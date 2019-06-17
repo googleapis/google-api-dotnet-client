@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/reporting/v1/reports/'>YouTube Reporting API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190605 (1616)
+ *      <tr><th>API Rev<td>20190614 (1625)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/reporting/v1/reports/'>
  *              https://developers.google.com/youtube/reporting/v1/reports/</a>

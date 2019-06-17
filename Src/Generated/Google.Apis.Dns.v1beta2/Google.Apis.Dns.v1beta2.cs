@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190517 (1597)
+ *      <tr><th>API Rev<td>20190611 (1622)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -89,9 +89,9 @@ namespace Google.Apis.Dns.v1beta2
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/dns/v1beta2/projects/"; }
+            get { return BaseUriOverride ?? "https://dns.googleapis.com/dns/v1beta2/projects/"; }
         #else
-            get { return "https://www.googleapis.com/dns/v1beta2/projects/"; }
+            get { return "https://dns.googleapis.com/dns/v1beta2/projects/"; }
         #endif
         }
 
@@ -105,7 +105,7 @@ namespace Google.Apis.Dns.v1beta2
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/dns/v1beta2"; }
+            get { return "https://dns.googleapis.com/batch/dns/v1beta2"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>

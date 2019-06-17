@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190605 (1616)
+ *      <tr><th>API Rev<td>20190609 (1620)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -68,6 +68,7 @@ namespace Google.Apis.Bigquery.v2
             jobs = new JobsResource(this);
             models = new ModelsResource(this);
             projects = new ProjectsResource(this);
+            routines = new RoutinesResource(this);
             tabledata = new TabledataResource(this);
             tables = new TablesResource(this);
         }
@@ -198,6 +199,14 @@ namespace Google.Apis.Bigquery.v2
         public virtual ProjectsResource Projects
         {
             get { return projects; }
+        }
+
+        private readonly RoutinesResource routines;
+
+        /// <summary>Gets the Routines resource.</summary>
+        public virtual RoutinesResource Routines
+        {
+            get { return routines; }
         }
 
         private readonly TabledataResource tabledata;
@@ -616,6 +625,10 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
+            /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The maximum number of results to return</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
@@ -629,10 +642,6 @@ namespace Google.Apis.Bigquery.v2
             /// labels.active". See Filtering datasets using labels for details.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -668,6 +677,15 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
@@ -689,15 +707,6 @@ namespace Google.Apis.Bigquery.v2
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1114,6 +1123,15 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobId { get; private set; }
 
+            /// <summary>Zero-based index of the starting row</summary>
+            [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> StartIndex { get; set; }
+
+            /// <summary>The geographic location where the job should run. Required except for US and EU. See details at
+            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1127,15 +1145,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Maximum number of results to read</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
-
-            /// <summary>Zero-based index of the starting row</summary>
-            [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ulong> StartIndex { get; set; }
-
-            /// <summary>The geographic location where the job should run. Required except for US and EU. See details at
-            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Location { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1180,6 +1189,24 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "startIndex", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startIndex",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1201,24 +1228,6 @@ namespace Google.Apis.Bigquery.v2
                     "maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startIndex", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startIndex",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "location", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "location",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1405,14 +1414,14 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("allUsers", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AllUsers { get; set; }
 
-            /// <summary>Maximum number of results to return</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
             /// <summary>Max value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
             /// created before or at this timestamp are returned</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxCreationTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ulong> MaxCreationTime { get; set; }
+
+            /// <summary>Maximum number of results to return</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>Filter for job state</summary>
             [Google.Apis.Util.RequestParameterAttribute("stateFilter", Google.Apis.Util.RequestParameterType.Query)]
@@ -1508,18 +1517,18 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
+                    "maxCreationTime", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxResults",
+                        Name = "maxCreationTime",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxCreationTime", new Google.Apis.Discovery.Parameter
+                    "maxResults", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxCreationTime",
+                        Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2113,13 +2122,13 @@ namespace Google.Apis.Bigquery.v2
             }
 
 
-            /// <summary>Maximum number of results to return</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
             /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Maximum number of results to return</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2146,6 +2155,15 @@ namespace Google.Apis.Bigquery.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
@@ -2153,6 +2171,387 @@ namespace Google.Apis.Bigquery.v2
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "routines" collection of methods.</summary>
+    public class RoutinesResource
+    {
+        private const string Resource = "routines";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public RoutinesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Deletes the routine specified by routineId from the dataset.</summary>
+        /// <param name="projectId">Project ID of the routine to delete</param>
+        /// <param name="datasetId">Dataset ID of
+        /// the routine to delete</param>
+        /// <param name="routineId">Routine ID of the routine to delete</param>
+        public virtual DeleteRequest Delete(string projectId, string datasetId, string routineId)
+        {
+            return new DeleteRequest(service, projectId, datasetId, routineId);
+        }
+
+        /// <summary>Deletes the routine specified by routineId from the dataset.</summary>
+        public class DeleteRequest : BigqueryBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string routineId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                RoutineId = routineId;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID of the routine to delete</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Dataset ID of the routine to delete</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+            /// <summary>Routine ID of the routine to delete</summary>
+            [Google.Apis.Util.RequestParameterAttribute("routineId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RoutineId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "datasetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "datasetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "routineId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "routineId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Gets the specified routine resource by routine ID.</summary>
+        /// <param name="projectId">Project ID of the requested routine</param>
+        /// <param name="datasetId">Dataset ID of
+        /// the requested routine</param>
+        /// <param name="routineId">Routine ID of the requested routine</param>
+        public virtual GetRequest Get(string projectId, string datasetId, string routineId)
+        {
+            return new GetRequest(service, projectId, datasetId, routineId);
+        }
+
+        /// <summary>Gets the specified routine resource by routine ID.</summary>
+        public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Routine>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId, string routineId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                RoutineId = routineId;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID of the requested routine</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Dataset ID of the requested routine</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+            /// <summary>Routine ID of the requested routine</summary>
+            [Google.Apis.Util.RequestParameterAttribute("routineId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RoutineId { get; private set; }
+
+            /// <summary>If set, only the Routine fields in the field mask are returned in the response. If unset, all
+            /// Routine fields are returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object FieldMask { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "datasetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "datasetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "routineId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "routineId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "fieldMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fieldMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a new routine in the dataset.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">Project ID of the new routine</param>
+        /// <param name="datasetId">Dataset ID of the new
+        /// routine</param>
+        public virtual InsertRequest Insert(Google.Apis.Bigquery.v2.Data.Routine body, string projectId, string datasetId)
+        {
+            return new InsertRequest(service, body, projectId, datasetId);
+        }
+
+        /// <summary>Creates a new routine in the dataset.</summary>
+        public class InsertRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Routine>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Routine body, string projectId, string datasetId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID of the new routine</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Dataset ID of the new routine</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.Routine Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{+projectId}/datasets/{+datasetId}/routines"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "datasetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "datasetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Lists all routines in the specified dataset. Requires the READER dataset role.</summary>
+        /// <param name="projectId">Project ID of the routines to list</param>
+        /// <param name="datasetId">Dataset ID of the
+        /// routines to list</param>
+        public virtual ListRequest List(string projectId, string datasetId)
+        {
+            return new ListRequest(service, projectId, datasetId);
+        }
+
+        /// <summary>Lists all routines in the specified dataset. Requires the READER dataset role.</summary>
+        public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.ListRoutinesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string projectId, string datasetId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID of the routines to list</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Dataset ID of the routines to list</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+            /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of results per page.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{+projectId}/datasets/{+datasetId}/routines"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "datasetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "datasetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
                     });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
@@ -2162,6 +2561,116 @@ namespace Google.Apis.Bigquery.v2
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates information in an existing routine. The update method replaces the entire Routine
+        /// resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">Project ID of the routine to update</param>
+        /// <param name="datasetId">Dataset ID of
+        /// the routine to update</param>
+        /// <param name="routineId">Routine ID of the routine to update</param>
+        public virtual UpdateRequest Update(Google.Apis.Bigquery.v2.Data.Routine body, string projectId, string datasetId, string routineId)
+        {
+            return new UpdateRequest(service, body, projectId, datasetId, routineId);
+        }
+
+        /// <summary>Updates information in an existing routine. The update method replaces the entire Routine
+        /// resource.</summary>
+        public class UpdateRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Routine>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Routine body, string projectId, string datasetId, string routineId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                DatasetId = datasetId;
+                RoutineId = routineId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID of the routine to update</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>Dataset ID of the routine to update</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DatasetId { get; private set; }
+
+            /// <summary>Routine ID of the routine to update</summary>
+            [Google.Apis.Util.RequestParameterAttribute("routineId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RoutineId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.Routine Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "datasetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "datasetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "routineId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "routineId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
                     });
             }
 
@@ -2321,14 +2830,6 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TableId { get; private set; }
 
-            /// <summary>Page token, returned by a previous call, identifying the result set</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Maximum number of results to return</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
             /// <summary>List of fields to return (comma-separated). If unspecified, all fields are returned</summary>
             [Google.Apis.Util.RequestParameterAttribute("selectedFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SelectedFields { get; set; }
@@ -2336,6 +2837,14 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Zero-based index of the starting row to read</summary>
             [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ulong> StartIndex { get; set; }
+
+            /// <summary>Page token, returned by a previous call, identifying the result set</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Maximum number of results to return</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2389,24 +2898,6 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "selectedFields", new Google.Apis.Discovery.Parameter
                     {
                         Name = "selectedFields",
@@ -2419,6 +2910,24 @@ namespace Google.Apis.Bigquery.v2
                     "startIndex", new Google.Apis.Discovery.Parameter
                     {
                         Name = "startIndex",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3077,6 +3586,30 @@ namespace Google.Apis.Bigquery.v2.Data
         /// class threshold. For multi-class classfication models this is the confidence threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
         public virtual System.Nullable<double> Threshold { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Input/output argument of a function or a stored procedure.</summary>
+    public class Argument : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Defaults to FIXED_TYPE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("argumentKind")]
+        public virtual string ArgumentKind { get; set; } 
+
+        /// <summary>Required unless argument_kind = ANY_TYPE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual StandardSqlDataType DataType { get; set; } 
+
+        /// <summary>Optional. Specifies whether the argument is input or output. Can be set for procedures
+        /// only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; } 
+
+        /// <summary>Optional. The name of this argument. Can be absent for function return argument.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4975,6 +5508,21 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ListRoutinesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token to request the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>Routines in the requested dataset. Only the following fields are populated: etag, project_id,
+        /// dataset_id, routine_id, routine_type, creation_time, last_modified_time, language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routines")]
+        public virtual System.Collections.Generic.IList<Routine> Routines { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>BigQuery-specific metadata about a location. This will be set on
     /// google.cloud.location.Location.metadata in Cloud Location API responses.</summary>
     public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -5486,6 +6034,69 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A user-defined function or a stored procedure.</summary>
+    public class Routine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
+        public virtual System.Collections.Generic.IList<Argument> Arguments { get; set; } 
+
+        /// <summary>Output only. The time when this routine was created, in milliseconds since the epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual System.Nullable<long> CreationTime { get; set; } 
+
+        /// <summary>Required. The body of the routine. For functions, this is the expression in the AS clause. If
+        /// language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function
+        /// created with the following statement create function JoinLines(x string, y string) as (concat(x, "\n", y))
+        /// definition_body = r'concat(x, "\n", y)' (\n is not replaced with linebreak). If language=JAVASCRIPT, it is
+        /// the evaluated string in the AS clause. For example, for the function created with the following statement
+        /// CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n' definition_body = 'return "\n";\n' (both
+        /// \n are replaced with linebreaks).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("definitionBody")]
+        public virtual string DefinitionBody { get; set; } 
+
+        /// <summary>Output only. A hash of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT
+        /// libraries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importedLibraries")]
+        public virtual System.Collections.Generic.IList<string> ImportedLibraries { get; set; } 
+
+        /// <summary>Optional. Defaults to "SQL".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; } 
+
+        /// <summary>Output only. The time when this routine was last modified, in milliseconds since the
+        /// epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
+        public virtual System.Nullable<long> LastModifiedTime { get; set; } 
+
+        /// <summary>Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from
+        /// definition_body at query time in each query that references this routine. If present, then the evaluated
+        /// result will be cast to the specified returned type at query time.
+        ///
+        /// For example, for the functions created with the following statements CREATE FUNCTION Add(x FLOAT64, y
+        /// FLOAT64) RETURNS FLOAT64 AS (x + y); CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1)); CREATE FUNCTION
+        /// Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1)); The return_type is {type_kind: "FLOAT64"} for Add and
+        /// Decrement, and is absent for Increment (inferred as FLOAT64 at query time). Suppose the function Add is
+        /// replaced by CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y); Then the inferred return type of
+        /// Increment is automatically changed to INT64 at query time, while the return type of Decrement remains
+        /// FLOAT64.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnType")]
+        public virtual StandardSqlDataType ReturnType { get; set; } 
+
+        /// <summary>Required. Reference describing the ID of this routine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routineReference")]
+        public virtual RoutineReference RoutineReference { get; set; } 
+
+        /// <summary>Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routineType")]
+        public virtual string RoutineType { get; set; } 
+
     }    
 
     public class RoutineReference : Google.Apis.Requests.IDirectResponseSchema

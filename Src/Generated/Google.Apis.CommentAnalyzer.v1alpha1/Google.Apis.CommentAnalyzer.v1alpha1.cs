@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://conversationai.github.io/'>Perspective Comment Analyzer API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190602 (1613)
+ *      <tr><th>API Rev<td>20190609 (1620)
  *      <tr><th>API Docs
  *          <td><a href='https://conversationai.github.io/'>
  *              https://conversationai.github.io/</a>

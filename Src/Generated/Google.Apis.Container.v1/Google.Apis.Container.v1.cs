@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190527 (1607)
+ *      <tr><th>API Rev<td>20190610 (1621)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -1628,11 +1628,6 @@ namespace Google.Apis.Container.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster to delete. This field has been deprecated and
-                    /// replaced by the name field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterId { get; set; }
-
                     /// <summary>Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
@@ -1644,6 +1639,11 @@ namespace Google.Apis.Container.v1
                     /// field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
+
+                    /// <summary>Deprecated. The name of the cluster to delete. This field has been deprecated and
+                    /// replaced by the name field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1679,15 +1679,6 @@ namespace Google.Apis.Container.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -1700,6 +1691,15 @@ namespace Google.Apis.Container.v1
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2932,6 +2932,11 @@ namespace Google.Apis.Container.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
+                    /// and replaced by the name field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OperationId { get; set; }
+
                     /// <summary>Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
@@ -2943,11 +2948,6 @@ namespace Google.Apis.Container.v1
                     /// field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
-
-                    /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
-                    /// and replaced by the name field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OperationId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2983,6 +2983,15 @@ namespace Google.Apis.Container.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "operationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "operationId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -2995,15 +3004,6 @@ namespace Google.Apis.Container.v1
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "operationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "operationId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6739,6 +6739,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Parameters for using BigQuery as the destination of resource usage export.</summary>
+    public class BigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of a BigQuery Dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>CancelOperationRequest cancels a single operation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6915,8 +6926,9 @@ namespace Google.Apis.Container.v1.Data
 
         /// <summary>The logging service the cluster should use to write logs. Currently available options:
         ///
-        /// * `logging.googleapis.com` - the Google Cloud Logging service. * `none` - no logs will be exported from the
-        /// cluster. * if left as an empty string,`logging.googleapis.com` will be used.</summary>
+        /// * "logging.googleapis.com/kubernetes" - the Google Cloud Logging service with Kubernetes-native resource
+        /// model in Stackdriver * `logging.googleapis.com` - the Google Cloud Logging service. * `none` - no logs will
+        /// be exported from the cluster. * if left as an empty string,`logging.googleapis.com` will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingService")]
         public virtual string LoggingService { get; set; } 
 
@@ -6992,6 +7004,11 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
         public virtual System.Collections.Generic.IDictionary<string,string> ResourceLabels { get; set; } 
 
+        /// <summary>Configuration for exporting resource usages. Resource usage export is disabled when this config is
+        /// unspecified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUsageExportConfig")]
+        public virtual ResourceUsageExportConfig ResourceUsageExportConfig { get; set; } 
+
         /// <summary>[Output only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -7051,6 +7068,14 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredLocations")]
         public virtual System.Collections.Generic.IList<string> DesiredLocations { get; set; } 
 
+        /// <summary>The logging service the cluster should use to write logs. Currently available options:
+        ///
+        /// * "logging.googleapis.com/kubernetes" - the Google Cloud Logging service with Kubernetes-native resource
+        /// model in Stackdriver * "logging.googleapis.com" - the Google Cloud Logging service * "none" - no logs will
+        /// be exported from the cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredLoggingService")]
+        public virtual string DesiredLoggingService { get; set; } 
+
         /// <summary>The desired configuration options for master authorized networks feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMasterAuthorizedNetworksConfig")]
         public virtual MasterAuthorizedNetworksConfig DesiredMasterAuthorizedNetworksConfig { get; set; } 
@@ -7068,8 +7093,9 @@ namespace Google.Apis.Container.v1.Data
 
         /// <summary>The monitoring service the cluster should use to write metrics. Currently available options:
         ///
-        /// * "monitoring.googleapis.com" - the Google Cloud Monitoring service * "none" - no metrics will be exported
-        /// from the cluster</summary>
+        /// * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring service with Kubernetes-native
+        /// resource model in Stackdriver * "monitoring.googleapis.com" - the Google Cloud Monitoring service * "none" -
+        /// no metrics will be exported from the cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMonitoringService")]
         public virtual string DesiredMonitoringService { get; set; } 
 
@@ -7095,6 +7121,10 @@ namespace Google.Apis.Container.v1.Data
         /// an explicit Kubernetes version - "-": picks the Kubernetes master version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNodeVersion")]
         public virtual string DesiredNodeVersion { get; set; } 
+
+        /// <summary>The desired configuration for exporting resource usage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredResourceUsageExportConfig")]
+        public virtual ResourceUsageExportConfig DesiredResourceUsageExportConfig { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7123,6 +7153,18 @@ namespace Google.Apis.Container.v1.Data
         /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Parameters for controlling consumption metering.</summary>
+    public class ConsumptionMeteringConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will
+        /// be created to hold resource consumption records.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7717,7 +7759,8 @@ namespace Google.Apis.Container.v1.Data
         /// other metadata keys for the project or be one of the reserved keys: "cluster-location" "cluster-name"
         /// "cluster-uid" "configure-sh" "containerd-configure-sh" "enable-os-login" "gci-update-strategy" "gci-ensure-
         /// gke-docker" "instance-template" "kube-env" "startup-script" "user-data" "disable-address-manager" "windows-
-        /// startup-script-ps1" "common-psm1" "k8s-node-setup-psm1" "install-ssh-psm1" "user-profile-psm1"
+        /// startup-script-ps1" "common-psm1" "k8s-node-setup-psm1" "install-ssh-psm1" "user-profile-psm1" "serial-port-
+        /// logging-enable"
         ///
         /// Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The
         /// only restriction placed on them is that each value's size must be less than or equal to 32 KB.
@@ -7999,6 +8042,26 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Output only. The external IP address of this cluster's master endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicEndpoint")]
         public virtual string PublicEndpoint { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for exporting cluster resource usages.</summary>
+    public class ResourceUsageExportConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration to use BigQuery as usage export destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
+        public virtual BigQueryDestination BigqueryDestination { get; set; } 
+
+        /// <summary>Configuration to enable resource consumption metering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumptionMeteringConfig")]
+        public virtual ConsumptionMeteringConfig ConsumptionMeteringConfig { get; set; } 
+
+        /// <summary>Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
+        /// in the cluster to meter network egress traffic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableNetworkEgressMetering")]
+        public virtual System.Nullable<bool> EnableNetworkEgressMetering { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8317,8 +8380,9 @@ namespace Google.Apis.Container.v1.Data
 
         /// <summary>The monitoring service the cluster should use to write metrics. Currently available options:
         ///
-        /// * "monitoring.googleapis.com" - the Google Cloud Monitoring service * "none" - no metrics will be exported
-        /// from the cluster</summary>
+        /// * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring service with Kubernetes-native
+        /// resource model in Stackdriver * "monitoring.googleapis.com" - the Google Cloud Monitoring service * "none" -
+        /// no metrics will be exported from the cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringService")]
         public virtual string MonitoringService { get; set; } 
 

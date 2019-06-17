@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190523 (1603)
+ *      <tr><th>API Rev<td>20190606 (1617)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -3127,6 +3127,20 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class MessageStoragePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of GCP region IDs where messages that are published to the topic may be persisted in
+        /// storage. Messages published by publishers running in non-allowed GCP regions (or running outside of GCP
+        /// altogether) will be routed for storage in one of the allowed regions. An empty list indicates a
+        /// misconfiguration at the project or organization level, which will result in all Publish operations
+        /// failing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedPersistenceRegions")]
+        public virtual System.Collections.Generic.IList<string> AllowedPersistenceRegions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request for the ModifyAckDeadline method.</summary>
     public class ModifyAckDeadlineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3536,9 +3550,23 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>A topic resource.</summary>
     public class Topic : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on
+        /// this topic.
+        ///
+        /// The expected format is `projects/locations/keyRings/cryptoKeys`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; } 
+
         /// <summary>See  Creating and managing labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>Policy constraining how messages published to the topic may be stored. It is determined when the
+        /// topic is created based on the policy configured at the project level. It must not be set by the caller in
+        /// the request to CreateTopic or to UpdateTopic. This field will be populated in the responses for GetTopic,
+        /// CreateTopic, and UpdateTopic: if not present in the response, then no constraints are in effect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageStoragePolicy")]
+        public virtual MessageStoragePolicy MessageStoragePolicy { get; set; } 
 
         /// <summary>The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}`
         /// must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),

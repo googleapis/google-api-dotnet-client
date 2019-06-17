@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20190528 (1608)
+ *      <tr><th>API Rev<td>20190530 (1610)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -1656,7 +1656,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Creates an address resource in the specified project using the data included in the
+        /// <summary>Creates an address resource in the specified project by using the data included in the
         /// request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -1667,7 +1667,7 @@ namespace Google.Apis.Compute.beta
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates an address resource in the specified project using the data included in the
+        /// <summary>Creates an address resource in the specified project by using the data included in the
         /// request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
@@ -9847,7 +9847,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Creates an address resource in the specified project using the data included in the
+        /// <summary>Creates an address resource in the specified project by using the data included in the
         /// request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -9856,7 +9856,7 @@ namespace Google.Apis.Compute.beta
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates an address resource in the specified project using the data included in the
+        /// <summary>Creates an address resource in the specified project by using the data included in the
         /// request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
@@ -32623,7 +32623,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Disable a serivce resource (a.k.a service project) associated with this host project.</summary>
+        /// <summary>Disable a service resource (also known as service project) associated with this host
+        /// project.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual DisableXpnResourceRequest DisableXpnResource(Google.Apis.Compute.beta.Data.ProjectsDisableXpnResourceRequest body, string project)
@@ -32631,7 +32632,8 @@ namespace Google.Apis.Compute.beta
             return new DisableXpnResourceRequest(service, body, project);
         }
 
-        /// <summary>Disable a serivce resource (a.k.a service project) associated with this host project.</summary>
+        /// <summary>Disable a service resource (also known as service project) associated with this host
+        /// project.</summary>
         public class DisableXpnResourceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new DisableXpnResource request.</summary>
@@ -62848,8 +62850,11 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An Accelerator Type resource. (== resource_for beta.acceleratorTypes ==) (== resource_for
-    /// v1.acceleratorTypes ==)</summary>
+    /// <summary>Represents an Accelerator Type resource.
+    ///
+    /// Google Cloud Platform provides graphics processing units (accelerators) that you can add to VM instances to
+    /// improve or accelerate performance when working with intensive workloads. For more information, read GPUs on
+    /// Compute Engine. (== resource_for beta.acceleratorTypes ==) (== resource_for v1.acceleratorTypes ==)</summary>
     public class AcceleratorType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -63103,8 +63108,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The name of this access configuration. The default and recommended name is External NAT but you can
-        /// use any arbitrary string you would like. For example, My external IP or Network Access.</summary>
+        /// <summary>The name of this access configuration. The default and recommended name is External NAT, but you
+        /// can use any arbitrary string, such as My external IP or Network Access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -63126,12 +63131,12 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
         public virtual string NetworkTier { get; set; } 
 
-        /// <summary>The DNS domain name for the public PTR record. This field can only be set when the set_public_ptr
+        /// <summary>The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr`
         /// field is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicPtrDomainName")]
         public virtual string PublicPtrDomainName { get; set; } 
 
-        /// <summary>Specifies whether a public DNS ?PTR? record should be created to map the external IP address of the
+        /// <summary>Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the
         /// instance to a DNS domain name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setPublicPtr")]
         public virtual System.Nullable<bool> SetPublicPtr { get; set; } 
@@ -63144,8 +63149,19 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A reserved address resource. (== resource_for beta.addresses ==) (== resource_for v1.addresses ==) (==
-    /// resource_for beta.globalAddresses ==) (== resource_for v1.globalAddresses ==)</summary>
+    /// <summary>Represents an IP Address resource.
+    ///
+    /// An address resource represents a regional internal IP address. Regional internal IP addresses are RFC 1918
+    /// addresses that come from either a primary or secondary IP range of a subnet in a VPC network. Regional external
+    /// IP addresses can be assigned to GCP VM instances, Cloud VPN gateways, regional external forwarding rules for
+    /// network load balancers (in either Standard or Premium Tier), and regional external forwarding rules for HTTP(S),
+    /// SSL Proxy, and TCP Proxy load balancers in Standard Tier. For more information, read IP addresses.
+    ///
+    /// A globalAddresses resource represent a global external IP address. Global external IP addresses are IPv4 or IPv6
+    /// addresses. They can only be assigned to global forwarding rules for HTTP(S), SSL Proxy, or TCP Proxy load
+    /// balancers in Premium Tier. For more information, read Global resources. (== resource_for beta.addresses ==) (==
+    /// resource_for v1.addresses ==) (== resource_for beta.globalAddresses ==) (== resource_for v1.globalAddresses
+    /// ==)</summary>
     public class Address : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The static IP address represented by this resource.</summary>
@@ -63161,7 +63177,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
-        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// <summary>An optional description of this resource. Provide this field when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
@@ -63171,7 +63187,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>The IP Version that will be used by this address. Valid options are IPV4 or IPV6. This can only be
+        /// <summary>The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be
         /// specified for a global address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipVersion")]
         public virtual string IpVersion { get; set; } 
@@ -63196,22 +63212,22 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
-        /// cannot be a dash.</summary>
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all
+        /// following characters (except for the last character) must be a dash, lowercase letter, or digit. The last
+        /// character must be a lowercase letter or digit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>The URL of the network in which to reserve the address. This field can only be used with INTERNAL
-        /// type with VPC_PEERING purpose.</summary>
+        /// type with the VPC_PEERING purpose.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>This signifies the networking tier used for configuring this Address and can only take the
-        /// following values: PREMIUM, STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding
+        /// <summary>This signifies the networking tier used for configuring this address and can only take the
+        /// following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding
         /// rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules
         /// can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with
-        /// a Network load balancer.
+        /// a network load balancer.
         ///
         /// If this field is not specified, it is assumed to be PREMIUM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
@@ -63221,13 +63237,16 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("prefixLength")]
         public virtual System.Nullable<int> PrefixLength { get; set; } 
 
-        /// <summary>The purpose of resource, only used with INTERNAL type.</summary>
+        /// <summary>The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for
+        /// addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. -
+        /// `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved
+        /// for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for
+        /// Cloud NAT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
         public virtual string Purpose { get; set; } 
 
-        /// <summary>[Output Only] URL of the region where the regional address resides. This field is not applicable to
-        /// global addresses. You must specify this field as part of the HTTP request URL. You cannot set this field in
-        /// the request body.</summary>
+        /// <summary>[Output Only] The URL of the region where the regional address resides. This field is not
+        /// applicable to global addresses. You must specify this field as part of the HTTP request URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
@@ -63243,8 +63262,8 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string Status { get; set; } 
 
         /// <summary>The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must
-        /// be within the subnetwork's IP range. This field can only be used with INTERNAL type with
-        /// GCE_ENDPOINT/DNS_RESOLVER purposes.</summary>
+        /// be within the subnetwork's IP range. This field can only be used with INTERNAL type with a GCE_ENDPOINT or
+        /// DNS_RESOLVER purpose.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 
@@ -63457,16 +63476,15 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>An alias IP range attached to an instance's network interface.</summary>
     public class AliasIpRange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The IP CIDR range represented by this alias IP range. This IP CIDR range must belong to the
-        /// specified subnetwork and cannot contain IP addresses reserved by system or used by other network interfaces.
-        /// This range may be a single IP address (e.g. 10.2.3.4), a netmask (e.g. /24) or a CIDR format string (e.g.
-        /// 10.1.2.0/24).</summary>
+        /// <summary>The IP alias ranges to allocate for this interface. This IP CIDR range must belong to the specified
+        /// subnetwork and cannot contain IP addresses reserved by system or used by other network interfaces. This
+        /// range may be a single IP address (such as 10.2.3.4), a netmask (such as /24) or a CIDR-formatted string
+        /// (such as 10.1.2.0/24).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; } 
 
-        /// <summary>Optional subnetwork secondary range name specifying the secondary range from which to allocate the
-        /// IP CIDR range for this alias IP range. If left unspecified, the primary range of the subnetwork will be
-        /// used.</summary>
+        /// <summary>The name of a subnetwork secondary IP range from which to allocate an IP alias range. If not
+        /// specified, the primary range of the subnetwork is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkRangeName")]
         public virtual string SubnetworkRangeName { get; set; } 
 
@@ -63596,7 +63614,8 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The
         /// default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a
         /// persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance
-        /// characteristics of SCSI over NVMe, see Local SSD performance.</summary>
+        /// characteristics of SCSI over NVMe, see Local SSD performance. TODO(b/131765817): Update documentation when
+        /// NVME is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interface")]
         public virtual string Interface__ { get; set; } 
 
@@ -63797,10 +63816,16 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine
-    /// instances in managed instance groups according to an autoscaling policy that you define. For more information,
-    /// read Autoscaling Groups of Instances. (== resource_for beta.autoscalers ==) (== resource_for v1.autoscalers ==)
-    /// (== resource_for beta.regionAutoscalers ==) (== resource_for v1.regionAutoscalers ==)</summary>
+    /// <summary>Represents an Autoscaler resource.
+    ///
+    /// Use autoscalers to automatically add or delete instances from a managed instance group according to your defined
+    /// autoscaling policy. For more information, read Autoscaling Groups of Instances.
+    ///
+    /// For zonal managed instance groups resource, use the autoscaler resource.
+    ///
+    /// For regional managed instance groups, use the regionAutoscalers resource. (== resource_for beta.autoscalers ==)
+    /// (== resource_for v1.autoscalers ==) (== resource_for beta.regionAutoscalers ==) (== resource_for
+    /// v1.regionAutoscalers ==)</summary>
     public class Autoscaler : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration parameters for the autoscaling algorithm. You can define one or more of the
@@ -65104,14 +65129,12 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a Commitment resource. Creating a Commitment resource means that you are purchasing a
-    /// committed use contract with an explicit start and end time. You can create commitments based on vCPUs and memory
-    /// usage and receive discounted rates. For full details, read Signing Up for Committed Use Discounts.
+    /// <summary>Represents a regional Commitment resource.
     ///
-    /// Committed use discounts are subject to Google Cloud Platform's Service Specific Terms. By purchasing a committed
-    /// use discount, you agree to these terms. Committed use discounts will not renew, so you must purchase a new
-    /// commitment to continue receiving discounts. (== resource_for beta.commitments ==) (== resource_for
-    /// v1.commitments ==)</summary>
+    /// Creating a commitment resource means that you are purchasing a committed use contract with an explicit start and
+    /// end time. You can create commitments based on vCPUs and memory usage and receive discounted rates. For full
+    /// details, read Signing Up for Committed Use Discounts. (== resource_for beta.regionCommitments ==) (==
+    /// resource_for v1.regionCommitments ==)</summary>
     public class Commitment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -65178,6 +65201,11 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] An optional, human-readable explanation of the status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; } 
+
+        /// <summary>The type of commitment, which affects the discount rate and the eligible resources. Type
+        /// MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65596,7 +65624,16 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Disk resource. (== resource_for beta.disks ==) (== resource_for v1.disks ==)</summary>
+    /// <summary>Represents a Persistent Disk resource.
+    ///
+    /// Persistent disks are required for running your VM instances. Create both boot and non-boot (data) persistent
+    /// disks. For more information, read Persistent Disks. For more storage options, read Storage options.
+    ///
+    /// The disks resource represents a zonal persistent disk. For more information, read Zonal persistent disks.
+    ///
+    /// The regionDisks resource represents a regional persistent disk. For more information, read  Regional resources.
+    /// (== resource_for beta.disks ==) (== resource_for v1.disks ==) (== resource_for v1.regionDisks ==) (==
+    /// resource_for beta.regionDisks ==)</summary>
     public class Disk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -65984,7 +66021,16 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A DiskType resource. (== resource_for beta.diskTypes ==) (== resource_for v1.diskTypes ==)</summary>
+    /// <summary>Represents a Disk Type resource.
+    ///
+    /// You can choose from a variety of disk types based on your needs. For more information, read Storage options.
+    ///
+    /// The diskTypes resource represents disk types for a zonal persistent disk. For more information, read Zonal
+    /// persistent disks.
+    ///
+    /// The regionDiskTypes resource represents disk types for a regional persistent disk. For more information, read
+    /// Regional persistent disks. (== resource_for beta.diskTypes ==) (== resource_for v1.diskTypes ==) (==
+    /// resource_for v1.regionDiskTypes ==) (== resource_for beta.regionDiskTypes ==)</summary>
     public class DiskType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -66379,7 +66425,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destRange")]
         public virtual string DestRange { get; set; } 
 
-        /// <summary>If the peering route is imported if there is no confliction.</summary>
+        /// <summary>True if the peering route has been imported from a peer. The actual import happens if the field
+        /// networkPeering.importCustomRoutes is true for this network, and networkPeering.exportCustomRoutes is true
+        /// for the peer network, and the import does not result in a route conflict.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imported")]
         public virtual System.Nullable<bool> Imported { get; set; } 
 
@@ -66659,7 +66707,10 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>Represents a Firewall resource.</summary>
+    /// <summary>Represents a Firewall Rule resource.
+    ///
+    /// Firewall rules allow or deny ingress traffic to, and egress traffic from your instances. For more information,
+    /// read Firewall rules.</summary>
     public class Firewall : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range
@@ -66676,25 +66727,25 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("denied")]
         public virtual System.Collections.Generic.IList<Firewall.DeniedData> Denied { get; set; } 
 
-        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// <summary>An optional description of this resource. Provide this field when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>If destination ranges are specified, the firewall will apply only to traffic that has destination
+        /// <summary>If destination ranges are specified, the firewall rule applies only to traffic that has destination
         /// IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationRanges")]
         public virtual System.Collections.Generic.IList<string> DestinationRanges { get; set; } 
 
-        /// <summary>Direction of traffic to which this firewall applies; default is INGRESS. Note: For INGRESS traffic,
-        /// it is NOT supported to specify destinationRanges; For EGRESS traffic, it is NOT supported to specify
-        /// sourceRanges OR sourceTags.</summary>
+        /// <summary>Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is
+        /// `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic,
+        /// you cannot specify the sourceRanges or sourceTags fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; } 
 
-        /// <summary>Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated
-        /// with. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If
-        /// this is unspecified, the firewall rule will be enabled.</summary>
+        /// <summary>Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced
+        /// and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be
+        /// enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; } 
 
@@ -66719,24 +66770,26 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
-        /// cannot be a dash.</summary>
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all
+        /// following characters (except for the last character) must be a dash, lowercase letter, or digit. The last
+        /// character must be a lowercase letter or digit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>URL of the network resource for this firewall rule. If not specified when creating a firewall rule,
-        /// the default network is used: global/networks/default If you choose to specify this property, you can specify
+        /// the default network is used: global/networks/default If you choose to specify this field, you can specify
         /// the network as a full or partial URL. For example, the following are all valid URLs: -
         /// https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network -
         /// projects/myproject/global/networks/my-network - global/networks/default</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>Priority for this rule. This is an integer between 0 and 65535, both inclusive. When not specified,
-        /// the value assumed is 1000. Relative priorities determine precedence of conflicting rules. Lower value of
-        /// priority implies higher precedence (eg, a rule with priority 0 has higher precedence than a rule with
-        /// priority 1). DENY rules take precedence over ALLOW rules having equal priority.</summary>
+        /// <summary>Priority for this rule. This is an integer between `0` and `65535`, both inclusive. The default
+        /// value is `1000`. Relative priorities determine which rule takes effect if multiple rules apply. Lower values
+        /// indicate higher priority. For example, a rule with priority `0` has higher precedence than a rule with
+        /// priority `1`. DENY rules take precedence over ALLOW rules if they have equal priority. Note that VPC
+        /// networks have implied rules with a priority of `65535`. To avoid conflicts with the implied rules, use a
+        /// priority number less than `65535`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<int> Priority { get; set; } 
 
@@ -66744,21 +66797,21 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>If source ranges are specified, the firewall will apply only to traffic that has source IP address
-        /// in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags
-        /// may be set. If both properties are set, the firewall will apply to traffic that has source IP address within
-        /// sourceRanges OR the source IP that belongs to a tag listed in the sourceTags property. The connection does
-        /// not need to match both properties for the firewall to apply. Only IPv4 is supported.</summary>
+        /// <summary>If source ranges are specified, the firewall rule applies only to traffic that has a source IP
+        /// address in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and
+        /// sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address
+        /// within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The
+        /// connection does not need to match both fields for the rule to apply. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRanges")]
         public virtual System.Collections.Generic.IList<string> SourceRanges { get; set; } 
 
-        /// <summary>If source service accounts are specified, the firewall will apply only to traffic originating from
+        /// <summary>If source service accounts are specified, the firewall rules apply only to traffic originating from
         /// an instance with a service account in this list. Source service accounts cannot be used to control traffic
         /// to an instance's external IP address because service accounts are associated with an instance, not an IP
         /// address. sourceRanges can be set at the same time as sourceServiceAccounts. If both are set, the firewall
-        /// will apply to traffic that has source IP address within sourceRanges OR the source IP belongs to an instance
-        /// with service account listed in sourceServiceAccount. The connection does not need to match both properties
-        /// for the firewall to apply. sourceServiceAccounts cannot be used at the same time as sourceTags or
+        /// applies to traffic that has a source IP address within the sourceRanges OR a source IP that belongs to an
+        /// instance with service account listed in sourceServiceAccount. The connection does not need to match both
+        /// fields for the firewall to apply. sourceServiceAccounts cannot be used at the same time as sourceTags or
         /// targetTags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceServiceAccounts")]
         public virtual System.Collections.Generic.IList<string> SourceServiceAccounts { get; set; } 
@@ -66767,9 +66820,9 @@ namespace Google.Apis.Compute.beta.Data
         /// the primary network interfaces of VM instances that have the tag and are in the same VPC network. Source
         /// tags cannot be used to control traffic to an instance's external IP address, it only applies to traffic
         /// between instances in the same virtual network. Because tags are associated with instances, not IP addresses.
-        /// One or both of sourceRanges and sourceTags may be set. If both properties are set, the firewall will apply
-        /// to traffic that has source IP address within sourceRanges OR the source IP that belongs to a tag listed in
-        /// the sourceTags property. The connection does not need to match both properties for the firewall to
+        /// One or both of sourceRanges and sourceTags may be set. If both fields are set, the firewall applies to
+        /// traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag
+        /// listed in the sourceTags field. The connection does not need to match both fields for the firewall to
         /// apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTags")]
         public virtual System.Collections.Generic.IList<string> SourceTags { get; set; } 
@@ -66796,12 +66849,12 @@ namespace Google.Apis.Compute.beta.Data
         {
             /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
             /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
-            /// icmp, esp, ah, ipip, sctp), or the IP protocol number.</summary>
+            /// icmp, esp, ah, ipip, sctp) or the IP protocol number.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
             public virtual string IPProtocol { get; set; } 
 
-            /// <summary>An optional list of ports to which this rule applies. This field is only applicable for UDP or
-            /// TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to
+            /// <summary>An optional list of ports to which this rule applies. This field is only applicable for the UDP
+            /// or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to
             /// connections through any port.
             ///
             /// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].</summary>
@@ -66814,12 +66867,12 @@ namespace Google.Apis.Compute.beta.Data
         {
             /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
             /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
-            /// icmp, esp, ah, ipip, sctp), or the IP protocol number.</summary>
+            /// icmp, esp, ah, ipip, sctp) or the IP protocol number.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
             public virtual string IPProtocol { get; set; } 
 
-            /// <summary>An optional list of ports to which this rule applies. This field is only applicable for UDP or
-            /// TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to
+            /// <summary>An optional list of ports to which this rule applies. This field is only applicable for the UDP
+            /// or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to
             /// connections through any port.
             ///
             /// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].</summary>
@@ -68670,7 +68723,10 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>An Image resource. (== resource_for beta.images ==) (== resource_for v1.images ==)</summary>
+    /// <summary>Represents an Image resource.
+    ///
+    /// You can use images to create boot disks for your VM instances. For more information, read Images. (==
+    /// resource_for beta.images ==) (== resource_for v1.images ==)</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).</summary>
@@ -68928,7 +68984,10 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>An Instance resource. (== resource_for beta.instances ==) (== resource_for v1.instances ==)</summary>
+    /// <summary>Represents an Instance resource.
+    ///
+    /// An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual
+    /// Machine Instances. (== resource_for beta.instances ==) (== resource_for v1.instances ==)</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Allows this instance to send and receive packets with non-matching destination or source IPs. This
@@ -69167,8 +69226,16 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>InstanceGroups (== resource_for beta.instanceGroups ==) (== resource_for v1.instanceGroups ==) (==
-    /// resource_for beta.regionInstanceGroups ==) (== resource_for v1.regionInstanceGroups ==)</summary>
+    /// <summary>Represents an unmanaged Instance Group resource.
+    ///
+    /// Use unmanaged instance groups if you need to apply load balancing to groups of heterogeneous instances or if you
+    /// need to manage the instances yourself. For more information, read  Instance groups.
+    ///
+    /// For zonal unmanaged Instance Group, use instanceGroups resource.
+    ///
+    /// For regional unmanaged Instance Group, use regionInstanceGroups resource. (== resource_for beta.instanceGroups
+    /// ==) (== resource_for v1.instanceGroups ==) (== resource_for beta.regionInstanceGroups ==) (== resource_for
+    /// v1.regionInstanceGroups ==)</summary>
     public class InstanceGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The creation timestamp for this instance group in RFC3339 text format.</summary>
@@ -69384,9 +69451,16 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>An Instance Group Manager resource. (== resource_for beta.instanceGroupManagers ==) (== resource_for
-    /// v1.instanceGroupManagers ==) (== resource_for beta.regionInstanceGroupManagers ==) (== resource_for
-    /// v1.regionInstanceGroupManagers ==)</summary>
+    /// <summary>Represents a Managed Instance Group resource.
+    ///
+    /// An instance group is a collection of VM instances that you can manage as a single entity. For more information,
+    /// read Instance groups.
+    ///
+    /// For zonal Managed Instance Group, use the instanceGroupManagers resource.
+    ///
+    /// For regional Managed Instance Group, use the regionInstanceGroupManagers resource. (== resource_for
+    /// beta.instanceGroupManagers ==) (== resource_for v1.instanceGroupManagers ==) (== resource_for
+    /// beta.regionInstanceGroupManagers ==) (== resource_for v1.regionInstanceGroupManagers ==)</summary>
     public class InstanceGroupManager : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The autohealing policy for this managed instance group. You can specify only one value.</summary>
@@ -69844,6 +69918,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minimalAction")]
         public virtual string MinimalAction { get; set; } 
 
+        /// <summary>The type of update process. You can specify either PROACTIVE so that the instance group manager
+        /// proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that
+        /// no action is proactively executed but the update will be performed as part of other actions (for example,
+        /// resizes or recreateInstances calls).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -69891,18 +69969,24 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>InstanceGroupManagers.applyUpdatesToInstances</summary>
     public class InstanceGroupManagersApplyUpdatesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of URLs of one or more instances for which we want to apply updates on this managed
-        /// instance group. This can be a full URL or a partial URL, such as
-        /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
+        /// <summary>The list of URLs of one or more instances for which you want to apply updates. Each URL can be a
+        /// full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
-        /// <summary>The minimal action that should be perfomed on the instances. By default NONE.</summary>
+        /// <summary>The minimal action that you want to perform on each instance during the update: - REPLACE: At
+        /// minimum, delete the instance and create it again. - RESTART: Stop the instance and start it again. -
+        /// REFRESH: Do not stop the instance. - NONE: Do not disrupt the instance at all.  By default, the minimum
+        /// action is NONE. If your update requires a more disruptive action than you set with this flag, the necessary
+        /// action is performed to execute the update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimalAction")]
         public virtual string MinimalAction { get; set; } 
 
-        /// <summary>The most disruptive action that allowed to be performed on the instances. By default
-        /// REPLACE.</summary>
+        /// <summary>The most disruptive action that you want to perform on each instance during the update: - REPLACE:
+        /// Delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not
+        /// stop the instance. - NONE: Do not disrupt the instance at all.  By default, the most disruptive allowed
+        /// action is REPLACE. If your update requires a more disruptive action than you set with this flag, the update
+        /// request will fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mostDisruptiveAllowedAction")]
         public virtual string MostDisruptiveAllowedAction { get; set; } 
 
@@ -70510,8 +70594,11 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An Instance Template resource. (== resource_for beta.instanceTemplates ==) (== resource_for
-    /// v1.instanceTemplates ==)</summary>
+    /// <summary>Represents an Instance Template resource.
+    ///
+    /// You can use instance templates to create VM instances and managed instance groups. For more information, read
+    /// Instance Templates. (== resource_for beta.instanceTemplates ==) (== resource_for v1.instanceTemplates
+    /// ==)</summary>
     public class InstanceTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The creation timestamp for this instance template in RFC3339 text format.</summary>
@@ -70822,9 +70909,11 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an Interconnects resource. The Interconnects resource is a dedicated connection between
-    /// Google's network and your on-premises network. For more information, see the  Dedicated overview page. (==
-    /// resource_for v1.interconnects ==) (== resource_for beta.interconnects ==)</summary>
+    /// <summary>Represents an Interconnect resource.
+    ///
+    /// An Interconnect resource is a dedicated connection between the GCP network and your on-premises network. For
+    /// more information, read the  Dedicated Interconnect Overview. (== resource_for v1.interconnects ==) (==
+    /// resource_for beta.interconnects ==)</summary>
     public class Interconnect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Administrative status of the interconnect. When this is set to true, the Interconnect is functional
@@ -70964,9 +71053,11 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an InterconnectAttachment (VLAN attachment) resource. For more information, see  Creating
-    /// VLAN Attachments. (== resource_for beta.interconnectAttachments ==) (== resource_for v1.interconnectAttachments
-    /// ==)</summary>
+    /// <summary>Represents an Interconnect Attachment (VLAN) resource.
+    ///
+    /// You can use Interconnect attachments (VLANS) to connect your Virtual Private Cloud networks to your on-premises
+    /// networks through an Interconnect. For more information, read  Creating VLAN Attachments. (== resource_for
+    /// beta.interconnectAttachments ==) (== resource_for v1.interconnectAttachments ==)</summary>
     public class InterconnectAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER.</summary>
@@ -71018,7 +71109,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string EdgeAvailabilityDomain { get; set; } 
 
         /// <summary>[Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise
-        /// to debug backend connectivity issues.</summary>
+        /// to debug backend connectivity issues. [Deprecated] This field is not used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleReferenceId")]
         public virtual string GoogleReferenceId { get; set; } 
 
@@ -71572,9 +71663,10 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>Represents an InterconnectLocations resource. The InterconnectLocations resource describes the
-    /// locations where you can connect to Google's networks. For more information, see  Colocation
-    /// Facilities.</summary>
+    /// <summary>Represents an Interconnect Attachment (VLAN) Location resource.
+    ///
+    /// You can use this resource to find location details about an Interconnect attachment (VLAN). For more information
+    /// about interconnect attachments, read  Creating VLAN Attachments.</summary>
     public class InterconnectLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The postal address of the Point of Presence, each line in the address is separated by
@@ -72075,7 +72167,10 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Machine Type resource. (== resource_for v1.machineTypes ==) (== resource_for beta.machineTypes
+    /// <summary>Represents a Machine Type resource.
+    ///
+    /// You can use specific machine types for your VM instances based on performance and pricing requirements. For more
+    /// information, read Machine Types. (== resource_for v1.machineTypes ==) (== resource_for beta.machineTypes
     /// ==)</summary>
     public class MachineType : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -72537,8 +72632,10 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a Network resource. Read Virtual Private Cloud (VPC) Network Overview for more information.
-    /// (== resource_for v1.networks ==) (== resource_for beta.networks ==)</summary>
+    /// <summary>Represents a VPC Network resource.
+    ///
+    /// Networks connect resources to each other and to the internet. For more information, read Virtual Private Cloud
+    /// (VPC) Network. (== resource_for v1.networks ==) (== resource_for beta.networks ==)</summary>
     public class Network : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this
@@ -72559,13 +72656,13 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
-        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// <summary>An optional description of this resource. Provide this field when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>[Output Only] The gateway address for default routing out of the network. This value is read only
-        /// and is selected by GCP.</summary>
+        /// <summary>[Output Only] The gateway address for default routing out of the network, selected by
+        /// GCP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayIPv4")]
         public virtual string GatewayIPv4 { get; set; } 
 
@@ -72580,9 +72677,9 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
-        /// cannot be a dash.</summary>
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all
+        /// following characters (except for the last character) must be a dash, lowercase letter, or digit. The last
+        /// character must be a lowercase letter or digit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -73052,8 +73149,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessConfigs")]
         public virtual System.Collections.Generic.IList<AccessConfig> AccessConfigs { get; set; } 
 
-        /// <summary>An array of alias IP ranges for this network interface. Can only be specified for network
-        /// interfaces on subnet-mode networks.</summary>
+        /// <summary>An array of alias IP ranges for this network interface. You can only specify this field for network
+        /// interfaces in VPC networks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliasIpRanges")]
         public virtual System.Collections.Generic.IList<AliasIpRange> AliasIpRanges { get; set; } 
 
@@ -73068,17 +73165,14 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output Only] The name of the network interface, generated by the server. For network devices,
-        /// these are eth0, eth1, etc.</summary>
+        /// <summary>[Output Only] The name of the network interface, which is generated by the server. For network
+        /// devices, these are eth0, eth1, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>URL of the network resource for this instance. When creating an instance, if neither the network
         /// nor the subnetwork is specified, the default network global/networks/default is used; if the network is not
         /// specified but the subnetwork is specified, the network is inferred.
-        ///
-        /// This field is optional when creating a firewall rule. If not specified when creating a firewall rule, the
-        /// default network global/networks/default is used.
         ///
         /// If you specify this property, you can specify the network as a full or partial URL. For example, the
         /// following are all valid URLs: -
@@ -73087,15 +73181,15 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>An IPv4 internal network address to assign to the instance for this network interface. If not
-        /// specified by the user, an unused internal IP is assigned by the system.</summary>
+        /// <summary>An IPv4 internal IP address to assign to the instance for this network interface. If not specified
+        /// by the user, an unused internal IP is assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkIP")]
         public virtual string NetworkIP { get; set; } 
 
         /// <summary>The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do
-        /// not provide this property. If the network is in auto subnet mode, providing the subnetwork is optional. If
-        /// the network is in custom subnet mode, then this field should be specified. If you specify this property, you
-        /// can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: -
+        /// not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the
+        /// network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can
+        /// specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: -
         /// https://www.googleapis.com/compute/v1/projects/project/regions/region/subnetworks/subnetwork -
         /// regions/region/subnetworks/subnetwork</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
@@ -73182,7 +73276,7 @@ namespace Google.Apis.Compute.beta.Data
     /// peering.</summary>
     public class NetworkPeering : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This field will be deprecated soon. Prefer using exchange_subnet_routes instead. Indicates whether
+        /// <summary>This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates whether
         /// full mesh connectivity is created and managed automatically. When it is set to true, Google Compute Engine
         /// will automatically create and manage the routes between two networks when the state is ACTIVE. Otherwise,
         /// user needs to create routes manually to route packets to peer network.</summary>
@@ -73205,9 +73299,9 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>Name of this peering. Provided by the client when the peering is created. The name must comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match regular expression
-        /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all the
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.</summary>
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following
+        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a
+        /// dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -73217,7 +73311,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>[Output Only] State for the peering.</summary>
+        /// <summary>[Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when
+        /// there's a matching configuration in the peer network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -73234,9 +73329,9 @@ namespace Google.Apis.Compute.beta.Data
     /// wide.</summary>
     public class NetworkRoutingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The network-wide routing mode to use. If set to REGIONAL, this network's cloud routers will only
+        /// <summary>The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only
         /// advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this
-        /// network's cloud routers will advertise routes with all subnets of this network, across regions.</summary>
+        /// network's Cloud Routers will advertise routes with all subnets of this network, across regions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routingMode")]
         public virtual string RoutingMode { get; set; } 
 
@@ -73246,8 +73341,8 @@ namespace Google.Apis.Compute.beta.Data
 
     public class NetworksAddPeeringRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This field will be deprecated soon. Prefer using exchange_subnet_routes in network_peering instead.
-        /// Whether Google Compute Engine manages the routes automatically.</summary>
+        /// <summary>This field will be deprecated soon. Use exchange_subnet_routes in network_peering instead. Whether
+        /// Google Compute Engine manages the routes automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCreateRoutes")]
         public virtual System.Nullable<bool> AutoCreateRoutes { get; set; } 
 
@@ -73255,10 +73350,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Network peering parameters. In order to specify route policies for peering using import/export
-        /// custom routes, you will have to fill all peering related parameters (name, peer network,
-        /// exchange_subnet_routes) in network_peeringfield. Corresponding fields in NetworksAddPeeringRequest will be
-        /// deprecated soon.</summary>
+        /// <summary>Network peering parameters. In order to specify route policies for peering using import and export
+        /// custom routes, you must specify all peering related parameters (name, peer network, exchange_subnet_routes)
+        /// in the network_peering field. The corresponding fields in NetworksAddPeeringRequest will be deprecated
+        /// soon.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkPeering")]
         public virtual NetworkPeering NetworkPeering { get; set; } 
 
@@ -73291,9 +73386,12 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A NodeGroup resource. To create a node group, you must first create a node templates. To learn more
-    /// about node groups and sole-tenant nodes, read the Sole-tenant nodes documentation. (== resource_for
-    /// beta.nodeGroups ==) (== resource_for v1.nodeGroups ==)</summary>
+    /// <summary>Represent a sole-tenant Node Group resource.
+    ///
+    /// A sole-tenant node is a physical server that is dedicated to hosting VM instances only for your specific
+    /// project. Use sole-tenant nodes to keep your instances physically separated from instances in other projects, or
+    /// to group your instances together on the same host hardware. For more information, read Sole-tenant nodes. (==
+    /// resource_for beta.nodeGroups ==) (== resource_for v1.nodeGroups ==) NextID: 15</summary>
     public class NodeGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -73667,9 +73765,11 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Node Template resource. To learn more about node templates and sole-tenant nodes, read the Sole-
-    /// tenant nodes documentation. (== resource_for beta.nodeTemplates ==) (== resource_for v1.nodeTemplates
-    /// ==)</summary>
+    /// <summary>Represent a sole-tenant Node Template resource.
+    ///
+    /// You can use a template to define properties for nodes in a node group. For more information, read Creating node
+    /// groups and instances. (== resource_for beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==) NextID:
+    /// 16</summary>
     public class NodeTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -73954,7 +74054,12 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>A Node Type resource.</summary>
+    /// <summary>Represent a sole-tenant Node Type resource.
+    ///
+    /// Each node within a node group must have a node type. A node type specifies the total amount of cores and memory
+    /// for that node. Currently, the only available node type is n1-node-96-624 node type that has 96 vCPUs and 624 GB
+    /// of memory, available in multiple zones. For more information read Node types. (== resource_for beta.nodeTypes
+    /// ==) (== resource_for v1.nodeTypes ==)</summary>
     public class NodeType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The CPU platform used by this node type.</summary>
@@ -74206,8 +74311,17 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>An Operation resource, used to manage asynchronous API requests. (== resource_for v1.globalOperations
-    /// ==) (== resource_for beta.globalOperations ==) (== resource_for v1.regionOperations ==) (== resource_for
+    /// <summary>Represents an Operation resource.
+    ///
+    /// You can use an operation resource to manage asynchronous API requests. For more information, read Handling API
+    /// responses.
+    ///
+    /// Operations can be global, regional or zonal. - For global operations, use the globalOperations resource. - For
+    /// regional operations, use the regionOperations resource. - For zonal operations, use the zonalOperations
+    /// resource.
+    ///
+    /// For more information, read  Global, Regional, and Zonal Resources. (== resource_for v1.globalOperations ==) (==
+    /// resource_for beta.globalOperations ==) (== resource_for v1.regionOperations ==) (== resource_for
     /// beta.regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for beta.zoneOperations
     /// ==)</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
@@ -74274,9 +74388,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<int> Progress { get; set; } 
 
-        /// <summary>[Output Only] The URL of the region where the operation resides. Only available when performing
-        /// regional operations. You must specify this field as part of the HTTP request URL. It is not settable as a
-        /// field in the request body.</summary>
+        /// <summary>[Output Only] The URL of the region where the operation resides. Only applicable when performing
+        /// regional operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
@@ -74317,9 +74430,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<Operation.WarningsData> Warnings { get; set; } 
 
-        /// <summary>[Output Only] The URL of the zone where the operation resides. Only available when performing per-
-        /// zone operations. You must specify this field as part of the HTTP request URL. It is not settable as a field
-        /// in the request body.</summary>
+        /// <summary>[Output Only] The URL of the zone where the operation resides. Only applicable when performing per-
+        /// zone operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -74836,8 +74948,10 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Project resource. For an overview of projects, see  Cloud Platform Resource Hierarchy. (==
-    /// resource_for v1.projects ==) (== resource_for beta.projects ==)</summary>
+    /// <summary>Represents a Project resource.
+    ///
+    /// A project is used to organize resources in a Google Cloud Platform environment. For more information, read about
+    /// the  Resource Hierarchy. (== resource_for v1.projects ==) (== resource_for beta.projects ==)</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata key/value pairs available to all instances contained in this project. See Custom metadata
@@ -75013,7 +75127,10 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Region resource. (== resource_for beta.regions ==) (== resource_for v1.regions ==)</summary>
+    /// <summary>Represents a Region resource.
+    ///
+    /// A region is a geographical area where a resource is located. For more information, read Regions and Zones. (==
+    /// resource_for beta.regions ==) (== resource_for v1.regions ==)</summary>
     public class Region : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -75403,16 +75520,24 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>InstanceGroupManagers.applyUpdatesToInstances</summary>
     public class RegionInstanceGroupManagersApplyUpdatesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of instances for which we want to apply changes on this managed instance group.</summary>
+        /// <summary>The list of URLs of one or more instances for which you want to apply updates. Each URL can be a
+        /// full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
-        /// <summary>The minimal action that should be perfomed on the instances. By default NONE.</summary>
+        /// <summary>The minimal action that you want to perform on each instance during the update: - REPLACE: At
+        /// minimum, delete the instance and create it again. - RESTART: Stop the instance and start it again. -
+        /// REFRESH: Do not stop the instance. - NONE: Do not disrupt the instance at all.  By default, the minimum
+        /// action is NONE. If your update requires a more disruptive action than you set with this flag, the necessary
+        /// action is performed to execute the update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimalAction")]
         public virtual string MinimalAction { get; set; } 
 
-        /// <summary>The most disruptive action that allowed to be performed on the instances. By default
-        /// REPLACE.</summary>
+        /// <summary>The most disruptive action that you want to perform on each instance during the update: - REPLACE:
+        /// Delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not
+        /// stop the instance. - NONE: Do not disrupt the instance at all.  By default, the most disruptive allowed
+        /// action is REPLACE. If your update requires a more disruptive action than you set with this flag, the update
+        /// request will fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mostDisruptiveAllowedAction")]
         public virtual string MostDisruptiveAllowedAction { get; set; } 
 
@@ -75742,7 +75867,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Reservation resource</summary>
+    /// <summary>Reservation resource NextID: 13</summary>
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[OutputOnly] Full or partial url for parent commitment for reservations which are tied to a
@@ -75789,6 +75914,10 @@ namespace Google.Apis.Compute.beta.Data
         /// this reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specificReservationRequired")]
         public virtual System.Nullable<bool> SpecificReservationRequired { get; set; } 
+
+        /// <summary>[Output Only] The status of the reservation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
 
         /// <summary>Zone in which the reservation resides, must be provided if reservation is created with commitment
         /// creation.</summary>
@@ -76449,26 +76578,18 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a Route resource. A route specifies how certain packets should be handled by the network.
-    /// Routes are associated with instances by tags and the set of routes for a particular instance is called its
-    /// routing table.
+    /// <summary>Represents a Route resource.
     ///
-    /// For each packet leaving an instance, the system searches that instance's routing table for a single best
-    /// matching route. Routes match packets by destination IP address, preferring smaller or more specific ranges over
-    /// larger ones. If there is a tie, the system selects the route with the smallest priority value. If there is still
-    /// a tie, it uses the layer three and four packet headers to select just one of the remaining matching routes. The
-    /// packet is then forwarded as specified by the nextHop field of the winning route - either to another instance
-    /// destination, an instance gateway, or a Google Compute Engine-operated gateway.
-    ///
-    /// Packets that do not match any route in the sending instance's routing table are dropped. (== resource_for
-    /// beta.routes ==) (== resource_for v1.routes ==)</summary>
+    /// A route defines a path from VM instances in the VPC network to a specific destination. This destination can be
+    /// inside or outside the VPC network. For more information, read the Routes overview. (== resource_for beta.routes
+    /// ==) (== resource_for v1.routes ==)</summary>
     public class Route : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
-        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// <summary>An optional description of this resource. Provide this field when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
@@ -76489,9 +76610,9 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
-        /// cannot be a dash.</summary>
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all
+        /// following characters (except for the last character) must be a dash, lowercase letter, or digit. The last
+        /// character must be a lowercase letter or digit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -76500,7 +76621,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string Network { get; set; } 
 
         /// <summary>The URL to a gateway that should handle matching packets. You can only specify the internet gateway
-        /// using a full or partial valid URL:  projects//global/gateways/default-internet-gateway</summary>
+        /// using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopGateway")]
         public virtual string NextHopGateway { get; set; } 
 
@@ -76544,8 +76665,9 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string NextHopVpnTunnel { get; set; } 
 
         /// <summary>The priority of this route. Priority is used to break ties in cases where there is more than one
-        /// matching route of equal prefix length. In the case of two routes with equal prefix length, the one with the
-        /// lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.</summary>
+        /// matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with
+        /// the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to
+        /// `65535`, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<long> Priority { get; set; } 
 
@@ -76675,7 +76797,9 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>Router resource.</summary>
+    /// <summary>Represents a Cloud Router resource.
+    ///
+    /// For more information about Cloud Router, read the the Cloud Router overview.</summary>
     public class Router : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>BGP information specific to this router.</summary>
@@ -77390,7 +77514,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Sets the scheduling options for an Instance.</summary>
+    /// <summary>Sets the scheduling options for an Instance. NextID: 9</summary>
     public class Scheduling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies whether the instance should be automatically restarted if it is terminated by Compute
@@ -77881,8 +78005,10 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A persistent disk snapshot resource. (== resource_for beta.snapshots ==) (== resource_for v1.snapshots
-    /// ==)</summary>
+    /// <summary>Represents a Persistent Disk Snapshot resource.
+    ///
+    /// You can use snapshots to back up data on a regular interval. For more information, read  Creating persistent
+    /// disk snapshots. (== resource_for beta.snapshots ==) (== resource_for v1.snapshots ==)</summary>
     public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Set to true if snapshots are automatically by applying resource policy on the target
@@ -78595,8 +78721,11 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Subnetwork resource. (== resource_for beta.subnetworks ==) (== resource_for v1.subnetworks
-    /// ==)</summary>
+    /// <summary>Represents a Subnetwork resource.
+    ///
+    /// A subnetwork (also known as a subnet) is a logical partition of a Virtual Private Cloud network with one primary
+    /// IP range and zero or more secondary IP ranges. For more information, read  Virtual Private Cloud (VPC) Network.
+    /// (== resource_for beta.subnetworks ==) (== resource_for v1.subnetworks ==)</summary>
     public class Subnetwork : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether this subnetwork can conflict with static routes. Setting this to true allows this
@@ -79577,8 +79706,12 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>A TargetInstance resource. This resource defines an endpoint instance that terminates traffic of
-    /// certain protocols. (== resource_for beta.targetInstances ==) (== resource_for v1.targetInstances ==)</summary>
+    /// <summary>Represents a Target Instance resource.
+    ///
+    /// You can use a target instance to handle traffic for one or more forwarding rules, which is ideal for forwarding
+    /// protocol traffic that is managed by a single source. For example, ESP, AH, TCP, or UDP. For more information,
+    /// read Target instances. (== resource_for beta.targetInstances ==) (== resource_for v1.targetInstances
+    /// ==)</summary>
     public class TargetInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -80485,8 +80618,10 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>Represents a Target VPN gateway resource. (== resource_for beta.targetVpnGateways ==) (== resource_for
-    /// v1.targetVpnGateways ==)</summary>
+    /// <summary>Represents a Target VPN Gateway resource.
+    ///
+    /// The target VPN gateway resource represents a Classic Cloud VPN gateway. For more information, read the the Cloud
+    /// VPN Overview. (== resource_for beta.targetVpnGateways ==) (== resource_for v1.targetVpnGateways ==)</summary>
     public class TargetVpnGateway : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -81787,7 +81922,10 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>VPN tunnel resource. (== resource_for beta.vpnTunnels ==) (== resource_for v1.vpnTunnels ==)</summary>
+    /// <summary>Represents a Cloud VPN Tunnel resource.
+    ///
+    /// For more information about VPN, read the the Cloud VPN Overview. (== resource_for beta.vpnTunnels ==) (==
+    /// resource_for v1.vpnTunnels ==)</summary>
     public class VpnTunnel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -82268,7 +82406,11 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones ==) Next ID: 17</summary>
+    /// <summary>Represents a Zone resource.
+    ///
+    /// A zone is a deployment area. These deployment areas are subsets of a region. For example the zone us-east1-a is
+    /// located in the us-east1 region. For more information, read Regions and Zones. (== resource_for beta.zones ==)
+    /// (== resource_for v1.zones ==)</summary>
     public class Zone : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Available cpu/platform selections for the zone.</summary>

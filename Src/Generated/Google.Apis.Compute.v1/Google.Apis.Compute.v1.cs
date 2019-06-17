@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190528 (1608)
+ *      <tr><th>API Rev<td>20190530 (1610)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -105,6 +105,7 @@ namespace Google.Apis.Compute.v1
             regionInstanceGroups = new RegionInstanceGroupsResource(this);
             regionOperations = new RegionOperationsResource(this);
             regions = new RegionsResource(this);
+            resourcePolicies = new ResourcePoliciesResource(this);
             routers = new RoutersResource(this);
             routes = new RoutesResource(this);
             securityPolicies = new SecurityPoliciesResource(this);
@@ -541,6 +542,14 @@ namespace Google.Apis.Compute.v1
         public virtual RegionsResource Regions
         {
             get { return regions; }
+        }
+
+        private readonly ResourcePoliciesResource resourcePolicies;
+
+        /// <summary>Gets the ResourcePolicies resource.</summary>
+        public virtual ResourcePoliciesResource ResourcePolicies
+        {
+            get { return resourcePolicies; }
         }
 
         private readonly RoutersResource routers;
@@ -1575,7 +1584,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates an address resource in the specified project using the data included in the
+        /// <summary>Creates an address resource in the specified project by using the data included in the
         /// request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -1586,7 +1595,7 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates an address resource in the specified project using the data included in the
+        /// <summary>Creates an address resource in the specified project by using the data included in the
         /// request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
@@ -5199,6 +5208,129 @@ namespace Google.Apis.Compute.v1
         }
 
 
+        /// <summary>Adds existing resource policies to a disk. You can only add one policy which will be applied to
+        /// this disk for scheduling snapshot creation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="disk">The disk name for this request.</param>
+        public virtual AddResourcePoliciesRequest AddResourcePolicies(Google.Apis.Compute.v1.Data.DisksAddResourcePoliciesRequest body, string project, string zone, string disk)
+        {
+            return new AddResourcePoliciesRequest(service, body, project, zone, disk);
+        }
+
+        /// <summary>Adds existing resource policies to a disk. You can only add one policy which will be applied to
+        /// this disk for scheduling snapshot creation.</summary>
+        public class AddResourcePoliciesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new AddResourcePolicies request.</summary>
+            public AddResourcePoliciesRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.DisksAddResourcePoliciesRequest body, string project, string zone, string disk)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Disk = disk;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>The disk name for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Disk { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.DisksAddResourcePoliciesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "addResourcePolicies"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/disks/{disk}/addResourcePolicies"; }
+            }
+
+            /// <summary>Initializes AddResourcePolicies parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "disk", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "disk",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Retrieves an aggregated list of persistent disks.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
@@ -6050,6 +6182,127 @@ namespace Google.Apis.Compute.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Removes resource policies from a disk.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="disk">The disk name for this request.</param>
+        public virtual RemoveResourcePoliciesRequest RemoveResourcePolicies(Google.Apis.Compute.v1.Data.DisksRemoveResourcePoliciesRequest body, string project, string zone, string disk)
+        {
+            return new RemoveResourcePoliciesRequest(service, body, project, zone, disk);
+        }
+
+        /// <summary>Removes resource policies from a disk.</summary>
+        public class RemoveResourcePoliciesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new RemoveResourcePolicies request.</summary>
+            public RemoveResourcePoliciesRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.DisksRemoveResourcePoliciesRequest body, string project, string zone, string disk)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Disk = disk;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>The disk name for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Disk { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.DisksRemoveResourcePoliciesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "removeResourcePolicies"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/disks/{disk}/removeResourcePolicies"; }
+            }
+
+            /// <summary>Initializes RemoveResourcePolicies parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "disk", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "disk",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -8089,7 +8342,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates an address resource in the specified project using the data included in the
+        /// <summary>Creates an address resource in the specified project by using the data included in the
         /// request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -8098,7 +8351,7 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates an address resource in the specified project using the data included in the
+        /// <summary>Creates an address resource in the specified project by using the data included in the
         /// request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
@@ -16774,6 +17027,123 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the specified guest attributes entry.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance scoping this request.</param>
+        public virtual GetGuestAttributesRequest GetGuestAttributes(string project, string zone, string instance)
+        {
+            return new GetGuestAttributesRequest(service, project, zone, instance);
+        }
+
+        /// <summary>Returns the specified guest attributes entry.</summary>
+        public class GetGuestAttributesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.GuestAttributes>
+        {
+            /// <summary>Constructs a new GetGuestAttributes request.</summary>
+            public GetGuestAttributesRequest(Google.Apis.Services.IClientService service, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Specifies the guest attributes path to be queried.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("queryPath", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string QueryPath { get; set; }
+
+            /// <summary>Specifies the key for the guest attributes entry.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("variableKey", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string VariableKey { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getGuestAttributes"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/getGuestAttributes"; }
+            }
+
+            /// <summary>Initializes GetGuestAttributes parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "queryPath", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "queryPath",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "variableKey", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "variableKey",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -27864,7 +28234,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Disable a serivce resource (a.k.a service project) associated with this host project.</summary>
+        /// <summary>Disable a service resource (also known as service project) associated with this host
+        /// project.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual DisableXpnResourceRequest DisableXpnResource(Google.Apis.Compute.v1.Data.ProjectsDisableXpnResourceRequest body, string project)
@@ -27872,7 +28243,8 @@ namespace Google.Apis.Compute.v1
             return new DisableXpnResourceRequest(service, body, project);
         }
 
-        /// <summary>Disable a serivce resource (a.k.a service project) associated with this host project.</summary>
+        /// <summary>Disable a service resource (also known as service project) associated with this host
+        /// project.</summary>
         public class DisableXpnResourceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new DisableXpnResource request.</summary>
@@ -31363,6 +31735,129 @@ namespace Google.Apis.Compute.v1
         }
 
 
+        /// <summary>Adds existing resource policies to a regional disk. You can only add one policy which will be
+        /// applied to this disk for scheduling snapshot creation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="disk">The disk name for this request.</param>
+        public virtual AddResourcePoliciesRequest AddResourcePolicies(Google.Apis.Compute.v1.Data.RegionDisksAddResourcePoliciesRequest body, string project, string region, string disk)
+        {
+            return new AddResourcePoliciesRequest(service, body, project, region, disk);
+        }
+
+        /// <summary>Adds existing resource policies to a regional disk. You can only add one policy which will be
+        /// applied to this disk for scheduling snapshot creation.</summary>
+        public class AddResourcePoliciesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new AddResourcePolicies request.</summary>
+            public AddResourcePoliciesRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.RegionDisksAddResourcePoliciesRequest body, string project, string region, string disk)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Disk = disk;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>The disk name for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Disk { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.RegionDisksAddResourcePoliciesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "addResourcePolicies"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{disk}/addResourcePolicies"; }
+            }
+
+            /// <summary>Initializes AddResourcePolicies parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "disk", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "disk",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Creates a snapshot of this regional disk.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -31961,6 +32456,127 @@ namespace Google.Apis.Compute.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Removes resource policies from a regional disk.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="disk">The disk name for this request.</param>
+        public virtual RemoveResourcePoliciesRequest RemoveResourcePolicies(Google.Apis.Compute.v1.Data.RegionDisksRemoveResourcePoliciesRequest body, string project, string region, string disk)
+        {
+            return new RemoveResourcePoliciesRequest(service, body, project, region, disk);
+        }
+
+        /// <summary>Removes resource policies from a regional disk.</summary>
+        public class RemoveResourcePoliciesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new RemoveResourcePolicies request.</summary>
+            public RemoveResourcePoliciesRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.RegionDisksRemoveResourcePoliciesRequest body, string project, string region, string disk)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Disk = disk;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>The disk name for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Disk { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.RegionDisksRemoveResourcePoliciesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "removeResourcePolicies"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{disk}/removeResourcePolicies"; }
+            }
+
+            /// <summary>Initializes RemoveResourcePolicies parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "disk", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "disk",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -35088,6 +35704,732 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "resourcePolicies" collection of methods.</summary>
+    public class ResourcePoliciesResource
+    {
+        private const string Resource = "resourcePolicies";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ResourcePoliciesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Retrieves an aggregated list of resource policies.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual AggregatedListRequest AggregatedList(string project)
+        {
+            return new AggregatedListRequest(service, project);
+        }
+
+        /// <summary>Retrieves an aggregated list of resource policies.</summary>
+        public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ResourcePolicyAggregatedList>
+        {
+            /// <summary>Constructs a new AggregatedList request.</summary>
+            public AggregatedListRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            ///
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
+            ///
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "aggregatedList"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/aggregated/resourcePolicies"; }
+            }
+
+            /// <summary>Initializes AggregatedList parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes the specified resource policy.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="resourcePolicy">Name of the resource policy to delete.</param>
+        public virtual DeleteRequest Delete(string project, string region, string resourcePolicy)
+        {
+            return new DeleteRequest(service, project, region, resourcePolicy);
+        }
+
+        /// <summary>Deletes the specified resource policy.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string region, string resourcePolicy)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                ResourcePolicy = resourcePolicy;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the resource policy to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourcePolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourcePolicy { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/resourcePolicies/{resourcePolicy}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resourcePolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourcePolicy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves all information of the specified resource policy.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="resourcePolicy">Name of the resource policy to retrieve.</param>
+        public virtual GetRequest Get(string project, string region, string resourcePolicy)
+        {
+            return new GetRequest(service, project, region, resourcePolicy);
+        }
+
+        /// <summary>Retrieves all information of the specified resource policy.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ResourcePolicy>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string region, string resourcePolicy)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                ResourcePolicy = resourcePolicy;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the resource policy to retrieve.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourcePolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourcePolicy { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/resourcePolicies/{resourcePolicy}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resourcePolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourcePolicy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a new resource policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.ResourcePolicy body, string project, string region)
+        {
+            return new InsertRequest(service, body, project, region);
+        }
+
+        /// <summary>Creates a new resource policy.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.ResourcePolicy body, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.ResourcePolicy Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/resourcePolicies"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>A list all the resource policies that have been configured for the specified project in specified
+        /// region.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        public virtual ListRequest List(string project, string region)
+        {
+            return new ListRequest(service, project, region);
+        }
+
+        /// <summary>A list all the resource policies that have been configured for the specified project in specified
+        /// region.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ResourcePolicyList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            ///
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
+            ///
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/resourcePolicies"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/resourcePolicies/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -48416,8 +49758,11 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An Accelerator Type resource. (== resource_for beta.acceleratorTypes ==) (== resource_for
-    /// v1.acceleratorTypes ==)</summary>
+    /// <summary>Represents an Accelerator Type resource.
+    ///
+    /// Google Cloud Platform provides graphics processing units (accelerators) that you can add to VM instances to
+    /// improve or accelerate performance when working with intensive workloads. For more information, read GPUs on
+    /// Compute Engine. (== resource_for beta.acceleratorTypes ==) (== resource_for v1.acceleratorTypes ==)</summary>
     public class AcceleratorType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -48671,8 +50016,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The name of this access configuration. The default and recommended name is External NAT but you can
-        /// use any arbitrary string you would like. For example, My external IP or Network Access.</summary>
+        /// <summary>The name of this access configuration. The default and recommended name is External NAT, but you
+        /// can use any arbitrary string, such as My external IP or Network Access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -48694,12 +50039,12 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
         public virtual string NetworkTier { get; set; } 
 
-        /// <summary>The DNS domain name for the public PTR record. This field can only be set when the set_public_ptr
+        /// <summary>The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr`
         /// field is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicPtrDomainName")]
         public virtual string PublicPtrDomainName { get; set; } 
 
-        /// <summary>Specifies whether a public DNS ?PTR? record should be created to map the external IP address of the
+        /// <summary>Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the
         /// instance to a DNS domain name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setPublicPtr")]
         public virtual System.Nullable<bool> SetPublicPtr { get; set; } 
@@ -48712,8 +50057,19 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A reserved address resource. (== resource_for beta.addresses ==) (== resource_for v1.addresses ==) (==
-    /// resource_for beta.globalAddresses ==) (== resource_for v1.globalAddresses ==)</summary>
+    /// <summary>Represents an IP Address resource.
+    ///
+    /// An address resource represents a regional internal IP address. Regional internal IP addresses are RFC 1918
+    /// addresses that come from either a primary or secondary IP range of a subnet in a VPC network. Regional external
+    /// IP addresses can be assigned to GCP VM instances, Cloud VPN gateways, regional external forwarding rules for
+    /// network load balancers (in either Standard or Premium Tier), and regional external forwarding rules for HTTP(S),
+    /// SSL Proxy, and TCP Proxy load balancers in Standard Tier. For more information, read IP addresses.
+    ///
+    /// A globalAddresses resource represent a global external IP address. Global external IP addresses are IPv4 or IPv6
+    /// addresses. They can only be assigned to global forwarding rules for HTTP(S), SSL Proxy, or TCP Proxy load
+    /// balancers in Premium Tier. For more information, read Global resources. (== resource_for beta.addresses ==) (==
+    /// resource_for v1.addresses ==) (== resource_for beta.globalAddresses ==) (== resource_for v1.globalAddresses
+    /// ==)</summary>
     public class Address : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The static IP address represented by this resource.</summary>
@@ -48729,7 +50085,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
-        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// <summary>An optional description of this resource. Provide this field when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
@@ -48739,7 +50095,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>The IP Version that will be used by this address. Valid options are IPV4 or IPV6. This can only be
+        /// <summary>The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be
         /// specified for a global address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipVersion")]
         public virtual string IpVersion { get; set; } 
@@ -48750,22 +50106,22 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
-        /// cannot be a dash.</summary>
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all
+        /// following characters (except for the last character) must be a dash, lowercase letter, or digit. The last
+        /// character must be a lowercase letter or digit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>The URL of the network in which to reserve the address. This field can only be used with INTERNAL
-        /// type with VPC_PEERING purpose.</summary>
+        /// type with the VPC_PEERING purpose.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>This signifies the networking tier used for configuring this Address and can only take the
-        /// following values: PREMIUM, STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding
+        /// <summary>This signifies the networking tier used for configuring this address and can only take the
+        /// following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding
         /// rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules
         /// can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with
-        /// a Network load balancer.
+        /// a network load balancer.
         ///
         /// If this field is not specified, it is assumed to be PREMIUM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
@@ -48775,13 +50131,16 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("prefixLength")]
         public virtual System.Nullable<int> PrefixLength { get; set; } 
 
-        /// <summary>The purpose of resource, only used with INTERNAL type.</summary>
+        /// <summary>The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for
+        /// addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. -
+        /// `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved
+        /// for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for
+        /// Cloud NAT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
         public virtual string Purpose { get; set; } 
 
-        /// <summary>[Output Only] URL of the region where the regional address resides. This field is not applicable to
-        /// global addresses. You must specify this field as part of the HTTP request URL. You cannot set this field in
-        /// the request body.</summary>
+        /// <summary>[Output Only] The URL of the region where the regional address resides. This field is not
+        /// applicable to global addresses. You must specify this field as part of the HTTP request URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
@@ -48797,8 +50156,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Status { get; set; } 
 
         /// <summary>The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must
-        /// be within the subnetwork's IP range. This field can only be used with INTERNAL type with
-        /// GCE_ENDPOINT/DNS_RESOLVER purposes.</summary>
+        /// be within the subnetwork's IP range. This field can only be used with INTERNAL type with a GCE_ENDPOINT or
+        /// DNS_RESOLVER purpose.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 
@@ -49011,16 +50370,15 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>An alias IP range attached to an instance's network interface.</summary>
     public class AliasIpRange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The IP CIDR range represented by this alias IP range. This IP CIDR range must belong to the
-        /// specified subnetwork and cannot contain IP addresses reserved by system or used by other network interfaces.
-        /// This range may be a single IP address (e.g. 10.2.3.4), a netmask (e.g. /24) or a CIDR format string (e.g.
-        /// 10.1.2.0/24).</summary>
+        /// <summary>The IP alias ranges to allocate for this interface. This IP CIDR range must belong to the specified
+        /// subnetwork and cannot contain IP addresses reserved by system or used by other network interfaces. This
+        /// range may be a single IP address (such as 10.2.3.4), a netmask (such as /24) or a CIDR-formatted string
+        /// (such as 10.1.2.0/24).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; } 
 
-        /// <summary>Optional subnetwork secondary range name specifying the secondary range from which to allocate the
-        /// IP CIDR range for this alias IP range. If left unspecified, the primary range of the subnetwork will be
-        /// used.</summary>
+        /// <summary>The name of a subnetwork secondary IP range from which to allocate an IP alias range. If not
+        /// specified, the primary range of the subnetwork is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkRangeName")]
         public virtual string SubnetworkRangeName { get; set; } 
 
@@ -49090,7 +50448,8 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The
         /// default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a
         /// persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance
-        /// characteristics of SCSI over NVMe, see Local SSD performance.</summary>
+        /// characteristics of SCSI over NVMe, see Local SSD performance. TODO(b/131765817): Update documentation when
+        /// NVME is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interface")]
         public virtual string Interface__ { get; set; } 
 
@@ -49163,6 +50522,11 @@ namespace Google.Apis.Compute.v1.Data
         /// is only applicable for persistent disks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>Resource policies applied to this disk for automatic snapshot creations. Specified using the full
+        /// or partial URL. For instance template, specify only the resource policy name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicies")]
+        public virtual System.Collections.Generic.IList<string> ResourcePolicies { get; set; } 
 
         /// <summary>The source image to create this disk. When creating a new instance, one of
         /// initializeParams.sourceImage or disks.source is required except for local SSD.
@@ -49278,10 +50642,16 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine
-    /// instances in managed instance groups according to an autoscaling policy that you define. For more information,
-    /// read Autoscaling Groups of Instances. (== resource_for beta.autoscalers ==) (== resource_for v1.autoscalers ==)
-    /// (== resource_for beta.regionAutoscalers ==) (== resource_for v1.regionAutoscalers ==)</summary>
+    /// <summary>Represents an Autoscaler resource.
+    ///
+    /// Use autoscalers to automatically add or delete instances from a managed instance group according to your defined
+    /// autoscaling policy. For more information, read Autoscaling Groups of Instances.
+    ///
+    /// For zonal managed instance groups resource, use the autoscaler resource.
+    ///
+    /// For regional managed instance groups, use the regionAutoscalers resource. (== resource_for beta.autoscalers ==)
+    /// (== resource_for v1.autoscalers ==) (== resource_for beta.regionAutoscalers ==) (== resource_for
+    /// v1.regionAutoscalers ==)</summary>
     public class Autoscaler : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration parameters for the autoscaling algorithm. You can define one or more of the
@@ -50397,14 +51767,12 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a Commitment resource. Creating a Commitment resource means that you are purchasing a
-    /// committed use contract with an explicit start and end time. You can create commitments based on vCPUs and memory
-    /// usage and receive discounted rates. For full details, read Signing Up for Committed Use Discounts.
+    /// <summary>Represents a regional Commitment resource.
     ///
-    /// Committed use discounts are subject to Google Cloud Platform's Service Specific Terms. By purchasing a committed
-    /// use discount, you agree to these terms. Committed use discounts will not renew, so you must purchase a new
-    /// commitment to continue receiving discounts. (== resource_for beta.commitments ==) (== resource_for
-    /// v1.commitments ==)</summary>
+    /// Creating a commitment resource means that you are purchasing a committed use contract with an explicit start and
+    /// end time. You can create commitments based on vCPUs and memory usage and receive discounted rates. For full
+    /// details, read Signing Up for Committed Use Discounts. (== resource_for beta.regionCommitments ==) (==
+    /// resource_for v1.regionCommitments ==)</summary>
     public class Commitment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -50784,7 +52152,16 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Disk resource. (== resource_for beta.disks ==) (== resource_for v1.disks ==)</summary>
+    /// <summary>Represents a Persistent Disk resource.
+    ///
+    /// Persistent disks are required for running your VM instances. Create both boot and non-boot (data) persistent
+    /// disks. For more information, read Persistent Disks. For more storage options, read Storage options.
+    ///
+    /// The disks resource represents a zonal persistent disk. For more information, read Zonal persistent disks.
+    ///
+    /// The regionDisks resource represents a regional persistent disk. For more information, read  Regional resources.
+    /// (== resource_for beta.disks ==) (== resource_for v1.disks ==) (== resource_for v1.regionDisks ==) (==
+    /// resource_for beta.regionDisks ==)</summary>
     public class Disk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -50881,6 +52258,10 @@ namespace Google.Apis.Compute.v1.Data
         /// resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicaZones")]
         public virtual System.Collections.Generic.IList<string> ReplicaZones { get; set; } 
+
+        /// <summary>Resource policies applied to this disk for automatic snapshot creations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicies")]
+        public virtual System.Collections.Generic.IList<string> ResourcePolicies { get; set; } 
 
         /// <summary>[Output Only] Server-defined fully-qualified URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -51164,7 +52545,16 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A DiskType resource. (== resource_for beta.diskTypes ==) (== resource_for v1.diskTypes ==)</summary>
+    /// <summary>Represents a Disk Type resource.
+    ///
+    /// You can choose from a variety of disk types based on your needs. For more information, read Storage options.
+    ///
+    /// The diskTypes resource represents disk types for a zonal persistent disk. For more information, read Zonal
+    /// persistent disks.
+    ///
+    /// The regionDiskTypes resource represents disk types for a regional persistent disk. For more information, read
+    /// Regional persistent disks. (== resource_for beta.diskTypes ==) (== resource_for v1.diskTypes ==) (==
+    /// resource_for v1.regionDiskTypes ==) (== resource_for beta.regionDiskTypes ==)</summary>
     public class DiskType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -51417,6 +52807,26 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    public class DisksAddResourcePoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource policies to be added to this disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicies")]
+        public virtual System.Collections.Generic.IList<string> ResourcePolicies { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class DisksRemoveResourcePoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource policies to be removed from this disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicies")]
+        public virtual System.Collections.Generic.IList<string> ResourcePolicies { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class DisksResizeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The new size of the persistent disk, which is specified in GB.</summary>
@@ -51534,7 +52944,10 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a Firewall resource.</summary>
+    /// <summary>Represents a Firewall Rule resource.
+    ///
+    /// Firewall rules allow or deny ingress traffic to, and egress traffic from your instances. For more information,
+    /// read Firewall rules.</summary>
     public class Firewall : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range
@@ -51551,25 +52964,25 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("denied")]
         public virtual System.Collections.Generic.IList<Firewall.DeniedData> Denied { get; set; } 
 
-        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// <summary>An optional description of this resource. Provide this field when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>If destination ranges are specified, the firewall will apply only to traffic that has destination
+        /// <summary>If destination ranges are specified, the firewall rule applies only to traffic that has destination
         /// IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationRanges")]
         public virtual System.Collections.Generic.IList<string> DestinationRanges { get; set; } 
 
-        /// <summary>Direction of traffic to which this firewall applies; default is INGRESS. Note: For INGRESS traffic,
-        /// it is NOT supported to specify destinationRanges; For EGRESS traffic, it is NOT supported to specify
-        /// sourceRanges OR sourceTags.</summary>
+        /// <summary>Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is
+        /// `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic,
+        /// you cannot specify the sourceRanges or sourceTags fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; } 
 
-        /// <summary>Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated
-        /// with. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If
-        /// this is unspecified, the firewall rule will be enabled.</summary>
+        /// <summary>Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced
+        /// and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be
+        /// enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; } 
 
@@ -51589,24 +53002,26 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
-        /// cannot be a dash.</summary>
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all
+        /// following characters (except for the last character) must be a dash, lowercase letter, or digit. The last
+        /// character must be a lowercase letter or digit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>URL of the network resource for this firewall rule. If not specified when creating a firewall rule,
-        /// the default network is used: global/networks/default If you choose to specify this property, you can specify
+        /// the default network is used: global/networks/default If you choose to specify this field, you can specify
         /// the network as a full or partial URL. For example, the following are all valid URLs: -
         /// https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network -
         /// projects/myproject/global/networks/my-network - global/networks/default</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>Priority for this rule. This is an integer between 0 and 65535, both inclusive. When not specified,
-        /// the value assumed is 1000. Relative priorities determine precedence of conflicting rules. Lower value of
-        /// priority implies higher precedence (eg, a rule with priority 0 has higher precedence than a rule with
-        /// priority 1). DENY rules take precedence over ALLOW rules having equal priority.</summary>
+        /// <summary>Priority for this rule. This is an integer between `0` and `65535`, both inclusive. The default
+        /// value is `1000`. Relative priorities determine which rule takes effect if multiple rules apply. Lower values
+        /// indicate higher priority. For example, a rule with priority `0` has higher precedence than a rule with
+        /// priority `1`. DENY rules take precedence over ALLOW rules if they have equal priority. Note that VPC
+        /// networks have implied rules with a priority of `65535`. To avoid conflicts with the implied rules, use a
+        /// priority number less than `65535`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<int> Priority { get; set; } 
 
@@ -51614,21 +53029,21 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>If source ranges are specified, the firewall will apply only to traffic that has source IP address
-        /// in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags
-        /// may be set. If both properties are set, the firewall will apply to traffic that has source IP address within
-        /// sourceRanges OR the source IP that belongs to a tag listed in the sourceTags property. The connection does
-        /// not need to match both properties for the firewall to apply. Only IPv4 is supported.</summary>
+        /// <summary>If source ranges are specified, the firewall rule applies only to traffic that has a source IP
+        /// address in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and
+        /// sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address
+        /// within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The
+        /// connection does not need to match both fields for the rule to apply. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRanges")]
         public virtual System.Collections.Generic.IList<string> SourceRanges { get; set; } 
 
-        /// <summary>If source service accounts are specified, the firewall will apply only to traffic originating from
+        /// <summary>If source service accounts are specified, the firewall rules apply only to traffic originating from
         /// an instance with a service account in this list. Source service accounts cannot be used to control traffic
         /// to an instance's external IP address because service accounts are associated with an instance, not an IP
         /// address. sourceRanges can be set at the same time as sourceServiceAccounts. If both are set, the firewall
-        /// will apply to traffic that has source IP address within sourceRanges OR the source IP belongs to an instance
-        /// with service account listed in sourceServiceAccount. The connection does not need to match both properties
-        /// for the firewall to apply. sourceServiceAccounts cannot be used at the same time as sourceTags or
+        /// applies to traffic that has a source IP address within the sourceRanges OR a source IP that belongs to an
+        /// instance with service account listed in sourceServiceAccount. The connection does not need to match both
+        /// fields for the firewall to apply. sourceServiceAccounts cannot be used at the same time as sourceTags or
         /// targetTags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceServiceAccounts")]
         public virtual System.Collections.Generic.IList<string> SourceServiceAccounts { get; set; } 
@@ -51637,9 +53052,9 @@ namespace Google.Apis.Compute.v1.Data
         /// the primary network interfaces of VM instances that have the tag and are in the same VPC network. Source
         /// tags cannot be used to control traffic to an instance's external IP address, it only applies to traffic
         /// between instances in the same virtual network. Because tags are associated with instances, not IP addresses.
-        /// One or both of sourceRanges and sourceTags may be set. If both properties are set, the firewall will apply
-        /// to traffic that has source IP address within sourceRanges OR the source IP that belongs to a tag listed in
-        /// the sourceTags property. The connection does not need to match both properties for the firewall to
+        /// One or both of sourceRanges and sourceTags may be set. If both fields are set, the firewall applies to
+        /// traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag
+        /// listed in the sourceTags field. The connection does not need to match both fields for the firewall to
         /// apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTags")]
         public virtual System.Collections.Generic.IList<string> SourceTags { get; set; } 
@@ -51666,12 +53081,12 @@ namespace Google.Apis.Compute.v1.Data
         {
             /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
             /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
-            /// icmp, esp, ah, ipip, sctp), or the IP protocol number.</summary>
+            /// icmp, esp, ah, ipip, sctp) or the IP protocol number.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
             public virtual string IPProtocol { get; set; } 
 
-            /// <summary>An optional list of ports to which this rule applies. This field is only applicable for UDP or
-            /// TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to
+            /// <summary>An optional list of ports to which this rule applies. This field is only applicable for the UDP
+            /// or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to
             /// connections through any port.
             ///
             /// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].</summary>
@@ -51684,12 +53099,12 @@ namespace Google.Apis.Compute.v1.Data
         {
             /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
             /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
-            /// icmp, esp, ah, ipip, sctp), or the IP protocol number.</summary>
+            /// icmp, esp, ah, ipip, sctp) or the IP protocol number.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
             public virtual string IPProtocol { get; set; } 
 
-            /// <summary>An optional list of ports to which this rule applies. This field is only applicable for UDP or
-            /// TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to
+            /// <summary>An optional list of ports to which this rule applies. This field is only applicable for the UDP
+            /// or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to
             /// connections through any port.
             ///
             /// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].</summary>
@@ -52241,6 +53656,68 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; } 
 
+    }    
+
+    /// <summary>A guest attributes entry.</summary>
+    public class GuestAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Type of the resource. Always compute#guestAttributes for guest attributes
+        /// entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The path to be queried. This can be the default namespace ('/') or a nested namespace ('//') or a
+        /// specified key ('//')</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryPath")]
+        public virtual string QueryPath { get; set; } 
+
+        /// <summary>[Output Only] The value of the requested queried path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryValue")]
+        public virtual GuestAttributesValue QueryValue { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The key to search for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variableKey")]
+        public virtual string VariableKey { get; set; } 
+
+        /// <summary>[Output Only] The value found for the requested key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variableValue")]
+        public virtual string VariableValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A guest attributes namespace/key/value entry.</summary>
+    public class GuestAttributesEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key for the guest attribute entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>Namespace for the guest attribute entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual string Namespace__ { get; set; } 
+
+        /// <summary>Value for the guest attribute entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Array of guest attribute namespace/key/value tuples.</summary>
+    public class GuestAttributesValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<GuestAttributesEntry> Items { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Guest OS features.</summary>
@@ -52905,7 +54382,10 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>An Image resource. (== resource_for beta.images ==) (== resource_for v1.images ==)</summary>
+    /// <summary>Represents an Image resource.
+    ///
+    /// You can use images to create boot disks for your VM instances. For more information, read Images. (==
+    /// resource_for beta.images ==) (== resource_for v1.images ==)</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).</summary>
@@ -53159,7 +54639,10 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>An Instance resource. (== resource_for beta.instances ==) (== resource_for v1.instances ==)</summary>
+    /// <summary>Represents an Instance resource.
+    ///
+    /// An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual
+    /// Machine Instances. (== resource_for beta.instances ==) (== resource_for v1.instances ==)</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Allows this instance to send and receive packets with non-matching destination or source IPs. This
@@ -53383,8 +54866,16 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>InstanceGroups (== resource_for beta.instanceGroups ==) (== resource_for v1.instanceGroups ==) (==
-    /// resource_for beta.regionInstanceGroups ==) (== resource_for v1.regionInstanceGroups ==)</summary>
+    /// <summary>Represents an unmanaged Instance Group resource.
+    ///
+    /// Use unmanaged instance groups if you need to apply load balancing to groups of heterogeneous instances or if you
+    /// need to manage the instances yourself. For more information, read  Instance groups.
+    ///
+    /// For zonal unmanaged Instance Group, use instanceGroups resource.
+    ///
+    /// For regional unmanaged Instance Group, use regionInstanceGroups resource. (== resource_for beta.instanceGroups
+    /// ==) (== resource_for v1.instanceGroups ==) (== resource_for beta.regionInstanceGroups ==) (== resource_for
+    /// v1.regionInstanceGroups ==)</summary>
     public class InstanceGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The creation timestamp for this instance group in RFC3339 text format.</summary>
@@ -53600,9 +55091,16 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>An Instance Group Manager resource. (== resource_for beta.instanceGroupManagers ==) (== resource_for
-    /// v1.instanceGroupManagers ==) (== resource_for beta.regionInstanceGroupManagers ==) (== resource_for
-    /// v1.regionInstanceGroupManagers ==)</summary>
+    /// <summary>Represents a Managed Instance Group resource.
+    ///
+    /// An instance group is a collection of VM instances that you can manage as a single entity. For more information,
+    /// read Instance groups.
+    ///
+    /// For zonal Managed Instance Group, use the instanceGroupManagers resource.
+    ///
+    /// For regional Managed Instance Group, use the regionInstanceGroupManagers resource. (== resource_for
+    /// beta.instanceGroupManagers ==) (== resource_for v1.instanceGroupManagers ==) (== resource_for
+    /// beta.regionInstanceGroupManagers ==) (== resource_for v1.regionInstanceGroupManagers ==)</summary>
     public class InstanceGroupManager : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The autohealing policy for this managed instance group. You can specify only one value.</summary>
@@ -53983,6 +55481,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minimalAction")]
         public virtual string MinimalAction { get; set; } 
 
+        /// <summary>The type of update process. You can specify either PROACTIVE so that the instance group manager
+        /// proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that
+        /// no action is proactively executed but the update will be performed as part of other actions (for example,
+        /// resizes or recreateInstances calls).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -54567,8 +56069,11 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An Instance Template resource. (== resource_for beta.instanceTemplates ==) (== resource_for
-    /// v1.instanceTemplates ==)</summary>
+    /// <summary>Represents an Instance Template resource.
+    ///
+    /// You can use instance templates to create VM instances and managed instance groups. For more information, read
+    /// Instance Templates. (== resource_for beta.instanceTemplates ==) (== resource_for v1.instanceTemplates
+    /// ==)</summary>
     public class InstanceTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The creation timestamp for this instance template in RFC3339 text format.</summary>
@@ -54840,9 +56345,11 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an Interconnects resource. The Interconnects resource is a dedicated connection between
-    /// Google's network and your on-premises network. For more information, see the  Dedicated overview page. (==
-    /// resource_for v1.interconnects ==) (== resource_for beta.interconnects ==)</summary>
+    /// <summary>Represents an Interconnect resource.
+    ///
+    /// An Interconnect resource is a dedicated connection between the GCP network and your on-premises network. For
+    /// more information, read the  Dedicated Interconnect Overview. (== resource_for v1.interconnects ==) (==
+    /// resource_for beta.interconnects ==)</summary>
     public class Interconnect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Administrative status of the interconnect. When this is set to true, the Interconnect is functional
@@ -54968,9 +56475,11 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an InterconnectAttachment (VLAN attachment) resource. For more information, see  Creating
-    /// VLAN Attachments. (== resource_for beta.interconnectAttachments ==) (== resource_for v1.interconnectAttachments
-    /// ==)</summary>
+    /// <summary>Represents an Interconnect Attachment (VLAN) resource.
+    ///
+    /// You can use Interconnect attachments (VLANS) to connect your Virtual Private Cloud networks to your on-premises
+    /// networks through an Interconnect. For more information, read  Creating VLAN Attachments. (== resource_for
+    /// beta.interconnectAttachments ==) (== resource_for v1.interconnectAttachments ==)</summary>
     public class InterconnectAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER.</summary>
@@ -55022,7 +56531,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string EdgeAvailabilityDomain { get; set; } 
 
         /// <summary>[Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise
-        /// to debug backend connectivity issues.</summary>
+        /// to debug backend connectivity issues. [Deprecated] This field is not used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleReferenceId")]
         public virtual string GoogleReferenceId { get; set; } 
 
@@ -55561,9 +57070,10 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>Represents an InterconnectLocations resource. The InterconnectLocations resource describes the
-    /// locations where you can connect to Google's networks. For more information, see  Colocation
-    /// Facilities.</summary>
+    /// <summary>Represents an Interconnect Attachment (VLAN) Location resource.
+    ///
+    /// You can use this resource to find location details about an Interconnect attachment (VLAN). For more information
+    /// about interconnect attachments, read  Creating VLAN Attachments.</summary>
     public class InterconnectLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The postal address of the Point of Presence, each line in the address is separated by
@@ -56064,7 +57574,10 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Machine Type resource. (== resource_for v1.machineTypes ==) (== resource_for beta.machineTypes
+    /// <summary>Represents a Machine Type resource.
+    ///
+    /// You can use specific machine types for your VM instances based on performance and pricing requirements. For more
+    /// information, read Machine Types. (== resource_for v1.machineTypes ==) (== resource_for beta.machineTypes
     /// ==)</summary>
     public class MachineType : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -56499,8 +58012,10 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a Network resource. Read Virtual Private Cloud (VPC) Network Overview for more information.
-    /// (== resource_for v1.networks ==) (== resource_for beta.networks ==)</summary>
+    /// <summary>Represents a VPC Network resource.
+    ///
+    /// Networks connect resources to each other and to the internet. For more information, read Virtual Private Cloud
+    /// (VPC) Network. (== resource_for v1.networks ==) (== resource_for beta.networks ==)</summary>
     public class Network : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this
@@ -56521,13 +58036,13 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
-        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// <summary>An optional description of this resource. Provide this field when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>[Output Only] The gateway address for default routing out of the network. This value is read only
-        /// and is selected by GCP.</summary>
+        /// <summary>[Output Only] The gateway address for default routing out of the network, selected by
+        /// GCP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayIPv4")]
         public virtual string GatewayIPv4 { get; set; } 
 
@@ -56542,9 +58057,9 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
-        /// cannot be a dash.</summary>
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all
+        /// following characters (except for the last character) must be a dash, lowercase letter, or digit. The last
+        /// character must be a lowercase letter or digit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -56982,8 +58497,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessConfigs")]
         public virtual System.Collections.Generic.IList<AccessConfig> AccessConfigs { get; set; } 
 
-        /// <summary>An array of alias IP ranges for this network interface. Can only be specified for network
-        /// interfaces on subnet-mode networks.</summary>
+        /// <summary>An array of alias IP ranges for this network interface. You can only specify this field for network
+        /// interfaces in VPC networks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliasIpRanges")]
         public virtual System.Collections.Generic.IList<AliasIpRange> AliasIpRanges { get; set; } 
 
@@ -56998,17 +58513,14 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output Only] The name of the network interface, generated by the server. For network devices,
-        /// these are eth0, eth1, etc.</summary>
+        /// <summary>[Output Only] The name of the network interface, which is generated by the server. For network
+        /// devices, these are eth0, eth1, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>URL of the network resource for this instance. When creating an instance, if neither the network
         /// nor the subnetwork is specified, the default network global/networks/default is used; if the network is not
         /// specified but the subnetwork is specified, the network is inferred.
-        ///
-        /// This field is optional when creating a firewall rule. If not specified when creating a firewall rule, the
-        /// default network global/networks/default is used.
         ///
         /// If you specify this property, you can specify the network as a full or partial URL. For example, the
         /// following are all valid URLs: -
@@ -57017,15 +58529,15 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>An IPv4 internal network address to assign to the instance for this network interface. If not
-        /// specified by the user, an unused internal IP is assigned by the system.</summary>
+        /// <summary>An IPv4 internal IP address to assign to the instance for this network interface. If not specified
+        /// by the user, an unused internal IP is assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkIP")]
         public virtual string NetworkIP { get; set; } 
 
         /// <summary>The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do
-        /// not provide this property. If the network is in auto subnet mode, providing the subnetwork is optional. If
-        /// the network is in custom subnet mode, then this field should be specified. If you specify this property, you
-        /// can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: -
+        /// not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the
+        /// network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can
+        /// specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: -
         /// https://www.googleapis.com/compute/v1/projects/project/regions/region/subnetworks/subnetwork -
         /// regions/region/subnetworks/subnetwork</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
@@ -57112,7 +58624,7 @@ namespace Google.Apis.Compute.v1.Data
     /// peering.</summary>
     public class NetworkPeering : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This field will be deprecated soon. Prefer using exchange_subnet_routes instead. Indicates whether
+        /// <summary>This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates whether
         /// full mesh connectivity is created and managed automatically. When it is set to true, Google Compute Engine
         /// will automatically create and manage the routes between two networks when the state is ACTIVE. Otherwise,
         /// user needs to create routes manually to route packets to peer network.</summary>
@@ -57127,9 +58639,9 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of this peering. Provided by the client when the peering is created. The name must comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match regular expression
-        /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all the
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.</summary>
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following
+        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a
+        /// dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -57139,7 +58651,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>[Output Only] State for the peering.</summary>
+        /// <summary>[Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when
+        /// there's a matching configuration in the peer network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -57156,9 +58669,9 @@ namespace Google.Apis.Compute.v1.Data
     /// wide.</summary>
     public class NetworkRoutingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The network-wide routing mode to use. If set to REGIONAL, this network's cloud routers will only
+        /// <summary>The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only
         /// advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this
-        /// network's cloud routers will advertise routes with all subnets of this network, across regions.</summary>
+        /// network's Cloud Routers will advertise routes with all subnets of this network, across regions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routingMode")]
         public virtual string RoutingMode { get; set; } 
 
@@ -57168,8 +58681,8 @@ namespace Google.Apis.Compute.v1.Data
 
     public class NetworksAddPeeringRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This field will be deprecated soon. Prefer using exchange_subnet_routes in network_peering instead.
-        /// Whether Google Compute Engine manages the routes automatically.</summary>
+        /// <summary>This field will be deprecated soon. Use exchange_subnet_routes in network_peering instead. Whether
+        /// Google Compute Engine manages the routes automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCreateRoutes")]
         public virtual System.Nullable<bool> AutoCreateRoutes { get; set; } 
 
@@ -57177,10 +58690,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Network peering parameters. In order to specify route policies for peering using import/export
-        /// custom routes, you will have to fill all peering related parameters (name, peer network,
-        /// exchange_subnet_routes) in network_peeringfield. Corresponding fields in NetworksAddPeeringRequest will be
-        /// deprecated soon.</summary>
+        /// <summary>Network peering parameters. In order to specify route policies for peering using import and export
+        /// custom routes, you must specify all peering related parameters (name, peer network, exchange_subnet_routes)
+        /// in the network_peering field. The corresponding fields in NetworksAddPeeringRequest will be deprecated
+        /// soon.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkPeering")]
         public virtual NetworkPeering NetworkPeering { get; set; } 
 
@@ -57204,9 +58717,12 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A NodeGroup resource. To create a node group, you must first create a node templates. To learn more
-    /// about node groups and sole-tenant nodes, read the Sole-tenant nodes documentation. (== resource_for
-    /// beta.nodeGroups ==) (== resource_for v1.nodeGroups ==)</summary>
+    /// <summary>Represent a sole-tenant Node Group resource.
+    ///
+    /// A sole-tenant node is a physical server that is dedicated to hosting VM instances only for your specific
+    /// project. Use sole-tenant nodes to keep your instances physically separated from instances in other projects, or
+    /// to group your instances together on the same host hardware. For more information, read Sole-tenant nodes. (==
+    /// resource_for beta.nodeGroups ==) (== resource_for v1.nodeGroups ==) NextID: 15</summary>
     public class NodeGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -57416,6 +58932,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeType")]
         public virtual string NodeType { get; set; } 
 
+        /// <summary>Binding properties for the physical server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverBinding")]
+        public virtual ServerBinding ServerBinding { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -57576,9 +59096,11 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Node Template resource. To learn more about node templates and sole-tenant nodes, read the Sole-
-    /// tenant nodes documentation. (== resource_for beta.nodeTemplates ==) (== resource_for v1.nodeTemplates
-    /// ==)</summary>
+    /// <summary>Represent a sole-tenant Node Template resource.
+    ///
+    /// You can use a template to define properties for nodes in a node group. For more information, read Creating node
+    /// groups and instances. (== resource_for beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==) NextID:
+    /// 16</summary>
     public class NodeTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -57631,6 +59153,10 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>Binding properties for the physical server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverBinding")]
+        public virtual ServerBinding ServerBinding { get; set; } 
 
         /// <summary>[Output Only] The status of the node template. One of the following values: CREATING, READY, and
         /// DELETING.</summary>
@@ -57859,7 +59385,12 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>A Node Type resource.</summary>
+    /// <summary>Represent a sole-tenant Node Type resource.
+    ///
+    /// Each node within a node group must have a node type. A node type specifies the total amount of cores and memory
+    /// for that node. Currently, the only available node type is n1-node-96-624 node type that has 96 vCPUs and 624 GB
+    /// of memory, available in multiple zones. For more information read Node types. (== resource_for beta.nodeTypes
+    /// ==) (== resource_for v1.nodeTypes ==)</summary>
     public class NodeType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The CPU platform used by this node type.</summary>
@@ -58111,8 +59642,17 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>An Operation resource, used to manage asynchronous API requests. (== resource_for v1.globalOperations
-    /// ==) (== resource_for beta.globalOperations ==) (== resource_for v1.regionOperations ==) (== resource_for
+    /// <summary>Represents an Operation resource.
+    ///
+    /// You can use an operation resource to manage asynchronous API requests. For more information, read Handling API
+    /// responses.
+    ///
+    /// Operations can be global, regional or zonal. - For global operations, use the globalOperations resource. - For
+    /// regional operations, use the regionOperations resource. - For zonal operations, use the zonalOperations
+    /// resource.
+    ///
+    /// For more information, read  Global, Regional, and Zonal Resources. (== resource_for v1.globalOperations ==) (==
+    /// resource_for beta.globalOperations ==) (== resource_for v1.regionOperations ==) (== resource_for
     /// beta.regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for beta.zoneOperations
     /// ==)</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
@@ -58179,9 +59719,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<int> Progress { get; set; } 
 
-        /// <summary>[Output Only] The URL of the region where the operation resides. Only available when performing
-        /// regional operations. You must specify this field as part of the HTTP request URL. It is not settable as a
-        /// field in the request body.</summary>
+        /// <summary>[Output Only] The URL of the region where the operation resides. Only applicable when performing
+        /// regional operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
@@ -58222,9 +59761,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<Operation.WarningsData> Warnings { get; set; } 
 
-        /// <summary>[Output Only] The URL of the zone where the operation resides. Only available when performing per-
-        /// zone operations. You must specify this field as part of the HTTP request URL. It is not settable as a field
-        /// in the request body.</summary>
+        /// <summary>[Output Only] The URL of the zone where the operation resides. Only applicable when performing per-
+        /// zone operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -58619,8 +60157,10 @@ namespace Google.Apis.Compute.v1.Data
 
     }    
 
-    /// <summary>A Project resource. For an overview of projects, see  Cloud Platform Resource Hierarchy. (==
-    /// resource_for v1.projects ==) (== resource_for beta.projects ==)</summary>
+    /// <summary>Represents a Project resource.
+    ///
+    /// A project is used to organize resources in a Google Cloud Platform environment. For more information, read about
+    /// the  Resource Hierarchy. (== resource_for v1.projects ==) (== resource_for beta.projects ==)</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata key/value pairs available to all instances contained in this project. See Custom metadata
@@ -58796,7 +60336,10 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Region resource. (== resource_for beta.regions ==) (== resource_for v1.regions ==)</summary>
+    /// <summary>Represents a Region resource.
+    ///
+    /// A region is a geographical area where a resource is located. For more information, read Regions and Zones. (==
+    /// resource_for beta.regions ==) (== resource_for v1.regions ==)</summary>
     public class Region : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -58985,6 +60528,26 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    public class RegionDisksAddResourcePoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource policies to be added to this disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicies")]
+        public virtual System.Collections.Generic.IList<string> ResourcePolicies { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class RegionDisksRemoveResourcePoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource policies to be removed from this disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicies")]
+        public virtual System.Collections.Generic.IList<string> ResourcePolicies { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class RegionDisksResizeRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -59453,26 +61016,408 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a Route resource. A route specifies how certain packets should be handled by the network.
-    /// Routes are associated with instances by tags and the set of routes for a particular instance is called its
-    /// routing table.
+    public class ResourcePoliciesScopedList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of resourcePolicies contained in this scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicies")]
+        public virtual System.Collections.Generic.IList<ResourcePolicy> ResourcePolicies { get; set; } 
+
+        /// <summary>Informational warning which replaces the list of resourcePolicies when the list is empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual ResourcePoliciesScopedList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>Informational warning which replaces the list of resourcePolicies when the list is empty.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
+    }    
+
+    public class ResourcePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; } 
+
+        /// <summary>[Output Only] Type of the resource. Always compute#resource_policies for resource
+        /// policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The name of the resource, provided by the client when initially creating the resource. The resource
+        /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
+        /// long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
+        /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
+
+        /// <summary>[Output Only] Server-defined fully-qualified URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>Resource policy for persistent disks for creating snapshots.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotSchedulePolicy")]
+        public virtual ResourcePolicySnapshotSchedulePolicy SnapshotSchedulePolicy { get; set; } 
+
+        /// <summary>[Output Only] The status of resource policy creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains a list of resourcePolicies.</summary>
+    public class ResourcePolicyAggregatedList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A list of ResourcePolicy resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IDictionary<string,ResourcePoliciesScopedList> Items { get; set; } 
+
+        /// <summary>Type of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual ResourcePolicyAggregatedList.WarningData Warning { get; set; } 
+
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
+    }    
+
+    /// <summary>Time window specified for daily operations.</summary>
+    public class ResourcePolicyDailyCycle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines a schedule that runs every nth day of the month.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("daysInCycle")]
+        public virtual System.Nullable<int> DaysInCycle { get; set; } 
+
+        /// <summary>[Output only] A predetermined duration for the window, automatically chosen to be the smallest
+        /// possible in the given scenario.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual string Duration { get; set; } 
+
+        /// <summary>Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00,
+        /// 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Time window specified for hourly operations.</summary>
+    public class ResourcePolicyHourlyCycle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output only] Duration of the time window, automatically chosen to be smallest possible in the
+        /// given scenario.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual string Duration { get; set; } 
+
+        /// <summary>Allows to define schedule that runs every nth hour.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hoursInCycle")]
+        public virtual System.Nullable<int> HoursInCycle { get; set; } 
+
+        /// <summary>Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23]
+        /// and MM : [00-00] GMT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ResourcePolicyList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>[Output Only] A list of ResourcePolicy resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<ResourcePolicy> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource.Always compute#resourcePoliciesList for listsof
+        /// resourcePolicies</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual ResourcePolicyList.WarningData Warning { get; set; } 
+
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
+    }    
+
+    /// <summary>A snapshot schedule policy specifies when and how frequently snapshots are to be created for the target
+    /// disk. Also specifies how many and how long these scheduled snapshots should be retained.</summary>
+    public class ResourcePolicySnapshotSchedulePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Retention policy applied to snapshots created by this resource policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionPolicy")]
+        public virtual ResourcePolicySnapshotSchedulePolicyRetentionPolicy RetentionPolicy { get; set; } 
+
+        /// <summary>A Vm Maintenance Policy specifies what kind of infrastructure maintenance we are allowed to perform
+        /// on this VM and when. Schedule that is applied to disks covered by this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
+        public virtual ResourcePolicySnapshotSchedulePolicySchedule Schedule { get; set; } 
+
+        /// <summary>Properties with which snapshots are created such as labels, encryption keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotProperties")]
+        public virtual ResourcePolicySnapshotSchedulePolicySnapshotProperties SnapshotProperties { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Policy for retention of scheduled snapshots.</summary>
+    public class ResourcePolicySnapshotSchedulePolicyRetentionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Maximum age of the snapshot that is allowed to be kept.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRetentionDays")]
+        public virtual System.Nullable<int> MaxRetentionDays { get; set; } 
+
+        /// <summary>Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onSourceDiskDelete")]
+        public virtual string OnSourceDiskDelete { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A schedule for disks where the schedueled operations are performed.</summary>
+    public class ResourcePolicySnapshotSchedulePolicySchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("dailySchedule")]
+        public virtual ResourcePolicyDailyCycle DailySchedule { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("hourlySchedule")]
+        public virtual ResourcePolicyHourlyCycle HourlySchedule { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("weeklySchedule")]
+        public virtual ResourcePolicyWeeklyCycle WeeklySchedule { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specified snapshot properties for scheduled snapshots created by this policy.</summary>
+    public class ResourcePolicySnapshotSchedulePolicySnapshotProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indication to perform a ?guest aware? snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestFlush")]
+        public virtual System.Nullable<bool> GuestFlush { get; set; } 
+
+        /// <summary>Labels to apply to scheduled snapshots. These can be later modified by the setLabels method. Label
+        /// values may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>GCS bucket storage location of the auto snapshot (regional or multi-regional).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageLocations")]
+        public virtual System.Collections.Generic.IList<string> StorageLocations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Time window specified for weekly operations.</summary>
+    public class ResourcePolicyWeeklyCycle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Up to 7 intervals/windows, one for each day of the week.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeeks")]
+        public virtual System.Collections.Generic.IList<ResourcePolicyWeeklyCycleDayOfWeek> DayOfWeeks { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ResourcePolicyWeeklyCycleDayOfWeek : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allows to define schedule that runs specified day of the week.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual string Day { get; set; } 
+
+        /// <summary>[Output only] Duration of the time window, automatically chosen to be smallest possible in the
+        /// given scenario.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual string Duration { get; set; } 
+
+        /// <summary>Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23]
+        /// and MM : [00-00] GMT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a Route resource.
     ///
-    /// For each packet leaving an instance, the system searches that instance's routing table for a single best
-    /// matching route. Routes match packets by destination IP address, preferring smaller or more specific ranges over
-    /// larger ones. If there is a tie, the system selects the route with the smallest priority value. If there is still
-    /// a tie, it uses the layer three and four packet headers to select just one of the remaining matching routes. The
-    /// packet is then forwarded as specified by the nextHop field of the winning route - either to another instance
-    /// destination, an instance gateway, or a Google Compute Engine-operated gateway.
-    ///
-    /// Packets that do not match any route in the sending instance's routing table are dropped. (== resource_for
-    /// beta.routes ==) (== resource_for v1.routes ==)</summary>
+    /// A route defines a path from VM instances in the VPC network to a specific destination. This destination can be
+    /// inside or outside the VPC network. For more information, read the Routes overview. (== resource_for beta.routes
+    /// ==) (== resource_for v1.routes ==)</summary>
     public class Route : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
-        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// <summary>An optional description of this resource. Provide this field when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
@@ -59493,9 +61438,9 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
-        /// cannot be a dash.</summary>
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all
+        /// following characters (except for the last character) must be a dash, lowercase letter, or digit. The last
+        /// character must be a lowercase letter or digit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -59504,7 +61449,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Network { get; set; } 
 
         /// <summary>The URL to a gateway that should handle matching packets. You can only specify the internet gateway
-        /// using a full or partial valid URL:  projects//global/gateways/default-internet-gateway</summary>
+        /// using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopGateway")]
         public virtual string NextHopGateway { get; set; } 
 
@@ -59533,8 +61478,9 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string NextHopVpnTunnel { get; set; } 
 
         /// <summary>The priority of this route. Priority is used to break ties in cases where there is more than one
-        /// matching route of equal prefix length. In the case of two routes with equal prefix length, the one with the
-        /// lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.</summary>
+        /// matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with
+        /// the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to
+        /// `65535`, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<long> Priority { get; set; } 
 
@@ -59664,7 +61610,9 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>Router resource.</summary>
+    /// <summary>Represents a Cloud Router resource.
+    ///
+    /// For more information about Cloud Router, read the the Cloud Router overview.</summary>
     public class Router : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>BGP information specific to this router.</summary>
@@ -60379,7 +62327,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Sets the scheduling options for an Instance.</summary>
+    /// <summary>Sets the scheduling options for an Instance. NextID: 9</summary>
     public class Scheduling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies whether the instance should be automatically restarted if it is terminated by Compute
@@ -60658,6 +62606,15 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ServerBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A service account.</summary>
     public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -60758,10 +62715,17 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A persistent disk snapshot resource. (== resource_for beta.snapshots ==) (== resource_for v1.snapshots
-    /// ==)</summary>
+    /// <summary>Represents a Persistent Disk Snapshot resource.
+    ///
+    /// You can use snapshots to back up data on a regular interval. For more information, read  Creating persistent
+    /// disk snapshots. (== resource_for beta.snapshots ==) (== resource_for v1.snapshots ==)</summary>
     public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>[Output Only] Set to true if snapshots are automatically by applying resource policy on the target
+        /// disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoCreated")]
+        public virtual System.Nullable<bool> AutoCreated { get; set; } 
+
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
@@ -61280,8 +63244,11 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Subnetwork resource. (== resource_for beta.subnetworks ==) (== resource_for v1.subnetworks
-    /// ==)</summary>
+    /// <summary>Represents a Subnetwork resource.
+    ///
+    /// A subnetwork (also known as a subnet) is a logical partition of a Virtual Private Cloud network with one primary
+    /// IP range and zero or more secondary IP ranges. For more information, read  Virtual Private Cloud (VPC) Network.
+    /// (== resource_for beta.subnetworks ==) (== resource_for v1.subnetworks ==)</summary>
     public class Subnetwork : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -61934,8 +63901,12 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>A TargetInstance resource. This resource defines an endpoint instance that terminates traffic of
-    /// certain protocols. (== resource_for beta.targetInstances ==) (== resource_for v1.targetInstances ==)</summary>
+    /// <summary>Represents a Target Instance resource.
+    ///
+    /// You can use a target instance to handle traffic for one or more forwarding rules, which is ideal for forwarding
+    /// protocol traffic that is managed by a single source. For example, ESP, AH, TCP, or UDP. For more information,
+    /// read Target instances. (== resource_for beta.targetInstances ==) (== resource_for v1.targetInstances
+    /// ==)</summary>
     public class TargetInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -62842,8 +64813,10 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>Represents a Target VPN gateway resource. (== resource_for beta.targetVpnGateways ==) (== resource_for
-    /// v1.targetVpnGateways ==)</summary>
+    /// <summary>Represents a Target VPN Gateway resource.
+    ///
+    /// The target VPN gateway resource represents a Classic Cloud VPN gateway. For more information, read the the Cloud
+    /// VPN Overview. (== resource_for beta.targetVpnGateways ==) (== resource_for v1.targetVpnGateways ==)</summary>
     public class TargetVpnGateway : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -63605,7 +65578,10 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>VPN tunnel resource. (== resource_for beta.vpnTunnels ==) (== resource_for v1.vpnTunnels ==)</summary>
+    /// <summary>Represents a Cloud VPN Tunnel resource.
+    ///
+    /// For more information about VPN, read the the Cloud VPN Overview. (== resource_for beta.vpnTunnels ==) (==
+    /// resource_for v1.vpnTunnels ==)</summary>
     public class VpnTunnel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -63983,7 +65959,11 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones ==) Next ID: 17</summary>
+    /// <summary>Represents a Zone resource.
+    ///
+    /// A zone is a deployment area. These deployment areas are subsets of a region. For example the zone us-east1-a is
+    /// located in the us-east1 region. For more information, read Regions and Zones. (== resource_for beta.zones ==)
+    /// (== resource_for v1.zones ==)</summary>
     public class Zone : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Available cpu/platform selections for the zone.</summary>

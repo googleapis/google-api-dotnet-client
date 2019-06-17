@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"VPK3KBfpaEgZ16pozGOoMYfKc0U/MeZ1zxzTVE7Jfm3wzdVqUf78pPg\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/3drmCC1Z1oZacuS_TWrno29D-sQ\"",
  "discoveryVersion": "v1",
  "id": "drive:v3",
  "name": "drive",
  "version": "v3",
- "revision": "20190530",
+ "revision": "20190610",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",

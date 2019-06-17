@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190601 (1612)
+ *      <tr><th>API Rev<td>20190610 (1621)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -447,6 +447,19 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
+            /// <summary>Not used.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of operations to return. If unspecified, defaults to 50. The maximum value
+            /// is 100.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>A string for filtering Operations. The following filter fields are supported
             ///
             /// * serviceName Required. Only `=` operator is allowed. * startTime The time this job was started, in ISO
@@ -464,19 +477,6 @@ namespace Google.Apis.ServiceManagement.v1
             /// ={some-service}.googleapis.com AND (status=done OR startTime>="2017-02-01")`</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>Not used.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Name { get; set; }
-
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of operations to return. If unspecified, defaults to 50. The maximum value
-            /// is 100.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -503,15 +503,6 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -533,6 +524,15 @@ namespace Google.Apis.ServiceManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1263,6 +1263,16 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
+                /// <summary>Unimplemented. Do not use this feature until this comment is removed.
+                ///
+                /// The rollout id that rollout to be created based on.
+                ///
+                /// Rollout should be constructed based on current successful rollout, this field indicates the current
+                /// successful rollout id that new rollout based on to construct, if current successful rollout changed
+                /// when server receives the request, request will be rejected for safety.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("baseRolloutId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string BaseRolloutId { get; set; }
+
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.ServiceManagement.v1.Data.Rollout Body { get; set; }
@@ -1299,6 +1309,15 @@ namespace Google.Apis.ServiceManagement.v1
                             Name = "serviceName",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "baseRolloutId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "baseRolloutId",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -1411,6 +1430,14 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
+                /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
+                /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
+                /// filter='status=SUCCESS' -- To limit the results to those in
+                /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or 'FAILED', use
+                /// filter='status=CANCELLED OR status=FAILED'</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The token of the page to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1419,14 +1446,6 @@ namespace Google.Apis.ServiceManagement.v1
                 /// Maximum value is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
-                /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
-                /// filter='status=SUCCESS' -- To limit the results to those in
-                /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or 'FAILED', use
-                /// filter='status=CANCELLED OR status=FAILED'</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1462,6 +1481,15 @@ namespace Google.Apis.ServiceManagement.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1474,15 +1502,6 @@ namespace Google.Apis.ServiceManagement.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1926,12 +1945,6 @@ namespace Google.Apis.ServiceManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
-            /// <summary>The id of the service configuration resource.
-            ///
-            /// This field must be specified for the server to return all fields, including `SourceInfo`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ConfigId { get; set; }
-
             /// <summary>Specifies which parts of the Service Config should be returned in the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1944,6 +1957,12 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
+
+            /// <summary>The id of the service configuration resource.
+            ///
+            /// This field must be specified for the server to return all fields, including `SourceInfo`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ConfigId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1979,18 +1998,18 @@ namespace Google.Apis.ServiceManagement.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "configId", new Google.Apis.Discovery.Parameter
+                    "view", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "configId",
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
+                    "configId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "view",
+                        Name = "configId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2101,6 +2120,10 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
+            /// <summary>Include services produced by the specified project.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProducerProjectId { get; set; }
+
             /// <summary>Include services consumed by the specified consumer.
             ///
             /// The Google Service Management implementation accepts the following forms: - project:</summary>
@@ -2115,10 +2138,6 @@ namespace Google.Apis.ServiceManagement.v1
             /// Maximum value is 100.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Include services produced by the specified project.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProducerProjectId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2145,6 +2164,15 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "producerProjectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "producerProjectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "consumerId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "consumerId",
@@ -2166,15 +2194,6 @@ namespace Google.Apis.ServiceManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "producerProjectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "producerProjectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4061,7 +4080,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// instances.
     ///
     /// Different APIs can support different monitored resource types. APIs generally provide a `list` method that
-    /// returns the monitored resource descriptors used by the API.</summary>
+    /// returns the monitored resource descriptors used by the API.
+    ///
+    /// Next ID: 10</summary>
     public class MonitoredResourceDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. A detailed description of the monitored resource type that might be used in
@@ -4704,48 +4725,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
     }    
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
-    /// is designed to be:
+    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
+    /// message contains three pieces of data: error code, error message, and error details.
     ///
-    /// - Simple to use and understand for most users - Flexible enough to meet unexpected needs
-    ///
-    /// # Overview
-    ///
-    /// The `Status` message contains three pieces of data: error code, error message, and error details. The error code
-    /// should be an enum value of google.rpc.Code, but it may accept additional error codes if needed.  The error
-    /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
-    /// If a localized user-facing error message is needed, put the localized message in the error details or localize
-    /// it in the client. The optional error details may contain arbitrary information about the error. There is a
-    /// predefined set of error detail types in the package `google.rpc` that can be used for common error conditions.
-    ///
-    /// # Language mapping
-    ///
-    /// The `Status` message is the logical representation of the error model, but it is not necessarily the actual wire
-    /// format. When the `Status` message is exposed in different client libraries and different wire protocols, it can
-    /// be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped
-    /// to some error codes in C.
-    ///
-    /// # Other uses
-    ///
-    /// The error model and the `Status` message can be used in a variety of environments, either with or without APIs,
-    /// to provide a consistent developer experience across different environments.
-    ///
-    /// Example uses of this error model include:
-    ///
-    /// - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status` in the
-    /// normal response to indicate the partial errors.
-    ///
-    /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
-    /// reporting.
-    ///
-    /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
-    /// directly inside batch response, one for each error sub-response.
-    ///
-    /// - Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
-    /// those operations should be represented directly using the `Status` message.
-    ///
-    /// - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any
-    /// stripping needed for security/privacy reasons.</summary>
+    /// You can find out more about this error model and how to work with it in the [API Design
+    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>

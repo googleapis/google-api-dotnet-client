@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20190531 (1611)
+ *      <tr><th>API Rev<td>20190607 (1618)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -9847,6 +9847,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class OrderLineItem : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Price and tax adjustments applied on the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adjustments")]
+        public virtual System.Collections.Generic.IList<OrderLineItemAdjustment> Adjustments { get; set; } 
+
         /// <summary>Annotations that are attached to the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IList<OrderMerchantProvidedAnnotation> Annotations { get; set; } 
@@ -9910,6 +9914,24 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// tax of $2, the total tax amount will be $4.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tax")]
         public virtual Price Tax { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderLineItemAdjustment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Adjustment for total price of the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceAdjustment")]
+        public virtual Price PriceAdjustment { get; set; } 
+
+        /// <summary>Adjustment for total tax of the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxAdjustment")]
+        public virtual Price TaxAdjustment { get; set; } 
+
+        /// <summary>Type of this adjustment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10274,9 +10296,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The carrier handling the shipment.
         ///
         /// Acceptable values for US are: - "gsx" - "ups" - "usps" - "fedex" - "dhl" - "ecourier" - "cxt" - "google" -
-        /// "ontrac" - "emsy" - "ont" - "deliv" - "dynamex" - "lasership" - "mpx" - "uds"
+        /// "ontrac" - "emsy" - "ont" - "deliv" - "dynamex" - "lasership" - "mpx" - "uds" - "efw"
         ///
-        /// Acceptable values for FR are: - "colissimo" - "chronopost"</summary>
+        /// Acceptable values for FR are: - "colissimo" - "chronopost" - "gls" - "dpd" - "bpost"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 

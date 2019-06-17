@@ -1,7 +1,272 @@
 {
+  "ownerDomain": "google.com",
+  "name": "cloudprivatecatalogproducer",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Cloud Private Catalog Producer API",
+  "ownerName": "Google",
   "resources": {
+    "operations": {
+      "methods": {
+        "cancel": {
+          "response": {
+            "$ref": "GoogleProtobufEmpty"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "POST",
+          "parameters": {
+            "name": {
+              "location": "path",
+              "description": "The name of the operation resource to be cancelled.",
+              "required": true,
+              "type": "string",
+              "pattern": "^operations/[^/]+$"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1beta1/operations/{operationsId}:cancel",
+          "path": "v1beta1/{+name}:cancel",
+          "id": "cloudprivatecatalogproducer.operations.cancel",
+          "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
+          "request": {
+            "$ref": "GoogleLongrunningCancelOperationRequest"
+          }
+        },
+        "delete": {
+          "flatPath": "v1beta1/operations/{operationsId}",
+          "path": "v1beta1/{+name}",
+          "id": "cloudprivatecatalogproducer.operations.delete",
+          "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
+          "response": {
+            "$ref": "GoogleProtobufEmpty"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "DELETE",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "name": {
+              "required": true,
+              "type": "string",
+              "pattern": "^operations/[^/]+$",
+              "location": "path",
+              "description": "The name of the operation resource to be deleted."
+            }
+          }
+        },
+        "list": {
+          "httpMethod": "GET",
+          "parameterOrder": [],
+          "response": {
+            "$ref": "GoogleLongrunningListOperationsResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "name": {
+              "location": "query",
+              "description": "The name of the operation's parent resource.",
+              "type": "string"
+            },
+            "pageToken": {
+              "type": "string",
+              "location": "query",
+              "description": "The standard list page token."
+            },
+            "pageSize": {
+              "type": "integer",
+              "location": "query",
+              "description": "The standard list page size.",
+              "format": "int32"
+            },
+            "filter": {
+              "location": "query",
+              "description": "The standard list filter.",
+              "type": "string"
+            }
+          },
+          "flatPath": "v1beta1/operations",
+          "id": "cloudprivatecatalogproducer.operations.list",
+          "path": "v1beta1/operations",
+          "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id."
+        },
+        "get": {
+          "response": {
+            "$ref": "GoogleLongrunningOperation"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "GET",
+          "parameters": {
+            "name": {
+              "required": true,
+              "type": "string",
+              "pattern": "^operations/[^/]+$",
+              "location": "path",
+              "description": "The name of the operation resource."
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1beta1/operations/{operationsId}",
+          "path": "v1beta1/{+name}",
+          "id": "cloudprivatecatalogproducer.operations.get",
+          "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
+        }
+      }
+    },
     "catalogs": {
       "methods": {
+        "getIamPolicy": {
+          "description": "Gets IAM policy for the specified Catalog.",
+          "httpMethod": "GET",
+          "parameterOrder": [
+            "resource"
+          ],
+          "response": {
+            "$ref": "GoogleIamV1Policy"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "resource": {
+              "required": true,
+              "type": "string",
+              "pattern": "^catalogs/[^/]+$",
+              "location": "path",
+              "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field."
+            }
+          },
+          "flatPath": "v1beta1/catalogs/{catalogsId}:getIamPolicy",
+          "id": "cloudprivatecatalogproducer.catalogs.getIamPolicy",
+          "path": "v1beta1/{+resource}:getIamPolicy"
+        },
+        "undelete": {
+          "httpMethod": "POST",
+          "parameterOrder": [
+            "name"
+          ],
+          "response": {
+            "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Catalog"
+          },
+          "parameters": {
+            "name": {
+              "location": "path",
+              "description": "The resource name of the catalog.",
+              "required": true,
+              "type": "string",
+              "pattern": "^catalogs/[^/]+$"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1beta1/catalogs/{catalogsId}:undelete",
+          "id": "cloudprivatecatalogproducer.catalogs.undelete",
+          "path": "v1beta1/{+name}:undelete",
+          "description": "Undeletes a deleted Catalog and all resources under it.",
+          "request": {
+            "$ref": "GoogleCloudPrivatecatalogproducerV1beta1UndeleteCatalogRequest"
+          }
+        },
+        "get": {
+          "response": {
+            "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Catalog"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "GET",
+          "parameters": {
+            "name": {
+              "required": true,
+              "type": "string",
+              "pattern": "^catalogs/[^/]+$",
+              "location": "path",
+              "description": "The resource name of the catalog."
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1beta1/catalogs/{catalogsId}",
+          "path": "v1beta1/{+name}",
+          "id": "cloudprivatecatalogproducer.catalogs.get",
+          "description": "Returns the requested Catalog resource."
+        },
+        "patch": {
+          "response": {
+            "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Catalog"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "PATCH",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "updateMask": {
+              "location": "query",
+              "description": "Field mask that controls which fields of the catalog should be updated.",
+              "format": "google-fieldmask",
+              "type": "string"
+            },
+            "name": {
+              "required": true,
+              "type": "string",
+              "pattern": "^catalogs/[^/]+$",
+              "location": "path",
+              "description": "Output only. The resource name of the catalog, in the format\n`catalogs/{catalog_id}'.\n\nA unique identifier for the catalog, which is generated\nby catalog service."
+            }
+          },
+          "flatPath": "v1beta1/catalogs/{catalogsId}",
+          "path": "v1beta1/{+name}",
+          "id": "cloudprivatecatalogproducer.catalogs.patch",
+          "request": {
+            "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Catalog"
+          },
+          "description": "Updates a specific Catalog resource."
+        },
+        "testIamPermissions": {
+          "httpMethod": "POST",
+          "parameterOrder": [
+            "resource"
+          ],
+          "response": {
+            "$ref": "GoogleIamV1TestIamPermissionsResponse"
+          },
+          "parameters": {
+            "resource": {
+              "required": true,
+              "type": "string",
+              "pattern": "^catalogs/[^/]+$",
+              "location": "path",
+              "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field."
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1beta1/catalogs/{catalogsId}:testIamPermissions",
+          "id": "cloudprivatecatalogproducer.catalogs.testIamPermissions",
+          "path": "v1beta1/{+resource}:testIamPermissions",
+          "description": "Tests the IAM permissions for the specified Catalog.",
+          "request": {
+            "$ref": "GoogleIamV1TestIamPermissionsRequest"
+          }
+        },
         "delete": {
           "description": "Soft deletes an existing Catalog and all resources under it.\nThe catalog can only be deleted if there is no associations under it or\nDeleteCatalogRequest.force is true. The delete operation\ncan be recovered by the PrivateCatalogProducer.UndeleteCatalog\nmethod.",
           "response": {
@@ -13,16 +278,16 @@
           "httpMethod": "DELETE",
           "parameters": {
             "name": {
+              "location": "path",
               "description": "The resource name of the catalog.",
               "required": true,
               "type": "string",
-              "pattern": "^catalogs/[^/]+$",
-              "location": "path"
+              "pattern": "^catalogs/[^/]+$"
             },
             "force": {
+              "location": "query",
               "description": "Forces deletion of the `Catalog` and its `Association` resources.\nIf the `Catalog` is still associated with other resources and\nforce is not set to true, then the operation fails.",
-              "type": "boolean",
-              "location": "query"
+              "type": "boolean"
             }
           },
           "scopes": [
@@ -33,253 +298,92 @@
           "id": "cloudprivatecatalogproducer.catalogs.delete"
         },
         "list": {
+          "flatPath": "v1beta1/catalogs",
+          "path": "v1beta1/catalogs",
+          "id": "cloudprivatecatalogproducer.catalogs.list",
           "description": "Lists Catalog resources that the producer has access to, within the\nscope of the parent resource.",
           "response": {
             "$ref": "GoogleCloudPrivatecatalogproducerV1beta1ListCatalogsResponse"
           },
           "parameterOrder": [],
           "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
           "parameters": {
+            "parent": {
+              "location": "query",
+              "description": "The resource name of the parent resource.",
+              "type": "string"
+            },
             "pageToken": {
-              "description": "A pagination token returned from a previous call to ListCatalogs\nthat indicates where this listing should continue from.\nThis field is optional.",
               "type": "string",
-              "location": "query"
+              "location": "query",
+              "description": "A pagination token returned from a previous call to ListCatalogs\nthat indicates where this listing should continue from.\nThis field is optional."
             },
             "pageSize": {
+              "type": "integer",
               "location": "query",
               "description": "The maximum number of catalogs to return.",
-              "format": "int32",
-              "type": "integer"
-            },
-            "parent": {
-              "description": "The resource name of the parent resource.",
-              "type": "string",
-              "location": "query"
+              "format": "int32"
             }
           },
-          "flatPath": "v1beta1/catalogs",
-          "path": "v1beta1/catalogs",
-          "id": "cloudprivatecatalogproducer.catalogs.list"
-        },
-        "setIamPolicy": {
-          "path": "v1beta1/{+resource}:setIamPolicy",
-          "id": "cloudprivatecatalogproducer.catalogs.setIamPolicy",
-          "request": {
-            "$ref": "GoogleIamV1SetIamPolicyRequest"
-          },
-          "description": "Sets the IAM policy for the specified Catalog.",
-          "response": {
-            "$ref": "GoogleIamV1Policy"
-          },
-          "parameterOrder": [
-            "resource"
-          ],
-          "httpMethod": "POST",
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "resource": {
-              "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
-              "required": true,
-              "type": "string",
-              "pattern": "^catalogs/[^/]+$",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1beta1/catalogs/{catalogsId}:setIamPolicy"
+          ]
         },
         "create": {
+          "description": "Creates a new Catalog resource.",
           "request": {
             "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Catalog"
           },
-          "description": "Creates a new Catalog resource.",
+          "httpMethod": "POST",
+          "parameterOrder": [],
           "response": {
             "$ref": "GoogleLongrunningOperation"
           },
-          "parameterOrder": [],
-          "httpMethod": "POST",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
           "parameters": {},
-          "flatPath": "v1beta1/catalogs",
-          "path": "v1beta1/catalogs",
-          "id": "cloudprivatecatalogproducer.catalogs.create"
-        },
-        "getIamPolicy": {
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "parameters": {
-            "resource": {
-              "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
-              "required": true,
-              "type": "string",
-              "pattern": "^catalogs/[^/]+$",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1beta1/catalogs/{catalogsId}:getIamPolicy",
-          "path": "v1beta1/{+resource}:getIamPolicy",
-          "id": "cloudprivatecatalogproducer.catalogs.getIamPolicy",
-          "description": "Gets IAM policy for the specified Catalog.",
+          "flatPath": "v1beta1/catalogs",
+          "id": "cloudprivatecatalogproducer.catalogs.create",
+          "path": "v1beta1/catalogs"
+        },
+        "setIamPolicy": {
+          "httpMethod": "POST",
+          "parameterOrder": [
+            "resource"
+          ],
           "response": {
             "$ref": "GoogleIamV1Policy"
           },
-          "parameterOrder": [
-            "resource"
-          ],
-          "httpMethod": "GET"
-        },
-        "patch": {
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "updateMask": {
-              "description": "Field mask that controls which fields of the catalog should be updated.",
-              "format": "google-fieldmask",
-              "type": "string",
-              "location": "query"
-            },
-            "name": {
-              "description": "Output only. The resource name of the catalog, in the format\n`catalogs/{catalog_id}'.\n\nA unique identifier for the catalog, which is generated\nby catalog service.",
-              "required": true,
-              "type": "string",
-              "pattern": "^catalogs/[^/]+$",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1beta1/catalogs/{catalogsId}",
-          "path": "v1beta1/{+name}",
-          "id": "cloudprivatecatalogproducer.catalogs.patch",
-          "request": {
-            "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Catalog"
-          },
-          "description": "Updates a specific Catalog resource.",
-          "response": {
-            "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Catalog"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "PATCH"
-        },
-        "get": {
-          "path": "v1beta1/{+name}",
-          "id": "cloudprivatecatalogproducer.catalogs.get",
-          "description": "Returns the requested Catalog resource.",
-          "response": {
-            "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Catalog"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "name": {
-              "pattern": "^catalogs/[^/]+$",
-              "location": "path",
-              "description": "The resource name of the catalog.",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "flatPath": "v1beta1/catalogs/{catalogsId}"
-        },
-        "undelete": {
-          "description": "Undeletes a deleted Catalog and all resources under it.",
-          "request": {
-            "$ref": "GoogleCloudPrivatecatalogproducerV1beta1UndeleteCatalogRequest"
-          },
-          "httpMethod": "POST",
-          "parameterOrder": [
-            "name"
-          ],
-          "response": {
-            "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Catalog"
-          },
-          "parameters": {
-            "name": {
-              "description": "The resource name of the catalog.",
-              "required": true,
-              "type": "string",
-              "pattern": "^catalogs/[^/]+$",
-              "location": "path"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1beta1/catalogs/{catalogsId}:undelete",
-          "id": "cloudprivatecatalogproducer.catalogs.undelete",
-          "path": "v1beta1/{+name}:undelete"
-        },
-        "testIamPermissions": {
-          "description": "Tests the IAM permissions for the specified Catalog.",
-          "request": {
-            "$ref": "GoogleIamV1TestIamPermissionsRequest"
-          },
-          "response": {
-            "$ref": "GoogleIamV1TestIamPermissionsResponse"
-          },
-          "parameterOrder": [
-            "resource"
-          ],
-          "httpMethod": "POST",
           "parameters": {
             "resource": {
-              "pattern": "^catalogs/[^/]+$",
               "location": "path",
-              "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+              "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
               "required": true,
-              "type": "string"
+              "type": "string",
+              "pattern": "^catalogs/[^/]+$"
             }
           },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "flatPath": "v1beta1/catalogs/{catalogsId}:testIamPermissions",
-          "path": "v1beta1/{+resource}:testIamPermissions",
-          "id": "cloudprivatecatalogproducer.catalogs.testIamPermissions"
+          "flatPath": "v1beta1/catalogs/{catalogsId}:setIamPolicy",
+          "id": "cloudprivatecatalogproducer.catalogs.setIamPolicy",
+          "path": "v1beta1/{+resource}:setIamPolicy",
+          "description": "Sets the IAM policy for the specified Catalog.",
+          "request": {
+            "$ref": "GoogleIamV1SetIamPolicyRequest"
+          }
         }
       },
       "resources": {
         "associations": {
           "methods": {
-            "delete": {
-              "parameters": {
-                "name": {
-                  "description": "The resource name of the `Association` to delete.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^catalogs/[^/]+/associations/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/catalogs/{catalogsId}/associations/{associationsId}",
-              "id": "cloudprivatecatalogproducer.catalogs.associations.delete",
-              "path": "v1beta1/{+name}",
-              "description": "Deletes the given Association.",
-              "httpMethod": "DELETE",
-              "parameterOrder": [
-                "name"
-              ],
-              "response": {
-                "$ref": "GoogleProtobufEmpty"
-              }
-            },
             "get": {
+              "flatPath": "v1beta1/catalogs/{catalogsId}/associations/{associationsId}",
+              "path": "v1beta1/{+name}",
+              "id": "cloudprivatecatalogproducer.catalogs.associations.get",
+              "description": "Returns the requested Association resource.",
               "response": {
                 "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Association"
               },
@@ -292,87 +396,83 @@
               ],
               "parameters": {
                 "name": {
-                  "description": "The resource name of the `Association` to retrieve.",
                   "required": true,
                   "type": "string",
                   "pattern": "^catalogs/[^/]+/associations/[^/]+$",
-                  "location": "path"
+                  "location": "path",
+                  "description": "The resource name of the `Association` to retrieve."
                 }
-              },
-              "flatPath": "v1beta1/catalogs/{catalogsId}/associations/{associationsId}",
-              "path": "v1beta1/{+name}",
-              "id": "cloudprivatecatalogproducer.catalogs.associations.get",
-              "description": "Returns the requested Association resource."
+              }
             },
             "list": {
+              "flatPath": "v1beta1/catalogs/{catalogsId}/associations",
+              "id": "cloudprivatecatalogproducer.catalogs.associations.list",
+              "path": "v1beta1/{+parent}/associations",
+              "description": "Lists all Association resources under a catalog.",
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "parent"
+              ],
+              "response": {
+                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1ListAssociationsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "parameters": {
-                "parent": {
-                  "pattern": "^catalogs/[^/]+$",
-                  "location": "path",
-                  "description": "The resource name of the `Catalog` whose `Associations` are\nbeing retrieved. In the format `catalogs/\u003ccatalog\u003e`.",
-                  "required": true,
-                  "type": "string"
-                },
                 "pageToken": {
-                  "description": "A pagination token returned from the previous call to\n`ListAssociations`.",
                   "type": "string",
-                  "location": "query"
+                  "location": "query",
+                  "description": "A pagination token returned from the previous call to\n`ListAssociations`."
                 },
                 "pageSize": {
                   "location": "query",
                   "description": "The maximum number of catalog associations to return.",
                   "format": "int32",
                   "type": "integer"
+                },
+                "parent": {
+                  "location": "path",
+                  "description": "The resource name of the `Catalog` whose `Associations` are\nbeing retrieved. In the format `catalogs/\u003ccatalog\u003e`.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^catalogs/[^/]+$"
+                }
+              }
+            },
+            "create": {
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "parent"
+              ],
+              "response": {
+                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Association"
+              },
+              "parameters": {
+                "parent": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^catalogs/[^/]+$",
+                  "location": "path",
+                  "description": "The `Catalog` resource's name."
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
               "flatPath": "v1beta1/catalogs/{catalogsId}/associations",
-              "path": "v1beta1/{+parent}/associations",
-              "id": "cloudprivatecatalogproducer.catalogs.associations.list",
-              "description": "Lists all Association resources under a catalog.",
-              "response": {
-                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1ListAssociationsResponse"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "GET"
-            },
-            "create": {
-              "path": "v1beta1/{+parent}/associations",
               "id": "cloudprivatecatalogproducer.catalogs.associations.create",
+              "path": "v1beta1/{+parent}/associations",
               "description": "Creates an Association instance under a given Catalog.",
               "request": {
                 "$ref": "GoogleCloudPrivatecatalogproducerV1beta1CreateAssociationRequest"
-              },
-              "response": {
-                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Association"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "POST",
-              "parameters": {
-                "parent": {
-                  "pattern": "^catalogs/[^/]+$",
-                  "location": "path",
-                  "description": "The `Catalog` resource's name.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/catalogs/{catalogsId}/associations"
-            }
-          }
-        },
-        "products": {
-          "methods": {
+              }
+            },
             "delete": {
+              "flatPath": "v1beta1/catalogs/{catalogsId}/associations/{associationsId}",
+              "path": "v1beta1/{+name}",
+              "id": "cloudprivatecatalogproducer.catalogs.associations.delete",
+              "description": "Deletes the given Association.",
               "response": {
                 "$ref": "GoogleProtobufEmpty"
               },
@@ -385,128 +485,19 @@
               ],
               "parameters": {
                 "name": {
-                  "description": "The resource name of the product.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^catalogs/[^/]+/products/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}",
-              "path": "v1beta1/{+name}",
-              "id": "cloudprivatecatalogproducer.catalogs.products.delete",
-              "description": "Hard deletes a Product."
-            },
-            "list": {
-              "response": {
-                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1ListProductsResponse"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "pageToken": {
-                  "description": "A pagination token returned from a previous call to ListProducts\nthat indicates where this listing should continue from.\nThis field is optional.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "description": "The maximum number of products to return.",
-                  "format": "int32",
-                  "type": "integer",
-                  "location": "query"
-                },
-                "parent": {
-                  "pattern": "^catalogs/[^/]+$",
                   "location": "path",
-                  "description": "The resource name of the parent resource.",
-                  "required": true,
-                  "type": "string"
-                },
-                "filter": {
-                  "location": "query",
-                  "description": "A filter expression used to restrict the returned results based\nupon properties of the product.",
-                  "type": "string"
-                }
-              },
-              "flatPath": "v1beta1/catalogs/{catalogsId}/products",
-              "path": "v1beta1/{+parent}/products",
-              "id": "cloudprivatecatalogproducer.catalogs.products.list",
-              "description": "Lists Product resources that the producer has access to, within the\nscope of the parent catalog."
-            },
-            "create": {
-              "path": "v1beta1/{+parent}/products",
-              "id": "cloudprivatecatalogproducer.catalogs.products.create",
-              "description": "Creates a Product instance under a given Catalog.",
-              "request": {
-                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Product"
-              },
-              "response": {
-                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Product"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "POST",
-              "parameters": {
-                "parent": {
-                  "description": "The catalog name of the new product's parent.",
+                  "description": "The resource name of the `Association` to delete.",
                   "required": true,
                   "type": "string",
-                  "pattern": "^catalogs/[^/]+$",
-                  "location": "path"
+                  "pattern": "^catalogs/[^/]+/associations/[^/]+$"
                 }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/catalogs/{catalogsId}/products"
-            },
-            "patch": {
-              "description": "Updates a specific Product resource.",
-              "request": {
-                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Product"
-              },
-              "response": {
-                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Product"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "PATCH",
-              "parameters": {
-                "updateMask": {
-                  "description": "Field mask that controls which fields of the product should be updated.",
-                  "format": "google-fieldmask",
-                  "type": "string",
-                  "location": "query"
-                },
-                "name": {
-                  "description": "Required. The resource name of the product in the format\n`catalogs/{catalog_id}/products/a-z*[a-z0-9]'.\n\nA unique identifier for the product under a catalog, which cannot\nbe changed after the product is created. The final\nsegment of the name must between 1 and 256 characters in length.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^catalogs/[^/]+/products/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}",
-              "path": "v1beta1/{+name}",
-              "id": "cloudprivatecatalogproducer.catalogs.products.patch"
-            },
+              }
+            }
+          }
+        },
+        "products": {
+          "methods": {
             "copy": {
-              "id": "cloudprivatecatalogproducer.catalogs.products.copy",
-              "path": "v1beta1/{+name}:copy",
-              "description": "Copies a Product under another Catalog.",
-              "request": {
-                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1CopyProductRequest"
-              },
               "httpMethod": "POST",
               "parameterOrder": [
                 "name"
@@ -516,26 +507,39 @@
               },
               "parameters": {
                 "name": {
-                  "description": "The resource name of the current product that is copied from.",
                   "required": true,
                   "type": "string",
                   "pattern": "^catalogs/[^/]+/products/[^/]+$",
-                  "location": "path"
+                  "location": "path",
+                  "description": "The resource name of the current product that is copied from."
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}:copy"
+              "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}:copy",
+              "id": "cloudprivatecatalogproducer.catalogs.products.copy",
+              "path": "v1beta1/{+name}:copy",
+              "description": "Copies a Product under another Catalog.",
+              "request": {
+                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1CopyProductRequest"
+              }
             },
             "get": {
+              "response": {
+                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Product"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
               "parameters": {
                 "name": {
+                  "location": "path",
                   "description": "The resource name of the product.",
                   "required": true,
                   "type": "string",
-                  "pattern": "^catalogs/[^/]+/products/[^/]+$",
-                  "location": "path"
+                  "pattern": "^catalogs/[^/]+/products/[^/]+$"
                 }
               },
               "scopes": [
@@ -544,14 +548,135 @@
               "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}",
               "path": "v1beta1/{+name}",
               "id": "cloudprivatecatalogproducer.catalogs.products.get",
-              "description": "Returns the requested Product resource.",
+              "description": "Returns the requested Product resource."
+            },
+            "patch": {
+              "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}",
+              "path": "v1beta1/{+name}",
+              "id": "cloudprivatecatalogproducer.catalogs.products.patch",
+              "request": {
+                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Product"
+              },
+              "description": "Updates a specific Product resource.",
               "response": {
                 "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Product"
               },
               "parameterOrder": [
                 "name"
               ],
-              "httpMethod": "GET"
+              "httpMethod": "PATCH",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^catalogs/[^/]+/products/[^/]+$",
+                  "location": "path",
+                  "description": "Required. The resource name of the product in the format\n`catalogs/{catalog_id}/products/a-z*[a-z0-9]'.\n\nA unique identifier for the product under a catalog, which cannot\nbe changed after the product is created. The final\nsegment of the name must between 1 and 256 characters in length."
+                },
+                "updateMask": {
+                  "location": "query",
+                  "description": "Field mask that controls which fields of the product should be updated.",
+                  "format": "google-fieldmask",
+                  "type": "string"
+                }
+              }
+            },
+            "delete": {
+              "response": {
+                "$ref": "GoogleProtobufEmpty"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "DELETE",
+              "parameters": {
+                "name": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^catalogs/[^/]+/products/[^/]+$",
+                  "location": "path",
+                  "description": "The resource name of the product."
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}",
+              "path": "v1beta1/{+name}",
+              "id": "cloudprivatecatalogproducer.catalogs.products.delete",
+              "description": "Hard deletes a Product."
+            },
+            "list": {
+              "flatPath": "v1beta1/catalogs/{catalogsId}/products",
+              "id": "cloudprivatecatalogproducer.catalogs.products.list",
+              "path": "v1beta1/{+parent}/products",
+              "description": "Lists Product resources that the producer has access to, within the\nscope of the parent catalog.",
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "parent"
+              ],
+              "response": {
+                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1ListProductsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "pageToken": {
+                  "location": "query",
+                  "description": "A pagination token returned from a previous call to ListProducts\nthat indicates where this listing should continue from.\nThis field is optional.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "The maximum number of products to return.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "parent": {
+                  "location": "path",
+                  "description": "The resource name of the parent resource.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^catalogs/[^/]+$"
+                },
+                "filter": {
+                  "location": "query",
+                  "description": "A filter expression used to restrict the returned results based\nupon properties of the product.",
+                  "type": "string"
+                }
+              }
+            },
+            "create": {
+              "flatPath": "v1beta1/catalogs/{catalogsId}/products",
+              "id": "cloudprivatecatalogproducer.catalogs.products.create",
+              "path": "v1beta1/{+parent}/products",
+              "request": {
+                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Product"
+              },
+              "description": "Creates a Product instance under a given Catalog.",
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "parent"
+              ],
+              "response": {
+                "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Product"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "parent": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^catalogs/[^/]+$",
+                  "location": "path",
+                  "description": "The catalog name of the new product's parent."
+                }
+              }
             }
           },
           "resources": {
@@ -565,59 +690,32 @@
                     "product"
                   ],
                   "httpMethod": "POST",
+                  "parameters": {
+                    "product": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^catalogs/[^/]+/products/[^/]+$",
+                      "location": "path",
+                      "description": "The resource name of the product."
+                    }
+                  },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "parameters": {
-                    "product": {
-                      "pattern": "^catalogs/[^/]+/products/[^/]+$",
-                      "location": "path",
-                      "description": "The resource name of the product.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
                   "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}/icons:upload",
                   "path": "v1beta1/{+product}/icons:upload",
                   "id": "cloudprivatecatalogproducer.catalogs.products.icons.upload",
+                  "description": "Creates an Icon instance under a given Product.\nIf Product only has a default icon, a new Icon\ninstance is created and associated with the given Product.\nIf Product already has a non-default icon, the action creates\na new Icon instance, associates the newly created\nIcon with the given Product and deletes the old icon.",
                   "request": {
                     "$ref": "GoogleCloudPrivatecatalogproducerV1beta1UploadIconRequest"
-                  },
-                  "description": "Creates an Icon instance under a given Product.\nIf Product only has a default icon, a new Icon\ninstance is created and associated with the given Product.\nIf Product already has a non-default icon, the action creates\na new Icon instance, associates the newly created\nIcon with the given Product and deletes the old icon."
+                  }
                 }
               }
             },
             "versions": {
               "methods": {
-                "create": {
-                  "response": {
-                    "$ref": "GoogleLongrunningOperation"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "parent": {
-                      "pattern": "^catalogs/[^/]+/products/[^/]+$",
-                      "location": "path",
-                      "description": "The product name of the new version's parent.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}/versions",
-                  "path": "v1beta1/{+parent}/versions",
-                  "id": "cloudprivatecatalogproducer.catalogs.products.versions.create",
-                  "request": {
-                    "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Version"
-                  },
-                  "description": "Creates a Version instance under a given Product."
-                },
                 "delete": {
+                  "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}/versions/{versionsId}",
                   "path": "v1beta1/{+name}",
                   "id": "cloudprivatecatalogproducer.catalogs.products.versions.delete",
                   "description": "Hard deletes a Version.",
@@ -628,19 +726,18 @@
                     "name"
                   ],
                   "httpMethod": "DELETE",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
                   "parameters": {
                     "name": {
+                      "required": true,
+                      "type": "string",
                       "pattern": "^catalogs/[^/]+/products/[^/]+/versions/[^/]+$",
                       "location": "path",
-                      "description": "The resource name of the version.",
-                      "required": true,
-                      "type": "string"
+                      "description": "The resource name of the version."
                     }
                   },
-                  "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}/versions/{versionsId}"
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
                 },
                 "list": {
                   "httpMethod": "GET",
@@ -650,35 +747,36 @@
                   "response": {
                     "$ref": "GoogleCloudPrivatecatalogproducerV1beta1ListVersionsResponse"
                   },
-                  "parameters": {
-                    "pageToken": {
-                      "location": "query",
-                      "description": "A pagination token returned from a previous call to ListVersions\nthat indicates where this listing should continue from.\nThis field is optional.",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "description": "The maximum number of versions to return.",
-                      "format": "int32",
-                      "type": "integer",
-                      "location": "query"
-                    },
-                    "parent": {
-                      "description": "The resource name of the parent resource.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^catalogs/[^/]+/products/[^/]+$",
-                      "location": "path"
-                    }
-                  },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
+                  "parameters": {
+                    "parent": {
+                      "location": "path",
+                      "description": "The resource name of the parent resource.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^catalogs/[^/]+/products/[^/]+$"
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "A pagination token returned from a previous call to ListVersions\nthat indicates where this listing should continue from.\nThis field is optional."
+                    },
+                    "pageSize": {
+                      "location": "query",
+                      "description": "The maximum number of versions to return.",
+                      "format": "int32",
+                      "type": "integer"
+                    }
+                  },
                   "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}/versions",
                   "id": "cloudprivatecatalogproducer.catalogs.products.versions.list",
                   "path": "v1beta1/{+parent}/versions",
                   "description": "Lists Version resources that the producer has access to, within the\nscope of the parent Product."
                 },
                 "get": {
+                  "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}/versions/{versionsId}",
                   "id": "cloudprivatecatalogproducer.catalogs.products.versions.get",
                   "path": "v1beta1/{+name}",
                   "description": "Returns the requested Version resource.",
@@ -689,19 +787,18 @@
                   "response": {
                     "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Version"
                   },
-                  "parameters": {
-                    "name": {
-                      "description": "The resource name of the version.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^catalogs/[^/]+/products/[^/]+/versions/[^/]+$",
-                      "location": "path"
-                    }
-                  },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}/versions/{versionsId}"
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^catalogs/[^/]+/products/[^/]+/versions/[^/]+$",
+                      "location": "path",
+                      "description": "The resource name of the version."
+                    }
+                  }
                 },
                 "patch": {
                   "response": {
@@ -712,17 +809,17 @@
                   ],
                   "httpMethod": "PATCH",
                   "parameters": {
-                    "updateMask": {
-                      "description": "Field mask that controls which fields of the version should be updated.",
-                      "format": "google-fieldmask",
-                      "type": "string",
-                      "location": "query"
-                    },
                     "name": {
-                      "pattern": "^catalogs/[^/]+/products/[^/]+/versions/[^/]+$",
                       "location": "path",
                       "description": "Required. The resource name of the version, in the format\n`catalogs/{catalog_id}/products/{product_id}/versions/a-z*[a-z0-9]'.\n\nA unique identifier for the version under a product, which can't\nbe changed after the version is created. The final segment of the name must\nbetween 1 and 63 characters in length.",
                       "required": true,
+                      "type": "string",
+                      "pattern": "^catalogs/[^/]+/products/[^/]+/versions/[^/]+$"
+                    },
+                    "updateMask": {
+                      "location": "query",
+                      "description": "Field mask that controls which fields of the version should be updated.",
+                      "format": "google-fieldmask",
                       "type": "string"
                     }
                   },
@@ -736,166 +833,55 @@
                   "request": {
                     "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Version"
                   }
+                },
+                "create": {
+                  "description": "Creates a Version instance under a given Product.",
+                  "request": {
+                    "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Version"
+                  },
+                  "response": {
+                    "$ref": "GoogleLongrunningOperation"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "POST",
+                  "parameters": {
+                    "parent": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^catalogs/[^/]+/products/[^/]+$",
+                      "location": "path",
+                      "description": "The product name of the new version's parent."
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1beta1/catalogs/{catalogsId}/products/{productsId}/versions",
+                  "path": "v1beta1/{+parent}/versions",
+                  "id": "cloudprivatecatalogproducer.catalogs.products.versions.create"
                 }
               }
             }
           }
         }
       }
-    },
-    "operations": {
-      "methods": {
-        "delete": {
-          "response": {
-            "$ref": "GoogleProtobufEmpty"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "DELETE",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "name": {
-              "pattern": "^operations/[^/]+$",
-              "location": "path",
-              "description": "The name of the operation resource to be deleted.",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "flatPath": "v1beta1/operations/{operationsId}",
-          "path": "v1beta1/{+name}",
-          "id": "cloudprivatecatalogproducer.operations.delete",
-          "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`."
-        },
-        "list": {
-          "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.",
-          "httpMethod": "GET",
-          "parameterOrder": [],
-          "response": {
-            "$ref": "GoogleLongrunningListOperationsResponse"
-          },
-          "parameters": {
-            "filter": {
-              "description": "The standard list filter.",
-              "type": "string",
-              "location": "query"
-            },
-            "name": {
-              "location": "query",
-              "description": "The name of the operation's parent resource.",
-              "type": "string"
-            },
-            "pageToken": {
-              "location": "query",
-              "description": "The standard list page token.",
-              "type": "string"
-            },
-            "pageSize": {
-              "location": "query",
-              "description": "The standard list page size.",
-              "format": "int32",
-              "type": "integer"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1beta1/operations",
-          "id": "cloudprivatecatalogproducer.operations.list",
-          "path": "v1beta1/operations"
-        },
-        "get": {
-          "path": "v1beta1/{+name}",
-          "id": "cloudprivatecatalogproducer.operations.get",
-          "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
-          "response": {
-            "$ref": "GoogleLongrunningOperation"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "name": {
-              "pattern": "^operations/[^/]+$",
-              "location": "path",
-              "description": "The name of the operation resource.",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "flatPath": "v1beta1/operations/{operationsId}"
-        },
-        "cancel": {
-          "httpMethod": "POST",
-          "parameterOrder": [
-            "name"
-          ],
-          "response": {
-            "$ref": "GoogleProtobufEmpty"
-          },
-          "parameters": {
-            "name": {
-              "pattern": "^operations/[^/]+$",
-              "location": "path",
-              "description": "The name of the operation resource to be cancelled.",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1beta1/operations/{operationsId}:cancel",
-          "id": "cloudprivatecatalogproducer.operations.cancel",
-          "path": "v1beta1/{+name}:cancel",
-          "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
-          "request": {
-            "$ref": "GoogleLongrunningCancelOperationRequest"
-          }
-        }
-      }
     }
   },
   "parameters": {
-    "quotaUser": {
+    "fields": {
+      "type": "string",
       "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
+      "description": "Selector specifying which fields to include in a partial response."
     },
     "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
       "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
     },
     "$.xgafv": {
+      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -905,15 +891,19 @@
         "1",
         "2"
       ],
-      "description": "V1 error format.",
+      "description": "V1 error format."
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
       "type": "string"
     },
     "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
@@ -922,22 +912,38 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json"
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
     },
     "key": {
+      "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "access_token": {
+      "location": "query",
       "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "upload_protocol": {
       "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string"
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks."
+    },
+    "quotaUser": {
+      "type": "string",
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
     }
   },
   "version": "v1beta1",
@@ -952,31 +958,35 @@
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
+    "GoogleProtobufEmpty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object",
+      "properties": {},
+      "id": "GoogleProtobufEmpty"
+    },
     "GoogleIamV1Binding": {
-      "description": "Associates `members` with a `role`.",
       "type": "object",
       "properties": {
-        "members": {
-          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@gmail.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "role": {
-          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
-          "type": "string"
+          "type": "string",
+          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."
         },
         "condition": {
           "$ref": "GoogleTypeExpr",
           "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@gmail.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n"
         }
       },
-      "id": "GoogleIamV1Binding"
+      "id": "GoogleIamV1Binding",
+      "description": "Associates `members` with a `role`."
     },
     "GoogleIamV1TestIamPermissionsRequest": {
-      "id": "GoogleIamV1TestIamPermissionsRequest",
-      "description": "Request message for `TestIamPermissions` method.",
       "type": "object",
       "properties": {
         "permissions": {
@@ -986,26 +996,27 @@
             "type": "string"
           }
         }
-      }
+      },
+      "id": "GoogleIamV1TestIamPermissionsRequest",
+      "description": "Request message for `TestIamPermissions` method."
     },
     "GoogleIamV1SetIamPolicyRequest": {
       "description": "Request message for `SetIamPolicy` method.",
       "type": "object",
       "properties": {
+        "policy": {
+          "$ref": "GoogleIamV1Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
+        },
         "updateMask": {
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM.",
           "format": "google-fieldmask",
           "type": "string"
-        },
-        "policy": {
-          "$ref": "GoogleIamV1Policy",
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
         }
       },
       "id": "GoogleIamV1SetIamPolicyRequest"
     },
     "GoogleCloudPrivatecatalogproducerV1beta1ListVersionsResponse": {
-      "id": "GoogleCloudPrivatecatalogproducerV1beta1ListVersionsResponse",
       "type": "object",
       "properties": {
         "versions": {
@@ -1019,17 +1030,25 @@
           "description": "A pagination token returned from a previous call to ListProducts\nthat indicates where the listing should continue from.\nThis field is optional.",
           "type": "string"
         }
-      }
+      },
+      "id": "GoogleCloudPrivatecatalogproducerV1beta1ListVersionsResponse"
     },
     "GoogleCloudPrivatecatalogproducerV1beta1UndeleteCatalogRequest": {
-      "id": "GoogleCloudPrivatecatalogproducerV1beta1UndeleteCatalogRequest",
       "type": "object",
-      "properties": {}
+      "properties": {},
+      "id": "GoogleCloudPrivatecatalogproducerV1beta1UndeleteCatalogRequest"
     },
     "GoogleIamV1Policy": {
       "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-other-app@appspot.gserviceaccount.com\n      role: roles/owner\n    - members:\n      - user:sean@example.com\n      role: roles/viewer\n\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
       "type": "object",
       "properties": {
+        "bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "GoogleIamV1Binding"
+          },
+          "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."
+        },
         "etag": {
           "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
           "format": "byte",
@@ -1041,24 +1060,16 @@
           "type": "integer"
         },
         "auditConfigs": {
-          "description": "Specifies cloud audit logging configuration for this policy.",
           "type": "array",
           "items": {
             "$ref": "GoogleIamV1AuditConfig"
-          }
-        },
-        "bindings": {
-          "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
-          "type": "array",
-          "items": {
-            "$ref": "GoogleIamV1Binding"
-          }
+          },
+          "description": "Specifies cloud audit logging configuration for this policy."
         }
       },
       "id": "GoogleIamV1Policy"
     },
     "GoogleCloudPrivatecatalogproducerV1beta1UploadIconRequest": {
-      "id": "GoogleCloudPrivatecatalogproducerV1beta1UploadIconRequest",
       "type": "object",
       "properties": {
         "icon": {
@@ -1066,49 +1077,48 @@
           "format": "byte",
           "type": "string"
         }
-      }
+      },
+      "id": "GoogleCloudPrivatecatalogproducerV1beta1UploadIconRequest"
     },
     "GoogleCloudPrivatecatalogproducerV1beta1Catalog": {
-      "id": "GoogleCloudPrivatecatalogproducerV1beta1Catalog",
-      "description": "The producer representation of a catalog which is a curated collection of\nsolutions that can be managed, controlled, and shared by cloud admins.",
       "type": "object",
       "properties": {
-        "displayName": {
-          "description": "Required. The user-supplied descriptive name of the catalog as it appears\nin UIs. Maximum 256 characters in length.",
-          "type": "string"
-        },
-        "description": {
-          "description": "Required. The user-supplied description of the catalog. Maximum of 512\ncharacters.",
-          "type": "string"
-        },
-        "parent": {
-          "description": "Required. The parent resource name of the catalog, which can't be changed\nafter a catalog is created. It can only be an organization. Values are of\nthe form `//cloudresourcemanager.googleapis.com/organizations/\u003cid\u003e`.\nMaximum 256 characters in length.",
-          "type": "string"
-        },
-        "createTime": {
-          "description": "Output only. The time when the catalog was created.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "updateTime": {
           "description": "Output only. The time when the catalog was last updated.",
           "format": "google-datetime",
           "type": "string"
         },
         "name": {
-          "description": "Output only. The resource name of the catalog, in the format\n`catalogs/{catalog_id}'.\n\nA unique identifier for the catalog, which is generated\nby catalog service.",
+          "type": "string",
+          "description": "Output only. The resource name of the catalog, in the format\n`catalogs/{catalog_id}'.\n\nA unique identifier for the catalog, which is generated\nby catalog service."
+        },
+        "description": {
+          "description": "Required. The user-supplied description of the catalog. Maximum of 512\ncharacters.",
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Required. The user-supplied descriptive name of the catalog as it appears\nin UIs. Maximum 256 characters in length."
+        },
+        "parent": {
+          "type": "string",
+          "description": "Required. The parent resource name of the catalog, which can't be changed\nafter a catalog is created. It can only be an organization. Values are of\nthe form `//cloudresourcemanager.googleapis.com/organizations/\u003cid\u003e`.\nMaximum 256 characters in length."
+        },
+        "createTime": {
+          "description": "Output only. The time when the catalog was created.",
+          "format": "google-datetime",
           "type": "string"
         }
-      }
+      },
+      "id": "GoogleCloudPrivatecatalogproducerV1beta1Catalog",
+      "description": "The producer representation of a catalog which is a curated collection of\nsolutions that can be managed, controlled, and shared by cloud admins."
     },
     "GoogleIamV1AuditConfig": {
-      "id": "GoogleIamV1AuditConfig",
-      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:foo@gmail.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"fooservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:bar@gmail.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts foo@gmail.com from DATA_READ logging, and\nbar@gmail.com from DATA_WRITE logging.",
       "type": "object",
       "properties": {
         "service": {
-          "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services.",
-          "type": "string"
+          "type": "string",
+          "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."
         },
         "auditLogConfigs": {
           "description": "The configuration for logging of each type of permission.",
@@ -1117,19 +1127,33 @@
             "$ref": "GoogleIamV1AuditLogConfig"
           }
         }
-      }
+      },
+      "id": "GoogleIamV1AuditConfig",
+      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:foo@gmail.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"fooservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:bar@gmail.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts foo@gmail.com from DATA_READ logging, and\nbar@gmail.com from DATA_WRITE logging."
     },
     "GoogleCloudPrivatecatalogproducerV1beta1Version": {
       "description": "The producer representation of a version, which is a child resource under a\n`Product` with asset data.",
       "type": "object",
       "properties": {
-        "asset": {
-          "description": "Output only. The asset which has been validated and is ready to be\nprovisioned. See Version.original_asset for the schema.",
-          "type": "object",
+        "originalAsset": {
           "additionalProperties": {
             "description": "Properties of the object.",
             "type": "any"
-          }
+          },
+          "description": "The user-supplied asset payload. The maximum size of the payload is 2MB.\nThe JSON schema of the payload is defined as:\n\n```\ntype: object\nproperties:\n  mainTemplate:\n    type: string\n    description: The file name of the main template and name prefix of\n    schema file. The content of the main template should be set in the\n    imports list. The schema file name is expected to be\n    \u003cmainTemplate\u003e.schema in the imports list. required: true\n  imports:\n    type: array\n    description: Import template and schema file contents. Required to have\n    both \u003cmainTemplate\u003e and \u003cmainTemplate\u003e.schema files. required: true\n    minItems: 2\n    items:\n      type: object\n      properties:\n        name:\n          type: string\n        content:\n          type: string\n```",
+          "type": "object"
+        },
+        "description": {
+          "description": "The user-supplied description of the version. Maximum of 256 characters.",
+          "type": "string"
+        },
+        "asset": {
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object."
+          },
+          "description": "Output only. The asset which has been validated and is ready to be\nprovisioned. See Version.original_asset for the schema.",
+          "type": "object"
         },
         "createTime": {
           "description": "Output only. The time when the version was created.",
@@ -1142,20 +1166,8 @@
           "type": "string"
         },
         "name": {
-          "description": "Required. The resource name of the version, in the format\n`catalogs/{catalog_id}/products/{product_id}/versions/a-z*[a-z0-9]'.\n\nA unique identifier for the version under a product, which can't\nbe changed after the version is created. The final segment of the name must\nbetween 1 and 63 characters in length.",
-          "type": "string"
-        },
-        "originalAsset": {
-          "description": "The user-supplied asset payload. The maximum size of the payload is 2MB.\nThe JSON schema of the payload is defined as:\n\n```\ntype: object\nproperties:\n  mainTemplate:\n    type: string\n    description: The file name of the main template and name prefix of\n    schema file. The content of the main template should be set in the\n    imports list. The schema file name is expected to be\n    \u003cmainTemplate\u003e.schema in the imports list. required: true\n  imports:\n    type: array\n    description: Import template and schema file contents. Required to have\n    both \u003cmainTemplate\u003e and \u003cmainTemplate\u003e.schema files. required: true\n    minItems: 2\n    items:\n      type: object\n      properties:\n        name:\n          type: string\n        content:\n          type: string\n```",
-          "type": "object",
-          "additionalProperties": {
-            "description": "Properties of the object.",
-            "type": "any"
-          }
-        },
-        "description": {
-          "description": "The user-supplied description of the version. Maximum of 256 characters.",
-          "type": "string"
+          "type": "string",
+          "description": "Required. The resource name of the version, in the format\n`catalogs/{catalog_id}/products/{product_id}/versions/a-z*[a-z0-9]'.\n\nA unique identifier for the version under a product, which can't\nbe changed after the version is created. The final segment of the name must\nbetween 1 and 63 characters in length."
         }
       },
       "id": "GoogleCloudPrivatecatalogproducerV1beta1Version"
@@ -1163,46 +1175,46 @@
     "GoogleCloudPrivatecatalogproducerV1beta1ListCatalogsResponse": {
       "type": "object",
       "properties": {
+        "nextPageToken": {
+          "type": "string",
+          "description": "A pagination token returned from a previous call to ListCatalogs\nthat indicates where the listing should continue from.\nThis field is optional."
+        },
         "catalogs": {
           "description": "The `Catalogs` returned from the list call.",
           "type": "array",
           "items": {
             "$ref": "GoogleCloudPrivatecatalogproducerV1beta1Catalog"
           }
-        },
-        "nextPageToken": {
-          "description": "A pagination token returned from a previous call to ListCatalogs\nthat indicates where the listing should continue from.\nThis field is optional.",
-          "type": "string"
         }
       },
       "id": "GoogleCloudPrivatecatalogproducerV1beta1ListCatalogsResponse"
     },
     "GoogleRpcStatus": {
-      "id": "GoogleRpcStatus",
       "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
       "type": "object",
       "properties": {
-        "message": {
-          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
-          "type": "string"
-        },
-        "details": {
-          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
-          "type": "array",
-          "items": {
-            "additionalProperties": {
-              "description": "Properties of the object. Contains field @type with type URL.",
-              "type": "any"
-            },
-            "type": "object"
-          }
-        },
         "code": {
           "description": "The status code, which should be an enum value of google.rpc.Code.",
           "format": "int32",
           "type": "integer"
+        },
+        "message": {
+          "type": "string",
+          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
+            }
+          },
+          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."
         }
-      }
+      },
+      "id": "GoogleRpcStatus"
     },
     "GoogleCloudPrivatecatalogproducerV1beta1CopyProductRequest": {
       "type": "object",
@@ -1225,52 +1237,45 @@
       "id": "GoogleCloudPrivatecatalogproducerV1beta1CreateAssociationRequest"
     },
     "GoogleLongrunningOperation": {
-      "id": "GoogleLongrunningOperation",
       "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
       "type": "object",
       "properties": {
-        "done": {
-          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
-          "type": "boolean"
-        },
         "response": {
-          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
           "type": "object",
           "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          }
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          },
+          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."
         },
         "name": {
           "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`.",
           "type": "string"
         },
         "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "GoogleRpcStatus"
+          "$ref": "GoogleRpcStatus",
+          "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
-          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
-          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
-          }
+          },
+          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+          "type": "object"
+        },
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
+          "type": "boolean"
         }
-      }
+      },
+      "id": "GoogleLongrunningOperation"
     },
     "GoogleIamV1AuditLogConfig": {
-      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:foo@gmail.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\nfoo@gmail.com from DATA_READ logging.",
       "type": "object",
       "properties": {
-        "exemptedMembers": {
-          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "logType": {
+          "type": "string",
           "enumDescriptions": [
             "Default case. Should never be this.",
             "Admin reads. Example: CloudIAM getIamPolicy",
@@ -1283,19 +1288,25 @@
             "DATA_WRITE",
             "DATA_READ"
           ],
-          "description": "The log type that this config enables.",
-          "type": "string"
+          "description": "The log type that this config enables."
+        },
+        "exemptedMembers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."
         }
       },
-      "id": "GoogleIamV1AuditLogConfig"
+      "id": "GoogleIamV1AuditLogConfig",
+      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:foo@gmail.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\nfoo@gmail.com from DATA_READ logging."
     },
     "GoogleTypeExpr": {
-      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
       "type": "object",
       "properties": {
         "title": {
-          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
-          "type": "string"
+          "type": "string",
+          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."
         },
         "location": {
           "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
@@ -1310,10 +1321,28 @@
           "type": "string"
         }
       },
-      "id": "GoogleTypeExpr"
+      "id": "GoogleTypeExpr",
+      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\""
+    },
+    "GoogleLongrunningListOperationsResponse": {
+      "description": "The response message for Operations.ListOperations.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        },
+        "operations": {
+          "description": "A list of operations that matches the specified filter in the request.",
+          "type": "array",
+          "items": {
+            "$ref": "GoogleLongrunningOperation"
+          }
+        }
+      },
+      "id": "GoogleLongrunningListOperationsResponse"
     },
     "GoogleCloudPrivatecatalogproducerV1beta1ListProductsResponse": {
-      "id": "GoogleCloudPrivatecatalogproducerV1beta1ListProductsResponse",
       "type": "object",
       "properties": {
         "products": {
@@ -1327,28 +1356,10 @@
           "description": "A pagination token returned from a previous call to ListProducts\nthat indicates where the listing should continue from.\nThis field is optional.",
           "type": "string"
         }
-      }
-    },
-    "GoogleLongrunningListOperationsResponse": {
-      "id": "GoogleLongrunningListOperationsResponse",
-      "description": "The response message for Operations.ListOperations.",
-      "type": "object",
-      "properties": {
-        "operations": {
-          "description": "A list of operations that matches the specified filter in the request.",
-          "type": "array",
-          "items": {
-            "$ref": "GoogleLongrunningOperation"
-          }
-        },
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        }
-      }
+      },
+      "id": "GoogleCloudPrivatecatalogproducerV1beta1ListProductsResponse"
     },
     "GoogleIamV1TestIamPermissionsResponse": {
-      "id": "GoogleIamV1TestIamPermissionsResponse",
       "description": "Response message for `TestIamPermissions` method.",
       "type": "object",
       "properties": {
@@ -1359,10 +1370,10 @@
             "type": "string"
           }
         }
-      }
+      },
+      "id": "GoogleIamV1TestIamPermissionsResponse"
     },
     "GoogleCloudPrivatecatalogproducerV1beta1ListAssociationsResponse": {
-      "id": "GoogleCloudPrivatecatalogproducerV1beta1ListAssociationsResponse",
       "type": "object",
       "properties": {
         "associations": {
@@ -1376,27 +1387,28 @@
           "description": "A pagination token returned from a previous call to\n`ListAssociations` that indicates where the listing should continue from.\nThis field is optional.",
           "type": "string"
         }
-      }
+      },
+      "id": "GoogleCloudPrivatecatalogproducerV1beta1ListAssociationsResponse"
     },
     "GoogleCloudPrivatecatalogproducerV1beta1Association": {
-      "id": "GoogleCloudPrivatecatalogproducerV1beta1Association",
-      "description": "An association tuple that pairs a `Catalog` to a resource\nthat can use the `Catalog`. After association, a\ngoogle.cloud.privatecatalog.v1beta1.Catalog becomes available to\nconsumers under specified Association.resource and all of its child\nnodes.\nUsers who have the `cloudprivatecatalog.targets.get` permission on any of\nthe resource nodes can access the catalog and child products under the node.\n\nFor example, suppose the cloud resource hierarchy is as follows:\n\n* organizations/example.com\n  * folders/team\n    * projects/test\n\nAfter creating an association with `organizations/example.com`, the catalog\n`catalogs/1`  is accessible from the following paths:\n\n* organizations/example.com\n* folders/team\n* projects/test\n\nUsers can access them by\ngoogle.cloud.v1beta1.PrivateCatalog.SearchCatalogs action.",
       "type": "object",
       "properties": {
-        "name": {
-          "description": "Output only. The resource name of the catalog association, in the format\n`catalogs/{catalog_id}/associations/{association_id}'.\n\nA unique identifier for the catalog association, which is\ngenerated by catalog service.",
-          "type": "string"
-        },
         "createTime": {
+          "type": "string",
           "description": "The creation time of the association.",
-          "format": "google-datetime",
-          "type": "string"
+          "format": "google-datetime"
         },
         "resource": {
           "description": "Required. The user-supplied fully qualified name of the `Resource`\nassociated to the `Catalog`. It supports `Organization`, `Folder`,\nand `Project`. Values are of the form\n\n* `//cloudresourcemanager.googleapis.com/projects/{product_number}`\n* `//cloudresourcemanager.googleapis.com/folders/{folder_id}`\n* `//cloudresourcemanager.googleapis.com/organizations/{organization_id}`",
           "type": "string"
+        },
+        "name": {
+          "description": "Output only. The resource name of the catalog association, in the format\n`catalogs/{catalog_id}/associations/{association_id}'.\n\nA unique identifier for the catalog association, which is\ngenerated by catalog service.",
+          "type": "string"
         }
-      }
+      },
+      "id": "GoogleCloudPrivatecatalogproducerV1beta1Association",
+      "description": "An association tuple that pairs a `Catalog` to a resource\nthat can use the `Catalog`. After association, a\ngoogle.cloud.privatecatalog.v1beta1.Catalog becomes available to\nconsumers under specified Association.resource and all of its child\nnodes.\nUsers who have the `cloudprivatecatalog.targets.get` permission on any of\nthe resource nodes can access the catalog and child products under the node.\n\nFor example, suppose the cloud resource hierarchy is as follows:\n\n* organizations/example.com\n  * folders/team\n    * projects/test\n\nAfter creating an association with `organizations/example.com`, the catalog\n`catalogs/1`  is accessible from the following paths:\n\n* organizations/example.com\n* folders/team\n* projects/test\n\nUsers can access them by\ngoogle.cloud.v1beta1.PrivateCatalog.SearchCatalogs action."
     },
     "GoogleLongrunningCancelOperationRequest": {
       "description": "The request message for Operations.CancelOperation.",
@@ -1405,53 +1417,47 @@
       "id": "GoogleLongrunningCancelOperationRequest"
     },
     "GoogleCloudPrivatecatalogproducerV1beta1Product": {
-      "id": "GoogleCloudPrivatecatalogproducerV1beta1Product",
-      "description": "The producer representation of a product which is a child resource of\n`Catalog` with display metadata and a list of `Version` resources.",
       "type": "object",
       "properties": {
+        "iconUri": {
+          "description": "Output only. The public accessible URI of the icon uploaded by\nPrivateCatalogProducer.UploadIcon.\n\nIf no icon is uploaded, it will be the default icon's URI.",
+          "type": "string"
+        },
         "createTime": {
           "description": "Output only. The time when the product was created.",
           "format": "google-datetime",
           "type": "string"
         },
         "updateTime": {
+          "type": "string",
           "description": "Output only. The time when the product was last updated.",
-          "format": "google-datetime",
-          "type": "string"
+          "format": "google-datetime"
         },
         "name": {
           "description": "Required. The resource name of the product in the format\n`catalogs/{catalog_id}/products/a-z*[a-z0-9]'.\n\nA unique identifier for the product under a catalog, which cannot\nbe changed after the product is created. The final\nsegment of the name must between 1 and 256 characters in length.",
           "type": "string"
         },
         "assetType": {
-          "description": "Required. The type of the product asset, which cannot be changed after the\nproduct is created. It supports the values\n`google.deploymentmanager.Template` and\n`google.cloudprivatecatalog.ListingOnly`. Other values will be\nrejected by the server. Read only after creation.\n\nThe following fields or resource types have different validation rules\nunder each `asset_type` values:\n\n* Product.display_metadata has different validation schema for each\nasset type value. See its comment for details.\n* Version resource isn't allowed to be added under the\n`google.cloudprivatecatalog.ListingOnly` type.",
-          "type": "string"
+          "type": "string",
+          "description": "Required. The type of the product asset, which cannot be changed after the\nproduct is created. It supports the values\n`google.deploymentmanager.Template` and\n`google.cloudprivatecatalog.ListingOnly`. Other values will be\nrejected by the server. Read only after creation.\n\nThe following fields or resource types have different validation rules\nunder each `asset_type` values:\n\n* Product.display_metadata has different validation schema for each\nasset type value. See its comment for details.\n* Version resource isn't allowed to be added under the\n`google.cloudprivatecatalog.ListingOnly` type."
         },
         "displayMetadata": {
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object.",
             "type": "any"
           },
-          "description": "The user-supplied display metadata to describe the product.\nThe JSON schema of the metadata differs by Product.asset_type.\nWhen the type is `google.deploymentmanager.Template`, the schema is as\nfollows:\n\n```\n\"$schema\": http://json-schema.org/draft-04/schema#\ntype: object\nproperties:\n  name:\n    type: string\n    minLength: 1\n    maxLength: 64\n  description:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  tagline:\n    type: string\n    minLength: 1\n    maxLength: 100\n  support_info:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  creator:\n    type: string\n    minLength: 1\n    maxLength: 100\n  documentation:\n    type: array\n    items:\n      type: object\n      properties:\n        url:\n          type: string\n          pattern:\n          \"^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]\"\n        title:\n          type: string\n          minLength: 1\n          maxLength: 64\n        description:\n          type: string\n          minLength: 1\n          maxLength: 2048\nrequired:\n- name\n- description\nadditionalProperties: false\n\n```\n\nWhen the asset type is `google.cloudprivatecatalog.ListingOnly`, the schema\nis as follows:\n\n```\n\"$schema\": http://json-schema.org/draft-04/schema#\ntype: object\nproperties:\n  name:\n    type: string\n    minLength: 1\n    maxLength: 64\n  description:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  tagline:\n    type: string\n    minLength: 1\n    maxLength: 100\n  support_info:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  creator:\n    type: string\n    minLength: 1\n    maxLength: 100\n  documentation:\n    type: array\n    items:\n      type: object\n      properties:\n        url:\n          type: string\n          pattern:\n          \"^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]\"\n        title:\n          type: string\n          minLength: 1\n          maxLength: 64\n        description:\n          type: string\n          minLength: 1\n          maxLength: 2048\n  signup_url:\n    type: string\n    pattern:\n    \"^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]\"\nrequired:\n- name\n- description\n- signup_url\nadditionalProperties: false\n```",
-          "type": "object"
-        },
-        "iconUri": {
-          "description": "Output only. The public accessible URI of the icon uploaded by\nPrivateCatalogProducer.UploadIcon.\n\nIf no icon is uploaded, it will be the default icon's URI.",
-          "type": "string"
+          "description": "The user-supplied display metadata to describe the product.\nThe JSON schema of the metadata differs by Product.asset_type.\nWhen the type is `google.deploymentmanager.Template`, the schema is as\nfollows:\n\n```\n\"$schema\": http://json-schema.org/draft-04/schema#\ntype: object\nproperties:\n  name:\n    type: string\n    minLength: 1\n    maxLength: 64\n  description:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  tagline:\n    type: string\n    minLength: 1\n    maxLength: 100\n  support_info:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  creator:\n    type: string\n    minLength: 1\n    maxLength: 100\n  documentation:\n    type: array\n    items:\n      type: object\n      properties:\n        url:\n          type: string\n          pattern:\n          \"^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]\"\n        title:\n          type: string\n          minLength: 1\n          maxLength: 64\n        description:\n          type: string\n          minLength: 1\n          maxLength: 2048\nrequired:\n- name\n- description\nadditionalProperties: false\n\n```\n\nWhen the asset type is `google.cloudprivatecatalog.ListingOnly`, the schema\nis as follows:\n\n```\n\"$schema\": http://json-schema.org/draft-04/schema#\ntype: object\nproperties:\n  name:\n    type: string\n    minLength: 1\n    maxLength: 64\n  description:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  tagline:\n    type: string\n    minLength: 1\n    maxLength: 100\n  support_info:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  creator:\n    type: string\n    minLength: 1\n    maxLength: 100\n  documentation:\n    type: array\n    items:\n      type: object\n      properties:\n        url:\n          type: string\n          pattern:\n          \"^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]\"\n        title:\n          type: string\n          minLength: 1\n          maxLength: 64\n        description:\n          type: string\n          minLength: 1\n          maxLength: 2048\n  signup_url:\n    type: string\n    pattern:\n    \"^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]\"\nrequired:\n- name\n- description\n- signup_url\nadditionalProperties: false\n```"
         }
-      }
-    },
-    "GoogleProtobufEmpty": {
-      "id": "GoogleProtobufEmpty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-      "type": "object",
-      "properties": {}
+      },
+      "id": "GoogleCloudPrivatecatalogproducerV1beta1Product",
+      "description": "The producer representation of a product which is a child resource of\n`Catalog` with display metadata and a list of `Version` resources."
     }
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "canonicalName": "Cloud PrivateCatalog Producer",
   "auth": {
@@ -1463,11 +1469,5 @@
       }
     }
   },
-  "rootUrl": "https://cloudprivatecatalogproducer.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "cloudprivatecatalogproducer",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Cloud Private Catalog Producer API",
-  "ownerName": "Google"
+  "rootUrl": "https://cloudprivatecatalogproducer.googleapis.com/"
 }

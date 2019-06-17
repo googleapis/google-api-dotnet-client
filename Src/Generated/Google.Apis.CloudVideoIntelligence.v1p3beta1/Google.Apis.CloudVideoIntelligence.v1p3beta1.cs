@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1p3beta1
- *      <tr><th>API Rev<td>20190427 (1577)
+ *      <tr><th>API Rev<td>20190603 (1614)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -735,6 +735,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies which feature is being tracked if the request contains more than one features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feature")]
+        public virtual string Feature { get; set; } 
+
         /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
@@ -742,6 +746,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         /// <summary>Approximate percentage processed thus far. Guaranteed to be 100 when fully processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; } 
+
+        /// <summary>Specifies which segment is being tracked if the request contains more than one segments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1VideoSegment Segment { get; set; } 
 
         /// <summary>Time when the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
@@ -1191,6 +1199,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies which feature is being tracked if the request contains more than one features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feature")]
+        public virtual string Feature { get; set; } 
+
         /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
@@ -1198,6 +1210,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         /// <summary>Approximate percentage processed thus far. Guaranteed to be 100 when fully processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; } 
+
+        /// <summary>Specifies which segment is being tracked if the request contains more than one segments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1beta2VideoSegment Segment { get; set; } 
 
         /// <summary>Time when the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
@@ -1647,6 +1663,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies which feature is being tracked if the request contains more than one features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feature")]
+        public virtual string Feature { get; set; } 
+
         /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
@@ -1654,6 +1674,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         /// <summary>Approximate percentage processed thus far. Guaranteed to be 100 when fully processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; } 
+
+        /// <summary>Specifies which segment is being tracked if the request contains more than one segments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1p1beta1VideoSegment Segment { get; set; } 
 
         /// <summary>Time when the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
@@ -2103,6 +2127,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies which feature is being tracked if the request contains more than one features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feature")]
+        public virtual string Feature { get; set; } 
+
         /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
@@ -2110,6 +2138,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         /// <summary>Approximate percentage processed thus far. Guaranteed to be 100 when fully processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; } 
+
+        /// <summary>Specifies which segment is being tracked if the request contains more than one segments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1p2beta1VideoSegment Segment { get; set; } 
 
         /// <summary>Time when the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
@@ -2293,6 +2325,27 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A generic detected attribute represented by name in string format.</summary>
+    public class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Detected attribute confidence. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>The name of the attribute, i.e. glasses, dark_glasses, mouth_open etc. A full list of supported
+        /// type names will be provided in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Text value of the detection result. For example, the value for "HairColor" can be "black",
+        /// "blonde", etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Detected entity from video analysis.</summary>
     public class GoogleCloudVideointelligenceV1p3beta1Entity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2445,6 +2498,28 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Annotation corresponding to one detected, tracked and recognized logo class.</summary>
+    public class GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Entity category information to specify the logo class that all the logo tracks within this
+        /// LogoRecognitionAnnotation are recognized as.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
+        public virtual GoogleCloudVideointelligenceV1p3beta1Entity Entity { get; set; } 
+
+        /// <summary>All video segments where the recognized logo appears. There might be multiple instances of the same
+        /// logo class appearing in one VideoSegment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1VideoSegment> Segments { get; set; } 
+
+        /// <summary>All logo tracks where the recognized logo appears. Each track corresponds to one logo instance
+        /// appearing in consecutive frames.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1Track> Tracks { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Normalized bounding box. The normalized vertex coordinates are relative to the original image. Range:
     /// [0, 1].</summary>
     public class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox : Google.Apis.Requests.IDirectResponseSchema
@@ -2531,6 +2606,18 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         /// same track_id over time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackId")]
         public virtual System.Nullable<long> TrackId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Config for OBJECT_TRACKING.</summary>
+    public class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Model to use for object tracking. Supported values: "builtin/stable" (the default if unset) and
+        /// "builtin/latest".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2756,6 +2843,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageHints")]
         public virtual System.Collections.Generic.IList<string> LanguageHints { get; set; } 
 
+        /// <summary>Model to use for text detection. Supported values: "builtin/stable" (the default if unset) and
+        /// "builtin/latest".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2796,9 +2888,57 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>For tracking related features, such as LOGO_RECOGNITION, FACE_DETECTION, CELEBRITY_RECOGNITION,
+    /// PERSON_DETECTION. An object at time_offset with attributes, and located with normalized_bounding_box.</summary>
+    public class GoogleCloudVideointelligenceV1p3beta1TimestampedObject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The attributes of the object in the bounding box.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1DetectedAttribute> Attributes { get; set; } 
+
+        /// <summary>Normalized Bounding box in a frame, where the object is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedBoundingBox")]
+        public virtual GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox NormalizedBoundingBox { get; set; } 
+
+        /// <summary>Time-offset, relative to the beginning of the video, corresponding to the video frame for this
+        /// object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeOffset")]
+        public virtual object TimeOffset { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A track of an object instance.</summary>
+    public class GoogleCloudVideointelligenceV1p3beta1Track : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Attributes in the track level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1DetectedAttribute> Attributes { get; set; } 
+
+        /// <summary>Optional. The confidence score of the tracked object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>Video segment of a track.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1p3beta1VideoSegment Segment { get; set; } 
+
+        /// <summary>The object with timestamp and attributes per frame in the track.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampedObjects")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1TimestampedObject> TimestampedObjects { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies which feature is being tracked if the request contains more than one features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feature")]
+        public virtual string Feature { get; set; } 
+
         /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
@@ -2806,6 +2946,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         /// <summary>Approximate percentage processed thus far. Guaranteed to be 100 when fully processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; } 
+
+        /// <summary>Specifies which segment is being tracked if the request contains more than one segments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1p3beta1VideoSegment Segment { get; set; } 
 
         /// <summary>Time when the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
@@ -2838,6 +2982,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
+
+        /// <summary>Annotations for list of logos detected, tracked and recognized in video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logoRecognitionAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation> LogoRecognitionAnnotations { get; set; } 
 
         /// <summary>Annotations for list of objects detected and tracked in video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
@@ -2879,6 +3027,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         /// <summary>Config for LABEL_DETECTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelDetectionConfig")]
         public virtual GoogleCloudVideointelligenceV1p3beta1LabelDetectionConfig LabelDetectionConfig { get; set; } 
+
+        /// <summary>Config for OBJECT_TRACKING.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectTrackingConfig")]
+        public virtual GoogleCloudVideointelligenceV1p3beta1ObjectTrackingConfig ObjectTrackingConfig { get; set; } 
 
         /// <summary>Video segments to annotate. The segments may overlap and are not required to be contiguous or span
         /// the whole video. If unspecified, each video is treated as a single segment.</summary>
@@ -2974,8 +3126,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should have the format of
-        /// `operations/some/unique/name`.</summary>
+        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
+        /// `operations/{unique_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2992,48 +3144,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
     }    
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
-    /// is designed to be:
+    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
+    /// message contains three pieces of data: error code, error message, and error details.
     ///
-    /// - Simple to use and understand for most users - Flexible enough to meet unexpected needs
-    ///
-    /// # Overview
-    ///
-    /// The `Status` message contains three pieces of data: error code, error message, and error details. The error code
-    /// should be an enum value of google.rpc.Code, but it may accept additional error codes if needed.  The error
-    /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
-    /// If a localized user-facing error message is needed, put the localized message in the error details or localize
-    /// it in the client. The optional error details may contain arbitrary information about the error. There is a
-    /// predefined set of error detail types in the package `google.rpc` that can be used for common error conditions.
-    ///
-    /// # Language mapping
-    ///
-    /// The `Status` message is the logical representation of the error model, but it is not necessarily the actual wire
-    /// format. When the `Status` message is exposed in different client libraries and different wire protocols, it can
-    /// be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped
-    /// to some error codes in C.
-    ///
-    /// # Other uses
-    ///
-    /// The error model and the `Status` message can be used in a variety of environments, either with or without APIs,
-    /// to provide a consistent developer experience across different environments.
-    ///
-    /// Example uses of this error model include:
-    ///
-    /// - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status` in the
-    /// normal response to indicate the partial errors.
-    ///
-    /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
-    /// reporting.
-    ///
-    /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
-    /// directly inside batch response, one for each error sub-response.
-    ///
-    /// - Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
-    /// those operations should be represented directly using the `Status` message.
-    ///
-    /// - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any
-    /// stripping needed for security/privacy reasons.</summary>
+    /// You can find out more about this error model and how to work with it in the [API Design
+    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>

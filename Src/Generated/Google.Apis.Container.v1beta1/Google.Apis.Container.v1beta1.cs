@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190527 (1607)
+ *      <tr><th>API Rev<td>20190610 (1621)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -416,6 +416,13 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>The max number of results per page that should be returned. If the number of available
+                    /// results is larger than `page_size`, a `next_page_token` is returned which can be used to get the
+                    /// next page of results in subsequent requests. Acceptable values are 0 to 500, inclusive.
+                    /// (Default: 500)</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Filtering currently only supports equality on the networkProjectId and must be in the
                     /// form: "networkProjectId=[PROJECTID]", where `networkProjectId` is the project which owns the
                     /// listed subnetworks. This defaults to the parent project ID.</summary>
@@ -426,13 +433,6 @@ namespace Google.Apis.Container.v1beta1
                     /// requests to get the next page of results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>The max number of results per page that should be returned. If the number of available
-                    /// results is larger than `page_size`, a `next_page_token` is returned which can be used to get the
-                    /// next page of results in subsequent requests. Acceptable values are 0 to 500, inclusive.
-                    /// (Default: 500)</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -468,6 +468,15 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -480,15 +489,6 @@ namespace Google.Apis.Container.v1beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -788,16 +788,6 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
-                        /// the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string ClusterId { get; set; }
-
-                        /// <summary>Deprecated. The name of the node pool. This field has been deprecated and replaced
-                        /// by the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string NodePoolId { get; set; }
-
                         /// <summary>Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the name field.</summary>
@@ -809,6 +799,16 @@ namespace Google.Apis.Container.v1beta1
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Zone { get; set; }
+
+                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
+                        /// the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ClusterId { get; set; }
+
+                        /// <summary>Deprecated. The name of the node pool. This field has been deprecated and replaced
+                        /// by the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string NodePoolId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -844,24 +844,6 @@ namespace Google.Apis.Container.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "projectId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "projectId",
@@ -874,6 +856,24 @@ namespace Google.Apis.Container.v1beta1
                                 "zone", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "zone",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "clusterId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "clusterId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "nodePoolId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "nodePoolId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -7190,6 +7190,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 
+        /// <summary>Cluster tier settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tierSettings")]
+        public virtual TierSettings TierSettings { get; set; } 
+
         /// <summary>[Output only] The IP address range of the Cloud TPUs in this cluster, in
         /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tpuIpv4CidrBlock")]
@@ -7923,8 +7927,6 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
         public virtual string ClientKey { get; set; } 
 
-        /// <summary>[Output only] Base64-encoded public certificate that is the root of trust for the
-        /// cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterCaCertificate")]
         public virtual string ClusterCaCertificate { get; set; } 
 
@@ -8102,10 +8104,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// other metadata keys for the project or be one of the reserved keys: "cluster-location" "cluster-name"
         /// "cluster-uid" "configure-sh" "containerd-configure-sh" "enable-oslogin" "gci-ensure-gke-docker" "gci-update-
         /// strategy" "instance-template" "kube-env" "startup-script" "user-data" "disable-address-manager" "windows-
-        /// startup-script-ps1" "common-psm1" "k8s-node-setup-psm1" "install-ssh-psm1" "user-profile-psm1"
-        ///
-        /// Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The
-        /// only restriction placed on them is that each value's size must be less than or equal to 32 KB.
+        /// startup-script-ps1" "common-psm1" "k8s-node-setup-psm1" "install-ssh-psm1" "user-profile-psm1" "serial-port-
+        /// logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in
+        /// the instance. The only restriction placed on them is that each value's size must be less than or equal to 32
+        /// KB.
         ///
         /// The total size of all keys and values must be less than 512 KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
@@ -8146,6 +8148,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// specified, the "default" service account is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
+
+        /// <summary>Shielded Instance options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; } 
 
         /// <summary>The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets
         /// for network firewalls and are specified by the client during cluster or node pool creation. Each tag within
@@ -8980,6 +8986,28 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A set of Shielded Instance options.</summary>
+    public class ShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines whether the instance has integrity monitoring enabled.
+        ///
+        /// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed
+        /// against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot
+        /// image when the instance is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
+        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; } 
+
+        /// <summary>Defines whether the instance has Secure Boot enabled.
+        ///
+        /// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of
+        /// all boot components, and halting the boot process if signature verification fails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
+        public virtual System.Nullable<bool> EnableSecureBoot { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>StartIPRotationRequest creates a new IP for the cluster and then performs a node upgrade on each node
     /// pool to point to the new IP.</summary>
     public class StartIPRotationRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -9024,6 +9052,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Human-friendly representation of the condition</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cluster tier settings.</summary>
+    public class TierSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cluster tier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tier")]
+        public virtual string Tier { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190521 (1601)
+ *      <tr><th>API Rev<td>20190612 (1623)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>
  *              https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory</a>
@@ -888,8 +888,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
-        /// `operations/{unique_id}`.</summary>
+        /// If you use the default HTTP mapping, the `name` should have the format of
+        /// `operations/some/unique/name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

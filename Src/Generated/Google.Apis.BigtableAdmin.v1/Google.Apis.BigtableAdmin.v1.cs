@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigtable/'>Cloud Bigtable Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190502 (1582)
+ *      <tr><th>API Rev<td>20190506 (1586)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigtable/'>
  *              https://cloud.google.com/bigtable/</a>
@@ -64,7 +64,7 @@ namespace Google.Apis.BigtableAdmin.v1
         public BigtableAdminService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
-            projects = new ProjectsResource(this);
+
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -112,14 +112,6 @@ namespace Google.Apis.BigtableAdmin.v1
 
 
 
-
-        private readonly ProjectsResource projects;
-
-        /// <summary>Gets the Projects resource.</summary>
-        public virtual ProjectsResource Projects
-        {
-            get { return projects; }
-        }
     }
 
     ///<summary>A base abstract class for BigtableAdmin requests.</summary>
@@ -310,207 +302,6 @@ namespace Google.Apis.BigtableAdmin.v1
                 });
         }
     }
-
-    /// <summary>The "projects" collection of methods.</summary>
-    public class ProjectsResource
-    {
-        private const string Resource = "projects";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public ProjectsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-            locations = new LocationsResource(service);
-
-        }
-
-        private readonly LocationsResource locations;
-
-        /// <summary>Gets the Locations resource.</summary>
-        public virtual LocationsResource Locations
-        {
-            get { return locations; }
-        }
-
-        /// <summary>The "locations" collection of methods.</summary>
-        public class LocationsResource
-        {
-            private const string Resource = "locations";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public LocationsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-
-            }
-
-
-            /// <summary>Gets information about a location.</summary>
-            /// <param name="name">Resource name for the location.</param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(service, name);
-            }
-
-            /// <summary>Gets information about a location.</summary>
-            public class GetRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v1.Data.Location>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-
-                /// <summary>Resource name for the location.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "get"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1/{+name}"; }
-                }
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                }
-
-            }
-
-            /// <summary>Lists information about the supported locations for this service.</summary>
-            /// <param name="name">The resource that owns the locations collection, if applicable.</param>
-            public virtual ListRequest List(string name)
-            {
-                return new ListRequest(service, name);
-            }
-
-            /// <summary>Lists information about the supported locations for this service.</summary>
-            public class ListRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v1.Data.ListLocationsResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-
-                /// <summary>The resource that owns the locations collection, if applicable.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "list"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1/{+name}/locations"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-        }
-    }
 }
 
 namespace Google.Apis.BigtableAdmin.v1.Data
@@ -676,51 +467,6 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         /// <summary>The type of the instance. Defaults to `PRODUCTION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The response message for Locations.ListLocations.</summary>
-    public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of locations that matches the specified filter in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
-
-        /// <summary>The standard List next-page token.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
-    public class Location : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
-
-        /// <summary>Cross-service attributes for the location. For example
-        ///
-        /// {"cloud.googleapis.com/region": "us-east1"}</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
-
-        /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
-
-        /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
-
-        /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
-        /// /example-project/locations/us-east1"`</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

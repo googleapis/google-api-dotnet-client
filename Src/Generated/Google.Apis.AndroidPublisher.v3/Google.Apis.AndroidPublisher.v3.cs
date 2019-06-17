@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190609 (1620)
+ *      <tr><th>API Rev<td>20190616 (1627)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7675,8 +7675,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priceCurrencyCode")]
         public virtual string PriceCurrencyCode { get; set; } 
 
-        /// <summary>The profile id of the user when the subscription was purchased. Only present for purchases made
-        /// with 'Subscribe with Google'.</summary>
+        /// <summary>The Google profile id of the user when the subscription was purchased. Only present for purchases
+        /// made with 'Subscribe with Google'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
         public virtual string ProfileId { get; set; } 
 
@@ -7736,9 +7736,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
     public class Testers : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of all Google Groups, as email addresses, that define testers for this track.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleGroups")]
         public virtual System.Collections.Generic.IList<string> GoogleGroups { get; set; } 
 
+        /// <summary>A list of all Google+ Communities, as URLs, that define testers for this track.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googlePlusCommunities")]
         public virtual System.Collections.Generic.IList<string> GooglePlusCommunities { get; set; } 
 

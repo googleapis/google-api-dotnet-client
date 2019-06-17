@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20190604 (1615)
+ *      <tr><th>API Rev<td>20190612 (1623)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -617,6 +617,23 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. A filter to constrain the pools returned. Filters have the form:
+                    ///
+                    /// [[AND|OR]   ]...
+                    ///
+                    /// is the path for a field or map key in the Pool proto message. e.g. "configuration.disk_size_gb"
+                    /// or "configuration.labels.key". can be one of "<", "<=", ">=", ">", "=", "!=", ":". ":" is a HAS
+                    /// operation for strings and repeated primitive fields. is the value to test, case-insensitive for
+                    /// strings. "*" stands for any value and can be used to test for key presence. Parenthesis
+                    /// determine AND/OR precedence. In space separated restrictions, AND is implicit, e.g. "a = b x =
+                    /// y" is equivalent to "a = b AND x = y".
+                    ///
+                    /// Example filter: configuration.labels.key1 = * AND (state = RUNNING OR state = UPDATING)
+                    ///
+                    /// This field is currently ignored in all requests.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -649,6 +666,15 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                     }
 
@@ -1103,7 +1129,8 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commandDigest")]
         public virtual BuildBazelRemoteExecutionV2Digest CommandDigest { get; set; } 
 
-        /// <summary>If true, then the `Action`'s result cannot be cached.</summary>
+        /// <summary>If true, then the `Action`'s result cannot be cached, and in-flight requests for the same `Action`
+        /// may not be merged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doNotCache")]
         public virtual System.Nullable<bool> DoNotCache { get; set; } 
 
@@ -1156,20 +1183,22 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// Tree proto with hash "4a73bc9d03..." and size 55: { root: { files: [ { name: "bar", digest: { hash:
         /// "4a73bc9d03...", size: 65534 } } ], directories: [ { name: "foo", digest: { hash: "4cf2eda940...", size: 43
         /// } } ] } children : { // (Directory proto with hash "4cf2eda940..." and size 43) files: [ { name: "baz",
-        /// digest: { hash: "b2c941073e...", size: 1294, }, is_executable: true } ] } } ```</summary>
+        /// digest: { hash: "b2c941073e...", size: 1294, }, is_executable: true } ] } } ``` If an output of the same
+        /// name was found, but was not a directory, the server will return a FAILED_PRECONDITION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputDirectories")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2OutputDirectory> OutputDirectories { get; set; } 
 
         /// <summary>The output directories of the action that are symbolic links to other directories. Those may be
         /// links to other output directories, or input directories, or even absolute paths outside of the working
         /// directory, if the server supports SymlinkAbsolutePathStrategy.ALLOWED. For each output directory requested
-        /// in the `output_directories` field of the Action, if the directory file existed after the action completed, a
+        /// in the `output_directories` field of the Action, if the directory existed after the action completed, a
         /// single entry will be present either in this field, or in the `output_directories` field, if the directory
         /// was not a symbolic link.
         ///
-        /// If the action does not produce the requested output, or produces a file where a directory is expected or
-        /// vice versa, then that output will be omitted from the list. The server is free to arrange the output list as
-        /// desired; clients MUST NOT assume that the output list is sorted.</summary>
+        /// If an output of the same name was found, but was a symbolic link to a file instead of a directory, the
+        /// server will return a FAILED_PRECONDITION. If the action does not produce the requested output, then that
+        /// output will be omitted from the list. The server is free to arrange the output list as desired; clients MUST
+        /// NOT assume that the output list is sorted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputDirectorySymlinks")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2OutputSymlink> OutputDirectorySymlinks { get; set; } 
 
@@ -1179,43 +1208,43 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// the Action, if the corresponding file existed after the action completed, a single entry will be present
         /// either in this field, or in the `output_files` field, if the file was not a symbolic link.
         ///
-        /// If the action does not produce the requested output, or produces a directory where a regular file is
-        /// expected or vice versa, then that output will be omitted from the list. The server is free to arrange the
-        /// output list as desired; clients MUST NOT assume that the output list is sorted.</summary>
+        /// If an output symbolic link of the same name was found, but its target type was not a regular file, the
+        /// server will return a FAILED_PRECONDITION. If the action does not produce the requested output, then that
+        /// output will be omitted from the list. The server is free to arrange the output list as desired; clients MUST
+        /// NOT assume that the output list is sorted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputFileSymlinks")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2OutputSymlink> OutputFileSymlinks { get; set; } 
 
         /// <summary>The output files of the action. For each output file requested in the `output_files` field of the
         /// Action, if the corresponding file existed after the action completed, a single entry will be present either
-        /// in this field, or in the output_file_symlinks field, if the file was a symbolic link to another file.
+        /// in this field, or the `output_file_symlinks` field if the file was a symbolic link to another file.
         ///
-        /// If the action does not produce the requested output, or produces a directory where a regular file is
-        /// expected or vice versa, then that output will be omitted from the list. The server is free to arrange the
-        /// output list as desired; clients MUST NOT assume that the output list is sorted.</summary>
+        /// If an output of the same name was found, but was a directory rather than a regular file, the server will
+        /// return a FAILED_PRECONDITION. If the action does not produce the requested output, then that output will be
+        /// omitted from the list. The server is free to arrange the output list as desired; clients MUST NOT assume
+        /// that the output list is sorted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputFiles")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2OutputFile> OutputFiles { get; set; } 
 
         /// <summary>The digest for a blob containing the standard error of the action, which can be retrieved from the
-        /// ContentAddressableStorage. See `stderr_raw` for when this will be set.</summary>
+        /// ContentAddressableStorage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stderrDigest")]
         public virtual BuildBazelRemoteExecutionV2Digest StderrDigest { get; set; } 
 
-        /// <summary>The standard error buffer of the action. The server will determine, based on the size of the
-        /// buffer, whether to return it in raw form or to return a digest in `stderr_digest` that points to the buffer.
-        /// If neither is set, then the buffer is empty. The client SHOULD NOT assume it will get one of the raw buffer
-        /// or a digest on any given request and should be prepared to handle either.</summary>
+        /// <summary>The standard error buffer of the action. The server SHOULD NOT inline stderr unless requested by
+        /// the client in the GetActionResultRequest message. The server MAY omit inlining, even if requested, and MUST
+        /// do so if inlining would cause the response to exceed message size limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stderrRaw")]
         public virtual string StderrRaw { get; set; } 
 
         /// <summary>The digest for a blob containing the standard output of the action, which can be retrieved from the
-        /// ContentAddressableStorage. See `stdout_raw` for when this will be set.</summary>
+        /// ContentAddressableStorage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stdoutDigest")]
         public virtual BuildBazelRemoteExecutionV2Digest StdoutDigest { get; set; } 
 
-        /// <summary>The standard output buffer of the action. The server will determine, based on the size of the
-        /// buffer, whether to return it in raw form or to return a digest in `stdout_digest` that points to the buffer.
-        /// If neither is set, then the buffer is empty. The client SHOULD NOT assume it will get one of the raw buffer
-        /// or a digest on any given request and should be prepared to handle either.</summary>
+        /// <summary>The standard output buffer of the action. The server SHOULD NOT inline stdout unless requested by
+        /// the client in the GetActionResultRequest message. The server MAY omit inlining, even if requested, and MUST
+        /// do so if inlining would cause the response to exceed message size limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stdoutRaw")]
         public virtual string StdoutRaw { get; set; } 
 
@@ -1261,7 +1290,8 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// In order to ensure consistent hashing of the same Action, the output paths MUST be sorted lexicographically
         /// by code point (or, equivalently, by UTF-8 bytes).
         ///
-        /// An output directory cannot be duplicated or have the same path as any of the listed output files.
+        /// An output directory cannot be duplicated or have the same path as any of the listed output files. An output
+        /// directory is allowed to be a parent of another output directory.
         ///
         /// Directories leading up to the output directories (but not the output directories themselves) are created by
         /// the worker prior to execution, even if they are not explicitly part of the input root.</summary>
@@ -1289,7 +1319,8 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
 
         /// <summary>The platform requirements for the execution environment. The server MAY choose to execute the
         /// action on any worker satisfying the requirements, so the client SHOULD ensure that running the action on any
-        /// such worker will have the same result.</summary>
+        /// such worker will have the same result. A detailed lexicon for this can be found in the accompanying
+        /// platform.md.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
         public virtual BuildBazelRemoteExecutionV2Platform Platform { get; set; } 
 
@@ -1366,9 +1397,12 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     /// be obeyed when constructing a a `Directory`:
     ///
     /// * Every child in the directory must have a path of exactly one segment. Multiple levels of directory hierarchy
-    /// may not be collapsed. * Each child in the directory must have a unique path segment (file name). * The files,
-    /// directories and symlinks in the directory must each be sorted in lexicographical order by path. The path strings
-    /// must be sorted by code point, equivalently, by UTF-8 bytes.
+    /// may not be collapsed. * Each child in the directory must have a unique path segment (file name). Note that while
+    /// the API itself is case-sensitive, the environment where the Action is executed may or may not be case-sensitive.
+    /// That is, it is legal to call the API with a Directory that has both "Foo" and "foo" as children, but the Action
+    /// may be rejected by the remote system upon execution. * The files, directories and symlinks in the directory must
+    /// each be sorted in lexicographical order by path. The path strings must be sorted by code point, equivalently, by
+    /// UTF-8 bytes.
     ///
     /// A `Directory` that obeys the restrictions is said to be in canonical form.
     ///
@@ -1423,6 +1457,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actionDigest")]
         public virtual BuildBazelRemoteExecutionV2Digest ActionDigest { get; set; } 
 
+        /// <summary>The current stage of execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stage")]
         public virtual string Stage { get; set; } 
 
@@ -1580,11 +1615,15 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     }    
 
     /// <summary>An `OutputFile` is similar to a FileNode, but it is used as an output in an `ActionResult`. It allows a
-    /// full file path rather than only a name.
-    ///
-    /// `OutputFile` is binary-compatible with `FileNode`.</summary>
+    /// full file path rather than only a name.</summary>
     public class BuildBazelRemoteExecutionV2OutputFile : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The contents of the file if inlining was requested. The server SHOULD NOT inline file contents
+        /// unless requested by the client in the GetActionResultRequest message. The server MAY omit inlining, even if
+        /// requested, and MUST do so if inlining would cause the response to exceed message size limits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual string Contents { get; set; } 
+
         /// <summary>The digest of the file's content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
         public virtual BuildBazelRemoteExecutionV2Digest Digest { get; set; } 
@@ -1670,7 +1709,10 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     /// call using the canonical proto serialization:
     ///
     /// * name: `build.bazel.remote.execution.v2.requestmetadata-bin` * contents: the base64 encoded binary
-    /// `RequestMetadata` message.</summary>
+    /// `RequestMetadata` message. Note: the gRPC library serializes binary headers encoded in base 64 by default
+    /// (https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests). Therefore, if the gRPC library is
+    /// used to pass/retrieve this metadata, the user may ignore the base64 encoding and assume it is simply serialized
+    /// as a binary message.</summary>
     public class BuildBazelRemoteExecutionV2RequestMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An identifier that ties multiple requests to the same action. For example, multiple requests to the
@@ -1965,6 +2007,22 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
 
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. A filter to constrain the pools returned. Filters have the form:
+        ///
+        /// [[AND|OR]   ]...
+        ///
+        /// is the path for a field or map key in the Pool proto message. e.g. "configuration.disk_size_gb" or
+        /// "configuration.labels.key". can be one of "<", "<=", ">=", ">", "=", "!=", ":". ":" is a HAS operation for
+        /// strings and repeated primitive fields. is the value to test, case-insensitive for strings. "*" stands for
+        /// any value and can be used to test for key presence. Parenthesis determine AND/OR precedence. In space
+        /// separated restrictions, AND is implicit, e.g. "a = b x = y" is equivalent to "a = b AND x = y".
+        ///
+        /// Example filter: configuration.labels.key1 = * AND (state = RUNNING OR state = UPDATING)
+        ///
+        /// This field is currently ignored in all requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
+
         /// <summary>Resource name of the instance. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
@@ -2015,6 +2073,13 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; } 
+
+        /// <summary>Labels associated with the workers. Label keys and values can be no longer than 63 characters, can
+        /// only contain lowercase letters, numeric characters, underscores and dashes. International letters are
+        /// permitted. Keys must start with a letter but values are optional. This field is currently ignored in all
+        /// requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Required. Machine type of the worker, such as `n1-standard-2`. See
         /// https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that
