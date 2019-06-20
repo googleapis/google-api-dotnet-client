@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190612 (1623)
+ *      <tr><th>API Rev<td>20190618 (1629)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -847,10 +847,6 @@ namespace Google.Apis.RemoteBuildExecution.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -858,6 +854,10 @@ namespace Google.Apis.RemoteBuildExecution.v1
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -893,15 +893,6 @@ namespace Google.Apis.RemoteBuildExecution.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -914,6 +905,15 @@ namespace Google.Apis.RemoteBuildExecution.v1
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1061,26 +1061,6 @@ namespace Google.Apis.RemoteBuildExecution.v1
             }
 
 
-            /// <summary>The `target` value **must** be a valid URL path pointing to an entity to watch. Note that the
-            /// service name **must** be removed from the target field (e.g., the target field must say "/foo/bar", not
-            /// "myservice.googleapis.com/foo/bar"). A client is also allowed to pass system-specific parameters in the
-            /// URL that are only obeyed by some implementations. Some parameters will be implementation-specific.
-            /// However, some have predefined meaning and are listed here:
-            ///
-            /// * recursive = true|false [default=false] If set to true, indicates that the client wants to watch all
-            /// elements of entities in the subtree rooted at the entity's name in `target`. For descendants that are
-            /// not the immediate children of the target, the `Change.element` will contain slashes.
-            ///
-            /// Note that some namespaces and entities will not support recursive watching. When watching such an
-            /// entity, a client must not set recursive to true. Otherwise, it will receive an `UNIMPLEMENTED` error.
-            ///
-            /// Normal URL encoding must be used inside `target`.  For example, if a query parameter name or value, or
-            /// the non-query parameter portion of `target` contains a special character, it must be %-encoded.  We
-            /// recommend that clients and servers use their runtime's URL library to produce and consume target
-            /// values.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Target { get; set; }
-
             /// <summary>The `resume_marker` specifies how much of the existing underlying state is delivered to the
             /// client when the watch request is received by the system. The client can set this marker in one of the
             /// following ways to get different semantics:
@@ -1103,6 +1083,26 @@ namespace Google.Apis.RemoteBuildExecution.v1
             /// fetching) and the "now" marker. It need not support resuming from a specific point.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resumeMarker", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ResumeMarker { get; set; }
+
+            /// <summary>The `target` value **must** be a valid URL path pointing to an entity to watch. Note that the
+            /// service name **must** be removed from the target field (e.g., the target field must say "/foo/bar", not
+            /// "myservice.googleapis.com/foo/bar"). A client is also allowed to pass system-specific parameters in the
+            /// URL that are only obeyed by some implementations. Some parameters will be implementation-specific.
+            /// However, some have predefined meaning and are listed here:
+            ///
+            /// * recursive = true|false [default=false] If set to true, indicates that the client wants to watch all
+            /// elements of entities in the subtree rooted at the entity's name in `target`. For descendants that are
+            /// not the immediate children of the target, the `Change.element` will contain slashes.
+            ///
+            /// Note that some namespaces and entities will not support recursive watching. When watching such an
+            /// entity, a client must not set recursive to true. Otherwise, it will receive an `UNIMPLEMENTED` error.
+            ///
+            /// Normal URL encoding must be used inside `target`.  For example, if a query parameter name or value, or
+            /// the non-query parameter portion of `target` contains a special character, it must be %-encoded.  We
+            /// recommend that clients and servers use their runtime's URL library to produce and consume target
+            /// values.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Target { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1129,18 +1129,18 @@ namespace Google.Apis.RemoteBuildExecution.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "target", new Google.Apis.Discovery.Parameter
+                    "resumeMarker", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "target",
+                        Name = "resumeMarker",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "resumeMarker", new Google.Apis.Discovery.Parameter
+                    "target", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "resumeMarker",
+                        Name = "target",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2072,9 +2072,7 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         /// any value and can be used to test for key presence. Parenthesis determine AND/OR precedence. In space
         /// separated restrictions, AND is implicit, e.g. "a = b x = y" is equivalent to "a = b AND x = y".
         ///
-        /// Example filter: configuration.labels.key1 = * AND (state = RUNNING OR state = UPDATING)
-        ///
-        /// This field is currently ignored in all requests.</summary>
+        /// Example filter: configuration.labels.key1 = * AND (state = RUNNING OR state = UPDATING)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -2131,8 +2129,8 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
 
         /// <summary>Labels associated with the workers. Label keys and values can be no longer than 63 characters, can
         /// only contain lowercase letters, numeric characters, underscores and dashes. International letters are
-        /// permitted. Keys must start with a letter but values are optional. This field is currently ignored in all
-        /// requests.</summary>
+        /// permitted. Keys must start with a letter but values are optional. There can not be more than 64 labels per
+        /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 

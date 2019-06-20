@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190616 (1627)
+ *      <tr><th>API Rev<td>20190618 (1629)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7531,7 +7531,7 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
         public virtual string OrderId { get; set; } 
 
-        /// <summary>The purchase state of the order. Possible values are: - Purchased - Canceled</summary>
+        /// <summary>The purchase state of the order. Possible values are: - Purchased - Canceled - Pending</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseState")]
         public virtual System.Nullable<int> PurchaseState { get; set; } 
 

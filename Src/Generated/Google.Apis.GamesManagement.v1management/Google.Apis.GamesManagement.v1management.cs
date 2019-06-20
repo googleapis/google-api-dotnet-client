@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services'>Google Play Game Services Management API</a>
  *      <tr><th>API Version<td>v1management
- *      <tr><th>API Rev<td>20190610 (1621)
+ *      <tr><th>API Rev<td>20190613 (1624)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services'>
  *              https://developers.google.com/games/services</a>

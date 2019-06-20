@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/data-fusion/docs'>Cloud Data Fusion API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190610 (1621)
+ *      <tr><th>API Rev<td>20190617 (1628)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/data-fusion/docs'>
  *              https://cloud.google.com/data-fusion/docs</a>

@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://conversationai.github.io/'>Perspective Comment Analyzer API</a>
+ *          <td><a href='https://github.com/conversationai/perspectiveapi/blob/master/README.md'>Perspective Comment Analyzer API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190609 (1620)
+ *      <tr><th>API Rev<td>20190616 (1627)
  *      <tr><th>API Docs
- *          <td><a href='https://conversationai.github.io/'>
- *              https://conversationai.github.io/</a>
+ *          <td><a href='https://github.com/conversationai/perspectiveapi/blob/master/README.md'>
+ *              https://github.com/conversationai/perspectiveapi/blob/master/README.md</a>
  *      <tr><th>Discovery Name<td>commentanalyzer
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Perspective Comment Analyzer API can be found at
- * <a href='https://conversationai.github.io/'>https://conversationai.github.io/</a>.
+ * <a href='https://github.com/conversationai/perspectiveapi/blob/master/README.md'>https://github.com/conversationai/perspectiveapi/blob/master/README.md</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20190530 (1610)
+ *      <tr><th>API Rev<td>20190607 (1618)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -46051,6 +46051,99 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string region, string resource)
+        {
+            return new GetIamPolicyRequest(service, project, region, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/resourcePolicies/{resource}/getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
         /// <summary>Creates a new resource policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -46311,6 +46404,105 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.beta.Data.RegionSetPolicyRequest body, string project, string region, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.RegionSetPolicyRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.RegionSetPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/resourcePolicies/{resource}/setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -47631,7 +47823,9 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Updates the specified Router resource with the data included in the request.</summary>
+        /// <summary>Updates the specified Router resource with the data included in the request. This method conforms
+        /// to PUT semantics, which requests that the state of the target resource be created or replaced with the state
+        /// defined by the representation enclosed in the request message payload.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -47642,7 +47836,9 @@ namespace Google.Apis.Compute.beta
             return new UpdateRequest(service, body, project, region, router);
         }
 
-        /// <summary>Updates the specified Router resource with the data included in the request.</summary>
+        /// <summary>Updates the specified Router resource with the data included in the request. This method conforms
+        /// to PUT semantics, which requests that the state of the target resource be created or replaced with the state
+        /// defined by the representation enclosed in the request message payload.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -73768,8 +73964,8 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Represent a sole-tenant Node Template resource.
     ///
     /// You can use a template to define properties for nodes in a node group. For more information, read Creating node
-    /// groups and instances. (== resource_for beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==) NextID:
-    /// 16</summary>
+    /// groups and instances. (== resource_for beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==) (== NextID:
+    /// 16 ==)</summary>
     public class NodeTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -73823,7 +74019,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>Binding properties for the physical server.</summary>
+        /// <summary>Sets the binding properties for the physical server. Valid values include: - [Default]
+        /// RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER:
+        /// Restarts VMs on the same physical server whenever possible
+        ///
+        /// See Sole-tenant node options for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverBinding")]
         public virtual ServerBinding ServerBinding { get; set; } 
 
@@ -75928,7 +76128,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>AllocationAffinity is the configuration of desired allocation which this instance could take capacity
+    /// <summary>ReservationAffinity is the configuration of desired reservation which this instance could take capacity
     /// from.</summary>
     public class ReservationAffinity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -79014,8 +79214,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flowSampling")]
         public virtual System.Nullable<float> FlowSampling { get; set; } 
 
-        /// <summary>Can only be specified if VPC flow logging for this subnetwork is enabled. Configures whether
-        /// metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.</summary>
+        /// <summary>Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none
+        /// or a subset of metadata fields should be added to the reported VPC flow logs. Default is
+        /// INCLUDE_ALL_METADATA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual string Metadata { get; set; } 
 

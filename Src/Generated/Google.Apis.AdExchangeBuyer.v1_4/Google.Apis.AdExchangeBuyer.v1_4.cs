@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20180823 (1330)
+ *      <tr><th>API Rev<td>20190614 (1625)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -3732,6 +3732,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adChoicesDestinationUrl")]
         public virtual string AdChoicesDestinationUrl { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("adTechnologyProviders")]
+        public virtual Creative.AdTechnologyProvidersData AdTechnologyProviders { get; set; } 
+
         /// <summary>Detected advertiser id, if any. Read-only. This field should not be set in requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> AdvertiserId { get; set; } 
@@ -3885,6 +3888,16 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         public virtual string ETag { get; set; }
         
 
+        public class AdTechnologyProvidersData
+        {
+            [Newtonsoft.Json.JsonPropertyAttribute("detectedProviderIds")]
+            public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedProviderIds { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("hasUnidentifiedProvider")]
+            public virtual System.Nullable<bool> HasUnidentifiedProvider { get; set; } 
+
+        }    
+
         public class CorrectionsData
         {
             /// <summary>All known serving contexts containing serving status information.</summary>
@@ -4004,10 +4017,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
             /// <summary>The app rating in the app store. Must be in the range [0-5].</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("starRating")]
             public virtual System.Nullable<double> StarRating { get; set; } 
-
-            /// <summary>The URL to the app store to purchase/download the promoted app.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("store")]
-            public virtual string Store { get; set; } 
 
             /// <summary>The URL of the XML VAST for a native ad. Note this is a separate field from
             /// resource.video_url.</summary>

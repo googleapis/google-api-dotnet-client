@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.3
- *      <tr><th>API Rev<td>20180823 (1330)
+ *      <tr><th>API Rev<td>20190614 (1625)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -2126,6 +2126,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<int> AccountId { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("adTechnologyProviders")]
+        public virtual Creative.AdTechnologyProvidersData AdTechnologyProviders { get; set; } 
+
         /// <summary>Detected advertiser id, if any. Read-only. This field should not be set in requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> AdvertiserId { get; set; } 
@@ -2239,6 +2242,16 @@ namespace Google.Apis.AdExchangeBuyer.v1_3.Data
         public virtual string ETag { get; set; }
         
 
+        public class AdTechnologyProvidersData
+        {
+            [Newtonsoft.Json.JsonPropertyAttribute("detectedProviderIds")]
+            public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedProviderIds { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("hasUnidentifiedProvider")]
+            public virtual System.Nullable<bool> HasUnidentifiedProvider { get; set; } 
+
+        }    
+
         public class CorrectionsData
         {
             /// <summary>Additional details about the correction.</summary>
@@ -2338,10 +2351,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_3.Data
             /// <summary>The app rating in the app store. Must be in the range [0-5].</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("starRating")]
             public virtual System.Nullable<double> StarRating { get; set; } 
-
-            /// <summary>The URL to the app store to purchase/download the promoted app.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("store")]
-            public virtual string Store { get; set; } 
 
             
 

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/p1cvbfPnG9B-3MzvMLbhZV5GJsg\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/hcIsQyAOKgIG-XNmjJJ2qekVMV8\"",
  "discoveryVersion": "v1",
  "id": "adexchangebuyer:v1.3",
  "name": "adexchangebuyer",
  "canonicalName": "Ad Exchange Buyer",
  "version": "v1.3",
- "revision": "20180823",
+ "revision": "20190614",
  "title": "Ad Exchange Buyer API",
  "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
  "ownerDomain": "google.com",
@@ -259,6 +259,21 @@
       ]
      }
     },
+    "adTechnologyProviders": {
+     "type": "object",
+     "properties": {
+      "detectedProviderIds": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "format": "int64"
+       }
+      },
+      "hasUnidentifiedProvider": {
+       "type": "boolean"
+      }
+     }
+    },
     "advertiserId": {
      "type": "array",
      "description": "Detected advertiser id, if any. Read-only. This field should not be set in requests.",
@@ -495,10 +510,6 @@
        "type": "number",
        "description": "The app rating in the app store. Must be in the range [0-5].",
        "format": "double"
-      },
-      "store": {
-       "type": "string",
-       "description": "The URL to the app store to purchase/download the promoted app."
       }
      }
     },

@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.AdSenseHost.v4_1 Client Library</Title>
-    <Version>1.40.2.1624</Version>
+    <Version>1.40.2.1629</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

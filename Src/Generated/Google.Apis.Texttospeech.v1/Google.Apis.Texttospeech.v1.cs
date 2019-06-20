@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/text-to-speech/'>Cloud Text-to-Speech API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190517 (1597)
+ *      <tr><th>API Rev<td>20190614 (1625)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/text-to-speech/'>
  *              https://cloud.google.com/text-to-speech/</a>
@@ -492,43 +492,43 @@ namespace Google.Apis.Texttospeech.v1.Data
     /// <summary>Description of audio data to be synthesized.</summary>
     public class AudioConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The format of the requested audio byte stream.</summary>
+        /// <summary>Required. The format of the audio byte stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
         public virtual string AudioEncoding { get; set; } 
 
-        /// <summary>An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to
-        /// speech. Effects are applied on top of each other in the order they are given. See
+        /// <summary>Input only. Optional. An identifier which selects 'audio effects' profiles that are applied on
+        /// (post synthesized) text to speech. Effects are applied on top of each other in the order they are given. See
         ///
         /// [audio-profiles](https: //cloud.google.com/text-to-speech/docs/audio-profiles) for current supported profile
         /// ids.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectsProfileId")]
         public virtual System.Collections.Generic.IList<string> EffectsProfileId { get; set; } 
 
-        /// <summary>Optional speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the
-        /// original pitch. -20 means decrease 20 semitones from the original pitch.</summary>
+        /// <summary>Input only. Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones
+        /// from the original pitch. -20 means decrease 20 semitones from the original pitch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pitch")]
         public virtual System.Nullable<double> Pitch { get; set; } 
 
-        /// <summary>The synthesis sample rate (in hertz) for this audio. Optional.  If this is different from the
-        /// voice's natural sample rate, then the synthesizer will honor this request by converting to the desired
-        /// sample rate (which might result in worse audio quality), unless the specified sample rate is not supported
-        /// for the encoding chosen, in which case it will fail the request and return
-        /// google.rpc.Code.INVALID_ARGUMENT.</summary>
+        /// <summary>The synthesis sample rate (in hertz) for this audio. Optional. When this is specified in
+        /// SynthesizeSpeechRequest, if this is different from the voice's natural sample rate, then the synthesizer
+        /// will honor this request by converting to the desired sample rate (which might result in worse audio
+        /// quality), unless the specified sample rate is not supported for the encoding chosen, in which case it will
+        /// fail the request and return google.rpc.Code.INVALID_ARGUMENT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
         public virtual System.Nullable<int> SampleRateHertz { get; set; } 
 
-        /// <summary>Optional speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by
-        /// the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0
-        /// speed. Any other values < 0.25 or > 4.0 will return an error.</summary>
+        /// <summary>Input only. Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed
+        /// supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to
+        /// the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakingRate")]
         public virtual System.Nullable<double> SpeakingRate { get; set; } 
 
-        /// <summary>Optional volume gain (in dB) of the normal native volume supported by the specific voice, in the
-        /// range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A
-        /// value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A
-        /// value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude.
-        /// Strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value
-        /// greater than that.</summary>
+        /// <summary>Input only. Optional. Volume gain (in dB) of the normal native volume supported by the specific
+        /// voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native
+        /// signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native
+        /// signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native
+        /// signal amplitude. Strongly recommend not to exceed +10 (dB) as there's usually no effective increase in
+        /// loudness for any value greater than that.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeGainDb")]
         public virtual System.Nullable<double> VolumeGainDb { get; set; } 
 
@@ -587,9 +587,10 @@ namespace Google.Apis.Texttospeech.v1.Data
     /// <summary>The message returned to the client by the `SynthesizeSpeech` method.</summary>
     public class SynthesizeSpeechResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The audio data bytes encoded as specified in the request, including the header (For LINEAR16 audio,
-        /// we include the WAV header). Note: as with all bytes fields, protobuffers use a pure binary representation,
-        /// whereas JSON representations use base64.</summary>
+        /// <summary>The audio data bytes encoded as specified in the request, including the header for encodings that
+        /// are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with
+        /// all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use
+        /// base64.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioContent")]
         public virtual string AudioContent { get; set; } 
 

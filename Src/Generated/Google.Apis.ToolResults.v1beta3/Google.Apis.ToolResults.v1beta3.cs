@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20190613 (1624)
+ *      <tr><th>API Rev<td>20190619 (1630)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -5314,6 +5314,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// a read only mode for the corresponding step.</summary>
     public class TestSuiteOverview : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Elapsed time of test suite.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elapsedTime")]
+        public virtual Duration ElapsedTime { get; set; } 
+
         /// <summary>Number of test cases in error, typically set by the service by parsing the xml_source.
         ///
         /// - In create/response: always set - In update request: never</summary>

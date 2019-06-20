@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20190612 (1623)
+ *      <tr><th>API Rev<td>20190618 (1629)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -628,9 +628,8 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha
                     /// determine AND/OR precedence. In space separated restrictions, AND is implicit, e.g. "a = b x =
                     /// y" is equivalent to "a = b AND x = y".
                     ///
-                    /// Example filter: configuration.labels.key1 = * AND (state = RUNNING OR state = UPDATING)
-                    ///
-                    /// This field is currently ignored in all requests.</summary>
+                    /// Example filter: configuration.labels.key1 = * AND (state = RUNNING OR state =
+                    /// UPDATING)</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -2017,9 +2016,7 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// any value and can be used to test for key presence. Parenthesis determine AND/OR precedence. In space
         /// separated restrictions, AND is implicit, e.g. "a = b x = y" is equivalent to "a = b AND x = y".
         ///
-        /// Example filter: configuration.labels.key1 = * AND (state = RUNNING OR state = UPDATING)
-        ///
-        /// This field is currently ignored in all requests.</summary>
+        /// Example filter: configuration.labels.key1 = * AND (state = RUNNING OR state = UPDATING)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -2076,8 +2073,8 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
 
         /// <summary>Labels associated with the workers. Label keys and values can be no longer than 63 characters, can
         /// only contain lowercase letters, numeric characters, underscores and dashes. International letters are
-        /// permitted. Keys must start with a letter but values are optional. This field is currently ignored in all
-        /// requests.</summary>
+        /// permitted. Keys must start with a letter but values are optional. There can not be more than 64 labels per
+        /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 

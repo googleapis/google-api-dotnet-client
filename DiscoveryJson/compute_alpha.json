@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/ueVoK3n_xLhYrMFdkcc3Qw2TPW0\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/9FN7PZIkZX1m8WLcc7-BvDvFgLc\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",
  "version": "alpha",
- "revision": "20190530",
+ "revision": "20190607",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -14072,10 +14072,6 @@
      "$ref": "ManagedInstanceLastAttempt",
      "description": "[Output Only] Information about the last attempt to create or delete the instance."
     },
-    "override": {
-     "$ref": "ManagedInstanceOverride",
-     "description": "[Output Only] Override defined for this instance."
-    },
     "preservedStateFromConfig": {
      "$ref": "PreservedState",
      "description": "[Output Only] Preserved state applied from per-instance config for this instance."
@@ -14164,88 +14160,6 @@
        }
       }
      }
-    }
-   }
-  },
-  "ManagedInstanceOverride": {
-   "id": "ManagedInstanceOverride",
-   "type": "object",
-   "description": "Overrides of stateful properties for a given instance",
-   "properties": {
-    "disks": {
-     "type": "array",
-     "description": "Disk overrides defined for this instance. According to documentation the maximum number of disks attached to an instance is 128: https://cloud.google.com/compute/docs/disks/ However, compute API defines the limit at 140, so this is what we check.",
-     "items": {
-      "$ref": "ManagedInstanceOverrideDiskOverride"
-     }
-    },
-    "metadata": {
-     "type": "array",
-     "description": "Metadata overrides defined for this instance. TODO(b/69785416) validate the total length is \u003c9 KB",
-     "items": {
-      "type": "object",
-      "properties": {
-       "key": {
-        "type": "string",
-        "description": "Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.",
-        "pattern": "[a-zA-Z0-9-_]{1,128}",
-        "annotations": {
-         "required": [
-          "compute.instances.insert",
-          "compute.projects.setCommonInstanceMetadata"
-         ]
-        }
-       },
-       "value": {
-        "type": "string",
-        "description": "Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).",
-        "annotations": {
-         "required": [
-          "compute.instances.insert",
-          "compute.projects.setCommonInstanceMetadata"
-         ]
-        }
-       }
-      }
-     }
-    },
-    "origin": {
-     "type": "string",
-     "description": "[Output Only] Indicates where does the override come from.",
-     "enum": [
-      "AUTO_GENERATED",
-      "USER_PROVIDED"
-     ],
-     "enumDescriptions": [
-      "",
-      ""
-     ]
-    }
-   }
-  },
-  "ManagedInstanceOverrideDiskOverride": {
-   "id": "ManagedInstanceOverrideDiskOverride",
-   "type": "object",
-   "properties": {
-    "deviceName": {
-     "type": "string",
-     "description": "The name of the device on the VM"
-    },
-    "mode": {
-     "type": "string",
-     "description": "The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.",
-     "enum": [
-      "READ_ONLY",
-      "READ_WRITE"
-     ],
-     "enumDescriptions": [
-      "",
-      ""
-     ]
-    },
-    "source": {
-     "type": "string",
-     "description": "The disk that is/will be mounted"
     }
    }
   },
@@ -15538,14 +15452,16 @@
      "description": "[Output Only] The type of the resource. Always compute#nodeGroup for node group.",
      "default": "compute#nodeGroup"
     },
-    "managedHoldback": {
+    "maintenancePolicy": {
      "type": "string",
      "enum": [
-      "MANAGED_HOLDBACK_UNSPECIFIED",
-      "OFF",
-      "ON"
+      "DEFAULT",
+      "MAINTENANCE_POLICY_UNSPECIFIED",
+      "MIGRATE_WITHIN_NODE_GROUP",
+      "RESTART_IN_PLACE"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       ""
@@ -16130,7 +16046,7 @@
   "NodeTemplate": {
    "id": "NodeTemplate",
    "type": "object",
-   "description": "Represent a sole-tenant Node Template resource.\n\nYou can use a template to define properties for nodes in a node group. For more information, read Creating node groups and instances. (== resource_for beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==) NextID: 16",
+   "description": "Represent a sole-tenant Node Template resource.\n\nYou can use a template to define properties for nodes in a node group. For more information, read Creating node groups and instances. (== resource_for beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==) (== NextID: 16 ==)",
    "properties": {
     "creationTimestamp": {
      "type": "string",
@@ -16189,7 +16105,7 @@
     },
     "serverBinding": {
      "$ref": "ServerBinding",
-     "description": "Binding properties for the physical server."
+     "description": "Sets the binding properties for the physical server. Valid values include:  \n- [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server \n- RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible  \n\nSee Sole-tenant node options for more information."
     },
     "status": {
      "type": "string",
@@ -18029,16 +17945,16 @@
    "id": "PacketMirroringFilter",
    "type": "object",
    "properties": {
-    "IPProtocol": {
+    "IPProtocols": {
      "type": "array",
-     "description": "Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IpProtocols is specified, all traffic is mirrored.",
+     "description": "Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.",
      "items": {
       "type": "string"
      }
     },
     "cidrRanges": {
      "type": "array",
-     "description": "IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IpProtocols is specified, all traffic is mirrored.",
+     "description": "IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.",
      "items": {
       "type": "string"
      }
@@ -18436,16 +18352,9 @@
      "description": "Fingerprint of this per-instance config. This field may be used in optimistic locking. It will be ignored when inserting a per-instance config. An up-to-date fingerprint must be provided in order to update an existing per-instance config or the field needs to be unset.",
      "format": "byte"
     },
-    "instance": {
-     "type": "string",
-     "description": "The URL of the instance. Serves as a merge key during UpdatePerInstanceConfigs operation, i.e. if per-instance config with the same instance URL exists then it will be updated, otherwise a new one will be created."
-    },
     "name": {
      "type": "string",
      "description": "The name of the per-instance config and the corresponding instance. Serves as a merge key during UpdatePerInstanceConfigs operation, i.e. if per-instance config with the same name exists then it will be updated, otherwise a new one will be created for the VM instance with the same name. An attempt to create a per-instance config for a VM instance that either doesn't exist or is not part of the group will result in a failure."
-    },
-    "override": {
-     "$ref": "ManagedInstanceOverride"
     },
     "preservedState": {
      "$ref": "PreservedState",
@@ -20451,7 +20360,7 @@
   "ReservationAffinity": {
    "id": "ReservationAffinity",
    "type": "object",
-   "description": "AllocationAffinity is the configuration of desired allocation which this instance could take capacity from.",
+   "description": "ReservationAffinity is the configuration of desired reservation which this instance could take capacity from.",
    "properties": {
     "consumeReservationType": {
      "type": "string",
@@ -21435,9 +21344,23 @@
    "id": "ResourcePolicyVmMaintenancePolicy",
    "type": "object",
    "properties": {
+    "concurrencyControlGroup": {
+     "$ref": "ResourcePolicyVmMaintenancePolicyConcurrencyControl"
+    },
     "maintenanceWindow": {
      "$ref": "ResourcePolicyVmMaintenancePolicyMaintenanceWindow",
      "description": "Maintenance windows that are applied to VMs covered by this policy."
+    }
+   }
+  },
+  "ResourcePolicyVmMaintenancePolicyConcurrencyControl": {
+   "id": "ResourcePolicyVmMaintenancePolicyConcurrencyControl",
+   "type": "object",
+   "description": "A concurrency control configuration. Defines a group config that, when attached to an instance, recognizes that instance as part of a group of instances where only up the concurrency_limit of instances in that group can undergo simultaneous maintenance. For more information: go/concurrency-control-design-doc",
+   "properties": {
+    "concurrencyLimit": {
+     "type": "integer",
+     "format": "int32"
     }
    }
   },
@@ -23148,6 +23071,9 @@
       "$ref": "SecurityPolicyAssociation"
      }
     },
+    "cloudArmorConfig": {
+     "$ref": "SecurityPolicyCloudArmorConfig"
+    },
     "creationTimestamp": {
      "type": "string",
      "description": "[Output Only] Creation timestamp in RFC3339 text format."
@@ -23237,6 +23163,17 @@
     "securityPolicyId": {
      "type": "string",
      "description": "[Output Only] The security policy ID of the association."
+    }
+   }
+  },
+  "SecurityPolicyCloudArmorConfig": {
+   "id": "SecurityPolicyCloudArmorConfig",
+   "type": "object",
+   "description": "Configuration options for Cloud Armor.",
+   "properties": {
+    "enableMl": {
+     "type": "boolean",
+     "description": "If set to true, enables Cloud Armor Machine Learning."
     }
    }
   },
@@ -24932,35 +24869,8 @@
    "id": "StatefulPolicy",
    "type": "object",
    "properties": {
-    "preservedResources": {
-     "$ref": "StatefulPolicyPreservedResources"
-    },
     "preservedState": {
      "$ref": "StatefulPolicyPreservedState"
-    }
-   }
-  },
-  "StatefulPolicyPreservedDisk": {
-   "id": "StatefulPolicyPreservedDisk",
-   "type": "object",
-   "properties": {
-    "deviceName": {
-     "type": "string",
-     "description": "Device name of the disk to be preserved"
-    }
-   }
-  },
-  "StatefulPolicyPreservedResources": {
-   "id": "StatefulPolicyPreservedResources",
-   "type": "object",
-   "description": "Configuration of all preserved resources.",
-   "properties": {
-    "disks": {
-     "type": "array",
-     "description": "Disks created on the instances that will be preserved on instance delete, resize down, etc.",
-     "items": {
-      "$ref": "StatefulPolicyPreservedDisk"
-     }
     }
    }
   },
@@ -25460,7 +25370,7 @@
     },
     "metadata": {
      "type": "string",
-     "description": "Can only be specified if VPC flow logging for this subnetwork is enabled. Configures whether metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.",
+     "description": "Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is INCLUDE_ALL_METADATA.",
      "enum": [
       "EXCLUDE_ALL_METADATA",
       "INCLUDE_ALL_METADATA"
@@ -45425,6 +45335,55 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "patch": {
+     "id": "compute.packetMirrorings.patch",
+     "path": "{project}/regions/{region}/packetMirrorings/{packetMirroring}",
+     "httpMethod": "PATCH",
+     "description": "Patches the specified PacketMirroring resource with the data included in the request. This method supports PATCH semantics and uses JSON merge patch format and processing rules.",
+     "parameters": {
+      "packetMirroring": {
+       "type": "string",
+       "description": "Name of the PacketMirroring resource to patch.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "packetMirroring"
+     ],
+     "request": {
+      "$ref": "PacketMirroring"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "testIamPermissions": {
      "id": "compute.packetMirrorings.testIamPermissions",
      "path": "{project}/regions/{region}/packetMirrorings/{resource}/testIamPermissions",
@@ -52584,7 +52543,7 @@
      "id": "compute.routers.update",
      "path": "{project}/regions/{region}/routers/{router}",
      "httpMethod": "PUT",
-     "description": "Updates the specified Router resource with the data included in the request.",
+     "description": "Updates the specified Router resource with the data included in the request. This method conforms to PUT semantics, which requests that the state of the target resource be created or replaced with the state defined by the representation enclosed in the request message payload.",
      "parameters": {
       "project": {
        "type": "string",
