@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190607 (1618)
+ *      <tr><th>API Rev<td>20190620 (1631)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -628,6 +628,80 @@ namespace Google.Apis.CloudRedis.v1beta1
                     }
 
                     /// <summary>Initializes Export parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Initiates a failover of the master node to current replica node for a specific STANDARD
+                /// tier Cloud Memorystore for Redis instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. Redis instance resource name using the form:
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP
+                /// region.</param>
+                public virtual FailoverRequest Failover(Google.Apis.CloudRedis.v1beta1.Data.FailoverInstanceRequest body, string name)
+                {
+                    return new FailoverRequest(service, body, name);
+                }
+
+                /// <summary>Initiates a failover of the master node to current replica node for a specific STANDARD
+                /// tier Cloud Memorystore for Redis instance.</summary>
+                public class FailoverRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Failover request.</summary>
+                    public FailoverRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRedis.v1beta1.Data.FailoverInstanceRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Redis instance resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
+                    /// refers to a GCP region.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRedis.v1beta1.Data.FailoverInstanceRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "failover"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+name}:failover"; }
+                    }
+
+                    /// <summary>Initializes Failover parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -1526,6 +1600,18 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request for Failover.</summary>
+    public class FailoverInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Available data protection modes that the user can choose. If it's unspecified, data
+        /// protection mode will be LIMITED_DATA_LOSS by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionMode")]
+        public virtual string DataProtectionMode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The Cloud Storage location for the output content</summary>
     public class GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1718,7 +1804,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// Updating the version will perform an upgrade/downgrade to the new version. Currently, the supported values
         /// are:
         ///
-        /// *   `REDIS_4_0` for Redis 4.0 compatibility *   `REDIS_3_2` for Redis 3.2 compatibility (default)</summary>
+        /// *   `REDIS_4_0` for Redis 4.0 compatibility (default) *   `REDIS_3_2` for Redis 3.2 compatibility</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisVersion")]
         public virtual string RedisVersion { get; set; } 
 

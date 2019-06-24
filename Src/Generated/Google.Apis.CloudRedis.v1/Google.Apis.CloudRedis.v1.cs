@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190607 (1618)
+ *      <tr><th>API Rev<td>20190620 (1631)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -1788,13 +1788,21 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently,
         /// the only supported parameters are:
         ///
-        /// *   maxmemory-policy *   notify-keyspace-events</summary>
+        /// Redis 3.2 and above:
+        ///
+        /// *   maxmemory-policy *   notify-keyspace-events
+        ///
+        /// Redis 4.0 and above:
+        ///
+        /// *   activedefrag *   lfu-log-factor *   lfu-decay-time</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisConfigs")]
         public virtual System.Collections.Generic.IDictionary<string,string> RedisConfigs { get; set; } 
 
         /// <summary>Optional. The version of Redis software. If not provided, latest supported version will be used.
         /// Updating the version will perform an upgrade/downgrade to the new version. Currently, the supported values
-        /// are `REDIS_3_2` for Redis 3.2.</summary>
+        /// are:
+        ///
+        /// *   `REDIS_4_0` for Redis 4.0 compatibility (default) *   `REDIS_3_2` for Redis 3.2 compatibility</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisVersion")]
         public virtual string RedisVersion { get; set; } 
 

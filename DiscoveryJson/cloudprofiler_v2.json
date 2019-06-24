@@ -1,78 +1,9 @@
 {
-  "kind": "discovery#restDescription",
-  "description": "Manages continuous profiling information.",
-  "servicePath": "",
-  "basePath": "",
-  "revision": "20190607",
-  "id": "cloudprofiler:v2",
-  "documentationLink": "https://cloud.google.com/profiler/",
-  "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "Profile": {
-      "description": "Profile resource.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "Output only. Opaque, server-assigned, unique ID for this profile."
-        },
-        "duration": {
-          "description": "Duration of the profiling session.\nInput (for the offline mode) or output (for the online mode).\nThe field represents requested profiling duration. It may slightly differ\nfrom the effective profiling duration, which is recorded in the profile\ndata, in case the profiling can't be stopped immediately (e.g. in case\nstopping the profiling is handled asynchronously).",
-          "format": "google-duration",
-          "type": "string"
-        },
-        "profileType": {
-          "enum": [
-            "PROFILE_TYPE_UNSPECIFIED",
-            "CPU",
-            "WALL",
-            "HEAP",
-            "THREADS",
-            "CONTENTION",
-            "PEAK_HEAP",
-            "HEAP_ALLOC"
-          ],
-          "description": "Type of profile.\nFor offline mode, this must be specified when creating the profile. For\nonline mode it is assigned and returned by the server.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified profile type.",
-            "Thread CPU time sampling.",
-            "Wallclock time sampling. More expensive as stops all threads.",
-            "In-use heap profile. Represents a snapshot of the allocations that are\nlive at the time of the profiling.",
-            "Single-shot collection of all thread stacks.",
-            "Synchronization contention profile.",
-            "Peak heap profile.",
-            "Heap allocation profile. It represents the aggregation of all allocations\nmade over the duration of the profile. All allocations are included,\nincluding those that might have been freed by the end of the profiling\ninterval. The profile is in particular useful for garbage collecting\nlanguages to understand which parts of the code create most of the garbage\ncollection pressure to see if those can be optimized."
-          ]
-        },
-        "deployment": {
-          "$ref": "Deployment",
-          "description": "Deployment this profile corresponds to."
-        },
-        "labels": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Input only. Labels associated to this specific profile. These labels will\nget merged with the deployment labels for the final data set.  See\ndocumentation on deployment labels for validation rules and limits."
-        },
-        "profileBytes": {
-          "description": "Input only. Profile bytes, as a gzip compressed serialized proto, the\nformat is https://github.com/google/pprof/blob/master/proto/profile.proto.",
-          "format": "byte",
-          "type": "string"
-        }
-      },
-      "id": "Profile"
-    },
     "CreateProfileRequest": {
-      "description": "CreateProfileRequest describes a profile resource online creation request.\nThe deployment field must be populated. The profile_type specifies the list\nof profile types supported by the agent. The creation call will hang until a\nprofile of one of these types needs to be collected.",
       "type": "object",
       "properties": {
-        "deployment": {
-          "description": "Deployment details.",
-          "$ref": "Deployment"
-        },
         "profileType": {
           "type": "array",
           "items": {
@@ -99,9 +30,14 @@
             "Heap allocation profile. It represents the aggregation of all allocations\nmade over the duration of the profile. All allocations are included,\nincluding those that might have been freed by the end of the profiling\ninterval. The profile is in particular useful for garbage collecting\nlanguages to understand which parts of the code create most of the garbage\ncollection pressure to see if those can be optimized."
           ],
           "description": "One or more profile types that the agent is capable of providing."
+        },
+        "deployment": {
+          "$ref": "Deployment",
+          "description": "Deployment details."
         }
       },
-      "id": "CreateProfileRequest"
+      "id": "CreateProfileRequest",
+      "description": "CreateProfileRequest describes a profile resource online creation request.\nThe deployment field must be populated. The profile_type specifies the list\nof profile types supported by the agent. The creation call will hang until a\nprofile of one of these types needs to be collected."
     },
     "Deployment": {
       "description": "Deployment contains the deployment identification information.",
@@ -124,25 +60,81 @@
         }
       },
       "id": "Deployment"
+    },
+    "Profile": {
+      "description": "Profile resource.",
+      "type": "object",
+      "properties": {
+        "duration": {
+          "description": "Duration of the profiling session.\nInput (for the offline mode) or output (for the online mode).\nThe field represents requested profiling duration. It may slightly differ\nfrom the effective profiling duration, which is recorded in the profile\ndata, in case the profiling can't be stopped immediately (e.g. in case\nstopping the profiling is handled asynchronously).",
+          "format": "google-duration",
+          "type": "string"
+        },
+        "profileType": {
+          "description": "Type of profile.\nFor offline mode, this must be specified when creating the profile. For\nonline mode it is assigned and returned by the server.",
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified profile type.",
+            "Thread CPU time sampling.",
+            "Wallclock time sampling. More expensive as stops all threads.",
+            "In-use heap profile. Represents a snapshot of the allocations that are\nlive at the time of the profiling.",
+            "Single-shot collection of all thread stacks.",
+            "Synchronization contention profile.",
+            "Peak heap profile.",
+            "Heap allocation profile. It represents the aggregation of all allocations\nmade over the duration of the profile. All allocations are included,\nincluding those that might have been freed by the end of the profiling\ninterval. The profile is in particular useful for garbage collecting\nlanguages to understand which parts of the code create most of the garbage\ncollection pressure to see if those can be optimized."
+          ],
+          "enum": [
+            "PROFILE_TYPE_UNSPECIFIED",
+            "CPU",
+            "WALL",
+            "HEAP",
+            "THREADS",
+            "CONTENTION",
+            "PEAK_HEAP",
+            "HEAP_ALLOC"
+          ]
+        },
+        "deployment": {
+          "$ref": "Deployment",
+          "description": "Deployment this profile corresponds to."
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Input only. Labels associated to this specific profile. These labels will\nget merged with the deployment labels for the final data set.  See\ndocumentation on deployment labels for validation rules and limits.",
+          "type": "object"
+        },
+        "profileBytes": {
+          "description": "Input only. Profile bytes, as a gzip compressed serialized proto, the\nformat is https://github.com/google/pprof/blob/master/proto/profile.proto.",
+          "format": "byte",
+          "type": "string"
+        },
+        "name": {
+          "description": "Output only. Opaque, server-assigned, unique ID for this profile.",
+          "type": "string"
+        }
+      },
+      "id": "Profile"
     }
   },
-  "protocol": "rest",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
+  "protocol": "rest",
   "canonicalName": "Cloud Profiler",
   "auth": {
     "oauth2": {
       "scopes": {
-        "https://www.googleapis.com/auth/monitoring": {
-          "description": "View and write monitoring data for all of your Google and third-party Cloud and API projects"
-        },
         "https://www.googleapis.com/auth/monitoring.write": {
           "description": "Publish metric data to your Google Cloud projects"
         },
         "https://www.googleapis.com/auth/cloud-platform": {
           "description": "View and manage your data across Google Cloud Platform services"
+        },
+        "https://www.googleapis.com/auth/monitoring": {
+          "description": "View and write monitoring data for all of your Google and third-party Cloud and API projects"
         }
       }
     }
@@ -160,10 +152,6 @@
         "profiles": {
           "methods": {
             "createOffline": {
-              "description": "CreateOfflineProfile creates a new profile resource in the offline mode.\nThe client provides the profile to create along with the profile bytes, the\nserver records it.",
-              "request": {
-                "$ref": "Profile"
-              },
               "response": {
                 "$ref": "Profile"
               },
@@ -187,15 +175,19 @@
               ],
               "flatPath": "v2/projects/{projectsId}/profiles:createOffline",
               "path": "v2/{+parent}/profiles:createOffline",
-              "id": "cloudprofiler.projects.profiles.createOffline"
+              "id": "cloudprofiler.projects.profiles.createOffline",
+              "description": "CreateOfflineProfile creates a new profile resource in the offline mode.\nThe client provides the profile to create along with the profile bytes, the\nserver records it.",
+              "request": {
+                "$ref": "Profile"
+              }
             },
             "patch": {
               "path": "v2/{+name}",
               "id": "cloudprofiler.projects.profiles.patch",
+              "description": "UpdateProfile updates the profile bytes and labels on the profile resource\ncreated in the online mode. Updating the bytes for profiles created in the\noffline mode is currently not supported: the profile content must be\nprovided at the time of the profile creation.",
               "request": {
                 "$ref": "Profile"
               },
-              "description": "UpdateProfile updates the profile bytes and labels on the profile resource\ncreated in the online mode. Updating the bytes for profiles created in the\noffline mode is currently not supported: the profile content must be\nprovided at the time of the profile creation.",
               "response": {
                 "$ref": "Profile"
               },
@@ -203,18 +195,13 @@
                 "name"
               ],
               "httpMethod": "PATCH",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/monitoring",
-                "https://www.googleapis.com/auth/monitoring.write"
-              ],
               "parameters": {
                 "name": {
+                  "required": true,
+                  "type": "string",
                   "pattern": "^projects/[^/]+/profiles/[^/]+$",
                   "location": "path",
-                  "description": "Output only. Opaque, server-assigned, unique ID for this profile.",
-                  "required": true,
-                  "type": "string"
+                  "description": "Output only. Opaque, server-assigned, unique ID for this profile."
                 },
                 "updateMask": {
                   "location": "query",
@@ -223,37 +210,42 @@
                   "type": "string"
                 }
               },
-              "flatPath": "v2/projects/{projectsId}/profiles/{profilesId}"
-            },
-            "create": {
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "parent"
-              ],
-              "response": {
-                "$ref": "Profile"
-              },
-              "parameters": {
-                "parent": {
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
-                  "description": "Parent project to create the profile in."
-                }
-              },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/monitoring",
                 "https://www.googleapis.com/auth/monitoring.write"
               ],
+              "flatPath": "v2/projects/{projectsId}/profiles/{profilesId}"
+            },
+            "create": {
+              "response": {
+                "$ref": "Profile"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/monitoring",
+                "https://www.googleapis.com/auth/monitoring.write"
+              ],
+              "parameters": {
+                "parent": {
+                  "location": "path",
+                  "description": "Parent project to create the profile in.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$"
+                }
+              },
               "flatPath": "v2/projects/{projectsId}/profiles",
-              "id": "cloudprofiler.projects.profiles.create",
               "path": "v2/{+parent}/profiles",
-              "description": "CreateProfile creates a new profile resource in the online mode.\n\nThe server ensures that the new profiles are created at a constant rate per\ndeployment, so the creation request may hang for some time until the next\nprofile session is available.\n\nThe request may fail with ABORTED error if the creation is not available\nwithin ~1m, the response will indicate the duration of the backoff the\nclient should take before attempting creating a profile again. The backoff\nduration is returned in google.rpc.RetryInfo extension on the response\nstatus. To a gRPC client, the extension will be return as a\nbinary-serialized proto in the trailing metadata item named\n\"google.rpc.retryinfo-bin\".",
+              "id": "cloudprofiler.projects.profiles.create",
               "request": {
                 "$ref": "CreateProfileRequest"
-              }
+              },
+              "description": "CreateProfile creates a new profile resource in the online mode.\n\nThe server ensures that the new profiles are created at a constant rate per\ndeployment, so the creation request may hang for some time until the next\nprofile session is available.\n\nThe request may fail with ABORTED error if the creation is not available\nwithin ~1m, the response will indicate the duration of the backoff the\nclient should take before attempting creating a profile again. The backoff\nduration is returned in google.rpc.RetryInfo extension on the response\nstatus. To a gRPC client, the extension will be return as a\nbinary-serialized proto in the trailing metadata item named\n\"google.rpc.retryinfo-bin\"."
             }
           }
         }
@@ -262,11 +254,6 @@
   },
   "parameters": {
     "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
@@ -275,26 +262,26 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json"
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
     },
-    "access_token": {
-      "description": "OAuth access token.",
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string",
       "location": "query"
     },
-    "key": {
+    "access_token": {
       "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "description": "OAuth access token.",
       "type": "string"
     },
     "upload_protocol": {
       "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
     },
     "prettyPrint": {
@@ -303,40 +290,53 @@
       "location": "query",
       "description": "Returns response with indentations and line breaks."
     },
-    "fields": {
+    "quotaUser": {
       "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
     },
     "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "callback": {
       "type": "string",
       "location": "query",
-      "description": "JSONP"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
     },
     "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
       "location": "query",
       "enum": [
         "1",
         "2"
       ],
       "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ]
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
       "type": "string"
     }
   },
   "version": "v2",
-  "baseUrl": "https://cloudprofiler.googleapis.com/"
+  "baseUrl": "https://cloudprofiler.googleapis.com/",
+  "servicePath": "",
+  "kind": "discovery#restDescription",
+  "description": "Manages continuous profiling information.",
+  "basePath": "",
+  "id": "cloudprofiler:v2",
+  "documentationLink": "https://cloud.google.com/profiler/",
+  "revision": "20190614",
+  "discoveryVersion": "v1"
 }

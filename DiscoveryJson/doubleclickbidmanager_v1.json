@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/xoxKVGyG96QSfwJ57MjgWSZsRxI\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/81Tm1z-js2RXAr8P1nZdtl6PgfQ\"",
  "discoveryVersion": "v1",
  "id": "doubleclickbidmanager:v1",
  "name": "doubleclickbidmanager",
  "canonicalName": "DoubleClick Bid Manager",
  "version": "v1",
- "revision": "20190529",
+ "revision": "20190617",
  "title": "DoubleClick Bid Manager API",
  "description": "API for viewing and managing your reports in DoubleClick Bid Manager.",
  "ownerDomain": "google.com",
@@ -1072,7 +1072,6 @@
        "METRIC_RICH_MEDIA_VIDEO_THIRD_QUARTILE_COMPLETES",
        "METRIC_TEA_TRUEVIEW_IMPRESSIONS",
        "METRIC_TEA_TRUEVIEW_UNIQUE_COOKIES",
-       "METRIC_TEA_TRUEVIEW_UNIQUE_PEOPLE",
        "METRIC_TOTAL_CONVERSIONS",
        "METRIC_TOTAL_MEDIA_COST_ADVERTISER",
        "METRIC_TOTAL_MEDIA_COST_ECPAPC_ADVERTISER",
@@ -1149,7 +1148,6 @@
        "METRIC_VIEWABLE_BID_REQUESTS"
       ],
       "enumDescriptions": [
-       "",
        "",
        "",
        "",

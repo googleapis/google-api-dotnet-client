@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190609 (1620)
+ *      <tr><th>API Rev<td>20190616 (1627)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -1855,13 +1855,13 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DatasetId { get; private set; }
 
-            /// <summary>The maximum number of results per page.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
             /// <summary>Page token, returned by a previous call to request the next page of results</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of results per page.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1906,18 +1906,18 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = @"^[^/]+$",
                     });
                 RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxResults",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "maxResults", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2122,13 +2122,13 @@ namespace Google.Apis.Bigquery.v2
             }
 
 
-            /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>Maximum number of results to return</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2155,18 +2155,18 @@ namespace Google.Apis.Bigquery.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "maxResults", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxResults",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3765,6 +3765,14 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>Confusion matrix for binary classification models.</summary>
     public class BinaryConfusionMatrix : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The fraction of predictions given the correct label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accuracy")]
+        public virtual System.Nullable<double> Accuracy { get; set; } 
+
+        /// <summary>The equally weighted average of recall and precision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
+        public virtual System.Nullable<double> F1Score { get; set; } 
+
         /// <summary>Number of false samples predicted as false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("falseNegatives")]
         public virtual System.Nullable<long> FalseNegatives { get; set; } 
@@ -3777,11 +3785,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("positiveClassThreshold")]
         public virtual System.Nullable<double> PositiveClassThreshold { get; set; } 
 
-        /// <summary>Aggregate precision.</summary>
+        /// <summary>The fraction of actual positive predictions that had positive actual labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("precision")]
         public virtual System.Nullable<double> Precision { get; set; } 
 
-        /// <summary>Aggregate recall.</summary>
+        /// <summary>The fraction of actual positive labels that were given a positive prediction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recall")]
         public virtual System.Nullable<double> Recall { get; set; } 
 
@@ -4474,12 +4482,17 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleSheetsOptions")]
         public virtual GoogleSheetsOptions GoogleSheetsOptions { get; set; } 
 
-        /// <summary>[Optional, Experimental] If hive partitioning is enabled, which mode to use. Two modes are
+        /// <summary>[Optional, Trusted Tester] If hive partitioning is enabled, which mode to use. Two modes are
         /// supported: - AUTO: automatically infer partition key name(s) and type(s). - STRINGS: automatic infer
         /// partition key name(s). All types are strings. Not all storage formats support hive partitioning --
-        /// requesting hive partitioning on an unsupported format will lead to an error.</summary>
+        /// requesting hive partitioning on an unsupported format will lead to an error. Note: this setting is in the
+        /// process of being deprecated in favor of hivePartitioningOptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningMode")]
         public virtual string HivePartitioningMode { get; set; } 
+
+        /// <summary>[Optional, Trusted Tester] Options to configure hive partitioning support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningOptions")]
+        public virtual HivePartitioningOptions HivePartitioningOptions { get; set; } 
 
         /// <summary>[Optional] Indicates if BigQuery should allow extra values that are not represented in the table
         /// schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad
@@ -4615,6 +4628,30 @@ namespace Google.Apis.Bigquery.v2.Data
         /// extract column names for the detected schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipLeadingRows")]
         public virtual System.Nullable<long> SkipLeadingRows { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class HivePartitioningOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Optional, Trusted Tester] When set, what mode of hive partitioning to use when reading data. Two
+        /// modes are supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS:
+        /// automatically infer partition key name(s). All types are interpreted as strings. Not all storage formats
+        /// support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error.
+        /// Currently supported types include: AVRO, CSV, JSON, ORC and Parquet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; } 
+
+        /// <summary>[Optional, Trusted Tester] When hive partition detection is requested, a common prefix for all
+        /// source uris should be supplied. The prefix must end immediately before the partition key encoding begins.
+        /// For example, consider files following this data layout.
+        /// gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro
+        /// gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When hive partitioning is requested with
+        /// either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or
+        /// gs://bucket/path_to_table/ (trailing slash does not matter).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceUriPrefix")]
+        public virtual string SourceUriPrefix { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4847,12 +4884,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
         public virtual string FieldDelimiter { get; set; } 
 
-        /// <summary>[Optional, Experimental] If hive partitioning is enabled, which mode to use. Two modes are
+        /// <summary>[Optional, Trusted Tester] If hive partitioning is enabled, which mode to use. Two modes are
         /// supported: - AUTO: automatically infer partition key name(s) and type(s). - STRINGS: automatic infer
         /// partition key name(s). All types are strings. Not all storage formats support hive partitioning --
         /// requesting hive partitioning on an unsupported format will lead to an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningMode")]
         public virtual string HivePartitioningMode { get; set; } 
+
+        /// <summary>[Optional, Trusted Tester] Options to configure hive partitioning support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningOptions")]
+        public virtual HivePartitioningOptions HivePartitioningOptions { get; set; } 
 
         /// <summary>[Optional] Indicates if BigQuery should allow extra values that are not represented in the table
         /// schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad

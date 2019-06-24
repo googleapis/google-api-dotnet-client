@@ -1041,11 +1041,6 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                             [Google.Apis.Util.RequestParameterAttribute("bindingId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string BindingId { get; private set; }
 
-                            /// <summary>Additional query parameter hints. The service id of the service
-                            /// instance.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string ServiceId { get; set; }
-
                             /// <summary>See CreateServiceInstanceRequest for details.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("acceptsIncomplete", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> AcceptsIncomplete { get; set; }
@@ -1053,6 +1048,11 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                             /// <summary>The plan id of the service instance.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PlanId { get; set; }
+
+                            /// <summary>Additional query parameter hints. The service id of the service
+                            /// instance.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string ServiceId { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -1106,15 +1106,6 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
-                                    "serviceId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "serviceId",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
                                     "acceptsIncomplete", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "acceptsIncomplete",
@@ -1127,6 +1118,15 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                                     "planId", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "planId",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "serviceId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "serviceId",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1540,6 +1540,10 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                         [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string InstanceId { get; private set; }
 
+                        /// <summary>The plan id of the service instance.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PlanId { get; set; }
+
                         /// <summary>The service id of the service instance.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ServiceId { get; set; }
@@ -1547,10 +1551,6 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                         /// <summary>See CreateServiceInstanceRequest for details.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("acceptsIncomplete", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> AcceptsIncomplete { get; set; }
-
-                        /// <summary>The plan id of the service instance.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PlanId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1595,6 +1595,15 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                                     Pattern = @"^[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "planId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "planId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "serviceId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "serviceId",
@@ -1607,15 +1616,6 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                                 "acceptsIncomplete", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "acceptsIncomplete",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "planId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "planId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1719,10 +1719,6 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                         [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string InstanceId { get; private set; }
 
-                        /// <summary>Plan id.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PlanId { get; set; }
-
                         /// <summary>Service id.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ServiceId { get; set; }
@@ -1731,6 +1727,10 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                         /// with the provided value.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Operation { get; set; }
+
+                        /// <summary>Plan id.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PlanId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1775,15 +1775,6 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                                     Pattern = @"^[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "planId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "planId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "serviceId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "serviceId",
@@ -1796,6 +1787,15 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                                 "operation", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "operation",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "planId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "planId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190603 (1614)
+ *      <tr><th>API Rev<td>20190619 (1630)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -533,9 +533,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             /// Organizations may be filtered by `owner.directoryCustomerId` or by `domain`, where the domain is a G
             /// Suite domain, for example:
             ///
-            /// |Filter|Description| |------|-----------| |owner.directorycustomerid:123456789|Organizations with
-            /// `owner.directory_customer_id` equal to `123456789`.| |domain:google.com|Organizations corresponding to
-            /// the domain `google.com`.|
+            /// * Filter `owner.directorycustomerid:123456789` returns Organization resources with
+            /// `owner.directory_customer_id` equal to `123456789`. * Filter `domain:google.com` returns Organization
+            /// resources corresponding to the domain `google.com`.
             ///
             /// This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -1274,6 +1274,13 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
+            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
+            /// listing should continue.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
             /// than requested. If unspecified, server picks an appropriate default.
             ///
@@ -1309,13 +1316,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
-            /// listing should continue.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1341,6 +1341,15 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1353,15 +1362,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
