@@ -1,0 +1,30 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "$package.csproj",
+          ],
+        },
+      ],
+      "dest": "obj/api",
+      "properties": {
+        "TargetFramework": "$target"
+      }
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": "*.yml",
+        "src": "obj/api",
+        "dest": "api"
+      },
+      {
+        "files": [
+          "index.md"
+        ]
+      }
+    ],
+    "xref": [
