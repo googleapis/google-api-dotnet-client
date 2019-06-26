@@ -68,7 +68,7 @@ namespace IntegrationTests
 
             // Get a JWT from code.
             var secretJson = JToken.Parse(Helper.GetClientSecret());
-            var codeReq = "https://www.googleapis.com/oauth2/v4/token";
+            var codeReq = "https://oauth2.googleapis.com/token";
             var contentStr = "code=" + code +
                 "&client_id=" + secretJson["installed"]["client_id"] +
                 "&client_secret=" + secretJson["installed"]["client_secret"] +
