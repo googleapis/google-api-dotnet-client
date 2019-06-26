@@ -6,6 +6,9 @@ declare -r repo_root=$(git rev-parse --show-toplevel)
 
 cd $repo_root
 
+# Avoid dotnet restore failing if the directory isn't present
+mkdir -p NuPkgs/Support
+
 source DocfxFunctions.sh
 install_docfx
 
