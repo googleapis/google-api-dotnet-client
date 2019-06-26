@@ -28,6 +28,7 @@ build_site() {
   declare -r directory=Src/Support/$1
   declare -r dependencies="$2"
   declare -r target_framework="$3"
+  declare -r entry_namespace=$4
   declare -r json=$directory/docfx.json
 
   cp Docs/docfx-1.json $json
@@ -40,7 +41,7 @@ build_site() {
   sed -i "s/\\\$package/$package/g" $json
   sed -i "s/\\\$target/$target_framework/g" $json
   sed -i "s/\\\$title/Google API support libraries/g" $json
-  sed -i "s/\\\$package/$package/g" $directory/index.md  
+  sed -i "s/\\\$entry_namespace/$entry_namespace/g" $directory/index.md  
   
   $DOCFX metadata -f --disableGitFeatures $json
   $DOCFX build --disableGitFeatures $json
@@ -48,8 +49,8 @@ build_site() {
   sed -i "1s/^/baseUrl: https:\/\/googleapis.dev\/dotnet\/$package\/$version\/\n/" $directory/obj/site/xrefmap.yml
 }
 
-build_site Google.Apis.Core "" netstandard2.0
-build_site Google.Apis Google.Apis.Core netstandard2.0
-build_site Google.Apis.Auth "Google.Apis.Core Google.Apis" netstandard2.0
-build_site Google.Apis.Auth.Mvc "Google.Apis.Core Google.Apis Google.Apis.Auth" net45
-build_site Google.Apis.Auth.AspNetCore "Google.Apis.Core Google.Apis Google.Apis.Auth" netstandard2.0
+build_site Google.Apis.Core "" netstandard2.0 Google.Apis
+build_site Google.Apis Google.Apis.Core netstandard2.0 Google.Apis
+build_site Google.Apis.Auth "Google.Apis.Core Google.Apis" netstandard2.0 Google.Apis.Auth
+build_site Google.Apis.Auth.Mvc "Google.Apis.Core Google.Apis Google.Apis.Auth" net45 Google.Apis.Auth.Mvc
+build_site Google.Apis.Auth.AspNetCore "Google.Apis.Core Google.Apis Google.Apis.Auth" netstandard2.0 Google.Apis.Auth.AspNetCore

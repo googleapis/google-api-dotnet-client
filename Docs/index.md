@@ -1,1 +1,1 @@
-This page is present as a root for the [API reference documentation](obj/api/$package.yml)
+This page is present as a root for the [API reference documentation](obj/api/$entry_namespace.yml)

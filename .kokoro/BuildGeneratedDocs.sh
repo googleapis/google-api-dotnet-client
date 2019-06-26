@@ -56,7 +56,7 @@ build_site() {
   sed -i "s/\\\$package/$package/g" $json
   sed -i "s/\\\$target/netstandard2.0/g" $json
   sed -i "s/\\\$title/$package/g" $json
-  sed -i "s/\\\$package/$package/g" $directory/index.md  
+  sed -i "s/\\\$entry_namespace/$package/g" $directory/index.md  
   
   $DOCFX metadata -f --disableGitFeatures $json
   $DOCFX build --disableGitFeatures $json
