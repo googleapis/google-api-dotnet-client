@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190603 (1614)
+ *      <tr><th>API Rev<td>20190618 (1629)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -1136,6 +1136,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1143,10 +1147,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1182,6 +1182,15 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1194,15 +1203,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1660,11 +1660,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Alternative hypotheses (a.k.a. n-best list).</summary>
     public class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater
-        /// likelihood that the recognized words are correct. This field is typically provided only for the top
-        /// hypothesis, and only for `is_final=true` results. Clients should not rely on the `confidence` field as it is
-        /// not guaranteed to be accurate or consistent. The default of 0.0 is a sentinel value indicating `confidence`
-        /// was not set.</summary>
+        /// <summary>Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
+        /// greater likelihood that the recognized words are correct. This field is set only for the top alternative.
+        /// This field is not guaranteed to be accurate and users should not rely on it to be always provided. The
+        /// default of 0.0 is a sentinel value indicating `confidence` was not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
@@ -1672,7 +1671,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; } 
 
-        /// <summary>A list of word-specific information for each recognized word.</summary>
+        /// <summary>Output only. A list of word-specific information for each recognized word. Note: When
+        /// `enable_speaker_diarization` is true, you will see all the words from the beginning of the audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1WordInfo> Words { get; set; } 
 
@@ -1887,8 +1887,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
 
-        /// <summary>Label annotations on video level or user specified segment level. There is exactly one element for
-        /// each unique label.</summary>
+        /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
+        /// element for each unique label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
@@ -1896,7 +1896,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shotAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1VideoSegment> ShotAnnotations { get; set; } 
 
-        /// <summary>Label annotations on shot level. There is exactly one element for each unique label.</summary>
+        /// <summary>Topical label annotations on shot level. There is exactly one element for each unique
+        /// label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1LabelAnnotation> ShotLabelAnnotations { get; set; } 
 
@@ -2241,11 +2242,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Alternative hypotheses (a.k.a. n-best list).</summary>
     public class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater
-        /// likelihood that the recognized words are correct. This field is typically provided only for the top
-        /// hypothesis, and only for `is_final=true` results. Clients should not rely on the `confidence` field as it is
-        /// not guaranteed to be accurate or consistent. The default of 0.0 is a sentinel value indicating `confidence`
-        /// was not set.</summary>
+        /// <summary>Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
+        /// greater likelihood that the recognized words are correct. This field is set only for the top alternative.
+        /// This field is not guaranteed to be accurate and users should not rely on it to be always provided. The
+        /// default of 0.0 is a sentinel value indicating `confidence` was not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
@@ -2253,7 +2253,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; } 
 
-        /// <summary>A list of word-specific information for each recognized word.</summary>
+        /// <summary>Output only. A list of word-specific information for each recognized word. Note: When
+        /// `enable_speaker_diarization` is true, you will see all the words from the beginning of the audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2WordInfo> Words { get; set; } 
 
@@ -2387,8 +2388,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
 
-        /// <summary>Label annotations on video level or user specified segment level. There is exactly one element for
-        /// each unique label.</summary>
+        /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
+        /// element for each unique label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
@@ -2396,7 +2397,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shotAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2VideoSegment> ShotAnnotations { get; set; } 
 
-        /// <summary>Label annotations on shot level. There is exactly one element for each unique label.</summary>
+        /// <summary>Topical label annotations on shot level. There is exactly one element for each unique
+        /// label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2LabelAnnotation> ShotLabelAnnotations { get; set; } 
 
@@ -2705,11 +2707,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Alternative hypotheses (a.k.a. n-best list).</summary>
     public class GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater
-        /// likelihood that the recognized words are correct. This field is typically provided only for the top
-        /// hypothesis, and only for `is_final=true` results. Clients should not rely on the `confidence` field as it is
-        /// not guaranteed to be accurate or consistent. The default of 0.0 is a sentinel value indicating `confidence`
-        /// was not set.</summary>
+        /// <summary>Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
+        /// greater likelihood that the recognized words are correct. This field is set only for the top alternative.
+        /// This field is not guaranteed to be accurate and users should not rely on it to be always provided. The
+        /// default of 0.0 is a sentinel value indicating `confidence` was not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
@@ -2717,7 +2718,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; } 
 
-        /// <summary>A list of word-specific information for each recognized word.</summary>
+        /// <summary>Output only. A list of word-specific information for each recognized word. Note: When
+        /// `enable_speaker_diarization` is true, you will see all the words from the beginning of the audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1WordInfo> Words { get; set; } 
 
@@ -2851,8 +2853,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
 
-        /// <summary>Label annotations on video level or user specified segment level. There is exactly one element for
-        /// each unique label.</summary>
+        /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
+        /// element for each unique label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
@@ -2860,7 +2862,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shotAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1VideoSegment> ShotAnnotations { get; set; } 
 
-        /// <summary>Label annotations on shot level. There is exactly one element for each unique label.</summary>
+        /// <summary>Topical label annotations on shot level. There is exactly one element for each unique
+        /// label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> ShotLabelAnnotations { get; set; } 
 
@@ -3169,11 +3172,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Alternative hypotheses (a.k.a. n-best list).</summary>
     public class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater
-        /// likelihood that the recognized words are correct. This field is typically provided only for the top
-        /// hypothesis, and only for `is_final=true` results. Clients should not rely on the `confidence` field as it is
-        /// not guaranteed to be accurate or consistent. The default of 0.0 is a sentinel value indicating `confidence`
-        /// was not set.</summary>
+        /// <summary>Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
+        /// greater likelihood that the recognized words are correct. This field is set only for the top alternative.
+        /// This field is not guaranteed to be accurate and users should not rely on it to be always provided. The
+        /// default of 0.0 is a sentinel value indicating `confidence` was not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
@@ -3181,7 +3183,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; } 
 
-        /// <summary>A list of word-specific information for each recognized word.</summary>
+        /// <summary>Output only. A list of word-specific information for each recognized word. Note: When
+        /// `enable_speaker_diarization` is true, you will see all the words from the beginning of the audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1WordInfo> Words { get; set; } 
 
@@ -3315,8 +3318,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
 
-        /// <summary>Label annotations on video level or user specified segment level. There is exactly one element for
-        /// each unique label.</summary>
+        /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
+        /// element for each unique label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
@@ -3324,7 +3327,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shotAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1VideoSegment> ShotAnnotations { get; set; } 
 
-        /// <summary>Label annotations on shot level. There is exactly one element for each unique label.</summary>
+        /// <summary>Topical label annotations on shot level. There is exactly one element for each unique
+        /// label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> ShotLabelAnnotations { get; set; } 
 
@@ -3676,11 +3680,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Alternative hypotheses (a.k.a. n-best list).</summary>
     public class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater
-        /// likelihood that the recognized words are correct. This field is typically provided only for the top
-        /// hypothesis, and only for `is_final=true` results. Clients should not rely on the `confidence` field as it is
-        /// not guaranteed to be accurate or consistent. The default of 0.0 is a sentinel value indicating `confidence`
-        /// was not set.</summary>
+        /// <summary>Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
+        /// greater likelihood that the recognized words are correct. This field is set only for the top alternative.
+        /// This field is not guaranteed to be accurate and users should not rely on it to be always provided. The
+        /// default of 0.0 is a sentinel value indicating `confidence` was not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
@@ -3688,7 +3691,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; } 
 
-        /// <summary>A list of word-specific information for each recognized word.</summary>
+        /// <summary>Output only. A list of word-specific information for each recognized word. Note: When
+        /// `enable_speaker_diarization` is true, you will see all the words from the beginning of the audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1WordInfo> Words { get; set; } 
 
@@ -3917,8 +3921,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
 
-        /// <summary>Label annotations on video level or user specified segment level. There is exactly one element for
-        /// each unique label.</summary>
+        /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
+        /// element for each unique label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
@@ -3926,7 +3930,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shotAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1VideoSegment> ShotAnnotations { get; set; } 
 
-        /// <summary>Label annotations on shot level. There is exactly one element for each unique label.</summary>
+        /// <summary>Topical label annotations on shot level. There is exactly one element for each unique
+        /// label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> ShotLabelAnnotations { get; set; } 
 

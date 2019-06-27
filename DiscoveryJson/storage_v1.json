@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/l_bNzW9zSG5n8TDDo7NOyKiYNoY\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/bdEvS9xoLrBEi78GFGUwV6O6Uc4\"",
  "discoveryVersion": "v1",
  "id": "storage:v1",
  "name": "storage",
@@ -534,7 +534,7 @@
     },
     "kind": {
      "type": "string",
-     "description": "Identifies this as a notification channel used to watch for changes to a resource. Value: the fixed string \"api#channel\".",
+     "description": "Identifies this as a notification channel used to watch for changes to a resource, which is \"api#channel\".",
      "default": "api#channel"
     },
     "params": {

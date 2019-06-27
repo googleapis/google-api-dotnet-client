@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190619 (1630)
+ *      <tr><th>API Rev<td>20190603 (1614)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -533,9 +533,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             /// Organizations may be filtered by `owner.directoryCustomerId` or by `domain`, where the domain is a G
             /// Suite domain, for example:
             ///
-            /// * Filter `owner.directorycustomerid:123456789` returns Organization resources with
-            /// `owner.directory_customer_id` equal to `123456789`. * Filter `domain:google.com` returns Organization
-            /// resources corresponding to the domain `google.com`.
+            /// |Filter|Description| |------|-----------| |owner.directorycustomerid:123456789|Organizations with
+            /// `owner.directory_customer_id` equal to `123456789`.| |domain:google.com|Organizations corresponding to
+            /// the domain `google.com`.|
             ///
             /// This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]

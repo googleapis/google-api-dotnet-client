@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190608 (1619)
+ *      <tr><th>API Rev<td>20190619 (1630)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -3129,11 +3129,10 @@ namespace Google.Apis.Pubsub.v1.Data
 
     public class MessageStoragePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of GCP region IDs where messages that are published to the topic may be persisted in
+        /// <summary>A list of IDs of GCP regions where messages that are published to the topic may be persisted in
         /// storage. Messages published by publishers running in non-allowed GCP regions (or running outside of GCP
-        /// altogether) will be routed for storage in one of the allowed regions. An empty list indicates a
-        /// misconfiguration at the project or organization level, which will result in all Publish operations
-        /// failing.</summary>
+        /// altogether) will be routed for storage in one of the allowed regions. An empty list means that no regions
+        /// are allowed, and is not a valid configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedPersistenceRegions")]
         public virtual System.Collections.Generic.IList<string> AllowedPersistenceRegions { get; set; } 
 
@@ -3561,10 +3560,8 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Policy constraining how messages published to the topic may be stored. It is determined when the
-        /// topic is created based on the policy configured at the project level. It must not be set by the caller in
-        /// the request to CreateTopic or to UpdateTopic. This field will be populated in the responses for GetTopic,
-        /// CreateTopic, and UpdateTopic: if not present in the response, then no constraints are in effect.</summary>
+        /// <summary>Policy constraining the set of Google Cloud Platform regions where messages published to the topic
+        /// may be stored. If not present, then no constraints are in effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageStoragePolicy")]
         public virtual MessageStoragePolicy MessageStoragePolicy { get; set; } 
 

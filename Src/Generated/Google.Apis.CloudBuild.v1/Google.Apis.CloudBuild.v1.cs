@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190618 (1629)
+ *      <tr><th>API Rev<td>20190622 (1633)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -2118,13 +2118,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A CheckSuiteFilter is a filter that indicates that we should build on all check suite events.</summary>
-    public class CheckSuiteFilter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -2155,11 +2148,7 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// This message is experimental.</summary>
     public class GitHubEventsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Indicates that a build was generated from a check suite event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("checkSuite")]
-        public virtual CheckSuiteFilter CheckSuite { get; set; } 
-
-        /// <summary>The installationID that emmits the GitHub event.</summary>
+        /// <summary>The installationID that emits the GitHub event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installationId")]
         public virtual System.Nullable<long> InstallationId { get; set; } 
 

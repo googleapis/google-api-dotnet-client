@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190611 (1622)
+ *      <tr><th>API Rev<td>20190625 (1636)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -88,9 +88,9 @@ namespace Google.Apis.Dns.v1
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/dns/v1/projects/"; }
+            get { return BaseUriOverride ?? "https://dns.googleapis.com/dns/v1/projects/"; }
         #else
-            get { return "https://www.googleapis.com/dns/v1/projects/"; }
+            get { return "https://dns.googleapis.com/dns/v1/projects/"; }
         #endif
         }
 
@@ -104,7 +104,7 @@ namespace Google.Apis.Dns.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/dns/v1"; }
+            get { return "https://dns.googleapis.com/batch/dns/v1"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
@@ -2291,8 +2291,8 @@ namespace Google.Apis.Dns.v1.Data
 
     public class ManagedZoneDnsSecConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. Output
-        /// only while state is not OFF.</summary>
+        /// <summary>Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. Can
+        /// only be changed while state is OFF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultKeySpecs")]
         public virtual System.Collections.Generic.IList<DnsKeySpec> DefaultKeySpecs { get; set; } 
 
@@ -2301,8 +2301,8 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Specifies the mechanism used to provide authenticated denial-of-existence responses. Output only
-        /// while state is not OFF.</summary>
+        /// <summary>Specifies the mechanism used to provide authenticated denial-of-existence responses. Can only be
+        /// changed while state is OFF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonExistence")]
         public virtual string NonExistence { get; set; } 
 

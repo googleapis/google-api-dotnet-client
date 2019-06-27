@@ -1,12 +1,6 @@
 {
-  "revision": "20190614",
-  "id": "accessapproval:v1beta1",
-  "documentationLink": "https://cloud.google.com/access-approval/docs",
-  "discoveryVersion": "v1",
-  "version_module": true,
   "schemas": {
     "DismissDecision": {
-      "id": "DismissDecision",
       "description": "A decision that has been made to dismiss an approval request.",
       "type": "object",
       "properties": {
@@ -15,36 +9,10 @@
           "format": "google-datetime",
           "type": "string"
         }
-      }
-    },
-    "AccessReason": {
-      "type": "object",
-      "properties": {
-        "detail": {
-          "description": "More detail about certain reason types. See comments for each type above.",
-          "type": "string"
-        },
-        "type": {
-          "enumDescriptions": [
-            "Default value for proto, shouldn't be used.",
-            "Customer made a request or raised an issue that required the principal to\naccess customer data. `detail` is of the form (\"#####\" is the issue ID):\n\u003col\u003e\n  \u003cli\u003e\"Feedback Report: #####\"\u003c/li\u003e\n  \u003cli\u003e\"Case Number: #####\"\u003c/li\u003e\n  \u003cli\u003e\"Case ID: #####\"\u003c/li\u003e\n  \u003cli\u003e\"E-PIN Reference: #####\"\u003c/li\u003e\n  \u003cli\u003e\"Google-#####\"\u003c/li\u003e\n  \u003cli\u003e\"T-#####\"\u003c/li\u003e\n\u003c/ol\u003e",
-            "The principal accessed customer data in order to diagnose or resolve a\nsuspected issue in services or a known outage. Often this access is used\nto confirm that customers are not affected by a suspected service issue\nor to remediate a reversible system issue.",
-            "Google initiated service for security, fraud, abuse, or compliance\npurposes."
-          ],
-          "enum": [
-            "TYPE_UNSPECIFIED",
-            "CUSTOMER_INITIATED_SUPPORT",
-            "GOOGLE_INITIATED_SERVICE",
-            "GOOGLE_INITIATED_REVIEW"
-          ],
-          "description": "Type of access justification.",
-          "type": "string"
-        }
       },
-      "id": "AccessReason"
+      "id": "DismissDecision"
     },
     "AccessApprovalSettings": {
-      "id": "AccessApprovalSettings",
       "description": "Settings on a Project/Folder/Organization related to Access Approval.",
       "type": "object",
       "properties": {
@@ -59,73 +27,55 @@
             "type": "string"
           }
         }
-      }
+      },
+      "id": "AccessApprovalSettings"
+    },
+    "AccessReason": {
+      "type": "object",
+      "properties": {
+        "detail": {
+          "description": "More detail about certain reason types. See comments for each type above.",
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enumDescriptions": [
+            "Default value for proto, shouldn't be used.",
+            "Customer made a request or raised an issue that required the principal to\naccess customer data. `detail` is of the form (\"#####\" is the issue ID):\n\u003col\u003e\n  \u003cli\u003e\"Feedback Report: #####\"\u003c/li\u003e\n  \u003cli\u003e\"Case Number: #####\"\u003c/li\u003e\n  \u003cli\u003e\"Case ID: #####\"\u003c/li\u003e\n  \u003cli\u003e\"E-PIN Reference: #####\"\u003c/li\u003e\n  \u003cli\u003e\"Google-#####\"\u003c/li\u003e\n  \u003cli\u003e\"T-#####\"\u003c/li\u003e\n\u003c/ol\u003e",
+            "The principal accessed customer data in order to diagnose or resolve a\nsuspected issue in services or a known outage. Often this access is used\nto confirm that customers are not affected by a suspected service issue\nor to remediate a reversible system issue.",
+            "Google initiated service for security, fraud, abuse, or compliance\npurposes."
+          ],
+          "enum": [
+            "TYPE_UNSPECIFIED",
+            "CUSTOMER_INITIATED_SUPPORT",
+            "GOOGLE_INITIATED_SERVICE",
+            "GOOGLE_INITIATED_REVIEW"
+          ],
+          "description": "Type of access justification."
+        }
+      },
+      "id": "AccessReason"
     },
     "ApproveDecision": {
+      "id": "ApproveDecision",
       "description": "A decision that has been made to approve access to a resource.",
       "type": "object",
       "properties": {
+        "expireTime": {
+          "type": "string",
+          "description": "The time at which the approval expires.",
+          "format": "google-datetime"
+        },
         "approveTime": {
           "description": "The time at which approval was granted.",
           "format": "google-datetime",
-          "type": "string"
-        },
-        "expireTime": {
-          "description": "The time at which the approval expires.",
-          "format": "google-datetime",
-          "type": "string"
-        }
-      },
-      "id": "ApproveDecision"
-    },
-    "ApproveApprovalRequestMessage": {
-      "description": "Request to approve an ApprovalRequest.",
-      "type": "object",
-      "properties": {
-        "expireTime": {
-          "description": "The expiration time of this approval.",
-          "format": "google-datetime",
-          "type": "string"
-        }
-      },
-      "id": "ApproveApprovalRequestMessage"
-    },
-    "ListApprovalRequestsResponse": {
-      "id": "ListApprovalRequestsResponse",
-      "description": "Response to listing of ApprovalRequest objects.",
-      "type": "object",
-      "properties": {
-        "approvalRequests": {
-          "description": "Approval request details.",
-          "type": "array",
-          "items": {
-            "$ref": "ApprovalRequest"
-          }
-        },
-        "nextPageToken": {
-          "description": "Token to retrieve the next page of results, or empty if there are no more.",
           "type": "string"
         }
       }
     },
     "ApprovalRequest": {
-      "id": "ApprovalRequest",
-      "description": "A request for the customer to approve access to a resource.",
       "type": "object",
       "properties": {
-        "requestTime": {
-          "description": "The time at which approval was requested.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "requestedLocations": {
-          "description": "The locations for which approval is being requested.",
-          "$ref": "AccessLocations"
-        },
-        "dismiss": {
-          "$ref": "DismissDecision",
-          "description": "The request was dismissed."
-        },
         "requestedResourceName": {
           "description": "The resource for which approval is being requested. The format of the\nresource name is defined at\nhttps://cloud.google.com/apis/design/resource_names. The resource name here\nmay either be a \"full\" resource name (e.g.\n\"//library.googleapis.com/shelves/shelf1/books/book2\") or a \"relative\"\nresource name (e.g. \"shelves/shelf1/books/book2\") as described in the\nresource name specification.",
           "type": "string"
@@ -140,24 +90,69 @@
           "type": "string"
         },
         "approve": {
-          "$ref": "ApproveDecision",
-          "description": "Access was approved."
+          "description": "Access was approved.",
+          "$ref": "ApproveDecision"
         },
         "requestedResourceProperties": {
           "description": "Properties related to the resource represented by requested_resource_name.",
           "$ref": "ResourceProperties"
         },
         "requestedReason": {
-          "description": "The justification for which approval is being requested.",
-          "$ref": "AccessReason"
+          "$ref": "AccessReason",
+          "description": "The justification for which approval is being requested."
+        },
+        "requestTime": {
+          "description": "The time at which approval was requested.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "requestedLocations": {
+          "$ref": "AccessLocations",
+          "description": "The locations for which approval is being requested."
+        },
+        "dismiss": {
+          "$ref": "DismissDecision",
+          "description": "The request was dismissed."
+        }
+      },
+      "id": "ApprovalRequest",
+      "description": "A request for the customer to approve access to a resource."
+    },
+    "ListApprovalRequestsResponse": {
+      "id": "ListApprovalRequestsResponse",
+      "description": "Response to listing of ApprovalRequest objects.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "Token to retrieve the next page of results, or empty if there are no more.",
+          "type": "string"
+        },
+        "approvalRequests": {
+          "description": "Approval request details.",
+          "type": "array",
+          "items": {
+            "$ref": "ApprovalRequest"
+          }
         }
       }
     },
+    "ApproveApprovalRequestMessage": {
+      "type": "object",
+      "properties": {
+        "expireTime": {
+          "type": "string",
+          "description": "The expiration time of this approval.",
+          "format": "google-datetime"
+        }
+      },
+      "id": "ApproveApprovalRequestMessage",
+      "description": "Request to approve an ApprovalRequest."
+    },
     "DismissApprovalRequestMessage": {
-      "id": "DismissApprovalRequestMessage",
       "description": "Request to dismiss an approval request.",
       "type": "object",
-      "properties": {}
+      "properties": {},
+      "id": "DismissApprovalRequestMessage"
     },
     "ResourceProperties": {
       "description": "The properties associated with the resource of the request.",
@@ -174,23 +169,23 @@
       "description": "Home office and physical location of the principal.",
       "type": "object",
       "properties": {
+        "principalOfficeCountry": {
+          "type": "string",
+          "description": "The \"home office\" location of the principal. A two-letter country code\n(ISO 3166-1 alpha-2), such as \"US\", \"DE\" or \"GB\" or a region code. In some\nlimited situations Google systems may refer refer to a region code instead\nof a country code.\nPossible Region Codes:\n\u003col\u003e\n  \u003cli\u003eASI: Asia\u003c/li\u003e\n  \u003cli\u003eEUR: Europe\u003c/li\u003e\n  \u003cli\u003eOCE: Oceania\u003c/li\u003e\n  \u003cli\u003eAFR: Africa\u003c/li\u003e\n  \u003cli\u003eNAM: North America\u003c/li\u003e\n  \u003cli\u003eSAM: South America\u003c/li\u003e\n  \u003cli\u003eANT: Antarctica\u003c/li\u003e\n  \u003cli\u003eANY: Any location\u003c/li\u003e\n\u003c/ol\u003e"
+        },
         "principalPhysicalLocationCountry": {
           "description": "Physical location of the principal at the time of the access. A\ntwo-letter country code (ISO 3166-1 alpha-2), such as \"US\", \"DE\" or \"GB\" or\na region code. In some limited situations Google systems may refer refer to\na region code instead of a country code.\nPossible Region Codes:\n\u003col\u003e\n  \u003cli\u003eASI: Asia\u003c/li\u003e\n  \u003cli\u003eEUR: Europe\u003c/li\u003e\n  \u003cli\u003eOCE: Oceania\u003c/li\u003e\n  \u003cli\u003eAFR: Africa\u003c/li\u003e\n  \u003cli\u003eNAM: North America\u003c/li\u003e\n  \u003cli\u003eSAM: South America\u003c/li\u003e\n  \u003cli\u003eANT: Antarctica\u003c/li\u003e\n  \u003cli\u003eANY: Any location\u003c/li\u003e\n\u003c/ol\u003e",
-          "type": "string"
-        },
-        "principalOfficeCountry": {
-          "description": "The \"home office\" location of the principal. A two-letter country code\n(ISO 3166-1 alpha-2), such as \"US\", \"DE\" or \"GB\" or a region code. In some\nlimited situations Google systems may refer refer to a region code instead\nof a country code.\nPossible Region Codes:\n\u003col\u003e\n  \u003cli\u003eASI: Asia\u003c/li\u003e\n  \u003cli\u003eEUR: Europe\u003c/li\u003e\n  \u003cli\u003eOCE: Oceania\u003c/li\u003e\n  \u003cli\u003eAFR: Africa\u003c/li\u003e\n  \u003cli\u003eNAM: North America\u003c/li\u003e\n  \u003cli\u003eSAM: South America\u003c/li\u003e\n  \u003cli\u003eANT: Antarctica\u003c/li\u003e\n  \u003cli\u003eANY: Any location\u003c/li\u003e\n\u003c/ol\u003e",
           "type": "string"
         }
       },
       "id": "AccessLocations"
     }
   },
-  "protocol": "rest",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
+  "protocol": "rest",
   "canonicalName": "Access Approval",
   "auth": {
     "oauth2": {
@@ -212,34 +207,42 @@
     "organizations": {
       "methods": {
         "getAccessApprovalSettings": {
-          "parameters": {
-            "name": {
-              "pattern": "^organizations/[^/]+/accessApprovalSettings$",
-              "location": "path",
-              "description": "Name of the AccessApprovalSettings to retrieve.",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1beta1/organizations/{organizationsId}/accessApprovalSettings",
-          "path": "v1beta1/{+name}",
-          "id": "accessapproval.organizations.getAccessApprovalSettings",
           "description": "Gets the settings associated with a project, folder, or organization.",
-          "response": {
-            "$ref": "AccessApprovalSettings"
-          },
+          "httpMethod": "GET",
           "parameterOrder": [
             "name"
           ],
-          "httpMethod": "GET"
-        },
-        "updateAccessApprovalSettings": {
+          "response": {
+            "$ref": "AccessApprovalSettings"
+          },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
+          "parameters": {
+            "name": {
+              "description": "Name of the AccessApprovalSettings to retrieve.",
+              "required": true,
+              "type": "string",
+              "pattern": "^organizations/[^/]+/accessApprovalSettings$",
+              "location": "path"
+            }
+          },
+          "flatPath": "v1beta1/organizations/{organizationsId}/accessApprovalSettings",
+          "id": "accessapproval.organizations.getAccessApprovalSettings",
+          "path": "v1beta1/{+name}"
+        },
+        "updateAccessApprovalSettings": {
+          "description": "Updates the settings associated with a project, folder, or organization.\nCompletely replaces the existing settings.",
+          "request": {
+            "$ref": "AccessApprovalSettings"
+          },
+          "httpMethod": "PATCH",
+          "parameterOrder": [
+            "name"
+          ],
+          "response": {
+            "$ref": "AccessApprovalSettings"
+          },
           "parameters": {
             "name": {
               "description": "The resource name of the settings. Format is one of:\n\u003col\u003e\n  \u003cli\u003e\"projects/{project_id}/accessApprovalSettings\"\u003c/li\u003e\n  \u003cli\u003e\"folders/{folder_id}/accessApprovalSettings\"\u003c/li\u003e\n  \u003cli\u003e\"organizations/{organization_id}/accessApprovalSettings\"\u003c/li\u003e\n\u003col\u003e",
@@ -249,29 +252,46 @@
               "location": "path"
             }
           },
-          "flatPath": "v1beta1/organizations/{organizationsId}/accessApprovalSettings",
-          "path": "v1beta1/{+name}",
-          "id": "accessapproval.organizations.updateAccessApprovalSettings",
-          "request": {
-            "$ref": "AccessApprovalSettings"
-          },
-          "description": "Updates the settings associated with a project, folder, or organization.\nCompletely replaces the existing settings.",
-          "response": {
-            "$ref": "AccessApprovalSettings"
-          },
-          "parameterOrder": [
-            "name"
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "httpMethod": "PATCH"
+          "flatPath": "v1beta1/organizations/{organizationsId}/accessApprovalSettings",
+          "id": "accessapproval.organizations.updateAccessApprovalSettings",
+          "path": "v1beta1/{+name}"
         }
       },
       "resources": {
         "approvalRequests": {
           "methods": {
+            "approve": {
+              "path": "v1beta1/{+name}:approve",
+              "id": "accessapproval.organizations.approvalRequests.approve",
+              "request": {
+                "$ref": "ApproveApprovalRequestMessage"
+              },
+              "description": "Approves a request and returns the updated ApprovalRequest.\n\nReturns NOT_FOUND if the request does not exist. Returns\nFAILED_PRECONDITION if the request exists but is not in a pending state.",
+              "response": {
+                "$ref": "ApprovalRequest"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+/approvalRequests/[^/]+$",
+                  "location": "path",
+                  "description": "Name of the approval request to approve."
+                }
+              },
+              "flatPath": "v1beta1/organizations/{organizationsId}/approvalRequests/{approvalRequestsId}:approve"
+            },
             "list": {
-              "path": "v1beta1/{+parent}/approvalRequests",
-              "id": "accessapproval.organizations.approvalRequests.list",
-              "description": "Lists approval requests associated with a project, folder, or organization.\nApproval requests can be filtered by state (pending, active, dismissed).\nThe order is reverse chronological.",
               "response": {
                 "$ref": "ListApprovalRequestsResponse"
               },
@@ -280,39 +300,39 @@
               ],
               "httpMethod": "GET",
               "parameters": {
-                "parent": {
-                  "description": "The parent resource. This may be \"projects/{project_id}\",\n\"folders/{folder_id}\", or \"organizations/{organization_id}\".",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+$",
-                  "location": "path"
-                },
-                "filter": {
-                  "location": "query",
-                  "description": "A filter on the type of approval requests to retrieve. Must be one of the\nfollowing values:\n\u003col\u003e\n  \u003cli\u003e[not set]: Requests that are pending or have active approvals.\u003c/li\u003e\n  \u003cli\u003eALL: All requests.\u003c/li\u003e\n  \u003cli\u003ePENDING: Only pending requests.\u003c/li\u003e\n  \u003cli\u003eACTIVE: Only active (i.e. currently approved) requests.\u003c/li\u003e\n  \u003cli\u003eDISMISSED: Only dismissed (including expired) requests.\u003c/li\u003e\n\u003c/ol\u003e",
-                  "type": "string"
-                },
                 "pageToken": {
+                  "location": "query",
                   "description": "A token identifying the page of results to return.",
-                  "type": "string",
-                  "location": "query"
+                  "type": "string"
                 },
                 "pageSize": {
                   "location": "query",
                   "description": "Requested page size.",
                   "format": "int32",
                   "type": "integer"
+                },
+                "parent": {
+                  "location": "path",
+                  "description": "The parent resource. This may be \"projects/{project_id}\",\n\"folders/{folder_id}\", or \"organizations/{organization_id}\".",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+$"
+                },
+                "filter": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "A filter on the type of approval requests to retrieve. Must be one of the\nfollowing values:\n\u003col\u003e\n  \u003cli\u003e[not set]: Requests that are pending or have active approvals.\u003c/li\u003e\n  \u003cli\u003eALL: All requests.\u003c/li\u003e\n  \u003cli\u003ePENDING: Only pending requests.\u003c/li\u003e\n  \u003cli\u003eACTIVE: Only active (i.e. currently approved) requests.\u003c/li\u003e\n  \u003cli\u003eDISMISSED: Only dismissed (including expired) requests.\u003c/li\u003e\n\u003c/ol\u003e"
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "flatPath": "v1beta1/organizations/{organizationsId}/approvalRequests"
+              "flatPath": "v1beta1/organizations/{organizationsId}/approvalRequests",
+              "path": "v1beta1/{+parent}/approvalRequests",
+              "id": "accessapproval.organizations.approvalRequests.list",
+              "description": "Lists approval requests associated with a project, folder, or organization.\nApproval requests can be filtered by state (pending, active, dismissed).\nThe order is reverse chronological."
             },
             "get": {
-              "id": "accessapproval.organizations.approvalRequests.get",
-              "path": "v1beta1/{+name}",
-              "description": "Gets an approval request. Returns NOT_FOUND if the request does not exist.",
               "httpMethod": "GET",
               "parameterOrder": [
                 "name"
@@ -320,36 +340,24 @@
               "response": {
                 "$ref": "ApprovalRequest"
               },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "parameters": {
                 "name": {
-                  "pattern": "^organizations/[^/]+/approvalRequests/[^/]+$",
                   "location": "path",
                   "description": "Name of the approval request to retrieve.",
                   "required": true,
-                  "type": "string"
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+/approvalRequests/[^/]+$"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/organizations/{organizationsId}/approvalRequests/{approvalRequestsId}"
+              "flatPath": "v1beta1/organizations/{organizationsId}/approvalRequests/{approvalRequestsId}",
+              "id": "accessapproval.organizations.approvalRequests.get",
+              "path": "v1beta1/{+name}",
+              "description": "Gets an approval request. Returns NOT_FOUND if the request does not exist."
             },
             "dismiss": {
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "Name of the ApprovalRequest to dismiss.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+/approvalRequests/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v1beta1/organizations/{organizationsId}/approvalRequests/{approvalRequestsId}:dismiss",
-              "path": "v1beta1/{+name}:dismiss",
-              "id": "accessapproval.organizations.approvalRequests.dismiss",
               "request": {
                 "$ref": "DismissApprovalRequestMessage"
               },
@@ -360,35 +368,22 @@
               "parameterOrder": [
                 "name"
               ],
-              "httpMethod": "POST"
-            },
-            "approve": {
-              "parameters": {
-                "name": {
-                  "pattern": "^organizations/[^/]+/approvalRequests/[^/]+$",
-                  "location": "path",
-                  "description": "Name of the approval request to approve.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
+              "httpMethod": "POST",
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "flatPath": "v1beta1/organizations/{organizationsId}/approvalRequests/{approvalRequestsId}:approve",
-              "path": "v1beta1/{+name}:approve",
-              "id": "accessapproval.organizations.approvalRequests.approve",
-              "description": "Approves a request and returns the updated ApprovalRequest.\n\nReturns NOT_FOUND if the request does not exist. Returns\nFAILED_PRECONDITION if the request exists but is not in a pending state.",
-              "request": {
-                "$ref": "ApproveApprovalRequestMessage"
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "Name of the ApprovalRequest to dismiss.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+/approvalRequests/[^/]+$"
+                }
               },
-              "response": {
-                "$ref": "ApprovalRequest"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "POST"
+              "flatPath": "v1beta1/organizations/{organizationsId}/approvalRequests/{approvalRequestsId}:dismiss",
+              "path": "v1beta1/{+name}:dismiss",
+              "id": "accessapproval.organizations.approvalRequests.dismiss"
             }
           }
         }
@@ -397,6 +392,193 @@
     "folders": {
       "methods": {
         "getAccessApprovalSettings": {
+          "flatPath": "v1beta1/folders/{foldersId}/accessApprovalSettings",
+          "path": "v1beta1/{+name}",
+          "id": "accessapproval.folders.getAccessApprovalSettings",
+          "description": "Gets the settings associated with a project, folder, or organization.",
+          "response": {
+            "$ref": "AccessApprovalSettings"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "name": {
+              "location": "path",
+              "description": "Name of the AccessApprovalSettings to retrieve.",
+              "required": true,
+              "type": "string",
+              "pattern": "^folders/[^/]+/accessApprovalSettings$"
+            }
+          }
+        },
+        "updateAccessApprovalSettings": {
+          "path": "v1beta1/{+name}",
+          "id": "accessapproval.folders.updateAccessApprovalSettings",
+          "description": "Updates the settings associated with a project, folder, or organization.\nCompletely replaces the existing settings.",
+          "request": {
+            "$ref": "AccessApprovalSettings"
+          },
+          "response": {
+            "$ref": "AccessApprovalSettings"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "PATCH",
+          "parameters": {
+            "name": {
+              "description": "The resource name of the settings. Format is one of:\n\u003col\u003e\n  \u003cli\u003e\"projects/{project_id}/accessApprovalSettings\"\u003c/li\u003e\n  \u003cli\u003e\"folders/{folder_id}/accessApprovalSettings\"\u003c/li\u003e\n  \u003cli\u003e\"organizations/{organization_id}/accessApprovalSettings\"\u003c/li\u003e\n\u003col\u003e",
+              "required": true,
+              "type": "string",
+              "pattern": "^folders/[^/]+/accessApprovalSettings$",
+              "location": "path"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1beta1/folders/{foldersId}/accessApprovalSettings"
+        }
+      },
+      "resources": {
+        "approvalRequests": {
+          "methods": {
+            "approve": {
+              "flatPath": "v1beta1/folders/{foldersId}/approvalRequests/{approvalRequestsId}:approve",
+              "path": "v1beta1/{+name}:approve",
+              "id": "accessapproval.folders.approvalRequests.approve",
+              "request": {
+                "$ref": "ApproveApprovalRequestMessage"
+              },
+              "description": "Approves a request and returns the updated ApprovalRequest.\n\nReturns NOT_FOUND if the request does not exist. Returns\nFAILED_PRECONDITION if the request exists but is not in a pending state.",
+              "response": {
+                "$ref": "ApprovalRequest"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "Name of the approval request to approve.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^folders/[^/]+/approvalRequests/[^/]+$"
+                }
+              }
+            },
+            "list": {
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "pageToken": {
+                  "description": "A token identifying the page of results to return.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "Requested page size.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "parent": {
+                  "location": "path",
+                  "description": "The parent resource. This may be \"projects/{project_id}\",\n\"folders/{folder_id}\", or \"organizations/{organization_id}\".",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^folders/[^/]+$"
+                },
+                "filter": {
+                  "description": "A filter on the type of approval requests to retrieve. Must be one of the\nfollowing values:\n\u003col\u003e\n  \u003cli\u003e[not set]: Requests that are pending or have active approvals.\u003c/li\u003e\n  \u003cli\u003eALL: All requests.\u003c/li\u003e\n  \u003cli\u003ePENDING: Only pending requests.\u003c/li\u003e\n  \u003cli\u003eACTIVE: Only active (i.e. currently approved) requests.\u003c/li\u003e\n  \u003cli\u003eDISMISSED: Only dismissed (including expired) requests.\u003c/li\u003e\n\u003c/ol\u003e",
+                  "type": "string",
+                  "location": "query"
+                }
+              },
+              "flatPath": "v1beta1/folders/{foldersId}/approvalRequests",
+              "path": "v1beta1/{+parent}/approvalRequests",
+              "id": "accessapproval.folders.approvalRequests.list",
+              "description": "Lists approval requests associated with a project, folder, or organization.\nApproval requests can be filtered by state (pending, active, dismissed).\nThe order is reverse chronological.",
+              "response": {
+                "$ref": "ListApprovalRequestsResponse"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "GET"
+            },
+            "get": {
+              "description": "Gets an approval request. Returns NOT_FOUND if the request does not exist.",
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "ApprovalRequest"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "Name of the approval request to retrieve.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^folders/[^/]+/approvalRequests/[^/]+$"
+                }
+              },
+              "flatPath": "v1beta1/folders/{foldersId}/approvalRequests/{approvalRequestsId}",
+              "id": "accessapproval.folders.approvalRequests.get",
+              "path": "v1beta1/{+name}"
+            },
+            "dismiss": {
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "ApprovalRequest"
+              },
+              "parameters": {
+                "name": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^folders/[^/]+/approvalRequests/[^/]+$",
+                  "location": "path",
+                  "description": "Name of the ApprovalRequest to dismiss."
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1beta1/folders/{foldersId}/approvalRequests/{approvalRequestsId}:dismiss",
+              "id": "accessapproval.folders.approvalRequests.dismiss",
+              "path": "v1beta1/{+name}:dismiss",
+              "description": "Dismisses a request. Returns the updated ApprovalRequest.\n\nNOTE: This does not deny access to the resource if another request has been\nmade and approved. It is equivalent in effect to ignoring the request\naltogether.\n\nReturns NOT_FOUND if the request does not exist.\n\nReturns FAILED_PRECONDITION if the request exists but is not in a pending\nstate.",
+              "request": {
+                "$ref": "DismissApprovalRequestMessage"
+              }
+            }
+          }
+        }
+      }
+    },
+    "projects": {
+      "methods": {
+        "getAccessApprovalSettings": {
+          "path": "v1beta1/{+name}",
+          "id": "accessapproval.projects.getAccessApprovalSettings",
           "description": "Gets the settings associated with a project, folder, or organization.",
           "response": {
             "$ref": "AccessApprovalSettings"
@@ -407,19 +589,17 @@
           "httpMethod": "GET",
           "parameters": {
             "name": {
+              "pattern": "^projects/[^/]+/accessApprovalSettings$",
+              "location": "path",
               "description": "Name of the AccessApprovalSettings to retrieve.",
               "required": true,
-              "type": "string",
-              "pattern": "^folders/[^/]+/accessApprovalSettings$",
-              "location": "path"
+              "type": "string"
             }
           },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "flatPath": "v1beta1/folders/{foldersId}/accessApprovalSettings",
-          "path": "v1beta1/{+name}",
-          "id": "accessapproval.folders.getAccessApprovalSettings"
+          "flatPath": "v1beta1/projects/{projectsId}/accessApprovalSettings"
         },
         "updateAccessApprovalSettings": {
           "response": {
@@ -434,16 +614,16 @@
           ],
           "parameters": {
             "name": {
-              "pattern": "^folders/[^/]+/accessApprovalSettings$",
-              "location": "path",
-              "description": "The resource name of the settings. Format is one of:\n\u003col\u003e\n  \u003cli\u003e\"projects/{project_id}/accessApprovalSettings\"\u003c/li\u003e\n  \u003cli\u003e\"folders/{folder_id}/accessApprovalSettings\"\u003c/li\u003e\n  \u003cli\u003e\"organizations/{organization_id}/accessApprovalSettings\"\u003c/li\u003e\n\u003col\u003e",
               "required": true,
-              "type": "string"
+              "type": "string",
+              "pattern": "^projects/[^/]+/accessApprovalSettings$",
+              "location": "path",
+              "description": "The resource name of the settings. Format is one of:\n\u003col\u003e\n  \u003cli\u003e\"projects/{project_id}/accessApprovalSettings\"\u003c/li\u003e\n  \u003cli\u003e\"folders/{folder_id}/accessApprovalSettings\"\u003c/li\u003e\n  \u003cli\u003e\"organizations/{organization_id}/accessApprovalSettings\"\u003c/li\u003e\n\u003col\u003e"
             }
           },
-          "flatPath": "v1beta1/folders/{foldersId}/accessApprovalSettings",
+          "flatPath": "v1beta1/projects/{projectsId}/accessApprovalSettings",
           "path": "v1beta1/{+name}",
-          "id": "accessapproval.folders.updateAccessApprovalSettings",
+          "id": "accessapproval.projects.updateAccessApprovalSettings",
           "request": {
             "$ref": "AccessApprovalSettings"
           },
@@ -463,18 +643,18 @@
               },
               "parameters": {
                 "name": {
-                  "pattern": "^folders/[^/]+/approvalRequests/[^/]+$",
                   "location": "path",
                   "description": "Name of the approval request to approve.",
                   "required": true,
-                  "type": "string"
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/approvalRequests/[^/]+$"
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "flatPath": "v1beta1/folders/{foldersId}/approvalRequests/{approvalRequestsId}:approve",
-              "id": "accessapproval.folders.approvalRequests.approve",
+              "flatPath": "v1beta1/projects/{projectsId}/approvalRequests/{approvalRequestsId}:approve",
+              "id": "accessapproval.projects.approvalRequests.approve",
               "path": "v1beta1/{+name}:approve",
               "description": "Approves a request and returns the updated ApprovalRequest.\n\nReturns NOT_FOUND if the request does not exist. Returns\nFAILED_PRECONDITION if the request exists but is not in a pending state.",
               "request": {
@@ -482,183 +662,18 @@
               }
             },
             "list": {
-              "description": "Lists approval requests associated with a project, folder, or organization.\nApproval requests can be filtered by state (pending, active, dismissed).\nThe order is reverse chronological.",
-              "response": {
-                "$ref": "ListApprovalRequestsResponse"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "pageToken": {
-                  "location": "query",
-                  "description": "A token identifying the page of results to return.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "description": "Requested page size.",
-                  "format": "int32",
-                  "type": "integer",
-                  "location": "query"
-                },
-                "parent": {
-                  "description": "The parent resource. This may be \"projects/{project_id}\",\n\"folders/{folder_id}\", or \"organizations/{organization_id}\".",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^folders/[^/]+$",
-                  "location": "path"
-                },
-                "filter": {
-                  "description": "A filter on the type of approval requests to retrieve. Must be one of the\nfollowing values:\n\u003col\u003e\n  \u003cli\u003e[not set]: Requests that are pending or have active approvals.\u003c/li\u003e\n  \u003cli\u003eALL: All requests.\u003c/li\u003e\n  \u003cli\u003ePENDING: Only pending requests.\u003c/li\u003e\n  \u003cli\u003eACTIVE: Only active (i.e. currently approved) requests.\u003c/li\u003e\n  \u003cli\u003eDISMISSED: Only dismissed (including expired) requests.\u003c/li\u003e\n\u003c/ol\u003e",
-                  "type": "string",
-                  "location": "query"
-                }
-              },
-              "flatPath": "v1beta1/folders/{foldersId}/approvalRequests",
+              "flatPath": "v1beta1/projects/{projectsId}/approvalRequests",
+              "id": "accessapproval.projects.approvalRequests.list",
               "path": "v1beta1/{+parent}/approvalRequests",
-              "id": "accessapproval.folders.approvalRequests.list"
-            },
-            "get": {
-              "path": "v1beta1/{+name}",
-              "id": "accessapproval.folders.approvalRequests.get",
-              "description": "Gets an approval request. Returns NOT_FOUND if the request does not exist.",
-              "response": {
-                "$ref": "ApprovalRequest"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "pattern": "^folders/[^/]+/approvalRequests/[^/]+$",
-                  "location": "path",
-                  "description": "Name of the approval request to retrieve.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/folders/{foldersId}/approvalRequests/{approvalRequestsId}"
-            },
-            "dismiss": {
-              "parameters": {
-                "name": {
-                  "description": "Name of the ApprovalRequest to dismiss.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^folders/[^/]+/approvalRequests/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/folders/{foldersId}/approvalRequests/{approvalRequestsId}:dismiss",
-              "path": "v1beta1/{+name}:dismiss",
-              "id": "accessapproval.folders.approvalRequests.dismiss",
-              "description": "Dismisses a request. Returns the updated ApprovalRequest.\n\nNOTE: This does not deny access to the resource if another request has been\nmade and approved. It is equivalent in effect to ignoring the request\naltogether.\n\nReturns NOT_FOUND if the request does not exist.\n\nReturns FAILED_PRECONDITION if the request exists but is not in a pending\nstate.",
-              "request": {
-                "$ref": "DismissApprovalRequestMessage"
-              },
-              "response": {
-                "$ref": "ApprovalRequest"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "POST"
-            }
-          }
-        }
-      }
-    },
-    "projects": {
-      "methods": {
-        "getAccessApprovalSettings": {
-          "description": "Gets the settings associated with a project, folder, or organization.",
-          "httpMethod": "GET",
-          "parameterOrder": [
-            "name"
-          ],
-          "response": {
-            "$ref": "AccessApprovalSettings"
-          },
-          "parameters": {
-            "name": {
-              "pattern": "^projects/[^/]+/accessApprovalSettings$",
-              "location": "path",
-              "description": "Name of the AccessApprovalSettings to retrieve.",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1beta1/projects/{projectsId}/accessApprovalSettings",
-          "id": "accessapproval.projects.getAccessApprovalSettings",
-          "path": "v1beta1/{+name}"
-        },
-        "updateAccessApprovalSettings": {
-          "httpMethod": "PATCH",
-          "parameterOrder": [
-            "name"
-          ],
-          "response": {
-            "$ref": "AccessApprovalSettings"
-          },
-          "parameters": {
-            "name": {
-              "description": "The resource name of the settings. Format is one of:\n\u003col\u003e\n  \u003cli\u003e\"projects/{project_id}/accessApprovalSettings\"\u003c/li\u003e\n  \u003cli\u003e\"folders/{folder_id}/accessApprovalSettings\"\u003c/li\u003e\n  \u003cli\u003e\"organizations/{organization_id}/accessApprovalSettings\"\u003c/li\u003e\n\u003col\u003e",
-              "required": true,
-              "type": "string",
-              "pattern": "^projects/[^/]+/accessApprovalSettings$",
-              "location": "path"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1beta1/projects/{projectsId}/accessApprovalSettings",
-          "id": "accessapproval.projects.updateAccessApprovalSettings",
-          "path": "v1beta1/{+name}",
-          "description": "Updates the settings associated with a project, folder, or organization.\nCompletely replaces the existing settings.",
-          "request": {
-            "$ref": "AccessApprovalSettings"
-          }
-        }
-      },
-      "resources": {
-        "approvalRequests": {
-          "methods": {
-            "list": {
               "description": "Lists approval requests associated with a project, folder, or organization.\nApproval requests can be filtered by state (pending, active, dismissed).\nThe order is reverse chronological.",
               "httpMethod": "GET",
-              "parameterOrder": [
-                "parent"
-              ],
               "response": {
                 "$ref": "ListApprovalRequestsResponse"
               },
+              "parameterOrder": [
+                "parent"
+              ],
               "parameters": {
-                "pageToken": {
-                  "description": "A token identifying the page of results to return.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "Requested page size.",
-                  "format": "int32",
-                  "type": "integer"
-                },
                 "parent": {
                   "description": "The parent resource. This may be \"projects/{project_id}\",\n\"folders/{folder_id}\", or \"organizations/{organization_id}\".",
                   "required": true,
@@ -667,17 +682,25 @@
                   "location": "path"
                 },
                 "filter": {
+                  "type": "string",
                   "location": "query",
-                  "description": "A filter on the type of approval requests to retrieve. Must be one of the\nfollowing values:\n\u003col\u003e\n  \u003cli\u003e[not set]: Requests that are pending or have active approvals.\u003c/li\u003e\n  \u003cli\u003eALL: All requests.\u003c/li\u003e\n  \u003cli\u003ePENDING: Only pending requests.\u003c/li\u003e\n  \u003cli\u003eACTIVE: Only active (i.e. currently approved) requests.\u003c/li\u003e\n  \u003cli\u003eDISMISSED: Only dismissed (including expired) requests.\u003c/li\u003e\n\u003c/ol\u003e",
-                  "type": "string"
+                  "description": "A filter on the type of approval requests to retrieve. Must be one of the\nfollowing values:\n\u003col\u003e\n  \u003cli\u003e[not set]: Requests that are pending or have active approvals.\u003c/li\u003e\n  \u003cli\u003eALL: All requests.\u003c/li\u003e\n  \u003cli\u003ePENDING: Only pending requests.\u003c/li\u003e\n  \u003cli\u003eACTIVE: Only active (i.e. currently approved) requests.\u003c/li\u003e\n  \u003cli\u003eDISMISSED: Only dismissed (including expired) requests.\u003c/li\u003e\n\u003c/ol\u003e"
+                },
+                "pageToken": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "A token identifying the page of results to return."
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "Requested page size.",
+                  "format": "int32",
+                  "type": "integer"
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/projects/{projectsId}/approvalRequests",
-              "id": "accessapproval.projects.approvalRequests.list",
-              "path": "v1beta1/{+parent}/approvalRequests"
+              ]
             },
             "get": {
               "response": {
@@ -687,68 +710,11 @@
                 "name"
               ],
               "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "Name of the approval request to retrieve.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/approvalRequests/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v1beta1/projects/{projectsId}/approvalRequests/{approvalRequestsId}",
-              "path": "v1beta1/{+name}",
-              "id": "accessapproval.projects.approvalRequests.get",
-              "description": "Gets an approval request. Returns NOT_FOUND if the request does not exist."
-            },
-            "dismiss": {
-              "id": "accessapproval.projects.approvalRequests.dismiss",
-              "path": "v1beta1/{+name}:dismiss",
-              "description": "Dismisses a request. Returns the updated ApprovalRequest.\n\nNOTE: This does not deny access to the resource if another request has been\nmade and approved. It is equivalent in effect to ignoring the request\naltogether.\n\nReturns NOT_FOUND if the request does not exist.\n\nReturns FAILED_PRECONDITION if the request exists but is not in a pending\nstate.",
-              "request": {
-                "$ref": "DismissApprovalRequestMessage"
-              },
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "name"
-              ],
-              "response": {
-                "$ref": "ApprovalRequest"
-              },
-              "parameters": {
-                "name": {
-                  "description": "Name of the ApprovalRequest to dismiss.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/approvalRequests/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/projects/{projectsId}/approvalRequests/{approvalRequestsId}:dismiss"
-            },
-            "approve": {
-              "description": "Approves a request and returns the updated ApprovalRequest.\n\nReturns NOT_FOUND if the request does not exist. Returns\nFAILED_PRECONDITION if the request exists but is not in a pending state.",
-              "request": {
-                "$ref": "ApproveApprovalRequestMessage"
-              },
-              "response": {
-                "$ref": "ApprovalRequest"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "POST",
               "parameters": {
                 "name": {
                   "pattern": "^projects/[^/]+/approvalRequests/[^/]+$",
                   "location": "path",
-                  "description": "Name of the approval request to approve.",
+                  "description": "Name of the approval request to retrieve.",
                   "required": true,
                   "type": "string"
                 }
@@ -756,9 +722,38 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "flatPath": "v1beta1/projects/{projectsId}/approvalRequests/{approvalRequestsId}:approve",
-              "path": "v1beta1/{+name}:approve",
-              "id": "accessapproval.projects.approvalRequests.approve"
+              "flatPath": "v1beta1/projects/{projectsId}/approvalRequests/{approvalRequestsId}",
+              "path": "v1beta1/{+name}",
+              "id": "accessapproval.projects.approvalRequests.get",
+              "description": "Gets an approval request. Returns NOT_FOUND if the request does not exist."
+            },
+            "dismiss": {
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "ApprovalRequest"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "Name of the ApprovalRequest to dismiss.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/approvalRequests/[^/]+$"
+                }
+              },
+              "flatPath": "v1beta1/projects/{projectsId}/approvalRequests/{approvalRequestsId}:dismiss",
+              "id": "accessapproval.projects.approvalRequests.dismiss",
+              "path": "v1beta1/{+name}:dismiss",
+              "request": {
+                "$ref": "DismissApprovalRequestMessage"
+              },
+              "description": "Dismisses a request. Returns the updated ApprovalRequest.\n\nNOTE: This does not deny access to the resource if another request has been\nmade and approved. It is equivalent in effect to ignoring the request\naltogether.\n\nReturns NOT_FOUND if the request does not exist.\n\nReturns FAILED_PRECONDITION if the request exists but is not in a pending\nstate."
             }
           }
         }
@@ -772,19 +767,14 @@
       "type": "string"
     },
     "access_token": {
+      "type": "string",
       "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
+      "description": "OAuth access token."
     },
     "upload_protocol": {
       "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
     },
     "prettyPrint": {
       "location": "query",
@@ -792,27 +782,24 @@
       "type": "boolean",
       "default": "true"
     },
+    "quotaUser": {
+      "type": "string",
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+    },
     "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string",
       "location": "query"
     },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
     "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -821,13 +808,19 @@
       "enum": [
         "1",
         "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
+      ]
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "callback": {
+      "type": "string",
+      "location": "query",
+      "description": "JSONP"
     },
     "alt": {
-      "description": "Data format for response.",
-      "default": "json",
       "enum": [
         "json",
         "media",
@@ -839,13 +832,20 @@
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
-      "location": "query"
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
     }
   },
   "version": "v1beta1",
   "baseUrl": "https://accessapproval.googleapis.com/",
+  "servicePath": "",
   "kind": "discovery#restDescription",
   "description": "An API for controlling access to data by Google personnel.",
-  "servicePath": "",
-  "basePath": ""
+  "basePath": "",
+  "id": "accessapproval:v1beta1",
+  "documentationLink": "https://cloud.google.com/access-approval/docs",
+  "revision": "20190614",
+  "discoveryVersion": "v1",
+  "version_module": true
 }

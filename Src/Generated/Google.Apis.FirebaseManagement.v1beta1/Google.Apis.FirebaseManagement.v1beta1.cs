@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190620 (1631)
+ *      <tr><th>API Rev<td>20190625 (1636)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -561,6 +561,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         {
             this.service = service;
             androidApps = new AndroidAppsResource(service);
+            availableLocations = new AvailableLocationsResource(service);
+            defaultLocation = new DefaultLocationResource(service);
             iosApps = new IosAppsResource(service);
             webApps = new WebAppsResource(service);
 
@@ -1196,6 +1198,298 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly AvailableLocationsResource availableLocations;
+
+        /// <summary>Gets the AvailableLocations resource.</summary>
+        public virtual AvailableLocationsResource AvailableLocations
+        {
+            get { return availableLocations; }
+        }
+
+        /// <summary>The "availableLocations" collection of methods.</summary>
+        public class AvailableLocationsResource
+        {
+            private const string Resource = "availableLocations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AvailableLocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Returns a list of valid Google Cloud Platform (GCP) resource locations for the specified
+            /// Project (including a FirebaseProject).
+            ///
+            /// The default GCP resource location of a project defines the geographical location where project
+            /// resources, such as Cloud Firestore, will be provisioned by default.
+            ///
+            /// The returned list are the available [GCP resource
+            /// locations](https://firebase.google.com/docs/projects/locations). This call checks for any location
+            /// restrictions for the specified Project and, thus, might return a subset of all possible GCP resource
+            /// locations. To list all GCP resource locations (regardless of any restrictions), call the endpoint
+            /// without specifying a `projectId` (that is, `/v1beta1/{parent=projects/-}/listAvailableLocations`).
+            ///
+            /// To call `ListAvailableLocations` with a specified project, a member must be at minimum a Viewer of the
+            /// project. Calls without a specified project do not require any specific project permissions.</summary>
+            /// <param name="parent">The Project for which to list GCP resource locations, in the format: projects/projectId If no
+            /// project is specified (that is, `projects/-`), the returned list does not take into account org-specific or project-
+            /// specific location restrictions.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Returns a list of valid Google Cloud Platform (GCP) resource locations for the specified
+            /// Project (including a FirebaseProject).
+            ///
+            /// The default GCP resource location of a project defines the geographical location where project
+            /// resources, such as Cloud Firestore, will be provisioned by default.
+            ///
+            /// The returned list are the available [GCP resource
+            /// locations](https://firebase.google.com/docs/projects/locations). This call checks for any location
+            /// restrictions for the specified Project and, thus, might return a subset of all possible GCP resource
+            /// locations. To list all GCP resource locations (regardless of any restrictions), call the endpoint
+            /// without specifying a `projectId` (that is, `/v1beta1/{parent=projects/-}/listAvailableLocations`).
+            ///
+            /// To call `ListAvailableLocations` with a specified project, a member must be at minimum a Viewer of the
+            /// project. Calls without a specified project do not require any specific project permissions.</summary>
+            public class ListRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.ListAvailableLocationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>The Project for which to list GCP resource locations, in the format: projects/projectId If
+                /// no project is specified (that is, `projects/-`), the returned list does not take into account org-
+                /// specific or project-specific location restrictions.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Token returned from a previous call to `ListAvailableLocations` indicating where in the
+                /// list of locations to resume listing.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of locations to return in the response.
+                ///
+                /// The server may return fewer than this value at its discretion. If no value is specified (or too
+                /// large a value is specified), then the server will impose its own limit.
+                ///
+                /// This value cannot be negative.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+parent}/availableLocations"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly DefaultLocationResource defaultLocation;
+
+        /// <summary>Gets the DefaultLocation resource.</summary>
+        public virtual DefaultLocationResource DefaultLocation
+        {
+            get { return defaultLocation; }
+        }
+
+        /// <summary>The "defaultLocation" collection of methods.</summary>
+        public class DefaultLocationResource
+        {
+            private const string Resource = "defaultLocation";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DefaultLocationResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Sets the default Google Cloud Platform (GCP) resource location for the specified
+            /// FirebaseProject.
+            ///
+            /// This method creates an App Engine application with a [default Cloud Storage
+            /// bucket](https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/setting-up-
+            /// cloud-storage#activating_a_cloud_storage_bucket), located in the specified
+            /// [`location_id`](#body.request_body.FIELDS.location_id). This location must be one of the available [GCP
+            /// resource locations](https://firebase.google.com/docs/projects/locations). After the default GCP resource
+            /// location is finalized, or if it was already set, it cannot be changed. The default GCP resource location
+            /// for the specified FirebaseProject might already be set because either the GCP `Project` already has an
+            /// App Engine application or `FinalizeDefaultLocation` was previously called with a specified
+            /// `location_id`. Any new calls to `FinalizeDefaultLocation` with a different specified `location_id` will
+            /// return a 409 error.
+            ///
+            /// The result of this call is an [`Operation`](../../v1beta1/operations), which can be used to track the
+            /// provisioning process. The [`response`](../../v1beta1/operations#Operation.FIELDS.response) type of the
+            /// `Operation` is google.protobuf.Empty.
+            ///
+            /// The `Operation` can be polled by its `name` using GetOperation until `done` is true. When `done` is
+            /// true, the `Operation` has either succeeded or failed. If the `Operation` has succeeded, its
+            /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) will be set to a google.protobuf.Empty;
+            /// if the `Operation` has failed, its `error` will be set to a google.rpc.Status. The `Operation` is
+            /// automatically deleted after completion, so there is no need to call DeleteOperation.
+            ///
+            /// All fields listed in the [request body](#request-body) are required.
+            ///
+            /// To call `FinalizeDefaultLocation`, a member must be an Owner of the project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">The resource name of the Project for which the default GCP resource location will be set, in
+            /// the format: projects/projectId</param>
+            public virtual FinalizeRequest Finalize(Google.Apis.FirebaseManagement.v1beta1.Data.FinalizeDefaultLocationRequest body, string parent)
+            {
+                return new FinalizeRequest(service, body, parent);
+            }
+
+            /// <summary>Sets the default Google Cloud Platform (GCP) resource location for the specified
+            /// FirebaseProject.
+            ///
+            /// This method creates an App Engine application with a [default Cloud Storage
+            /// bucket](https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/setting-up-
+            /// cloud-storage#activating_a_cloud_storage_bucket), located in the specified
+            /// [`location_id`](#body.request_body.FIELDS.location_id). This location must be one of the available [GCP
+            /// resource locations](https://firebase.google.com/docs/projects/locations). After the default GCP resource
+            /// location is finalized, or if it was already set, it cannot be changed. The default GCP resource location
+            /// for the specified FirebaseProject might already be set because either the GCP `Project` already has an
+            /// App Engine application or `FinalizeDefaultLocation` was previously called with a specified
+            /// `location_id`. Any new calls to `FinalizeDefaultLocation` with a different specified `location_id` will
+            /// return a 409 error.
+            ///
+            /// The result of this call is an [`Operation`](../../v1beta1/operations), which can be used to track the
+            /// provisioning process. The [`response`](../../v1beta1/operations#Operation.FIELDS.response) type of the
+            /// `Operation` is google.protobuf.Empty.
+            ///
+            /// The `Operation` can be polled by its `name` using GetOperation until `done` is true. When `done` is
+            /// true, the `Operation` has either succeeded or failed. If the `Operation` has succeeded, its
+            /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) will be set to a google.protobuf.Empty;
+            /// if the `Operation` has failed, its `error` will be set to a google.rpc.Status. The `Operation` is
+            /// automatically deleted after completion, so there is no need to call DeleteOperation.
+            ///
+            /// All fields listed in the [request body](#request-body) are required.
+            ///
+            /// To call `FinalizeDefaultLocation`, a member must be an Owner of the project.</summary>
+            public class FinalizeRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Finalize request.</summary>
+                public FinalizeRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseManagement.v1beta1.Data.FinalizeDefaultLocationRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource name of the Project for which the default GCP resource location will be set,
+                /// in the format: projects/projectId</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseManagement.v1beta1.Data.FinalizeDefaultLocationRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "finalize"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+parent}/defaultLocation:finalize"; }
+                }
+
+                /// <summary>Initializes Finalize parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
                         });
                 }
 
@@ -2547,10 +2841,12 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     /// <summary>All fields are required.</summary>
     public class AddFirebaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. Instead, call FinalizeDefaultLocation after you add Firebase services to your project.
+        /// <summary>Deprecated. Instead, to set your project's default GCP resource location, call
+        /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase services to your
+        /// project.
         ///
-        /// The ID of the project's Cloud resource location. The location should be one of the AppEngine locations
-        /// defined here: https://cloud.google.com/appengine/docs/locations</summary>
+        /// The ID of the project's default GCP resource location. The location must be one of the available [GCP
+        /// resource locations](https://firebase.google.com/docs/projects/locations).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -2576,8 +2872,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseURL")]
         public virtual string DatabaseURL { get; set; } 
 
-        /// <summary>The default resource location of other Firebase resources (such as Cloud Firestore). For examples,
-        /// see https://cloud.google.com/appengine/docs/locations.</summary>
+        /// <summary>The ID of the project's default GCP resource location. The location is one of the available [GCP
+        /// resource locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the
+        /// default GCP resource location has not been finalized yet. To set your project's default GCP resource
+        /// location, call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase
+        /// services to your project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -2652,9 +2951,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hostingSite")]
         public virtual string HostingSite { get; set; } 
 
-        /// <summary>The default resource location of other Firebase resources, such as Cloud Firestore. This field is
-        /// omitted if the default resource location has not been finalized yet. For examples, see
-        /// https://cloud.google.com/appengine/docs/locations.</summary>
+        /// <summary>The ID of the project's default GCP resource location. The location is one of the available [GCP
+        /// resource locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the
+        /// default GCP resource location has not been finalized yet. To set your project's default GCP resource
+        /// location, call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase
+        /// services to your project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -2667,8 +2968,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("realtimeDatabaseInstance")]
         public virtual string RealtimeDatabaseInstance { get; set; } 
 
-        /// <summary>The default Cloud Storage for Firebase storage bucket, in the format: projectId.appspot.com. This
-        /// field is omitted if the default resource location has not been finalized yet.</summary>
+        /// <summary>The default Cloud Storage for Firebase storage bucket, in the format:
+        /// projectId.appspot.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBucket")]
         public virtual string StorageBucket { get; set; } 
 
@@ -2684,6 +2985,17 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class FinalizeDefaultLocationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the default GCP resource location for the Project. The location must be one of the
+        /// available [GCP resource locations](https://firebase.google.com/docs/projects/locations).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
+        public virtual string LocationId { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2819,6 +3131,26 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ListAvailableLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>One page of results from a call to `ListAvailableLocations`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+
+        /// <summary>If the result list is too large to fit in a single response, then a token is returned. If the
+        /// string is empty, then this response is the last page of results and all available locations have been
+        /// listed.
+        ///
+        /// This token can be used in a subsequent call to `ListAvailableLocations` to find more locations.
+        ///
+        /// Page tokens are short-lived and should not be persisted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ListAvailableProjectsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If the result list is too large to fit in a single response, then a token is returned. If the
@@ -2906,6 +3238,18 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A GCP resource location that can be selected for a Project.</summary>
+    public class Location : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the default GCP resource location. It must be one of the available [GCP resource
+        /// locations](https://firebase.google.com/docs/projects/locations).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
+        public virtual string LocationId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>This is proto2's version of MessageSet.</summary>
     public class MessageSet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2956,10 +3300,12 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The default resource location of other Firebase resources (such as Cloud Firestore). Not all
-        /// projects will have this field populated. If it is not populated, it means that the project is not yet
-        /// associated with any region. Consequently, a call to AddFirebase must provide a location in this case. For
-        /// examples, see https://cloud.google.com/appengine/docs/locations.</summary>
+        /// <summary>The ID of the project's default GCP resource location. The location is one of the available [GCP
+        /// resource locations](https://firebase.google.com/docs/projects/locations). Not all projects will have this
+        /// field populated. If it is not populated, it means that the project does not yet have a default GCP resource
+        /// location. To set your project's default GCP resource location, call
+        /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase services to your
+        /// project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -3156,8 +3502,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseURL")]
         public virtual string DatabaseURL { get; set; } 
 
-        /// <summary>The default resource location of other Firebase resources (such as Cloud Firestore). For examples,
-        /// see https://cloud.google.com/appengine/docs/locations.</summary>
+        /// <summary>The ID of the project's default GCP resource location. The location is one of the available [GCP
+        /// resource locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the
+        /// default GCP resource location has not been finalized yet. To set your project's default GCP resource
+        /// location, call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase
+        /// services to your project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 

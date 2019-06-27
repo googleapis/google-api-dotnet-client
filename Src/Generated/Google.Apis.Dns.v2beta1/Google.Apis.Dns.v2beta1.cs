@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20190611 (1622)
+ *      <tr><th>API Rev<td>20190625 (1636)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -2291,8 +2291,8 @@ namespace Google.Apis.Dns.v2beta1.Data
 
     public class ManagedZoneDnsSecConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. Output
-        /// only while state is not OFF.</summary>
+        /// <summary>Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. Can
+        /// only be changed while state is OFF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultKeySpecs")]
         public virtual System.Collections.Generic.IList<DnsKeySpec> DefaultKeySpecs { get; set; } 
 
@@ -2301,8 +2301,8 @@ namespace Google.Apis.Dns.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Specifies the mechanism used to provide authenticated denial-of-existence responses. Output only
-        /// while state is not OFF.</summary>
+        /// <summary>Specifies the mechanism used to provide authenticated denial-of-existence responses. Can only be
+        /// changed while state is OFF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonExistence")]
         public virtual string NonExistence { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190611 (1622)
+ *      <tr><th>API Rev<td>20190625 (1636)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -2875,8 +2875,8 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     public class ManagedZoneDnsSecConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. Output
-        /// only while state is not OFF.</summary>
+        /// <summary>Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. Can
+        /// only be changed while state is OFF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultKeySpecs")]
         public virtual System.Collections.Generic.IList<DnsKeySpec> DefaultKeySpecs { get; set; } 
 
@@ -2885,8 +2885,8 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Specifies the mechanism used to provide authenticated denial-of-existence responses. Output only
-        /// while state is not OFF.</summary>
+        /// <summary>Specifies the mechanism used to provide authenticated denial-of-existence responses. Can only be
+        /// changed while state is OFF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonExistence")]
         public virtual string NonExistence { get; set; } 
 
@@ -2973,10 +2973,9 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     public class ManagedZonePeeringConfigTargetNetwork : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If this zone has been deactivated due to a problem with the network it targeted, the time at which
-        /// it was deactivated. The zone can be deactivated if, for instance, the network it targeted was deleted. If
-        /// the targeted network is still present, this will be the empty string. This is in RFC3339 text format. Output
-        /// only.</summary>
+        /// <summary>If this zone has been deactivated (possibly because the producer network it targeted was deleted),
+        /// the time at which it was deactivated. If the peering connection is still active, this will be the empty
+        /// string. This is in RFC3339 text format. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deactivateTime")]
         public virtual string DeactivateTime { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190608 (1619)
+ *      <tr><th>API Rev<td>20190620 (1631)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -476,6 +476,18 @@ namespace Google.Apis.CloudTrace.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>Field used to sort the returned traces. Optional. Can be one of the following:
+                ///
+                /// *   `trace_id` *   `name` (`name` field of root span in the trace) *   `duration` (difference
+                /// between `end_time` and `start_time` fields of the root span) *   `start` (`start_time` field of the
+                /// root span)
+                ///
+                /// Descending order can be specified by appending `desc` to the sort field (for example, `name desc`).
+                ///
+                /// Only one sort field is permitted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
                 /// <summary>An optional filter against labels for the request.
                 ///
                 /// By default, searches use prefix matching. To specify exact match, prepend a plus symbol (`+`) to the
@@ -536,18 +548,6 @@ namespace Google.Apis.CloudTrace.v1
                     COMPLETE,
                 }
 
-                /// <summary>Field used to sort the returned traces. Optional. Can be one of the following:
-                ///
-                /// *   `trace_id` *   `name` (`name` field of root span in the trace) *   `duration` (difference
-                /// between `end_time` and `start_time` fields of the root span) *   `start` (`start_time` field of the
-                /// root span)
-                ///
-                /// Descending order can be specified by appending `desc` to the sort field (for example, `name desc`).
-                ///
-                /// Only one sort field is permitted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -578,6 +578,15 @@ namespace Google.Apis.CloudTrace.v1
                             Name = "projectId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -630,15 +639,6 @@ namespace Google.Apis.CloudTrace.v1
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

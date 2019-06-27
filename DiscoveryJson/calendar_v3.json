@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/lKF_tGqbIv32tztXl1Y1OHKH7zQ\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/K_k45CtMfV--mlEBFlbW_LzaaUU\"",
  "discoveryVersion": "v1",
  "id": "calendar:v3",
  "name": "calendar",
@@ -381,7 +381,7 @@
     },
     "kind": {
      "type": "string",
-     "description": "Identifies this as a notification channel used to watch for changes to a resource. Value: the fixed string \"api#channel\".",
+     "description": "Identifies this as a notification channel used to watch for changes to a resource, which is \"api#channel\".",
      "default": "api#channel"
     },
     "params": {

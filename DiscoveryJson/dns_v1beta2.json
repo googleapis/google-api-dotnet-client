@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/tZodWpNji3ot_YmPPgfJSu7AV8c\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/Khrvb7g_d0JWxRb9Yn4ZzW5VnGk\"",
  "discoveryVersion": "v1",
  "id": "dns:v1beta2",
  "name": "dns",
  "version": "v1beta2",
- "revision": "20190611",
+ "revision": "20190625",
  "title": "Google Cloud DNS API",
  "description": "Configures and serves authoritative DNS records.",
  "ownerDomain": "google.com",
@@ -422,7 +422,7 @@
    "properties": {
     "defaultKeySpecs": {
      "type": "array",
-     "description": "Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. Output only while state is not OFF.",
+     "description": "Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. Can only be changed while state is OFF.",
      "items": {
       "$ref": "DnsKeySpec"
      }
@@ -434,7 +434,7 @@
     },
     "nonExistence": {
      "type": "string",
-     "description": "Specifies the mechanism used to provide authenticated denial-of-existence responses. Output only while state is not OFF.",
+     "description": "Specifies the mechanism used to provide authenticated denial-of-existence responses. Can only be changed while state is OFF.",
      "enum": [
       "nsec",
       "nsec3"
@@ -539,7 +539,7 @@
    "properties": {
     "deactivateTime": {
      "type": "string",
-     "description": "If this zone has been deactivated due to a problem with the network it targeted, the time at which it was deactivated. The zone can be deactivated if, for instance, the network it targeted was deleted. If the targeted network is still present, this will be the empty string. This is in RFC3339 text format. Output only."
+     "description": "If this zone has been deactivated (possibly because the producer network it targeted was deleted), the time at which it was deactivated. If the peering connection is still active, this will be the empty string. This is in RFC3339 text format. Output only."
     },
     "kind": {
      "type": "string",

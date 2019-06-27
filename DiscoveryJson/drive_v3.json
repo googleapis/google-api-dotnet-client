@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/aWd2jDAmwSYxZyCbksCv6R-mXxk\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/0iA8vxcUiheoF8DYYwsH9o3K3hg\"",
  "discoveryVersion": "v1",
  "id": "drive:v3",
  "name": "drive",
  "version": "v3",
- "revision": "20190613",
+ "revision": "20190620",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -333,7 +333,7 @@
     },
     "kind": {
      "type": "string",
-     "description": "Identifies this as a notification channel used to watch for changes to a resource. Value: the fixed string \"api#channel\".",
+     "description": "Identifies this as a notification channel used to watch for changes to a resource, which is \"api#channel\".",
      "default": "api#channel"
     },
     "params": {
@@ -2651,7 +2651,7 @@
      "id": "drive.files.generateIds",
      "path": "files/generateIds",
      "httpMethod": "GET",
-     "description": "Generates a set of file IDs which can be provided in create requests.",
+     "description": "Generates a set of file IDs which can be provided in create or copy requests.",
      "parameters": {
       "count": {
        "type": "integer",

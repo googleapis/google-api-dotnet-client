@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/vault'>G Suite Vault API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190610 (1621)
+ *      <tr><th>API Rev<td>20190614 (1625)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/vault'>
  *              https://developers.google.com/vault</a>
@@ -1335,16 +1335,6 @@ namespace Google.Apis.Vault.v1
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
 
-                /// <summary>The pagination token as returned in the response. An empty token means start from the
-                /// beginning.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The number of holds to return in the response, between 0 and 100 inclusive. Leaving this
-                /// empty, or as 0, is the same as page_size = 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Specifies which parts of the Hold to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1359,6 +1349,16 @@ namespace Google.Apis.Vault.v1
                     [Google.Apis.Util.StringValueAttribute("FULL_HOLD")]
                     FULLHOLD,
                 }
+
+                /// <summary>The pagination token as returned in the response. An empty token means start from the
+                /// beginning.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The number of holds to return in the response, between 0 and 100 inclusive. Leaving this
+                /// empty, or as 0, is the same as page_size = 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1394,6 +1394,15 @@ namespace Google.Apis.Vault.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1406,15 +1415,6 @@ namespace Google.Apis.Vault.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2286,21 +2286,6 @@ namespace Google.Apis.Vault.v1
             }
 
 
-            /// <summary>Specifies which parts of the matter to return in response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ViewEnum> View { get; set; }
-
-            /// <summary>Specifies which parts of the matter to return in response.</summary>
-            public enum ViewEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                VIEWUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("BASIC")]
-                BASIC,
-                [Google.Apis.Util.StringValueAttribute("FULL")]
-                FULL,
-            }
-
             /// <summary>If set, list only matters with that specific state. The default is listing matters of all
             /// states.</summary>
             [Google.Apis.Util.RequestParameterAttribute("state", Google.Apis.Util.RequestParameterType.Query)]
@@ -2328,6 +2313,21 @@ namespace Google.Apis.Vault.v1
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
+            /// <summary>Specifies which parts of the matter to return in response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>Specifies which parts of the matter to return in response.</summary>
+            public enum ViewEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
+                VIEWUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC,
+                [Google.Apis.Util.StringValueAttribute("FULL")]
+                FULL,
+            }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2353,15 +2353,6 @@ namespace Google.Apis.Vault.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "state", new Google.Apis.Discovery.Parameter
                     {
                         Name = "state",
@@ -2383,6 +2374,15 @@ namespace Google.Apis.Vault.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3477,48 +3477,11 @@ namespace Google.Apis.Vault.v1.Data
     }    
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
-    /// is designed to be:
+    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
+    /// message contains three pieces of data: error code, error message, and error details.
     ///
-    /// - Simple to use and understand for most users - Flexible enough to meet unexpected needs
-    ///
-    /// # Overview
-    ///
-    /// The `Status` message contains three pieces of data: error code, error message, and error details. The error code
-    /// should be an enum value of google.rpc.Code, but it may accept additional error codes if needed.  The error
-    /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
-    /// If a localized user-facing error message is needed, put the localized message in the error details or localize
-    /// it in the client. The optional error details may contain arbitrary information about the error. There is a
-    /// predefined set of error detail types in the package `google.rpc` that can be used for common error conditions.
-    ///
-    /// # Language mapping
-    ///
-    /// The `Status` message is the logical representation of the error model, but it is not necessarily the actual wire
-    /// format. When the `Status` message is exposed in different client libraries and different wire protocols, it can
-    /// be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped
-    /// to some error codes in C.
-    ///
-    /// # Other uses
-    ///
-    /// The error model and the `Status` message can be used in a variety of environments, either with or without APIs,
-    /// to provide a consistent developer experience across different environments.
-    ///
-    /// Example uses of this error model include:
-    ///
-    /// - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status` in the
-    /// normal response to indicate the partial errors.
-    ///
-    /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
-    /// reporting.
-    ///
-    /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
-    /// directly inside batch response, one for each error sub-response.
-    ///
-    /// - Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
-    /// those operations should be represented directly using the `Status` message.
-    ///
-    /// - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any
-    /// stripping needed for security/privacy reasons.</summary>
+    /// You can find out more about this error model and how to work with it in the [API Design
+    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>

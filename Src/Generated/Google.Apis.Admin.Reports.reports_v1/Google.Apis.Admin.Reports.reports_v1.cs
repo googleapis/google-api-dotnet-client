@@ -1465,8 +1465,8 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Identifies this as a notification channel used to watch for changes to a resource. Value: the fixed
-        /// string "api#channel".</summary>
+        /// <summary>Identifies this as a notification channel used to watch for changes to a resource, which is
+        /// "api#channel".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 

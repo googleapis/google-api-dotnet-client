@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190615 (1626)
+ *      <tr><th>API Rev<td>20190625 (1636)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>
  *              https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory</a>
@@ -462,6 +462,17 @@ namespace Google.Apis.CloudAsset.v1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
+            /// <summary>A list of the full names of the assets. For example:
+            /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
+            /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) and [Resource Name
+            /// Format](https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/resource-name-format) for
+            /// more info.
+            ///
+            /// The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is
+            /// 100 in one request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("assetNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> AssetNames { get; set; }
+
             /// <summary>Required. The content type.</summary>
             [Google.Apis.Util.RequestParameterAttribute("contentType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ContentTypeEnum> ContentType { get; set; }
@@ -484,17 +495,6 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>Start time of the time window (exclusive).</summary>
             [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadTimeWindowStartTime { get; set; }
-
-            /// <summary>A list of the full names of the assets. For example:
-            /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
-            /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) and [Resource Name
-            /// Format](https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/resource-name-format) for
-            /// more info.
-            ///
-            /// The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is
-            /// 100 in one request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("assetNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> AssetNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -530,6 +530,15 @@ namespace Google.Apis.CloudAsset.v1
                         Pattern = @"^[^/]+/[^/]+$",
                     });
                 RequestParameters.Add(
+                    "assetNames", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "assetNames",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "contentType", new Google.Apis.Discovery.Parameter
                     {
                         Name = "contentType",
@@ -551,15 +560,6 @@ namespace Google.Apis.CloudAsset.v1
                     "readTimeWindow.startTime", new Google.Apis.Discovery.Parameter
                     {
                         Name = "readTimeWindow.startTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "assetNames", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "assetNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -669,6 +669,11 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Representation of the Cloud Organization Policy set on an asset. For each asset, there could be
+        /// multiple Organization policies with different constraints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicy")]
+        public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV1Policy> OrgPolicy { get; set; } 
 
         /// <summary>Representation of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
@@ -865,6 +870,202 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uriPrefix")]
         public virtual string UriPrefix { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Used in `policy_type` to specify how `boolean_policy` will behave at this resource.</summary>
+    public class GoogleCloudOrgpolicyV1BooleanPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable.
+        ///
+        /// Suppose you have a `Constraint` `constraints/compute.disableSerialPortAccess` with `constraint_default` set
+        /// to `ALLOW`. A `Policy` for that `Constraint` exhibits the following behavior: - If the `Policy` at this
+        /// resource has enforced set to `false`, serial port connection attempts will be allowed. - If the `Policy` at
+        /// this resource has enforced set to `true`, serial port connection attempts will be refused. - If the `Policy`
+        /// at this resource is `RestoreDefault`, serial port connection attempts will be allowed. - If no `Policy` is
+        /// set at this resource or anywhere higher in the resource hierarchy, serial port connection attempts will be
+        /// allowed. - If no `Policy` is set at this resource, but one exists higher in the resource hierarchy, the
+        /// behavior is as if the`Policy` were set at this resource.
+        ///
+        /// The following examples demonstrate the different possible layerings:
+        ///
+        /// Example 1 (nearest `Constraint` wins): `organizations/foo` has a `Policy` with: {enforced: false}
+        /// `projects/bar` has no `Policy` set. The constraint at `projects/bar` and `organizations/foo` will not be
+        /// enforced.
+        ///
+        /// Example 2 (enforcement gets replaced): `organizations/foo` has a `Policy` with: {enforced: false}
+        /// `projects/bar` has a `Policy` with: {enforced: true} The constraint at `organizations/foo` is not enforced.
+        /// The constraint at `projects/bar` is enforced.
+        ///
+        /// Example 3 (RestoreDefault): `organizations/foo` has a `Policy` with: {enforced: true} `projects/bar` has a
+        /// `Policy` with: {RestoreDefault: {}} The constraint at `organizations/foo` is enforced. The constraint at
+        /// `projects/bar` is not enforced, because `constraint_default` for the `Constraint` is `ALLOW`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforced")]
+        public virtual System.Nullable<bool> Enforced { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Used in `policy_type` to specify how `list_policy` behaves at this resource.
+    ///
+    /// `ListPolicy` can define specific values and subtrees of Cloud Resource Manager resource hierarchy
+    /// (`Organizations`, `Folders`, `Projects`) that are allowed or denied by setting the `allowed_values` and
+    /// `denied_values` fields. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix
+    /// is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required
+    /// only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix.
+    /// Ancestry subtrees must be in one of the following formats: - “projects/”, e.g. “projects/tokyo-rain-123” -
+    /// “folders/”, e.g. “folders/1234” - “organizations/”, e.g. “organizations/1234” The `supports_under` field of the
+    /// associated `Constraint`  defines whether ancestry prefixes can be used. You can set `allowed_values` and
+    /// `denied_values` in the same `Policy` if `all_values` is `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to
+    /// allow or deny all values. If `all_values` is set to either `ALLOW` or `DENY`, `allowed_values` and
+    /// `denied_values` must be unset.</summary>
+    public class GoogleCloudOrgpolicyV1ListPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The policy all_values state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allValues")]
+        public virtual string AllValues { get; set; } 
+
+        /// <summary>List of values allowed  at this resource. Can only be set if `all_values` is set to
+        /// `ALL_VALUES_UNSPECIFIED`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedValues")]
+        public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; } 
+
+        /// <summary>List of values denied at this resource. Can only be set if `all_values` is set to
+        /// `ALL_VALUES_UNSPECIFIED`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deniedValues")]
+        public virtual System.Collections.Generic.IList<string> DeniedValues { get; set; } 
+
+        /// <summary>Determines the inheritance behavior for this `Policy`.
+        ///
+        /// By default, a `ListPolicy` set at a resource supercedes any `Policy` set anywhere up the resource hierarchy.
+        /// However, if `inherit_from_parent` is set to `true`, then the values from the effective `Policy` of the
+        /// parent resource are inherited, meaning the values set in this `Policy` are added to the values inherited up
+        /// the hierarchy.
+        ///
+        /// Setting `Policy` hierarchies that inherit both allowed values and denied values isn't recommended in most
+        /// circumstances to keep the configuration simple and understandable. However, it is possible to set a `Policy`
+        /// with `allowed_values` set that inherits a `Policy` with `denied_values` set. In this case, the values that
+        /// are allowed must be in `allowed_values` and not present in `denied_values`.
+        ///
+        /// For example, suppose you have a `Constraint` `constraints/serviceuser.services`, which has a
+        /// `constraint_type` of `list_constraint`, and with `constraint_default` set to `ALLOW`. Suppose that at the
+        /// Organization level, a `Policy` is applied that restricts the allowed API activations to {`E1`, `E2`}. Then,
+        /// if a `Policy` is applied to a project below the Organization that has `inherit_from_parent` set to `false`
+        /// and field all_values set to DENY, then an attempt to activate any API will be denied.
+        ///
+        /// The following examples demonstrate different possible layerings for `projects/bar` parented by
+        /// `organizations/foo`:
+        ///
+        /// Example 1 (no inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: “E1”
+        /// allowed_values:”E2”} `projects/bar` has `inherit_from_parent` `false` and values: {allowed_values: "E3"
+        /// allowed_values: "E4"} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at
+        /// `projects/bar` are `E3`, and `E4`.
+        ///
+        /// Example 2 (inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: “E1”
+        /// allowed_values:”E2”} `projects/bar` has a `Policy` with values: {value: “E3” value: ”E4”
+        /// inherit_from_parent: true} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at
+        /// `projects/bar` are `E1`, `E2`, `E3`, and `E4`.
+        ///
+        /// Example 3 (inheriting both allowed and denied values): `organizations/foo` has a `Policy` with values:
+        /// {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {denied_values: "E1"} The
+        /// accepted values at `organizations/foo` are `E1`, `E2`. The value accepted at `projects/bar` is `E2`.
+        ///
+        /// Example 4 (RestoreDefault): `organizations/foo` has a `Policy` with values: {allowed_values: “E1”
+        /// allowed_values:”E2”} `projects/bar` has a `Policy` with values: {RestoreDefault: {}} The accepted values at
+        /// `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are either all or none depending
+        /// on the value of `constraint_default` (if `ALLOW`, all; if `DENY`, none).
+        ///
+        /// Example 5 (no policy inherits parent policy): `organizations/foo` has no `Policy` set. `projects/bar` has no
+        /// `Policy` set. The accepted values at both levels are either all or none depending on the value of
+        /// `constraint_default` (if `ALLOW`, all; if `DENY`, none).
+        ///
+        /// Example 6 (ListConstraint allowing all): `organizations/foo` has a `Policy` with values: {allowed_values:
+        /// “E1” allowed_values: ”E2”} `projects/bar` has a `Policy` with: {all: ALLOW} The accepted values at
+        /// `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`.
+        ///
+        /// Example 7 (ListConstraint allowing none): `organizations/foo` has a `Policy` with values: {allowed_values:
+        /// “E1” allowed_values: ”E2”} `projects/bar` has a `Policy` with: {all: DENY} The accepted values at
+        /// `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`.
+        ///
+        /// Example 10 (allowed and denied subtrees of Resource Manager hierarchy): Given the following resource
+        /// hierarchy O1->{F1, F2}; F1->{P1}; F2->{P2, P3}, `organizations/foo` has a `Policy` with values:
+        /// {allowed_values: "under:organizations/O1"} `projects/bar` has a `Policy` with: {allowed_values:
+        /// "under:projects/P3"} {denied_values: "under:folders/F2"} The accepted values at `organizations/foo` are
+        /// `organizations/O1`, `folders/F1`, `folders/F2`, `projects/P1`, `projects/P2`, `projects/P3`. The accepted
+        /// values at `projects/bar` are `organizations/O1`, `folders/F1`, `projects/P1`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inheritFromParent")]
+        public virtual System.Nullable<bool> InheritFromParent { get; set; } 
+
+        /// <summary>Optional. The Google Cloud Console will try to default to a configuration that matches the value
+        /// specified in this `Policy`. If `suggested_value` is not set, it will inherit the value specified higher in
+        /// the hierarchy, unless `inherit_from_parent` is `false`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedValue")]
+        public virtual string SuggestedValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines a Cloud Organization `Policy` which is used to specify `Constraints` for configurations of
+    /// Cloud Platform resources.</summary>
+    public class GoogleCloudOrgpolicyV1Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For boolean `Constraints`, whether to enforce the `Constraint` or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanPolicy")]
+        public virtual GoogleCloudOrgpolicyV1BooleanPolicy BooleanPolicy { get; set; } 
+
+        /// <summary>The name of the `Constraint` the `Policy` is configuring, for example,
+        /// `constraints/serviceuser.services`.
+        ///
+        /// Immutable after creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraint")]
+        public virtual string Constraint { get; set; } 
+
+        /// <summary>An opaque tag indicating the current version of the `Policy`, used for concurrency control.
+        ///
+        /// When the `Policy` is returned from either a `GetPolicy` or a `ListOrgPolicy` request, this `etag` indicates
+        /// the version of the current `Policy` to use when executing a read-modify-write loop.
+        ///
+        /// When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+        ///
+        /// When the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value that was returned from a
+        /// `GetOrgPolicy` request as part of a read-modify-write loop for concurrency control. Not setting the `etag`in
+        /// a `SetOrgPolicy` request will result in an unconditional write of the `Policy`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>List of values either allowed or disallowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listPolicy")]
+        public virtual GoogleCloudOrgpolicyV1ListPolicy ListPolicy { get; set; } 
+
+        /// <summary>Restores the default behavior of the constraint; independent of `Constraint` type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreDefault")]
+        public virtual GoogleCloudOrgpolicyV1RestoreDefault RestoreDefault { get; set; } 
+
+        /// <summary>The time stamp the `Policy` was previously updated. This is set by the server, not specified by the
+        /// caller, and represents the last time a call to `SetOrgPolicy` was made for that `Policy`. Any value set by
+        /// the client will be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>Version of the `Policy`. Default version is 0;</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; } 
+
+    }    
+
+    /// <summary>Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of
+    /// the specific `Constraint` at this resource.
+    ///
+    /// Suppose that `constraint_default` is set to `ALLOW` for the `Constraint` `constraints/serviceuser.services`.
+    /// Suppose that organization foo.com sets a `Policy` at their Organization resource node that restricts the allowed
+    /// service activations to deny all service activations. They could then set a `Policy` with the `policy_type`
+    /// `restore_default` on several experimental projects, restoring the `constraint_default` enforcement of the
+    /// `Constraint` for only those projects, allowing those projects to have all services activated.</summary>
+    public class GoogleCloudOrgpolicyV1RestoreDefault : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

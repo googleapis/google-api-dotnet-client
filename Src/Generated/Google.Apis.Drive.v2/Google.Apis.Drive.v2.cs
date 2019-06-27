@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190613 (1624)
+ *      <tr><th>API Rev<td>20190620 (1631)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -3433,13 +3433,13 @@ namespace Google.Apis.Drive.v2
 
         }
 
-        /// <summary>Generates a set of file IDs which can be provided in insert requests.</summary>
+        /// <summary>Generates a set of file IDs which can be provided in insert or copy requests.</summary>
         public virtual GenerateIdsRequest GenerateIds()
         {
             return new GenerateIdsRequest(service);
         }
 
-        /// <summary>Generates a set of file IDs which can be provided in insert requests.</summary>
+        /// <summary>Generates a set of file IDs which can be provided in insert or copy requests.</summary>
         public class GenerateIdsRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.GeneratedIds>
         {
             /// <summary>Constructs a new GenerateIds request.</summary>
@@ -9655,8 +9655,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Identifies this as a notification channel used to watch for changes to a resource. Value: the fixed
-        /// string "api#channel".</summary>
+        /// <summary>Identifies this as a notification channel used to watch for changes to a resource, which is
+        /// "api#channel".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 

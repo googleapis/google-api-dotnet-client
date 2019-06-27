@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190619 (1630)
+ *      <tr><th>API Rev<td>20190603 (1614)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -690,16 +690,6 @@ namespace Google.Apis.CloudResourceManager.v2
             }
 
 
-            /// <summary>Controls whether Folders in the DELETE_REQUESTED state should be returned. Defaults to false.
-            /// This field is optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ShowDeleted { get; set; }
-
-            /// <summary>A pagination token returned from a previous call to `ListFolders` that indicates where this
-            /// listing should continue from. This field is optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>The maximum number of Folders to return in the response. This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -709,6 +699,16 @@ namespace Google.Apis.CloudResourceManager.v2
             /// the `resourcemanager.folders.list` permission on the `parent`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
+
+            /// <summary>Controls whether Folders in the DELETE_REQUESTED state should be returned. Defaults to false.
+            /// This field is optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+            /// <summary>A pagination token returned from a previous call to `ListFolders` that indicates where this
+            /// listing should continue from. This field is optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -735,24 +735,6 @@ namespace Google.Apis.CloudResourceManager.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -765,6 +747,24 @@ namespace Google.Apis.CloudResourceManager.v2
                     "parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1478,7 +1478,7 @@ namespace Google.Apis.CloudResourceManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Output only. The lifecycle state of the folder. Updates to the lifecycle_state must be performed
+        /// <summary>Output only.  The lifecycle state of the folder. Updates to the lifecycle_state must be performed
         /// via DeleteFolder and UndeleteFolder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
         public virtual string LifecycleState { get; set; } 
@@ -1697,12 +1697,11 @@ namespace Google.Apis.CloudResourceManager.v2.Data
         ///
         /// Some example queries are:
         ///
-        /// * Query `displayName=Test*` returns Folder resources whose display name starts with "Test". * Query
-        /// `lifecycleState=ACTIVE` returns Folder resources with `lifecycleState` set to `ACTIVE`. * Query
-        /// `parent=folders/123` returns Folder resources that have `folders/123` as a parent resource. * Query
-        /// `parent=folders/123 AND lifecycleState=ACTIVE` returns active Folder resources that have `folders/123` as a
-        /// parent resource. * Query `displayName=\\"Test String\\"` returns Folder resources with display names that
-        /// include both "Test" and "String".</summary>
+        /// |Query | Description| |----- | -----------| |displayName=Test* | Folders whose display name starts with
+        /// "Test".| |lifecycleState=ACTIVE | Folders whose lifecycleState is ACTIVE.| |parent=folders/123 | Folders
+        /// whose parent is "folders/123".| |parent=folders/123 AND lifecycleState=ACTIVE | Active folders whose parent
+        /// is "folders/123".| |displayName=\\"Test String\\"|Folders whose display name includes both "Test" and
+        /// "String".|</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 
 
