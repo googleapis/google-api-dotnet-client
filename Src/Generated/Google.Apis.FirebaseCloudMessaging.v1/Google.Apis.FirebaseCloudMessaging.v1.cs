@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>Firebase Cloud Messaging API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190626 (1637)
+ *      <tr><th>API Rev<td>20190628 (1639)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>
  *              https://firebase.google.com/docs/cloud-messaging</a>
@@ -492,7 +492,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     /// <summary>Options for features provided by the FCM SDK for Android.</summary>
     public class AndroidFcmOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Label that the message's analytics data will be associated with.</summary>
+        /// <summary>Label associated with the message's analytics data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsLabel")]
         public virtual string AnalyticsLabel { get; set; } 
 
@@ -597,7 +597,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     /// <summary>Options for features provided by the FCM SDK for iOS.</summary>
     public class ApnsFcmOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Label that the message's analytics data will be associated with.</summary>
+        /// <summary>Label associated with the message's analytics data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsLabel")]
         public virtual string AnalyticsLabel { get; set; } 
 
@@ -608,7 +608,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     /// <summary>Platform independent options for features provided by the FCM SDKs.</summary>
     public class FcmOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Label that the message's analytics data will be associated with.</summary>
+        /// <summary>Label associated with the message's analytics data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsLabel")]
         public virtual string AnalyticsLabel { get; set; } 
 

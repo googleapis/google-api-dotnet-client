@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190618 (1629)
+ *      <tr><th>API Rev<td>20190701 (1642)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -1672,6 +1672,27 @@ namespace Google.Apis.CloudTalentSolution.v3
 
             /// <summary>Optional.
             ///
+            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            public enum TypeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
+                COMPLETIONTYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
+                JOBTITLE,
+                [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
+                COMPANYNAME,
+                [Google.Apis.Util.StringValueAttribute("COMBINED")]
+                COMBINED,
+            }
+
+            /// <summary>Optional.
+            ///
             /// The list of languages of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For
             /// more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
             ///
@@ -1750,27 +1771,6 @@ namespace Google.Apis.CloudTalentSolution.v3
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
 
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<TypeEnum> Type { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
-            public enum TypeEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
-                COMPLETIONTYPEUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
-                JOBTITLE,
-                [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
-                COMPANYNAME,
-                [Google.Apis.Util.StringValueAttribute("COMBINED")]
-                COMBINED,
-            }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1803,6 +1803,15 @@ namespace Google.Apis.CloudTalentSolution.v3
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "type", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "type",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "languageCodes", new Google.Apis.Discovery.Parameter
@@ -1853,15 +1862,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                     "languageCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3255,7 +3255,7 @@ namespace Google.Apis.CloudTalentSolution.v3.Data
 
         /// <summary>Optional.
         ///
-        /// Allows the client to return jobs without a set location, specifically, telecommuting jobs (telecomuting is
+        /// Allows the client to return jobs without a set location, specifically, telecommuting jobs (telecommuting is
         /// considered by the service as a special location. Job.posting_region indicates if a job permits
         /// telecommuting. If this field is set to TelecommutePreference.TELECOMMUTE_ALLOWED, telecommuting jobs are
         /// searched, and address and lat_lng are ignored. If not set or set to
@@ -3657,17 +3657,17 @@ namespace Google.Apis.CloudTalentSolution.v3.Data
         ///
         /// Supported options are:
         ///
-        /// * "relevance desc": By relevance descending, as determined by the API algorithms. Relevance thresholding of
-        /// query results is only available with this ordering. * "posting`_`publish`_`time desc": By
-        /// Job.posting_publish_time descending. * "posting`_`update`_`time desc": By Job.posting_update_time
-        /// descending. * "title": By Job.title ascending. * "title desc": By Job.title descending. *
-        /// "annualized`_`base`_`compensation": By job's CompensationInfo.annualized_base_compensation_range ascending.
+        /// * `"relevance desc"`: By relevance descending, as determined by the API algorithms. Relevance thresholding
+        /// of query results is only available with this ordering. * `"posting_publish_time desc"`: By
+        /// Job.posting_publish_time descending. * `"posting_update_time desc"`: By Job.posting_update_time descending.
+        /// * `"title"`: By Job.title ascending. * `"title desc"`: By Job.title descending. *
+        /// `"annualized_base_compensation"`: By job's CompensationInfo.annualized_base_compensation_range ascending.
         /// Jobs whose annualized base compensation is unspecified are put at the end of search results. *
-        /// "annualized`_`base`_`compensation desc": By job's CompensationInfo.annualized_base_compensation_range
+        /// `"annualized_base_compensation desc"`: By job's CompensationInfo.annualized_base_compensation_range
         /// descending. Jobs whose annualized base compensation is unspecified are put at the end of search results. *
-        /// "annualized`_`total`_`compensation": By job's CompensationInfo.annualized_total_compensation_range
-        /// ascending. Jobs whose annualized base compensation is unspecified are put at the end of search results. *
-        /// "annualized`_`total`_`compensation desc": By job's CompensationInfo.annualized_total_compensation_range
+        /// `"annualized_total_compensation"`: By job's CompensationInfo.annualized_total_compensation_range ascending.
+        /// Jobs whose annualized base compensation is unspecified are put at the end of search results. *
+        /// `"annualized_total_compensation desc"`: By job's CompensationInfo.annualized_total_compensation_range
         /// descending. Jobs whose annualized base compensation is unspecified are put at the end of search
         /// results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
@@ -3689,8 +3689,8 @@ namespace Google.Apis.CloudTalentSolution.v3.Data
 
         /// <summary>Required.
         ///
-        /// The meta information collected about the job searcher, used to improve the search quality of the service..
-        /// The identifiers, (such as `user_id`) are provided by users, and must be unique and consistent.</summary>
+        /// The meta information collected about the job searcher, used to improve the search quality of the service.
+        /// The identifiers (such as `user_id`) are provided by users, and must be unique and consistent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestMetadata")]
         public virtual RequestMetadata RequestMetadata { get; set; } 
 

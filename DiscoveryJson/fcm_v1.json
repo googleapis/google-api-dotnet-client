@@ -1,13 +1,4 @@
 {
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "View and manage your data across Google Cloud Platform services"
-        }
-      }
-    }
-  },
   "rootUrl": "https://fcm.googleapis.com/",
   "ownerDomain": "google.com",
   "name": "fcm",
@@ -33,11 +24,11 @@
               ],
               "parameters": {
                 "parent": {
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
                   "description": "Required. It contains the Firebase project id (i.e. the unique identifier\nfor your Firebase project), in the format of `projects/{project_id}`.\nFor legacy support, the numeric project number with no padding is also\nsupported in the format of `projects/{project_number}`.",
                   "required": true,
-                  "type": "string"
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
                 }
               },
               "flatPath": "v1/projects/{projectsId}/messages:send",
@@ -54,14 +45,19 @@
     }
   },
   "parameters": {
-    "upload_protocol": {
-      "type": "string",
+    "access_token": {
       "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+      "description": "OAuth access token.",
+      "type": "string"
     },
-    "quotaUser": {
+    "key": {
       "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string"
     },
     "prettyPrint": {
@@ -70,28 +66,32 @@
       "location": "query",
       "description": "Returns response with indentations and line breaks."
     },
-    "fields": {
-      "type": "string",
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string",
       "location": "query"
     },
-    "callback": {
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
       "location": "query",
-      "description": "JSONP",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string"
+    },
+    "callback": {
+      "type": "string",
+      "location": "query",
+      "description": "JSONP"
     },
     "oauth_token": {
+      "type": "string",
       "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
+      "description": "OAuth 2.0 token for the current user."
     },
     "$.xgafv": {
-      "description": "V1 error format.",
       "type": "string",
       "enumDescriptions": [
         "v1 error format",
@@ -101,132 +101,67 @@
       "enum": [
         "1",
         "2"
-      ]
+      ],
+      "description": "V1 error format."
     },
     "alt": {
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
       "description": "Data format for response.",
       "default": "json",
       "enum": [
         "json",
         "media",
         "proto"
-      ]
-    },
-    "access_token": {
-      "description": "OAuth access token.",
+      ],
       "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
       "location": "query"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
     }
   },
   "version": "v1",
   "baseUrl": "https://fcm.googleapis.com/",
+  "servicePath": "",
   "kind": "discovery#restDescription",
   "description": "FCM send API that provides a cross-platform messaging solution to reliably deliver messages at no cost.",
-  "servicePath": "",
   "basePath": "",
-  "revision": "20190626",
-  "documentationLink": "https://firebase.google.com/docs/cloud-messaging",
   "id": "fcm:v1",
+  "documentationLink": "https://firebase.google.com/docs/cloud-messaging",
+  "revision": "20190628",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "WebpushConfig": {
-      "type": "object",
-      "properties": {
-        "notification": {
-          "description": "Web Notification options as a JSON object. Supports Notification instance\nproperties as defined in [Web Notification\nAPI](https://developer.mozilla.org/en-US/docs/Web/API/Notification). If\npresent, \"title\" and \"body\" fields override\n[google.firebase.fcm.v1.Notification.title] and\n[google.firebase.fcm.v1.Notification.body].",
-          "type": "object",
-          "additionalProperties": {
-            "description": "Properties of the object.",
-            "type": "any"
-          }
-        },
-        "fcmOptions": {
-          "$ref": "WebpushFcmOptions",
-          "description": "Options for features provided by the FCM SDK for Web."
-        },
-        "headers": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "HTTP headers defined in webpush protocol. Refer to\n[Webpush protocol](https://tools.ietf.org/html/rfc8030#section-5) for\nsupported headers, e.g. \"TTL\": \"15\"."
-        },
-        "data": {
-          "description": "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data.",
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      },
-      "id": "WebpushConfig",
-      "description": "[Webpush protocol](https://tools.ietf.org/html/rfc8030) options."
-    },
-    "WebpushFcmOptions": {
-      "id": "WebpushFcmOptions",
-      "description": "Options for features provided by the FCM SDK for Web.",
-      "type": "object",
-      "properties": {
-        "link": {
-          "description": "The link to open when the user clicks on the notification.\nFor all URL values, HTTPS is required.",
-          "type": "string"
-        }
-      }
-    },
     "SendMessageRequest": {
-      "id": "SendMessageRequest",
       "description": "Request to send a message to specified target.",
       "type": "object",
       "properties": {
-        "message": {
-          "description": "Required. Message to send.",
-          "$ref": "Message"
-        },
         "validateOnly": {
           "description": "Flag for testing the request without actually delivering the message.",
           "type": "boolean"
+        },
+        "message": {
+          "$ref": "Message",
+          "description": "Required. Message to send."
         }
-      }
+      },
+      "id": "SendMessageRequest"
     },
     "Message": {
       "type": "object",
       "properties": {
-        "apns": {
-          "$ref": "ApnsConfig",
-          "description": "Input only. [Apple Push Notification Service](https://goo.gl/MXRTPa)\nspecific options."
-        },
-        "webpush": {
-          "$ref": "WebpushConfig",
-          "description": "Input only. [Webpush protocol](https://tools.ietf.org/html/rfc8030)\noptions."
-        },
-        "name": {
-          "type": "string",
-          "description": "Output Only. The identifier of the message sent, in the format of\n`projects/*/messages/{message_id}`."
-        },
         "topic": {
-          "description": "Topic name to send a message to, e.g. \"weather\".\nNote: \"/topics/\" prefix should not be provided.",
-          "type": "string"
-        },
-        "notification": {
-          "$ref": "Notification",
-          "description": "Input only. Basic notification template to use across all platforms."
+          "type": "string",
+          "description": "Topic name to send a message to, e.g. \"weather\".\nNote: \"/topics/\" prefix should not be provided."
         },
         "fcmOptions": {
           "$ref": "FcmOptions",
           "description": "Input only. Template for FCM SDK feature options to use across all\nplatforms."
+        },
+        "notification": {
+          "$ref": "Notification",
+          "description": "Input only. Basic notification template to use across all platforms."
         },
         "data": {
           "description": "Input only. Arbitrary key/value payload.",
@@ -239,43 +174,55 @@
           "description": "Registration token to send a message to.",
           "type": "string"
         },
+        "condition": {
+          "description": "Condition to send a message to,\ne.g. \"'foo' in topics && 'bar' in topics\".",
+          "type": "string"
+        },
         "android": {
           "$ref": "AndroidConfig",
           "description": "Input only. Android specific options for messages sent through\n[FCM connection server](https://goo.gl/4GLdUl)."
         },
-        "condition": {
-          "description": "Condition to send a message to,\ne.g. \"'foo' in topics && 'bar' in topics\".",
+        "apns": {
+          "description": "Input only. [Apple Push Notification Service](https://goo.gl/MXRTPa)\nspecific options.",
+          "$ref": "ApnsConfig"
+        },
+        "webpush": {
+          "$ref": "WebpushConfig",
+          "description": "Input only. [Webpush protocol](https://tools.ietf.org/html/rfc8030)\noptions."
+        },
+        "name": {
+          "description": "Output Only. The identifier of the message sent, in the format of\n`projects/*/messages/{message_id}`.",
           "type": "string"
         }
       },
       "id": "Message",
       "description": "Message to send by Firebase Cloud Messaging Service."
     },
-    "Notification": {
-      "description": "Basic notification template to use across all platforms.",
-      "type": "object",
-      "properties": {
-        "body": {
-          "description": "The notification's body text.",
-          "type": "string"
-        },
-        "title": {
-          "type": "string",
-          "description": "The notification's title."
-        }
-      },
-      "id": "Notification"
-    },
     "AndroidFcmOptions": {
+      "id": "AndroidFcmOptions",
       "description": "Options for features provided by the FCM SDK for Android.",
       "type": "object",
       "properties": {
         "analyticsLabel": {
-          "description": "Label that the message's analytics data will be associated with.",
+          "description": "Label associated with the message's analytics data.",
           "type": "string"
         }
-      },
-      "id": "AndroidFcmOptions"
+      }
+    },
+    "Notification": {
+      "id": "Notification",
+      "description": "Basic notification template to use across all platforms.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The notification's title."
+        },
+        "body": {
+          "description": "The notification's body text.",
+          "type": "string"
+        }
+      }
     },
     "ApnsFcmOptions": {
       "description": "Options for features provided by the FCM SDK for iOS.",
@@ -283,52 +230,26 @@
       "properties": {
         "analyticsLabel": {
           "type": "string",
-          "description": "Label that the message's analytics data will be associated with."
+          "description": "Label associated with the message's analytics data."
         }
       },
       "id": "ApnsFcmOptions"
-    },
-    "ApnsConfig": {
-      "description": "[Apple Push Notification Service](https://goo.gl/MXRTPa) specific options.",
-      "type": "object",
-      "properties": {
-        "headers": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "HTTP request headers defined in Apple Push Notification Service. Refer to\n[APNs request headers](https://goo.gl/C6Yhia) for\nsupported headers, e.g. \"apns-priority\": \"10\".",
-          "type": "object"
-        },
-        "payload": {
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object."
-          },
-          "description": "APNs payload as a JSON object, including both `aps` dictionary and custom\npayload. See [Payload Key Reference](https://goo.gl/32Pl5W).\nIf present, it overrides google.firebase.fcm.v1.Notification.title\nand google.firebase.fcm.v1.Notification.body.",
-          "type": "object"
-        },
-        "fcmOptions": {
-          "$ref": "ApnsFcmOptions",
-          "description": "Options for features provided by the FCM SDK for iOS."
-        }
-      },
-      "id": "ApnsConfig"
     },
     "AndroidConfig": {
       "description": "Android specific options for messages sent through\n[FCM connection server](https://goo.gl/4GLdUl).",
       "type": "object",
       "properties": {
         "fcmOptions": {
-          "description": "Options for features provided by the FCM SDK for Android.",
-          "$ref": "AndroidFcmOptions"
+          "$ref": "AndroidFcmOptions",
+          "description": "Options for features provided by the FCM SDK for Android."
         },
         "notification": {
           "$ref": "AndroidNotification",
           "description": "Notification to send to android devices."
         },
         "restrictedPackageName": {
-          "type": "string",
-          "description": "Package name of the application where the registration token must match in\norder to receive the message."
+          "description": "Package name of the application where the registration token must match in\norder to receive the message.",
+          "type": "string"
         },
         "ttl": {
           "type": "string",
@@ -336,11 +257,11 @@
           "format": "google-duration"
         },
         "data": {
+          "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data.",
-          "type": "object"
+          "description": "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data."
         },
         "priority": {
           "description": "Message priority. Can take \"normal\" and \"high\" values.\nFor more information, see [Setting the priority of a\nmessage](https://goo.gl/GjONJv).",
@@ -355,63 +276,81 @@
           ]
         },
         "collapseKey": {
-          "description": "An identifier of a group of messages that can be collapsed, so that only\nthe last message gets sent when delivery can be resumed. A maximum of 4\ndifferent collapse keys is allowed at any given time.",
-          "type": "string"
+          "type": "string",
+          "description": "An identifier of a group of messages that can be collapsed, so that only\nthe last message gets sent when delivery can be resumed. A maximum of 4\ndifferent collapse keys is allowed at any given time."
         }
       },
       "id": "AndroidConfig"
     },
-    "FcmOptions": {
-      "id": "FcmOptions",
-      "description": "Platform independent options for features provided by the FCM SDKs.",
+    "ApnsConfig": {
+      "id": "ApnsConfig",
+      "description": "[Apple Push Notification Service](https://goo.gl/MXRTPa) specific options.",
       "type": "object",
       "properties": {
-        "analyticsLabel": {
-          "description": "Label that the message's analytics data will be associated with.",
-          "type": "string"
+        "payload": {
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any"
+          },
+          "description": "APNs payload as a JSON object, including both `aps` dictionary and custom\npayload. See [Payload Key Reference](https://goo.gl/32Pl5W).\nIf present, it overrides google.firebase.fcm.v1.Notification.title\nand google.firebase.fcm.v1.Notification.body.",
+          "type": "object"
+        },
+        "fcmOptions": {
+          "$ref": "ApnsFcmOptions",
+          "description": "Options for features provided by the FCM SDK for iOS."
+        },
+        "headers": {
+          "description": "HTTP request headers defined in Apple Push Notification Service. Refer to\n[APNs request headers](https://goo.gl/C6Yhia) for\nsupported headers, e.g. \"apns-priority\": \"10\".",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },
     "AndroidNotification": {
-      "description": "Notification to send to android devices.",
       "type": "object",
       "properties": {
+        "titleLocKey": {
+          "description": "The key to the title string in the app's string resources to use to\nlocalize the title text to the user's current localization.\nSee [String Resources](https://goo.gl/NdFZGI) for more information.",
+          "type": "string"
+        },
         "sound": {
           "description": "The sound to play when the device receives the notification.\nSupports \"default\" or the filename of a sound resource bundled in the app.\nSound files must reside in /res/raw/.",
           "type": "string"
         },
         "title": {
-          "type": "string",
-          "description": "The notification's title. If present, it will override\ngoogle.firebase.fcm.v1.Notification.title."
+          "description": "The notification's title. If present, it will override\ngoogle.firebase.fcm.v1.Notification.title.",
+          "type": "string"
         },
         "bodyLocKey": {
-          "type": "string",
-          "description": "The key to the body string in the app's string resources to use to localize\nthe body text to the user's current localization.\nSee [String Resources](https://goo.gl/NdFZGI) for more information."
+          "description": "The key to the body string in the app's string resources to use to localize\nthe body text to the user's current localization.\nSee [String Resources](https://goo.gl/NdFZGI) for more information.",
+          "type": "string"
         },
         "bodyLocArgs": {
-          "description": "Variable string values to be used in place of the format specifiers in\nbody_loc_key to use to localize the body text to the user's current\nlocalization.\nSee [Formatting and Styling](https://goo.gl/MalYE3) for more information.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Variable string values to be used in place of the format specifiers in\nbody_loc_key to use to localize the body text to the user's current\nlocalization.\nSee [Formatting and Styling](https://goo.gl/MalYE3) for more information."
+        },
+        "titleLocArgs": {
+          "description": "Variable string values to be used in place of the format specifiers in\ntitle_loc_key to use to localize the title text to the user's current\nlocalization.\nSee [Formatting and Styling](https://goo.gl/MalYE3) for more information.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
-        "titleLocArgs": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Variable string values to be used in place of the format specifiers in\ntitle_loc_key to use to localize the title text to the user's current\nlocalization.\nSee [Formatting and Styling](https://goo.gl/MalYE3) for more information."
-        },
         "body": {
           "description": "The notification's body text. If present, it will override\ngoogle.firebase.fcm.v1.Notification.body.",
           "type": "string"
         },
-        "icon": {
-          "description": "The notification's icon.\nSets the notification icon to myicon for drawable resource myicon.\nIf you don't send this key in the request, FCM displays the launcher icon\nspecified in your app manifest.",
-          "type": "string"
-        },
         "channelId": {
           "description": "The [notification's channel\nid](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels)\n(new in Android O). The app must create a channel with this channel ID\nbefore any notification with this channel ID is received. If you don't send\nthis channel ID in the request, or if the channel ID provided has not yet\nbeen created by the app, FCM uses the channel ID specified in the app\nmanifest.",
+          "type": "string"
+        },
+        "icon": {
+          "description": "The notification's icon.\nSets the notification icon to myicon for drawable resource myicon.\nIf you don't send this key in the request, FCM displays the launcher icon\nspecified in your app manifest.",
           "type": "string"
         },
         "clickAction": {
@@ -419,25 +358,86 @@
           "type": "string"
         },
         "color": {
-          "type": "string",
-          "description": "The notification's icon color, expressed in #rrggbb format."
+          "description": "The notification's icon color, expressed in #rrggbb format.",
+          "type": "string"
         },
         "tag": {
-          "description": "Identifier used to replace existing notifications in the notification\ndrawer.\nIf not specified, each request creates a new notification.\nIf specified and a notification with the same tag is already being shown,\nthe new notification replaces the existing one in the notification drawer.",
-          "type": "string"
-        },
-        "titleLocKey": {
-          "description": "The key to the title string in the app's string resources to use to\nlocalize the title text to the user's current localization.\nSee [String Resources](https://goo.gl/NdFZGI) for more information.",
-          "type": "string"
+          "type": "string",
+          "description": "Identifier used to replace existing notifications in the notification\ndrawer.\nIf not specified, each request creates a new notification.\nIf specified and a notification with the same tag is already being shown,\nthe new notification replaces the existing one in the notification drawer."
         }
       },
-      "id": "AndroidNotification"
+      "id": "AndroidNotification",
+      "description": "Notification to send to android devices."
+    },
+    "FcmOptions": {
+      "description": "Platform independent options for features provided by the FCM SDKs.",
+      "type": "object",
+      "properties": {
+        "analyticsLabel": {
+          "type": "string",
+          "description": "Label associated with the message's analytics data."
+        }
+      },
+      "id": "FcmOptions"
+    },
+    "WebpushConfig": {
+      "id": "WebpushConfig",
+      "description": "[Webpush protocol](https://tools.ietf.org/html/rfc8030) options.",
+      "type": "object",
+      "properties": {
+        "notification": {
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any"
+          },
+          "description": "Web Notification options as a JSON object. Supports Notification instance\nproperties as defined in [Web Notification\nAPI](https://developer.mozilla.org/en-US/docs/Web/API/Notification). If\npresent, \"title\" and \"body\" fields override\n[google.firebase.fcm.v1.Notification.title] and\n[google.firebase.fcm.v1.Notification.body].",
+          "type": "object"
+        },
+        "fcmOptions": {
+          "$ref": "WebpushFcmOptions",
+          "description": "Options for features provided by the FCM SDK for Web."
+        },
+        "headers": {
+          "description": "HTTP headers defined in webpush protocol. Refer to\n[Webpush protocol](https://tools.ietf.org/html/rfc8030#section-5) for\nsupported headers, e.g. \"TTL\": \"15\".",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data."
+        }
+      }
+    },
+    "WebpushFcmOptions": {
+      "description": "Options for features provided by the FCM SDK for Web.",
+      "type": "object",
+      "properties": {
+        "link": {
+          "type": "string",
+          "description": "The link to open when the user clicks on the notification.\nFor all URL values, HTTPS is required."
+        }
+      },
+      "id": "WebpushFcmOptions"
     }
   },
-  "protocol": "rest",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "canonicalName": "Firebase Cloud Messaging"
+  "protocol": "rest",
+  "canonicalName": "Firebase Cloud Messaging",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "View and manage your data across Google Cloud Platform services"
+        }
+      }
+    }
+  }
 }

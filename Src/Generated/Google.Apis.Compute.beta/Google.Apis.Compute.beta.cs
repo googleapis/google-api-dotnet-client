@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20190607 (1618)
+ *      <tr><th>API Rev<td>20190618 (1629)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -45105,7 +45105,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Creates a new reservation.</summary>
+        /// <summary>Creates a new reservation. For more information, read Reserving zonal resources.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
@@ -45115,7 +45115,7 @@ namespace Google.Apis.Compute.beta
             return new InsertRequest(service, body, project, zone);
         }
 
-        /// <summary>Creates a new reservation.</summary>
+        /// <summary>Creates a new reservation. For more information, read Reserving zonal resources.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -69287,8 +69287,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; } 
 
-        /// <summary>The configuration of desired reservations from which this Instance can consume capacity
-        /// from.</summary>
+        /// <summary>Specifies the reservations that this instance can consume from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
         public virtual ReservationAffinity ReservationAffinity { get; set; } 
 
@@ -69356,7 +69355,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A list of InstancesScopedList resources.</summary>
+        /// <summary>An object that contains a list of instances scoped by zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,InstancesScopedList> Items { get; set; } 
 
@@ -70748,8 +70747,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; } 
 
-        /// <summary>The configuration of desired reservations which this Instance could consume capacity
-        /// from.</summary>
+        /// <summary>Specifies the reservations that this instance can consume from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
         public virtual ReservationAffinity ReservationAffinity { get; set; } 
 
@@ -76067,7 +76065,9 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Reservation resource NextID: 13</summary>
+    /// <summary>Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even
+    /// if the reserved VMs are not running. For more information, read  Reserving zonal resources. (== resource_for
+    /// beta.reservations ==) (== resource_for v1.reservations ==) (== NextID: 13 ==)</summary>
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[OutputOnly] Full or partial url for parent commitment for reservations which are tied to a
@@ -76109,9 +76109,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("specificReservation")]
         public virtual AllocationSpecificSKUReservation SpecificReservation { get; set; } 
 
-        /// <summary>Indicates whether the reservation can be consumed by VMs with "any reservation" defined. If the
-        /// field is set, then only VMs that target the reservation by name using --reservation-affinity can consume
-        /// this reservation.</summary>
+        /// <summary>Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If
+        /// the field is set, then only VMs that target the reservation by name can consume from this
+        /// reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specificReservationRequired")]
         public virtual System.Nullable<bool> SpecificReservationRequired { get; set; } 
 
@@ -76128,8 +76128,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>ReservationAffinity is the configuration of desired reservation which this instance could take capacity
-    /// from.</summary>
+    /// <summary>Specifies the reservations that this instance can consume from.</summary>
     public class ReservationAffinity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION
@@ -76138,11 +76137,13 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumeReservationType")]
         public virtual string ConsumeReservationType { get; set; } 
 
-        /// <summary>Corresponds to the label key of reservation resource.</summary>
+        /// <summary>Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name,
+        /// specify googleapis.com/reservation-name as the key and specify the name of your reservation as its
+        /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
-        /// <summary>Corresponds to the label values of reservation resource.</summary>
+        /// <summary>Corresponds to the label values of a reservation resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; } 
 

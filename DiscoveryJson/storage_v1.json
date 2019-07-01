@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/bdEvS9xoLrBEi78GFGUwV6O6Uc4\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/m18VxIxuaQHJN-C1B3-yQYvta24\"",
  "discoveryVersion": "v1",
  "id": "storage:v1",
  "name": "storage",
  "version": "v1",
- "revision": "20190620",
+ "revision": "20190624",
  "title": "Cloud Storage JSON API",
  "description": "Stores and retrieves potentially large, immutable data objects.",
  "ownerDomain": "google.com",
@@ -188,11 +188,26 @@
        "properties": {
         "enabled": {
          "type": "boolean",
-         "description": "If set, access checks only use bucket-level IAM policies or above."
+         "description": "If set, access is controlled only by bucket-level or above IAM policies."
         },
         "lockedTime": {
          "type": "string",
-         "description": "The deadline time for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable.",
+         "description": "The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable.",
+         "format": "date-time"
+        }
+       }
+      },
+      "uniformBucketLevelAccess": {
+       "type": "object",
+       "description": "The bucket's uniform bucket-level access configuration.",
+       "properties": {
+        "enabled": {
+         "type": "boolean",
+         "description": "If set, access is controlled only by bucket-level or above IAM policies."
+        },
+        "lockedTime": {
+         "type": "string",
+         "description": "The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.",
          "format": "date-time"
         }
        }

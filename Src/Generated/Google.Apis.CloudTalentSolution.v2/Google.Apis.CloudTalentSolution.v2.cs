@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190618 (1629)
+ *      <tr><th>API Rev<td>20190701 (1642)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -424,6 +424,25 @@ namespace Google.Apis.CloudTalentSolution.v2
 
                 /// <summary>Optional.
                 ///
+                /// The requisition ID, also known as posting ID, assigned by the company to the job.
+                ///
+                /// The maximum number of allowable characters is 225.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("jobRequisitionId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string JobRequisitionId { get; set; }
+
+                /// <summary>Deprecated. Please DO NOT use this field except for small companies. Suggest counting jobs
+                /// page by page instead.
+                ///
+                /// Optional.
+                ///
+                /// Set to true if the total number of open jobs is to be returned.
+                ///
+                /// Defaults to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeJobsCount", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeJobsCount { get; set; }
+
+                /// <summary>Optional.
+                ///
                 /// The starting point of a query result.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -448,25 +467,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                 /// Default is 100 if empty or a number < 1 is specified.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional.
-                ///
-                /// The requisition ID, also known as posting ID, assigned by the company to the job.
-                ///
-                /// The maximum number of allowable characters is 225.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("jobRequisitionId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string JobRequisitionId { get; set; }
-
-                /// <summary>Deprecated. Please DO NOT use this field except for small companies. Suggest counting jobs
-                /// page by page instead.
-                ///
-                /// Optional.
-                ///
-                /// Set to true if the total number of open jobs is to be returned.
-                ///
-                /// Defaults to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeJobsCount", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeJobsCount { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -502,6 +502,24 @@ namespace Google.Apis.CloudTalentSolution.v2
                             Pattern = @"^companies/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "jobRequisitionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobRequisitionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "includeJobsCount", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeJobsCount",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -523,24 +541,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobRequisitionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobRequisitionId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeJobsCount", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeJobsCount",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -754,6 +754,17 @@ namespace Google.Apis.CloudTalentSolution.v2
 
             /// <summary>Optional.
             ///
+            /// Set to true if the companies request must have open jobs.
+            ///
+            /// Defaults to false.
+            ///
+            /// If true, at most page_size of companies are fetched, among which only those with open jobs are
+            /// returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("mustHaveOpenJobs", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> MustHaveOpenJobs { get; set; }
+
+            /// <summary>Optional.
+            ///
             /// The starting indicator from which to return results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -764,17 +775,6 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// provided.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// Set to true if the companies request must have open jobs.
-            ///
-            /// Defaults to false.
-            ///
-            /// If true, at most page_size of companies are fetched, among which only those with open jobs are
-            /// returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("mustHaveOpenJobs", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> MustHaveOpenJobs { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -801,6 +801,15 @@ namespace Google.Apis.CloudTalentSolution.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "mustHaveOpenJobs",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -813,15 +822,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "mustHaveOpenJobs",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1356,6 +1356,22 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
+            /// <summary>Required.
+            ///
+            /// The filter string specifies the jobs to be enumerated.
+            ///
+            /// Supported operator: =, AND
+            ///
+            /// The fields eligible for filtering are:
+            ///
+            /// * `companyName` (Required) * `requisitionId` (Optional)
+            ///
+            /// Sample Query:
+            ///
+            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>Optional.
             ///
             /// The starting point of a query result.</summary>
@@ -1383,22 +1399,6 @@ namespace Google.Apis.CloudTalentSolution.v2
             [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IdsOnly { get; set; }
 
-            /// <summary>Required.
-            ///
-            /// The filter string specifies the jobs to be enumerated.
-            ///
-            /// Supported operator: =, AND
-            ///
-            /// The fields eligible for filtering are:
-            ///
-            /// * `companyName` (Required) * `requisitionId` (Optional)
-            ///
-            /// Sample Query:
-            ///
-            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1424,6 +1424,15 @@ namespace Google.Apis.CloudTalentSolution.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1445,15 +1454,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                     "idsOnly", new Google.Apis.Discovery.Parameter
                     {
                         Name = "idsOnly",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1705,6 +1705,27 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
+            /// <summary>Required.
+            ///
+            /// The query used to generate suggestions.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
+            /// <summary>Required.
+            ///
+            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
+            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+            ///
+            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
+            ///
+            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
+            /// returned.
+            ///
+            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
+            /// with same language_code are returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
             /// <summary>Optional.
             ///
             /// The completion topic. The default is CompletionType.COMBINED.</summary>
@@ -1757,27 +1778,6 @@ namespace Google.Apis.CloudTalentSolution.v2
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>Required.
-            ///
-            /// The query used to generate suggestions.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Query { get; set; }
-
-            /// <summary>Required.
-            ///
-            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
-            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-            ///
-            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
-            ///
-            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
-            /// returned.
-            ///
-            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
-            /// with same language_code are returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LanguageCode { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1802,6 +1802,24 @@ namespace Google.Apis.CloudTalentSolution.v2
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "type", new Google.Apis.Discovery.Parameter
                     {
@@ -1833,24 +1851,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

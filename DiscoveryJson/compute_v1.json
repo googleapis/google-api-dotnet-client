@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/QPp01-pQWovnKomfKhTDs6ph1VE\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/5uWA75QzxYQo8oEVUDMDgwi5aeU\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20190607",
+ "revision": "20190618",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -6379,7 +6379,7 @@
     },
     "reservationAffinity": {
      "$ref": "ReservationAffinity",
-     "description": "The configuration of desired reservations from which this Instance can consume capacity from."
+     "description": "Specifies the reservations that this instance can consume from."
     },
     "scheduling": {
      "$ref": "Scheduling",
@@ -6456,7 +6456,7 @@
     },
     "items": {
      "type": "object",
-     "description": "A list of InstancesScopedList resources.",
+     "description": "An object that contains a list of instances scoped by zone.",
      "additionalProperties": {
       "$ref": "InstancesScopedList",
       "description": "[Output Only] Name of the scope containing this set of instances."
@@ -8076,7 +8076,7 @@
     },
     "reservationAffinity": {
      "$ref": "ReservationAffinity",
-     "description": "The configuration of desired reservations which this Instance could consume capacity from."
+     "description": "Specifies the reservations that this instance can consume from."
     },
     "scheduling": {
      "$ref": "Scheduling",
@@ -13722,6 +13722,13 @@
       "BACKEND_SERVICES",
       "C2_CPUS",
       "COMMITMENTS",
+      "COMMITTED_CPUS",
+      "COMMITTED_LOCAL_SSD_TOTAL_GB",
+      "COMMITTED_NVIDIA_K80_GPUS",
+      "COMMITTED_NVIDIA_P100_GPUS",
+      "COMMITTED_NVIDIA_P4_GPUS",
+      "COMMITTED_NVIDIA_T4_GPUS",
+      "COMMITTED_NVIDIA_V100_GPUS",
       "CPUS",
       "CPUS_ALL_REGIONS",
       "DISKS_TOTAL_GB",
@@ -13767,6 +13774,7 @@
       "PREEMPTIBLE_NVIDIA_V100_GPUS",
       "REGIONAL_AUTOSCALERS",
       "REGIONAL_INSTANCE_GROUP_MANAGERS",
+      "RESERVATIONS",
       "RESOURCE_POLICIES",
       "ROUTERS",
       "ROUTES",
@@ -13789,6 +13797,14 @@
       "VPN_TUNNELS"
      ],
      "enumDescriptions": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
       "",
       "",
       "",
@@ -14830,7 +14846,7 @@
   "Reservation": {
    "id": "Reservation",
    "type": "object",
-   "description": "Reservation resource NextID: 13",
+   "description": "Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read  Reserving zonal resources. (== resource_for beta.reservations ==) (== resource_for v1.reservations ==) (== NextID: 13 ==)",
    "properties": {
     "commitment": {
      "type": "string",
@@ -14874,7 +14890,7 @@
     },
     "specificReservationRequired": {
      "type": "boolean",
-     "description": "Indicates whether the reservation can be consumed by VMs with \"any reservation\" defined. If the field is set, then only VMs that target the reservation by name using --reservation-affinity can consume this reservation."
+     "description": "Indicates whether the reservation can be consumed by VMs with affinity for \"any\" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation."
     },
     "status": {
      "type": "string",
@@ -14903,7 +14919,7 @@
   "ReservationAffinity": {
    "id": "ReservationAffinity",
    "type": "object",
-   "description": "ReservationAffinity is the configuration of desired reservation which this instance could take capacity from.",
+   "description": "Specifies the reservations that this instance can consume from.",
    "properties": {
     "consumeReservationType": {
      "type": "string",
@@ -14923,11 +14939,11 @@
     },
     "key": {
      "type": "string",
-     "description": "Corresponds to the label key of reservation resource."
+     "description": "Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify googleapis.com/reservation-name as the key and specify the name of your reservation as its value."
     },
     "values": {
      "type": "array",
-     "description": "Corresponds to the label values of reservation resource.",
+     "description": "Corresponds to the label values of a reservation resource.",
      "items": {
       "type": "string"
      }
@@ -35749,7 +35765,7 @@
      "id": "compute.reservations.insert",
      "path": "{project}/zones/{zone}/reservations",
      "httpMethod": "POST",
-     "description": "Creates a new reservation.",
+     "description": "Creates a new reservation. For more information, read Reserving zonal resources.",
      "parameters": {
       "project": {
        "type": "string",
