@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/text-to-speech/'>Cloud Text-to-Speech API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190621 (1632)
+ *      <tr><th>API Rev<td>20190628 (1639)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/text-to-speech/'>
  *              https://cloud.google.com/text-to-speech/</a>
@@ -496,14 +496,14 @@ namespace Google.Apis.Texttospeech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
         public virtual string AudioEncoding { get; set; } 
 
-        /// <summary>Input only. Optional. An identifier which selects 'audio effects' profiles that are applied on
+        /// <summary>Optional. Input only. An identifier which selects 'audio effects' profiles that are applied on
         /// (post synthesized) text to speech. Effects are applied on top of each other in the order they are given. See
         /// [audio profiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for current supported profile
         /// ids.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectsProfileId")]
         public virtual System.Collections.Generic.IList<string> EffectsProfileId { get; set; } 
 
-        /// <summary>Input only. Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones
+        /// <summary>Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones
         /// from the original pitch. -20 means decrease 20 semitones from the original pitch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pitch")]
         public virtual System.Nullable<double> Pitch { get; set; } 
@@ -516,13 +516,13 @@ namespace Google.Apis.Texttospeech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
         public virtual System.Nullable<int> SampleRateHertz { get; set; } 
 
-        /// <summary>Input only. Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed
+        /// <summary>Optional. Input only. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed
         /// supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to
         /// the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakingRate")]
         public virtual System.Nullable<double> SpeakingRate { get; set; } 
 
-        /// <summary>Input only. Optional. Volume gain (in dB) of the normal native volume supported by the specific
+        /// <summary>Optional. Input only. Volume gain (in dB) of the normal native volume supported by the specific
         /// voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native
         /// signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native
         /// signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native

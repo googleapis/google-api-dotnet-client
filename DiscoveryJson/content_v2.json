@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/JrRFVq1dVWgk7QWNhBQNy4Ljt24\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/Uj8dqhaMoa_WrlzoiCKu1I4cNbk\"",
  "discoveryVersion": "v1",
  "id": "content:v2",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2",
- "revision": "20190607",
+ "revision": "20190702",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -1020,6 +1020,19 @@
     }
    }
   },
+  "BusinessDayConfig": {
+   "id": "BusinessDayConfig",
+   "type": "object",
+   "properties": {
+    "businessDays": {
+     "type": "array",
+     "description": "Regular business days. May not be empty.",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
   "CarrierRate": {
    "id": "CarrierRate",
    "type": "object",
@@ -1648,6 +1661,10 @@
      "$ref": "CutoffTime",
      "description": "Business days cutoff time definition. If not configured the cutoff time will be defaulted to 8AM PST."
     },
+    "handlingBusinessDayConfig": {
+     "$ref": "BusinessDayConfig",
+     "description": "The business days during which orders can be handled. If not provided, Monday to Friday business days will be assumed."
+    },
     "holidayCutoffs": {
      "type": "array",
      "description": "Holiday cutoff definitions. If configured, they specify order cutoff times for holiday-specific shipping.",
@@ -1672,12 +1689,16 @@
     },
     "minTransitTimeInDays": {
      "type": "integer",
-     "description": "Minimum number of business days that is spent in transit. 0 means same day delivery, 1 means next day delivery. Either {min,max}transitTimeInDays or transitTimeTable must be set, but not both.",
+     "description": "Minimum number of business days that is spent in transit. 0 means same day delivery, 1 means next day delivery. Either {min,max}TransitTimeInDays or transitTimeTable must be set, but not both.",
      "format": "uint32"
+    },
+    "transitBusinessDayConfig": {
+     "$ref": "BusinessDayConfig",
+     "description": "The business days during which orders can be in-transit. If not provided, Monday to Friday business days will be assumed."
     },
     "transitTimeTable": {
      "$ref": "TransitTable",
-     "description": "Transit time table, number of business days spent in transit based on row and column dimensions. Either {min,max}transitTimeInDays or transitTimeTable can be set, but not both."
+     "description": "Transit time table, number of business days spent in transit based on row and column dimensions. Either {min,max}TransitTimeInDays or transitTimeTable can be set, but not both."
     }
    }
   },
@@ -6389,6 +6410,11 @@
      "description": "An entry ID, unique within the batch request.",
      "format": "uint32"
     },
+    "feedId": {
+     "type": "string",
+     "description": "The ContentAPI feed id.",
+     "format": "uint64"
+    },
     "merchantId": {
      "type": "string",
      "description": "The ID of the managing account.",
@@ -9744,7 +9770,7 @@
       },
       "statuses": {
        "type": "string",
-       "description": "Obtains orders that match any of the specified statuses. Multiple values can be specified with comma separation. Additionally, please note that active is a shortcut for pendingShipment and partiallyShipped, and completed is a shortcut for shipped, partiallyDelivered, delivered, partiallyReturned, returned, and canceled.",
+       "description": "Obtains orders that match any of the specified statuses. Please note that active is a shortcut for pendingShipment and partiallyShipped, and completed is a shortcut for shipped, partiallyDelivered, delivered, partiallyReturned, returned, and canceled.",
        "enum": [
         "active",
         "canceled",

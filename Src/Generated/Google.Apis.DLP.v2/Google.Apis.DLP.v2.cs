@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190622 (1633)
+ *      <tr><th>API Rev<td>20190629 (1640)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -1722,6 +1722,7 @@ namespace Google.Apis.DLP.v2
             image = new ImageResource(service);
             inspectTemplates = new InspectTemplatesResource(service);
             jobTriggers = new JobTriggersResource(service);
+            locations = new LocationsResource(service);
             storedInfoTypes = new StoredInfoTypesResource(service);
 
         }
@@ -2732,14 +2733,6 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc` postfix.
                 /// This list is case-insensitive, default sorting order is ascending, redundant space characters are
                 /// insignificant.
@@ -2792,6 +2785,14 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -2826,24 +2827,6 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -2865,6 +2848,24 @@ namespace Google.Apis.DLP.v2
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3902,6 +3903,152 @@ namespace Google.Apis.DLP.v2
 
             }
         }
+        private readonly LocationsResource locations;
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations
+        {
+            get { return locations; }
+        }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                content = new ContentResource(service);
+
+            }
+
+            private readonly ContentResource content;
+
+            /// <summary>Gets the Content resource.</summary>
+            public virtual ContentResource Content
+            {
+                get { return content; }
+            }
+
+            /// <summary>The "content" collection of methods.</summary>
+            public class ContentResource
+            {
+                private const string Resource = "content";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ContentResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>De-identifies potentially sensitive info from a ContentItem. This method has limits on
+                /// input size and output size. See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to learn
+                /// more.
+                ///
+                /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically
+                /// choose what detectors to run. By default this may be all types, but may change over time as
+                /// detectors are updated.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
+                /// <param
+                /// name="location">The geographic location to process de-identification. Reserved for future extensions.</param>
+                public virtual DeidentifyRequest Deidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentRequest body, string parent, string location)
+                {
+                    return new DeidentifyRequest(service, body, parent, location);
+                }
+
+                /// <summary>De-identifies potentially sensitive info from a ContentItem. This method has limits on
+                /// input size and output size. See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to learn
+                /// more.
+                ///
+                /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically
+                /// choose what detectors to run. By default this may be all types, but may change over time as
+                /// detectors are updated.</summary>
+                public class DeidentifyRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentResponse>
+                {
+                    /// <summary>Constructs a new Deidentify request.</summary>
+                    public DeidentifyRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentRequest body, string parent, string location)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Location = location;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The parent resource name, for example projects/my-project-id.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The geographic location to process de-identification. Reserved for future
+                    /// extensions.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Location { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "deidentify"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+parent}/locations/{location}/content:deidentify"; }
+                    }
+
+                    /// <summary>Initializes Deidentify parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+        }
         private readonly StoredInfoTypesResource storedInfoTypes;
 
         /// <summary>Gets the StoredInfoTypes resource.</summary>
@@ -4155,6 +4302,11 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to
                 /// `ListStoredInfoTypes`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -4173,11 +4325,6 @@ namespace Google.Apis.DLP.v2
                 /// corresponds to info type's display name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
-
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -4213,6 +4360,15 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -4225,15 +4381,6 @@ namespace Google.Apis.DLP.v2
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4335,6 +4482,10 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Publish a notification to a pubsub topic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubSub")]
         public virtual GooglePrivacyDlpV2PublishToPubSub PubSub { get; set; } 
+
+        /// <summary>Publish findings to Cloud Datahub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishFindingsToCloudDataCatalog")]
+        public virtual GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog PublishFindingsToCloudDataCatalog { get; set; } 
 
         /// <summary>Publish summary to Cloud Security Command Center (Alpha).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishSummaryToCscc")]
@@ -5332,6 +5483,10 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The item to de-identify. Will be treated as text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
         public virtual GooglePrivacyDlpV2ContentItem Item { get; set; } 
+
+        /// <summary>The geographic location to process de-identification. Reserved for future extensions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6882,6 +7037,18 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("windowBefore")]
         public virtual System.Nullable<int> WindowBefore { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the results of the DlpJob will
+    /// be applied to the entry for the resource scanned in Cloud Data Catalog. Any labels previously written by another
+    /// DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the
+    /// findings will be persisted in Cloud Data Catalog storage and are governed by Data Catalog service-specific
+    /// policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified
+    /// and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect</summary>
+    public class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

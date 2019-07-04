@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190618 (1629)
+ *      <tr><th>API Rev<td>20190627 (1638)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -1034,53 +1034,53 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A Google Docs document.</summary>
     public class Document : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The main body of the document.</summary>
+        /// <summary>Output only. The main body of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual Body Body { get; set; } 
 
-        /// <summary>The ID of the document.</summary>
+        /// <summary>Output only. The ID of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual string DocumentId { get; set; } 
 
-        /// <summary>The style of the document.</summary>
+        /// <summary>Output only. The style of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentStyle")]
         public virtual DocumentStyle DocumentStyle { get; set; } 
 
-        /// <summary>The footers in the document, keyed by footer ID.</summary>
+        /// <summary>Output only. The footers in the document, keyed by footer ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("footers")]
         public virtual System.Collections.Generic.IDictionary<string,Footer> Footers { get; set; } 
 
-        /// <summary>The footnotes in the document, keyed by footnote ID.</summary>
+        /// <summary>Output only. The footnotes in the document, keyed by footnote ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("footnotes")]
         public virtual System.Collections.Generic.IDictionary<string,Footnote> Footnotes { get; set; } 
 
-        /// <summary>The headers in the document, keyed by header ID.</summary>
+        /// <summary>Output only. The headers in the document, keyed by header ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IDictionary<string,Header> Headers { get; set; } 
 
-        /// <summary>The inline objects in the document, keyed by object ID.</summary>
+        /// <summary>Output only. The inline objects in the document, keyed by object ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineObjects")]
         public virtual System.Collections.Generic.IDictionary<string,InlineObject> InlineObjects { get; set; } 
 
-        /// <summary>The lists in the document, keyed by list ID.</summary>
+        /// <summary>Output only. The lists in the document, keyed by list ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lists")]
         public virtual System.Collections.Generic.IDictionary<string,List> Lists { get; set; } 
 
-        /// <summary>The named ranges in the document, keyed by name.</summary>
+        /// <summary>Output only. The named ranges in the document, keyed by name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRanges")]
         public virtual System.Collections.Generic.IDictionary<string,NamedRanges> NamedRanges { get; set; } 
 
-        /// <summary>The named styles of the document.</summary>
+        /// <summary>Output only. The named styles of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedStyles")]
         public virtual NamedStyles NamedStyles { get; set; } 
 
-        /// <summary>The positioned objects in the document, keyed by object ID.</summary>
+        /// <summary>Output only. The positioned objects in the document, keyed by object ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positionedObjects")]
         public virtual System.Collections.Generic.IDictionary<string,PositionedObject> PositionedObjects { get; set; } 
 
-        /// <summary>The revision ID of the document. Can be used in update requests to specify which revision of a
-        /// document to apply updates to and how the request should behave if the document has been edited since that
-        /// revision. Only populated if the user has edit access to the document.
+        /// <summary>Output only. The revision ID of the document. Can be used in update requests to specify which
+        /// revision of a document to apply updates to and how the request should behave if the document has been edited
+        /// since that revision. Only populated if the user has edit access to the document.
         ///
         /// The format of the revision ID may change over time, so it should be treated opaquely. A returned revision ID
         /// is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users. If
@@ -1090,15 +1090,16 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; } 
 
-        /// <summary>The suggested changes to the style of the document, keyed by suggestion ID.</summary>
+        /// <summary>Output only. The suggested changes to the style of the document, keyed by suggestion ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedDocumentStyleChanges")]
         public virtual System.Collections.Generic.IDictionary<string,SuggestedDocumentStyle> SuggestedDocumentStyleChanges { get; set; } 
 
-        /// <summary>The suggested changes to the named styles of the document, keyed by suggestion ID.</summary>
+        /// <summary>Output only. The suggested changes to the named styles of the document, keyed by suggestion
+        /// ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedNamedStylesChanges")]
         public virtual System.Collections.Generic.IDictionary<string,SuggestedNamedStyles> SuggestedNamedStylesChanges { get; set; } 
 
-        /// <summary>The suggestions view mode applied to the document.
+        /// <summary>Output only. The suggestions view mode applied to the document.
         ///
         /// Note: When editing a document, changes must be based on a document with SUGGESTIONS_INLINE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionsViewMode")]

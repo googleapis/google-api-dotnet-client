@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/tasks/firstapp'>Tasks API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190222 (1513)
+ *      <tr><th>API Rev<td>20190628 (1639)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/tasks/firstapp'>
  *              https://developers.google.com/google-apps/tasks/firstapp</a>
@@ -1495,7 +1495,9 @@ namespace Google.Apis.Tasks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; } 
 
-        /// <summary>Due date of the task (as a RFC 3339 timestamp). Optional.</summary>
+        /// <summary>Due date of the task (as a RFC 3339 timestamp). Optional. The due date only records date
+        /// information; the time portion of the timestamp is discarded when setting the due date. It isn't possible to
+        /// read or write the time that a task is due via the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("due")]
         public virtual string DueRaw { get; set; }
 

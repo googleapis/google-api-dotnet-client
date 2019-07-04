@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/5hf7l4OXls843duAMQrmw2lOdP8\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/sib0TfOU9SmOWm02eMFRVq-fFck\"",
  "discoveryVersion": "v1",
  "id": "tasks:v1",
  "name": "tasks",
  "version": "v1",
- "revision": "20190222",
+ "revision": "20190628",
  "title": "Tasks API",
  "description": "Manages your tasks and task lists.",
  "ownerDomain": "google.com",
@@ -94,7 +94,7 @@
     },
     "due": {
      "type": "string",
-     "description": "Due date of the task (as a RFC 3339 timestamp). Optional.",
+     "description": "Due date of the task (as a RFC 3339 timestamp). Optional. The due date only records date information; the time portion of the timestamp is discarded when setting the due date. It isn't possible to read or write the time that a task is due via the API.",
      "format": "date-time"
     },
     "etag": {

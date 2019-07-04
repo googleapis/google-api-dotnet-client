@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/LujvsVuGeaUSXxPEAwz2rjziDZ8\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/m_e1pg763lT2azOGbaicH23tu28\"",
  "discoveryVersion": "v1",
  "id": "dfareporting:v3.2",
  "name": "dfareporting",
  "version": "v3.2",
- "revision": "20190206",
+ "revision": "20190531",
  "title": "DCM/DFA Reporting And Trafficking API",
  "description": "Manages your DoubleClick Campaign Manager ad campaigns and reports.",
  "ownerDomain": "google.com",
@@ -12712,6 +12712,7 @@
         "OBJECT_FLOODLIGHT_ACTIVITY_GROUP",
         "OBJECT_FLOODLIGHT_ACTVITY",
         "OBJECT_FLOODLIGHT_CONFIGURATION",
+        "OBJECT_FLOODLIGHT_DV360_LINK",
         "OBJECT_INSTREAM_CREATIVE",
         "OBJECT_LANDING_PAGE",
         "OBJECT_MEDIA_ORDER",
@@ -12732,6 +12733,7 @@
         "OBJECT_USER_ROLE"
        ],
        "enumDescriptions": [
+        "",
         "",
         "",
         "",

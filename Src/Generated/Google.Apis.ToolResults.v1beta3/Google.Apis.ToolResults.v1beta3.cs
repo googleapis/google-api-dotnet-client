@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20190627 (1638)
+ *      <tr><th>API Rev<td>20190703 (1644)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -4437,6 +4437,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// the user pressed ctrl-c which sent a kill signal to the test runner while the test was running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("abortedByUser")]
         public virtual System.Nullable<bool> AbortedByUser { get; set; } 
+
+        /// <summary>If results are being provided to the user in certain cases of infrastructure failures</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasErrorLogs")]
+        public virtual System.Nullable<bool> HasErrorLogs { get; set; } 
 
         /// <summary>If the test runner could not determine success or failure because the test depends on a component
         /// other than the system under test which failed.

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/Qpcrnn6e_zGa0vm6WgVHtHA7I-I\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/tLEn1KkE5NEmlpywSz1Qx5p8WMk\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v3",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v3",
- "revision": "20190624",
+ "revision": "20190702",
  "title": "Google Play Developer API",
  "description": "Accesses Android application developers' Google Play accounts.",
  "ownerDomain": "google.com",
@@ -625,6 +625,31 @@
     }
    }
   },
+  "IntroductoryPriceInfo": {
+   "id": "IntroductoryPriceInfo",
+   "type": "object",
+   "description": "Contains the introductory price information for a subscription.",
+   "properties": {
+    "introductoryPriceAmountMicros": {
+     "type": "string",
+     "description": "Introductory price of the subscription, not including tax. The currency is the same as price_currency_code. Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of the currency. For example, if the subscription price is €1.99, price_amount_micros is 1990000.",
+     "format": "int64"
+    },
+    "introductoryPriceCurrencyCode": {
+     "type": "string",
+     "description": "ISO 4217 currency code for the introductory subscription price. For example, if the price is specified in British pounds sterling, price_currency_code is \"GBP\"."
+    },
+    "introductoryPriceCycles": {
+     "type": "integer",
+     "description": "The number of billing period to offer introductory pricing.",
+     "format": "int32"
+    },
+    "introductoryPricePeriod": {
+     "type": "string",
+     "description": "Introductory price period, specified in ISO 8601 format. Common values are (but not limited to) \"P1W\" (one week), \"P1M\" (one month), \"P3M\" (three months), \"P6M\" (six months), and \"P1Y\" (one year)."
+    }
+   }
+  },
   "Listing": {
    "id": "Listing",
    "type": "object",
@@ -993,6 +1018,10 @@
     "givenName": {
      "type": "string",
      "description": "The given name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."
+    },
+    "introductoryPriceInfo": {
+     "$ref": "IntroductoryPriceInfo",
+     "description": "Introductory price information of the subscription. This is only present when the subscription was purchased with an introductory price.\n\nThis field does not indicate the subscription is currently in introductory price period."
     },
     "kind": {
      "type": "string",

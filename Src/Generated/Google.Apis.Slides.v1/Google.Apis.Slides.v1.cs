@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190618 (1629)
+ *      <tr><th>API Rev<td>20190625 (1636)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -2304,7 +2304,10 @@ namespace Google.Apis.Slides.v1.Data
     public class PageProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The color scheme of the page. If unset, the color scheme is inherited from a parent page. If the
-        /// page has no parent, the color scheme uses a default Slides color scheme. This field is read-only.</summary>
+        /// page has no parent, the color scheme uses a default Slides color scheme, matching the defaults in the Slides
+        /// editor. Only the concrete colors of the first 12 ThemeColorTypes are editable. To update the field, a color
+        /// scheme containing mappings from all the first 12 ThemeColorTypes to their concrete colors must be
+        /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorScheme")]
         public virtual ColorScheme ColorScheme { get; set; } 
 

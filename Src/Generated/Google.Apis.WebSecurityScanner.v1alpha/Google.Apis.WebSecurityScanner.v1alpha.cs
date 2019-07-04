@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/security-scanner/'>Web Security Scanner API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20190622 (1633)
+ *      <tr><th>API Rev<td>20190629 (1640)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/security-scanner/'>
  *              https://cloud.google.com/security-scanner/</a>
@@ -1500,7 +1500,7 @@ namespace Google.Apis.WebSecurityScanner.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loginUrl")]
         public virtual string LoginUrl { get; set; } 
 
-        /// <summary>Input only. Required. The password of the custom account. The credential is stored encrypted and
+        /// <summary>Required. Input only. The password of the custom account. The credential is stored encrypted and
         /// not returned in any response nor included in audit logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; } 
@@ -1620,7 +1620,7 @@ namespace Google.Apis.WebSecurityScanner.v1alpha.Data
     /// <summary>Describes authentication configuration that uses a Google account.</summary>
     public class GoogleAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input only. Required. The password of the Google account. The credential is stored encrypted and
+        /// <summary>Required. Input only. The password of the Google account. The credential is stored encrypted and
         /// not returned in any response nor included in audit logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; } 

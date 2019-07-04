@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/binary-authorization/'>Binary Authorization API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190621 (1632)
+ *      <tr><th>API Rev<td>20190628 (1639)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/binary-authorization/'>
  *              https://cloud.google.com/binary-authorization/</a>
@@ -600,6 +600,11 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
+                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the
+                /// value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -632,6 +637,15 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/attestors/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 
@@ -999,6 +1013,11 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
+                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the
+                /// value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1031,6 +1050,15 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/policy$",
+                        });
+                    RequestParameters.Add(
+                        "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 

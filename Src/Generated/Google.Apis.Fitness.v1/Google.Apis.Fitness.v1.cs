@@ -1881,8 +1881,7 @@ namespace Google.Apis.Fitness.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTimeMillis")]
         public virtual System.Nullable<long> EndTimeMillis { get; set; } 
 
-        /// <summary>DO NOT POPULATE THIS FIELD. As data quality standards are deprecated, filling it in will result in
-        /// no data sources being returned. It will be removed in a future version entirely.</summary>
+        /// <summary>DO NOT POPULATE THIS FIELD. It is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filteredDataQualityStandard")]
         public virtual System.Collections.Generic.IList<string> FilteredDataQualityStandard { get; set; } 
 

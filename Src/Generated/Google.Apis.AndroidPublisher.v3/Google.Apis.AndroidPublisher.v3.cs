@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190624 (1635)
+ *      <tr><th>API Rev<td>20190702 (1643)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7262,6 +7262,34 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Contains the introductory price information for a subscription.</summary>
+    public class IntroductoryPriceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Introductory price of the subscription, not including tax. The currency is the same as
+        /// price_currency_code. Price is expressed in micro-units, where 1,000,000 micro-units represents one unit of
+        /// the currency. For example, if the subscription price is €1.99, price_amount_micros is 1990000.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("introductoryPriceAmountMicros")]
+        public virtual System.Nullable<long> IntroductoryPriceAmountMicros { get; set; } 
+
+        /// <summary>ISO 4217 currency code for the introductory subscription price. For example, if the price is
+        /// specified in British pounds sterling, price_currency_code is "GBP".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("introductoryPriceCurrencyCode")]
+        public virtual string IntroductoryPriceCurrencyCode { get; set; } 
+
+        /// <summary>The number of billing period to offer introductory pricing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("introductoryPriceCycles")]
+        public virtual System.Nullable<int> IntroductoryPriceCycles { get; set; } 
+
+        /// <summary>Introductory price period, specified in ISO 8601 format. Common values are (but not limited to)
+        /// "P1W" (one week), "P1M" (one month), "P3M" (three months), "P6M" (six months), and "P1Y" (one
+        /// year).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("introductoryPricePeriod")]
+        public virtual string IntroductoryPricePeriod { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class Listing : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Full description of the app; this may be up to 4000 characters in length.</summary>
@@ -7631,6 +7659,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// with 'Subscribe with Google'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
         public virtual string GivenName { get; set; } 
+
+        /// <summary>Introductory price information of the subscription. This is only present when the subscription was
+        /// purchased with an introductory price.
+        ///
+        /// This field does not indicate the subscription is currently in introductory price period.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("introductoryPriceInfo")]
+        public virtual IntroductoryPriceInfo IntroductoryPriceInfo { get; set; } 
 
         /// <summary>This kind represents a subscriptionPurchase object in the androidpublisher service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]

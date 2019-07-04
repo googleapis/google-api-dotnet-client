@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v3.1
- *      <tr><th>API Rev<td>20190206 (1497)
+ *      <tr><th>API Rev<td>20190531 (1611)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -5643,6 +5643,8 @@ namespace Google.Apis.Dfareporting.v3_1
                 OBJECTFLOODLIGHTACTVITY,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_FLOODLIGHT_CONFIGURATION")]
                 OBJECTFLOODLIGHTCONFIGURATION,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_FLOODLIGHT_DV360_LINK")]
+                OBJECTFLOODLIGHTDV360LINK,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_INSTREAM_CREATIVE")]
                 OBJECTINSTREAMCREATIVE,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_LANDING_PAGE")]

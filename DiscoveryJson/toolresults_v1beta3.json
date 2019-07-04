@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/NCu3fWCbbpd11Za0iGB55K_72G0\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/yHDDMKlMsjmTefZFIyJyRtpyxyQ\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3",
- "revision": "20190627",
+ "revision": "20190703",
  "title": "Cloud Tool Results API",
  "description": "Reads and publishes results from Firebase Test Lab.",
  "ownerDomain": "google.com",
@@ -567,6 +567,10 @@
     "abortedByUser": {
      "type": "boolean",
      "description": "If the end user aborted the test execution before a pass or fail could be determined. For example, the user pressed ctrl-c which sent a kill signal to the test runner while the test was running."
+    },
+    "hasErrorLogs": {
+     "type": "boolean",
+     "description": "If results are being provided to the user in certain cases of infrastructure failures"
     },
     "infrastructureFailure": {
      "type": "boolean",
@@ -1391,6 +1395,7 @@
       "availableDeepLinks",
       "compatibleWithOrchestrator",
       "completeRoboScriptExecution",
+      "crashDialogError",
       "encounteredLoginScreen",
       "encounteredNonAndroidUiWidgetScreen",
       "failedToInstall",
@@ -1413,6 +1418,7 @@
       "usedRoboIgnoreDirective"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",

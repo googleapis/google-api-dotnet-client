@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/security-scanner/'>Web Security Scanner API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20190622 (1633)
+ *      <tr><th>API Rev<td>20190629 (1640)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/security-scanner/'>
  *              https://cloud.google.com/security-scanner/</a>
@@ -440,16 +440,16 @@ namespace Google.Apis.WebSecurityScanner.v1beta
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The maximum number of CrawledUrls to return, can be limited by server. If not
-                        /// specified or not positive, the implementation will select a reasonable value.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>A token identifying a page of results to be returned. This should be a
                         /// `next_page_token` value returned from a previous List request. If unspecified, the first
                         /// page of results is returned.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>The maximum number of CrawledUrls to return, can be limited by server. If not
+                        /// specified or not positive, the implementation will select a reasonable value.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -485,18 +485,18 @@ namespace Google.Apis.WebSecurityScanner.v1beta
                                     Pattern = @"^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -704,11 +704,6 @@ namespace Google.Apis.WebSecurityScanner.v1beta
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The maximum number of Findings to return, can be limited by server. If not
-                        /// specified or not positive, the implementation will select a reasonable value.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>The filter expression. The expression must be in the format: . Supported field:
                         /// 'finding_type'. Supported operator: '='.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -719,6 +714,11 @@ namespace Google.Apis.WebSecurityScanner.v1beta
                         /// page of results is returned.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>The maximum number of Findings to return, can be limited by server. If not
+                        /// specified or not positive, the implementation will select a reasonable value.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -754,15 +754,6 @@ namespace Google.Apis.WebSecurityScanner.v1beta
                                     Pattern = @"^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "filter", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "filter",
@@ -775,6 +766,15 @@ namespace Google.Apis.WebSecurityScanner.v1beta
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1500,7 +1500,7 @@ namespace Google.Apis.WebSecurityScanner.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loginUrl")]
         public virtual string LoginUrl { get; set; } 
 
-        /// <summary>Input only. Required. The password of the custom account. The credential is stored encrypted and
+        /// <summary>Required. Input only. The password of the custom account. The credential is stored encrypted and
         /// not returned in any response nor included in audit logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; } 
@@ -1641,7 +1641,7 @@ namespace Google.Apis.WebSecurityScanner.v1beta.Data
     /// <summary>Describes authentication configuration that uses a Google account.</summary>
     public class GoogleAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input only. Required. The password of the Google account. The credential is stored encrypted and
+        /// <summary>Required. Input only. The password of the Google account. The credential is stored encrypted and
         /// not returned in any response nor included in audit logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; } 

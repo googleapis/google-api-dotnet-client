@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190621 (1632)
+ *      <tr><th>API Rev<td>20190628 (1639)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -1945,12 +1945,6 @@ namespace Google.Apis.ServiceManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
-            /// <summary>The id of the service configuration resource.
-            ///
-            /// This field must be specified for the server to return all fields, including `SourceInfo`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ConfigId { get; set; }
-
             /// <summary>Specifies which parts of the Service Config should be returned in the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1963,6 +1957,12 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
+
+            /// <summary>The id of the service configuration resource.
+            ///
+            /// This field must be specified for the server to return all fields, including `SourceInfo`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ConfigId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1998,18 +1998,18 @@ namespace Google.Apis.ServiceManagement.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "configId", new Google.Apis.Discovery.Parameter
+                    "view", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "configId",
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
+                    "configId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "view",
+                        Name = "configId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3421,6 +3421,23 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. This field is only
+        /// used by Cloud IAM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual GetPolicyOptions Options { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
+    public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the value is
+        /// 0, or the field is omitted, policy format version 1 will be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
+        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

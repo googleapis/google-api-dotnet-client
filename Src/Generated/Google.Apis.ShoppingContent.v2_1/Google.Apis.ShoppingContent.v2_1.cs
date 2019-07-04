@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20190607 (1618)
+ *      <tr><th>API Rev<td>20190702 (1643)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -5073,17 +5073,15 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("placedDateStart", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PlacedDateStart { get; set; }
 
-            /// <summary>Obtains orders that match any of the specified statuses. Multiple values can be specified with
-            /// comma separation. Additionally, please note that active is a shortcut for pendingShipment and
-            /// partiallyShipped, and completed is a shortcut for shipped, partiallyDelivered, delivered,
-            /// partiallyReturned, returned, and canceled.</summary>
+            /// <summary>Obtains orders that match any of the specified statuses. Please note that active is a shortcut
+            /// for pendingShipment and partiallyShipped, and completed is a shortcut for shipped, partiallyDelivered,
+            /// delivered, partiallyReturned, returned, and canceled.</summary>
             [Google.Apis.Util.RequestParameterAttribute("statuses", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusesEnum> Statuses { get; set; }
 
-            /// <summary>Obtains orders that match any of the specified statuses. Multiple values can be specified with
-            /// comma separation. Additionally, please note that active is a shortcut for pendingShipment and
-            /// partiallyShipped, and completed is a shortcut for shipped, partiallyDelivered, delivered,
-            /// partiallyReturned, returned, and canceled.</summary>
+            /// <summary>Obtains orders that match any of the specified statuses. Please note that active is a shortcut
+            /// for pendingShipment and partiallyShipped, and completed is a shortcut for shipped, partiallyDelivered,
+            /// delivered, partiallyReturned, returned, and canceled.</summary>
             public enum StatusesEnum
             {
                 [Google.Apis.Util.StringValueAttribute("active")]
@@ -6489,6 +6487,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
+            /// <summary>The Content API Supplemental Feed ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("feedId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> FeedId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -6528,6 +6530,15 @@ namespace Google.Apis.ShoppingContent.v2_1
                         Name = "productId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "feedId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "feedId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -6641,6 +6652,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
+            /// <summary>The Content API Supplemental Feed ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("feedId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> FeedId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.ShoppingContent.v2_1.Data.Product Body { get; set; }
@@ -6677,6 +6692,15 @@ namespace Google.Apis.ShoppingContent.v2_1
                         Name = "merchantId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "feedId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "feedId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -8444,6 +8468,16 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class BusinessDayConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Regular business days. May not be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessDays")]
+        public virtual System.Collections.Generic.IList<string> BusinessDays { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class CarrierRate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Carrier service, such as "UPS" or "Fedex". The list of supported carriers can be retrieved via the
@@ -8979,6 +9013,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cutoffTime")]
         public virtual CutoffTime CutoffTime { get; set; } 
 
+        /// <summary>The business days during which orders can be handled. If not provided, Monday to Friday business
+        /// days will be assumed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handlingBusinessDayConfig")]
+        public virtual BusinessDayConfig HandlingBusinessDayConfig { get; set; } 
+
         /// <summary>Holiday cutoff definitions. If configured, they specify order cutoff times for holiday-specific
         /// shipping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("holidayCutoffs")]
@@ -9000,12 +9039,17 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<long> MinHandlingTimeInDays { get; set; } 
 
         /// <summary>Minimum number of business days that is spent in transit. 0 means same day delivery, 1 means next
-        /// day delivery. Either {min,max}transitTimeInDays or transitTimeTable must be set, but not both.</summary>
+        /// day delivery. Either {min,max}TransitTimeInDays or transitTimeTable must be set, but not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTransitTimeInDays")]
         public virtual System.Nullable<long> MinTransitTimeInDays { get; set; } 
 
+        /// <summary>The business days during which orders can be in-transit. If not provided, Monday to Friday business
+        /// days will be assumed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitBusinessDayConfig")]
+        public virtual BusinessDayConfig TransitBusinessDayConfig { get; set; } 
+
         /// <summary>Transit time table, number of business days spent in transit based on row and column dimensions.
-        /// Either {min,max}transitTimeInDays or transitTimeTable can be set, but not both.</summary>
+        /// Either {min,max}TransitTimeInDays or transitTimeTable can be set, but not both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitTimeTable")]
         public virtual TransitTable TransitTimeTable { get; set; } 
 
@@ -12208,6 +12252,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
         public virtual System.Nullable<long> BatchId { get; set; } 
+
+        /// <summary>The ContentAPI feed id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedId")]
+        public virtual System.Nullable<ulong> FeedId { get; set; } 
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
