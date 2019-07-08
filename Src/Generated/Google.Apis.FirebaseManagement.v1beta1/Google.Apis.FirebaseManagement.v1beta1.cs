@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190702 (1643)
+ *      <tr><th>API Rev<td>20190704 (1645)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -691,7 +691,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
                 /// <summary>Removes a SHA certificate from the specified AndroidApp.</summary>
                 /// <param name="name">The fully qualified resource name of the `sha-key`, in the format:
-                /// projects/projectId/androidApps/appId/sha/shaHash</param>
+                /// projects/projectId/androidApps/appId/sha/shaId You can obtain the full name from the response of
+                /// [`ListShaCertificates`](../projects.androidApps.sha/list) or the original
+                /// [`CreateShaCertificate`](../projects.androidApps.sha/create).</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -710,7 +712,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
 
                     /// <summary>The fully qualified resource name of the `sha-key`, in the format:
-                    /// projects/projectId/androidApps/appId/sha/shaHash</summary>
+                    /// projects/projectId/androidApps/appId/sha/shaId You can obtain the full name from the response of
+                    /// [`ListShaCertificates`](../projects.androidApps.sha/list) or the original
+                    /// [`CreateShaCertificate`](../projects.androidApps.sha/create).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3344,7 +3348,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string CertType { get; set; } 
 
         /// <summary>The fully qualified resource name of the `sha-key`, in the format:
-        /// projects/projectId/androidApps/appId/sha/shaHash</summary>
+        /// projects/projectId/androidApps/appId/sha/shaId</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

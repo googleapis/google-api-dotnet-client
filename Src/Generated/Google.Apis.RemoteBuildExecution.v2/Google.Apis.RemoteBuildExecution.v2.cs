@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190625 (1636)
+ *      <tr><th>API Rev<td>20190702 (1643)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -436,6 +436,10 @@ namespace Google.Apis.RemoteBuildExecution.v2
             [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long SizeBytes { get; private set; }
 
+            /// <summary>A hint to the server to request inlining stdout in the ActionResult message.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("inlineStdout", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> InlineStdout { get; set; }
+
             /// <summary>A hint to the server to request inlining stderr in the ActionResult message.</summary>
             [Google.Apis.Util.RequestParameterAttribute("inlineStderr", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> InlineStderr { get; set; }
@@ -444,10 +448,6 @@ namespace Google.Apis.RemoteBuildExecution.v2
             /// exactly match one path in `output_files` in the Command message.</summary>
             [Google.Apis.Util.RequestParameterAttribute("inlineOutputFiles", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> InlineOutputFiles { get; set; }
-
-            /// <summary>A hint to the server to request inlining stdout in the ActionResult message.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("inlineStdout", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> InlineStdout { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -501,6 +501,15 @@ namespace Google.Apis.RemoteBuildExecution.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "inlineStdout", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "inlineStdout",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "inlineStderr", new Google.Apis.Discovery.Parameter
                     {
                         Name = "inlineStderr",
@@ -513,15 +522,6 @@ namespace Google.Apis.RemoteBuildExecution.v2
                     "inlineOutputFiles", new Google.Apis.Discovery.Parameter
                     {
                         Name = "inlineOutputFiles",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "inlineStdout", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "inlineStdout",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

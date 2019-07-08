@@ -645,10 +645,6 @@ namespace Google.Apis.Translate.v2
             [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Target { get; private set; }
 
-            /// <summary>The customization id for translate</summary>
-            [Google.Apis.Util.RequestParameterAttribute("cid", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> Cid { get; set; }
-
             /// <summary>The format of the source text, in either HTML (default) or plain-text. A value of "html"
             /// indicates HTML and a value of "text" indicates plain-text.</summary>
             [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
@@ -676,6 +672,10 @@ namespace Google.Apis.Translate.v2
             /// automatically and return it within the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Source { get; set; }
+
+            /// <summary>The customization id for translate</summary>
+            [Google.Apis.Util.RequestParameterAttribute("cid", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Cid { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -720,15 +720,6 @@ namespace Google.Apis.Translate.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "cid", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "cid",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "format", new Google.Apis.Discovery.Parameter
                     {
                         Name = "format",
@@ -750,6 +741,15 @@ namespace Google.Apis.Translate.v2
                     "source", new Google.Apis.Discovery.Parameter
                     {
                         Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "cid", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "cid",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/analytics'>YouTube Analytics API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190702 (1643)
+ *      <tr><th>API Rev<td>20190703 (1644)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/analytics'>
  *              https://developers.google.com/youtube/analytics</a>
@@ -803,6 +803,12 @@ namespace Google.Apis.YouTubeAnalytics.v2
             }
 
 
+            /// <summary>The `pageToken` parameter identifies a specific page in the result set that should be returned.
+            /// In an API response, the `nextPageToken` property identifies the next page that can be
+            /// retrieved.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>This parameter can only be used in a properly authorized request. **Note:** This parameter is
             /// intended exclusively for YouTube content partners that own and manage many different YouTube channels.
             ///
@@ -827,12 +833,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
             /// true to retrieve all groups owned by the authenticated user.</summary>
             [Google.Apis.Util.RequestParameterAttribute("mine", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Mine { get; set; }
-
-            /// <summary>The `pageToken` parameter identifies a specific page in the result set that should be returned.
-            /// In an API response, the `nextPageToken` property identifies the next page that can be
-            /// retrieved.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -859,6 +859,15 @@ namespace Google.Apis.YouTubeAnalytics.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
                     {
                         Name = "onBehalfOfContentOwner",
@@ -880,15 +889,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
                     "mine", new Google.Apis.Discovery.Parameter
                     {
                         Name = "mine",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1005,25 +1005,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
             }
 
 
-            /// <summary>The currency to which financial metrics should be converted. The default is US Dollar (USD). If
-            /// the result contains no financial metrics, this flag will be ignored. Responds with an error if the
-            /// specified currency is not recognized.", pattern: [A-Z]{3}</summary>
-            [Google.Apis.Util.RequestParameterAttribute("currency", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Currency { get; set; }
-
-            /// <summary>An index of the first entity to retrieve. Use this parameter as a pagination mechanism along
-            /// with the max-results parameter (one-based, inclusive).", minValue: 1</summary>
-            [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> StartIndex { get; set; }
-
-            /// <summary>A comma-separated list of YouTube Analytics dimensions, such as `views` or `ageGroup,gender`.
-            /// See the [Available Reports](/youtube/analytics/v2/available_reports) document for a list of the reports
-            /// that you can retrieve and the dimensions used for those reports. Also see the
-            /// [Dimensions](/youtube/analytics/v2/dimsmets/dims) document for definitions of those dimensions."
-            /// pattern: [0-9a-zA-Z,]+</summary>
-            [Google.Apis.Util.RequestParameterAttribute("dimensions", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Dimensions { get; set; }
-
             /// <summary>The end date for fetching YouTube Analytics data. The value should be in `YYYY-MM-DD` format.
             /// required: true, pattern: [0-9]{4}-[0-9]{2}-[0-9]{2}</summary>
             [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
@@ -1062,6 +1043,11 @@ namespace Google.Apis.YouTubeAnalytics.v2
             [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Metrics { get; set; }
 
+            /// <summary>If set to true historical data (i.e. channel data from before the linking of the channel to the
+            /// content owner) will be retrieved.",</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeHistoricalChannelData", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeHistoricalChannelData { get; set; }
+
             /// <summary>Identifies the YouTube channel or content owner for which you are retrieving YouTube Analytics
             /// data.
             ///
@@ -1072,10 +1058,24 @@ namespace Google.Apis.YouTubeAnalytics.v2
             [Google.Apis.Util.RequestParameterAttribute("ids", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Ids { get; set; }
 
-            /// <summary>If set to true historical data (i.e. channel data from before the linking of the channel to the
-            /// content owner) will be retrieved.",</summary>
-            [Google.Apis.Util.RequestParameterAttribute("includeHistoricalChannelData", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> IncludeHistoricalChannelData { get; set; }
+            /// <summary>The currency to which financial metrics should be converted. The default is US Dollar (USD). If
+            /// the result contains no financial metrics, this flag will be ignored. Responds with an error if the
+            /// specified currency is not recognized.", pattern: [A-Z]{3}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("currency", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Currency { get; set; }
+
+            /// <summary>An index of the first entity to retrieve. Use this parameter as a pagination mechanism along
+            /// with the max-results parameter (one-based, inclusive).", minValue: 1</summary>
+            [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> StartIndex { get; set; }
+
+            /// <summary>A comma-separated list of YouTube Analytics dimensions, such as `views` or `ageGroup,gender`.
+            /// See the [Available Reports](/youtube/analytics/v2/available_reports) document for a list of the reports
+            /// that you can retrieve and the dimensions used for those reports. Also see the
+            /// [Dimensions](/youtube/analytics/v2/dimsmets/dims) document for definitions of those dimensions."
+            /// pattern: [0-9a-zA-Z,]+</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dimensions", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Dimensions { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1101,33 +1101,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "currency", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "currency",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startIndex", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startIndex",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "dimensions", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "dimensions",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "endDate", new Google.Apis.Discovery.Parameter
                     {
@@ -1183,6 +1156,15 @@ namespace Google.Apis.YouTubeAnalytics.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "includeHistoricalChannelData", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeHistoricalChannelData",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "ids", new Google.Apis.Discovery.Parameter
                     {
                         Name = "ids",
@@ -1192,9 +1174,27 @@ namespace Google.Apis.YouTubeAnalytics.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "includeHistoricalChannelData", new Google.Apis.Discovery.Parameter
+                    "currency", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "includeHistoricalChannelData",
+                        Name = "currency",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "startIndex", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startIndex",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "dimensions", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dimensions",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
