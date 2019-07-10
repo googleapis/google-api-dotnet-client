@@ -40,6 +40,7 @@ build_site() {
   then
     # TODO: Allow a --force switch or similar
     echo "Documentation for $package version $version already exists; skipping"
+    return 0
   fi
 
   echo "Generating documentation for $package version $version"
