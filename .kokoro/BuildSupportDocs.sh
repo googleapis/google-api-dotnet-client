@@ -41,6 +41,8 @@ build_site() {
   sed -i "s/\\\$package/$package/g" $json
   sed -i "s/\\\$target/$target_framework/g" $json
   sed -i "s/\\\$title/Google API support libraries/g" $json
+
+  sed -i "s/\\\$title/Google API support libraries/g" $directory/index.md
   sed -i "s/\\\$entry_namespace/$entry_namespace/g" $directory/index.md  
   
   $DOCFX metadata -f --disableGitFeatures $json
