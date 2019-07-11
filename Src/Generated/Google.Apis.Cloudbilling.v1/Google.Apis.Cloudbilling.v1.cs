@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/'>Cloud Billing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190617 (1628)
+ *      <tr><th>API Rev<td>20190709 (1650)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/'>
  *              https://cloud.google.com/billing/</a>
@@ -412,15 +412,15 @@ namespace Google.Apis.Cloudbilling.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Requested page size. The maximum page size is 100; this is also the default.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>A token identifying a page of results to be returned. This should be a `next_page_token`
                 /// value returned from a previous `ListProjectBillingInfo` call. If unspecified, the first page of
                 /// results is returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Requested page size. The maximum page size is 100; this is also the default.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -456,18 +456,18 @@ namespace Google.Apis.Cloudbilling.v1
                             Pattern = @"^billingAccounts/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -634,6 +634,11 @@ namespace Google.Apis.Cloudbilling.v1
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the value
+            /// is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -666,6 +671,15 @@ namespace Google.Apis.Cloudbilling.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^billingAccounts/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "options.requestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -1256,6 +1270,11 @@ namespace Google.Apis.Cloudbilling.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The ISO 4217 currency code for the pricing info in the response proto. Will use the
+                /// conversion rate as of start_time. Optional. If not specified USD will be used.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("currencyCode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CurrencyCode { get; set; }
+
                 /// <summary>Optional exclusive end time of the time range for which the pricing versions will be
                 /// returned. Timestamps in the future are not allowed. The time range has to be within a single
                 /// calendar month in America/Los_Angeles timezone. Time range as a whole is optional. If not specified,
@@ -1279,11 +1298,6 @@ namespace Google.Apis.Cloudbilling.v1
                 /// <summary>Requested page size. Defaults to 5000.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The ISO 4217 currency code for the pricing info in the response proto. Will use the
-                /// conversion rate as of start_time. Optional. If not specified USD will be used.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("currencyCode", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string CurrencyCode { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1319,6 +1333,15 @@ namespace Google.Apis.Cloudbilling.v1
                             Pattern = @"^services/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "currencyCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "currencyCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "endTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "endTime",
@@ -1349,15 +1372,6 @@ namespace Google.Apis.Cloudbilling.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "currencyCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "currencyCode",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1475,12 +1489,12 @@ namespace Google.Apis.Cloudbilling.v1.Data
     /// Example Policy with multiple AuditConfigs:
     ///
     /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ]
-    /// }, { "service": "fooservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
-    /// "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
+    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
     ///
-    /// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
-    /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
+    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
+    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -1498,10 +1512,10 @@ namespace Google.Apis.Cloudbilling.v1.Data
 
     /// <summary>Provides the configuration for logging a type of permissions. Example:
     ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] }, {
+    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
     /// "log_type": "DATA_WRITE", } ] }
     ///
-    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.com from DATA_READ
+    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1509,6 +1523,11 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>Specifies whether principals can be exempted for the same LogType in lower-level resource policies.
+        /// If true, any lower-level exemptions will be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreChildExemptions")]
+        public virtual System.Nullable<bool> IgnoreChildExemptions { get; set; } 
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
@@ -1568,7 +1587,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` .
+        /// `alice@example.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.
@@ -1778,8 +1797,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
-        /// blindly.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 

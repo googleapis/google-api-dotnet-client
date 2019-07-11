@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190622 (1633)
+ *      <tr><th>API Rev<td>20190704 (1645)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -2508,7 +2508,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>A reseller, vendor, or customer in the zero-touch reseller and customer APIs.</summary>
     public class Company : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input only. Optional. Email address of customer's users in the admin role. Each email address must
+        /// <summary>Optional. Input only. Email address of customer's users in the admin role. Each email address must
         /// be associated with a Google Account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminEmails")]
         public virtual System.Collections.Generic.IList<string> AdminEmails { get; set; } 

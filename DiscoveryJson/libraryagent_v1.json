@@ -1,74 +1,12 @@
 {
-  "version": "v1",
-  "baseUrl": "https://libraryagent.googleapis.com/",
-  "servicePath": "",
-  "description": "A simple Google Example Library API.",
-  "kind": "discovery#restDescription",
   "basePath": "",
-  "revision": "20190704",
+  "revision": "20190709",
   "documentationLink": "https://cloud.google.com/docs/quota",
   "id": "libraryagent:v1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "GoogleExampleLibraryagentV1ListShelvesResponse": {
-      "description": "Response message for LibraryAgent.ListShelves.",
-      "type": "object",
-      "properties": {
-        "shelves": {
-          "type": "array",
-          "items": {
-            "$ref": "GoogleExampleLibraryagentV1Shelf"
-          },
-          "description": "The list of shelves."
-        },
-        "nextPageToken": {
-          "type": "string",
-          "description": "A token to retrieve next page of results.\nPass this value in the\nListShelvesRequest.page_token\nfield in the subsequent call to `ListShelves` method to retrieve the next\npage of results."
-        }
-      },
-      "id": "GoogleExampleLibraryagentV1ListShelvesResponse"
-    },
-    "GoogleExampleLibraryagentV1Book": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "The resource name of the book.\nBook names have the form `shelves/{shelf_id}/books/{book_id}`.\nThe name is ignored when creating a book."
-        },
-        "author": {
-          "description": "The name of the book author.",
-          "type": "string"
-        },
-        "read": {
-          "description": "Value indicating whether the book has been read.",
-          "type": "boolean"
-        },
-        "title": {
-          "description": "The title of the book.",
-          "type": "string"
-        }
-      },
-      "id": "GoogleExampleLibraryagentV1Book",
-      "description": "A single book in the library."
-    },
-    "GoogleExampleLibraryagentV1Shelf": {
-      "id": "GoogleExampleLibraryagentV1Shelf",
-      "description": "A Shelf contains a collection of books with a theme.",
-      "type": "object",
-      "properties": {
-        "theme": {
-          "type": "string",
-          "description": "The theme of the shelf"
-        },
-        "name": {
-          "type": "string",
-          "description": "Output only. The resource name of the shelf.\nShelf names have the form `shelves/{shelf_id}`.\nThe name is ignored when creating a shelf."
-        }
-      }
-    },
     "GoogleExampleLibraryagentV1ListBooksResponse": {
-      "description": "Response message for LibraryAgent.ListBooks.",
       "type": "object",
       "properties": {
         "books": {
@@ -79,17 +17,74 @@
           }
         },
         "nextPageToken": {
-          "description": "A token to retrieve next page of results.\nPass this value in the\nListBooksRequest.page_token\nfield in the subsequent call to `ListBooks` method to retrieve the next\npage of results.",
-          "type": "string"
+          "type": "string",
+          "description": "A token to retrieve next page of results.\nPass this value in the\nListBooksRequest.page_token\nfield in the subsequent call to `ListBooks` method to retrieve the next\npage of results."
         }
       },
-      "id": "GoogleExampleLibraryagentV1ListBooksResponse"
+      "id": "GoogleExampleLibraryagentV1ListBooksResponse",
+      "description": "Response message for LibraryAgent.ListBooks."
+    },
+    "GoogleExampleLibraryagentV1ListShelvesResponse": {
+      "id": "GoogleExampleLibraryagentV1ListShelvesResponse",
+      "description": "Response message for LibraryAgent.ListShelves.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "A token to retrieve next page of results.\nPass this value in the\nListShelvesRequest.page_token\nfield in the subsequent call to `ListShelves` method to retrieve the next\npage of results.",
+          "type": "string"
+        },
+        "shelves": {
+          "description": "The list of shelves.",
+          "type": "array",
+          "items": {
+            "$ref": "GoogleExampleLibraryagentV1Shelf"
+          }
+        }
+      }
+    },
+    "GoogleExampleLibraryagentV1Book": {
+      "id": "GoogleExampleLibraryagentV1Book",
+      "description": "A single book in the library.",
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "string",
+          "description": "The name of the book author."
+        },
+        "read": {
+          "type": "boolean",
+          "description": "Value indicating whether the book has been read."
+        },
+        "title": {
+          "description": "The title of the book.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The resource name of the book.\nBook names have the form `shelves/{shelf_id}/books/{book_id}`.\nThe name is ignored when creating a book.",
+          "type": "string"
+        }
+      }
+    },
+    "GoogleExampleLibraryagentV1Shelf": {
+      "description": "A Shelf contains a collection of books with a theme.",
+      "type": "object",
+      "properties": {
+        "theme": {
+          "description": "The theme of the shelf",
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "Output only. The resource name of the shelf.\nShelf names have the form `shelves/{shelf_id}`.\nThe name is ignored when creating a shelf."
+        }
+      },
+      "id": "GoogleExampleLibraryagentV1Shelf"
     }
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "canonicalName": "Libraryagent",
   "auth": {
@@ -128,57 +123,57 @@
           ],
           "parameters": {
             "name": {
+              "location": "path",
               "description": "The name of the shelf to retrieve.",
               "required": true,
               "type": "string",
-              "pattern": "^shelves/[^/]+$",
-              "location": "path"
+              "pattern": "^shelves/[^/]+$"
             }
           }
         },
         "list": {
           "description": "Lists shelves. The order is unspecified but deterministic. Newly created\nshelves will not necessarily be added to the end of this list.",
-          "httpMethod": "GET",
-          "parameterOrder": [],
           "response": {
             "$ref": "GoogleExampleLibraryagentV1ListShelvesResponse"
           },
-          "parameters": {
-            "pageToken": {
-              "type": "string",
-              "location": "query",
-              "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListShelvesResponse.next_page_token\nreturned from the previous call to `ListShelves` method."
-            },
-            "pageSize": {
-              "type": "integer",
-              "location": "query",
-              "description": "Requested page size. Server may return fewer shelves than requested.\nIf unspecified, server will pick an appropriate default.",
-              "format": "int32"
-            }
-          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
+          "parameters": {
+            "pageToken": {
+              "location": "query",
+              "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListShelvesResponse.next_page_token\nreturned from the previous call to `ListShelves` method.",
+              "type": "string"
+            },
+            "pageSize": {
+              "description": "Requested page size. Server may return fewer shelves than requested.\nIf unspecified, server will pick an appropriate default.",
+              "format": "int32",
+              "type": "integer",
+              "location": "query"
+            }
+          },
           "flatPath": "v1/shelves",
-          "id": "libraryagent.shelves.list",
-          "path": "v1/shelves"
+          "path": "v1/shelves",
+          "id": "libraryagent.shelves.list"
         }
       },
       "resources": {
         "books": {
           "methods": {
             "borrow": {
+              "flatPath": "v1/shelves/{shelvesId}/books/{booksId}:borrow",
+              "id": "libraryagent.shelves.books.borrow",
+              "path": "v1/{+name}:borrow",
               "description": "Borrow a book from the library. Returns the book if it is borrowed\nsuccessfully. Returns NOT_FOUND if the book does not exist in the library.\nReturns quota exceeded error if the amount of books borrowed exceeds\nallocation quota in any dimensions.",
-              "response": {
-                "$ref": "GoogleExampleLibraryagentV1Book"
-              },
+              "httpMethod": "POST",
               "parameterOrder": [
                 "name"
               ],
-              "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
+              "response": {
+                "$ref": "GoogleExampleLibraryagentV1Book"
+              },
               "parameters": {
                 "name": {
                   "description": "The name of the book to borrow.",
@@ -188,47 +183,36 @@
                   "location": "path"
                 }
               },
-              "flatPath": "v1/shelves/{shelvesId}/books/{booksId}:borrow",
-              "path": "v1/{+name}:borrow",
-              "id": "libraryagent.shelves.books.borrow"
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
             },
             "get": {
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^shelves/[^/]+/books/[^/]+$",
+                  "location": "path",
+                  "description": "The name of the book to retrieve."
+                }
+              },
+              "flatPath": "v1/shelves/{shelvesId}/books/{booksId}",
+              "id": "libraryagent.shelves.books.get",
+              "path": "v1/{+name}",
+              "description": "Gets a book. Returns NOT_FOUND if the book does not exist.",
               "httpMethod": "GET",
               "parameterOrder": [
                 "name"
               ],
               "response": {
                 "$ref": "GoogleExampleLibraryagentV1Book"
-              },
-              "parameters": {
-                "name": {
-                  "pattern": "^shelves/[^/]+/books/[^/]+$",
-                  "location": "path",
-                  "description": "The name of the book to retrieve.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1/shelves/{shelvesId}/books/{booksId}",
-              "id": "libraryagent.shelves.books.get",
-              "path": "v1/{+name}",
-              "description": "Gets a book. Returns NOT_FOUND if the book does not exist."
+              }
             },
             "list": {
-              "flatPath": "v1/shelves/{shelvesId}/books",
-              "id": "libraryagent.shelves.books.list",
-              "path": "v1/{+parent}/books",
-              "description": "Lists books in a shelf. The order is unspecified but deterministic. Newly\ncreated books will not necessarily be added to the end of this list.\nReturns NOT_FOUND if the shelf does not exist.",
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "parent"
-              ],
-              "response": {
-                "$ref": "GoogleExampleLibraryagentV1ListBooksResponse"
-              },
               "parameters": {
                 "pageToken": {
                   "location": "query",
@@ -236,10 +220,10 @@
                   "type": "string"
                 },
                 "pageSize": {
-                  "type": "integer",
                   "location": "query",
                   "description": "Requested page size. Server may return fewer books than requested.\nIf unspecified, server will pick an appropriate default.",
-                  "format": "int32"
+                  "format": "int32",
+                  "type": "integer"
                 },
                 "parent": {
                   "required": true,
@@ -251,7 +235,18 @@
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
-              ]
+              ],
+              "flatPath": "v1/shelves/{shelvesId}/books",
+              "path": "v1/{+parent}/books",
+              "id": "libraryagent.shelves.books.list",
+              "description": "Lists books in a shelf. The order is unspecified but deterministic. Newly\ncreated books will not necessarily be added to the end of this list.\nReturns NOT_FOUND if the shelf does not exist.",
+              "response": {
+                "$ref": "GoogleExampleLibraryagentV1ListBooksResponse"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "GET"
             },
             "return": {
               "description": "Return a book to the library. Returns the book if it is returned to the\nlibrary successfully.\nReturns error if the book does not belong to the library\nor the users didn't borrow before.",
@@ -262,18 +257,18 @@
                 "name"
               ],
               "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "parameters": {
                 "name": {
+                  "description": "The name of the book to return.",
                   "required": true,
                   "type": "string",
                   "pattern": "^shelves/[^/]+/books/[^/]+$",
-                  "location": "path",
-                  "description": "The name of the book to return."
+                  "location": "path"
                 }
               },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "flatPath": "v1/shelves/{shelvesId}/books/{booksId}:return",
               "path": "v1/{+name}:return",
               "id": "libraryagent.shelves.books.return"
@@ -284,10 +279,10 @@
     }
   },
   "parameters": {
-    "quotaUser": {
+    "upload_protocol": {
+      "type": "string",
       "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
     },
     "prettyPrint": {
       "type": "boolean",
@@ -295,19 +290,32 @@
       "location": "query",
       "description": "Returns response with indentations and line breaks."
     },
-    "uploadType": {
+    "quotaUser": {
       "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
+    },
+    "uploadType": {
+      "type": "string",
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
     },
     "fields": {
       "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
-    "callback": {
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
       "location": "query",
-      "description": "JSONP",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
       "type": "string"
     },
     "oauth_token": {
@@ -315,18 +323,10 @@
       "description": "OAuth 2.0 token for the current user.",
       "type": "string"
     },
-    "$.xgafv": {
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
+    "callback": {
+      "description": "JSONP",
       "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
+      "location": "query"
     },
     "alt": {
       "type": "string",
@@ -345,19 +345,19 @@
       ]
     },
     "key": {
-      "type": "string",
       "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
     },
     "access_token": {
       "type": "string",
       "location": "query",
       "description": "OAuth access token."
-    },
-    "upload_protocol": {
-      "type": "string",
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
     }
-  }
+  },
+  "version": "v1",
+  "baseUrl": "https://libraryagent.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "A simple Google Example Library API.",
+  "servicePath": ""
 }

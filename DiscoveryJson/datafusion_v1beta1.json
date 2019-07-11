@@ -1,9 +1,4 @@
 {
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  },
-  "protocol": "rest",
   "canonicalName": "Data Fusion",
   "auth": {
     "oauth2": {
@@ -35,7 +30,15 @@
                 "name"
               ],
               "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "parameters": {
+                "filter": {
+                  "location": "query",
+                  "description": "The standard list filter.",
+                  "type": "string"
+                },
                 "name": {
                   "pattern": "^projects/[^/]+$",
                   "location": "path",
@@ -49,168 +52,180 @@
                   "location": "query"
                 },
                 "pageSize": {
-                  "location": "query",
                   "description": "The standard list page size.",
                   "format": "int32",
-                  "type": "integer"
-                },
-                "filter": {
-                  "location": "query",
-                  "description": "The standard list filter.",
-                  "type": "string"
+                  "type": "integer",
+                  "location": "query"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "flatPath": "v1beta1/projects/{projectsId}/locations",
               "path": "v1beta1/{+name}/locations",
               "id": "datafusion.projects.locations.list"
             },
             "get": {
-              "description": "Gets information about a location.",
-              "response": {
-                "$ref": "Location"
-              },
+              "httpMethod": "GET",
               "parameterOrder": [
                 "name"
               ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "description": "Resource name for the location.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "location": "path"
-                }
+              "response": {
+                "$ref": "Location"
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "Resource name for the location.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/locations/[^/]+$"
+                }
+              },
               "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}",
+              "id": "datafusion.projects.locations.get",
               "path": "v1beta1/{+name}",
-              "id": "datafusion.projects.locations.get"
+              "description": "Gets information about a location."
             }
           },
           "resources": {
-            "instances": {
+            "operations": {
               "methods": {
-                "list": {
+                "cancel": {
+                  "request": {
+                    "$ref": "CancelOperationRequest"
+                  },
+                  "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
                   "response": {
-                    "$ref": "ListInstancesResponse"
+                    "$ref": "Empty"
                   },
                   "parameterOrder": [
-                    "parent"
+                    "name"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "location": "path",
+                      "description": "The name of the operation resource to be cancelled."
+                    }
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                  "path": "v1beta1/{+name}:cancel",
+                  "id": "datafusion.projects.locations.operations.cancel"
+                },
+                "delete": {
+                  "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "DELETE",
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "description": "The name of the operation resource to be deleted.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "path": "v1beta1/{+name}",
+                  "id": "datafusion.projects.locations.operations.delete"
+                },
+                "list": {
+                  "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.",
+                  "response": {
+                    "$ref": "ListOperationsResponse"
+                  },
+                  "parameterOrder": [
+                    "name"
                   ],
                   "httpMethod": "GET",
                   "parameters": {
-                    "pageSize": {
-                      "location": "query",
-                      "description": "The maximum number of items to return.",
-                      "format": "int32",
-                      "type": "integer"
-                    },
-                    "parent": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "description": "The project and location for which to retrieve instance information\nin the format projects/{project}/locations/{location}. If the location is\nspecified as '-' (wildcard), then all regions available to the project\nare queried, and the results are aggregated.",
-                      "required": true,
-                      "type": "string"
-                    },
                     "filter": {
                       "location": "query",
-                      "description": "List filter.",
+                      "description": "The standard list filter.",
                       "type": "string"
+                    },
+                    "name": {
+                      "description": "The name of the operation's parent resource.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path"
                     },
                     "pageToken": {
                       "location": "query",
-                      "description": "The next_page_token value to use if there are additional\nresults to retrieve for this list request.",
+                      "description": "The standard list page token.",
                       "type": "string"
                     },
-                    "orderBy": {
+                    "pageSize": {
                       "location": "query",
-                      "description": "Sort results. Supported values are \"name\", \"name desc\",  or \"\" (unsorted).",
-                      "type": "string"
+                      "description": "The standard list page size.",
+                      "format": "int32",
+                      "type": "integer"
                     }
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances",
-                  "path": "v1beta1/{+parent}/instances",
-                  "id": "datafusion.projects.locations.instances.list",
-                  "description": "Lists Data Fusion instances in the specified project and location."
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations",
+                  "path": "v1beta1/{+name}/operations",
+                  "id": "datafusion.projects.locations.operations.list"
                 },
-                "setIamPolicy": {
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "resource"
-                  ],
-                  "response": {
-                    "$ref": "Policy"
-                  },
-                  "parameters": {
-                    "resource": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                      "location": "path",
-                      "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:setIamPolicy",
-                  "id": "datafusion.projects.locations.instances.setIamPolicy",
-                  "path": "v1beta1/{+resource}:setIamPolicy",
-                  "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.",
-                  "request": {
-                    "$ref": "SetIamPolicyRequest"
-                  }
-                },
-                "create": {
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "parent"
-                  ],
+                "get": {
+                  "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
                   "response": {
                     "$ref": "Operation"
                   },
-                  "parameters": {
-                    "instanceId": {
-                      "description": "The name of the instance to create.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "parent": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "description": "The instance's project and location in the format\nprojects/{project}/locations/{location}.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances",
-                  "id": "datafusion.projects.locations.instances.create",
-                  "path": "v1beta1/{+parent}/instances",
-                  "description": "Creates a new Data Fusion instance in the specified project and location.",
-                  "request": {
-                    "$ref": "Instance"
-                  }
-                },
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the operation resource.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "path": "v1beta1/{+name}",
+                  "id": "datafusion.projects.locations.operations.get"
+                }
+              }
+            },
+            "instances": {
+              "methods": {
                 "getIamPolicy": {
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "resource"
-                  ],
+                  "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
                   "response": {
                     "$ref": "Policy"
                   },
+                  "parameterOrder": [
+                    "resource"
+                  ],
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
                   "parameters": {
                     "resource": {
                       "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
@@ -220,49 +235,12 @@
                       "type": "string"
                     }
                   },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
                   "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:getIamPolicy",
-                  "id": "datafusion.projects.locations.instances.getIamPolicy",
                   "path": "v1beta1/{+resource}:getIamPolicy",
-                  "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."
-                },
-                "patch": {
-                  "path": "v1beta1/{+name}",
-                  "id": "datafusion.projects.locations.instances.patch",
-                  "description": "Updates a single Data Fusion instance.",
-                  "request": {
-                    "$ref": "Instance"
-                  },
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "PATCH",
-                  "parameters": {
-                    "updateMask": {
-                      "description": "Field mask is used to specify the fields that the update will overwrite\nin an instance resource. The fields specified in the update_mask are\nrelative to the resource, not the full request.\nA field will be overwritten if it is in the mask.\nIf the user does not provide a mask, all the supported fields (labels and\noptions currently) will be overwritten.",
-                      "format": "google-fieldmask",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "name": {
-                      "location": "path",
-                      "description": "Output only. The name of this instance is in the form of\nprojects/{project}/locations/{location}/instances/{instance}.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}"
+                  "id": "datafusion.projects.locations.instances.getIamPolicy"
                 },
                 "get": {
+                  "description": "Gets details of a single Data Fusion instance.",
                   "response": {
                     "$ref": "Instance"
                   },
@@ -270,22 +248,55 @@
                     "name"
                   ],
                   "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
                   "parameters": {
                     "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                      "location": "path",
                       "description": "The instance resource name in the format\nprojects/{project}/locations/{location}/instances/{instance}.",
                       "required": true,
-                      "type": "string"
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
+                  "path": "v1beta1/{+name}",
+                  "id": "datafusion.projects.locations.instances.get"
+                },
+                "patch": {
+                  "description": "Updates a single Data Fusion instance.",
+                  "request": {
+                    "$ref": "Instance"
+                  },
+                  "httpMethod": "PATCH",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameters": {
+                    "updateMask": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "Field mask is used to specify the fields that the update will overwrite\nin an instance resource. The fields specified in the update_mask are\nrelative to the resource, not the full request.\nA field will be overwritten if it is in the mask.\nIf the user does not provide a mask, all the supported fields (labels and\noptions currently) will be overwritten.",
+                      "format": "google-fieldmask"
+                    },
+                    "name": {
+                      "description": "Output only. The name of this instance is in the form of\nprojects/{project}/locations/{location}/instances/{instance}.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                      "location": "path"
                     }
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
                   "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-                  "path": "v1beta1/{+name}",
-                  "id": "datafusion.projects.locations.instances.get",
-                  "description": "Gets details of a single Data Fusion instance."
+                  "id": "datafusion.projects.locations.instances.patch",
+                  "path": "v1beta1/{+name}"
                 },
                 "upgrade": {
                   "response": {
@@ -316,10 +327,12 @@
                   }
                 },
                 "testIamPermissions": {
-                  "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.",
+                  "path": "v1beta1/{+resource}:testIamPermissions",
+                  "id": "datafusion.projects.locations.instances.testIamPermissions",
                   "request": {
                     "$ref": "TestIamPermissionsRequest"
                   },
+                  "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.",
                   "response": {
                     "$ref": "TestIamPermissionsResponse"
                   },
@@ -327,30 +340,32 @@
                     "resource"
                   ],
                   "httpMethod": "POST",
-                  "parameters": {
-                    "resource": {
-                      "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                      "location": "path"
-                    }
-                  },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:testIamPermissions",
-                  "path": "v1beta1/{+resource}:testIamPermissions",
-                  "id": "datafusion.projects.locations.instances.testIamPermissions"
+                  "parameters": {
+                    "resource": {
+                      "location": "path",
+                      "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$"
+                    }
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:testIamPermissions"
                 },
                 "restart": {
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "name"
-                  ],
+                  "description": "Restart a single Data Fusion instance.\nAt the end of an operation instance is fully restarted.",
+                  "request": {
+                    "$ref": "RestartInstanceRequest"
+                  },
                   "response": {
                     "$ref": "Operation"
                   },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "POST",
                   "parameters": {
                     "name": {
                       "description": "Name of the Data Fusion instance which need to be restarted in the form of\nprojects/{project}/locations/{location}/instances/{instance}",
@@ -364,14 +379,13 @@
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
                   "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:restart",
-                  "id": "datafusion.projects.locations.instances.restart",
                   "path": "v1beta1/{+name}:restart",
-                  "description": "Restart a single Data Fusion instance.\nAt the end of an operation instance is fully restarted.",
-                  "request": {
-                    "$ref": "RestartInstanceRequest"
-                  }
+                  "id": "datafusion.projects.locations.instances.restart"
                 },
                 "delete": {
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
+                  "path": "v1beta1/{+name}",
+                  "id": "datafusion.projects.locations.instances.delete",
                   "description": "Deletes a single Date Fusion instance.",
                   "response": {
                     "$ref": "Operation"
@@ -380,144 +394,125 @@
                     "name"
                   ],
                   "httpMethod": "DELETE",
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                      "location": "path",
+                      "description": "The instance resource name in the format\nprojects/{project}/locations/{location}/instances/{instance}"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "list": {
+                  "response": {
+                    "$ref": "ListInstancesResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "GET",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
                   "parameters": {
-                    "name": {
-                      "description": "The instance resource name in the format\nprojects/{project}/locations/{location}/instances/{instance}",
+                    "pageToken": {
+                      "location": "query",
+                      "description": "The next_page_token value to use if there are additional\nresults to retrieve for this list request.",
+                      "type": "string"
+                    },
+                    "orderBy": {
+                      "location": "query",
+                      "description": "Sort results. Supported values are \"name\", \"name desc\",  or \"\" (unsorted).",
+                      "type": "string"
+                    },
+                    "pageSize": {
+                      "location": "query",
+                      "description": "The maximum number of items to return.",
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "parent": {
                       "required": true,
                       "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                      "location": "path"
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "description": "The project and location for which to retrieve instance information\nin the format projects/{project}/locations/{location}. If the location is\nspecified as '-' (wildcard), then all regions available to the project\nare queried, and the results are aggregated."
+                    },
+                    "filter": {
+                      "location": "query",
+                      "description": "List filter.",
+                      "type": "string"
                     }
                   },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-                  "path": "v1beta1/{+name}",
-                  "id": "datafusion.projects.locations.instances.delete"
-                }
-              }
-            },
-            "operations": {
-              "methods": {
-                "cancel": {
-                  "path": "v1beta1/{+name}:cancel",
-                  "id": "datafusion.projects.locations.operations.cancel",
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances",
+                  "path": "v1beta1/{+parent}/instances",
+                  "id": "datafusion.projects.locations.instances.list",
+                  "description": "Lists Data Fusion instances in the specified project and location."
+                },
+                "create": {
+                  "id": "datafusion.projects.locations.instances.create",
+                  "path": "v1beta1/{+parent}/instances",
+                  "description": "Creates a new Data Fusion instance in the specified project and location.",
                   "request": {
-                    "$ref": "CancelOperationRequest"
+                    "$ref": "Instance"
                   },
-                  "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "parent"
+                  ],
                   "response": {
-                    "$ref": "Empty"
+                    "$ref": "Operation"
+                  },
+                  "parameters": {
+                    "instanceId": {
+                      "description": "The name of the instance to create.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "parent": {
+                      "location": "path",
+                      "description": "The instance's project and location in the format\nprojects/{project}/locations/{location}.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances"
+                },
+                "setIamPolicy": {
+                  "path": "v1beta1/{+resource}:setIamPolicy",
+                  "id": "datafusion.projects.locations.instances.setIamPolicy",
+                  "request": {
+                    "$ref": "SetIamPolicyRequest"
+                  },
+                  "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.",
+                  "response": {
+                    "$ref": "Policy"
                   },
                   "parameterOrder": [
-                    "name"
+                    "resource"
                   ],
                   "httpMethod": "POST",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
                   "parameters": {
-                    "name": {
-                      "description": "The name of the operation resource to be cancelled.",
+                    "resource": {
+                      "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
                       "required": true,
                       "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                       "location": "path"
                     }
                   },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel"
-                },
-                "delete": {
-                  "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "DELETE",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "location": "path",
-                      "description": "The name of the operation resource to be deleted."
-                    }
-                  },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                  "path": "v1beta1/{+name}",
-                  "id": "datafusion.projects.locations.operations.delete"
-                },
-                "list": {
-                  "response": {
-                    "$ref": "ListOperationsResponse"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "The name of the operation's parent resource.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    },
-                    "pageToken": {
-                      "type": "string",
-                      "location": "query",
-                      "description": "The standard list page token."
-                    },
-                    "pageSize": {
-                      "location": "query",
-                      "description": "The standard list page size.",
-                      "format": "int32",
-                      "type": "integer"
-                    },
-                    "filter": {
-                      "location": "query",
-                      "description": "The standard list filter.",
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations",
-                  "path": "v1beta1/{+name}/operations",
-                  "id": "datafusion.projects.locations.operations.list",
-                  "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id."
-                },
-                "get": {
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "location": "path",
-                      "description": "The name of the operation resource.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                  "path": "v1beta1/{+name}",
-                  "id": "datafusion.projects.locations.operations.get",
-                  "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:setIamPolicy"
                 }
               }
             }
@@ -527,51 +522,15 @@
     }
   },
   "parameters": {
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "type": "string",
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
     "fields": {
+      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
       "type": "string",
-      "location": "query"
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
     },
     "$.xgafv": {
       "type": "string",
@@ -586,12 +545,17 @@
       ],
       "description": "V1 error format."
     },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
     "alt": {
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
       "location": "query",
       "description": "Data format for response.",
       "default": "json",
@@ -600,6 +564,37 @@
         "media",
         "proto"
       ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ]
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
     }
   },
@@ -609,12 +604,336 @@
   "description": "Cloud Data Fusion is a fully-managed, cloud native, enterprise data integration service for\n    quickly building and managing data pipelines. It provides a graphical interface to increase\n    time efficiency and reduce complexity, and allows business users, developers, and data\n    scientists to easily and reliably build scalable data integration solutions to cleanse,\n    prepare, blend, transfer and transform data without having to wrestle with infrastructure.",
   "servicePath": "",
   "basePath": "",
-  "id": "datafusion:v1beta1",
-  "documentationLink": "https://cloud.google.com/data-fusion/docs",
   "revision": "20190617",
+  "documentationLink": "https://cloud.google.com/data-fusion/docs",
+  "id": "datafusion:v1beta1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
+    "TestIamPermissionsResponse": {
+      "description": "Response message for `TestIamPermissions` method.",
+      "type": "object",
+      "properties": {
+        "permissions": {
+          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "TestIamPermissionsResponse"
+    },
+    "ListOperationsResponse": {
+      "id": "ListOperationsResponse",
+      "description": "The response message for Operations.ListOperations.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        },
+        "operations": {
+          "description": "A list of operations that matches the specified filter in the request.",
+          "type": "array",
+          "items": {
+            "$ref": "Operation"
+          }
+        }
+      }
+    },
+    "OperationMetadata": {
+      "description": "Represents the metadata of a long-running operation.",
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "description": "The time the operation was created.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "statusDetail": {
+          "description": "Human-readable status of the operation if any.",
+          "type": "string"
+        },
+        "apiVersion": {
+          "description": "API version used to start the operation.",
+          "type": "string"
+        },
+        "target": {
+          "description": "Server-defined resource path for the target of the operation.",
+          "type": "string"
+        },
+        "endTime": {
+          "description": "The time the operation finished running.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "verb": {
+          "description": "Name of the verb executed by the operation.",
+          "type": "string"
+        },
+        "requestedCancellation": {
+          "description": "Identifies whether the user has requested cancellation\nof the operation. Operations that have successfully been cancelled\nhave Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
+          "type": "boolean"
+        }
+      },
+      "id": "OperationMetadata"
+    },
+    "Rule": {
+      "description": "A rule to be applied in a Policy.",
+      "type": "object",
+      "properties": {
+        "logConfig": {
+          "description": "The config returned to callers of tech.iam.IAM.CheckPolicy for any entries\nthat match the LOG action.",
+          "type": "array",
+          "items": {
+            "$ref": "LogConfig"
+          }
+        },
+        "in": {
+          "description": "If one or more 'in' clauses are specified, the rule matches if\nthe PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "permissions": {
+          "description": "A permission is a string of form '\u003cservice\u003e.\u003cresource type\u003e.\u003cverb\u003e'\n(e.g., 'storage.buckets.list'). A value of '*' matches all permissions,\nand a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "action": {
+          "enum": [
+            "NO_ACTION",
+            "ALLOW",
+            "ALLOW_WITH_LOG",
+            "DENY",
+            "DENY_WITH_LOG",
+            "LOG"
+          ],
+          "description": "Required",
+          "type": "string",
+          "enumDescriptions": [
+            "Default no action.",
+            "Matching 'Entries' grant access.",
+            "Matching 'Entries' grant access and the caller promises to log\nthe request per the returned log_configs.",
+            "Matching 'Entries' deny access.",
+            "Matching 'Entries' deny access and the caller promises to log\nthe request per the returned log_configs.",
+            "Matching 'Entries' tell IAM.Check callers to generate logs."
+          ]
+        },
+        "notIn": {
+          "description": "If one or more 'not_in' clauses are specified, the rule matches\nif the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.\nThe format for in and not_in entries can be found at in the Local IAM\ndocumentation (see go/local-iam#features).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "description": "Human-readable description of the rule.",
+          "type": "string"
+        },
+        "conditions": {
+          "description": "Additional restrictions that must be met. All conditions must pass for the\nrule to match.",
+          "type": "array",
+          "items": {
+            "$ref": "Condition"
+          }
+        }
+      },
+      "id": "Rule"
+    },
+    "LogConfig": {
+      "description": "Specifies what kind of log the caller must write",
+      "type": "object",
+      "properties": {
+        "dataAccess": {
+          "description": "Data access options.",
+          "$ref": "DataAccessOptions"
+        },
+        "cloudAudit": {
+          "$ref": "CloudAuditOptions",
+          "description": "Cloud audit options."
+        },
+        "counter": {
+          "$ref": "CounterOptions",
+          "description": "Counter options."
+        }
+      },
+      "id": "LogConfig"
+    },
+    "ListInstancesResponse": {
+      "properties": {
+        "nextPageToken": {
+          "description": "Token to retrieve the next page of results or empty if there are no more\nresults in the list.",
+          "type": "string"
+        },
+        "unreachable": {
+          "description": "Locations that could not be reached.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "instances": {
+          "description": "Represents a list of Data Fusion instances.",
+          "type": "array",
+          "items": {
+            "$ref": "Instance"
+          }
+        }
+      },
+      "id": "ListInstancesResponse",
+      "description": "Response message for the list instance request.",
+      "type": "object"
+    },
+    "UpgradeInstanceRequest": {
+      "description": "Request message for upgrading a Data Fusion instance.\nTo change the instance properties, instance update should be used.",
+      "type": "object",
+      "properties": {},
+      "id": "UpgradeInstanceRequest"
+    },
+    "RestartInstanceRequest": {
+      "description": "Request message for restarting a Data Fusion instance.",
+      "type": "object",
+      "properties": {},
+      "id": "RestartInstanceRequest"
+    },
+    "SetIamPolicyRequest": {
+      "description": "Request message for `SetIamPolicy` method.",
+      "type": "object",
+      "properties": {
+        "policy": {
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
+        },
+        "updateMask": {
+          "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM.",
+          "format": "google-fieldmask",
+          "type": "string"
+        }
+      },
+      "id": "SetIamPolicyRequest"
+    },
+    "Instance": {
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "description": "Output only. The time the instance was created.",
+          "format": "google-datetime"
+        },
+        "labels": {
+          "description": "The resource labels for instance to use to annotate any related underlying\nresources such as GCE VMs. The character '=' is not allowed to be used\nwithin the labels.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "updateTime": {
+          "description": "Output only. The time the instance was last updated.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "serviceEndpoint": {
+          "description": "Output only. Endpoint on which the Data Fusion UI and REST APIs are\naccessible.",
+          "type": "string"
+        },
+        "enableStackdriverMonitoring": {
+          "description": "Option to enable Stackdriver Monitoring.",
+          "type": "boolean"
+        },
+        "type": {
+          "description": "Required. Instance type.",
+          "type": "string",
+          "enumDescriptions": [
+            "No type specified. The instance creation will fail.",
+            "Basic Data Fusion instance. In Basic type, the user will be able to\ncreate data pipelines using point and click UI. However, there are\ncertain limitations, such as fewer number of concurrent pipelines, no\nsupport for streaming pipelines, etc.",
+            "Enterprise Data Fusion instance. In Enterprise type, the user will have\nmore features available, such as support for streaming pipelines, higher\nnumber of concurrent pipelines, etc."
+          ],
+          "enum": [
+            "TYPE_UNSPECIFIED",
+            "BASIC",
+            "ENTERPRISE"
+          ]
+        },
+        "version": {
+          "description": "Output only. Current version of the Data Fusion.",
+          "type": "string"
+        },
+        "stateMessage": {
+          "description": "Output only. Additional information about the current state of this Data\nFusion instance if available.",
+          "type": "string"
+        },
+        "description": {
+          "description": "An optional description of this instance.",
+          "type": "string"
+        },
+        "options": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Map of additional options used to configure the behavior of\nData Fusion instance.",
+          "type": "object"
+        },
+        "networkConfig": {
+          "description": "Network configuration options. These are required when a private Data\nFusion instance is to be created.",
+          "$ref": "NetworkConfig"
+        },
+        "state": {
+          "enumDescriptions": [
+            "Instance does not have a state yet",
+            "Instance is being created",
+            "Instance is running and ready for requests",
+            "Instance creation failed",
+            "Instance is being deleted",
+            "Instance is being upgraded",
+            "Instance is being restarted",
+            "Instance is being updated"
+          ],
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "CREATING",
+            "RUNNING",
+            "FAILED",
+            "DELETING",
+            "UPGRADING",
+            "RESTARTING",
+            "UPDATING"
+          ],
+          "description": "Output only. The current state of this Data Fusion instance.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Output only. The name of this instance is in the form of\nprojects/{project}/locations/{location}/instances/{instance}.",
+          "type": "string"
+        },
+        "enableStackdriverLogging": {
+          "description": "Option to enable Stackdriver Logging.",
+          "type": "boolean"
+        },
+        "privateInstance": {
+          "description": "Specifies whether the Data Fusion instance should be private. If set to\ntrue, all Data Fusion nodes will have private IP addresses and will not be\nable to access the public internet.",
+          "type": "boolean"
+        },
+        "serviceAccount": {
+          "description": "Output only. Service account which will be used to access resources in\nthe customer project.\"",
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display name for an instance."
+        },
+        "zone": {
+          "description": "Name of the zone in which the Data Fusion instance will be created.",
+          "type": "string"
+        }
+      },
+      "id": "Instance",
+      "description": "Represents a Data Fusion instance.",
+      "type": "object"
+    },
     "Empty": {
       "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
@@ -622,15 +941,13 @@
       "id": "Empty"
     },
     "Location": {
-      "description": "A resource that represents Google Cloud Platform location.",
-      "type": "object",
       "properties": {
         "labels": {
-          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
-          "type": "object",
           "additionalProperties": {
             "type": "string"
-          }
+          },
+          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
+          "type": "object"
         },
         "name": {
           "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
@@ -645,73 +962,23 @@
           "type": "string"
         },
         "metadata": {
+          "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
+          "type": "object",
           "additionalProperties": {
             "type": "any",
             "description": "Properties of the object. Contains field @type with type URL."
-          },
-          "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
-          "type": "object"
+          }
         }
       },
-      "id": "Location"
+      "id": "Location",
+      "description": "A resource that represents Google Cloud Platform location.",
+      "type": "object"
     },
     "Condition": {
       "description": "A condition to be met.",
       "type": "object",
       "properties": {
-        "sys": {
-          "description": "Trusted attributes supplied by any service that owns resources and uses\nthe IAM system for access control.",
-          "type": "string",
-          "enumDescriptions": [
-            "Default non-attribute type",
-            "Region of the resource",
-            "Service name",
-            "Resource name",
-            "IP address of the caller"
-          ],
-          "enum": [
-            "NO_ATTR",
-            "REGION",
-            "SERVICE",
-            "NAME",
-            "IP"
-          ]
-        },
-        "op": {
-          "enum": [
-            "NO_OP",
-            "EQUALS",
-            "NOT_EQUALS",
-            "IN",
-            "NOT_IN",
-            "DISCHARGED"
-          ],
-          "description": "An operator to apply the subject with.",
-          "type": "string",
-          "enumDescriptions": [
-            "Default no-op.",
-            "DEPRECATED. Use IN instead.",
-            "DEPRECATED. Use NOT_IN instead.",
-            "The condition is true if the subject (or any element of it if it is\na set) matches any of the supplied values.",
-            "The condition is true if the subject (or every element of it if it is\na set) matches none of the supplied values.",
-            "Subject is discharged"
-          ]
-        },
-        "svc": {
-          "description": "Trusted attributes discharged by the service.",
-          "type": "string"
-        },
         "iam": {
-          "type": "string",
-          "enumDescriptions": [
-            "Default non-attribute.",
-            "Either principal or (if present) authority selector.",
-            "The principal (even if an authority selector is present), which\nmust only be used for attribution, not authorization.",
-            "Any of the security realms in the IAMContext (go/security-realms).\nWhen used with IN, the condition indicates \"any of the request's realms\nmatch one of the given values; with NOT_IN, \"none of the realms match\nany of the given values\". Note that a value can be:\n - 'self' (i.e., allow connections from clients that are in the same\n security realm)\n - a realm (e.g., 'campus-abc')\n - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups)\nA match is determined by a realm group\nmembership check performed by a RealmAclRep object (go/realm-acl-howto).\nIt is not permitted to grant access based on the *absence* of a realm, so\nrealm conditions can only be used in a \"positive\" context (e.g., ALLOW/IN\nor DENY/NOT_IN).",
-            "An approver (distinct from the requester) that has authorized this\nrequest.\nWhen used with IN, the condition indicates that one of the approvers\nassociated with the request matches the specified principal, or is a\nmember of the specified group. Approvers can only grant additional\naccess, and are thus only used in a strictly positive context\n(e.g. ALLOW/IN or DENY/NOT_IN).",
-            "What types of justifications have been supplied with this request.\nString values should match enum names from tech.iam.JustificationType,\ne.g. \"MANUAL_STRING\". It is not permitted to grant access based on\nthe *absence* of a justification, so justification conditions can only\nbe used in a \"positive\" context (e.g., ALLOW/IN or DENY/NOT_IN).\n\nMultiple justifications, e.g., a Buganizer ID and a manually-entered\nreason, are normal and supported.",
-            "What type of credentials have been supplied with this request.\nString values should match enum names from\nsecurity_loas_l2.CredentialsType - currently, only CREDS_TYPE_EMERGENCY\nis supported.\nIt is not permitted to grant access based on the *absence* of a\ncredentials type, so the conditions can only be used in a \"positive\"\ncontext (e.g., ALLOW/IN or DENY/NOT_IN)."
-          ],
           "enum": [
             "NO_ATTR",
             "AUTHORITY",
@@ -721,7 +988,17 @@
             "JUSTIFICATION_TYPE",
             "CREDENTIALS_TYPE"
           ],
-          "description": "Trusted attributes supplied by the IAM system."
+          "description": "Trusted attributes supplied by the IAM system.",
+          "type": "string",
+          "enumDescriptions": [
+            "Default non-attribute.",
+            "Either principal or (if present) authority selector.",
+            "The principal (even if an authority selector is present), which\nmust only be used for attribution, not authorization.",
+            "Any of the security realms in the IAMContext (go/security-realms).\nWhen used with IN, the condition indicates \"any of the request's realms\nmatch one of the given values; with NOT_IN, \"none of the realms match\nany of the given values\". Note that a value can be:\n - 'self' (i.e., allow connections from clients that are in the same\n security realm)\n - a realm (e.g., 'campus-abc')\n - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups)\nA match is determined by a realm group\nmembership check performed by a RealmAclRep object (go/realm-acl-howto).\nIt is not permitted to grant access based on the *absence* of a realm, so\nrealm conditions can only be used in a \"positive\" context (e.g., ALLOW/IN\nor DENY/NOT_IN).",
+            "An approver (distinct from the requester) that has authorized this\nrequest.\nWhen used with IN, the condition indicates that one of the approvers\nassociated with the request matches the specified principal, or is a\nmember of the specified group. Approvers can only grant additional\naccess, and are thus only used in a strictly positive context\n(e.g. ALLOW/IN or DENY/NOT_IN).",
+            "What types of justifications have been supplied with this request.\nString values should match enum names from tech.iam.JustificationType,\ne.g. \"MANUAL_STRING\". It is not permitted to grant access based on\nthe *absence* of a justification, so justification conditions can only\nbe used in a \"positive\" context (e.g., ALLOW/IN or DENY/NOT_IN).\n\nMultiple justifications, e.g., a Buganizer ID and a manually-entered\nreason, are normal and supported.",
+            "What type of credentials have been supplied with this request.\nString values should match enum names from\nsecurity_loas_l2.CredentialsType - currently, only CREDS_TYPE_EMERGENCY\nis supported.\nIt is not permitted to grant access based on the *absence* of a\ncredentials type, so the conditions can only be used in a \"positive\"\ncontext (e.g., ALLOW/IN or DENY/NOT_IN)."
+          ]
         },
         "values": {
           "description": "The objects of the condition.",
@@ -729,36 +1006,77 @@
           "items": {
             "type": "string"
           }
+        },
+        "sys": {
+          "enum": [
+            "NO_ATTR",
+            "REGION",
+            "SERVICE",
+            "NAME",
+            "IP"
+          ],
+          "description": "Trusted attributes supplied by any service that owns resources and uses\nthe IAM system for access control.",
+          "type": "string",
+          "enumDescriptions": [
+            "Default non-attribute type",
+            "Region of the resource",
+            "Service name",
+            "Resource name",
+            "IP address of the caller"
+          ]
+        },
+        "op": {
+          "enumDescriptions": [
+            "Default no-op.",
+            "DEPRECATED. Use IN instead.",
+            "DEPRECATED. Use NOT_IN instead.",
+            "The condition is true if the subject (or any element of it if it is\na set) matches any of the supplied values.",
+            "The condition is true if the subject (or every element of it if it is\na set) matches none of the supplied values.",
+            "Subject is discharged"
+          ],
+          "enum": [
+            "NO_OP",
+            "EQUALS",
+            "NOT_EQUALS",
+            "IN",
+            "NOT_IN",
+            "DISCHARGED"
+          ],
+          "description": "An operator to apply the subject with.",
+          "type": "string"
+        },
+        "svc": {
+          "description": "Trusted attributes discharged by the service.",
+          "type": "string"
         }
       },
       "id": "Condition"
     },
     "CounterOptions": {
-      "description": "Increment a streamz counter with the specified metric and field names.\n\nMetric names should start with a '/', generally be lowercase-only,\nand end in \"_count\". Field names should not contain an initial slash.\nThe actual exported metric names will have \"/iam/policy\" prepended.\n\nField names correspond to IAM request parameters and field values are\ntheir respective values.\n\nSupported field names:\n   - \"authority\", which is \"[token]\" if IAMContext.token is present,\n     otherwise the value of IAMContext.authority_selector if present, and\n     otherwise a representation of IAMContext.principal; or\n   - \"iam_principal\", a representation of IAMContext.principal even if a\n     token or authority selector is present; or\n   - \"\" (empty string), resulting in a counter with no fields.\n\nExamples:\n  counter { metric: \"/debug_access_count\"  field: \"iam_principal\" }\n  ==\u003e increment counter /iam/policy/backend_debug_access_count\n                        {iam_principal=[value of IAMContext.principal]}\n\nAt this time we do not support multiple field names (though this may be\nsupported in the future).",
-      "type": "object",
       "properties": {
         "metric": {
-          "type": "string",
-          "description": "The metric to update."
+          "description": "The metric to update.",
+          "type": "string"
         },
         "field": {
           "description": "The field value to attribute.",
           "type": "string"
         }
       },
-      "id": "CounterOptions"
+      "id": "CounterOptions",
+      "description": "Increment a streamz counter with the specified metric and field names.\n\nMetric names should start with a '/', generally be lowercase-only,\nand end in \"_count\". Field names should not contain an initial slash.\nThe actual exported metric names will have \"/iam/policy\" prepended.\n\nField names correspond to IAM request parameters and field values are\ntheir respective values.\n\nSupported field names:\n   - \"authority\", which is \"[token]\" if IAMContext.token is present,\n     otherwise the value of IAMContext.authority_selector if present, and\n     otherwise a representation of IAMContext.principal; or\n   - \"iam_principal\", a representation of IAMContext.principal even if a\n     token or authority selector is present; or\n   - \"\" (empty string), resulting in a counter with no fields.\n\nExamples:\n  counter { metric: \"/debug_access_count\"  field: \"iam_principal\" }\n  ==\u003e increment counter /iam/policy/backend_debug_access_count\n                        {iam_principal=[value of IAMContext.principal]}\n\nAt this time we do not support multiple field names (though this may be\nsupported in the future).",
+      "type": "object"
     },
     "AuditLogConfig": {
-      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:foo@gmail.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\nfoo@gmail.com from DATA_READ logging.",
-      "type": "object",
       "properties": {
+        "exemptedMembers": {
+          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "logType": {
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
@@ -766,19 +1084,21 @@
             "DATA_READ"
           ],
           "description": "The log type that this config enables.",
-          "type": "string"
-        },
-        "exemptedMembers": {
-          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "type": "string",
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
+          ]
         }
       },
-      "id": "AuditLogConfig"
+      "id": "AuditLogConfig",
+      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:foo@gmail.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\nfoo@gmail.com from DATA_READ logging.",
+      "type": "object"
     },
     "TestIamPermissionsRequest": {
+      "description": "Request message for `TestIamPermissions` method.",
       "type": "object",
       "properties": {
         "permissions": {
@@ -789,28 +1109,10 @@
           }
         }
       },
-      "id": "TestIamPermissionsRequest",
-      "description": "Request message for `TestIamPermissions` method."
-    },
-    "ListLocationsResponse": {
-      "description": "The response message for Locations.ListLocations.",
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        },
-        "locations": {
-          "description": "A list of locations that matches the specified filter in the request.",
-          "type": "array",
-          "items": {
-            "$ref": "Location"
-          }
-        }
-      },
-      "id": "ListLocationsResponse"
+      "id": "TestIamPermissionsRequest"
     },
     "Policy": {
+      "id": "Policy",
       "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-other-app@appspot.gserviceaccount.com\n      role: roles/owner\n    - members:\n      - user:sean@example.com\n      role: roles/viewer\n\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
       "type": "object",
       "properties": {
@@ -848,14 +1150,31 @@
             "$ref": "Rule"
           }
         }
+      }
+    },
+    "ListLocationsResponse": {
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        },
+        "locations": {
+          "description": "A list of locations that matches the specified filter in the request.",
+          "type": "array",
+          "items": {
+            "$ref": "Location"
+          }
+        }
       },
-      "id": "Policy"
+      "id": "ListLocationsResponse",
+      "description": "The response message for Locations.ListLocations."
     },
     "AuthorizationLoggingOptions": {
+      "description": "Authorization-related information used by Cloud Audit Logging.",
+      "type": "object",
       "properties": {
         "permissionType": {
-          "description": "The type of the permission that was checked.",
-          "type": "string",
           "enumDescriptions": [
             "Default. Should not be used.",
             "A read of admin (meta) data.",
@@ -869,27 +1188,18 @@
             "ADMIN_WRITE",
             "DATA_READ",
             "DATA_WRITE"
-          ]
+          ],
+          "description": "The type of the permission that was checked.",
+          "type": "string"
         }
       },
-      "id": "AuthorizationLoggingOptions",
-      "description": "Authorization-related information used by Cloud Audit Logging.",
-      "type": "object"
-    },
-    "CancelOperationRequest": {
-      "type": "object",
-      "properties": {},
-      "id": "CancelOperationRequest",
-      "description": "The request message for Operations.CancelOperation."
+      "id": "AuthorizationLoggingOptions"
     },
     "DataAccessOptions": {
-      "id": "DataAccessOptions",
       "description": "Write a Data Access (Gin) log",
       "type": "object",
       "properties": {
         "logMode": {
-          "description": "Whether Gin logging should happen in a fail-closed manner at the caller.\nThis is relevant only in the LocalIAM implementation, for now.",
-          "type": "string",
           "enumDescriptions": [
             "Client is not required to write a partial Gin log immediately after\nthe authorization check. If client chooses to write one and it fails,\nclient may either fail open (allow the operation to continue) or\nfail closed (handle as a DENY outcome).",
             "The application's operation in the context of which this authorization\ncheck is being made may only be performed if it is successfully logged\nto Gin. For instance, the authorization library may satisfy this\nobligation by emitting a partial log entry at authorization check time\nand only returning ALLOW to the application if it succeeds.\n\nIf a matching Rule has this directive, but the client has not indicated\nthat it will honor such requirements, then the IAM check will result in\nauthorization failure by setting CheckPolicyResponse.success=false."
@@ -897,9 +1207,18 @@
           "enum": [
             "LOG_MODE_UNSPECIFIED",
             "LOG_FAIL_CLOSED"
-          ]
+          ],
+          "description": "Whether Gin logging should happen in a fail-closed manner at the caller.\nThis is relevant only in the LocalIAM implementation, for now.",
+          "type": "string"
         }
-      }
+      },
+      "id": "DataAccessOptions"
+    },
+    "CancelOperationRequest": {
+      "description": "The request message for Operations.CancelOperation.",
+      "type": "object",
+      "properties": {},
+      "id": "CancelOperationRequest"
     },
     "Operation": {
       "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
@@ -910,41 +1229,36 @@
           "type": "boolean"
         },
         "response": {
+          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
-          },
-          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
-          "type": "object"
+          }
         },
         "name": {
-          "type": "string",
-          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."
+          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`.",
+          "type": "string"
         },
         "error": {
           "description": "The error result of the operation in case of failure or cancellation.",
           "$ref": "Status"
         },
         "metadata": {
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
-          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
-          "type": "object"
+          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."
         }
       },
       "id": "Operation"
     },
     "AuditConfig": {
+      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:foo@gmail.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"fooservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:bar@gmail.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts foo@gmail.com from DATA_READ logging, and\nbar@gmail.com from DATA_WRITE logging.",
       "type": "object",
       "properties": {
-        "exemptedMembers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "service": {
           "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services.",
           "type": "string"
@@ -955,54 +1269,57 @@
           "items": {
             "$ref": "AuditLogConfig"
           }
+        },
+        "exemptedMembers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
-      "id": "AuditConfig",
-      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:foo@gmail.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"fooservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:bar@gmail.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts foo@gmail.com from DATA_READ logging, and\nbar@gmail.com from DATA_WRITE logging."
+      "id": "AuditConfig"
     },
     "NetworkConfig": {
-      "id": "NetworkConfig",
       "description": "Network configuration for a Data Fusion instance. These configurations\nare used for peering with the customer network. Configurations are optional\nwhen a public Data Fusion instance is to be created. However, providing\nthese configurations allows several benefits, such as reduced network latency\nwhile accessing the customer resources from managed Data Fusion instance\nnodes, as well as access to the customer on-prem resources.",
       "type": "object",
       "properties": {
+        "ipAllocation": {
+          "description": "The IP range in CIDR notation to use for the managed Data Fusion instance\nnodes. This range must not overlap with any other ranges used in the Data\nFusion instance network.",
+          "type": "string"
+        },
         "network": {
           "description": "Name of the network in the customer project with which the Tenant Project\nwill be peered for executing pipelines.",
           "type": "string"
-        },
-        "ipAllocation": {
-          "type": "string",
-          "description": "The IP range in CIDR notation to use for the managed Data Fusion instance\nnodes. This range must not overlap with any other ranges used in the Data\nFusion instance network."
         }
-      }
+      },
+      "id": "NetworkConfig"
     },
     "CloudAuditOptions": {
-      "id": "CloudAuditOptions",
-      "description": "Write a Cloud Audit log",
-      "type": "object",
       "properties": {
         "authorizationLoggingOptions": {
-          "$ref": "AuthorizationLoggingOptions",
-          "description": "Information used by the Cloud Audit Logging pipeline."
+          "description": "Information used by the Cloud Audit Logging pipeline.",
+          "$ref": "AuthorizationLoggingOptions"
         },
         "logName": {
+          "enumDescriptions": [
+            "Default. Should not be used.",
+            "Corresponds to \"cloudaudit.googleapis.com/activity\"",
+            "Corresponds to \"cloudaudit.googleapis.com/data_access\""
+          ],
           "enum": [
             "UNSPECIFIED_LOG_NAME",
             "ADMIN_ACTIVITY",
             "DATA_ACCESS"
           ],
           "description": "The log_name to populate in the Cloud Audit Record.",
-          "type": "string",
-          "enumDescriptions": [
-            "Default. Should not be used.",
-            "Corresponds to \"cloudaudit.googleapis.com/activity\"",
-            "Corresponds to \"cloudaudit.googleapis.com/data_access\""
-          ]
+          "type": "string"
         }
-      }
+      },
+      "id": "CloudAuditOptions",
+      "description": "Write a Cloud Audit log",
+      "type": "object"
     },
     "Status": {
-      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
-      "type": "object",
       "properties": {
         "code": {
           "description": "The status code, which should be an enum value of google.rpc.Code.",
@@ -1010,10 +1327,11 @@
           "type": "integer"
         },
         "message": {
-          "type": "string",
-          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."
+          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+          "type": "string"
         },
         "details": {
+          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
           "type": "array",
           "items": {
             "additionalProperties": {
@@ -1021,13 +1339,15 @@
               "type": "any"
             },
             "type": "object"
-          },
-          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."
+          }
         }
       },
-      "id": "Status"
+      "id": "Status",
+      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
+      "type": "object"
     },
     "Binding": {
+      "description": "Associates `members` with a `role`.",
       "type": "object",
       "properties": {
         "condition": {
@@ -1042,14 +1362,15 @@
           }
         },
         "role": {
-          "type": "string",
-          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."
+          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+          "type": "string"
         }
       },
-      "id": "Binding",
-      "description": "Associates `members` with a `role`."
+      "id": "Binding"
     },
     "Expr": {
+      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
+      "type": "object",
       "properties": {
         "description": {
           "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
@@ -1068,333 +1389,12 @@
           "type": "string"
         }
       },
-      "id": "Expr",
-      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
-      "type": "object"
-    },
-    "TestIamPermissionsResponse": {
-      "description": "Response message for `TestIamPermissions` method.",
-      "type": "object",
-      "properties": {
-        "permissions": {
-          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "id": "TestIamPermissionsResponse"
-    },
-    "ListOperationsResponse": {
-      "description": "The response message for Operations.ListOperations.",
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        },
-        "operations": {
-          "description": "A list of operations that matches the specified filter in the request.",
-          "type": "array",
-          "items": {
-            "$ref": "Operation"
-          }
-        }
-      },
-      "id": "ListOperationsResponse"
-    },
-    "OperationMetadata": {
-      "type": "object",
-      "properties": {
-        "endTime": {
-          "description": "The time the operation finished running.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "verb": {
-          "description": "Name of the verb executed by the operation.",
-          "type": "string"
-        },
-        "requestedCancellation": {
-          "description": "Identifies whether the user has requested cancellation\nof the operation. Operations that have successfully been cancelled\nhave Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
-          "type": "boolean"
-        },
-        "createTime": {
-          "description": "The time the operation was created.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "statusDetail": {
-          "description": "Human-readable status of the operation if any.",
-          "type": "string"
-        },
-        "apiVersion": {
-          "description": "API version used to start the operation.",
-          "type": "string"
-        },
-        "target": {
-          "description": "Server-defined resource path for the target of the operation.",
-          "type": "string"
-        }
-      },
-      "id": "OperationMetadata",
-      "description": "Represents the metadata of a long-running operation."
-    },
-    "Rule": {
-      "description": "A rule to be applied in a Policy.",
-      "type": "object",
-      "properties": {
-        "in": {
-          "description": "If one or more 'in' clauses are specified, the rule matches if\nthe PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "permissions": {
-          "description": "A permission is a string of form '\u003cservice\u003e.\u003cresource type\u003e.\u003cverb\u003e'\n(e.g., 'storage.buckets.list'). A value of '*' matches all permissions,\nand a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "action": {
-          "description": "Required",
-          "type": "string",
-          "enumDescriptions": [
-            "Default no action.",
-            "Matching 'Entries' grant access.",
-            "Matching 'Entries' grant access and the caller promises to log\nthe request per the returned log_configs.",
-            "Matching 'Entries' deny access.",
-            "Matching 'Entries' deny access and the caller promises to log\nthe request per the returned log_configs.",
-            "Matching 'Entries' tell IAM.Check callers to generate logs."
-          ],
-          "enum": [
-            "NO_ACTION",
-            "ALLOW",
-            "ALLOW_WITH_LOG",
-            "DENY",
-            "DENY_WITH_LOG",
-            "LOG"
-          ]
-        },
-        "notIn": {
-          "description": "If one or more 'not_in' clauses are specified, the rule matches\nif the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.\nThe format for in and not_in entries can be found at in the Local IAM\ndocumentation (see go/local-iam#features).",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "description": {
-          "description": "Human-readable description of the rule.",
-          "type": "string"
-        },
-        "conditions": {
-          "description": "Additional restrictions that must be met. All conditions must pass for the\nrule to match.",
-          "type": "array",
-          "items": {
-            "$ref": "Condition"
-          }
-        },
-        "logConfig": {
-          "description": "The config returned to callers of tech.iam.IAM.CheckPolicy for any entries\nthat match the LOG action.",
-          "type": "array",
-          "items": {
-            "$ref": "LogConfig"
-          }
-        }
-      },
-      "id": "Rule"
-    },
-    "LogConfig": {
-      "description": "Specifies what kind of log the caller must write",
-      "type": "object",
-      "properties": {
-        "cloudAudit": {
-          "description": "Cloud audit options.",
-          "$ref": "CloudAuditOptions"
-        },
-        "counter": {
-          "description": "Counter options.",
-          "$ref": "CounterOptions"
-        },
-        "dataAccess": {
-          "description": "Data access options.",
-          "$ref": "DataAccessOptions"
-        }
-      },
-      "id": "LogConfig"
-    },
-    "ListInstancesResponse": {
-      "id": "ListInstancesResponse",
-      "description": "Response message for the list instance request.",
-      "type": "object",
-      "properties": {
-        "instances": {
-          "description": "Represents a list of Data Fusion instances.",
-          "type": "array",
-          "items": {
-            "$ref": "Instance"
-          }
-        },
-        "nextPageToken": {
-          "description": "Token to retrieve the next page of results or empty if there are no more\nresults in the list.",
-          "type": "string"
-        },
-        "unreachable": {
-          "description": "Locations that could not be reached.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "UpgradeInstanceRequest": {
-      "properties": {},
-      "id": "UpgradeInstanceRequest",
-      "description": "Request message for upgrading a Data Fusion instance.\nTo change the instance properties, instance update should be used.",
-      "type": "object"
-    },
-    "RestartInstanceRequest": {
-      "description": "Request message for restarting a Data Fusion instance.",
-      "type": "object",
-      "properties": {},
-      "id": "RestartInstanceRequest"
-    },
-    "SetIamPolicyRequest": {
-      "description": "Request message for `SetIamPolicy` method.",
-      "type": "object",
-      "properties": {
-        "updateMask": {
-          "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM.",
-          "format": "google-fieldmask",
-          "type": "string"
-        },
-        "policy": {
-          "$ref": "Policy",
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
-        }
-      },
-      "id": "SetIamPolicyRequest"
-    },
-    "Instance": {
-      "description": "Represents a Data Fusion instance.",
-      "type": "object",
-      "properties": {
-        "enableStackdriverLogging": {
-          "description": "Option to enable Stackdriver Logging.",
-          "type": "boolean"
-        },
-        "privateInstance": {
-          "type": "boolean",
-          "description": "Specifies whether the Data Fusion instance should be private. If set to\ntrue, all Data Fusion nodes will have private IP addresses and will not be\nable to access the public internet."
-        },
-        "serviceAccount": {
-          "description": "Output only. Service account which will be used to access resources in\nthe customer project.\"",
-          "type": "string"
-        },
-        "displayName": {
-          "description": "Display name for an instance.",
-          "type": "string"
-        },
-        "zone": {
-          "description": "Name of the zone in which the Data Fusion instance will be created.",
-          "type": "string"
-        },
-        "labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "The resource labels for instance to use to annotate any related underlying\nresources such as GCE VMs. The character '=' is not allowed to be used\nwithin the labels.",
-          "type": "object"
-        },
-        "createTime": {
-          "description": "Output only. The time the instance was created.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "updateTime": {
-          "description": "Output only. The time the instance was last updated.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "serviceEndpoint": {
-          "description": "Output only. Endpoint on which the Data Fusion UI and REST APIs are\naccessible.",
-          "type": "string"
-        },
-        "enableStackdriverMonitoring": {
-          "description": "Option to enable Stackdriver Monitoring.",
-          "type": "boolean"
-        },
-        "type": {
-          "enum": [
-            "TYPE_UNSPECIFIED",
-            "BASIC",
-            "ENTERPRISE"
-          ],
-          "description": "Required. Instance type.",
-          "type": "string",
-          "enumDescriptions": [
-            "No type specified. The instance creation will fail.",
-            "Basic Data Fusion instance. In Basic type, the user will be able to\ncreate data pipelines using point and click UI. However, there are\ncertain limitations, such as fewer number of concurrent pipelines, no\nsupport for streaming pipelines, etc.",
-            "Enterprise Data Fusion instance. In Enterprise type, the user will have\nmore features available, such as support for streaming pipelines, higher\nnumber of concurrent pipelines, etc."
-          ]
-        },
-        "version": {
-          "description": "Output only. Current version of the Data Fusion.",
-          "type": "string"
-        },
-        "stateMessage": {
-          "description": "Output only. Additional information about the current state of this Data\nFusion instance if available.",
-          "type": "string"
-        },
-        "description": {
-          "description": "An optional description of this instance.",
-          "type": "string"
-        },
-        "options": {
-          "description": "Map of additional options used to configure the behavior of\nData Fusion instance.",
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "networkConfig": {
-          "$ref": "NetworkConfig",
-          "description": "Network configuration options. These are required when a private Data\nFusion instance is to be created."
-        },
-        "state": {
-          "type": "string",
-          "enumDescriptions": [
-            "Instance does not have a state yet",
-            "Instance is being created",
-            "Instance is running and ready for requests",
-            "Instance creation failed",
-            "Instance is being deleted",
-            "Instance is being upgraded",
-            "Instance is being restarted",
-            "Instance is being updated"
-          ],
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "CREATING",
-            "RUNNING",
-            "FAILED",
-            "DELETING",
-            "UPGRADING",
-            "RESTARTING",
-            "UPDATING"
-          ],
-          "description": "Output only. The current state of this Data Fusion instance."
-        },
-        "name": {
-          "description": "Output only. The name of this instance is in the form of\nprojects/{project}/locations/{location}/instances/{instance}.",
-          "type": "string"
-        }
-      },
-      "id": "Instance"
+      "id": "Expr"
     }
+  },
+  "protocol": "rest",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   }
 }

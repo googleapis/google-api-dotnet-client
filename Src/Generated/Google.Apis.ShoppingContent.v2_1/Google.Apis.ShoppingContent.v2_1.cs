@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20190702 (1643)
+ *      <tr><th>API Rev<td>20190705 (1646)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -12253,7 +12253,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
         public virtual System.Nullable<long> BatchId { get; set; } 
 
-        /// <summary>The ContentAPI feed id.</summary>
+        /// <summary>The Content API feed id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedId")]
         public virtual System.Nullable<ulong> FeedId { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190618 (1629)
+ *      <tr><th>API Rev<td>20190624 (1635)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -52340,10 +52340,31 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Message containing information of one individual backend.</summary>
     public class Backend : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies the balancing mode for this backend. For global HTTP(S) or TCP/SSL load balancing, the
-        /// default is UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).
+        /// <summary>Specifies the balancing mode for the backend.
         ///
-        /// For Internal Load Balancing, the default and only supported mode is CONNECTION.</summary>
+        /// When choosing a balancing mode, you need to consider the loadBalancingScheme, and protocol for the backend
+        /// service, as well as the type of backend (instance group or NEG).
+        ///
+        /// - If the load balancing mode is CONNECTION, then the load is spread based on how many concurrent connections
+        /// the backend can handle. The CONNECTION balancing mode is only available if the protocol for the backend
+        /// service is SSL, TCP, or UDP.
+        ///
+        /// If the loadBalancingScheme for the backend service is EXTERNAL (SSL Proxy and TCP Proxy load balancers), you
+        /// must also specify exactly one of the following parameters: maxConnections, maxConnectionsPerInstance, or
+        /// maxConnectionsPerEndpoint.
+        ///
+        /// If the loadBalancingScheme for the backend service is INTERNAL (internal TCP/UDP load balancers), you cannot
+        /// specify any additional parameters.
+        ///
+        /// - If the load balancing mode is RATE, then the load is spread based on the rate of HTTP requests per second
+        /// (RPS). The RATE balancing mode is only available if the protocol for the backend service is HTTP or HTTPS.
+        /// You must specify exactly one of the following parameters: maxRate, maxRatePerInstance, or
+        /// maxRatePerEndpoint.
+        ///
+        /// - If the load balancing mode is UTILIZATION, then the load is spread based on the CPU utilization of
+        /// instances in an instance group. The UTILIZATION balancing mode is only available if the loadBalancingScheme
+        /// of the backend service is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and the backend is made up of
+        /// instance groups. There are no restrictions on the backend service protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("balancingMode")]
         public virtual string BalancingMode { get; set; } 
 
@@ -52361,46 +52382,52 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>The fully-qualified URL of an Instance Group or Network Endpoint Group resource. In case of
-        /// instance group this defines the list of instances that serve traffic. Member virtual machine instances from
-        /// each instance group must live in the same zone as the instance group itself. No two backends in a backend
-        /// service are allowed to use same Instance Group resource.
+        /// <summary>The fully-qualified URL of an instance group or network endpoint group (NEG) resource. The type of
+        /// backend that a backend service supports depends on the backend service's loadBalancingScheme.
         ///
-        /// For Network Endpoint Groups this defines list of endpoints. All endpoints of Network Endpoint Group must be
-        /// hosted on instances located in the same zone as the Network Endpoint Group.
+        /// - When the loadBalancingScheme for the backend service is EXTERNAL, INTERNAL_SELF_MANAGED, or
+        /// INTERNAL_MANAGED, the backend can be either an instance group or a NEG. The backends on the backend service
+        /// must be either all instance groups or all NEGs. You cannot mix instance group and NEG backends on the same
+        /// backend service.
         ///
-        /// Backend service can not contain mix of Instance Group and Network Endpoint Group backends.
+        /// - When the loadBalancingScheme for the backend service is INTERNAL, the backend must be an instance group in
+        /// the same region as the backend service. NEGs are not supported.
         ///
-        /// Note that you must specify an Instance Group or Network Endpoint Group resource using the fully-qualified
-        /// URL, rather than a partial URL.
-        ///
-        /// When the BackendService has load balancing scheme INTERNAL, the instance group must be within the same
-        /// region as the BackendService. Network Endpoint Groups are not supported for INTERNAL load balancing
-        /// scheme.</summary>
+        /// You must use the fully-qualified URL (starting with https://www.googleapis.com/) to specify the instance
+        /// group or NEG. Partial URLs are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; } 
 
-        /// <summary>The max number of simultaneous connections for the group. Can be used with either CONNECTION or
-        /// UTILIZATION balancing modes. For CONNECTION mode, either maxConnections or maxConnectionsPerInstance must be
-        /// set.
+        /// <summary>Defines a maximum target for simultaneous connections for the entire backend (instance group or
+        /// NEG). If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's
+        /// balancingMode is CONNECTION, and backend is attached to a backend service whose loadBalancingScheme is
+        /// EXTERNAL, you must specify either this parameter, maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
         ///
-        /// This cannot be used for internal load balancing.</summary>
+        /// Not available if the backend's balancingMode is RATE. If the loadBalancingScheme is INTERNAL, then
+        /// maxConnections is not supported, even though the backend requires a balancing mode of CONNECTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConnections")]
         public virtual System.Nullable<int> MaxConnections { get; set; } 
 
-        /// <summary>The max number of simultaneous connections that a single backend network endpoint can handle. This
-        /// is used to calculate the capacity of the group. Can be used in either CONNECTION or UTILIZATION balancing
-        /// modes. For CONNECTION mode, either maxConnections or maxConnectionsPerEndpoint must be set.
+        /// <summary>Defines a maximum target for simultaneous connections for an endpoint of a NEG. This is multiplied
+        /// by the number of endpoints in the NEG to implicitly calculate a maximum number of target maximum
+        /// simultaneous connections for the NEG. If the backend's balancingMode is CONNECTION, and the backend is
+        /// attached to a backend service whose loadBalancingScheme is EXTERNAL, you must specify either this parameter,
+        /// maxConnections, or maxConnectionsPerInstance.
         ///
-        /// This cannot be used for internal load balancing.</summary>
+        /// Not available if the backend's balancingMode is RATE. Internal TCP/UDP load balancing does not support
+        /// setting maxConnectionsPerEndpoint even though its backends require a balancing mode of CONNECTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConnectionsPerEndpoint")]
         public virtual System.Nullable<int> MaxConnectionsPerEndpoint { get; set; } 
 
-        /// <summary>The max number of simultaneous connections that a single backend instance can handle. This is used
-        /// to calculate the capacity of the group. Can be used in either CONNECTION or UTILIZATION balancing modes. For
-        /// CONNECTION mode, either maxConnections or maxConnectionsPerInstance must be set.
+        /// <summary>Defines a maximum target for simultaneous connections for a single VM in a backend instance group.
+        /// This is multiplied by the number of instances in the instance group to implicitly calculate a target maximum
+        /// number of simultaneous connections for the whole instance group. If the backend's balancingMode is
+        /// UTILIZATION, this is an optional parameter. If the backend's balancingMode is CONNECTION, and backend is
+        /// attached to a backend service whose loadBalancingScheme is EXTERNAL, you must specify either this parameter,
+        /// maxConnections, or maxConnectionsPerEndpoint.
         ///
-        /// This cannot be used for internal load balancing.</summary>
+        /// Not available if the backend's balancingMode is RATE. Internal TCP/UDP load balancing does not support
+        /// setting maxConnectionsPerInstance even though its backends require a balancing mode of CONNECTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConnectionsPerInstance")]
         public virtual System.Nullable<int> MaxConnectionsPerInstance { get; set; } 
 
@@ -52411,26 +52438,32 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxRate")]
         public virtual System.Nullable<int> MaxRate { get; set; } 
 
-        /// <summary>The max requests per second (RPS) that a single backend network endpoint can handle. This is used
-        /// to calculate the capacity of the group. Can be used in either balancing mode. For RATE mode, either maxRate
-        /// or maxRatePerEndpoint must be set.
+        /// <summary>Defines a maximum target for requests per second (RPS) for an endpoint of a NEG. This is multiplied
+        /// by the number of endpoints in the NEG to implicitly calculate a target maximum rate for the NEG.
         ///
-        /// This cannot be used for internal load balancing.</summary>
+        /// If the backend's balancingMode is RATE, you must specify either this parameter, maxRate, or
+        /// maxRatePerInstance.
+        ///
+        /// Not available if the backend's balancingMode is CONNECTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRatePerEndpoint")]
         public virtual System.Nullable<float> MaxRatePerEndpoint { get; set; } 
 
-        /// <summary>The max requests per second (RPS) that a single backend instance can handle. This is used to
-        /// calculate the capacity of the group. Can be used in either balancing mode. For RATE mode, either maxRate or
-        /// maxRatePerInstance must be set.
+        /// <summary>Defines a maximum target for requests per second (RPS) for a single VM in a backend instance group.
+        /// This is multiplied by the number of instances in the instance group to implicitly calculate a target maximum
+        /// rate for the whole instance group.
         ///
-        /// This cannot be used for internal load balancing.</summary>
+        /// If the backend's balancingMode is UTILIZATION, this is an optional parameter. If the backend's balancingMode
+        /// is RATE, you must specify either this parameter, maxRate, or maxRatePerEndpoint.
+        ///
+        /// Not available if the backend's balancingMode is CONNECTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRatePerInstance")]
         public virtual System.Nullable<float> MaxRatePerInstance { get; set; } 
 
-        /// <summary>Used when balancingMode is UTILIZATION. This ratio defines the CPU utilization target for the
-        /// group. The default is 0.8. Valid range is [0.0, 1.0].
+        /// <summary>Defines the maximum average CPU utilization of a backend VM in an instance group. The valid range
+        /// is [0.0, 1.0]. This is an optional parameter if the backend's balancingMode is UTILIZATION.
         ///
-        /// This cannot be used for internal load balancing.</summary>
+        /// This parameter can be used in conjunction with maxRate, maxRatePerInstance, maxConnections, or
+        /// maxConnectionsPerInstance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxUtilization")]
         public virtual System.Nullable<float> MaxUtilization { get; set; } 
 
@@ -52438,7 +52471,10 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A BackendBucket resource. This resource defines a Cloud Storage bucket.</summary>
+    /// <summary>Represents a Cloud Storage Bucket resource.
+    ///
+    /// This Cloud Storage bucket resource is referenced by a URL map of a load balancer. For more information, read
+    /// Backend Buckets.</summary>
     public class BackendBucket : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cloud Storage bucket name.</summary>
@@ -52577,15 +52613,21 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>A BackendService resource. This resource defines a group of backend virtual machines and their serving
-    /// capacity. (== resource_for v1.backendService ==) (== resource_for beta.backendService ==)</summary>
+    /// <summary>Represents a Backend Service resource.
+    ///
+    /// Backend services must have an associated health check. Backend services also store information about session
+    /// affinity. For more information, read Backend Services.
+    ///
+    /// A backendServices resource represents a global backend service. Global backend services are used for HTTP(S),
+    /// SSL Proxy, TCP Proxy load balancing and Traffic Director.
+    ///
+    /// A regionBackendServices resource represents a regional backend service. Regional backend services are used for
+    /// internal TCP/UDP load balancing. For more information, read Internal TCP/UDP Load balancing. (== resource_for
+    /// v1.backendService ==) (== resource_for beta.backendService ==)</summary>
     public class BackendService : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is
-        /// non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed
-        /// value for TTL is one day.
-        ///
-        /// When the load balancing scheme is INTERNAL, this field is not used.</summary>
+        /// <summary>If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or
+        /// equivalent). The maximum allowed value is one day (86,400).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("affinityCookieTtlSec")]
         public virtual System.Nullable<int> AffinityCookieTtlSec { get; set; } 
 
@@ -52613,9 +52655,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>If true, enable Cloud CDN for this BackendService.
-        ///
-        /// When the load balancing scheme is INTERNAL, this field is not used.</summary>
+        /// <summary>If true, enables Cloud CDN for the backend service. Only applicable if the loadBalancingScheme is
+        /// EXTERNAL and the protocol is HTTP or HTTPS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableCDN")]
         public virtual System.Nullable<bool> EnableCDN { get; set; } 
 
@@ -52665,22 +52706,24 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
         ///
-        /// This cannot be used for internal load balancing.</summary>
+        /// This cannot be used if the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; } 
 
-        /// <summary>Name of backend port. The same name should appear in the instance groups referenced by this
-        /// service. Required when the load balancing scheme is EXTERNAL.
+        /// <summary>A named port on a backend instance group representing the port for communication to the backend VMs
+        /// in that group. Required when the loadBalancingScheme is EXTERNAL and the backends are instance groups. The
+        /// named port must be defined on each backend instance group. This parameter has no meaning if the backends are
+        /// NEGs.
         ///
-        /// When the load balancing scheme is INTERNAL, this field is not used.</summary>
+        /// Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Blaancing).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portName")]
         public virtual string PortName { get; set; } 
 
         /// <summary>The protocol this BackendService uses to communicate with backends.
         ///
-        /// Possible values are HTTP, HTTPS, TCP, and SSL. The default is HTTP.
-        ///
-        /// For internal load balancing, the possible values are TCP and UDP, and the default is TCP.</summary>
+        /// Possible values are HTTP, HTTPS, TCP, SSL, or UDP, depending on the chosen load balancer or Traffic Director
+        /// configuration. Refer to the documentation for the load balancer or for Traffic director for more
+        /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
 
@@ -52699,19 +52742,22 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>Type of session affinity to use. The default is NONE.
+        /// <summary>Type of session affinity to use. The default is NONE. Session affinity is not applicable if the
+        /// --protocol is UDP.
         ///
-        /// When the load balancing scheme is EXTERNAL, can be NONE, CLIENT_IP, or GENERATED_COOKIE.
+        /// When the loadBalancingScheme is EXTERNAL, possible values are NONE, CLIENT_IP, or GENERATED_COOKIE.
+        /// GENERATED_COOKIE is only available if the protocol is HTTP or HTTPS.
         ///
-        /// When the load balancing scheme is INTERNAL, can be NONE, CLIENT_IP, CLIENT_IP_PROTO, or
+        /// When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or
         /// CLIENT_IP_PORT_PROTO.
         ///
-        /// When the protocol is UDP, this field is not used.</summary>
+        /// When the loadBalancingScheme is INTERNAL_SELF_MANAGED, possible values are NONE, CLIENT_IP,
+        /// GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionAffinity")]
         public virtual string SessionAffinity { get; set; } 
 
-        /// <summary>How many seconds to wait for the backend before considering it a failed request. Default is 30
-        /// seconds.</summary>
+        /// <summary>The backend service timeout has a different meaning depending on the type of load balancer. For
+        /// more information read,  Backend service settings The default is 30 seconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSec")]
         public virtual System.Nullable<int> TimeoutSec { get; set; } 
 
@@ -53377,8 +53423,8 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Message containing connection draining configuration.</summary>
     public class ConnectionDraining : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Time for which instance will be drained (not accept new connections, but still work to finish
-        /// started).</summary>
+        /// <summary>The amount of time in seconds to allow existing connections to persist while on unhealthy backend
+        /// VMs. Only applicable if the protocol is not UDP. The valid range is [0, 3600].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drainingTimeoutSec")]
         public virtual System.Nullable<int> DrainingTimeoutSec { get; set; } 
 
@@ -54530,8 +54576,29 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A ForwardingRule resource. A ForwardingRule resource specifies which pool of target virtual machines to
-    /// forward a packet to if it matches the given [IPAddress, IPProtocol, ports] tuple. (== resource_for
+    /// <summary>Represents a Forwarding Rule resource.
+    ///
+    /// A forwardingRules resource represents a regional forwarding rule.
+    ///
+    /// Regional external forwarding rules can reference any of the following resources:
+    ///
+    /// - A target instance - A Cloud VPN Classic gateway (targetVpnGateway), - A target pool for a Network Load
+    /// Balancer - A global target HTTP(S) proxy for an HTTP(S) load balancer using Standard Tier - A target SSL proxy
+    /// for a SSL Proxy load balancer using Standard Tier - A target TCP proxy for a TCP Proxy load balancer using
+    /// Standard Tier.
+    ///
+    /// Regional internal forwarding rules can reference the backend service of an internal TCP/UDP load balancer.
+    ///
+    /// For regional internal forwarding rules, the following applies: - If the loadBalancingScheme for the load
+    /// balancer is INTERNAL, then the forwarding rule references a regional internal backend service. - If the
+    /// loadBalancingScheme for the load balancer is INTERNAL_MANAGED, then the forwarding rule must reference a
+    /// regional target HTTP(S) proxy.
+    ///
+    /// For more information, read Using Forwarding rules.
+    ///
+    /// A globalForwardingRules resource represents a global forwarding rule.
+    ///
+    /// Global forwarding rules are only used by load balancers that use Premium Tier. (== resource_for
     /// beta.forwardingRules ==) (== resource_for v1.forwardingRules ==) (== resource_for beta.globalForwardingRules ==)
     /// (== resource_for v1.globalForwardingRules ==) (== resource_for beta.regionForwardingRules ==) (== resource_for
     /// v1.regionForwardingRules ==)</summary>
@@ -55175,8 +55242,13 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An HealthCheck resource. This resource defines a template for how individual virtual machines should be
-    /// checked for health, via one of the supported protocols.</summary>
+    /// <summary>Represents a Health Check resource.
+    ///
+    /// Health checks are used for most GCP load balancers and managed instance group auto-healing. For more
+    /// information, read Health Check Concepts.
+    ///
+    /// To perform health checks on network load balancers, you must use either httpHealthChecks or
+    /// httpsHealthChecks.</summary>
     public class HealthCheck : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>How often (in seconds) to send a health check. The default value is 5 seconds.</summary>
@@ -55405,8 +55477,10 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An HttpHealthCheck resource. This resource defines a template for how individual instances should be
-    /// checked for health, via HTTP.</summary>
+    /// <summary>Represents a legacy HTTP Health Check resource.
+    ///
+    /// Legacy health checks are required by network load balancers. For more information, read Health Check
+    /// Concepts.</summary>
     public class HttpHealthCheck : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>How often (in seconds) to send a health check. The default value is 5 seconds.</summary>
@@ -55454,7 +55528,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; } 
 
-        /// <summary>The request path of the HTTP health check request. The default value is /.</summary>
+        /// <summary>The request path of the HTTP health check request. The default value is /. This field does not
+        /// support query parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestPath")]
         public virtual string RequestPath { get; set; } 
 
@@ -55548,8 +55623,10 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>An HttpsHealthCheck resource. This resource defines a template for how individual instances should be
-    /// checked for health, via HTTPS.</summary>
+    /// <summary>Represents a legacy HTTPS Health Check resource.
+    ///
+    /// Legacy health checks are required by network load balancers. For more information, read Health Check
+    /// Concepts.</summary>
     public class HttpsHealthCheck : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>How often (in seconds) to send a health check. The default value is 5 seconds.</summary>
@@ -59941,15 +60018,15 @@ namespace Google.Apis.Compute.v1.Data
     public class NetworkPeering : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates whether
-        /// full mesh connectivity is created and managed automatically. When it is set to true, Google Compute Engine
-        /// will automatically create and manage the routes between two networks when the state is ACTIVE. Otherwise,
-        /// user needs to create routes manually to route packets to peer network.</summary>
+        /// full mesh connectivity is created and managed automatically between peered networks. Currently this field
+        /// should always be true since Google Compute Engine will automatically create and manage subnetwork routes
+        /// between two networks when peering state is ACTIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCreateRoutes")]
         public virtual System.Nullable<bool> AutoCreateRoutes { get; set; } 
 
-        /// <summary>Whether full mesh connectivity is created and managed automatically. When it is set to true, Google
-        /// Compute Engine will automatically create and manage the routes between two networks when the peering state
-        /// is ACTIVE. Otherwise, user needs to create routes manually to route packets to peer network.</summary>
+        /// <summary>Indicates whether full mesh connectivity is created and managed automatically between peered
+        /// networks. Currently this field should always be true since Google Compute Engine will automatically create
+        /// and manage subnetwork routes between two networks when peering state is ACTIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exchangeSubnetRoutes")]
         public virtual System.Nullable<bool> ExchangeSubnetRoutes { get; set; } 
 
@@ -59997,8 +60074,10 @@ namespace Google.Apis.Compute.v1.Data
 
     public class NetworksAddPeeringRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This field will be deprecated soon. Use exchange_subnet_routes in network_peering instead. Whether
-        /// Google Compute Engine manages the routes automatically.</summary>
+        /// <summary>This field will be deprecated soon. Use exchange_subnet_routes in network_peering instead.
+        /// Indicates whether full mesh connectivity is created and managed automatically between peered networks.
+        /// Currently this field should always be true since Google Compute Engine will automatically create and manage
+        /// subnetwork routes between two networks when peering state is ACTIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCreateRoutes")]
         public virtual System.Nullable<bool> AutoCreateRoutes { get; set; } 
 
@@ -63955,7 +64034,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("automaticRestart")]
         public virtual System.Nullable<bool> AutomaticRestart { get; set; } 
 
-        /// <summary>A set of node affinity and anti-affinity.</summary>
+        /// <summary>A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for
+        /// more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeAffinities")]
         public virtual System.Collections.Generic.IList<SchedulingNodeAffinity> NodeAffinities { get; set; } 
 
@@ -63982,7 +64062,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
-        /// <summary>Defines the operation of node selection.</summary>
+        /// <summary>Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-
+        /// affinity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operator")]
         public virtual string Operator__ { get; set; } 
 
@@ -63994,8 +64075,11 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A security policy is comprised of one or more rules. It can also be associated with one or more
-    /// 'targets'. (== resource_for v1.securityPolicies ==) (== resource_for beta.securityPolicies ==)</summary>
+    /// <summary>Represents a Cloud Armor Security Policy resource.
+    ///
+    /// Only external backend services that use load balancers can reference a Security Policy. For more information,
+    /// read  Cloud Armor Security Policy Concepts. (== resource_for v1.securityPolicies ==) (== resource_for
+    /// beta.securityPolicies ==)</summary>
     public class SecurityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -64539,9 +64623,11 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An SslCertificate resource. This resource provides a mechanism to upload an SSL key and certificate to
-    /// the load balancer to serve secure connections from the user. (== resource_for beta.sslCertificates ==) (==
-    /// resource_for v1.sslCertificates ==)</summary>
+    /// <summary>Represents an SSL Certificate resource.
+    ///
+    /// This SSL certificate resource also contains a private key. You can use SSL keys and certificates to secure
+    /// connections to a load balancer. For more information, read  Creating and Using SSL Certificates. (==
+    /// resource_for beta.sslCertificates ==) (== resource_for v1.sslCertificates ==)</summary>
     public class SslCertificate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A local certificate file. The certificate must be in PEM format. The certificate chain must be no
@@ -64740,9 +64826,11 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A SSL policy specifies the server-side support for SSL features. This can be attached to a
-    /// TargetHttpsProxy or a TargetSslProxy. This affects connections between clients and the HTTPS or SSL proxy load
-    /// balancer. They do not affect the connection between the load balancers and the backends.</summary>
+    /// <summary>Represents a Cloud Armor Security Policy resource.
+    ///
+    /// Only external backend services used by HTTP or HTTPS load balancers can reference a Security Policy. For more
+    /// information, read read  Cloud Armor Security Policy Concepts. (== resource_for beta.sslPolicies ==) (==
+    /// resource_for v1.sslPolicies ==)</summary>
     public class SslPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -65246,8 +65334,11 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A TargetHttpProxy resource. This resource defines an HTTP proxy. (== resource_for
-    /// beta.targetHttpProxies ==) (== resource_for v1.targetHttpProxies ==)</summary>
+    /// <summary>Represents a Target HTTP Proxy resource.
+    ///
+    /// A target HTTP proxy is a component of certain types of load balancers. Global forwarding rules reference a
+    /// target HTTP proxy, and the target proxy then references a URL map. For more information, read Using Target
+    /// Proxies. (== resource_for beta.targetHttpProxies ==) (== resource_for v1.targetHttpProxies ==)</summary>
     public class TargetHttpProxy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -65381,8 +65472,11 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A TargetHttpsProxy resource. This resource defines an HTTPS proxy. (== resource_for
-    /// beta.targetHttpsProxies ==) (== resource_for v1.targetHttpsProxies ==)</summary>
+    /// <summary>Represents a Target HTTPS Proxy resource.
+    ///
+    /// A target HTTPS proxy is a component of certain types of load balancers. Global forwarding rules reference a
+    /// target HTTPS proxy, and the target proxy then references a URL map. For more information, read Using Target
+    /// Proxies. (== resource_for beta.targetHttpsProxies ==) (== resource_for v1.targetHttpsProxies ==)</summary>
     public class TargetHttpsProxy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -65773,9 +65867,11 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>A TargetPool resource. This resource defines a pool of instances, an associated HttpHealthCheck
-    /// resource, and the fallback target pool. (== resource_for beta.targetPools ==) (== resource_for v1.targetPools
-    /// ==)</summary>
+    /// <summary>Represents a Target Pool resource.
+    ///
+    /// Target pools are used for network TCP/UDP load balancing. A target pool references member instances, an
+    /// associated legacy HttpHealthCheck resource, and, optionally, a backup target pool. For more information, read
+    /// Using target pools. (== resource_for beta.targetPools ==) (== resource_for v1.targetPools ==)</summary>
     public class TargetPool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This field is applicable only when the containing target pool is serving a forwarding rule as the
@@ -66160,8 +66256,11 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A TargetSslProxy resource. This resource defines an SSL proxy. (== resource_for beta.targetSslProxies
-    /// ==) (== resource_for v1.targetSslProxies ==)</summary>
+    /// <summary>Represents a Target SSL Proxy resource.
+    ///
+    /// A target SSL proxy is a component of a SSL Proxy load balancer. Global forwarding rules reference a target SSL
+    /// proxy, and the target proxy then references an external backend service. For more information, read Using Target
+    /// Proxies. (== resource_for beta.targetSslProxies ==) (== resource_for v1.targetSslProxies ==)</summary>
     public class TargetSslProxy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -66310,8 +66409,12 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A TargetTcpProxy resource. This resource defines a TCP proxy. (== resource_for beta.targetTcpProxies
-    /// ==) (== resource_for v1.targetTcpProxies ==)</summary>
+    /// <summary>Represents a Target TCP Proxy resource.
+    ///
+    /// A target TCP proxy is a component of a TCP Proxy load balancer. Global forwarding rules reference ta target TCP
+    /// proxy, and the target proxy then references an external backend service. For more information, read TCP Proxy
+    /// Load Balancing Concepts. (== resource_for beta.targetTcpProxies ==) (== resource_for v1.targetTcpProxies
+    /// ==)</summary>
     public class TargetTcpProxy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -66730,8 +66833,13 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A UrlMap resource. This resource defines the mapping from URL to the BackendService resource, based on
-    /// the "longest-match" of the URL's host and path.</summary>
+    /// <summary>Represents a URL Map resource.
+    ///
+    /// A URL map resource is a component of certain types of load balancers. This resource defines mappings from host
+    /// names and URL paths to either a backend service or a backend bucket.
+    ///
+    /// To use this resource, the backend service must have a loadBalancingScheme of either EXTERNAL,
+    /// INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED For more information, read URL Map Concepts.</summary>
     public class UrlMap : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>

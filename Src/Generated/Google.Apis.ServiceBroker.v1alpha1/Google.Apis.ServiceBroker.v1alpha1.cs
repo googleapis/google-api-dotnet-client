@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker'>Service Broker API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190624 (1635)
+ *      <tr><th>API Rev<td>20190708 (1649)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker'>
  *              https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker</a>
@@ -1041,6 +1041,10 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                             [Google.Apis.Util.RequestParameterAttribute("bindingId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string BindingId { get; private set; }
 
+                            /// <summary>See CreateServiceInstanceRequest for details.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("acceptsIncomplete", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<bool> AcceptsIncomplete { get; set; }
+
                             /// <summary>The plan id of the service instance.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PlanId { get; set; }
@@ -1049,10 +1053,6 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                             /// instance.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string ServiceId { get; set; }
-
-                            /// <summary>See CreateServiceInstanceRequest for details.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("acceptsIncomplete", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<bool> AcceptsIncomplete { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -1106,6 +1106,15 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
+                                    "acceptsIncomplete", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "acceptsIncomplete",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
                                     "planId", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "planId",
@@ -1118,15 +1127,6 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                                     "serviceId", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "serviceId",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "acceptsIncomplete", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "acceptsIncomplete",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1173,13 +1173,13 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                             [Google.Apis.Util.RequestParameterAttribute("bindingId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string BindingId { get; private set; }
 
-                            /// <summary>Plan id.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PlanId { get; set; }
-
                             /// <summary>Service id.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string ServiceId { get; set; }
+
+                            /// <summary>Plan id.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PlanId { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -1233,18 +1233,18 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                                         Pattern = @"^[^/]+$",
                                     });
                                 RequestParameters.Add(
-                                    "planId", new Google.Apis.Discovery.Parameter
+                                    "serviceId", new Google.Apis.Discovery.Parameter
                                     {
-                                        Name = "planId",
+                                        Name = "serviceId",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
-                                    "serviceId", new Google.Apis.Discovery.Parameter
+                                    "planId", new Google.Apis.Discovery.Parameter
                                     {
-                                        Name = "serviceId",
+                                        Name = "planId",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1719,6 +1719,10 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                         [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string InstanceId { get; private set; }
 
+                        /// <summary>Plan id.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PlanId { get; set; }
+
                         /// <summary>Service id.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ServiceId { get; set; }
@@ -1727,10 +1731,6 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                         /// with the provided value.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Operation { get; set; }
-
-                        /// <summary>Plan id.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PlanId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1775,6 +1775,15 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                                     Pattern = @"^[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "planId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "planId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "serviceId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "serviceId",
@@ -1787,15 +1796,6 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                                 "operation", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "operation",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "planId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "planId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1953,6 +1953,11 @@ namespace Google.Apis.ServiceBroker.v1alpha1
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the value
+            /// is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1985,6 +1990,15 @@ namespace Google.Apis.ServiceBroker.v1alpha1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^.+$",
+                    });
+                RequestParameters.Add(
+                    "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "options.requestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -2589,7 +2603,7 @@ namespace Google.Apis.ServiceBroker.v1alpha1.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` .
+        /// `alice@example.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.
@@ -2645,8 +2659,7 @@ namespace Google.Apis.ServiceBroker.v1alpha1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
-        /// blindly.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 

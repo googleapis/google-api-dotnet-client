@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Cloud Security Command Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190628 (1639)
+ *      <tr><th>API Rev<td>20190704 (1645)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -462,43 +462,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Expression that defines what fields and order to use for sorting. The string value should
-                /// follow SQL syntax: comma separated list of fields. For example:
-                /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
-                /// order for a field, a suffix " desc" should be appended to the field name. For example: "name
-                /// desc,resource_properties.a_property". Redundant space characters in the syntax are insignificant.
-                /// "name desc,resource_properties.a_property" and " name     desc  ,   resource_properties.a_property
-                /// " are equivalent.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
-                /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
-                /// existing at the supplied time and their values are those at that specific time. Absence of this
-                /// field will default to the API's version of NOW.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object ReadTime { get; set; }
-
-                /// <summary>When compare_duration is set, the ListAssetResult's "state" attribute is updated to
-                /// indicate whether the asset was added, removed, or remained present during the compare_duration
-                /// period of time that precedes the read_time. This is the time between (read_time - compare_duration)
-                /// and read_time.
-                ///
-                /// The state value is derived based on the presence of the asset at the two points in time.
-                /// Intermediate state changes between the two times don't affect the result. For example, the results
-                /// aren't affected if the asset is removed and re-created again.
-                ///
-                /// Possible "state" values when compare_duration is specified:
-                ///
-                /// * "ADDED": indicates that the asset was not present before compare_duration, but present at
-                /// read_time. * "REMOVED": indicates that the asset was present at the start of compare_duration, but
-                /// not present at read_time. * "ACTIVE": indicates that the asset was present at both the start and the
-                /// end of the time period defined by compare_duration and read_time.
-                ///
-                /// If compare_duration is not specified, then the only possible state is "UNUSED", which indicates that
-                /// the asset is present at read_time.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object CompareDuration { get; set; }
-
                 /// <summary>Expression that defines the filter to apply across assets. The expression is a list of zero
                 /// or more restrictions combined via logical operators `AND` and `OR`. Parentheses are not supported,
                 /// and `OR` has higher precedence than `AND`.
@@ -523,20 +486,57 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Optional. A field mask to specify the ListAssetsResult fields to be listed in the response.
-                /// An empty field mask will list all fields.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object FieldMask { get; set; }
-
                 /// <summary>The value returned by the last `ListAssetsResponse`; indicates that this is a continuation
                 /// of a prior `ListAssets` call, and that the system should return the next page of data.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>Optional. A field mask to specify the ListAssetsResult fields to be listed in the response.
+                /// An empty field mask will list all fields.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object FieldMask { get; set; }
+
                 /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is 1,
                 /// maximum is 1000.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
+                /// existing at the supplied time and their values are those at that specific time. Absence of this
+                /// field will default to the API's version of NOW.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object ReadTime { get; set; }
+
+                /// <summary>Expression that defines what fields and order to use for sorting. The string value should
+                /// follow SQL syntax: comma separated list of fields. For example:
+                /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
+                /// order for a field, a suffix " desc" should be appended to the field name. For example: "name
+                /// desc,resource_properties.a_property". Redundant space characters in the syntax are insignificant.
+                /// "name desc,resource_properties.a_property" and " name     desc  ,   resource_properties.a_property
+                /// " are equivalent.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>When compare_duration is set, the ListAssetResult's "state" attribute is updated to
+                /// indicate whether the asset was added, removed, or remained present during the compare_duration
+                /// period of time that precedes the read_time. This is the time between (read_time - compare_duration)
+                /// and read_time.
+                ///
+                /// The state value is derived based on the presence of the asset at the two points in time.
+                /// Intermediate state changes between the two times don't affect the result. For example, the results
+                /// aren't affected if the asset is removed and re-created again.
+                ///
+                /// Possible "state" values when compare_duration is specified:
+                ///
+                /// * "ADDED": indicates that the asset was not present before compare_duration, but present at
+                /// read_time. * "REMOVED": indicates that the asset was present at the start of compare_duration, but
+                /// not present at read_time. * "ACTIVE": indicates that the asset was present at both the start and the
+                /// end of the time period defined by compare_duration and read_time.
+                ///
+                /// If compare_duration is not specified, then the only possible state is "UNUSED", which indicates that
+                /// the asset is present at read_time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object CompareDuration { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -572,45 +572,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "readTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "readTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "compareDuration", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "compareDuration",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fieldMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -626,9 +590,45 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "fieldMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "readTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "compareDuration", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "compareDuration",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1403,12 +1403,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Time used as a reference point when filtering findings. The filter is limited to
-                    /// findings existing at the supplied time and their values are those at that specific time. Absence
-                    /// of this field will default to the API's version of NOW.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object ReadTime { get; set; }
-
                     /// <summary>Expression that defines what fields and order to use for sorting. The string value
                     /// should follow SQL syntax: comma separated list of fields. For example:
                     /// "name,resource_properties.a_property". The default sorting order is ascending. To specify
@@ -1418,6 +1412,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                     /// source_properties.a_property  " are equivalent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
+
+                    /// <summary>Time used as a reference point when filtering findings. The filter is limited to
+                    /// findings existing at the supplied time and their values are those at that specific time. Absence
+                    /// of this field will default to the API's version of NOW.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadTime { get; set; }
 
                     /// <summary>Expression that defines the filter to apply across findings. The expression is a list
                     /// of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are not
@@ -1492,18 +1492,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                                 Pattern = @"^organizations/[^/]+/sources/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "readTime", new Google.Apis.Discovery.Parameter
+                            "orderBy", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "readTime",
+                                Name = "orderBy",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "orderBy", new Google.Apis.Discovery.Parameter
+                            "readTime", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "orderBy",
+                                Name = "readTime",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1740,13 +1740,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The time at which the updated SecurityMarks take effect.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object StartTime { get; set; }
-
                     /// <summary>The FieldMask to use when updating the security marks resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
+
+                    /// <summary>The time at which the updated SecurityMarks take effect.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object StartTime { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1788,18 +1788,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                                 Pattern = @"^organizations/[^/]+/sources/[^/]+/findings/[^/]+/securityMarks$",
                             });
                         RequestParameters.Add(
-                            "startTime", new Google.Apis.Discovery.Parameter
+                            "updateMask", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "startTime",
+                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
+                            "startTime", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "updateMask",
+                                Name = "startTime",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2545,12 +2545,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     /// Example Policy with multiple AuditConfigs:
     ///
     /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ]
-    /// }, { "service": "fooservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
-    /// "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
+    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
     ///
-    /// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
-    /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
+    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
+    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -2568,10 +2568,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
     /// <summary>Provides the configuration for logging a type of permissions. Example:
     ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] }, {
+    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
     /// "log_type": "DATA_WRITE", } ] }
     ///
-    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.com from DATA_READ
+    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2579,6 +2579,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>Specifies whether principals can be exempted for the same LogType in lower-level resource policies.
+        /// If true, any lower-level exemptions will be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreChildExemptions")]
+        public virtual System.Nullable<bool> IgnoreChildExemptions { get; set; } 
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
@@ -2607,7 +2612,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` .
+        /// `alice@example.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.
@@ -3178,8 +3183,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
-        /// blindly.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 

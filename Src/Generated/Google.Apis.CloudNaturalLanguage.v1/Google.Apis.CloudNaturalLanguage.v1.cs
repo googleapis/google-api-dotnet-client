@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190623 (1634)
+ *      <tr><th>API Rev<td>20190704 (1645)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -681,7 +681,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// <summary>The entity analysis request message.</summary>
     public class AnalyzeEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input document.</summary>
+        /// <summary>Required. Input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual Document Document { get; set; } 
 
@@ -712,7 +712,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// <summary>The entity-level sentiment analysis request message.</summary>
     public class AnalyzeEntitySentimentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input document.</summary>
+        /// <summary>Required. Input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual Document Document { get; set; } 
 
@@ -743,7 +743,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// <summary>The sentiment analysis request message.</summary>
     public class AnalyzeSentimentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input document.</summary>
+        /// <summary>Required. Input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual Document Document { get; set; } 
 
@@ -778,7 +778,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// <summary>The syntax analysis request message.</summary>
     public class AnalyzeSyntaxRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input document.</summary>
+        /// <summary>Required. Input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual Document Document { get; set; } 
 
@@ -814,7 +814,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// entities, and syntax) in one call.</summary>
     public class AnnotateTextRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input document.</summary>
+        /// <summary>Required. Input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual Document Document { get; set; } 
 
@@ -822,7 +822,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encodingType")]
         public virtual string EncodingType { get; set; } 
 
-        /// <summary>The enabled features.</summary>
+        /// <summary>Required. The enabled features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual Features Features { get; set; } 
 
@@ -886,7 +886,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// <summary>The document classification request message.</summary>
     public class ClassifyTextRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input document.</summary>
+        /// <summary>Required. Input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual Document Document { get; set; } 
 
