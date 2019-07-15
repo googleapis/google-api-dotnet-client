@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>Firebase Cloud Messaging API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190710 (1651)
+ *      <tr><th>API Rev<td>20190712 (1653)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>
  *              https://firebase.google.com/docs/cloud-messaging</a>
@@ -541,6 +541,11 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
         public virtual string Icon { get; set; } 
 
+        /// <summary>Contains the URL of an image that is going to be displayed in a notification. If present, it will
+        /// override google.firebase.fcm.v1.Notification.image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; } 
+
         /// <summary>The sound to play when the device receives the notification. Supports "default" or the filename of
         /// a sound resource bundled in the app. Sound files must reside in /res/raw/.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sound")]
@@ -600,6 +605,11 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// <summary>Label associated with the message's analytics data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsLabel")]
         public virtual string AnalyticsLabel { get; set; } 
+
+        /// <summary>Contains the URL of an image that is going to be displayed in a notification. If present, it will
+        /// override google.firebase.fcm.v1.Notification.image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -672,6 +682,14 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// <summary>The notification's body text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual string Body { get; set; } 
+
+        /// <summary>Contains the URL of an image that is going to be downloaded on the device and displayed in a
+        /// notification. JPEG, PNG, BMP have full support across platforms. Animated GIF and video only work on iOS.
+        /// WebP and HEIF have varying levels of support across platforms and platform versions. Android has 1MB image
+        /// size limit. Quota usage and implications/costs for hosting image on Firebase Storage:
+        /// https://firebase.google.com/pricing</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; } 
 
         /// <summary>The notification's title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]

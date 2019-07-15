@@ -13,7 +13,8 @@
     <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <Description>
-      Google APIs Client Library for working with Dlp v2.
+      This is not the recommended package for working with Dlp, please use the Google.Cloud.Dlp.V2 package.
+      This Google APIs Client Library for working with Dlp v2 uses older code generation, and is harder to use.
 
       Supported Platforms:
       - .NET Framework 4.5+

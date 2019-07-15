@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190709 (1650)
+ *      <tr><th>API Rev<td>20190713 (1654)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -441,6 +441,16 @@ namespace Google.Apis.CloudTalentSolution.v2
 
                 /// <summary>Optional.
                 ///
+                /// If set to `true`, only job ID, job requisition ID and language code will be returned.
+                ///
+                /// A typical use is to synchronize job repositories.
+                ///
+                /// Defaults to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IdsOnly { get; set; }
+
+                /// <summary>Optional.
+                ///
                 /// The maximum number of jobs to be returned per page of results.
                 ///
                 /// If ids_only is set to true, the maximum allowed page size is 1000. Otherwise, the maximum allowed
@@ -449,16 +459,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                 /// Default is 100 if empty or a number < 1 is specified.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional.
-                ///
-                /// If set to `true`, only job ID, job requisition ID and language code will be returned.
-                ///
-                /// A typical use is to synchronize job repositories.
-                ///
-                /// Defaults to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IdsOnly { get; set; }
 
                 /// <summary>Optional.
                 ///
@@ -520,18 +520,18 @@ namespace Google.Apis.CloudTalentSolution.v2
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "idsOnly", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "idsOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "idsOnly", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "idsOnly",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1707,27 +1707,6 @@ namespace Google.Apis.CloudTalentSolution.v2
 
             /// <summary>Optional.
             ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<TypeEnum> Type { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
-            public enum TypeEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
-                COMPLETIONTYPEUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
-                JOBTITLE,
-                [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
-                COMPANYNAME,
-                [Google.Apis.Util.StringValueAttribute("COMBINED")]
-                COMBINED,
-            }
-
-            /// <summary>Optional.
-            ///
             /// If provided, restricts completion to the specified company.</summary>
             [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CompanyName { get; set; }
@@ -1778,6 +1757,27 @@ namespace Google.Apis.CloudTalentSolution.v2
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
 
+            /// <summary>Optional.
+            ///
+            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            public enum TypeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
+                COMPLETIONTYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
+                JOBTITLE,
+                [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
+                COMPANYNAME,
+                [Google.Apis.Util.StringValueAttribute("COMBINED")]
+                COMBINED,
+            }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1802,15 +1802,6 @@ namespace Google.Apis.CloudTalentSolution.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "companyName", new Google.Apis.Discovery.Parameter
                     {
@@ -1851,6 +1842,15 @@ namespace Google.Apis.CloudTalentSolution.v2
                     "languageCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "type", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "type",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

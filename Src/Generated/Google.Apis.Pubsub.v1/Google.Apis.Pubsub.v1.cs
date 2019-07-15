@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190625 (1636)
+ *      <tr><th>API Rev<td>20190701 (1642)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -633,6 +633,11 @@ namespace Google.Apis.Pubsub.v1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
+                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the
+                /// value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -665,6 +670,15 @@ namespace Google.Apis.Pubsub.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/snapshots/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 
@@ -699,15 +713,15 @@ namespace Google.Apis.Pubsub.v1
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
 
-                /// <summary>Maximum number of snapshots to return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The value returned by the last `ListSnapshotsResponse`; indicates that this is a
                 /// continuation of a prior `ListSnapshots` call, and that the system should return the next page of
                 /// data.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum number of snapshots to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -743,18 +757,18 @@ namespace Google.Apis.Pubsub.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1338,6 +1352,11 @@ namespace Google.Apis.Pubsub.v1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
+                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the
+                /// value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1370,6 +1389,15 @@ namespace Google.Apis.Pubsub.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 
@@ -2484,6 +2512,11 @@ namespace Google.Apis.Pubsub.v1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
+                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the
+                /// value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -2516,6 +2549,15 @@ namespace Google.Apis.Pubsub.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/topics/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 

@@ -13,7 +13,8 @@
     <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <Description>
-      Google APIs Client Library for working with Oslogin v1.
+      This is not the recommended package for working with Oslogin, please use the Google.Cloud.OsLogin.V1 package.
+      This Google APIs Client Library for working with Oslogin v1 uses older code generation, and is harder to use.
 
       Supported Platforms:
       - .NET Framework 4.5+

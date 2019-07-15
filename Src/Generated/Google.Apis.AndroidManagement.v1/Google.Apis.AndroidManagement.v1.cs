@@ -2167,10 +2167,6 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
-            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
-
             /// <summary>The enterprise token appended to the callback URL.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EnterpriseToken { get; set; }
@@ -2178,6 +2174,10 @@ namespace Google.Apis.AndroidManagement.v1
             /// <summary>The name of the SignupUrl used to sign up for the enterprise.</summary>
             [Google.Apis.Util.RequestParameterAttribute("signupUrlName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SignupUrlName { get; set; }
+
+            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2210,15 +2210,6 @@ namespace Google.Apis.AndroidManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "enterpriseToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "enterpriseToken",
@@ -2231,6 +2222,15 @@ namespace Google.Apis.AndroidManagement.v1
                     "signupUrlName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "signupUrlName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2416,10 +2416,6 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
-            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
-
             /// <summary>The callback URL that the admin will be redirected to after successfully creating an
             /// enterprise. Before redirecting there the system will add a query parameter to this URL named
             /// enterpriseToken which will contain an opaque token to be used for the create enterprise request. The URL
@@ -2427,6 +2423,10 @@ namespace Google.Apis.AndroidManagement.v1
             /// minor formatting changes.</summary>
             [Google.Apis.Util.RequestParameterAttribute("callbackUrl", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CallbackUrl { get; set; }
+
+            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2453,18 +2453,18 @@ namespace Google.Apis.AndroidManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
+                    "callbackUrl", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "projectId",
+                        Name = "callbackUrl",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "callbackUrl", new Google.Apis.Discovery.Parameter
+                    "projectId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "callbackUrl",
+                        Name = "projectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

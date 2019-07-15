@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.CloudRedis.v1 Client Library</Title>
-    <Version>1.40.2.1639</Version>
+    <Version>1.40.2.1649</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
@@ -13,7 +13,8 @@
     <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <Description>
-      Google APIs Client Library for working with Redis v1.
+      This is not the recommended package for working with Redis, please use the Google.Cloud.Redis.V1 package.
+      This Google APIs Client Library for working with Redis v1 uses older code generation, and is harder to use.
 
       Supported Platforms:
       - .NET Framework 4.5+

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190625 (1636)
+ *      <tr><th>API Rev<td>20190701 (1642)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -685,6 +685,11 @@ namespace Google.Apis.Pubsub.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
+                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the
+                /// value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -717,6 +722,15 @@ namespace Google.Apis.Pubsub.v1beta2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 
@@ -1548,6 +1562,11 @@ namespace Google.Apis.Pubsub.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
+                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the
+                /// value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1580,6 +1599,15 @@ namespace Google.Apis.Pubsub.v1beta2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/topics/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 

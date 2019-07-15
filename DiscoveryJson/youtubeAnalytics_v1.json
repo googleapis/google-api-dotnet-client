@@ -1,16 +1,19 @@
 {
+  "servicePath": "",
+  "kind": "discovery#restDescription",
+  "description": "Retrieves your YouTube Analytics data.",
   "basePath": "",
-  "revision": "20190709",
+  "revision": "20190710",
   "documentationLink": "https://developers.google.com/youtube/analytics",
   "id": "youtubeAnalytics:v1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {},
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  },
   "protocol": "rest",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
   "canonicalName": "YouTube Analytics",
   "rootUrl": "https://youtubeanalytics.googleapis.com/",
   "ownerDomain": "google.com",
@@ -22,6 +25,11 @@
   "resources": {},
   "parameters": {
     "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
@@ -30,12 +38,7 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
+      "default": "json"
     },
     "key": {
       "location": "query",
@@ -43,38 +46,37 @@
       "type": "string"
     },
     "access_token": {
-      "location": "query",
       "description": "OAuth access token.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "upload_protocol": {
+      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "prettyPrint": {
-      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
+      "default": "true",
       "location": "query"
     },
-    "uploadType": {
-      "type": "string",
+    "quotaUser": {
       "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
     },
     "fields": {
+      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
       "location": "query"
     },
     "$.xgafv": {
-      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -84,7 +86,8 @@
         "1",
         "2"
       ],
-      "description": "V1 error format."
+      "description": "V1 error format.",
+      "type": "string"
     },
     "oauth_token": {
       "location": "query",
@@ -98,8 +101,5 @@
     }
   },
   "version": "v1",
-  "baseUrl": "https://youtubeanalytics.googleapis.com/",
-  "servicePath": "",
-  "description": "Retrieves your YouTube Analytics data.",
-  "kind": "discovery#restDescription"
+  "baseUrl": "https://youtubeanalytics.googleapis.com/"
 }

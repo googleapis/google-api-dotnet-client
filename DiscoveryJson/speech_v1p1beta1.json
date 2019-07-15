@@ -6,98 +6,42 @@
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "LongRunningRecognizeMetadata": {
-      "description": "Describes the progress of a long-running `LongRunningRecognize` call. It is\nincluded in the `metadata` field of the `Operation` returned by the\n`GetOperation` call of the `google::longrunning::Operations` service.",
+    "SpeakerDiarizationConfig": {
+      "id": "SpeakerDiarizationConfig",
       "type": "object",
       "properties": {
-        "lastUpdateTime": {
-          "description": "Time of the most recent processing update.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "progressPercent": {
-          "description": "Approximate percentage of audio processed thus far. Guaranteed to be 100\nwhen the audio is fully processed and the results are available.",
+        "minSpeakerCount": {
+          "description": "*Optional* Only used if diarization_speaker_count is not set.\nMinimum number of speakers in the conversation. This range gives you more\nflexibility by allowing the system to automatically determine the correct\nnumber of speakers. If not set, the default value is 2.",
           "format": "int32",
           "type": "integer"
         },
-        "startTime": {
-          "description": "Time when the request was received.",
-          "format": "google-datetime",
-          "type": "string"
-        }
-      },
-      "id": "LongRunningRecognizeMetadata"
-    },
-    "RecognitionAudio": {
-      "id": "RecognitionAudio",
-      "description": "Contains audio data in the encoding specified in the `RecognitionConfig`.\nEither `content` or `uri` must be supplied. Supplying both or neither\nreturns google.rpc.Code.INVALID_ARGUMENT. See\n[content limits](/speech-to-text/quotas#content).",
-      "type": "object",
-      "properties": {
-        "content": {
-          "description": "The audio data bytes encoded as specified in\n`RecognitionConfig`. Note: as with all bytes fields, proto buffers use a\npure binary representation, whereas JSON representations use base64.",
-          "format": "byte",
-          "type": "string"
+        "maxSpeakerCount": {
+          "type": "integer",
+          "description": "*Optional* Only used if diarization_speaker_count is not set.\nMaximum number of speakers in the conversation. This range gives you more\nflexibility by allowing the system to automatically determine the correct\nnumber of speakers. If not set, the default value is 6.",
+          "format": "int32"
         },
-        "uri": {
-          "description": "URI that points to a file that contains audio data bytes as specified in\n`RecognitionConfig`. The file must not be compressed (for example, gzip).\nCurrently, only Google Cloud Storage URIs are\nsupported, which must be specified in the following format:\n`gs://bucket_name/object_name` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](https://cloud.google.com/storage/docs/reference-uris).",
-          "type": "string"
-        }
-      }
-    },
-    "LongRunningRecognizeRequest": {
-      "id": "LongRunningRecognizeRequest",
-      "description": "The top-level message sent by the client for the `LongRunningRecognize`\nmethod.",
-      "type": "object",
-      "properties": {
-        "config": {
-          "$ref": "RecognitionConfig",
-          "description": "*Required* Provides information to the recognizer that specifies how to\nprocess the request."
-        },
-        "audio": {
-          "$ref": "RecognitionAudio",
-          "description": "*Required* The audio data to be recognized."
-        }
-      }
-    },
-    "RecognizeResponse": {
-      "description": "The only message returned to the client by the `Recognize` method. It\ncontains the result as zero or more sequential `SpeechRecognitionResult`\nmessages.",
-      "type": "object",
-      "properties": {
-        "results": {
-          "description": "Output only. Sequential list of transcription results corresponding to\nsequential portions of audio.",
-          "type": "array",
-          "items": {
-            "$ref": "SpeechRecognitionResult"
-          }
-        }
-      },
-      "id": "RecognizeResponse"
-    },
-    "SpeakerDiarizationConfig": {
-      "type": "object",
-      "properties": {
         "enableSpeakerDiarization": {
           "description": "*Optional* If 'true', enables speaker detection for each recognized word in\nthe top alternative of the recognition result using a speaker_tag provided\nin the WordInfo.",
           "type": "boolean"
-        },
-        "minSpeakerCount": {
-          "type": "integer",
-          "description": "*Optional* Only used if diarization_speaker_count is not set.\nMinimum number of speakers in the conversation. This range gives you more\nflexibility by allowing the system to automatically determine the correct\nnumber of speakers. If not set, the default value is 2.",
-          "format": "int32"
-        },
-        "maxSpeakerCount": {
-          "description": "*Optional* Only used if diarization_speaker_count is not set.\nMaximum number of speakers in the conversation. This range gives you more\nflexibility by allowing the system to automatically determine the correct\nnumber of speakers. If not set, the default value is 6.",
-          "format": "int32",
-          "type": "integer"
         }
-      },
-      "id": "SpeakerDiarizationConfig"
+      }
     },
     "Operation": {
-      "id": "Operation",
       "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
       "type": "object",
       "properties": {
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
+          "type": "boolean"
+        },
+        "response": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
+          "type": "object"
+        },
         "name": {
           "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`.",
           "type": "string"
@@ -110,28 +54,33 @@
           "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
           "type": "object",
           "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          }
-        },
-        "done": {
-          "type": "boolean",
-          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."
-        },
-        "response": {
-          "additionalProperties": {
             "type": "any",
             "description": "Properties of the object. Contains field @type with type URL."
-          },
-          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
-          "type": "object"
+          }
         }
-      }
+      },
+      "id": "Operation"
     },
     "RecognitionConfig": {
+      "id": "RecognitionConfig",
       "description": "Provides information to the recognizer that specifies how to process the\nrequest.",
       "type": "object",
       "properties": {
+        "diarizationConfig": {
+          "$ref": "SpeakerDiarizationConfig",
+          "description": "*Optional* Config to enable speaker diarization and set additional\nparameters to make diarization better suited for your application.\nNote: When this is enabled, we send all the words from the beginning of the\naudio for the top alternative in every consecutive STREAMING responses.\nThis is done in order to improve our speaker tags as our models learn to\nidentify the speakers in the conversation over time.\nFor non-streaming requests, the diarization results will be provided only\nin the top alternative of the FINAL SpeechRecognitionResult."
+        },
+        "alternativeLanguageCodes": {
+          "description": "*Optional* A list of up to 3 additional\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags,\nlisting possible alternative languages of the supplied audio.\nSee [Language Support](/speech-to-text/docs/languages)\nfor a list of the currently supported language codes.\nIf alternative languages are listed, recognition result will contain\nrecognition in the most likely language detected including the main\nlanguage_code. The recognition result will include the language tag\nof the language detected in the audio.\nNote: This feature is only supported for Voice Command and Voice Search\nuse cases and performance may vary for other use cases (e.g., phone call\ntranscription).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "enableWordTimeOffsets": {
+          "description": "*Optional* If `true`, the top result includes a list of words and\nthe start and end time offsets (timestamps) for those words. If\n`false`, no word-level time offset information is returned. The default is\n`false`.",
+          "type": "boolean"
+        },
         "languageCode": {
           "description": "*Required* The language of the supplied audio as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.\nExample: \"en-US\".\nSee [Language Support](/speech-to-text/docs/languages)\nfor a list of the currently supported language codes.",
           "type": "string"
@@ -153,9 +102,9 @@
           "description": "*Optional* Metadata regarding this request."
         },
         "sampleRateHertz": {
+          "type": "integer",
           "description": "Sample rate in Hertz of the audio data sent in all\n`RecognitionAudio` messages. Valid values are: 8000-48000.\n16000 is optimal. For best results, set the sampling rate of the audio\nsource to 16000 Hz. If that's not possible, use the native sample rate of\nthe audio source (instead of re-sampling).\nThis field is optional for FLAC and WAV audio files, but is\nrequired for all other audio formats. For details, see AudioEncoding.",
-          "format": "int32",
-          "type": "integer"
+          "format": "int32"
         },
         "enableSeparateRecognitionPerChannel": {
           "description": "This needs to be set to `true` explicitly and `audio_channel_count` \u003e 1\nto get each channel recognized separately. The recognition result will\ncontain a `channel_tag` field to state which channel that result belongs\nto. If this is not true, we will only recognize the first channel. The\nrequest is billed cumulatively for all channels recognized:\n`audio_channel_count` multiplied by the length of the audio.",
@@ -176,11 +125,11 @@
           "type": "integer"
         },
         "speechContexts": {
-          "description": "*Optional* array of SpeechContext.\nA means to provide context to assist the speech recognition. For more\ninformation, see [Phrase Hints](/speech-to-text/docs/basics#phrase-hints).",
           "type": "array",
           "items": {
             "$ref": "SpeechContext"
-          }
+          },
+          "description": "*Optional* array of SpeechContext.\nA means to provide context to assist the speech recognition. For more\ninformation, see [Phrase Hints](/speech-to-text/docs/basics#phrase-hints)."
         },
         "encoding": {
           "type": "string",
@@ -209,8 +158,8 @@
           "description": "Encoding of audio data sent in all `RecognitionAudio` messages.\nThis field is optional for `FLAC` and `WAV` audio files and required\nfor all other audio formats. For details, see AudioEncoding."
         },
         "enableWordConfidence": {
-          "type": "boolean",
-          "description": "*Optional* If `true`, the top result includes a list of words and the\nconfidence for those words. If `false`, no word-level confidence\ninformation is returned. The default is `false`."
+          "description": "*Optional* If `true`, the top result includes a list of words and the\nconfidence for those words. If `false`, no word-level confidence\ninformation is returned. The default is `false`.",
+          "type": "boolean"
         },
         "model": {
           "description": "*Optional* Which model to select for the given request. Select the model\nbest suited to your domain to get best results. If a model is not\nexplicitly specified, then we auto-select a model based on the parameters\nin the RecognitionConfig.\n\u003ctable\u003e\n  \u003ctr\u003e\n    \u003ctd\u003e\u003cb\u003eModel\u003c/b\u003e\u003c/td\u003e\n    \u003ctd\u003e\u003cb\u003eDescription\u003c/b\u003e\u003c/td\u003e\n  \u003c/tr\u003e\n  \u003ctr\u003e\n    \u003ctd\u003e\u003ccode\u003ecommand_and_search\u003c/code\u003e\u003c/td\u003e\n    \u003ctd\u003eBest for short queries such as voice commands or voice search.\u003c/td\u003e\n  \u003c/tr\u003e\n  \u003ctr\u003e\n    \u003ctd\u003e\u003ccode\u003ephone_call\u003c/code\u003e\u003c/td\u003e\n    \u003ctd\u003eBest for audio that originated from a phone call (typically\n    recorded at an 8khz sampling rate).\u003c/td\u003e\n  \u003c/tr\u003e\n  \u003ctr\u003e\n    \u003ctd\u003e\u003ccode\u003evideo\u003c/code\u003e\u003c/td\u003e\n    \u003ctd\u003eBest for audio that originated from from video or includes multiple\n        speakers. Ideally the audio is recorded at a 16khz or greater\n        sampling rate. This is a premium model that costs more than the\n        standard rate.\u003c/td\u003e\n  \u003c/tr\u003e\n  \u003ctr\u003e\n    \u003ctd\u003e\u003ccode\u003edefault\u003c/code\u003e\u003c/td\u003e\n    \u003ctd\u003eBest for audio that is not one of the specific audio models.\n        For example, long-form audio. Ideally the audio is high-fidelity,\n        recorded at a 16khz or greater sampling rate.\u003c/td\u003e\n  \u003c/tr\u003e\n\u003c/table\u003e",
@@ -220,28 +169,21 @@
           "type": "integer",
           "description": "*Optional* The number of channels in the input audio data.\nONLY set this for MULTI-CHANNEL recognition.\nValid values for LINEAR16 and FLAC are `1`-`8`.\nValid values for OGG_OPUS are '1'-'254'.\nValid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`.\nIf `0` or omitted, defaults to one channel (mono).\nNote: We only recognize the first channel by default.\nTo perform independent recognition on each channel set\n`enable_separate_recognition_per_channel` to 'true'.",
           "format": "int32"
-        },
-        "enableWordTimeOffsets": {
-          "type": "boolean",
-          "description": "*Optional* If `true`, the top result includes a list of words and\nthe start and end time offsets (timestamps) for those words. If\n`false`, no word-level time offset information is returned. The default is\n`false`."
-        },
-        "alternativeLanguageCodes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "*Optional* A list of up to 3 additional\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags,\nlisting possible alternative languages of the supplied audio.\nSee [Language Support](/speech-to-text/docs/languages)\nfor a list of the currently supported language codes.\nIf alternative languages are listed, recognition result will contain\nrecognition in the most likely language detected including the main\nlanguage_code. The recognition result will include the language tag\nof the language detected in the audio.\nNote: This feature is only supported for Voice Command and Voice Search\nuse cases and performance may vary for other use cases (e.g., phone call\ntranscription)."
-        },
-        "diarizationConfig": {
-          "$ref": "SpeakerDiarizationConfig",
-          "description": "*Optional* Config to enable speaker diarization and set additional\nparameters to make diarization better suited for your application.\nNote: When this is enabled, we send all the words from the beginning of the\naudio for the top alternative in every consecutive STREAMING responses.\nThis is done in order to improve our speaker tags as our models learn to\nidentify the speakers in the conversation over time.\nFor non-streaming requests, the diarization results will be provided only\nin the top alternative of the FINAL SpeechRecognitionResult."
         }
-      },
-      "id": "RecognitionConfig"
+      }
     },
     "WordInfo": {
       "type": "object",
       "properties": {
+        "startTime": {
+          "description": "Output only. Time offset relative to the beginning of the audio,\nand corresponding to the start of the spoken word.\nThis field is only set if `enable_word_time_offsets=true` and only\nin the top hypothesis.\nThis is an experimental feature and the accuracy of the time offset can\nvary.",
+          "format": "google-duration",
+          "type": "string"
+        },
+        "word": {
+          "type": "string",
+          "description": "Output only. The word corresponding to this set of information."
+        },
         "speakerTag": {
           "description": "Output only. A distinct integer value is assigned for every speaker within\nthe audio. This field specifies which one of those speakers was detected to\nhave spoken this word. Value ranges from '1' to diarization_speaker_count.\nspeaker_tag is set if enable_speaker_diarization = 'true' and only in the\ntop alternative.",
           "format": "int32",
@@ -256,15 +198,6 @@
           "type": "number",
           "description": "Output only. The confidence estimate between 0.0 and 1.0. A higher number\nindicates an estimated greater likelihood that the recognized words are\ncorrect. This field is set only for the top alternative of a non-streaming\nresult or, of a streaming result where `is_final=true`.\nThis field is not guaranteed to be accurate and users should not rely on it\nto be always provided.\nThe default of 0.0 is a sentinel value indicating `confidence` was not set.",
           "format": "float"
-        },
-        "startTime": {
-          "type": "string",
-          "description": "Output only. Time offset relative to the beginning of the audio,\nand corresponding to the start of the spoken word.\nThis field is only set if `enable_word_time_offsets=true` and only\nin the top hypothesis.\nThis is an experimental feature and the accuracy of the time offset can\nvary.",
-          "format": "google-duration"
-        },
-        "word": {
-          "description": "Output only. The word corresponding to this set of information.",
-          "type": "string"
         }
       },
       "id": "WordInfo",
@@ -289,8 +222,8 @@
           "items": {
             "type": "object",
             "additionalProperties": {
-              "type": "any",
-              "description": "Properties of the object. Contains field @type with type URL."
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
             }
           }
         }
@@ -298,6 +231,7 @@
       "id": "Status"
     },
     "RecognizeRequest": {
+      "description": "The top-level message sent by the client for the `Recognize` method.",
       "type": "object",
       "properties": {
         "config": {
@@ -305,18 +239,19 @@
           "description": "*Required* Provides information to the recognizer that specifies how to\nprocess the request."
         },
         "audio": {
-          "$ref": "RecognitionAudio",
-          "description": "*Required* The audio data to be recognized."
+          "description": "*Required* The audio data to be recognized.",
+          "$ref": "RecognitionAudio"
         },
         "name": {
           "description": "*Optional* The name of the model to use for recognition.",
           "type": "string"
         }
       },
-      "id": "RecognizeRequest",
-      "description": "The top-level message sent by the client for the `Recognize` method."
+      "id": "RecognizeRequest"
     },
     "LongRunningRecognizeResponse": {
+      "id": "LongRunningRecognizeResponse",
+      "description": "The only message returned to the client by the `LongRunningRecognize` method.\nIt contains the result as zero or more sequential `SpeechRecognitionResult`\nmessages. It is included in the `result.response` field of the `Operation`\nreturned by the `GetOperation` call of the `google::longrunning::Operations`\nservice.",
       "type": "object",
       "properties": {
         "results": {
@@ -326,23 +261,34 @@
             "$ref": "SpeechRecognitionResult"
           }
         }
+      }
+    },
+    "ListOperationsResponse": {
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "type": "string",
+          "description": "The standard List next-page token."
+        },
+        "operations": {
+          "description": "A list of operations that matches the specified filter in the request.",
+          "type": "array",
+          "items": {
+            "$ref": "Operation"
+          }
+        }
       },
-      "id": "LongRunningRecognizeResponse",
-      "description": "The only message returned to the client by the `LongRunningRecognize` method.\nIt contains the result as zero or more sequential `SpeechRecognitionResult`\nmessages. It is included in the `result.response` field of the `Operation`\nreturned by the `GetOperation` call of the `google::longrunning::Operations`\nservice."
+      "id": "ListOperationsResponse",
+      "description": "The response message for Operations.ListOperations."
     },
     "SpeechRecognitionAlternative": {
       "id": "SpeechRecognitionAlternative",
       "description": "Alternative hypotheses (a.k.a. n-best list).",
       "type": "object",
       "properties": {
-        "confidence": {
-          "type": "number",
-          "description": "Output only. The confidence estimate between 0.0 and 1.0. A higher number\nindicates an estimated greater likelihood that the recognized words are\ncorrect. This field is set only for the top alternative of a non-streaming\nresult or, of a streaming result where `is_final=true`.\nThis field is not guaranteed to be accurate and users should not rely on it\nto be always provided.\nThe default of 0.0 is a sentinel value indicating `confidence` was not set.",
-          "format": "float"
-        },
         "transcript": {
-          "type": "string",
-          "description": "Output only. Transcript text representing the words that the user spoke."
+          "description": "Output only. Transcript text representing the words that the user spoke.",
+          "type": "string"
         },
         "words": {
           "description": "Output only. A list of word-specific information for each recognized word.\nNote: When `enable_speaker_diarization` is true, you will see all the words\nfrom the beginning of the audio.",
@@ -350,35 +296,22 @@
           "items": {
             "$ref": "WordInfo"
           }
+        },
+        "confidence": {
+          "description": "Output only. The confidence estimate between 0.0 and 1.0. A higher number\nindicates an estimated greater likelihood that the recognized words are\ncorrect. This field is set only for the top alternative of a non-streaming\nresult or, of a streaming result where `is_final=true`.\nThis field is not guaranteed to be accurate and users should not rely on it\nto be always provided.\nThe default of 0.0 is a sentinel value indicating `confidence` was not set.",
+          "format": "float",
+          "type": "number"
         }
       }
-    },
-    "ListOperationsResponse": {
-      "description": "The response message for Operations.ListOperations.",
-      "type": "object",
-      "properties": {
-        "operations": {
-          "type": "array",
-          "items": {
-            "$ref": "Operation"
-          },
-          "description": "A list of operations that matches the specified filter in the request."
-        },
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        }
-      },
-      "id": "ListOperationsResponse"
     },
     "SpeechContext": {
       "description": "Provides \"hints\" to the speech recognizer to favor specific words and phrases\nin the results.",
       "type": "object",
       "properties": {
         "boost": {
+          "type": "number",
           "description": "Hint Boost. Positive value will increase the probability that a specific\nphrase will be recognized over other similar sounding phrases. The higher\nthe boost, the higher the chance of false positive recognition as well.\nNegative boost values would correspond to anti-biasing. Anti-biasing is not\nenabled, so negative boost will simply be ignored. Though `boost` can\naccept a wide range of positive values, most use cases are best served with\nvalues between 0 and 20. We recommend using a binary search approach to\nfinding the optimal value for your use case.",
-          "format": "float",
-          "type": "number"
+          "format": "float"
         },
         "phrases": {
           "description": "*Optional* A list of strings containing words and phrases \"hints\" so that\nthe speech recognition is more likely to recognize them. This can be used\nto improve the accuracy for specific words and phrases, for example, if\nspecific commands are typically spoken by the user. This can also be used\nto add additional words to the vocabulary of the recognizer. See\n[usage limits](/speech-to-text/quotas#content).\n\nList items can also be set to classes for groups of words that represent\ncommon concepts that occur in natural language. For example, rather than\nproviding phrase hints for every month of the year, using the $MONTH class\nimproves the likelihood of correctly transcribing audio that includes\nmonths.",
@@ -391,51 +324,20 @@
       "id": "SpeechContext"
     },
     "RecognitionMetadata": {
-      "description": "Description of audio data to be recognized.",
       "type": "object",
       "properties": {
-        "originalMediaType": {
-          "type": "string",
-          "enumDescriptions": [
-            "Unknown original media type.",
-            "The speech data is an audio recording.",
-            "The speech data originally recorded on a video."
-          ],
-          "enum": [
-            "ORIGINAL_MEDIA_TYPE_UNSPECIFIED",
-            "AUDIO",
-            "VIDEO"
-          ],
-          "description": "The original media the speech was recorded on."
-        },
-        "obfuscatedId": {
-          "description": "Obfuscated (privacy-protected) ID of the user, to identify number of\nunique users using the service.",
-          "format": "int64",
-          "type": "string"
-        },
-        "recordingDeviceType": {
-          "enum": [
-            "RECORDING_DEVICE_TYPE_UNSPECIFIED",
-            "SMARTPHONE",
-            "PC",
-            "PHONE_LINE",
-            "VEHICLE",
-            "OTHER_OUTDOOR_DEVICE",
-            "OTHER_INDOOR_DEVICE"
-          ],
-          "description": "The type of device the speech was recorded with.",
-          "type": "string",
-          "enumDescriptions": [
-            "The recording device is unknown.",
-            "Speech was recorded on a smartphone.",
-            "Speech was recorded using a personal computer or tablet.",
-            "Speech was recorded over a phone line.",
-            "Speech was recorded in a vehicle.",
-            "Speech was recorded outdoors.",
-            "Speech was recorded indoors."
-          ]
-        },
         "interactionType": {
+          "enum": [
+            "INTERACTION_TYPE_UNSPECIFIED",
+            "DISCUSSION",
+            "PRESENTATION",
+            "PHONE_CALL",
+            "VOICEMAIL",
+            "PROFESSIONALLY_PRODUCED",
+            "VOICE_SEARCH",
+            "VOICE_COMMAND",
+            "DICTATION"
+          ],
           "description": "The use case most closely describing the audio content to be recognized.",
           "type": "string",
           "enumDescriptions": [
@@ -448,30 +350,19 @@
             "Transcribe spoken questions and queries into text.",
             "Transcribe voice commands, such as for controlling a device.",
             "Transcribe speech to text to create a written document, such as a\ntext-message, email or report."
-          ],
-          "enum": [
-            "INTERACTION_TYPE_UNSPECIFIED",
-            "DISCUSSION",
-            "PRESENTATION",
-            "PHONE_CALL",
-            "VOICEMAIL",
-            "PROFESSIONALLY_PRODUCED",
-            "VOICE_SEARCH",
-            "VOICE_COMMAND",
-            "DICTATION"
           ]
         },
         "recordingDeviceName": {
-          "type": "string",
-          "description": "The device used to make the recording.  Examples 'Nexus 5X' or\n'Polycom SoundStation IP 6000' or 'POTS' or 'VoIP' or\n'Cardioid Microphone'."
+          "description": "The device used to make the recording.  Examples 'Nexus 5X' or\n'Polycom SoundStation IP 6000' or 'POTS' or 'VoIP' or\n'Cardioid Microphone'.",
+          "type": "string"
         },
         "originalMimeType": {
-          "description": "Mime type of the original audio file.  For example `audio/m4a`,\n`audio/x-alaw-basic`, `audio/mp3`, `audio/3gpp`.\nA list of possible audio mime types is maintained at\nhttp://www.iana.org/assignments/media-types/media-types.xhtml#audio",
-          "type": "string"
+          "type": "string",
+          "description": "Mime type of the original audio file.  For example `audio/m4a`,\n`audio/x-alaw-basic`, `audio/mp3`, `audio/3gpp`.\nA list of possible audio mime types is maintained at\nhttp://www.iana.org/assignments/media-types/media-types.xhtml#audio"
         },
         "audioTopic": {
-          "description": "Description of the content. Eg. \"Recordings of federal supreme court\nhearings from 2012\".",
-          "type": "string"
+          "type": "string",
+          "description": "Description of the content. Eg. \"Recordings of federal supreme court\nhearings from 2012\"."
         },
         "industryNaicsCodeOfAudio": {
           "description": "The industry vertical to which this speech recognition request most\nclosely applies. This is most indicative of the topics contained\nin the audio.  Use the 6-digit NAICS code to identify the industry\nvertical - see https://www.naics.com/search/.",
@@ -479,8 +370,6 @@
           "type": "integer"
         },
         "microphoneDistance": {
-          "description": "The audio type that most closely describes the audio being recognized.",
-          "type": "string",
           "enumDescriptions": [
             "Audio type is not known.",
             "The audio was captured from a closely placed microphone. Eg. phone,\ndictaphone, or handheld microphone. Generally if there speaker is within\n1 meter of the microphone.",
@@ -492,18 +381,61 @@
             "NEARFIELD",
             "MIDFIELD",
             "FARFIELD"
+          ],
+          "description": "The audio type that most closely describes the audio being recognized.",
+          "type": "string"
+        },
+        "originalMediaType": {
+          "description": "The original media the speech was recorded on.",
+          "type": "string",
+          "enumDescriptions": [
+            "Unknown original media type.",
+            "The speech data is an audio recording.",
+            "The speech data originally recorded on a video."
+          ],
+          "enum": [
+            "ORIGINAL_MEDIA_TYPE_UNSPECIFIED",
+            "AUDIO",
+            "VIDEO"
           ]
+        },
+        "obfuscatedId": {
+          "type": "string",
+          "description": "Obfuscated (privacy-protected) ID of the user, to identify number of\nunique users using the service.",
+          "format": "int64"
+        },
+        "recordingDeviceType": {
+          "enumDescriptions": [
+            "The recording device is unknown.",
+            "Speech was recorded on a smartphone.",
+            "Speech was recorded using a personal computer or tablet.",
+            "Speech was recorded over a phone line.",
+            "Speech was recorded in a vehicle.",
+            "Speech was recorded outdoors.",
+            "Speech was recorded indoors."
+          ],
+          "enum": [
+            "RECORDING_DEVICE_TYPE_UNSPECIFIED",
+            "SMARTPHONE",
+            "PC",
+            "PHONE_LINE",
+            "VEHICLE",
+            "OTHER_OUTDOOR_DEVICE",
+            "OTHER_INDOOR_DEVICE"
+          ],
+          "description": "The type of device the speech was recorded with.",
+          "type": "string"
         }
       },
-      "id": "RecognitionMetadata"
+      "id": "RecognitionMetadata",
+      "description": "Description of audio data to be recognized."
     },
     "SpeechRecognitionResult": {
-      "description": "A speech recognition result corresponding to a portion of the audio.",
       "type": "object",
       "properties": {
         "languageCode": {
-          "type": "string",
-          "description": "Output only. The\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the\nlanguage in this result. This language code was detected to have the most\nlikelihood of being spoken in the audio."
+          "description": "Output only. The\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the\nlanguage in this result. This language code was detected to have the most\nlikelihood of being spoken in the audio.",
+          "type": "string"
         },
         "alternatives": {
           "description": "Output only. May contain one or more recognition hypotheses (up to the\nmaximum specified in `max_alternatives`).\nThese alternatives are ordered in terms of accuracy, with the top (first)\nalternative being the most probable, as ranked by the recognizer.",
@@ -513,12 +445,80 @@
           }
         },
         "channelTag": {
+          "type": "integer",
           "description": "For multi-channel audio, this is the channel number corresponding to the\nrecognized result for the audio from that channel.\nFor audio_channel_count = N, its output values can range from '1' to 'N'.",
+          "format": "int32"
+        }
+      },
+      "id": "SpeechRecognitionResult",
+      "description": "A speech recognition result corresponding to a portion of the audio."
+    },
+    "LongRunningRecognizeMetadata": {
+      "description": "Describes the progress of a long-running `LongRunningRecognize` call. It is\nincluded in the `metadata` field of the `Operation` returned by the\n`GetOperation` call of the `google::longrunning::Operations` service.",
+      "type": "object",
+      "properties": {
+        "startTime": {
+          "description": "Time when the request was received.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "lastUpdateTime": {
+          "description": "Time of the most recent processing update.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "progressPercent": {
+          "description": "Approximate percentage of audio processed thus far. Guaranteed to be 100\nwhen the audio is fully processed and the results are available.",
           "format": "int32",
           "type": "integer"
         }
       },
-      "id": "SpeechRecognitionResult"
+      "id": "LongRunningRecognizeMetadata"
+    },
+    "RecognitionAudio": {
+      "description": "Contains audio data in the encoding specified in the `RecognitionConfig`.\nEither `content` or `uri` must be supplied. Supplying both or neither\nreturns google.rpc.Code.INVALID_ARGUMENT. See\n[content limits](/speech-to-text/quotas#content).",
+      "type": "object",
+      "properties": {
+        "content": {
+          "description": "The audio data bytes encoded as specified in\n`RecognitionConfig`. Note: as with all bytes fields, proto buffers use a\npure binary representation, whereas JSON representations use base64.",
+          "format": "byte",
+          "type": "string"
+        },
+        "uri": {
+          "description": "URI that points to a file that contains audio data bytes as specified in\n`RecognitionConfig`. The file must not be compressed (for example, gzip).\nCurrently, only Google Cloud Storage URIs are\nsupported, which must be specified in the following format:\n`gs://bucket_name/object_name` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](https://cloud.google.com/storage/docs/reference-uris).",
+          "type": "string"
+        }
+      },
+      "id": "RecognitionAudio"
+    },
+    "LongRunningRecognizeRequest": {
+      "description": "The top-level message sent by the client for the `LongRunningRecognize`\nmethod.",
+      "type": "object",
+      "properties": {
+        "config": {
+          "description": "*Required* Provides information to the recognizer that specifies how to\nprocess the request.",
+          "$ref": "RecognitionConfig"
+        },
+        "audio": {
+          "$ref": "RecognitionAudio",
+          "description": "*Required* The audio data to be recognized."
+        }
+      },
+      "id": "LongRunningRecognizeRequest"
+    },
+    "RecognizeResponse": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "description": "Output only. Sequential list of transcription results corresponding to\nsequential portions of audio.",
+          "type": "array",
+          "items": {
+            "$ref": "SpeechRecognitionResult"
+          }
+        }
+      },
+      "id": "RecognizeResponse",
+      "description": "The only message returned to the client by the `Recognize` method. It\ncontains the result as zero or more sequential `SpeechRecognitionResult`\nmessages."
     }
   },
   "protocol": "rest",
@@ -547,6 +547,10 @@
     "operations": {
       "methods": {
         "list": {
+          "flatPath": "v1p1beta1/operations",
+          "id": "speech.operations.list",
+          "path": "v1p1beta1/operations",
+          "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.",
           "httpMethod": "GET",
           "parameterOrder": [],
           "response": {
@@ -554,36 +558,45 @@
           },
           "parameters": {
             "filter": {
-              "type": "string",
               "location": "query",
-              "description": "The standard list filter."
-            },
-            "name": {
-              "description": "The name of the operation's parent resource.",
-              "type": "string",
-              "location": "query"
-            },
-            "pageToken": {
-              "location": "query",
-              "description": "The standard list page token.",
+              "description": "The standard list filter.",
               "type": "string"
             },
+            "name": {
+              "location": "query",
+              "description": "The name of the operation's parent resource.",
+              "type": "string"
+            },
+            "pageToken": {
+              "type": "string",
+              "location": "query",
+              "description": "The standard list page token."
+            },
             "pageSize": {
+              "location": "query",
               "description": "The standard list page size.",
               "format": "int32",
-              "type": "integer",
-              "location": "query"
+              "type": "integer"
             }
           },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1p1beta1/operations",
-          "id": "speech.operations.list",
-          "path": "v1p1beta1/operations",
-          "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id."
+          ]
         },
         "get": {
+          "path": "v1p1beta1/operations/{+name}",
+          "id": "speech.operations.get",
+          "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
+          "response": {
+            "$ref": "Operation"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
           "parameters": {
             "name": {
               "required": true,
@@ -593,60 +606,47 @@
               "description": "The name of the operation resource."
             }
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1p1beta1/operations/{operationsId}",
-          "id": "speech.operations.get",
-          "path": "v1p1beta1/operations/{+name}",
-          "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
-          "httpMethod": "GET",
-          "response": {
-            "$ref": "Operation"
-          },
-          "parameterOrder": [
-            "name"
-          ]
+          "flatPath": "v1p1beta1/operations/{operationsId}"
         }
       }
     },
     "speech": {
       "methods": {
         "longrunningrecognize": {
-          "flatPath": "v1p1beta1/speech:longrunningrecognize",
-          "path": "v1p1beta1/speech:longrunningrecognize",
-          "id": "speech.speech.longrunningrecognize",
-          "description": "Performs asynchronous speech recognition: receive results via the\ngoogle.longrunning.Operations interface. Returns either an\n`Operation.error` or an `Operation.response` which contains\na `LongRunningRecognizeResponse` message.\nFor more information on asynchronous speech recognition, see the\n[how-to](https://cloud.google.com/speech-to-text/docs/async-recognize).",
-          "request": {
-            "$ref": "LongRunningRecognizeRequest"
-          },
+          "httpMethod": "POST",
+          "parameterOrder": [],
           "response": {
             "$ref": "Operation"
           },
-          "parameterOrder": [],
-          "httpMethod": "POST",
-          "parameters": {},
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ]
-        },
-        "recognize": {
-          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "flatPath": "v1p1beta1/speech:recognize",
-          "id": "speech.speech.recognize",
-          "path": "v1p1beta1/speech:recognize",
-          "description": "Performs synchronous speech recognition: receive results after all audio\nhas been sent and processed.",
+          "parameters": {},
+          "flatPath": "v1p1beta1/speech:longrunningrecognize",
+          "id": "speech.speech.longrunningrecognize",
+          "path": "v1p1beta1/speech:longrunningrecognize",
+          "request": {
+            "$ref": "LongRunningRecognizeRequest"
+          },
+          "description": "Performs asynchronous speech recognition: receive results via the\ngoogle.longrunning.Operations interface. Returns either an\n`Operation.error` or an `Operation.response` which contains\na `LongRunningRecognizeResponse` message.\nFor more information on asynchronous speech recognition, see the\n[how-to](https://cloud.google.com/speech-to-text/docs/async-recognize)."
+        },
+        "recognize": {
           "request": {
             "$ref": "RecognizeRequest"
           },
-          "httpMethod": "POST",
-          "parameterOrder": [],
+          "description": "Performs synchronous speech recognition: receive results after all audio\nhas been sent and processed.",
           "response": {
             "$ref": "RecognizeResponse"
-          }
+          },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {},
+          "flatPath": "v1p1beta1/speech:recognize",
+          "path": "v1p1beta1/speech:recognize",
+          "id": "speech.speech.recognize"
         }
       }
     },
@@ -657,14 +657,22 @@
             "operations": {
               "methods": {
                 "list": {
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "name"
-                  ],
                   "response": {
                     "$ref": "ListOperationsResponse"
                   },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
                   "parameters": {
+                    "filter": {
+                      "description": "The standard list filter.",
+                      "type": "string",
+                      "location": "query"
+                    },
                     "name": {
                       "location": "path",
                       "description": "The name of the operation's parent resource.",
@@ -682,23 +690,14 @@
                       "format": "int32",
                       "type": "integer",
                       "location": "query"
-                    },
-                    "filter": {
-                      "location": "query",
-                      "description": "The standard list filter.",
-                      "type": "string"
                     }
                   },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
                   "flatPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/operations",
-                  "id": "speech.projects.locations.operations.list",
                   "path": "v1p1beta1/{+name}/operations",
+                  "id": "speech.projects.locations.operations.list",
                   "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id."
                 },
                 "get": {
-                  "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
                   "response": {
                     "$ref": "Operation"
                   },
@@ -706,21 +705,22 @@
                     "name"
                   ],
                   "httpMethod": "GET",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "The name of the operation resource.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
-                    }
-                  },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
+                  "parameters": {
+                    "name": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "location": "path",
+                      "description": "The name of the operation resource.",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
                   "flatPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "path": "v1p1beta1/{+name}",
-                  "id": "speech.projects.locations.operations.get"
+                  "id": "speech.projects.locations.operations.get",
+                  "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
                 }
               }
             }
@@ -730,31 +730,47 @@
     }
   },
   "parameters": {
-    "key": {
+    "alt": {
       "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ]
     },
     "access_token": {
       "location": "query",
       "description": "OAuth access token.",
       "type": "string"
     },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
     "upload_protocol": {
       "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string"
     },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
     "quotaUser": {
       "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
     },
     "fields": {
       "location": "query",
@@ -762,9 +778,19 @@
       "type": "string"
     },
     "uploadType": {
-      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
       "type": "string"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
     },
     "$.xgafv": {
       "type": "string",
@@ -778,32 +804,6 @@
         "2"
       ],
       "description": "V1 error format."
-    },
-    "oauth_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user."
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json"
     }
   },
   "version": "v1p1beta1",
