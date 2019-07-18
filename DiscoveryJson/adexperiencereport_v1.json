@@ -1,8 +1,4 @@
 {
-  "basePath": "",
-  "revision": "20190624",
-  "documentationLink": "https://developers.google.com/ad-experience-report/",
-  "id": "adexperiencereport:v1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
@@ -29,12 +25,13 @@
       "description": "Summary of the ad experience rating of a site for a specific platform.",
       "type": "object",
       "properties": {
-        "enforcementTime": {
-          "type": "string",
-          "description": "The date on which ad filtering begins.",
-          "format": "google-datetime"
-        },
         "region": {
+          "enumDescriptions": [
+            "Ad standard not yet defined for your region.",
+            "Region A.",
+            "Region B.",
+            "Region C."
+          ],
           "description": "The assigned regions for the site and platform.",
           "type": "array",
           "items": {
@@ -45,15 +42,15 @@
               "REGION_C"
             ],
             "type": "string"
-          },
-          "enumDescriptions": [
-            "Ad standard not yet defined for your region.",
-            "Region A.",
-            "Region B.",
-            "Region C."
-          ]
+          }
+        },
+        "enforcementTime": {
+          "description": "The date on which ad filtering begins.",
+          "format": "google-datetime",
+          "type": "string"
         },
         "filterStatus": {
+          "description": "The ad filtering status of the site.",
           "type": "string",
           "enumDescriptions": [
             "N/A.",
@@ -68,8 +65,7 @@
             "OFF",
             "PAUSED",
             "PENDING"
-          ],
-          "description": "The ad filtering status of the site."
+          ]
         },
         "underReview": {
           "description": "Whether the site is currently under review.",
@@ -80,9 +76,9 @@
           "type": "string"
         },
         "lastChangeTime": {
+          "type": "string",
           "description": "The last time that the site changed status.",
-          "format": "google-datetime",
-          "type": "string"
+          "format": "google-datetime"
         },
         "betterAdsStatus": {
           "type": "string",
@@ -104,23 +100,23 @@
       "id": "PlatformSummary"
     },
     "ViolatingSitesResponse": {
-      "description": "Response message for ListViolatingSites.",
       "type": "object",
       "properties": {
         "violatingSites": {
+          "description": "A list of summaries of violating sites.",
           "type": "array",
           "items": {
             "$ref": "SiteSummaryResponse"
-          },
-          "description": "A list of summaries of violating sites."
+          }
         }
       },
-      "id": "ViolatingSitesResponse"
+      "id": "ViolatingSitesResponse",
+      "description": "Response message for ListViolatingSites."
     }
   },
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "protocol": "rest",
   "canonicalName": "Ad Experience Report",
@@ -162,6 +158,21 @@
     "sites": {
       "methods": {
         "get": {
+          "scopes": [
+            "https://www.googleapis.com/auth/xapi.zoo"
+          ],
+          "parameters": {
+            "name": {
+              "location": "path",
+              "description": "The required site name. It should be the site property whose ad experiences\nmay have been reviewed, and it should be URL-encoded. For example,\nsites/https%3A%2F%2Fwww.google.com. The server will return an error of\nBAD_REQUEST if this field is not filled in. Note that if the site property\nis not yet verified in Search Console, the reportUrl field returned by the\nAPI will lead to the verification page, prompting the user to go through\nthat process before they can gain access to the Ad Experience Report.",
+              "required": true,
+              "type": "string",
+              "pattern": "^sites/[^/]+$"
+            }
+          },
+          "flatPath": "v1/sites/{sitesId}",
+          "path": "v1/{+name}",
+          "id": "adexperiencereport.sites.get",
           "description": "Gets a summary of the ad experience rating of a site.",
           "response": {
             "$ref": "SiteSummaryResponse"
@@ -169,29 +180,36 @@
           "parameterOrder": [
             "name"
           ],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/xapi.zoo"
-          ],
-          "parameters": {
-            "name": {
-              "required": true,
-              "type": "string",
-              "pattern": "^sites/[^/]+$",
-              "location": "path",
-              "description": "The required site name. It should be the site property whose ad experiences\nmay have been reviewed, and it should be URL-encoded. For example,\nsites/https%3A%2F%2Fwww.google.com. The server will return an error of\nBAD_REQUEST if this field is not filled in. Note that if the site property\nis not yet verified in Search Console, the reportUrl field returned by the\nAPI will lead to the verification page, prompting the user to go through\nthat process before they can gain access to the Ad Experience Report."
-            }
-          },
-          "flatPath": "v1/sites/{sitesId}",
-          "path": "v1/{+name}",
-          "id": "adexperiencereport.sites.get"
+          "httpMethod": "GET"
         }
       }
     }
   },
   "parameters": {
-    "alt": {
+    "callback": {
       "type": "string",
+      "location": "query",
+      "description": "JSONP"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ]
+    },
+    "alt": {
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -204,7 +222,8 @@
         "json",
         "media",
         "proto"
-      ]
+      ],
+      "type": "string"
     },
     "access_token": {
       "location": "query",
@@ -212,9 +231,9 @@
       "type": "string"
     },
     "key": {
-      "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "upload_protocol": {
       "location": "query",
@@ -233,36 +252,13 @@
       "location": "query"
     },
     "fields": {
+      "type": "string",
       "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
+      "description": "Selector specifying which fields to include in a partial response."
     },
     "uploadType": {
+      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
       "type": "string"
     }
   },
@@ -270,5 +266,9 @@
   "baseUrl": "https://adexperiencereport.googleapis.com/",
   "kind": "discovery#restDescription",
   "description": "Views Ad Experience Report data, and gets a list of sites that have a significant number of annoying ads.",
-  "servicePath": ""
+  "servicePath": "",
+  "basePath": "",
+  "id": "adexperiencereport:v1",
+  "revision": "20190714",
+  "documentationLink": "https://developers.google.com/ad-experience-report/"
 }

@@ -462,6 +462,26 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Expression that defines what fields and order to use for sorting. The string value should
+                /// follow SQL syntax: comma separated list of fields. For example:
+                /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
+                /// order for a field, a suffix " desc" should be appended to the field name. For example: "name
+                /// desc,resource_properties.a_property". Redundant space characters in the syntax are insignificant.
+                /// "name desc,resource_properties.a_property" and " name     desc  ,   resource_properties.a_property
+                /// " are equivalent.
+                ///
+                /// The following fields are supported: name update_time resource_properties security_marks
+                /// security_center_properties.resource_name security_center_properties.resource_parent
+                /// security_center_properties.resource_project security_center_properties.resource_type</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
+                /// existing at the supplied time and their values are those at that specific time. Absence of this
+                /// field will default to the API's version of NOW.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object ReadTime { get; set; }
+
                 /// <summary>When compare_duration is set, the ListAssetsResult's "state_change" attribute is updated to
                 /// indicate whether the asset was added, removed, or remained present during the compare_duration
                 /// period of time that precedes the read_time. This is the time between (read_time - compare_duration)
@@ -531,26 +551,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Expression that defines what fields and order to use for sorting. The string value should
-                /// follow SQL syntax: comma separated list of fields. For example:
-                /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
-                /// order for a field, a suffix " desc" should be appended to the field name. For example: "name
-                /// desc,resource_properties.a_property". Redundant space characters in the syntax are insignificant.
-                /// "name desc,resource_properties.a_property" and " name     desc  ,   resource_properties.a_property
-                /// " are equivalent.
-                ///
-                /// The following fields are supported: name update_time resource_properties security_marks
-                /// security_center_properties.resource_name security_center_properties.resource_parent
-                /// security_center_properties.resource_project security_center_properties.resource_type</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
-                /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
-                /// existing at the supplied time and their values are those at that specific time. Absence of this
-                /// field will default to the API's version of NOW.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object ReadTime { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -583,6 +583,24 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^organizations/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "readTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "compareDuration", new Google.Apis.Discovery.Parameter
@@ -624,24 +642,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "readTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "readTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

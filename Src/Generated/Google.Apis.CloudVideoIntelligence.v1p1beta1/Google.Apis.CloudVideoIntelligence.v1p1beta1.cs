@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20190626 (1637)
+ *      <tr><th>API Rev<td>20190713 (1654)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -787,6 +787,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
 
+        /// <summary>Video segment on which the annotation is run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1VideoSegment Segment { get; set; } 
+
         /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
         /// element for each unique label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
@@ -1251,6 +1255,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         /// <summary>Annotations for list of objects detected and tracked in video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
+
+        /// <summary>Video segment on which the annotation is run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1beta2VideoSegment Segment { get; set; } 
 
         /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
         /// element for each unique label.</summary>
@@ -1927,6 +1935,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
 
+        /// <summary>Video segment on which the annotation is run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1p1beta1VideoSegment Segment { get; set; } 
+
         /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
         /// element for each unique label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
@@ -2427,6 +2439,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         /// <summary>Annotations for list of objects detected and tracked in video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
+
+        /// <summary>Video segment on which the annotation is run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1p2beta1VideoSegment Segment { get; set; } 
 
         /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
         /// element for each unique label.</summary>
@@ -3030,6 +3046,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         /// <summary>Annotations for list of objects detected and tracked in video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
+
+        /// <summary>Video segment on which the annotation is run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1p3beta1VideoSegment Segment { get; set; } 
 
         /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
         /// element for each unique label.</summary>

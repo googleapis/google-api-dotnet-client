@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190712 (1653)
+ *      <tr><th>API Rev<td>20190711 (1652)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -2308,7 +2308,7 @@ namespace Google.Apis.Slides.v1.Data
         /// editor.
         ///
         /// Only the concrete colors of the first 12 ThemeColorTypes are editable. In addition, only the color scheme on
-        /// Master pages can be updated. To update the field, a color scheme containing mappings from all the first 12
+        /// `Master` pages can be updated. To update the field, a color scheme containing mappings from all the first 12
         /// ThemeColorTypes to their concrete colors must be provided. Colors for the remaining ThemeColorTypes will be
         /// ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorScheme")]

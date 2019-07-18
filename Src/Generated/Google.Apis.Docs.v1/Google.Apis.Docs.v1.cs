@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190702 (1643)
+ *      <tr><th>API Rev<td>20190711 (1652)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -2897,6 +2897,10 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateParagraphStyle")]
         public virtual UpdateParagraphStyleRequest UpdateParagraphStyle { get; set; } 
 
+        /// <summary>Updates the style of table cells.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTableCellStyle")]
+        public virtual UpdateTableCellStyleRequest UpdateTableCellStyle { get; set; } 
+
         /// <summary>Updates the properties of columns in a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTableColumnProperties")]
         public virtual UpdateTableColumnPropertiesRequest UpdateTableColumnProperties { get; set; } 
@@ -3601,6 +3605,36 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A table range represents a reference to a subset of a table.
+    ///
+    /// It's important to note that the cells specified by a table range do not necessarily form a rectangle. For
+    /// example, let's say we have a 3 x 3 table where all the cells of the last row are merged together. The table
+    /// looks like this:
+    ///
+    /// [             ]
+    ///
+    /// A table range with table cell location = (table_start_location, row = 0, column = 0), row span = 3 and column
+    /// span = 2 specifies the following cells:
+    ///
+    /// x     x [ x    x    x ]</summary>
+    public class TableRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The column span of the table range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnSpan")]
+        public virtual System.Nullable<int> ColumnSpan { get; set; } 
+
+        /// <summary>The row span of the table range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowSpan")]
+        public virtual System.Nullable<int> RowSpan { get; set; } 
+
+        /// <summary>The cell location where the table range starts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableCellLocation")]
+        public virtual TableCellLocation TableCellLocation { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The contents and style of a row in a Table.</summary>
     public class TableRow : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3875,6 +3909,46 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>The range overlapping the paragraphs to style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual Range Range { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Updates the style of a range of table cells.</summary>
+    public class UpdateTableCellStyleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fields that should be updated.
+        ///
+        /// At least one field must be specified. The root `tableCellStyle` is implied and should not be specified. A
+        /// single `"*"` can be used as short-hand for listing every field.
+        ///
+        /// For example to update the table cell background color, set `fields` to `"backgroundColor"`.
+        ///
+        /// To reset a property to its default value, include its field name in the field mask but leave the field
+        /// itself unset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; } 
+
+        /// <summary>The style to set on the table cells.
+        ///
+        /// When updating borders, if a cell shares a border with an adjacent cell, the corresponding border property of
+        /// the adjacent cell is updated as well. Borders that are merged and invisible are not updated.
+        ///
+        /// Since updating a border shared by adjacent cells in the same request can cause conflicting border updates,
+        /// border updates are applied in the following order:
+        ///
+        /// - `border_right` - `border_left` - `border_bottom` - `border_top`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableCellStyle")]
+        public virtual TableCellStyle TableCellStyle { get; set; } 
+
+        /// <summary>The table range representing the subset of the table to which the updates are applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
+        public virtual TableRange TableRange { get; set; } 
+
+        /// <summary>The location where the table starts in the document. When specified, the updates are applied to all
+        /// the cells in the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableStartLocation")]
+        public virtual Location TableStartLocation { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

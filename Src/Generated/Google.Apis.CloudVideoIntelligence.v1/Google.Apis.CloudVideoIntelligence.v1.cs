@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190626 (1637)
+ *      <tr><th>API Rev<td>20190713 (1654)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -631,202 +631,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                 }
             }
         }
-
-        /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
-        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
-        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
-        /// <param name="name">The name of the operation resource to be cancelled.</param>
-        public virtual CancelRequest Cancel(string name)
-        {
-            return new CancelRequest(service, name);
-        }
-
-        /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
-        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
-        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
-        public class CancelRequest : CloudVideoIntelligenceBaseServiceRequest<Google.Apis.CloudVideoIntelligence.v1.Data.GoogleProtobufEmpty>
-        {
-            /// <summary>Constructs a new Cancel request.</summary>
-            public CancelRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-
-            /// <summary>The name of the operation resource to be cancelled.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "cancel"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/operations/{+name}:cancel"; }
-            }
-
-            /// <summary>Initializes Cancel parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-            }
-
-        }
-
-        /// <summary>Deletes a long-running operation. This method indicates that the client is no longer interested in
-        /// the operation result. It does not cancel the operation. If the server doesn't support this method, it
-        /// returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
-        /// <param name="name">The name of the operation resource to be deleted.</param>
-        public virtual DeleteRequest Delete(string name)
-        {
-            return new DeleteRequest(service, name);
-        }
-
-        /// <summary>Deletes a long-running operation. This method indicates that the client is no longer interested in
-        /// the operation result. It does not cancel the operation. If the server doesn't support this method, it
-        /// returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
-        public class DeleteRequest : CloudVideoIntelligenceBaseServiceRequest<Google.Apis.CloudVideoIntelligence.v1.Data.GoogleProtobufEmpty>
-        {
-            /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-
-            /// <summary>The name of the operation resource to be deleted.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "delete"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "DELETE"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/operations/{+name}"; }
-            }
-
-            /// <summary>Initializes Delete parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-            }
-
-        }
-
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
-        /// operation result at intervals as recommended by the API service.</summary>
-        /// <param name="name">The name of the operation resource.</param>
-        public virtual GetRequest Get(string name)
-        {
-            return new GetRequest(service, name);
-        }
-
-        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
-        /// operation result at intervals as recommended by the API service.</summary>
-        public class GetRequest : CloudVideoIntelligenceBaseServiceRequest<Google.Apis.CloudVideoIntelligence.v1.Data.GoogleLongrunningOperation>
-        {
-            /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-
-            /// <summary>The name of the operation resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "get"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/operations/{+name}"; }
-            }
-
-            /// <summary>Initializes Get parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-            }
-
-        }
     }
 
     /// <summary>The "projects" collection of methods.</summary>
@@ -1136,10 +940,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1147,6 +947,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1182,15 +986,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1203,6 +998,15 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1887,6 +1691,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
 
+        /// <summary>Video segment on which the annotation is run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1VideoSegment Segment { get; set; } 
+
         /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
         /// element for each unique label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
@@ -2388,6 +2196,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
 
+        /// <summary>Video segment on which the annotation is run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1beta2VideoSegment Segment { get; set; } 
+
         /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
         /// element for each unique label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
@@ -2853,6 +2665,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
 
+        /// <summary>Video segment on which the annotation is run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1p1beta1VideoSegment Segment { get; set; } 
+
         /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
         /// element for each unique label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
@@ -3317,6 +3133,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         /// <summary>Annotations for list of objects detected and tracked in video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
+
+        /// <summary>Video segment on which the annotation is run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1p2beta1VideoSegment Segment { get; set; } 
 
         /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
         /// element for each unique label.</summary>
@@ -3920,6 +3740,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         /// <summary>Annotations for list of objects detected and tracked in video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
+
+        /// <summary>Video segment on which the annotation is run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudVideointelligenceV1p3beta1VideoSegment Segment { get; set; } 
 
         /// <summary>Topical label annotations on video level or user specified segment level. There is exactly one
         /// element for each unique label.</summary>
