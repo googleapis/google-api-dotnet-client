@@ -745,13 +745,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The time at which the updated SecurityMarks take effect.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
-
                 /// <summary>The FieldMask to use when updating the security marks resource.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
+
+                /// <summary>The time at which the updated SecurityMarks take effect.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTime { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -793,18 +793,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                             Pattern = @"^organizations/[^/]+/assets/[^/]+/securityMarks$",
                         });
                     RequestParameters.Add(
-                        "startTime", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "startTime",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "startTime", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "startTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

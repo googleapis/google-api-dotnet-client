@@ -753,15 +753,15 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>When set to `true`, the target document must exist. When set to `false`, the target
-                    /// document must not exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("currentDocument.exists", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> CurrentDocumentExists { get; set; }
-
                     /// <summary>When set, the target document must exist and have been last updated at that
                     /// time.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("currentDocument.updateTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object CurrentDocumentUpdateTime { get; set; }
+
+                    /// <summary>When set to `true`, the target document must exist. When set to `false`, the target
+                    /// document must not exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("currentDocument.exists", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> CurrentDocumentExists { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -797,18 +797,18 @@ namespace Google.Apis.Firestore.v1beta1
                                 Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$",
                             });
                         RequestParameters.Add(
-                            "currentDocument.exists", new Google.Apis.Discovery.Parameter
+                            "currentDocument.updateTime", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "currentDocument.exists",
+                                Name = "currentDocument.updateTime",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "currentDocument.updateTime", new Google.Apis.Discovery.Parameter
+                            "currentDocument.exists", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "currentDocument.updateTime",
+                                Name = "currentDocument.exists",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -968,14 +968,14 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("showMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ShowMissing { get; set; }
 
-                    /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>The list of field paths in the mask. See Document.fields for a field path syntax
                     /// reference.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
+
+                    /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
                     /// <summary>The maximum number of documents to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -985,14 +985,14 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("transaction", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Transaction { get; set; }
 
+                    /// <summary>The order to sort results by. For example: `priority desc, name`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
                     /// <summary>Reads documents as they were at the given time. This may not be older than 60
                     /// seconds.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadTime { get; set; }
-
-                    /// <summary>The order to sort results by. For example: `priority desc, name`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OrderBy { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1046,18 +1046,18 @@ namespace Google.Apis.Firestore.v1beta1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "mask.fieldPaths", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "mask.fieldPaths",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "mask.fieldPaths", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "mask.fieldPaths",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1082,18 +1082,18 @@ namespace Google.Apis.Firestore.v1beta1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "readTime", new Google.Apis.Discovery.Parameter
+                            "orderBy", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "readTime",
+                                Name = "orderBy",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "orderBy", new Google.Apis.Discovery.Parameter
+                            "readTime", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "orderBy",
+                                Name = "readTime",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1272,6 +1272,11 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>When set to `true`, the target document must exist. When set to `false`, the target
+                    /// document must not exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("currentDocument.exists", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> CurrentDocumentExists { get; set; }
+
                     /// <summary>The list of field paths in the mask. See Document.fields for a field path syntax
                     /// reference.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
@@ -1286,11 +1291,6 @@ namespace Google.Apis.Firestore.v1beta1
                     /// time.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("currentDocument.updateTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object CurrentDocumentUpdateTime { get; set; }
-
-                    /// <summary>When set to `true`, the target document must exist. When set to `false`, the target
-                    /// document must not exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("currentDocument.exists", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> CurrentDocumentExists { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1332,6 +1332,15 @@ namespace Google.Apis.Firestore.v1beta1
                                 Pattern = @"^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$",
                             });
                         RequestParameters.Add(
+                            "currentDocument.exists", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "currentDocument.exists",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "updateMask.fieldPaths", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "updateMask.fieldPaths",
@@ -1353,15 +1362,6 @@ namespace Google.Apis.Firestore.v1beta1
                             "currentDocument.updateTime", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "currentDocument.updateTime",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "currentDocument.exists", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "currentDocument.exists",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

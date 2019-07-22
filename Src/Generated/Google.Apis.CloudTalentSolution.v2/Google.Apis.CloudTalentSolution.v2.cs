@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190713 (1654)
+ *      <tr><th>API Rev<td>20190720 (1661)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -392,9 +392,7 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// <summary>Deprecated. Use ListJobs instead.
             ///
             /// Lists all jobs associated with a company.</summary>
-            /// <param name="companyName">Required.
-            ///
-            /// The resource name of the company that owns the jobs to be listed, such as,
+            /// <param name="companyName">Required. The resource name of the company that owns the jobs to be listed, such as,
             /// "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".</param>
             public virtual ListRequest List(string companyName)
             {
@@ -415,9 +413,7 @@ namespace Google.Apis.CloudTalentSolution.v2
                 }
 
 
-                /// <summary>Required.
-                ///
-                /// The resource name of the company that owns the jobs to be listed, such as,
+                /// <summary>Required. The resource name of the company that owns the jobs to be listed, such as,
                 /// "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CompanyName { get; private set; }
@@ -433,15 +429,20 @@ namespace Google.Apis.CloudTalentSolution.v2
                 [Google.Apis.Util.RequestParameterAttribute("includeJobsCount", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeJobsCount { get; set; }
 
-                /// <summary>Optional.
-                ///
-                /// The starting point of a query result.</summary>
+                /// <summary>Optional. The starting point of a query result.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Optional.
+                /// <summary>Optional. If set to `true`, only job ID, job requisition ID and language code will be
+                /// returned.
                 ///
-                /// The maximum number of jobs to be returned per page of results.
+                /// A typical use is to synchronize job repositories.
+                ///
+                /// Defaults to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IdsOnly { get; set; }
+
+                /// <summary>Optional. The maximum number of jobs to be returned per page of results.
                 ///
                 /// If ids_only is set to true, the maximum allowed page size is 1000. Otherwise, the maximum allowed
                 /// page size is 100.
@@ -450,19 +451,7 @@ namespace Google.Apis.CloudTalentSolution.v2
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Optional.
-                ///
-                /// If set to `true`, only job ID, job requisition ID and language code will be returned.
-                ///
-                /// A typical use is to synchronize job repositories.
-                ///
-                /// Defaults to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IdsOnly { get; set; }
-
-                /// <summary>Optional.
-                ///
-                /// The requisition ID, also known as posting ID, assigned by the company to the job.
+                /// <summary>Optional. The requisition ID, also known as posting ID, assigned by the company to the job.
                 ///
                 /// The maximum number of allowable characters is 225.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("jobRequisitionId", Google.Apis.Util.RequestParameterType.Query)]
@@ -520,18 +509,18 @@ namespace Google.Apis.CloudTalentSolution.v2
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "idsOnly", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "idsOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "idsOnly", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "idsOnly",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -605,9 +594,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         }
 
         /// <summary>Deletes the specified company.</summary>
-        /// <param name="name">Required.
-        ///
-        /// The resource name of the company to be deleted, such as,
+        /// <param name="name">Required. The resource name of the company to be deleted, such as,
         /// "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".</param>
         public virtual DeleteRequest Delete(string name)
         {
@@ -626,9 +613,7 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
-            /// <summary>Required.
-            ///
-            /// The resource name of the company to be deleted, such as,
+            /// <summary>Required. The resource name of the company to be deleted, such as,
             /// "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -671,9 +656,8 @@ namespace Google.Apis.CloudTalentSolution.v2
         }
 
         /// <summary>Retrieves the specified company.</summary>
-        /// <param name="name">Required.
-        ///
-        /// Resource name of the company to retrieve, such as "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".</param>
+        /// <param name="name">Required. Resource name of the company to retrieve, such as
+        /// "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -691,9 +675,7 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
-            /// <summary>Required.
-            ///
-            /// Resource name of the company to retrieve, such as
+            /// <summary>Required. Resource name of the company to retrieve, such as
             /// "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -752,9 +734,12 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
-            /// <summary>Optional.
-            ///
-            /// Set to true if the companies request must have open jobs.
+            /// <summary>Optional. The maximum number of companies to be returned, at most 100. Default is 100 if a non-
+            /// positive number is provided.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. Set to true if the companies request must have open jobs.
             ///
             /// Defaults to false.
             ///
@@ -763,18 +748,9 @@ namespace Google.Apis.CloudTalentSolution.v2
             [Google.Apis.Util.RequestParameterAttribute("mustHaveOpenJobs", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> MustHaveOpenJobs { get; set; }
 
-            /// <summary>Optional.
-            ///
-            /// The starting indicator from which to return results.</summary>
+            /// <summary>Optional. The starting indicator from which to return results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is
-            /// provided.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -801,6 +777,15 @@ namespace Google.Apis.CloudTalentSolution.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
                     {
                         Name = "mustHaveOpenJobs",
@@ -813,15 +798,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1059,9 +1035,7 @@ namespace Google.Apis.CloudTalentSolution.v2
         /// <summary>Deletes the specified job.
         ///
         /// Typically, the job becomes unsearchable within 10 seconds, but it may take up to 5 minutes.</summary>
-        /// <param name="name">Required.
-        ///
-        /// The resource name of the job to be deleted, such as "jobs/11111111".</param>
+        /// <param name="name">Required. The resource name of the job to be deleted, such as "jobs/11111111".</param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(service, name);
@@ -1081,9 +1055,7 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
-            /// <summary>Required.
-            ///
-            /// The resource name of the job to be deleted, such as "jobs/11111111".</summary>
+            /// <summary>Required. The resource name of the job to be deleted, such as "jobs/11111111".</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1204,9 +1176,7 @@ namespace Google.Apis.CloudTalentSolution.v2
 
         /// <summary>Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90
         /// days.</summary>
-        /// <param name="name">Required.
-        ///
-        /// The resource name of the job to retrieve, such as "jobs/11111111".</param>
+        /// <param name="name">Required. The resource name of the job to retrieve, such as "jobs/11111111".</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -1225,9 +1195,7 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
-            /// <summary>Required.
-            ///
-            /// The resource name of the job to retrieve, such as "jobs/11111111".</summary>
+            /// <summary>Required. The resource name of the job to retrieve, such as "jobs/11111111".</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1356,9 +1324,29 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
-            /// <summary>Required.
+            /// <summary>Optional. The starting point of a query result.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Optional. The maximum number of jobs to be returned per page of results.
             ///
-            /// The filter string specifies the jobs to be enumerated.
+            /// If ids_only is set to true, the maximum allowed page size is 1000. Otherwise, the maximum allowed page
+            /// size is 100.
+            ///
+            /// Default is 100 if empty or a number < 1 is specified.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. If set to `true`, only Job.name, Job.requisition_id and Job.language_code will be
+            /// returned.
+            ///
+            /// A typical use case is to synchronize job repositories.
+            ///
+            /// Defaults to false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IdsOnly { get; set; }
+
+            /// <summary>Required. The filter string specifies the jobs to be enumerated.
             ///
             /// Supported operator: =, AND
             ///
@@ -1371,33 +1359,6 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The starting point of a query result.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The maximum number of jobs to be returned per page of results.
-            ///
-            /// If ids_only is set to true, the maximum allowed page size is 1000. Otherwise, the maximum allowed page
-            /// size is 100.
-            ///
-            /// Default is 100 if empty or a number < 1 is specified.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// If set to `true`, only Job.name, Job.requisition_id and Job.language_code will be returned.
-            ///
-            /// A typical use case is to synchronize job repositories.
-            ///
-            /// Defaults to false.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> IdsOnly { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1424,15 +1385,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1454,6 +1406,15 @@ namespace Google.Apis.CloudTalentSolution.v2
                     "idsOnly", new Google.Apis.Discovery.Parameter
                     {
                         Name = "idsOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1705,30 +1666,11 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
-            /// <summary>Required.
-            ///
-            /// The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more
-            /// information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-            ///
-            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
-            ///
-            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
-            /// returned.
-            ///
-            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
-            /// with same language_code are returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LanguageCode { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            /// <summary>Optional. The completion topic. The default is CompletionType.COMBINED.</summary>
             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<TypeEnum> Type { get; set; }
 
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            /// <summary>Optional. The completion topic. The default is CompletionType.COMBINED.</summary>
             public enum TypeEnum
             {
                 [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
@@ -1741,21 +1683,15 @@ namespace Google.Apis.CloudTalentSolution.v2
                 COMBINED,
             }
 
-            /// <summary>Optional.
-            ///
-            /// If provided, restricts completion to the specified company.</summary>
+            /// <summary>Optional. If provided, restricts completion to the specified company.</summary>
             [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CompanyName { get; set; }
 
-            /// <summary>Optional.
-            ///
-            /// The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
+            /// <summary>Optional. The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ScopeEnum> Scope { get; set; }
 
-            /// <summary>Optional.
-            ///
-            /// The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
+            /// <summary>Optional. The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
             public enum ScopeEnum
             {
                 [Google.Apis.Util.StringValueAttribute("COMPLETION_SCOPE_UNSPECIFIED")]
@@ -1766,17 +1702,26 @@ namespace Google.Apis.CloudTalentSolution.v2
                 PUBLIC__,
             }
 
-            /// <summary>Required.
-            ///
-            /// Completion result count. The maximum allowed page size is 10.</summary>
+            /// <summary>Required. Completion result count. The maximum allowed page size is 10.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>Required.
-            ///
-            /// The query used to generate suggestions.</summary>
+            /// <summary>Required. The query used to generate suggestions.</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
+
+            /// <summary>Required. The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-
+            /// Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+            ///
+            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
+            ///
+            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
+            /// returned.
+            ///
+            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
+            /// with same language_code are returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1802,15 +1747,6 @@ namespace Google.Apis.CloudTalentSolution.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "type", new Google.Apis.Discovery.Parameter
                     {
@@ -1856,6 +1792,15 @@ namespace Google.Apis.CloudTalentSolution.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1870,9 +1815,7 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// Batch delete jobs request.</summary>
     public class BatchDeleteJobsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required.
-        ///
-        /// The filter string specifies the jobs to be deleted.
+        /// <summary>Required. The filter string specifies the jobs to be deleted.
         ///
         /// Supported operator: =, AND
         ///
@@ -1950,36 +1893,28 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowNonStreetLevelAddress")]
         public virtual System.Nullable<bool> AllowNonStreetLevelAddress { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The departure hour to use to calculate traffic impact. Accepts an integer between 0 and 23, representing the
-        /// hour in the time zone of the start_location. Must not be present if road_traffic is specified.</summary>
+        /// <summary>Optional. The departure hour to use to calculate traffic impact. Accepts an integer between 0 and
+        /// 23, representing the hour in the time zone of the start_location. Must not be present if road_traffic is
+        /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("departureHourLocal")]
         public virtual System.Nullable<int> DepartureHourLocal { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// The method of transportation for which to calculate the commute time.</summary>
+        /// <summary>Required. The method of transportation for which to calculate the commute time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Specifies the traffic density to use when calculating commute time. Must not be present if
-        /// departure_hour_local is specified.</summary>
+        /// <summary>Optional. Specifies the traffic density to use when calculating commute time. Must not be present
+        /// if departure_hour_local is specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roadTraffic")]
         public virtual string RoadTraffic { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// The latitude and longitude of the location from which to calculate the commute time.</summary>
+        /// <summary>Required. The latitude and longitude of the location from which to calculate the commute
+        /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startLocation")]
         public virtual LatLng StartLocation { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// The maximum travel time in seconds. The maximum allowed value is `3600s` (one hour). Format is
-        /// `123s`.</summary>
+        /// <summary>Required. The maximum travel time in seconds. The maximum allowed value is `3600s` (one hour).
+        /// Format is `123s`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("travelTime")]
         public virtual object TravelTime { get; set; } 
 
@@ -1991,21 +1926,16 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// that is, the hiring entity responsible for employing applicants for the job position.</summary>
     public class Company : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// The URL to employer's career site or careers page on the employer's web site.</summary>
+        /// <summary>Optional. The URL to employer's career site or careers page on the employer's web site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("careerPageLink")]
         public virtual string CareerPageLink { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Identifiers external to the application that help to further identify the employer.</summary>
+        /// <summary>Optional. Identifiers external to the application that help to further identify the
+        /// employer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyInfoSources")]
         public virtual System.Collections.Generic.IList<CompanyInfoSource> CompanyInfoSources { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The employer's company size.</summary>
+        /// <summary>Optional. The employer's company size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companySize")]
         public virtual string CompanySize { get; set; } 
 
@@ -2017,71 +1947,58 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disableLocationOptimization")]
         public virtual System.Nullable<bool> DisableLocationOptimization { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// The name of the employer to be displayed with the job, for example, "Google, LLC.".</summary>
+        /// <summary>Required. The name of the employer to be displayed with the job, for example, "Google,
+        /// LLC.".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The unique company identifier provided by the client to identify an employer for billing purposes.
-        /// Recommended practice is to use the distributor_company_id.
+        /// <summary>Optional. The unique company identifier provided by the client to identify an employer for billing
+        /// purposes. Recommended practice is to use the distributor_company_id.
         ///
         /// Defaults to same value as distributor_company_id when a value is not provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distributorBillingCompanyId")]
         public virtual string DistributorBillingCompanyId { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// A client's company identifier, used to uniquely identify the company. If an employer has a subsidiary or
-        /// sub-brand, such as "Alphabet" and "Google", which the client wishes to use as the company displayed on the
-        /// job. Best practice is to create a distinct company identifier for each distinct brand displayed.
+        /// <summary>Required. A client's company identifier, used to uniquely identify the company. If an employer has
+        /// a subsidiary or sub-brand, such as "Alphabet" and "Google", which the client wishes to use as the company
+        /// displayed on the job. Best practice is to create a distinct company identifier for each distinct brand
+        /// displayed.
         ///
         /// The maximum number of allowed characters is 255.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distributorCompanyId")]
         public virtual string DistributorCompanyId { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be
-        /// displayed in all roles.
+        /// <summary>Optional. Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and
+        /// typically to be displayed in all roles.
         ///
         /// The maximum number of allowed characters is 500.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eeoText")]
         public virtual string EeoText { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Set to true if it is the hiring agency that post jobs for other employers.
+        /// <summary>Optional. Set to true if it is the hiring agency that post jobs for other employers.
         ///
         /// Defaults to false if not provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiringAgency")]
         public virtual System.Nullable<bool> HiringAgency { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The street address of the company's main headquarters, which may be different from the job location. The
-        /// service attempts to geolocate the provided address, and populates a more specific location wherever possible
-        /// in structured_company_hq_location.</summary>
+        /// <summary>Optional. The street address of the company's main headquarters, which may be different from the
+        /// job location. The service attempts to geolocate the provided address, and populates a more specific location
+        /// wherever possible in structured_company_hq_location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hqLocation")]
         public virtual string HqLocation { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// A URL that hosts the employer's company logo. If provided, the logo image should be squared at 80x80 pixels.
+        /// <summary>Optional. A URL that hosts the employer's company logo. If provided, the logo image should be
+        /// squared at 80x80 pixels.
         ///
         /// The url must be a Google Photos or Google Album url. Only images in these Google sub-domains are
         /// accepted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
         public virtual string ImageUrl { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword
-        /// search. Jobs with `string_values` under these specified field keys are returned if any of the values matches
-        /// the search keyword. Custom field values with parenthesis, brackets and special symbols might not be properly
-        /// searchable, and those keyword queries need to be surrounded by quotes.</summary>
+        /// <summary>Optional. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values`
+        /// are used in keyword search. Jobs with `string_values` under these specified field keys are returned if any
+        /// of the values matches the search keyword. Custom field values with parenthesis, brackets and special symbols
+        /// might not be properly searchable, and those keyword queries need to be surrounded by quotes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywordSearchableCustomAttributes")]
         public virtual System.Collections.Generic.IList<string> KeywordSearchableCustomAttributes { get; set; } 
 
@@ -2103,16 +2020,13 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// A structured headquarters location of the company, resolved from hq_location if possible.</summary>
+        /// <summary>Output only. A structured headquarters location of the company, resolved from hq_location if
+        /// possible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredCompanyHqLocation")]
         public virtual JobLocation StructuredCompanyHqLocation { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// Indicates whether a company is flagged to be suspended from public availability by the service when job
-        /// content appears suspicious, abusive, or spammy.</summary>
+        /// <summary>Output only. Indicates whether a company is flagged to be suspended from public availability by the
+        /// service when job content appears suspicious, abusive, or spammy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
         public virtual System.Nullable<bool> Suspended { get; set; } 
 
@@ -2124,9 +2038,8 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The URL representing the company's primary web site or home page, such as, "www.google.com".</summary>
+        /// <summary>Optional. The URL representing the company's primary web site or home page, such as,
+        /// "www.google.com".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("website")]
         public virtual string Website { get; set; } 
 
@@ -2138,28 +2051,20 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// business page or a Google Maps business page. For unsupported types, use `unknown_type_id`.</summary>
     public class CompanyInfoSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// The Google's Knowledge Graph value for the employer's company.</summary>
+        /// <summary>Optional. The Google's Knowledge Graph value for the employer's company.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freebaseMid")]
         public virtual string FreebaseMid { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The numeric identifier for the employer's Google+ business page.</summary>
+        /// <summary>Optional. The numeric identifier for the employer's Google+ business page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gplusId")]
         public virtual string GplusId { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The numeric identifier for the employer's headquarters on Google Maps, namely, the Google Maps CID (cell
-        /// id).</summary>
+        /// <summary>Optional. The numeric identifier for the employer's headquarters on Google Maps, namely, the Google
+        /// Maps CID (cell id).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapsCid")]
         public virtual string MapsCid { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// A Google identifier that does not match any of the other types.</summary>
+        /// <summary>Optional. A Google identifier that does not match any of the other types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unknownTypeId")]
         public virtual string UnknownTypeId { get; set; } 
 
@@ -2175,42 +2080,30 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// expected_units_per_year.</summary>
     public class CompensationEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// Compensation amount.</summary>
+        /// <summary>Optional. Compensation amount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual Money Amount { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Compensation description.  For example, could indicate equity terms or provide additional context to an
-        /// estimated bonus.</summary>
+        /// <summary>Optional. Compensation description.  For example, could indicate equity terms or provide additional
+        /// context to an estimated bonus.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default
-        /// value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 -
-        /// ANNUAL: 1</summary>
+        /// <summary>Optional. Expected number of units paid each year. If not specified, when Job.employment_types is
+        /// FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY:
+        /// 52 - MONTHLY: 12 - ANNUAL: 1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedUnitsPerYear")]
         public virtual System.Nullable<double> ExpectedUnitsPerYear { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Compensation range.</summary>
+        /// <summary>Optional. Compensation range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual CompensationRange Range { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// Compensation type.</summary>
+        /// <summary>Required. Compensation type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Frequency of the specified amount.
+        /// <summary>Optional. Frequency of the specified amount.
         ///
         /// Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
@@ -2225,27 +2118,19 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// Filter on job compensation type and amount.</summary>
     public class CompensationFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// Whether to include jobs whose compensation range is unspecified.</summary>
+        /// <summary>Optional. Whether to include jobs whose compensation range is unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeJobsWithUnspecifiedCompensationRange")]
         public virtual System.Nullable<bool> IncludeJobsWithUnspecifiedCompensationRange { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Compensation range.</summary>
+        /// <summary>Optional. Compensation range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual CompensationRange Range { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// Type of filter.</summary>
+        /// <summary>Required. Type of filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// Specify desired `base compensation entry's` CompensationInfo.CompensationUnit.</summary>
+        /// <summary>Required. Specify desired `base compensation entry's` CompensationInfo.CompensationUnit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
         public virtual System.Collections.Generic.IList<string> Units { get; set; } 
 
@@ -2258,16 +2143,12 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// Compensation based histogram request.</summary>
     public class CompensationHistogramRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required.
-        ///
-        /// Numeric histogram options, like buckets, whether include min or max value.</summary>
+        /// <summary>Required. Numeric histogram options, like buckets, whether include min or max value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketingOption")]
         public virtual NumericBucketingOption BucketingOption { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// Type of the request, representing which field the histogramming should be performed over. A single request
-        /// can only specify one histogram of each `CompensationHistogramRequestType`.</summary>
+        /// <summary>Required. Type of the request, representing which field the histogramming should be performed over.
+        /// A single request can only specify one histogram of each `CompensationHistogramRequestType`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2304,27 +2185,21 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual Money Amount { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation
-        /// times CompensationEntry.expected_units_per_year.
+        /// <summary>Output only. Annualized base compensation range. Computed as base compensation entry's
+        /// CompensationEntry.compensation times CompensationEntry.expected_units_per_year.
         ///
         /// See CompensationEntry for explanation on compensation annualization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annualizedBaseCompensationRange")]
         public virtual CompensationRange AnnualizedBaseCompensationRange { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation
-        /// times CompensationEntry.expected_units_per_year.
+        /// <summary>Output only. Annualized total compensation range. Computed as all compensation entries'
+        /// CompensationEntry.compensation times CompensationEntry.expected_units_per_year.
         ///
         /// See CompensationEntry for explanation on compensation annualization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annualizedTotalCompensationRange")]
         public virtual CompensationRange AnnualizedTotalCompensationRange { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Job compensation information.
+        /// <summary>Optional. Job compensation information.
         ///
         /// At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as ** base
         /// compensation entry ** for the job.</summary>
@@ -2364,17 +2239,13 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// <summary>Compensation range.</summary>
     public class CompensationRange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the
-        /// currency code is set to match the currency code of min_compensation.</summary>
+        /// <summary>Optional. The maximum amount of compensation. If left empty, the value is set to a maximal
+        /// compensation value and the currency code is set to match the currency code of min_compensation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("max")]
         public virtual Money Max { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to
-        /// match the currency code of max_compensation.</summary>
+        /// <summary>Optional. The minimum amount of compensation. If left empty, the value is set to zero and the
+        /// currency code is set to match the currency code of max_compensation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("min")]
         public virtual Money Min { get; set; } 
 
@@ -2433,15 +2304,11 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disableStreetAddressResolution")]
         public virtual System.Nullable<bool> DisableStreetAddressResolution { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// The Job to be created.</summary>
+        /// <summary>Required. The Job to be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("job")]
         public virtual Job Job { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Options for job processing.</summary>
+        /// <summary>Optional. Options for job processing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingOptions")]
         public virtual JobProcessingOptions ProcessingOptions { get; set; } 
 
@@ -2452,9 +2319,8 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// <summary>Custom attribute values that are either filterable or non-filterable.</summary>
     public class CustomAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// If the `filterable` flag is true, custom field values are searchable. If false, values are not searchable.
+        /// <summary>Optional. If the `filterable` flag is true, custom field values are searchable. If false, values
+        /// are not searchable.
         ///
         /// Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterable")]
@@ -2486,18 +2352,14 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// long_value_histogram_bucketing_option has been defined.</summary>
     public class CustomAttributeHistogramRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required.
-        ///
-        /// Specifies the custom field key to perform a histogram on. If specified without
+        /// <summary>Required. Specifies the custom field key to perform a histogram on. If specified without
         /// `long_value_histogram_bucketing_option`, histogram on string values of the given `key` is triggered,
         /// otherwise histogram is performed on long values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Specifies buckets used to perform a range histogram on Job's filterable long custom field values, or min/max
-        /// value requirements.</summary>
+        /// <summary>Optional. Specifies buckets used to perform a range histogram on Job's filterable long custom field
+        /// values, or min/max value requirements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longValueHistogramBucketingOption")]
         public virtual NumericBucketingOption LongValueHistogramBucketingOption { get; set; } 
 
@@ -2536,9 +2398,7 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// <summary>Resource that represents the custom data not captured by the standard fields.</summary>
     public class CustomField : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// The values of the custom data.</summary>
+        /// <summary>Optional. The values of the custom data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; } 
 
@@ -2551,15 +2411,11 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// Custom field filter of the search.</summary>
     public class CustomFieldFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required.
-        ///
-        /// The query strings for the filter.</summary>
+        /// <summary>Required. The query strings for the filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queries")]
         public virtual System.Collections.Generic.IList<string> Queries { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The type of filter. Defaults to FilterType.OR.</summary>
+        /// <summary>Optional. The type of filter. Defaults to FilterType.OR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2604,16 +2460,13 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// The job typically becomes unsearchable within 10 seconds, but it may take up to 5 minutes.</summary>
     public class DeleteJobsByFilterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// If set to true, this call waits for all processing steps to complete before the job is cleaned up.
-        /// Otherwise, the call returns while some steps are still taking place asynchronously, hence faster.</summary>
+        /// <summary>Optional. If set to true, this call waits for all processing steps to complete before the job is
+        /// cleaned up. Otherwise, the call returns while some steps are still taking place asynchronously, hence
+        /// faster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableFastProcess")]
         public virtual System.Nullable<bool> DisableFastProcess { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// Restrictions on the scope of the delete request.</summary>
+        /// <summary>Required. Restrictions on the scope of the delete request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual Filter Filter { get; set; } 
 
@@ -2627,16 +2480,12 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// Providing this information improves the quality of the search results across devices.</summary>
     public class DeviceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// Type of the device.</summary>
+        /// <summary>Optional. Type of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
         public virtual string DeviceType { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// A device-specific ID. The ID must be a unique identifier that distinguishes the device from other
-        /// devices.</summary>
+        /// <summary>Optional. A device-specific ID. The ID must be a unique identifier that distinguishes the device
+        /// from other devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -2663,34 +2512,25 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// Filter on job compensation type and amount.</summary>
     public class ExtendedCompensationFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// Compensation range.</summary>
+        /// <summary>Optional. Compensation range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compensationRange")]
         public virtual ExtendedCompensationInfoCompensationRange CompensationRange { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// Specify desired `base compensation entry's` ExtendedCompensationInfo.CompensationUnit.</summary>
+        /// <summary>Required. Specify desired `base compensation entry's`
+        /// ExtendedCompensationInfo.CompensationUnit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compensationUnits")]
         public virtual System.Collections.Generic.IList<string> CompensationUnits { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Specify currency in 3-letter [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) format. If
-        /// unspecified, jobs are returned regardless of currency.</summary>
+        /// <summary>Optional. Specify currency in 3-letter [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)
+        /// format. If unspecified, jobs are returned regardless of currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currency")]
         public virtual string Currency { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Whether to include jobs whose compensation range is unspecified.</summary>
+        /// <summary>Optional. Whether to include jobs whose compensation range is unspecified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeJobWithUnspecifiedCompensationRange")]
         public virtual System.Nullable<bool> IncludeJobWithUnspecifiedCompensationRange { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// Type of filter.</summary>
+        /// <summary>Required. Type of filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2703,43 +2543,32 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// Describes job compensation.</summary>
     public class ExtendedCompensationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only.
-        ///
-        /// Annualized base compensation range.</summary>
+        /// <summary>Output only. Annualized base compensation range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annualizedBaseCompensationRange")]
         public virtual ExtendedCompensationInfoCompensationRange AnnualizedBaseCompensationRange { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// Indicates annualized base compensation range cannot be derived, due to the job's base compensation entry
-        /// cannot be annualized. See CompensationEntry for explanation on annualization and base compensation
-        /// entry.</summary>
+        /// <summary>Output only. Indicates annualized base compensation range cannot be derived, due to the job's base
+        /// compensation entry cannot be annualized. See CompensationEntry for explanation on annualization and base
+        /// compensation entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annualizedBaseCompensationUnspecified")]
         public virtual System.Nullable<bool> AnnualizedBaseCompensationUnspecified { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// Annualized total compensation range.</summary>
+        /// <summary>Output only. Annualized total compensation range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annualizedTotalCompensationRange")]
         public virtual ExtendedCompensationInfoCompensationRange AnnualizedTotalCompensationRange { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// Indicates annualized total compensation range cannot be derived, due to the job's all CompensationEntry
-        /// cannot be annualized. See CompensationEntry for explanation on annualization and base compensation
-        /// entry.</summary>
+        /// <summary>Output only. Indicates annualized total compensation range cannot be derived, due to the job's all
+        /// CompensationEntry cannot be annualized. See CompensationEntry for explanation on annualization and base
+        /// compensation entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annualizedTotalCompensationUnspecified")]
         public virtual System.Nullable<bool> AnnualizedTotalCompensationUnspecified { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// A 3-letter [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) currency code.</summary>
+        /// <summary>Optional. A 3-letter [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) currency
+        /// code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currency")]
         public virtual string Currency { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Job compensation information.
+        /// <summary>Optional. Job compensation information.
         ///
         /// At most one entry can be of type ExtendedCompensationInfo.CompensationType.BASE, which is referred as **
         /// base compensation entry ** for the job.</summary>
@@ -2760,49 +2589,35 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// expected_units_per_year.</summary>
     public class ExtendedCompensationInfoCompensationEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// Monetary amount.</summary>
+        /// <summary>Optional. Monetary amount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual ExtendedCompensationInfoDecimal Amount { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Compensation description.</summary>
+        /// <summary>Optional. Compensation description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default
-        /// value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 -
-        /// ANNUAL: 1</summary>
+        /// <summary>Optional. Expected number of units paid each year. If not specified, when Job.employment_types is
+        /// FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY:
+        /// 52 - MONTHLY: 12 - ANNUAL: 1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedUnitsPerYear")]
         public virtual ExtendedCompensationInfoDecimal ExpectedUnitsPerYear { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Compensation range.</summary>
+        /// <summary>Optional. Compensation range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual ExtendedCompensationInfoCompensationRange Range { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// Compensation type.</summary>
+        /// <summary>Required. Compensation type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Frequency of the specified amount.
+        /// <summary>Optional. Frequency of the specified amount.
         ///
         /// Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Indicates compensation amount and range are unset.</summary>
+        /// <summary>Optional. Indicates compensation amount and range are unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unspecified")]
         public virtual System.Nullable<bool> Unspecified { get; set; } 
 
@@ -2815,15 +2630,11 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// Compensation range.</summary>
     public class ExtendedCompensationInfoCompensationRange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required.
-        ///
-        /// Maximum value.</summary>
+        /// <summary>Required. Maximum value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("max")]
         public virtual ExtendedCompensationInfoDecimal Max { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// Minimum value.</summary>
+        /// <summary>Required. Minimum value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("min")]
         public virtual ExtendedCompensationInfoDecimal Min { get; set; } 
 
@@ -2858,11 +2669,9 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// Filter for jobs to be deleted.</summary>
     public class Filter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required.
-        ///
-        /// The requisition ID (or posting ID) assigned by the client to identify a job. This is intended for client
-        /// identification and tracking of listings. name takes precedence over this field The maximum number of allowed
-        /// characters is 225.</summary>
+        /// <summary>Required. The requisition ID (or posting ID) assigned by the client to identify a job. This is
+        /// intended for client identification and tracking of listings. name takes precedence over this field The
+        /// maximum number of allowed characters is 225.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requisitionId")]
         public virtual string RequisitionId { get; set; } 
 
@@ -2878,11 +2687,9 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// A request for the `GetHistogram` method.</summary>
     public class GetHistogramRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// Controls whether to broaden the search to avoid too few results for a given query in instances where a
-        /// search has sparse results. Results from a broadened query is a superset of the results from the original
-        /// query.
+        /// <summary>Optional. Controls whether to broaden the search to avoid too few results for a given query in
+        /// instances where a search has sparse results. Results from a broadened query is a superset of the results
+        /// from the original query.
         ///
         /// Defaults to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowBroadening")]
@@ -2896,9 +2703,7 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
         public virtual JobFilters Filters { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Query used to search against jobs, such as keyword, location filters, etc.</summary>
+        /// <summary>Optional. Query used to search against jobs, such as keyword, location filters, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual JobQuery Query { get; set; } 
 
@@ -2908,9 +2713,7 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestMetadata")]
         public virtual RequestMetadata RequestMetadata { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// A list of facets that specify the histogram data to be calculated against and returned.
+        /// <summary>Required. A list of facets that specify the histogram data to be calculated against and returned.
         ///
         /// Histogram response times can be slow, and counts can be approximations. This call may be temporarily or
         /// permanently removed prior to the production release of Cloud Talent Solution.</summary>
@@ -2946,17 +2749,13 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// Histogram facets to be specified in SearchJobsRequest.</summary>
     public class HistogramFacets : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// Specifies compensation field-based histogram requests. Duplicate values of CompensationHistogramRequest.type
-        /// are not allowed.</summary>
+        /// <summary>Optional. Specifies compensation field-based histogram requests. Duplicate values of
+        /// CompensationHistogramRequest.type are not allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compensationHistogramFacets")]
         public virtual System.Collections.Generic.IList<CompensationHistogramRequest> CompensationHistogramFacets { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Specifies the custom attributes histogram requests. Duplicate values of CustomAttributeHistogramRequest.key
-        /// are not allowed.</summary>
+        /// <summary>Optional. Specifies the custom attributes histogram requests. Duplicate values of
+        /// CustomAttributeHistogramRequest.key are not allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributeHistogramFacets")]
         public virtual System.Collections.Generic.IList<CustomAttributeHistogramRequest> CustomAttributeHistogramFacets { get; set; } 
 
@@ -3050,15 +2849,11 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("applicationUrls")]
         public virtual System.Collections.Generic.IList<string> ApplicationUrls { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The benefits included with the job.</summary>
+        /// <summary>Optional. The benefits included with the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("benefits")]
         public virtual System.Collections.Generic.IList<string> Benefits { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// The name of the company listing the job.</summary>
+        /// <summary>Output only. The name of the company listing the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyDisplayName")]
         public virtual string CompanyDisplayName { get; set; } 
 
@@ -3077,22 +2872,16 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("companyTitle")]
         public virtual string CompanyTitle { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Job compensation information.</summary>
+        /// <summary>Optional. Job compensation information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compensationInfo")]
         public virtual CompensationInfo CompensationInfo { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// The timestamp when this job was created.</summary>
+        /// <summary>Output only. The timestamp when this job was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the
-        /// provided structured fields.
+        /// <summary>Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are
+        /// not covered by the provided structured fields.
         ///
         /// This field is a more general combination of the deprecated id-based filterable_custom_fields and string-
         /// based non_filterable_custom_fields.
@@ -3105,19 +2894,15 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributes")]
         public virtual System.Collections.Generic.IDictionary<string,CustomAttribute> CustomAttributes { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The department or functional area within the company with the open position.
+        /// <summary>Optional. The department or functional area within the company with the open position.
         ///
         /// The maximum number of allowed characters is 255.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("department")]
         public virtual string Department { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// The description of the job, which typically includes a multi-paragraph description of the company and
-        /// related information. Separate fields are provided on the job object for responsibilities, qualifications,
-        /// and other job characteristics. Use of these separate job fields is recommended.
+        /// <summary>Required. The description of the job, which typically includes a multi-paragraph description of the
+        /// company and related information. Separate fields are provided on the job object for responsibilities,
+        /// qualifications, and other job characteristics. Use of these separate job fields is recommended.
         ///
         /// This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list
         /// markup tags.
@@ -3135,22 +2920,17 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("distributorCompanyId")]
         public virtual string DistributorCompanyId { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The desired education level for the job, such as "Bachelors", "Masters", "Doctorate".</summary>
+        /// <summary>Optional. The desired education level for the job, such as "Bachelors", "Masters",
+        /// "Doctorate".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("educationLevels")]
         public virtual System.Collections.Generic.IList<string> EducationLevels { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The employment type(s) of a job, for example, full time or part time.</summary>
+        /// <summary>Optional. The employment type(s) of a job, for example, full time or part time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("employmentTypes")]
         public virtual System.Collections.Generic.IList<string> EmploymentTypes { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The end date of the job in UTC time zone. Typically this field is used for contracting engagements. Dates
-        /// prior to 1970/1/1 and invalid date formats are ignored.</summary>
+        /// <summary>Optional. The end date of the job in UTC time zone. Typically this field is used for contracting
+        /// engagements. Dates prior to 1970/1/1 and invalid date formats are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual Date EndDate { get; set; } 
 
@@ -3241,33 +3021,25 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filterableCustomFields")]
         public virtual System.Collections.Generic.IDictionary<string,CustomField> FilterableCustomFields { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// A description of bonus, commission, and other compensation incentives associated with the job not including
-        /// salary or pay.
+        /// <summary>Optional. A description of bonus, commission, and other compensation incentives associated with the
+        /// job not including salary or pay.
         ///
         /// The maximum number of allowed characters is 10,000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incentives")]
         public virtual string Incentives { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// Structured locations of the job, resolved from locations.</summary>
+        /// <summary>Output only. Structured locations of the job, resolved from locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobLocations")]
         public virtual System.Collections.Generic.IList<JobLocation> JobLocations { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// The title of the job, such as "Software Engineer"
+        /// <summary>Required. The title of the job, such as "Software Engineer"
         ///
         /// The maximum number of allowed characters is 500.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobTitle")]
         public virtual string JobTitle { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The language of the posting. This field is distinct from any requirements for fluency that are associated
-        /// with the job.
+        /// <summary>Optional. The language of the posting. This field is distinct from any requirements for fluency
+        /// that are associated with the job.
         ///
         /// Language codes must be in BCP-47 format, such as "en-US" or "sr-Latn". For more information, see [Tags for
         /// Identifying Languages](https://tools.ietf.org/html/bcp47){: class="external" target="_blank" }.
@@ -3277,9 +3049,7 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The experience level associated with the job, such as "Entry Level".</summary>
+        /// <summary>Optional. The experience level associated with the job, such as "Entry Level".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("level")]
         public virtual string Level { get; set; } 
 
@@ -3307,28 +3077,22 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// A promotion value of the job, as determined by the client. The value determines the sort order of the jobs
-        /// returned when searching for jobs using the featured jobs search call, with higher promotional values being
-        /// returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are
-        /// returned in a FEATURED_JOB_SEARCH.
+        /// <summary>Optional. A promotion value of the job, as determined by the client. The value determines the sort
+        /// order of the jobs returned when searching for jobs using the featured jobs search call, with higher
+        /// promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a
+        /// promotionValue >0 are returned in a FEATURED_JOB_SEARCH.
         ///
         /// Default value is 0, and negative values are treated as 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionValue")]
         public virtual System.Nullable<int> PromotionValue { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The date this job was most recently published in UTC format. The default value is the time the request
-        /// arrives at the server.</summary>
+        /// <summary>Optional. The date this job was most recently published in UTC format. The default value is the
+        /// time the request arrives at the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishDate")]
         public virtual Date PublishDate { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// A description of the qualifications required to perform the job. The use of this field is recommended as an
-        /// alternative to using the more general description field.
+        /// <summary>Optional. A description of the qualifications required to perform the job. The use of this field is
+        /// recommended as an alternative to using the more general description field.
         ///
         /// This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list
         /// markup tags.
@@ -3337,35 +3101,28 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("qualifications")]
         public virtual string Qualifications { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// The URL of a web page that displays job details.</summary>
+        /// <summary>Output only. The URL of a web page that displays job details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceUrl")]
         public virtual string ReferenceUrl { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The job Region (for example, state, country) throughout which the job is available. If this field is set, a
-        /// LocationFilter in a search query within the job region finds this job if an exact location match is not
-        /// specified. If this field is set, setting job locations to the same location level as this field is strongly
-        /// recommended.</summary>
+        /// <summary>Optional. The job Region (for example, state, country) throughout which the job is available. If
+        /// this field is set, a LocationFilter in a search query within the job region finds this job if an exact
+        /// location match is not specified. If this field is set, setting job locations to the same location level as
+        /// this field is strongly recommended.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field
-        /// is intended to be used by clients for client identification and tracking of listings. A job is not allowed
-        /// to be created if there is another job with the same requisition_id, company_name and language_code.
+        /// <summary>Required. The requisition ID, also referred to as the posting ID, assigned by the client to
+        /// identify a job. This field is intended to be used by clients for client identification and tracking of
+        /// listings. A job is not allowed to be created if there is another job with the same requisition_id,
+        /// company_name and language_code.
         ///
         /// The maximum number of allowed characters is 255.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requisitionId")]
         public virtual string RequisitionId { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// A description of job responsibilities. The use of this field is recommended as an alternative to using the
-        /// more general description field.
+        /// <summary>Optional. A description of job responsibilities. The use of this field is recommended as an
+        /// alternative to using the more general description field.
         ///
         /// This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list
         /// markup tags.
@@ -3374,10 +3131,8 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responsibilities")]
         public virtual string Responsibilities { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The start date of the job in UTC time zone. Typically this field is used for contracting engagements. Dates
-        /// prior to 1970/1/1 and invalid date formats are ignored.</summary>
+        /// <summary>Optional. The start date of the job in UTC time zone. Typically this field is used for contracting
+        /// engagements. Dates prior to 1970/1/1 and invalid date formats are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual Date StartDate { get; set; } 
 
@@ -3393,16 +3148,12 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unindexedCustomFields")]
         public virtual System.Collections.Generic.IDictionary<string,CustomField> UnindexedCustomFields { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// The timestamp when this job was last updated.</summary>
+        /// <summary>Output only. The timestamp when this job was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The visibility of the job. Defaults to JobVisibility.PRIVATE if not specified. Currently only
-        /// JobVisibility.PRIVATE is supported.</summary>
+        /// <summary>Optional. The visibility of the job. Defaults to JobVisibility.PRIVATE if not specified. Currently
+        /// only JobVisibility.PRIVATE is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; } 
 
@@ -3417,9 +3168,8 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// The filters required to perform a search query or histogram.</summary>
     public class JobFilters : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// The category filter specifies the categories of jobs to search against. See Category for more information.
+        /// <summary>Optional. The category filter specifies the categories of jobs to search against. See Category for
+        /// more information.
         ///
         /// If a value is not specified, jobs from any category are searched against.
         ///
@@ -3427,18 +3177,15 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
         public virtual System.Collections.Generic.IList<string> Categories { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Allows filtering jobs by commute time with different travel methods (e.g. driving or public transit). Note:
-        /// this only works with COMMUTE MODE. When specified, [JobFilters.location_filters] will be ignored.
+        /// <summary>Optional. Allows filtering jobs by commute time with different travel methods (e.g. driving or
+        /// public transit). Note: this only works with COMMUTE MODE. When specified, [JobFilters.location_filters] will
+        /// be ignored.
         ///
         /// Currently we do not support sorting by commute time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commuteFilter")]
         public virtual CommutePreference CommuteFilter { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The company names filter specifies the company entities to search against.
+        /// <summary>Optional. The company names filter specifies the company entities to search against.
         ///
         /// If a value is not specified, jobs are searched for against all companies.
         ///
@@ -3448,9 +3195,7 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("companyNames")]
         public virtual System.Collections.Generic.IList<string> CompanyNames { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// This filter specifies the exact company titles of jobs to search against.
+        /// <summary>Optional. This filter specifies the exact company titles of jobs to search against.
         ///
         /// If a value is not specified, jobs within the search results can be associated with any company.
         ///
@@ -3461,18 +3206,14 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("companyTitles")]
         public virtual System.Collections.Generic.IList<string> CompanyTitles { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// This search filter is applied only to Job.compensation_info. For example, if the filter is specified as
-        /// "Hourly job with per-hour compensation > $15", only jobs that meet this criteria are searched. If a filter
-        /// is not defined, all open jobs are searched.</summary>
+        /// <summary>Optional. This search filter is applied only to Job.compensation_info. For example, if the filter
+        /// is specified as "Hourly job with per-hour compensation > $15", only jobs that meet this criteria are
+        /// searched. If a filter is not defined, all open jobs are searched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compensationFilter")]
         public virtual CompensationFilter CompensationFilter { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// This filter specifies a structured syntax to match against the Job.custom_attributes that are marked as
-        /// `filterable`.
+        /// <summary>Optional. This filter specifies a structured syntax to match against the Job.custom_attributes that
+        /// are marked as `filterable`.
         ///
         /// The syntax for this expression is a subset of Google SQL syntax.
         ///
@@ -3501,19 +3242,15 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customFieldFilters")]
         public virtual System.Collections.Generic.IDictionary<string,CustomFieldFilter> CustomFieldFilters { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// This flag controls the spell-check feature. If false, the service attempts to correct a misspelled query,
-        /// for example, "enginee" is corrected to "engineer".
+        /// <summary>Optional. This flag controls the spell-check feature. If false, the service attempts to correct a
+        /// misspelled query, for example, "enginee" is corrected to "engineer".
         ///
         /// Defaults to false: a spell check is performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableSpellCheck")]
         public virtual System.Nullable<bool> DisableSpellCheck { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The employment type filter specifies the employment type of jobs to search against, such as
-        /// EmploymentType.FULL_TIME.
+        /// <summary>Optional. The employment type filter specifies the employment type of jobs to search against, such
+        /// as EmploymentType.FULL_TIME.
         ///
         /// If a value is not specified, jobs in the search results include any employment type.
         ///
@@ -3532,9 +3269,7 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("extendedCompensationFilter")]
         public virtual ExtendedCompensationFilter ExtendedCompensationFilter { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// This filter specifies the locale of jobs to search against, for example, "en-US".
+        /// <summary>Optional. This filter specifies the locale of jobs to search against, for example, "en-US".
         ///
         /// If a value is not specified, the search results may contain jobs in any locale.
         ///
@@ -3545,10 +3280,8 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageCodes")]
         public virtual System.Collections.Generic.IList<string> LanguageCodes { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The location filter specifies geo-regions containing the jobs to search against. See LocationFilter for more
-        /// information.
+        /// <summary>Optional. The location filter specifies geo-regions containing the jobs to search against. See
+        /// LocationFilter for more information.
         ///
         /// If a location value is not specified, jobs are retrieved from all locations.
         ///
@@ -3560,17 +3293,14 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationFilters")]
         public virtual System.Collections.Generic.IList<LocationFilter> LocationFilters { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Jobs published within a range specified by this filter are searched against, for example,
+        /// <summary>Optional. Jobs published within a range specified by this filter are searched against, for example,
         /// DateRange.PAST_MONTH. If a value is not specified, all open jobs are searched against regardless of the date
         /// they were published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishDateRange")]
         public virtual string PublishDateRange { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The query filter contains the keywords that match against the job title, description, and location fields.
+        /// <summary>Optional. The query filter contains the keywords that match against the job title, description, and
+        /// location fields.
         ///
         /// The maximum query size is 255 bytes/characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
@@ -3624,15 +3354,12 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// Options for job processing.</summary>
     public class JobProcessingOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// If set to `true`, the service does not attempt to resolve a more precise address for the job.</summary>
+        /// <summary>Optional. If set to `true`, the service does not attempt to resolve a more precise address for the
+        /// job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableStreetAddressResolution")]
         public virtual System.Nullable<bool> DisableStreetAddressResolution { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Option for job HTML content sanitization. Applied fields are:
+        /// <summary>Optional. Option for job HTML content sanitization. Applied fields are:
         ///
         /// * description * applicationInstruction * incentives * qualifications * responsibilities
         ///
@@ -3651,9 +3378,8 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// The query required to perform a search query or histogram.</summary>
     public class JobQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// The category filter specifies the categories of jobs to search against. See Category for more information.
+        /// <summary>Optional. The category filter specifies the categories of jobs to search against. See Category for
+        /// more information.
         ///
         /// If a value is not specified, jobs from any category are searched against.
         ///
@@ -3661,18 +3387,15 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
         public virtual System.Collections.Generic.IList<string> Categories { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Allows filtering jobs by commute time with different travel methods (for example, driving or public
-        /// transit). Note: This only works with COMMUTE MODE. When specified, [JobQuery.location_filters] is ignored.
+        /// <summary>Optional. Allows filtering jobs by commute time with different travel methods (for example, driving
+        /// or public transit). Note: This only works with COMMUTE MODE. When specified, [JobQuery.location_filters] is
+        /// ignored.
         ///
         /// Currently we don't support sorting by commute time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commuteFilter")]
         public virtual CommutePreference CommuteFilter { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// This filter specifies the exact company display name of the jobs to search against.
+        /// <summary>Optional. This filter specifies the exact company display name of the jobs to search against.
         ///
         /// If a value isn't specified, jobs within the search results are associated with any company.
         ///
@@ -3683,9 +3406,7 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("companyDisplayNames")]
         public virtual System.Collections.Generic.IList<string> CompanyDisplayNames { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// This filter specifies the company entities to search against.
+        /// <summary>Optional. This filter specifies the company entities to search against.
         ///
         /// If a value isn't specified, jobs are searched for against all companies.
         ///
@@ -3695,17 +3416,14 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("companyNames")]
         public virtual System.Collections.Generic.IList<string> CompanyNames { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// This search filter is applied only to Job.compensation_info. For example, if the filter is specified as
-        /// "Hourly job with per-hour compensation > $15", only jobs meeting these criteria are searched. If a filter
-        /// isn't defined, all open jobs are searched.</summary>
+        /// <summary>Optional. This search filter is applied only to Job.compensation_info. For example, if the filter
+        /// is specified as "Hourly job with per-hour compensation > $15", only jobs meeting these criteria are
+        /// searched. If a filter isn't defined, all open jobs are searched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compensationFilter")]
         public virtual CompensationFilter CompensationFilter { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// This filter specifies a structured syntax to match against the Job.custom_attributes marked as `filterable`.
+        /// <summary>Optional. This filter specifies a structured syntax to match against the Job.custom_attributes
+        /// marked as `filterable`.
         ///
         /// The syntax for this expression is a subset of Google SQL syntax.
         ///
@@ -3723,19 +3441,15 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributeFilter")]
         public virtual string CustomAttributeFilter { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// This flag controls the spell-check feature. If false, the service attempts to correct a misspelled query,
-        /// for example, "enginee" is corrected to "engineer".
+        /// <summary>Optional. This flag controls the spell-check feature. If false, the service attempts to correct a
+        /// misspelled query, for example, "enginee" is corrected to "engineer".
         ///
         /// Defaults to false: a spell check is performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableSpellCheck")]
         public virtual System.Nullable<bool> DisableSpellCheck { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The employment type filter specifies the employment type of jobs to search against, such as
-        /// EmploymentType.FULL_TIME.
+        /// <summary>Optional. The employment type filter specifies the employment type of jobs to search against, such
+        /// as EmploymentType.FULL_TIME.
         ///
         /// If a value is not specified, jobs in the search results include any employment type.
         ///
@@ -3744,9 +3458,7 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("employmentTypes")]
         public virtual System.Collections.Generic.IList<string> EmploymentTypes { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// This filter specifies the locale of jobs to search against, for example, "en-US".
+        /// <summary>Optional. This filter specifies the locale of jobs to search against, for example, "en-US".
         ///
         /// If a value isn't specified, the search results can contain jobs in any locale.
         ///
@@ -3757,10 +3469,8 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageCodes")]
         public virtual System.Collections.Generic.IList<string> LanguageCodes { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The location filter specifies geo-regions containing the jobs to search against. See LocationFilter for more
-        /// information.
+        /// <summary>Optional. The location filter specifies geo-regions containing the jobs to search against. See
+        /// LocationFilter for more information.
         ///
         /// If a location value isn't specified, jobs fitting the other search criteria are retrieved regardless of
         /// where they're located.
@@ -3773,17 +3483,13 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationFilters")]
         public virtual System.Collections.Generic.IList<LocationFilter> LocationFilters { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Jobs published within a range specified by this filter are searched against, for example,
+        /// <summary>Optional. Jobs published within a range specified by this filter are searched against, for example,
         /// DateRange.PAST_MONTH. If a value isn't specified, all open jobs are searched against regardless of their
         /// published date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishDateRange")]
         public virtual string PublishDateRange { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The query string that matches against the job title, description, and location fields.
+        /// <summary>Optional. The query string that matches against the job title, description, and location fields.
         ///
         /// The maximum query size is 255 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
@@ -3889,42 +3595,32 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// Geographic region of the search.</summary>
     public class LocationFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// The distance_in_miles is applied when the location being searched for is identified as a city or smaller.
-        /// When the location being searched for is a state or larger, this field is ignored.</summary>
+        /// <summary>Optional. The distance_in_miles is applied when the location being searched for is identified as a
+        /// city or smaller. When the location being searched for is a state or larger, this field is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distanceInMiles")]
         public virtual System.Nullable<double> DistanceInMiles { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Allows the client to return jobs without a set location, specifically, telecommuting jobs (telecomuting is
-        /// considered by the service as a special location. Job.allow_telecommute indicates if a job permits
-        /// telecommuting. If this field is true, telecommuting jobs are searched, and name and lat_lng are ignored.
-        /// This filter can be used by itself to search exclusively for telecommuting jobs, or it can be combined with
-        /// another location filter to search for a combination of job locations, such as "Mountain View" or
-        /// "telecommuting" jobs. However, when used in combination with other location filters, telecommuting jobs can
-        /// be treated as less relevant than other jobs in the search response.</summary>
+        /// <summary>Optional. Allows the client to return jobs without a set location, specifically, telecommuting jobs
+        /// (telecomuting is considered by the service as a special location. Job.allow_telecommute indicates if a job
+        /// permits telecommuting. If this field is true, telecommuting jobs are searched, and name and lat_lng are
+        /// ignored. This filter can be used by itself to search exclusively for telecommuting jobs, or it can be
+        /// combined with another location filter to search for a combination of job locations, such as "Mountain View"
+        /// or "telecommuting" jobs. However, when used in combination with other location filters, telecommuting jobs
+        /// can be treated as less relevant than other jobs in the search response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isTelecommute")]
         public virtual System.Nullable<bool> IsTelecommute { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The latitude and longitude of the geographic center from which to search. This field is ignored if
-        /// `location_name` is provided.</summary>
+        /// <summary>Optional. The latitude and longitude of the geographic center from which to search. This field is
+        /// ignored if `location_name` is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latLng")]
         public virtual LatLng LatLng { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The address name, such as "Mountain View" or "Bay Area".</summary>
+        /// <summary>Optional. The address name, such as "Mountain View" or "Bay Area".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// CLDR region code of the country/region of the address. This will be used to address ambiguity of the user-
-        /// input location, e.g. "Liverpool" against "Liverpool, NY, US" or "Liverpool, UK".
+        /// <summary>Optional. CLDR region code of the country/region of the address. This will be used to address
+        /// ambiguity of the user-input location, e.g. "Liverpool" against "Liverpool, NY, US" or "Liverpool, UK".
         ///
         /// Set this field if all the jobs to search against are from a same region, or jobs are world-wide but the job
         /// seeker is from a specific region.
@@ -4000,17 +3696,14 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// Use this field to specify bucketing option for the histogram search response.</summary>
     public class NumericBucketingOption : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required.
-        ///
-        /// Two adjacent values form a histogram bucket. Values should be in ascending order. For example, if [5, 10,
-        /// 15] are provided, four buckets are created: (-inf, 5), 5, 10), [10, 15), [15, inf). At most 20
-        /// [buckets_bound is supported.</summary>
+        /// <summary>Required. Two adjacent values form a histogram bucket. Values should be in ascending order. For
+        /// example, if [5, 10, 15] are provided, four buckets are created: (-inf, 5), 5, 10), [10, 15), [15, inf). At
+        /// most 20 [buckets_bound is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketBounds")]
         public virtual System.Collections.Generic.IList<System.Nullable<double>> BucketBounds { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// If set to true, the histogram result includes minimum/maximum value of the numeric field.</summary>
+        /// <summary>Optional. If set to true, the histogram result includes minimum/maximum value of the numeric
+        /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiresMinMax")]
         public virtual System.Nullable<bool> RequiresMinMax { get; set; } 
 
@@ -4050,8 +3743,8 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// type of process.
     ///
     /// Advice on address input / editing: - Use an i18n-ready address widget such as
-    /// https://github.com/googlei18n/libaddressinput) - Users should not be presented with UI elements for input or
-    /// editing of fields outside countries where that field is used.
+    /// https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing
+    /// of fields outside countries where that field is used.
     ///
     /// For more guidance on how to use this schema, please see:
     /// https://support.google.com/business/answer/6397478</summary>
@@ -4152,16 +3845,13 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// improve the performance of the service.</summary>
     public class RequestMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// The type of device used by the job seeker at the time of the call to the service.</summary>
+        /// <summary>Optional. The type of device used by the job seeker at the time of the call to the
+        /// service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceInfo")]
         public virtual DeviceInfo DeviceInfo { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// The client-defined scope or source of the service call, which typically is the domain on which the service
-        /// has been implemented and is currently being run.
+        /// <summary>Required. The client-defined scope or source of the service call, which typically is the domain on
+        /// which the service has been implemented and is currently being run.
         ///
         /// For example, if the service is being run by client Foo, Inc., on job board www.foo.com and career site
         /// www.bar.com, then this field is set to "foo.com" for use on the job board, and "bar.com" for use on the
@@ -4172,10 +3862,9 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// A unique session identification string. A session is defined as the duration of an end user's interaction
-        /// with the service over a period. Obfuscate this field for privacy concerns before providing it to the API.
+        /// <summary>Required. A unique session identification string. A session is defined as the duration of an end
+        /// user's interaction with the service over a period. Obfuscate this field for privacy concerns before
+        /// providing it to the API.
         ///
         /// If this field is not available for some reason, please send "UNKNOWN". Note that any improvements to the
         /// service model for a particular tenant site, rely on this field being set correctly to some unique
@@ -4183,11 +3872,9 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
         public virtual string SessionId { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// A unique user identification string, as determined by the client. The client is responsible for ensuring
-        /// client-level uniqueness of this value in order to have the strongest positive impact on search quality.
-        /// Obfuscate this field for privacy concerns before providing it to the service.
+        /// <summary>Required. A unique user identification string, as determined by the client. The client is
+        /// responsible for ensuring client-level uniqueness of this value in order to have the strongest positive
+        /// impact on search quality. Obfuscate this field for privacy concerns before providing it to the service.
         ///
         /// If this field is not available for some reason, please send "UNKNOWN". Note that any improvements to the
         /// service model for a particular tenant site, rely on this field being set correctly to some unique
@@ -4226,11 +3913,9 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// The Request body of the `SearchJobs` call.</summary>
     public class SearchJobsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional.
-        ///
-        /// Controls whether to disable relevance thresholding. Relevance thresholding removes jobs that have low
-        /// relevance in search results, for example, removing "Assistant to the CEO" positions from the search results
-        /// of a search for "CEO".
+        /// <summary>Optional. Controls whether to disable relevance thresholding. Relevance thresholding removes jobs
+        /// that have low relevance in search results, for example, removing "Assistant to the CEO" positions from the
+        /// search results of a search for "CEO".
         ///
         /// Disabling relevance thresholding improves the accuracy of subsequent search requests.
         ///
@@ -4238,20 +3923,16 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disableRelevanceThresholding")]
         public virtual System.Nullable<bool> DisableRelevanceThresholding { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Controls whether to broaden the search when it produces sparse results. Broadened queries append results to
-        /// the end of the matching results list.
+        /// <summary>Optional. Controls whether to broaden the search when it produces sparse results. Broadened queries
+        /// append results to the end of the matching results list.
         ///
         /// Defaults to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableBroadening")]
         public virtual System.Nullable<bool> EnableBroadening { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Controls if the search job request requires the return of a precise count of the first 300 results. Setting
-        /// this to `true` ensures consistency in the number of results per page. Best practice is to set this value to
-        /// true if a client allows users to jump directly to a non-sequential search results page.
+        /// <summary>Optional. Controls if the search job request requires the return of a precise count of the first
+        /// 300 results. Setting this to `true` ensures consistency in the number of results per page. Best practice is
+        /// to set this value to true if a client allows users to jump directly to a non-sequential search results page.
         ///
         /// Enabling this flag may adversely impact performance.
         ///
@@ -4267,29 +3948,23 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
         public virtual JobFilters Filters { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Restrictions on what fields to perform histogram on, such as `COMPANY_SIZE` etc.</summary>
+        /// <summary>Optional. Restrictions on what fields to perform histogram on, such as `COMPANY_SIZE`
+        /// etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("histogramFacets")]
         public virtual HistogramFacets HistogramFacets { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The number of job attributes returned for jobs in the search response. Defaults to JobView.SMALL if no value
-        /// is specified.</summary>
+        /// <summary>Optional. The number of job attributes returned for jobs in the search response. Defaults to
+        /// JobView.SMALL if no value is specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobView")]
         public virtual string JobView { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// Mode of a search.</summary>
+        /// <summary>Required. Mode of a search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// An integer that specifies the current offset (that is, starting result location, amongst the jobs deemed by
-        /// the API as relevant) in search results. This field is only considered if page_token is unset.
+        /// <summary>Optional. An integer that specifies the current offset (that is, starting result location, amongst
+        /// the jobs deemed by the API as relevant) in search results. This field is only considered if page_token is
+        /// unset.
         ///
         /// For example, 0 means to  return results starting from the first matching job, and 10 means to return from
         /// the 11th job. This can be used for pagination, (for example, pageSize = 10 and offset = 10 means to return
@@ -4306,37 +3981,29 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// A limit on the number of jobs returned in the search results. Increasing this value above the default value
-        /// of 10 can increase search response time. The value can be between 1 and 100.</summary>
+        /// <summary>Optional. A limit on the number of jobs returned in the search results. Increasing this value above
+        /// the default value of 10 can increase search response time. The value can be between 1 and 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The token specifying the current offset within search results. See SearchJobsResponse.next_page_token for an
-        /// explanation of how to obtain the next set of query results.</summary>
+        /// <summary>Optional. The token specifying the current offset within search results. See
+        /// SearchJobsResponse.next_page_token for an explanation of how to obtain the next set of query
+        /// results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Query used to search against jobs, such as keyword, location filters, etc.</summary>
+        /// <summary>Optional. Query used to search against jobs, such as keyword, location filters, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual JobQuery Query { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// The meta information collected about the job searcher, used to improve the search quality of the service.
-        /// The identifiers, (such as `user_id`) are provided by users, and must be unique and consistent.</summary>
+        /// <summary>Required. The meta information collected about the job searcher, used to improve the search quality
+        /// of the service. The identifiers, (such as `user_id`) are provided by users, and must be unique and
+        /// consistent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestMetadata")]
         public virtual RequestMetadata RequestMetadata { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// The criteria determining how search results are sorted. Defaults to SortBy.RELEVANCE_DESC if no value is
-        /// specified.</summary>
+        /// <summary>Optional. The criteria determining how search results are sorted. Defaults to SortBy.RELEVANCE_DESC
+        /// if no value is specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortBy")]
         public virtual string SortBy { get; set; } 
 
@@ -4428,9 +4095,7 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
     /// <summary>Represents array of string values.</summary>
     public class StringValues : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required.
-        ///
-        /// String values.</summary>
+        /// <summary>Required. String values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; } 
 
@@ -4451,15 +4116,11 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disableStreetAddressResolution")]
         public virtual System.Nullable<bool> DisableStreetAddressResolution { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// The Job to be updated.</summary>
+        /// <summary>Required. The Job to be updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("job")]
         public virtual Job Job { get; set; } 
 
-        /// <summary>Optional.
-        ///
-        /// Options for job processing.
+        /// <summary>Optional. Options for job processing.
         ///
         /// UpdateJobRequest.disable_street_address_resolution is ignored if this flag is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingOptions")]

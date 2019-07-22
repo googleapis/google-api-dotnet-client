@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/streetview/publish/'>Street View Publish API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190716 (1657)
+ *      <tr><th>API Rev<td>20190718 (1659)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/streetview/publish/'>
  *              https://developers.google.com/streetview/publish/</a>
@@ -1089,6 +1089,17 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
 
+            /// <summary>The nextPageToken value returned from a previous ListPhotos request, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of photos to return. `pageSize` must be non-negative. If `pageSize` is zero
+            /// or is not provided, the default page size of 100 is used. The number of photos returned in the response
+            /// may be less than `pageSize` if the number of photos that belong to the user is less than
+            /// `pageSize`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Specifies if a download URL for the photos bytes should be returned in the Photos
             /// response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -1116,17 +1127,6 @@ namespace Google.Apis.StreetViewPublish.v1
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
 
-            /// <summary>The nextPageToken value returned from a previous ListPhotos request, if any.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of photos to return. `pageSize` must be non-negative. If `pageSize` is zero
-            /// or is not provided, the default page size of 100 is used. The number of photos returned in the response
-            /// may be less than `pageSize` if the number of photos that belong to the user is less than
-            /// `pageSize`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1152,6 +1152,24 @@ namespace Google.Apis.StreetViewPublish.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
@@ -1173,24 +1191,6 @@ namespace Google.Apis.StreetViewPublish.v1
                     "languageCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

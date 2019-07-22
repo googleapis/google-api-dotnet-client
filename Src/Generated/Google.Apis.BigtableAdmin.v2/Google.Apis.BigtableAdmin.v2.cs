@@ -1087,10 +1087,6 @@ namespace Google.Apis.BigtableAdmin.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The value of `next_page_token` returned by a previous call.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>Maximum number of results per page.
                     ///
                     /// A page_size of zero lets the server choose the number of items to return. A page_size which is
@@ -1101,6 +1097,10 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The value of `next_page_token` returned by a previous call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1136,18 +1136,18 @@ namespace Google.Apis.BigtableAdmin.v2
                                 Pattern = @"^projects/[^/]+/instances/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1184,14 +1184,14 @@ namespace Google.Apis.BigtableAdmin.v2
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>If true, ignore safety checks when updating the app profile.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("ignoreWarnings", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
+
                     /// <summary>The subset of app profile fields which should be replaced. If unset, all fields will be
                     /// replaced.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
-
-                    /// <summary>If true, ignore safety checks when updating the app profile.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("ignoreWarnings", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1233,18 +1233,18 @@ namespace Google.Apis.BigtableAdmin.v2
                                 Pattern = @"^projects/[^/]+/instances/[^/]+/appProfiles/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
+                            "ignoreWarnings", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "updateMask",
+                                Name = "ignoreWarnings",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "ignoreWarnings", new Google.Apis.Discovery.Parameter
+                            "updateMask", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "ignoreWarnings",
+                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190717 (1658)
+ *      <tr><th>API Rev<td>20190718 (1659)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -996,32 +996,6 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ResourceName { get; private set; }
 
-                /// <summary>Whether the response should include a sync token, which can be used to get all changes
-                /// since the last request. For subsequent sync requests use the `sync_token` param instead. Initial
-                /// sync requests that specify `request_sync_token` have an additional rate limit.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> RequestSyncToken { get; set; }
-
-                /// <summary>The token of the page to be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each
-                /// path should start with `person.`: for example, `person.names` or `person.photos`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object RequestMaskIncludeField { get; set; }
-
-                /// <summary>The number of connections to include in the response. Valid values are between 1 and 2000,
-                /// inclusive. Defaults to 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>A sync token returned by a previous call to `people.connections.list`. Only resources
-                /// changed since the sync token was created will be returned. Sync requests that specify `sync_token`
-                /// have an additional rate limit.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string SyncToken { get; set; }
-
                 /// <summary>**Required.** A field mask to restrict which fields on each person are returned. Multiple
                 /// fields can be specified by separating them with commas. Valid values are:
                 ///
@@ -1050,6 +1024,32 @@ namespace Google.Apis.PeopleService.v1
                     [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
                     LASTNAMEASCENDING,
                 }
+
+                /// <summary>Whether the response should include a sync token, which can be used to get all changes
+                /// since the last request. For subsequent sync requests use the `sync_token` param instead. Initial
+                /// sync requests that specify `request_sync_token` have an additional rate limit.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> RequestSyncToken { get; set; }
+
+                /// <summary>The token of the page to be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The number of connections to include in the response. Valid values are between 1 and 2000,
+                /// inclusive. Defaults to 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each
+                /// path should start with `person.`: for example, `person.names` or `person.photos`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object RequestMaskIncludeField { get; set; }
+
+                /// <summary>A sync token returned by a previous call to `people.connections.list`. Only resources
+                /// changed since the sync token was created will be returned. Sync requests that specify `sync_token`
+                /// have an additional rate limit.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string SyncToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1085,6 +1085,24 @@ namespace Google.Apis.PeopleService.v1
                             Pattern = @"^people/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "personFields", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "personFields",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "sortOrder", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sortOrder",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "requestSyncToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestSyncToken",
@@ -1103,15 +1121,6 @@ namespace Google.Apis.PeopleService.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestMask.includeField",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1121,27 +1130,18 @@ namespace Google.Apis.PeopleService.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestMask.includeField",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "syncToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "syncToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "personFields", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "personFields",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "sortOrder", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sortOrder",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1278,6 +1278,86 @@ namespace Google.Apis.PeopleService.v1
 
         }
 
+        /// <summary>Delete a contact's photo.</summary>
+        /// <param name="resourceName">The resource name of the contact whose photo will be deleted.</param>
+        public virtual DeleteContactPhotoRequest DeleteContactPhoto(string resourceName)
+        {
+            return new DeleteContactPhotoRequest(service, resourceName);
+        }
+
+        /// <summary>Delete a contact's photo.</summary>
+        public class DeleteContactPhotoRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.DeleteContactPhotoResponse>
+        {
+            /// <summary>Constructs a new DeleteContactPhoto request.</summary>
+            public DeleteContactPhotoRequest(Google.Apis.Services.IClientService service, string resourceName)
+                : base(service)
+            {
+                ResourceName = resourceName;
+                InitParameters();
+            }
+
+
+            /// <summary>The resource name of the contact whose photo will be deleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceName { get; private set; }
+
+            /// <summary>**Optional.** Not specifying any fields will skip the post mutate read. A field mask to
+            /// restrict which fields on the person are returned. Multiple fields can be specified by separating them
+            /// with commas. Valid values are:
+            ///
+            /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
+            /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
+            /// occupations * organizations * phoneNumbers * photos * relations * relationshipInterests *
+            /// relationshipStatuses * residences * sipAddresses * skills * taglines * urls * userDefined</summary>
+            [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object PersonFields { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "deleteContactPhoto"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+resourceName}:deleteContactPhoto"; }
+            }
+
+            /// <summary>Initializes DeleteContactPhoto parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resourceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^people/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "personFields", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "personFields",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Provides information about a person by specifying a resource name. Use `people/me` to indicate the
         /// authenticated user.
         ///
@@ -1409,6 +1489,17 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
+            /// <summary>The resource names of the people to provide information about.
+            ///
+            /// - To get information about the authenticated user, specify `people/me`. - To get information about a
+            /// google account, specify `people/`account_id. - To get information about a contact, specify the resource
+            /// name that identifies the contact as returned by
+            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
+            ///
+            /// You can include up to 50 resource names in one request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
+
             /// <summary>**Required.** A field mask to restrict which fields on each person are returned. Multiple
             /// fields can be specified by separating them with commas. Valid values are:
             ///
@@ -1423,17 +1514,6 @@ namespace Google.Apis.PeopleService.v1
             /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object RequestMaskIncludeField { get; set; }
-
-            /// <summary>The resource names of the people to provide information about.
-            ///
-            /// - To get information about the authenticated user, specify `people/me`. - To get information about a
-            /// google account, specify `people/`account_id. - To get information about a contact, specify the resource
-            /// name that identifies the contact as returned by
-            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
-            ///
-            /// You can include up to 50 resource names in one request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1460,6 +1540,15 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "resourceNames", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceNames",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "personFields", new Google.Apis.Discovery.Parameter
                     {
                         Name = "personFields",
@@ -1472,15 +1561,6 @@ namespace Google.Apis.PeopleService.v1
                     "requestMask.includeField", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMask.includeField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "resourceNames", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resourceNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1589,6 +1669,74 @@ namespace Google.Apis.PeopleService.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Update a contact's photo.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resourceName">Person resource name</param>
+        public virtual UpdateContactPhotoRequest UpdateContactPhoto(Google.Apis.PeopleService.v1.Data.UpdateContactPhotoRequest body, string resourceName)
+        {
+            return new UpdateContactPhotoRequest(service, body, resourceName);
+        }
+
+        /// <summary>Update a contact's photo.</summary>
+        public class UpdateContactPhotoRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.UpdateContactPhotoResponse>
+        {
+            /// <summary>Constructs a new UpdateContactPhoto request.</summary>
+            public UpdateContactPhotoRequest(Google.Apis.Services.IClientService service, Google.Apis.PeopleService.v1.Data.UpdateContactPhotoRequest body, string resourceName)
+                : base(service)
+            {
+                ResourceName = resourceName;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Person resource name</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceName { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.PeopleService.v1.Data.UpdateContactPhotoRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateContactPhoto"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+resourceName}:updateContactPhoto"; }
+            }
+
+            /// <summary>Initializes UpdateContactPhoto parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resourceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^people/[^/]+$",
                     });
             }
 
@@ -1887,6 +2035,18 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for deleteing a contact's photo.</summary>
+    public class DeleteContactPhotoResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated person, if person_fields is set in the DeleteContactPhotoRequest; otherwise this will
+        /// be unset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("person")]
+        public virtual Person Person { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2847,6 +3007,41 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The contact group to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroup")]
         public virtual ContactGroup ContactGroup { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to update an existing contact's photo. All requests must have a valid photo format: JPEG or
+    /// PNG.</summary>
+    public class UpdateContactPhotoRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>**Optional.** Not specifying any fields will skip the post mutate read. A field mask to restrict
+        /// which fields on the person are returned. Multiple fields can be specified by separating them with commas.
+        /// Valid values are:
+        ///
+        /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses * events *
+        /// genders * imClients * interests * locales * memberships * metadata * names * nicknames * occupations *
+        /// organizations * phoneNumbers * photos * relations * relationshipInterests * relationshipStatuses *
+        /// residences * sipAddresses * skills * taglines * urls * userDefined</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personFields")]
+        public virtual object PersonFields { get; set; } 
+
+        /// <summary>Raw photo bytes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photoBytes")]
+        public virtual string PhotoBytes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for updating a contact's photo.</summary>
+    public class UpdateContactPhotoResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated person, if person_fields is set in the UpdateContactPhotoRequest; otherwise this will
+        /// be unset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("person")]
+        public virtual Person Person { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
