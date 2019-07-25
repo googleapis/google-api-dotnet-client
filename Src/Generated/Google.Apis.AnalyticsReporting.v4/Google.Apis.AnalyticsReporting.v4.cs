@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Analytics Reporting API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20190715 (1656)
+ *      <tr><th>API Rev<td>20190723 (1664)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>
  *              https://developers.google.com/analytics/devguides/reporting/core/v4/</a>
@@ -1307,7 +1307,7 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilterClauses")]
         public virtual System.Collections.Generic.IList<DimensionFilterClause> DimensionFilterClauses { get; set; } 
 
-        /// <summary>The dimensions requested. Requests can have a total of 7 dimensions.</summary>
+        /// <summary>The dimensions requested. Requests can have a total of 9 dimensions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; } 
 

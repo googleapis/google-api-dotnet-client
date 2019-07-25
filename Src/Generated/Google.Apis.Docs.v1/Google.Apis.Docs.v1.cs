@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190711 (1652)
+ *      <tr><th>API Rev<td>20190718 (1659)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -1116,57 +1116,79 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>The style of the document.</summary>
     public class DocumentStyle : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The background of the document.</summary>
+        /// <summary>The background of the document. Documents cannot have a transparent background color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("background")]
         public virtual Background Background { get; set; } 
 
-        /// <summary>The ID of the default footer. If not set, there is no default footer.</summary>
+        /// <summary>The ID of the default footer. If not set, there is no default footer.
+        ///
+        /// This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultFooterId")]
         public virtual string DefaultFooterId { get; set; } 
 
-        /// <summary>The ID of the default header. If not set, there is no default header.</summary>
+        /// <summary>The ID of the default header. If not set, there is no default header.
+        ///
+        /// This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultHeaderId")]
         public virtual string DefaultHeaderId { get; set; } 
 
         /// <summary>The ID of the footer used only for even pages. The value of use_even_page_header_footer determines
         /// whether to use the default_footer_id or this value for the footer on even pages. If not set, there is no
-        /// even page footer.</summary>
+        /// even page footer.
+        ///
+        /// This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evenPageFooterId")]
         public virtual string EvenPageFooterId { get; set; } 
 
         /// <summary>The ID of the header used only for even pages. The value of use_even_page_header_footer determines
         /// whether to use the default_header_id or this value for the header on even pages. If not set, there is no
-        /// even page header.</summary>
+        /// even page header.
+        ///
+        /// This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evenPageHeaderId")]
         public virtual string EvenPageHeaderId { get; set; } 
 
         /// <summary>The ID of the footer used only for the first page. If not set then a unique footer for the first
         /// page does not exist. The value of use_first_page_header_footer determines whether to use the
-        /// default_footer_id or this value for the footer on the first page. If not set, there is no first page
-        /// footer.</summary>
+        /// default_footer_id or this value for the footer on the first page. If not set, there is no first page footer.
+        ///
+        /// This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPageFooterId")]
         public virtual string FirstPageFooterId { get; set; } 
 
         /// <summary>The ID of the header used only for the first page. If not set then a unique header for the first
         /// page does not exist. The value of use_first_page_header_footer determines whether to use the
-        /// default_header_id or this value for the header on the first page. If not set, there is no first page
-        /// header.</summary>
+        /// default_header_id or this value for the header on the first page. If not set, there is no first page header.
+        ///
+        /// This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPageHeaderId")]
         public virtual string FirstPageHeaderId { get; set; } 
 
-        /// <summary>The bottom page margin.</summary>
+        /// <summary>The bottom page margin.
+        ///
+        /// Updating the bottom page margin on the document style clears the bottom page margin on all section
+        /// styles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginBottom")]
         public virtual Dimension MarginBottom { get; set; } 
 
-        /// <summary>The left page margin.</summary>
+        /// <summary>The left page margin.
+        ///
+        /// Updating the left page margin on the document style clears the left page margin on all section styles. It
+        /// may also cause columns to resize in all sections.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginLeft")]
         public virtual Dimension MarginLeft { get; set; } 
 
-        /// <summary>The right page margin.</summary>
+        /// <summary>The right page margin.
+        ///
+        /// Updating the right page margin on the document style clears the right page margin on all section styles. It
+        /// may also cause columns to resize in all sections.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginRight")]
         public virtual Dimension MarginRight { get; set; } 
 
-        /// <summary>The top page margin.</summary>
+        /// <summary>The top page margin.
+        ///
+        /// Updating the top page margin on the document style clears the top page margin on all section
+        /// styles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginTop")]
         public virtual Dimension MarginTop { get; set; } 
 
@@ -1178,11 +1200,15 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual Size PageSize { get; set; } 
 
-        /// <summary>Indicates whether to use the even page header / footer IDs for the even pages.</summary>
+        /// <summary>Indicates whether to use the even page header / footer IDs for the even pages.
+        ///
+        /// This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useEvenPageHeaderFooter")]
         public virtual System.Nullable<bool> UseEvenPageHeaderFooter { get; set; } 
 
-        /// <summary>Indicates whether to use the first page header / footer IDs for the first page.</summary>
+        /// <summary>Indicates whether to use the first page header / footer IDs for the first page.
+        ///
+        /// This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useFirstPageHeaderFooter")]
         public virtual System.Nullable<bool> UseFirstPageHeaderFooter { get; set; } 
 
@@ -2513,8 +2539,9 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; } 
 
-        /// <summary>The heading ID of the paragraph. If empty, then this paragraph is not a heading. This property is
-        /// read-only.</summary>
+        /// <summary>The heading ID of the paragraph. If empty, then this paragraph is not a heading.
+        ///
+        /// This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headingId")]
         public virtual string HeadingId { get; set; } 
 
@@ -2573,8 +2600,9 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spacingMode")]
         public virtual string SpacingMode { get; set; } 
 
-        /// <summary>A list of the tab stops for this paragraph. The list of tab stops is not inherited. This property
-        /// is read-only.</summary>
+        /// <summary>A list of the tab stops for this paragraph. The list of tab stops is not inherited.
+        ///
+        /// This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tabStops")]
         public virtual System.Collections.Generic.IList<TabStop> TabStops { get; set; } 
 
@@ -2892,6 +2920,10 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Replaces all instances of the specified text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceAllText")]
         public virtual ReplaceAllTextRequest ReplaceAllText { get; set; } 
+
+        /// <summary>Updates the style of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateDocumentStyle")]
+        public virtual UpdateDocumentStyleRequest UpdateDocumentStyle { get; set; } 
 
         /// <summary>Updates the paragraph style at the specified range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateParagraphStyle")]
@@ -3480,7 +3512,9 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("borderTop")]
         public virtual TableCellBorder BorderTop { get; set; } 
 
-        /// <summary>The column span of the cell. This property is read-only.</summary>
+        /// <summary>The column span of the cell.
+        ///
+        /// This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnSpan")]
         public virtual System.Nullable<int> ColumnSpan { get; set; } 
 
@@ -3505,7 +3539,9 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paddingTop")]
         public virtual Dimension PaddingTop { get; set; } 
 
-        /// <summary>The row span of the cell. This property is read-only.</summary>
+        /// <summary>The row span of the cell.
+        ///
+        /// This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowSpan")]
         public virtual System.Nullable<int> RowSpan { get; set; } 
 
@@ -3880,6 +3916,29 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Indicates if there was a suggested change to weighted_font_family.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weightedFontFamilySuggested")]
         public virtual System.Nullable<bool> WeightedFontFamilySuggested { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Updates the DocumentStyle.</summary>
+    public class UpdateDocumentStyleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The styles to set on the document.
+        ///
+        /// Certain document style changes may cause other changes in order to mirror the behavior of the Docs editor.
+        /// See the documentation of DocumentStyle for more information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentStyle")]
+        public virtual DocumentStyle DocumentStyle { get; set; } 
+
+        /// <summary>The fields that should be updated.
+        ///
+        /// At least one field must be specified. The root `document_style` is implied and should not be specified. A
+        /// single `"*"` can be used as short-hand for listing every field.
+        ///
+        /// For example to update the background, set `fields` to `"background"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

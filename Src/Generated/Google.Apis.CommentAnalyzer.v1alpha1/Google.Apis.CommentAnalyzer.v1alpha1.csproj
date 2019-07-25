@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.CommentAnalyzer.v1alpha1 Client Library</Title>
-    <Version>1.40.2.1655</Version>
+    <Version>1.40.2.1662</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

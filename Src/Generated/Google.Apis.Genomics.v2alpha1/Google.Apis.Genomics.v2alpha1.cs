@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v2alpha1
- *      <tr><th>API Rev<td>20190710 (1651)
+ *      <tr><th>API Rev<td>20190719 (1660)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -1684,6 +1684,10 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         /// <summary>The worker's instance name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; } 
+
+        /// <summary>The machine type that was assigned for the worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; } 
 
         /// <summary>The zone the worker is running in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]

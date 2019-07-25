@@ -476,6 +476,23 @@ namespace Google.Apis.CloudTrace.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>Type of data returned for traces in the list. Optional. Default is `MINIMAL`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>Type of data returned for traces in the list. Optional. Default is `MINIMAL`.</summary>
+                public enum ViewEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
+                    VIEWTYPEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("MINIMAL")]
+                    MINIMAL,
+                    [Google.Apis.Util.StringValueAttribute("ROOTSPAN")]
+                    ROOTSPAN,
+                    [Google.Apis.Util.StringValueAttribute("COMPLETE")]
+                    COMPLETE,
+                }
+
                 /// <summary>Field used to sort the returned traces. Optional. Can be one of the following:
                 ///
                 /// *   `trace_id` *   `name` (`name` field of root span in the trace) *   `duration` (difference
@@ -531,23 +548,6 @@ namespace Google.Apis.CloudTrace.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Type of data returned for traces in the list. Optional. Default is `MINIMAL`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ViewEnum> View { get; set; }
-
-                /// <summary>Type of data returned for traces in the list. Optional. Default is `MINIMAL`.</summary>
-                public enum ViewEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                    VIEWTYPEUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("MINIMAL")]
-                    MINIMAL,
-                    [Google.Apis.Util.StringValueAttribute("ROOTSPAN")]
-                    ROOTSPAN,
-                    [Google.Apis.Util.StringValueAttribute("COMPLETE")]
-                    COMPLETE,
-                }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -578,6 +578,15 @@ namespace Google.Apis.CloudTrace.v1
                             Name = "projectId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -630,15 +639,6 @@ namespace Google.Apis.CloudTrace.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
