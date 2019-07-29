@@ -24,10 +24,7 @@ Please see the [FAQ](FAQ.md) for answers to common questions.
 
 * .NET Framework 4.5+
 * netstandard1.3, providing .NET Core support
-
-### ASP.NET Core
-
-ASP.NET Core is supported through the `netstandard1.3` framework target. However there are currently no authentication helpers or examples specific to ASP.NET Core, making authentication more difficult to use than on other platforms. This is being tracked in issue [#933](https://github.com/googleapis/google-api-dotnet-client/issues/933).
+* netstandard2.0, providing [ASP.NET Core Support](https://www.nuget.org/packages/Google.Apis.Auth.AspNetCore)
 
 ## Legacy Supported Frameworks
 
