@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190709 (1650)
+ *      <tr><th>API Rev<td>20190723 (1664)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -847,10 +847,6 @@ namespace Google.Apis.RemoteBuildExecution.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -858,6 +854,10 @@ namespace Google.Apis.RemoteBuildExecution.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -893,15 +893,6 @@ namespace Google.Apis.RemoteBuildExecution.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -914,6 +905,15 @@ namespace Google.Apis.RemoteBuildExecution.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2062,17 +2062,25 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
 
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A filter to constrain the pools returned. Filters have the form:
+        /// <summary>Optional. A filter expression that filters resources listed in the response. The expression must
+        /// specify the field name, a comparison operator, and the value that you want to use for filtering. The value
+        /// must be a string, a number, or a boolean. String values are case-insensitive. The comparison operator must
+        /// be either `:`, `=`, `!=`, `>`, `>=`, `<=` or `<`. The `:` operator can be used with string fields to match
+        /// substrings. For non-string fields it is equivalent to the `=` operator. The `:*` comparison can be used to
+        /// test  whether a key has been defined.
         ///
-        /// [[AND|OR]   ]...
+        /// You can also filter on nested fields.
         ///
-        /// is the path for a field or map key in the Pool proto message. e.g. "configuration.disk_size_gb" or
-        /// "configuration.labels.key". can be one of "<", "<=", ">=", ">", "=", "!=", ":". ":" is a HAS operation for
-        /// strings and repeated primitive fields. is the value to test, case-insensitive for strings. "*" stands for
-        /// any value and can be used to test for key presence. Parenthesis determine AND/OR precedence. In space
-        /// separated restrictions, AND is implicit, e.g. "a = b x = y" is equivalent to "a = b AND x = y".
+        /// To filter on multiple expressions, you can separate expression using `AND` and `OR` operators, using
+        /// parentheses to specify precedence. If neither operator is specified, `AND` is assumed.
         ///
-        /// Example filter: configuration.labels.key1 = * AND (state = RUNNING OR state = UPDATING)</summary>
+        /// Examples:
+        ///
+        /// Include only pools with more than 100 reserved workers: `(worker_count > 100) (worker_config.reserved =
+        /// true)`
+        ///
+        /// Include only pools with a certain label or machines of the n1-standard family: `worker_config.labels.key1 :
+        /// * OR worker_config.machine_type: n1-standard`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -2129,8 +2137,8 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
 
         /// <summary>Labels associated with the workers. Label keys and values can be no longer than 63 characters, can
         /// only contain lowercase letters, numeric characters, underscores and dashes. International letters are
-        /// permitted. Keys must start with a letter but values are optional. There can not be more than 64 labels per
-        /// resource.</summary>
+        /// permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64
+        /// labels per resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 

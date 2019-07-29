@@ -704,12 +704,6 @@ namespace Google.Apis.WebSecurityScanner.v1beta
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>A token identifying a page of results to be returned. This should be a
-                        /// `next_page_token` value returned from a previous List request. If unspecified, the first
-                        /// page of results is returned.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
                         /// <summary>The maximum number of Findings to return, can be limited by server. If not
                         /// specified or not positive, the implementation will select a reasonable value.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -719,6 +713,12 @@ namespace Google.Apis.WebSecurityScanner.v1beta
                         /// 'finding_type'. Supported operator: '='.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
+
+                        /// <summary>A token identifying a page of results to be returned. This should be a
+                        /// `next_page_token` value returned from a previous List request. If unspecified, the first
+                        /// page of results is returned.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -754,15 +754,6 @@ namespace Google.Apis.WebSecurityScanner.v1beta
                                     Pattern = @"^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
@@ -775,6 +766,15 @@ namespace Google.Apis.WebSecurityScanner.v1beta
                                 "filter", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,

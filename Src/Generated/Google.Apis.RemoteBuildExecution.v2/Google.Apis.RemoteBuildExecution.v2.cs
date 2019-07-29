@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190709 (1650)
+ *      <tr><th>API Rev<td>20190723 (1664)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -436,10 +436,6 @@ namespace Google.Apis.RemoteBuildExecution.v2
             [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long SizeBytes { get; private set; }
 
-            /// <summary>A hint to the server to request inlining stdout in the ActionResult message.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("inlineStdout", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> InlineStdout { get; set; }
-
             /// <summary>A hint to the server to request inlining stderr in the ActionResult message.</summary>
             [Google.Apis.Util.RequestParameterAttribute("inlineStderr", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> InlineStderr { get; set; }
@@ -448,6 +444,10 @@ namespace Google.Apis.RemoteBuildExecution.v2
             /// exactly match one path in `output_files` in the Command message.</summary>
             [Google.Apis.Util.RequestParameterAttribute("inlineOutputFiles", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> InlineOutputFiles { get; set; }
+
+            /// <summary>A hint to the server to request inlining stdout in the ActionResult message.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("inlineStdout", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> InlineStdout { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -501,15 +501,6 @@ namespace Google.Apis.RemoteBuildExecution.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "inlineStdout", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "inlineStdout",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "inlineStderr", new Google.Apis.Discovery.Parameter
                     {
                         Name = "inlineStderr",
@@ -522,6 +513,15 @@ namespace Google.Apis.RemoteBuildExecution.v2
                     "inlineOutputFiles", new Google.Apis.Discovery.Parameter
                     {
                         Name = "inlineOutputFiles",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "inlineStdout", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "inlineStdout",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2722,17 +2722,25 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
 
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A filter to constrain the pools returned. Filters have the form:
+        /// <summary>Optional. A filter expression that filters resources listed in the response. The expression must
+        /// specify the field name, a comparison operator, and the value that you want to use for filtering. The value
+        /// must be a string, a number, or a boolean. String values are case-insensitive. The comparison operator must
+        /// be either `:`, `=`, `!=`, `>`, `>=`, `<=` or `<`. The `:` operator can be used with string fields to match
+        /// substrings. For non-string fields it is equivalent to the `=` operator. The `:*` comparison can be used to
+        /// test  whether a key has been defined.
         ///
-        /// [[AND|OR]   ]...
+        /// You can also filter on nested fields.
         ///
-        /// is the path for a field or map key in the Pool proto message. e.g. "configuration.disk_size_gb" or
-        /// "configuration.labels.key". can be one of "<", "<=", ">=", ">", "=", "!=", ":". ":" is a HAS operation for
-        /// strings and repeated primitive fields. is the value to test, case-insensitive for strings. "*" stands for
-        /// any value and can be used to test for key presence. Parenthesis determine AND/OR precedence. In space
-        /// separated restrictions, AND is implicit, e.g. "a = b x = y" is equivalent to "a = b AND x = y".
+        /// To filter on multiple expressions, you can separate expression using `AND` and `OR` operators, using
+        /// parentheses to specify precedence. If neither operator is specified, `AND` is assumed.
         ///
-        /// Example filter: configuration.labels.key1 = * AND (state = RUNNING OR state = UPDATING)</summary>
+        /// Examples:
+        ///
+        /// Include only pools with more than 100 reserved workers: `(worker_count > 100) (worker_config.reserved =
+        /// true)`
+        ///
+        /// Include only pools with a certain label or machines of the n1-standard family: `worker_config.labels.key1 :
+        /// * OR worker_config.machine_type: n1-standard`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -2789,8 +2797,8 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
 
         /// <summary>Labels associated with the workers. Label keys and values can be no longer than 63 characters, can
         /// only contain lowercase letters, numeric characters, underscores and dashes. International letters are
-        /// permitted. Keys must start with a letter but values are optional. There can not be more than 64 labels per
-        /// resource.</summary>
+        /// permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64
+        /// labels per resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 

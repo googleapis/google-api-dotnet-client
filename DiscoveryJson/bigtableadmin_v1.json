@@ -1,80 +1,5 @@
 {
-  "discoveryVersion": "v1",
-  "version_module": true,
   "schemas": {
-    "Cluster": {
-      "description": "A resizable group of nodes in a particular cloud location, capable\nof serving all Tables in the parent\nInstance.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "(`OutputOnly`)\nThe unique name of the cluster. Values are of the form\n`projects/\u003cproject\u003e/instances/\u003cinstance\u003e/clusters/a-z*`.",
-          "type": "string"
-        },
-        "serveNodes": {
-          "description": "The number of nodes allocated to this cluster. More nodes enable higher\nthroughput and more consistent performance.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "defaultStorageType": {
-          "description": "(`CreationOnly`)\nThe type of storage used by this cluster to serve its\nparent instance's tables, unless explicitly overridden.",
-          "type": "string",
-          "enumDescriptions": [
-            "The user did not specify a storage type.",
-            "Flash (SSD) storage should be used.",
-            "Magnetic drive (HDD) storage should be used."
-          ],
-          "enum": [
-            "STORAGE_TYPE_UNSPECIFIED",
-            "SSD",
-            "HDD"
-          ]
-        },
-        "location": {
-          "description": "(`CreationOnly`)\nThe location where this cluster's nodes and storage reside. For best\nperformance, clients should be located as close as possible to this\ncluster. Currently only zones are supported, so values should be of the\nform `projects/\u003cproject\u003e/locations/\u003czone\u003e`.",
-          "type": "string"
-        },
-        "state": {
-          "description": "(`OutputOnly`)\nThe current state of the cluster.",
-          "type": "string",
-          "enumDescriptions": [
-            "The state of the cluster could not be determined.",
-            "The cluster has been successfully created and is ready to serve requests.",
-            "The cluster is currently being created, and may be destroyed\nif the creation process encounters an error.\nA cluster may not be able to serve requests while being created.",
-            "The cluster is currently being resized, and may revert to its previous\nnode count if the process encounters an error.\nA cluster is still capable of serving requests while being resized,\nbut may exhibit performance as if its number of allocated nodes is\nbetween the starting and requested states.",
-            "The cluster has no backing nodes. The data (tables) still\nexist, but no operations can be performed on the cluster."
-          ],
-          "enum": [
-            "STATE_NOT_KNOWN",
-            "READY",
-            "CREATING",
-            "RESIZING",
-            "DISABLED"
-          ]
-        }
-      },
-      "id": "Cluster"
-    },
-    "UpdateInstanceMetadata": {
-      "description": "The metadata for the Operation returned by UpdateInstance.",
-      "type": "object",
-      "properties": {
-        "originalRequest": {
-          "$ref": "PartialUpdateInstanceRequest",
-          "description": "The request that prompted the initiation of this UpdateInstance operation."
-        },
-        "requestTime": {
-          "description": "The time at which the original request was received.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "finishTime": {
-          "description": "The time at which the operation failed or was completed successfully.",
-          "format": "google-datetime",
-          "type": "string"
-        }
-      },
-      "id": "UpdateInstanceMetadata"
-    },
     "CreateInstanceMetadata": {
       "description": "The metadata for the Operation returned by CreateInstance.",
       "type": "object",
@@ -85,16 +10,37 @@
           "type": "string"
         },
         "originalRequest": {
-          "$ref": "CreateInstanceRequest",
-          "description": "The request that prompted the initiation of this CreateInstance operation."
+          "description": "The request that prompted the initiation of this CreateInstance operation.",
+          "$ref": "CreateInstanceRequest"
         },
         "requestTime": {
-          "type": "string",
           "description": "The time at which the original request was received.",
-          "format": "google-datetime"
+          "format": "google-datetime",
+          "type": "string"
         }
       },
       "id": "CreateInstanceMetadata"
+    },
+    "UpdateInstanceMetadata": {
+      "description": "The metadata for the Operation returned by UpdateInstance.",
+      "type": "object",
+      "properties": {
+        "finishTime": {
+          "description": "The time at which the operation failed or was completed successfully.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "originalRequest": {
+          "description": "The request that prompted the initiation of this UpdateInstance operation.",
+          "$ref": "PartialUpdateInstanceRequest"
+        },
+        "requestTime": {
+          "description": "The time at which the original request was received.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "id": "UpdateInstanceMetadata"
     },
     "PartialUpdateInstanceRequest": {
       "description": "Request message for BigtableInstanceAdmin.PartialUpdateInstance.",
@@ -113,15 +59,10 @@
       "id": "PartialUpdateInstanceRequest"
     },
     "CreateClusterMetadata": {
+      "id": "CreateClusterMetadata",
+      "description": "The metadata for the Operation returned by CreateCluster.",
       "type": "object",
       "properties": {
-        "tables": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "TableProgress"
-          },
-          "description": "Keys: the full `name` of each table that existed in the instance when\nCreateCluster was first called, i.e.\n`projects/\u003cproject\u003e/instances/\u003cinstance\u003e/tables/\u003ctable\u003e`. Any table added\nto the instance by a later API call will be created in the new cluster by\nthat API call, not this one.\n\nValues: information on how much of a table's data has been copied to the\nnewly-created cluster so far."
-        },
         "finishTime": {
           "description": "The time at which the operation failed or was completed successfully.",
           "format": "google-datetime",
@@ -135,10 +76,15 @@
           "description": "The time at which the original request was received.",
           "format": "google-datetime",
           "type": "string"
+        },
+        "tables": {
+          "additionalProperties": {
+            "$ref": "TableProgress"
+          },
+          "description": "Keys: the full `name` of each table that existed in the instance when\nCreateCluster was first called, i.e.\n`projects/\u003cproject\u003e/instances/\u003cinstance\u003e/tables/\u003ctable\u003e`. Any table added\nto the instance by a later API call will be created in the new cluster by\nthat API call, not this one.\n\nValues: information on how much of a table's data has been copied to the\nnewly-created cluster so far.",
+          "type": "object"
         }
-      },
-      "id": "CreateClusterMetadata",
-      "description": "The metadata for the Operation returned by CreateCluster."
+      }
     },
     "Instance": {
       "description": "A collection of Bigtable Tables and\nthe resources that serve them.\nAll tables in an instance are served from all\nClusters in the instance.",
@@ -149,8 +95,8 @@
           "type": "string"
         },
         "displayName": {
-          "type": "string",
-          "description": "The descriptive name for this instance as it appears in UIs.\nCan be changed at any time, but should be kept globally unique\nto avoid confusion."
+          "description": "The descriptive name for this instance as it appears in UIs.\nCan be changed at any time, but should be kept globally unique\nto avoid confusion.",
+          "type": "string"
         },
         "type": {
           "description": "The type of the instance. Defaults to `PRODUCTION`.",
@@ -174,8 +120,6 @@
           "type": "object"
         },
         "state": {
-          "description": "(`OutputOnly`)\nThe current state of the instance.",
-          "type": "string",
           "enumDescriptions": [
             "The state of the instance could not be determined.",
             "The instance has been successfully created and can serve requests\nto its tables.",
@@ -185,20 +129,18 @@
             "STATE_NOT_KNOWN",
             "READY",
             "CREATING"
-          ]
+          ],
+          "description": "(`OutputOnly`)\nThe current state of the instance.",
+          "type": "string"
         }
       },
       "id": "Instance"
     },
     "UpdateClusterMetadata": {
+      "id": "UpdateClusterMetadata",
       "description": "The metadata for the Operation returned by UpdateCluster.",
       "type": "object",
       "properties": {
-        "finishTime": {
-          "description": "The time at which the operation failed or was completed successfully.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "originalRequest": {
           "$ref": "Cluster",
           "description": "The request that prompted the initiation of this UpdateCluster operation."
@@ -207,60 +149,38 @@
           "description": "The time at which the original request was received.",
           "format": "google-datetime",
           "type": "string"
+        },
+        "finishTime": {
+          "description": "The time at which the operation failed or was completed successfully.",
+          "format": "google-datetime",
+          "type": "string"
         }
-      },
-      "id": "UpdateClusterMetadata"
-    },
-    "UpdateAppProfileMetadata": {
-      "id": "UpdateAppProfileMetadata",
-      "description": "The metadata for the Operation returned by UpdateAppProfile.",
-      "type": "object",
-      "properties": {}
+      }
     },
     "CreateClusterRequest": {
+      "id": "CreateClusterRequest",
       "description": "Request message for BigtableInstanceAdmin.CreateCluster.",
       "type": "object",
       "properties": {
-        "cluster": {
-          "$ref": "Cluster",
-          "description": "The cluster to be created.\nFields marked `OutputOnly` must be left blank."
-        },
         "parent": {
           "description": "The unique name of the instance in which to create the new cluster.\nValues are of the form\n`projects/\u003cproject\u003e/instances/\u003cinstance\u003e`.",
           "type": "string"
         },
         "clusterId": {
-          "type": "string",
-          "description": "The ID to be used when referring to the new cluster within its instance,\ne.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`."
+          "description": "The ID to be used when referring to the new cluster within its instance,\ne.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.",
+          "type": "string"
+        },
+        "cluster": {
+          "$ref": "Cluster",
+          "description": "The cluster to be created.\nFields marked `OutputOnly` must be left blank."
         }
-      },
-      "id": "CreateClusterRequest"
+      }
     },
-    "CreateInstanceRequest": {
-      "description": "Request message for BigtableInstanceAdmin.CreateInstance.",
+    "UpdateAppProfileMetadata": {
+      "description": "The metadata for the Operation returned by UpdateAppProfile.",
       "type": "object",
-      "properties": {
-        "parent": {
-          "description": "The unique name of the project in which to create the new instance.\nValues are of the form `projects/\u003cproject\u003e`.",
-          "type": "string"
-        },
-        "instanceId": {
-          "description": "The ID to be used when referring to the new instance within its project,\ne.g., just `myinstance` rather than\n`projects/myproject/instances/myinstance`.",
-          "type": "string"
-        },
-        "clusters": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "Cluster"
-          },
-          "description": "The clusters to be created within the instance, mapped by desired\ncluster ID, e.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.\nFields marked `OutputOnly` must be left blank.\nCurrently, at most two clusters can be specified."
-        },
-        "instance": {
-          "$ref": "Instance",
-          "description": "The instance to create.\nFields marked `OutputOnly` must be left blank."
-        }
-      },
-      "id": "CreateInstanceRequest"
+      "properties": {},
+      "id": "UpdateAppProfileMetadata"
     },
     "TableProgress": {
       "id": "TableProgress",
@@ -278,7 +198,6 @@
           "type": "string"
         },
         "state": {
-          "type": "string",
           "enumDescriptions": [
             "",
             "The table has not yet begun copying to the new cluster.",
@@ -292,14 +211,93 @@
             "COPYING",
             "COMPLETED",
             "CANCELLED"
-          ]
+          ],
+          "type": "string"
         }
       }
+    },
+    "CreateInstanceRequest": {
+      "id": "CreateInstanceRequest",
+      "description": "Request message for BigtableInstanceAdmin.CreateInstance.",
+      "type": "object",
+      "properties": {
+        "instance": {
+          "description": "The instance to create.\nFields marked `OutputOnly` must be left blank.",
+          "$ref": "Instance"
+        },
+        "parent": {
+          "description": "The unique name of the project in which to create the new instance.\nValues are of the form `projects/\u003cproject\u003e`.",
+          "type": "string"
+        },
+        "instanceId": {
+          "description": "The ID to be used when referring to the new instance within its project,\ne.g., just `myinstance` rather than\n`projects/myproject/instances/myinstance`.",
+          "type": "string"
+        },
+        "clusters": {
+          "description": "The clusters to be created within the instance, mapped by desired\ncluster ID, e.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.\nFields marked `OutputOnly` must be left blank.\nCurrently, at most two clusters can be specified.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "Cluster"
+          }
+        }
+      }
+    },
+    "Cluster": {
+      "description": "A resizable group of nodes in a particular cloud location, capable\nof serving all Tables in the parent\nInstance.",
+      "type": "object",
+      "properties": {
+        "location": {
+          "description": "(`CreationOnly`)\nThe location where this cluster's nodes and storage reside. For best\nperformance, clients should be located as close as possible to this\ncluster. Currently only zones are supported, so values should be of the\nform `projects/\u003cproject\u003e/locations/\u003czone\u003e`.",
+          "type": "string"
+        },
+        "state": {
+          "enumDescriptions": [
+            "The state of the cluster could not be determined.",
+            "The cluster has been successfully created and is ready to serve requests.",
+            "The cluster is currently being created, and may be destroyed\nif the creation process encounters an error.\nA cluster may not be able to serve requests while being created.",
+            "The cluster is currently being resized, and may revert to its previous\nnode count if the process encounters an error.\nA cluster is still capable of serving requests while being resized,\nbut may exhibit performance as if its number of allocated nodes is\nbetween the starting and requested states.",
+            "The cluster has no backing nodes. The data (tables) still\nexist, but no operations can be performed on the cluster."
+          ],
+          "enum": [
+            "STATE_NOT_KNOWN",
+            "READY",
+            "CREATING",
+            "RESIZING",
+            "DISABLED"
+          ],
+          "description": "(`OutputOnly`)\nThe current state of the cluster.",
+          "type": "string"
+        },
+        "name": {
+          "description": "(`OutputOnly`)\nThe unique name of the cluster. Values are of the form\n`projects/\u003cproject\u003e/instances/\u003cinstance\u003e/clusters/a-z*`.",
+          "type": "string"
+        },
+        "serveNodes": {
+          "description": "The number of nodes allocated to this cluster. More nodes enable higher\nthroughput and more consistent performance.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "defaultStorageType": {
+          "enumDescriptions": [
+            "The user did not specify a storage type.",
+            "Flash (SSD) storage should be used.",
+            "Magnetic drive (HDD) storage should be used."
+          ],
+          "enum": [
+            "STORAGE_TYPE_UNSPECIFIED",
+            "SSD",
+            "HDD"
+          ],
+          "description": "(`CreationOnly`)\nThe type of storage used by this cluster to serve its\nparent instance's tables, unless explicitly overridden.",
+          "type": "string"
+        }
+      },
+      "id": "Cluster"
     }
   },
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "protocol": "rest",
   "canonicalName": "Bigtable Admin",
@@ -312,8 +310,51 @@
   "ownerName": "Google",
   "resources": {},
   "parameters": {
-    "alt": {
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string"
+    },
+    "alt": {
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -326,66 +367,23 @@
         "json",
         "media",
         "proto"
-      ]
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
+      ],
       "type": "string"
     },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+    "access_token": {
+      "description": "OAuth access token.",
       "type": "string",
       "location": "query"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
     },
     "upload_protocol": {
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string",
       "location": "query"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "oauth_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user."
-    },
-    "$.xgafv": {
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
     }
   },
   "version": "v1",
@@ -394,7 +392,9 @@
   "description": "Administer your Cloud Bigtable tables and instances.",
   "servicePath": "",
   "basePath": "",
-  "id": "bigtableadmin:v1",
+  "revision": "20190628",
   "documentationLink": "https://cloud.google.com/bigtable/",
-  "revision": "20190628"
+  "id": "bigtableadmin:v1",
+  "discoveryVersion": "v1",
+  "version_module": true
 }
