@@ -391,13 +391,25 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </summary>
         private class MultiChunkServer : TestServer.Handler
         {
-            public MultiChunkServer(TestServer server, bool lowerRange = false) : base(server) => _lowerRange = lowerRange;
+            public MultiChunkServer(TestServer server, bool lowerRange = false, bool ignoreFirstUploadCall = false) : base(server)
+            {               
+                _lowerRange = lowerRange;
+                _ignoreFirstUploadCall = ignoreFirstUploadCall;
+            }
 
             public List<byte> Bytes { get; } = new List<byte>();
 
+            /// <summary>
+            /// Whether the Range header should be returned as "range" (true) or "Range" (false).
+            /// </summary>
             public readonly bool _lowerRange;
+            /// <summary>
+            /// If this is true, the first upload call is effectively ignored, as if the server couldn't
+            /// read the data. This forces us to send it again.
+            /// </summary>
+            public readonly bool _ignoreFirstUploadCall;
             private int? _length;
-
+            private bool _firstUploadCall = true;
 
             protected void HandleHeaders(HttpListenerRequest request, HttpListenerResponse response)
             {
@@ -430,8 +442,13 @@ namespace Google.Apis.Tests.Apis.Upload
                     case uploadPath:
                         var bytesStream = new MemoryStream();
                         await request.InputStream.CopyToAsync(bytesStream);
-                        Bytes.AddRange(bytesStream.ToArray());
+                        bool ignoreData = _ignoreFirstUploadCall && _firstUploadCall;
+                        if (!ignoreData)
+                        {
+                            Bytes.AddRange(bytesStream.ToArray());
+                        }
                         HandleHeaders(request, response);
+                        _firstUploadCall = false;
                         return null;
                     default:
                         throw new InvalidOperationException();
@@ -465,11 +482,12 @@ namespace Google.Apis.Tests.Apis.Upload
         [Theory, CombinatorialData]
         public void TestUploadInMultipleChunks_Interception(
             [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(100, 400, 1000)] int chunkSize)
+            [CombinatorialValues(100, 400, 1000)] int chunkSize,
+            [CombinatorialValues(true, false)] bool ignoreFirstUploadCall)
         {
             // One fewer interception call than server calls, as there's no initialization call.
             var expectedInterceptionCount = (uploadLength + chunkSize - 1) / chunkSize;
-            using (var server = new MultiChunkServer(_server))
+            using (var server = new MultiChunkServer(_server, ignoreFirstUploadCall: ignoreFirstUploadCall))
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);

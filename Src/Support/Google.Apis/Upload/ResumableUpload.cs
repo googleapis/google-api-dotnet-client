@@ -42,6 +42,11 @@ namespace Google.Apis.Upload
     /// </remarks>
     public abstract class ResumableUpload
     {
+        static ResumableUpload()
+        {
+            Console.WriteLine("DRUMKIT: Using local build");
+        }
+        
         #region Constants
 
         /// <summary>The class logger.</summary>
@@ -646,13 +651,23 @@ namespace Google.Apis.Upload
             Logger.Debug("MediaUpload[{0}] - Sending bytes={1}-{2}", UploadUri, BytesServerReceived,
                 BytesClientSent - 1);
 
+            // We can't assume that the server actually received all the data. It almost always does,
+            // but just occasionally it'll return a 308 that makes us resend a chunk. We need to
+            // be aware of that so that the upload interceptor is called appropriately afterwards.
+            long bytesServerReceivedBefore = BytesServerReceived;
             HttpResponseMessage response = await HttpClient.SendAsync(request, cancellationToken)
                 .ConfigureAwait(false);
             var completed = await HandleResponse(response).ConfigureAwait(false);
+            long bytesServerReceivedAfter = BytesServerReceived;
 
-            // If we've got an interceptor (e.g. for hashing), we can use it now that
-            // we know the server has accepted the chunk.
-            UploadStreamInterceptor?.Invoke(chunk, 0, chunkLength);
+            int bytesReceivedFromChunk = (int) (bytesServerReceivedAfter - bytesServerReceivedBefore);
+
+            // If we've got an interceptor (e.g. for hashing), we can use it now for as much
+            // data as the server actually received.
+            if (bytesReceivedFromChunk != 0)
+            {
+                UploadStreamInterceptor?.Invoke(chunk, 0, bytesReceivedFromChunk);
+            }
             return completed;
         }
 
