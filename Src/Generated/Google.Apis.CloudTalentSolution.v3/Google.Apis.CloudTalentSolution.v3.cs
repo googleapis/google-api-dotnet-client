@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190720 (1661)
+ *      <tr><th>API Rev<td>20190727 (1668)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -1622,6 +1622,13 @@ namespace Google.Apis.CloudTalentSolution.v3
             [Google.Apis.Util.RequestParameterAttribute("languageCodes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> LanguageCodes { get; set; }
 
+            /// <summary>Optional. If provided, restricts completion to specified company.
+            ///
+            /// The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-
+            /// project/companies/foo".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CompanyName { get; set; }
+
             /// <summary>Optional. The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ScopeEnum> Scope { get; set; }
@@ -1636,13 +1643,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
                 PUBLIC__,
             }
-
-            /// <summary>Optional. If provided, restricts completion to specified company.
-            ///
-            /// The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-
-            /// project/companies/foo".</summary>
-            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CompanyName { get; set; }
 
             /// <summary>Required. Completion result count.
             ///
@@ -1735,18 +1735,18 @@ namespace Google.Apis.CloudTalentSolution.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "scope", new Google.Apis.Discovery.Parameter
+                    "companyName", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "scope",
+                        Name = "companyName",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "companyName", new Google.Apis.Discovery.Parameter
+                    "scope", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "companyName",
+                        Name = "scope",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2331,7 +2331,7 @@ namespace Google.Apis.CloudTalentSolution.v3.Data
         ///
         /// This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search.
         /// For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value`
-        /// has a byte size of no more than 255B. For unfilterable `string_values`, the maximum total byte size of
+        /// has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of
         /// unfilterable `string_values` is 50KB.
         ///
         /// Empty string is not allowed.</summary>

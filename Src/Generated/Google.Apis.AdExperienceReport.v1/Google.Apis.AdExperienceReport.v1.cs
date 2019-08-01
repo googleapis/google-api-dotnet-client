@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-experience-report/'>Ad Experience Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190722 (1663)
+ *      <tr><th>API Rev<td>20190729 (1670)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-experience-report/'>
  *              https://developers.google.com/ad-experience-report/</a>
@@ -505,7 +505,8 @@ namespace Google.Apis.AdExperienceReport.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastChangeTime")]
         public virtual object LastChangeTime { get; set; } 
 
-        /// <summary>The assigned regions for the site and platform.</summary>
+        /// <summary>The assigned regions for the site and platform. No longer populated, because there is no longer any
+        /// semantic difference between sites in different regions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual System.Collections.Generic.IList<string> Region { get; set; } 
 

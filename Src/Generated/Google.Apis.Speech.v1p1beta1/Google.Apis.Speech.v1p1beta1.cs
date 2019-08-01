@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech-to-Text API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20190719 (1660)
+ *      <tr><th>API Rev<td>20190730 (1671)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -1065,9 +1065,8 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diarizationConfig")]
         public virtual SpeakerDiarizationConfig DiarizationConfig { get; set; } 
 
-        /// <summary>*Optional* If set, specifies the estimated number of speakers in the conversation. If not set,
-        /// defaults to '2'. Ignored unless enable_speaker_diarization is set to true." Note: Use diarization_config
-        /// instead. This field will be DEPRECATED soon.</summary>
+        /// <summary>*Optional* If set, specifies the estimated number of speakers in the conversation. Defaults to '2'.
+        /// Ignored unless enable_speaker_diarization is set to true. Note: Use diarization_config instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diarizationSpeakerCount")]
         public virtual System.Nullable<int> DiarizationSpeakerCount { get; set; } 
 
@@ -1088,8 +1087,8 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         public virtual System.Nullable<bool> EnableSeparateRecognitionPerChannel { get; set; } 
 
         /// <summary>*Optional* If 'true', enables speaker detection for each recognized word in the top alternative of
-        /// the recognition result using a speaker_tag provided in the WordInfo. Note: Use diarization_config instead.
-        /// This field will be DEPRECATED soon.</summary>
+        /// the recognition result using a speaker_tag provided in the WordInfo. Note: Use diarization_config
+        /// instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSpeakerDiarization")]
         public virtual System.Nullable<bool> EnableSpeakerDiarization { get; set; } 
 
@@ -1261,6 +1260,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>*Optional* Config to enable speaker diarization.</summary>
     public class SpeakerDiarizationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>*Optional* If 'true', enables speaker detection for each recognized word in the top alternative of
@@ -1268,15 +1268,15 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableSpeakerDiarization")]
         public virtual System.Nullable<bool> EnableSpeakerDiarization { get; set; } 
 
-        /// <summary>*Optional* Only used if diarization_speaker_count is not set. Maximum number of speakers in the
-        /// conversation. This range gives you more flexibility by allowing the system to automatically determine the
-        /// correct number of speakers. If not set, the default value is 6.</summary>
+        /// <summary>*Optional* Maximum number of speakers in the conversation. This range gives you more flexibility by
+        /// allowing the system to automatically determine the correct number of speakers. If not set, the default value
+        /// is 6.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxSpeakerCount")]
         public virtual System.Nullable<int> MaxSpeakerCount { get; set; } 
 
-        /// <summary>*Optional* Only used if diarization_speaker_count is not set. Minimum number of speakers in the
-        /// conversation. This range gives you more flexibility by allowing the system to automatically determine the
-        /// correct number of speakers. If not set, the default value is 2.</summary>
+        /// <summary>*Optional* Minimum number of speakers in the conversation. This range gives you more flexibility by
+        /// allowing the system to automatically determine the correct number of speakers. If not set, the default value
+        /// is 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minSpeakerCount")]
         public virtual System.Nullable<int> MinSpeakerCount { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Cloud Security Command Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190704 (1645)
+ *      <tr><th>API Rev<td>20190726 (1667)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -462,26 +462,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Expression that defines what fields and order to use for sorting. The string value should
-                /// follow SQL syntax: comma separated list of fields. For example:
-                /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
-                /// order for a field, a suffix " desc" should be appended to the field name. For example: "name
-                /// desc,resource_properties.a_property". Redundant space characters in the syntax are insignificant.
-                /// "name desc,resource_properties.a_property" and " name     desc  ,   resource_properties.a_property
-                /// " are equivalent.
-                ///
-                /// The following fields are supported: name update_time resource_properties security_marks
-                /// security_center_properties.resource_name security_center_properties.resource_parent
-                /// security_center_properties.resource_project security_center_properties.resource_type</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
-                /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
-                /// existing at the supplied time and their values are those at that specific time. Absence of this
-                /// field will default to the API's version of NOW.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object ReadTime { get; set; }
-
                 /// <summary>When compare_duration is set, the ListAssetsResult's "state_change" attribute is updated to
                 /// indicate whether the asset was added, removed, or remained present during the compare_duration
                 /// period of time that precedes the read_time. This is the time between (read_time - compare_duration)
@@ -525,31 +505,60 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 ///
                 /// The following are the allowed field and operator combinations:
                 ///
-                /// * name: `=` * update_time: `>`, `<`, `>=`, `<=` * iam_policy.policy_blob: `=`, `:` *
-                /// resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` * security_marks: `=`, `:` *
-                /// security_center_properties.resource_name: `=`, `:` * security_center_properties.resource_type: `=`,
-                /// `:` * security_center_properties.resource_parent: `=`, `:` *
-                /// security_center_properties.resource_project: `=`, `:` * security_center_properties.resource_owners:
-                /// `=`, `:`
+                /// * name: `=` * update_time: `=`, `>`, `<`, `>=`, `<=`
+                ///
+                /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: "update_time =
+                /// \"2019-06-10T16:07:18-07:00\"" "update_time = 1560208038000"
+                ///
+                /// * create_time: `=`, `>`, `<`, `>=`, `<=`
+                ///
+                /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: "create_time =
+                /// \"2019-06-10T16:07:18-07:00\"" "create_time = 1560208038000"
+                ///
+                /// * iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` *
+                /// security_marks.marks: `=`, `:` * security_center_properties.resource_name: `=`, `:` *
+                /// security_center_properties.resource_type: `=`, `:` * security_center_properties.resource_parent:
+                /// `=`, `:` * security_center_properties.resource_project: `=`, `:` *
+                /// security_center_properties.resource_owners: `=`, `:`
                 ///
                 /// For example, `resource_properties.size = 100` is a valid filter string.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>Optional. A field mask to specify the ListAssetsResult fields to be listed in the response.
-                /// An empty field mask will list all fields.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object FieldMask { get; set; }
 
                 /// <summary>The value returned by the last `ListAssetsResponse`; indicates that this is a continuation
                 /// of a prior `ListAssets` call, and that the system should return the next page of data.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>Optional. A field mask to specify the ListAssetsResult fields to be listed in the response.
+                /// An empty field mask will list all fields.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object FieldMask { get; set; }
+
                 /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is 1,
                 /// maximum is 1000.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
+                /// existing at the supplied time and their values are those at that specific time. Absence of this
+                /// field will default to the API's version of NOW.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object ReadTime { get; set; }
+
+                /// <summary>Expression that defines what fields and order to use for sorting. The string value should
+                /// follow SQL syntax: comma separated list of fields. For example:
+                /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
+                /// order for a field, a suffix " desc" should be appended to the field name. For example: "name
+                /// desc,resource_properties.a_property". Redundant space characters in the syntax are insignificant.
+                /// "name desc,resource_properties.a_property" and " name     desc  ,   resource_properties.a_property
+                /// " are equivalent.
+                ///
+                /// The following fields are supported: name update_time resource_properties security_marks.marks
+                /// security_center_properties.resource_name security_center_properties.resource_parent
+                /// security_center_properties.resource_project security_center_properties.resource_type</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -585,24 +594,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "readTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "readTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "compareDuration", new Google.Apis.Discovery.Parameter
                         {
                             Name = "compareDuration",
@@ -621,15 +612,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "fieldMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -639,9 +621,36 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "fieldMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "readTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -758,18 +767,18 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The time at which the updated SecurityMarks take effect. If not set uses current server
+                /// time.  Updates will be applied to the SecurityMarks that are active immediately preceding this
+                /// time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTime { get; set; }
+
                 /// <summary>The FieldMask to use when updating the security marks resource.
                 ///
                 /// The field mask must not contain duplicate fields. If empty or set to "marks", all marks will be
                 /// replaced.  Individual marks can be updated using "marks.".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
-                /// <summary>The time at which the updated SecurityMarks take effect. If not set uses current server
-                /// time.  Updates will be applied to the SecurityMarks that are active immediately preceding this
-                /// time.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -811,18 +820,18 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             Pattern = @"^organizations/[^/]+/assets/[^/]+/securityMarks$",
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "startTime", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "startTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "startTime", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "startTime",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1444,7 +1453,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// source_properties.a_property  " are equivalent.
                     ///
                     /// The following fields are supported: name parent state category resource_name event_time
-                    /// source_properties security_marks</summary>
+                    /// source_properties security_marks.marks</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -1492,8 +1501,12 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// The following field and operator combinations are supported:
                     ///
                     /// name: `=` parent: `=`, `:` resource_name: `=`, `:` state: `=`, `:` category: `=`, `:`
-                    /// external_uri: `=`, `:` event_time: `>`, `<`, `>=`, `<=` security_marks: `=`, `:`
-                    /// source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
+                    /// external_uri: `=`, `:` event_time: `=`, `>`, `<`, `>=`, `<=`
+                    ///
+                    /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: "event_time =
+                    /// \"2019-06-10T16:07:18-07:00\"" "event_time = 1560208038000"
+                    ///
+                    /// security_marks.marks: `=`, `:` source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
                     ///
                     /// For example, `source_properties.size = 100` is a valid filter string.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -1794,18 +1807,18 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The time at which the updated SecurityMarks take effect. If not set uses current server
+                    /// time.  Updates will be applied to the SecurityMarks that are active immediately preceding this
+                    /// time.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object StartTime { get; set; }
+
                     /// <summary>The FieldMask to use when updating the security marks resource.
                     ///
                     /// The field mask must not contain duplicate fields. If empty or set to "marks", all marks will be
                     /// replaced.  Individual marks can be updated using "marks.".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
-
-                    /// <summary>The time at which the updated SecurityMarks take effect. If not set uses current server
-                    /// time.  Updates will be applied to the SecurityMarks that are active immediately preceding this
-                    /// time.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object StartTime { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1847,18 +1860,18 @@ namespace Google.Apis.SecurityCommandCenter.v1
                                 Pattern = @"^organizations/[^/]+/sources/[^/]+/findings/[^/]+/securityMarks$",
                             });
                         RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
+                            "startTime", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "updateMask",
+                                Name = "startTime",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "startTime", new Google.Apis.Discovery.Parameter
+                            "updateMask", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "startTime",
+                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2912,8 +2925,17 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         ///
         /// The following field and operator combinations are supported:
         ///
-        /// * name: `=` * update_time: `>`, `<`, `>=`, `<=`, `=` * create_time: `>`, `<`, `>=`, `<=`, `=` *
-        /// iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` * security_marks:
+        /// * name: `=` * update_time: `=`, `>`, `<`, `>=`, `<=`
+        ///
+        /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: "update_time =
+        /// \"2019-06-10T16:07:18-07:00\"" "update_time = 1560208038000"
+        ///
+        /// * create_time: `=`, `>`, `<`, `>=`, `<=`
+        ///
+        /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: "create_time =
+        /// \"2019-06-10T16:07:18-07:00\"" "create_time = 1560208038000"
+        ///
+        /// * iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` * security_marks:
         /// `=`, `:` * security_center_properties.resource_name: `=`, `:` * security_center_properties.resource_type:
         /// `=`, `:` * security_center_properties.resource_parent: `=`, `:` *
         /// security_center_properties.resource_project: `=`, `:` * security_center_properties.resource_owners: `=`, `:`
@@ -3029,8 +3051,12 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// The following field and operator combinations are supported:
         ///
         /// * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` *
-        /// external_uri: `=`, `:` * event_time: `>`, `<`, `>=`, `<=` * security_marks: `=`, `:` * source_properties:
-        /// `=`, `:`, `>`, `<`, `>=`, `<=`
+        /// external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=`
+        ///
+        /// Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: "event_time =
+        /// \"2019-06-10T16:07:18-07:00\"" "event_time = 1560208038000"
+        ///
+        /// * security_marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
         ///
         /// For example, `source_properties.size = 100` is a valid filter string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]

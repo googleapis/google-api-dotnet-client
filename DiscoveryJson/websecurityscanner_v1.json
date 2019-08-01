@@ -1,13 +1,50 @@
 {
-  "rootUrl": "https://websecurityscanner.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "websecurityscanner",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Web Security Scanner API",
-  "ownerName": "Google",
   "resources": {},
   "parameters": {
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query"
+    },
     "alt": {
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
@@ -25,9 +62,9 @@
       "type": "string"
     },
     "access_token": {
+      "location": "query",
       "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "key": {
       "type": "string",
@@ -35,71 +72,34 @@
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
     },
     "upload_protocol": {
-      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "quotaUser": {
-      "type": "string",
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string",
       "location": "query"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ]
     }
   },
   "version": "v1",
   "baseUrl": "https://websecurityscanner.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Scans your Compute and App Engine apps for common web vulnerabilities.",
   "servicePath": "",
+  "description": "Scans your Compute and App Engine apps for common web vulnerabilities.",
+  "kind": "discovery#restDescription",
   "basePath": "",
-  "revision": "20190719",
   "documentationLink": "https://cloud.google.com/security-scanner/",
+  "revision": "20190727",
   "id": "websecurityscanner:v1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {},
-  "protocol": "rest",
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "canonicalName": "WebSecurityScanner"
+  "protocol": "rest",
+  "canonicalName": "WebSecurityScanner",
+  "rootUrl": "https://websecurityscanner.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "websecurityscanner",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Web Security Scanner API",
+  "ownerName": "Google"
 }

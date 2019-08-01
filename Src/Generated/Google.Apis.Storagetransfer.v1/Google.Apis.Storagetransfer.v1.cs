@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190716 (1657)
+ *      <tr><th>API Rev<td>20190729 (1670)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>
  *              https://cloud.google.com/storage-transfer/docs</a>
@@ -1295,7 +1295,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
         /// <summary>Error samples.
         ///
-        /// No more than 100 error log entries may be recorded for a given error code for a single task.</summary>
+        /// At most 5 error log entries will be recorded for a given error code for a single transfer
+        /// operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorLogEntries")]
         public virtual System.Collections.Generic.IList<ErrorLogEntry> ErrorLogEntries { get; set; } 
 

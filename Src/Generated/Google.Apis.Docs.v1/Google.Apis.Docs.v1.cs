@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190718 (1659)
+ *      <tr><th>API Rev<td>20190729 (1670)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -4094,7 +4094,9 @@ namespace Google.Apis.Docs.v1.Data
         /// The range may be extended to include adjacent newlines.
         ///
         /// If the range fully contains a paragraph belonging to a list, the paragraph's bullet is also updated with the
-        /// matching text style.</summary>
+        /// matching text style.
+        ///
+        /// Ranges cannot be inserted inside a relative UpdateTextStyleRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual Range Range { get; set; } 
 

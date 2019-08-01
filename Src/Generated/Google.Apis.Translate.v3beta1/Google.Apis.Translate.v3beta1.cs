@@ -611,11 +611,6 @@ namespace Google.Apis.Translate.v3beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filter specifying constraints of a list operation. Filtering is not supported
-                    /// yet, and the parameter currently has no effect. If missing, no filtering is performed.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>Optional. A token identifying a page of results the server should return. Typically,
                     /// this is the value of [ListGlossariesResponse.next_page_token] returned from the previous call to
                     /// `ListGlossaries` method. The first page is returned if `page_token`is empty or
@@ -627,6 +622,11 @@ namespace Google.Apis.Translate.v3beta1
                     /// If unspecified, the server picks an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Filter specifying constraints of a list operation. Filtering is not supported
+                    /// yet, and the parameter currently has no effect. If missing, no filtering is performed.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -662,15 +662,6 @@ namespace Google.Apis.Translate.v3beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -683,6 +674,15 @@ namespace Google.Apis.Translate.v3beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

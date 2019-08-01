@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190723 (1664)
+ *      <tr><th>API Rev<td>20190730 (1671)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -2428,6 +2428,138 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
         }
 
+        /// <summary>Links a FirebaseProject with an existing [Google Analytics
+        /// account](http://www.google.com/analytics/).
+        ///
+        /// Using this call, you can either:
+        ///
+        /// Provision a new Google Analytics property and associate the new property with your `FirebaseProject`.
+        /// Associate an existing Google Analytics property with your `FirebaseProject`.
+        ///
+        /// Note that when you call `AddGoogleAnalytics`:
+        ///
+        /// Any Firebase Apps already in your `FirebaseProject` are automatically provisioned as new data streams in the
+        /// Google Analytics property. Any data streams already in the Google Analytics property are automatically
+        /// associated with their corresponding Firebase Apps (only applies when an app's `packageName` or `bundleId`
+        /// match those for an existing data stream).
+        ///
+        /// Learn more about the hierarchy and structure of Google Analytics accounts in the [Analytics
+        /// documentation](https://support.google.com/analytics/answer/9303323).
+        ///
+        /// The result of this call is an [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the
+        /// provisioning process by calling GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done)
+        /// is `true`. When `done` is `true`, the `Operation` has either succeeded or failed. If the `Operation`
+        /// succeeded, its [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to an
+        /// AnalyticsDetails; if the `Operation` failed, its [`error`](../../v1beta1/operations#Operation.FIELDS.error)
+        /// is set to a google.rpc.Status.
+        ///
+        /// To call `AddGoogleAnalytics`, a member must be an Owner for the existing `FirebaseProject` and have the
+        /// [`Edit` permission](https://support.google.com/analytics/answer/2884495) for the Google Analytics account.
+        ///
+        /// If a `FirebaseProject` already has Google Analytics enabled, and you call `AddGoogleAnalytics` using an
+        /// `analyticsPropertyId` that's different from the currently associated property, then the call will fail.
+        /// Analytics may have already been enabled in the Firebase console or by specifying `timeZone` and `regionCode`
+        /// in the call to [`AddFirebase`](../../v1beta1/projects/addFirebase).</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">The parent `FirebaseProject` to link to an existing Google Analytics account, in the format:
+        /// projects/projectId</param>
+        public virtual AddGoogleAnalyticsRequest AddGoogleAnalytics(Google.Apis.FirebaseManagement.v1beta1.Data.AddGoogleAnalyticsRequest body, string parent)
+        {
+            return new AddGoogleAnalyticsRequest(service, body, parent);
+        }
+
+        /// <summary>Links a FirebaseProject with an existing [Google Analytics
+        /// account](http://www.google.com/analytics/).
+        ///
+        /// Using this call, you can either:
+        ///
+        /// Provision a new Google Analytics property and associate the new property with your `FirebaseProject`.
+        /// Associate an existing Google Analytics property with your `FirebaseProject`.
+        ///
+        /// Note that when you call `AddGoogleAnalytics`:
+        ///
+        /// Any Firebase Apps already in your `FirebaseProject` are automatically provisioned as new data streams in the
+        /// Google Analytics property. Any data streams already in the Google Analytics property are automatically
+        /// associated with their corresponding Firebase Apps (only applies when an app's `packageName` or `bundleId`
+        /// match those for an existing data stream).
+        ///
+        /// Learn more about the hierarchy and structure of Google Analytics accounts in the [Analytics
+        /// documentation](https://support.google.com/analytics/answer/9303323).
+        ///
+        /// The result of this call is an [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the
+        /// provisioning process by calling GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done)
+        /// is `true`. When `done` is `true`, the `Operation` has either succeeded or failed. If the `Operation`
+        /// succeeded, its [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to an
+        /// AnalyticsDetails; if the `Operation` failed, its [`error`](../../v1beta1/operations#Operation.FIELDS.error)
+        /// is set to a google.rpc.Status.
+        ///
+        /// To call `AddGoogleAnalytics`, a member must be an Owner for the existing `FirebaseProject` and have the
+        /// [`Edit` permission](https://support.google.com/analytics/answer/2884495) for the Google Analytics account.
+        ///
+        /// If a `FirebaseProject` already has Google Analytics enabled, and you call `AddGoogleAnalytics` using an
+        /// `analyticsPropertyId` that's different from the currently associated property, then the call will fail.
+        /// Analytics may have already been enabled in the Firebase console or by specifying `timeZone` and `regionCode`
+        /// in the call to [`AddFirebase`](../../v1beta1/projects/addFirebase).</summary>
+        public class AddGoogleAnalyticsRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new AddGoogleAnalytics request.</summary>
+            public AddGoogleAnalyticsRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseManagement.v1beta1.Data.AddGoogleAnalyticsRequest body, string parent)
+                : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The parent `FirebaseProject` to link to an existing Google Analytics account, in the format:
+            /// projects/projectId</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.FirebaseManagement.v1beta1.Data.AddGoogleAnalyticsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "addGoogleAnalytics"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+parent}:addGoogleAnalytics"; }
+            }
+
+            /// <summary>Initializes AddGoogleAnalytics parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+            }
+
+        }
+
         /// <summary>Gets the FirebaseProject identified by the specified resource name.</summary>
         /// <param name="name">The fully qualified resource name of the Project, in the format: projects/projectId</param>
         public virtual GetRequest Get(string name)
@@ -2551,6 +2683,73 @@ namespace Google.Apis.FirebaseManagement.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/adminSdkConfig$",
+                    });
+            }
+
+        }
+
+        /// <summary>Gets the Google Analytics details currently associated with a FirebaseProject.
+        ///
+        /// If the `FirebaseProject` is not yet linked to Google Analytics, then the response to `GetAnalyticsDetails`
+        /// is NOT_FOUND.</summary>
+        /// <param name="name">The fully qualified resource name, in the format:
+        /// projects/projectId/analyticsDetails</param>
+        public virtual GetAnalyticsDetailsRequest GetAnalyticsDetails(string name)
+        {
+            return new GetAnalyticsDetailsRequest(service, name);
+        }
+
+        /// <summary>Gets the Google Analytics details currently associated with a FirebaseProject.
+        ///
+        /// If the `FirebaseProject` is not yet linked to Google Analytics, then the response to `GetAnalyticsDetails`
+        /// is NOT_FOUND.</summary>
+        public class GetAnalyticsDetailsRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.AnalyticsDetails>
+        {
+            /// <summary>Constructs a new GetAnalyticsDetails request.</summary>
+            public GetAnalyticsDetailsRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>The fully qualified resource name, in the format: projects/projectId/analyticsDetails</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getAnalyticsDetails"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+name}"; }
+            }
+
+            /// <summary>Initializes GetAnalyticsDetails parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/analyticsDetails$",
                     });
             }
 
@@ -2739,6 +2938,96 @@ namespace Google.Apis.FirebaseManagement.v1beta1
 
         }
 
+        /// <summary>Unlinks the specified `FirebaseProject` from its Google Analytics account.
+        ///
+        /// This call removes the association of the specified `FirebaseProject` with its current Google Analytics
+        /// property. However, this call does not delete the Google Analytics resources, such as the Google Analytics
+        /// property or any data streams.
+        ///
+        /// These resources may be re-associated later to the `FirebaseProject` by calling
+        /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and specifying the same
+        /// `analyticsPropertyId`.
+        ///
+        /// To call `RemoveAnalytics`, a member must be an Owner for the `FirebaseProject`.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">The parent `FirebaseProject` to unlink from its Google Analytics account, in the format:
+        /// projects/projectId</param>
+        public virtual RemoveAnalyticsRequest RemoveAnalytics(Google.Apis.FirebaseManagement.v1beta1.Data.RemoveAnalyticsRequest body, string parent)
+        {
+            return new RemoveAnalyticsRequest(service, body, parent);
+        }
+
+        /// <summary>Unlinks the specified `FirebaseProject` from its Google Analytics account.
+        ///
+        /// This call removes the association of the specified `FirebaseProject` with its current Google Analytics
+        /// property. However, this call does not delete the Google Analytics resources, such as the Google Analytics
+        /// property or any data streams.
+        ///
+        /// These resources may be re-associated later to the `FirebaseProject` by calling
+        /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and specifying the same
+        /// `analyticsPropertyId`.
+        ///
+        /// To call `RemoveAnalytics`, a member must be an Owner for the `FirebaseProject`.</summary>
+        public class RemoveAnalyticsRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Empty>
+        {
+            /// <summary>Constructs a new RemoveAnalytics request.</summary>
+            public RemoveAnalyticsRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseManagement.v1beta1.Data.RemoveAnalyticsRequest body, string parent)
+                : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The parent `FirebaseProject` to unlink from its Google Analytics account, in the format:
+            /// projects/projectId</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.FirebaseManagement.v1beta1.Data.RemoveAnalyticsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "removeAnalytics"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+parent}:removeAnalytics"; }
+            }
+
+            /// <summary>Initializes RemoveAnalytics parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+            }
+
+        }
+
         /// <summary>A convenience method that lists all available Apps for the specified FirebaseProject.
         ///
         /// Typically, interaction with an App should be done using the platform-specific service, but some tool use-
@@ -2870,6 +3159,25 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class AddGoogleAnalyticsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID for the existing [Google Analytics account](http://www.google.com/analytics/) that you want
+        /// to link with your `FirebaseProject`.
+        ///
+        /// Specifying this field will provision a new Google Analytics property in your Google Analytics account and
+        /// associate the new property with your `FirebaseProject`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyticsAccountId")]
+        public virtual string AnalyticsAccountId { get; set; } 
+
+        /// <summary>The ID for the existing Google Analytics property that you want to associate with your
+        /// `FirebaseProject`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyticsPropertyId")]
+        public virtual string AnalyticsPropertyId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class AdminSdkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The default Firebase Realtime Database URL.</summary>
@@ -2891,6 +3199,45 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// <summary>The default Cloud Storage for Firebase storage bucket name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBucket")]
         public virtual string StorageBucket { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AnalyticsDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Analytics Property object associated with the specified `FirebaseProject`.
+        ///
+        /// This object contains the details of the Google Analytics property associated with the specified
+        /// `FirebaseProject`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyticsProperty")]
+        public virtual AnalyticsProperty AnalyticsProperty { get; set; } 
+
+        /// <summary>A map of `AppId` to `StreamId` for each Firebase App in the specified `FirebaseProject`. Each
+        /// `AppId` and `StreamId` appears only once.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamMappings")]
+        public virtual System.Collections.Generic.IList<StreamMapping> StreamMappings { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Details of a Google Analytics property</summary>
+    public class AnalyticsProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the Google Analytics property associated with the specified
+        /// `FirebaseProject`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The globally unique, Google-assigned identifier of the Google Analytics property associated with
+        /// the specified `FirebaseProject`.
+        ///
+        /// If you called [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) to link your
+        /// `FirebaseProject` with a Google Analytics account, the value in this `id` field is the same as the ID of the
+        /// property either specified or provisioned with that call to `AddGoogleAnalytics`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3322,6 +3669,20 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class RemoveAnalyticsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The ID of the Google Analytics property associated with the specified `FirebaseProject`.
+        ///
+        /// If not set, then the Google Analytics property that is currently associated with the specified
+        /// `FirebaseProject` is removed. If set, and the specified `FirebaseProject` is currently associated with a
+        /// different Google Analytics property, then the response is a `412 Precondition Failed` error. </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyticsPropertyId")]
+        public virtual string AnalyticsPropertyId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class SearchFirebaseAppsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>One page of results from a call to `SearchFirebaseApps`.</summary>
@@ -3429,6 +3790,26 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// <summary>The following are usually only present when code != 0 Space to which this status belongs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual string Space { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A mapping of a Firebase App to a Google Analytics data stream</summary>
+    public class StreamMapping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fully qualified resource name of the Firebase App associated with the Google Analytics data
+        /// stream, in the format: projects/projectId/iosApps/appId or projects/projectId/androidApps/appId</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("app")]
+        public virtual string App { get; set; } 
+
+        /// <summary>The unique Google-assigned identifier of the Google Analytics data stream associated with the
+        /// Firebase App.
+        ///
+        /// Learn more about Google Analytics data streams in the [Analytics
+        /// documentation](https://support.google.com/analytics/answer/9303323).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamId")]
+        public virtual System.Nullable<long> StreamId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
