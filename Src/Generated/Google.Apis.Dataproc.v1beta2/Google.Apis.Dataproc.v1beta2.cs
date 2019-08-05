@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190627 (1638)
+ *      <tr><th>API Rev<td>20190717 (1658)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -1318,7 +1318,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// execution of workflow by polling operations.get. The Operation will complete when entire workflow is
                 /// finished.The running workflow can be aborted via operations.cancel. This will cause any inflight
                 /// jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be
-                /// WorkflowMetadata.On successful completion, Operation.response will be Empty.</summary>
+                /// WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will
+                /// be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The "resource name" of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form
@@ -1332,7 +1333,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// execution of workflow by polling operations.get. The Operation will complete when entire workflow is
                 /// finished.The running workflow can be aborted via operations.cancel. This will cause any inflight
                 /// jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be
-                /// WorkflowMetadata.On successful completion, Operation.response will be Empty.</summary>
+                /// WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will
+                /// be Empty.</summary>
                 public class InstantiateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new Instantiate request.</summary>
@@ -1399,8 +1401,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// Operation can be used to track execution of workflow by polling operations.get. The Operation will
                 /// complete when entire workflow is finished.The running workflow can be aborted via operations.cancel.
                 /// This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The
-                /// Operation.metadata will be WorkflowMetadata.On successful completion, Operation.response will be
-                /// Empty.</summary>
+                /// Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
+                /// completion, Operation.response will be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The "resource name" of the workflow template region, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
@@ -1414,8 +1416,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// Operation can be used to track execution of workflow by polling operations.get. The Operation will
                 /// complete when entire workflow is finished.The running workflow can be aborted via operations.cancel.
                 /// This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The
-                /// Operation.metadata will be WorkflowMetadata.On successful completion, Operation.response will be
-                /// Empty.</summary>
+                /// Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
+                /// completion, Operation.response will be Empty.</summary>
                 public class InstantiateInlineRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new InstantiateInline request.</summary>
@@ -1534,14 +1536,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Optional. The page token, returned by a previous call, to request the next page of
                     /// results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1577,18 +1579,18 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5242,7 +5244,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// execution of workflow by polling operations.get. The Operation will complete when entire workflow is
                 /// finished.The running workflow can be aborted via operations.cancel. This will cause any inflight
                 /// jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be
-                /// WorkflowMetadata.On successful completion, Operation.response will be Empty.</summary>
+                /// WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will
+                /// be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The "resource name" of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form
@@ -5256,7 +5259,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// execution of workflow by polling operations.get. The Operation will complete when entire workflow is
                 /// finished.The running workflow can be aborted via operations.cancel. This will cause any inflight
                 /// jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be
-                /// WorkflowMetadata.On successful completion, Operation.response will be Empty.</summary>
+                /// WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will
+                /// be Empty.</summary>
                 public class InstantiateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new Instantiate request.</summary>
@@ -5323,8 +5327,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// Operation can be used to track execution of workflow by polling operations.get. The Operation will
                 /// complete when entire workflow is finished.The running workflow can be aborted via operations.cancel.
                 /// This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The
-                /// Operation.metadata will be WorkflowMetadata.On successful completion, Operation.response will be
-                /// Empty.</summary>
+                /// Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
+                /// completion, Operation.response will be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The "resource name" of the workflow template region, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
@@ -5338,8 +5342,8 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// Operation can be used to track execution of workflow by polling operations.get. The Operation will
                 /// complete when entire workflow is finished.The running workflow can be aborted via operations.cancel.
                 /// This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The
-                /// Operation.metadata will be WorkflowMetadata.On successful completion, Operation.response will be
-                /// Empty.</summary>
+                /// Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
+                /// completion, Operation.response will be Empty.</summary>
                 public class InstantiateInlineRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new InstantiateInline request.</summary>
@@ -5887,7 +5891,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// following values: allUsers: A special identifier that represents anyone who is  on the internet; with or
         /// without a Google account. allAuthenticatedUsers: A special identifier that represents anyone  who is
         /// authenticated with a Google account or a service account. user:{emailid}: An email address that represents a
-        /// specific Google  account. For example, alice@gmail.com . serviceAccount:{emailid}: An email address that
+        /// specific Google  account. For example, alice@example.com . serviceAccount:{emailid}: An email address that
         /// represents a service  account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An
         /// email address that represents a Google group.  For example, admins@example.com. domain:{domain}: The G Suite
         /// domain (primary) that represents all the  users of that domain. For example, google.com or
@@ -6486,8 +6490,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// worker group.</summary>
     public class InstanceGroupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The Compute Engine accelerator configuration for these instances.Beta Feature: This
-        /// feature is still under development. It may be changed before final release.</summary>
+        /// <summary>Optional. The Compute Engine accelerator configuration for these instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; } 
 
@@ -6823,6 +6826,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("idleDeleteTtl")]
         public virtual object IdleDeleteTtl { get; set; } 
 
+        /// <summary>Output only. The time when cluster became idle (most recent job finished) and became eligible for
+        /// deletion due to idleness.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleStartTime")]
+        public virtual object IdleStartTime { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -7141,7 +7149,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the
         /// response to getIamPolicy, and systems are expected to put that etag in the request to setIamPolicy to ensure
         /// that their change will be applied to the same version of the policy.If no etag is provided in the call to
-        /// setIamPolicy, then the existing policy is overwritten blindly.</summary>
+        /// setIamPolicy, then the existing policy is overwritten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 

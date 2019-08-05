@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190722 (1663)
+ *      <tr><th>API Rev<td>20190801 (1673)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -2167,6 +2167,10 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
+            /// <summary>The enterprise token appended to the callback URL.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string EnterpriseToken { get; set; }
+
             /// <summary>The name of the SignupUrl used to sign up for the enterprise.</summary>
             [Google.Apis.Util.RequestParameterAttribute("signupUrlName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SignupUrlName { get; set; }
@@ -2174,10 +2178,6 @@ namespace Google.Apis.AndroidManagement.v1
             /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
-
-            /// <summary>The enterprise token appended to the callback URL.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string EnterpriseToken { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2210,6 +2210,15 @@ namespace Google.Apis.AndroidManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "enterpriseToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "signupUrlName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "signupUrlName",
@@ -2222,15 +2231,6 @@ namespace Google.Apis.AndroidManagement.v1
                     "projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "enterpriseToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2926,6 +2926,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// has enrolled previously. The names are in chronological order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousDeviceNames")]
         public virtual System.Collections.Generic.IList<string> PreviousDeviceNames { get; set; } 
+
+        /// <summary>Device's security posture value that reflects how secure the device is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPosture")]
+        public virtual SecurityPosture SecurityPosture { get; set; } 
 
         /// <summary>Detailed information about the device software. This information is only available if
         /// softwareInfoEnabled is true in the device's policy.</summary>
@@ -4098,6 +4102,21 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Detail that provides further information if the device is not in the most secure state.</summary>
+    public class PostureDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Corresponding pieces of advice to mitigate the security risk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advice")]
+        public virtual System.Collections.Generic.IList<UserFacingMessage> Advice { get; set; } 
+
+        /// <summary>The risk that makes the device not in the most secure state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityRisk")]
+        public virtual string SecurityRisk { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A power management event.</summary>
     public class PowerManagementEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4137,6 +4156,21 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>The port of the direct proxy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>. Device's security posture value that reflects how secure the device is.</summary>
+    public class SecurityPosture : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Device's security posture value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devicePosture")]
+        public virtual string DevicePosture { get; set; } 
+
+        /// <summary>Details that provide further information if the device is not in the most secure state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postureDetails")]
+        public virtual System.Collections.Generic.IList<PostureDetail> PostureDetails { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

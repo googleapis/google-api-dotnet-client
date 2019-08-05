@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kms/'>Cloud Key Management Service (KMS) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190626 (1637)
+ *      <tr><th>API Rev<td>20190727 (1668)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kms/'>
  *              https://cloud.google.com/kms/</a>
@@ -980,13 +980,15 @@ namespace Google.Apis.CloudKMS.v1
                             }
 
                             /// <summary>Optional. Specify how the results should be sorted. If not specified, the
-                            /// results will be sorted in the default order (https://cloud.google.com/kms/docs/sorting-
-                            /// and-filtering).</summary>
+                            /// results will be sorted in the default order. For more information, see [Sorting and
+                            /// filtering list results](https://cloud.google.com/kms/docs/sorting-and-
+                            /// filtering).</summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
 
-                            /// <summary>Optional. Only include resources that match the filter in the response
-                            /// (https://cloud.google.com/kms/docs/sorting-and-filtering).</summary>
+                            /// <summary>Optional. Only include resources that match the filter in the response. For
+                            /// more information, see [Sorting and filtering list
+                            /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).</summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
@@ -1662,24 +1664,6 @@ namespace Google.Apis.CloudKMS.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The fields of the primary version to include in the response.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("versionView", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<VersionViewEnum> VersionView { get; set; }
-
-                        /// <summary>The fields of the primary version to include in the response.</summary>
-                        public enum VersionViewEnum
-                        {
-                            [Google.Apis.Util.StringValueAttribute("CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED")]
-                            CRYPTOKEYVERSIONVIEWUNSPECIFIED,
-                            [Google.Apis.Util.StringValueAttribute("FULL")]
-                            FULL,
-                        }
-
-                        /// <summary>Optional. Only include resources that match the filter in the response
-                        /// (https://cloud.google.com/kms/docs/sorting-and-filtering).</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
-
                         /// <summary>Optional pagination token, returned earlier via
                         /// ListCryptoKeysResponse.next_page_token.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1693,10 +1677,29 @@ namespace Google.Apis.CloudKMS.v1
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>Optional. Specify how the results should be sorted. If not specified, the results
-                        /// will be sorted in the default order (https://cloud.google.com/kms/docs/sorting-and-
-                        /// filtering).</summary>
+                        /// will be sorted in the default order. For more information, see [Sorting and filtering list
+                        /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
+
+                        /// <summary>The fields of the primary version to include in the response.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("versionView", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<VersionViewEnum> VersionView { get; set; }
+
+                        /// <summary>The fields of the primary version to include in the response.</summary>
+                        public enum VersionViewEnum
+                        {
+                            [Google.Apis.Util.StringValueAttribute("CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED")]
+                            CRYPTOKEYVERSIONVIEWUNSPECIFIED,
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL,
+                        }
+
+                        /// <summary>Optional. Only include resources that match the filter in the response. For more
+                        /// information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs
+                        /// /sorting-and-filtering).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1732,24 +1735,6 @@ namespace Google.Apis.CloudKMS.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "versionView", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "versionView",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -1771,6 +1756,24 @@ namespace Google.Apis.CloudKMS.v1
                                 "orderBy", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "versionView", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "versionView",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2365,8 +2368,8 @@ namespace Google.Apis.CloudKMS.v1
                         public virtual string PageToken { get; set; }
 
                         /// <summary>Optional. Specify how the results should be sorted. If not specified, the results
-                        /// will be sorted in the default order (https://cloud.google.com/kms/docs/sorting-and-
-                        /// filtering).</summary>
+                        /// will be sorted in the default order. For more information, see [Sorting and filtering list
+                        /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
@@ -2377,8 +2380,9 @@ namespace Google.Apis.CloudKMS.v1
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>Optional. Only include resources that match the filter in the response
-                        /// (https://cloud.google.com/kms/docs/sorting-and-filtering).</summary>
+                        /// <summary>Optional. Only include resources that match the filter in the response. For more
+                        /// information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs
+                        /// /sorting-and-filtering).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
@@ -2853,19 +2857,14 @@ namespace Google.Apis.CloudKMS.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Only include resources that match the filter in the response
-                    /// (https://cloud.google.com/kms/docs/sorting-and-filtering).</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>Optional pagination token, returned earlier via
                     /// ListKeyRingsResponse.next_page_token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
                     /// <summary>Optional. Specify how the results should be sorted. If not specified, the results will
-                    /// be sorted in the default order (https://cloud.google.com/kms/docs/sorting-and-
-                    /// filtering).</summary>
+                    /// be sorted in the default order.  For more information, see [Sorting and filtering list
+                    /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -2874,6 +2873,12 @@ namespace Google.Apis.CloudKMS.v1
                     /// subsequent request.  If unspecified, the server will pick an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Only include resources that match the filter in the response. For more
+                    /// information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-
+                    /// and-filtering).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2909,15 +2914,6 @@ namespace Google.Apis.CloudKMS.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -2939,6 +2935,15 @@ namespace Google.Apis.CloudKMS.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3301,6 +3306,11 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Response message for KeyManagementService.AsymmetricSign.</summary>
     public class AsymmetricSignResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The resource name of the CryptoKeyVersion used for signing. Check this field to verify that the
+        /// intended resource was used for signing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
         /// <summary>The created signature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string Signature { get; set; } 
@@ -3320,12 +3330,12 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// Example Policy with multiple AuditConfigs:
     ///
     /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ]
-    /// }, { "service": "fooservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
-    /// "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
+    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
     ///
-    /// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
-    /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
+    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
+    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -3343,10 +3353,10 @@ namespace Google.Apis.CloudKMS.v1.Data
 
     /// <summary>Provides the configuration for logging a type of permissions. Example:
     ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] }, {
+    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
     /// "log_type": "DATA_WRITE", } ] }
     ///
-    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.com from DATA_READ
+    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3382,7 +3392,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` .
+        /// `alice@example.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.
@@ -3642,7 +3652,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertext")]
         public virtual string Ciphertext { get; set; } 
 
-        /// <summary>The resource name of the CryptoKeyVersion used in encryption.</summary>
+        /// <summary>The resource name of the CryptoKeyVersion used in encryption. Check this field to verify that the
+        /// intended resource was used for encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3987,8 +3998,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
-        /// blindly.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -4004,6 +4014,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>The Algorithm associated with this key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
         public virtual string Algorithm { get; set; } 
+
+        /// <summary>The name of the CryptoKeyVersion public key. Provided here for verification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The public key, encoded in PEM format. For more information, see the [RFC
         /// 7468](https://tools.ietf.org/html/rfc7468) sections for [General

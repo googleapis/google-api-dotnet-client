@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190701 (1642)
+ *      <tr><th>API Rev<td>20190723 (1664)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -2588,14 +2588,14 @@ namespace Google.Apis.Pubsub.v1
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
 
-                /// <summary>Maximum number of topics to return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The value returned by the last `ListTopicsResponse`; indicates that this is a continuation
                 /// of a prior `ListTopics` call, and that the system should return the next page of data.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum number of topics to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2631,18 +2631,18 @@ namespace Google.Apis.Pubsub.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2987,7 +2987,7 @@ namespace Google.Apis.Pubsub.v1.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` .
+        /// `alice@example.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.
@@ -3272,8 +3272,7 @@ namespace Google.Apis.Pubsub.v1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
-        /// blindly.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -3370,24 +3369,24 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>Configuration for a push delivery endpoint.</summary>
     public class PushConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Endpoint configuration attributes.
+        /// <summary>Endpoint configuration attributes that can be used to control different aspects of the message
+        /// delivery.
         ///
-        /// Every endpoint has a set of API supported attributes that can be used to control different aspects of the
-        /// message delivery.
+        /// The only currently supported attribute is `x-goog-version`, which you can use to change the format of the
+        /// pushed message. This attribute indicates the version of the data expected by the endpoint. This controls the
+        /// shape of the pushed message (i.e., its fields and metadata).
         ///
-        /// The currently supported attribute is `x-goog-version`, which you can use to change the format of the pushed
-        /// message. This attribute indicates the version of the data expected by the endpoint. This controls the shape
-        /// of the pushed message (i.e., its fields and metadata). The endpoint version is based on the version of the
-        /// Pub/Sub API.
+        /// If not present during the `CreateSubscription` call, it will default to the version of the Pub/Sub API used
+        /// to make such call. If not present in a `ModifyPushConfig` call, its value will not be changed.
+        /// `GetSubscription` calls will always return a valid version, even if the subscription was created without
+        /// this attribute.
         ///
-        /// If not present during the `CreateSubscription` call, it will default to the version of the API used to make
-        /// such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
-        /// calls will always return a valid version, even if the subscription was created without this attribute.
-        ///
-        /// The possible values for this attribute are:
+        /// The only supported values for the `x-goog-version` attribute are:
         ///
         /// * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push
-        /// format defined in the v1 Pub/Sub API.</summary>
+        /// format defined in the v1 Pub/Sub API.
+        ///
+        /// For example: attributes { "x-goog-version": "v1" } </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
 

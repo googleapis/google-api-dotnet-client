@@ -1,4 +1,7 @@
 {
+  "ownerDomain": "google.com",
+  "name": "abusiveexperiencereport",
+  "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
   "title": "Abusive Experience Report API",
   "ownerName": "Google",
@@ -6,6 +9,9 @@
     "sites": {
       "methods": {
         "get": {
+          "path": "v1/{+name}",
+          "id": "abusiveexperiencereport.sites.get",
+          "description": "Gets a summary of the abusive experience rating of a site.",
           "response": {
             "$ref": "SiteSummaryResponse"
           },
@@ -18,17 +24,14 @@
           ],
           "parameters": {
             "name": {
+              "location": "path",
               "description": "The required site name. This is the site property whose abusive\nexperiences have been reviewed, and it must be URL-encoded. For example,\nsites/https%3A%2F%2Fwww.google.com. The server will return an error of\nBAD_REQUEST if this field is not filled in. Note that if the site property\nis not yet verified in Search Console, the reportUrl field\nreturned by the API will lead to the verification page, prompting the user\nto go through that process before they can gain access to the Abusive\nExperience Report.",
               "required": true,
               "type": "string",
-              "pattern": "^sites/[^/]+$",
-              "location": "path"
+              "pattern": "^sites/[^/]+$"
             }
           },
-          "flatPath": "v1/sites/{sitesId}",
-          "path": "v1/{+name}",
-          "id": "abusiveexperiencereport.sites.get",
-          "description": "Gets a summary of the abusive experience rating of a site."
+          "flatPath": "v1/sites/{sitesId}"
         }
       }
     },
@@ -53,17 +56,45 @@
     }
   },
   "parameters": {
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks."
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "uploadType": {
+      "type": "string",
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
     "callback": {
       "location": "query",
       "description": "JSONP",
       "type": "string"
     },
     "oauth_token": {
-      "type": "string",
       "location": "query",
-      "description": "OAuth 2.0 token for the current user."
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
     },
     "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -72,11 +103,14 @@
       "enum": [
         "1",
         "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
+      ]
     },
     "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
@@ -85,48 +119,17 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
+      "default": "json"
     },
     "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "quotaUser": {
       "type": "string",
       "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+      "description": "OAuth access token."
     },
-    "prettyPrint": {
+    "key": {
+      "type": "string",
       "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
     }
   },
   "version": "v1",
@@ -142,24 +145,24 @@
   "version_module": true,
   "schemas": {
     "ViolatingSitesResponse": {
-      "description": "Response message for ListViolatingSites.",
       "type": "object",
       "properties": {
         "violatingSites": {
-          "description": "A list of summaries of violating sites.",
           "type": "array",
           "items": {
             "$ref": "SiteSummaryResponse"
-          }
+          },
+          "description": "A list of summaries of violating sites."
         }
       },
-      "id": "ViolatingSitesResponse"
+      "id": "ViolatingSitesResponse",
+      "description": "Response message for ListViolatingSites."
     },
     "SiteSummaryResponse": {
-      "description": "Response message for GetSiteSummary.",
       "type": "object",
       "properties": {
         "filterStatus": {
+          "type": "string",
           "enumDescriptions": [
             "N/A.",
             "Ad filtering is on.",
@@ -174,8 +177,7 @@
             "PAUSED",
             "PENDING"
           ],
-          "description": "The abusive experience enforcement status of the site.",
-          "type": "string"
+          "description": "The abusive experience enforcement status of the site."
         },
         "underReview": {
           "description": "Whether the site is currently under review.",
@@ -195,26 +197,27 @@
           "type": "string"
         },
         "abusiveStatus": {
-          "enumDescriptions": [
-            "Not reviewed.",
-            "Passing.",
-            "Failing."
-          ],
           "enum": [
             "UNKNOWN",
             "PASSING",
             "FAILING"
           ],
           "description": "The status of the site reviewed for the abusive experiences.",
-          "type": "string"
+          "type": "string",
+          "enumDescriptions": [
+            "Not reviewed.",
+            "Passing.",
+            "Failing."
+          ]
         },
         "enforcementTime": {
+          "type": "string",
           "description": "The date on which enforcement begins.",
-          "format": "google-datetime",
-          "type": "string"
+          "format": "google-datetime"
         }
       },
-      "id": "SiteSummaryResponse"
+      "id": "SiteSummaryResponse",
+      "description": "Response message for GetSiteSummary."
     }
   },
   "protocol": "rest",
@@ -232,8 +235,5 @@
       }
     }
   },
-  "rootUrl": "https://abusiveexperiencereport.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "abusiveexperiencereport",
-  "batchPath": "batch"
+  "rootUrl": "https://abusiveexperiencereport.googleapis.com/"
 }
