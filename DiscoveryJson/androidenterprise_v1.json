@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/EwrwrWi80P0DXJMxvwC_adZFR_s\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/FM_8jB_Nba90IkIzNz2nu5XOmo8\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20190708",
+ "revision": "20190731",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -120,7 +120,7 @@
     },
     "parent": {
      "type": "string",
-     "description": "The URI of the parent frame hosting the iframe. To prevent XSS, the iframe may not be hosted at other URIs. This URI must be https."
+     "description": "The URI of the parent frame hosting the iframe. To prevent XSS, the iframe may not be hosted at other URIs. This URI must be https. Use whitespaces to separate multiple parent URIs."
     },
     "permission": {
      "type": "array",

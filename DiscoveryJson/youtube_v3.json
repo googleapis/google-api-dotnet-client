@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/iJCWgcHgub352FxdGhLwKx-bej4\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/rWYUaGpny8LTCuJElOojAsmREFw\"",
  "discoveryVersion": "v1",
  "id": "youtube:v3",
  "name": "youtube",
  "canonicalName": "YouTube",
  "version": "v3",
- "revision": "20190513",
+ "revision": "20190722",
  "title": "YouTube Data API",
  "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
  "ownerDomain": "google.com",
@@ -746,9 +746,11 @@
      "enum": [
       "dash",
       "hls",
-      "rtmp"
+      "rtmp",
+      "webrtc"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       ""
@@ -1467,11 +1469,9 @@
      "enum": [
       "private",
       "public",
-      "unlisted",
-      "unlisted_new"
+      "unlisted"
      ],
      "enumDescriptions": [
-      "",
       "",
       "",
       ""
@@ -4049,6 +4049,33 @@
      "description": "The date and time that the broadcast actually started. This information is only available once the broadcast's state is live. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.",
      "format": "date-time"
     },
+    "broadcastType": {
+     "type": "string",
+     "enum": [
+      "fludd",
+      "fluddArchive",
+      "gplusHoa",
+      "lcrEncoder",
+      "mobile",
+      "persistent",
+      "premiere",
+      "unspecified",
+      "webcam",
+      "ytHoa"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+     ]
+    },
     "channelId": {
      "type": "string",
      "description": "The ID that YouTube uses to uniquely identify the channel that is publishing the broadcast."
@@ -4166,11 +4193,9 @@
      "enum": [
       "private",
       "public",
-      "unlisted",
-      "unlisted_new"
+      "unlisted"
      ],
      "enumDescriptions": [
-      "",
       "",
       "",
       ""
@@ -5388,11 +5413,9 @@
      "enum": [
       "private",
       "public",
-      "unlisted",
-      "unlisted_new"
+      "unlisted"
      ],
      "enumDescriptions": [
-      "",
       "",
       "",
       ""
@@ -5532,11 +5555,9 @@
      "enum": [
       "private",
       "public",
-      "unlisted",
-      "unlisted_new"
+      "unlisted"
      ],
      "enumDescriptions": [
-      "",
       "",
       "",
       ""
@@ -7240,11 +7261,9 @@
      "enum": [
       "private",
       "public",
-      "unlisted",
-      "unlisted_new"
+      "unlisted"
      ],
      "enumDescriptions": [
-      "",
       "",
       "",
       ""
@@ -10595,7 +10614,7 @@
        "application/octet-stream",
        "video/*"
       ],
-      "maxSize": "64GB",
+      "maxSize": "128GB",
       "protocols": {
        "simple": {
         "multipart": true,

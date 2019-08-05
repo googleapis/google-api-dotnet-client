@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/ElhICwgdqyy6BHtKaIXdz23nNvE\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/3tx6VdUXP7L7Yr2512fVLQnP1WA\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v3",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v3",
- "revision": "20190707",
+ "revision": "20190730",
  "title": "Google Play Developer API",
  "description": "Accesses Android application developers' Google Play accounts.",
  "ownerDomain": "google.com",
@@ -470,6 +470,10 @@
     "sha1": {
      "type": "string",
      "description": "A sha1 hash of the image that was uploaded."
+    },
+    "sha256": {
+     "type": "string",
+     "description": "A sha256 hash of the image that was uploaded."
     },
     "url": {
      "type": "string",

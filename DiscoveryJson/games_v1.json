@@ -1,12 +1,12 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/XPfe6tjdZ-NZ9IXKc9c_sPq7eNw\"",
+  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/G05msEHtAJadDlAM05HgoDhdhJM\"",
   "discoveryVersion": "v1",
   "id": "games:v1",
   "name": "games",
   "canonicalName": "Games",
   "version": "v1",
-  "revision": "20190627",
+  "revision": "20190725",
   "title": "Google Play Game Services API",
   "description": "The API for Google Play Game Services.",
   "ownerDomain": "google.com",
@@ -1789,8 +1789,7 @@
           "default": "games#profileSettings"
         },
         "profileVisible": {
-          "type": "boolean",
-          "description": "The player's current profile visibility. This field is visible to both 1P and 3P APIs."
+          "type": "boolean"
         }
       }
     },
