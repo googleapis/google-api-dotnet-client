@@ -42,11 +42,6 @@ namespace Google.Apis.Upload
     /// </remarks>
     public abstract class ResumableUpload
     {
-        static ResumableUpload()
-        {
-            Console.WriteLine("DRUMKIT: Using local build");
-        }
-        
         #region Constants
 
         /// <summary>The class logger.</summary>
