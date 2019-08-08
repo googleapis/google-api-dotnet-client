@@ -977,10 +977,6 @@ namespace Google.Apis.CloudAsset.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>Start time of the time window (exclusive).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object ReadTimeWindowStartTime { get; set; }
-
             /// <summary>A list of the full names of the assets. For example:
             /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
             /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
@@ -1008,6 +1004,10 @@ namespace Google.Apis.CloudAsset.v1beta1
             /// <summary>End time of the time window (inclusive). Current timestamp if not specified.</summary>
             [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.endTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadTimeWindowEndTime { get; set; }
+
+            /// <summary>Start time of the time window (exclusive).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadTimeWindowStartTime { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1043,15 +1043,6 @@ namespace Google.Apis.CloudAsset.v1beta1
                         Pattern = @"^projects/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "readTimeWindow.startTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "readTimeWindow.startTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "assetNames", new Google.Apis.Discovery.Parameter
                     {
                         Name = "assetNames",
@@ -1073,6 +1064,15 @@ namespace Google.Apis.CloudAsset.v1beta1
                     "readTimeWindow.endTime", new Google.Apis.Discovery.Parameter
                     {
                         Name = "readTimeWindow.endTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "readTimeWindow.startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "readTimeWindow.startTime",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

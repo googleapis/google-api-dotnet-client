@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190802 (1674)
+ *      <tr><th>API Rev<td>20190807 (1679)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -2332,8 +2332,6 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         ///
         /// This method does not modify any billing account information on the underlying GCP `Project`.
         ///
-        /// All fields listed in the [request body](#request-body) are required.
-        ///
         /// To call `AddFirebase`, a member must be an Editor or Owner for the existing GCP `Project`. Service accounts
         /// cannot call `AddFirebase`.</summary>
         /// <param name="body">The body of the request.</param>
@@ -2361,8 +2359,6 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         /// DeleteOperation.
         ///
         /// This method does not modify any billing account information on the underlying GCP `Project`.
-        ///
-        /// All fields listed in the [request body](#request-body) are required.
         ///
         /// To call `AddFirebase`, a member must be an Editor or Owner for the existing GCP `Project`. Service accounts
         /// cannot call `AddFirebase`.</summary>
@@ -3135,7 +3131,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class AddFirebaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Deprecated. Instead, to set your project's default GCP resource location, call
-        /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase services to your
+        /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to your
         /// project.
         ///
         /// The ID of the project's default GCP resource location. The location must be one of the available [GCP
@@ -3143,15 +3139,22 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
-        /// <summary>The region code (CLDR) that the account will use for Firebase Analytics data. For example: US, GB,
-        /// or DE
+        /// <summary>Deprecated. Instead, to link your Project with a Google Analytics account, call
+        /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after you add Firebase resources to your
+        /// Project.
+        ///
+        /// The region code (CLDR) that the account will use for Firebase Analytics data. For example: US, GB, or DE
         ///
         /// In Java, use `com.google.i18n.identifiers.RegionCode`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; } 
 
-        /// <summary>The time zone that the account will use for Firebase Analytics data. For example:
-        /// America/Los_Angeles or Africa/Abidjan</summary>
+        /// <summary>Deprecated. Instead, to link your Project with a Google Analytics account, call
+        /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after you add Firebase resources to your
+        /// Project.
+        ///
+        /// The time zone that the account will use for Firebase Analytics data. For example: America/Los_Angeles or
+        /// Africa/Abidjan</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; } 
 
@@ -3655,7 +3658,7 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// resource locations](https://firebase.google.com/docs/projects/locations). Not all projects will have this
         /// field populated. If it is not populated, it means that the project does not yet have a default GCP resource
         /// location. To set your project's default GCP resource location, call
-        /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase services to your
+        /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to your
         /// project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 

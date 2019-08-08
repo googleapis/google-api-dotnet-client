@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190704 (1645)
+ *      <tr><th>API Rev<td>20190804 (1676)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1315,6 +1315,10 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; } 
 
+        /// <summary>Optional. Source code location information associated with the log entry, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceLocation")]
+        public virtual LogEntrySourceLocation SourceLocation { get; set; } 
+
         /// <summary>The log entry payload, represented as a structure that is expressed as a JSON object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structPayload")]
         public virtual System.Collections.Generic.IDictionary<string,object> StructPayload { get; set; } 
@@ -1360,6 +1364,29 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// `"github.com/MyProject/MyApplication"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producer")]
         public virtual string Producer { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Additional information about the source code location that produced the log entry.</summary>
+    public class LogEntrySourceLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Source file name. Depending on the runtime environment, this might be a simple name or a
+        /// fully-qualified name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("file")]
+        public virtual string File { get; set; } 
+
+        /// <summary>Optional. Human-readable name of the function or method being invoked, with optional context such
+        /// as the class or package name. This information may be used in contexts such as the logs viewer, where a file
+        /// and line number are less meaningful. The format can vary by language. For example:
+        /// `qual.if.ied.Class.method` (Java), `dir/package.func` (Go), `function` (Python).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("function")]
+        public virtual string Function { get; set; } 
+
+        /// <summary>Optional. Line within the source file. 1-based; 0 indicates no line number available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("line")]
+        public virtual System.Nullable<long> Line { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1543,8 +1570,8 @@ namespace Google.Apis.ServiceControl.v1.Data
     }    
 
     /// <summary>This message defines attributes for a node that handles a network request. The node can be either a
-    /// service or an application that sends, forwards, or receives the request. Service peers should fill in the
-    /// `service`, `principal`, and `labels` as appropriate.</summary>
+    /// service or an application that sends, forwards, or receives the request. Service peers should fill in
+    /// `principal` and `labels` as appropriate.</summary>
     public class Peer : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The IP address of the peer.</summary>
@@ -1568,12 +1595,6 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// the `region_code` should reflect the physical location where this peer is running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; } 
-
-        /// <summary>The canonical service name of the peer.
-        ///
-        /// NOTE: different systems may have different service naming schemes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1798,10 +1819,6 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auth")]
         public virtual Auth Auth { get; set; } 
 
-        /// <summary>The HTTP URL fragment. No URL decoding is performed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fragment")]
-        public virtual string Fragment { get; set; } 
-
         /// <summary>The HTTP request headers. If multiple headers share the same key, they must be merged according to
         /// the HTTP spec. All header keys must be lowercased, because HTTP header keys are case-insensitive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
@@ -1931,8 +1948,10 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
 
-        /// <summary>The type of the resource. The scheme is platform-specific because different platforms define their
-        /// resources differently.</summary>
+        /// <summary>The type of the resource. The syntax is platform-specific because different platforms define their
+        /// resources differently.
+        ///
+        /// For Google APIs, the type format must be "{service}/{kind}".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

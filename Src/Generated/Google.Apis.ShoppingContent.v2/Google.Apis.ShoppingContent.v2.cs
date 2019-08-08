@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190705 (1646)
+ *      <tr><th>API Rev<td>20190805 (1677)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -6133,12 +6133,12 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Notifies that item return and refund was handled directly by merchant outside of Google payments
-        /// processing (e.g. cash refund done in store). Note: We recommend calling the returnrefundlineitem method to
-        /// refund in-store returns. We will issue the refund directly to the customer. This helps to prevent possible
-        /// differences arising between merchant and Google transaction records. We also recommend having the point of
-        /// sale system communicate with Google to ensure that customers do not receive a double refund by first
-        /// refunding via Google then via an in-store return.</summary>
+        /// <summary>Deprecated. Notifies that item return and refund was handled directly by merchant outside of Google
+        /// payments processing (e.g. cash refund done in store). Note: We recommend calling the returnrefundlineitem
+        /// method to refund in-store returns. We will issue the refund directly to the customer. This helps to prevent
+        /// possible differences arising between merchant and Google transaction records. We also recommend having the
+        /// point of sale system communicate with Google to ensure that customers do not receive a double refund by
+        /// first refunding via Google then via an in-store return.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
         /// account.</param>
@@ -6148,12 +6148,12 @@ namespace Google.Apis.ShoppingContent.v2
             return new InstorerefundlineitemRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Notifies that item return and refund was handled directly by merchant outside of Google payments
-        /// processing (e.g. cash refund done in store). Note: We recommend calling the returnrefundlineitem method to
-        /// refund in-store returns. We will issue the refund directly to the customer. This helps to prevent possible
-        /// differences arising between merchant and Google transaction records. We also recommend having the point of
-        /// sale system communicate with Google to ensure that customers do not receive a double refund by first
-        /// refunding via Google then via an in-store return.</summary>
+        /// <summary>Deprecated. Notifies that item return and refund was handled directly by merchant outside of Google
+        /// payments processing (e.g. cash refund done in store). Note: We recommend calling the returnrefundlineitem
+        /// method to refund in-store returns. We will issue the refund directly to the customer. This helps to prevent
+        /// possible differences arising between merchant and Google transaction records. We also recommend having the
+        /// point of sale system communicate with Google to ensure that customers do not receive a double refund by
+        /// first refunding via Google then via an in-store return.</summary>
         public class InstorerefundlineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersInStoreRefundLineItemResponse>
         {
             /// <summary>Constructs a new Instorerefundlineitem request.</summary>
@@ -10408,8 +10408,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; } 
 
         /// <summary>The list of destinations to include for this target (corresponds to checked check boxes in Merchant
-        /// Center). Default destinations are always included unless provided in the excluded_destination
-        /// field.</summary>
+        /// Center). Default destinations are always included unless provided in excludedDestinations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedDestinations")]
         public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; } 
 
@@ -12257,7 +12256,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// Acceptable values for US are: - "gsx" - "ups" - "usps" - "fedex" - "dhl" - "ecourier" - "cxt" - "google" -
         /// "ontrac" - "emsy" - "ont" - "deliv" - "dynamex" - "lasership" - "mpx" - "uds" - "efw"
         ///
-        /// Acceptable values for FR are: - "colissimo" - "chronopost" - "gls" - "dpd" - "bpost"</summary>
+        /// Acceptable values for FR are: - "colissimo" - "chronopost" - "gls" - "dpd" - "bpost" - "colis priv�" -
+        /// "boxtal" - "geodis"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -15513,9 +15513,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<OrderLegacyPromotion> Promotions { get; set; } 
 
-        /// <summary>The price of shipping for all items. Shipping tax is automatically calculated for MFL orders. For
-        /// non-MFL orders, tax settings from Merchant Center are applied. Note that shipping is not taxed in certain
-        /// states.</summary>
+        /// <summary>The price of shipping for all items. Shipping tax is automatically calculated for orders where
+        /// marketplace facilitator tax laws are applicable. Otherwise, tax settings from Merchant Center are applied.
+        /// Note that shipping is not taxed in certain states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shippingCost")]
         public virtual Price ShippingCost { get; set; } 
 
@@ -15637,8 +15637,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; } 
 
-        /// <summary>The price for the product. Tax is automatically calculated for MFL orders. For non-MFL orders, tax
-        /// settings from Merchant Center are applied.</summary>
+        /// <summary>The price for the product. Tax is automatically calculated for orders where marketplace facilitator
+        /// tax laws are applicable. Otherwise, tax settings from Merchant Center are applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-approval/docs'>Access Approval API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190704 (1645)
+ *      <tr><th>API Rev<td>20190806 (1678)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-approval/docs'>
  *              https://cloud.google.com/access-approval/docs</a>
@@ -767,8 +767,8 @@ namespace Google.Apis.AccessApproval.v1beta1
 
         }
 
-        /// <summary>Updates the settings associated with a project, folder, or organization. Completely replaces the
-        /// existing settings.</summary>
+        /// <summary>Updates the settings associated with a project, folder, or organization. Settings to update are
+        /// determined by the value of field_mask.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The resource name of the settings. Format is one of:
         ///
@@ -779,8 +779,8 @@ namespace Google.Apis.AccessApproval.v1beta1
             return new UpdateAccessApprovalSettingsRequest(service, body, name);
         }
 
-        /// <summary>Updates the settings associated with a project, folder, or organization. Completely replaces the
-        /// existing settings.</summary>
+        /// <summary>Updates the settings associated with a project, folder, or organization. Settings to update are
+        /// determined by the value of field_mask.</summary>
         public class UpdateAccessApprovalSettingsRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1beta1.Data.AccessApprovalSettings>
         {
             /// <summary>Constructs a new UpdateAccessApprovalSettings request.</summary>
@@ -799,6 +799,12 @@ namespace Google.Apis.AccessApproval.v1beta1
             /// "organizations/{organization_id}/accessApprovalSettings" </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
+
+            /// <summary>The update mask applies to the settings. For the `FieldMask` definition, see
+            /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If this field is
+            /// left unset, only the notification_emails field will be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -838,6 +844,15 @@ namespace Google.Apis.AccessApproval.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+/accessApprovalSettings$",
+                    });
+                RequestParameters.Add(
+                    "updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -1268,8 +1283,8 @@ namespace Google.Apis.AccessApproval.v1beta1
 
         }
 
-        /// <summary>Updates the settings associated with a project, folder, or organization. Completely replaces the
-        /// existing settings.</summary>
+        /// <summary>Updates the settings associated with a project, folder, or organization. Settings to update are
+        /// determined by the value of field_mask.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The resource name of the settings. Format is one of:
         ///
@@ -1280,8 +1295,8 @@ namespace Google.Apis.AccessApproval.v1beta1
             return new UpdateAccessApprovalSettingsRequest(service, body, name);
         }
 
-        /// <summary>Updates the settings associated with a project, folder, or organization. Completely replaces the
-        /// existing settings.</summary>
+        /// <summary>Updates the settings associated with a project, folder, or organization. Settings to update are
+        /// determined by the value of field_mask.</summary>
         public class UpdateAccessApprovalSettingsRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1beta1.Data.AccessApprovalSettings>
         {
             /// <summary>Constructs a new UpdateAccessApprovalSettings request.</summary>
@@ -1300,6 +1315,12 @@ namespace Google.Apis.AccessApproval.v1beta1
             /// "organizations/{organization_id}/accessApprovalSettings" </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
+
+            /// <summary>The update mask applies to the settings. For the `FieldMask` definition, see
+            /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If this field is
+            /// left unset, only the notification_emails field will be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1339,6 +1360,15 @@ namespace Google.Apis.AccessApproval.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/accessApprovalSettings$",
+                    });
+                RequestParameters.Add(
+                    "updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -1769,8 +1799,8 @@ namespace Google.Apis.AccessApproval.v1beta1
 
         }
 
-        /// <summary>Updates the settings associated with a project, folder, or organization. Completely replaces the
-        /// existing settings.</summary>
+        /// <summary>Updates the settings associated with a project, folder, or organization. Settings to update are
+        /// determined by the value of field_mask.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The resource name of the settings. Format is one of:
         ///
@@ -1781,8 +1811,8 @@ namespace Google.Apis.AccessApproval.v1beta1
             return new UpdateAccessApprovalSettingsRequest(service, body, name);
         }
 
-        /// <summary>Updates the settings associated with a project, folder, or organization. Completely replaces the
-        /// existing settings.</summary>
+        /// <summary>Updates the settings associated with a project, folder, or organization. Settings to update are
+        /// determined by the value of field_mask.</summary>
         public class UpdateAccessApprovalSettingsRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1beta1.Data.AccessApprovalSettings>
         {
             /// <summary>Constructs a new UpdateAccessApprovalSettings request.</summary>
@@ -1801,6 +1831,12 @@ namespace Google.Apis.AccessApproval.v1beta1
             /// "organizations/{organization_id}/accessApprovalSettings" </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
+
+            /// <summary>The update mask applies to the settings. For the `FieldMask` definition, see
+            /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If this field is
+            /// left unset, only the notification_emails field will be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1841,6 +1877,15 @@ namespace Google.Apis.AccessApproval.v1beta1
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/accessApprovalSettings$",
                     });
+                RequestParameters.Add(
+                    "updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1853,6 +1898,16 @@ namespace Google.Apis.AccessApproval.v1beta1.Data
     /// <summary>Settings on a Project/Folder/Organization related to Access Approval.</summary>
     public class AccessApprovalSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access
+        /// requests for the resource given by name against any of these services contained here will be required to
+        /// have explicit approval. If name refers to an organization, enrollment can be done for individual services.
+        /// If name refers to a folder or project, enrollment can only be done on an all or nothing basis.
+        ///
+        /// If a cloud_product is repeated in this list, the first entry will be honored and all following entries will
+        /// be discarded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrolledServices")]
+        public virtual System.Collections.Generic.IList<EnrolledService> EnrolledServices { get; set; } 
+
         /// <summary>The resource name of the settings. Format is one of:
         ///
         /// "projects/{project_id}/accessApprovalSettings" "folders/{folder_id}/accessApprovalSettings"
@@ -1996,6 +2051,26 @@ namespace Google.Apis.AccessApproval.v1beta1.Data
         /// <summary>The time at which the approval request was dismissed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dismissTime")]
         public virtual object DismissTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the enrollment of a cloud resource into a specific service.</summary>
+    public class EnrolledService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The product for which Access Approval will be enrolled. Allowed values are listed below (case-
+        /// sensitive):
+        ///
+        /// all appengine.googleapis.com bigquery.googleapis.com bigtable.googleapis.com cloudkms.googleapis.com
+        /// compute.googleapis.com dataflow.googleapis.com iam.googleapis.com pubsub.googleapis.com
+        /// storage.googleapis.com </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProduct")]
+        public virtual string CloudProduct { get; set; } 
+
+        /// <summary>The enrollment level of the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollmentLevel")]
+        public virtual string EnrollmentLevel { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20190723 (1664)
+ *      <tr><th>API Rev<td>20190731 (1672)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -1871,6 +1871,22 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>AcceleratorConfig defines the accelerator cards to attach to the VM.</summary>
+    public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of the guest accelerator cards exposed to this VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
+        public virtual System.Nullable<long> AcceleratorCount { get; set; } 
+
+        /// <summary>The type of accelerator to attach to this VM, e.g. "nvidia-tesla-k80" for nVidia Tesla
+        /// K80.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
+        public virtual string AcceleratorType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request used for `CreateInstance`.</summary>
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2075,6 +2091,10 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     /// <summary>Defines the configuration to be used for a creating workers in the worker pool.</summary>
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The accelerator card attached to each VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelerator")]
+        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig Accelerator { get; set; } 
+
         /// <summary>Required. Size of the disk attached to the worker, in GB. See
         /// https://cloud.google.com/compute/docs/disks/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]

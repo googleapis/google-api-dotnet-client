@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190723 (1664)
+ *      <tr><th>API Rev<td>20190731 (1672)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -1061,6 +1061,26 @@ namespace Google.Apis.RemoteBuildExecution.v1
             }
 
 
+            /// <summary>The `target` value **must** be a valid URL path pointing to an entity to watch. Note that the
+            /// service name **must** be removed from the target field (e.g., the target field must say "/foo/bar", not
+            /// "myservice.googleapis.com/foo/bar"). A client is also allowed to pass system-specific parameters in the
+            /// URL that are only obeyed by some implementations. Some parameters will be implementation-specific.
+            /// However, some have predefined meaning and are listed here:
+            ///
+            /// * recursive = true|false [default=false] If set to true, indicates that the client wants to watch all
+            /// elements of entities in the subtree rooted at the entity's name in `target`. For descendants that are
+            /// not the immediate children of the target, the `Change.element` will contain slashes.
+            ///
+            /// Note that some namespaces and entities will not support recursive watching. When watching such an
+            /// entity, a client must not set recursive to true. Otherwise, it will receive an `UNIMPLEMENTED` error.
+            ///
+            /// Normal URL encoding must be used inside `target`.  For example, if a query parameter name or value, or
+            /// the non-query parameter portion of `target` contains a special character, it must be %-encoded.  We
+            /// recommend that clients and servers use their runtime's URL library to produce and consume target
+            /// values.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Target { get; set; }
+
             /// <summary>The `resume_marker` specifies how much of the existing underlying state is delivered to the
             /// client when the watch request is received by the system. The client can set this marker in one of the
             /// following ways to get different semantics:
@@ -1083,26 +1103,6 @@ namespace Google.Apis.RemoteBuildExecution.v1
             /// fetching) and the "now" marker. It need not support resuming from a specific point.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resumeMarker", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ResumeMarker { get; set; }
-
-            /// <summary>The `target` value **must** be a valid URL path pointing to an entity to watch. Note that the
-            /// service name **must** be removed from the target field (e.g., the target field must say "/foo/bar", not
-            /// "myservice.googleapis.com/foo/bar"). A client is also allowed to pass system-specific parameters in the
-            /// URL that are only obeyed by some implementations. Some parameters will be implementation-specific.
-            /// However, some have predefined meaning and are listed here:
-            ///
-            /// * recursive = true|false [default=false] If set to true, indicates that the client wants to watch all
-            /// elements of entities in the subtree rooted at the entity's name in `target`. For descendants that are
-            /// not the immediate children of the target, the `Change.element` will contain slashes.
-            ///
-            /// Note that some namespaces and entities will not support recursive watching. When watching such an
-            /// entity, a client must not set recursive to true. Otherwise, it will receive an `UNIMPLEMENTED` error.
-            ///
-            /// Normal URL encoding must be used inside `target`.  For example, if a query parameter name or value, or
-            /// the non-query parameter portion of `target` contains a special character, it must be %-encoded.  We
-            /// recommend that clients and servers use their runtime's URL library to produce and consume target
-            /// values.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Target { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1129,18 +1129,18 @@ namespace Google.Apis.RemoteBuildExecution.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "resumeMarker", new Google.Apis.Discovery.Parameter
+                    "target", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "resumeMarker",
+                        Name = "target",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "target", new Google.Apis.Discovery.Parameter
+                    "resumeMarker", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "target",
+                        Name = "resumeMarker",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1920,6 +1920,22 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>AcceleratorConfig defines the accelerator cards to attach to the VM.</summary>
+    public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of the guest accelerator cards exposed to this VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
+        public virtual System.Nullable<long> AcceleratorCount { get; set; } 
+
+        /// <summary>The type of accelerator to attach to this VM, e.g. "nvidia-tesla-k80" for nVidia Tesla
+        /// K80.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
+        public virtual string AcceleratorType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request used for `CreateInstance`.</summary>
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2124,6 +2140,10 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
     /// <summary>Defines the configuration to be used for a creating workers in the worker pool.</summary>
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The accelerator card attached to each VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelerator")]
+        public virtual GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig Accelerator { get; set; } 
+
         /// <summary>Required. Size of the disk attached to the worker, in GB. See
         /// https://cloud.google.com/compute/docs/disks/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]

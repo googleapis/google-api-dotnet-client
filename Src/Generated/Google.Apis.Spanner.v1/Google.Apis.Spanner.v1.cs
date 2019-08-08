@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190613 (1624)
+ *      <tr><th>API Rev<td>20190723 (1664)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -841,10 +841,6 @@ namespace Google.Apis.Spanner.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>The standard list filter.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
-
                         /// <summary>The standard list page token.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -852,6 +848,10 @@ namespace Google.Apis.Spanner.v1
                         /// <summary>The standard list page size.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The standard list filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -887,15 +887,6 @@ namespace Google.Apis.Spanner.v1
                                     Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/operations$",
                                 });
                             RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -908,6 +899,15 @@ namespace Google.Apis.Spanner.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1100,10 +1100,10 @@ namespace Google.Apis.Spanner.v1
                     /// /write-only transactions, create multiple sessions. Note that standalone reads and queries use a
                     /// transaction internally, and count toward the one transaction limit.
                     ///
-                    /// Cloud Spanner limits the number of sessions that can exist at any given time; thus, it is a good
-                    /// idea to delete idle and/or unneeded sessions. Aside from explicit deletes, Cloud Spanner can
-                    /// delete sessions for which no operations are sent for more than an hour. If a session is deleted,
-                    /// requests to it return `NOT_FOUND`.
+                    /// Active sessions use additional server resources, so it is a good idea to delete idle and
+                    /// unneeded sessions. Aside from explicit deletes, Cloud Spanner can delete sessions for which no
+                    /// operations are sent for more than an hour. If a session is deleted, requests to it return
+                    /// `NOT_FOUND`.
                     ///
                     /// Idle sessions can be kept alive by sending a trivial SQL query periodically, e.g., `"SELECT
                     /// 1"`.</summary>
@@ -1122,10 +1122,10 @@ namespace Google.Apis.Spanner.v1
                     /// /write-only transactions, create multiple sessions. Note that standalone reads and queries use a
                     /// transaction internally, and count toward the one transaction limit.
                     ///
-                    /// Cloud Spanner limits the number of sessions that can exist at any given time; thus, it is a good
-                    /// idea to delete idle and/or unneeded sessions. Aside from explicit deletes, Cloud Spanner can
-                    /// delete sessions for which no operations are sent for more than an hour. If a session is deleted,
-                    /// requests to it return `NOT_FOUND`.
+                    /// Active sessions use additional server resources, so it is a good idea to delete idle and
+                    /// unneeded sessions. Aside from explicit deletes, Cloud Spanner can delete sessions for which no
+                    /// operations are sent for more than an hour. If a session is deleted, requests to it return
+                    /// `NOT_FOUND`.
                     ///
                     /// Idle sessions can be kept alive by sending a trivial SQL query periodically, e.g., `"SELECT
                     /// 1"`.</summary>
@@ -1253,16 +1253,12 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>Executes a batch of SQL DML statements. This method allows many statements to be run
                     /// with lower latency than submitting them sequentially with ExecuteSql.
                     ///
-                    /// Statements are executed in order, sequentially. ExecuteBatchDmlResponse will contain a ResultSet
-                    /// for each DML statement that has successfully executed. If a statement fails, its error status
-                    /// will be returned as part of the ExecuteBatchDmlResponse. Execution will stop at the first failed
-                    /// statement; the remaining statements will not run.
+                    /// Statements are executed in sequential order. A request can succeed even if a statement fails.
+                    /// The ExecuteBatchDmlResponse.status field in the response provides information about the
+                    /// statement that failed. Clients must inspect this field to determine whether an error occurred.
                     ///
-                    /// ExecuteBatchDml is expected to return an OK status with a response even if there was an error
-                    /// while processing one of the DML statements. Clients must inspect response.status to determine if
-                    /// there were any errors while processing the request.
-                    ///
-                    /// See more details in ExecuteBatchDmlRequest and ExecuteBatchDmlResponse.</summary>
+                    /// Execution stops after the first failed statement; the remaining statements are not
+                    /// executed.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="session">Required. The session in which the DML statements should be performed.</param>
                     public virtual ExecuteBatchDmlRequest ExecuteBatchDml(Google.Apis.Spanner.v1.Data.ExecuteBatchDmlRequest body, string session)
@@ -1273,16 +1269,12 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>Executes a batch of SQL DML statements. This method allows many statements to be run
                     /// with lower latency than submitting them sequentially with ExecuteSql.
                     ///
-                    /// Statements are executed in order, sequentially. ExecuteBatchDmlResponse will contain a ResultSet
-                    /// for each DML statement that has successfully executed. If a statement fails, its error status
-                    /// will be returned as part of the ExecuteBatchDmlResponse. Execution will stop at the first failed
-                    /// statement; the remaining statements will not run.
+                    /// Statements are executed in sequential order. A request can succeed even if a statement fails.
+                    /// The ExecuteBatchDmlResponse.status field in the response provides information about the
+                    /// statement that failed. Clients must inspect this field to determine whether an error occurred.
                     ///
-                    /// ExecuteBatchDml is expected to return an OK status with a response even if there was an error
-                    /// while processing one of the DML statements. Clients must inspect response.status to determine if
-                    /// there were any errors while processing the request.
-                    ///
-                    /// See more details in ExecuteBatchDmlRequest and ExecuteBatchDmlResponse.</summary>
+                    /// Execution stops after the first failed statement; the remaining statements are not
+                    /// executed.</summary>
                     public class ExecuteBatchDmlRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ExecuteBatchDmlResponse>
                     {
                         /// <summary>Constructs a new ExecuteBatchDml request.</summary>
@@ -1583,6 +1575,16 @@ namespace Google.Apis.Spanner.v1
                         [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Database { get; private set; }
 
+                        /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
+                        /// ListSessionsResponse.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Number of sessions to be returned in the response. If 0 or less, defaults to the
+                        /// server's maximum allowed page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
                         /// <summary>An expression for filtering the results of the request. Filter rules are case
                         /// insensitive. The fields eligible for filtering are:
                         ///
@@ -1594,16 +1596,6 @@ namespace Google.Apis.Spanner.v1
                         /// the label "env" and the value of the label contains the string "dev".</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
-
-                        /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
-                        /// ListSessionsResponse.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Number of sessions to be returned in the response. If 0 or less, defaults to the
-                        /// server's maximum allowed page size.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1639,15 +1631,6 @@ namespace Google.Apis.Spanner.v1
                                     Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -1660,6 +1643,15 @@ namespace Google.Apis.Spanner.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3435,6 +3427,16 @@ namespace Google.Apis.Spanner.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
+                /// ListInstancesResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
+                /// maximum allowed page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>An expression for filtering the results of the request. Filter rules are case insensitive.
                 /// The fields eligible for filtering are:
                 ///
@@ -3450,16 +3452,6 @@ namespace Google.Apis.Spanner.v1
                 /// "dev".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
-                /// ListInstancesResponse.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
-                /// maximum allowed page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3495,15 +3487,6 @@ namespace Google.Apis.Spanner.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3516,6 +3499,15 @@ namespace Google.Apis.Spanner.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4052,25 +4044,30 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request for ExecuteBatchDml</summary>
+    /// <summary>The request for ExecuteBatchDml.</summary>
     public class ExecuteBatchDmlRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A per-transaction sequence number used to identify this request. This is used in the same space as
-        /// the seqno in ExecuteSqlRequest. See more details in ExecuteSqlRequest.</summary>
+        /// <summary>A per-transaction sequence number used to identify this request. This field makes each request
+        /// idempotent such that if the request is received multiple times, at most one will succeed.
+        ///
+        /// The sequence number must be monotonically increasing within the transaction. If a request arrives for the
+        /// first time with an out-of-order sequence number, the transaction may be aborted. Replays of previously
+        /// handled requests will yield the same response as the first execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seqno")]
         public virtual System.Nullable<long> Seqno { get; set; } 
 
         /// <summary>The list of statements to execute in this batch. Statements are executed serially, such that the
-        /// effects of statement i are visible to statement i+1. Each statement must be a DML statement. Execution will
-        /// stop at the first failed statement; the remaining statements will not run.
+        /// effects of statement `i` are visible to statement `i+1`. Each statement must be a DML statement. Execution
+        /// stops at the first failed statement; the remaining statements are not executed.
         ///
-        /// REQUIRES: `statements_size()` > 0.</summary>
+        /// Callers must provide at least one statement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statements")]
         public virtual System.Collections.Generic.IList<Statement> Statements { get; set; } 
 
-        /// <summary>The transaction to use. A ReadWrite transaction is required. Single-use transactions are not
-        /// supported (to avoid replay).  The caller must either supply an existing transaction ID or begin a new
-        /// transaction.</summary>
+        /// <summary>The transaction to use. Must be a read-write transaction.
+        ///
+        /// To protect against replays, single-use transactions are not supported. The caller must either supply an
+        /// existing transaction ID or begin a new transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual TransactionSelector Transaction { get; set; } 
 
@@ -4078,34 +4075,36 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response for ExecuteBatchDml. Contains a list of ResultSet, one for each DML statement that has
-    /// successfully executed. If a statement fails, the error is returned as part of the response payload. Clients can
-    /// determine whether all DML statements have run successfully, or if a statement failed, using one of the following
-    /// approaches:
+    /// <summary>The response for ExecuteBatchDml. Contains a list of ResultSet messages, one for each DML statement
+    /// that has successfully executed, in the same order as the statements in the request. If a statement fails, the
+    /// status in the response body identifies the cause of the failure.
     ///
-    /// 1. Check if `'status'` field is `OkStatus`. 2. Check if `result_sets_size()` equals the number of statements in
-    /// ExecuteBatchDmlRequest.
+    /// To check for DML statements that failed, use the following approach:
     ///
-    /// Example 1: A request with 5 DML statements, all executed successfully.
+    /// 1. Check the status in the response message. The google.rpc.Code enum value `OK` indicates that all statements
+    /// were executed successfully. 2. If the status was not `OK`, check the number of result sets in the response. If
+    /// the response contains `N` ResultSet messages, then statement `N+1` in the request failed.
     ///
-    /// Result: A response with 5 ResultSets, one for each statement in the same order, and an `OkStatus`.
+    /// Example 1:
     ///
-    /// Example 2: A request with 5 DML statements. The 3rd statement has a syntax error.
+    /// * Request: 5 DML statements, all executed successfully. * Response: 5 ResultSet messages, with the status `OK`.
     ///
-    /// Result: A response with 2 ResultSets, for the first 2 statements that run successfully, and a syntax error
-    /// (`INVALID_ARGUMENT`) status. From `result_set_size()` client can determine that the 3rd statement has
-    /// failed.</summary>
+    /// Example 2:
+    ///
+    /// * Request: 5 DML statements. The third statement has a syntax error. * Response: 2 ResultSet messages, and a
+    /// syntax error (`INVALID_ARGUMENT`) status. The number of ResultSet messages indicates that the third statement
+    /// failed, and the fourth and fifth statements were not executed.</summary>
     public class ExecuteBatchDmlResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>ResultSets, one for each statement in the request that ran successfully, in the same order as the
-        /// statements in the request. Each ResultSet will not contain any rows. The ResultSetStats in each ResultSet
-        /// will contain the number of rows modified by the statement.
+        /// <summary>One ResultSet for each statement in the request that ran successfully, in the same order as the
+        /// statements in the request. Each ResultSet does not contain any rows. The ResultSetStats in each ResultSet
+        /// contain the number of rows modified by the statement.
         ///
-        /// Only the first ResultSet in the response contains a valid ResultSetMetadata.</summary>
+        /// Only the first ResultSet in the response contains valid ResultSetMetadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultSets")]
         public virtual System.Collections.Generic.IList<ResultSet> ResultSets { get; set; } 
 
-        /// <summary>If all DML statements are executed successfully, status will be OK. Otherwise, the error status of
+        /// <summary>If all DML statements are executed successfully, the status is `OK`. Otherwise, the error status of
         /// the first failed statement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; } 
@@ -4125,17 +4124,17 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paramTypes")]
         public virtual System.Collections.Generic.IDictionary<string,Type> ParamTypes { get; set; } 
 
-        /// <summary>The SQL string can contain parameter placeholders. A parameter placeholder consists of `'@'`
-        /// followed by the parameter name. Parameter names consist of any combination of letters, numbers, and
-        /// underscores.
+        /// <summary>Parameter names and values that bind to placeholders in the SQL string.
+        ///
+        /// A parameter placeholder consists of the `@` character followed by the parameter name (for example,
+        /// `@firstName`). Parameter names can contain letters, numbers, and underscores.
         ///
         /// Parameters can appear anywhere that a literal value is expected.  The same parameter name can be used more
-        /// than once, for example: `"WHERE id > @msg_id AND id < @msg_id + 100"`
+        /// than once, for example:
         ///
-        /// It is an error to execute an SQL statement with unbound parameters.
+        /// `"WHERE id > @msg_id AND id < @msg_id + 100"`
         ///
-        /// Parameter values are specified using `params`, which is a JSON object whose keys are parameter names, and
-        /// whose values are the corresponding parameter values.</summary>
+        /// It is an error to execute a SQL statement with unbound parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string,object> Params__ { get; set; } 
 
@@ -4157,8 +4156,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resumeToken")]
         public virtual string ResumeToken { get; set; } 
 
-        /// <summary>A per-transaction sequence number used to identify this request. This makes each request idempotent
-        /// such that if the request is received multiple times, at most one will succeed.
+        /// <summary>A per-transaction sequence number used to identify this request. This field makes each request
+        /// idempotent such that if the request is received multiple times, at most one will succeed.
         ///
         /// The sequence number must be monotonically increasing within the transaction. If a request arrives for the
         /// first time with an out-of-order sequence number, the transaction may be aborted. Replays of previously
@@ -4172,17 +4171,15 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sql")]
         public virtual string Sql { get; set; } 
 
-        /// <summary>The transaction to use. If none is provided, the default is a temporary read-only transaction with
-        /// strong concurrency.
-        ///
-        /// The transaction to use.
+        /// <summary>The transaction to use.
         ///
         /// For queries, if none is provided, the default is a temporary read-only transaction with strong concurrency.
         ///
-        /// Standard DML statements require a ReadWrite transaction. Single-use transactions are not supported (to avoid
-        /// replay).  The caller must either supply an existing transaction ID or begin a new transaction.
+        /// Standard DML statements require a read-write transaction. To protect against replays, single-use
+        /// transactions are not supported.  The caller must either supply an existing transaction ID or begin a new
+        /// transaction.
         ///
-        /// Partitioned DML requires an existing PartitionedDml transaction ID.</summary>
+        /// Partitioned DML requires an existing Partitioned DML transaction ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual TransactionSelector Transaction { get; set; } 
 
@@ -4721,17 +4718,17 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paramTypes")]
         public virtual System.Collections.Generic.IDictionary<string,Type> ParamTypes { get; set; } 
 
-        /// <summary>The SQL query string can contain parameter placeholders. A parameter placeholder consists of `'@'`
-        /// followed by the parameter name. Parameter names consist of any combination of letters, numbers, and
-        /// underscores.
+        /// <summary>Parameter names and values that bind to placeholders in the SQL string.
+        ///
+        /// A parameter placeholder consists of the `@` character followed by the parameter name (for example,
+        /// `@firstName`). Parameter names can contain letters, numbers, and underscores.
         ///
         /// Parameters can appear anywhere that a literal value is expected.  The same parameter name can be used more
-        /// than once, for example: `"WHERE id > @msg_id AND id < @msg_id + 100"`
+        /// than once, for example:
         ///
-        /// It is an error to execute an SQL query with unbound parameters.
+        /// `"WHERE id > @msg_id AND id < @msg_id + 100"`
         ///
-        /// Parameter values are specified using `params`, which is a JSON object whose keys are parameter names, and
-        /// whose values are the corresponding parameter values.</summary>
+        /// It is an error to execute a SQL statement with unbound parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string,object> Params__ { get; set; } 
 
@@ -5220,17 +5217,17 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paramTypes")]
         public virtual System.Collections.Generic.IDictionary<string,Type> ParamTypes { get; set; } 
 
-        /// <summary>The DML string can contain parameter placeholders. A parameter placeholder consists of `'@'`
-        /// followed by the parameter name. Parameter names consist of any combination of letters, numbers, and
-        /// underscores.
+        /// <summary>Parameter names and values that bind to placeholders in the DML string.
+        ///
+        /// A parameter placeholder consists of the `@` character followed by the parameter name (for example,
+        /// `@firstName`). Parameter names can contain letters, numbers, and underscores.
         ///
         /// Parameters can appear anywhere that a literal value is expected.  The same parameter name can be used more
-        /// than once, for example: `"WHERE id > @msg_id AND id < @msg_id + 100"`
+        /// than once, for example:
         ///
-        /// It is an error to execute an SQL statement with unbound parameters.
+        /// `"WHERE id > @msg_id AND id < @msg_id + 100"`
         ///
-        /// Parameter values are specified using `params`, which is a JSON object whose keys are parameter names, and
-        /// whose values are the corresponding parameter values.</summary>
+        /// It is an error to execute a SQL statement with unbound parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string,object> Params__ { get; set; } 
 

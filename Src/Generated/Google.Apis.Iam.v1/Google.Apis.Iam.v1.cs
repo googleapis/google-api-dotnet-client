@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190726 (1667)
+ *      <tr><th>API Rev<td>20190802 (1674)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -2664,8 +2664,9 @@ namespace Google.Apis.Iam.v1
             /// enabled service account will have no effect.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The resource name of the service account in the following format:
-            /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}'. Using `-` as a wildcard for the `PROJECT_ID` will infer
-            /// the project from the account.</param>
+            /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will infer the
+            /// project from the account. The `ACCOUNT` value can be the `email` address or the `unique_id` of the service
+            /// account.</param>
             public virtual EnableRequest Enable(Google.Apis.Iam.v1.Data.EnableServiceAccountRequest body, string name)
             {
                 return new EnableRequest(service, body, name);
@@ -2692,8 +2693,9 @@ namespace Google.Apis.Iam.v1
 
 
                 /// <summary>The resource name of the service account in the following format:
-                /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}'. Using `-` as a wildcard for the
-                /// `PROJECT_ID` will infer the project from the account.</summary>
+                /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will
+                /// infer the project from the account. The `ACCOUNT` value can be the `email` address or the
+                /// `unique_id` of the service account.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2849,8 +2851,8 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
-                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the
-                /// value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If
+                /// the value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -2925,16 +2927,16 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Optional pagination token returned in an earlier
-                /// ListServiceAccountsResponse.next_page_token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional limit on the number of service accounts to include in the response. Further
                 /// accounts can subsequently be obtained by including the ListServiceAccountsResponse.next_page_token
                 /// in a subsequent request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional pagination token returned in an earlier
+                /// ListServiceAccountsResponse.next_page_token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2970,18 +2972,18 @@ namespace Google.Apis.Iam.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3423,7 +3425,7 @@ namespace Google.Apis.Iam.v1
             /// account may not always be restorable.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The resource name of the service account in the following format:
-            /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}'. Using `-` as a wildcard for the `PROJECT_ID` will infer
+            /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}`. Using `-` as a wildcard for the `PROJECT_ID` will infer
             /// the project from the account.</param>
             public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteServiceAccountRequest body, string name)
             {
@@ -3445,7 +3447,7 @@ namespace Google.Apis.Iam.v1
 
 
                 /// <summary>The resource name of the service account in the following format:
-                /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}'. Using `-` as a wildcard for the
+                /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}`. Using `-` as a wildcard for the
                 /// `PROJECT_ID` will infer the project from the account.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3717,14 +3719,6 @@ namespace Google.Apis.Iam.v1
             }
 
 
-            /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Optional limit on the number of roles to include in the response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Optional view for the returned Role objects. When `FULL` is specified, the
             /// `includedPermissions` field is returned, which includes a list of all permissions in the role. The
             /// default value is `BASIC`, which does not return the `includedPermissions` field.</summary>
@@ -3769,6 +3763,14 @@ namespace Google.Apis.Iam.v1
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
+            /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Optional limit on the number of roles to include in the response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -3794,24 +3796,6 @@ namespace Google.Apis.Iam.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
@@ -3833,6 +3817,24 @@ namespace Google.Apis.Iam.v1
                     "showDeleted", new Google.Apis.Discovery.Parameter
                     {
                         Name = "showDeleted",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4349,6 +4351,11 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("onlyInPredefinedRoles")]
         public virtual System.Nullable<bool> OnlyInPredefinedRoles { get; set; } 
 
+        /// <summary>The preferred name for this permission. If present, then this permission is an alias of, and
+        /// equivalent to, the listed primary_permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryPermission")]
+        public virtual string PrimaryPermission { get; set; } 
+
         /// <summary>The current launch stage of the permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stage")]
         public virtual string Stage { get; set; } 
@@ -4564,8 +4571,8 @@ namespace Google.Apis.Iam.v1.Data
         /// When Role is used in CreateRole, the role name must not be set.
         ///
         /// When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g.,
-        /// roles/logging.viewer for curated roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom
-        /// roles.</summary>
+        /// roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for
+        /// custom roles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

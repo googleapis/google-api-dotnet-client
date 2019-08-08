@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/poly/'>Poly API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190727 (1668)
+ *      <tr><th>API Rev<td>20190806 (1678)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/poly/'>
  *              https://developers.google.com/poly/</a>
@@ -643,12 +643,6 @@ namespace Google.Apis.PolyService.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`.
-                /// Defaults to `BEST`, which ranks assets based on a combination of popularity and other
-                /// features.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
                 /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`,
                 /// `GLTF`, `GLTF2`, `OBJ`, and `TILT`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
@@ -681,6 +675,12 @@ namespace Google.Apis.PolyService.v1
                     [Google.Apis.Util.StringValueAttribute("PRIVATE")]
                     PRIVATE__,
                 }
+
+                /// <summary>Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`.
+                /// Defaults to `BEST`, which ranks assets based on a combination of popularity and other
+                /// features.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -716,15 +716,6 @@ namespace Google.Apis.PolyService.v1
                             Pattern = @"^users/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "format", new Google.Apis.Discovery.Parameter
                         {
                             Name = "format",
@@ -755,6 +746,15 @@ namespace Google.Apis.PolyService.v1
                         "visibility", new Google.Apis.Discovery.Parameter
                         {
                             Name = "visibility",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
