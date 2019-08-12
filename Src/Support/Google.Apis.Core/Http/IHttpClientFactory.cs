@@ -29,6 +29,9 @@ namespace Google.Apis.Http
 
         /// <summary>Gets a list of initializers to initialize the HTTP client instance.</summary>
         public IList<IConfigurableHttpClientInitializer> Initializers { get; private set; }
+        
+        /// <summary>Gets or sets the value for the x-goog-api-client header</summary>
+        public string GoogleApiClientHeader { get; set; }
 
         /// <summary>Constructs a new argument instance.</summary>
         public CreateHttpClientArgs()

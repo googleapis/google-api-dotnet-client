@@ -113,6 +113,14 @@ namespace Google.Apis.Services
             /// </summary>
             public string BaseUri { get; set; }
 
+            /// <summary>
+            /// Builder for the x-goog-api-client header, collecting version information.
+            /// Services automatically add the API library version to this.
+            /// Most users will never need to configure this, but higher level abstraction Google libraries
+            /// may add their own version here.
+            /// </summary>
+            public VersionHeaderBuilder VersionHeaderBuilder { get; }
+            
             /// <summary>Constructs a new initializer with default values.</summary>
             public Initializer()
             {
@@ -120,6 +128,8 @@ namespace Google.Apis.Services
                 Serializer = new NewtonsoftJsonSerializer();
                 DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.UnsuccessfulResponse503;
                 MaxUrlLength = DefaultMaxUrlLength;
+                VersionHeaderBuilder = new VersionHeaderBuilder()
+                    .AppendDotNetEnvironment();
             }
 
             // HttpRequestMessage.Headers fails if any of these characters are included in a User-Agent header.
@@ -140,6 +150,9 @@ namespace Google.Apis.Services
         protected BaseClientService(Initializer initializer)
         {
             initializer.Validate();
+            // Note that GetType() will get the *actual* type, which will be the service type in the API-specific library.
+            // That's the version we want to append.
+            initializer.VersionHeaderBuilder.AppendAssemblyVersion("gdcl", GetType());
             // Set the right properties by the initializer's properties.
             GZipEnabled = initializer.GZipEnabled;
             Serializer = initializer.Serializer;
@@ -175,6 +188,7 @@ namespace Google.Apis.Services
                 {
                     GZipEnabled = GZipEnabled,
                     ApplicationName = ApplicationName,
+                    GoogleApiClientHeader = initializer.VersionHeaderBuilder.ToString()
                 };
 
             // Add the user's input initializer.

@@ -68,6 +68,10 @@ namespace Google.Apis.Upload
         /// <summary>Content-Range header value for the body upload of zero length files.</summary>
         private const string ZeroByteContentRangeHeader = "bytes */0";
 
+        /// <summary>
+        /// The x-goog-api-client header value used for resumable uploads initiated without any options or an HttpClient.
+        /// </summary>
+        private static readonly string DefaultGoogleApiClientHeader = new VersionHeaderBuilder().AppendDotNetEnvironment().AppendAssemblyVersion("gdcl", typeof(ResumableUpload)).ToString();
         #endregion // Constants
 
         #region Construction
@@ -83,7 +87,7 @@ namespace Google.Apis.Upload
             ContentStream = contentStream;
             // Check if the stream length is known.
             StreamLength = ContentStream.CanSeek ? ContentStream.Length : UnknownSize;
-            HttpClient = options?.ConfigurableHttpClient ?? new HttpClientFactory().CreateHttpClient(new CreateHttpClientArgs { ApplicationName = "ResumableUpload", GZipEnabled = true });
+            HttpClient = options?.ConfigurableHttpClient ?? new HttpClientFactory().CreateHttpClient(new CreateHttpClientArgs { ApplicationName = "ResumableUpload", GZipEnabled = true, GoogleApiClientHeader = DefaultGoogleApiClientHeader });
             Options = options;
         }
 

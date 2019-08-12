@@ -322,6 +322,9 @@ namespace Google.Apis.Http
         /// <summary>Gets or sets the application name which will be used on the User-Agent header.</summary>
         public string ApplicationName { get; set; }
 
+        /// <summary>Gets or sets the value set for the x-goog-api-client header.</summary>
+        public string GoogleApiClientHeader { get; set; }
+
         /// <summary>Constructs a new configurable message handler.</summary>
         public ConfigurableMessageHandler(HttpMessageHandler httpMessageHandler)
             : base(httpMessageHandler)
@@ -388,6 +391,11 @@ namespace Google.Apis.Http
             // TODO: setting the User-Agent won't work on Silverlight. We may need to create a special callback here to 
             // set it correctly.
             request.Headers.Add("User-Agent", userAgent);
+            var apiClientHeader = GoogleApiClientHeader;
+            if (apiClientHeader != null)
+            {
+                request.Headers.Add("x-goog-api-client", apiClientHeader);
+            }
 
             HttpResponseMessage response = null;
             do // While (triesRemaining > 0)

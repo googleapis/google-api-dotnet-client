@@ -369,5 +369,17 @@ namespace Google.Apis.Tests.Apis.Services
                 ApplicationName = "App=Name"
             }));
         }
+
+        [Fact]
+        public void VersionHeader()
+        {
+            var initializer = new BaseClientService.Initializer();
+            initializer.VersionHeaderBuilder.AppendVersion("test", "1.2.3");
+            var service = new MockClientService(initializer);
+            var header = service.HttpClient.MessageHandler.GoogleApiClientHeader;
+            Assert.Contains("test/1.2.3", header);
+            Assert.Contains("gl-dotnet/", header);
+            Assert.Contains("gdcl/", header);
+        }
     }
 }
