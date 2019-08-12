@@ -647,16 +647,16 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("collectionId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CollectionId { get; private set; }
 
+                    /// <summary>The list of field paths in the mask. See Document.fields for a field path syntax
+                    /// reference.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
+
                     /// <summary>The client-assigned document ID to use for this document.
                     ///
                     /// Optional. If not specified, an ID will be assigned by the service.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("documentId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DocumentId { get; set; }
-
-                    /// <summary>The list of field paths in the mask. See Document.fields for a field path syntax
-                    /// reference.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -707,18 +707,18 @@ namespace Google.Apis.Firestore.v1beta1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "documentId", new Google.Apis.Discovery.Parameter
+                            "mask.fieldPaths", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "documentId",
+                                Name = "mask.fieldPaths",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "mask.fieldPaths", new Google.Apis.Discovery.Parameter
+                            "documentId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "mask.fieldPaths",
+                                Name = "documentId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

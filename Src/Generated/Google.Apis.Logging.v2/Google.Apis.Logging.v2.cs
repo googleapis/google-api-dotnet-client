@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190704 (1645)
+ *      <tr><th>API Rev<td>20190803 (1675)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -699,17 +699,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -745,18 +745,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^billingAccounts/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3597,17 +3597,17 @@ namespace Google.Apis.Logging.v2
             }
 
 
-            /// <summary>Optional. The maximum number of results to return from this request. Non-positive values are
-            /// ignored. The presence of nextPageToken in the response indicates that more results might be
-            /// available.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to this
             /// method. pageToken must be the value of nextPageToken from the previous response. The values of other
             /// method parameters should be identical to those in the previous call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Optional. The maximum number of results to return from this request. Non-positive values are
+            /// ignored. The presence of nextPageToken in the response indicates that more results might be
+            /// available.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3634,18 +3634,18 @@ namespace Google.Apis.Logging.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -5735,17 +5735,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -5781,18 +5781,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6725,17 +6725,17 @@ namespace Google.Apis.Logging.v2
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to this
-            /// method. pageToken must be the value of nextPageToken from the previous response. The values of other
-            /// method parameters should be identical to those in the previous call.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>Optional. The maximum number of results to return from this request. Non-positive values are
             /// ignored. The presence of nextPageToken in the response indicates that more results might be
             /// available.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to this
+            /// method. pageToken must be the value of nextPageToken from the previous response. The values of other
+            /// method parameters should be identical to those in the previous call.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -6771,18 +6771,18 @@ namespace Google.Apis.Logging.v2
                         Pattern = @"^[^/]+/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -7205,8 +7205,8 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>Result returned from ListLogs.</summary>
     public class ListLogsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of log names. For example, "projects/my-project/syslog" or
-        /// "organizations/123/cloudresourcemanager.googleapis.com%2Factivity".</summary>
+        /// <summary>A list of log names. For example, "projects/my-project/logs/syslog" or
+        /// "organizations/123/logs/cloudresourcemanager.googleapis.com%2Factivity".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logNames")]
         public virtual System.Collections.Generic.IList<string> LogNames { get; set; } 
 

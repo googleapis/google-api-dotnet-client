@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>Container Analysis API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190731 (1672)
+ *      <tr><th>API Rev<td>20190805 (1677)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-analysis/api/reference/rest/'>
  *              https://cloud.google.com/container-analysis/api/reference/rest/</a>
@@ -530,14 +530,14 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The ID to use for this note.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("noteId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string NoteId { get; set; }
+
                 /// <summary>The name of the project. Should be of the form "providers/{provider_id}".
                 /// @Deprecated</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Name { get; set; }
-
-                /// <summary>The ID to use for this note.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("noteId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string NoteId { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -579,18 +579,18 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
+                        "noteId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "name",
+                            Name = "noteId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "noteId", new Google.Apis.Discovery.Parameter
+                        "name", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "noteId",
+                            Name = "name",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -827,6 +827,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The filter expression.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The name field will contain the project Id for example: "providers/{provider_id}
                 /// @Deprecated</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
@@ -839,10 +843,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                 /// <summary>Number of notes to return in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The filter expression.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -878,6 +878,15 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -899,15 +908,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1642,11 +1642,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The name field contains the project Id. For example: "projects/{project_id}
-                /// @Deprecated</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Name { get; set; }
-
                 /// <summary>The filter expression.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1654,10 +1649,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Number of occurrences to return in the list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>The kind of occurrences to filter on.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
@@ -1682,7 +1673,18 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                     DISCOVERY,
                     [Google.Apis.Util.StringValueAttribute("ATTESTATION_AUTHORITY")]
                     ATTESTATIONAUTHORITY,
+                    [Google.Apis.Util.StringValueAttribute("UPGRADE")]
+                    UPGRADE,
                 }
+
+                /// <summary>Number of occurrences to return in the list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The name field contains the project Id. For example: "projects/{project_id}
+                /// @Deprecated</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Name { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1718,15 +1720,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1745,6 +1738,15 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "kind", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "kind",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1754,9 +1756,9 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "kind", new Google.Apis.Discovery.Parameter
+                        "name", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "kind",
+                            Name = "name",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2290,6 +2292,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The filter expression.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The page token to use for the next request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2297,10 +2303,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                 /// <summary>The number of items to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The filter expression.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2336,6 +2338,15 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2348,15 +2359,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2542,10 +2544,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The filter expression.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2553,6 +2551,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                     /// <summary>Number of notes to return in the list.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The filter expression.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2588,15 +2590,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                                 Pattern = @"^providers/[^/]+/notes/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -2609,6 +2602,15 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2944,14 +2946,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>This field contains the project Id for example: "projects/{PROJECT_ID}".</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Parent { get; set; }
-
-                /// <summary>The filter expression.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2959,6 +2953,14 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                 /// <summary>Number of notes to return in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>This field contains the project Id for example: "projects/{PROJECT_ID}".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Parent { get; set; }
+
+                /// <summary>The filter expression.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2994,24 +2996,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                             Pattern = @"^providers/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3024,6 +3008,24 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3379,12 +3381,12 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     /// Example Policy with multiple AuditConfigs:
     ///
     /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ]
-    /// }, { "service": "fooservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
-    /// "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
+    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
     ///
-    /// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
-    /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
+    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
+    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -3402,10 +3404,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
 
     /// <summary>Provides the configuration for logging a type of permissions. Example:
     ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] }, {
+    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
     /// "log_type": "DATA_WRITE", } ] }
     ///
-    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.com from DATA_READ
+    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3413,6 +3415,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>Specifies whether principals can be exempted for the same LogType in lower-level resource policies.
+        /// If true, any lower-level exemptions will be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreChildExemptions")]
+        public virtual System.Nullable<bool> IgnoreChildExemptions { get; set; } 
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
@@ -3458,7 +3465,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` .
+        /// `alice@example.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.
@@ -3951,8 +3958,8 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the value is
-        /// 0, or the field is omitted, policy format version 1 will be returned.</summary>
+        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If the value
+        /// is 0, or the field is omitted, policy format version 1 will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
 
@@ -4286,7 +4293,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("longDescription")]
         public virtual string LongDescription { get; set; } 
 
-        /// <summary>The name of the note in the form "providers/{provider_id}/notes/{NOTE_ID}"</summary>
+        /// <summary>The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -4306,6 +4313,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
+
+        /// <summary>A note describing an upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgrade")]
+        public virtual UpgradeNote Upgrade { get; set; } 
 
         /// <summary>A package vulnerability type of note.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityType")]
@@ -4377,6 +4388,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Output only. The time this `Occurrence` was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
+
+        /// <summary>Describes an upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgrade")]
+        public virtual UpgradeOccurrence Upgrade { get; set; } 
 
         /// <summary>Details of a security vulnerability note.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityDetails")]
@@ -4530,8 +4545,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
-        /// blindly.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -4786,6 +4800,75 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>The fields to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The Upgrade Distribution represents metadata about the Upgrade for each operating system (CPE). Some
+    /// distributions have additional metadata around updates, classifying them into various categories and
+    /// severities.</summary>
+    public class UpgradeDistribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The operating system classification of this Upgrade, as specified by the upstream operating system
+        /// upgrade feed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classification")]
+        public virtual string Classification { get; set; } 
+
+        /// <summary>Required - The specific operating system this metadata applies to. See
+        /// https://cpe.mitre.org/specification/.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
+        public virtual string CpeUri { get; set; } 
+
+        /// <summary>The cve that would be resolved by this upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cve")]
+        public virtual System.Collections.Generic.IList<string> Cve { get; set; } 
+
+        /// <summary>The severity as specified by the upstream operating system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An Upgrade Note represents a potential upgrade of a package to a given version. For each package
+    /// version combination (i.e. bash 4.0, bash 4.1, bash 4.1.2), there will be a Upgrade Note.</summary>
+    public class UpgradeNote : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata about the upgrade for each specific operating system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distributions")]
+        public virtual System.Collections.Generic.IList<UpgradeDistribution> Distributions { get; set; } 
+
+        /// <summary>Required - The package this Upgrade is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("package")]
+        public virtual string Package { get; set; } 
+
+        /// <summary>Required - The version of the package in machine + human readable form.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual Version Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This
+    /// presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its
+    /// availability).</summary>
+    public class UpgradeOccurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata about the upgrade for available for the specific operating system for the resource_url.
+        /// This allows efficient filtering, as well as making it easier to use the occurrence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distribution")]
+        public virtual UpgradeDistribution Distribution { get; set; } 
+
+        /// <summary>Required - The package this Upgrade is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("package")]
+        public virtual string Package { get; set; } 
+
+        /// <summary>Required - The version of the package in a machine + human readable form.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parsedVersion")]
+        public virtual Version ParsedVersion { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

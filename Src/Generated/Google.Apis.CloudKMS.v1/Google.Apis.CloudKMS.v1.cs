@@ -966,6 +966,19 @@ namespace Google.Apis.CloudKMS.v1
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
+                            /// <summary>The fields to include in the response.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                            /// <summary>The fields to include in the response.</summary>
+                            public enum ViewEnum
+                            {
+                                [Google.Apis.Util.StringValueAttribute("CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED")]
+                                CRYPTOKEYVERSIONVIEWUNSPECIFIED,
+                                [Google.Apis.Util.StringValueAttribute("FULL")]
+                                FULL,
+                            }
+
                             /// <summary>Optional. Specify how the results should be sorted. If not specified, the
                             /// results will be sorted in the default order. For more information, see [Sorting and
                             /// filtering list results](https://cloud.google.com/kms/docs/sorting-and-
@@ -990,19 +1003,6 @@ namespace Google.Apis.CloudKMS.v1
                             /// the server will pick an appropriate default.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
-
-                            /// <summary>The fields to include in the response.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<ViewEnum> View { get; set; }
-
-                            /// <summary>The fields to include in the response.</summary>
-                            public enum ViewEnum
-                            {
-                                [Google.Apis.Util.StringValueAttribute("CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED")]
-                                CRYPTOKEYVERSIONVIEWUNSPECIFIED,
-                                [Google.Apis.Util.StringValueAttribute("FULL")]
-                                FULL,
-                            }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -1038,6 +1038,15 @@ namespace Google.Apis.CloudKMS.v1
                                         Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$",
                                     });
                                 RequestParameters.Add(
+                                    "view", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "view",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
                                     "orderBy", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "orderBy",
@@ -1068,15 +1077,6 @@ namespace Google.Apis.CloudKMS.v1
                                     "pageSize", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "view", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "view",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1664,12 +1664,6 @@ namespace Google.Apis.CloudKMS.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. Only include resources that match the filter in the response. For more
-                        /// information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs
-                        /// /sorting-and-filtering).</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
-
                         /// <summary>Optional pagination token, returned earlier via
                         /// ListCryptoKeysResponse.next_page_token.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1700,6 +1694,12 @@ namespace Google.Apis.CloudKMS.v1
                             [Google.Apis.Util.StringValueAttribute("FULL")]
                             FULL,
                         }
+
+                        /// <summary>Optional. Only include resources that match the filter in the response. For more
+                        /// information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs
+                        /// /sorting-and-filtering).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1735,15 +1735,6 @@ namespace Google.Apis.CloudKMS.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -1774,6 +1765,15 @@ namespace Google.Apis.CloudKMS.v1
                                 "versionView", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "versionView",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3187,10 +3187,6 @@ namespace Google.Apis.CloudKMS.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -3198,6 +3194,10 @@ namespace Google.Apis.CloudKMS.v1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3233,15 +3233,6 @@ namespace Google.Apis.CloudKMS.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3254,6 +3245,15 @@ namespace Google.Apis.CloudKMS.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
