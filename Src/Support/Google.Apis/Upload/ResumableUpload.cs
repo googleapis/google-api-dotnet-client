@@ -31,6 +31,7 @@ using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Apis.Testing;
 using Google.Apis.Util;
+using System.Collections.Generic;
 
 namespace Google.Apis.Upload
 {
@@ -215,7 +216,7 @@ namespace Google.Apis.Upload
         /// were successfully uploaded before the error occurred.
         /// See https://developers.google.com/drive/manage-uploads#resume-upload for more details.
         /// </summary>
-        class ServerErrorCallback : IHttpUnsuccessfulResponseHandler, IHttpExceptionHandler, IDisposable
+        class ServerErrorCallback : IHttpUnsuccessfulResponseHandler, IHttpExceptionHandler
         {
             private ResumableUpload Owner { get; set; }
 
@@ -226,8 +227,13 @@ namespace Google.Apis.Upload
             public ServerErrorCallback(ResumableUpload resumable)
             {
                 this.Owner = resumable;
-                Owner.HttpClient.MessageHandler.AddUnsuccessfulResponseHandler(this);
-                Owner.HttpClient.MessageHandler.AddExceptionHandler(this);
+            }
+
+            public void AddToRequest(HttpRequestMessage request)
+            {
+                // This assumes the property hasn't been set elsewhere - but that's reasonable as we're creating the messages ourselves in this class.
+                request.Properties[ConfigurableMessageHandler.ExceptionHandlerKey] = new List<IHttpExceptionHandler> { this };
+                request.Properties[ConfigurableMessageHandler.UnsuccessfulResponseHandlerKey] = new List<IHttpUnsuccessfulResponseHandler> { this };
             }
 
             public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
@@ -269,12 +275,6 @@ namespace Google.Apis.Upload
                 request.Method = System.Net.Http.HttpMethod.Put;
                 request.SetEmptyContent().Headers.Add("Content-Range", range);
                 return true;
-            }
-
-            public void Dispose()
-            {
-                Owner.HttpClient.MessageHandler.RemoveUnsuccessfulResponseHandler(this);
-                Owner.HttpClient.MessageHandler.RemoveExceptionHandler(this);
             }
         }
 
@@ -536,11 +536,9 @@ namespace Google.Apis.Upload
             try
             {
                 HttpResponseMessage response;
-                using (var callback = new ServerErrorCallback(this))
-                {
-                    response = await HttpClient.SendAsync(request, cancellationToken)
-                      .ConfigureAwait(false);
-                }
+                new ServerErrorCallback(this).AddToRequest(request);
+                response = await HttpClient.SendAsync(request, cancellationToken)
+                    .ConfigureAwait(false);
 
                 if (await HandleResponse(response).ConfigureAwait(false))
                 {
@@ -571,14 +569,11 @@ namespace Google.Apis.Upload
         {
             try
             {
-                using (var callback = new ServerErrorCallback(this))
+                while (!await SendNextChunkAsync(ContentStream, cancellationToken).ConfigureAwait(false))
                 {
-                    while (!await SendNextChunkAsync(ContentStream, cancellationToken).ConfigureAwait(false))
-                    {
-                        UpdateProgress(new ResumableUploadProgress(UploadStatus.Uploading, BytesServerReceived));
-                    }
-                    UpdateProgress(new ResumableUploadProgress(UploadStatus.Completed, BytesServerReceived));
+                    UpdateProgress(new ResumableUploadProgress(UploadStatus.Uploading, BytesServerReceived));
                 }
+                UpdateProgress(new ResumableUploadProgress(UploadStatus.Completed, BytesServerReceived));
             }
             catch (TaskCanceledException ex)
             {
@@ -625,6 +620,7 @@ namespace Google.Apis.Upload
                     BaseUri = UploadUri,
                     Method = HttpConsts.Put
                 }.CreateRequest();
+            new ServerErrorCallback(this).AddToRequest(request);
 
             // Prepare next chunk to send. This is always read into memory one way or another.
             byte[] chunk;
