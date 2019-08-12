@@ -934,7 +934,9 @@ namespace Google.Apis.Tests.Apis.Upload
             public bool Equals(TestRequest other)
             {
                 if (other == null)
+                {
                     return false;
+                }
 
                 return Name == null ? other.Name == null : Name.Equals(other.Name) &&
                     Description == null ? other.Description == null : Description.Equals(other.Description);
@@ -951,7 +953,9 @@ namespace Google.Apis.Tests.Apis.Upload
             public bool Equals(TestResponse other)
             {
                 if (other == null)
+                {
                     return false;
+                }
 
                 return Id.Equals(other.Id) &&
                     Name == null ? other.Name == null : Name.Equals(other.Name) &&
