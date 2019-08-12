@@ -1009,9 +1009,9 @@ namespace Google.Apis.Tests.Apis.Http
             const string applicationName = "NO NAME";
 
             var handler = new MockMessageHandler();
-            var configurableHanlder = new ConfigurableMessageHandler(handler);
+            var configurableHandler = new ConfigurableMessageHandler(handler);
 
-            using (var client = new HttpClient(configurableHanlder))
+            using (var client = new HttpClient(configurableHandler))
             {
                 // without application name
                 var request = new HttpRequestMessage(HttpMethod.Get, "https://test-user-agent");
@@ -1020,11 +1020,43 @@ namespace Google.Apis.Tests.Apis.Http
                 Assert.Equal(apiVersion, userAgent);
 
                 // with application name
-                configurableHanlder.ApplicationName = applicationName;
+                configurableHandler.ApplicationName = applicationName;
                 request = new HttpRequestMessage(HttpMethod.Get, "https://test-user-agent");
                 response = client.SendAsync(request).Result;
                 userAgent = string.Join(" ", request.Headers.GetValues("User-Agent").ToArray());
                 Assert.Equal(applicationName + " " + apiVersion, userAgent);
+            }
+        }
+
+        [Fact]
+        public void SendAsync_GoogleApiClientHeader_Unset()
+        {
+            var handler = new MockMessageHandler();
+            var configurableHandler = new ConfigurableMessageHandler(handler);
+
+            using (var client = new HttpClient(configurableHandler))
+            {
+                var request = new HttpRequestMessage(HttpMethod.Get, "https://test-request");
+                HttpResponseMessage response = client.SendAsync(request).Result;
+                Assert.False(request.Headers.Contains("x-goog-api-client"));
+            }
+        }
+
+        [Fact]
+        public void SendAsync_GoogleApiClientHeader_Set()
+        {
+            var handler = new MockMessageHandler();
+            var configurableHandler = new ConfigurableMessageHandler(handler)
+            {
+                GoogleApiClientHeader = "test/1.2.3"
+            };
+
+            using (var client = new HttpClient(configurableHandler))
+            {
+                var request = new HttpRequestMessage(HttpMethod.Get, "https://test-request");
+                HttpResponseMessage response = client.SendAsync(request).Result;
+                string header = string.Join(" ", request.Headers.GetValues("x-goog-api-client").ToArray());
+                Assert.Equal("test/1.2.3", header);
             }
         }
 
