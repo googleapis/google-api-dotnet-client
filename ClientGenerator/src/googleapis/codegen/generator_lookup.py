@@ -7,15 +7,7 @@
 __author__ = 'akesling@google.com (Alex Kesling)'
 
 
-from googleapis.codegen import cpp_generator
 from googleapis.codegen import csharp_generator
-from googleapis.codegen import dart_generator
-from googleapis.codegen import gwt_generator
-from googleapis.codegen import java_generator
-from googleapis.codegen import objc_generator
-from googleapis.codegen import php_generator
-from googleapis.codegen import python_generator
-from googleapis.codegen import sample_generator
 
 
 # Multiple generators per language are possible, as is the case with
