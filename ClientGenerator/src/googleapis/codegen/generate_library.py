@@ -67,7 +67,7 @@ flags.DEFINE_string(
     'A discovery document captured from a discovery service.')
 flags.DEFINE_enum(
     'language',
-    'java',
+    'csharp',
     generator_lookup.SupportedLanguages(),
     'Target language for the generated library')
 flags.DEFINE_string(
@@ -177,7 +177,7 @@ def Generate(discovery_doc, package_writer,
              version_package=False,
              package_path=None,
              output_type='plain',
-             language='java',
+             language='csharp',
              language_variant='default',
              callback=None):
   """Generate a library package from discovery and options."""
