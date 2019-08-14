@@ -63,37 +63,6 @@ class TemplateHelpersTest(basetest.TestCase):
     self.assertEquals(2, len(blocks[1]))
     self.assertEquals(1, len(blocks[2]))
 
-  def testCommentFragment(self):
-    value = '123456789 ' * 15
-    indent = 6
-    # What we expect is that 9 of the sequences above will fit on the first
-    # line, then we wrap. It's only 89 because the trailing space is trimmed.
-    expected = value[:89] + '\n' + (' ' * indent) + ' * ' + value[90:-1]
-    self.assertEquals(expected,
-                      template_helpers.java_comment_fragment(value, indent))
-
-  def testCommentBlockJavaDoc(self):
-    alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    value = """
-       * %s %s
-       * %s %s %s
-       * """ % (alphabet, alphabet, alphabet, alphabet, alphabet)
-    expected = """
-       * %s %s %s
-       * %s %s""" % (alphabet, alphabet, alphabet, alphabet, alphabet)
-    self.assertEquals(expected, template_helpers.block_comment(value))
-    value = """
-       // %s %s
-       // %s %s %s
-       // """ % (alphabet, alphabet, alphabet, alphabet, alphabet)
-    expected = """
-       // %s %s %s
-       // %s %s""" % (alphabet, alphabet, alphabet, alphabet, alphabet)
-    self.assertEquals(expected, template_helpers.block_comment(value))
-    value = '// %s %s %s %s' % ((alphabet,) * 4)
-    expected = '// %s %s %s\n// %s' % ((alphabet,) * 4)
-    self.assertEquals(expected, template_helpers.block_comment(value))
-
   def testCommentBlockPerLanguage(self):
     text = ('Confectis bellis quinquiens triumphavit, post devictum '
             'Scipionem quater eodem mense, sed interiectis diebus, et '
