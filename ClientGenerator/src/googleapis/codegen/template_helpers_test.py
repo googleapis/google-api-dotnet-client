@@ -124,27 +124,6 @@ class TemplateHelpersTest(basetest.TestCase):
         NodesList('a\n\n\n\nb'))
     self.assertEquals('a\n\nb', collapse_node.render(context))
 
-  def testDocCommentBlocks(self):
-
-    def Render(language, text, block):
-      context = self._GetContext()
-      lang_node = template_helpers.LanguageNode(language)
-      lang_node.render(context)
-      doc_comment_node = template_helpers.DocCommentNode(
-          text=text, comment_type='doc', wrap_blocks=block)
-      return doc_comment_node.render(context)
-
-    s1 = [('We can all agree that this comment is '
-           'almost certain to be too long for a '),
-          'single line due to its excessive verbosity.']
-    s2 = 'This is short and sweet.'
-    text = '\n'.join([''.join(s1), s2])
-    no_blocks = Render('cpp', text, False)
-    with_blocks = Render('cpp', text, True)
-    self.assertNotEqual(no_blocks, with_blocks)
-    self.assertTrue((' * %s' % s2) in no_blocks)
-    self.assertTrue(s1[1] + ' ' +  s2 in with_blocks)
-
   def testWrapInComment(self):
     text = textwrap.dedent("""\
     Line one.
@@ -170,39 +149,6 @@ class TemplateHelpersTest(basetest.TestCase):
           available_width=80)
       self.assertEquals(expected, wrapped)
 
-  def testDocCommmentsEol(self):
-    source_tmpl = textwrap.dedent("""\
-    {% language java %}
-    {% doc_comment XXX %}
-    Sets the '<code>{{ p.wireName }}</code>' attribute.
-    {% if p.deprecated %}
-    @deprecated
-    {% endif %}
-    @param[in] value {{ p.description }}
-    {% enddoc_comment %}
-    """)
-    for should_block in ('block', 'noblock'):
-      source = source_tmpl.replace('XXX', should_block)
-      template = django_template.Template(source)
-      context = self._GetContext({
-          'p': {
-              'deprecated': True,
-              'wireName': 'foobar',
-              'description': 'A description.',
-              }})
-
-      rendered = template.render(context)
-      expected = (
-          '\n'
-          '/**\n'
-          ' * Sets the \'<code>foobar</code>\' attribute.\n'
-          ' *\n'
-          ' * @deprecated\n'
-          ' *\n'
-          ' * @param[in] value A description.\n'
-          ' */\n')
-      self.assertEquals(expected, rendered, 'should block is %s' % should_block)
-
   def testDocComments(self):
     def TryDocComment(language, input_text, expected):
       context = self._GetContext()
@@ -215,49 +161,25 @@ class TemplateHelpersTest(basetest.TestCase):
 
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
-    # single line java and php
-    value = '%s' % alphabet
-    expected = '/** %s */' % alphabet
-    TryDocComment('java', value, expected)
-    TryDocComment('php', value, expected)
-
-    # single line csharp and cpp
+    # single line csharp
     value = 'Hello, World!'
-    TryDocComment('cpp', value, '/** %s */' % value)
     TryDocComment('csharp', value, '/// <summary>%s</summary>' % value)
 
     # single line but with '\n' in it
     value = '123\n456'
     expected_expansion = '123 456'
-    # NOTE(user): 20130111
-    # Java and PHP have their own special methods for handling comments.
-    # I think this case is wrong, but am not addressing it at this time
-    # since it is still syntactically correct.
-    TryDocComment('java', value, '/**\n * %s\n */' % expected_expansion)
-    TryDocComment('php', value, '/**\n * %s\n */' % expected_expansion)
-    TryDocComment('cpp', value, '/**\n * %s\n */' % expected_expansion)
     TryDocComment('csharp', value,
                   '/// <summary>%s</summary>' % expected_expansion)
 
-    # multi line java and php
-    value = '%s %s %s' % (alphabet, alphabet, alphabet)
-    expected = '/**\n * %s\n * %s\n * %s\n */' % (alphabet, alphabet, alphabet)
-    TryDocComment('java', value, expected)
-    TryDocComment('php', value, expected)
-
-    # single line csharp and c++
+    # single line csharp
     value = alphabet
     TryDocComment('csharp', value, '/// <summary>%s</summary>' % value)
-    TryDocComment('cpp', value, '/** %s */' % value)
 
     # multi line csharp
     value = '%s %s %s' % (alphabet, alphabet, alphabet)
     expected_expansion = '%s\n/// %s\n/// %s' % (alphabet, alphabet, alphabet)
     TryDocComment('csharp', value,
                   '/// <summary>%s</summary>' % expected_expansion)
-
-    expected_expansion = '%s\n * %s\n * %s' % (alphabet, alphabet, alphabet)
-    TryDocComment('cpp', value, '/**\n * %s\n */' % expected_expansion)
 
   def testCallTemplate(self):
     source = 'abc {% call_template _call_test foo bar qux api.xxx %} def'
@@ -491,37 +413,18 @@ class TemplateHelpersTest(basetest.TestCase):
 
     TryIt(norecurse_source, norecurse_expected)
 
-  def testLiteral(self):
-    def TryTestLiteral(language, input_text, expected):
-      context = self._GetContext({
-          'foo': 'foo\nb"a$r',
-          'bar': 'baz',
-          'pattern': '\\d{4}-\\d{2}-\\d{2}'})
-      lang_node = template_helpers.LanguageNode(language)
-      lang_node.render(context)
-      context['_LINE_WIDTH'] = 50  # to make expected easier to read
-      node = template_helpers.LiteralStringNode(input_text)
-      self.assertEquals(expected, node.render(context))
-
-    TryTestLiteral('dart', ['foo', 'bar'], '"foo\\nb\\"a\\$rbaz"')
-    TryTestLiteral('java', ['foo'], '"foo\\nb\\"a$r"')
-    TryTestLiteral('java', ['bar'], '"baz"')
-    TryTestLiteral('java', ['pattern'], '"\\\\d{4}-\\\\d{2}-\\\\d{2}"')
-    TryTestLiteral('objc', ['foo'], '@"foo\\nb\\"a$r"')
-    TryTestLiteral('php', ['foo', 'bar'], """'foo\nb"a$rbaz'""")
-
   def testCopyright(self):
     copyright_text = 'MY COPYRIGHT TEXT'
     expected_license_preamble = 'Licensed under the Apache License'
     template = django_template.Template(
-        '{% language java %}{% copyright_block %}')
+        '{% language csharp %}{% copyright_block %}')
     context = self._GetContext({
         'template_dir': self._TEST_DATA_DIR,
         'api': {},
         })
     text_without_copyright = template.render(context)
     license_pos = text_without_copyright.find(expected_license_preamble)
-    self.assertLess(3, license_pos)
+    self.assertEquals(3, license_pos)
     self.assertEquals(-1, text_without_copyright.find(copyright_text))
     context['api']['copyright'] = copyright_text
     text_with_copyright = template.render(context)
@@ -548,16 +451,6 @@ class TemplateHelpersTest(basetest.TestCase):
         self.fail('TemplateSyntaxError not raised')
       except django_template.TemplateSyntaxError as e:
         self.assertEquals('tag requires a single argument: %s' % tag, str(e))
-
-  def testCache(self):
-    loader = template_helpers.CachingTemplateLoader()
-    template_dir = os.path.join(self._TEST_DATA_DIR, 'languages')
-    test_path = os.path.join(template_dir, 'java/1.0dev/test.tmpl')
-    stable_path = os.path.join(template_dir, 'java/1.0/test.tmpl')
-    loader.GetTemplate(test_path, template_dir)
-    loader.GetTemplate(stable_path, template_dir)
-    self.assertTrue(stable_path in loader._cache)
-    self.assertFalse(test_path in loader._cache)
 
   def testHalt(self):
     # See that it raises the error
