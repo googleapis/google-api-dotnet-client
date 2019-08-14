@@ -1,0 +1,6 @@
+{
+  "language": "java",
+  "description": "Java libraries for Google APIs.",
+  "generator": "java1_12",
+  "requires": []
+}
