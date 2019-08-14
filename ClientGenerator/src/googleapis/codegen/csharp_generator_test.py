@@ -10,6 +10,7 @@ class NestedClassNameTest(basetest.TestCase):
   NESTED_API = {
       'name': 'nestor',
       'version': 'v1',
+      'revision': '20190804',
       'resources': {},
       'schemas': {
           'A': {
@@ -70,6 +71,7 @@ class NestedClassNameTest(basetest.TestCase):
   COMPUTE_EXTRACT = {
       'name': 'computeextract',
       'version': 'v1',
+      'revision': '20190804',
       'resources': {},
       'schemas': {
           'MachineType': {
@@ -96,6 +98,7 @@ class NestedClassNameTest(basetest.TestCase):
   FREEBASE_EXTRACT = {
       'name': 'freebase',
       'version': 'v1',
+      'revision': '20190804',
       'resources': {},
       'schemas': {
           'TopicStatslinkcount': {
@@ -214,6 +217,7 @@ class PackagePathTest(basetest.TestCase):
     discovery = {
         'name': 'foo',
         'version': 'v1',
+        'revision': '20190804',
         'packagePath': 'nougat',
         'schemas': {},
         'resources': {},
@@ -231,6 +235,7 @@ class VersionWithDashTest(basetest.TestCase):
     discovery = {
         'name': 'foo',
         'version': 'v1-dash',
+        'revision': '20190804',
         'schemas': {},
         'resources': {},
         }
@@ -247,6 +252,7 @@ class MemberNameTest(basetest.TestCase):
     api = {
         'name': 'groups',
         'version': 'v1',
+        'revision': '20190804',
         'schemas': {
             'Groups': {
                 'id': 'Groups',
@@ -269,6 +275,7 @@ class MemberNameTest(basetest.TestCase):
     api = {
         'name': 'groups',
         'version': 'v1',
+        'revision': '20190804',
         'schemas': {
             'GroupsThing': {
                 'id': 'groups_thing',
