@@ -24,23 +24,11 @@ from googleapis.codegen import sample_generator
 # to a key in these dictionaries.  If a template tree does not
 # include this specification, the language name is used as a key.
 _GENERATORS_BY_LANGUAGE = {
-    'cpp': cpp_generator.CppGenerator,
     'csharp': csharp_generator.CSharpGenerator,
-    'dart': dart_generator.DartGenerator,
-    'gwt': gwt_generator.GwtGenerator,
-    'java': java_generator.Java14Generator,
-    'objc': objc_generator.ObjCGenerator,
-    'php': php_generator.PHPGenerator,
-    'python': python_generator.PythonGenerator,
-    'sample': sample_generator.SampleGenerator,
     }
 
 
 _ALL_GENERATORS = {
-    'java1_12': java_generator.Java12Generator,
-    'java1_13': java_generator.Java12Generator,
-    'java1_14': java_generator.Java14Generator,
-    'java1_15': java_generator.Java14Generator,
 }
 
 

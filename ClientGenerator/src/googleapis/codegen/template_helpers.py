@@ -118,19 +118,6 @@ _defaults = {
     }
 
 _language_defaults = {
-    'cpp': {
-        _LINE_WIDTH: 80,
-        _PARAMETER_INDENT: 4,
-        _LEVEL_INDENT: 2,
-        _COMMENT_START: '// ',
-        _COMMENT_CONTINUE: '// ',
-        _COMMENT_END: '',
-        _DOC_COMMENT_START: '/** ',
-        _DOC_COMMENT_CONTINUE: ' * ',
-        _DOC_COMMENT_END: ' */',
-        _IMPORT_REGEX: r'^#include\s+(?P<import>[\<\"][a-zA-Z0-9./_\-]+[\>\"])',
-        _IMPORT_TEMPLATE: '#include %s'
-        },
     'csharp': {
         _LINE_WIDTH: 120,
         _PARAMETER_INDENT: 4,
@@ -142,82 +129,6 @@ _language_defaults = {
         _DOC_COMMENT_CONTINUE: '/// ',
         _DOC_COMMENT_BEGIN_TAG: '<summary>',
         _DOC_COMMENT_END_TAG: '</summary>',
-        },
-    'dart': {
-        _LEVEL_INDENT: 2,
-        _LINE_WIDTH: 100,
-        _COMMENT_START: '/* ',
-        _COMMENT_CONTINUE: ' * ',
-        _COMMENT_END: ' */',
-        _DOC_COMMENT_START: '/** ',
-        _PARAMETER_DOC_INDENT: 6,
-        # E.g. #import('dart:json');
-        _IMPORT_REGEX: r'^#\s*import\s+\(\'(?P<import>[a-zA-Z0-9:.]+)\'\);',
-        _IMPORT_TEMPLATE: """#import('%s');""",
-        _LITERAL_ESCAPE: _defaults[_LITERAL_ESCAPE] + [('$', '\\$')]
-        },
-    'go': {
-        _LINE_WIDTH: 120,
-        _PARAMETER_INDENT: 4,
-        _LEVEL_INDENT: 8,
-        _COMMENT_START: '// ',
-        _COMMENT_CONTINUE: '// ',
-        _COMMENT_END: '',
-        _DOC_COMMENT_START: '// ',
-        _DOC_COMMENT_CONTINUE: '// '
-        },
-    'java': {
-        _LINE_WIDTH: 100,
-        _COMMENT_START: '/* ',
-        _COMMENT_CONTINUE: ' * ',
-        _COMMENT_END: ' */',
-        _DOC_COMMENT_START: '/** ',
-        _PARAMETER_DOC_INDENT: 6,
-        _IMPORT_REGEX: r'^\s*import\s+(?P<import>[a-zA-Z0-9.]+);',
-        _IMPORT_TEMPLATE: 'import %s;'
-        },
-    'javascript': {
-        _LINE_WIDTH: 80,
-        _COMMENT_START: '/* ',
-        _COMMENT_CONTINUE: ' * ',
-        _COMMENT_END: ' */',
-        _DOC_COMMENT_START: '/** ',
-        },
-    'objc': {
-        _LINE_WIDTH: 80,
-        _COMMENT_START: '// ',
-        _COMMENT_CONTINUE: '// ',
-        _COMMENT_END: '',
-        _DOC_COMMENT_START: '// ',
-        _DOC_COMMENT_CONTINUE: '// ',
-        _DOC_COMMENT_END: '',
-        _LITERAL_QUOTE_START: '@"',
-        _BOOLEAN_LITERALS: ('NO', 'YES'),
-        _IMPORT_TEMPLATE: '#import %s',
-        },
-    'php': {
-        _LINE_WIDTH: 80,
-        _COMMENT_START: '/* ',
-        _COMMENT_CONTINUE: ' * ',
-        _COMMENT_END: ' */',
-        _DOC_COMMENT_START: '/** ',
-        _LITERAL_QUOTE_START: '\'',
-        _LITERAL_QUOTE_END: '\'',
-        _LITERAL_ESCAPE: [
-            ('\\', '\\\\'),  # Really is \ => \\
-            ('\'', '\\\''),  # ' => \'
-            ]
-        },
-    'python': {
-        _LINE_WIDTH: 80,
-        _COMMENT_START: '# ',
-        _COMMENT_CONTINUE: '# ',
-        _COMMENT_END: '# ',
-        _DOC_COMMENT_START: '"""',
-        _DOC_COMMENT_CONTINUE: '"""',
-        _LITERAL_QUOTE_START: '\'',
-        _LITERAL_QUOTE_END: '\'',
-        _BOOLEAN_LITERALS: ('False', 'True'),
         },
     }
 
@@ -426,66 +337,6 @@ def _ExtractCommentPrefix(line):
     else:
       break
   return line[:prefix_length]
-
-
-# We disable the bad function name warning because we use Django style names
-# rather than Google style names
-@register.filter
-def java_comment_fragment(value, indent):  # pylint: disable=g-bad-name
-  """Template filter to wrap lines into Java comment style.
-
-  Take a single long string and break it so that subsequent lines are prefixed
-  by an approprate number of spaces and then a ' * '.  The filter invocation
-  should begin on a line that is already indented suffciently.
-
-  This is typically used after we have written the lead-in for a comment. E.g.
-
-  |    // NOTE: The leading / is indented 4 spaces.
-  |    /**
-  |     * {{ variable|java_comment_fragment:4 }}
-  |     */
-
-  Args:
-    value: (str) the string to wrap
-    indent: (int) the number of spaces to indent the block.
-  Returns:
-    The rewrapped string.
-  """
-  if not indent:
-    indent = 0
-  prefix = '%s * ' % (' ' * indent)
-  wrapper = textwrap.TextWrapper(width=_language_defaults['java'][_LINE_WIDTH],
-                                 replace_whitespace=False,
-                                 initial_indent=prefix,
-                                 subsequent_indent=prefix)
-  wrapped = wrapper.fill(value)
-  if wrapped.startswith(prefix):
-    wrapped = wrapped[len(prefix):]
-  return wrapped
-
-
-@register.filter
-def java_parameter_wrap(value):  # pylint: disable=g-bad-name
-  """Templatefilter to wrap lines of parameter documentation.
-
-  Take a single long string and breaks it up so that subsequent lines are
-  prefixed by an appropriate number of spaces (and preceded by a ' * '.
-
-  Args:
-   value: (str) the string to wrap
-
-  Returns:
-  the rewrapped string.
-  """
-  # TODO(user): add 'parameter_doc' option to the DocCommentBlock
-  indent = _language_defaults['java'][_PARAMETER_DOC_INDENT]
-  prefix = ' * %s ' % (' ' * indent)
-  wrapper = textwrap.TextWrapper(width=_language_defaults['java'][_LINE_WIDTH],
-                                 replace_whitespace=False,
-                                 initial_indent='',
-                                 subsequent_indent=prefix)
-  wrapped = wrapper.fill(value)
-  return wrapped
 
 
 # We disable the bad function name warning because we use Django style names
