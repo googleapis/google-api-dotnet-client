@@ -88,7 +88,7 @@ class GeneratorTest(basetest.TestCase):
     gen.SetTemplateDir(os.path.join(self._TEST_DATA_DIR, 'library'))
     gen.WalkTemplateTree(
         'templates', self._path_replacements, {}, {}, self._package,
-        file_filter=lambda template, output: output != 'pp/xxx')
+        file_filter=lambda template, output: output != 'pp/xxx' and output != 'pp\\xxx')
     self._package.DoneWritingArchive()
     self.VerifyPackageContains(['foo', 'bar'], must_not_contain=['pp/xxx'])
 
