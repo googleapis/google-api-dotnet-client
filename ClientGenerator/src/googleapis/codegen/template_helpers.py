@@ -163,49 +163,6 @@ def _GetCurrentLanguage(ctxt=None, default=None):
   return default
 
 
-class CachingTemplateLoader(object):
-  """A template loader that caches templates under stable directories."""
-
-  # A pattern that variation directories will match if they are development
-  # versions that should not be cached.   E.g., "java/dev/" or "java/1.0dev"
-  UNSTABLE_VARIATION_PATTERN = re.compile(r'^[^/]+/[^/]*dev/')
-
-  def __init__(self):
-    self._cache = {}
-
-  def GetTemplate(self, template_path, template_dir):
-    """Get a compiled django template.
-
-    Args:
-      template_path: Full path to the template.
-      template_dir: The root of the template path.
-    Returns:
-      A compiled django template.
-    """
-    relpath = os.path.relpath(template_path, template_dir)
-    if (self.UNSTABLE_VARIATION_PATTERN.match(relpath) or
-        os.environ.get('NOCACHE')):
-      # don't cache if specifically requested (for testing) or
-      # for unstable variations
-      return self._LoadTemplate(template_path)
-
-    template = self._cache.get(template_path)
-    if not template:
-      try:
-        template = self._LoadTemplate(template_path)
-        self._cache[template_path] = template
-      except django_template.TemplateSyntaxError as err:
-        raise django_template.TemplateSyntaxError('%s: %s' % (relpath, err))
-    return template
-
-  def _LoadTemplate(self, template_path):
-    source = files.GetFileContents(template_path).decode('utf-8')
-    return django_template.Template(source)
-
-
-_TEMPLATE_LOADER = CachingTemplateLoader()
-
-
 def _RenderToString(template_path, context):
   """Renders a template specified by a file path with a give values dict.
 
@@ -219,11 +176,9 @@ def _RenderToString(template_path, context):
   Returns:
     (str) The expanded template.
   """
-  # FRAGILE: this relies on template_dir being passed in to the
-  # context (in generator.py)
-  t = _TEMPLATE_LOADER.GetTemplate(template_path,
-                                   context.get('template_dir', ''))
-  return t.render(context)
+  source = files.GetFileContents(template_path).decode('utf-8')
+  template = django_template.Template(source)
+  return template.render(context)
 
 
 def _GetFromContext(context, *variables):
