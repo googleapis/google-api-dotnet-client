@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Data Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190708 (1649)
+ *      <tr><th>API Rev<td>20190820 (1692)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -115,6 +115,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// <summary>View and manage your data in Google BigQuery</summary>
             public static string Bigquery = "https://www.googleapis.com/auth/bigquery";
 
+            /// <summary>View your data in Google BigQuery</summary>
+            public static string BigqueryReadonly = "https://www.googleapis.com/auth/bigquery.readonly";
+
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
@@ -128,6 +131,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1
         {
             /// <summary>View and manage your data in Google BigQuery</summary>
             public const string Bigquery = "https://www.googleapis.com/auth/bigquery";
+
+            /// <summary>View your data in Google BigQuery</summary>
+            public const string BigqueryReadonly = "https://www.googleapis.com/auth/bigquery.readonly";
 
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
@@ -1233,19 +1239,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Indicates how run attempts are to be pulled.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("runAttempt", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<RunAttemptEnum> RunAttempt { get; set; }
-
-                        /// <summary>Indicates how run attempts are to be pulled.</summary>
-                        public enum RunAttemptEnum
-                        {
-                            [Google.Apis.Util.StringValueAttribute("RUN_ATTEMPT_UNSPECIFIED")]
-                            RUNATTEMPTUNSPECIFIED,
-                            [Google.Apis.Util.StringValueAttribute("LATEST")]
-                            LATEST,
-                        }
-
                         /// <summary>Pagination token, which can be used to request a specific page of
                         /// `ListTransferRunsRequest` list results. For multiple-page results,
                         /// `ListTransferRunsResponse` outputs a `next_page` token, which can be used as the
@@ -1277,6 +1270,19 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         /// <summary>Page size. The default page size is the maximum value of 1000 results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Indicates how run attempts are to be pulled.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("runAttempt", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<RunAttemptEnum> RunAttempt { get; set; }
+
+                        /// <summary>Indicates how run attempts are to be pulled.</summary>
+                        public enum RunAttemptEnum
+                        {
+                            [Google.Apis.Util.StringValueAttribute("RUN_ATTEMPT_UNSPECIFIED")]
+                            RUNATTEMPTUNSPECIFIED,
+                            [Google.Apis.Util.StringValueAttribute("LATEST")]
+                            LATEST,
+                        }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1312,15 +1318,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "runAttempt", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "runAttempt",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -1342,6 +1339,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "runAttempt", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "runAttempt",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1381,6 +1387,14 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional version info. If users want to find a very recent access token, that is,
+                    /// immediately after approving access, users have to set the version_info claim in the token
+                    /// request. To obtain the version_info, users must use the "none+gsession" response type. which be
+                    /// return a version_info back in the authorization response which be be put in a JWT claim in the
+                    /// token request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("versionInfo", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string VersionInfo { get; set; }
+
                     /// <summary>Optional OAuth2 authorization code to use with this transfer configuration. This is
                     /// required if new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain
                     /// authorization_code, please make a request to
@@ -1395,14 +1409,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// it in the application.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("authorizationCode", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AuthorizationCode { get; set; }
-
-                    /// <summary>Optional version info. If users want to find a very recent access token, that is,
-                    /// immediately after approving access, users have to set the version_info claim in the token
-                    /// request. To obtain the version_info, users must use the "none+gsession" response type. which be
-                    /// return a version_info back in the authorization response which be be put in a JWT claim in the
-                    /// token request.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("versionInfo", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string VersionInfo { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1444,18 +1450,18 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "authorizationCode", new Google.Apis.Discovery.Parameter
+                            "versionInfo", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "authorizationCode",
+                                Name = "versionInfo",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "versionInfo", new Google.Apis.Discovery.Parameter
+                            "authorizationCode", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "versionInfo",
+                                Name = "authorizationCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1730,6 +1736,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Required list of fields to be updated in this request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
                     /// <summary>Optional version info. If users want to find a very recent access token, that is,
                     /// immediately after approving access, users have to set the version_info claim in the token
                     /// request. To obtain the version_info, users must use the "none+gsession" response type. which be
@@ -1752,10 +1762,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// it in the application.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("authorizationCode", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AuthorizationCode { get; set; }
-
-                    /// <summary>Required list of fields to be updated in this request.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1797,6 +1803,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "versionInfo", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "versionInfo",
@@ -1809,15 +1824,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             "authorizationCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "authorizationCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2232,6 +2238,17 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>Pagination token, which can be used to request a specific page of
+                        /// `ListTransferLogsRequest` list results. For multiple-page results,
+                        /// `ListTransferLogsResponse` outputs a `next_page` token, which can be used as the
+                        /// `page_token` value to request the next page of list results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Page size. The default page size is the maximum value of 1000 results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
                         /// <summary>Message types to return. If not populated - INFO, WARNING and ERROR messages are
                         /// returned.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("messageTypes", Google.Apis.Util.RequestParameterType.Query)]
@@ -2250,17 +2267,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             [Google.Apis.Util.StringValueAttribute("ERROR")]
                             ERROR,
                         }
-
-                        /// <summary>Pagination token, which can be used to request a specific page of
-                        /// `ListTransferLogsRequest` list results. For multiple-page results,
-                        /// `ListTransferLogsResponse` outputs a `next_page` token, which can be used as the
-                        /// `page_token` value to request the next page of list results.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Page size. The default page size is the maximum value of 1000 results.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2296,15 +2302,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                     Pattern = @"^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "messageTypes", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "messageTypes",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -2317,6 +2314,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "messageTypes", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "messageTypes",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2477,19 +2483,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Indicates how run attempts are to be pulled.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("runAttempt", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<RunAttemptEnum> RunAttempt { get; set; }
-
-                    /// <summary>Indicates how run attempts are to be pulled.</summary>
-                    public enum RunAttemptEnum
-                    {
-                        [Google.Apis.Util.StringValueAttribute("RUN_ATTEMPT_UNSPECIFIED")]
-                        RUNATTEMPTUNSPECIFIED,
-                        [Google.Apis.Util.StringValueAttribute("LATEST")]
-                        LATEST,
-                    }
-
                     /// <summary>Pagination token, which can be used to request a specific page of
                     /// `ListTransferRunsRequest` list results. For multiple-page results, `ListTransferRunsResponse`
                     /// outputs a `next_page` token, which can be used as the `page_token` value to request the next
@@ -2521,6 +2514,19 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// <summary>Page size. The default page size is the maximum value of 1000 results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Indicates how run attempts are to be pulled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("runAttempt", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<RunAttemptEnum> RunAttempt { get; set; }
+
+                    /// <summary>Indicates how run attempts are to be pulled.</summary>
+                    public enum RunAttemptEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("RUN_ATTEMPT_UNSPECIFIED")]
+                        RUNATTEMPTUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("LATEST")]
+                        LATEST,
+                    }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2556,15 +2562,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                 Pattern = @"^projects/[^/]+/transferConfigs/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "runAttempt", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "runAttempt",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -2586,6 +2583,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "runAttempt", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "runAttempt",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2860,6 +2866,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>When specified, only configurations of requested data sources are returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("dataSourceIds", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> DataSourceIds { get; set; }
+
                 /// <summary>Pagination token, which can be used to request a specific page of `ListTransfersRequest`
                 /// list results. For multiple-page results, `ListTransfersResponse` outputs a `next_page` token, which
                 /// can be used as the `page_token` value to request the next page of list results.</summary>
@@ -2869,10 +2879,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// <summary>Page size. The default page size is the maximum value of 1000 results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>When specified, only configurations of requested data sources are returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("dataSourceIds", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> DataSourceIds { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2908,6 +2914,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "dataSourceIds", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dataSourceIds",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2920,15 +2935,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "dataSourceIds", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "dataSourceIds",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

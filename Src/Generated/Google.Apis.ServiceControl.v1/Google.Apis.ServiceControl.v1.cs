@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190804 (1676)
+ *      <tr><th>API Rev<td>20190816 (1688)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -640,7 +640,8 @@ namespace Google.Apis.ServiceControl.v1.Data
     {
         /// <summary>A list of label keys that were unused by the server in processing the request. Thus, for similar
         /// requests repeated in a certain future time window, the caller can choose to ignore these labels in the
-        /// requests to achieve better client-side cache hits and quota aggregation.</summary>
+        /// requests to achieve better client-side cache hits and quota aggregation for rate quota. This field is not
+        /// populated for allocation quota checks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unusedArguments")]
         public virtual System.Collections.Generic.IList<string> UnusedArguments { get; set; } 
 

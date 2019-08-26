@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190718 (1659)
+ *      <tr><th>API Rev<td>20190816 (1688)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -1004,6 +1004,10 @@ namespace Google.Apis.Vision.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1011,10 +1015,6 @@ namespace Google.Apis.Vision.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1050,6 +1050,15 @@ namespace Google.Apis.Vision.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1062,15 +1071,6 @@ namespace Google.Apis.Vision.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1093,11 +1093,435 @@ namespace Google.Apis.Vision.v1
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            files = new FilesResource(service);
+            images = new ImagesResource(service);
             locations = new LocationsResource(service);
             operations = new OperationsResource(service);
 
         }
 
+        private readonly FilesResource files;
+
+        /// <summary>Gets the Files resource.</summary>
+        public virtual FilesResource Files
+        {
+            get { return files; }
+        }
+
+        /// <summary>The "files" collection of methods.</summary>
+        public class FilesResource
+        {
+            private const string Resource = "files";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public FilesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Service that performs image detection and annotation for a batch of files. Now only
+            /// "application/pdf", "image/tiff" and "image/gif" are supported.
+            ///
+            /// This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames
+            /// (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image
+            /// extracted.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Optional. Target project and location to make a call.
+            ///
+            /// Format: `projects/{project-id}/locations/{location-id}`.
+            ///
+            /// If no parent is specified, a region will be chosen automatically.
+            ///
+            /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
+            /// European Union.
+            ///
+            /// Example: `projects/project-A/locations/eu`.</param>
+            public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1.Data.BatchAnnotateFilesRequest body, string parent)
+            {
+                return new AnnotateRequest(service, body, parent);
+            }
+
+            /// <summary>Service that performs image detection and annotation for a batch of files. Now only
+            /// "application/pdf", "image/tiff" and "image/gif" are supported.
+            ///
+            /// This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames
+            /// (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image
+            /// extracted.</summary>
+            public class AnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.BatchAnnotateFilesResponse>
+            {
+                /// <summary>Constructs a new Annotate request.</summary>
+                public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.BatchAnnotateFilesRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Optional. Target project and location to make a call.
+                ///
+                /// Format: `projects/{project-id}/locations/{location-id}`.
+                ///
+                /// If no parent is specified, a region will be chosen automatically.
+                ///
+                /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
+                /// The European Union.
+                ///
+                /// Example: `projects/project-A/locations/eu`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Vision.v1.Data.BatchAnnotateFilesRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "annotate"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/files:annotate"; }
+                }
+
+                /// <summary>Initializes Annotate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Run asynchronous image detection and annotation for a list of generic files, such as PDF files,
+            /// which may contain multiple pages and multiple images per page. Progress and results can be retrieved
+            /// through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata`
+            /// (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results).</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Optional. Target project and location to make a call.
+            ///
+            /// Format: `projects/{project-id}/locations/{location-id}`.
+            ///
+            /// If no parent is specified, a region will be chosen automatically.
+            ///
+            /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
+            /// European Union.
+            ///
+            /// Example: `projects/project-A/locations/eu`.</param>
+            public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1.Data.AsyncBatchAnnotateFilesRequest body, string parent)
+            {
+                return new AsyncBatchAnnotateRequest(service, body, parent);
+            }
+
+            /// <summary>Run asynchronous image detection and annotation for a list of generic files, such as PDF files,
+            /// which may contain multiple pages and multiple images per page. Progress and results can be retrieved
+            /// through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata`
+            /// (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results).</summary>
+            public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new AsyncBatchAnnotate request.</summary>
+                public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.AsyncBatchAnnotateFilesRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Optional. Target project and location to make a call.
+                ///
+                /// Format: `projects/{project-id}/locations/{location-id}`.
+                ///
+                /// If no parent is specified, a region will be chosen automatically.
+                ///
+                /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
+                /// The European Union.
+                ///
+                /// Example: `projects/project-A/locations/eu`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Vision.v1.Data.AsyncBatchAnnotateFilesRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "asyncBatchAnnotate"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/files:asyncBatchAnnotate"; }
+                }
+
+                /// <summary>Initializes AsyncBatchAnnotate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                }
+
+            }
+        }
+        private readonly ImagesResource images;
+
+        /// <summary>Gets the Images resource.</summary>
+        public virtual ImagesResource Images
+        {
+            get { return images; }
+        }
+
+        /// <summary>The "images" collection of methods.</summary>
+        public class ImagesResource
+        {
+            private const string Resource = "images";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ImagesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Run image detection and annotation for a batch of images.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Optional. Target project and location to make a call.
+            ///
+            /// Format: `projects/{project-id}/locations/{location-id}`.
+            ///
+            /// If no parent is specified, a region will be chosen automatically.
+            ///
+            /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
+            /// European Union.
+            ///
+            /// Example: `projects/project-A/locations/eu`.</param>
+            public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1.Data.BatchAnnotateImagesRequest body, string parent)
+            {
+                return new AnnotateRequest(service, body, parent);
+            }
+
+            /// <summary>Run image detection and annotation for a batch of images.</summary>
+            public class AnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.BatchAnnotateImagesResponse>
+            {
+                /// <summary>Constructs a new Annotate request.</summary>
+                public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.BatchAnnotateImagesRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Optional. Target project and location to make a call.
+                ///
+                /// Format: `projects/{project-id}/locations/{location-id}`.
+                ///
+                /// If no parent is specified, a region will be chosen automatically.
+                ///
+                /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
+                /// The European Union.
+                ///
+                /// Example: `projects/project-A/locations/eu`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Vision.v1.Data.BatchAnnotateImagesRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "annotate"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/images:annotate"; }
+                }
+
+                /// <summary>Initializes Annotate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Run asynchronous image detection and annotation for a list of images.
+            ///
+            /// Progress and results can be retrieved through the `google.longrunning.Operations` interface.
+            /// `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains
+            /// `AsyncBatchAnnotateImagesResponse` (results).
+            ///
+            /// This service will write image annotation outputs to json files in customer GCS bucket, each json file
+            /// containing BatchAnnotateImagesResponse proto.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Optional. Target project and location to make a call.
+            ///
+            /// Format: `projects/{project-id}/locations/{location-id}`.
+            ///
+            /// If no parent is specified, a region will be chosen automatically.
+            ///
+            /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
+            /// European Union.
+            ///
+            /// Example: `projects/project-A/locations/eu`.</param>
+            public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1.Data.AsyncBatchAnnotateImagesRequest body, string parent)
+            {
+                return new AsyncBatchAnnotateRequest(service, body, parent);
+            }
+
+            /// <summary>Run asynchronous image detection and annotation for a list of images.
+            ///
+            /// Progress and results can be retrieved through the `google.longrunning.Operations` interface.
+            /// `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains
+            /// `AsyncBatchAnnotateImagesResponse` (results).
+            ///
+            /// This service will write image annotation outputs to json files in customer GCS bucket, each json file
+            /// containing BatchAnnotateImagesResponse proto.</summary>
+            public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new AsyncBatchAnnotate request.</summary>
+                public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.AsyncBatchAnnotateImagesRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Optional. Target project and location to make a call.
+                ///
+                /// Format: `projects/{project-id}/locations/{location-id}`.
+                ///
+                /// If no parent is specified, a region will be chosen automatically.
+                ///
+                /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
+                /// The European Union.
+                ///
+                /// Example: `projects/project-A/locations/eu`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Vision.v1.Data.AsyncBatchAnnotateImagesRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "asyncBatchAnnotate"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/images:asyncBatchAnnotate"; }
+                }
+
+                /// <summary>Initializes AsyncBatchAnnotate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                }
+
+            }
+        }
         private readonly LocationsResource locations;
 
         /// <summary>Gets the Locations resource.</summary>
@@ -1118,12 +1542,438 @@ namespace Google.Apis.Vision.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                files = new FilesResource(service);
+                images = new ImagesResource(service);
                 operations = new OperationsResource(service);
                 productSets = new ProductSetsResource(service);
                 products = new ProductsResource(service);
 
             }
 
+            private readonly FilesResource files;
+
+            /// <summary>Gets the Files resource.</summary>
+            public virtual FilesResource Files
+            {
+                get { return files; }
+            }
+
+            /// <summary>The "files" collection of methods.</summary>
+            public class FilesResource
+            {
+                private const string Resource = "files";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FilesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Service that performs image detection and annotation for a batch of files. Now only
+                /// "application/pdf", "image/tiff" and "image/gif" are supported.
+                ///
+                /// This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages)
+                /// frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for
+                /// each image extracted.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Optional. Target project and location to make a call.
+                ///
+                /// Format: `projects/{project-id}/locations/{location-id}`.
+                ///
+                /// If no parent is specified, a region will be chosen automatically.
+                ///
+                /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
+                /// European Union.
+                ///
+                /// Example: `projects/project-A/locations/eu`.</param>
+                public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1.Data.BatchAnnotateFilesRequest body, string parent)
+                {
+                    return new AnnotateRequest(service, body, parent);
+                }
+
+                /// <summary>Service that performs image detection and annotation for a batch of files. Now only
+                /// "application/pdf", "image/tiff" and "image/gif" are supported.
+                ///
+                /// This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages)
+                /// frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for
+                /// each image extracted.</summary>
+                public class AnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.BatchAnnotateFilesResponse>
+                {
+                    /// <summary>Constructs a new Annotate request.</summary>
+                    public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.BatchAnnotateFilesRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Optional. Target project and location to make a call.
+                    ///
+                    /// Format: `projects/{project-id}/locations/{location-id}`.
+                    ///
+                    /// If no parent is specified, a region will be chosen automatically.
+                    ///
+                    /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan,
+                    /// `eu`: The European Union.
+                    ///
+                    /// Example: `projects/project-A/locations/eu`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Vision.v1.Data.BatchAnnotateFilesRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "annotate"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/files:annotate"; }
+                    }
+
+                    /// <summary>Initializes Annotate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Run asynchronous image detection and annotation for a list of generic files, such as PDF
+                /// files, which may contain multiple pages and multiple images per page. Progress and results can be
+                /// retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains
+                /// `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse`
+                /// (results).</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Optional. Target project and location to make a call.
+                ///
+                /// Format: `projects/{project-id}/locations/{location-id}`.
+                ///
+                /// If no parent is specified, a region will be chosen automatically.
+                ///
+                /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
+                /// European Union.
+                ///
+                /// Example: `projects/project-A/locations/eu`.</param>
+                public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1.Data.AsyncBatchAnnotateFilesRequest body, string parent)
+                {
+                    return new AsyncBatchAnnotateRequest(service, body, parent);
+                }
+
+                /// <summary>Run asynchronous image detection and annotation for a list of generic files, such as PDF
+                /// files, which may contain multiple pages and multiple images per page. Progress and results can be
+                /// retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains
+                /// `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse`
+                /// (results).</summary>
+                public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new AsyncBatchAnnotate request.</summary>
+                    public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.AsyncBatchAnnotateFilesRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Optional. Target project and location to make a call.
+                    ///
+                    /// Format: `projects/{project-id}/locations/{location-id}`.
+                    ///
+                    /// If no parent is specified, a region will be chosen automatically.
+                    ///
+                    /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan,
+                    /// `eu`: The European Union.
+                    ///
+                    /// Example: `projects/project-A/locations/eu`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Vision.v1.Data.AsyncBatchAnnotateFilesRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "asyncBatchAnnotate"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/files:asyncBatchAnnotate"; }
+                    }
+
+                    /// <summary>Initializes AsyncBatchAnnotate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                    }
+
+                }
+            }
+            private readonly ImagesResource images;
+
+            /// <summary>Gets the Images resource.</summary>
+            public virtual ImagesResource Images
+            {
+                get { return images; }
+            }
+
+            /// <summary>The "images" collection of methods.</summary>
+            public class ImagesResource
+            {
+                private const string Resource = "images";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ImagesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Run image detection and annotation for a batch of images.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Optional. Target project and location to make a call.
+                ///
+                /// Format: `projects/{project-id}/locations/{location-id}`.
+                ///
+                /// If no parent is specified, a region will be chosen automatically.
+                ///
+                /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
+                /// European Union.
+                ///
+                /// Example: `projects/project-A/locations/eu`.</param>
+                public virtual AnnotateRequest Annotate(Google.Apis.Vision.v1.Data.BatchAnnotateImagesRequest body, string parent)
+                {
+                    return new AnnotateRequest(service, body, parent);
+                }
+
+                /// <summary>Run image detection and annotation for a batch of images.</summary>
+                public class AnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.BatchAnnotateImagesResponse>
+                {
+                    /// <summary>Constructs a new Annotate request.</summary>
+                    public AnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.BatchAnnotateImagesRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Optional. Target project and location to make a call.
+                    ///
+                    /// Format: `projects/{project-id}/locations/{location-id}`.
+                    ///
+                    /// If no parent is specified, a region will be chosen automatically.
+                    ///
+                    /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan,
+                    /// `eu`: The European Union.
+                    ///
+                    /// Example: `projects/project-A/locations/eu`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Vision.v1.Data.BatchAnnotateImagesRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "annotate"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/images:annotate"; }
+                    }
+
+                    /// <summary>Initializes Annotate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Run asynchronous image detection and annotation for a list of images.
+                ///
+                /// Progress and results can be retrieved through the `google.longrunning.Operations` interface.
+                /// `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains
+                /// `AsyncBatchAnnotateImagesResponse` (results).
+                ///
+                /// This service will write image annotation outputs to json files in customer GCS bucket, each json
+                /// file containing BatchAnnotateImagesResponse proto.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Optional. Target project and location to make a call.
+                ///
+                /// Format: `projects/{project-id}/locations/{location-id}`.
+                ///
+                /// If no parent is specified, a region will be chosen automatically.
+                ///
+                /// Supported location-ids:     `us`: USA country only,     `asia`: East asia areas, like Japan, Taiwan,     `eu`: The
+                /// European Union.
+                ///
+                /// Example: `projects/project-A/locations/eu`.</param>
+                public virtual AsyncBatchAnnotateRequest AsyncBatchAnnotate(Google.Apis.Vision.v1.Data.AsyncBatchAnnotateImagesRequest body, string parent)
+                {
+                    return new AsyncBatchAnnotateRequest(service, body, parent);
+                }
+
+                /// <summary>Run asynchronous image detection and annotation for a list of images.
+                ///
+                /// Progress and results can be retrieved through the `google.longrunning.Operations` interface.
+                /// `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains
+                /// `AsyncBatchAnnotateImagesResponse` (results).
+                ///
+                /// This service will write image annotation outputs to json files in customer GCS bucket, each json
+                /// file containing BatchAnnotateImagesResponse proto.</summary>
+                public class AsyncBatchAnnotateRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new AsyncBatchAnnotate request.</summary>
+                    public AsyncBatchAnnotateRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.AsyncBatchAnnotateImagesRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Optional. Target project and location to make a call.
+                    ///
+                    /// Format: `projects/{project-id}/locations/{location-id}`.
+                    ///
+                    /// If no parent is specified, a region will be chosen automatically.
+                    ///
+                    /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan,
+                    /// `eu`: The European Union.
+                    ///
+                    /// Example: `projects/project-A/locations/eu`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Vision.v1.Data.AsyncBatchAnnotateImagesRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "asyncBatchAnnotate"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/images:asyncBatchAnnotate"; }
+                    }
+
+                    /// <summary>Initializes AsyncBatchAnnotate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                    }
+
+                }
+            }
             private readonly OperationsResource operations;
 
             /// <summary>Gets the Operations resource.</summary>
@@ -3202,6 +4052,19 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Multiple async file annotation requests are batched into a single service call.</summary>
     public class AsyncBatchAnnotateFilesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Target project and location to make a call.
+        ///
+        /// Format: `projects/{project-id}/locations/{location-id}`.
+        ///
+        /// If no parent is specified, a region will be chosen automatically.
+        ///
+        /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The
+        /// European Union.
+        ///
+        /// Example: `projects/project-A/locations/eu`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
         /// <summary>Individual async file annotation requests for this batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<AsyncAnnotateFileRequest> Requests { get; set; } 
@@ -3229,6 +4092,19 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual OutputConfig OutputConfig { get; set; } 
 
+        /// <summary>Optional. Target project and location to make a call.
+        ///
+        /// Format: `projects/{project-id}/locations/{location-id}`.
+        ///
+        /// If no parent is specified, a region will be chosen automatically.
+        ///
+        /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The
+        /// European Union.
+        ///
+        /// Example: `projects/project-A/locations/eu`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
         /// <summary>Individual image annotation requests for this batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<AnnotateImageRequest> Requests { get; set; } 
@@ -3251,6 +4127,19 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>A list of requests to annotate files using the BatchAnnotateFiles API.</summary>
     public class BatchAnnotateFilesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Target project and location to make a call.
+        ///
+        /// Format: `projects/{project-id}/locations/{location-id}`.
+        ///
+        /// If no parent is specified, a region will be chosen automatically.
+        ///
+        /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The
+        /// European Union.
+        ///
+        /// Example: `projects/project-A/locations/eu`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
         /// <summary>The list of file annotation requests. Right now we support only one AnnotateFileRequest in
         /// BatchAnnotateFilesRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
@@ -3275,6 +4164,19 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Multiple image annotation requests are batched into a single service call.</summary>
     public class BatchAnnotateImagesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Target project and location to make a call.
+        ///
+        /// Format: `projects/{project-id}/locations/{location-id}`.
+        ///
+        /// If no parent is specified, a region will be chosen automatically.
+        ///
+        /// Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The
+        /// European Union.
+        ///
+        /// Example: `projects/project-A/locations/eu`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
         /// <summary>Individual image annotation requests for this batch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<AnnotateImageRequest> Requests { get; set; } 
@@ -7502,6 +8404,12 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Stores image quality scores, could be aesthetic quality or technical quality.</summary>
     public class GoogleCloudVisionV1p4beta1ImageQuality : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A score representing the aesthetic/technical quality of the image. The score is in range [0, 1].
+        /// Higher value corresponds to more professional looking photos. 0 means the image looks very bad, 1 means the
+        /// image with very high quality.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
+        public virtual System.Nullable<float> QualityScore { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -7924,9 +8832,21 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adult")]
         public virtual string Adult { get; set; } 
 
+        /// <summary>Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adultConfidence")]
+        public virtual System.Nullable<float> AdultConfidence { get; set; } 
+
         /// <summary>Likelihood that this is a medical image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medical")]
         public virtual string Medical { get; set; } 
+
+        /// <summary>Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medicalConfidence")]
+        public virtual System.Nullable<float> MedicalConfidence { get; set; } 
+
+        /// <summary>Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nsfwConfidence")]
+        public virtual System.Nullable<float> NsfwConfidence { get; set; } 
 
         /// <summary>Likelihood that the request image contains racy content. Racy content may include (but is not
         /// limited to) skimpy or sheer clothing, strategically covered nudity, lewd or provocative poses, or close-ups
@@ -7934,14 +8854,27 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("racy")]
         public virtual string Racy { get; set; } 
 
+        /// <summary>Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("racyConfidence")]
+        public virtual System.Nullable<float> RacyConfidence { get; set; } 
+
         /// <summary>Spoof likelihood. The likelihood that an modification was made to the image's canonical version to
         /// make it appear funny or offensive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spoof")]
         public virtual string Spoof { get; set; } 
 
+        /// <summary>Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spoofConfidence")]
+        public virtual System.Nullable<float> SpoofConfidence { get; set; } 
+
         /// <summary>Likelihood that this image contains violent content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violence")]
         public virtual string Violence { get; set; } 
+
+        /// <summary>Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means very
+        /// confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violenceConfidence")]
+        public virtual System.Nullable<float> ViolenceConfidence { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9135,9 +10068,21 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adult")]
         public virtual string Adult { get; set; } 
 
+        /// <summary>Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adultConfidence")]
+        public virtual System.Nullable<float> AdultConfidence { get; set; } 
+
         /// <summary>Likelihood that this is a medical image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medical")]
         public virtual string Medical { get; set; } 
+
+        /// <summary>Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medicalConfidence")]
+        public virtual System.Nullable<float> MedicalConfidence { get; set; } 
+
+        /// <summary>Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nsfwConfidence")]
+        public virtual System.Nullable<float> NsfwConfidence { get; set; } 
 
         /// <summary>Likelihood that the request image contains racy content. Racy content may include (but is not
         /// limited to) skimpy or sheer clothing, strategically covered nudity, lewd or provocative poses, or close-ups
@@ -9145,14 +10090,27 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("racy")]
         public virtual string Racy { get; set; } 
 
+        /// <summary>Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("racyConfidence")]
+        public virtual System.Nullable<float> RacyConfidence { get; set; } 
+
         /// <summary>Spoof likelihood. The likelihood that an modification was made to the image's canonical version to
         /// make it appear funny or offensive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spoof")]
         public virtual string Spoof { get; set; } 
 
+        /// <summary>Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spoofConfidence")]
+        public virtual System.Nullable<float> SpoofConfidence { get; set; } 
+
         /// <summary>Likelihood that this image contains violent content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violence")]
         public virtual string Violence { get; set; } 
+
+        /// <summary>Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means very
+        /// confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violenceConfidence")]
+        public virtual System.Nullable<float> ViolenceConfidence { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10296,9 +11254,21 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adult")]
         public virtual string Adult { get; set; } 
 
+        /// <summary>Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adultConfidence")]
+        public virtual System.Nullable<float> AdultConfidence { get; set; } 
+
         /// <summary>Likelihood that this is a medical image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medical")]
         public virtual string Medical { get; set; } 
+
+        /// <summary>Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medicalConfidence")]
+        public virtual System.Nullable<float> MedicalConfidence { get; set; } 
+
+        /// <summary>Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nsfwConfidence")]
+        public virtual System.Nullable<float> NsfwConfidence { get; set; } 
 
         /// <summary>Likelihood that the request image contains racy content. Racy content may include (but is not
         /// limited to) skimpy or sheer clothing, strategically covered nudity, lewd or provocative poses, or close-ups
@@ -10306,14 +11276,27 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("racy")]
         public virtual string Racy { get; set; } 
 
+        /// <summary>Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("racyConfidence")]
+        public virtual System.Nullable<float> RacyConfidence { get; set; } 
+
         /// <summary>Spoof likelihood. The likelihood that an modification was made to the image's canonical version to
         /// make it appear funny or offensive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spoof")]
         public virtual string Spoof { get; set; } 
 
+        /// <summary>Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spoofConfidence")]
+        public virtual System.Nullable<float> SpoofConfidence { get; set; } 
+
         /// <summary>Likelihood that this image contains violent content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violence")]
         public virtual string Violence { get; set; } 
+
+        /// <summary>Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means very
+        /// confident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violenceConfidence")]
+        public virtual System.Nullable<float> ViolenceConfidence { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

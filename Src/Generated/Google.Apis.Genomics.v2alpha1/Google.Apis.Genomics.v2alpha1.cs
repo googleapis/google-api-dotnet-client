@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v2alpha1
- *      <tr><th>API Rev<td>20190730 (1671)
+ *      <tr><th>API Rev<td>20190822 (1694)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -365,7 +365,10 @@ namespace Google.Apis.Genomics.v2alpha1
         }
 
 
-        /// <summary>Runs a pipeline.
+        /// <summary>Runs a pipeline.  The returned Operation's metadata field will contain a
+        /// google.genomics.v2alpha1.Metadata object describing the status of the pipeline execution.  The [response]
+        /// field will contain a google.genomics.v2alpha1.RunPipelineResponse object if the pipeline completes
+        /// successfully.
         ///
         /// **Note:** Before you can use this method, the Genomics Service Agent must have access to your project. This
         /// is done automatically when the Cloud Genomics API is first enabled, but if you delete this permission, or if
@@ -382,7 +385,10 @@ namespace Google.Apis.Genomics.v2alpha1
             return new RunRequest(service, body);
         }
 
-        /// <summary>Runs a pipeline.
+        /// <summary>Runs a pipeline.  The returned Operation's metadata field will contain a
+        /// google.genomics.v2alpha1.Metadata object describing the status of the pipeline execution.  The [response]
+        /// field will contain a google.genomics.v2alpha1.RunPipelineResponse object if the pipeline completes
+        /// successfully.
         ///
         /// **Note:** Before you can use this method, the Genomics Service Agent must have access to your project. This
         /// is done automatically when the Cloud Genomics API is first enabled, but if you delete this permission, or if
@@ -654,6 +660,14 @@ namespace Google.Apis.Genomics.v2alpha1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of results to return. The maximum value is 256.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>A string for filtering Operations. In v2alpha1, the following filter fields are supported
                 ///
                 /// * createTime The time this job was created * events The set of event (names) that have occurred
@@ -677,14 +691,6 @@ namespace Google.Apis.Genomics.v2alpha1
                 /// labels.color = *` * `projectId = my-project AND labels.color = red`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The maximum number of results to return. The maximum value is 256.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -720,15 +726,6 @@ namespace Google.Apis.Genomics.v2alpha1
                             Pattern = @"^projects/[^/]+/operations$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -741,6 +738,15 @@ namespace Google.Apis.Genomics.v2alpha1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -884,8 +890,8 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entrypoint")]
         public virtual string Entrypoint { get; set; } 
 
-        /// <summary>The environment to pass into the container. This environment is merged with any values specified in
-        /// the `Pipeline` message. These values overwrite any in the `Pipeline` message.
+        /// <summary>The environment to pass into the container. This environment is merged with values specified in the
+        /// google.genomics.v2alpha1.Pipeline message, overwriting any duplicate values.
         ///
         /// In addition to the values passed here, a few other values are automatically injected into the environment.
         /// These cannot be hidden or overwritten.
@@ -904,9 +910,17 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flags")]
         public virtual System.Collections.Generic.IList<string> Flags { get; set; } 
 
-        /// <summary>The URI to pull the container image from. Note that all images referenced by actions in the
-        /// pipeline are pulled before the first action runs. If multiple actions reference the same image, it is only
-        /// pulled once, ensuring that the same image is used for all actions in a single pipeline.</summary>
+        /// <summary>Required. The URI to pull the container image from. Note that all images referenced by actions in
+        /// the pipeline are pulled before the first action runs. If multiple actions reference the same image, it is
+        /// only pulled once, ensuring that the same image is used for all actions in a single pipeline.
+        ///
+        /// The image URI can be either a complete host and image specification (e.g., quay.io/biocontainers/samtools),
+        /// a library and image name (e.g., google/cloud-sdk) or a bare image name ('bash') to pull from the default
+        /// library.  No schema is required in any of these cases.
+        ///
+        /// If the specified image is not public, the service account specified for the Virtual Machine must have access
+        /// to pull the images from GCR, or appropriate credentials must be specified in the
+        /// google.genomics.v2alpha1.Action.credentials field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; } 
 
@@ -1485,7 +1499,7 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The description of the pipeline to run.</summary>
+        /// <summary>Required. The description of the pipeline to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipeline")]
         public virtual Pipeline Pipeline { get; set; } 
 
@@ -1539,8 +1553,8 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>List of scopes to be enabled for this service account on the VM, in addition to the Cloud Genomics
-        /// API scope.</summary>
+        /// <summary>List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform
+        /// API scope that will be added by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; } 
 
@@ -1638,7 +1652,8 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual System.Nullable<bool> EnableStackdriverMonitoring { get; set; } 
 
         /// <summary>Optional set of labels to apply to the VM and any attached disk resources. These labels must adhere
-        /// to the name and value restrictions on VM labels imposed by Compute Engine.
+        /// to the [name and value restrictions](https://cloud.google.com/compute/docs/labeling-resources) on VM labels
+        /// imposed by Compute Engine.
         ///
         /// Labels keys with the prefix 'google-' are reserved for use by Google.
         ///
@@ -1647,11 +1662,11 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The machine type of the virtual machine to create. Must be the short name of a standard machine
-        /// type (such as "n1-standard-1") or a custom machine type (such as "custom-1-4096", where "1" indicates the
-        /// number of vCPUs and "4096" indicates the memory in MB). See [Creating an instance with a custom machine
-        /// type](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) for
-        /// more specifications on creating a custom machine type.</summary>
+        /// <summary>Required. The machine type of the virtual machine to create. Must be the short name of a standard
+        /// machine type (such as "n1-standard-1") or a custom machine type (such as "custom-1-4096", where "1"
+        /// indicates the number of vCPUs and "4096" indicates the memory in MB). See [Creating an instance with a
+        /// custom machine type](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-
+        /// type#create) for more specifications on creating a custom machine type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
 

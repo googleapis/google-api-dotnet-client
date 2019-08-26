@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Analytics Reporting API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20190729 (1670)
+ *      <tr><th>API Rev<td>20190821 (1693)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>
  *              https://developers.google.com/analytics/devguides/reporting/core/v4/</a>
@@ -491,7 +491,8 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
     /// hits. These hits will be merged into one ECOMMERCE Activity.</summary>
     public class Activity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp of the activity.</summary>
+        /// <summary>Timestamp of the activity. If activities for a visit cross midnight and occur in two separate
+        /// dates, then two sessions (one per date) share the session identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activityTime")]
         public virtual object ActivityTime { get; set; } 
 

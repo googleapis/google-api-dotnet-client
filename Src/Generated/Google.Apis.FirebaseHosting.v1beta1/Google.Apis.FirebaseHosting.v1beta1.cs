@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/hosting/'>Firebase Hosting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190801 (1673)
+ *      <tr><th>API Rev<td>20190820 (1692)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/hosting/'>
  *              https://firebase.google.com/docs/hosting/</a>
@@ -1735,14 +1735,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     /// request URL path match the pattern.</summary>
     public class Header : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The user-supplied [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to
-        /// match against the request URL path.</summary>
+        /// <summary>The user-supplied [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match against
+        /// the request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; } 
 
         /// <summary>Required. The additional headers to add to the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
+
+        /// <summary>The user-supplied RE2 regular expression to match against the request URL path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regex")]
+        public virtual string Regex { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1825,8 +1829,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     /// redirect response given a matching request URL path.</summary>
     public class Redirect : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The user-supplied [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to
-        /// match against the request URL path.</summary>
+        /// <summary>The user-supplied [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match against
+        /// the request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; } 
 
@@ -1836,6 +1840,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// "https://example.com/foo/:capture"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
+
+        /// <summary>The user-supplied RE2 regular expression to match against the request URL path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regex")]
+        public virtual string Regex { get; set; } 
 
         /// <summary>Required. The status HTTP code to return in the response. It must be a valid 3xx status
         /// code.</summary>
@@ -1895,14 +1903,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
         public virtual string Function { get; set; } 
 
-        /// <summary>Required. The user-supplied [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to
-        /// match against the request URL path.</summary>
+        /// <summary>The user-supplied [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match against
+        /// the request URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; } 
 
         /// <summary>The URL path to rewrite the request to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
+
+        /// <summary>The user-supplied RE2 regular expression to match against the request URL path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regex")]
+        public virtual string Regex { get; set; } 
 
         /// <summary>The request will be forwarded to Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("run")]

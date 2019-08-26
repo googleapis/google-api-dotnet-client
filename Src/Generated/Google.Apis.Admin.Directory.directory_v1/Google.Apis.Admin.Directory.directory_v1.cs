@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20190214 (1505)
+ *      <tr><th>API Rev<td>20190806 (1678)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -1111,7 +1111,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Maximum number of results to return. Default is 100</summary>
+            /// <summary>Maximum number of results to return. Max allowed value is 200.</summary>
+            /// [default: 100]
             /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -1231,7 +1232,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "100",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -2860,7 +2861,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("domain", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Domain { get; set; }
 
-            /// <summary>Maximum number of results to return. Default is 200</summary>
+            /// <summary>Maximum number of results to return. Max allowed value is 200.</summary>
+            /// [default: 200]
             /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -2903,8 +2905,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 DESCENDING,
             }
 
-            /// <summary>Email or immutable Id of the user if only those groups are to be listed, the given user is a
-            /// member of. If Id, it should match with id of user object</summary>
+            /// <summary>Email or immutable ID of the user if only those groups are to be listed, the given user is a
+            /// member of. If it's an ID, it should match with the ID of the user object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserKey { get; set; }
 
@@ -2956,7 +2958,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "200",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -3491,7 +3493,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("includeDerivedMembership", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeDerivedMembership { get; set; }
 
-            /// <summary>Maximum number of results to return. Default is 200</summary>
+            /// <summary>Maximum number of results to return. Max allowed value is 200.</summary>
+            /// [default: 200]
             /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -3552,7 +3555,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "200",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -4048,7 +4051,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Maximum number of results to return. Default is 100</summary>
+            /// <summary>Maximum number of results to return. Max allowed value is 100.</summary>
+            /// [default: 100]
             /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -4167,7 +4171,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "100",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -9607,7 +9611,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 Update,
             }
 
-            /// <summary>Maximum number of results to return. Default is 100. Max allowed is 500</summary>
+            /// <summary>Maximum number of results to return.</summary>
+            /// [default: 100]
             /// [minimum: 1]
             /// [maximum: 500]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -9659,7 +9664,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>If set to true retrieves the list of deleted users. Default is false</summary>
+            /// <summary>If set to true, retrieves the list of deleted users. (Default: false)</summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ShowDeleted { get; set; }
 
@@ -9760,7 +9765,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "100",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -10160,7 +10165,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 Update,
             }
 
-            /// <summary>Maximum number of results to return. Default is 100. Max allowed is 500</summary>
+            /// <summary>Maximum number of results to return.</summary>
+            /// [default: 100]
             /// [minimum: 1]
             /// [maximum: 500]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -10212,7 +10218,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>If set to true retrieves the list of deleted users. Default is false</summary>
+            /// <summary>If set to true, retrieves the list of deleted users. (Default: false)</summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ShowDeleted { get; set; }
 
@@ -10319,7 +10325,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "100",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -11007,6 +11013,11 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotatedUser")]
         public virtual string AnnotatedUser { get; set; } 
 
+        /// <summary>(Read-only) The timestamp after which the device will stop receiving Chrome updates or
+        /// support</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoUpdateExpiration")]
+        public virtual System.Nullable<long> AutoUpdateExpiration { get; set; } 
+
         /// <summary>Chromebook boot mode (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootMode")]
         public virtual string BootMode { get; set; } 
@@ -11027,6 +11038,14 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskVolumeReports")]
         public virtual System.Collections.Generic.IList<ChromeOsDevice.DiskVolumeReportsData> DiskVolumeReports { get; set; } 
 
+        /// <summary>(Read-only) Built-in MAC address for the docking station that the device connected to. Factory sets
+        /// Media access control address (MAC address) assigned for use by a dock. Currently this is only supported on
+        /// the Dell Arcada / Sarien devices and the Dell WD19 / WD19TB Docking Station. It is reserved specifically for
+        /// MAC pass through device policy. The format is twelve (12) hexadecimal digits without any delimiter
+        /// (uppercase letters). This is only relevant for Dell devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockMacAddress")]
+        public virtual string DockMacAddress { get; set; } 
+
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
@@ -11034,6 +11053,12 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Chromebook Mac Address on ethernet network interface (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ethernetMacAddress")]
         public virtual string EthernetMacAddress { get; set; } 
+
+        /// <summary>(Read-only) MAC address used by the Chromebook’s internal ethernet port, and for onboard network
+        /// (ethernet) interface. The format is twelve (12) hexadecimal digits without any delimiter (uppercase
+        /// letters). This is only relevant for Dell devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ethernetMacAddress0")]
+        public virtual string EthernetMacAddress0 { get; set; } 
 
         /// <summary>Chromebook firmware version (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firmwareVersion")]
@@ -11083,6 +11108,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Chromebook Mac Address on wifi network interface (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("macAddress")]
         public virtual string MacAddress { get; set; } 
+
+        /// <summary>(Read-only) The date the device was manufactured in yyyy-mm-dd format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manufactureDate")]
+        public virtual string ManufactureDate { get; set; } 
 
         /// <summary>Mobile Equipment identifier for the 3G mobile card in the Chromebook (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meid")]
@@ -11730,8 +11759,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Unique identifier of customer member (Read-only) Unique identifier of group (Read-only) Unique
-        /// identifier of member (Read-only)</summary>
+        /// <summary>The unique ID of the group member. A member id can be used as a member request URI's memberKey.
+        /// Unique identifier of group (Read-only) Unique identifier of member (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -12195,7 +12224,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privilegeName")]
         public virtual string PrivilegeName { get; set; } 
 
-        /// <summary>The obfuscated ID of the service this privilege is for.</summary>
+        /// <summary>The obfuscated ID of the service this privilege is for. This value is returned with
+        /// Privileges.list().</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceId")]
         public virtual string ServiceId { get; set; } 
 
@@ -12265,7 +12295,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("privilegeName")]
             public virtual string PrivilegeName { get; set; } 
 
-            /// <summary>The obfuscated ID of the service this privilege is for.</summary>
+            /// <summary>The obfuscated ID of the service this privilege is for. This value is returned with
+            /// Privileges.list().</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("serviceId")]
             public virtual string ServiceId { get; set; } 
 
@@ -12736,6 +12767,15 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primaryEmail")]
         public virtual string PrimaryEmail { get; set; } 
 
+        /// <summary>Recovery email of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryEmail")]
+        public virtual string RecoveryEmail { get; set; } 
+
+        /// <summary>Recovery phone of the user. The phone number must be in the E.164 format, starting with the plus
+        /// sign (+). Example: +16506661212.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryPhone")]
+        public virtual string RecoveryPhone { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("relations")]
         public virtual System.Collections.Generic.IList<UserRelation> Relations { get; set; } 
 
@@ -13070,7 +13110,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; } 
 
-        /// <summary>The full-time equivalent percent within the organization (100000 = 100%).</summary>
+        /// <summary>The full-time equivalent millipercent within the organization (100000 = 100%).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullTimeEquivalent")]
         public virtual System.Nullable<int> FullTimeEquivalent { get; set; } 
 

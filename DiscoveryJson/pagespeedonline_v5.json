@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/FH8hr1vcSrDlKiGXDM8sQApgVtA\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/CM5ddfI3h29HSne4uDeqx2Y7B4Q\"",
  "discoveryVersion": "v1",
  "id": "pagespeedonline:v5",
  "name": "pagespeedonline",
  "version": "v5",
- "revision": "20190725",
+ "revision": "20190821",
  "title": "PageSpeed Insights API",
  "description": "Analyzes the performance of a web page and provides tailored suggestions to make that page faster.",
  "ownerDomain": "google.com",
@@ -67,6 +67,13 @@
   }
  },
  "schemas": {
+  "GoogleprotobufListValue": {
+   "id": "GoogleprotobufListValue",
+   "type": "array",
+   "items": {
+    "$ref": "GoogleprotobufValue"
+   }
+  },
   "GoogleprotobufValue": {
    "id": "GoogleprotobufValue",
    "type": "any"
@@ -350,11 +357,8 @@
      "description": "The original requested url."
     },
     "runWarnings": {
-     "type": "array",
-     "description": "List of all run warnings in the LHR. Will always output to at least `[]`.",
-     "items": {
-      "type": "any"
-     }
+     "$ref": "GoogleprotobufListValue",
+     "description": "List of all run warnings in the LHR. Will always output to at least `[]`."
     },
     "runtimeError": {
      "type": "object",

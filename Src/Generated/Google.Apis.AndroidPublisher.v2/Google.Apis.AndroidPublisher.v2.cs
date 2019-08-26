@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190806 (1678)
+ *      <tr><th>API Rev<td>20190820 (1692)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -6492,11 +6492,11 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
-                /// <summary>The time, in milliseconds since the Epoch, of the newest voided in-app product purchase
-                /// that you want to see in the response. The value of this parameter cannot be greater than the current
-                /// time and is ignored if a pagination token is set. Default value is current time. Note: This filter
-                /// is applied on the time at which the record is seen as voided by our systems and not the actual
-                /// voided time returned in the response.</summary>
+                /// <summary>The time, in milliseconds since the Epoch, of the newest voided purchase that you want to
+                /// see in the response. The value of this parameter cannot be greater than the current time and is
+                /// ignored if a pagination token is set. Default value is current time. Note: This filter is applied on
+                /// the time at which the record is seen as voided by our systems and not the actual voided time
+                /// returned in the response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> EndTime { get; set; }
 
@@ -6508,11 +6508,11 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> StartIndex { get; set; }
 
-                /// <summary>The time, in milliseconds since the Epoch, of the oldest voided in-app product purchase
-                /// that you want to see in the response. The value of this parameter cannot be older than 30 days and
-                /// is ignored if a pagination token is set. Default value is current time minus 30 days. Note: This
-                /// filter is applied on the time at which the record is seen as voided by our systems and not the
-                /// actual voided time returned in the response.</summary>
+                /// <summary>The time, in milliseconds since the Epoch, of the oldest voided purchase that you want to
+                /// see in the response. The value of this parameter cannot be older than 30 days and is ignored if a
+                /// pagination token is set. Default value is current time minus 30 days. Note: This filter is applied
+                /// on the time at which the record is seen as voided by our systems and not the actual voided time
+                /// returned in the response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> StartTime { get; set; }
 
@@ -7997,8 +7997,8 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseTimeMillis")]
         public virtual System.Nullable<long> PurchaseTimeMillis { get; set; } 
 
-        /// <summary>The token that was generated when a purchase was made. This uniquely identifies a
-        /// purchase.</summary>
+        /// <summary>The token which uniquely identifies a one-time purchase or subscription. To uniquely identify
+        /// subscription renewals use order_id (available starting from version 3 of the API).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseToken")]
         public virtual string PurchaseToken { get; set; } 
 

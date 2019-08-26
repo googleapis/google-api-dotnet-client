@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190722 (1663)
+ *      <tr><th>API Rev<td>20190816 (1688)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -79,6 +79,8 @@ namespace Google.Apis.YouTube.v3
             liveChatMessages = new LiveChatMessagesResource(this);
             liveChatModerators = new LiveChatModeratorsResource(this);
             liveStreams = new LiveStreamsResource(this);
+            members = new MembersResource(this);
+            membershipsLevels = new MembershipsLevelsResource(this);
             playlistItems = new PlaylistItemsResource(this);
             playlists = new PlaylistsResource(this);
             search = new SearchResource(this);
@@ -302,6 +304,22 @@ namespace Google.Apis.YouTube.v3
         public virtual LiveStreamsResource LiveStreams
         {
             get { return liveStreams; }
+        }
+
+        private readonly MembersResource members;
+
+        /// <summary>Gets the Members resource.</summary>
+        public virtual MembersResource Members
+        {
+            get { return members; }
+        }
+
+        private readonly MembershipsLevelsResource membershipsLevels;
+
+        /// <summary>Gets the MembershipsLevels resource.</summary>
+        public virtual MembershipsLevelsResource MembershipsLevels
+        {
+            get { return membershipsLevels; }
         }
 
         private readonly PlaylistItemsResource playlistItems;
@@ -6391,6 +6409,236 @@ namespace Google.Apis.YouTube.v3
                     {
                         Name = "onBehalfOfContentOwnerChannel",
                         IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "members" collection of methods.</summary>
+    public class MembersResource
+    {
+        private const string Resource = "members";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public MembersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Lists members for a channel.</summary>
+        /// <param name="part">The part parameter specifies the member resource parts that the API response will include.
+        /// Supported values are id and snippet.</param>
+        public virtual ListRequest List(string part)
+        {
+            return new ListRequest(service, part);
+        }
+
+        /// <summary>Lists members for a channel.</summary>
+        public class ListRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.MemberListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string part)
+                : base(service)
+            {
+                Part = part;
+                InitParameters();
+            }
+
+
+            /// <summary>The part parameter specifies the member resource parts that the API response will include.
+            /// Supported values are id and snippet.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Part { get; private set; }
+
+            /// <summary>The hasAccessToLevel parameter specifies, when set, the ID of a pricing level that members from
+            /// the results set should have access to. When not set, all members will be considered, regardless of their
+            /// active pricing level.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("hasAccessToLevel", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string HasAccessToLevel { get; set; }
+
+            /// <summary>The maxResults parameter specifies the maximum number of items that should be returned in the
+            /// result set.</summary>
+            /// [default: 5]
+            /// [minimum: 0]
+            /// [maximum: 50]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>The mode parameter specifies which channel members to return.</summary>
+            /// [default: LIST_MEMBERS_MODE_ALL_CURRENT]
+            [Google.Apis.Util.RequestParameterAttribute("mode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ModeEnum> Mode { get; set; }
+
+            /// <summary>The mode parameter specifies which channel members to return.</summary>
+            public enum ModeEnum
+            {
+                /// <summary>Return all current members, from newest to oldest.</summary>
+                [Google.Apis.Util.StringValueAttribute("all_current")]
+                AllCurrent,
+                /// <summary>Return only members that joined after the first call with this mode was made.</summary>
+                [Google.Apis.Util.StringValueAttribute("updates")]
+                Updates,
+            }
+
+            /// <summary>The pageToken parameter identifies a specific page in the result set that should be returned.
+            /// In an API response, the nextPageToken and prevPageToken properties identify other pages that could be
+            /// retrieved.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "members"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "part", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "part",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "hasAccessToLevel", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "hasAccessToLevel",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "5",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "mode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "mode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "LIST_MEMBERS_MODE_ALL_CURRENT",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "membershipsLevels" collection of methods.</summary>
+    public class MembershipsLevelsResource
+    {
+        private const string Resource = "membershipsLevels";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public MembershipsLevelsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Lists pricing levels for a channel.</summary>
+        /// <param name="part">The part parameter specifies the membershipsLevel resource parts that the API response will
+        /// include. Supported values are id and snippet.</param>
+        public virtual ListRequest List(string part)
+        {
+            return new ListRequest(service, part);
+        }
+
+        /// <summary>Lists pricing levels for a channel.</summary>
+        public class ListRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.MembershipsLevelListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string part)
+                : base(service)
+            {
+                Part = part;
+                InitParameters();
+            }
+
+
+            /// <summary>The part parameter specifies the membershipsLevel resource parts that the API response will
+            /// include. Supported values are id and snippet.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Part { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "membershipsLevels"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "part", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "part",
+                        IsRequired = true,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -12799,6 +13047,15 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class LevelDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A liveBroadcast resource represents an event that will be streamed, via live video, on
     /// YouTube.</summary>
     public class LiveBroadcast : Google.Apis.Requests.IDirectResponseSchema
@@ -13906,6 +14163,178 @@ namespace Google.Apis.YouTube.v3.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A member resource represents a member for a YouTube channel. A member provides recurring monetary
+    /// support to a creator and receives special benefits.</summary>
+    public class Member : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Etag of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>The ID that YouTube assigns to uniquely identify the member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#member".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The snippet object contains basic details about the member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual MemberSnippet Snippet { get; set; } 
+
+    }    
+
+    public class MemberListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Etag of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Serialized EventId of the request which produced this response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; } 
+
+        /// <summary>A list of members that match the request criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Member> Items { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "youtube#memberListResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
+        /// result set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
+        public virtual PageInfo PageInfo { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
+        public virtual TokenPagination TokenPagination { get; set; } 
+
+        /// <summary>The visitorId identifies the visitor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
+        public virtual string VisitorId { get; set; } 
+
+    }    
+
+    public class MemberSnippet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The id of the channel that's offering memberships.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorChannelId")]
+        public virtual string CreatorChannelId { get; set; } 
+
+        /// <summary>Details about the member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberDetails")]
+        public virtual ChannelProfileDetails MemberDetails { get; set; } 
+
+        /// <summary>Details about the user's membership.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipsDetails")]
+        public virtual MembershipsDetails MembershipsDetails { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class MembershipsDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All levels that the user has access to. This includes the purchased level and all other levels that
+        /// are included because of a higher purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessibleLevels")]
+        public virtual System.Collections.Generic.IList<string> AccessibleLevels { get; set; } 
+
+        /// <summary>The date and time when the user became a continuous member across all levels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberSince")]
+        public virtual string MemberSince { get; set; } 
+
+        /// <summary>The date and time when the user started to continuously have access to the currently highest
+        /// level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberSinceCurrentLevel")]
+        public virtual string MemberSinceCurrentLevel { get; set; } 
+
+        /// <summary>The cumulative time the user has been a member across all levels in complete months (the time is
+        /// rounded down to the nearest integer).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberTotalDuration")]
+        public virtual System.Nullable<int> MemberTotalDuration { get; set; } 
+
+        /// <summary>The cumulative time the user has had access to the currently highest level in complete months (the
+        /// time is rounded down to the nearest integer).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberTotalDurationCurrentLevel")]
+        public virtual System.Nullable<int> MemberTotalDurationCurrentLevel { get; set; } 
+
+        /// <summary>The highest level the user has access to at the moment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchasedLevel")]
+        public virtual string PurchasedLevel { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A membershipsLevel resource represents an offer made by YouTube creators for their fans. Users can
+    /// become members of the channel by joining one of the available levels. They will provide recurring monetary
+    /// support and receives special benefits.</summary>
+    public class MembershipsLevel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Etag of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>The ID that YouTube assigns to uniquely identify the memberships level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "youtube#membershipsLevel".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The snippet object contains basic details about the level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual MembershipsLevelSnippet Snippet { get; set; } 
+
+    }    
+
+    public class MembershipsLevelListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Etag of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Serialized EventId of the request which produced this response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; } 
+
+        /// <summary>A list of pricing levels offered by a creator to the fans.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<MembershipsLevel> Items { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "youtube#membershipsLevelListResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The visitorId identifies the visitor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
+        public virtual string VisitorId { get; set; } 
+
+    }    
+
+    public class MembershipsLevelSnippet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The id of the channel that's offering channel memberships.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorChannelId")]
+        public virtual string CreatorChannelId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("levelDetails")]
+        public virtual LevelDetails LevelDetails { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

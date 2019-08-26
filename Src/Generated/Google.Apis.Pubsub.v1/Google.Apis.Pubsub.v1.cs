@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190802 (1674)
+ *      <tr><th>API Rev<td>20190812 (1684)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -633,8 +633,8 @@ namespace Google.Apis.Pubsub.v1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
-                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the
-                /// value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If
+                /// the value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -1352,8 +1352,8 @@ namespace Google.Apis.Pubsub.v1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
-                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the
-                /// value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If
+                /// the value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -2512,8 +2512,8 @@ namespace Google.Apis.Pubsub.v1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
-                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the
-                /// value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If
+                /// the value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -3338,8 +3338,8 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>Request for the `Pull` method.</summary>
     public class PullRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The maximum number of messages returned for this request. The Pub/Sub system may return fewer than
-        /// the number specified.</summary>
+        /// <summary>The maximum number of messages to return for this request. Must be a positive integer. The Pub/Sub
+        /// system may return fewer than the number specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxMessages")]
         public virtual System.Nullable<int> MaxMessages { get; set; } 
 

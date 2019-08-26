@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/H4vWgpd1MCO4wKLGF823qtL1fw0\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/o_TVyaWurnALX6ZIQ952-U5m22Y\"",
  "discoveryVersion": "v1",
  "id": "analytics:v3",
  "name": "analytics",
  "version": "v3",
- "revision": "20190604",
+ "revision": "20190807",
  "title": "Google Analytics API",
  "description": "Views and manages your Google Analytics data.",
  "ownerDomain": "google.com",
@@ -3460,6 +3460,10 @@
      "type": "string",
      "description": "Value is \"analytics#userDeletionRequest\".",
      "default": "analytics#userDeletionRequest"
+    },
+    "propertyId": {
+     "type": "string",
+     "description": "Property ID"
     },
     "webPropertyId": {
      "type": "string",

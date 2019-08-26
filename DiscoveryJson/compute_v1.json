@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/wnMyqmR3tmklkU9hLzfbwTAQ-KE\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/DncSnvGqwaU1HaysGzrVActiBqE\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
@@ -16,9 +16,9 @@
  },
  "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
  "protocol": "rest",
- "baseUrl": "https://www.googleapis.com/compute/v1/projects/",
+ "baseUrl": "https://compute.googleapis.com/compute/v1/projects/",
  "basePath": "/compute/v1/projects/",
- "rootUrl": "https://www.googleapis.com/",
+ "rootUrl": "https://compute.googleapis.com/",
  "servicePath": "compute/v1/projects/",
  "batchPath": "batch/compute/v1",
  "parameters": {

@@ -143,9 +143,9 @@ namespace Google.Apis.Compute.v1
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/compute/v1/projects/"; }
+            get { return BaseUriOverride ?? "https://compute.googleapis.com/compute/v1/projects/"; }
         #else
-            get { return "https://www.googleapis.com/compute/v1/projects/"; }
+            get { return "https://compute.googleapis.com/compute/v1/projects/"; }
         #endif
         }
 
@@ -159,7 +159,7 @@ namespace Google.Apis.Compute.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/compute/v1"; }
+            get { return "https://compute.googleapis.com/batch/compute/v1"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>

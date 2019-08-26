@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190618 (1629)
+ *      <tr><th>API Rev<td>20190813 (1685)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tasks/'>
  *              https://cloud.google.com/tasks/</a>
@@ -419,9 +419,8 @@ namespace Google.Apis.CloudTasks.v2
                     ///
                     /// * The maximum task size is 100KB.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required.
-                    ///
-                    /// The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+                    /// <param name="parent">Required. The queue name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
                     ///
                     /// The queue must already exist.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudTasks.v2.Data.CreateTaskRequest body, string parent)
@@ -446,9 +445,8 @@ namespace Google.Apis.CloudTasks.v2
                         }
 
 
-                        /// <summary>Required.
-                        ///
-                        /// The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+                        /// <summary>Required. The queue name. For example:
+                        /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
                         ///
                         /// The queue must already exist.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -501,9 +499,8 @@ namespace Google.Apis.CloudTasks.v2
                     ///
                     /// A task can be deleted if it is scheduled or dispatched. A task cannot be deleted if it has
                     /// executed successfully or permanently failed.</summary>
-                    /// <param name="name">Required.
-                    ///
-                    /// The task name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`</param>
+                    /// <param name="name">Required. The task name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
@@ -524,9 +521,7 @@ namespace Google.Apis.CloudTasks.v2
                         }
 
 
-                        /// <summary>Required.
-                        ///
-                        /// The task name. For example:
+                        /// <summary>Required. The task name. For example:
                         /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -569,9 +564,8 @@ namespace Google.Apis.CloudTasks.v2
                     }
 
                     /// <summary>Gets a task.</summary>
-                    /// <param name="name">Required.
-                    ///
-                    /// The task name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`</param>
+                    /// <param name="name">Required. The task name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
@@ -589,9 +583,7 @@ namespace Google.Apis.CloudTasks.v2
                         }
 
 
-                        /// <summary>Required.
-                        ///
-                        /// The task name. For example:
+                        /// <summary>Required. The task name. For example:
                         /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -677,9 +669,8 @@ namespace Google.Apis.CloudTasks.v2
                     /// controls the subset of information which is returned.
                     ///
                     /// The tasks may be returned in any order. The ordering may change at any time.</summary>
-                    /// <param name="parent">Required.
-                    ///
-                    /// The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</param>
+                    /// <param name="parent">Required. The queue name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -702,9 +693,7 @@ namespace Google.Apis.CloudTasks.v2
                         }
 
 
-                        /// <summary>Required.
-                        ///
-                        /// The queue name. For example:
+                        /// <summary>Required. The queue name. For example:
                         /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -839,9 +828,8 @@ namespace Google.Apis.CloudTasks.v2
                     /// RunTask returns NOT_FOUND when it is called on a task that has already succeeded or permanently
                     /// failed.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Required.
-                    ///
-                    /// The task name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`</param>
+                    /// <param name="name">Required. The task name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`</param>
                     public virtual RunRequest Run(Google.Apis.CloudTasks.v2.Data.RunTaskRequest body, string name)
                     {
                         return new RunRequest(service, body, name);
@@ -876,9 +864,7 @@ namespace Google.Apis.CloudTasks.v2
                         }
 
 
-                        /// <summary>Required.
-                        ///
-                        /// The task name. For example:
+                        /// <summary>Required. The task name. For example:
                         /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -936,9 +922,8 @@ namespace Google.Apis.CloudTasks.v2
                 /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
                 /// queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this method.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required.
-                ///
-                /// The location name in which the queue will be created. For example: `projects/PROJECT_ID/locations/LOCATION_ID`
+                /// <param name="parent">Required. The location name in which the queue will be created. For example:
+                /// `projects/PROJECT_ID/locations/LOCATION_ID`
                 ///
                 /// The list of allowed locations can be obtained by calling Cloud Tasks' implementation of ListLocations.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudTasks.v2.Data.Queue body, string parent)
@@ -966,9 +951,7 @@ namespace Google.Apis.CloudTasks.v2
                     }
 
 
-                    /// <summary>Required.
-                    ///
-                    /// The location name in which the queue will be created. For example:
+                    /// <summary>Required. The location name in which the queue will be created. For example:
                     /// `projects/PROJECT_ID/locations/LOCATION_ID`
                     ///
                     /// The list of allowed locations can be obtained by calling Cloud Tasks' implementation of
@@ -1028,9 +1011,8 @@ namespace Google.Apis.CloudTasks.v2
                 /// WARNING: Using this method may have unintended side effects if you are using an App Engine
                 /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
                 /// queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this method.</summary>
-                /// <param name="name">Required.
-                ///
-                /// The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</param>
+                /// <param name="name">Required. The queue name. For example:
+                /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -1056,9 +1038,7 @@ namespace Google.Apis.CloudTasks.v2
                     }
 
 
-                    /// <summary>Required.
-                    ///
-                    /// The queue name. For example:
+                    /// <summary>Required. The queue name. For example:
                     /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1101,9 +1081,7 @@ namespace Google.Apis.CloudTasks.v2
                 }
 
                 /// <summary>Gets a queue.</summary>
-                /// <param name="name">Required.
-                ///
-                /// The resource name of the queue. For example:
+                /// <param name="name">Required. The resource name of the queue. For example:
                 /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1122,9 +1100,7 @@ namespace Google.Apis.CloudTasks.v2
                     }
 
 
-                    /// <summary>Required.
-                    ///
-                    /// The resource name of the queue. For example:
+                    /// <summary>Required. The resource name of the queue. For example:
                     /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1251,9 +1227,8 @@ namespace Google.Apis.CloudTasks.v2
                 /// <summary>Lists queues.
                 ///
                 /// Queues are returned in lexicographical order.</summary>
-                /// <param name="parent">Required.
-                ///
-                /// The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`</param>
+                /// <param name="parent">Required. The location name. For example:
+                /// `projects/PROJECT_ID/locations/LOCATION_ID`</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -1273,23 +1248,10 @@ namespace Google.Apis.CloudTasks.v2
                     }
 
 
-                    /// <summary>Required.
-                    ///
-                    /// The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`</summary>
+                    /// <summary>Required. The location name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
-                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
-                    /// syntax is the same as described in [Stackdriver's Advanced Logs
-                    /// Filters](https://cloud.google.com/logging/docs/view/advanced_filters).
-                    ///
-                    /// Sample filter "state: PAUSED".
-                    ///
-                    /// Note that using filters might cause fewer queues than the requested page_size to be
-                    /// returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
                     /// <summary>A token identifying the page of results to return.
                     ///
@@ -1307,6 +1269,18 @@ namespace Google.Apis.CloudTasks.v2
                     /// response to determine if more queues exist.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
+                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
+                    /// syntax is the same as described in [Stackdriver's Advanced Logs
+                    /// Filters](https://cloud.google.com/logging/docs/view/advanced_filters).
+                    ///
+                    /// Sample filter "state: PAUSED".
+                    ///
+                    /// Note that using filters might cause fewer queues than the requested page_size to be
+                    /// returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1342,15 +1316,6 @@ namespace Google.Apis.CloudTasks.v2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1363,6 +1328,15 @@ namespace Google.Apis.CloudTasks.v2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1503,9 +1477,8 @@ namespace Google.Apis.CloudTasks.v2
                 /// ResumeQueue. Tasks can still be added when the queue is paused. A queue is paused if its state is
                 /// PAUSED.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required.
-                ///
-                /// The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`</param>
+                /// <param name="name">Required. The queue name. For example:
+                /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`</param>
                 public virtual PauseRequest Pause(Google.Apis.CloudTasks.v2.Data.PauseQueueRequest body, string name)
                 {
                     return new PauseRequest(service, body, name);
@@ -1528,9 +1501,7 @@ namespace Google.Apis.CloudTasks.v2
                     }
 
 
-                    /// <summary>Required.
-                    ///
-                    /// The queue name. For example:
+                    /// <summary>Required. The queue name. For example:
                     /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1585,9 +1556,8 @@ namespace Google.Apis.CloudTasks.v2
                 /// Purge operations can take up to one minute to take effect. Tasks might be dispatched before the
                 /// purge takes effect. A purge is irreversible.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required.
-                ///
-                /// The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`</param>
+                /// <param name="name">Required. The queue name. For example:
+                /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`</param>
                 public virtual PurgeRequest Purge(Google.Apis.CloudTasks.v2.Data.PurgeQueueRequest body, string name)
                 {
                     return new PurgeRequest(service, body, name);
@@ -1611,9 +1581,7 @@ namespace Google.Apis.CloudTasks.v2
                     }
 
 
-                    /// <summary>Required.
-                    ///
-                    /// The queue name. For example:
+                    /// <summary>Required. The queue name. For example:
                     /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1670,9 +1638,8 @@ namespace Google.Apis.CloudTasks.v2
                 /// resuming high-QPS queues, follow the 500/50/5 pattern described in [Managing Cloud Tasks Scaling
                 /// Risks](https://cloud.google.com/tasks/docs/manage-cloud-task-scaling).</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required.
-                ///
-                /// The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`</param>
+                /// <param name="name">Required. The queue name. For example:
+                /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`</param>
                 public virtual ResumeRequest Resume(Google.Apis.CloudTasks.v2.Data.ResumeQueueRequest body, string name)
                 {
                     return new ResumeRequest(service, body, name);
@@ -1698,9 +1665,7 @@ namespace Google.Apis.CloudTasks.v2
                     }
 
 
-                    /// <summary>Required.
-                    ///
-                    /// The queue name. For example:
+                    /// <summary>Required. The queue name. For example:
                     /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2098,8 +2063,8 @@ namespace Google.Apis.CloudTasks.v2.Data
     /// The AppEngineRouting used to construct the URL that the task is delivered to can be set at the queue-level or
     /// task-level:
     ///
-    /// * If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the
-    /// task-level app_engine_routing.
+    /// * If app_engine_routing_override is set on the queue, this value is used for all tasks in the queue, no matter
+    /// what the setting is for the task-level app_engine_routing.
     ///
     /// The `url` that the task will be sent to is:
     ///
@@ -2122,8 +2087,8 @@ namespace Google.Apis.CloudTasks.v2.Data
     {
         /// <summary>Task-level setting for App Engine routing.
         ///
-        /// If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for
-        /// the task-level app_engine_routing.</summary>
+        /// * If app_engine_routing_override is set on the queue, this value is used for all tasks in the queue, no
+        /// matter what the setting is for the task-level app_engine_routing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineRouting")]
         public virtual AppEngineRouting AppEngineRouting { get; set; } 
 
@@ -2199,7 +2164,12 @@ namespace Google.Apis.CloudTasks.v2.Data
     /// on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine
     /// Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and
     /// [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-
-    /// routed).</summary>
+    /// routed).
+    ///
+    /// Using AppEngineRouting requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api
+    /// /access-control) Google IAM permission for the project and the following scope:
+    ///
+    /// `https://www.googleapis.com/auth/cloud-platform`</summary>
     public class AppEngineRouting : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The host that the task is sent to.
@@ -2304,7 +2274,7 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` .
+        /// `alice@example.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.
@@ -2341,9 +2311,7 @@ namespace Google.Apis.CloudTasks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
         public virtual string ResponseView { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// The task to add.
+        /// <summary>Required. The task to add.
         ///
         /// Task names have the following format:
         /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`. The user can optionally specify a
@@ -2420,6 +2388,23 @@ namespace Google.Apis.CloudTasks.v2.Data
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. This field is only
+        /// used by Cloud IAM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual GetPolicyOptions Options { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
+    public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If the value
+        /// is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
+        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2549,8 +2534,7 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
-        /// blindly.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -2670,7 +2654,7 @@ namespace Google.Apis.CloudTasks.v2.Data
         ///
         /// Cloud Tasks will pick the value of `max_burst_size` based on the value of max_dispatches_per_second.
         ///
-        /// For App Engine queues that were created or updated using `queue.yaml/xml`, `max_burst_size` is equal to
+        /// For queues that were created or updated using `queue.yaml/xml`, `max_burst_size` is equal to
         /// [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size). Since
         /// `max_burst_size` is output only, if UpdateQueue is called on a queue created by `queue.yaml/xml`,
         /// `max_burst_size` will be reset based on the value of max_dispatches_per_second, regardless of whether
@@ -2695,7 +2679,7 @@ namespace Google.Apis.CloudTasks.v2.Data
         ///
         /// If unspecified when the queue is created, Cloud Tasks will pick the default.
         ///
-        /// * For App Engine queues, the maximum allowed value is 500.
+        /// * The maximum allowed value is 500.
         ///
         /// This field has the same meaning as [rate in
         /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).</summary>
@@ -2925,9 +2909,7 @@ namespace Google.Apis.CloudTasks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseCount")]
         public virtual System.Nullable<int> ResponseCount { get; set; } 
 
-        /// <summary>The time when the task is scheduled to be attempted.
-        ///
-        /// For App Engine queues, this is when the task will be attempted or retried.
+        /// <summary>The time when the task is scheduled to be attempted or retried.
         ///
         /// `schedule_time` will be truncated to the nearest microsecond.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]

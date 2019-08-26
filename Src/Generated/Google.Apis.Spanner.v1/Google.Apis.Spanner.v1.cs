@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190723 (1664)
+ *      <tr><th>API Rev<td>20190719 (1660)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -941,6 +941,82 @@ namespace Google.Apis.Spanner.v1
                     }
 
 
+                    /// <summary>Creates multiple new sessions. If the requested number of sessions would cause the
+                    /// database to exceed its session limit, returns a RESOURCE_EXHAUSTED error.
+                    ///
+                    /// This API can be used to initialize a session cache on the clients. See https://goo.gl/TgSFN2 for
+                    /// best practices on session cache management.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="database">Required. The database in which the new sessions are created.</param>
+                    public virtual BatchCreateRequest BatchCreate(Google.Apis.Spanner.v1.Data.BatchCreateSessionsRequest body, string database)
+                    {
+                        return new BatchCreateRequest(service, body, database);
+                    }
+
+                    /// <summary>Creates multiple new sessions. If the requested number of sessions would cause the
+                    /// database to exceed its session limit, returns a RESOURCE_EXHAUSTED error.
+                    ///
+                    /// This API can be used to initialize a session cache on the clients. See https://goo.gl/TgSFN2 for
+                    /// best practices on session cache management.</summary>
+                    public class BatchCreateRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.BatchCreateSessionsResponse>
+                    {
+                        /// <summary>Constructs a new BatchCreate request.</summary>
+                        public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.BatchCreateSessionsRequest body, string database)
+                            : base(service)
+                        {
+                            Database = database;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The database in which the new sessions are created.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Database { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Spanner.v1.Data.BatchCreateSessionsRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "batchCreate"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+database}/sessions:batchCreate"; }
+                        }
+
+                        /// <summary>Initializes BatchCreate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "database", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "database",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
+                                });
+                        }
+
+                    }
+
                     /// <summary>Begins a new transaction. This step can often be skipped: Read, ExecuteSql and Commit
                     /// can begin a new transaction as a side-effect.</summary>
                     /// <param name="body">The body of the request.</param>
@@ -1575,6 +1651,16 @@ namespace Google.Apis.Spanner.v1
                         [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Database { get; private set; }
 
+                        /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
+                        /// ListSessionsResponse.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Number of sessions to be returned in the response. If 0 or less, defaults to the
+                        /// server's maximum allowed page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
                         /// <summary>An expression for filtering the results of the request. Filter rules are case
                         /// insensitive. The fields eligible for filtering are:
                         ///
@@ -1586,16 +1672,6 @@ namespace Google.Apis.Spanner.v1
                         /// the label "env" and the value of the label contains the string "dev".</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
-
-                        /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
-                        /// ListSessionsResponse.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Number of sessions to be returned in the response. If 0 or less, defaults to the
-                        /// server's maximum allowed page size.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1631,15 +1707,6 @@ namespace Google.Apis.Spanner.v1
                                     Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -1652,6 +1719,15 @@ namespace Google.Apis.Spanner.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2991,10 +3067,6 @@ namespace Google.Apis.Spanner.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -3002,6 +3074,10 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3037,15 +3113,6 @@ namespace Google.Apis.Spanner.v1
                                 Pattern = @"^projects/[^/]+/instances/[^/]+/operations$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -3058,6 +3125,15 @@ namespace Google.Apis.Spanner.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3427,6 +3503,16 @@ namespace Google.Apis.Spanner.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
+                /// ListInstancesResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
+                /// maximum allowed page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>An expression for filtering the results of the request. Filter rules are case insensitive.
                 /// The fields eligible for filtering are:
                 ///
@@ -3442,16 +3528,6 @@ namespace Google.Apis.Spanner.v1
                 /// "dev".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
-                /// ListInstancesResponse.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
-                /// maximum allowed page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3487,15 +3563,6 @@ namespace Google.Apis.Spanner.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3508,6 +3575,15 @@ namespace Google.Apis.Spanner.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3803,6 +3879,35 @@ namespace Google.Apis.Spanner.v1
 namespace Google.Apis.Spanner.v1.Data
 {    
 
+    /// <summary>The request for BatchCreateSessions.</summary>
+    public class BatchCreateSessionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The number of sessions to be created in this batch call. The API may return fewer than
+        /// the requested number of sessions. If a specific number of sessions are desired, the client can make
+        /// additional calls to BatchCreateSessions (adjusting session_count as necessary). The maximum allowed sessions
+        /// are documented at https://goo.gl/hBUQED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionCount")]
+        public virtual System.Nullable<int> SessionCount { get; set; } 
+
+        /// <summary>Parameters to be applied to each created session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionTemplate")]
+        public virtual Session SessionTemplate { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for BatchCreateSessions.</summary>
+    public class BatchCreateSessionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The freshly created sessions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("session")]
+        public virtual System.Collections.Generic.IList<Session> Session { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request for BeginTransaction.</summary>
     public class BeginTransactionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3833,7 +3938,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` .
+        /// `alice@example.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.
@@ -4252,6 +4357,23 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. This field is only
+        /// used by Cloud IAM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual GetPolicyOptions Options { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
+    public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the value is
+        /// 0, or the field is omitted, policy format version 1 will be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
+        public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -4890,8 +5012,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
-        /// blindly.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 

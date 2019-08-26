@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/rWYUaGpny8LTCuJElOojAsmREFw\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/cYMSyVb-ZDSvhrgWhkfqRgn6L9c\"",
  "discoveryVersion": "v1",
  "id": "youtube:v3",
  "name": "youtube",
  "canonicalName": "YouTube",
  "version": "v3",
- "revision": "20190722",
+ "revision": "20190816",
  "title": "YouTube Data API",
  "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
  "ownerDomain": "google.com",
@@ -3082,12 +3082,14 @@
      "description": "The video's rating from the Nacionãlais Kino centrs (National Film Centre of Latvia).",
      "enum": [
       "nkclv12plus",
+      "nkclv16plus",
       "nkclv18plus",
       "nkclv7plus",
       "nkclvU",
       "nkclvUnrated"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -3811,6 +3813,15 @@
    "type": "object",
    "properties": {
     "value": {
+     "type": "string"
+    }
+   }
+  },
+  "LevelDetails": {
+   "id": "LevelDetails",
+   "type": "object",
+   "properties": {
+    "displayName": {
      "type": "string"
     }
    }
@@ -5113,6 +5124,190 @@
     },
     "value": {
      "type": "string"
+    }
+   }
+  },
+  "Member": {
+   "id": "Member",
+   "type": "object",
+   "description": "A member resource represents a member for a YouTube channel. A member provides recurring monetary support to a creator and receives special benefits.",
+   "properties": {
+    "etag": {
+     "type": "string",
+     "description": "Etag of this resource."
+    },
+    "id": {
+     "type": "string",
+     "description": "The ID that YouTube assigns to uniquely identify the member."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"youtube#member\".",
+     "default": "youtube#member"
+    },
+    "snippet": {
+     "$ref": "MemberSnippet",
+     "description": "The snippet object contains basic details about the member."
+    }
+   }
+  },
+  "MemberListResponse": {
+   "id": "MemberListResponse",
+   "type": "object",
+   "properties": {
+    "etag": {
+     "type": "string",
+     "description": "Etag of this resource."
+    },
+    "eventId": {
+     "type": "string",
+     "description": "Serialized EventId of the request which produced this response."
+    },
+    "items": {
+     "type": "array",
+     "description": "A list of members that match the request criteria.",
+     "items": {
+      "$ref": "Member"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"youtube#memberListResponse\".",
+     "default": "youtube#memberListResponse"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."
+    },
+    "pageInfo": {
+     "$ref": "PageInfo"
+    },
+    "tokenPagination": {
+     "$ref": "TokenPagination"
+    },
+    "visitorId": {
+     "type": "string",
+     "description": "The visitorId identifies the visitor."
+    }
+   }
+  },
+  "MemberSnippet": {
+   "id": "MemberSnippet",
+   "type": "object",
+   "properties": {
+    "creatorChannelId": {
+     "type": "string",
+     "description": "The id of the channel that's offering memberships."
+    },
+    "memberDetails": {
+     "$ref": "ChannelProfileDetails",
+     "description": "Details about the member."
+    },
+    "membershipsDetails": {
+     "$ref": "MembershipsDetails",
+     "description": "Details about the user's membership."
+    }
+   }
+  },
+  "MembershipsDetails": {
+   "id": "MembershipsDetails",
+   "type": "object",
+   "properties": {
+    "accessibleLevels": {
+     "type": "array",
+     "description": "All levels that the user has access to. This includes the purchased level and all other levels that are included because of a higher purchase.",
+     "items": {
+      "type": "string"
+     }
+    },
+    "memberSince": {
+     "type": "string",
+     "description": "The date and time when the user became a continuous member across all levels."
+    },
+    "memberSinceCurrentLevel": {
+     "type": "string",
+     "description": "The date and time when the user started to continuously have access to the currently highest level."
+    },
+    "memberTotalDuration": {
+     "type": "integer",
+     "description": "The cumulative time the user has been a member across all levels in complete months (the time is rounded down to the nearest integer).",
+     "format": "int32"
+    },
+    "memberTotalDurationCurrentLevel": {
+     "type": "integer",
+     "description": "The cumulative time the user has had access to the currently highest level in complete months (the time is rounded down to the nearest integer).",
+     "format": "int32"
+    },
+    "purchasedLevel": {
+     "type": "string",
+     "description": "The highest level the user has access to at the moment."
+    }
+   }
+  },
+  "MembershipsLevel": {
+   "id": "MembershipsLevel",
+   "type": "object",
+   "description": "A membershipsLevel resource represents an offer made by YouTube creators for their fans. Users can become members of the channel by joining one of the available levels. They will provide recurring monetary support and receives special benefits.",
+   "properties": {
+    "etag": {
+     "type": "string",
+     "description": "Etag of this resource."
+    },
+    "id": {
+     "type": "string",
+     "description": "The ID that YouTube assigns to uniquely identify the memberships level."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"youtube#membershipsLevel\".",
+     "default": "youtube#membershipsLevel"
+    },
+    "snippet": {
+     "$ref": "MembershipsLevelSnippet",
+     "description": "The snippet object contains basic details about the level."
+    }
+   }
+  },
+  "MembershipsLevelListResponse": {
+   "id": "MembershipsLevelListResponse",
+   "type": "object",
+   "properties": {
+    "etag": {
+     "type": "string",
+     "description": "Etag of this resource."
+    },
+    "eventId": {
+     "type": "string",
+     "description": "Serialized EventId of the request which produced this response."
+    },
+    "items": {
+     "type": "array",
+     "description": "A list of pricing levels offered by a creator to the fans.",
+     "items": {
+      "$ref": "MembershipsLevel"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"youtube#membershipsLevelListResponse\".",
+     "default": "youtube#membershipsLevelListResponse"
+    },
+    "visitorId": {
+     "type": "string",
+     "description": "The visitorId identifies the visitor."
+    }
+   }
+  },
+  "MembershipsLevelSnippet": {
+   "id": "MembershipsLevelSnippet",
+   "type": "object",
+   "properties": {
+    "creatorChannelId": {
+     "type": "string",
+     "description": "The id of the channel that's offering channel memberships."
+    },
+    "levelDetails": {
+     "$ref": "LevelDetails"
     }
    }
   },
@@ -9461,6 +9656,99 @@
      "scopes": [
       "https://www.googleapis.com/auth/youtube",
       "https://www.googleapis.com/auth/youtube.force-ssl"
+     ]
+    }
+   }
+  },
+  "members": {
+   "methods": {
+    "list": {
+     "id": "youtube.members.list",
+     "path": "members",
+     "httpMethod": "GET",
+     "description": "Lists members for a channel.",
+     "parameters": {
+      "hasAccessToLevel": {
+       "type": "string",
+       "description": "The hasAccessToLevel parameter specifies, when set, the ID of a pricing level that members from the results set should have access to. When not set, all members will be considered, regardless of their active pricing level.",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maxResults parameter specifies the maximum number of items that should be returned in the result set.",
+       "default": "5",
+       "format": "uint32",
+       "minimum": "0",
+       "maximum": "50",
+       "location": "query"
+      },
+      "mode": {
+       "type": "string",
+       "description": "The mode parameter specifies which channel members to return.",
+       "default": "LIST_MEMBERS_MODE_ALL_CURRENT",
+       "enum": [
+        "all_current",
+        "updates"
+       ],
+       "enumDescriptions": [
+        "Return all current members, from newest to oldest.",
+        "Return only members that joined after the first call with this mode was made."
+       ],
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.",
+       "location": "query"
+      },
+      "part": {
+       "type": "string",
+       "description": "The part parameter specifies the member resource parts that the API response will include. Supported values are id and snippet.",
+       "required": true,
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "part"
+     ],
+     "response": {
+      "$ref": "MemberListResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/youtube",
+      "https://www.googleapis.com/auth/youtube.force-ssl",
+      "https://www.googleapis.com/auth/youtube.readonly",
+      "https://www.googleapis.com/auth/youtubepartner"
+     ]
+    }
+   }
+  },
+  "membershipsLevels": {
+   "methods": {
+    "list": {
+     "id": "youtube.membershipsLevels.list",
+     "path": "membershipsLevels",
+     "httpMethod": "GET",
+     "description": "Lists pricing levels for a channel.",
+     "parameters": {
+      "part": {
+       "type": "string",
+       "description": "The part parameter specifies the membershipsLevel resource parts that the API response will include. Supported values are id and snippet.",
+       "required": true,
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "part"
+     ],
+     "response": {
+      "$ref": "MembershipsLevelListResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/youtube",
+      "https://www.googleapis.com/auth/youtube.force-ssl",
+      "https://www.googleapis.com/auth/youtube.readonly",
+      "https://www.googleapis.com/auth/youtubepartner"
      ]
     }
    }

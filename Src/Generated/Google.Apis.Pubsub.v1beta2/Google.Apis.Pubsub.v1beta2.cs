@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190802 (1674)
+ *      <tr><th>API Rev<td>20190812 (1684)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -685,8 +685,8 @@ namespace Google.Apis.Pubsub.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
-                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the
-                /// value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If
+                /// the value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -1562,8 +1562,8 @@ namespace Google.Apis.Pubsub.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
-                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the
-                /// value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If
+                /// the value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 

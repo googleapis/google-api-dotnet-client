@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190806 (1678)
+ *      <tr><th>API Rev<td>20190820 (1692)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -6321,11 +6321,11 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
-                /// <summary>The time, in milliseconds since the Epoch, of the newest voided in-app product purchase
-                /// that you want to see in the response. The value of this parameter cannot be greater than the current
-                /// time and is ignored if a pagination token is set. Default value is current time. Note: This filter
-                /// is applied on the time at which the record is seen as voided by our systems and not the actual
-                /// voided time returned in the response.</summary>
+                /// <summary>The time, in milliseconds since the Epoch, of the newest voided purchase that you want to
+                /// see in the response. The value of this parameter cannot be greater than the current time and is
+                /// ignored if a pagination token is set. Default value is current time. Note: This filter is applied on
+                /// the time at which the record is seen as voided by our systems and not the actual voided time
+                /// returned in the response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> EndTime { get; set; }
 
@@ -6337,17 +6337,27 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> StartIndex { get; set; }
 
-                /// <summary>The time, in milliseconds since the Epoch, of the oldest voided in-app product purchase
-                /// that you want to see in the response. The value of this parameter cannot be older than 30 days and
-                /// is ignored if a pagination token is set. Default value is current time minus 30 days. Note: This
-                /// filter is applied on the time at which the record is seen as voided by our systems and not the
-                /// actual voided time returned in the response.</summary>
+                /// <summary>The time, in milliseconds since the Epoch, of the oldest voided purchase that you want to
+                /// see in the response. The value of this parameter cannot be older than 30 days and is ignored if a
+                /// pagination token is set. Default value is current time minus 30 days. Note: This filter is applied
+                /// on the time at which the record is seen as voided by our systems and not the actual voided time
+                /// returned in the response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> StartTime { get; set; }
 
 
                 [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Token { get; set; }
+
+                /// <summary>The type of voided purchases that you want to see in the response. Possible values are: -
+                /// 0: Only voided in-app product purchases will be returned in the response. This is the default value.
+                /// - 1: Both voided in-app purchases and voided subscription purchases will be returned in the
+                /// response.  Note: Before requesting to receive voided subscription purchases, you must switch to use
+                /// orderId in the response which uniquely identifies one-time purchases and subscriptions. Otherwise,
+                /// you will receive multiple subscription orders with the same PurchaseToken, because subscription
+                /// renewal orders share the same PurchaseToken.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> Type { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -6422,6 +6432,15 @@ namespace Google.Apis.AndroidPublisher.v3
                         "token", new Google.Apis.Discovery.Parameter
                         {
                             Name = "token",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "type", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "type",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7942,14 +7961,28 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>The order id which uniquely identifies a one-time purchase, subscription purchase, or subscription
+        /// renewal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
+        public virtual string OrderId { get; set; } 
+
         /// <summary>The time at which the purchase was made, in milliseconds since the epoch (Jan 1, 1970).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseTimeMillis")]
         public virtual System.Nullable<long> PurchaseTimeMillis { get; set; } 
 
-        /// <summary>The token that was generated when a purchase was made. This uniquely identifies a
-        /// purchase.</summary>
+        /// <summary>The token which uniquely identifies a one-time purchase or subscription. To uniquely identify
+        /// subscription renewals use order_id (available starting from version 3 of the API).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseToken")]
         public virtual string PurchaseToken { get; set; } 
+
+        /// <summary>The reason why the purchase was voided, possible values are: - Other - Remorse - Not_received -
+        /// Defective - Accidental_purchase - Fraud - Friendly_fraud - Chargeback</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voidedReason")]
+        public virtual System.Nullable<int> VoidedReason { get; set; } 
+
+        /// <summary>The initiator of voided purchase, possible values are: - User - Developer - Google</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voidedSource")]
+        public virtual System.Nullable<int> VoidedSource { get; set; } 
 
         /// <summary>The time at which the purchase was canceled/refunded/charged-back, in milliseconds since the epoch
         /// (Jan 1, 1970).</summary>

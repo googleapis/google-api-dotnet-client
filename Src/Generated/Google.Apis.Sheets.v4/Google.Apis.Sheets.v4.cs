@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20190807 (1679)
+ *      <tr><th>API Rev<td>20190814 (1686)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -729,23 +729,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
-                /// <summary>Determines how values in the response should be rendered. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ResponseValueRenderOptionEnum> ResponseValueRenderOption { get; set; }
-
-                /// <summary>Determines how values in the response should be rendered. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.</summary>
-                public enum ResponseValueRenderOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
-                    FORMATTEDVALUE,
-                    [Google.Apis.Util.StringValueAttribute("UNFORMATTED_VALUE")]
-                    UNFORMATTEDVALUE,
-                    [Google.Apis.Util.StringValueAttribute("FORMULA")]
-                    FORMULA,
-                }
-
                 /// <summary>How the input data should be inserted.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("insertDataOption", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<InsertDataOptionEnum> InsertDataOption { get; set; }
@@ -796,6 +779,23 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
 
+                /// <summary>Determines how values in the response should be rendered. The default render option is
+                /// ValueRenderOption.FORMATTED_VALUE.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ResponseValueRenderOptionEnum> ResponseValueRenderOption { get; set; }
+
+                /// <summary>Determines how values in the response should be rendered. The default render option is
+                /// ValueRenderOption.FORMATTED_VALUE.</summary>
+                public enum ResponseValueRenderOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
+                    FORMATTEDVALUE,
+                    [Google.Apis.Util.StringValueAttribute("UNFORMATTED_VALUE")]
+                    UNFORMATTEDVALUE,
+                    [Google.Apis.Util.StringValueAttribute("FORMULA")]
+                    FORMULA,
+                }
+
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.ValueRange Body { get; set; }
@@ -845,15 +845,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "responseValueRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "responseValueRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "insertDataOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "insertDataOption",
@@ -884,6 +875,15 @@ namespace Google.Apis.Sheets.v4
                         "includeValuesInResponse", new Google.Apis.Discovery.Parameter
                         {
                             Name = "includeValuesInResponse",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "responseValueRenderOption", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "responseValueRenderOption",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1064,33 +1064,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
-                /// <summary>The A1 notation of the values to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("ranges", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> Ranges { get; set; }
-
-                /// <summary>The major dimension that results should use.
-                ///
-                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
-
-                /// <summary>The major dimension that results should use.
-                ///
-                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
-                public enum MajorDimensionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
-                    DIMENSIONUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("ROWS")]
-                    ROWS,
-                    [Google.Apis.Util.StringValueAttribute("COLUMNS")]
-                    COLUMNS,
-                }
-
                 /// <summary>How values should be represented in the output. The default render option is
                 /// ValueRenderOption.FORMATTED_VALUE.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("valueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
@@ -1123,6 +1096,33 @@ namespace Google.Apis.Sheets.v4
                     SERIALNUMBER,
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
                     FORMATTEDSTRING,
+                }
+
+                /// <summary>The A1 notation of the values to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("ranges", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> Ranges { get; set; }
+
+                /// <summary>The major dimension that results should use.
+                ///
+                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
+                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
+
+                /// <summary>The major dimension that results should use.
+                ///
+                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
+                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                public enum MajorDimensionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
+                    DIMENSIONUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("ROWS")]
+                    ROWS,
+                    [Google.Apis.Util.StringValueAttribute("COLUMNS")]
+                    COLUMNS,
                 }
 
 
@@ -1159,24 +1159,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "ranges", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ranges",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "majorDimension", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "majorDimension",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "valueRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "valueRenderOption",
@@ -1189,6 +1171,24 @@ namespace Google.Apis.Sheets.v4
                         "dateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "dateTimeRenderOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "ranges", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ranges",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "majorDimension", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "majorDimension",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1694,6 +1694,21 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
+                /// <summary>How the input data should be interpreted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("valueInputOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ValueInputOptionEnum> ValueInputOption { get; set; }
+
+                /// <summary>How the input data should be interpreted.</summary>
+                public enum ValueInputOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("INPUT_VALUE_OPTION_UNSPECIFIED")]
+                    INPUTVALUEOPTIONUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("RAW")]
+                    RAW,
+                    [Google.Apis.Util.StringValueAttribute("USER_ENTERED")]
+                    USERENTERED,
+                }
+
                 /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
                 /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
                 /// DateTimeRenderOption.SERIAL_NUMBER.</summary>
@@ -1733,21 +1748,6 @@ namespace Google.Apis.Sheets.v4
                     UNFORMATTEDVALUE,
                     [Google.Apis.Util.StringValueAttribute("FORMULA")]
                     FORMULA,
-                }
-
-                /// <summary>How the input data should be interpreted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("valueInputOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ValueInputOptionEnum> ValueInputOption { get; set; }
-
-                /// <summary>How the input data should be interpreted.</summary>
-                public enum ValueInputOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("INPUT_VALUE_OPTION_UNSPECIFIED")]
-                    INPUTVALUEOPTIONUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("RAW")]
-                    RAW,
-                    [Google.Apis.Util.StringValueAttribute("USER_ENTERED")]
-                    USERENTERED,
                 }
 
 
@@ -1799,6 +1799,15 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "valueInputOption", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "valueInputOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseDateTimeRenderOption",
@@ -1820,15 +1829,6 @@ namespace Google.Apis.Sheets.v4
                         "responseValueRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseValueRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "valueInputOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "valueInputOption",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3892,8 +3892,9 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Removes rows within this range containing duplicate values in the specified columns. Rows with
-    /// identical values but different letter cases, formatting, or formulas are considered to be duplicates.
+    /// <summary>Removes rows within this range that contain values in the specified columns that are duplicates of
+    /// values in any previous row. Rows with identical values but different letter cases, formatting, or formulas are
+    /// considered to be duplicates.
     ///
     /// This request also removes duplicate rows hidden from view (for example, due to a filter). When removing
     /// duplicates, the first instance of each duplicate row scanning from the top downwards is kept in the resulting
@@ -6227,9 +6228,9 @@ namespace Google.Apis.Sheets.v4.Data
     }    
 
     /// <summary>Trims the whitespace (such as spaces, tabs, or new lines) in every cell in the specified range. This
-    /// request removes all whitespace from the start and end of each cell's text, and reduces any sub-sequence of
+    /// request removes all whitespace from the start and end of each cell's text, and reduces any subsequence of
     /// remaining whitespace characters to a single space. If the resulting trimmed text starts with a '+' or '='
-    /// character, the text remains as a string value and is not interpreted as a formula.</summary>
+    /// character, the text remains as a string value and isn't interpreted as a formula.</summary>
     public class TrimWhitespaceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The range whose cells to trim.</summary>

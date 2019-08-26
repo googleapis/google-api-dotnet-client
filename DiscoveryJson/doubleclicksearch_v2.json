@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/LNBN7eIg-fNuxhjSAh2ygQekXLE\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/V7jM5EsXc58zTkN0gQqOa8rHpsw\"",
  "discoveryVersion": "v1",
  "id": "doubleclicksearch:v2",
  "name": "doubleclicksearch",
  "version": "v2",
- "revision": "20190805",
- "title": "DoubleClick Search API",
+ "revision": "20190821",
+ "title": "Search Ads 360 API",
  "description": "Reports and modifies your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).",
  "ownerDomain": "google.com",
  "ownerName": "Google",
@@ -364,7 +364,7 @@
    "properties": {
     "files": {
      "type": "array",
-     "description": "Asynchronous report only. Contains a list of generated report files once the report has succesfully completed.",
+     "description": "Asynchronous report only. Contains a list of generated report files once the report has successfully completed.",
      "items": {
       "type": "object",
       "properties": {

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/xgvireT-Vynv--FFkFbMWRLKz6E\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/a_K-vEOgmKHsfpZUj_abkDcULlY\"",
  "discoveryVersion": "v1",
  "id": "doubleclickbidmanager:v1",
  "name": "doubleclickbidmanager",
  "canonicalName": "DoubleClick Bid Manager",
  "version": "v1",
- "revision": "20190715",
+ "revision": "20190807",
  "title": "DoubleClick Bid Manager API",
  "description": "API for viewing and managing your reports in DoubleClick Bid Manager.",
  "ownerDomain": "google.com",
@@ -358,6 +358,7 @@
       "FILTER_VIDEO_CREATIVE_DURATION",
       "FILTER_VIDEO_CREATIVE_DURATION_SKIPPABLE",
       "FILTER_VIDEO_DURATION_SECONDS",
+      "FILTER_VIDEO_DURATION_SECONDS_RANGE",
       "FILTER_VIDEO_FORMAT_SUPPORT",
       "FILTER_VIDEO_INVENTORY_TYPE",
       "FILTER_VIDEO_PLAYER_SIZE",
@@ -370,6 +371,7 @@
       "FILTER_ZIP_CODE"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -678,6 +680,7 @@
        "FILTER_VIDEO_CREATIVE_DURATION",
        "FILTER_VIDEO_CREATIVE_DURATION_SKIPPABLE",
        "FILTER_VIDEO_DURATION_SECONDS",
+       "FILTER_VIDEO_DURATION_SECONDS_RANGE",
        "FILTER_VIDEO_FORMAT_SUPPORT",
        "FILTER_VIDEO_INVENTORY_TYPE",
        "FILTER_VIDEO_PLAYER_SIZE",
@@ -690,6 +693,7 @@
        "FILTER_ZIP_CODE"
       ],
       "enumDescriptions": [
+       "",
        "",
        "",
        "",

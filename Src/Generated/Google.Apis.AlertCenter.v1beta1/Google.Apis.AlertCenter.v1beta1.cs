@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190725 (1666)
+ *      <tr><th>API Rev<td>20190821 (1693)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -375,7 +375,8 @@ namespace Google.Apis.AlertCenter.v1beta1
 
 
             /// <summary>Creates new feedback for an alert. Attempting to create a feedback for a non-existent alert
-            /// returns `NOT_FOUND` error.</summary>
+            /// returns `NOT_FOUND` error. Attempting to create a feedback for an alert that is marked for deletion
+            /// returns `FAILED_PRECONDITION' error.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="alertId">Required. The identifier of the alert this feedback belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback body, string alertId)
@@ -384,7 +385,8 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
             /// <summary>Creates new feedback for an alert. Attempting to create a feedback for a non-existent alert
-            /// returns `NOT_FOUND` error.</summary>
+            /// returns `NOT_FOUND` error. Attempting to create a feedback for an alert that is marked for deletion
+            /// returns `FAILED_PRECONDITION' error.</summary>
             public class CreateRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -552,6 +554,112 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
         }
 
+        /// <summary>Performs batch delete operation on alerts.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual BatchDeleteRequest BatchDelete(Google.Apis.AlertCenter.v1beta1.Data.BatchDeleteAlertsRequest body)
+        {
+            return new BatchDeleteRequest(service, body);
+        }
+
+        /// <summary>Performs batch delete operation on alerts.</summary>
+        public class BatchDeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.BatchDeleteAlertsResponse>
+        {
+            /// <summary>Constructs a new BatchDelete request.</summary>
+            public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.BatchDeleteAlertsRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AlertCenter.v1beta1.Data.BatchDeleteAlertsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "batchDelete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/alerts:batchDelete"; }
+            }
+
+            /// <summary>Initializes BatchDelete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Performs batch undelete operation on alerts.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual BatchUndeleteRequest BatchUndelete(Google.Apis.AlertCenter.v1beta1.Data.BatchUndeleteAlertsRequest body)
+        {
+            return new BatchUndeleteRequest(service, body);
+        }
+
+        /// <summary>Performs batch undelete operation on alerts.</summary>
+        public class BatchUndeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.BatchUndeleteAlertsResponse>
+        {
+            /// <summary>Constructs a new BatchUndelete request.</summary>
+            public BatchUndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.BatchUndeleteAlertsRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AlertCenter.v1beta1.Data.BatchUndeleteAlertsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "batchUndelete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/alerts:batchUndelete"; }
+            }
+
+            /// <summary>Initializes BatchUndelete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
         /// <summary>Marks the specified alert for deletion. An alert that has been marked for deletion is removed from
         /// Alert Center after 30 days. Marking an alert for deletion has no effect on an alert which has already been
         /// marked for deletion. Attempting to mark a nonexistent alert for deletion results in a `NOT_FOUND`
@@ -708,6 +816,82 @@ namespace Google.Apis.AlertCenter.v1beta1
 
         }
 
+        /// <summary>Returns the metadata of an alert. Attempting to get metadata for a non-existent alert returns
+        /// `NOT_FOUND` error.</summary>
+        /// <param name="alertId">Required. The identifier of the alert this metadata belongs to.</param>
+        public virtual GetMetadataRequest GetMetadata(string alertId)
+        {
+            return new GetMetadataRequest(service, alertId);
+        }
+
+        /// <summary>Returns the metadata of an alert. Attempting to get metadata for a non-existent alert returns
+        /// `NOT_FOUND` error.</summary>
+        public class GetMetadataRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.AlertMetadata>
+        {
+            /// <summary>Constructs a new GetMetadata request.</summary>
+            public GetMetadataRequest(Google.Apis.Services.IClientService service, string alertId)
+                : base(service)
+            {
+                AlertId = alertId;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The identifier of the alert this metadata belongs to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("alertId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AlertId { get; private set; }
+
+            /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the alert
+            /// metadata is associated with. Inferred from the caller identity if not provided.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CustomerId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getMetadata"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/alerts/{alertId}/metadata"; }
+            }
+
+            /// <summary>Initializes GetMetadata parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "alertId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "alertId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "customerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Lists the alerts.</summary>
         public virtual ListRequest List()
         {
@@ -724,16 +908,6 @@ namespace Google.Apis.AlertCenter.v1beta1
                 InitParameters();
             }
 
-
-            /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the alerts
-            /// are associated with. Inferred from the caller identity if not provided.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CustomerId { get; set; }
-
-            /// <summary>Optional. The requested page size. Server may return fewer items than requested. If
-            /// unspecified, server picks an appropriate default.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>Optional. A query string for filtering alert results. For more details, see [Query filters
             /// ](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-
@@ -753,6 +927,16 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// `update_time desc`</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
+
+            /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the alerts
+            /// are associated with. Inferred from the caller identity if not provided.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CustomerId { get; set; }
+
+            /// <summary>Optional. The requested page size. Server may return fewer items than requested. If
+            /// unspecified, server picks an appropriate default.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -779,24 +963,6 @@ namespace Google.Apis.AlertCenter.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -818,6 +984,24 @@ namespace Google.Apis.AlertCenter.v1beta1
                     "orderBy", new Google.Apis.Discovery.Parameter
                     {
                         Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "customerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1156,6 +1340,21 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
+        /// <summary>Optional. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous
+        /// updates of an alert from overwriting each other. It is strongly suggested that systems make use of the
+        /// `etag` in the read-modify-write cycle to perform alert updates in order to avoid race conditions: An `etag`
+        /// is returned in the response which contains alerts, and systems are expected to put that etag in the request
+        /// to update alert to ensure that their change will be applied to the same version of the alert.
+        ///
+        /// If no `etag` is provided in the call to update alert, then the existing alert is overwritten
+        /// blindly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Output only. The metadata associated with this alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual AlertMetadata Metadata { get; set; } 
+
         /// <summary>Output only. An optional [Security Investigation Tool](https://support.google.com/a/answer/7575955)
         /// query for this alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityInvestigationToolLink")]
@@ -1184,8 +1383,6 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }    
 
     /// <summary>A customer feedback about an alert.</summary>
@@ -1219,6 +1416,53 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An alert metadata.</summary>
+    public class AlertMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The alert identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
+        public virtual string AlertId { get; set; } 
+
+        /// <summary>The email address of the user assigned to the alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignee")]
+        public virtual string Assignee { get; set; } 
+
+        /// <summary>Output only. The unique identifier of the Google account of the customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
+        public virtual string CustomerId { get; set; } 
+
+        /// <summary>Optional. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous
+        /// updates of an alert metadata from overwriting each other. It is strongly suggested that systems make use of
+        /// the `etag` in the read-modify-write cycle to perform metatdata updates in order to avoid race conditions: An
+        /// `etag` is returned in the response which contains alert metadata, and systems are expected to put that etag
+        /// in the request to update alert metadata to ensure that their change will be applied to the same version of
+        /// the alert metadata.
+        ///
+        /// If no `etag` is provided in the call to update alert metadata, then the existing alert metadata is
+        /// overwritten blindly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>The severity value of the alert. Alert Center will set this field at alert creation time, default's
+        /// to an empty string when it could not be determined. The supported values for update actions on this field
+        /// are the following:
+        ///
+        /// * HIGH * MEDIUM * LOW</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; } 
+
+        /// <summary>The current status of the alert. The supported values are the following:
+        ///
+        /// * NOT_STARTED * IN_PROGRESS * CLOSED</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>Output only. The time this metadata was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+    }    
+
     /// <summary>Attachment with application-specific information about an alert.</summary>
     public class Attachment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1249,6 +1493,68 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>The source IP address of the malicious email, for example, `127.0.0.1`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceIp")]
         public virtual string SourceIp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to perform batch delete on alerts.</summary>
+    public class BatchDeleteAlertsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. list of alert ids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
+        public virtual System.Collections.Generic.IList<string> AlertId { get; set; } 
+
+        /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the alerts are
+        /// associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
+        public virtual string CustomerId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response to batch delete operation on alerts.</summary>
+    public class BatchDeleteAlertsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status details for each failed alert_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedAlertStatus")]
+        public virtual System.Collections.Generic.IDictionary<string,Status> FailedAlertStatus { get; set; } 
+
+        /// <summary>The successful list of alert ids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successAlertIds")]
+        public virtual System.Collections.Generic.IList<string> SuccessAlertIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to perform batch undelete on alerts.</summary>
+    public class BatchUndeleteAlertsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. list of alert ids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
+        public virtual System.Collections.Generic.IList<string> AlertId { get; set; } 
+
+        /// <summary>Optional. The unique identifier of the G Suite organization account of the customer the alerts are
+        /// associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
+        public virtual string CustomerId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response to batch undelete operation on alerts.</summary>
+    public class BatchUndeleteAlertsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status details for each failed alert_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedAlertStatus")]
+        public virtual System.Collections.Generic.IDictionary<string,Status> FailedAlertStatus { get; set; } 
+
+        /// <summary>The successful list of alert ids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successAlertIds")]
+        public virtual System.Collections.Generic.IList<string> SuccessAlertIds { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1594,6 +1900,32 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>The email of the user this incident was created for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
+    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
+    /// message contains three pieces of data: error code, error message, and error details.
+    ///
+    /// You can find out more about this error model and how to work with it in the [API Design
+    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; } 
+
+        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
+        /// to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+
+        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
+        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

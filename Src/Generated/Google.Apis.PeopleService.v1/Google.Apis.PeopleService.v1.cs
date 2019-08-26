@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190807 (1679)
+ *      <tr><th>API Rev<td>20190822 (1694)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -1041,15 +1041,15 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>The number of connections to include in the response. Valid values are between 1 and 2000,
-                /// inclusive. Defaults to 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each
                 /// path should start with `person.`: for example, `person.names` or `person.photos`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object RequestMaskIncludeField { get; set; }
+
+                /// <summary>The number of connections to include in the response. Valid values are between 1 and 2000,
+                /// inclusive. Defaults to 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1130,18 +1130,18 @@ namespace Google.Apis.PeopleService.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "requestMask.includeField",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "requestMask.includeField",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1576,9 +1576,10 @@ namespace Google.Apis.PeopleService.v1
         ///
         /// The request throws a 400 error if `person.metadata.sources` is not specified for the contact to be updated.
         ///
-        /// The request throws a 412 error if `person.metadata.sources.etag` is different than the contact's etag, which
-        /// indicates the contact has changed since its data was read. Clients should get the latest person and re-apply
-        /// their updates to the latest person.</summary>
+        /// The request throws a 400 error with an error with reason `"failedPrecondition"` if
+        /// `person.metadata.sources.etag` is different than the contact's etag, which indicates the contact has changed
+        /// since its data was read. Clients should get the latest person and re-apply their updates to the latest
+        /// person.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceName">The resource name for the person, assigned by the server. An ASCII string with a max
         /// length of 27 characters, in the form of `people/`person_id.</param>
@@ -1593,9 +1594,10 @@ namespace Google.Apis.PeopleService.v1
         ///
         /// The request throws a 400 error if `person.metadata.sources` is not specified for the contact to be updated.
         ///
-        /// The request throws a 412 error if `person.metadata.sources.etag` is different than the contact's etag, which
-        /// indicates the contact has changed since its data was read. Clients should get the latest person and re-apply
-        /// their updates to the latest person.</summary>
+        /// The request throws a 400 error with an error with reason `"failedPrecondition"` if
+        /// `person.metadata.sources.etag` is different than the contact's etag, which indicates the contact has changed
+        /// since its data was read. Clients should get the latest person and re-apply their updates to the latest
+        /// person.</summary>
         public class UpdateContactRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
         {
             /// <summary>Constructs a new UpdateContact request.</summary>

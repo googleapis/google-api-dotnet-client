@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>Firebase Cloud Messaging API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190808 (1680)
+ *      <tr><th>API Rev<td>20190820 (1692)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>
  *              https://firebase.google.com/docs/cloud-messaging</a>
@@ -536,6 +536,32 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual string Color { get; set; } 
 
+        /// <summary>If set to true, use the Android framework's default LED light settings for the notification.
+        /// Default values are specified in [config.xml](https://android.googlesource.com/platform/frameworks/base/+/mas
+        /// ter/core/res/res/values/config.xml). If `default_light_settings` is set to true and `light_settings` is also
+        /// set, the user-specified `light_settings` is used instead of the default value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLightSettings")]
+        public virtual System.Nullable<bool> DefaultLightSettings { get; set; } 
+
+        /// <summary>If set to true, use the Android framework's default sound for the notification. Default values are
+        /// specified in [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/va
+        /// lues/config.xml).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultSound")]
+        public virtual System.Nullable<bool> DefaultSound { get; set; } 
+
+        /// <summary>If set to true, use the Android framework's default vibrate pattern for the notification. Default
+        /// values are specified in [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core
+        /// /res/res/values/config.xml). If `default_vibrate_timings` is set to true and `vibrate_timings` is also set,
+        /// the default value is used instead of the user-specified `vibrate_timings`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultVibrateTimings")]
+        public virtual System.Nullable<bool> DefaultVibrateTimings { get; set; } 
+
+        /// <summary>Set the time that the event in the notification occurred. Notifications in the panel are sorted by
+        /// this time. A point in time is represented using [protobuf.Timestamp](https://developers.google.com/protocol-
+        /// buffers/docs/reference/java/com/google/protobuf/Timestamp).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual object EventTime { get; set; } 
+
         /// <summary>The notification's icon. Sets the notification icon to myicon for drawable resource myicon. If you
         /// don't send this key in the request, FCM displays the launcher icon specified in your app manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
@@ -546,16 +572,59 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; } 
 
+        /// <summary>Settings to control the notification's LED blinking rate and color if LED is available on the
+        /// device. The total blinking time is controlled by the OS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lightSettings")]
+        public virtual LightSettings LightSettings { get; set; } 
+
+        /// <summary>Set whether or not this notification is relevant only to the current device. Some notifications can
+        /// be bridged to other devices for remote display, such as a Wear OS watch. This hint can be set to recommend
+        /// this notification not be bridged. See [Wear OS
+        /// guides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-
+        /// preventing-bridging)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localOnly")]
+        public virtual System.Nullable<bool> LocalOnly { get; set; } 
+
+        /// <summary>Sets the number of items this notification represents. May be displayed as a badge count for
+        /// launchers that support badging.See [Notification Badge](https://developer.android.com/training/notify-
+        /// user/badges). For example, this might be useful if you're using just one notification to represent multiple
+        /// new messages but you want the count here to represent the number of total new messages. If zero or
+        /// unspecified, systems that support badging use the default, which is to increment a number displayed on the
+        /// long-press menu each time a new notification arrives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationCount")]
+        public virtual System.Nullable<int> NotificationCount { get; set; } 
+
+        /// <summary>Set the relative priority for this notification. Priority is an indication of how much of the
+        /// user's attention should be consumed by this notification. Low-priority notifications may be hidden from the
+        /// user in certain situations, while the user might be interrupted for a higher-priority notification. The
+        /// effect of setting the same priorities may differ slightly on different platforms. Note this priority differs
+        /// from `AndroidMessagePriority`. This priority is processed by the client after the message has been
+        /// delivered, whereas [AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.
+        /// messages#androidmessagepriority) is an FCM concept that controls when the message is delivered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationPriority")]
+        public virtual string NotificationPriority { get; set; } 
+
         /// <summary>The sound to play when the device receives the notification. Supports "default" or the filename of
         /// a sound resource bundled in the app. Sound files must reside in /res/raw/.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sound")]
         public virtual string Sound { get; set; } 
+
+        /// <summary>When set to false or unset, the notification is automatically dismissed when the user clicks it in
+        /// the panel. When set to true, the notification persists even when the user clicks it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sticky")]
+        public virtual System.Nullable<bool> Sticky { get; set; } 
 
         /// <summary>Identifier used to replace existing notifications in the notification drawer. If not specified,
         /// each request creates a new notification. If specified and a notification with the same tag is already being
         /// shown, the new notification replaces the existing one in the notification drawer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; } 
+
+        /// <summary>Sets the "ticker" text, which is sent to accessibility services. Prior to API level 21
+        /// (`Lollipop`), sets the text that is displayed in the status bar when the notification first
+        /// arrives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ticker")]
+        public virtual string Ticker { get; set; } 
 
         /// <summary>The notification's title. If present, it will override
         /// google.firebase.fcm.v1.Notification.title.</summary>
@@ -572,6 +641,22 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// user's current localization. See [String Resources](https://goo.gl/NdFZGI) for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titleLocKey")]
         public virtual string TitleLocKey { get; set; } 
+
+        /// <summary>Set the vibration pattern to use. Pass in an array of
+        /// [protobuf.Duration](https://developers.google.com/protocol-
+        /// buffers/docs/reference/google.protobuf#google.protobuf.Duration) to turn on or off the vibrator. The first
+        /// value indicates the `Duration` to wait before turning the vibrator on. The next value indicates the
+        /// `Duration` to keep the vibrator on. Subsequent values alternate between `Duration` to turn the vibrator off
+        /// and to turn the vibrator on. If `vibrate_timings` is set and `default_vibrate_timings` is set to `true`, the
+        /// default value is used instead of the user-specified `vibrate_timings`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vibrateTimings")]
+        public virtual System.Collections.Generic.IList<object> VibrateTimings { get; set; } 
+
+        /// <summary>Set the
+        /// [Notification.visibility](https://developer.android.com/reference/android/app/Notification.html#visibility)
+        /// of the notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
+        public virtual string Visibility { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -615,12 +700,123 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a color in the RGBA color space. This representation is designed for simplicity of
+    /// conversion to/from color representations in various languages over compactness; for example, the fields of this
+    /// representation can be trivially provided to the constructor of "java.awt.Color" in Java; it can also be
+    /// trivially provided to UIColor's "+colorWithRed:green:blue:alpha" method in iOS; and, with just a little work, it
+    /// can be easily formatted into a CSS "rgba()" string in JavaScript, as well.
+    ///
+    /// Note: this proto does not carry information about the absolute color space that should be used to interpret the
+    /// RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+    /// space.
+    ///
+    /// Example (Java):
+    ///
+    /// import com.google.type.Color;
+    ///
+    /// // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
+    /// protocolor.getAlpha().getValue() : 1.0;
+    ///
+    /// return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
+    ///
+    /// public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float)
+    /// color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder =
+    /// Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int
+    /// alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float)
+    /// alpha) / denominator) .build()); } return resultBuilder.build(); } // ...
+    ///
+    /// Example (iOS / Obj-C):
+    ///
+    /// // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor
+    /// green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if
+    /// (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue
+    /// alpha:alpha]; }
+    ///
+    /// static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed: green: blue:
+    /// alpha:]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green];
+    /// [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result
+    /// autorelease]; return result; } // ...
+    ///
+    /// Example (JavaScript):
+    ///
+    /// // ...
+    ///
+    /// var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green
+    /// || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green =
+    /// Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255);
+    ///
+    /// if (!('alpha' in rgb_color)) { return rgbToCssColor_(red, green, blue); }
+    ///
+    /// var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(',
+    /// rgbParams, ',', alphaFrac, ')'].join(''); };
+    ///
+    /// var rgbToCssColor_ = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+    /// var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for
+    /// (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return
+    /// resultBuilder.join(''); };
+    ///
+    /// // ...</summary>
+    public class Color : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fraction of this color that should be applied to the pixel. That is, the final pixel color is
+        /// defined by the equation:
+        ///
+        /// pixel color = alpha * (this color) + (1.0 - alpha) * (background color)
+        ///
+        /// This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a
+        /// completely transparent color. This uses a wrapper message rather than a simple float scalar so that it is
+        /// possible to distinguish between a default value and the value being unset. If omitted, this color object is
+        /// to be rendered as a solid color (as if the alpha value had been explicitly given with a value of
+        /// 1.0).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alpha")]
+        public virtual System.Nullable<float> Alpha { get; set; } 
+
+        /// <summary>The amount of blue in the color as a value in the interval [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blue")]
+        public virtual System.Nullable<float> Blue { get; set; } 
+
+        /// <summary>The amount of green in the color as a value in the interval [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("green")]
+        public virtual System.Nullable<float> Green { get; set; } 
+
+        /// <summary>The amount of red in the color as a value in the interval [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("red")]
+        public virtual System.Nullable<float> Red { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Platform independent options for features provided by the FCM SDKs.</summary>
     public class FcmOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Label associated with the message's analytics data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsLabel")]
         public virtual string AnalyticsLabel { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Settings to control notification LED.</summary>
+    public class LightSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Set `color` of the LED with
+        /// [google.type.Color](https://github.com/googleapis/googleapis/blob/master/google/type/color.proto).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("color")]
+        public virtual Color Color { get; set; } 
+
+        /// <summary>Required. Along with `light_on_duration `, define the blink rate of LED flashes. Resolution defined
+        /// by [proto.Duration](https://developers.google.com/protocol-
+        /// buffers/docs/reference/google.protobuf#google.protobuf.Duration)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lightOffDuration")]
+        public virtual object LightOffDuration { get; set; } 
+
+        /// <summary>Required. Along with `light_off_duration`, define the blink rate of LED flashes. Resolution defined
+        /// by [proto.Duration](https://developers.google.com/protocol-
+        /// buffers/docs/reference/google.protobuf#google.protobuf.Duration)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lightOnDuration")]
+        public virtual object LightOnDuration { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

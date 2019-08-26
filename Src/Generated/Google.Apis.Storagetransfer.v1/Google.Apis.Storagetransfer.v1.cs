@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190804 (1676)
+ *      <tr><th>API Rev<td>20190818 (1690)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>
  *              https://cloud.google.com/storage-transfer/docs</a>
@@ -589,14 +589,6 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
-            /// <summary>The list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The list page size. The max allowed value is 256.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Required. A list of query parameters specified as JSON text in the form of:
             /// {"project_id":"my_project_id", "job_names":["jobid1","jobid2",...],
             /// "job_statuses":["status1","status2",...]}. Since `job_names` and `job_statuses` support multiple values,
@@ -605,6 +597,14 @@ namespace Google.Apis.Storagetransfer.v1
             /// `DISABLED`, and `DELETED`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>The list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The list page size. The max allowed value is 256.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -631,6 +631,15 @@ namespace Google.Apis.Storagetransfer.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -643,15 +652,6 @@ namespace Google.Apis.Storagetransfer.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1304,12 +1304,12 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>In a GcsData resource, an object's name is the Google Cloud Storage object's name and its
+    /// <summary>In a GcsData resource, an object's name is the Cloud Storage object's name and its
     /// `lastModificationTime` refers to the object's updated time, which changes when the content or the metadata of
     /// the object is updated.</summary>
     public class GcsData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Google Cloud Storage bucket name (see [Bucket Name
+        /// <summary>Required. Cloud Storage bucket name (see [Bucket Name
         /// Requirements](https://cloud.google.com/storage/docs/naming#requirements)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
         public virtual string BucketName { get; set; } 
@@ -1355,8 +1355,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will
     /// fail. For more information, see [Generating MD5 hashes](https://cloud.google.com/storage/transfer/#md5)
     ///
-    /// * Ensure that each URL you specify is publicly accessible. For example, in Google Cloud Storage you can [share
-    /// an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it.
+    /// * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an
+    /// object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it.
     ///
     /// * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range`
     /// requests and to return a `Content-Length` header in each response.
@@ -1403,7 +1403,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Conditions that determine which objects will be transferred. Applies only to S3 and GCS
+    /// <summary>Conditions that determine which objects will be transferred. Applies only to S3 and Cloud Storage
     /// objects.</summary>
     public class ObjectConditions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1448,7 +1448,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         ///
         /// Note that, for each `TransferOperation` started by this `TransferJob`, `NOW` refers to the `start_time` of
         /// the 'TransferOperation`. Also, `lastModificationTime` refers to the time of the last change to the object's
-        /// content or metadata - specifically, this would be the `updated` property of GCS objects and the
+        /// content or metadata - specifically, this would be the `updated` property of Cloud Storage objects and the
         /// `LastModified` field of S3 objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTimeElapsedSinceLastModification")]
         public virtual object MaxTimeElapsedSinceLastModification { get; set; } 
@@ -1458,7 +1458,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         ///
         /// Note that, for each `TransferOperation` started by this `TransferJob`, `NOW` refers to the `start_time` of
         /// the 'TransferOperation`. Also, `lastModificationTime` refers to the time of the last change to the object's
-        /// content or metadata - specifically, this would be the `updated` property of GCS objects and the
+        /// content or metadata - specifically, this would be the `updated` property of Cloud Storage objects and the
         /// `LastModified` field of S3 objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTimeElapsedSinceLastModification")]
         public virtual object MinTimeElapsedSinceLastModification { get; set; } 
@@ -1792,11 +1792,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsS3DataSource")]
         public virtual AwsS3Data AwsS3DataSource { get; set; } 
 
-        /// <summary>A Google Cloud Storage data sink.</summary>
+        /// <summary>A Cloud Storage data sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDataSink")]
         public virtual GcsData GcsDataSink { get; set; } 
 
-        /// <summary>A Google Cloud Storage data source.</summary>
+        /// <summary>A Cloud Storage data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDataSource")]
         public virtual GcsData GcsDataSource { get; set; } 
 

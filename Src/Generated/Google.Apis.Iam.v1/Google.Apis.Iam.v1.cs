@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190802 (1674)
+ *      <tr><th>API Rev<td>20190816 (1688)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -927,6 +927,18 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Include Roles that have been deleted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional limit on the number of roles to include in the response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Optional view for the returned Role objects. When `FULL` is specified, the
                 /// `includedPermissions` field is returned, which includes a list of all permissions in the role. The
                 /// default value is `BASIC`, which does not return the `includedPermissions` field.</summary>
@@ -943,18 +955,6 @@ namespace Google.Apis.Iam.v1
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
                 }
-
-                /// <summary>Include Roles that have been deleted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> ShowDeleted { get; set; }
-
-                /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional limit on the number of roles to include in the response.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -990,15 +990,6 @@ namespace Google.Apis.Iam.v1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "showDeleted", new Google.Apis.Discovery.Parameter
                         {
                             Name = "showDeleted",
@@ -1020,6 +1011,15 @@ namespace Google.Apis.Iam.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2416,6 +2416,82 @@ namespace Google.Apis.Iam.v1
                     }
 
                 }
+
+                /// <summary>Upload public key for a given service account. This rpc will create a ServiceAccountKey
+                /// that has the provided public key and returns it.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The resource name of the service account in the following format:
+                /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID` will infer the
+                /// project from the account. The `ACCOUNT` value can be the `email` address or the `unique_id` of the service
+                /// account.</param>
+                public virtual UploadRequest Upload(Google.Apis.Iam.v1.Data.UploadServiceAccountKeyRequest body, string name)
+                {
+                    return new UploadRequest(service, body, name);
+                }
+
+                /// <summary>Upload public key for a given service account. This rpc will create a ServiceAccountKey
+                /// that has the provided public key and returns it.</summary>
+                public class UploadRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ServiceAccountKey>
+                {
+                    /// <summary>Constructs a new Upload request.</summary>
+                    public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.UploadServiceAccountKeyRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource name of the service account in the following format:
+                    /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. Using `-` as a wildcard for the `PROJECT_ID`
+                    /// will infer the project from the account. The `ACCOUNT` value can be the `email` address or the
+                    /// `unique_id` of the service account.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Iam.v1.Data.UploadServiceAccountKeyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "upload"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}/keys:upload"; }
+                    }
+
+                    /// <summary>Initializes Upload parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
+                            });
+                    }
+
+                }
             }
 
             /// <summary>Creates a ServiceAccount and returns it.</summary>
@@ -2927,16 +3003,16 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Optional pagination token returned in an earlier
-                /// ListServiceAccountsResponse.next_page_token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional limit on the number of service accounts to include in the response. Further
                 /// accounts can subsequently be obtained by including the ListServiceAccountsResponse.next_page_token
                 /// in a subsequent request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional pagination token returned in an earlier
+                /// ListServiceAccountsResponse.next_page_token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2972,18 +3048,18 @@ namespace Google.Apis.Iam.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3719,6 +3795,31 @@ namespace Google.Apis.Iam.v1
             }
 
 
+            /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Optional limit on the number of roles to include in the response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional view for the returned Role objects. When `FULL` is specified, the
+            /// `includedPermissions` field is returned, which includes a list of all permissions in the role. The
+            /// default value is `BASIC`, which does not return the `includedPermissions` field.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>Optional view for the returned Role objects. When `FULL` is specified, the
+            /// `includedPermissions` field is returned, which includes a list of all permissions in the role. The
+            /// default value is `BASIC`, which does not return the `includedPermissions` field.</summary>
+            public enum ViewEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC,
+                [Google.Apis.Util.StringValueAttribute("FULL")]
+                FULL,
+            }
+
             /// <summary>The `parent` parameter's value depends on the target resource for the request, namely
             /// [`roles`](/iam/reference/rest/v1/roles), [`projects`](/iam/reference/rest/v1/projects.roles), or
             /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each resource type's `parent` value
@@ -3746,31 +3847,6 @@ namespace Google.Apis.Iam.v1
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
-            /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Optional limit on the number of roles to include in the response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Optional view for the returned Role objects. When `FULL` is specified, the
-            /// `includedPermissions` field is returned, which includes a list of all permissions in the role. The
-            /// default value is `BASIC`, which does not return the `includedPermissions` field.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ViewEnum> View { get; set; }
-
-            /// <summary>Optional view for the returned Role objects. When `FULL` is specified, the
-            /// `includedPermissions` field is returned, which includes a list of all permissions in the role. The
-            /// default value is `BASIC`, which does not return the `includedPermissions` field.</summary>
-            public enum ViewEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("BASIC")]
-                BASIC,
-                [Google.Apis.Util.StringValueAttribute("FULL")]
-                FULL,
-            }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -3796,24 +3872,6 @@ namespace Google.Apis.Iam.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -3835,6 +3893,24 @@ namespace Google.Apis.Iam.v1
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4044,8 +4120,8 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>Unimplemented. The condition that is associated with this binding. This field is logged only for
-        /// Cloud Audit Logging.</summary>
+        /// <summary>The condition that is associated with this binding. This field is logged only for Cloud Audit
+        /// Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
@@ -4829,6 +4905,19 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>Metadata for the restored service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoredAccount")]
         public virtual ServiceAccount RestoredAccount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The service account key upload request.</summary>
+    public class UploadServiceAccountKeyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A field that allows clients to upload their own public key. If set, use this public key data to
+        /// create a service account key for given service account. Please note, the expected format for this field is
+        /// X509_PEM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeyData")]
+        public virtual string PublicKeyData { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

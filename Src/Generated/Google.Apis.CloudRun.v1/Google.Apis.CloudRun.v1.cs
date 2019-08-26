@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190731 (1672)
+ *      <tr><th>API Rev<td>20190816 (1688)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -424,12 +424,126 @@ namespace Google.Apis.CloudRun.v1
                 }
 
             }
+
+            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <param name="name">The resource that owns the locations collection, if applicable.</param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(service, name);
+            }
+
+            /// <summary>Lists information about the supported locations for this service.</summary>
+            public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListLocationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource that owns the locations collection, if applicable.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}/locations"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
         }
     }
 }
 
 namespace Google.Apis.CloudRun.v1.Data
 {    
+
+    /// <summary>The response message for Locations.ListLocations.</summary>
+    public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of locations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>A resource that represents Google Cloud Platform location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema

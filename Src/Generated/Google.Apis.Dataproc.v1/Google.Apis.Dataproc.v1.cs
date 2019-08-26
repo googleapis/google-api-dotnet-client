@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190717 (1658)
+ *      <tr><th>API Rev<td>20190809 (1681)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -392,8 +392,11 @@ namespace Google.Apis.Dataproc.v1
 
                 /// <summary>Creates new workflow template.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The "resource name" of the region, as described in
-                /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
+                /// <param name="parent">Required. The resource name of the region or location, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,create, the resource
+                /// name of the  region has the following format:  projects/{project_id}/regions/{region} For
+                /// projects.locations.workflowTemplates.create, the resource name of  the location has the following format:
+                /// projects/{project_id}/locations/{location}</param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -412,9 +415,12 @@ namespace Google.Apis.Dataproc.v1
                     }
 
 
-                    /// <summary>Required. The "resource name" of the region, as described in
-                    /// https://cloud.google.com/apis/design/resource_names of the form
-                    /// projects/{project_id}/regions/{region}</summary>
+                    /// <summary>Required. The resource name of the region or location, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.workflowTemplates,create, the resource name of the  region has the following
+                    /// format:  projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create,
+                    /// the resource name of  the location has the following format:
+                    /// projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -462,9 +468,12 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>Deletes a workflow template. It does not cancel in-progress workflows.</summary>
-                /// <param name="name">Required. The "resource name" of the workflow template, as described in
-                /// https://cloud.google.com/apis/design/resource_names of the form
-                /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
+                /// <param name="name">Required. The resource name of the workflow template, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.delete, the resource
+                /// name of the template has the following format:
+                /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the following format:
+                /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -482,9 +491,13 @@ namespace Google.Apis.Dataproc.v1
                     }
 
 
-                    /// <summary>Required. The "resource name" of the workflow template, as described in
-                    /// https://cloud.google.com/apis/design/resource_names of the form
-                    /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
+                    /// <summary>Required. The resource name of the workflow template, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.workflowTemplates.delete, the resource name of the template has the following
+                    /// format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                    /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the
+                    /// following format:
+                    /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -541,9 +554,11 @@ namespace Google.Apis.Dataproc.v1
 
                 /// <summary>Retrieves the latest workflow template.Can retrieve previously instantiated template by
                 /// specifying optional version parameter.</summary>
-                /// <param name="name">Required. The "resource name" of the workflow template, as described in
-                /// https://cloud.google.com/apis/design/resource_names of the form
-                /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
+                /// <param name="name">Required. The resource name of the workflow template, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.get, the resource name
+                /// of the  template has the following format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+                /// For projects.locations.workflowTemplates.get, the resource name of the  template has the following format:
+                /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -562,13 +577,16 @@ namespace Google.Apis.Dataproc.v1
                     }
 
 
-                    /// <summary>Required. The "resource name" of the workflow template, as described in
-                    /// https://cloud.google.com/apis/design/resource_names of the form
-                    /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
+                    /// <summary>Required. The resource name of the workflow template, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.get,
+                    /// the resource name of the  template has the following format:
+                    /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                    /// projects.locations.workflowTemplates.get, the resource name of the  template has the following
+                    /// format:  projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The version of workflow template to retrieve. Only previously instatiated
+                    /// <summary>Optional. The version of workflow template to retrieve. Only previously instantiated
                     /// versions can be retrieved.If unspecified, retrieves the current version.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Version { get; set; }
@@ -698,9 +716,12 @@ namespace Google.Apis.Dataproc.v1
                 /// WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will
                 /// be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. The "resource name" of the workflow template, as described in
-                /// https://cloud.google.com/apis/design/resource_names of the form
-                /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
+                /// <param name="name">Required. The resource name of the workflow template, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.instantiate, the
+                /// resource name of the template has the following format:
+                /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the following format:
+                /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual InstantiateRequest Instantiate(Google.Apis.Dataproc.v1.Data.InstantiateWorkflowTemplateRequest body, string name)
                 {
                     return new InstantiateRequest(service, body, name);
@@ -724,9 +745,13 @@ namespace Google.Apis.Dataproc.v1
                     }
 
 
-                    /// <summary>Required. The "resource name" of the workflow template, as described in
-                    /// https://cloud.google.com/apis/design/resource_names of the form
-                    /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
+                    /// <summary>Required. The resource name of the workflow template, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.workflowTemplates.instantiate, the resource name of the template has the
+                    /// following format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                    /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the
+                    /// following format:
+                    /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -781,8 +806,11 @@ namespace Google.Apis.Dataproc.v1
                 /// Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
                 /// completion, Operation.response will be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The "resource name" of the workflow template region, as described in
-                /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
+                /// <param name="parent">Required. The resource name of the region or location, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,instantiateinline, the
+                /// resource  name of the region has the following format:  projects/{project_id}/regions/{region} For
+                /// projects.locations.workflowTemplates.instantiateinline, the  resource name of the location has the following format:
+                /// projects/{project_id}/locations/{location}</param>
                 public virtual InstantiateInlineRequest InstantiateInline(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
                 {
                     return new InstantiateInlineRequest(service, body, parent);
@@ -807,9 +835,12 @@ namespace Google.Apis.Dataproc.v1
                     }
 
 
-                    /// <summary>Required. The "resource name" of the workflow template region, as described in
-                    /// https://cloud.google.com/apis/design/resource_names of the form
-                    /// projects/{project_id}/regions/{region}</summary>
+                    /// <summary>Required. The resource name of the region or location, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.workflowTemplates,instantiateinline, the resource  name of the region has the
+                    /// following format:  projects/{project_id}/regions/{region} For
+                    /// projects.locations.workflowTemplates.instantiateinline, the  resource name of the location has
+                    /// the following format:  projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -875,8 +906,11 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>Lists workflows that match the specified filter in the request.</summary>
-                /// <param name="parent">Required. The "resource name" of the region, as described in
-                /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
+                /// <param name="parent">Required. The resource name of the region or location, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,list, the resource  name
+                /// of the region has the following format:  projects/{project_id}/regions/{region} For
+                /// projects.locations.workflowTemplates.list, the  resource name of the location has the following format:
+                /// projects/{project_id}/locations/{location}</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -894,9 +928,12 @@ namespace Google.Apis.Dataproc.v1
                     }
 
 
-                    /// <summary>Required. The "resource name" of the region, as described in
-                    /// https://cloud.google.com/apis/design/resource_names of the form
-                    /// projects/{project_id}/regions/{region}</summary>
+                    /// <summary>Required. The resource name of the region or location, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.workflowTemplates,list, the resource  name of the region has the following
+                    /// format:  projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.list,
+                    /// the  resource name of the location has the following format:
+                    /// projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1115,9 +1152,11 @@ namespace Google.Apis.Dataproc.v1
                 /// <summary>Updates (replaces) workflow template. The updated template must contain version that
                 /// matches the current server version.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. The "resource name" of the template, as described in
-                /// https://cloud.google.com/apis/design/resource_names of the form
-                /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
+                /// <param name="name">Output only. The resource name of the workflow template, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of
+                /// the  template has the following format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                /// projects.locations.workflowTemplates, the resource name of the  template has the following format:
+                /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual UpdateRequest Update(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string name)
                 {
                     return new UpdateRequest(service, body, name);
@@ -1137,9 +1176,12 @@ namespace Google.Apis.Dataproc.v1
                     }
 
 
-                    /// <summary>Output only. The "resource name" of the template, as described in
-                    /// https://cloud.google.com/apis/design/resource_names of the form
-                    /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
+                    /// <summary>Output only. The resource name of the workflow template, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the
+                    /// resource name of the  template has the following format:
+                    /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                    /// projects.locations.workflowTemplates, the resource name of the  template has the following
+                    /// format:  projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1238,7 +1280,8 @@ namespace Google.Apis.Dataproc.v1
                 }
 
 
-                /// <summary>Creates a cluster in a project.</summary>
+                /// <summary>Creates a cluster in a project. The returned Operation.metadata will be
+                /// ClusterOperationMetadata.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
@@ -1249,7 +1292,8 @@ namespace Google.Apis.Dataproc.v1
                     return new CreateRequest(service, body, projectId, region);
                 }
 
-                /// <summary>Creates a cluster in a project.</summary>
+                /// <summary>Creates a cluster in a project. The returned Operation.metadata will be
+                /// ClusterOperationMetadata.</summary>
                 public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1343,7 +1387,8 @@ namespace Google.Apis.Dataproc.v1
 
                 }
 
-                /// <summary>Deletes a cluster in a project.</summary>
+                /// <summary>Deletes a cluster in a project. The returned Operation.metadata will be
+                /// ClusterOperationMetadata.</summary>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
                 /// <param name="region">Required. The Cloud Dataproc region in which to handle the
@@ -1354,7 +1399,8 @@ namespace Google.Apis.Dataproc.v1
                     return new DeleteRequest(service, projectId, region, clusterName);
                 }
 
-                /// <summary>Deletes a cluster in a project.</summary>
+                /// <summary>Deletes a cluster in a project. The returned Operation.metadata will be
+                /// ClusterOperationMetadata.</summary>
                 public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1381,6 +1427,11 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
+                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
+                    /// if cluster with specified UUID does not exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterUuid { get; set; }
+
                     /// <summary>Optional. A unique id used to identify the request. If the server receives two
                     /// DeleteClusterRequest requests with the same id, then the second request will be ignored and the
                     /// first google.longrunning.Operation created and stored in the backend is returned.It is
@@ -1390,11 +1441,6 @@ namespace Google.Apis.Dataproc.v1
                     /// characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
-
-                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
-                    /// if cluster with specified UUID does not exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterUuid { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1448,18 +1494,18 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
+                            "clusterUuid", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "requestId",
+                                Name = "clusterUuid",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "requestId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
+                                Name = "requestId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1469,8 +1515,9 @@ namespace Google.Apis.Dataproc.v1
 
                 }
 
-                /// <summary>Gets cluster diagnostic information. After the operation completes, the Operation.response
-                /// field contains DiagnoseClusterOutputLocation.</summary>
+                /// <summary>Gets cluster diagnostic information. The returned Operation.metadata will be
+                /// ClusterOperationMetadata. After the operation completes, Operation.response contains
+                /// DiagnoseClusterResults.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
@@ -1482,8 +1529,9 @@ namespace Google.Apis.Dataproc.v1
                     return new DiagnoseRequest(service, body, projectId, region, clusterName);
                 }
 
-                /// <summary>Gets cluster diagnostic information. After the operation completes, the Operation.response
-                /// field contains DiagnoseClusterOutputLocation.</summary>
+                /// <summary>Gets cluster diagnostic information. The returned Operation.metadata will be
+                /// ClusterOperationMetadata. After the operation completes, Operation.response contains
+                /// DiagnoseClusterResults.</summary>
                 public class DiagnoseRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Diagnose request.</summary>
@@ -1862,7 +1910,8 @@ namespace Google.Apis.Dataproc.v1
 
                 }
 
-                /// <summary>Updates a cluster in a project.</summary>
+                /// <summary>Updates a cluster in a project. The returned Operation.metadata will be
+                /// ClusterOperationMetadata.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project the cluster belongs
                 /// to.</param>
@@ -1874,7 +1923,8 @@ namespace Google.Apis.Dataproc.v1
                     return new PatchRequest(service, body, projectId, region, clusterName);
                 }
 
-                /// <summary>Updates a cluster in a project.</summary>
+                /// <summary>Updates a cluster in a project. The returned Operation.metadata will be
+                /// ClusterOperationMetadata.</summary>
                 public class PatchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -3398,6 +3448,10 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -3405,10 +3459,6 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3444,6 +3494,15 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = @"^projects/[^/]+/regions/[^/]+/operations$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -3456,15 +3515,6 @@ namespace Google.Apis.Dataproc.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3648,8 +3698,11 @@ namespace Google.Apis.Dataproc.v1
 
                 /// <summary>Creates new workflow template.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The "resource name" of the region, as described in
-                /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
+                /// <param name="parent">Required. The resource name of the region or location, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,create, the resource
+                /// name of the  region has the following format:  projects/{project_id}/regions/{region} For
+                /// projects.locations.workflowTemplates.create, the resource name of  the location has the following format:
+                /// projects/{project_id}/locations/{location}</param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -3668,9 +3721,12 @@ namespace Google.Apis.Dataproc.v1
                     }
 
 
-                    /// <summary>Required. The "resource name" of the region, as described in
-                    /// https://cloud.google.com/apis/design/resource_names of the form
-                    /// projects/{project_id}/regions/{region}</summary>
+                    /// <summary>Required. The resource name of the region or location, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.workflowTemplates,create, the resource name of the  region has the following
+                    /// format:  projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create,
+                    /// the resource name of  the location has the following format:
+                    /// projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -3718,9 +3774,12 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>Deletes a workflow template. It does not cancel in-progress workflows.</summary>
-                /// <param name="name">Required. The "resource name" of the workflow template, as described in
-                /// https://cloud.google.com/apis/design/resource_names of the form
-                /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
+                /// <param name="name">Required. The resource name of the workflow template, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.delete, the resource
+                /// name of the template has the following format:
+                /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the following format:
+                /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -3738,9 +3797,13 @@ namespace Google.Apis.Dataproc.v1
                     }
 
 
-                    /// <summary>Required. The "resource name" of the workflow template, as described in
-                    /// https://cloud.google.com/apis/design/resource_names of the form
-                    /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
+                    /// <summary>Required. The resource name of the workflow template, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.workflowTemplates.delete, the resource name of the template has the following
+                    /// format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                    /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the
+                    /// following format:
+                    /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3797,9 +3860,11 @@ namespace Google.Apis.Dataproc.v1
 
                 /// <summary>Retrieves the latest workflow template.Can retrieve previously instantiated template by
                 /// specifying optional version parameter.</summary>
-                /// <param name="name">Required. The "resource name" of the workflow template, as described in
-                /// https://cloud.google.com/apis/design/resource_names of the form
-                /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
+                /// <param name="name">Required. The resource name of the workflow template, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.get, the resource name
+                /// of the  template has the following format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+                /// For projects.locations.workflowTemplates.get, the resource name of the  template has the following format:
+                /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -3818,13 +3883,16 @@ namespace Google.Apis.Dataproc.v1
                     }
 
 
-                    /// <summary>Required. The "resource name" of the workflow template, as described in
-                    /// https://cloud.google.com/apis/design/resource_names of the form
-                    /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
+                    /// <summary>Required. The resource name of the workflow template, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.get,
+                    /// the resource name of the  template has the following format:
+                    /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                    /// projects.locations.workflowTemplates.get, the resource name of the  template has the following
+                    /// format:  projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The version of workflow template to retrieve. Only previously instatiated
+                    /// <summary>Optional. The version of workflow template to retrieve. Only previously instantiated
                     /// versions can be retrieved.If unspecified, retrieves the current version.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Version { get; set; }
@@ -3954,9 +4022,12 @@ namespace Google.Apis.Dataproc.v1
                 /// WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will
                 /// be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. The "resource name" of the workflow template, as described in
-                /// https://cloud.google.com/apis/design/resource_names of the form
-                /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
+                /// <param name="name">Required. The resource name of the workflow template, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.instantiate, the
+                /// resource name of the template has the following format:
+                /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the following format:
+                /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual InstantiateRequest Instantiate(Google.Apis.Dataproc.v1.Data.InstantiateWorkflowTemplateRequest body, string name)
                 {
                     return new InstantiateRequest(service, body, name);
@@ -3980,9 +4051,13 @@ namespace Google.Apis.Dataproc.v1
                     }
 
 
-                    /// <summary>Required. The "resource name" of the workflow template, as described in
-                    /// https://cloud.google.com/apis/design/resource_names of the form
-                    /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
+                    /// <summary>Required. The resource name of the workflow template, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.workflowTemplates.instantiate, the resource name of the template has the
+                    /// following format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                    /// projects.locations.workflowTemplates.instantiate, the resource name  of the template has the
+                    /// following format:
+                    /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4037,8 +4112,11 @@ namespace Google.Apis.Dataproc.v1
                 /// Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
                 /// completion, Operation.response will be Empty.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The "resource name" of the workflow template region, as described in
-                /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
+                /// <param name="parent">Required. The resource name of the region or location, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,instantiateinline, the
+                /// resource  name of the region has the following format:  projects/{project_id}/regions/{region} For
+                /// projects.locations.workflowTemplates.instantiateinline, the  resource name of the location has the following format:
+                /// projects/{project_id}/locations/{location}</param>
                 public virtual InstantiateInlineRequest InstantiateInline(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string parent)
                 {
                     return new InstantiateInlineRequest(service, body, parent);
@@ -4063,9 +4141,12 @@ namespace Google.Apis.Dataproc.v1
                     }
 
 
-                    /// <summary>Required. The "resource name" of the workflow template region, as described in
-                    /// https://cloud.google.com/apis/design/resource_names of the form
-                    /// projects/{project_id}/regions/{region}</summary>
+                    /// <summary>Required. The resource name of the region or location, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.workflowTemplates,instantiateinline, the resource  name of the region has the
+                    /// following format:  projects/{project_id}/regions/{region} For
+                    /// projects.locations.workflowTemplates.instantiateinline, the  resource name of the location has
+                    /// the following format:  projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -4131,8 +4212,11 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>Lists workflows that match the specified filter in the request.</summary>
-                /// <param name="parent">Required. The "resource name" of the region, as described in
-                /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
+                /// <param name="parent">Required. The resource name of the region or location, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,list, the resource  name
+                /// of the region has the following format:  projects/{project_id}/regions/{region} For
+                /// projects.locations.workflowTemplates.list, the  resource name of the location has the following format:
+                /// projects/{project_id}/locations/{location}</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -4150,9 +4234,12 @@ namespace Google.Apis.Dataproc.v1
                     }
 
 
-                    /// <summary>Required. The "resource name" of the region, as described in
-                    /// https://cloud.google.com/apis/design/resource_names of the form
-                    /// projects/{project_id}/regions/{region}</summary>
+                    /// <summary>Required. The resource name of the region or location, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.workflowTemplates,list, the resource  name of the region has the following
+                    /// format:  projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.list,
+                    /// the  resource name of the location has the following format:
+                    /// projects/{project_id}/locations/{location}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -4371,9 +4458,11 @@ namespace Google.Apis.Dataproc.v1
                 /// <summary>Updates (replaces) workflow template. The updated template must contain version that
                 /// matches the current server version.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. The "resource name" of the template, as described in
-                /// https://cloud.google.com/apis/design/resource_names of the form
-                /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
+                /// <param name="name">Output only. The resource name of the workflow template, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of
+                /// the  template has the following format:  projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                /// projects.locations.workflowTemplates, the resource name of the  template has the following format:
+                /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</param>
                 public virtual UpdateRequest Update(Google.Apis.Dataproc.v1.Data.WorkflowTemplate body, string name)
                 {
                     return new UpdateRequest(service, body, name);
@@ -4393,9 +4482,12 @@ namespace Google.Apis.Dataproc.v1
                     }
 
 
-                    /// <summary>Output only. The "resource name" of the template, as described in
-                    /// https://cloud.google.com/apis/design/resource_names of the form
-                    /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
+                    /// <summary>Output only. The resource name of the workflow template, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the
+                    /// resource name of the  template has the following format:
+                    /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+                    /// projects.locations.workflowTemplates, the resource name of the  template has the following
+                    /// format:  projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4920,8 +5012,8 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the value is
-        /// 0, or the field is omitted, policy format version 1 will be returned.</summary>
+        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If the value
+        /// is 0, or the field is omitted, policy format version 1 will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
 
@@ -5019,7 +5111,8 @@ namespace Google.Apis.Dataproc.v1.Data
     /// worker group.</summary>
     public class InstanceGroupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The Compute Engine accelerator configuration for these instances.</summary>
+        /// <summary>Optional. The Compute Engine accelerator configuration for these instances.Beta Feature: This
+        /// feature is still under development. It may be changed before final release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; } 
 
@@ -6022,7 +6115,12 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Output only. The "resource name" of the template.</summary>
+        /// <summary>Output only. The resource name of the workflow template as described in
+        /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource
+        /// name of the  template has the following format:
+        /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+        /// projects.locations.workflowTemplates, the resource name of the  template has the following format:
+        /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("template")]
         public virtual string Template { get; set; } 
 
@@ -6086,9 +6184,12 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Output only. The "resource name" of the template, as described in
-        /// https://cloud.google.com/apis/design/resource_names of the form
-        /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
+        /// <summary>Output only. The resource name of the workflow template, as described in
+        /// https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource
+        /// name of the  template has the following format:
+        /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For
+        /// projects.locations.workflowTemplates, the resource name of the  template has the following format:
+        /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

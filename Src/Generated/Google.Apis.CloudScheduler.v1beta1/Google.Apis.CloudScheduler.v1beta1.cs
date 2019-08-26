@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/scheduler/'>Cloud Scheduler API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190617 (1628)
+ *      <tr><th>API Rev<td>20190815 (1687)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/scheduler/'>
  *              https://cloud.google.com/scheduler/</a>
@@ -391,9 +391,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
 
                 /// <summary>Creates a job.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required.
-                ///
-                /// The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.</param>
+                /// <param name="parent">Required. The location name. For example:
+                /// `projects/PROJECT_ID/locations/LOCATION_ID`.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudScheduler.v1beta1.Data.Job body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -412,9 +411,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     }
 
 
-                    /// <summary>Required.
-                    ///
-                    /// The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.</summary>
+                    /// <summary>Required. The location name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -462,9 +460,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 }
 
                 /// <summary>Deletes a job.</summary>
-                /// <param name="name">Required.
-                ///
-                /// The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</param>
+                /// <param name="name">Required. The job name. For example:
+                /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -482,9 +479,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     }
 
 
-                    /// <summary>Required.
-                    ///
-                    /// The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</summary>
+                    /// <summary>Required. The job name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -526,9 +522,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 }
 
                 /// <summary>Gets a job.</summary>
-                /// <param name="name">Required.
-                ///
-                /// The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</param>
+                /// <param name="name">Required. The job name. For example:
+                /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -546,9 +541,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     }
 
 
-                    /// <summary>Required.
-                    ///
-                    /// The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</summary>
+                    /// <summary>Required. The job name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -590,9 +584,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 }
 
                 /// <summary>Lists jobs.</summary>
-                /// <param name="parent">Required.
-                ///
-                /// The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.</param>
+                /// <param name="parent">Required. The location name. For example:
+                /// `projects/PROJECT_ID/locations/LOCATION_ID`.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -610,9 +603,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     }
 
 
-                    /// <summary>Required.
-                    ///
-                    /// The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`.</summary>
+                    /// <summary>Required. The location name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -804,9 +796,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 /// The state of the job is stored in state; if paused it will be set to Job.State.PAUSED. A job must be
                 /// in Job.State.ENABLED to be paused.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required.
-                ///
-                /// The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</param>
+                /// <param name="name">Required. The job name. For example:
+                /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</param>
                 public virtual PauseRequest Pause(Google.Apis.CloudScheduler.v1beta1.Data.PauseJobRequest body, string name)
                 {
                     return new PauseRequest(service, body, name);
@@ -829,9 +820,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     }
 
 
-                    /// <summary>Required.
-                    ///
-                    /// The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</summary>
+                    /// <summary>Required. The job name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -884,9 +874,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 /// Job.state; after calling this method it will be set to Job.State.ENABLED. A job must be in
                 /// Job.State.PAUSED to be resumed.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required.
-                ///
-                /// The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</param>
+                /// <param name="name">Required. The job name. For example:
+                /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</param>
                 public virtual ResumeRequest Resume(Google.Apis.CloudScheduler.v1beta1.Data.ResumeJobRequest body, string name)
                 {
                     return new ResumeRequest(service, body, name);
@@ -909,9 +898,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     }
 
 
-                    /// <summary>Required.
-                    ///
-                    /// The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</summary>
+                    /// <summary>Required. The job name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -963,9 +951,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
                 /// When this method is called, Cloud Scheduler will dispatch the job, even if the job is already
                 /// running.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required.
-                ///
-                /// The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</param>
+                /// <param name="name">Required. The job name. For example:
+                /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</param>
                 public virtual RunRequest Run(Google.Apis.CloudScheduler.v1beta1.Data.RunJobRequest body, string name)
                 {
                     return new RunRequest(service, body, name);
@@ -987,9 +974,8 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     }
 
 
-                    /// <summary>Required.
-                    ///
-                    /// The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</summary>
+                    /// <summary>Required. The job name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1402,12 +1388,10 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oidcToken")]
         public virtual OidcToken OidcToken { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// The full URI path that the request will be sent to. This string must begin with either "http://" or
-        /// "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`.
-        /// Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is
-        /// 2083 characters after encoding.</summary>
+        /// <summary>Required. The full URI path that the request will be sent to. This string must begin with either
+        /// "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and
+        /// `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The
+        /// maximum allowed URL length is 2083 characters after encoding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -1675,10 +1659,8 @@ namespace Google.Apis.CloudScheduler.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; } 
 
-        /// <summary>Required.
-        ///
-        /// The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic
-        /// name must be in the same format as required by PubSub's
+        /// <summary>Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is
+        /// delivered. The topic name must be in the same format as required by PubSub's
         /// [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest),
         /// for example `projects/PROJECT_ID/topics/TOPIC_ID`.
         ///

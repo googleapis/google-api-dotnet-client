@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>Cloud Translation API</a>
  *      <tr><th>API Version<td>v3beta1
- *      <tr><th>API Rev<td>20190805 (1677)
+ *      <tr><th>API Rev<td>20190822 (1694)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>
  *              https://cloud.google.com/translate/docs/quickstarts</a>
@@ -959,6 +959,10 @@ namespace Google.Apis.Translate.v3beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -966,10 +970,6 @@ namespace Google.Apis.Translate.v3beta1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1005,6 +1005,15 @@ namespace Google.Apis.Translate.v3beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1017,15 +1026,6 @@ namespace Google.Apis.Translate.v3beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1123,7 +1123,7 @@ namespace Google.Apis.Translate.v3beta1
             /// This call returns immediately and you can use google.longrunning.Operation.name to poll the status of
             /// the call.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Location to make a regional call.
+            /// <param name="parent">Required. Location to make a call. Must refer to a caller's project.
             ///
             /// Format: `projects/{project-id}/locations/{location-id}`.
             ///
@@ -1154,7 +1154,7 @@ namespace Google.Apis.Translate.v3beta1
                 }
 
 
-                /// <summary>Required. Location to make a regional call.
+                /// <summary>Required. Location to make a call. Must refer to a caller's project.
                 ///
                 /// Format: `projects/{project-id}/locations/{location-id}`.
                 ///
@@ -1210,7 +1210,7 @@ namespace Google.Apis.Translate.v3beta1
 
             /// <summary>Detects the language of text within a request.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Target project or location to make a call.
+            /// <param name="parent">Required. Project or location to make a call. Must refer to a caller's project.
             ///
             /// Format: `projects/{project-id}/locations/{location-id}` or `projects/{project-id}`.
             ///
@@ -1236,7 +1236,7 @@ namespace Google.Apis.Translate.v3beta1
                 }
 
 
-                /// <summary>Required. Target project or location to make a call.
+                /// <summary>Required. Project or location to make a call. Must refer to a caller's project.
                 ///
                 /// Format: `projects/{project-id}/locations/{location-id}` or `projects/{project-id}`.
                 ///
@@ -1290,8 +1290,68 @@ namespace Google.Apis.Translate.v3beta1
 
             }
 
+            /// <summary>Gets information about a location.</summary>
+            /// <param name="name">Resource name for the location.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets information about a location.</summary>
+            public class GetRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3beta1.Data.Location>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name for the location.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                }
+
+            }
+
             /// <summary>Returns a list of supported languages for translation.</summary>
-            /// <param name="parent">Required. Target project or location to make a call.
+            /// <param name="parent">Required. Project or location to make a call. Must refer to a caller's project.
             ///
             /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
             ///
@@ -1318,7 +1378,7 @@ namespace Google.Apis.Translate.v3beta1
                 }
 
 
-                /// <summary>Required. Target project or location to make a call.
+                /// <summary>Required. Project or location to make a call. Must refer to a caller's project.
                 ///
                 /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
                 ///
@@ -1405,9 +1465,108 @@ namespace Google.Apis.Translate.v3beta1
 
             }
 
+            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <param name="name">The resource that owns the locations collection, if applicable.</param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(service, name);
+            }
+
+            /// <summary>Lists information about the supported locations for this service.</summary>
+            public class ListRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3beta1.Data.ListLocationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource that owns the locations collection, if applicable.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3beta1/{+name}/locations"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
             /// <summary>Translates input text and returns translated text.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Target project or location to make a call.
+            /// <param name="parent">Required. Project or location to make a call. Must refer to a caller's project.
             ///
             /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
             ///
@@ -1435,7 +1594,7 @@ namespace Google.Apis.Translate.v3beta1
                 }
 
 
-                /// <summary>Required. Target project or location to make a call.
+                /// <summary>Required. Project or location to make a call. Must refer to a caller's project.
                 ///
                 /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
                 ///
@@ -1494,7 +1653,7 @@ namespace Google.Apis.Translate.v3beta1
 
         /// <summary>Detects the language of text within a request.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="parent">Required. Target project or location to make a call.
+        /// <param name="parent">Required. Project or location to make a call. Must refer to a caller's project.
         ///
         /// Format: `projects/{project-id}/locations/{location-id}` or `projects/{project-id}`.
         ///
@@ -1520,7 +1679,7 @@ namespace Google.Apis.Translate.v3beta1
             }
 
 
-            /// <summary>Required. Target project or location to make a call.
+            /// <summary>Required. Project or location to make a call. Must refer to a caller's project.
             ///
             /// Format: `projects/{project-id}/locations/{location-id}` or `projects/{project-id}`.
             ///
@@ -1575,7 +1734,7 @@ namespace Google.Apis.Translate.v3beta1
         }
 
         /// <summary>Returns a list of supported languages for translation.</summary>
-        /// <param name="parent">Required. Target project or location to make a call.
+        /// <param name="parent">Required. Project or location to make a call. Must refer to a caller's project.
         ///
         /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
         ///
@@ -1602,7 +1761,7 @@ namespace Google.Apis.Translate.v3beta1
             }
 
 
-            /// <summary>Required. Target project or location to make a call.
+            /// <summary>Required. Project or location to make a call. Must refer to a caller's project.
             ///
             /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
             ///
@@ -1614,11 +1773,6 @@ namespace Google.Apis.Translate.v3beta1
             /// (400) error is returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
-
-            /// <summary>Optional. The language to use to return localized, human readable names of supported languages.
-            /// If missing, then display names are not returned in a response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("displayLanguageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string DisplayLanguageCode { get; set; }
 
             /// <summary>Optional. Get supported languages of this model.
             ///
@@ -1633,6 +1787,11 @@ namespace Google.Apis.Translate.v3beta1
             /// general base (PBMT) model.</summary>
             [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Model { get; set; }
+
+            /// <summary>Optional. The language to use to return localized, human readable names of supported languages.
+            /// If missing, then display names are not returned in a response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("displayLanguageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DisplayLanguageCode { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1668,18 +1827,18 @@ namespace Google.Apis.Translate.v3beta1
                         Pattern = @"^projects/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "displayLanguageCode", new Google.Apis.Discovery.Parameter
+                    "model", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "displayLanguageCode",
+                        Name = "model",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "model", new Google.Apis.Discovery.Parameter
+                    "displayLanguageCode", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "model",
+                        Name = "displayLanguageCode",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1691,7 +1850,7 @@ namespace Google.Apis.Translate.v3beta1
 
         /// <summary>Translates input text and returns translated text.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="parent">Required. Target project or location to make a call.
+        /// <param name="parent">Required. Project or location to make a call. Must refer to a caller's project.
         ///
         /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
         ///
@@ -1719,7 +1878,7 @@ namespace Google.Apis.Translate.v3beta1
             }
 
 
-            /// <summary>Required. Target project or location to make a call.
+            /// <summary>Required. Project or location to make a call. Must refer to a caller's project.
             ///
             /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
             ///
@@ -2058,6 +2217,21 @@ namespace Google.Apis.Translate.v3beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for Locations.ListLocations.</summary>
+    public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of locations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2068,6 +2242,36 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    public class Location : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Cross-service attributes for the location. For example
+        ///
+        /// {"cloud.googleapis.com/region": "us-east1"}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
+        public virtual string LocationId { get; set; } 
+
+        /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+
+        /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
+        /// /example-project/locations/us-east1"`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

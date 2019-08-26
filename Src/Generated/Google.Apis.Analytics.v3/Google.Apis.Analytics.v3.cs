@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/'>Google Analytics API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190604 (1615)
+ *      <tr><th>API Rev<td>20190807 (1679)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/'>
  *              https://developers.google.com/analytics/</a>
@@ -13465,6 +13465,10 @@ namespace Google.Apis.Analytics.v3.Data
         /// <summary>Value is "analytics#userDeletionRequest".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>Property ID</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyId")]
+        public virtual string PropertyId { get; set; } 
 
         /// <summary>Web property ID of the form UA-XXXXX-YY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]

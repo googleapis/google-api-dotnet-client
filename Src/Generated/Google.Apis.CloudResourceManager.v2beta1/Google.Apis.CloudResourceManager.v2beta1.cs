@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20190710 (1651)
+ *      <tr><th>API Rev<td>20190807 (1679)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -690,15 +690,6 @@ namespace Google.Apis.CloudResourceManager.v2beta1
             }
 
 
-            /// <summary>A pagination token returned from a previous call to `ListFolders` that indicates where this
-            /// listing should continue from. This field is optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of Folders to return in the response. This field is optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>The resource name of the Organization or Folder whose Folders are being listed. Must be of the
             /// form `folders/{folder_id}` or `organizations/{org_id}`. Access to this method is controlled by checking
             /// the `resourcemanager.folders.list` permission on the `parent`.</summary>
@@ -709,6 +700,15 @@ namespace Google.Apis.CloudResourceManager.v2beta1
             /// This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+            /// <summary>A pagination token returned from a previous call to `ListFolders` that indicates where this
+            /// listing should continue from. This field is optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of Folders to return in the response. This field is optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -735,24 +735,6 @@ namespace Google.Apis.CloudResourceManager.v2beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -765,6 +747,24 @@ namespace Google.Apis.CloudResourceManager.v2beta1
                     "showDeleted", new Google.Apis.Discovery.Parameter
                     {
                         Name = "showDeleted",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1548,8 +1548,8 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the value is
-        /// 0, or the field is omitted, policy format version 1 will be returned.</summary>
+        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If the value
+        /// is 0, or the field is omitted, policy format version 1 will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
 

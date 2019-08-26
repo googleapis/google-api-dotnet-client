@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   DoubleClick Search API Version v2
+ *   Search Ads 360 API Version v2
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/doubleclick-search/'>DoubleClick Search API</a>
+ *          <td><a href='https://developers.google.com/doubleclick-search/'>Search Ads 360 API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190805 (1677)
+ *      <tr><th>API Rev<td>20190821 (1693)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-search/'>
  *              https://developers.google.com/doubleclick-search/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using DoubleClick Search API can be found at
+ * The complete API documentation for using Search Ads 360 API can be found at
  * <a href='https://developers.google.com/doubleclick-search/'>https://developers.google.com/doubleclick-search/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -111,7 +111,7 @@ namespace Google.Apis.Doubleclicksearch.v2
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the DoubleClick Search API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Search Ads 360 API.</summary>
         public class Scope
         {
             /// <summary>View and manage your advertising data in DoubleClick Search</summary>
@@ -119,7 +119,7 @@ namespace Google.Apis.Doubleclicksearch.v2
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the DoubleClick Search API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Search Ads 360 API.</summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage your advertising data in DoubleClick Search</summary>
@@ -1484,8 +1484,8 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
     /// currency code, and the generated report rows or report files.</summary>
     public class Report : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Asynchronous report only. Contains a list of generated report files once the report has succesfully
-        /// completed.</summary>
+        /// <summary>Asynchronous report only. Contains a list of generated report files once the report has
+        /// successfully completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<Report.FilesData> Files { get; set; } 
 
