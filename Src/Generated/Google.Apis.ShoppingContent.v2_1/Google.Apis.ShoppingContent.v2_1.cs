@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20190809 (1681)
+ *      <tr><th>API Rev<td>20190822 (1694)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -10450,7 +10450,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual OrderCustomer Customer { get; set; } 
 
-        /// <summary>Delivery details for shipments.</summary>
+        /// <summary>Delivery details for shipments of type delivery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryDetails")]
         public virtual OrderDeliveryDetails DeliveryDetails { get; set; } 
 
@@ -11126,7 +11126,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Acceptable values for US are: - "gsx" - "ups" - "usps" - "fedex" - "dhl" - "ecourier" - "cxt" - "google" -
         /// "ontrac" - "emsy" - "ont" - "deliv" - "dynamex" - "lasership" - "mpx" - "uds" - "efw"
         ///
-        /// Acceptable values for FR are: - "colissimo" - "chronopost" - "gls" - "dpd" - "bpost" - "colis priv�" -
+        /// Acceptable values for FR are: - "colissimo" - "chronopost" - "gls" - "dpd" - "bpost" - "colis prive" -
         /// "boxtal" - "geodis"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 

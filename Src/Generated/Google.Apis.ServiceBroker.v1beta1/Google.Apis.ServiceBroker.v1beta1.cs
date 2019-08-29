@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker'>Service Broker API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190822 (1694)
+ *      <tr><th>API Rev<td>20190826 (1698)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker'>
  *              https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker</a>
@@ -554,16 +554,16 @@ namespace Google.Apis.ServiceBroker.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a
+                        /// previous list request to get the next page of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
                         /// <summary>Specifies the number of results to return per page. If there are fewer elements
                         /// than the specified number, returns all elements. Optional. Acceptable values are 0 to 200,
                         /// inclusive. (Default: 100)</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a
-                        /// previous list request to get the next page of results.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -599,18 +599,18 @@ namespace Google.Apis.ServiceBroker.v1beta1
                                     Pattern = @"^projects/[^/]+/brokers/[^/]+/instances/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -818,16 +818,16 @@ namespace Google.Apis.ServiceBroker.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a
+                    /// previous list request to get the next page of results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Specifies the number of results to return per page. If there are fewer elements than
                     /// the specified number, returns all elements. Optional. Acceptable values are 0 to 200, inclusive.
                     /// (Default: 100)</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a
-                    /// previous list request to get the next page of results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -863,18 +863,18 @@ namespace Google.Apis.ServiceBroker.v1beta1
                                 Pattern = @"^projects/[^/]+/brokers/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1627,6 +1627,10 @@ namespace Google.Apis.ServiceBroker.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>The plan id of the service instance.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PlanId { get; set; }
+
                         /// <summary>The service id of the service instance.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ServiceId { get; set; }
@@ -1634,10 +1638,6 @@ namespace Google.Apis.ServiceBroker.v1beta1
                         /// <summary>See CreateServiceInstanceRequest for details.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("acceptsIncomplete", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> AcceptsIncomplete { get; set; }
-
-                        /// <summary>The plan id of the service instance.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("planId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PlanId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1673,6 +1673,15 @@ namespace Google.Apis.ServiceBroker.v1beta1
                                     Pattern = @"^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "planId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "planId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "serviceId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "serviceId",
@@ -1685,15 +1694,6 @@ namespace Google.Apis.ServiceBroker.v1beta1
                                 "acceptsIncomplete", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "acceptsIncomplete",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "planId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "planId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,

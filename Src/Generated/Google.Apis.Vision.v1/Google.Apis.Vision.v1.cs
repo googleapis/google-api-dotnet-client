@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190816 (1688)
+ *      <tr><th>API Rev<td>20190823 (1695)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -3767,6 +3767,116 @@ namespace Google.Apis.Vision.v1
                     }
 
                 }
+
+                /// <summary>Asynchronous API to delete all Products in a ProductSet or all Products that are in no
+                /// ProductSet.
+                ///
+                /// If a Product is a member of the specified ProductSet in addition to other ProductSets, the Product
+                /// will still be deleted.
+                ///
+                /// It is recommended to not delete the specified ProductSet until after this operation has completed.
+                /// It is also recommended to not add any of the Products involved in the batch delete to a new
+                /// ProductSet while this operation is running because those Products may still end up deleted.
+                ///
+                /// It's not possible to undo the PurgeProducts operation. Therefore, it is recommended to keep the csv
+                /// files used in ImportProductSets (if that was how you originally built the Product Set) before
+                /// starting PurgeProducts, in case you need to re-import the data after deletion.
+                ///
+                /// If the plan is to purge all of the Products from a ProductSet and then re-use the empty ProductSet
+                /// to re-import new Products into the empty ProductSet, you must wait until the PurgeProducts operation
+                /// has finished for that ProductSet.
+                ///
+                /// The google.longrunning.Operation API can be used to keep track of the progress and results of the
+                /// request. `Operation.metadata` contains `BatchOperationMetadata`. (progress)</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The project and location in which the Products should be deleted.
+                ///
+                /// Format is `projects/PROJECT_ID/locations/LOC_ID`.</param>
+                public virtual PurgeRequest Purge(Google.Apis.Vision.v1.Data.PurgeProductsRequest body, string parent)
+                {
+                    return new PurgeRequest(service, body, parent);
+                }
+
+                /// <summary>Asynchronous API to delete all Products in a ProductSet or all Products that are in no
+                /// ProductSet.
+                ///
+                /// If a Product is a member of the specified ProductSet in addition to other ProductSets, the Product
+                /// will still be deleted.
+                ///
+                /// It is recommended to not delete the specified ProductSet until after this operation has completed.
+                /// It is also recommended to not add any of the Products involved in the batch delete to a new
+                /// ProductSet while this operation is running because those Products may still end up deleted.
+                ///
+                /// It's not possible to undo the PurgeProducts operation. Therefore, it is recommended to keep the csv
+                /// files used in ImportProductSets (if that was how you originally built the Product Set) before
+                /// starting PurgeProducts, in case you need to re-import the data after deletion.
+                ///
+                /// If the plan is to purge all of the Products from a ProductSet and then re-use the empty ProductSet
+                /// to re-import new Products into the empty ProductSet, you must wait until the PurgeProducts operation
+                /// has finished for that ProductSet.
+                ///
+                /// The google.longrunning.Operation API can be used to keep track of the progress and results of the
+                /// request. `Operation.metadata` contains `BatchOperationMetadata`. (progress)</summary>
+                public class PurgeRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Purge request.</summary>
+                    public PurgeRequest(Google.Apis.Services.IClientService service, Google.Apis.Vision.v1.Data.PurgeProductsRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The project and location in which the Products should be deleted.
+                    ///
+                    /// Format is `projects/PROJECT_ID/locations/LOC_ID`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Vision.v1.Data.PurgeProductsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "purge"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/products:purge"; }
+                    }
+
+                    /// <summary>Initializes Purge parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                    }
+
+                }
             }
         }
         private readonly OperationsResource operations;
@@ -3912,6 +4022,11 @@ namespace Google.Apis.Vision.v1.Data
     /// have their own responses.</summary>
     public class AnnotateFileResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If set, represents the error message for the failed request. The `responses` field will not be set
+        /// in this case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; } 
+
         /// <summary>Information about the file for which this response is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
         public virtual InputConfig InputConfig { get; set; } 
@@ -4681,6 +4796,11 @@ namespace Google.Apis.Vision.v1.Data
     /// have their own responses.</summary>
     public class GoogleCloudVisionV1p1beta1AnnotateFileResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If set, represents the error message for the failed request. The `responses` field will not be set
+        /// in this case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; } 
+
         /// <summary>Information about the file for which this response is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
         public virtual GoogleCloudVisionV1p1beta1InputConfig InputConfig { get; set; } 
@@ -5403,9 +5523,37 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingPoly { get; set; } 
 
+        /// <summary>List of generic predictions for the object in the bounding box.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation> ObjectAnnotations { get; set; } 
+
         /// <summary>List of results, one for each product match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Prediction for what the object in the bounding box is.</summary>
+    public class GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Object ID that should align with EntityAnnotation mid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mid")]
+        public virtual string Mid { get; set; } 
+
+        /// <summary>Object name, expressed in its `language_code` language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Score of the result. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5732,6 +5880,11 @@ namespace Google.Apis.Vision.v1.Data
     /// have their own responses.</summary>
     public class GoogleCloudVisionV1p2beta1AnnotateFileResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If set, represents the error message for the failed request. The `responses` field will not be set
+        /// in this case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; } 
+
         /// <summary>Information about the file for which this response is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
         public virtual GoogleCloudVisionV1p2beta1InputConfig InputConfig { get; set; } 
@@ -6454,9 +6607,37 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingPoly { get; set; } 
 
+        /// <summary>List of generic predictions for the object in the bounding box.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation> ObjectAnnotations { get; set; } 
+
         /// <summary>List of results, one for each product match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Prediction for what the object in the bounding box is.</summary>
+    public class GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Object ID that should align with EntityAnnotation mid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mid")]
+        public virtual string Mid { get; set; } 
+
+        /// <summary>Object name, expressed in its `language_code` language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Score of the result. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6783,6 +6964,11 @@ namespace Google.Apis.Vision.v1.Data
     /// have their own responses.</summary>
     public class GoogleCloudVisionV1p3beta1AnnotateFileResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If set, represents the error message for the failed request. The `responses` field will not be set
+        /// in this case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; } 
+
         /// <summary>Information about the file for which this response is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
         public virtual GoogleCloudVisionV1p3beta1InputConfig InputConfig { get; set; } 
@@ -7549,9 +7735,37 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p3beta1BoundingPoly BoundingPoly { get; set; } 
 
+        /// <summary>List of generic predictions for the object in the bounding box.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation> ObjectAnnotations { get; set; } 
+
         /// <summary>List of results, one for each product match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p3beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Prediction for what the object in the bounding box is.</summary>
+    public class GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Object ID that should align with EntityAnnotation mid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mid")]
+        public virtual string Mid { get; set; } 
+
+        /// <summary>Object name, expressed in its `language_code` language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Score of the result. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7913,6 +8127,11 @@ namespace Google.Apis.Vision.v1.Data
     /// have their own responses.</summary>
     public class GoogleCloudVisionV1p4beta1AnnotateFileResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If set, represents the error message for the failed request. The `responses` field will not be set
+        /// in this case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; } 
+
         /// <summary>Information about the file for which this response is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
         public virtual GoogleCloudVisionV1p4beta1InputConfig InputConfig { get; set; } 
@@ -8723,9 +8942,37 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p4beta1BoundingPoly BoundingPoly { get; set; } 
 
+        /// <summary>List of generic predictions for the object in the bounding box.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation> ObjectAnnotations { get; set; } 
+
         /// <summary>List of results, one for each product match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p4beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Prediction for what the object in the bounding box is.</summary>
+    public class GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Object ID that should align with EntityAnnotation mid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mid")]
+        public virtual string Mid { get; set; } 
+
+        /// <summary>Object name, expressed in its `language_code` language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Score of the result. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9131,6 +9378,11 @@ namespace Google.Apis.Vision.v1.Data
     /// have their own responses.</summary>
     public class GoogleCloudVisionV1p5beta1AnnotateFileResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If set, represents the error message for the failed request. The `responses` field will not be set
+        /// in this case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; } 
+
         /// <summary>Information about the file for which this response is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConfig")]
         public virtual GoogleCloudVisionV1p5beta1InputConfig InputConfig { get; set; } 
@@ -9978,9 +10230,37 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p5beta1BoundingPoly BoundingPoly { get; set; } 
 
+        /// <summary>List of generic predictions for the object in the bounding box.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p5beta1ProductSearchResultsObjectAnnotation> ObjectAnnotations { get; set; } 
+
         /// <summary>List of results, one for each product match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p5beta1ProductSearchResultsResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Prediction for what the object in the bounding box is.</summary>
+    public class GoogleCloudVisionV1p5beta1ProductSearchResultsObjectAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Object ID that should align with EntityAnnotation mid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mid")]
+        public virtual string Mid { get; set; } 
+
+        /// <summary>Object name, expressed in its `language_code` language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Score of the result. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10426,6 +10706,10 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual BoundingPoly BoundingPoly { get; set; } 
 
+        /// <summary>List of generic predictions for the object in the bounding box.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
+        public virtual System.Collections.Generic.IList<ObjectAnnotation> ObjectAnnotations { get; set; } 
+
         /// <summary>List of results, one for each product match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<Result> Results { get; set; } 
@@ -10867,6 +11151,30 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Prediction for what the object in the bounding box is.</summary>
+    public class ObjectAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
+        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Object ID that should align with EntityAnnotation mid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mid")]
+        public virtual string Mid { get; set; } 
+
+        /// <summary>Object name, expressed in its `language_code` language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Score of the result. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11159,6 +11467,18 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Config to control which ProductSet contains the Products to be deleted.</summary>
+    public class ProductSetPurgeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ProductSet that contains the Products to delete. If a Product is a member of product_set_id in
+        /// addition to other ProductSets, the Product will still be deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSetId")]
+        public virtual string ProductSetId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A `Property` consists of a user-supplied name/value pair.</summary>
     public class Property : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11173,6 +11493,26 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>Value of the property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for the `PurgeProducts` method.</summary>
+    public class PurgeProductsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If delete_orphan_products is true, all Products that are not in any ProductSet will be
+        /// deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteOrphanProducts")]
+        public virtual System.Nullable<bool> DeleteOrphanProducts { get; set; } 
+
+        /// <summary>The default value is false. Override this value to true to actually perform the purge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; } 
+
+        /// <summary>Specify which ProductSet contains the Products to be deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSetPurgeConfig")]
+        public virtual ProductSetPurgeConfig ProductSetPurgeConfig { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

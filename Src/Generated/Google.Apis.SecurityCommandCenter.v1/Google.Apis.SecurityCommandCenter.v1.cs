@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Cloud Security Command Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190815 (1687)
+ *      <tr><th>API Rev<td>20190824 (1696)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -462,26 +462,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
-                /// existing at the supplied time and their values are those at that specific time. Absence of this
-                /// field will default to the API's version of NOW.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object ReadTime { get; set; }
-
-                /// <summary>Expression that defines what fields and order to use for sorting. The string value should
-                /// follow SQL syntax: comma separated list of fields. For example:
-                /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
-                /// order for a field, a suffix " desc" should be appended to the field name. For example: "name
-                /// desc,resource_properties.a_property". Redundant space characters in the syntax are insignificant.
-                /// "name desc,resource_properties.a_property" and " name     desc  ,   resource_properties.a_property
-                /// " are equivalent.
-                ///
-                /// The following fields are supported: name update_time resource_properties security_marks.marks
-                /// security_center_properties.resource_name security_center_properties.resource_parent
-                /// security_center_properties.resource_project security_center_properties.resource_type</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
                 /// <summary>When compare_duration is set, the ListAssetsResult's "state_change" attribute is updated to
                 /// indicate whether the asset was added, removed, or remained present during the compare_duration
                 /// period of time that precedes the read_time. This is the time between (read_time - compare_duration)
@@ -560,6 +540,26 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
+                /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
+                /// existing at the supplied time and their values are those at that specific time. Absence of this
+                /// field will default to the API's version of NOW.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object ReadTime { get; set; }
+
+                /// <summary>Expression that defines what fields and order to use for sorting. The string value should
+                /// follow SQL syntax: comma separated list of fields. For example:
+                /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
+                /// order for a field, a suffix " desc" should be appended to the field name. For example: "name
+                /// desc,resource_properties.a_property". Redundant space characters in the syntax are insignificant.
+                /// "name desc,resource_properties.a_property" and " name     desc  ,   resource_properties.a_property
+                /// " are equivalent.
+                ///
+                /// The following fields are supported: name update_time resource_properties security_marks.marks
+                /// security_center_properties.resource_name security_center_properties.resource_parent
+                /// security_center_properties.resource_project security_center_properties.resource_type</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -592,24 +592,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^organizations/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "readTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "readTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "compareDuration", new Google.Apis.Discovery.Parameter
@@ -651,6 +633,24 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "readTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -767,18 +767,18 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The time at which the updated SecurityMarks take effect. If not set uses current server
-                /// time.  Updates will be applied to the SecurityMarks that are active immediately preceding this
-                /// time.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
-
                 /// <summary>The FieldMask to use when updating the security marks resource.
                 ///
                 /// The field mask must not contain duplicate fields. If empty or set to "marks", all marks will be
                 /// replaced.  Individual marks can be updated using "marks.".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
+
+                /// <summary>The time at which the updated SecurityMarks take effect. If not set uses current server
+                /// time.  Updates will be applied to the SecurityMarks that are active immediately preceding this
+                /// time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTime { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -820,18 +820,18 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             Pattern = @"^organizations/[^/]+/assets/[^/]+/securityMarks$",
                         });
                     RequestParameters.Add(
-                        "startTime", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "startTime",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "startTime", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "startTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1098,10 +1098,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1109,6 +1105,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1144,15 +1144,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             Pattern = @"^organizations/[^/]+/operations$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1165,6 +1156,15 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

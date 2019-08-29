@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataflow'>Dataflow API</a>
  *      <tr><th>API Version<td>v1b3
- *      <tr><th>API Rev<td>20190729 (1670)
+ *      <tr><th>API Rev<td>20190813 (1685)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataflow'>
  *              https://cloud.google.com/dataflow</a>
@@ -357,7 +357,6 @@ namespace Google.Apis.Dataflow.v1b3
             this.service = service;
             jobs = new JobsResource(service);
             locations = new LocationsResource(service);
-            snapshots = new SnapshotsResource(service);
             templates = new TemplatesResource(service);
 
         }
@@ -642,6 +641,32 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
+                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                    /// endpoints) that contains the job specified by job_id.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Location { get; set; }
+
+                    /// <summary>Return only messages with timestamps < end_time. The default is now (i.e. return up to
+                    /// the latest messages available).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object EndTime { get; set; }
+
+                    /// <summary>If supplied, this should be the value of next_page_token returned by an earlier call.
+                    /// This will cause the next page of results to be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>If specified, return only messages with timestamps >= start_time. The default is the
+                    /// job creation time (i.e. beginning of messages).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object StartTime { get; set; }
+
+                    /// <summary>If specified, determines the maximum number of messages to return.  If unspecified, the
+                    /// service may choose an appropriate default, or may return an arbitrarily large number of
+                    /// results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Filter to only get messages with importance >= level</summary>
                     [Google.Apis.Util.RequestParameterAttribute("minimumImportance", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<MinimumImportanceEnum> MinimumImportance { get; set; }
@@ -662,32 +687,6 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_ERROR")]
                         JOBMESSAGEERROR,
                     }
-
-                    /// <summary>Return only messages with timestamps < end_time. The default is now (i.e. return up to
-                    /// the latest messages available).</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object EndTime { get; set; }
-
-                    /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                    /// endpoints) that contains the job specified by job_id.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Location { get; set; }
-
-                    /// <summary>If supplied, this should be the value of next_page_token returned by an earlier call.
-                    /// This will cause the next page of results to be returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>If specified, return only messages with timestamps >= start_time. The default is the
-                    /// job creation time (i.e. beginning of messages).</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object StartTime { get; set; }
-
-                    /// <summary>If specified, determines the maximum number of messages to return.  If unspecified, the
-                    /// service may choose an appropriate default, or may return an arbitrarily large number of
-                    /// results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -732,9 +731,9 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "minimumImportance", new Google.Apis.Discovery.Parameter
+                            "location", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "minimumImportance",
+                                Name = "location",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -744,15 +743,6 @@ namespace Google.Apis.Dataflow.v1b3
                             "endTime", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "endTime",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -780,6 +770,15 @@ namespace Google.Apis.Dataflow.v1b3
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "minimumImportance", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "minimumImportance",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1005,6 +1004,23 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>The kind of filter to use.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<FilterEnum> Filter { get; set; }
+
+                /// <summary>The kind of filter to use.</summary>
+                public enum FilterEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
+                    UNKNOWN,
+                    [Google.Apis.Util.StringValueAttribute("ALL")]
+                    ALL,
+                    [Google.Apis.Util.StringValueAttribute("TERMINATED")]
+                    TERMINATED,
+                    [Google.Apis.Util.StringValueAttribute("ACTIVE")]
+                    ACTIVE,
+                }
+
                 /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
                 /// endpoints) that contains this job.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
@@ -1035,23 +1051,6 @@ namespace Google.Apis.Dataflow.v1b3
                     JOBVIEWALL,
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                     JOBVIEWDESCRIPTION,
-                }
-
-                /// <summary>The kind of filter to use.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<FilterEnum> Filter { get; set; }
-
-                /// <summary>The kind of filter to use.</summary>
-                public enum FilterEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                    UNKNOWN,
-                    [Google.Apis.Util.StringValueAttribute("ALL")]
-                    ALL,
-                    [Google.Apis.Util.StringValueAttribute("TERMINATED")]
-                    TERMINATED,
-                    [Google.Apis.Util.StringValueAttribute("ACTIVE")]
-                    ACTIVE,
                 }
 
 
@@ -1088,6 +1087,15 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "location", new Google.Apis.Discovery.Parameter
                         {
                             Name = "location",
@@ -1118,15 +1126,6 @@ namespace Google.Apis.Dataflow.v1b3
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1303,6 +1302,11 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string JobId { get; private set; }
 
+                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                /// endpoints) that contains this job.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Location { get; set; }
+
                 /// <summary>The level of information requested in response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1319,11 +1323,6 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                     JOBVIEWDESCRIPTION,
                 }
-
-                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                /// endpoints) that contains this job.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Location { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1368,18 +1367,18 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
+                        "location", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "view",
+                            Name = "location",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
+                        "view", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "location",
+                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1535,23 +1534,6 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ViewEnum> View { get; set; }
-
-                /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
-                public enum ViewEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
-                    JOBVIEWUNKNOWN,
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
-                    JOBVIEWSUMMARY,
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
-                    JOBVIEWALL,
-                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
-                    JOBVIEWDESCRIPTION,
-                }
-
                 /// <summary>The kind of filter to use.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<FilterEnum> Filter { get; set; }
@@ -1584,6 +1566,23 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
+                /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
+                public enum ViewEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
+                    JOBVIEWUNKNOWN,
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
+                    JOBVIEWSUMMARY,
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
+                    JOBVIEWALL,
+                    [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
+                    JOBVIEWDESCRIPTION,
+                }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1614,15 +1613,6 @@ namespace Google.Apis.Dataflow.v1b3
                             Name = "projectId",
                             IsRequired = true,
                             ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -1662,87 +1652,12 @@ namespace Google.Apis.Dataflow.v1b3
                             DefaultValue = null,
                             Pattern = null,
                         });
-                }
-
-            }
-
-            /// <summary>Snapshot the state of a streaming job.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="projectId">The project which owns the job to be snapshotted.</param>
-            /// <param name="jobId">The
-            /// job to be snapshotted.</param>
-            public virtual SnapshotRequest Snapshot(Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest body, string projectId, string jobId)
-            {
-                return new SnapshotRequest(service, body, projectId, jobId);
-            }
-
-            /// <summary>Snapshot the state of a streaming job.</summary>
-            public class SnapshotRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Snapshot>
-            {
-                /// <summary>Constructs a new Snapshot request.</summary>
-                public SnapshotRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest body, string projectId, string jobId)
-                    : base(service)
-                {
-                    ProjectId = projectId;
-                    JobId = jobId;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>The project which owns the job to be snapshotted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-                /// <summary>The job to be snapshotted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string JobId { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "snapshot"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "POST"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1b3/projects/{projectId}/jobs/{jobId}:snapshot"; }
-                }
-
-                /// <summary>Initializes Snapshot parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
                     RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
+                        "view", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobId",
-                            IsRequired = true,
-                            ParameterType = "path",
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -1879,7 +1794,6 @@ namespace Google.Apis.Dataflow.v1b3
             {
                 this.service = service;
                 jobs = new JobsResource(service);
-                snapshots = new SnapshotsResource(service);
                 sql = new SqlResource(service);
                 templates = new TemplatesResource(service);
 
@@ -1907,7 +1821,6 @@ namespace Google.Apis.Dataflow.v1b3
                     this.service = service;
                     debug = new DebugResource(service);
                     messages = new MessagesResource(service);
-                    snapshots = new SnapshotsResource(service);
                     workItems = new WorkItemsResource(service);
 
                 }
@@ -2352,122 +2265,6 @@ namespace Google.Apis.Dataflow.v1b3
 
                     }
                 }
-                private readonly SnapshotsResource snapshots;
-
-                /// <summary>Gets the Snapshots resource.</summary>
-                public virtual SnapshotsResource Snapshots
-                {
-                    get { return snapshots; }
-                }
-
-                /// <summary>The "snapshots" collection of methods.</summary>
-                public class SnapshotsResource
-                {
-                    private const string Resource = "snapshots";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public SnapshotsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-
-                    }
-
-
-                    /// <summary>Lists snapshots.</summary>
-                    /// <param name="projectId">The project ID to list snapshots for.</param>
-                    /// <param name="location">The location to
-                    /// list snapshots in.</param>
-                    /// <param name="jobId">If specified, list snapshots created from this
-                    /// job.</param>
-                    public virtual ListRequest List(string projectId, string location, string jobId)
-                    {
-                        return new ListRequest(service, projectId, location, jobId);
-                    }
-
-                    /// <summary>Lists snapshots.</summary>
-                    public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListSnapshotsResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string location, string jobId)
-                            : base(service)
-                        {
-                            ProjectId = projectId;
-                            Location = location;
-                            JobId = jobId;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>The project ID to list snapshots for.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectId { get; private set; }
-
-                        /// <summary>The location to list snapshots in.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Location { get; private set; }
-
-                        /// <summary>If specified, list snapshots created from this job.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string JobId { get; private set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "list"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "GET"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/snapshots"; }
-                        }
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "location", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "location",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "jobId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "jobId",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-                }
                 private readonly WorkItemsResource workItems;
 
                 /// <summary>Gets the WorkItems resource.</summary>
@@ -2737,6 +2534,10 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
+                    /// <summary>Deprecated. This field is now in the Job message.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("replaceJobId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ReplaceJobId { get; set; }
+
                     /// <summary>The level of information requested in response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -2753,10 +2554,6 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                         JOBVIEWDESCRIPTION,
                     }
-
-                    /// <summary>Deprecated. This field is now in the Job message.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("replaceJobId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ReplaceJobId { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -2807,18 +2604,18 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "view", new Google.Apis.Discovery.Parameter
+                            "replaceJobId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "view",
+                                Name = "replaceJobId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "replaceJobId", new Google.Apis.Discovery.Parameter
+                            "view", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "replaceJobId",
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3241,105 +3038,6 @@ namespace Google.Apis.Dataflow.v1b3
 
                 }
 
-                /// <summary>Snapshot the state of a streaming job.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">The project which owns the job to be snapshotted.</param>
-                /// <param name="location">The
-                /// location that contains this job.</param>
-                /// <param name="jobId">The job to be snapshotted.</param>
-                public virtual SnapshotRequest Snapshot(Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest body, string projectId, string location, string jobId)
-                {
-                    return new SnapshotRequest(service, body, projectId, location, jobId);
-                }
-
-                /// <summary>Snapshot the state of a streaming job.</summary>
-                public class SnapshotRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Snapshot>
-                {
-                    /// <summary>Constructs a new Snapshot request.</summary>
-                    public SnapshotRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest body, string projectId, string location, string jobId)
-                        : base(service)
-                    {
-                        ProjectId = projectId;
-                        Location = location;
-                        JobId = jobId;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The project which owns the job to be snapshotted.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ProjectId { get; private set; }
-
-                    /// <summary>The location that contains this job.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Location { get; private set; }
-
-                    /// <summary>The job to be snapshotted.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string JobId { get; private set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dataflow.v1b3.Data.SnapshotJobRequest Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "snapshot"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "POST"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}:snapshot"; }
-                    }
-
-                    /// <summary>Initializes Snapshot parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-
                 /// <summary>Updates the state of an existing Cloud Dataflow job.
                 ///
                 /// To update the state of an existing job, we recommend using `projects.locations.jobs.update` with a
@@ -3444,303 +3142,6 @@ namespace Google.Apis.Dataflow.v1b3
                                 Name = "jobId",
                                 IsRequired = true,
                                 ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-            }
-            private readonly SnapshotsResource snapshots;
-
-            /// <summary>Gets the Snapshots resource.</summary>
-            public virtual SnapshotsResource Snapshots
-            {
-                get { return snapshots; }
-            }
-
-            /// <summary>The "snapshots" collection of methods.</summary>
-            public class SnapshotsResource
-            {
-                private const string Resource = "snapshots";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public SnapshotsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-
-                }
-
-
-                /// <summary>Deletes a snapshot.</summary>
-                /// <param name="projectId">The ID of the Cloud Platform project that the snapshot belongs to.</param>
-                /// <param
-                /// name="location">The location that contains this snapshot.</param>
-                /// <param name="snapshotId">The ID of the
-                /// snapshot.</param>
-                public virtual DeleteRequest Delete(string projectId, string location, string snapshotId)
-                {
-                    return new DeleteRequest(service, projectId, location, snapshotId);
-                }
-
-                /// <summary>Deletes a snapshot.</summary>
-                public class DeleteRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.DeleteSnapshotResponse>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string location, string snapshotId)
-                        : base(service)
-                    {
-                        ProjectId = projectId;
-                        Location = location;
-                        SnapshotId = snapshotId;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The ID of the Cloud Platform project that the snapshot belongs to.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ProjectId { get; private set; }
-
-                    /// <summary>The location that contains this snapshot.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Location { get; private set; }
-
-                    /// <summary>The ID of the snapshot.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("snapshotId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string SnapshotId { get; private set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "delete"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "DELETE"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}"; }
-                    }
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "snapshotId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "snapshotId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-
-                /// <summary>Gets information about a snapshot.</summary>
-                /// <param name="projectId">The ID of the Cloud Platform project that the snapshot belongs to.</param>
-                /// <param
-                /// name="location">The location that contains this snapshot.</param>
-                /// <param name="snapshotId">The ID of the
-                /// snapshot.</param>
-                public virtual GetRequest Get(string projectId, string location, string snapshotId)
-                {
-                    return new GetRequest(service, projectId, location, snapshotId);
-                }
-
-                /// <summary>Gets information about a snapshot.</summary>
-                public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Snapshot>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string projectId, string location, string snapshotId)
-                        : base(service)
-                    {
-                        ProjectId = projectId;
-                        Location = location;
-                        SnapshotId = snapshotId;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The ID of the Cloud Platform project that the snapshot belongs to.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ProjectId { get; private set; }
-
-                    /// <summary>The location that contains this snapshot.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Location { get; private set; }
-
-                    /// <summary>The ID of the snapshot.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("snapshotId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string SnapshotId { get; private set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "get"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "GET"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}"; }
-                    }
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "snapshotId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "snapshotId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-
-                /// <summary>Lists snapshots.</summary>
-                /// <param name="projectId">The project ID to list snapshots for.</param>
-                /// <param name="location">The location to
-                /// list snapshots in.</param>
-                public virtual ListRequest List(string projectId, string location)
-                {
-                    return new ListRequest(service, projectId, location);
-                }
-
-                /// <summary>Lists snapshots.</summary>
-                public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListSnapshotsResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string location)
-                        : base(service)
-                    {
-                        ProjectId = projectId;
-                        Location = location;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The project ID to list snapshots for.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ProjectId { get; private set; }
-
-                    /// <summary>The location to list snapshots in.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Location { get; private set; }
-
-                    /// <summary>If specified, list snapshots created from this job.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string JobId { get; set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "list"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "GET"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1b3/projects/{projectId}/locations/{location}/snapshots"; }
-                    }
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobId",
-                                IsRequired = false,
-                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -4318,205 +3719,6 @@ namespace Google.Apis.Dataflow.v1b3
 
             }
         }
-        private readonly SnapshotsResource snapshots;
-
-        /// <summary>Gets the Snapshots resource.</summary>
-        public virtual SnapshotsResource Snapshots
-        {
-            get { return snapshots; }
-        }
-
-        /// <summary>The "snapshots" collection of methods.</summary>
-        public class SnapshotsResource
-        {
-            private const string Resource = "snapshots";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public SnapshotsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-
-            }
-
-
-            /// <summary>Gets information about a snapshot.</summary>
-            /// <param name="projectId">The ID of the Cloud Platform project that the snapshot belongs to.</param>
-            /// <param
-            /// name="snapshotId">The ID of the snapshot.</param>
-            public virtual GetRequest Get(string projectId, string snapshotId)
-            {
-                return new GetRequest(service, projectId, snapshotId);
-            }
-
-            /// <summary>Gets information about a snapshot.</summary>
-            public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Snapshot>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string projectId, string snapshotId)
-                    : base(service)
-                {
-                    ProjectId = projectId;
-                    SnapshotId = snapshotId;
-                    InitParameters();
-                }
-
-
-                /// <summary>The ID of the Cloud Platform project that the snapshot belongs to.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-                /// <summary>The ID of the snapshot.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("snapshotId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string SnapshotId { get; private set; }
-
-                /// <summary>The location that contains this snapshot.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Location { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "get"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1b3/projects/{projectId}/snapshots/{snapshotId}"; }
-                }
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "snapshotId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "snapshotId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-
-            /// <summary>Lists snapshots.</summary>
-            /// <param name="projectId">The project ID to list snapshots for.</param>
-            public virtual ListRequest List(string projectId)
-            {
-                return new ListRequest(service, projectId);
-            }
-
-            /// <summary>Lists snapshots.</summary>
-            public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListSnapshotsResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string projectId)
-                    : base(service)
-                {
-                    ProjectId = projectId;
-                    InitParameters();
-                }
-
-
-                /// <summary>The project ID to list snapshots for.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectId { get; private set; }
-
-                /// <summary>The location to list snapshots in.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Location { get; set; }
-
-                /// <summary>If specified, list snapshots created from this job.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string JobId { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "list"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1b3/projects/{projectId}/snapshots"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-        }
         private readonly TemplatesResource templates;
 
         /// <summary>Gets the Templates resource.</summary>
@@ -4632,11 +3834,6 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
-                /// endpoints) to which to direct the request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Location { get; set; }
-
                 /// <summary>The view to retrieve. Defaults to METADATA_ONLY.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -4652,6 +3849,11 @@ namespace Google.Apis.Dataflow.v1b3
                 /// Cloud Storage URL, beginning with 'gs://'.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string GcsPath { get; set; }
+
+                /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
+                /// endpoints) to which to direct the request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Location { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -4687,15 +3889,6 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
@@ -4708,6 +3901,15 @@ namespace Google.Apis.Dataflow.v1b3
                         "gcsPath", new Google.Apis.Discovery.Parameter
                         {
                             Name = "gcsPath",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4853,92 +4055,6 @@ namespace Google.Apis.Dataflow.v1b3
                 }
 
             }
-        }
-
-        /// <summary>Deletes a snapshot.</summary>
-        /// <param name="projectId">The ID of the Cloud Platform project that the snapshot belongs to.</param>
-        public virtual DeleteSnapshotsRequest DeleteSnapshots(string projectId)
-        {
-            return new DeleteSnapshotsRequest(service, projectId);
-        }
-
-        /// <summary>Deletes a snapshot.</summary>
-        public class DeleteSnapshotsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.DeleteSnapshotResponse>
-        {
-            /// <summary>Constructs a new DeleteSnapshots request.</summary>
-            public DeleteSnapshotsRequest(Google.Apis.Services.IClientService service, string projectId)
-                : base(service)
-            {
-                ProjectId = projectId;
-                InitParameters();
-            }
-
-
-            /// <summary>The ID of the Cloud Platform project that the snapshot belongs to.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string ProjectId { get; private set; }
-
-            /// <summary>The location that contains this snapshot.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Location { get; set; }
-
-            /// <summary>The ID of the snapshot.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("snapshotId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SnapshotId { get; set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "deleteSnapshots"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "DELETE"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1b3/projects/{projectId}/snapshots"; }
-            }
-
-            /// <summary>Initializes DeleteSnapshots parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "location", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "location",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "snapshotId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "snapshotId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
         }
 
         /// <summary>Send a worker_message to the service.</summary>
@@ -5523,13 +4639,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Response from deleting a snapshot.</summary>
-    public class DeleteSnapshotResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -6514,17 +5623,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>List of snapshots.</summary>
-    public class ListSnapshotsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Returned snapshots.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snapshots")]
-        public virtual System.Collections.Generic.IList<Snapshot> Snapshots { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>MapTask consists of an ordered set of instructions, each of which describes one particular low-level
     /// operation for the worker to perform in order to accomplish the MapTask's WorkItem.
     ///
@@ -7304,52 +6402,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>The sink to write to, plus its parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual System.Collections.Generic.IDictionary<string,object> Spec { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Represents a snapshot of a job.</summary>
-    public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The time this snapshot was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual object CreationTime { get; set; } 
-
-        /// <summary>The unique ID of this snapshot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
-
-        /// <summary>The project this snapshot belongs to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
-
-        /// <summary>The job this snapshot was created from.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceJobId")]
-        public virtual string SourceJobId { get; set; } 
-
-        /// <summary>State of the snapshot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
-
-        /// <summary>The time after which this snapshot will be automatically deleted.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
-        public virtual object Ttl { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Request to create a snapshot of a job.</summary>
-    public class SnapshotJobRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The location that contains this job.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
-
-        /// <summary>TTL for the snapshot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
-        public virtual object Ttl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

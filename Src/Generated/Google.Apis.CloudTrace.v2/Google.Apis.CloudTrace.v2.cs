@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190622 (1633)
+ *      <tr><th>API Rev<td>20190820 (1692)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -772,6 +772,11 @@ namespace Google.Apis.CloudTrace.v2.Data
         /// <summary>The [SPAN_ID] portion of the span's resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual string SpanId { get; set; } 
+
+        /// <summary>Distinguishes between spans generated in a particular context. For example, two spans with the same
+        /// name may be distinguished using `CLIENT` (caller) and `SERVER` (callee) to identify an RPC call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spanKind")]
+        public virtual string SpanKind { get; set; } 
 
         /// <summary>Stack trace captured at the start of the span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]

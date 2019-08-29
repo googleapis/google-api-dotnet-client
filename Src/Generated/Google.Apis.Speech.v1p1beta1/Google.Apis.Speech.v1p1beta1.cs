@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech-to-Text API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20190819 (1691)
+ *      <tr><th>API Rev<td>20190823 (1695)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -1014,8 +1014,8 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     }    
 
     /// <summary>Contains audio data in the encoding specified in the `RecognitionConfig`. Either `content` or `uri`
-    /// must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. See [content limits
-    /// ](/speech-to-text/quotas#content).</summary>
+    /// must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. See [content
+    /// limits](https://cloud.google.com/speech-to-text/quotas#content).</summary>
     public class RecognitionAudio : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The audio data bytes encoded as specified in `RecognitionConfig`. Note: as with all bytes fields,
@@ -1039,12 +1039,12 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     public class RecognitionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>*Optional* A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
-        /// language tags, listing possible alternative languages of the supplied audio. See [Language Support](/speech-
-        /// to-text/docs/languages) for a list of the currently supported language codes. If alternative languages are
-        /// listed, recognition result will contain recognition in the most likely language detected including the main
-        /// language_code. The recognition result will include the language tag of the language detected in the audio.
-        /// Note: This feature is only supported for Voice Command and Voice Search use cases and performance may vary
-        /// for other use cases (e.g., phone call transcription).</summary>
+        /// language tags, listing possible alternative languages of the supplied audio. See [Language
+        /// Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of the currently supported
+        /// language codes. If alternative languages are listed, recognition result will contain recognition in the most
+        /// likely language detected including the main language_code. The recognition result will include the language
+        /// tag of the language detected in the audio. Note: This feature is only supported for Voice Command and Voice
+        /// Search use cases and performance may vary for other use cases (e.g., phone call transcription).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternativeLanguageCodes")]
         public virtual System.Collections.Generic.IList<string> AlternativeLanguageCodes { get; set; } 
 
@@ -1109,8 +1109,9 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         public virtual string Encoding { get; set; } 
 
         /// <summary>*Required* The language of the supplied audio as a [BCP-47](https://www.rfc-
-        /// editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US". See [Language Support](/speech-to-
-        /// text/docs/languages) for a list of the currently supported language codes.</summary>
+        /// editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US". See [Language
+        /// Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of the currently supported
+        /// language codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 
@@ -1161,7 +1162,8 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         public virtual System.Nullable<int> SampleRateHertz { get; set; } 
 
         /// <summary>*Optional* array of SpeechContext. A means to provide context to assist the speech recognition. For
-        /// more information, see [speech adaptation](/speech-to-text/docs/context-strength).</summary>
+        /// more information, see [speech adaptation](https://cloud.google.com/speech-to-text/docs/context-
+        /// strength).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechContexts")]
         public virtual System.Collections.Generic.IList<SpeechContext> SpeechContexts { get; set; } 
 
@@ -1299,7 +1301,8 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// <summary>*Optional* A list of strings containing words and phrases "hints" so that the speech recognition is
         /// more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for
         /// example, if specific commands are typically spoken by the user. This can also be used to add additional
-        /// words to the vocabulary of the recognizer. See [usage limits](/speech-to-text/quotas#content).
+        /// words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-
+        /// text/quotas#content).
         ///
         /// List items can also be set to classes for groups of words that represent common concepts that occur in
         /// natural language. For example, rather than providing phrase hints for every month of the year, using the

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20190607 (1618)
+ *      <tr><th>API Rev<td>20190815 (1687)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -4149,7 +4149,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Host of the user in the instance.</summary>
+            /// <summary>Host of the user in the instance. For a MySQL instance, it's required; For a PostgreSQL
+            /// instance, it's optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Host { get; set; }
 
@@ -4320,6 +4321,15 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The description of this run, only applicable to on-demand backups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>Disk encryption configuration specific to a backup. Applies only to Second Generation
+        /// instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionConfiguration")]
+        public virtual DiskEncryptionConfiguration DiskEncryptionConfiguration { get; set; } 
+
+        /// <summary>Disk encryption status specific to a backup. Applies only to Second Generation instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionStatus")]
+        public virtual DiskEncryptionStatus DiskEncryptionStatus { get; set; } 
 
         /// <summary>The time the backup operation completed in UTC timezone in RFC 3339 format, for example
         /// 2012-11-15T16:19:00.094Z.</summary>

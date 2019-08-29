@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/scheduler/'>Cloud Scheduler API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190815 (1687)
+ *      <tr><th>API Rev<td>20190823 (1695)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/scheduler/'>
  *              https://cloud.google.com/scheduler/</a>
@@ -608,13 +608,6 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>A token identifying a page of results the server will return. To request the first page
-                    /// results, page_token must be empty. To request the next page of results, page_token must be the
-                    /// value of next_page_token returned from the previous call to ListJobs. It is an error to switch
-                    /// the value of filter or order_by while iterating through pages.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>Requested page size.
                     ///
                     /// The maximum page size is 500. If unspecified, the page size will be the maximum. Fewer jobs than
@@ -622,6 +615,13 @@ namespace Google.Apis.CloudScheduler.v1beta1
                     /// jobs exist.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>A token identifying a page of results the server will return. To request the first page
+                    /// results, page_token must be empty. To request the next page of results, page_token must be the
+                    /// value of next_page_token returned from the previous call to ListJobs. It is an error to switch
+                    /// the value of filter or order_by while iterating through pages.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -657,18 +657,18 @@ namespace Google.Apis.CloudScheduler.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

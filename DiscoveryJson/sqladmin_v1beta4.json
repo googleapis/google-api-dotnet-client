@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/LRkkAS7hoxkBOrIOmm_GjUTQ6v8\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/N55ZXwjx5gVcFVd9x7svcXqGxFA\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20190607",
+ "revision": "20190815",
  "title": "Cloud SQL Admin API",
  "description": "Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.",
  "ownerDomain": "google.com",
@@ -160,6 +160,14 @@
     "description": {
      "type": "string",
      "description": "The description of this run, only applicable to on-demand backups."
+    },
+    "diskEncryptionConfiguration": {
+     "$ref": "DiskEncryptionConfiguration",
+     "description": "Disk encryption configuration specific to a backup. Applies only to Second Generation instances."
+    },
+    "diskEncryptionStatus": {
+     "$ref": "DiskEncryptionStatus",
+     "description": "Disk encryption status specific to a backup. Applies only to Second Generation instances."
     },
     "endTime": {
      "type": "string",
@@ -3197,7 +3205,7 @@
      "parameters": {
       "host": {
        "type": "string",
-       "description": "Host of the user in the instance.",
+       "description": "Host of the user in the instance. For a MySQL instance, it's required; For a PostgreSQL instance, it's optional.",
        "location": "query"
       },
       "instance": {

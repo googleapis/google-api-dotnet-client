@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/docs/quota'>Library Agent API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190821 (1693)
+ *      <tr><th>API Rev<td>20190827 (1699)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/docs/quota'>
  *              https://cloud.google.com/docs/quota</a>
@@ -368,7 +368,7 @@ namespace Google.Apis.Libraryagent.v1
             /// <summary>Borrow a book from the library. Returns the book if it is borrowed successfully. Returns
             /// NOT_FOUND if the book does not exist in the library. Returns quota exceeded error if the amount of books
             /// borrowed exceeds allocation quota in any dimensions.</summary>
-            /// <param name="name">The name of the book to borrow.</param>
+            /// <param name="name">Required. The name of the book to borrow.</param>
             public virtual BorrowRequest Borrow(string name)
             {
                 return new BorrowRequest(service, name);
@@ -388,7 +388,7 @@ namespace Google.Apis.Libraryagent.v1
                 }
 
 
-                /// <summary>The name of the book to borrow.</summary>
+                /// <summary>Required. The name of the book to borrow.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -430,7 +430,7 @@ namespace Google.Apis.Libraryagent.v1
             }
 
             /// <summary>Gets a book. Returns NOT_FOUND if the book does not exist.</summary>
-            /// <param name="name">The name of the book to retrieve.</param>
+            /// <param name="name">Required. The name of the book to retrieve.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -448,7 +448,7 @@ namespace Google.Apis.Libraryagent.v1
                 }
 
 
-                /// <summary>The name of the book to retrieve.</summary>
+                /// <summary>Required. The name of the book to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -492,7 +492,7 @@ namespace Google.Apis.Libraryagent.v1
             /// <summary>Lists books in a shelf. The order is unspecified but deterministic. Newly created books will
             /// not necessarily be added to the end of this list. Returns NOT_FOUND if the shelf does not
             /// exist.</summary>
-            /// <param name="parent">The name of the shelf whose books we'd like to list.</param>
+            /// <param name="parent">Required. The name of the shelf whose books we'd like to list.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -512,7 +512,7 @@ namespace Google.Apis.Libraryagent.v1
                 }
 
 
-                /// <summary>The name of the shelf whose books we'd like to list.</summary>
+                /// <summary>Required. The name of the shelf whose books we'd like to list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -584,7 +584,7 @@ namespace Google.Apis.Libraryagent.v1
 
             /// <summary>Return a book to the library. Returns the book if it is returned to the library successfully.
             /// Returns error if the book does not belong to the library or the users didn't borrow before.</summary>
-            /// <param name="name">The name of the book to return.</param>
+            /// <param name="name">Required. The name of the book to return.</param>
             public virtual LibraryagentReturnRequest LibraryagentReturn(string name)
             {
                 return new LibraryagentReturnRequest(service, name);
@@ -603,7 +603,7 @@ namespace Google.Apis.Libraryagent.v1
                 }
 
 
-                /// <summary>The name of the book to return.</summary>
+                /// <summary>Required. The name of the book to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -646,7 +646,7 @@ namespace Google.Apis.Libraryagent.v1
         }
 
         /// <summary>Gets a shelf. Returns NOT_FOUND if the shelf does not exist.</summary>
-        /// <param name="name">The name of the shelf to retrieve.</param>
+        /// <param name="name">Required. The name of the shelf to retrieve.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -664,7 +664,7 @@ namespace Google.Apis.Libraryagent.v1
             }
 
 
-            /// <summary>The name of the shelf to retrieve.</summary>
+            /// <summary>Required. The name of the shelf to retrieve.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20190822 (1694)
+ *      <tr><th>API Rev<td>20190828 (1700)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -4956,7 +4956,9 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// the service parses the xml logs and returns a TestExecutionStep with updated TestResult(s). - user update the
     /// status of TestExecutionStep with id 100 to COMPLETE
     ///
-    /// A Step can be updated until its state is set to COMPLETE at which points it becomes immutable.</summary>
+    /// A Step can be updated until its state is set to COMPLETE at which points it becomes immutable.
+    ///
+    /// Next tag: 23</summary>
     public class Step : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time when the step status was set to complete.

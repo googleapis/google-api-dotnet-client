@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190816 (1688)
+ *      <tr><th>API Rev<td>20190824 (1696)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>
  *              https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory</a>
@@ -462,6 +462,17 @@ namespace Google.Apis.CloudAsset.v1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
+            /// <summary>A list of the full names of the assets. For example:
+            /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
+            /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) and [Resource Name
+            /// Format](https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/resource-name-format) for
+            /// more info.
+            ///
+            /// The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is
+            /// 100 in one request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("assetNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> AssetNames { get; set; }
+
             /// <summary>Required. The content type.</summary>
             [Google.Apis.Util.RequestParameterAttribute("contentType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ContentTypeEnum> ContentType { get; set; }
@@ -488,17 +499,6 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>Start time of the time window (exclusive).</summary>
             [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadTimeWindowStartTime { get; set; }
-
-            /// <summary>A list of the full names of the assets. For example:
-            /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
-            /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) and [Resource Name
-            /// Format](https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/resource-name-format) for
-            /// more info.
-            ///
-            /// The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is
-            /// 100 in one request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("assetNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> AssetNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -534,6 +534,15 @@ namespace Google.Apis.CloudAsset.v1
                         Pattern = @"^[^/]+/[^/]+$",
                     });
                 RequestParameters.Add(
+                    "assetNames", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "assetNames",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "contentType", new Google.Apis.Discovery.Parameter
                     {
                         Name = "contentType",
@@ -555,15 +564,6 @@ namespace Google.Apis.CloudAsset.v1
                     "readTimeWindow.startTime", new Google.Apis.Discovery.Parameter
                     {
                         Name = "readTimeWindow.startTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "assetNames", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "assetNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -756,6 +756,30 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>A list of assets with valid time windows.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assets")]
         public virtual System.Collections.Generic.IList<TemporalAsset> Assets { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A BigQuery destination.</summary>
+    public class BigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The BigQuery dataset in format "projects/projectId/datasets/datasetId", to which the
+        /// snapshot result should be exported. If this dataset does not exist, the export call returns an
+        /// error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual string Dataset { get; set; } 
+
+        /// <summary>If the destination table already exists and this flag is `TRUE`, the table will be overwritten by
+        /// the contents of assets snapshot. If the flag is not set and the destination table already exists, the export
+        /// call returns an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; } 
+
+        /// <summary>Required. The BigQuery table to which the snapshot result should be written. If this table does not
+        /// exist, a new table with the given name will be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1384,6 +1408,12 @@ namespace Google.Apis.CloudAsset.v1.Data
     /// <summary>Output configuration for export assets destination.</summary>
     public class OutputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Destination on BigQuery. The output table stores the fields in asset proto as columns in BigQuery.
+        /// The resource/iam_policy field is converted to a record with each field to a column, except metadata to a
+        /// single JSON string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
+        public virtual BigQueryDestination BigqueryDestination { get; set; } 
+
         /// <summary>Destination on Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual GcsDestination GcsDestination { get; set; } 

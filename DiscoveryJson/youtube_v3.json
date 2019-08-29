@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/cYMSyVb-ZDSvhrgWhkfqRgn6L9c\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/yXw94x0FfH9hsuVdo84XOMLmCno\"",
  "discoveryVersion": "v1",
  "id": "youtube:v3",
  "name": "youtube",
  "canonicalName": "YouTube",
  "version": "v3",
- "revision": "20190816",
+ "revision": "20190827",
  "title": "YouTube Data API",
  "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
  "ownerDomain": "google.com",
@@ -1775,7 +1775,7 @@
   "ContentRating": {
    "id": "ContentRating",
    "type": "object",
-   "description": "Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 71",
+   "description": "Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 72",
    "properties": {
     "acbRating": {
      "type": "string",
@@ -3089,6 +3089,29 @@
       "nkclvUnrated"
      ],
      "enumDescriptions": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+     ]
+    },
+    "nmcRating": {
+     "type": "string",
+     "enum": [
+      "nmc15plus",
+      "nmc18plus",
+      "nmc18tc",
+      "nmcG",
+      "nmcPg",
+      "nmcPg13",
+      "nmcPg15",
+      "nmcUnrated"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
       "",
       "",
       "",

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190806 (1678)
+ *      <tr><th>API Rev<td>20190824 (1696)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -527,6 +527,10 @@ namespace Google.Apis.CloudBuild.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -534,10 +538,6 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -573,6 +573,15 @@ namespace Google.Apis.CloudBuild.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -585,15 +594,6 @@ namespace Google.Apis.CloudBuild.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -912,6 +912,10 @@ namespace Google.Apis.CloudBuild.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>The raw filter text to constrain the results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -919,10 +923,6 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Number of results to return in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The raw filter text to constrain the results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -958,6 +958,15 @@ namespace Google.Apis.CloudBuild.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -970,15 +979,6 @@ namespace Google.Apis.CloudBuild.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2065,6 +2065,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includedFiles")]
         public virtual System.Collections.Generic.IList<string> IncludedFiles { get; set; } 
 
+        /// <summary>User assigned name of the trigger. Must be unique within the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
         /// <summary>Substitutions data for Build resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substitutions")]
         public virtual System.Collections.Generic.IDictionary<string,string> Substitutions { get; set; } 
@@ -2291,14 +2295,14 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Push contains filter properties for matching GitHub git pushes.</summary>
     public class PushFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Regexes of branches to match.
+        /// <summary>Regexes matching branches to build.
         ///
         /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at
         /// https://github.com/google/re2/wiki/Syntax</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branch")]
         public virtual string Branch { get; set; } 
 
-        /// <summary>Regexes of tags to match.
+        /// <summary>Regexes matching tags to build.
         ///
         /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at
         /// https://github.com/google/re2/wiki/Syntax</summary>
@@ -2312,7 +2316,10 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Location of the source in a Google Cloud Source Repository.</summary>
     public class RepoSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of the branch to build.</summary>
+        /// <summary>Regex matching branches to build.
+        ///
+        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at
+        /// https://github.com/google/re2/wiki/Syntax</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branchName")]
         public virtual string BranchName { get; set; } 
 
@@ -2336,7 +2343,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("repoName")]
         public virtual string RepoName { get; set; } 
 
-        /// <summary>Name of the tag to build.</summary>
+        /// <summary>Regex matching tags to build.
+        ///
+        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at
+        /// https://github.com/google/re2/wiki/Syntax</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagName")]
         public virtual string TagName { get; set; } 
 

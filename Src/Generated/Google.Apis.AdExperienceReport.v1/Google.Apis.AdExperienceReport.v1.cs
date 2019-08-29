@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-experience-report/'>Ad Experience Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190823 (1695)
+ *      <tr><th>API Rev<td>20190826 (1698)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-experience-report/'>
  *              https://developers.google.com/ad-experience-report/</a>
@@ -351,11 +351,11 @@ namespace Google.Apis.AdExperienceReport.v1
 
 
         /// <summary>Gets a summary of the ad experience rating of a site.</summary>
-        /// <param name="name">The required site name. It should be the site property whose ad experiences may have been
-        /// reviewed, and it should be URL-encoded. For example, sites/https%3A%2F%2Fwww.google.com. The server will return an
-        /// error of BAD_REQUEST if this field is not filled in. Note that if the site property is not yet verified in Search
-        /// Console, the reportUrl field returned by the API will lead to the verification page, prompting the user to go
-        /// through that process before they can gain access to the Ad Experience Report.</param>
+        /// <param name="name">Required. The site property whose ad experiences may have been reviewed, and it should be URL-
+        /// encoded. For example, sites/https%3A%2F%2Fwww.google.com. The server will return an error of BAD_REQUEST if this
+        /// field is not filled in. Note that if the site property is not yet verified in Search Console, the reportUrl field
+        /// returned by the API will lead to the verification page, prompting the user to go through that process before they
+        /// can gain access to the Ad Experience Report.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -373,12 +373,11 @@ namespace Google.Apis.AdExperienceReport.v1
             }
 
 
-            /// <summary>The required site name. It should be the site property whose ad experiences may have been
-            /// reviewed, and it should be URL-encoded. For example, sites/https%3A%2F%2Fwww.google.com. The server will
-            /// return an error of BAD_REQUEST if this field is not filled in. Note that if the site property is not yet
-            /// verified in Search Console, the reportUrl field returned by the API will lead to the verification page,
-            /// prompting the user to go through that process before they can gain access to the Ad Experience
-            /// Report.</summary>
+            /// <summary>Required. The site property whose ad experiences may have been reviewed, and it should be URL-
+            /// encoded. For example, sites/https%3A%2F%2Fwww.google.com. The server will return an error of BAD_REQUEST
+            /// if this field is not filled in. Note that if the site property is not yet verified in Search Console,
+            /// the reportUrl field returned by the API will lead to the verification page, prompting the user to go
+            /// through that process before they can gain access to the Ad Experience Report.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -436,13 +435,13 @@ namespace Google.Apis.AdExperienceReport.v1
         }
 
 
-        /// <summary>Lists sites with Ad Experience Report statuses of "Failing" or "Warning".</summary>
+        /// <summary>Lists sites with failing Ad Experience Report statuses.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists sites with Ad Experience Report statuses of "Failing" or "Warning".</summary>
+        /// <summary>Lists sites with failing Ad Experience Report statuses.</summary>
         public class ListRequest : AdExperienceReportBaseServiceRequest<Google.Apis.AdExperienceReport.v1.Data.ViolatingSitesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -493,7 +492,7 @@ namespace Google.Apis.AdExperienceReport.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("betterAdsStatus")]
         public virtual string BetterAdsStatus { get; set; } 
 
-        /// <summary>The date on which ad filtering begins.</summary>
+        /// <summary>The time at which ad filtering begins.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcementTime")]
         public virtual object EnforcementTime { get; set; } 
 

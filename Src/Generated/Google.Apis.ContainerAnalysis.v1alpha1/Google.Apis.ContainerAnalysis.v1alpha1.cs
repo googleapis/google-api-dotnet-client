@@ -1642,11 +1642,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The name field contains the project Id. For example: "projects/{project_id}
-                /// @Deprecated</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Name { get; set; }
-
                 /// <summary>The filter expression.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1686,6 +1681,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                     UPGRADE,
                 }
 
+                /// <summary>The name field contains the project Id. For example: "projects/{project_id}
+                /// @Deprecated</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Name { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1720,15 +1720,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1759,6 +1750,15 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                         "kind", new Google.Apis.Discovery.Parameter
                         {
                             Name = "kind",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

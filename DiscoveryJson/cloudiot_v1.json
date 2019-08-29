@@ -1,126 +1,5 @@
 {
-  "discoveryVersion": "v1",
-  "version_module": true,
   "schemas": {
-    "Binding": {
-      "description": "Associates `members` with a `role`.",
-      "type": "object",
-      "properties": {
-        "condition": {
-          "$ref": "Expr",
-          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
-        },
-        "members": {
-          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "role": {
-          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
-          "type": "string"
-        }
-      },
-      "id": "Binding"
-    },
-    "Expr": {
-      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
-      "type": "object",
-      "properties": {
-        "expression": {
-          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
-          "type": "string"
-        },
-        "title": {
-          "type": "string",
-          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."
-        },
-        "location": {
-          "type": "string",
-          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."
-        },
-        "description": {
-          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
-          "type": "string"
-        }
-      },
-      "id": "Expr"
-    },
-    "BindDeviceToGatewayResponse": {
-      "type": "object",
-      "properties": {},
-      "id": "BindDeviceToGatewayResponse",
-      "description": "Response for `BindDeviceToGateway`."
-    },
-    "ModifyCloudToDeviceConfigRequest": {
-      "description": "Request for `ModifyCloudToDeviceConfig`.",
-      "type": "object",
-      "properties": {
-        "versionToUpdate": {
-          "description": "The version number to update. If this value is zero, it will not check the\nversion number of the server and will always update the current version;\notherwise, this update will fail if the version number found on the server\ndoes not match this version number. This is used to support multiple\nsimultaneous updates without losing data.",
-          "format": "int64",
-          "type": "string"
-        },
-        "binaryData": {
-          "type": "string",
-          "description": "The configuration data for the device.",
-          "format": "byte"
-        }
-      },
-      "id": "ModifyCloudToDeviceConfigRequest"
-    },
-    "ListDeviceStatesResponse": {
-      "type": "object",
-      "properties": {
-        "deviceStates": {
-          "description": "The last few device states. States are listed in descending order of server\nupdate time, starting from the most recent one.",
-          "type": "array",
-          "items": {
-            "$ref": "DeviceState"
-          }
-        }
-      },
-      "id": "ListDeviceStatesResponse",
-      "description": "Response for `ListDeviceStates`."
-    },
-    "GetPolicyOptions": {
-      "id": "GetPolicyOptions",
-      "description": "Encapsulates settings provided to GetIamPolicy.",
-      "type": "object",
-      "properties": {
-        "requestedPolicyVersion": {
-          "description": "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned.",
-          "format": "int32",
-          "type": "integer"
-        }
-      }
-    },
-    "TestIamPermissionsResponse": {
-      "id": "TestIamPermissionsResponse",
-      "description": "Response message for `TestIamPermissions` method.",
-      "type": "object",
-      "properties": {
-        "permissions": {
-          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "GetIamPolicyRequest": {
-      "description": "Request message for `GetIamPolicy` method.",
-      "type": "object",
-      "properties": {
-        "options": {
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM.",
-          "$ref": "GetPolicyOptions"
-        }
-      },
-      "id": "GetIamPolicyRequest"
-    },
     "Device": {
       "description": "The device resource.",
       "type": "object",
@@ -135,9 +14,9 @@
           "type": "string"
         },
         "lastEventTime": {
-          "type": "string",
           "description": "[Output only] The last time a telemetry event was received. Timestamps are\nperiodically collected and written to storage; they may be stale by a few\nminutes.",
-          "format": "google-datetime"
+          "format": "google-datetime",
+          "type": "string"
         },
         "lastConfigSendTime": {
           "description": "[Output only] The last time a cloud-to-device config version was sent to\nthe device.",
@@ -145,21 +24,25 @@
           "type": "string"
         },
         "lastErrorStatus": {
-          "$ref": "Status",
-          "description": "[Output only] The error message of the most recent error, such as a failure\nto publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of this\nfield. If no errors have occurred, this field has an empty message\nand the status code 0 == OK. Otherwise, this field is expected to have a\nstatus code other than OK."
+          "description": "[Output only] The error message of the most recent error, such as a failure\nto publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of this\nfield. If no errors have occurred, this field has an empty message\nand the status code 0 == OK. Otherwise, this field is expected to have a\nstatus code other than OK.",
+          "$ref": "Status"
         },
         "lastStateTime": {
           "description": "[Output only] The last time a state event was received. Timestamps are\nperiodically collected and written to storage; they may be stale by a few\nminutes.",
           "format": "google-datetime",
           "type": "string"
         },
-        "config": {
-          "$ref": "DeviceConfig",
-          "description": "The most recent device configuration, which is eventually sent from\nCloud IoT Core to the device. If not present on creation, the\nconfiguration will be initialized with an empty payload and version value\nof `1`. To update this field after creation, use the\n`DeviceManager.ModifyCloudToDeviceConfig` method."
-        },
         "state": {
-          "description": "[Output only] The state most recently received from the device. If no state\nhas been reported, this field is not present.",
-          "$ref": "DeviceState"
+          "$ref": "DeviceState",
+          "description": "[Output only] The state most recently received from the device. If no state\nhas been reported, this field is not present."
+        },
+        "config": {
+          "description": "The most recent device configuration, which is eventually sent from\nCloud IoT Core to the device. If not present on creation, the\nconfiguration will be initialized with an empty payload and version value\nof `1`. To update this field after creation, use the\n`DeviceManager.ModifyCloudToDeviceConfig` method.",
+          "$ref": "DeviceConfig"
+        },
+        "name": {
+          "description": "The resource path name. For example,\n`projects/p1/locations/us-central1/registries/registry0/devices/dev0` or\n`projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`.\nWhen `name` is populated as a response from the service, it always ends\nin the device numeric ID.",
+          "type": "string"
         },
         "credentials": {
           "description": "The credentials used to authenticate this device. To allow credential\nrotation without interruption, multiple device credentials can be bound to\nthis device. No more than 3 credentials can be bound to a single device at\na time. When new credentials are added to a device, they are verified\nagainst the registry credentials. For details, see the description of the\n`DeviceRegistry.credentials` field.",
@@ -168,21 +51,10 @@
             "$ref": "DeviceCredential"
           }
         },
-        "name": {
-          "description": "The resource path name. For example,\n`projects/p1/locations/us-central1/registries/registry0/devices/dev0` or\n`projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`.\nWhen `name` is populated as a response from the service, it always ends\nin the device numeric ID.",
-          "type": "string"
-        },
         "lastErrorTime": {
           "description": "[Output only] The time the most recent error occurred, such as a failure to\npublish to Cloud Pub/Sub. This field is the timestamp of\n'last_error_status'.",
           "format": "google-datetime",
           "type": "string"
-        },
-        "metadata": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "The metadata key-value pairs assigned to the device. This metadata is not\ninterpreted or indexed by Cloud IoT Core. It can be used to add contextual\ninformation for the device.\n\nKeys must conform to the regular expression a-zA-Z+ and\nbe less than 128 bytes in length.\n\nValues are free-form strings. Each value must be less than or equal to 32\nKB in size.\n\nThe total size of all keys and values must be less than 256 KB, and the\nmaximum number of key-value pairs is 500."
         },
         "logLevel": {
           "enumDescriptions": [
@@ -201,6 +73,13 @@
           ],
           "description": "**Beta Feature**\n\nThe logging verbosity for device activity. If unspecified,\nDeviceRegistry.log_level will be used.",
           "type": "string"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "The metadata key-value pairs assigned to the device. This metadata is not\ninterpreted or indexed by Cloud IoT Core. It can be used to add contextual\ninformation for the device.\n\nKeys must conform to the regular expression a-zA-Z+ and\nbe less than 128 bytes in length.\n\nValues are free-form strings. Each value must be less than or equal to 32\nKB in size.\n\nThe total size of all keys and values must be less than 256 KB, and the\nmaximum number of key-value pairs is 500.",
+          "type": "object"
         },
         "id": {
           "description": "The user-defined device identifier. The device ID must be unique\nwithin a device registry.",
@@ -237,13 +116,19 @@
       },
       "id": "ListDeviceConfigVersionsResponse"
     },
+    "SendCommandToDeviceResponse": {
+      "description": "Response for `SendCommandToDevice`.",
+      "type": "object",
+      "properties": {},
+      "id": "SendCommandToDeviceResponse"
+    },
     "X509CertificateDetails": {
       "description": "Details of an X.509 certificate. For informational purposes only.",
       "type": "object",
       "properties": {
         "signatureAlgorithm": {
-          "type": "string",
-          "description": "The algorithm used to sign the certificate."
+          "description": "The algorithm used to sign the certificate.",
+          "type": "string"
         },
         "startTime": {
           "description": "The time the certificate becomes valid.",
@@ -251,17 +136,17 @@
           "type": "string"
         },
         "expiryTime": {
+          "type": "string",
           "description": "The time the certificate becomes invalid.",
-          "format": "google-datetime",
-          "type": "string"
+          "format": "google-datetime"
         },
         "subject": {
           "description": "The entity the certificate and public key belong to.",
           "type": "string"
         },
         "issuer": {
-          "description": "The entity that signed the certificate.",
-          "type": "string"
+          "type": "string",
+          "description": "The entity that signed the certificate."
         },
         "publicKeyType": {
           "description": "The type of public key in the certificate.",
@@ -270,45 +155,39 @@
       },
       "id": "X509CertificateDetails"
     },
-    "SendCommandToDeviceResponse": {
-      "description": "Response for `SendCommandToDevice`.",
+    "EventNotificationConfig": {
+      "description": "The configuration for forwarding telemetry events.",
       "type": "object",
-      "properties": {},
-      "id": "SendCommandToDeviceResponse"
+      "properties": {
+        "subfolderMatches": {
+          "description": "If the subfolder name matches this string exactly, this configuration will\nbe used. The string must not include the leading '/' character. If empty,\nall strings are matched. This field is used only for telemetry events;\nsubfolders are not supported for state changes.",
+          "type": "string"
+        },
+        "pubsubTopicName": {
+          "description": "A Cloud Pub/Sub topic name. For example,\n`projects/myProject/topics/deviceEvents`.",
+          "type": "string"
+        }
+      },
+      "id": "EventNotificationConfig"
     },
     "SetIamPolicyRequest": {
       "type": "object",
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them.",
-          "$ref": "Policy"
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
         }
       },
       "id": "SetIamPolicyRequest",
       "description": "Request message for `SetIamPolicy` method."
-    },
-    "EventNotificationConfig": {
-      "id": "EventNotificationConfig",
-      "description": "The configuration for forwarding telemetry events.",
-      "type": "object",
-      "properties": {
-        "pubsubTopicName": {
-          "description": "A Cloud Pub/Sub topic name. For example,\n`projects/myProject/topics/deviceEvents`.",
-          "type": "string"
-        },
-        "subfolderMatches": {
-          "type": "string",
-          "description": "If the subfolder name matches this string exactly, this configuration will\nbe used. The string must not include the leading '/' character. If empty,\nall strings are matched. This field is used only for telemetry events;\nsubfolders are not supported for state changes."
-        }
-      }
     },
     "UnbindDeviceFromGatewayRequest": {
       "description": "Request for `UnbindDeviceFromGateway`.",
       "type": "object",
       "properties": {
         "gatewayId": {
-          "type": "string",
-          "description": "The value of `gateway_id` can be either the device numeric ID or the\nuser-defined device identifier."
+          "description": "The value of `gateway_id` can be either the device numeric ID or the\nuser-defined device identifier.",
+          "type": "string"
         },
         "deviceId": {
           "description": "The device to disassociate from the specified gateway. The value of\n`device_id` can be either the device numeric ID or the user-defined device\nidentifier.",
@@ -318,18 +197,19 @@
       "id": "UnbindDeviceFromGatewayRequest"
     },
     "Empty": {
-      "type": "object",
       "properties": {},
       "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object"
     },
     "UnbindDeviceFromGatewayResponse": {
-      "description": "Response for `UnbindDeviceFromGateway`.",
       "type": "object",
       "properties": {},
-      "id": "UnbindDeviceFromGatewayResponse"
+      "id": "UnbindDeviceFromGatewayResponse",
+      "description": "Response for `UnbindDeviceFromGateway`."
     },
     "PublicKeyCredential": {
+      "description": "A public key format and data.",
       "type": "object",
       "properties": {
         "key": {
@@ -337,6 +217,13 @@
           "type": "string"
         },
         "format": {
+          "enumDescriptions": [
+            "The format has not been specified. This is an invalid default value and\nmust not be used.",
+            "An RSA public key encoded in base64, and wrapped by\n`-----BEGIN PUBLIC KEY-----` and `-----END PUBLIC KEY-----`. This can be\nused to verify `RS256` signatures in JWT tokens ([RFC7518](\nhttps://www.ietf.org/rfc/rfc7518.txt)).",
+            "As RSA_PEM, but wrapped in an X.509v3 certificate ([RFC5280](\nhttps://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and wrapped by\n`-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.",
+            "Public key for the ECDSA algorithm using P-256 and SHA-256, encoded in\nbase64, and wrapped by `-----BEGIN PUBLIC KEY-----` and `-----END\nPUBLIC KEY-----`. This can be used to verify JWT tokens with the `ES256`\nalgorithm ([RFC7518](https://www.ietf.org/rfc/rfc7518.txt)). This curve is\ndefined in [OpenSSL](https://www.openssl.org/) as the `prime256v1` curve.",
+            "As ES256_PEM, but wrapped in an X.509v3 certificate ([RFC5280](\nhttps://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and wrapped by\n`-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`."
+          ],
           "enum": [
             "UNSPECIFIED_PUBLIC_KEY_FORMAT",
             "RSA_PEM",
@@ -345,29 +232,16 @@
             "ES256_X509_PEM"
           ],
           "description": "The format of the key.",
-          "type": "string",
-          "enumDescriptions": [
-            "The format has not been specified. This is an invalid default value and\nmust not be used.",
-            "An RSA public key encoded in base64, and wrapped by\n`-----BEGIN PUBLIC KEY-----` and `-----END PUBLIC KEY-----`. This can be\nused to verify `RS256` signatures in JWT tokens ([RFC7518](\nhttps://www.ietf.org/rfc/rfc7518.txt)).",
-            "As RSA_PEM, but wrapped in an X.509v3 certificate ([RFC5280](\nhttps://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and wrapped by\n`-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.",
-            "Public key for the ECDSA algorithm using P-256 and SHA-256, encoded in\nbase64, and wrapped by `-----BEGIN PUBLIC KEY-----` and `-----END\nPUBLIC KEY-----`. This can be used to verify JWT tokens with the `ES256`\nalgorithm ([RFC7518](https://www.ietf.org/rfc/rfc7518.txt)). This curve is\ndefined in [OpenSSL](https://www.openssl.org/) as the `prime256v1` curve.",
-            "As ES256_PEM, but wrapped in an X.509v3 certificate ([RFC5280](\nhttps://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and wrapped by\n`-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`."
-          ]
+          "type": "string"
         }
       },
-      "id": "PublicKeyCredential",
-      "description": "A public key format and data."
+      "id": "PublicKeyCredential"
     },
     "PublicKeyCertificate": {
       "description": "A public key certificate format and data.",
       "type": "object",
       "properties": {
-        "x509Details": {
-          "description": "[Output only] The certificate details. Used only for X.509 certificates.",
-          "$ref": "X509CertificateDetails"
-        },
         "format": {
-          "description": "The certificate format.",
           "type": "string",
           "enumDescriptions": [
             "The format has not been specified. This is an invalid default value and\nmust not be used.",
@@ -376,34 +250,38 @@
           "enum": [
             "UNSPECIFIED_PUBLIC_KEY_CERTIFICATE_FORMAT",
             "X509_CERTIFICATE_PEM"
-          ]
+          ],
+          "description": "The certificate format."
         },
         "certificate": {
-          "description": "The certificate data.",
-          "type": "string"
+          "type": "string",
+          "description": "The certificate data."
+        },
+        "x509Details": {
+          "$ref": "X509CertificateDetails",
+          "description": "[Output only] The certificate details. Used only for X.509 certificates."
         }
       },
       "id": "PublicKeyCertificate"
     },
     "DeviceState": {
+      "description": "The device state, as reported by the device.",
       "type": "object",
       "properties": {
-        "binaryData": {
-          "description": "The device state data.",
-          "format": "byte",
-          "type": "string"
-        },
         "updateTime": {
           "description": "[Output only] The time at which this state version was updated in Cloud\nIoT Core.",
           "format": "google-datetime",
           "type": "string"
+        },
+        "binaryData": {
+          "description": "The device state data.",
+          "format": "byte",
+          "type": "string"
         }
       },
-      "id": "DeviceState",
-      "description": "The device state, as reported by the device."
+      "id": "DeviceState"
     },
     "TestIamPermissionsRequest": {
-      "id": "TestIamPermissionsRequest",
       "description": "Request message for `TestIamPermissions` method.",
       "type": "object",
       "properties": {
@@ -414,10 +292,10 @@
             "type": "string"
           }
         }
-      }
+      },
+      "id": "TestIamPermissionsRequest"
     },
     "StateNotificationConfig": {
-      "description": "The configuration for notification of new states received from the device.",
       "type": "object",
       "properties": {
         "pubsubTopicName": {
@@ -425,66 +303,91 @@
           "type": "string"
         }
       },
-      "id": "StateNotificationConfig"
+      "id": "StateNotificationConfig",
+      "description": "The configuration for notification of new states received from the device."
     },
     "RegistryCredential": {
-      "id": "RegistryCredential",
       "description": "A server-stored registry credential used to validate device credentials.",
       "type": "object",
       "properties": {
         "publicKeyCertificate": {
-          "$ref": "PublicKeyCertificate",
-          "description": "A public key certificate used to verify the device credentials."
+          "description": "A public key certificate used to verify the device credentials.",
+          "$ref": "PublicKeyCertificate"
         }
-      }
+      },
+      "id": "RegistryCredential"
     },
     "Policy": {
+      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-other-app@appspot.gserviceaccount.com\n      role: roles/owner\n    - members:\n      - user:sean@example.com\n      role: roles/viewer\n\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
       "type": "object",
       "properties": {
+        "etag": {
+          "type": "string",
+          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten.",
+          "format": "byte"
+        },
+        "version": {
+          "type": "integer",
+          "description": "Deprecated.",
+          "format": "int32"
+        },
         "bindings": {
           "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
           "type": "array",
           "items": {
             "$ref": "Binding"
           }
-        },
-        "etag": {
-          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten.",
-          "format": "byte",
-          "type": "string"
-        },
-        "version": {
-          "description": "Deprecated.",
-          "format": "int32",
-          "type": "integer"
         }
       },
-      "id": "Policy",
-      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-other-app@appspot.gserviceaccount.com\n      role: roles/owner\n    - members:\n      - user:sean@example.com\n      role: roles/viewer\n\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs)."
+      "id": "Policy"
     },
     "ListDeviceRegistriesResponse": {
+      "description": "Response for `ListDeviceRegistries`.",
       "type": "object",
       "properties": {
+        "nextPageToken": {
+          "description": "If not empty, indicates that there may be more registries that match the\nrequest; this value should be passed in a new\n`ListDeviceRegistriesRequest`.",
+          "type": "string"
+        },
         "deviceRegistries": {
           "description": "The registries that matched the query.",
           "type": "array",
           "items": {
             "$ref": "DeviceRegistry"
           }
-        },
-        "nextPageToken": {
-          "description": "If not empty, indicates that there may be more registries that match the\nrequest; this value should be passed in a new\n`ListDeviceRegistriesRequest`.",
-          "type": "string"
         }
       },
-      "id": "ListDeviceRegistriesResponse",
-      "description": "Response for `ListDeviceRegistries`."
+      "id": "ListDeviceRegistriesResponse"
     },
     "GatewayConfig": {
-      "description": "Gateway-related configuration and state.",
-      "type": "object",
       "properties": {
+        "lastAccessedGatewayId": {
+          "description": "[Output only] The ID of the gateway the device accessed most recently.",
+          "type": "string"
+        },
+        "gatewayAuthMethod": {
+          "enum": [
+            "GATEWAY_AUTH_METHOD_UNSPECIFIED",
+            "ASSOCIATION_ONLY",
+            "DEVICE_AUTH_TOKEN_ONLY",
+            "ASSOCIATION_AND_DEVICE_AUTH_TOKEN"
+          ],
+          "description": "Indicates how to authorize and/or authenticate devices to access the\ngateway.",
+          "type": "string",
+          "enumDescriptions": [
+            "No authentication/authorization method specified. No devices are allowed to\naccess the gateway.",
+            "The device is authenticated through the gateway association only. Device\ncredentials are ignored even if provided.",
+            "The device is authenticated through its own credentials. Gateway\nassociation is not checked.",
+            "The device is authenticated through both device credentials and gateway\nassociation. The device must be bound to the gateway and must provide its\nown credentials."
+          ]
+        },
+        "lastAccessedGatewayTime": {
+          "description": "[Output only] The most recent time at which the device accessed the gateway\nspecified in `last_accessed_gateway`.",
+          "format": "google-datetime",
+          "type": "string"
+        },
         "gatewayType": {
+          "description": "Indicates whether the device is a gateway.",
           "type": "string",
           "enumDescriptions": [
             "If unspecified, the device is considered a non-gateway device.",
@@ -495,53 +398,30 @@
             "GATEWAY_TYPE_UNSPECIFIED",
             "GATEWAY",
             "NON_GATEWAY"
-          ],
-          "description": "Indicates whether the device is a gateway."
-        },
-        "lastAccessedGatewayId": {
-          "type": "string",
-          "description": "[Output only] The ID of the gateway the device accessed most recently."
-        },
-        "gatewayAuthMethod": {
-          "description": "Indicates how to authorize and/or authenticate devices to access the\ngateway.",
-          "type": "string",
-          "enumDescriptions": [
-            "No authentication/authorization method specified. No devices are allowed to\naccess the gateway.",
-            "The device is authenticated through the gateway association only. Device\ncredentials are ignored even if provided.",
-            "The device is authenticated through its own credentials. Gateway\nassociation is not checked.",
-            "The device is authenticated through both device credentials and gateway\nassociation. The device must be bound to the gateway and must provide its\nown credentials."
-          ],
-          "enum": [
-            "GATEWAY_AUTH_METHOD_UNSPECIFIED",
-            "ASSOCIATION_ONLY",
-            "DEVICE_AUTH_TOKEN_ONLY",
-            "ASSOCIATION_AND_DEVICE_AUTH_TOKEN"
           ]
-        },
-        "lastAccessedGatewayTime": {
-          "type": "string",
-          "description": "[Output only] The most recent time at which the device accessed the gateway\nspecified in `last_accessed_gateway`.",
-          "format": "google-datetime"
         }
       },
-      "id": "GatewayConfig"
+      "id": "GatewayConfig",
+      "description": "Gateway-related configuration and state.",
+      "type": "object"
     },
     "BindDeviceToGatewayRequest": {
-      "id": "BindDeviceToGatewayRequest",
-      "description": "Request for `BindDeviceToGateway`.",
-      "type": "object",
       "properties": {
         "gatewayId": {
           "description": "The value of `gateway_id` can be either the device numeric ID or the\nuser-defined device identifier.",
           "type": "string"
         },
         "deviceId": {
-          "type": "string",
-          "description": "The device to associate with the specified gateway. The value of\n`device_id` can be either the device numeric ID or the user-defined device\nidentifier."
+          "description": "The device to associate with the specified gateway. The value of\n`device_id` can be either the device numeric ID or the user-defined device\nidentifier.",
+          "type": "string"
         }
-      }
+      },
+      "id": "BindDeviceToGatewayRequest",
+      "description": "Request for `BindDeviceToGateway`.",
+      "type": "object"
     },
     "DeviceRegistry": {
+      "description": "A container for a group of devices.",
       "type": "object",
       "properties": {
         "credentials": {
@@ -556,13 +436,15 @@
           "type": "string"
         },
         "eventNotificationConfigs": {
+          "description": "The configuration for notification of telemetry events received from the\ndevice. All telemetry events that were successfully published by the\ndevice and acknowledged by Cloud IoT Core are guaranteed to be\ndelivered to Cloud Pub/Sub. If multiple configurations match a message,\nonly the first matching configuration is used. If you try to publish a\ndevice telemetry event using MQTT without specifying a Cloud Pub/Sub topic\nfor the device's registry, the connection closes automatically. If you try\nto do so using an HTTP connection, an error is returned. Up to 10\nconfigurations may be provided.",
           "type": "array",
           "items": {
             "$ref": "EventNotificationConfig"
-          },
-          "description": "The configuration for notification of telemetry events received from the\ndevice. All telemetry events that were successfully published by the\ndevice and acknowledged by Cloud IoT Core are guaranteed to be\ndelivered to Cloud Pub/Sub. If multiple configurations match a message,\nonly the first matching configuration is used. If you try to publish a\ndevice telemetry event using MQTT without specifying a Cloud Pub/Sub topic\nfor the device's registry, the connection closes automatically. If you try\nto do so using an HTTP connection, an error is returned. Up to 10\nconfigurations may be provided."
+          }
         },
         "logLevel": {
+          "description": "**Beta Feature**\n\nThe default logging verbosity for activity from devices in this registry.\nThe verbosity level can be overridden by Device.log_level.",
+          "type": "string",
           "enumDescriptions": [
             "No logging specified. If not specified, logging will be disabled.",
             "Disables logging.",
@@ -576,13 +458,11 @@
             "ERROR",
             "INFO",
             "DEBUG"
-          ],
-          "description": "**Beta Feature**\n\nThe default logging verbosity for activity from devices in this registry.\nThe verbosity level can be overridden by Device.log_level.",
-          "type": "string"
+          ]
         },
         "httpConfig": {
-          "description": "The DeviceService (HTTP) configuration for this device registry.",
-          "$ref": "HttpConfig"
+          "$ref": "HttpConfig",
+          "description": "The DeviceService (HTTP) configuration for this device registry."
         },
         "id": {
           "description": "The identifier of this device registry. For example, `myRegistry`.",
@@ -597,47 +477,32 @@
           "description": "The configuration for notification of new states received from the device.\nState updates are guaranteed to be stored in the state history, but\nnotifications to Cloud Pub/Sub are not guaranteed. For example, if\npermissions are misconfigured or the specified topic doesn't exist, no\nnotification will be published but the state will still be stored in Cloud\nIoT Core."
         }
       },
-      "id": "DeviceRegistry",
-      "description": "A container for a group of devices."
+      "id": "DeviceRegistry"
     },
     "ListDevicesResponse": {
+      "id": "ListDevicesResponse",
       "description": "Response for `ListDevices`.",
       "type": "object",
       "properties": {
-        "nextPageToken": {
-          "type": "string",
-          "description": "If not empty, indicates that there may be more devices that match the\nrequest; this value should be passed in a new `ListDevicesRequest`."
-        },
         "devices": {
           "description": "The devices that match the request.",
           "type": "array",
           "items": {
             "$ref": "Device"
           }
-        }
-      },
-      "id": "ListDevicesResponse"
-    },
-    "DeviceCredential": {
-      "id": "DeviceCredential",
-      "description": "A server-stored device credential used for authentication.",
-      "type": "object",
-      "properties": {
-        "expirationTime": {
-          "type": "string",
-          "description": "[Optional] The time at which this credential becomes invalid. This\ncredential will be ignored for new client authentication requests after\nthis timestamp; however, it will not be automatically deleted.",
-          "format": "google-datetime"
         },
-        "publicKey": {
-          "$ref": "PublicKeyCredential",
-          "description": "A public key used to verify the signature of JSON Web Tokens (JWTs).\nWhen adding a new device credential, either via device creation or via\nmodifications, this public key credential may be required to be signed by\none of the registry level certificates. More specifically, if the\nregistry contains at least one certificate, any new device credential\nmust be signed by one of the registry certificates. As a result,\nwhen the registry contains certificates, only X.509 certificates are\naccepted as device credentials. However, if the registry does\nnot contain a certificate, self-signed certificates and public keys will\nbe accepted. New device credentials must be different from every\nregistry-level certificate."
+        "nextPageToken": {
+          "description": "If not empty, indicates that there may be more devices that match the\nrequest; this value should be passed in a new `ListDevicesRequest`.",
+          "type": "string"
         }
       }
     },
     "HttpConfig": {
+      "description": "The configuration of the HTTP bridge for a device registry.",
       "type": "object",
       "properties": {
         "httpEnabledState": {
+          "description": "If enabled, allows devices to use DeviceService via the HTTP protocol.\nOtherwise, any requests to DeviceService will fail for this registry.",
           "type": "string",
           "enumDescriptions": [
             "No HTTP state specified. If not specified, DeviceService will be\nenabled by default.",
@@ -648,15 +513,28 @@
             "HTTP_STATE_UNSPECIFIED",
             "HTTP_ENABLED",
             "HTTP_DISABLED"
-          ],
-          "description": "If enabled, allows devices to use DeviceService via the HTTP protocol.\nOtherwise, any requests to DeviceService will fail for this registry."
+          ]
         }
       },
-      "id": "HttpConfig",
-      "description": "The configuration of the HTTP bridge for a device registry."
+      "id": "HttpConfig"
+    },
+    "DeviceCredential": {
+      "description": "A server-stored device credential used for authentication.",
+      "type": "object",
+      "properties": {
+        "publicKey": {
+          "$ref": "PublicKeyCredential",
+          "description": "A public key used to verify the signature of JSON Web Tokens (JWTs).\nWhen adding a new device credential, either via device creation or via\nmodifications, this public key credential may be required to be signed by\none of the registry level certificates. More specifically, if the\nregistry contains at least one certificate, any new device credential\nmust be signed by one of the registry certificates. As a result,\nwhen the registry contains certificates, only X.509 certificates are\naccepted as device credentials. However, if the registry does\nnot contain a certificate, self-signed certificates and public keys will\nbe accepted. New device credentials must be different from every\nregistry-level certificate."
+        },
+        "expirationTime": {
+          "description": "[Optional] The time at which this credential becomes invalid. This\ncredential will be ignored for new client authentication requests after\nthis timestamp; however, it will not be automatically deleted.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "id": "DeviceCredential"
     },
     "SendCommandToDeviceRequest": {
-      "description": "Request for `SendCommandToDevice`.",
       "type": "object",
       "properties": {
         "subfolder": {
@@ -669,7 +547,8 @@
           "type": "string"
         }
       },
-      "id": "SendCommandToDeviceRequest"
+      "id": "SendCommandToDeviceRequest",
+      "description": "Request for `SendCommandToDevice`."
     },
     "DeviceConfig": {
       "type": "object",
@@ -680,9 +559,9 @@
           "type": "string"
         },
         "cloudUpdateTime": {
+          "type": "string",
           "description": "[Output only] The time at which this configuration version was updated in\nCloud IoT Core. This timestamp is set by the server.",
-          "format": "google-datetime",
-          "type": "string"
+          "format": "google-datetime"
         },
         "deviceAckTime": {
           "description": "[Output only] The time at which Cloud IoT Core received the\nacknowledgment from the device, indicating that the device has received\nthis configuration version. If this field is not present, the device has\nnot yet acknowledged that it received this version. Note that when\nthe config was sent to the device, many config versions may have been\navailable in Cloud IoT Core while the device was disconnected, and on\nconnection, only the latest version is sent to the device. Some\nversions may never be sent to the device, and therefore are never\nacknowledged. This timestamp is set by Cloud IoT Core.",
@@ -699,7 +578,6 @@
       "description": "The device configuration. Eventually delivered to devices."
     },
     "MqttConfig": {
-      "description": "The configuration of MQTT for a device registry.",
       "type": "object",
       "properties": {
         "mqttEnabledState": {
@@ -717,10 +595,10 @@
           ]
         }
       },
-      "id": "MqttConfig"
+      "id": "MqttConfig",
+      "description": "The configuration of MQTT for a device registry."
     },
     "Status": {
-      "id": "Status",
       "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
       "type": "object",
       "properties": {
@@ -728,11 +606,11 @@
           "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
           "type": "array",
           "items": {
-            "type": "object",
             "additionalProperties": {
-              "type": "any",
-              "description": "Properties of the object. Contains field @type with type URL."
-            }
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
+            },
+            "type": "object"
           }
         },
         "code": {
@@ -741,10 +619,130 @@
           "type": "integer"
         },
         "message": {
-          "type": "string",
-          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."
+          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+          "type": "string"
         }
-      }
+      },
+      "id": "Status"
+    },
+    "Binding": {
+      "type": "object",
+      "properties": {
+        "members": {
+          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "role": {
+          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+          "type": "string"
+        },
+        "condition": {
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
+        }
+      },
+      "id": "Binding",
+      "description": "Associates `members` with a `role`."
+    },
+    "Expr": {
+      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
+      "type": "object",
+      "properties": {
+        "description": {
+          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
+          "type": "string"
+        },
+        "expression": {
+          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
+          "type": "string"
+        },
+        "title": {
+          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
+          "type": "string"
+        },
+        "location": {
+          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
+          "type": "string"
+        }
+      },
+      "id": "Expr"
+    },
+    "BindDeviceToGatewayResponse": {
+      "description": "Response for `BindDeviceToGateway`.",
+      "type": "object",
+      "properties": {},
+      "id": "BindDeviceToGatewayResponse"
+    },
+    "ModifyCloudToDeviceConfigRequest": {
+      "description": "Request for `ModifyCloudToDeviceConfig`.",
+      "type": "object",
+      "properties": {
+        "binaryData": {
+          "description": "The configuration data for the device.",
+          "format": "byte",
+          "type": "string"
+        },
+        "versionToUpdate": {
+          "description": "The version number to update. If this value is zero, it will not check the\nversion number of the server and will always update the current version;\notherwise, this update will fail if the version number found on the server\ndoes not match this version number. This is used to support multiple\nsimultaneous updates without losing data.",
+          "format": "int64",
+          "type": "string"
+        }
+      },
+      "id": "ModifyCloudToDeviceConfigRequest"
+    },
+    "ListDeviceStatesResponse": {
+      "description": "Response for `ListDeviceStates`.",
+      "type": "object",
+      "properties": {
+        "deviceStates": {
+          "type": "array",
+          "items": {
+            "$ref": "DeviceState"
+          },
+          "description": "The last few device states. States are listed in descending order of server\nupdate time, starting from the most recent one."
+        }
+      },
+      "id": "ListDeviceStatesResponse"
+    },
+    "GetPolicyOptions": {
+      "type": "object",
+      "properties": {
+        "requestedPolicyVersion": {
+          "type": "integer",
+          "description": "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned.",
+          "format": "int32"
+        }
+      },
+      "id": "GetPolicyOptions",
+      "description": "Encapsulates settings provided to GetIamPolicy."
+    },
+    "GetIamPolicyRequest": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM.",
+          "$ref": "GetPolicyOptions"
+        }
+      },
+      "id": "GetIamPolicyRequest",
+      "description": "Request message for `GetIamPolicy` method."
+    },
+    "TestIamPermissionsResponse": {
+      "properties": {
+        "permissions": {
+          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "TestIamPermissionsResponse",
+      "description": "Response message for `TestIamPermissions` method.",
+      "type": "object"
     }
   },
   "protocol": "rest",
@@ -778,133 +776,558 @@
         "locations": {
           "resources": {
             "registries": {
-              "methods": {
-                "testIamPermissions": {
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}:testIamPermissions",
-                  "path": "v1/{+resource}:testIamPermissions",
-                  "id": "cloudiot.projects.locations.registries.testIamPermissions",
-                  "request": {
-                    "$ref": "TestIamPermissionsRequest"
+              "resources": {
+                "groups": {
+                  "methods": {
+                    "testIamPermissions": {
+                      "request": {
+                        "$ref": "TestIamPermissionsRequest"
+                      },
+                      "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.",
+                      "response": {
+                        "$ref": "TestIamPermissionsResponse"
+                      },
+                      "parameterOrder": [
+                        "resource"
+                      ],
+                      "httpMethod": "POST",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloudiot"
+                      ],
+                      "parameters": {
+                        "resource": {
+                          "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
+                          "location": "path"
+                        }
+                      },
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/groups/{groupsId}:testIamPermissions",
+                      "path": "v1/{+resource}:testIamPermissions",
+                      "id": "cloudiot.projects.locations.registries.groups.testIamPermissions"
+                    },
+                    "getIamPolicy": {
+                      "response": {
+                        "$ref": "Policy"
+                      },
+                      "parameterOrder": [
+                        "resource"
+                      ],
+                      "httpMethod": "POST",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloudiot"
+                      ],
+                      "parameters": {
+                        "resource": {
+                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
+                          "location": "path",
+                          "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/groups/{groupsId}:getIamPolicy",
+                      "path": "v1/{+resource}:getIamPolicy",
+                      "id": "cloudiot.projects.locations.registries.groups.getIamPolicy",
+                      "request": {
+                        "$ref": "GetIamPolicyRequest"
+                      },
+                      "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."
+                    },
+                    "setIamPolicy": {
+                      "response": {
+                        "$ref": "Policy"
+                      },
+                      "parameterOrder": [
+                        "resource"
+                      ],
+                      "httpMethod": "POST",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloudiot"
+                      ],
+                      "parameters": {
+                        "resource": {
+                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
+                          "location": "path",
+                          "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/groups/{groupsId}:setIamPolicy",
+                      "path": "v1/{+resource}:setIamPolicy",
+                      "id": "cloudiot.projects.locations.registries.groups.setIamPolicy",
+                      "request": {
+                        "$ref": "SetIamPolicyRequest"
+                      },
+                      "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy."
+                    }
                   },
-                  "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.",
-                  "response": {
-                    "$ref": "TestIamPermissionsResponse"
-                  },
-                  "parameterOrder": [
-                    "resource"
-                  ],
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloudiot"
-                  ],
-                  "parameters": {
-                    "resource": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
-                      "location": "path",
-                      "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
-                      "required": true,
-                      "type": "string"
+                  "resources": {
+                    "devices": {
+                      "methods": {
+                        "list": {
+                          "path": "v1/{+parent}/devices",
+                          "id": "cloudiot.projects.locations.registries.groups.devices.list",
+                          "description": "List devices in a device registry.",
+                          "response": {
+                            "$ref": "ListDevicesResponse"
+                          },
+                          "parameterOrder": [
+                            "parent"
+                          ],
+                          "httpMethod": "GET",
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform",
+                            "https://www.googleapis.com/auth/cloudiot"
+                          ],
+                          "parameters": {
+                            "pageToken": {
+                              "description": "The value returned by the last `ListDevicesResponse`; indicates\nthat this is a continuation of a prior `ListDevices` call and\nthe system should return the next page of data.",
+                              "type": "string",
+                              "location": "query"
+                            },
+                            "fieldMask": {
+                              "location": "query",
+                              "description": "The fields of the `Device` resource to be returned in the response. The\nfields `id` and `num_id` are always returned, along with any\nother fields specified.",
+                              "format": "google-fieldmask",
+                              "type": "string"
+                            },
+                            "pageSize": {
+                              "type": "integer",
+                              "location": "query",
+                              "description": "The maximum number of devices to return in the response. If this value\nis zero, the service will select a default size. A call may return fewer\nobjects than requested. A non-empty `next_page_token` in the response\nindicates that more data is available.",
+                              "format": "int32"
+                            },
+                            "parent": {
+                              "description": "The device registry path. Required. For example,\n`projects/my-project/locations/us-central1/registries/my-registry`.",
+                              "required": true,
+                              "type": "string",
+                              "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
+                              "location": "path"
+                            },
+                            "deviceIds": {
+                              "repeated": true,
+                              "location": "query",
+                              "description": "A list of device string IDs. For example, `['device0', 'device12']`.\nIf empty, this field is ignored. Maximum IDs: 10,000",
+                              "type": "string"
+                            },
+                            "deviceNumIds": {
+                              "location": "query",
+                              "description": "A list of device numeric IDs. If empty, this field is ignored. Maximum\nIDs: 10,000.",
+                              "format": "uint64",
+                              "type": "string",
+                              "repeated": true
+                            },
+                            "gatewayListOptions.associationsDeviceId": {
+                              "location": "query",
+                              "description": "If set, returns only the gateways with which the specified device is\nassociated. The device ID can be numeric (`num_id`) or the user-defined\nstring (`id`). For example, if `456` is specified, returns only the\ngateways to which the device with `num_id` 456 is bound.",
+                              "type": "string"
+                            },
+                            "gatewayListOptions.gatewayType": {
+                              "enum": [
+                                "GATEWAY_TYPE_UNSPECIFIED",
+                                "GATEWAY",
+                                "NON_GATEWAY"
+                              ],
+                              "description": "If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY`\nis specified, only non-gateway devices are returned. If\n`GATEWAY_TYPE_UNSPECIFIED` is specified, all devices are returned.",
+                              "type": "string",
+                              "location": "query"
+                            },
+                            "gatewayListOptions.associationsGatewayId": {
+                              "location": "query",
+                              "description": "If set, only devices associated with the specified gateway are returned.\nThe gateway ID can be numeric (`num_id`) or the user-defined string\n(`id`). For example, if `123` is specified, only devices bound to the\ngateway with `num_id` 123 are returned.",
+                              "type": "string"
+                            }
+                          },
+                          "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/groups/{groupsId}/devices"
+                        }
+                      }
                     }
                   }
                 },
-                "delete": {
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "DELETE",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloudiot"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "The name of the device registry. For example,\n`projects/example-project/locations/us-central1/registries/my-registry`.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
-                      "location": "path"
+                "devices": {
+                  "methods": {
+                    "sendCommandToDevice": {
+                      "description": "Sends a command to the specified device. In order for a device to be able\nto receive commands, it must:\n1) be connected to Cloud IoT Core using the MQTT protocol, and\n2) be subscribed to the group of MQTT topics specified by\n   /devices/{device-id}/commands/#. This subscription will receive commands\n   at the top-level topic /devices/{device-id}/commands as well as commands\n   for subfolders, like /devices/{device-id}/commands/subfolder.\n   Note that subscribing to specific subfolders is not supported.\nIf the command could not be delivered to the device, this method will\nreturn an error; in particular, if the device is not subscribed, this\nmethod will return FAILED_PRECONDITION. Otherwise, this method will\nreturn OK. If the subscription is QoS 1, at least once delivery will be\nguaranteed; for QoS 0, no acknowledgment will be expected from the device.",
+                      "request": {
+                        "$ref": "SendCommandToDeviceRequest"
+                      },
+                      "response": {
+                        "$ref": "SendCommandToDeviceResponse"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "POST",
+                      "parameters": {
+                        "name": {
+                          "description": "The name of the device. For example,\n`projects/p0/locations/us-central1/registries/registry0/devices/device0` or\n`projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
+                          "location": "path"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloudiot"
+                      ],
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}:sendCommandToDevice",
+                      "path": "v1/{+name}:sendCommandToDevice",
+                      "id": "cloudiot.projects.locations.registries.devices.sendCommandToDevice"
+                    },
+                    "patch": {
+                      "response": {
+                        "$ref": "Device"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "PATCH",
+                      "parameters": {
+                        "name": {
+                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
+                          "location": "path",
+                          "description": "The resource path name. For example,\n`projects/p1/locations/us-central1/registries/registry0/devices/dev0` or\n`projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`.\nWhen `name` is populated as a response from the service, it always ends\nin the device numeric ID.",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "updateMask": {
+                          "location": "query",
+                          "description": "Only updates the `device` fields indicated by this mask.\nThe field mask must not be empty, and it must not contain fields that\nare immutable or only set by the server.\nMutable top-level fields: `credentials`, `blocked`, and `metadata`",
+                          "format": "google-fieldmask",
+                          "type": "string"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloudiot"
+                      ],
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}",
+                      "path": "v1/{+name}",
+                      "id": "cloudiot.projects.locations.registries.devices.patch",
+                      "description": "Updates a device.",
+                      "request": {
+                        "$ref": "Device"
+                      }
+                    },
+                    "get": {
+                      "response": {
+                        "$ref": "Device"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "GET",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloudiot"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "location": "path",
+                          "description": "The name of the device. For example,\n`projects/p0/locations/us-central1/registries/registry0/devices/device0` or\n`projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$"
+                        },
+                        "fieldMask": {
+                          "location": "query",
+                          "description": "The fields of the `Device` resource to be returned in the response. If the\nfield mask is unset or empty, all fields are returned.",
+                          "format": "google-fieldmask",
+                          "type": "string"
+                        }
+                      },
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}",
+                      "path": "v1/{+name}",
+                      "id": "cloudiot.projects.locations.registries.devices.get",
+                      "description": "Gets details about a device."
+                    },
+                    "delete": {
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}",
+                      "path": "v1/{+name}",
+                      "id": "cloudiot.projects.locations.registries.devices.delete",
+                      "description": "Deletes a device.",
+                      "response": {
+                        "$ref": "Empty"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "DELETE",
+                      "parameters": {
+                        "name": {
+                          "description": "The name of the device. For example,\n`projects/p0/locations/us-central1/registries/registry0/devices/device0` or\n`projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
+                          "location": "path"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloudiot"
+                      ]
+                    },
+                    "list": {
+                      "description": "List devices in a device registry.",
+                      "httpMethod": "GET",
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "response": {
+                        "$ref": "ListDevicesResponse"
+                      },
+                      "parameters": {
+                        "gatewayListOptions.associationsDeviceId": {
+                          "location": "query",
+                          "description": "If set, returns only the gateways with which the specified device is\nassociated. The device ID can be numeric (`num_id`) or the user-defined\nstring (`id`). For example, if `456` is specified, returns only the\ngateways to which the device with `num_id` 456 is bound.",
+                          "type": "string"
+                        },
+                        "deviceNumIds": {
+                          "description": "A list of device numeric IDs. If empty, this field is ignored. Maximum\nIDs: 10,000.",
+                          "format": "uint64",
+                          "type": "string",
+                          "repeated": true,
+                          "location": "query"
+                        },
+                        "gatewayListOptions.gatewayType": {
+                          "enum": [
+                            "GATEWAY_TYPE_UNSPECIFIED",
+                            "GATEWAY",
+                            "NON_GATEWAY"
+                          ],
+                          "description": "If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY`\nis specified, only non-gateway devices are returned. If\n`GATEWAY_TYPE_UNSPECIFIED` is specified, all devices are returned.",
+                          "type": "string",
+                          "location": "query"
+                        },
+                        "gatewayListOptions.associationsGatewayId": {
+                          "location": "query",
+                          "description": "If set, only devices associated with the specified gateway are returned.\nThe gateway ID can be numeric (`num_id`) or the user-defined string\n(`id`). For example, if `123` is specified, only devices bound to the\ngateway with `num_id` 123 are returned.",
+                          "type": "string"
+                        },
+                        "fieldMask": {
+                          "location": "query",
+                          "description": "The fields of the `Device` resource to be returned in the response. The\nfields `id` and `num_id` are always returned, along with any\nother fields specified.",
+                          "format": "google-fieldmask",
+                          "type": "string"
+                        },
+                        "pageToken": {
+                          "location": "query",
+                          "description": "The value returned by the last `ListDevicesResponse`; indicates\nthat this is a continuation of a prior `ListDevices` call and\nthe system should return the next page of data.",
+                          "type": "string"
+                        },
+                        "pageSize": {
+                          "description": "The maximum number of devices to return in the response. If this value\nis zero, the service will select a default size. A call may return fewer\nobjects than requested. A non-empty `next_page_token` in the response\nindicates that more data is available.",
+                          "format": "int32",
+                          "type": "integer",
+                          "location": "query"
+                        },
+                        "parent": {
+                          "location": "path",
+                          "description": "The device registry path. Required. For example,\n`projects/my-project/locations/us-central1/registries/my-registry`.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+$"
+                        },
+                        "deviceIds": {
+                          "location": "query",
+                          "description": "A list of device string IDs. For example, `['device0', 'device12']`.\nIf empty, this field is ignored. Maximum IDs: 10,000",
+                          "type": "string",
+                          "repeated": true
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloudiot"
+                      ],
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices",
+                      "id": "cloudiot.projects.locations.registries.devices.list",
+                      "path": "v1/{+parent}/devices"
+                    },
+                    "create": {
+                      "httpMethod": "POST",
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "response": {
+                        "$ref": "Device"
+                      },
+                      "parameters": {
+                        "parent": {
+                          "description": "The name of the device registry where this device should be created.\nFor example,\n`projects/example-project/locations/us-central1/registries/my-registry`.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
+                          "location": "path"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloudiot"
+                      ],
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices",
+                      "id": "cloudiot.projects.locations.registries.devices.create",
+                      "path": "v1/{+parent}/devices",
+                      "description": "Creates a device in a device registry.",
+                      "request": {
+                        "$ref": "Device"
+                      }
+                    },
+                    "modifyCloudToDeviceConfig": {
+                      "parameters": {
+                        "name": {
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
+                          "location": "path",
+                          "description": "The name of the device. For example,\n`projects/p0/locations/us-central1/registries/registry0/devices/device0` or\n`projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`."
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloudiot"
+                      ],
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}:modifyCloudToDeviceConfig",
+                      "id": "cloudiot.projects.locations.registries.devices.modifyCloudToDeviceConfig",
+                      "path": "v1/{+name}:modifyCloudToDeviceConfig",
+                      "description": "Modifies the configuration for the device, which is eventually sent from\nthe Cloud IoT Core servers. Returns the modified configuration version and\nits metadata.",
+                      "request": {
+                        "$ref": "ModifyCloudToDeviceConfigRequest"
+                      },
+                      "httpMethod": "POST",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "response": {
+                        "$ref": "DeviceConfig"
+                      }
                     }
                   },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}",
-                  "path": "v1/{+name}",
-                  "id": "cloudiot.projects.locations.registries.delete",
-                  "description": "Deletes a device registry configuration."
-                },
-                "unbindDeviceFromGateway": {
-                  "path": "v1/{+parent}:unbindDeviceFromGateway",
-                  "id": "cloudiot.projects.locations.registries.unbindDeviceFromGateway",
-                  "description": "Deletes the association between the device and the gateway.",
-                  "request": {
-                    "$ref": "UnbindDeviceFromGatewayRequest"
-                  },
-                  "response": {
-                    "$ref": "UnbindDeviceFromGatewayResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "POST",
-                  "parameters": {
-                    "parent": {
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
-                      "location": "path",
-                      "description": "The name of the registry. For example,\n`projects/example-project/locations/us-central1/registries/my-registry`."
+                  "resources": {
+                    "configVersions": {
+                      "methods": {
+                        "list": {
+                          "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}/configVersions",
+                          "path": "v1/{+name}/configVersions",
+                          "id": "cloudiot.projects.locations.registries.devices.configVersions.list",
+                          "description": "Lists the last few versions of the device configuration in descending\norder (i.e.: newest first).",
+                          "response": {
+                            "$ref": "ListDeviceConfigVersionsResponse"
+                          },
+                          "parameterOrder": [
+                            "name"
+                          ],
+                          "httpMethod": "GET",
+                          "parameters": {
+                            "name": {
+                              "description": "The name of the device. For example,\n`projects/p0/locations/us-central1/registries/registry0/devices/device0` or\n`projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.",
+                              "required": true,
+                              "type": "string",
+                              "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
+                              "location": "path"
+                            },
+                            "numVersions": {
+                              "description": "The number of versions to list. Versions are listed in decreasing order of\nthe version number. The maximum number of versions retained is 10. If this\nvalue is zero, it will return all the versions available.",
+                              "format": "int32",
+                              "type": "integer",
+                              "location": "query"
+                            }
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform",
+                            "https://www.googleapis.com/auth/cloudiot"
+                          ]
+                        }
+                      }
+                    },
+                    "states": {
+                      "methods": {
+                        "list": {
+                          "description": "Lists the last few versions of the device state in descending order (i.e.:\nnewest first).",
+                          "response": {
+                            "$ref": "ListDeviceStatesResponse"
+                          },
+                          "parameterOrder": [
+                            "name"
+                          ],
+                          "httpMethod": "GET",
+                          "parameters": {
+                            "name": {
+                              "location": "path",
+                              "description": "The name of the device. For example,\n`projects/p0/locations/us-central1/registries/registry0/devices/device0` or\n`projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.",
+                              "required": true,
+                              "type": "string",
+                              "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$"
+                            },
+                            "numStates": {
+                              "location": "query",
+                              "description": "The number of states to list. States are listed in descending order of\nupdate time. The maximum number of states retained is 10. If this\nvalue is zero, it will return all the states available.",
+                              "format": "int32",
+                              "type": "integer"
+                            }
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform",
+                            "https://www.googleapis.com/auth/cloudiot"
+                          ],
+                          "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}/states",
+                          "path": "v1/{+name}/states",
+                          "id": "cloudiot.projects.locations.registries.devices.states.list"
+                        }
+                      }
                     }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloudiot"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}:unbindDeviceFromGateway"
-                },
+                  }
+                }
+              },
+              "methods": {
                 "list": {
-                  "description": "Lists device registries.",
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "parent"
-                  ],
                   "response": {
                     "$ref": "ListDeviceRegistriesResponse"
                   },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "GET",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/cloudiot"
                   ],
                   "parameters": {
-                    "pageToken": {
-                      "location": "query",
-                      "description": "The value returned by the last `ListDeviceRegistriesResponse`; indicates\nthat this is a continuation of a prior `ListDeviceRegistries` call and\nthe system should return the next page of data.",
-                      "type": "string"
-                    },
                     "pageSize": {
+                      "type": "integer",
                       "location": "query",
                       "description": "The maximum number of registries to return in the response. If this value\nis zero, the service will select a default size. A call may return fewer\nobjects than requested. A non-empty `next_page_token` in the response\nindicates that more data is available.",
-                      "format": "int32",
-                      "type": "integer"
+                      "format": "int32"
                     },
                     "parent": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "location": "path",
                       "description": "The project and cloud region path. For example,\n`projects/example-project/locations/us-central1`.",
                       "required": true,
+                      "type": "string"
+                    },
+                    "pageToken": {
+                      "description": "The value returned by the last `ListDeviceRegistriesResponse`; indicates\nthat this is a continuation of a prior `ListDeviceRegistries` call and\nthe system should return the next page of data.",
                       "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                      "location": "query"
                     }
                   },
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries",
+                  "path": "v1/{+parent}/registries",
                   "id": "cloudiot.projects.locations.registries.list",
-                  "path": "v1/{+parent}/registries"
+                  "description": "Lists device registries."
                 },
                 "setIamPolicy": {
-                  "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.",
                   "request": {
                     "$ref": "SetIamPolicyRequest"
                   },
+                  "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.",
                   "httpMethod": "POST",
                   "parameterOrder": [
                     "resource"
@@ -912,6 +1335,10 @@
                   "response": {
                     "$ref": "Policy"
                   },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloudiot"
+                  ],
                   "parameters": {
                     "resource": {
                       "required": true,
@@ -921,15 +1348,14 @@
                       "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field."
                     }
                   },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloudiot"
-                  ],
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}:setIamPolicy",
                   "id": "cloudiot.projects.locations.registries.setIamPolicy",
                   "path": "v1/{+resource}:setIamPolicy"
                 },
                 "create": {
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries",
+                  "path": "v1/{+parent}/registries",
+                  "id": "cloudiot.projects.locations.registries.create",
                   "description": "Creates a device registry that contains devices.",
                   "request": {
                     "$ref": "DeviceRegistry"
@@ -943,22 +1369,30 @@
                   "httpMethod": "POST",
                   "parameters": {
                     "parent": {
+                      "description": "The project and cloud region where this device registry must be created.\nFor example, `projects/example-project/locations/us-central1`.",
                       "required": true,
                       "type": "string",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "description": "The project and cloud region where this device registry must be created.\nFor example, `projects/example-project/locations/us-central1`."
+                      "location": "path"
                     }
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/cloudiot"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries",
-                  "path": "v1/{+parent}/registries",
-                  "id": "cloudiot.projects.locations.registries.create"
+                  ]
                 },
                 "bindDeviceToGateway": {
+                  "description": "Associates the device with the gateway.",
+                  "request": {
+                    "$ref": "BindDeviceToGatewayRequest"
+                  },
+                  "response": {
+                    "$ref": "BindDeviceToGatewayResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "POST",
                   "parameters": {
                     "parent": {
                       "required": true,
@@ -974,20 +1408,12 @@
                   ],
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}:bindDeviceToGateway",
                   "path": "v1/{+parent}:bindDeviceToGateway",
-                  "id": "cloudiot.projects.locations.registries.bindDeviceToGateway",
-                  "description": "Associates the device with the gateway.",
-                  "request": {
-                    "$ref": "BindDeviceToGatewayRequest"
-                  },
-                  "response": {
-                    "$ref": "BindDeviceToGatewayResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "POST"
+                  "id": "cloudiot.projects.locations.registries.bindDeviceToGateway"
                 },
                 "getIamPolicy": {
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}:getIamPolicy",
+                  "id": "cloudiot.projects.locations.registries.getIamPolicy",
+                  "path": "v1/{+resource}:getIamPolicy",
                   "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
                   "request": {
                     "$ref": "GetIamPolicyRequest"
@@ -1011,36 +1437,106 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/cloudiot"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}:getIamPolicy",
-                  "id": "cloudiot.projects.locations.registries.getIamPolicy",
-                  "path": "v1/{+resource}:getIamPolicy"
+                  ]
                 },
                 "patch": {
-                  "description": "Updates a device registry configuration.",
-                  "request": {
-                    "$ref": "DeviceRegistry"
-                  },
-                  "response": {
-                    "$ref": "DeviceRegistry"
-                  },
-                  "parameterOrder": [
-                    "name"
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloudiot"
                   ],
-                  "httpMethod": "PATCH",
                   "parameters": {
+                    "updateMask": {
+                      "description": "Only updates the `device_registry` fields indicated by this mask.\nThe field mask must not be empty, and it must not contain fields that\nare immutable or only set by the server.\nMutable top-level fields: `event_notification_config`, `http_config`,\n`mqtt_config`, and `state_notification_config`.",
+                      "format": "google-fieldmask",
+                      "type": "string",
+                      "location": "query"
+                    },
                     "name": {
                       "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
                       "location": "path",
                       "description": "The resource path name. For example,\n`projects/example-project/locations/us-central1/registries/my-registry`.",
                       "required": true,
                       "type": "string"
-                    },
-                    "updateMask": {
-                      "location": "query",
-                      "description": "Only updates the `device_registry` fields indicated by this mask.\nThe field mask must not be empty, and it must not contain fields that\nare immutable or only set by the server.\nMutable top-level fields: `event_notification_config`, `http_config`,\n`mqtt_config`, and `state_notification_config`.",
-                      "format": "google-fieldmask",
-                      "type": "string"
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}",
+                  "id": "cloudiot.projects.locations.registries.patch",
+                  "path": "v1/{+name}",
+                  "request": {
+                    "$ref": "DeviceRegistry"
+                  },
+                  "description": "Updates a device registry configuration.",
+                  "httpMethod": "PATCH",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "DeviceRegistry"
+                  }
+                },
+                "get": {
+                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "DeviceRegistry"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the device registry. For example,\n`projects/example-project/locations/us-central1/registries/my-registry`.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloudiot"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}",
+                  "id": "cloudiot.projects.locations.registries.get",
+                  "path": "v1/{+name}",
+                  "description": "Gets a device registry configuration."
+                },
+                "testIamPermissions": {
+                  "request": {
+                    "$ref": "TestIamPermissionsRequest"
+                  },
+                  "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.",
+                  "response": {
+                    "$ref": "TestIamPermissionsResponse"
+                  },
+                  "parameterOrder": [
+                    "resource"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloudiot"
+                  ],
+                  "parameters": {
+                    "resource": {
+                      "location": "path",
+                      "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+$"
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}:testIamPermissions",
+                  "path": "v1/{+resource}:testIamPermissions",
+                  "id": "cloudiot.projects.locations.registries.testIamPermissions"
+                },
+                "delete": {
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the device registry. For example,\n`projects/example-project/locations/us-central1/registries/my-registry`.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
+                      "location": "path"
                     }
                   },
                   "scopes": [
@@ -1049,541 +1545,43 @@
                   ],
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}",
                   "path": "v1/{+name}",
-                  "id": "cloudiot.projects.locations.registries.patch"
-                },
-                "get": {
-                  "path": "v1/{+name}",
-                  "id": "cloudiot.projects.locations.registries.get",
-                  "description": "Gets a device registry configuration.",
+                  "id": "cloudiot.projects.locations.registries.delete",
+                  "description": "Deletes a device registry configuration.",
                   "response": {
-                    "$ref": "DeviceRegistry"
+                    "$ref": "Empty"
                   },
                   "parameterOrder": [
                     "name"
                   ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloudiot"
+                  "httpMethod": "DELETE"
+                },
+                "unbindDeviceFromGateway": {
+                  "response": {
+                    "$ref": "UnbindDeviceFromGatewayResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
                   ],
+                  "httpMethod": "POST",
                   "parameters": {
-                    "name": {
+                    "parent": {
                       "location": "path",
-                      "description": "The name of the device registry. For example,\n`projects/example-project/locations/us-central1/registries/my-registry`.",
+                      "description": "The name of the registry. For example,\n`projects/example-project/locations/us-central1/registries/my-registry`.",
                       "required": true,
                       "type": "string",
                       "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+$"
                     }
                   },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}"
-                }
-              },
-              "resources": {
-                "groups": {
-                  "methods": {
-                    "getIamPolicy": {
-                      "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
-                      "request": {
-                        "$ref": "GetIamPolicyRequest"
-                      },
-                      "httpMethod": "POST",
-                      "parameterOrder": [
-                        "resource"
-                      ],
-                      "response": {
-                        "$ref": "Policy"
-                      },
-                      "parameters": {
-                        "resource": {
-                          "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
-                          "location": "path"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloudiot"
-                      ],
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/groups/{groupsId}:getIamPolicy",
-                      "id": "cloudiot.projects.locations.registries.groups.getIamPolicy",
-                      "path": "v1/{+resource}:getIamPolicy"
-                    },
-                    "setIamPolicy": {
-                      "response": {
-                        "$ref": "Policy"
-                      },
-                      "parameterOrder": [
-                        "resource"
-                      ],
-                      "httpMethod": "POST",
-                      "parameters": {
-                        "resource": {
-                          "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
-                          "location": "path"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloudiot"
-                      ],
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/groups/{groupsId}:setIamPolicy",
-                      "path": "v1/{+resource}:setIamPolicy",
-                      "id": "cloudiot.projects.locations.registries.groups.setIamPolicy",
-                      "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.",
-                      "request": {
-                        "$ref": "SetIamPolicyRequest"
-                      }
-                    },
-                    "testIamPermissions": {
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/groups/{groupsId}:testIamPermissions",
-                      "path": "v1/{+resource}:testIamPermissions",
-                      "id": "cloudiot.projects.locations.registries.groups.testIamPermissions",
-                      "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.",
-                      "request": {
-                        "$ref": "TestIamPermissionsRequest"
-                      },
-                      "response": {
-                        "$ref": "TestIamPermissionsResponse"
-                      },
-                      "parameterOrder": [
-                        "resource"
-                      ],
-                      "httpMethod": "POST",
-                      "parameters": {
-                        "resource": {
-                          "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
-                          "location": "path"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloudiot"
-                      ]
-                    }
-                  },
-                  "resources": {
-                    "devices": {
-                      "methods": {
-                        "list": {
-                          "response": {
-                            "$ref": "ListDevicesResponse"
-                          },
-                          "parameterOrder": [
-                            "parent"
-                          ],
-                          "httpMethod": "GET",
-                          "parameters": {
-                            "parent": {
-                              "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
-                              "location": "path",
-                              "description": "The device registry path. Required. For example,\n`projects/my-project/locations/us-central1/registries/my-registry`.",
-                              "required": true,
-                              "type": "string"
-                            },
-                            "deviceIds": {
-                              "type": "string",
-                              "repeated": true,
-                              "location": "query",
-                              "description": "A list of device string IDs. For example, `['device0', 'device12']`.\nIf empty, this field is ignored. Maximum IDs: 10,000"
-                            },
-                            "deviceNumIds": {
-                              "type": "string",
-                              "repeated": true,
-                              "location": "query",
-                              "description": "A list of device numeric IDs. If empty, this field is ignored. Maximum\nIDs: 10,000.",
-                              "format": "uint64"
-                            },
-                            "gatewayListOptions.associationsDeviceId": {
-                              "description": "If set, returns only the gateways with which the specified device is\nassociated. The device ID can be numeric (`num_id`) or the user-defined\nstring (`id`). For example, if `456` is specified, returns only the\ngateways to which the device with `num_id` 456 is bound.",
-                              "type": "string",
-                              "location": "query"
-                            },
-                            "gatewayListOptions.gatewayType": {
-                              "type": "string",
-                              "location": "query",
-                              "enum": [
-                                "GATEWAY_TYPE_UNSPECIFIED",
-                                "GATEWAY",
-                                "NON_GATEWAY"
-                              ],
-                              "description": "If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY`\nis specified, only non-gateway devices are returned. If\n`GATEWAY_TYPE_UNSPECIFIED` is specified, all devices are returned."
-                            },
-                            "gatewayListOptions.associationsGatewayId": {
-                              "location": "query",
-                              "description": "If set, only devices associated with the specified gateway are returned.\nThe gateway ID can be numeric (`num_id`) or the user-defined string\n(`id`). For example, if `123` is specified, only devices bound to the\ngateway with `num_id` 123 are returned.",
-                              "type": "string"
-                            },
-                            "pageToken": {
-                              "type": "string",
-                              "location": "query",
-                              "description": "The value returned by the last `ListDevicesResponse`; indicates\nthat this is a continuation of a prior `ListDevices` call and\nthe system should return the next page of data."
-                            },
-                            "fieldMask": {
-                              "description": "The fields of the `Device` resource to be returned in the response. The\nfields `id` and `num_id` are always returned, along with any\nother fields specified.",
-                              "format": "google-fieldmask",
-                              "type": "string",
-                              "location": "query"
-                            },
-                            "pageSize": {
-                              "location": "query",
-                              "description": "The maximum number of devices to return in the response. If this value\nis zero, the service will select a default size. A call may return fewer\nobjects than requested. A non-empty `next_page_token` in the response\nindicates that more data is available.",
-                              "format": "int32",
-                              "type": "integer"
-                            }
-                          },
-                          "scopes": [
-                            "https://www.googleapis.com/auth/cloud-platform",
-                            "https://www.googleapis.com/auth/cloudiot"
-                          ],
-                          "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/groups/{groupsId}/devices",
-                          "path": "v1/{+parent}/devices",
-                          "id": "cloudiot.projects.locations.registries.groups.devices.list",
-                          "description": "List devices in a device registry."
-                        }
-                      }
-                    }
-                  }
-                },
-                "devices": {
-                  "methods": {
-                    "delete": {
-                      "parameters": {
-                        "name": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
-                          "location": "path",
-                          "description": "The name of the device. For example,\n`projects/p0/locations/us-central1/registries/registry0/devices/device0` or\n`projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloudiot"
-                      ],
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}",
-                      "id": "cloudiot.projects.locations.registries.devices.delete",
-                      "path": "v1/{+name}",
-                      "description": "Deletes a device.",
-                      "httpMethod": "DELETE",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "response": {
-                        "$ref": "Empty"
-                      }
-                    },
-                    "list": {
-                      "description": "List devices in a device registry.",
-                      "httpMethod": "GET",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "response": {
-                        "$ref": "ListDevicesResponse"
-                      },
-                      "parameters": {
-                        "gatewayListOptions.gatewayType": {
-                          "type": "string",
-                          "location": "query",
-                          "enum": [
-                            "GATEWAY_TYPE_UNSPECIFIED",
-                            "GATEWAY",
-                            "NON_GATEWAY"
-                          ],
-                          "description": "If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY`\nis specified, only non-gateway devices are returned. If\n`GATEWAY_TYPE_UNSPECIFIED` is specified, all devices are returned."
-                        },
-                        "gatewayListOptions.associationsGatewayId": {
-                          "location": "query",
-                          "description": "If set, only devices associated with the specified gateway are returned.\nThe gateway ID can be numeric (`num_id`) or the user-defined string\n(`id`). For example, if `123` is specified, only devices bound to the\ngateway with `num_id` 123 are returned.",
-                          "type": "string"
-                        },
-                        "pageToken": {
-                          "location": "query",
-                          "description": "The value returned by the last `ListDevicesResponse`; indicates\nthat this is a continuation of a prior `ListDevices` call and\nthe system should return the next page of data.",
-                          "type": "string"
-                        },
-                        "fieldMask": {
-                          "location": "query",
-                          "description": "The fields of the `Device` resource to be returned in the response. The\nfields `id` and `num_id` are always returned, along with any\nother fields specified.",
-                          "format": "google-fieldmask",
-                          "type": "string"
-                        },
-                        "pageSize": {
-                          "location": "query",
-                          "description": "The maximum number of devices to return in the response. If this value\nis zero, the service will select a default size. A call may return fewer\nobjects than requested. A non-empty `next_page_token` in the response\nindicates that more data is available.",
-                          "format": "int32",
-                          "type": "integer"
-                        },
-                        "deviceIds": {
-                          "repeated": true,
-                          "location": "query",
-                          "description": "A list of device string IDs. For example, `['device0', 'device12']`.\nIf empty, this field is ignored. Maximum IDs: 10,000",
-                          "type": "string"
-                        },
-                        "parent": {
-                          "location": "path",
-                          "description": "The device registry path. Required. For example,\n`projects/my-project/locations/us-central1/registries/my-registry`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+$"
-                        },
-                        "deviceNumIds": {
-                          "repeated": true,
-                          "location": "query",
-                          "description": "A list of device numeric IDs. If empty, this field is ignored. Maximum\nIDs: 10,000.",
-                          "format": "uint64",
-                          "type": "string"
-                        },
-                        "gatewayListOptions.associationsDeviceId": {
-                          "location": "query",
-                          "description": "If set, returns only the gateways with which the specified device is\nassociated. The device ID can be numeric (`num_id`) or the user-defined\nstring (`id`). For example, if `456` is specified, returns only the\ngateways to which the device with `num_id` 456 is bound.",
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloudiot"
-                      ],
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices",
-                      "id": "cloudiot.projects.locations.registries.devices.list",
-                      "path": "v1/{+parent}/devices"
-                    },
-                    "create": {
-                      "parameters": {
-                        "parent": {
-                          "description": "The name of the device registry where this device should be created.\nFor example,\n`projects/example-project/locations/us-central1/registries/my-registry`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
-                          "location": "path"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloudiot"
-                      ],
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices",
-                      "id": "cloudiot.projects.locations.registries.devices.create",
-                      "path": "v1/{+parent}/devices",
-                      "description": "Creates a device in a device registry.",
-                      "request": {
-                        "$ref": "Device"
-                      },
-                      "httpMethod": "POST",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "response": {
-                        "$ref": "Device"
-                      }
-                    },
-                    "modifyCloudToDeviceConfig": {
-                      "response": {
-                        "$ref": "DeviceConfig"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "POST",
-                      "parameters": {
-                        "name": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
-                          "location": "path",
-                          "description": "The name of the device. For example,\n`projects/p0/locations/us-central1/registries/registry0/devices/device0` or\n`projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloudiot"
-                      ],
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}:modifyCloudToDeviceConfig",
-                      "path": "v1/{+name}:modifyCloudToDeviceConfig",
-                      "id": "cloudiot.projects.locations.registries.devices.modifyCloudToDeviceConfig",
-                      "description": "Modifies the configuration for the device, which is eventually sent from\nthe Cloud IoT Core servers. Returns the modified configuration version and\nits metadata.",
-                      "request": {
-                        "$ref": "ModifyCloudToDeviceConfigRequest"
-                      }
-                    },
-                    "sendCommandToDevice": {
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}:sendCommandToDevice",
-                      "path": "v1/{+name}:sendCommandToDevice",
-                      "id": "cloudiot.projects.locations.registries.devices.sendCommandToDevice",
-                      "description": "Sends a command to the specified device. In order for a device to be able\nto receive commands, it must:\n1) be connected to Cloud IoT Core using the MQTT protocol, and\n2) be subscribed to the group of MQTT topics specified by\n   /devices/{device-id}/commands/#. This subscription will receive commands\n   at the top-level topic /devices/{device-id}/commands as well as commands\n   for subfolders, like /devices/{device-id}/commands/subfolder.\n   Note that subscribing to specific subfolders is not supported.\nIf the command could not be delivered to the device, this method will\nreturn an error; in particular, if the device is not subscribed, this\nmethod will return FAILED_PRECONDITION. Otherwise, this method will\nreturn OK. If the subscription is QoS 1, at least once delivery will be\nguaranteed; for QoS 0, no acknowledgment will be expected from the device.",
-                      "request": {
-                        "$ref": "SendCommandToDeviceRequest"
-                      },
-                      "response": {
-                        "$ref": "SendCommandToDeviceResponse"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "POST",
-                      "parameters": {
-                        "name": {
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
-                          "location": "path",
-                          "description": "The name of the device. For example,\n`projects/p0/locations/us-central1/registries/registry0/devices/device0` or\n`projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`."
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloudiot"
-                      ]
-                    },
-                    "patch": {
-                      "httpMethod": "PATCH",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "response": {
-                        "$ref": "Device"
-                      },
-                      "parameters": {
-                        "name": {
-                          "description": "The resource path name. For example,\n`projects/p1/locations/us-central1/registries/registry0/devices/dev0` or\n`projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`.\nWhen `name` is populated as a response from the service, it always ends\nin the device numeric ID.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
-                          "location": "path"
-                        },
-                        "updateMask": {
-                          "location": "query",
-                          "description": "Only updates the `device` fields indicated by this mask.\nThe field mask must not be empty, and it must not contain fields that\nare immutable or only set by the server.\nMutable top-level fields: `credentials`, `blocked`, and `metadata`",
-                          "format": "google-fieldmask",
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloudiot"
-                      ],
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}",
-                      "id": "cloudiot.projects.locations.registries.devices.patch",
-                      "path": "v1/{+name}",
-                      "description": "Updates a device.",
-                      "request": {
-                        "$ref": "Device"
-                      }
-                    },
-                    "get": {
-                      "response": {
-                        "$ref": "Device"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "GET",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloudiot"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
-                          "location": "path",
-                          "description": "The name of the device. For example,\n`projects/p0/locations/us-central1/registries/registry0/devices/device0` or\n`projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.",
-                          "required": true,
-                          "type": "string"
-                        },
-                        "fieldMask": {
-                          "location": "query",
-                          "description": "The fields of the `Device` resource to be returned in the response. If the\nfield mask is unset or empty, all fields are returned.",
-                          "format": "google-fieldmask",
-                          "type": "string"
-                        }
-                      },
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}",
-                      "path": "v1/{+name}",
-                      "id": "cloudiot.projects.locations.registries.devices.get",
-                      "description": "Gets details about a device."
-                    }
-                  },
-                  "resources": {
-                    "configVersions": {
-                      "methods": {
-                        "list": {
-                          "path": "v1/{+name}/configVersions",
-                          "id": "cloudiot.projects.locations.registries.devices.configVersions.list",
-                          "description": "Lists the last few versions of the device configuration in descending\norder (i.e.: newest first).",
-                          "response": {
-                            "$ref": "ListDeviceConfigVersionsResponse"
-                          },
-                          "parameterOrder": [
-                            "name"
-                          ],
-                          "httpMethod": "GET",
-                          "parameters": {
-                            "numVersions": {
-                              "type": "integer",
-                              "location": "query",
-                              "description": "The number of versions to list. Versions are listed in decreasing order of\nthe version number. The maximum number of versions retained is 10. If this\nvalue is zero, it will return all the versions available.",
-                              "format": "int32"
-                            },
-                            "name": {
-                              "location": "path",
-                              "description": "The name of the device. For example,\n`projects/p0/locations/us-central1/registries/registry0/devices/device0` or\n`projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.",
-                              "required": true,
-                              "type": "string",
-                              "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$"
-                            }
-                          },
-                          "scopes": [
-                            "https://www.googleapis.com/auth/cloud-platform",
-                            "https://www.googleapis.com/auth/cloudiot"
-                          ],
-                          "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}/configVersions"
-                        }
-                      }
-                    },
-                    "states": {
-                      "methods": {
-                        "list": {
-                          "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}/devices/{devicesId}/states",
-                          "id": "cloudiot.projects.locations.registries.devices.states.list",
-                          "path": "v1/{+name}/states",
-                          "description": "Lists the last few versions of the device state in descending order (i.e.:\nnewest first).",
-                          "httpMethod": "GET",
-                          "parameterOrder": [
-                            "name"
-                          ],
-                          "response": {
-                            "$ref": "ListDeviceStatesResponse"
-                          },
-                          "scopes": [
-                            "https://www.googleapis.com/auth/cloud-platform",
-                            "https://www.googleapis.com/auth/cloudiot"
-                          ],
-                          "parameters": {
-                            "numStates": {
-                              "location": "query",
-                              "description": "The number of states to list. States are listed in descending order of\nupdate time. The maximum number of states retained is 10. If this\nvalue is zero, it will return all the states available.",
-                              "format": "int32",
-                              "type": "integer"
-                            },
-                            "name": {
-                              "required": true,
-                              "type": "string",
-                              "pattern": "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
-                              "location": "path",
-                              "description": "The name of the device. For example,\n`projects/p0/locations/us-central1/registries/registry0/devices/device0` or\n`projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`."
-                            }
-                          }
-                        }
-                      }
-                    }
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloudiot"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}:unbindDeviceFromGateway",
+                  "path": "v1/{+parent}:unbindDeviceFromGateway",
+                  "id": "cloudiot.projects.locations.registries.unbindDeviceFromGateway",
+                  "description": "Deletes the association between the device and the gateway.",
+                  "request": {
+                    "$ref": "UnbindDeviceFromGatewayRequest"
                   }
                 }
               }
@@ -1594,46 +1592,20 @@
     }
   },
   "parameters": {
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
     "fields": {
+      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "uploadType": {
-      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "callback": {
-      "type": "string",
       "location": "query",
-      "description": "JSONP"
+      "description": "JSONP",
+      "type": "string"
     },
     "oauth_token": {
       "description": "OAuth 2.0 token for the current user.",
@@ -1641,6 +1613,8 @@
       "location": "query"
     },
     "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -1649,9 +1623,7 @@
       "enum": [
         "1",
         "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
+      ]
     },
     "alt": {
       "enumDescriptions": [
@@ -1668,6 +1640,32 @@
         "proto"
       ],
       "type": "string"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
     }
   },
   "version": "v1",
@@ -1676,7 +1674,9 @@
   "description": "Registers and manages IoT (Internet of Things) devices that connect to the Google Cloud Platform.\n",
   "servicePath": "",
   "basePath": "",
-  "revision": "20190805",
+  "revision": "20190820",
   "documentationLink": "https://cloud.google.com/iot",
-  "id": "cloudiot:v1"
+  "id": "cloudiot:v1",
+  "discoveryVersion": "v1",
+  "version_module": true
 }

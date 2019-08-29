@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.ServiceManagement.v1 Client Library</Title>
-    <Version>1.40.3.1688</Version>
+    <Version>1.40.3.1695</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

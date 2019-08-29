@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190811 (1683)
+ *      <tr><th>API Rev<td>20190822 (1694)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -6733,7 +6733,9 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canDownload")]
             public virtual System.Nullable<bool> CanDownload { get; set; } 
 
-            /// <summary>Whether the current user can edit this file.</summary>
+            /// <summary>Whether the current user can edit this file. Other factors may limit the type of changes a user
+            /// can make to a file. For example, see canChangeCopyRequiresWriterPermission or
+            /// canModifyContent.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canEdit")]
             public virtual System.Nullable<bool> CanEdit { get; set; } 
 
@@ -6741,6 +6743,10 @@ namespace Google.Apis.Drive.v3.Data
             /// item is not a folder.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canListChildren")]
             public virtual System.Nullable<bool> CanListChildren { get; set; } 
+
+            /// <summary>Whether the current user can modify the content of this file.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canModifyContent")]
+            public virtual System.Nullable<bool> CanModifyContent { get; set; } 
 
             /// <summary>Whether the current user can move children of this folder outside of the shared drive. This is
             /// false when the item is not a folder. Only populated for items in shared drives.</summary>

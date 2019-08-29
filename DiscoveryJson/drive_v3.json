@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/0HIxD5Dw5zTJAQ7whwcX2CPweIc\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/lIzWTshPvT6DrRvrcDo10rXoluM\"",
  "discoveryVersion": "v1",
  "id": "drive:v3",
  "name": "drive",
  "version": "v3",
- "revision": "20190811",
+ "revision": "20190822",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -705,11 +705,15 @@
       },
       "canEdit": {
        "type": "boolean",
-       "description": "Whether the current user can edit this file."
+       "description": "Whether the current user can edit this file. Other factors may limit the type of changes a user can make to a file. For example, see canChangeCopyRequiresWriterPermission or canModifyContent."
       },
       "canListChildren": {
        "type": "boolean",
        "description": "Whether the current user can list the children of this folder. This is always false when the item is not a folder."
+      },
+      "canModifyContent": {
+       "type": "boolean",
+       "description": "Whether the current user can modify the content of this file."
       },
       "canMoveChildrenOutOfDrive": {
        "type": "boolean",

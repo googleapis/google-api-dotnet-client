@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/activity/'>Drive Activity API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190816 (1688)
+ *      <tr><th>API Rev<td>20190824 (1696)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/activity/'>
  *              https://developers.google.com/drive/activity/</a>
@@ -754,7 +754,7 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("driveFile")]
         public virtual DriveFile DriveFile { get; set; } 
 
-        /// <summary>The Drive item is a folder.</summary>
+        /// <summary>The Drive item is a folder. Includes information about the type of folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveFolder")]
         public virtual DriveFolder DriveFolder { get; set; } 
 

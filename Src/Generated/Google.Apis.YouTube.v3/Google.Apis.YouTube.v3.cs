@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190816 (1688)
+ *      <tr><th>API Rev<td>20190827 (1699)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -12288,7 +12288,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 71</summary>
+    /// <summary>Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 72</summary>
     public class ContentRating : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The video's Australian Classification Board (ACB) or Australian Communications and Media Authority
@@ -12543,6 +12543,9 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The video's rating from the Nacionãlais Kino centrs (National Film Centre of Latvia).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nkclvRating")]
         public virtual string NkclvRating { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("nmcRating")]
+        public virtual string NmcRating { get; set; } 
 
         /// <summary>The video's Office of Film and Literature Classification (OFLC - New Zealand) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oflcRating")]

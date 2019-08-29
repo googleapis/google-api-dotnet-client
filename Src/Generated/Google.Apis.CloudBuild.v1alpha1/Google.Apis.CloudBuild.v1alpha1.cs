@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190806 (1678)
+ *      <tr><th>API Rev<td>20190824 (1696)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -1182,7 +1182,10 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
     /// <summary>Location of the source in a Google Cloud Source Repository.</summary>
     public class RepoSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of the branch to build.</summary>
+        /// <summary>Regex matching branches to build.
+        ///
+        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at
+        /// https://github.com/google/re2/wiki/Syntax</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branchName")]
         public virtual string BranchName { get; set; } 
 
@@ -1206,7 +1209,10 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("repoName")]
         public virtual string RepoName { get; set; } 
 
-        /// <summary>Name of the tag to build.</summary>
+        /// <summary>Regex matching tags to build.
+        ///
+        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at
+        /// https://github.com/google/re2/wiki/Syntax</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagName")]
         public virtual string TagName { get; set; } 
 
