@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190816 (1688)
+ *      <tr><th>API Rev<td>20190824 (1696)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -65,6 +65,7 @@ namespace Google.Apis.DLP.v2
             : base(initializer)
         {
             infoTypes = new InfoTypesResource(this);
+            locations = new LocationsResource(this);
             organizations = new OrganizationsResource(this);
             projects = new ProjectsResource(this);
         }
@@ -135,6 +136,14 @@ namespace Google.Apis.DLP.v2
         public virtual InfoTypesResource InfoTypes
         {
             get { return infoTypes; }
+        }
+
+        private readonly LocationsResource locations;
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations
+        {
+            get { return locations; }
         }
 
         private readonly OrganizationsResource organizations;
@@ -388,6 +397,10 @@ namespace Google.Apis.DLP.v2
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
+            /// <summary>The geographic location to list info types. Reserved for future extensions.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -427,6 +440,102 @@ namespace Google.Apis.DLP.v2
                         Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "locations" collection of methods.</summary>
+    public class LocationsResource
+    {
+        private const string Resource = "locations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public LocationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Returns a list of the sensitive information types that the DLP API supports. See
+        /// https://cloud.google.com/dlp/docs/infotypes-reference to learn more.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="location">The geographic location to list info types. Reserved for future extensions.</param>
+        public virtual InfoTypesRequest InfoTypes(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInfoTypesRequest body, string location)
+        {
+            return new InfoTypesRequest(service, body, location);
+        }
+
+        /// <summary>Returns a list of the sensitive information types that the DLP API supports. See
+        /// https://cloud.google.com/dlp/docs/infotypes-reference to learn more.</summary>
+        public class InfoTypesRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInfoTypesResponse>
+        {
+            /// <summary>Constructs a new InfoTypes request.</summary>
+            public InfoTypesRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInfoTypesRequest body, string location)
+                : base(service)
+            {
+                Location = location;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The geographic location to list info types. Reserved for future extensions.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Location { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInfoTypesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "infoTypes"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v2/locations/{location}/infoTypes"; }
+            }
+
+            /// <summary>Initializes InfoTypes parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = true,
+                        ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -2733,6 +2842,30 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. Allows filtering.
+                ///
+                /// Supported syntax:
+                ///
+                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
+                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
+                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
+                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY -
+                /// `trigger_name` - The resource name of the trigger that created job. - 'end_time` - Corresponds to
+                /// time the job finished. - 'start_time` - Corresponds to time the job finished. * Supported fields for
+                /// risk analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time
+                /// the job finished. - 'start_time` - Corresponds to time the job finished. * The operator must be `=`
+                /// or `!=`.
+                ///
+                /// Examples:
+                ///
+                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
+                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
+                /// canceled) * end_time > \"2017-12-12T00:00:00+00:00\"
+                ///
+                /// The length of this field should be no more than 500 characters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2769,30 +2902,6 @@ namespace Google.Apis.DLP.v2
                     RISKANALYSISJOB,
                 }
 
-                /// <summary>Optional. Allows filtering.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
-                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY -
-                /// `trigger_name` - The resource name of the trigger that created job. - 'end_time` - Corresponds to
-                /// time the job finished. - 'start_time` - Corresponds to time the job finished. * Supported fields for
-                /// risk analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time
-                /// the job finished. - 'start_time` - Corresponds to time the job finished. * The operator must be `=`
-                /// or `!=`.
-                ///
-                /// Examples:
-                ///
-                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
-                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
-                /// canceled) * end_time > \"2017-12-12T00:00:00+00:00\"
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -2827,6 +2936,15 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2857,15 +2975,6 @@ namespace Google.Apis.DLP.v2
                         "type", new Google.Apis.Discovery.Parameter
                         {
                             Name = "type",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3712,6 +3821,28 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. Allows filtering.
+                ///
+                /// Supported syntax:
+                ///
+                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
+                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
+                /// has the form of `  `. * Supported fields/values for inspect jobs: - `status` -
+                /// HEALTHY|PAUSED|CANCELLED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time`
+                /// - RFC 3339 formatted timestamp, surrounded by quotation marks. Nanoseconds are ignored. -
+                /// 'error_count' - Number of errors that have occurred while running. * The operator must be `=` or
+                /// `!=` for status and inspected_storage.
+                ///
+                /// Examples:
+                ///
+                /// * inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR
+                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state =
+                /// HEALTHY) * last_run_time > \"2017-12-12T00:00:00+00:00\"
+                ///
+                /// The length of this field should be no more than 500 characters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to ListJobTriggers.
                 /// `order_by` field must not change for subsequent calls.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -3735,28 +3866,6 @@ namespace Google.Apis.DLP.v2
                 /// <summary>Optional size of the page, can be limited by a server.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. Allows filtering.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `  `. * Supported fields/values for inspect jobs: - `status` -
-                /// HEALTHY|PAUSED|CANCELLED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time`
-                /// - RFC 3339 formatted timestamp, surrounded by quotation marks. Nanoseconds are ignored. -
-                /// 'error_count' - Number of errors that have occurred while running. * The operator must be `=` or
-                /// `!=` for status and inspected_storage.
-                ///
-                /// Examples:
-                ///
-                /// * inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR
-                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state =
-                /// HEALTHY) * last_run_time > \"2017-12-12T00:00:00+00:00\"
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3792,6 +3901,15 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3813,15 +3931,6 @@ namespace Google.Apis.DLP.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4022,6 +4131,107 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>Initializes Deidentify parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Finds potentially sensitive info in content. This method has limits on input size,
+                /// processing time, and output size.
+                ///
+                /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically
+                /// choose what detectors to run. By default this may be all types, but may change over time as
+                /// detectors are updated.
+                ///
+                /// For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images and
+                /// https://cloud.google.com/dlp/docs/inspecting-text,</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
+                /// <param
+                /// name="location">The geographic location to process content inspection. Reserved for future extensions.</param>
+                public virtual InspectRequest Inspect(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentRequest body, string parent, string location)
+                {
+                    return new InspectRequest(service, body, parent, location);
+                }
+
+                /// <summary>Finds potentially sensitive info in content. This method has limits on input size,
+                /// processing time, and output size.
+                ///
+                /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically
+                /// choose what detectors to run. By default this may be all types, but may change over time as
+                /// detectors are updated.
+                ///
+                /// For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images and
+                /// https://cloud.google.com/dlp/docs/inspecting-text,</summary>
+                public class InspectRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentResponse>
+                {
+                    /// <summary>Constructs a new Inspect request.</summary>
+                    public InspectRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentRequest body, string parent, string location)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Location = location;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The parent resource name, for example projects/my-project-id.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The geographic location to process content inspection. Reserved for future
+                    /// extensions.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Location { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "inspect"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+parent}/locations/{location}/content:inspect"; }
+                    }
+
+                    /// <summary>Initializes Inspect parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -6199,6 +6409,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
         public virtual GooglePrivacyDlpV2ContentItem Item { get; set; } 
 
+        /// <summary>The geographic location to process content inspection. Reserved for future extensions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -6770,6 +6984,23 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request for the list of infoTypes.</summary>
+    public class GooglePrivacyDlpV2ListInfoTypesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional filter to only return infoTypes supported by certain parts of the API. Defaults to
+        /// supported_by=INSPECT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
+
+        /// <summary>Optional BCP-47 language code for localized infoType friendly names. If omitted, or if localized
+        /// strings are not available, en-US strings will be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

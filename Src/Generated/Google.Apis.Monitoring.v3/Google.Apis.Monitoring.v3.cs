@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190826 (1698)
+ *      <tr><th>API Rev<td>20190824 (1696)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -630,6 +630,11 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>If provided, this field specifies the criteria that must be met by alert policies to be
+                /// included in the response.For more details, see sorting and filtering.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>A comma-separated list of fields by which to sort the result. Supports the same set of
                 /// field references as the filter field. Entries can be prefixed with a minus sign to sort by the field
                 /// in descending order.For more details, see sorting and filtering.</summary>
@@ -645,11 +650,6 @@ namespace Google.Apis.Monitoring.v3
                 /// <summary>The maximum number of results to return in a single response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>If provided, this field specifies the criteria that must be met by alert policies to be
-                /// included in the response.For more details, see sorting and filtering.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -685,6 +685,15 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -706,15 +715,6 @@ namespace Google.Apis.Monitoring.v3
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -995,6 +995,21 @@ namespace Google.Apis.Monitoring.v3
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
+                    /// previous call to this method. Using this field causes the method to return additional results
+                    /// from the previous method call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The beginning of the time interval. The default value for the start time is
+                    /// the end time. The start time must not be later than the end time.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object IntervalStartTime { get; set; }
+
+                    /// <summary>A positive number that is the maximum number of results to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Required. The end of the time interval.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object IntervalEndTime { get; set; }
@@ -1005,21 +1020,6 @@ namespace Google.Apis.Monitoring.v3
                     /// "gce_instance" </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
-
-                    /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
-                    /// previous call to this method. Using this field causes the method to return additional results
-                    /// from the previous method call.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>A positive number that is the maximum number of results to return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. The beginning of the time interval. The default value for the start time is
-                    /// the end time. The start time must not be later than the end time.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object IntervalStartTime { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1055,27 +1055,18 @@ namespace Google.Apis.Monitoring.v3
                                 Pattern = @"^projects/[^/]+/groups/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "interval.endTime", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "interval.endTime",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "interval.startTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "interval.startTime",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1091,9 +1082,18 @@ namespace Google.Apis.Monitoring.v3
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "interval.startTime", new Google.Apis.Discovery.Parameter
+                            "interval.endTime", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "interval.startTime",
+                                Name = "interval.endTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1351,12 +1351,6 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns the descendants
-                /// of the specified group. This is a superset of the results returned by the childrenOfGroup filter,
-                /// and includes children-of-children, and so forth.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("descendantsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string DescendantsOfGroup { get; set; }
-
                 /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
                 /// previous call to this method. Using this field causes the method to return additional results from
                 /// the previous method call.</summary>
@@ -1379,6 +1373,12 @@ namespace Google.Apis.Monitoring.v3
                 /// empty.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("childrenOfGroup", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ChildrenOfGroup { get; set; }
+
+                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns the descendants
+                /// of the specified group. This is a superset of the results returned by the childrenOfGroup filter,
+                /// and includes children-of-children, and so forth.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("descendantsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DescendantsOfGroup { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1414,15 +1414,6 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "descendantsOfGroup", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "descendantsOfGroup",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1453,6 +1444,15 @@ namespace Google.Apis.Monitoring.v3
                         "childrenOfGroup", new Google.Apis.Discovery.Parameter
                         {
                             Name = "childrenOfGroup",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "descendantsOfGroup", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "descendantsOfGroup",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1800,10 +1800,6 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>A positive number that is the maximum number of results to return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>If this field is empty, all custom and system-defined metric descriptors are returned.
                 /// Otherwise, the filter specifies which metric descriptors are to be returned. For example, the
                 /// following filter matches all custom metrics: metric.type = starts_with("custom.googleapis.com/")
@@ -1816,6 +1812,10 @@ namespace Google.Apis.Monitoring.v3
                 /// the previous method call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>A positive number that is the maximum number of results to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1851,15 +1851,6 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1872,6 +1863,15 @@ namespace Google.Apis.Monitoring.v3
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3080,6 +3080,13 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>A positive number that is the maximum number of results to return. If page_size is empty or
+                /// more than 100,000 results, the effective page_size is 100,000 results. If view is set to FULL, this
+                /// is the maximum number of Points returned. If view is set to HEADERS, this is the maximum number of
+                /// TimeSeries returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Unsupported: must be left blank. The points in each time series are returned in reverse
                 /// time order.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -3244,13 +3251,6 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("aggregation.alignmentPeriod", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object AggregationAlignmentPeriod { get; set; }
 
-                /// <summary>A positive number that is the maximum number of results to return. If page_size is empty or
-                /// more than 100,000 results, the effective page_size is 100,000 results. If view is set to FULL, this
-                /// is the maximum number of Points returned. If view is set to HEADERS, this is the maximum number of
-                /// TimeSeries returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -3283,6 +3283,15 @@ namespace Google.Apis.Monitoring.v3
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
@@ -3369,15 +3378,6 @@ namespace Google.Apis.Monitoring.v3
                         "aggregation.alignmentPeriod", new Google.Apis.Discovery.Parameter
                         {
                             Name = "aggregation.alignmentPeriod",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3795,6 +3795,76 @@ namespace Google.Apis.Monitoring.v3
                 }
 
             }
+        }
+
+        /// <summary>Validates a new uptime check configuration, and also executes the Uptime check. The results of the
+        /// Uptime check are returned, but not stored.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">The project for the uptime check. The format is projects/[PROJECT_ID].</param>
+        public virtual ValidateUptimeCheckConfigRequest ValidateUptimeCheckConfig(Google.Apis.Monitoring.v3.Data.UptimeCheckConfig body, string parent)
+        {
+            return new ValidateUptimeCheckConfigRequest(service, body, parent);
+        }
+
+        /// <summary>Validates a new uptime check configuration, and also executes the Uptime check. The results of the
+        /// Uptime check are returned, but not stored.</summary>
+        public class ValidateUptimeCheckConfigRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ValidateUptimeCheckConfigResponse>
+        {
+            /// <summary>Constructs a new ValidateUptimeCheckConfig request.</summary>
+            public ValidateUptimeCheckConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.UptimeCheckConfig body, string parent)
+                : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The project for the uptime check. The format is projects/[PROJECT_ID].</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Monitoring.v3.Data.UptimeCheckConfig Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "validateUptimeCheckConfig"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v3/{+parent}:validateUptimeCheckConfig"; }
+            }
+
+            /// <summary>Initializes ValidateUptimeCheckConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+            }
+
         }
     }
 
@@ -5670,6 +5740,52 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>A broad region category in which the IP address is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of a single uptime check execution. For group checks, this corresponds to one member of the
+    /// group.</summary>
+    public class UptimeCheckResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>True if the resource passed the check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkPassed")]
+        public virtual System.Nullable<bool> CheckPassed { get; set; } 
+
+        /// <summary>True if the response had content that did not match the check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentMismatch")]
+        public virtual System.Nullable<bool> ContentMismatch { get; set; } 
+
+        /// <summary>For HTTP checks, error, if any, that prevented contact with the resource (ex: DNS_NAME_UNKNOWN,
+        /// INVALID_URL).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual string ErrorCode { get; set; } 
+
+        /// <summary>For HTTP checks, HTTP response code returned by the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpStatus")]
+        public virtual System.Nullable<int> HttpStatus { get; set; } 
+
+        /// <summary>The monitored resource (https://cloud.google.com/monitoring/api/resources) for the Uptime check
+        /// result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]
+        public virtual MonitoredResource MonitoredResource { get; set; } 
+
+        /// <summary>The request latency when executing the uptime check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestLatency")]
+        public virtual object RequestLatency { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The protocol for the ValidateUptimeCheckConfigResponse response.</summary>
+    public class ValidateUptimeCheckConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The results of the uptime check execution (includes one result per group member, up to a maximum of
+        /// 3 randomly selected group members).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uptimeCheckResults")]
+        public virtual System.Collections.Generic.IList<UptimeCheckResult> UptimeCheckResults { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

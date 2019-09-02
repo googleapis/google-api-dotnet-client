@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190624 (1635)
+ *      <tr><th>API Rev<td>20190812 (1684)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -1269,6 +1269,12 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
+            /// <summary>The IAM policy format version to be returned. If the optionsRequestedPolicyVersion is for an
+            /// older version that doesn't support part of the requested IAM policy, the request fails.</summary>
+            /// [minimum: 1]
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
             /// <summary>The project to be billed for this request if the target bucket is requester-pays
             /// bucket.</summary>
             [Google.Apis.Util.RequestParameterAttribute("provisionalUserProject", Google.Apis.Util.RequestParameterType.Query)]
@@ -1308,6 +1314,15 @@ namespace Google.Apis.Storage.v1
                         Name = "bucket",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "optionsRequestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -8378,21 +8393,7 @@ namespace Google.Apis.Storage.v1.Data
                 /// false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from
                 /// true to false until the locked time, after which the field is immutable.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("lockedTime")]
-                public virtual string LockedTimeRaw { get; set; }
-
-                /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LockedTimeRaw"/>.</summary>
-                [Newtonsoft.Json.JsonIgnore]
-                public virtual System.Nullable<System.DateTime> LockedTime
-                {
-                    get
-                    {
-                        return Google.Apis.Util.Utilities.GetDateTimeFromString(LockedTimeRaw);
-                    }
-                    set
-                    {
-                        LockedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-                    }
-                }
+                public virtual string LockedTime { get; set; } 
 
             }
         }    
@@ -9363,6 +9364,10 @@ namespace Google.Apis.Storage.v1.Data
         /// input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; } 
+
+        /// <summary>The IAM policy format version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; } 
 
         
 

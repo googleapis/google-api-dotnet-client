@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190820 (1692)
+ *      <tr><th>API Rev<td>20190829 (1701)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -1324,24 +1324,6 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
-            /// <summary>Required. The filter string specifies the jobs to be enumerated.
-            ///
-            /// Supported operator: =, AND
-            ///
-            /// The fields eligible for filtering are:
-            ///
-            /// * `companyName` (Required) * `requisitionId` (Optional)
-            ///
-            /// Sample Query:
-            ///
-            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-            /// <summary>Optional. The starting point of a query result.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>Optional. The maximum number of jobs to be returned per page of results.
             ///
             /// If ids_only is set to true, the maximum allowed page size is 1000. Otherwise, the maximum allowed page
@@ -1359,6 +1341,24 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// Defaults to false.</summary>
             [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IdsOnly { get; set; }
+
+            /// <summary>Required. The filter string specifies the jobs to be enumerated.
+            ///
+            /// Supported operator: =, AND
+            ///
+            /// The fields eligible for filtering are:
+            ///
+            /// * `companyName` (Required) * `requisitionId` (Optional)
+            ///
+            /// Sample Query:
+            ///
+            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>Optional. The starting point of a query result.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1385,24 +1385,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1415,6 +1397,24 @@ namespace Google.Apis.CloudTalentSolution.v2
                     "idsOnly", new Google.Apis.Discovery.Parameter
                     {
                         Name = "idsOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1666,6 +1666,29 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
+            /// <summary>Optional. If provided, restricts completion to the specified company.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CompanyName { get; set; }
+
+            /// <summary>Optional. The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ScopeEnum> Scope { get; set; }
+
+            /// <summary>Optional. The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
+            public enum ScopeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("COMPLETION_SCOPE_UNSPECIFIED")]
+                COMPLETIONSCOPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("TENANT")]
+                TENANT,
+                [Google.Apis.Util.StringValueAttribute("PUBLIC")]
+                PUBLIC__,
+            }
+
+            /// <summary>Required. Completion result count. The maximum allowed page size is 10.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Required. The query used to generate suggestions.</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -1700,29 +1723,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                 COMBINED,
             }
 
-            /// <summary>Optional. If provided, restricts completion to the specified company.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CompanyName { get; set; }
-
-            /// <summary>Optional. The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ScopeEnum> Scope { get; set; }
-
-            /// <summary>Optional. The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
-            public enum ScopeEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("COMPLETION_SCOPE_UNSPECIFIED")]
-                COMPLETIONSCOPEUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("TENANT")]
-                TENANT,
-                [Google.Apis.Util.StringValueAttribute("PUBLIC")]
-                PUBLIC__,
-            }
-
-            /// <summary>Required. Completion result count. The maximum allowed page size is 10.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1748,33 +1748,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "companyName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "companyName",
@@ -1796,6 +1769,33 @@ namespace Google.Apis.CloudTalentSolution.v2
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "type", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "type",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

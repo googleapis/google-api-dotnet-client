@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/m18VxIxuaQHJN-C1B3-yQYvta24\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/9Oh4KBZowCPgFtht1bjglfUQ9l0\"",
  "discoveryVersion": "v1",
  "id": "storage:v1",
  "name": "storage",
  "version": "v1",
- "revision": "20190624",
+ "revision": "20190812",
  "title": "Cloud Storage JSON API",
  "description": "Stores and retrieves potentially large, immutable data objects.",
  "ownerDomain": "google.com",
@@ -207,8 +207,7 @@
         },
         "lockedTime": {
          "type": "string",
-         "description": "The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.",
-         "format": "date-time"
+         "description": "The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable."
         }
        }
       }
@@ -1198,6 +1197,11 @@
     "resourceId": {
      "type": "string",
      "description": "The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input."
+    },
+    "version": {
+     "type": "integer",
+     "description": "The IAM policy format version.",
+     "format": "int32"
     }
    }
   },
@@ -1633,6 +1637,13 @@
        "description": "Name of a bucket.",
        "required": true,
        "location": "path"
+      },
+      "optionsRequestedPolicyVersion": {
+       "type": "integer",
+       "description": "The IAM policy format version to be returned. If the optionsRequestedPolicyVersion is for an older version that doesn't support part of the requested IAM policy, the request fails.",
+       "format": "int32",
+       "minimum": "1",
+       "location": "query"
       },
       "provisionalUserProject": {
        "type": "string",
