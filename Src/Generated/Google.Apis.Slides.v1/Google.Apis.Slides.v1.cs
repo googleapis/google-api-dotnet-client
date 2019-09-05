@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190827 (1699)
+ *      <tr><th>API Rev<td>20190826 (1698)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -2698,7 +2698,7 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageReplaceMethod")]
         public virtual string ImageReplaceMethod { get; set; } 
 
-        /// <summary>The URL of the new image.
+        /// <summary>The image URL.
         ///
         /// The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images
         /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/composer/'>Cloud Composer API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190805 (1677)
+ *      <tr><th>API Rev<td>20190827 (1699)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/composer/'>
  *              https://cloud.google.com/composer/</a>
@@ -1467,6 +1467,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// Composer location, and propagate that choice to both fields. If exactly one of this field and
         /// `nodeConfig.location` is specified, the location information from the specified field will be propagated to
         /// the unspecified field.
+        ///
+        /// The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore).
         ///
         /// If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech-to-Text API</a>
  *      <tr><th>API Version<td>v2beta
- *      <tr><th>API Rev<td>20190823 (1695)
+ *      <tr><th>API Rev<td>20190830 (1702)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -488,6 +488,10 @@ namespace Google.Apis.Speech.v2beta
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -495,10 +499,6 @@ namespace Google.Apis.Speech.v2beta
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -534,6 +534,15 @@ namespace Google.Apis.Speech.v2beta
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -546,15 +555,6 @@ namespace Google.Apis.Speech.v2beta
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -609,7 +609,7 @@ namespace Google.Apis.Speech.v2beta.Data
     }    
 
     /// <summary>The only message returned to the client by the `LongRunningRecognize` method. It contains the result as
-    /// zero or more sequential `SpeechRecognitionResult` messages. It is included in the `result.response` field of the
+    /// zero or more sequential SpeechRecognitionResult messages. It is included in the `result.response` field of the
     /// `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations` service.</summary>
     public class LongRunningRecognizeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -692,8 +692,8 @@ namespace Google.Apis.Speech.v2beta.Data
         public virtual System.Collections.Generic.IList<SpeechRecognitionAlternative> Alternatives { get; set; } 
 
         /// <summary>Output only. For multi-channel audio, this is the channel number corresponding to the recognized
-        /// result for the audio from that channel. For audio_channel_count = N, its output values can range from '1' to
-        /// 'N'.</summary>
+        /// result for the audio from that channel. For `audio_channel_count` = N, its output values can range from `1`
+        /// to `N`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelTag")]
         public virtual System.Nullable<int> ChannelTag { get; set; } 
 
@@ -751,7 +751,7 @@ namespace Google.Apis.Speech.v2beta.Data
         public virtual object EndTime { get; set; } 
 
         /// <summary>Output only. A distinct integer value is assigned for every speaker within the audio. This field
-        /// specifies which one of those speakers was detected to have spoken this word. Value ranges from '1' to
+        /// specifies which one of those speakers was detected to have spoken this word. Value ranges from `1` to
         /// `diarization_speaker_count`. speaker_tag is set if `enable_speaker_diarization` = `true` and only in the top
         /// alternative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]

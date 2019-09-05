@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/rX04bDQEhzrlpnJ7zysFtOlKwiM\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/2OMYwfrgYoo_mlwX0OWUGwIO9sM\"",
  "discoveryVersion": "v1",
  "id": "calendar:v3",
  "name": "calendar",
  "version": "v3",
- "revision": "20190825",
+ "revision": "20190903",
  "title": "Calendar API",
  "description": "Manipulates events and other calendar data.",
  "ownerDomain": "google.com",
@@ -466,7 +466,7 @@
    "properties": {
     "conferenceId": {
      "type": "string",
-     "description": "The ID of the conference.\nCan be used by developers to keep track of conferences, should not be displayed to users.\nValues for solution types:  \n- \"eventHangout\": unset.\n- \"eventNamedHangout\": the name of the Hangout.\n- \"hangoutsMeet\": the 10-letter meeting code, for example \"aaa-bbbb-ccc\".  Optional."
+     "description": "The ID of the conference.\nCan be used by developers to keep track of conferences, should not be displayed to users.\nValues for solution types:  \n- \"eventHangout\": unset.\n- \"eventNamedHangout\": the name of the Hangout.\n- \"hangoutsMeet\": the 10-letter meeting code, for example \"aaa-bbbb-ccc\".\n- \"addOn\": defined by 3P conference provider.  Optional."
     },
     "conferenceSolution": {
      "$ref": "ConferenceSolution",

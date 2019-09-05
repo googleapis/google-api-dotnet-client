@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/poly/'>Poly API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190828 (1700)
+ *      <tr><th>API Rev<td>20190902 (1705)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/poly/'>
  *              https://developers.google.com/poly/</a>
@@ -643,23 +643,6 @@ namespace Google.Apis.PolyService.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The visibility of the assets to be returned. Defaults to VISIBILITY_UNSPECIFIED which
-                /// returns all assets.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("visibility", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<VisibilityEnum> Visibility { get; set; }
-
-                /// <summary>The visibility of the assets to be returned. Defaults to VISIBILITY_UNSPECIFIED which
-                /// returns all assets.</summary>
-                public enum VisibilityEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("VISIBILITY_UNSPECIFIED")]
-                    VISIBILITYUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
-                    PUBLISHED,
-                    [Google.Apis.Util.StringValueAttribute("PRIVATE")]
-                    PRIVATE__,
-                }
-
                 /// <summary>Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`.
                 /// Defaults to `BEST`, which ranks assets based on a combination of popularity and other
                 /// features.</summary>
@@ -681,6 +664,23 @@ namespace Google.Apis.PolyService.v1
                 /// Defaults to `20`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The visibility of the assets to be returned. Defaults to VISIBILITY_UNSPECIFIED which
+                /// returns all assets.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("visibility", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<VisibilityEnum> Visibility { get; set; }
+
+                /// <summary>The visibility of the assets to be returned. Defaults to VISIBILITY_UNSPECIFIED which
+                /// returns all assets.</summary>
+                public enum VisibilityEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("VISIBILITY_UNSPECIFIED")]
+                    VISIBILITYUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
+                    PUBLISHED,
+                    [Google.Apis.Util.StringValueAttribute("PRIVATE")]
+                    PRIVATE__,
+                }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -716,15 +716,6 @@ namespace Google.Apis.PolyService.v1
                             Pattern = @"^users/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "visibility", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "visibility",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -755,6 +746,15 @@ namespace Google.Apis.PolyService.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "visibility", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "visibility",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

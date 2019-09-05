@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/N55ZXwjx5gVcFVd9x7svcXqGxFA\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/LQk4tkY-l69ZrPa5OlN2M--rZ0o\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20190815",
+ "revision": "20190827",
  "title": "Cloud SQL Admin API",
  "description": "Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.",
  "ownerDomain": "google.com",
@@ -797,6 +797,29 @@
    "type": "object",
    "description": "Database instance import context.",
    "properties": {
+    "bakImportOptions": {
+     "type": "object",
+     "description": "Import parameters specific to SQL Server .BAK files",
+     "properties": {
+      "encryptionOptions": {
+       "type": "object",
+       "properties": {
+        "certPath": {
+         "type": "string",
+         "description": "Path to the Certificate (.cer) in Cloud Storage, in the form gs://bucketName/fileName. The instance must have write permissions to the bucket and read access to the file."
+        },
+        "pvkPassword": {
+         "type": "string",
+         "description": "Password that encrypts the private key"
+        },
+        "pvkPath": {
+         "type": "string",
+         "description": "Path to the Certificate Private Key (.pvk) in Cloud Storage, in the form gs://bucketName/fileName. The instance must have write permissions to the bucket and read access to the file."
+        }
+       }
+      }
+     }
+    },
     "csvImportOptions": {
      "type": "object",
      "description": "Options for importing data as CSV.",

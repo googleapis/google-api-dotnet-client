@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta3
- *      <tr><th>API Rev<td>20190813 (1685)
+ *      <tr><th>API Rev<td>20190823 (1695)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tasks/'>
  *              https://cloud.google.com/tasks/</a>
@@ -698,6 +698,15 @@ namespace Google.Apis.CloudTasks.v2beta3
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>Maximum page size.
+                        ///
+                        /// Fewer tasks than requested might be returned, even if more tasks exist; use next_page_token
+                        /// in the response to determine if more tasks exist.
+                        ///
+                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
                         /// <summary>The response_view specifies which subset of the Task will be returned.
                         ///
                         /// By default response_view is BASIC; not all information is retrieved by default because some
@@ -737,15 +746,6 @@ namespace Google.Apis.CloudTasks.v2beta3
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
-                        /// <summary>Maximum page size.
-                        ///
-                        /// Fewer tasks than requested might be returned, even if more tasks exist; use next_page_token
-                        /// in the response to determine if more tasks exist.
-                        ///
-                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
 
                         ///<summary>Gets the method name.</summary>
                         public override string MethodName
@@ -780,6 +780,15 @@ namespace Google.Apis.CloudTasks.v2beta3
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "responseView", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "responseView",
@@ -792,15 +801,6 @@ namespace Google.Apis.CloudTasks.v2beta3
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2441,7 +2441,7 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
     ///
     /// System throttling happens because:
     ///
-    /// * Cloud Tasks backoffs on all errors. Normally the backoff specified in rate limits will be used. But if the
+    /// * Cloud Tasks backs off on all errors. Normally the backoff specified in rate limits will be used. But if the
     /// worker returns `429` (Too Many Requests), `503` (Service Unavailable), or the rate of errors is high, Cloud
     /// Tasks will use a higher backoff rate. The retry specified in the `Retry-After` HTTP response header is
     /// considered.

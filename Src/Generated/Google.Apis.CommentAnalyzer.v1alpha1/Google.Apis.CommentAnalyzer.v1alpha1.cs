@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://github.com/conversationai/perspectiveapi/blob/master/README.md'>Perspective Comment Analyzer API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190818 (1690)
+ *      <tr><th>API Rev<td>20190901 (1704)
  *      <tr><th>API Docs
  *          <td><a href='https://github.com/conversationai/perspectiveapi/blob/master/README.md'>
  *              https://github.com/conversationai/perspectiveapi/blob/master/README.md</a>
@@ -452,7 +452,7 @@ namespace Google.Apis.CommentAnalyzer.v1alpha1
 namespace Google.Apis.CommentAnalyzer.v1alpha1.Data
 {    
 
-    /// <summary>The comment analysis request message.</summary>
+    /// <summary>The comment analysis request message. LINT.IfChange</summary>
     public class AnalyzeCommentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Opaque token that is echoed from the request to the response.</summary>

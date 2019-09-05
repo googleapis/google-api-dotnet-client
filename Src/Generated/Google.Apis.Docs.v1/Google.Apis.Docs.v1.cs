@@ -2079,6 +2079,24 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Merges cells in a Table.</summary>
+    public class MergeTableCellsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The table range specifying which cells of the table to merge.
+        ///
+        /// Any text in the cells being merged will be concatenated and stored in the "head" cell of the range. This is
+        /// the upper-left cell of the range when the content direction is left to right, and the upper-right cell of
+        /// the range otherwise.
+        ///
+        /// If the range is non-rectangular (which can occur in some cases where the range covers cells that are already
+        /// merged or where the table is non-rectangular), a 400 bad request error is returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
+        public virtual TableRange TableRange { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A collection of Ranges with the same named range ID.
     ///
     /// Named ranges allow developers to associate parts of a document with an arbitrary user-defined label so their
@@ -2858,6 +2876,34 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Replaces an existing image with a new image.
+    ///
+    /// Replacing an image removes some image effects from the existing image in order to mirror the behavior of the
+    /// Docs editor.</summary>
+    public class ReplaceImageRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the existing image that will be replaced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageObjectId")]
+        public virtual string ImageObjectId { get; set; } 
+
+        /// <summary>The replacement method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageReplaceMethod")]
+        public virtual string ImageReplaceMethod { get; set; } 
+
+        /// <summary>The URI of the new image.
+        ///
+        /// The image is fetched once at insertion time and a copy is stored for display inside the document. Images
+        /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
+        ///
+        /// The provided URI can be at most 2 kB in length. The URI itself is saved with the image, and exposed via the
+        /// ImageProperties.source_uri field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A single update to apply to a document.</summary>
     public class Request : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2917,9 +2963,21 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertText")]
         public virtual InsertTextRequest InsertText { get; set; } 
 
+        /// <summary>Merges cells in a table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergeTableCells")]
+        public virtual MergeTableCellsRequest MergeTableCells { get; set; } 
+
         /// <summary>Replaces all instances of the specified text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceAllText")]
         public virtual ReplaceAllTextRequest ReplaceAllText { get; set; } 
+
+        /// <summary>Replaces an image in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replaceImage")]
+        public virtual ReplaceImageRequest ReplaceImage { get; set; } 
+
+        /// <summary>Unmerges cells in a table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unmergeTableCells")]
+        public virtual UnmergeTableCellsRequest UnmergeTableCells { get; set; } 
 
         /// <summary>Updates the style of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateDocumentStyle")]
@@ -3447,10 +3505,14 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A border around a table cell.</summary>
+    /// <summary>A border around a table cell.
+    ///
+    /// Table cell borders cannot be transparent. To hide a table cell border, make its width 0.</summary>
     public class TableCellBorder : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The color of the border.</summary>
+        /// <summary>The color of the border.
+        ///
+        /// This color cannot be transparent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual OptionalColor Color { get; set; } 
 
@@ -3916,6 +3978,24 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Indicates if there was a suggested change to weighted_font_family.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weightedFontFamilySuggested")]
         public virtual System.Nullable<bool> WeightedFontFamilySuggested { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Unmerges cells in a Table.</summary>
+    public class UnmergeTableCellsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The table range specifying which cells of the table to unmerge.
+        ///
+        /// All merged cells in this range will be unmerged, and cells that are already unmerged will not be affected.
+        /// If the range has no merged cells, the request will do nothing.
+        ///
+        /// If there is text in any of the merged cells, the text will remain in the "head" cell of the resulting block
+        /// of unmerged cells. The "head" cell is the upper-left cell when the content direction is from left to right,
+        /// and the upper-right otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
+        public virtual TableRange TableRange { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

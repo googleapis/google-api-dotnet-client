@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20190815 (1687)
+ *      <tr><th>API Rev<td>20190827 (1699)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -5010,6 +5010,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Database instance import context.</summary>
     public class ImportContext : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Import parameters specific to SQL Server .BAK files</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bakImportOptions")]
+        public virtual ImportContext.BakImportOptionsData BakImportOptions { get; set; } 
+
         /// <summary>Options for importing data as CSV.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csvImportOptions")]
         public virtual ImportContext.CsvImportOptionsData CsvImportOptions { get; set; } 
@@ -5042,6 +5046,34 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
         
+
+        /// <summary>Import parameters specific to SQL Server .BAK files</summary>
+        public class BakImportOptionsData
+        {
+            [Newtonsoft.Json.JsonPropertyAttribute("encryptionOptions")]
+            public virtual BakImportOptionsData.EncryptionOptionsData EncryptionOptions { get; set; } 
+
+            
+
+            public class EncryptionOptionsData
+            {
+                /// <summary>Path to the Certificate (.cer) in Cloud Storage, in the form gs://bucketName/fileName. The
+                /// instance must have write permissions to the bucket and read access to the file.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("certPath")]
+                public virtual string CertPath { get; set; } 
+
+                /// <summary>Password that encrypts the private key</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("pvkPassword")]
+                public virtual string PvkPassword { get; set; } 
+
+                /// <summary>Path to the Certificate Private Key (.pvk) in Cloud Storage, in the form
+                /// gs://bucketName/fileName. The instance must have write permissions to the bucket and read access to
+                /// the file.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("pvkPath")]
+                public virtual string PvkPath { get; set; } 
+
+            }
+        }    
 
         /// <summary>Options for importing data as CSV.</summary>
         public class CsvImportOptionsData

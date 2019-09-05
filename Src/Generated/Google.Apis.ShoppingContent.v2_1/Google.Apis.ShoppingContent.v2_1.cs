@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20190822 (1694)
+ *      <tr><th>API Rev<td>20190902 (1705)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>

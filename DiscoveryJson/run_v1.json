@@ -1,74 +1,4 @@
 {
-  "schemas": {
-    "ListLocationsResponse": {
-      "description": "The response message for Locations.ListLocations.",
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        },
-        "locations": {
-          "description": "A list of locations that matches the specified filter in the request.",
-          "type": "array",
-          "items": {
-            "$ref": "Location"
-          }
-        }
-      },
-      "id": "ListLocationsResponse"
-    },
-    "Location": {
-      "description": "A resource that represents Google Cloud Platform location.",
-      "type": "object",
-      "properties": {
-        "labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
-          "type": "object"
-        },
-        "name": {
-          "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
-          "type": "string"
-        },
-        "locationId": {
-          "description": "The canonical id for this location. For example: `\"us-east1\"`.",
-          "type": "string"
-        },
-        "displayName": {
-          "description": "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\".",
-          "type": "string"
-        },
-        "metadata": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
-          "type": "object"
-        }
-      },
-      "id": "Location"
-    }
-  },
-  "protocol": "rest",
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  },
-  "canonicalName": "Cloud Run",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "View and manage your data across Google Cloud Platform services"
-        }
-      }
-    }
-  },
-  "rootUrl": "https://run.googleapis.com/",
   "ownerDomain": "google.com",
   "name": "run",
   "batchPath": "batch",
@@ -89,23 +19,26 @@
                 "name"
               ],
               "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "parameters": {
                 "filter": {
+                  "type": "string",
                   "location": "query",
-                  "description": "The standard list filter.",
-                  "type": "string"
+                  "description": "The standard list filter."
                 },
                 "name": {
+                  "pattern": "^projects/[^/]+$",
                   "location": "path",
                   "description": "The resource that owns the locations collection, if applicable.",
                   "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$"
+                  "type": "string"
                 },
                 "pageToken": {
-                  "location": "query",
                   "description": "The standard list page token.",
-                  "type": "string"
+                  "type": "string",
+                  "location": "query"
                 },
                 "pageSize": {
                   "location": "query",
@@ -114,14 +47,14 @@
                   "type": "integer"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "flatPath": "v1/projects/{projectsId}/locations",
               "path": "v1/{+name}/locations",
               "id": "run.projects.locations.list"
             },
             "get": {
+              "path": "v1/{+name}",
+              "id": "run.projects.locations.get",
+              "description": "Gets information about a location.",
               "response": {
                 "$ref": "Location"
               },
@@ -134,17 +67,14 @@
               ],
               "parameters": {
                 "name": {
-                  "location": "path",
                   "description": "Resource name for the location.",
                   "required": true,
                   "type": "string",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$"
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path"
                 }
               },
-              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
-              "path": "v1/{+name}",
-              "id": "run.projects.locations.get",
-              "description": "Gets information about a location."
+              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}"
             }
           }
         }
@@ -152,27 +82,48 @@
     }
   },
   "parameters": {
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks."
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
     "callback": {
       "location": "query",
       "description": "JSONP",
       "type": "string"
     },
     "oauth_token": {
+      "location": "query",
       "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "$.xgafv": {
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
       "description": "V1 error format.",
       "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
       ]
     },
     "alt": {
@@ -192,51 +143,100 @@
       ]
     },
     "access_token": {
-      "description": "OAuth access token.",
       "type": "string",
-      "location": "query"
+      "location": "query",
+      "description": "OAuth access token."
     },
     "key": {
-      "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "upload_protocol": {
+      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string"
     }
   },
   "version": "v1",
   "baseUrl": "https://run.googleapis.com/",
+  "servicePath": "",
   "kind": "discovery#restDescription",
   "description": "Deploy and manage user provided container images that scale automatically based on HTTP traffic.",
-  "servicePath": "",
   "basePath": "",
-  "revision": "20190823",
-  "documentationLink": "https://cloud.google.com/run/",
   "id": "run:v1",
+  "documentationLink": "https://cloud.google.com/run/",
+  "revision": "20190828",
   "discoveryVersion": "v1",
-  "version_module": true
+  "version_module": true,
+  "schemas": {
+    "Location": {
+      "description": "A resource that represents Google Cloud Platform location.",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
+          "type": "object"
+        },
+        "labels": {
+          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
+          "type": "string"
+        },
+        "locationId": {
+          "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\".",
+          "type": "string"
+        }
+      },
+      "id": "Location"
+    },
+    "ListLocationsResponse": {
+      "type": "object",
+      "properties": {
+        "locations": {
+          "type": "array",
+          "items": {
+            "$ref": "Location"
+          },
+          "description": "A list of locations that matches the specified filter in the request."
+        },
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        }
+      },
+      "id": "ListLocationsResponse",
+      "description": "The response message for Locations.ListLocations."
+    }
+  },
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "protocol": "rest",
+  "canonicalName": "Cloud Run",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "View and manage your data across Google Cloud Platform services"
+        }
+      }
+    }
+  },
+  "rootUrl": "https://run.googleapis.com/"
 }

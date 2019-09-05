@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190825 (1697)
+ *      <tr><th>API Rev<td>20190903 (1706)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -5062,7 +5062,8 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>The ID of the conference. Can be used by developers to keep track of conferences, should not be
         /// displayed to users. Values for solution types: - "eventHangout": unset. - "eventNamedHangout": the name of
-        /// the Hangout. - "hangoutsMeet": the 10-letter meeting code, for example "aaa-bbbb-ccc".  Optional.</summary>
+        /// the Hangout. - "hangoutsMeet": the 10-letter meeting code, for example "aaa-bbbb-ccc". - "addOn": defined by
+        /// 3P conference provider.  Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceId")]
         public virtual string ConferenceId { get; set; } 
 
