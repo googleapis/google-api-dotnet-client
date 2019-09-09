@@ -386,6 +386,34 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
+        [Fact]
+        public void TestUploadStreamDisposedBeforeConstruction()
+        {
+            using (var server = new SingleChunkServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = new MemoryStream(new byte[10]);
+                content.Dispose();
+                var uploader = new TestResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100);
+                var progress = uploader.Upload();
+                Assert.IsType<ObjectDisposedException>(progress.Exception);
+            }
+        }
+
+        [Fact]
+        public void TestUploadStreamDisposedBetweenConstructionAndUpload()
+        {
+            using (var server = new SingleChunkServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = new MemoryStream(new byte[10]);
+                var uploader = new TestResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100);
+                content.Dispose();
+                var progress = uploader.Upload();
+                Assert.IsType<ObjectDisposedException>(progress.Exception);
+            }
+        }
+
         /// <summary>
         /// Server that support multiple-chunk uploads.
         /// </summary>
