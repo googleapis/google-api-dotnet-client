@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/tasks/firstapp'>Tasks API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190901 (1704)
+ *      <tr><th>API Rev<td>20190903 (1706)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/tasks/firstapp'>
  *              https://developers.google.com/google-apps/tasks/firstapp</a>

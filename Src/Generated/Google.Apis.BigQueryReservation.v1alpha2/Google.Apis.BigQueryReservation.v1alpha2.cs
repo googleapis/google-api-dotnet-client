@@ -1763,6 +1763,11 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Please specify resource name as grantee in the query. e.g., "grantee=projects/myproject"
+                /// "grantee=folders/123" "grantee=organizations/456"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Query { get; set; }
+
                 /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1770,11 +1775,6 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                 /// <summary>The maximum number of items to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Please specify resource name as grantee in the query. e.g., "grantee=projects/myproject"
-                /// "grantee=folders/123" "grantee=organizations/456"</summary>
-                [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Query { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1810,6 +1810,15 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "query", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "query",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1822,15 +1831,6 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "query", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "query",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v3.1
- *      <tr><th>API Rev<td>20190531 (1611)
+ *      <tr><th>API Rev<td>20190904 (1707)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -88,7 +88,6 @@ namespace Google.Apis.Dfareporting.v3_1
             creativeGroups = new CreativeGroupsResource(this);
             creatives = new CreativesResource(this);
             dimensionValues = new DimensionValuesResource(this);
-            directorySiteContacts = new DirectorySiteContactsResource(this);
             directorySites = new DirectorySitesResource(this);
             dynamicTargetingKeys = new DynamicTargetingKeysResource(this);
             eventTags = new EventTagsResource(this);
@@ -389,14 +388,6 @@ namespace Google.Apis.Dfareporting.v3_1
         public virtual DimensionValuesResource DimensionValues
         {
             get { return dimensionValues; }
-        }
-
-        private readonly DirectorySiteContactsResource directorySiteContacts;
-
-        /// <summary>Gets the DirectorySiteContacts resource.</summary>
-        public virtual DirectorySiteContactsResource DirectorySiteContacts
-        {
-            get { return directorySiteContacts; }
         }
 
         private readonly DirectorySitesResource directorySites;
@@ -3634,6 +3625,10 @@ namespace Google.Apis.Dfareporting.v3_1
             [Google.Apis.Util.RequestParameterAttribute("archived", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Archived { get; set; }
 
+            /// <summary>Select only landing pages that are associated with these campaigns.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("campaignIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> CampaignIds { get; set; }
+
             /// <summary>Select only landing pages with these IDs.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ids", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
@@ -3735,6 +3730,15 @@ namespace Google.Apis.Dfareporting.v3_1
                     "archived", new Google.Apis.Discovery.Parameter
                     {
                         Name = "archived",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "campaignIds", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "campaignIds",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -9646,281 +9650,6 @@ namespace Google.Apis.Dfareporting.v3_1
         }
     }
 
-    /// <summary>The "directorySiteContacts" collection of methods.</summary>
-    public class DirectorySiteContactsResource
-    {
-        private const string Resource = "directorySiteContacts";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public DirectorySiteContactsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-
-        }
-
-
-        /// <summary>Gets one directory site contact by ID.</summary>
-        /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Directory
-        /// site contact ID.</param>
-        public virtual GetRequest Get(long profileId, long id)
-        {
-            return new GetRequest(service, profileId, id);
-        }
-
-        /// <summary>Gets one directory site contact by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_1.Data.DirectorySiteContact>
-        {
-            /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long id)
-                : base(service)
-            {
-                ProfileId = profileId;
-                Id = id;
-                InitParameters();
-            }
-
-
-            /// <summary>User profile ID associated with this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long ProfileId { get; private set; }
-
-            /// <summary>Directory site contact ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long Id { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "get"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "userprofiles/{profileId}/directorySiteContacts/{id}"; }
-            }
-
-            /// <summary>Initializes Get parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "id", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "id",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Retrieves a list of directory site contacts, possibly filtered. This method supports
-        /// paging.</summary>
-        /// <param name="profileId">User profile ID associated with this request.</param>
-        public virtual ListRequest List(long profileId)
-        {
-            return new ListRequest(service, profileId);
-        }
-
-        /// <summary>Retrieves a list of directory site contacts, possibly filtered. This method supports
-        /// paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_1.Data.DirectorySiteContactsListResponse>
-        {
-            /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId)
-                : base(service)
-            {
-                ProfileId = profileId;
-                InitParameters();
-            }
-
-
-            /// <summary>User profile ID associated with this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long ProfileId { get; private set; }
-
-            /// <summary>Select only directory site contacts with these directory site IDs. This is a required
-            /// field.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("directorySiteIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> DirectorySiteIds { get; set; }
-
-            /// <summary>Select only directory site contacts with these IDs.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("ids", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
-
-            /// <summary>Maximum number of results to return.</summary>
-            /// [default: 1000]
-            /// [minimum: 0]
-            /// [maximum: 1000]
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> MaxResults { get; set; }
-
-            /// <summary>Value of the nextPageToken from the previous result page.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Allows searching for objects by name, ID or email. Wildcards (*) are allowed. For example,
-            /// "directory site contact*2015" will return objects with names like "directory site contact June 2015",
-            /// "directory site contact April 2015", or simply "directory site contact 2015". Most of the searches also
-            /// add wildcards implicitly at the start and the end of the search string. For example, a search string of
-            /// "directory site contact" will match objects with name "my directory site contact", "directory site
-            /// contact 2015", or simply "directory site contact".</summary>
-            [Google.Apis.Util.RequestParameterAttribute("searchString", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SearchString { get; set; }
-
-            /// <summary>Field by which to sort the list.</summary>
-            /// [default: ID]
-            [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
-
-            /// <summary>Field by which to sort the list.</summary>
-            public enum SortFieldEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
-                [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
-            }
-
-            /// <summary>Order of sorted results.</summary>
-            /// [default: ASCENDING]
-            [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
-
-            /// <summary>Order of sorted results.</summary>
-            public enum SortOrderEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
-                [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
-            }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "list"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "userprofiles/{profileId}/directorySiteContacts"; }
-            }
-
-            /// <summary>Initializes List parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "profileId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "profileId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "directorySiteIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "directorySiteIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "ids",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "1000",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "searchString", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "searchString",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortField", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortField",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ID",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "sortOrder", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "sortOrder",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "ASCENDING",
-                        Pattern = null,
-                    });
-            }
-
-        }
-    }
-
     /// <summary>The "directorySites" collection of methods.</summary>
     public class DirectorySitesResource
     {
@@ -10124,10 +9853,6 @@ namespace Google.Apis.Dfareporting.v3_1
             [Google.Apis.Util.RequestParameterAttribute("active", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Active { get; set; }
 
-            /// <summary>Select only directory sites with this country ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("countryId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> CountryId { get; set; }
-
             /// <summary>Select only directory sites with this Ad Manager network code.</summary>
             [Google.Apis.Util.RequestParameterAttribute("dfpNetworkCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DfpNetworkCode { get; set; }
@@ -10146,10 +9871,6 @@ namespace Google.Apis.Dfareporting.v3_1
             /// <summary>Value of the nextPageToken from the previous result page.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>Select only directory sites with this parent ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parentId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> ParentId { get; set; }
 
             /// <summary>Allows searching for objects by name, ID or URL. Wildcards (*) are allowed. For example,
             /// "directory site*2015" will return objects with names like "directory site June 2015", "directory site
@@ -10257,15 +9978,6 @@ namespace Google.Apis.Dfareporting.v3_1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "countryId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "countryId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "dfpNetworkCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "dfpNetworkCode",
@@ -10296,15 +10008,6 @@ namespace Google.Apis.Dfareporting.v3_1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parentId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parentId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -23972,10 +23675,6 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedInfo")]
         public virtual LastModifiedInfo LastModifiedInfo { get; set; } 
 
-        /// <summary>Lookback window settings for the campaign.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lookbackConfiguration")]
-        public virtual LookbackConfiguration LookbackConfiguration { get; set; } 
-
         /// <summary>Name of this campaign. This is a required field and must be less than 256 characters long and
         /// unique among campaigns of the same advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -24444,7 +24143,8 @@ namespace Google.Apis.Dfareporting.v3_1.Data
     /// ad.</summary>
     public class Conversion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the conversion was directed toward children.</summary>
+        /// <summary>Whether this particular request may come from a user under the age of 13, under COPPA
+        /// compliance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childDirectedTreatment")]
         public virtual System.Nullable<bool> ChildDirectedTreatment { get; set; } 
 
@@ -24497,6 +24197,10 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceId")]
         public virtual string MobileDeviceId { get; set; } 
 
+        /// <summary>Whether the conversion was for a non personalized ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonPersonalizedAd")]
+        public virtual System.Nullable<bool> NonPersonalizedAd { get; set; } 
+
         /// <summary>The ordinal of the conversion. Use this field to control how conversions of the same user and day
         /// are de-duplicated. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ordinal")]
@@ -24509,6 +24213,11 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         /// <summary>The timestamp of conversion, in Unix epoch micros. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampMicros")]
         public virtual System.Nullable<long> TimestampMicros { get; set; } 
+
+        /// <summary>Whether this particular request may come from a user under the age of 16 (may differ by country),
+        /// under compliance with the European Union's General Data Protection Regulation (GDPR).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("treatmentForUnderage")]
+        public virtual System.Nullable<bool> TreatmentForUnderage { get; set; } 
 
         /// <summary>The value of the conversion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
@@ -24708,6 +24417,12 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         /// and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adTagKeys")]
         public virtual System.Collections.Generic.IList<string> AdTagKeys { get; set; } 
+
+        /// <summary>Additional sizes associated with a responsive creative. When inserting or updating a creative
+        /// either the size ID field or size width and height fields can be used. Applicable to DISPLAY creatives when
+        /// the primary asset type is HTML_IMAGE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalSizes")]
+        public virtual System.Collections.Generic.IList<Size> AdditionalSizes { get; set; } 
 
         /// <summary>Advertiser ID of this creative. This is a required field. Applicable to all creative
         /// types.</summary>
@@ -24919,10 +24634,6 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("overrideCss")]
         public virtual string OverrideCss { get; set; } 
 
-        /// <summary>The asset ID of the polite load image asset. Applicable to the creative type: DISPLAY.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("politeLoadAssetId")]
-        public virtual System.Nullable<long> PoliteLoadAssetId { get; set; } 
-
         /// <summary>Amount of time to play the video before counting a view. Applicable to the following creative
         /// types: all INSTREAM_VIDEO.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressOffset")]
@@ -25070,6 +24781,11 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         /// assets. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
         public virtual System.Nullable<bool> Active { get; set; } 
+
+        /// <summary>Additional sizes associated with this creative asset. HTML5 asset generated by compatible software
+        /// such as GWD will be able to support more sizes this creative asset can render.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalSizes")]
+        public virtual System.Collections.Generic.IList<Size> AdditionalSizes { get; set; } 
 
         /// <summary>Possible alignments for an asset. This is a read-only field. Applicable to the following creative
         /// types: RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL.</summary>
@@ -25815,23 +25531,6 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Creative Settings</summary>
-    public class CreativeSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Header text for iFrames for this site. Must be less than or equal to 2000 characters
-        /// long.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iFrameFooter")]
-        public virtual string IFrameFooter { get; set; } 
-
-        /// <summary>Header text for iFrames for this site. Must be less than or equal to 2000 characters
-        /// long.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iFrameHeader")]
-        public virtual string IFrameHeader { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Creative List Response</summary>
     public class CreativesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26201,29 +25900,6 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
         public virtual System.Nullable<bool> Active { get; set; } 
 
-        /// <summary>Directory site contacts.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contactAssignments")]
-        public virtual System.Collections.Generic.IList<DirectorySiteContactAssignment> ContactAssignments { get; set; } 
-
-        /// <summary>Country ID of this directory site. This is a read-only field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("countryId")]
-        public virtual System.Nullable<long> CountryId { get; set; } 
-
-        /// <summary>Currency ID of this directory site. This is a read-only field. Possible values are: - "1" for USD -
-        /// "2" for GBP - "3" for ESP - "4" for SEK - "5" for CAD - "6" for JPY - "7" for DEM - "8" for AUD - "9" for
-        /// FRF - "10" for ITL - "11" for DKK - "12" for NOK - "13" for FIM - "14" for ZAR - "15" for IEP - "16" for NLG
-        /// - "17" for EUR - "18" for KRW - "19" for TWD - "20" for SGD - "21" for CNY - "22" for HKD - "23" for NZD -
-        /// "24" for MYR - "25" for BRL - "26" for PTE - "27" for MXP - "28" for CLP - "29" for TRY - "30" for ARS -
-        /// "31" for PEN - "32" for ILS - "33" for CHF - "34" for VEF - "35" for COP - "36" for GTQ - "37" for PLN -
-        /// "39" for INR - "40" for THB - "41" for IDR - "42" for CZK - "43" for RON - "44" for HUF - "45" for RUB -
-        /// "46" for AED - "47" for BGN - "48" for HRK - "49" for MXN - "50" for NGN</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("currencyId")]
-        public virtual System.Nullable<long> CurrencyId { get; set; } 
-
-        /// <summary>Description of this directory site. This is a read-only field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
-
         /// <summary>ID of this directory site. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; } 
@@ -26256,10 +25932,6 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Parent directory site ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parentId")]
-        public virtual System.Nullable<long> ParentId { get; set; } 
-
         /// <summary>Directory site settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settings")]
         public virtual DirectorySiteSettings Settings { get; set; } 
@@ -26267,90 +25939,6 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         /// <summary>URL of this directory site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Contains properties of a Site Directory contact.</summary>
-    public class DirectorySiteContact : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Address of this directory site contact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual string Address { get; set; } 
-
-        /// <summary>Email address of this directory site contact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; } 
-
-        /// <summary>First name of this directory site contact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("firstName")]
-        public virtual string FirstName { get; set; } 
-
-        /// <summary>ID of this directory site contact. This is a read-only, auto-generated field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
-
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "dfareporting#directorySiteContact".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Last name of this directory site contact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastName")]
-        public virtual string LastName { get; set; } 
-
-        /// <summary>Phone number of this directory site contact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("phone")]
-        public virtual string Phone { get; set; } 
-
-        /// <summary>Directory site contact role.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; } 
-
-        /// <summary>Title or designation of this directory site contact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
-
-        /// <summary>Directory site contact type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Directory Site Contact Assignment</summary>
-    public class DirectorySiteContactAssignment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>ID of this directory site contact. This is a read-only, auto-generated field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contactId")]
-        public virtual System.Nullable<long> ContactId { get; set; } 
-
-        /// <summary>Visibility of this directory site contact assignment. When set to PUBLIC this contact assignment is
-        /// visible to all account and agency users; when set to PRIVATE it is visible only to the site.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
-        public virtual string Visibility { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Directory Site Contact List Response</summary>
-    public class DirectorySiteContactsListResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Directory site contact collection</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("directorySiteContacts")]
-        public virtual System.Collections.Generic.IList<DirectorySiteContact> DirectorySiteContacts { get; set; } 
-
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "dfareporting#directorySiteContactsListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Pagination token to be used for the next list operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26374,19 +25962,6 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         /// <summary>Whether this site accepts interstitial ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interstitialPlacementAccepted")]
         public virtual System.Nullable<bool> InterstitialPlacementAccepted { get; set; } 
-
-        /// <summary>Whether this directory site has disabled Nielsen OCR reach ratings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nielsenOcrOptOut")]
-        public virtual System.Nullable<bool> NielsenOcrOptOut { get; set; } 
-
-        /// <summary>Whether this directory site has disabled generation of Verification ins tags.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("verificationTagOptOut")]
-        public virtual System.Nullable<bool> VerificationTagOptOut { get; set; } 
-
-        /// <summary>Whether this directory site has disabled active view for in-stream video creatives. This is a read-
-        /// only field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("videoActiveViewOptOut")]
-        public virtual System.Nullable<bool> VideoActiveViewOptOut { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26822,10 +26397,6 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         /// <summary>The type of Floodlight tag this activity will generate. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightTagType")]
         public virtual string FloodlightTagType { get; set; } 
-
-        /// <summary>Whether this activity is archived.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hidden")]
-        public virtual System.Nullable<bool> Hidden { get; set; } 
 
         /// <summary>ID of this floodlight activity. This is a read-only, auto-generated field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -28198,6 +27769,11 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adBlockingOptOut")]
         public virtual System.Nullable<bool> AdBlockingOptOut { get; set; } 
 
+        /// <summary>Additional sizes associated with this placement. When inserting or updating a placement, only the
+        /// size ID field is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalSizes")]
+        public virtual System.Collections.Generic.IList<Size> AdditionalSizes { get; set; } 
+
         /// <summary>Advertiser ID of this placement. This field can be left blank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; } 
@@ -28827,10 +28403,6 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         /// <summary>Placement cap cost option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capCostOption")]
         public virtual string CapCostOption { get; set; } 
-
-        /// <summary>Whether cap costs are ignored by ad serving.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disregardOverdelivery")]
-        public virtual System.Nullable<bool> DisregardOverdelivery { get; set; } 
 
         /// <summary>Placement end date. This date must be later than, or the same day as, the placement start date, but
         /// not later than the campaign end date. If, for example, you set 6/25/2015 as both the start and end dates,
@@ -29869,17 +29441,9 @@ namespace Google.Apis.Dfareporting.v3_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adBlockingOptOut")]
         public virtual System.Nullable<bool> AdBlockingOptOut { get; set; } 
 
-        /// <summary>Site-wide creative settings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("creativeSettings")]
-        public virtual CreativeSettings CreativeSettings { get; set; } 
-
         /// <summary>Whether new cookies are disabled for this site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableNewCookie")]
         public virtual System.Nullable<bool> DisableNewCookie { get; set; } 
-
-        /// <summary>Lookback window settings for this site.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lookbackConfiguration")]
-        public virtual LookbackConfiguration LookbackConfiguration { get; set; } 
 
         /// <summary>Configuration settings for dynamic and image floodlight tags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagSetting")]

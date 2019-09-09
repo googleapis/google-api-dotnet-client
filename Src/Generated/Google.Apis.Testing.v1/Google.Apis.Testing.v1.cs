@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190807 (1679)
+ *      <tr><th>API Rev<td>20190905 (1708)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1560,7 +1560,7 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A description of an iOS device tests may be run on.</summary>
+    /// <summary>A description of an iOS device tests may be run on. Next tag: 10</summary>
     public class IosModel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Device capabilities. Copied from https://developer.apple.com/library/archive/documentation/DeviceIn
@@ -1580,6 +1580,18 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>The human-readable name for this device model. Examples: "iPhone 4s", "iPad Mini 2".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Screen density in DPI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenDensity")]
+        public virtual System.Nullable<int> ScreenDensity { get; set; } 
+
+        /// <summary>Screen size in the horizontal (X) dimension measured in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenX")]
+        public virtual System.Nullable<int> ScreenX { get; set; } 
+
+        /// <summary>Screen size in the vertical (Y) dimension measured in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenY")]
+        public virtual System.Nullable<int> ScreenY { get; set; } 
 
         /// <summary>The set of iOS major software versions this device supports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedVersionIds")]

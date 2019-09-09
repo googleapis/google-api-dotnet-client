@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190824 (1696)
+ *      <tr><th>API Rev<td>20190904 (1707)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -2634,11 +2634,6 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>If provided, this field specifies the criteria that must be met by notification channels to
-                /// be included in the response.For more details, see sorting and filtering.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>A comma-separated list of fields by which to sort the result. Supports the same set of
                 /// fields as in filter. Entries can be prefixed with a minus sign to sort in descending rather than
                 /// ascending order.For more details, see sorting and filtering.</summary>
@@ -2654,6 +2649,11 @@ namespace Google.Apis.Monitoring.v3
                 /// number, a reasonable value will be chosen by the service.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>If provided, this field specifies the criteria that must be met by notification channels to
+                /// be included in the response.For more details, see sorting and filtering.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2689,15 +2689,6 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -2719,6 +2710,15 @@ namespace Google.Apis.Monitoring.v3
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3080,37 +3080,6 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The set of fields to preserve when crossSeriesReducer is specified. The groupByFields
-                /// determine how the time series are partitioned into subsets prior to applying the aggregation
-                /// function. Each subset contains time series that have the same value for each of the grouping fields.
-                /// Each individual time series is a member of exactly one subset. The crossSeriesReducer is applied to
-                /// each subset of time series. It is not possible to reduce across different resource types, so this
-                /// field implicitly contains resource.type. Fields not specified in groupByFields are aggregated away.
-                /// If groupByFields is not specified and all the time series have the same resource type, then the time
-                /// series are aggregated into a single output time series. If crossSeriesReducer is not defined, this
-                /// field is ignored.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("aggregation.groupByFields", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> AggregationGroupByFields { get; set; }
-
-                /// <summary>Required. The end of the time interval.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object IntervalEndTime { get; set; }
-
-                /// <summary>The alignment period for per-time series alignment. If present, alignmentPeriod must be at
-                /// least 60 seconds. After per-time series alignment, each time series will contain data points only on
-                /// the period boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is
-                /// ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be
-                /// defined; otherwise an error is returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("aggregation.alignmentPeriod", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object AggregationAlignmentPeriod { get; set; }
-
-                /// <summary>A positive number that is the maximum number of results to return. If page_size is empty or
-                /// more than 100,000 results, the effective page_size is 100,000 results. If view is set to FULL, this
-                /// is the maximum number of Points returned. If view is set to HEADERS, this is the maximum number of
-                /// TimeSeries returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Unsupported: must be left blank. The points in each time series are returned in reverse
                 /// time order.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -3251,6 +3220,37 @@ namespace Google.Apis.Monitoring.v3
                     HEADERS,
                 }
 
+                /// <summary>The set of fields to preserve when crossSeriesReducer is specified. The groupByFields
+                /// determine how the time series are partitioned into subsets prior to applying the aggregation
+                /// function. Each subset contains time series that have the same value for each of the grouping fields.
+                /// Each individual time series is a member of exactly one subset. The crossSeriesReducer is applied to
+                /// each subset of time series. It is not possible to reduce across different resource types, so this
+                /// field implicitly contains resource.type. Fields not specified in groupByFields are aggregated away.
+                /// If groupByFields is not specified and all the time series have the same resource type, then the time
+                /// series are aggregated into a single output time series. If crossSeriesReducer is not defined, this
+                /// field is ignored.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.groupByFields", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> AggregationGroupByFields { get; set; }
+
+                /// <summary>Required. The end of the time interval.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object IntervalEndTime { get; set; }
+
+                /// <summary>The alignment period for per-time series alignment. If present, alignmentPeriod must be at
+                /// least 60 seconds. After per-time series alignment, each time series will contain data points only on
+                /// the period boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is
+                /// ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be
+                /// defined; otherwise an error is returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.alignmentPeriod", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object AggregationAlignmentPeriod { get; set; }
+
+                /// <summary>A positive number that is the maximum number of results to return. If page_size is empty or
+                /// more than 100,000 results, the effective page_size is 100,000 results. If view is set to FULL, this
+                /// is the maximum number of Points returned. If view is set to HEADERS, this is the maximum number of
+                /// TimeSeries returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -3283,42 +3283,6 @@ namespace Google.Apis.Monitoring.v3
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "aggregation.groupByFields", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "aggregation.groupByFields",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "interval.endTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "interval.endTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "aggregation.alignmentPeriod", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "aggregation.alignmentPeriod",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
@@ -3378,6 +3342,42 @@ namespace Google.Apis.Monitoring.v3
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "aggregation.groupByFields", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "aggregation.groupByFields",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "interval.endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "aggregation.alignmentPeriod", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "aggregation.alignmentPeriod",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3795,76 +3795,6 @@ namespace Google.Apis.Monitoring.v3
                 }
 
             }
-        }
-
-        /// <summary>Validates a new uptime check configuration, and also executes the Uptime check. The results of the
-        /// Uptime check are returned, but not stored.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="parent">The project for the uptime check. The format is projects/[PROJECT_ID].</param>
-        public virtual ValidateUptimeCheckConfigRequest ValidateUptimeCheckConfig(Google.Apis.Monitoring.v3.Data.UptimeCheckConfig body, string parent)
-        {
-            return new ValidateUptimeCheckConfigRequest(service, body, parent);
-        }
-
-        /// <summary>Validates a new uptime check configuration, and also executes the Uptime check. The results of the
-        /// Uptime check are returned, but not stored.</summary>
-        public class ValidateUptimeCheckConfigRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ValidateUptimeCheckConfigResponse>
-        {
-            /// <summary>Constructs a new ValidateUptimeCheckConfig request.</summary>
-            public ValidateUptimeCheckConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.UptimeCheckConfig body, string parent)
-                : base(service)
-            {
-                Parent = parent;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>The project for the uptime check. The format is projects/[PROJECT_ID].</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Parent { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Monitoring.v3.Data.UptimeCheckConfig Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "validateUptimeCheckConfig"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v3/{+parent}:validateUptimeCheckConfig"; }
-            }
-
-            /// <summary>Initializes ValidateUptimeCheckConfig parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
-            }
-
         }
     }
 
@@ -5740,52 +5670,6 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>A broad region category in which the IP address is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The result of a single uptime check execution. For group checks, this corresponds to one member of the
-    /// group.</summary>
-    public class UptimeCheckResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>True if the resource passed the check.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("checkPassed")]
-        public virtual System.Nullable<bool> CheckPassed { get; set; } 
-
-        /// <summary>True if the response had content that did not match the check.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentMismatch")]
-        public virtual System.Nullable<bool> ContentMismatch { get; set; } 
-
-        /// <summary>For HTTP checks, error, if any, that prevented contact with the resource (ex: DNS_NAME_UNKNOWN,
-        /// INVALID_URL).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
-        public virtual string ErrorCode { get; set; } 
-
-        /// <summary>For HTTP checks, HTTP response code returned by the resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("httpStatus")]
-        public virtual System.Nullable<int> HttpStatus { get; set; } 
-
-        /// <summary>The monitored resource (https://cloud.google.com/monitoring/api/resources) for the Uptime check
-        /// result.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]
-        public virtual MonitoredResource MonitoredResource { get; set; } 
-
-        /// <summary>The request latency when executing the uptime check.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestLatency")]
-        public virtual object RequestLatency { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The protocol for the ValidateUptimeCheckConfigResponse response.</summary>
-    public class ValidateUptimeCheckConfigResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The results of the uptime check execution (includes one result per group member, up to a maximum of
-        /// 3 randomly selected group members).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uptimeCheckResults")]
-        public virtual System.Collections.Generic.IList<UptimeCheckResult> UptimeCheckResults { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

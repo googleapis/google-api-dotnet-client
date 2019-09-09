@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/hangouts/chat'>Hangouts Chat API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190821 (1693)
+ *      <tr><th>API Rev<td>20190828 (1700)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/hangouts/chat'>
  *              https://developers.google.com/hangouts/chat</a>

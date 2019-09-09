@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20190624 (1635)
+ *      <tr><th>API Rev<td>20190815 (1687)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -6333,6 +6333,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -6383,6 +6387,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "optionsRequestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -14248,6 +14261,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -14289,6 +14306,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "optionsRequestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -18709,6 +18735,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -18750,6 +18780,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "optionsRequestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -20232,6 +20271,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -20282,6 +20325,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "optionsRequestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -26529,6 +26581,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -26570,6 +26626,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "optionsRequestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -30120,7 +30185,8 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="nodeGroup">Name of the NodeGroup resource to delete.</param>
+        /// <param name="nodeGroup">Name of the NodeGroup resource whose nodes will be
+        /// deleted.</param>
         public virtual DeleteNodesRequest DeleteNodes(Google.Apis.Compute.beta.Data.NodeGroupsDeleteNodesRequest body, string project, string zone, string nodeGroup)
         {
             return new DeleteNodesRequest(service, body, project, zone, nodeGroup);
@@ -30149,7 +30215,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the NodeGroup resource to delete.</summary>
+            /// <summary>Name of the NodeGroup resource whose nodes will be deleted.</summary>
             [Google.Apis.Util.RequestParameterAttribute("nodeGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string NodeGroup { get; private set; }
 
@@ -30367,6 +30433,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -30417,6 +30487,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "optionsRequestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -31598,6 +31677,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -31648,6 +31731,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "optionsRequestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -36044,8 +36136,8 @@ namespace Google.Apis.Compute.beta
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
-        /// <param name="commitment">Name of the commitment of which the reservation's capacities are
-        /// being updated.</param>
+        /// <param name="commitment">Name of the commitment for which the reservation is being
+        /// updated.</param>
         public virtual UpdateReservationsRequest UpdateReservations(Google.Apis.Compute.beta.Data.RegionCommitmentsUpdateReservationsRequest body, string project, string region, string commitment)
         {
             return new UpdateReservationsRequest(service, body, project, region, commitment);
@@ -36075,7 +36167,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the commitment of which the reservation's capacities are being updated.</summary>
+            /// <summary>Name of the commitment for which the reservation is being updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("commitment", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Commitment { get; private set; }
 
@@ -36936,6 +37028,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -36986,6 +37082,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "optionsRequestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -44921,7 +45026,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Retrieves all information of the specified reservation.</summary>
+        /// <summary>Retrieves information about the specified reservation.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
         /// request.</param>
@@ -44931,7 +45036,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, zone, reservation);
         }
 
-        /// <summary>Retrieves all information of the specified reservation.</summary>
+        /// <summary>Retrieves information about the specified reservation.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Reservation>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -45050,6 +45155,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -45100,6 +45209,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "optionsRequestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -45211,7 +45329,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>A list all the reservations that have been configured for the specified project in specified
+        /// <summary>A list of all the reservations that have been configured for the specified project in specified
         /// zone.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
@@ -45221,7 +45339,7 @@ namespace Google.Apis.Compute.beta
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>A list all the reservations that have been configured for the specified project in specified
+        /// <summary>A list of all the reservations that have been configured for the specified project in specified
         /// zone.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.ReservationList>
         {
@@ -45370,7 +45488,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Resizes the reservation (applicable to standalone reservations only)</summary>
+        /// <summary>Resizes the reservation (applicable to standalone reservations only). For more information, read
+        /// Modifying reservations.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
@@ -45381,7 +45500,8 @@ namespace Google.Apis.Compute.beta
             return new ResizeRequest(service, body, project, zone, reservation);
         }
 
-        /// <summary>Resizes the reservation (applicable to standalone reservations only)</summary>
+        /// <summary>Resizes the reservation (applicable to standalone reservations only). For more information, read
+        /// Modifying reservations.</summary>
         public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Resize request.</summary>
@@ -46089,6 +46209,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -46139,6 +46263,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "optionsRequestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -47036,6 +47169,11 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
+            /// <summary>Name of the nat service to filter the Nat Mapping information. If it is omitted, all nats for
+            /// this router will be returned. Name should conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("natName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string NatName { get; set; }
+
             /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
             /// based on the resource name.
             ///
@@ -47120,6 +47258,15 @@ namespace Google.Apis.Compute.beta
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "natName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "natName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -49926,6 +50073,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -49967,6 +50118,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "optionsRequestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -52301,6 +52461,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -52351,6 +52515,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "optionsRequestedPolicyVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -52619,14 +52792,16 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Retrieves an aggregated list of usable subnetworks.</summary>
+        /// <summary>Retrieves an aggregated list of all usable subnetworks in the project. The list contains all of the
+        /// subnetworks in the project and the subnetworks that were shared by a Shared VPC host project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListUsableRequest ListUsable(string project)
         {
             return new ListUsableRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of usable subnetworks.</summary>
+        /// <summary>Retrieves an aggregated list of all usable subnetworks in the project. The list contains all of the
+        /// subnetworks in the project and the subnetworks that were shared by a Shared VPC host project.</summary>
         public class ListUsableRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.UsableSubnetworksAggregatedList>
         {
             /// <summary>Constructs a new ListUsable request.</summary>
@@ -63732,15 +63907,15 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>This reservation type allows to pre allocate specific instance configuration.</summary>
     public class AllocationSpecificSKUReservation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies number of resources that are allocated.</summary>
+        /// <summary>Specifies the number of resources that are allocated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; } 
 
-        /// <summary>[OutputOnly] Indicates how many resource are in use.</summary>
+        /// <summary>[OutputOnly] Indicates how many instances are in use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inUseCount")]
         public virtual System.Nullable<long> InUseCount { get; set; } 
 
-        /// <summary>The instance properties for this specific sku reservation.</summary>
+        /// <summary>The instance properties for the reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceProperties")]
         public virtual AllocationSpecificSKUAllocationReservedInstanceProperties InstanceProperties { get; set; } 
 
@@ -63864,7 +64039,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskName")]
         public virtual string DiskName { get; set; } 
 
-        /// <summary>Specifies the size of the disk in base-2 GB.</summary>
+        /// <summary>Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as
+        /// the image (usually 10GB). If specified, the size must be equal to or larger than 10GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; } 
 
@@ -63955,12 +64131,12 @@ namespace Google.Apis.Compute.beta.Data
     /// Example Policy with multiple AuditConfigs:
     ///
     /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ]
-    /// }, { "service": "fooservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
-    /// "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
+    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
     ///
-    /// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
-    /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
+    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
+    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -63981,10 +64157,10 @@ namespace Google.Apis.Compute.beta.Data
 
     /// <summary>Provides the configuration for logging a type of permissions. Example:
     ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] }, {
+    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
     /// "log_type": "DATA_WRITE", } ] }
     ///
-    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.com from DATA_READ
+    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -63992,6 +64168,11 @@ namespace Google.Apis.Compute.beta.Data
         /// format of [Binding.members][].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>Specifies whether principals can be exempted for the same LogType in lower-level resource policies.
+        /// If true, any lower-level exemptions will be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreChildExemptions")]
+        public virtual System.Nullable<bool> IgnoreChildExemptions { get; set; } 
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
@@ -64450,8 +64631,8 @@ namespace Google.Apis.Compute.beta.Data
         /// service, as well as the type of backend (instance group or NEG).
         ///
         /// - If the load balancing mode is CONNECTION, then the load is spread based on how many concurrent connections
-        /// the backend can handle. The CONNECTION balancing mode is only available if the protocol for the backend
-        /// service is SSL, TCP, or UDP.
+        /// the backend can handle. You can use the CONNECTION balancing mode if the protocol for the backend service is
+        /// SSL, TCP, or UDP.
         ///
         /// If the loadBalancingScheme for the backend service is EXTERNAL (SSL Proxy and TCP Proxy load balancers), you
         /// must also specify exactly one of the following parameters: maxConnections, maxConnectionsPerInstance, or
@@ -64460,15 +64641,14 @@ namespace Google.Apis.Compute.beta.Data
         /// If the loadBalancingScheme for the backend service is INTERNAL (internal TCP/UDP load balancers), you cannot
         /// specify any additional parameters.
         ///
-        /// - If the load balancing mode is RATE, then the load is spread based on the rate of HTTP requests per second
-        /// (RPS). The RATE balancing mode is only available if the protocol for the backend service is HTTP or HTTPS.
-        /// You must specify exactly one of the following parameters: maxRate, maxRatePerInstance, or
-        /// maxRatePerEndpoint.
+        /// - If the load balancing mode is RATE, the load is spread based on the rate of HTTP requests per second
+        /// (RPS). You can use the RATE balancing mode if the protocol for the backend service is HTTP or HTTPS. You
+        /// must specify exactly one of the following parameters: maxRate, maxRatePerInstance, or maxRatePerEndpoint.
         ///
-        /// - If the load balancing mode is UTILIZATION, then the load is spread based on the CPU utilization of
-        /// instances in an instance group. The UTILIZATION balancing mode is only available if the loadBalancingScheme
-        /// of the backend service is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and the backend is made up of
-        /// instance groups. There are no restrictions on the backend service protocol.</summary>
+        /// - If the load balancing mode is UTILIZATION, the load is spread based on the CPU utilization of instances in
+        /// an instance group. You can use the UTILIZATION balancing mode if the loadBalancingScheme of the backend
+        /// service is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and the backends are instance groups. There
+        /// are no restrictions on the backend service protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("balancingMode")]
         public virtual string BalancingMode { get; set; } 
 
@@ -64861,6 +65041,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>The URL of the network to which this backend service belongs. This field can only be spcified when
+        /// the load balancing scheme is set to INTERNAL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
         /// <summary>Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is
         /// applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
         /// and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme
@@ -64909,8 +65094,8 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>Type of session affinity to use. The default is NONE. Session affinity is not applicable if the
         /// --protocol is UDP.
         ///
-        /// When the loadBalancingScheme is EXTERNAL, possible values are NONE, CLIENT_IP, or GENERATED_COOKIE.
-        /// GENERATED_COOKIE is only available if the protocol is HTTP or HTTPS.
+        /// When the loadBalancingScheme is EXTERNAL, possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. You can
+        /// use GENERATED_COOKIE if the protocol is HTTP or HTTPS.
         ///
         /// When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or
         /// CLIENT_IP_PORT_PROTO.
@@ -65240,6 +65425,164 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
+    public class BfdPacket : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Authentication Present bit of the BFD packet. This is specified in section 4.1 of
+        /// RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationPresent")]
+        public virtual System.Nullable<bool> AuthenticationPresent { get; set; } 
+
+        /// <summary>The Control Plane Independent bit of the BFD packet. This is specified in section 4.1 of
+        /// RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneIndependent")]
+        public virtual System.Nullable<bool> ControlPlaneIndependent { get; set; } 
+
+        /// <summary>The demand bit of the BFD packet. This is specified in section 4.1 of RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demand")]
+        public virtual System.Nullable<bool> Demand { get; set; } 
+
+        /// <summary>The diagnostic code specifies the local system's reason for the last change in session state. This
+        /// allows remote systems to determine the reason that the previous session failed, for example. These
+        /// diagnostic codes are specified in section 4.1 of RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnostic")]
+        public virtual string Diagnostic { get; set; } 
+
+        /// <summary>The Final bit of the BFD packet. This is specified in section 4.1 of RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("final")]
+        public virtual System.Nullable<bool> Final { get; set; } 
+
+        /// <summary>The length of the BFD Control packet in bytes. This is specified in section 4.1 of
+        /// RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual System.Nullable<long> Length { get; set; } 
+
+        /// <summary>The Required Min Echo RX Interval value in the BFD packet. This is specified in section 4.1 of
+        /// RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minEchoRxIntervalMs")]
+        public virtual System.Nullable<long> MinEchoRxIntervalMs { get; set; } 
+
+        /// <summary>The Required Min RX Interval value in the BFD packet. This is specified in section 4.1 of
+        /// RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minRxIntervalMs")]
+        public virtual System.Nullable<long> MinRxIntervalMs { get; set; } 
+
+        /// <summary>The Desired Min TX Interval value in the BFD packet. This is specified in section 4.1 of
+        /// RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTxIntervalMs")]
+        public virtual System.Nullable<long> MinTxIntervalMs { get; set; } 
+
+        /// <summary>The detection time multiplier of the BFD packet. This is specified in section 4.1 of
+        /// RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiplier")]
+        public virtual System.Nullable<long> Multiplier { get; set; } 
+
+        /// <summary>The multipoint bit of the BFD packet. This is specified in section 4.1 of RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multipoint")]
+        public virtual System.Nullable<bool> Multipoint { get; set; } 
+
+        /// <summary>The My Discriminator value in the BFD packet. This is specified in section 4.1 of RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("myDiscriminator")]
+        public virtual System.Nullable<long> MyDiscriminator { get; set; } 
+
+        /// <summary>The Poll bit of the BFD packet. This is specified in section 4.1 of RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("poll")]
+        public virtual System.Nullable<bool> Poll { get; set; } 
+
+        /// <summary>The current BFD session state as seen by the transmitting system. These states are specified in
+        /// section 4.1 of RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The version number of the BFD protocol, as specified in section 4.1 of RFC5880.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<long> Version { get; set; } 
+
+        /// <summary>The Your Discriminator value in the BFD packet. This is specified in section 4.1 of
+        /// RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yourDiscriminator")]
+        public virtual System.Nullable<long> YourDiscriminator { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Next free: 15</summary>
+    public class BfdStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will
+        /// initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer
+        /// router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP
+        /// peer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bfdSessionInitializationMode")]
+        public virtual string BfdSessionInitializationMode { get; set; } 
+
+        /// <summary>Unix timestamp of the most recent config update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configUpdateTimestampMicros")]
+        public virtual System.Nullable<long> ConfigUpdateTimestampMicros { get; set; } 
+
+        /// <summary>Control packet counts for the current BFD session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPacketCounts")]
+        public virtual BfdStatusPacketCounts ControlPacketCounts { get; set; } 
+
+        /// <summary>Inter-packet time interval statistics for control packets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPacketIntervals")]
+        public virtual System.Collections.Generic.IList<PacketIntervals> ControlPacketIntervals { get; set; } 
+
+        /// <summary>The diagnostic code specifies the local system's reason for the last change in session state. This
+        /// allows remote systems to determine the reason that the previous session failed, for example. These
+        /// diagnostic codes are specified in section 4.1 of RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localDiagnostic")]
+        public virtual string LocalDiagnostic { get; set; } 
+
+        /// <summary>The current BFD session state as seen by the transmitting system. These states are specified in
+        /// section 4.1 of RFC5880</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localState")]
+        public virtual string LocalState { get; set; } 
+
+        /// <summary>Negotiated transmit interval for control packets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negotiatedLocalControlTxIntervalMs")]
+        public virtual System.Nullable<long> NegotiatedLocalControlTxIntervalMs { get; set; } 
+
+        /// <summary>The most recent Rx control packet for this BFD session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rxPacket")]
+        public virtual BfdPacket RxPacket { get; set; } 
+
+        /// <summary>The most recent Tx control packet for this BFD session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("txPacket")]
+        public virtual BfdPacket TxPacket { get; set; } 
+
+        /// <summary>Session uptime in milliseconds. Value will be 0 if session is not up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uptimeMs")]
+        public virtual System.Nullable<long> UptimeMs { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class BfdStatusPacketCounts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of packets received since the beginning of the current BFD session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numRx")]
+        public virtual System.Nullable<long> NumRx { get; set; } 
+
+        /// <summary>Number of packets received that were rejected because of errors since the beginning of the current
+        /// BFD session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numRxRejected")]
+        public virtual System.Nullable<long> NumRxRejected { get; set; } 
+
+        /// <summary>Number of packets received that were successfully processed since the beginning of the current BFD
+        /// session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numRxSuccessful")]
+        public virtual System.Nullable<long> NumRxSuccessful { get; set; } 
+
+        /// <summary>Number of packets transmitted since the beginning of the current BFD session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numTx")]
+        public virtual System.Nullable<long> NumTx { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -65259,7 +65602,7 @@ namespace Google.Apis.Compute.beta.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` .
+        /// `alice@example.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.
@@ -65411,7 +65754,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
-        /// <summary>List of reservations for this commitment.</summary>
+        /// <summary>List of reservations in this commitment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservations")]
         public virtual System.Collections.Generic.IList<Reservation> Reservations { get; set; } 
 
@@ -66033,7 +66376,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshotId")]
         public virtual string SourceSnapshotId { get; set; } 
 
-        /// <summary>[Output Only] The status of disk creation.</summary>
+        /// <summary>[Output Only] The status of disk creation. CREATING: Disk is provisioning. RESTORING: Source data
+        /// is being copied into the disk. FAILED: Disk creation failed. READY: Disk is ready for use. DELETING: Disk is
+        /// deleting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -67253,30 +67598,20 @@ namespace Google.Apis.Compute.beta.Data
     /// v1.regionForwardingRules ==)</summary>
     public class ForwardingRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The IP address that this forwarding rule is serving on behalf of.
+        /// <summary>IP address that this forwarding rule serves. When a client sends traffic to this IP address, the
+        /// forwarding rule directs the traffic to the target that you specify in the forwarding rule.
         ///
-        /// Addresses are restricted based on the forwarding rule's load balancing scheme (EXTERNAL or INTERNAL) and
-        /// scope (global or regional).
+        /// If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an
+        /// IP address:
         ///
-        /// When the load balancing scheme is EXTERNAL, for global forwarding rules, the address must be a global IP,
-        /// and for regional forwarding rules, the address must live in the same region as the forwarding rule. If this
-        /// field is empty, an ephemeral IPv4 address from the same scope (global or regional) will be assigned. A
-        /// regional forwarding rule supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6.
+        /// * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in
+        /// https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name * Partial
+        /// URL or by name, as in: * projects/project_id/regions/region/addresses/address-name *
+        /// regions/region/addresses/address-name * global/addresses/address-name * address-name
         ///
-        /// When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL reference to an existing Address
-        /// resource ( internal regional static IP address), with a purpose of GCE_END_POINT and address_type of
-        /// INTERNAL.
-        ///
-        /// When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the
-        /// network/subnet configured for the forwarding rule. By default, if this field is empty, an ephemeral internal
-        /// IP address will be automatically allocated from the IP range of the subnet or network configured for this
-        /// forwarding rule.
-        ///
-        /// An address can be specified either by a literal IP address or a URL reference to an existing Address
-        /// resource. The following examples are all valid: - 100.1.2.3 -
-        /// https://www.googleapis.com/compute/v1/projects/project/regions/region/addresses/address -
-        /// projects/project/regions/region/addresses/address - regions/region/addresses/address -
-        /// global/addresses/address - address</summary>
+        /// The loadBalancingScheme and the forwarding rule's target determine the type of IP address that you can use.
+        /// For detailed information, refer to [IP address specifications](/load-balancing/docs/forwarding-rule-
+        /// concepts#ip_address_specifications).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPAddress")]
         public virtual string IPAddress { get; set; } 
 
@@ -67401,27 +67736,34 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
         public virtual string NetworkTier { get; set; } 
 
-        /// <summary>This field is used along with the target field for TargetHttpProxy, TargetHttpsProxy,
-        /// TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.
-        ///
-        /// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range
-        /// will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint
-        /// port ranges.
-        ///
-        /// Some types of forwarding target have constraints on the acceptable ports: - TargetHttpProxy: 80, 8080 -
-        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688, 1883,
-        /// 5222 - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688, 1883, 5222 -
-        /// TargetVpnGateway: 500, 4500</summary>
+        /// <summary>This field is deprecated. See the port field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 
-        /// <summary>This field is used along with the backend_service field for internal load balancing.
+        /// <summary>List of comma-separated ports. The forwarding rule forwards packets with matching destination
+        /// ports. If the forwarding rule's loadBalancingScheme is EXTERNAL, and the forwarding rule references a target
+        /// pool, specifying ports is optional. You can specify an unlimited number of ports, but they must be
+        /// contiguous. If you omit ports, GCP forwards traffic on any port of the forwarding rule's protocol.
         ///
-        /// When the load balancing scheme is INTERNAL, a list of ports can be configured, for example, ['80'],
-        /// ['8000','9000'] etc. Only packets addressed to these ports will be forwarded to the backends configured with
-        /// this forwarding rule.
+        /// If the forwarding rule's loadBalancingScheme is EXTERNAL, and the forwarding rule references a target HTTP
+        /// proxy, target HTTPS proxy, target TCP proxy, target SSL proxy, or target VPN gateway, you must specify ports
+        /// using the following constraints:
         ///
-        /// You may specify a maximum of up to 5 ports.</summary>
+        /// - TargetHttpProxy: 80, 8080 - TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587,
+        /// 700, 993, 995, 1688, 1883, 5222 - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
+        /// 1883, 5222 - TargetVpnGateway: 500, 4500
+        ///
+        /// If the forwarding rule's loadBalancingScheme is INTERNAL, you must specify ports in one of the following
+        /// ways:
+        ///
+        /// * A list of up to five ports, which can be non-contiguous * Keyword ALL, which causes the forwarding rule to
+        /// forward traffic on any port of the forwarding rule's protocol.
+        ///
+        /// The ports field is used along with the target field for TargetHttpProxy, TargetHttpsProxy, TargetSslProxy,
+        /// TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.
+        ///
+        /// Applicable only when IPProtocol is TCP, UDP, or SCTP. Forwarding rules with the same [IPAddress, IPProtocol]
+        /// pair must have disjoint port ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
         public virtual System.Collections.Generic.IList<string> Ports { get; set; } 
 
@@ -67435,8 +67777,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>An optional prefix to the service name for this Forwarding Rule. If specified, will be the first
-        /// label of the fully qualified service name.
+        /// <summary>An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the
+        /// first label of the fully qualified service name.
         ///
         /// The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63
         /// characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
@@ -69148,7 +69490,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>GCS bucket storage location of the image (regional or multi-regional).</summary>
+        /// <summary>Cloud Storage bucket storage location of the image (regional or multi-regional).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageLocations")]
         public virtual System.Collections.Generic.IList<string> StorageLocations { get; set; } 
 
@@ -69292,6 +69634,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; } 
 
+        /// <summary>Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If
+        /// hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the
+        /// global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
         public virtual string Hostname { get; set; } 
 
@@ -70144,6 +70489,9 @@ namespace Google.Apis.Compute.beta.Data
 
     public class InstanceGroupManagerUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The  instance redistribution policy for regional managed instance groups. Valid values are: -
+        /// PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the
+        /// region. - NONE: For non-autoscaled groups, proactive redistribution is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceRedistributionType")]
         public virtual string InstanceRedistributionType { get; set; } 
 
@@ -71333,7 +71681,7 @@ namespace Google.Apis.Compute.beta.Data
         /// interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and
         /// DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M:
         /// 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G:
-        /// 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s</summary>
+        /// 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandwidth")]
         public virtual string Bandwidth { get; set; } 
 
@@ -72979,9 +73327,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; } 
 
-        /// <summary>Optional IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the
-        /// primary IP or as part of an aliased IP range). If the IP address is not specified, then the primary IP
-        /// address for the VM instance in the network that the network endpoint group belongs to will be
+        /// <summary>Optional IPv4 address of network endpoint. The IP address must belong to a VM in Compute Engine
+        /// (either the primary IP or as part of an aliased IP range). If the IP address is not specified, then the
+        /// primary IP address for the VM instance in the network that the network endpoint group belongs to will be
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
@@ -73890,6 +74238,7 @@ namespace Google.Apis.Compute.beta.Data
 
     public class NodeGroupsDeleteNodesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Names of the nodes to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<string> Nodes { get; set; } 
 
@@ -74630,7 +74979,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("httpErrorStatusCode")]
         public virtual System.Nullable<int> HttpErrorStatusCode { get; set; } 
 
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// <summary>[Output Only] The unique identifier for the operation. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
@@ -74644,7 +74993,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output Only] Name of the resource.</summary>
+        /// <summary>[Output Only] Name of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -75046,6 +75395,37 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Next free: 7</summary>
+    public class PacketIntervals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Average observed inter-packet interval in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avgMs")]
+        public virtual System.Nullable<long> AvgMs { get; set; } 
+
+        /// <summary>From how long ago in the past these intervals were observed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual string Duration { get; set; } 
+
+        /// <summary>Maximum observed inter-packet interval in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxMs")]
+        public virtual System.Nullable<long> MaxMs { get; set; } 
+
+        /// <summary>Minimum observed inter-packet interval in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minMs")]
+        public virtual System.Nullable<long> MinMs { get; set; } 
+
+        /// <summary>Number of inter-packet intervals from which these statistics were derived.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numIntervals")]
+        public virtual System.Nullable<long> NumIntervals { get; set; } 
+
+        /// <summary>The type of packets for which inter-packet intervals were computed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve
     /// the URL. If no rule was matched, the default service will be used.</summary>
     public class PathMatcher : Google.Apis.Requests.IDirectResponseSchema
@@ -75186,8 +75566,7 @@ namespace Google.Apis.Compute.beta.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
-        /// blindly.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -75522,7 +75901,7 @@ namespace Google.Apis.Compute.beta.Data
 
     public class RegionCommitmentsUpdateReservationsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of reservations for the capacity move of VMs with accelerators and local ssds.</summary>
+        /// <summary>List of two reservations to transfer GPUs and local SSD between.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservations")]
         public virtual System.Collections.Generic.IList<Reservation> Reservations { get; set; } 
 
@@ -76139,11 +76518,11 @@ namespace Google.Apis.Compute.beta.Data
 
     /// <summary>Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even
     /// if the reserved VMs are not running. For more information, read  Reserving zonal resources. (== resource_for
-    /// beta.reservations ==) (== resource_for v1.reservations ==) (== NextID: 13 ==)</summary>
+    /// beta.reservations ==) (== resource_for v1.reservations ==)</summary>
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[OutputOnly] Full or partial url for parent commitment for reservations which are tied to a
-        /// commitment.</summary>
+        /// <summary>[OutputOnly] Full or partial URL to a parent commitment. This field displays for reservations that
+        /// are tied to a commitment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitment")]
         public virtual string Commitment { get; set; } 
 
@@ -76191,8 +76570,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>Zone in which the reservation resides, must be provided if reservation is created with commitment
-        /// creation.</summary>
+        /// <summary>Zone in which the reservation resides. A zone must be provided if the reservation is created within
+        /// a commitment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -76812,7 +77191,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>GCS bucket storage location of the auto snapshot (regional or multi-regional).</summary>
+        /// <summary>Cloud Storage bucket storage location of the auto snapshot (regional or multi-regional).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageLocations")]
         public virtual System.Collections.Generic.IList<string> StorageLocations { get; set; } 
 
@@ -77250,6 +77629,14 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("asn")]
         public virtual System.Nullable<long> Asn { get; set; } 
 
+        /// <summary>The interval in seconds between BGP keepalive messages that are sent to the peer. Hold time is
+        /// three times the interval at which keepalive messages are sent, and the hold time is the maximum number of
+        /// seconds allowed to elapse between successive keepalive messages that BGP receives from a peer. BGP will use
+        /// the smaller of either the local hold time value or the peer?s hold time value as the hold time for the BGP
+        /// connection between the two peers. If set, this value must be between 1 and 120. The default is 20.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keepaliveInterval")]
+        public virtual System.Nullable<long> KeepaliveInterval { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -77281,6 +77668,16 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedRoutePriority")]
         public virtual System.Nullable<long> AdvertisedRoutePriority { get; set; } 
 
+        /// <summary>BFD configuration for the BGP peering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bfd")]
+        public virtual RouterBgpPeerBfd Bfd { get; set; } 
+
+        /// <summary>The status of the BGP peer connection. If set to FALSE, any active session with the peer is
+        /// terminated and all associated routing information is removed. If set to TRUE, the peer connection can be
+        /// established with routing information. The default is TRUE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual string Enable { get; set; } 
+
         /// <summary>Name of the interface the BGP peer is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interfaceName")]
         public virtual string InterfaceName { get; set; } 
@@ -77297,7 +77694,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
 
-        /// <summary>Name of this BGP peer. The name must be 1-63 characters long and comply with RFC1035.</summary>
+        /// <summary>Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035.
+        /// Specifically, the name must be 1-63 characters long and match the regular expression
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a
+        /// dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -77308,6 +77709,38 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerIpAddress")]
         public virtual string PeerIpAddress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class RouterBgpPeerBfd : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The minimum interval, in milliseconds, between BFD control packets received from the peer router.
+        /// The actual value is negotiated between the two routers and is equal to the greater of this value and the
+        /// transmit interval of the other router. If set, this value must be between 100 and 30000. The default is
+        /// 300.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minReceiveInterval")]
+        public virtual System.Nullable<long> MinReceiveInterval { get; set; } 
+
+        /// <summary>The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router.
+        /// The actual value is negotiated between the two routers and is equal to the greater of this value and the
+        /// corresponding receive interval of the other router. If set, this value must be between 100 and 30000. The
+        /// default is 300.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTransmitInterval")]
+        public virtual System.Nullable<long> MinTransmitInterval { get; set; } 
+
+        /// <summary>The number of consecutive BFD packets that must be missed before BFD declares that a peer is
+        /// unavailable. If set, the value must be a value between 2 and 16. The default is 3.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiplier")]
+        public virtual System.Nullable<long> Multiplier { get; set; } 
+
+        /// <summary>The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will
+        /// initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer
+        /// router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer.
+        /// The default is PASSIVE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionInitializationMode")]
+        public virtual string SessionInitializationMode { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -77340,8 +77773,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
 
-        /// <summary>Name of this interface entry. The name must be 1-63 characters long and comply with
-        /// RFC1035.</summary>
+        /// <summary>Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035.
+        /// Specifically, the name must be 1-63 characters long and match the regular expression
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a
+        /// dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -77427,6 +77863,11 @@ namespace Google.Apis.Compute.beta.Data
     /// no external IPs are provided.</summary>
     public class RouterNat : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that
+        /// have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drainNatIps")]
+        public virtual System.Collections.Generic.IList<string> DrainNatIps { get; set; } 
+
         /// <summary>Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icmpIdleTimeoutSec")]
         public virtual System.Nullable<int> IcmpIdleTimeoutSec { get; set; } 
@@ -77557,6 +77998,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedRoutes")]
         public virtual System.Collections.Generic.IList<Route> AdvertisedRoutes { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("bfdStatus")]
+        public virtual BfdStatus BfdStatus { get; set; } 
+
         /// <summary>IP address of the local BGP interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
@@ -77604,6 +78048,16 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>A list of IPs auto-allocated for NAT. Example: ["1.1.1.1", "129.2.16.89"]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoAllocatedNatIps")]
         public virtual System.Collections.Generic.IList<string> AutoAllocatedNatIps { get; set; } 
+
+        /// <summary>A list of IPs auto-allocated for NAT that are in drain mode. Example: ["1.1.1.1",
+        /// ?179.12.26.133?].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drainAutoAllocatedNatIps")]
+        public virtual System.Collections.Generic.IList<string> DrainAutoAllocatedNatIps { get; set; } 
+
+        /// <summary>A list of IPs user-allocated for NAT that are in drain mode. Example: ["1.1.1.1",
+        /// ?179.12.26.133?].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drainUserAllocatedNatIps")]
+        public virtual System.Collections.Generic.IList<string> DrainUserAllocatedNatIps { get; set; } 
 
         /// <summary>The number of extra IPs to allocate. This will be greater than 0 only if user-specified IPs are NOT
         /// enough to allow all configured VMs to use NAT. This value is meaningful only when auto-allocation of NAT IPs
@@ -78397,7 +78851,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storageBytesStatus")]
         public virtual string StorageBytesStatus { get; set; } 
 
-        /// <summary>GCS bucket storage location of the snapshot (regional or multi-regional).</summary>
+        /// <summary>Cloud Storage bucket storage location of the snapshot (regional or multi-regional).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageLocations")]
         public virtual System.Collections.Generic.IList<string> StorageLocations { get; set; } 
 
@@ -81768,11 +82222,22 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Contain information of Nat mapping for an interface of this endpoint.</summary>
     public class VmEndpointNatMappingsInterfaceNatMappings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>List of all drain IP:port-range mappings assigned to this interface. These ranges are inclusive,
+        /// that is, both the first and the last ports can be used for NAT. Example: ["2.2.2.2:12345-12355",
+        /// "1.1.1.1:2234-2234"].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drainNatIpPortRanges")]
+        public virtual System.Collections.Generic.IList<string> DrainNatIpPortRanges { get; set; } 
+
         /// <summary>A list of all IP:port-range mappings assigned to this interface. These ranges are inclusive, that
         /// is, both the first and the last ports can be used for NAT. Example: ["2.2.2.2:12345-12355",
         /// "1.1.1.1:2234-2234"].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("natIpPortRanges")]
         public virtual System.Collections.Generic.IList<string> NatIpPortRanges { get; set; } 
+
+        /// <summary>Total number of drain ports across all NAT IPs allocated to this interface. It equals to the
+        /// aggregated port number in the field drain_nat_ip_port_ranges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numTotalDrainNatPorts")]
+        public virtual System.Nullable<int> NumTotalDrainNatPorts { get; set; } 
 
         /// <summary>Total number of ports across all NAT IPs allocated to this interface. It equals to the aggregated
         /// port number in the field nat_ip_port_ranges.</summary>

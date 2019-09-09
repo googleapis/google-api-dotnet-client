@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190624 (1635)
+ *      <tr><th>API Rev<td>20190815 (1687)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -71,6 +71,7 @@ namespace Google.Apis.Compute.v1
             backendServices = new BackendServicesResource(this);
             diskTypes = new DiskTypesResource(this);
             disks = new DisksResource(this);
+            externalVpnGateways = new ExternalVpnGatewaysResource(this);
             firewalls = new FirewallsResource(this);
             forwardingRules = new ForwardingRulesResource(this);
             globalAddresses = new GlobalAddressesResource(this);
@@ -122,6 +123,7 @@ namespace Google.Apis.Compute.v1
             targetTcpProxies = new TargetTcpProxiesResource(this);
             targetVpnGateways = new TargetVpnGatewaysResource(this);
             urlMaps = new UrlMapsResource(this);
+            vpnGateways = new VpnGatewaysResource(this);
             vpnTunnels = new VpnTunnelsResource(this);
             zoneOperations = new ZoneOperationsResource(this);
             zones = new ZonesResource(this);
@@ -271,6 +273,14 @@ namespace Google.Apis.Compute.v1
         public virtual DisksResource Disks
         {
             get { return disks; }
+        }
+
+        private readonly ExternalVpnGatewaysResource externalVpnGateways;
+
+        /// <summary>Gets the ExternalVpnGateways resource.</summary>
+        public virtual ExternalVpnGatewaysResource ExternalVpnGateways
+        {
+            get { return externalVpnGateways; }
         }
 
         private readonly FirewallsResource firewalls;
@@ -679,6 +689,14 @@ namespace Google.Apis.Compute.v1
         public virtual UrlMapsResource UrlMaps
         {
             get { return urlMaps; }
+        }
+
+        private readonly VpnGatewaysResource vpnGateways;
+
+        /// <summary>Gets the VpnGateways resource.</summary>
+        public virtual VpnGatewaysResource VpnGateways
+        {
+            get { return vpnGateways; }
         }
 
         private readonly VpnTunnelsResource vpnTunnels;
@@ -6758,6 +6776,602 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "externalVpnGateways" collection of methods.</summary>
+    public class ExternalVpnGatewaysResource
+    {
+        private const string Resource = "externalVpnGateways";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ExternalVpnGatewaysResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Deletes the specified externalVpnGateway.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="externalVpnGateway">Name of the
+        /// externalVpnGateways to delete.</param>
+        public virtual DeleteRequest Delete(string project, string externalVpnGateway)
+        {
+            return new DeleteRequest(service, project, externalVpnGateway);
+        }
+
+        /// <summary>Deletes the specified externalVpnGateway.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string externalVpnGateway)
+                : base(service)
+            {
+                Project = project;
+                ExternalVpnGateway = externalVpnGateway;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the externalVpnGateways to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("externalVpnGateway", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExternalVpnGateway { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/externalVpnGateways/{externalVpnGateway}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "externalVpnGateway", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "externalVpnGateway",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the specified externalVpnGateway. Get a list of available externalVpnGateways by making a
+        /// list() request.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="externalVpnGateway">Name of the
+        /// externalVpnGateway to return.</param>
+        public virtual GetRequest Get(string project, string externalVpnGateway)
+        {
+            return new GetRequest(service, project, externalVpnGateway);
+        }
+
+        /// <summary>Returns the specified externalVpnGateway. Get a list of available externalVpnGateways by making a
+        /// list() request.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ExternalVpnGateway>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string externalVpnGateway)
+                : base(service)
+            {
+                Project = project;
+                ExternalVpnGateway = externalVpnGateway;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the externalVpnGateway to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("externalVpnGateway", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExternalVpnGateway { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/externalVpnGateways/{externalVpnGateway}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "externalVpnGateway", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "externalVpnGateway",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a ExternalVpnGateway in the specified project using the data included in the
+        /// request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.ExternalVpnGateway body, string project)
+        {
+            return new InsertRequest(service, body, project);
+        }
+
+        /// <summary>Creates a ExternalVpnGateway in the specified project using the data included in the
+        /// request.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.ExternalVpnGateway body, string project)
+                : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.ExternalVpnGateway Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/externalVpnGateways"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves the list of ExternalVpnGateway available to the specified project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual ListRequest List(string project)
+        {
+            return new ListRequest(service, project);
+        }
+
+        /// <summary>Retrieves the list of ExternalVpnGateway available to the specified project.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ExternalVpnGatewayList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            ///
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
+            ///
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/externalVpnGateways"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the labels on an ExternalVpnGateway. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.v1.Data.GlobalSetLabelsRequest body, string project, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Sets the labels on an ExternalVpnGateway. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.GlobalSetLabelsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.GlobalSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/externalVpnGateways/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource
+        /// for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/externalVpnGateways/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                     });
             }
 
@@ -20204,6 +20818,131 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Updates the Display config for a VM instance. You can only use this method on a stopped VM
+        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance scoping this request.</param>
+        public virtual UpdateDisplayDeviceRequest UpdateDisplayDevice(Google.Apis.Compute.v1.Data.DisplayDevice body, string project, string zone, string instance)
+        {
+            return new UpdateDisplayDeviceRequest(service, body, project, zone, instance);
+        }
+
+        /// <summary>Updates the Display config for a VM instance. You can only use this method on a stopped VM
+        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
+        public class UpdateDisplayDeviceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateDisplayDevice request.</summary>
+            public UpdateDisplayDeviceRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.DisplayDevice body, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.DisplayDevice Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateDisplayDevice"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/updateDisplayDevice"; }
+            }
+
+            /// <summary>Initializes UpdateDisplayDevice parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Updates an instance's network interface. This method follows PATCH semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -25340,6 +26079,116 @@ namespace Google.Apis.Compute.v1
             }
 
         }
+
+        /// <summary>Updates the specified network peering with the data included in the request Only the following
+        /// fields can be modified: NetworkPeering.export_custom_routes, and
+        /// NetworkPeering.import_custom_routes</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="network">Name of the network
+        /// resource which the updated peering is belonging to.</param>
+        public virtual UpdatePeeringRequest UpdatePeering(Google.Apis.Compute.v1.Data.NetworksUpdatePeeringRequest body, string project, string network)
+        {
+            return new UpdatePeeringRequest(service, body, project, network);
+        }
+
+        /// <summary>Updates the specified network peering with the data included in the request Only the following
+        /// fields can be modified: NetworkPeering.export_custom_routes, and
+        /// NetworkPeering.import_custom_routes</summary>
+        public class UpdatePeeringRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdatePeering request.</summary>
+            public UpdatePeeringRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.NetworksUpdatePeeringRequest body, string project, string network)
+                : base(service)
+            {
+                Project = project;
+                Network = network;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the network resource which the updated peering is belonging to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Network { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.NetworksUpdatePeeringRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updatePeering"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/networks/{network}/updatePeering"; }
+            }
+
+            /// <summary>Initializes UpdatePeering parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "network", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "network",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
     }
 
     /// <summary>The "nodeGroups" collection of methods.</summary>
@@ -25740,7 +26589,8 @@ namespace Google.Apis.Compute.v1
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
-        /// <param name="nodeGroup">Name of the NodeGroup resource to delete.</param>
+        /// <param name="nodeGroup">Name of the NodeGroup resource whose nodes will be
+        /// deleted.</param>
         public virtual DeleteNodesRequest DeleteNodes(Google.Apis.Compute.v1.Data.NodeGroupsDeleteNodesRequest body, string project, string zone, string nodeGroup)
         {
             return new DeleteNodesRequest(service, body, project, zone, nodeGroup);
@@ -25769,7 +26619,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the NodeGroup resource to delete.</summary>
+            /// <summary>Name of the NodeGroup resource whose nodes will be deleted.</summary>
             [Google.Apis.Util.RequestParameterAttribute("nodeGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string NodeGroup { get; private set; }
 
@@ -35989,7 +36839,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves all information of the specified reservation.</summary>
+        /// <summary>Retrieves information about the specified reservation.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
         /// request.</param>
@@ -35999,7 +36849,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone, reservation);
         }
 
-        /// <summary>Retrieves all information of the specified reservation.</summary>
+        /// <summary>Retrieves information about the specified reservation.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Reservation>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -36279,7 +37129,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>A list all the reservations that have been configured for the specified project in specified
+        /// <summary>A list of all the reservations that have been configured for the specified project in specified
         /// zone.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
@@ -36289,7 +37139,7 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>A list all the reservations that have been configured for the specified project in specified
+        /// <summary>A list of all the reservations that have been configured for the specified project in specified
         /// zone.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ReservationList>
         {
@@ -36438,7 +37288,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Resizes the reservation (applicable to standalone reservations only)</summary>
+        /// <summary>Resizes the reservation (applicable to standalone reservations only). For more information, read
+        /// Modifying reservations.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
@@ -36449,7 +37300,8 @@ namespace Google.Apis.Compute.v1
             return new ResizeRequest(service, body, project, zone, reservation);
         }
 
-        /// <summary>Resizes the reservation (applicable to standalone reservations only)</summary>
+        /// <summary>Resizes the reservation (applicable to standalone reservations only). For more information, read
+        /// Modifying reservations.</summary>
         public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Resize request.</summary>
@@ -42843,14 +43695,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves an aggregated list of usable subnetworks.</summary>
+        /// <summary>Retrieves an aggregated list of all usable subnetworks in the project. The list contains all of the
+        /// subnetworks in the project and the subnetworks that were shared by a Shared VPC host project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListUsableRequest ListUsable(string project)
         {
             return new ListUsableRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of usable subnetworks.</summary>
+        /// <summary>Retrieves an aggregated list of all usable subnetworks in the project. The list contains all of the
+        /// subnetworks in the project and the subnetworks that were shared by a Shared VPC host project.</summary>
         public class ListUsableRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.UsableSubnetworksAggregatedList>
         {
             /// <summary>Constructs a new ListUsable request.</summary>
@@ -49759,6 +50613,948 @@ namespace Google.Apis.Compute.v1
         }
     }
 
+    /// <summary>The "vpnGateways" collection of methods.</summary>
+    public class VpnGatewaysResource
+    {
+        private const string Resource = "vpnGateways";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public VpnGatewaysResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Retrieves an aggregated list of VPN gateways.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual AggregatedListRequest AggregatedList(string project)
+        {
+            return new AggregatedListRequest(service, project);
+        }
+
+        /// <summary>Retrieves an aggregated list of VPN gateways.</summary>
+        public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.VpnGatewayAggregatedList>
+        {
+            /// <summary>Constructs a new AggregatedList request.</summary>
+            public AggregatedListRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            ///
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
+            ///
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "aggregatedList"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/aggregated/vpnGateways"; }
+            }
+
+            /// <summary>Initializes AggregatedList parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes the specified VPN gateway.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="vpnGateway">Name of the VPN gateway to delete.</param>
+        public virtual DeleteRequest Delete(string project, string region, string vpnGateway)
+        {
+            return new DeleteRequest(service, project, region, vpnGateway);
+        }
+
+        /// <summary>Deletes the specified VPN gateway.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string region, string vpnGateway)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                VpnGateway = vpnGateway;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the VPN gateway to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("vpnGateway", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string VpnGateway { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/vpnGateways/{vpnGateway}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "vpnGateway", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "vpnGateway",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the specified VPN gateway. Gets a list of available VPN gateways by making a list()
+        /// request.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="vpnGateway">Name of the VPN gateway to return.</param>
+        public virtual GetRequest Get(string project, string region, string vpnGateway)
+        {
+            return new GetRequest(service, project, region, vpnGateway);
+        }
+
+        /// <summary>Returns the specified VPN gateway. Gets a list of available VPN gateways by making a list()
+        /// request.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.VpnGateway>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string region, string vpnGateway)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                VpnGateway = vpnGateway;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the VPN gateway to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("vpnGateway", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string VpnGateway { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/vpnGateways/{vpnGateway}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "vpnGateway", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "vpnGateway",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the status for the specified VPN gateway.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="vpnGateway">Name of the VPN gateway to return.</param>
+        public virtual GetStatusRequest GetStatus(string project, string region, string vpnGateway)
+        {
+            return new GetStatusRequest(service, project, region, vpnGateway);
+        }
+
+        /// <summary>Returns the status for the specified VPN gateway.</summary>
+        public class GetStatusRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.VpnGatewaysGetStatusResponse>
+        {
+            /// <summary>Constructs a new GetStatus request.</summary>
+            public GetStatusRequest(Google.Apis.Services.IClientService service, string project, string region, string vpnGateway)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                VpnGateway = vpnGateway;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the VPN gateway to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("vpnGateway", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string VpnGateway { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getStatus"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/vpnGateways/{vpnGateway}/getStatus"; }
+            }
+
+            /// <summary>Initializes GetStatus parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "vpnGateway", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "vpnGateway",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a VPN gateway in the specified project and region using the data included in the
+        /// request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.VpnGateway body, string project, string region)
+        {
+            return new InsertRequest(service, body, project, region);
+        }
+
+        /// <summary>Creates a VPN gateway in the specified project and region using the data included in the
+        /// request.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.VpnGateway body, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.VpnGateway Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/vpnGateways"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves a list of VPN gateways available to the specified project and region.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        public virtual ListRequest List(string project, string region)
+        {
+            return new ListRequest(service, project, region);
+        }
+
+        /// <summary>Retrieves a list of VPN gateways available to the specified project and region.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.VpnGatewayList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            ///
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
+            ///
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/vpnGateways"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the labels on a VpnGateway. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The region for this
+        /// request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.v1.Data.RegionSetLabelsRequest body, string project, string region, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Sets the labels on a VpnGateway. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.RegionSetLabelsRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.RegionSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/vpnGateways/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/vpnGateways/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "vpnTunnels" collection of methods.</summary>
     public class VpnTunnelsResource
     {
@@ -51674,15 +53470,15 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>This reservation type allows to pre allocate specific instance configuration.</summary>
     public class AllocationSpecificSKUReservation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies number of resources that are allocated.</summary>
+        /// <summary>Specifies the number of resources that are allocated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; } 
 
-        /// <summary>[OutputOnly] Indicates how many resource are in use.</summary>
+        /// <summary>[OutputOnly] Indicates how many instances are in use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inUseCount")]
         public virtual System.Nullable<long> InUseCount { get; set; } 
 
-        /// <summary>The instance properties for this specific sku reservation.</summary>
+        /// <summary>The instance properties for the reservation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceProperties")]
         public virtual AllocationSpecificSKUAllocationReservedInstanceProperties InstanceProperties { get; set; } 
 
@@ -51806,7 +53602,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskName")]
         public virtual string DiskName { get; set; } 
 
-        /// <summary>Specifies the size of the disk in base-2 GB.</summary>
+        /// <summary>Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as
+        /// the image (usually 10GB). If specified, the size must be equal to or larger than 10GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; } 
 
@@ -51889,12 +53686,12 @@ namespace Google.Apis.Compute.v1.Data
     /// Example Policy with multiple AuditConfigs:
     ///
     /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ]
-    /// }, { "service": "fooservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
-    /// "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
+    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
     ///
-    /// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
-    /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
+    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
+    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -51915,10 +53712,10 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Provides the configuration for logging a type of permissions. Example:
     ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] }, {
+    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
     /// "log_type": "DATA_WRITE", } ] }
     ///
-    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.com from DATA_READ
+    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -51926,6 +53723,11 @@ namespace Google.Apis.Compute.v1.Data
         /// format of [Binding.members][].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>Specifies whether principals can be exempted for the same LogType in lower-level resource policies.
+        /// If true, any lower-level exemptions will be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreChildExemptions")]
+        public virtual System.Nullable<bool> IgnoreChildExemptions { get; set; } 
 
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
@@ -52346,8 +54148,8 @@ namespace Google.Apis.Compute.v1.Data
         /// service, as well as the type of backend (instance group or NEG).
         ///
         /// - If the load balancing mode is CONNECTION, then the load is spread based on how many concurrent connections
-        /// the backend can handle. The CONNECTION balancing mode is only available if the protocol for the backend
-        /// service is SSL, TCP, or UDP.
+        /// the backend can handle. You can use the CONNECTION balancing mode if the protocol for the backend service is
+        /// SSL, TCP, or UDP.
         ///
         /// If the loadBalancingScheme for the backend service is EXTERNAL (SSL Proxy and TCP Proxy load balancers), you
         /// must also specify exactly one of the following parameters: maxConnections, maxConnectionsPerInstance, or
@@ -52356,15 +54158,14 @@ namespace Google.Apis.Compute.v1.Data
         /// If the loadBalancingScheme for the backend service is INTERNAL (internal TCP/UDP load balancers), you cannot
         /// specify any additional parameters.
         ///
-        /// - If the load balancing mode is RATE, then the load is spread based on the rate of HTTP requests per second
-        /// (RPS). The RATE balancing mode is only available if the protocol for the backend service is HTTP or HTTPS.
-        /// You must specify exactly one of the following parameters: maxRate, maxRatePerInstance, or
-        /// maxRatePerEndpoint.
+        /// - If the load balancing mode is RATE, the load is spread based on the rate of HTTP requests per second
+        /// (RPS). You can use the RATE balancing mode if the protocol for the backend service is HTTP or HTTPS. You
+        /// must specify exactly one of the following parameters: maxRate, maxRatePerInstance, or maxRatePerEndpoint.
         ///
-        /// - If the load balancing mode is UTILIZATION, then the load is spread based on the CPU utilization of
-        /// instances in an instance group. The UTILIZATION balancing mode is only available if the loadBalancingScheme
-        /// of the backend service is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and the backend is made up of
-        /// instance groups. There are no restrictions on the backend service protocol.</summary>
+        /// - If the load balancing mode is UTILIZATION, the load is spread based on the CPU utilization of instances in
+        /// an instance group. You can use the UTILIZATION balancing mode if the loadBalancingScheme of the backend
+        /// service is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and the backends are instance groups. There
+        /// are no restrictions on the backend service protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("balancingMode")]
         public virtual string BalancingMode { get; set; } 
 
@@ -52745,8 +54546,8 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Type of session affinity to use. The default is NONE. Session affinity is not applicable if the
         /// --protocol is UDP.
         ///
-        /// When the loadBalancingScheme is EXTERNAL, possible values are NONE, CLIENT_IP, or GENERATED_COOKIE.
-        /// GENERATED_COOKIE is only available if the protocol is HTTP or HTTPS.
+        /// When the loadBalancingScheme is EXTERNAL, possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. You can
+        /// use GENERATED_COOKIE if the protocol is HTTP or HTTPS.
         ///
         /// When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or
         /// CLIENT_IP_PORT_PROTO.
@@ -53049,7 +54850,7 @@ namespace Google.Apis.Compute.v1.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` .
+        /// `alice@example.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.
@@ -53164,7 +54965,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
-        /// <summary>List of reservations for this commitment.</summary>
+        /// <summary>List of reservations in this commitment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservations")]
         public virtual System.Collections.Generic.IList<Reservation> Reservations { get; set; } 
 
@@ -53680,7 +55481,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshotId")]
         public virtual string SourceSnapshotId { get; set; } 
 
-        /// <summary>[Output Only] The status of disk creation.</summary>
+        /// <summary>[Output Only] The status of disk creation. CREATING: Disk is provisioning. RESTORING: Source data
+        /// is being copied into the disk. FAILED: Disk creation failed. READY: Disk is ready for use. DELETING: Disk is
+        /// deleting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -54245,6 +56048,17 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    /// <summary>A set of Display Device options</summary>
+    public class DisplayDevice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines whether the instance has Display enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableDisplay")]
+        public virtual System.Nullable<bool> EnableDisplay { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class DistributionPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Zones where the regional managed instance group will create and manage instances.</summary>
@@ -54296,6 +56110,162 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>External VPN gateway is the on-premises VPN gateway(s) or another cloud provider?s VPN gateway that
+    /// connects to your Google Cloud VPN gateway. To create a highly available VPN from Google Cloud to your on-
+    /// premises side or another Cloud provider's VPN gateway, you must create a external VPN gateway resource in GCP,
+    /// which provides the information to GCP about your external VPN gateway.</summary>
+    public class ExternalVpnGateway : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; } 
+
+        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; } 
+
+        /// <summary>List of interfaces for this external VPN gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interfaces")]
+        public virtual System.Collections.Generic.IList<ExternalVpnGatewayInterface> Interfaces { get; set; } 
+
+        /// <summary>[Output Only] Type of the resource. Always compute#externalVpnGateway for
+        /// externalVpnGateways.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>A fingerprint for the labels being applied to this ExternalVpnGateway, which is essentially a hash
+        /// of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and
+        /// changes after every request to modify or update labels. You must always provide an up-to-date fingerprint
+        /// hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet.
+        ///
+        /// To see the latest fingerprint, make a get() request to retrieve an ExternalVpnGateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>Labels to apply to this ExternalVpnGateway resource. These can be later modified by the setLabels
+        /// method. Each label key/value must comply with RFC1035. Label values may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
+        /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
+        /// cannot be a dash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Indicates the user-supplied redundancy type of this external VPN gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redundancyType")]
+        public virtual string RedundancyType { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The interface for the external VPN gateway.</summary>
+    public class ExternalVpnGatewayInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The numeric ID of this interface. The allowed input values for this id for different redundancy
+        /// types of external VPN gateway: SINGLE_IP_INTERNALLY_REDUNDANT - 0 TWO_IPS_REDUNDANCY - 0, 1
+        /// FOUR_IPS_REDUNDANCY - 0, 1, 2, 3</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; } 
+
+        /// <summary>IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address
+        /// can be either from your on-premise gateway or another Cloud provider?s VPN gateway, it cannot be an IP
+        /// address from Google Compute Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response to the list request, and contains a list of externalVpnGateways.</summary>
+    public class ExternalVpnGatewayList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A list of ExternalVpnGateway resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<ExternalVpnGateway> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#externalVpnGatewayList  for lists of
+        /// externalVpnGateways.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual ExternalVpnGatewayList.WarningData Warning { get; set; } 
+
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
     }    
 
     /// <summary>Represents a Firewall Rule resource.
@@ -54604,30 +56574,20 @@ namespace Google.Apis.Compute.v1.Data
     /// v1.regionForwardingRules ==)</summary>
     public class ForwardingRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The IP address that this forwarding rule is serving on behalf of.
+        /// <summary>IP address that this forwarding rule serves. When a client sends traffic to this IP address, the
+        /// forwarding rule directs the traffic to the target that you specify in the forwarding rule.
         ///
-        /// Addresses are restricted based on the forwarding rule's load balancing scheme (EXTERNAL or INTERNAL) and
-        /// scope (global or regional).
+        /// If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an
+        /// IP address:
         ///
-        /// When the load balancing scheme is EXTERNAL, for global forwarding rules, the address must be a global IP,
-        /// and for regional forwarding rules, the address must live in the same region as the forwarding rule. If this
-        /// field is empty, an ephemeral IPv4 address from the same scope (global or regional) will be assigned. A
-        /// regional forwarding rule supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6.
+        /// * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in
+        /// https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name * Partial
+        /// URL or by name, as in: * projects/project_id/regions/region/addresses/address-name *
+        /// regions/region/addresses/address-name * global/addresses/address-name * address-name
         ///
-        /// When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL reference to an existing Address
-        /// resource ( internal regional static IP address), with a purpose of GCE_END_POINT and address_type of
-        /// INTERNAL.
-        ///
-        /// When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the
-        /// network/subnet configured for the forwarding rule. By default, if this field is empty, an ephemeral internal
-        /// IP address will be automatically allocated from the IP range of the subnet or network configured for this
-        /// forwarding rule.
-        ///
-        /// An address can be specified either by a literal IP address or a URL reference to an existing Address
-        /// resource. The following examples are all valid: - 100.1.2.3 -
-        /// https://www.googleapis.com/compute/v1/projects/project/regions/region/addresses/address -
-        /// projects/project/regions/region/addresses/address - regions/region/addresses/address -
-        /// global/addresses/address - address</summary>
+        /// The loadBalancingScheme and the forwarding rule's target determine the type of IP address that you can use.
+        /// For detailed information, refer to [IP address specifications](/load-balancing/docs/forwarding-rule-
+        /// concepts#ip_address_specifications).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPAddress")]
         public virtual string IPAddress { get; set; } 
 
@@ -54712,27 +56672,34 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
         public virtual string NetworkTier { get; set; } 
 
-        /// <summary>This field is used along with the target field for TargetHttpProxy, TargetHttpsProxy,
-        /// TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.
-        ///
-        /// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range
-        /// will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint
-        /// port ranges.
-        ///
-        /// Some types of forwarding target have constraints on the acceptable ports: - TargetHttpProxy: 80, 8080 -
-        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688, 1883,
-        /// 5222 - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688, 1883, 5222 -
-        /// TargetVpnGateway: 500, 4500</summary>
+        /// <summary>This field is deprecated. See the port field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 
-        /// <summary>This field is used along with the backend_service field for internal load balancing.
+        /// <summary>List of comma-separated ports. The forwarding rule forwards packets with matching destination
+        /// ports. If the forwarding rule's loadBalancingScheme is EXTERNAL, and the forwarding rule references a target
+        /// pool, specifying ports is optional. You can specify an unlimited number of ports, but they must be
+        /// contiguous. If you omit ports, GCP forwards traffic on any port of the forwarding rule's protocol.
         ///
-        /// When the load balancing scheme is INTERNAL, a list of ports can be configured, for example, ['80'],
-        /// ['8000','9000'] etc. Only packets addressed to these ports will be forwarded to the backends configured with
-        /// this forwarding rule.
+        /// If the forwarding rule's loadBalancingScheme is EXTERNAL, and the forwarding rule references a target HTTP
+        /// proxy, target HTTPS proxy, target TCP proxy, target SSL proxy, or target VPN gateway, you must specify ports
+        /// using the following constraints:
         ///
-        /// You may specify a maximum of up to 5 ports.</summary>
+        /// - TargetHttpProxy: 80, 8080 - TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587,
+        /// 700, 993, 995, 1688, 1883, 5222 - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
+        /// 1883, 5222 - TargetVpnGateway: 500, 4500
+        ///
+        /// If the forwarding rule's loadBalancingScheme is INTERNAL, you must specify ports in one of the following
+        /// ways:
+        ///
+        /// * A list of up to five ports, which can be non-contiguous * Keyword ALL, which causes the forwarding rule to
+        /// forward traffic on any port of the forwarding rule's protocol.
+        ///
+        /// The ports field is used along with the target field for TargetHttpProxy, TargetHttpsProxy, TargetSslProxy,
+        /// TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.
+        ///
+        /// Applicable only when IPProtocol is TCP, UDP, or SCTP. Forwarding rules with the same [IPAddress, IPProtocol]
+        /// pair must have disjoint port ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
         public virtual System.Collections.Generic.IList<string> Ports { get; set; } 
 
@@ -54746,8 +56713,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>An optional prefix to the service name for this Forwarding Rule. If specified, will be the first
-        /// label of the fully qualified service name.
+        /// <summary>An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the
+        /// first label of the fully qualified service name.
         ///
         /// The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63
         /// characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
@@ -56058,10 +58025,17 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<AttachedDisk> Disks { get; set; } 
 
+        /// <summary>Enables display device for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayDevice")]
+        public virtual DisplayDevice DisplayDevice { get; set; } 
+
         /// <summary>A list of the type and count of accelerator cards attached to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; } 
 
+        /// <summary>Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If
+        /// hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the
+        /// global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
         public virtual string Hostname { get; set; } 
 
@@ -57884,7 +59858,7 @@ namespace Google.Apis.Compute.v1.Data
         /// interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and
         /// DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M:
         /// 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G:
-        /// 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s</summary>
+        /// 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandwidth")]
         public virtual string Bandwidth { get; set; } 
 
@@ -59488,9 +61462,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; } 
 
-        /// <summary>Optional IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the
-        /// primary IP or as part of an aliased IP range). If the IP address is not specified, then the primary IP
-        /// address for the VM instance in the network that the network endpoint group belongs to will be
+        /// <summary>Optional IPv4 address of network endpoint. The IP address must belong to a VM in Compute Engine
+        /// (either the primary IP or as part of an aliased IP range). If the IP address is not specified, then the
+        /// primary IP address for the VM instance in the network that the network endpoint group belongs to will be
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
@@ -60030,6 +62004,14 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exchangeSubnetRoutes")]
         public virtual System.Nullable<bool> ExchangeSubnetRoutes { get; set; } 
 
+        /// <summary>Whether to export the custom routes to peer network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportCustomRoutes")]
+        public virtual System.Nullable<bool> ExportCustomRoutes { get; set; } 
+
+        /// <summary>Whether to import the custom routes from peer network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importCustomRoutes")]
+        public virtual System.Nullable<bool> ImportCustomRoutes { get; set; } 
+
         /// <summary>Name of this peering. Provided by the client when the peering is created. The name must comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match regular expression
         /// `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following
@@ -60107,6 +62089,15 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Name of the peering, which should conform to RFC1035.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class NetworksUpdatePeeringRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPeering")]
+        public virtual NetworkPeering NetworkPeering { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60350,6 +62341,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class NodeGroupsDeleteNodesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Names of the nodes to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<string> Nodes { get; set; } 
 
@@ -61090,7 +63082,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("httpErrorStatusCode")]
         public virtual System.Nullable<int> HttpErrorStatusCode { get; set; } 
 
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// <summary>[Output Only] The unique identifier for the operation. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
@@ -61104,7 +63096,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output Only] Name of the resource.</summary>
+        /// <summary>[Output Only] Name of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -61534,8 +63526,7 @@ namespace Google.Apis.Compute.v1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
-        /// blindly.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -62389,11 +64380,11 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even
     /// if the reserved VMs are not running. For more information, read  Reserving zonal resources. (== resource_for
-    /// beta.reservations ==) (== resource_for v1.reservations ==) (== NextID: 13 ==)</summary>
+    /// beta.reservations ==) (== resource_for v1.reservations ==)</summary>
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[OutputOnly] Full or partial url for parent commitment for reservations which are tied to a
-        /// commitment.</summary>
+        /// <summary>[OutputOnly] Full or partial URL to a parent commitment. This field displays for reservations that
+        /// are tied to a commitment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitment")]
         public virtual string Commitment { get; set; } 
 
@@ -62441,8 +64432,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>Zone in which the reservation resides, must be provided if reservation is created with commitment
-        /// creation.</summary>
+        /// <summary>Zone in which the reservation resides. A zone must be provided if the reservation is created within
+        /// a commitment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -63062,7 +65053,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>GCS bucket storage location of the auto snapshot (regional or multi-regional).</summary>
+        /// <summary>Cloud Storage bucket storage location of the auto snapshot (regional or multi-regional).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageLocations")]
         public virtual System.Collections.Generic.IList<string> StorageLocations { get; set; } 
 
@@ -63532,7 +65523,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
 
-        /// <summary>Name of this BGP peer. The name must be 1-63 characters long and comply with RFC1035.</summary>
+        /// <summary>Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035.
+        /// Specifically, the name must be 1-63 characters long and match the regular expression
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a
+        /// dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -63575,8 +65570,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
 
-        /// <summary>Name of this interface entry. The name must be 1-63 characters long and comply with
-        /// RFC1035.</summary>
+        /// <summary>Name of this interface entry. The name must be 1-63 characters long, and comply with RFC1035.
+        /// Specifically, the name must be 1-63 characters long and match the regular expression
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a
+        /// dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -64529,7 +66527,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storageBytesStatus")]
         public virtual string StorageBytesStatus { get; set; } 
 
-        /// <summary>GCS bucket storage location of the snapshot (regional or multi-regional).</summary>
+        /// <summary>Cloud Storage bucket storage location of the snapshot (regional or multi-regional).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageLocations")]
         public virtual System.Collections.Generic.IList<string> StorageLocations { get; set; } 
 
@@ -64998,6 +66996,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs
+        /// are exported to Stackdriver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
+        public virtual SubnetworkLogConfig LogConfig { get; set; } 
+
         /// <summary>The name of the resource, provided by the client when initially creating the resource. The name
         /// must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long
         /// and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
@@ -65178,6 +67181,37 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    /// <summary>The available logging options for this subnetwork.</summary>
+    public class SubnetworkLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation
+        /// interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow
+        /// logs for long lasting connections. Default is an interval of 5 seconds per connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationInterval")]
+        public virtual string AggregationInterval { get; set; } 
+
+        /// <summary>Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will
+        /// not appear in get listings. If not set the default behavior is to disable flow logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual System.Nullable<bool> Enable { get; set; } 
+
+        /// <summary>Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field
+        /// must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all
+        /// collected logs are reported and 0.0 means no logs are reported. Default is 0.5, which means half of all
+        /// collected logs are reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowSampling")]
+        public virtual System.Nullable<float> FlowSampling { get; set; } 
+
+        /// <summary>Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none
+        /// or a subset of metadata fields should be added to the reported VPC flow logs. Default is
+        /// INCLUDE_ALL_METADATA.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual string Metadata { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Represents a secondary IP range of a subnetwork.</summary>
@@ -67302,6 +69336,365 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    /// <summary>Represents a VPN gateway resource.</summary>
+    public class VpnGateway : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; } 
+
+        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#vpnGateway for VPN gateways.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>A fingerprint for the labels being applied to this VpnGateway, which is essentially a hash of the
+        /// labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes
+        /// after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in
+        /// order to update or change labels, otherwise the request will fail with error 412 conditionNotMet.
+        ///
+        /// To see the latest fingerprint, make a get() request to retrieve an VpnGateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>Labels to apply to this VpnGateway resource. These can be later modified by the setLabels method.
+        /// Each label key/value must comply with RFC1035. Label values may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
+        /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
+        /// cannot be a dash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>URL of the network to which this VPN gateway is attached. Provided by the client when the VPN
+        /// gateway is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
+        /// <summary>[Output Only] URL of the region where the VPN gateway resides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] A list of interfaces on this VPN gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpnInterfaces")]
+        public virtual System.Collections.Generic.IList<VpnGatewayVpnGatewayInterface> VpnInterfaces { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class VpnGatewayAggregatedList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A list of VpnGateway resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IDictionary<string,VpnGatewaysScopedList> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#vpnGateway for VPN gateways.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual VpnGatewayAggregatedList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
+    }    
+
+    /// <summary>Contains a list of VpnGateway resources.</summary>
+    public class VpnGatewayList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A list of VpnGateway resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<VpnGateway> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#vpnGateway for VPN gateways.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual VpnGatewayList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
+    }    
+
+    public class VpnGatewayStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of VPN connection for this VpnGateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpnConnections")]
+        public virtual System.Collections.Generic.IList<VpnGatewayStatusVpnConnection> VpnConnections { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Describes the high availability requirement state for the VPN connection between this Cloud VPN gateway
+    /// and a peer gateway.</summary>
+    public class VpnGatewayStatusHighAvailabilityRequirementState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates the high availability requirement state for the VPN connection. Valid values are
+        /// CONNECTION_REDUNDANCY_MET, CONNECTION_REDUNDANCY_NOT_MET.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Indicates the reason why the VPN connection does not meet the high availability redundancy
+        /// criteria/requirement. Valid values is INCOMPLETE_TUNNELS_COVERAGE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unsatisfiedReason")]
+        public virtual string UnsatisfiedReason { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains some information about a VPN tunnel.</summary>
+    public class VpnGatewayStatusTunnel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The VPN gateway interface this VPN tunnel is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localGatewayInterface")]
+        public virtual System.Nullable<long> LocalGatewayInterface { get; set; } 
+
+        /// <summary>The peer gateway interface this VPN tunnel is connected to, the peer gateway could either be an
+        /// external VPN gateway or GCP VPN gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerGatewayInterface")]
+        public virtual System.Nullable<long> PeerGatewayInterface { get; set; } 
+
+        /// <summary>URL reference to the VPN tunnel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tunnelUrl")]
+        public virtual string TunnelUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A VPN connection contains all VPN tunnels connected from this VpnGateway to the same peer gateway. The
+    /// peer gateway could either be a external VPN gateway or GCP VPN gateway.</summary>
+    public class VpnGatewayStatusVpnConnection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL reference to the peer external VPN gateways to which the VPN tunnels in this VPN connection are
+        /// connected. This field is mutually exclusive with peer_gcp_gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerExternalGateway")]
+        public virtual string PeerExternalGateway { get; set; } 
+
+        /// <summary>URL reference to the peer side VPN gateways to which the VPN tunnels in this VPN connection are
+        /// connected. This field is mutually exclusive with peer_gcp_gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerGcpGateway")]
+        public virtual string PeerGcpGateway { get; set; } 
+
+        /// <summary>HighAvailabilityRequirementState for the VPN connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual VpnGatewayStatusHighAvailabilityRequirementState State { get; set; } 
+
+        /// <summary>List of VPN tunnels that are in this VPN connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tunnels")]
+        public virtual System.Collections.Generic.IList<VpnGatewayStatusTunnel> Tunnels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A VPN gateway interface.</summary>
+    public class VpnGatewayVpnGatewayInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The numeric ID of this VPN gateway interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; } 
+
+        /// <summary>The external IP address for this VPN gateway interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class VpnGatewaysGetStatusResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual VpnGatewayStatus Result { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class VpnGatewaysScopedList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] A list of VPN gateways contained in this scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpnGateways")]
+        public virtual System.Collections.Generic.IList<VpnGateway> VpnGateways { get; set; } 
+
+        /// <summary>[Output Only] Informational warning which replaces the list of addresses when the list is
+        /// empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual VpnGatewaysScopedList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>[Output Only] Informational warning which replaces the list of addresses when the list is
+        /// empty.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
+    }    
+
     /// <summary>Represents a Cloud VPN Tunnel resource.
     ///
     /// For more information about VPN, read the the Cloud VPN Overview. (== resource_for beta.vpnTunnels ==) (==
@@ -67348,6 +69741,23 @@ namespace Google.Apis.Compute.v1.Data
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>URL of the peer side external VPN gateway to which this VPN tunnel is connected. Provided by the
+        /// client when the VPN tunnel is created. This field is exclusive with the field peerGcpGateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerExternalGateway")]
+        public virtual string PeerExternalGateway { get; set; } 
+
+        /// <summary>The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the
+        /// client when the VPN tunnel is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerExternalGatewayInterface")]
+        public virtual System.Nullable<int> PeerExternalGatewayInterface { get; set; } 
+
+        /// <summary>URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. Provided by the
+        /// client when the VPN tunnel is created. This field can be used when creating highly available VPN from VPC
+        /// network to VPC network, the field is exclusive with the field peerExternalGateway. If provided, the VPN
+        /// tunnel will automatically use the same vpnGatewayInterface ID in the peer GCP VPN gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerGcpGateway")]
+        public virtual string PeerGcpGateway { get; set; } 
 
         /// <summary>IP address of the peer VPN gateway. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerIp")]
@@ -67396,6 +69806,16 @@ namespace Google.Apis.Compute.v1.Data
         /// the VPN tunnel is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetVpnGateway")]
         public virtual string TargetVpnGateway { get; set; } 
+
+        /// <summary>URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the
+        /// VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High Availability VPN gateway
+        /// resource is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpnGateway")]
+        public virtual string VpnGateway { get; set; } 
+
+        /// <summary>The interface ID of the VPN gateway with which this VPN tunnel is associated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpnGatewayInterface")]
+        public virtual System.Nullable<int> VpnGatewayInterface { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

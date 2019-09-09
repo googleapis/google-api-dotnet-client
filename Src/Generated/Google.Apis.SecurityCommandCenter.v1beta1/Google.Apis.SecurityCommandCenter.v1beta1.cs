@@ -462,43 +462,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
-                /// existing at the supplied time and their values are those at that specific time. Absence of this
-                /// field will default to the API's version of NOW.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object ReadTime { get; set; }
-
-                /// <summary>Expression that defines what fields and order to use for sorting. The string value should
-                /// follow SQL syntax: comma separated list of fields. For example:
-                /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
-                /// order for a field, a suffix " desc" should be appended to the field name. For example: "name
-                /// desc,resource_properties.a_property". Redundant space characters in the syntax are insignificant.
-                /// "name desc,resource_properties.a_property" and " name     desc  ,   resource_properties.a_property
-                /// " are equivalent.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
-                /// <summary>When compare_duration is set, the ListAssetResult's "state" attribute is updated to
-                /// indicate whether the asset was added, removed, or remained present during the compare_duration
-                /// period of time that precedes the read_time. This is the time between (read_time - compare_duration)
-                /// and read_time.
-                ///
-                /// The state value is derived based on the presence of the asset at the two points in time.
-                /// Intermediate state changes between the two times don't affect the result. For example, the results
-                /// aren't affected if the asset is removed and re-created again.
-                ///
-                /// Possible "state" values when compare_duration is specified:
-                ///
-                /// * "ADDED": indicates that the asset was not present before compare_duration, but present at
-                /// read_time. * "REMOVED": indicates that the asset was present at the start of compare_duration, but
-                /// not present at read_time. * "ACTIVE": indicates that the asset was present at both the start and the
-                /// end of the time period defined by compare_duration and read_time.
-                ///
-                /// If compare_duration is not specified, then the only possible state is "UNUSED", which indicates that
-                /// the asset is present at read_time.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object CompareDuration { get; set; }
-
                 /// <summary>Expression that defines the filter to apply across assets. The expression is a list of zero
                 /// or more restrictions combined via logical operators `AND` and `OR`. Parentheses are not supported,
                 /// and `OR` has higher precedence than `AND`.
@@ -538,6 +501,43 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
+                /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
+                /// existing at the supplied time and their values are those at that specific time. Absence of this
+                /// field will default to the API's version of NOW.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object ReadTime { get; set; }
+
+                /// <summary>Expression that defines what fields and order to use for sorting. The string value should
+                /// follow SQL syntax: comma separated list of fields. For example:
+                /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
+                /// order for a field, a suffix " desc" should be appended to the field name. For example: "name
+                /// desc,resource_properties.a_property". Redundant space characters in the syntax are insignificant.
+                /// "name desc,resource_properties.a_property" and " name     desc  ,   resource_properties.a_property
+                /// " are equivalent.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>When compare_duration is set, the ListAssetResult's "state" attribute is updated to
+                /// indicate whether the asset was added, removed, or remained present during the compare_duration
+                /// period of time that precedes the read_time. This is the time between (read_time - compare_duration)
+                /// and read_time.
+                ///
+                /// The state value is derived based on the presence of the asset at the two points in time.
+                /// Intermediate state changes between the two times don't affect the result. For example, the results
+                /// aren't affected if the asset is removed and re-created again.
+                ///
+                /// Possible "state" values when compare_duration is specified:
+                ///
+                /// * "ADDED": indicates that the asset was not present before compare_duration, but present at
+                /// read_time. * "REMOVED": indicates that the asset was present at the start of compare_duration, but
+                /// not present at read_time. * "ACTIVE": indicates that the asset was present at both the start and the
+                /// end of the time period defined by compare_duration and read_time.
+                ///
+                /// If compare_duration is not specified, then the only possible state is "UNUSED", which indicates that
+                /// the asset is present at read_time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("compareDuration", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object CompareDuration { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -572,33 +572,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "readTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "readTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "compareDuration", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "compareDuration",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -629,6 +602,33 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "readTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "compareDuration", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "compareDuration",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -745,13 +745,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The FieldMask to use when updating the security marks resource.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object UpdateMask { get; set; }
-
                 /// <summary>The time at which the updated SecurityMarks take effect.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
+
+                /// <summary>The FieldMask to use when updating the security marks resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -793,18 +793,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                             Pattern = @"^organizations/[^/]+/assets/[^/]+/securityMarks$",
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "startTime", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "startTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "startTime", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "startTime",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1740,13 +1740,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The time at which the updated SecurityMarks take effect.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object StartTime { get; set; }
-
                     /// <summary>The FieldMask to use when updating the security marks resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
+
+                    /// <summary>The time at which the updated SecurityMarks take effect.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object StartTime { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1788,18 +1788,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                                 Pattern = @"^organizations/[^/]+/sources/[^/]+/findings/[^/]+/securityMarks$",
                             });
                         RequestParameters.Add(
-                            "startTime", new Google.Apis.Discovery.Parameter
+                            "updateMask", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "startTime",
+                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
+                            "startTime", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "updateMask",
+                                Name = "startTime",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

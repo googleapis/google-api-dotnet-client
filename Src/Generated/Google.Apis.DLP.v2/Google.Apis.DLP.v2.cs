@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190824 (1696)
+ *      <tr><th>API Rev<td>20190902 (1705)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -1648,11 +1648,6 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to
                 /// `ListStoredInfoTypes`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1671,6 +1666,11 @@ namespace Google.Apis.DLP.v2
                 /// corresponds to info type's display name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
+
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1706,15 +1706,6 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1727,6 +1718,15 @@ namespace Google.Apis.DLP.v2
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2351,11 +2351,6 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to
                 /// `ListDeidentifyTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -2374,6 +2369,11 @@ namespace Google.Apis.DLP.v2
                 /// corresponds to template's display name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
+
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2409,15 +2409,6 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2430,6 +2421,15 @@ namespace Google.Apis.DLP.v2
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2842,6 +2842,21 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+                /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
+                public enum TypeEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
+                    DLPJOBTYPEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
+                    INSPECTJOB,
+                    [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
+                    RISKANALYSISJOB,
+                }
+
                 /// <summary>Optional. Allows filtering.
                 ///
                 /// Supported syntax:
@@ -2887,21 +2902,6 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
-                /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
-                [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<TypeEnum> Type { get; set; }
-
-                /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
-                public enum TypeEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
-                    DLPJOBTYPEUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
-                    INSPECTJOB,
-                    [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
-                    RISKANALYSISJOB,
-                }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -2936,6 +2936,15 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "type", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "type",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -2966,15 +2975,6 @@ namespace Google.Apis.DLP.v2
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "type", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "type",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3821,28 +3821,6 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. Allows filtering.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `  `. * Supported fields/values for inspect jobs: - `status` -
-                /// HEALTHY|PAUSED|CANCELLED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time`
-                /// - RFC 3339 formatted timestamp, surrounded by quotation marks. Nanoseconds are ignored. -
-                /// 'error_count' - Number of errors that have occurred while running. * The operator must be `=` or
-                /// `!=` for status and inspected_storage.
-                ///
-                /// Examples:
-                ///
-                /// * inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR
-                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state =
-                /// HEALTHY) * last_run_time > \"2017-12-12T00:00:00+00:00\"
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to ListJobTriggers.
                 /// `order_by` field must not change for subsequent calls.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -3866,6 +3844,28 @@ namespace Google.Apis.DLP.v2
                 /// <summary>Optional size of the page, can be limited by a server.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. Allows filtering.
+                ///
+                /// Supported syntax:
+                ///
+                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
+                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
+                /// has the form of `  `. * Supported fields/values for inspect jobs: - `status` -
+                /// HEALTHY|PAUSED|CANCELLED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time`
+                /// - RFC 3339 formatted timestamp, surrounded by quotation marks. Nanoseconds are ignored. -
+                /// 'error_count' - Number of errors that have occurred while running. * The operator must be `=` or
+                /// `!=` for status and inspected_storage.
+                ///
+                /// Examples:
+                ///
+                /// * inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR
+                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state =
+                /// HEALTHY) * last_run_time > \"2017-12-12T00:00:00+00:00\"
+                ///
+                /// The length of this field should be no more than 500 characters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3901,15 +3901,6 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3931,6 +3922,15 @@ namespace Google.Apis.DLP.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4232,6 +4232,95 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>Initializes Inspect parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Re-identifies content that has been de-identified. See
+                /// https://cloud.google.com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example to
+                /// learn more.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The parent resource name.</param>
+                /// <param name="location">The geographic location to
+                /// process content reidentification.  Reserved for future extensions.</param>
+                public virtual ReidentifyRequest Reidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentRequest body, string parent, string location)
+                {
+                    return new ReidentifyRequest(service, body, parent, location);
+                }
+
+                /// <summary>Re-identifies content that has been de-identified. See
+                /// https://cloud.google.com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example to
+                /// learn more.</summary>
+                public class ReidentifyRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentResponse>
+                {
+                    /// <summary>Constructs a new Reidentify request.</summary>
+                    public ReidentifyRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentRequest body, string parent, string location)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Location = location;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The parent resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The geographic location to process content reidentification.  Reserved for future
+                    /// extensions.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Location { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "reidentify"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+parent}/locations/{location}/content:reidentify"; }
+                    }
+
+                    /// <summary>Initializes Reidentify parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -5396,6 +5485,10 @@ namespace Google.Apis.DLP.v2.Data
         /// This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'.
         /// This facilitates reversal of the surrogate when it occurs in free text.
         ///
+        /// Note: For record transformations where the entire cell in a table is being transformed, surrogates are
+        /// optional to use. Surrogates are used to denote the location of the token and are necessary for re-
+        /// identification in free form text.
+        ///
         /// In order for inspection to work properly, the name of this info type must not occur naturally anywhere in
         /// your data; otherwise, inspection may either
         ///
@@ -5406,7 +5499,7 @@ namespace Google.Apis.DLP.v2.Data
         /// to select a name that has a high chance of yielding reliable detection is to include one or more unicode
         /// characters that are highly improbable to exist in your data. For example, assuming your data is entered from
         /// a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so:
-        /// ⧝MY_TOKEN_TYPE</summary>
+        /// ⧝MY_TOKEN_TYPE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surrogateInfoType")]
         public virtual GooglePrivacyDlpV2InfoType SurrogateInfoType { get; set; } 
 
@@ -7554,6 +7647,11 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The item to re-identify. Will be treated as text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("item")]
         public virtual GooglePrivacyDlpV2ContentItem Item { get; set; } 
+
+        /// <summary>The geographic location to process content reidentification.  Reserved for future
+        /// extensions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
 
         /// <summary>Configuration for the re-identification of the content item. This field shares the same proto
         /// message type that is used for de-identification, however its usage here is for the reversal of the previous

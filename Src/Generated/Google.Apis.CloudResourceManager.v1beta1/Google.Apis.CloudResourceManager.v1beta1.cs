@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190807 (1679)
+ *      <tr><th>API Rev<td>20190830 (1702)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -527,6 +527,16 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
+            /// <summary>A pagination token returned from a previous call to `ListOrganizations` that indicates from
+            /// where listing should continue. This field is optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of Organizations to return in the response. This field is
+            /// optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>An optional query string used to filter the Organizations to return in the response. Filter
             /// rules are case-insensitive.
             ///
@@ -540,16 +550,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             /// This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>A pagination token returned from a previous call to `ListOrganizations` that indicates from
-            /// where listing should continue. This field is optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of Organizations to return in the response. This field is
-            /// optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -576,15 +576,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -597,6 +588,15 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -752,7 +752,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
         /// <summary>Updates an Organization resource identified by the specified resource name.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">Output Only. The resource name of the organization. This is the organization's relative path in
+        /// <param name="name">Output only. The resource name of the organization. This is the organization's relative path in
         /// the API. Its format is "organizations/[organization_id]". For example, "organizations/1234".</param>
         public virtual UpdateRequest Update(Google.Apis.CloudResourceManager.v1beta1.Data.Organization body, string name)
         {
@@ -772,7 +772,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>Output Only. The resource name of the organization. This is the organization's relative path in
+            /// <summary>Output only. The resource name of the organization. This is the organization's relative path in
             /// the API. Its format is "organizations/[organization_id]". For example, "organizations/1234".</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -1377,7 +1377,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         ///
         /// + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`.
         ///
-        /// + The owner role can be granted only to `user` and `serviceAccount`.
+        /// + The owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization.
+        /// For example, group@myownpersonaldomain.com could be added as an owner to a project in the
+        /// myownpersonaldomain.com organization, but not the examplepetstore.com organization.
         ///
         /// + Service accounts can be made owners of a project directly without any restrictions. However, to be added
         /// as an owner, a user must be invited via Cloud Platform console and must accept the invitation.
@@ -1416,7 +1418,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         ///
         /// + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`.
         ///
-        /// + The owner role can be granted only to `user` and `serviceAccount`.
+        /// + The owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization.
+        /// For example, group@myownpersonaldomain.com could be added as an owner to a project in the
+        /// myownpersonaldomain.com organization, but not the examplepetstore.com organization.
         ///
         /// + Service accounts can be made owners of a project directly without any restrictions. However, to be added
         /// as an owner, a user must be invited via Cloud Platform console and must accept the invitation.
@@ -1955,8 +1959,12 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If the value
-        /// is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+        /// <summary>Optional. The policy format version to be returned.
+        ///
+        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        ///
+        /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
+        /// bindings may specify any valid value or leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
 
@@ -2013,21 +2021,21 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     /// belong.</summary>
     public class Organization : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp when the Organization was created. Assigned by the server. @OutputOnly</summary>
+        /// <summary>Timestamp when the Organization was created. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual object CreationTime { get; set; } 
 
         /// <summary>A human-readable string that refers to the Organization in the GCP Console UI. This string is set
         /// by the server and cannot be changed. The string will be set to the primary domain (for example,
-        /// "google.com") of the G Suite customer that owns the organization. @OutputOnly</summary>
+        /// "google.com") of the G Suite customer that owns the organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The organization's current lifecycle state. Assigned by the server. @OutputOnly</summary>
+        /// <summary>The organization's current lifecycle state. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
         public virtual string LifecycleState { get; set; } 
 
-        /// <summary>Output Only. The resource name of the organization. This is the organization's relative path in the
+        /// <summary>Output only. The resource name of the organization. This is the organization's relative path in the
         /// API. Its format is "organizations/[organization_id]". For example, "organizations/1234".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -2100,7 +2108,12 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Deprecated.</summary>
+        /// <summary>Specifies the format of the policy.
+        ///
+        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        ///
+        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
+        /// specify any valid value or leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

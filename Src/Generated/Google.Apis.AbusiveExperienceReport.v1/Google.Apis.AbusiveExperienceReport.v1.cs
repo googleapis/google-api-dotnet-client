@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/abusive-experience-report/'>Abusive Experience Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190830 (1702)
+ *      <tr><th>API Rev<td>20190902 (1705)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/abusive-experience-report/'>
  *              https://developers.google.com/abusive-experience-report/</a>
@@ -350,18 +350,16 @@ namespace Google.Apis.AbusiveExperienceReport.v1
         }
 
 
-        /// <summary>Gets a summary of the abusive experience rating of a site.</summary>
-        /// <param name="name">Required. The site property whose abusive experiences have been reviewed, and it must be URL-
-        /// encoded. For example, sites/https%3A%2F%2Fwww.google.com. The server will return an error of BAD_REQUEST if this
-        /// field is not filled in. Note that if the site property is not yet verified in Search Console, the reportUrl field
-        /// returned by the API will lead to the verification page, prompting the user to go through that process before they
-        /// can gain access to the Abusive Experience Report.</param>
+        /// <summary>Gets a site's Abusive Experience Report summary.</summary>
+        /// <param name="name">Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%2Fwww.google.com%2F`.
+        ///
+        /// Format: `sites/{site}`</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets a summary of the abusive experience rating of a site.</summary>
+        /// <summary>Gets a site's Abusive Experience Report summary.</summary>
         public class GetRequest : AbusiveExperienceReportBaseServiceRequest<Google.Apis.AbusiveExperienceReport.v1.Data.SiteSummaryResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -373,11 +371,10 @@ namespace Google.Apis.AbusiveExperienceReport.v1
             }
 
 
-            /// <summary>Required. The site property whose abusive experiences have been reviewed, and it must be URL-
-            /// encoded. For example, sites/https%3A%2F%2Fwww.google.com. The server will return an error of BAD_REQUEST
-            /// if this field is not filled in. Note that if the site property is not yet verified in Search Console,
-            /// the reportUrl field returned by the API will lead to the verification page, prompting the user to go
-            /// through that process before they can gain access to the Abusive Experience Report.</summary>
+            /// <summary>Required. The name of the site whose summary to get, e.g.
+            /// `sites/http%3A%2F%2Fwww.google.com%2F`.
+            ///
+            /// Format: `sites/{site}`</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -435,13 +432,13 @@ namespace Google.Apis.AbusiveExperienceReport.v1
         }
 
 
-        /// <summary>Lists sites with failing Abusive Experience Report statuses.</summary>
+        /// <summary>Lists sites that are failing in the Abusive Experience Report.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists sites with failing Abusive Experience Report statuses.</summary>
+        /// <summary>Lists sites that are failing in the Abusive Experience Report.</summary>
         public class ListRequest : AbusiveExperienceReportBaseServiceRequest<Google.Apis.AbusiveExperienceReport.v1.Data.ViolatingSitesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -488,27 +485,36 @@ namespace Google.Apis.AbusiveExperienceReport.v1.Data
     /// <summary>Response message for GetSiteSummary.</summary>
     public class SiteSummaryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status of the site reviewed for the abusive experiences.</summary>
+        /// <summary>The site's Abusive Experience Report status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("abusiveStatus")]
         public virtual string AbusiveStatus { get; set; } 
 
-        /// <summary>The time at which enforcement begins.</summary>
+        /// <summary>The time at which [enforcement](https://support.google.com/webtools/answer/7538608) against the
+        /// site began or will begin.
+        ///
+        /// Not set when the filter_status is OFF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcementTime")]
         public virtual object EnforcementTime { get; set; } 
 
-        /// <summary>The abusive experience enforcement status of the site.</summary>
+        /// <summary>The site's [enforcement status](https://support.google.com/webtools/answer/7538608).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterStatus")]
         public virtual string FilterStatus { get; set; } 
 
-        /// <summary>The last time that the site changed status.</summary>
+        /// <summary>The time at which the site's status last changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastChangeTime")]
         public virtual object LastChangeTime { get; set; } 
 
-        /// <summary>A link that leads to a full abusive experience report.</summary>
+        /// <summary>A link to the full Abusive Experience Report for the site.
+        ///
+        /// Not set in ViolatingSitesResponse.
+        ///
+        /// Note that you must complete the [Search Console verification
+        /// process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full
+        /// report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportUrl")]
         public virtual string ReportUrl { get; set; } 
 
-        /// <summary>The name of the site reviewed.</summary>
+        /// <summary>The name of the reviewed site, e.g. `google.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewedSite")]
         public virtual string ReviewedSite { get; set; } 
 
@@ -523,7 +529,7 @@ namespace Google.Apis.AbusiveExperienceReport.v1.Data
     /// <summary>Response message for ListViolatingSites.</summary>
     public class ViolatingSitesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of summaries of violating sites.</summary>
+        /// <summary>The list of violating sites.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violatingSites")]
         public virtual System.Collections.Generic.IList<SiteSummaryResponse> ViolatingSites { get; set; } 
 

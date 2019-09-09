@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190816 (1688)
+ *      <tr><th>API Rev<td>20190902 (1705)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -799,10 +799,10 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. A nonempty list of fields to change in the existing exclusion. New values for the
-                /// fields are taken from the corresponding fields in the LogExclusion included in this request. Fields
-                /// not mentioned in update_mask are not changed and are ignored in the request.For example, to change
-                /// the filter and description of an exclusion, specify an update_mask of
+                /// <summary>Required. A non-empty list of fields to change in the existing exclusion. New values for
+                /// the fields are taken from the corresponding fields in the LogExclusion included in this request.
+                /// Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to
+                /// change the filter and description of an exclusion, specify an update_mask of
                 /// "filter,description".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -955,8 +955,7 @@ namespace Google.Apis.Logging.v2
 
             /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
             /// entries are listed.</summary>
-            /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
+            /// <param name="parent">Required. To be deprecated in Logging Data Model V2.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -975,9 +974,7 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// </summary>
+                /// <summary>Required. To be deprecated in Logging Data Model V2.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -992,6 +989,12 @@ namespace Google.Apis.Logging.v2
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
+                /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
+                /// "folders/FOLDER_ID"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1039,6 +1042,15 @@ namespace Google.Apis.Logging.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "resourceNames", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceNames",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2113,7 +2125,7 @@ namespace Google.Apis.Logging.v2
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Required. A nonempty list of fields to change in the existing exclusion. New values for the
+            /// <summary>Required. A non-empty list of fields to change in the existing exclusion. New values for the
             /// fields are taken from the corresponding fields in the LogExclusion included in this request. Fields not
             /// mentioned in update_mask are not changed and are ignored in the request.For example, to change the
             /// filter and description of an exclusion, specify an update_mask of "filter,description".</summary>
@@ -2551,10 +2563,10 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. A nonempty list of fields to change in the existing exclusion. New values for the
-                /// fields are taken from the corresponding fields in the LogExclusion included in this request. Fields
-                /// not mentioned in update_mask are not changed and are ignored in the request.For example, to change
-                /// the filter and description of an exclusion, specify an update_mask of
+                /// <summary>Required. A non-empty list of fields to change in the existing exclusion. New values for
+                /// the fields are taken from the corresponding fields in the LogExclusion included in this request.
+                /// Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to
+                /// change the filter and description of an exclusion, specify an update_mask of
                 /// "filter,description".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -2707,8 +2719,7 @@ namespace Google.Apis.Logging.v2
 
             /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
             /// entries are listed.</summary>
-            /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
+            /// <param name="parent">Required. To be deprecated in Logging Data Model V2.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -2727,9 +2738,7 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// </summary>
+                /// <summary>Required. To be deprecated in Logging Data Model V2.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2744,6 +2753,12 @@ namespace Google.Apis.Logging.v2
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
+                /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
+                /// "folders/FOLDER_ID"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2791,6 +2806,15 @@ namespace Google.Apis.Logging.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "resourceNames", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceNames",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3470,8 +3494,7 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
         /// entries are listed.</summary>
-        /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-        /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
+        /// <param name="parent">Required. To be deprecated in Logging Data Model V2.</param>
         public virtual ListRequest List(string parent)
         {
             return new ListRequest(service, parent);
@@ -3490,11 +3513,15 @@ namespace Google.Apis.Logging.v2
             }
 
 
-            /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-            /// </summary>
+            /// <summary>Required. To be deprecated in Logging Data Model V2.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
+
+            /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
+            /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
+            /// "folders/FOLDER_ID"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
             /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to this
             /// method. pageToken must be the value of nextPageToken from the previous response. The values of other
@@ -3540,6 +3567,15 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^[^/]+/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "resourceNames", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceNames",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
@@ -4034,10 +4070,10 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. A nonempty list of fields to change in the existing exclusion. New values for the
-                /// fields are taken from the corresponding fields in the LogExclusion included in this request. Fields
-                /// not mentioned in update_mask are not changed and are ignored in the request.For example, to change
-                /// the filter and description of an exclusion, specify an update_mask of
+                /// <summary>Required. A non-empty list of fields to change in the existing exclusion. New values for
+                /// the fields are taken from the corresponding fields in the LogExclusion included in this request.
+                /// Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to
+                /// change the filter and description of an exclusion, specify an update_mask of
                 /// "filter,description".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -4190,8 +4226,7 @@ namespace Google.Apis.Logging.v2
 
             /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
             /// entries are listed.</summary>
-            /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
+            /// <param name="parent">Required. To be deprecated in Logging Data Model V2.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -4210,9 +4245,7 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// </summary>
+                /// <summary>Required. To be deprecated in Logging Data Model V2.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -4227,6 +4260,12 @@ namespace Google.Apis.Logging.v2
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
+                /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
+                /// "folders/FOLDER_ID"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -4274,6 +4313,15 @@ namespace Google.Apis.Logging.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "resourceNames", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceNames",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5244,10 +5292,10 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. A nonempty list of fields to change in the existing exclusion. New values for the
-                /// fields are taken from the corresponding fields in the LogExclusion included in this request. Fields
-                /// not mentioned in update_mask are not changed and are ignored in the request.For example, to change
-                /// the filter and description of an exclusion, specify an update_mask of
+                /// <summary>Required. A non-empty list of fields to change in the existing exclusion. New values for
+                /// the fields are taken from the corresponding fields in the LogExclusion included in this request.
+                /// Fields not mentioned in update_mask are not changed and are ignored in the request.For example, to
+                /// change the filter and description of an exclusion, specify an update_mask of
                 /// "filter,description".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -5400,8 +5448,7 @@ namespace Google.Apis.Logging.v2
 
             /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
             /// entries are listed.</summary>
-            /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
+            /// <param name="parent">Required. To be deprecated in Logging Data Model V2.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -5420,9 +5467,7 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-                /// </summary>
+                /// <summary>Required. To be deprecated in Logging Data Model V2.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -5437,6 +5482,12 @@ namespace Google.Apis.Logging.v2
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
+                /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
+                /// "folders/FOLDER_ID"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -5484,6 +5535,15 @@ namespace Google.Apis.Logging.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "resourceNames", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceNames",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7418,10 +7478,10 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies a set of log entries that are not to be stored in Logging. If your project receives a large
-    /// volume of logs, you might be able to use exclusions to reduce your chargeable logs. Exclusions are processed
-    /// after log sinks, so you can export log entries before they are excluded. Audit log entries and log entries from
-    /// Amazon Web Services are never excluded.</summary>
+    /// <summary>Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a
+    /// large volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log
+    /// sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level
+    /// exclusions don't apply to child resources, and that you can't exclude audit log entries.</summary>
     public class LogExclusion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The creation timestamp of the exclusion.This field may not be present for older
@@ -7439,8 +7499,8 @@ namespace Google.Apis.Logging.v2.Data
         public virtual System.Nullable<bool> Disabled { get; set; } 
 
         /// <summary>Required. An advanced logs filter that matches the log entries to be excluded. By using the sample
-        /// function, you can exclude less than 100% of the matching log entries. For example, the following filter
-        /// matches 99% of low-severity log entries from load balancers:"resource.type=http_load_balancer
+        /// function, you can exclude less than 100% of the matching log entries. For example, the following query
+        /// matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket
         /// severity</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 

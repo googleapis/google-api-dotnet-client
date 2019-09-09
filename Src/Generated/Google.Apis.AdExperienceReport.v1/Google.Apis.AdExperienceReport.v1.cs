@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-experience-report/'>Ad Experience Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190830 (1702)
+ *      <tr><th>API Rev<td>20190902 (1705)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-experience-report/'>
  *              https://developers.google.com/ad-experience-report/</a>
@@ -350,18 +350,16 @@ namespace Google.Apis.AdExperienceReport.v1
         }
 
 
-        /// <summary>Gets a summary of the ad experience rating of a site.</summary>
-        /// <param name="name">Required. The site property whose ad experiences may have been reviewed, and it should be URL-
-        /// encoded. For example, sites/https%3A%2F%2Fwww.google.com. The server will return an error of BAD_REQUEST if this
-        /// field is not filled in. Note that if the site property is not yet verified in Search Console, the reportUrl field
-        /// returned by the API will lead to the verification page, prompting the user to go through that process before they
-        /// can gain access to the Ad Experience Report.</param>
+        /// <summary>Gets a site's Ad Experience Report summary.</summary>
+        /// <param name="name">Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%2Fwww.google.com%2F`.
+        ///
+        /// Format: `sites/{site}`</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets a summary of the ad experience rating of a site.</summary>
+        /// <summary>Gets a site's Ad Experience Report summary.</summary>
         public class GetRequest : AdExperienceReportBaseServiceRequest<Google.Apis.AdExperienceReport.v1.Data.SiteSummaryResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -373,11 +371,10 @@ namespace Google.Apis.AdExperienceReport.v1
             }
 
 
-            /// <summary>Required. The site property whose ad experiences may have been reviewed, and it should be URL-
-            /// encoded. For example, sites/https%3A%2F%2Fwww.google.com. The server will return an error of BAD_REQUEST
-            /// if this field is not filled in. Note that if the site property is not yet verified in Search Console,
-            /// the reportUrl field returned by the API will lead to the verification page, prompting the user to go
-            /// through that process before they can gain access to the Ad Experience Report.</summary>
+            /// <summary>Required. The name of the site whose summary to get, e.g.
+            /// `sites/http%3A%2F%2Fwww.google.com%2F`.
+            ///
+            /// Format: `sites/{site}`</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -435,13 +432,13 @@ namespace Google.Apis.AdExperienceReport.v1
         }
 
 
-        /// <summary>Lists sites with failing Ad Experience Report statuses.</summary>
+        /// <summary>Lists sites that are failing in the Ad Experience Report on at least one platform.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists sites with failing Ad Experience Report statuses.</summary>
+        /// <summary>Lists sites that are failing in the Ad Experience Report on at least one platform.</summary>
         public class ListRequest : AdExperienceReportBaseServiceRequest<Google.Apis.AdExperienceReport.v1.Data.ViolatingSitesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -485,35 +482,47 @@ namespace Google.Apis.AdExperienceReport.v1
 namespace Google.Apis.AdExperienceReport.v1.Data
 {    
 
-    /// <summary>Summary of the ad experience rating of a site for a specific platform.</summary>
+    /// <summary>A site's Ad Experience Report summary on a single platform.</summary>
     public class PlatformSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status of the site reviewed for the Better Ads Standards.</summary>
+        /// <summary>The site's Ad Experience Report status on this platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("betterAdsStatus")]
         public virtual string BetterAdsStatus { get; set; } 
 
-        /// <summary>The time at which ad filtering begins.</summary>
+        /// <summary>The time at which [enforcement](https://support.google.com/webtools/answer/7308033) against the
+        /// site began or will begin on this platform.
+        ///
+        /// Not set when the filter_status is OFF.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcementTime")]
         public virtual object EnforcementTime { get; set; } 
 
-        /// <summary>The ad filtering status of the site.</summary>
+        /// <summary>The site's [enforcement status](https://support.google.com/webtools/answer/7308033) on this
+        /// platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterStatus")]
         public virtual string FilterStatus { get; set; } 
 
-        /// <summary>The last time that the site changed status.</summary>
+        /// <summary>The time at which the site's status last changed on this platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastChangeTime")]
         public virtual object LastChangeTime { get; set; } 
 
-        /// <summary>The assigned regions for the site and platform. No longer populated, because there is no longer any
-        /// semantic difference between sites in different regions.</summary>
+        /// <summary>The site's regions on this platform.
+        ///
+        /// No longer populated, because there is no longer any semantic difference between sites in different
+        /// regions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual System.Collections.Generic.IList<string> Region { get; set; } 
 
-        /// <summary>A link that leads to a full ad experience report.</summary>
+        /// <summary>A link to the full Ad Experience Report for the site on this platform..
+        ///
+        /// Not set in ViolatingSitesResponse.
+        ///
+        /// Note that you must complete the [Search Console verification
+        /// process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full
+        /// report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportUrl")]
         public virtual string ReportUrl { get; set; } 
 
-        /// <summary>Whether the site is currently under review.</summary>
+        /// <summary>Whether the site is currently under review on this platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("underReview")]
         public virtual System.Nullable<bool> UnderReview { get; set; } 
 
@@ -524,15 +533,15 @@ namespace Google.Apis.AdExperienceReport.v1.Data
     /// <summary>Response message for GetSiteSummary.</summary>
     public class SiteSummaryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Summary for the desktop review of the site.</summary>
+        /// <summary>The site's Ad Experience Report summary on desktop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desktopSummary")]
         public virtual PlatformSummary DesktopSummary { get; set; } 
 
-        /// <summary>Summary for the mobile review of the site.</summary>
+        /// <summary>The site's Ad Experience Report summary on mobile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileSummary")]
         public virtual PlatformSummary MobileSummary { get; set; } 
 
-        /// <summary>The name of the site reviewed.</summary>
+        /// <summary>The name of the reviewed site, e.g. `google.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewedSite")]
         public virtual string ReviewedSite { get; set; } 
 
@@ -543,7 +552,7 @@ namespace Google.Apis.AdExperienceReport.v1.Data
     /// <summary>Response message for ListViolatingSites.</summary>
     public class ViolatingSitesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of summaries of violating sites.</summary>
+        /// <summary>The list of violating sites.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violatingSites")]
         public virtual System.Collections.Generic.IList<SiteSummaryResponse> ViolatingSites { get; set; } 
 

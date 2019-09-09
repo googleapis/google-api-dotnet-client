@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Analytics Reporting API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20190827 (1699)
+ *      <tr><th>API Rev<td>20190904 (1707)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>
  *              https://developers.google.com/analytics/devguides/reporting/core/v4/</a>
@@ -492,7 +492,9 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
     public class Activity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Timestamp of the activity. If activities for a visit cross midnight and occur in two separate
-        /// dates, then two sessions (one per date) share the session identifier.</summary>
+        /// dates, then two sessions (one per date) share the session identifier. For example, say session ID 113472 has
+        /// activity within 2019-08-20, and session ID 243742 has activity within 2019-08-25 and 2019-08-26. Session ID
+        /// 113472 is one session, and session ID 243742 is two sessions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activityTime")]
         public virtual object ActivityTime { get; set; } 
 
