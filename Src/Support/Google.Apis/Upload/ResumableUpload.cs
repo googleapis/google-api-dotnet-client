@@ -637,7 +637,6 @@ namespace Google.Apis.Upload
             {
                 PrepareNextChunkUnknownSize(stream, cancellationToken, out chunk, out chunkLength);
             }
-
             var content = new ByteArrayContent(chunk, 0, chunkLength);
             content.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, chunkLength));
             request.Content = content;
@@ -729,8 +728,12 @@ namespace Google.Apis.Upload
                 Buffer.BlockCopy(LastMediaRequest, LastMediaLength - copyCount, LastMediaRequest, 0, copyCount);
                 LastMediaLength = copyCount;
             }
-            // Read any more required bytes from stream, to form the next chunk
-            while (LastMediaLength < ChunkSize + 1 && StreamLength == UnknownSize)
+            // Read any more required bytes from stream, to form the next chunk.
+            // We don't rely on reading StreamLength to determine whether we've finished reading or not, as
+            // there are corner cases where it can be not unknown, even though we're in the "unknown size" case -
+            // see https://github.com/googleapis/google-api-dotnet-client/issues/1449.
+            bool finished = false;
+            while (LastMediaLength < ChunkSize + 1 && !finished)
             {
                 cancellationToken.ThrowIfCancellationRequested();
                 int readSize = Math.Min(BufferSize, ChunkSize + 1 - LastMediaLength);
@@ -738,11 +741,10 @@ namespace Google.Apis.Upload
                 LastMediaLength += len;
                 if (len == 0)
                 {
-                    // Stream ended, so we know the length
                     StreamLength = BytesServerReceived + LastMediaLength;
+                    finished = true;
                 }
             }
-
             // If we've read an extra byte, it'll be included in the next chunk.
             chunkLength = Math.Min(ChunkSize, LastMediaLength);
             chunk = LastMediaRequest;
