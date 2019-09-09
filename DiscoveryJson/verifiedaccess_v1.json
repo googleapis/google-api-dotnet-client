@@ -1,4 +1,128 @@
 {
+  "resources": {
+    "challenge": {
+      "methods": {
+        "create": {
+          "flatPath": "v1/challenge",
+          "path": "v1/challenge",
+          "id": "verifiedaccess.challenge.create",
+          "description": "CreateChallenge API",
+          "request": {
+            "$ref": "Empty"
+          },
+          "response": {
+            "$ref": "Challenge"
+          },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "parameters": {},
+          "scopes": [
+            "https://www.googleapis.com/auth/verifiedaccess"
+          ]
+        },
+        "verify": {
+          "path": "v1/challenge:verify",
+          "id": "verifiedaccess.challenge.verify",
+          "request": {
+            "$ref": "VerifyChallengeResponseRequest"
+          },
+          "description": "VerifyChallengeResponse API",
+          "response": {
+            "$ref": "VerifyChallengeResponseResult"
+          },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/verifiedaccess"
+          ],
+          "parameters": {},
+          "flatPath": "v1/challenge:verify"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "alt": {
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ]
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "access_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth access token."
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "$.xgafv": {
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format."
+    }
+  },
+  "version": "v1",
+  "baseUrl": "https://verifiedaccess.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "API for Verified Access chrome extension to provide credential verification for chrome devices connecting to an enterprise network",
+  "servicePath": "",
   "basePath": "",
   "revision": "20190718",
   "id": "verifiedaccess:v1",
@@ -7,19 +131,19 @@
   "version_module": true,
   "schemas": {
     "Challenge": {
+      "description": "Result message for VerifiedAccess.CreateChallenge.",
       "type": "object",
       "properties": {
-        "alternativeChallenge": {
-          "$ref": "SignedData",
-          "description": "Challenge generated with the old signing key\n(this will only be present during key rotation)"
-        },
         "challenge": {
-          "description": "Generated challenge",
+          "$ref": "SignedData",
+          "description": "Generated challenge"
+        },
+        "alternativeChallenge": {
+          "description": "Challenge generated with the old signing key\n(this will only be present during key rotation)",
           "$ref": "SignedData"
         }
       },
-      "id": "Challenge",
-      "description": "Result message for VerifiedAccess.CreateChallenge."
+      "id": "Challenge"
     },
     "VerifyChallengeResponseRequest": {
       "description": "signed ChallengeResponse",
@@ -37,45 +161,45 @@
       "id": "VerifyChallengeResponseRequest"
     },
     "VerifyChallengeResponseResult": {
-      "description": "Result message for VerifiedAccess.VerifyChallengeResponse.",
       "type": "object",
       "properties": {
         "signedPublicKeyAndChallenge": {
-          "type": "string",
-          "description": "Certificate Signing Request (in the SPKAC format, base64 encoded) is\nreturned in this field. This field will be set only if device has included\nCSR in its challenge response.\n(the option to include CSR is now available for both user and machine\nresponses)"
-        },
-        "deviceEnrollmentId": {
-          "description": "Device enrollment id is returned in this field (for the machine response\nonly).",
+          "description": "Certificate Signing Request (in the SPKAC format, base64 encoded) is\nreturned in this field. This field will be set only if device has included\nCSR in its challenge response.\n(the option to include CSR is now available for both user and machine\nresponses)",
           "type": "string"
         },
-        "devicePermanentId": {
+        "deviceEnrollmentId": {
           "type": "string",
-          "description": "Device permanent id is returned in this field (for the machine response\nonly)."
+          "description": "Device enrollment id is returned in this field (for the machine response\nonly)."
+        },
+        "devicePermanentId": {
+          "description": "Device permanent id is returned in this field (for the machine response\nonly).",
+          "type": "string"
         },
         "verificationOutput": {
           "description": "For EMCert check, device permanent id is returned here.\nFor EUCert check, signed_public_key_and_challenge [base64 encoded]\nis returned if present, otherwise empty string is returned.\nThis field is deprecated, please use device_permanent_id or\nsigned_public_key_and_challenge fields.",
           "type": "string"
         }
       },
-      "id": "VerifyChallengeResponseResult"
+      "id": "VerifyChallengeResponseResult",
+      "description": "Result message for VerifiedAccess.VerifyChallengeResponse."
     },
     "Empty": {
-      "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
-      "properties": {}
+      "properties": {},
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
     },
     "SignedData": {
       "description": "The wrapper message of any data and its signature.",
       "type": "object",
       "properties": {
-        "data": {
-          "description": "The data to be signed.",
+        "signature": {
+          "description": "The signature of the data field.",
           "format": "byte",
           "type": "string"
         },
-        "signature": {
-          "description": "The signature of the data field.",
+        "data": {
+          "description": "The data to be signed.",
           "format": "byte",
           "type": "string"
         }
@@ -104,129 +228,5 @@
   "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
   "title": "Verified Access API",
-  "ownerName": "Google",
-  "resources": {
-    "challenge": {
-      "methods": {
-        "verify": {
-          "flatPath": "v1/challenge:verify",
-          "path": "v1/challenge:verify",
-          "id": "verifiedaccess.challenge.verify",
-          "request": {
-            "$ref": "VerifyChallengeResponseRequest"
-          },
-          "description": "VerifyChallengeResponse API",
-          "response": {
-            "$ref": "VerifyChallengeResponseResult"
-          },
-          "parameterOrder": [],
-          "httpMethod": "POST",
-          "scopes": [
-            "https://www.googleapis.com/auth/verifiedaccess"
-          ],
-          "parameters": {}
-        },
-        "create": {
-          "description": "CreateChallenge API",
-          "request": {
-            "$ref": "Empty"
-          },
-          "response": {
-            "$ref": "Challenge"
-          },
-          "parameterOrder": [],
-          "httpMethod": "POST",
-          "parameters": {},
-          "scopes": [
-            "https://www.googleapis.com/auth/verifiedaccess"
-          ],
-          "flatPath": "v1/challenge",
-          "path": "v1/challenge",
-          "id": "verifiedaccess.challenge.create"
-        }
-      }
-    }
-  },
-  "parameters": {
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
-    },
-    "alt": {
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
-    },
-    "key": {
-      "type": "string",
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "quotaUser": {
-      "type": "string",
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    }
-  },
-  "version": "v1",
-  "baseUrl": "https://verifiedaccess.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "API for Verified Access chrome extension to provide credential verification for chrome devices connecting to an enterprise network",
-  "servicePath": ""
+  "ownerName": "Google"
 }
