@@ -381,5 +381,13 @@ namespace Google.Apis.Tests.Apis.Services
             Assert.Contains("gl-dotnet/", header);
             Assert.Contains("gdcl/", header);
         }
+
+        [Fact]
+        public void SharedInitializer()
+        {
+            var initializer = new BaseClientService.Initializer();
+            var service1 = new TranslateService(initializer);
+            var service2 = new TranslateService(initializer);
+        }
     }
 }

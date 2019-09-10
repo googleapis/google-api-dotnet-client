@@ -152,7 +152,11 @@ namespace Google.Apis.Services
             initializer.Validate();
             // Note that GetType() will get the *actual* type, which will be the service type in the API-specific library.
             // That's the version we want to append.
-            initializer.VersionHeaderBuilder.AppendAssemblyVersion("gdcl", GetType());
+            // It's important that we clone the VersionHeaderBuilder, so we don't modify the initializer - otherwise
+            // a single initializer can't be used for multiple services (which can be useful).
+            string versionHeader = initializer.VersionHeaderBuilder.Clone()
+                .AppendAssemblyVersion("gdcl", GetType())
+                .ToString();
             // Set the right properties by the initializer's properties.
             GZipEnabled = initializer.GZipEnabled;
             Serializer = initializer.Serializer;
@@ -166,7 +170,7 @@ namespace Google.Apis.Services
             HttpClientInitializer = initializer.HttpClientInitializer;
 
             // Create a HTTP client for this service.
-            HttpClient = CreateHttpClient(initializer);
+            HttpClient = CreateHttpClient(initializer, versionHeader);
         }
 
         /// <summary>
@@ -180,7 +184,7 @@ namespace Google.Apis.Services
             return Features.Contains(Utilities.GetEnumStringValue(feature));
         }
 
-        private ConfigurableHttpClient CreateHttpClient(Initializer initializer)
+        private ConfigurableHttpClient CreateHttpClient(Initializer initializer, string versionHeader)
         {
             // If factory wasn't set use the default HTTP client factory.
             var factory = initializer.HttpClientFactory ?? new HttpClientFactory();
@@ -188,7 +192,7 @@ namespace Google.Apis.Services
                 {
                     GZipEnabled = GZipEnabled,
                     ApplicationName = ApplicationName,
-                    GoogleApiClientHeader = initializer.VersionHeaderBuilder.ToString()
+                    GoogleApiClientHeader = versionHeader
                 };
 
             // Add the user's input initializer.
