@@ -1,228 +1,65 @@
 {
-  "ownerName": "Google",
-  "resources": {
-    "projects": {
-      "resources": {
-        "messages": {
-          "methods": {
-            "send": {
-              "response": {
-                "$ref": "Message"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "parent": {
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
-                  "description": "Required. It contains the Firebase project id (i.e. the unique identifier\nfor your Firebase project), in the format of `projects/{project_id}`.\nFor legacy support, the numeric project number with no padding is also\nsupported in the format of `projects/{project_number}`."
-                }
-              },
-              "flatPath": "v1/projects/{projectsId}/messages:send",
-              "path": "v1/{+parent}/messages:send",
-              "id": "fcm.projects.messages.send",
-              "request": {
-                "$ref": "SendMessageRequest"
-              },
-              "description": "Send a message to specified target (a registration token, topic\nor condition)."
-            }
-          }
-        }
-      }
-    }
-  },
-  "parameters": {
-    "alt": {
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response."
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format."
-    },
-    "oauth_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user."
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    }
-  },
   "version": "v1",
   "baseUrl": "https://fcm.googleapis.com/",
-  "servicePath": "",
-  "description": "FCM send API that provides a cross-platform messaging solution to reliably deliver messages at no cost.",
   "kind": "discovery#restDescription",
+  "description": "FCM send API that provides a cross-platform messaging solution to reliably deliver messages at no cost.",
+  "servicePath": "",
   "basePath": "",
-  "revision": "20190903",
-  "documentationLink": "https://firebase.google.com/docs/cloud-messaging",
   "id": "fcm:v1",
+  "documentationLink": "https://firebase.google.com/docs/cloud-messaging",
+  "revision": "20190903",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "LightSettings": {
-      "description": "Settings to control notification LED.",
-      "type": "object",
       "properties": {
         "color": {
           "$ref": "Color",
           "description": "Required. Set `color` of the LED with\n[google.type.Color](https://github.com/googleapis/googleapis/blob/master/google/type/color.proto)."
         },
         "lightOnDuration": {
-          "type": "string",
           "description": "Required. Along with `light_off_duration`, define the blink rate of LED\nflashes. Resolution defined by\n[proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)",
-          "format": "google-duration"
-        },
-        "lightOffDuration": {
-          "description": "Required. Along with `light_on_duration `, define the blink rate of LED\nflashes. Resolution defined by\n[proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)",
           "format": "google-duration",
           "type": "string"
+        },
+        "lightOffDuration": {
+          "type": "string",
+          "description": "Required. Along with `light_on_duration `, define the blink rate of LED\nflashes. Resolution defined by\n[proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)",
+          "format": "google-duration"
         }
       },
-      "id": "LightSettings"
+      "id": "LightSettings",
+      "description": "Settings to control notification LED.",
+      "type": "object"
     },
     "ApnsFcmOptions": {
       "description": "Options for features provided by the FCM SDK for iOS.",
       "type": "object",
       "properties": {
+        "analyticsLabel": {
+          "type": "string",
+          "description": "Label associated with the message's analytics data."
+        },
         "image": {
           "description": "Contains the URL of an image that is going to be displayed in a\nnotification. If present, it will override\ngoogle.firebase.fcm.v1.Notification.image.",
-          "type": "string"
-        },
-        "analyticsLabel": {
-          "description": "Label associated with the message's analytics data.",
           "type": "string"
         }
       },
       "id": "ApnsFcmOptions"
     },
-    "ApnsConfig": {
-      "description": "[Apple Push Notification Service](https://goo.gl/MXRTPa) specific options.",
-      "type": "object",
-      "properties": {
-        "fcmOptions": {
-          "description": "Options for features provided by the FCM SDK for iOS.",
-          "$ref": "ApnsFcmOptions"
-        },
-        "headers": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "HTTP request headers defined in Apple Push Notification Service. Refer to\n[APNs request headers](https://goo.gl/C6Yhia) for\nsupported headers, e.g. \"apns-priority\": \"10\".",
-          "type": "object"
-        },
-        "payload": {
-          "type": "object",
-          "additionalProperties": {
-            "description": "Properties of the object.",
-            "type": "any"
-          },
-          "description": "APNs payload as a JSON object, including both `aps` dictionary and custom\npayload. See [Payload Key Reference](https://goo.gl/32Pl5W).\nIf present, it overrides google.firebase.fcm.v1.Notification.title\nand google.firebase.fcm.v1.Notification.body."
-        }
-      },
-      "id": "ApnsConfig"
-    },
     "AndroidConfig": {
-      "id": "AndroidConfig",
       "description": "Android specific options for messages sent through\n[FCM connection server](https://goo.gl/4GLdUl).",
       "type": "object",
       "properties": {
-        "collapseKey": {
-          "description": "An identifier of a group of messages that can be collapsed, so that only\nthe last message gets sent when delivery can be resumed. A maximum of 4\ndifferent collapse keys is allowed at any given time.",
-          "type": "string"
-        },
-        "fcmOptions": {
-          "$ref": "AndroidFcmOptions",
-          "description": "Options for features provided by the FCM SDK for Android."
-        },
-        "notification": {
-          "$ref": "AndroidNotification",
-          "description": "Notification to send to android devices."
-        },
-        "restrictedPackageName": {
-          "type": "string",
-          "description": "Package name of the application where the registration token must match in\norder to receive the message."
-        },
-        "ttl": {
-          "description": "How long (in seconds) the message should be kept in FCM storage if the\ndevice is offline. The maximum time to live supported is 4 weeks, and the\ndefault value is 4 weeks if not set. Set it to 0 if want to send the\nmessage immediately.\nIn JSON format, the Duration type is encoded as a string rather than an\nobject, where the string ends in the suffix \"s\" (indicating seconds) and\nis preceded by the number of seconds, with nanoseconds expressed as\nfractional seconds. For example, 3 seconds with 0 nanoseconds should be\nencoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should\nbe expressed in JSON format as \"3.000000001s\". The ttl will be rounded down\nto the nearest second.",
-          "format": "google-duration",
-          "type": "string"
-        },
         "data": {
-          "description": "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data.",
-          "type": "object",
           "additionalProperties": {
             "type": "string"
-          }
+          },
+          "description": "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data.",
+          "type": "object"
         },
         "priority": {
+          "description": "Message priority. Can take \"normal\" and \"high\" values.\nFor more information, see [Setting the priority of a\nmessage](https://goo.gl/GjONJv).",
           "type": "string",
           "enumDescriptions": [
             "Default priority for data messages. Normal priority messages won't open\nnetwork connections on a sleeping device, and their delivery may be\ndelayed to conserve the battery. For less time-sensitive messages, such\nas notifications of new email or other data to sync, choose normal\ndelivery priority.",
@@ -231,74 +68,64 @@
           "enum": [
             "NORMAL",
             "HIGH"
-          ],
-          "description": "Message priority. Can take \"normal\" and \"high\" values.\nFor more information, see [Setting the priority of a\nmessage](https://goo.gl/GjONJv)."
-        }
-      }
-    },
-    "AndroidNotification": {
-      "description": "Notification to send to android devices.",
-      "type": "object",
-      "properties": {
-        "body": {
-          "description": "The notification's body text. If present, it will override\ngoogle.firebase.fcm.v1.Notification.body.",
-          "type": "string"
-        },
-        "lightSettings": {
-          "$ref": "LightSettings",
-          "description": "Settings to control the notification's LED blinking rate and color if LED\nis available on the device. The total blinking time is controlled by the\nOS."
-        },
-        "icon": {
-          "type": "string",
-          "description": "The notification's icon.\nSets the notification icon to myicon for drawable resource myicon.\nIf you don't send this key in the request, FCM displays the launcher icon\nspecified in your app manifest."
-        },
-        "color": {
-          "description": "The notification's icon color, expressed in #rrggbb format.",
-          "type": "string"
-        },
-        "tag": {
-          "type": "string",
-          "description": "Identifier used to replace existing notifications in the notification\ndrawer.\nIf not specified, each request creates a new notification.\nIf specified and a notification with the same tag is already being shown,\nthe new notification replaces the existing one in the notification drawer."
-        },
-        "titleLocKey": {
-          "description": "The key to the title string in the app's string resources to use to\nlocalize the title text to the user's current localization.\nSee [String Resources](https://goo.gl/NdFZGI) for more information.",
-          "type": "string"
-        },
-        "image": {
-          "description": "Contains the URL of an image that is going to be displayed in a\nnotification. If present, it will override\ngoogle.firebase.fcm.v1.Notification.image.",
-          "type": "string"
-        },
-        "visibility": {
-          "description": "Set the\n[Notification.visibility](https://developer.android.com/reference/android/app/Notification.html#visibility)\nof the notification.",
-          "type": "string",
-          "enumDescriptions": [
-            "If unspecified, default to `Visibility.PRIVATE`.",
-            "Show this notification on all lockscreens, but conceal sensitive or\nprivate information on secure lockscreens.",
-            "Show this notification in its entirety on all lockscreens.",
-            "Do not reveal any part of this notification on a secure lockscreen."
-          ],
-          "enum": [
-            "VISIBILITY_UNSPECIFIED",
-            "PRIVATE",
-            "PUBLIC",
-            "SECRET"
           ]
         },
-        "ticker": {
-          "description": "Sets the \"ticker\" text, which is sent to accessibility services.\nPrior to API level 21 (`Lollipop`), sets the text that is displayed in the\nstatus bar when the notification first arrives.",
+        "collapseKey": {
+          "type": "string",
+          "description": "An identifier of a group of messages that can be collapsed, so that only\nthe last message gets sent when delivery can be resumed. A maximum of 4\ndifferent collapse keys is allowed at any given time."
+        },
+        "fcmOptions": {
+          "description": "Options for features provided by the FCM SDK for Android.",
+          "$ref": "AndroidFcmOptions"
+        },
+        "notification": {
+          "description": "Notification to send to android devices.",
+          "$ref": "AndroidNotification"
+        },
+        "restrictedPackageName": {
+          "description": "Package name of the application where the registration token must match in\norder to receive the message.",
           "type": "string"
         },
-        "title": {
-          "description": "The notification's title. If present, it will override\ngoogle.firebase.fcm.v1.Notification.title.",
+        "ttl": {
+          "description": "How long (in seconds) the message should be kept in FCM storage if the\ndevice is offline. The maximum time to live supported is 4 weeks, and the\ndefault value is 4 weeks if not set. Set it to 0 if want to send the\nmessage immediately.\nIn JSON format, the Duration type is encoded as a string rather than an\nobject, where the string ends in the suffix \"s\" (indicating seconds) and\nis preceded by the number of seconds, with nanoseconds expressed as\nfractional seconds. For example, 3 seconds with 0 nanoseconds should be\nencoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should\nbe expressed in JSON format as \"3.000000001s\". The ttl will be rounded down\nto the nearest second.",
+          "format": "google-duration",
           "type": "string"
+        }
+      },
+      "id": "AndroidConfig"
+    },
+    "ApnsConfig": {
+      "description": "[Apple Push Notification Service](https://goo.gl/MXRTPa) specific options.",
+      "type": "object",
+      "properties": {
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "HTTP request headers defined in Apple Push Notification Service. Refer to\n[APNs request headers](https://goo.gl/C6Yhia) for\nsupported headers, e.g. \"apns-priority\": \"10\".",
+          "type": "object"
         },
-        "defaultSound": {
-          "description": "If set to true, use the Android framework's default sound for the\nnotification. Default values are specified in\n[config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).",
-          "type": "boolean"
+        "payload": {
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object."
+          },
+          "description": "APNs payload as a JSON object, including both `aps` dictionary and custom\npayload. See [Payload Key Reference](https://goo.gl/32Pl5W).\nIf present, it overrides google.firebase.fcm.v1.Notification.title\nand google.firebase.fcm.v1.Notification.body.",
+          "type": "object"
         },
+        "fcmOptions": {
+          "$ref": "ApnsFcmOptions",
+          "description": "Options for features provided by the FCM SDK for iOS."
+        }
+      },
+      "id": "ApnsConfig"
+    },
+    "AndroidNotification": {
+      "type": "object",
+      "properties": {
         "sticky": {
-          "type": "boolean",
-          "description": "When set to false or unset, the notification is automatically\ndismissed when the user clicks it in the panel. When set to true, the\nnotification persists even when the user clicks it."
+          "description": "When set to false or unset, the notification is automatically\ndismissed when the user clicks it in the panel. When set to true, the\nnotification persists even when the user clicks it.",
+          "type": "boolean"
         },
         "titleLocArgs": {
           "description": "Variable string values to be used in place of the format specifiers in\ntitle_loc_key to use to localize the title text to the user's current\nlocalization.\nSee [Formatting and Styling](https://goo.gl/MalYE3) for more information.",
@@ -333,6 +160,14 @@
           "type": "boolean"
         },
         "notificationPriority": {
+          "enumDescriptions": [
+            "If priority is unspecified, notification priority is set to\n`PRIORITY_DEFAULT`.",
+            "Lowest notification priority. Notifications with this `PRIORITY_MIN`\nmight not be shown to the user except under special circumstances,\nsuch as detailed notification logs.",
+            "Lower notification priority. The UI may choose to show the notifications\nsmaller, or at a different position in the list, compared with\nnotifications with `PRIORITY_DEFAULT`.",
+            "Default notification priority. If the application does not prioritize its\nown notifications, use this value for all notifications.",
+            "Higher notification priority. Use this for more important notifications\nor alerts. The UI may choose to show these notifications larger, or at a\ndifferent position in the notification lists, compared with notifications\nwith `PRIORITY_DEFAULT`.",
+            "Highest notification priority. Use this for the application's most\nimportant items that require the user's prompt attention or input."
+          ],
           "enum": [
             "PRIORITY_UNSPECIFIED",
             "PRIORITY_MIN",
@@ -342,23 +177,15 @@
             "PRIORITY_MAX"
           ],
           "description": "Set the relative priority for this notification. Priority is an indication\nof how much of the user's attention should be consumed by this\nnotification. Low-priority notifications may be hidden from the user in\ncertain situations, while the user might be interrupted for a\nhigher-priority notification. The effect of setting the same priorities may\ndiffer slightly on different platforms. Note this priority differs from\n`AndroidMessagePriority`. This priority is processed by the client after\nthe message has been delivered, whereas\n[AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority)\nis an FCM concept that controls when the message is delivered.",
-          "type": "string",
-          "enumDescriptions": [
-            "If priority is unspecified, notification priority is set to\n`PRIORITY_DEFAULT`.",
-            "Lowest notification priority. Notifications with this `PRIORITY_MIN`\nmight not be shown to the user except under special circumstances,\nsuch as detailed notification logs.",
-            "Lower notification priority. The UI may choose to show the notifications\nsmaller, or at a different position in the list, compared with\nnotifications with `PRIORITY_DEFAULT`.",
-            "Default notification priority. If the application does not prioritize its\nown notifications, use this value for all notifications.",
-            "Higher notification priority. Use this for more important notifications\nor alerts. The UI may choose to show these notifications larger, or at a\ndifferent position in the notification lists, compared with notifications\nwith `PRIORITY_DEFAULT`.",
-            "Highest notification priority. Use this for the application's most\nimportant items that require the user's prompt attention or input."
-          ]
+          "type": "string"
         },
         "vibrateTimings": {
+          "description": "Set the vibration pattern to use. Pass in an array of\n[protobuf.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)\nto turn on or off the vibrator. The first value indicates the `Duration` to\nwait before turning the vibrator on. The next value indicates the\n`Duration` to keep the vibrator on. Subsequent values alternate between\n`Duration` to turn the vibrator off and to turn the vibrator on.\nIf `vibrate_timings` is set and `default_vibrate_timings` is set to `true`,\nthe default value is used instead of the user-specified `vibrate_timings`.",
           "type": "array",
           "items": {
             "format": "google-duration",
             "type": "string"
-          },
-          "description": "Set the vibration pattern to use. Pass in an array of\n[protobuf.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)\nto turn on or off the vibrator. The first value indicates the `Duration` to\nwait before turning the vibrator on. The next value indicates the\n`Duration` to keep the vibrator on. Subsequent values alternate between\n`Duration` to turn the vibrator off and to turn the vibrator on.\nIf `vibrate_timings` is set and `default_vibrate_timings` is set to `true`,\nthe default value is used instead of the user-specified `vibrate_timings`."
+          }
         },
         "sound": {
           "description": "The sound to play when the device receives the notification.\nSupports \"default\" or the filename of a sound resource bundled in the app.\nSound files must reside in /res/raw/.",
@@ -369,19 +196,76 @@
           "type": "string"
         },
         "notificationCount": {
-          "type": "integer",
           "description": "Sets the number of items this notification represents. May be displayed as\na badge count for launchers that support badging.See [Notification\nBadge](https://developer.android.com/training/notify-user/badges).\nFor example, this might be useful if you're using just one notification to\nrepresent multiple new messages but you want the count here to represent\nthe number of total new messages.\nIf zero or unspecified, systems that support badging use the default, which\nis to increment a number displayed on the long-press menu each time a new\nnotification arrives.",
-          "format": "int32"
+          "format": "int32",
+          "type": "integer"
         },
         "bodyLocArgs": {
-          "description": "Variable string values to be used in place of the format specifiers in\nbody_loc_key to use to localize the body text to the user's current\nlocalization.\nSee [Formatting and Styling](https://goo.gl/MalYE3) for more information.",
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "Variable string values to be used in place of the format specifiers in\nbody_loc_key to use to localize the body text to the user's current\nlocalization.\nSee [Formatting and Styling](https://goo.gl/MalYE3) for more information."
+        },
+        "body": {
+          "description": "The notification's body text. If present, it will override\ngoogle.firebase.fcm.v1.Notification.body.",
+          "type": "string"
+        },
+        "lightSettings": {
+          "$ref": "LightSettings",
+          "description": "Settings to control the notification's LED blinking rate and color if LED\nis available on the device. The total blinking time is controlled by the\nOS."
+        },
+        "icon": {
+          "description": "The notification's icon.\nSets the notification icon to myicon for drawable resource myicon.\nIf you don't send this key in the request, FCM displays the launcher icon\nspecified in your app manifest.",
+          "type": "string"
+        },
+        "color": {
+          "description": "The notification's icon color, expressed in #rrggbb format.",
+          "type": "string"
+        },
+        "tag": {
+          "description": "Identifier used to replace existing notifications in the notification\ndrawer.\nIf not specified, each request creates a new notification.\nIf specified and a notification with the same tag is already being shown,\nthe new notification replaces the existing one in the notification drawer.",
+          "type": "string"
+        },
+        "titleLocKey": {
+          "description": "The key to the title string in the app's string resources to use to\nlocalize the title text to the user's current localization.\nSee [String Resources](https://goo.gl/NdFZGI) for more information.",
+          "type": "string"
+        },
+        "visibility": {
+          "enum": [
+            "VISIBILITY_UNSPECIFIED",
+            "PRIVATE",
+            "PUBLIC",
+            "SECRET"
+          ],
+          "description": "Set the\n[Notification.visibility](https://developer.android.com/reference/android/app/Notification.html#visibility)\nof the notification.",
+          "type": "string",
+          "enumDescriptions": [
+            "If unspecified, default to `Visibility.PRIVATE`.",
+            "Show this notification on all lockscreens, but conceal sensitive or\nprivate information on secure lockscreens.",
+            "Show this notification in its entirety on all lockscreens.",
+            "Do not reveal any part of this notification on a secure lockscreen."
+          ]
+        },
+        "image": {
+          "description": "Contains the URL of an image that is going to be displayed in a\nnotification. If present, it will override\ngoogle.firebase.fcm.v1.Notification.image.",
+          "type": "string"
+        },
+        "ticker": {
+          "description": "Sets the \"ticker\" text, which is sent to accessibility services.\nPrior to API level 21 (`Lollipop`), sets the text that is displayed in the\nstatus bar when the notification first arrives.",
+          "type": "string"
+        },
+        "title": {
+          "type": "string",
+          "description": "The notification's title. If present, it will override\ngoogle.firebase.fcm.v1.Notification.title."
+        },
+        "defaultSound": {
+          "description": "If set to true, use the Android framework's default sound for the\nnotification. Default values are specified in\n[config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).",
+          "type": "boolean"
         }
       },
-      "id": "AndroidNotification"
+      "id": "AndroidNotification",
+      "description": "Notification to send to android devices."
     },
     "WebpushFcmOptions": {
       "description": "Options for features provided by the FCM SDK for Web.",
@@ -422,9 +306,23 @@
       "id": "Color"
     },
     "Message": {
-      "description": "Message to send by Firebase Cloud Messaging Service.",
-      "type": "object",
       "properties": {
+        "token": {
+          "description": "Registration token to send a message to.",
+          "type": "string"
+        },
+        "condition": {
+          "description": "Condition to send a message to,\ne.g. \"'foo' in topics && 'bar' in topics\".",
+          "type": "string"
+        },
+        "android": {
+          "description": "Input only. Android specific options for messages sent through\n[FCM connection server](https://goo.gl/4GLdUl).",
+          "$ref": "AndroidConfig"
+        },
+        "apns": {
+          "$ref": "ApnsConfig",
+          "description": "Input only. [Apple Push Notification Service](https://goo.gl/MXRTPa)\nspecific options."
+        },
         "webpush": {
           "$ref": "WebpushConfig",
           "description": "Input only. [Webpush protocol](https://tools.ietf.org/html/rfc8030)\noptions."
@@ -434,44 +332,42 @@
           "type": "string"
         },
         "fcmOptions": {
-          "$ref": "FcmOptions",
-          "description": "Input only. Template for FCM SDK feature options to use across all\nplatforms."
+          "description": "Input only. Template for FCM SDK feature options to use across all\nplatforms.",
+          "$ref": "FcmOptions"
         },
         "notification": {
-          "description": "Input only. Basic notification template to use across all platforms.",
-          "$ref": "Notification"
+          "$ref": "Notification",
+          "description": "Input only. Basic notification template to use across all platforms."
         },
         "topic": {
           "description": "Topic name to send a message to, e.g. \"weather\".\nNote: \"/topics/\" prefix should not be provided.",
           "type": "string"
         },
         "data": {
-          "description": "Input only. Arbitrary key/value payload.",
-          "type": "object",
           "additionalProperties": {
             "type": "string"
-          }
-        },
-        "token": {
-          "type": "string",
-          "description": "Registration token to send a message to."
-        },
-        "condition": {
-          "description": "Condition to send a message to,\ne.g. \"'foo' in topics && 'bar' in topics\".",
-          "type": "string"
-        },
-        "android": {
-          "$ref": "AndroidConfig",
-          "description": "Input only. Android specific options for messages sent through\n[FCM connection server](https://goo.gl/4GLdUl)."
-        },
-        "apns": {
-          "description": "Input only. [Apple Push Notification Service](https://goo.gl/MXRTPa)\nspecific options.",
-          "$ref": "ApnsConfig"
+          },
+          "description": "Input only. Arbitrary key/value payload.",
+          "type": "object"
         }
       },
-      "id": "Message"
+      "id": "Message",
+      "description": "Message to send by Firebase Cloud Messaging Service.",
+      "type": "object"
+    },
+    "AndroidFcmOptions": {
+      "description": "Options for features provided by the FCM SDK for Android.",
+      "type": "object",
+      "properties": {
+        "analyticsLabel": {
+          "type": "string",
+          "description": "Label associated with the message's analytics data."
+        }
+      },
+      "id": "AndroidFcmOptions"
     },
     "Notification": {
+      "description": "Basic notification template to use across all platforms.",
       "type": "object",
       "properties": {
         "title": {
@@ -483,23 +379,11 @@
           "type": "string"
         },
         "body": {
-          "type": "string",
-          "description": "The notification's body text."
-        }
-      },
-      "id": "Notification",
-      "description": "Basic notification template to use across all platforms."
-    },
-    "AndroidFcmOptions": {
-      "description": "Options for features provided by the FCM SDK for Android.",
-      "type": "object",
-      "properties": {
-        "analyticsLabel": {
-          "description": "Label associated with the message's analytics data.",
+          "description": "The notification's body text.",
           "type": "string"
         }
       },
-      "id": "AndroidFcmOptions"
+      "id": "Notification"
     },
     "FcmOptions": {
       "description": "Platform independent options for features provided by the FCM SDKs.",
@@ -516,49 +400,49 @@
       "description": "[Webpush protocol](https://tools.ietf.org/html/rfc8030) options.",
       "type": "object",
       "properties": {
-        "headers": {
+        "data": {
           "additionalProperties": {
             "type": "string"
           },
-          "description": "HTTP headers defined in webpush protocol. Refer to\n[Webpush protocol](https://tools.ietf.org/html/rfc8030#section-5) for\nsupported headers, e.g. \"TTL\": \"15\".",
+          "description": "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data.",
           "type": "object"
         },
-        "data": {
-          "description": "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data.",
+        "notification": {
+          "description": "Web Notification options as a JSON object. Supports Notification instance\nproperties as defined in [Web Notification\nAPI](https://developer.mozilla.org/en-US/docs/Web/API/Notification). If\npresent, \"title\" and \"body\" fields override\n[google.firebase.fcm.v1.Notification.title] and\n[google.firebase.fcm.v1.Notification.body].",
+          "type": "object",
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any"
+          }
+        },
+        "fcmOptions": {
+          "$ref": "WebpushFcmOptions",
+          "description": "Options for features provided by the FCM SDK for Web."
+        },
+        "headers": {
+          "description": "HTTP headers defined in webpush protocol. Refer to\n[Webpush protocol](https://tools.ietf.org/html/rfc8030#section-5) for\nsupported headers, e.g. \"TTL\": \"15\".",
           "type": "object",
           "additionalProperties": {
             "type": "string"
           }
-        },
-        "notification": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object."
-          },
-          "description": "Web Notification options as a JSON object. Supports Notification instance\nproperties as defined in [Web Notification\nAPI](https://developer.mozilla.org/en-US/docs/Web/API/Notification). If\npresent, \"title\" and \"body\" fields override\n[google.firebase.fcm.v1.Notification.title] and\n[google.firebase.fcm.v1.Notification.body]."
-        },
-        "fcmOptions": {
-          "description": "Options for features provided by the FCM SDK for Web.",
-          "$ref": "WebpushFcmOptions"
         }
       },
       "id": "WebpushConfig"
     },
     "SendMessageRequest": {
+      "description": "Request to send a message to specified target.",
       "type": "object",
       "properties": {
-        "message": {
-          "$ref": "Message",
-          "description": "Required. Message to send."
-        },
         "validateOnly": {
-          "type": "boolean",
-          "description": "Flag for testing the request without actually delivering the message."
+          "description": "Flag for testing the request without actually delivering the message.",
+          "type": "boolean"
+        },
+        "message": {
+          "description": "Required. Message to send.",
+          "$ref": "Message"
         }
       },
-      "id": "SendMessageRequest",
-      "description": "Request to send a message to specified target."
+      "id": "SendMessageRequest"
     }
   },
   "protocol": "rest",
@@ -581,5 +465,121 @@
   "name": "fcm",
   "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
-  "title": "Firebase Cloud Messaging API"
+  "title": "Firebase Cloud Messaging API",
+  "ownerName": "Google",
+  "resources": {
+    "projects": {
+      "resources": {
+        "messages": {
+          "methods": {
+            "send": {
+              "description": "Send a message to specified target (a registration token, topic\nor condition).",
+              "request": {
+                "$ref": "SendMessageRequest"
+              },
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "parent"
+              ],
+              "response": {
+                "$ref": "Message"
+              },
+              "parameters": {
+                "parent": {
+                  "description": "Required. It contains the Firebase project id (i.e. the unique identifier\nfor your Firebase project), in the format of `projects/{project_id}`.\nFor legacy support, the numeric project number with no padding is also\nsupported in the format of `projects/{project_number}`.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/projects/{projectsId}/messages:send",
+              "id": "fcm.projects.messages.send",
+              "path": "v1/{+parent}/messages:send"
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string"
+    },
+    "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    }
+  }
 }

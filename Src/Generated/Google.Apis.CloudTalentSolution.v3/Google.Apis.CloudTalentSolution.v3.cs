@@ -1606,6 +1606,18 @@ namespace Google.Apis.CloudTalentSolution.v3
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>Required. Completion result count.
+            ///
+            /// The maximum allowed page size is 10.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Required. The query used to generate suggestions.
+            ///
+            /// The maximum number of allowed characters is 255.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
             /// <summary>Deprecated. Use language_codes instead.
             ///
             /// Optional.
@@ -1658,13 +1670,6 @@ namespace Google.Apis.CloudTalentSolution.v3
             [Google.Apis.Util.RequestParameterAttribute("languageCodes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> LanguageCodes { get; set; }
 
-            /// <summary>Optional. If provided, restricts completion to specified company.
-            ///
-            /// The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-
-            /// project/companies/foo".</summary>
-            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CompanyName { get; set; }
-
             /// <summary>Optional. The scope of the completion. The defaults is CompletionScope.PUBLIC.</summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ScopeEnum> Scope { get; set; }
@@ -1680,17 +1685,12 @@ namespace Google.Apis.CloudTalentSolution.v3
                 PUBLIC__,
             }
 
-            /// <summary>Required. Completion result count.
+            /// <summary>Optional. If provided, restricts completion to specified company.
             ///
-            /// The maximum allowed page size is 10.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Required. The query used to generate suggestions.
-            ///
-            /// The maximum number of allowed characters is 255.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Query { get; set; }
+            /// The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-
+            /// project/companies/foo".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CompanyName { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1726,6 +1726,24 @@ namespace Google.Apis.CloudTalentSolution.v3
                         Pattern = @"^projects/[^/]+$",
                     });
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "languageCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "languageCode",
@@ -1753,15 +1771,6 @@ namespace Google.Apis.CloudTalentSolution.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "companyName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "companyName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "scope", new Google.Apis.Discovery.Parameter
                     {
                         Name = "scope",
@@ -1771,18 +1780,9 @@ namespace Google.Apis.CloudTalentSolution.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "companyName", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
+                        Name = "companyName",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
