@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/VadrwSuifi0ckwZdhrJYESz5FCo\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/vR4mJ0lje_vHuAdPQodBU68W9NU\"",
  "discoveryVersion": "v1",
  "id": "content:v2.1",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2.1",
- "revision": "20190902",
+ "revision": "20190905",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -2319,6 +2319,10 @@
      "type": "string",
      "description": "The status of the payment."
     },
+    "pickupDetails": {
+     "$ref": "OrderPickupDetails",
+     "description": "Pickup details for shipments of type pickup."
+    },
     "placedDate": {
      "type": "string",
      "description": "The date when the order was placed, in ISO 8601 format."
@@ -2558,6 +2562,11 @@
      "description": "Number of items pending.",
      "format": "uint32"
     },
+    "quantityReadyForPickup": {
+     "type": "integer",
+     "description": "Number of items ready for pickup.",
+     "format": "uint32"
+    },
     "quantityReturned": {
      "type": "integer",
      "description": "Number of items returned.",
@@ -2776,6 +2785,10 @@
        "content.orders.createtestorder"
       ]
      }
+    },
+    "type": {
+     "type": "string",
+     "description": "Type of shipment. Indicates whether deliveryDetails or pickupDetails is applicable for this shipment."
     }
    }
   },
@@ -2829,6 +2842,41 @@
     "value": {
      "type": "string",
      "description": "Value for additional merchant provided (as key-value pairs) annotation about the line item."
+    }
+   }
+  },
+  "OrderPickupDetails": {
+   "id": "OrderPickupDetails",
+   "type": "object",
+   "properties": {
+    "address": {
+     "$ref": "OrderAddress",
+     "description": "Address of the pickup location where the shipment should be sent. Note that recipientName in the address is the name of the business at the pickup location."
+    },
+    "collectors": {
+     "type": "array",
+     "description": "Collectors authorized to pick up shipment from the pickup location.",
+     "items": {
+      "$ref": "OrderPickupDetailsCollector"
+     }
+    },
+    "locationId": {
+     "type": "string",
+     "description": "ID of the pickup location."
+    }
+   }
+  },
+  "OrderPickupDetailsCollector": {
+   "id": "OrderPickupDetailsCollector",
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string",
+     "description": "Name of the person picking up the shipment."
+    },
+    "phoneNumber": {
+     "type": "string",
+     "description": "Phone number of the person picking up the shipment."
     }
    }
   },
@@ -6462,6 +6510,10 @@
        "content.orders.createtestorder"
       ]
      }
+    },
+    "predefinedPickupDetails": {
+     "type": "string",
+     "description": "Identifier of one of the predefined pickup details. Required for orders containing line items with shipping type pickup."
     },
     "promotions": {
      "type": "array",
