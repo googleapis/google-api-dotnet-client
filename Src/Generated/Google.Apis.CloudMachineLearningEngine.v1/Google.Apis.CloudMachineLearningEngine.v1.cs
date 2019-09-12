@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190910 (1713)
+ *      <tr><th>API Rev<td>20190909 (1712)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -591,8 +591,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
-                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If
-                /// the value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                /// <summary>Optional. The policy format version to be returned.
+                ///
+                /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+                ///
+                /// Requests for policies with any conditional bindings must specify version 3. Policies without any
+                /// conditional bindings may specify any valid value or leave the field unset.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -1487,10 +1491,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Specifies the subset of versions to retrieve.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>Optional. A page token to request the next page of results.
                     ///
                     /// You get the token from the `next_page_token` field of the response from the previous
@@ -1505,6 +1505,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// The default value is 20, and the maximum page size is 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Specifies the subset of versions to retrieve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1540,15 +1544,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                                 Pattern = @"^projects/[^/]+/models/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1561,6 +1556,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1981,8 +1985,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
-                /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If
-                /// the value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                /// <summary>Optional. The policy format version to be returned.
+                ///
+                /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+                ///
+                /// Requests for policies with any conditional bindings must specify version 3. Policies without any
+                /// conditional bindings may specify any valid value or leave the field unset.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -2065,6 +2073,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. Specifies the subset of models to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>Optional. A page token to request the next page of results.
                 ///
                 /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
@@ -2078,10 +2090,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. Specifies the subset of models to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2117,6 +2125,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2129,15 +2146,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3525,19 +3533,31 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Configurations for logging request-response pairs. Currently only BigQuery logging is supported. The
-    /// request and response will be converted to raw string and stored within the specified BigQuery table. The schema
-    /// is: model: STRING version: STRING time: Timestamp raw_data: STRING raw_prediction: STRING ground_truth:
-    /// STRING</summary>
+    /// <summary>Configuration for logging request-response pairs to a BigQuery table. Online prediction requests to a
+    /// model version and the responses to these requests are converted to raw strings and saved to the specified
+    /// BigQuery table. Logging is constrained by [BigQuery quotas and limits](/bigquery/quotas). If your project
+    /// exceeds BigQuery quotas or limits, AI Platform Prediction does not log request-response pairs, but it continues
+    /// to serve predictions.
+    ///
+    /// If you are using [continuous evaluation](/ml-engine/docs/continuous-evaluation/), you do not need to specify
+    /// this configuration manually. Setting up continuous evaluation automatically enables logging of request-response
+    /// pairs.</summary>
     public class GoogleCloudMlV1RequestLoggingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Fully qualified BigQuery table name in the format of
-        /// "[project_id].[dataset_name].[table_name]".</summary>
+        /// <summary>Required. Fully qualified BigQuery table name in the following format:
+        /// "project_id.dataset_name.table_name"
+        ///
+        /// The specifcied table must already exist, and the "Cloud ML Service Agent" for your project must have
+        /// permission to write to it. The table must have the following [schema](/bigquery/docs/schemas):
+        ///
+        /// Field nameType Mode modelSTRINGREQUIRED model_versionSTRINGREQUIRED timeTIMESTAMPREQUIRED
+        /// raw_dataSTRINGREQUIRED raw_predictionSTRINGNULLABLE groundtruthSTRINGNULLABLE </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryTableName")]
         public virtual string BigqueryTableName { get; set; } 
 
-        /// <summary>Percentage of the request being logged. The sampling window is the lifetime of the Version.
-        /// Defaults to 0.</summary>
+        /// <summary>Percentage of requests to be logged, expressed as a fraction from 0 to 1. For example, if you want
+        /// to log 10% of requests, enter `0.1`. The sampling window is the lifetime of the model version. Defaults to
+        /// 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("samplingPercentage")]
         public virtual System.Nullable<double> SamplingPercentage { get; set; } 
 
@@ -4126,7 +4146,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Deprecated.</summary>
+        /// <summary>Specifies the format of the policy.
+        ///
+        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        ///
+        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
+        /// specify any valid value or leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

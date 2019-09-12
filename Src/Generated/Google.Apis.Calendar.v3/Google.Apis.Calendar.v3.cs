@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190903 (1706)
+ *      <tr><th>API Rev<td>20190910 (1713)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -5445,8 +5445,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("originalStartTime")]
         public virtual EventDateTime OriginalStartTime { get; set; } 
 
-        /// <summary>Whether this is a private event copy where changes are not shared with other copies on other
-        /// calendars. Optional. Immutable. The default is False.</summary>
+        /// <summary>If set to True, Event propagation is disabled. Note that it is not the same thing as Private event
+        /// properties. Optional. Immutable. The default is False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateCopy")]
         public virtual System.Nullable<bool> PrivateCopy { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190904 (1707)
+ *      <tr><th>API Rev<td>20190910 (1713)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -512,13 +512,13 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>The resource names of the contact groups to get.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
-
             /// <summary>Specifies the maximum number of members to return for each group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxMembers", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxMembers { get; set; }
+
+            /// <summary>The resource names of the contact groups to get.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -545,18 +545,18 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "resourceNames", new Google.Apis.Discovery.Parameter
+                    "maxMembers", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "resourceNames",
+                        Name = "maxMembers",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxMembers", new Google.Apis.Discovery.Parameter
+                    "resourceNames", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxMembers",
+                        Name = "resourceNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -996,6 +996,25 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ResourceName { get; private set; }
 
+                /// <summary>The order in which the connections should be sorted. Defaults to
+                /// `LAST_MODIFIED_ASCENDING`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
+
+                /// <summary>The order in which the connections should be sorted. Defaults to
+                /// `LAST_MODIFIED_ASCENDING`.</summary>
+                public enum SortOrderEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_ASCENDING")]
+                    LASTMODIFIEDASCENDING,
+                    [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_DESCENDING")]
+                    LASTMODIFIEDDESCENDING,
+                    [Google.Apis.Util.StringValueAttribute("FIRST_NAME_ASCENDING")]
+                    FIRSTNAMEASCENDING,
+                    [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
+                    LASTNAMEASCENDING,
+                }
+
                 /// <summary>Whether the response should include a sync token, which can be used to get all changes
                 /// since the last request. For subsequent sync requests use the `sync_token` param instead. Initial
                 /// sync requests that specify `request_sync_token` have an additional rate limit.</summary>
@@ -1032,25 +1051,6 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object PersonFields { get; set; }
 
-                /// <summary>The order in which the connections should be sorted. Defaults to
-                /// `LAST_MODIFIED_ASCENDING`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
-
-                /// <summary>The order in which the connections should be sorted. Defaults to
-                /// `LAST_MODIFIED_ASCENDING`.</summary>
-                public enum SortOrderEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_ASCENDING")]
-                    LASTMODIFIEDASCENDING,
-                    [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_DESCENDING")]
-                    LASTMODIFIEDDESCENDING,
-                    [Google.Apis.Util.StringValueAttribute("FIRST_NAME_ASCENDING")]
-                    FIRSTNAMEASCENDING,
-                    [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
-                    LASTNAMEASCENDING,
-                }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1083,6 +1083,15 @@ namespace Google.Apis.PeopleService.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^people/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "sortOrder", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sortOrder",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "requestSyncToken", new Google.Apis.Discovery.Parameter
@@ -1133,15 +1142,6 @@ namespace Google.Apis.PeopleService.v1
                         "personFields", new Google.Apis.Discovery.Parameter
                         {
                             Name = "personFields",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "sortOrder", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sortOrder",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2018,11 +2018,15 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a whole calendar date, for example a date of birth. The time of day and time zone are either
-    /// specified elsewhere or are not significant. The date is relative to the [Proleptic Gregorian
-    /// Calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar). The day may be 0 to represent a year and
-    /// month where the day is not significant. The year may be 0 to represent a month and day independent of year; for
-    /// example, anniversary date.</summary>
+    /// <summary>Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either
+    /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can
+    /// represent:
+    ///
+    /// * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an
+    /// anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g.
+    /// a credit card expiration date
+    ///
+    /// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by

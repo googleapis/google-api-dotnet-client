@@ -978,12 +978,6 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
-                /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
-                /// "folders/FOLDER_ID"</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
@@ -995,6 +989,12 @@ namespace Google.Apis.Logging.v2
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
+                /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
+                /// "folders/FOLDER_ID"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1030,15 +1030,6 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^billingAccounts/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "resourceNames", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceNames",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1051,6 +1042,15 @@ namespace Google.Apis.Logging.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "resourceNames", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceNames",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2742,6 +2742,12 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
                 /// are ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.</summary>
@@ -2753,12 +2759,6 @@ namespace Google.Apis.Logging.v2
                 /// "folders/FOLDER_ID"</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
-
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2794,6 +2794,15 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^folders/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -2806,15 +2815,6 @@ namespace Google.Apis.Logging.v2
                         "resourceNames", new Google.Apis.Discovery.Parameter
                         {
                             Name = "resourceNames",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4249,12 +4249,6 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
-                /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
-                /// "folders/FOLDER_ID"</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
@@ -4266,6 +4260,12 @@ namespace Google.Apis.Logging.v2
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
+                /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
+                /// "folders/FOLDER_ID"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -4301,15 +4301,6 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "resourceNames", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceNames",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -4322,6 +4313,15 @@ namespace Google.Apis.Logging.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "resourceNames", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceNames",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5471,6 +5471,12 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
+                /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
+                /// "folders/FOLDER_ID"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
+
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
@@ -5482,12 +5488,6 @@ namespace Google.Apis.Logging.v2
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
-                /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
-                /// "folders/FOLDER_ID"</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -5523,6 +5523,15 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "resourceNames", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceNames",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -5535,15 +5544,6 @@ namespace Google.Apis.Logging.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "resourceNames", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceNames",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

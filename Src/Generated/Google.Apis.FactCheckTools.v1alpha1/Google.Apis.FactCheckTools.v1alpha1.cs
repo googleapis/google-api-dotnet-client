@@ -367,15 +367,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             }
 
 
-            /// <summary>Textual query string. Required unless `review_publisher_site_filter` is specified.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Query { get; set; }
-
-            /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". Can be used to restrict results by
-            /// language, though we do not currently consider the region.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LanguageCode { get; set; }
-
             /// <summary>The maximum age of the returned search results, in days. Age is determined by either claim date
             /// or review date, whichever is newer.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxAgeDays", Google.Apis.Util.RequestParameterType.Query)]
@@ -393,14 +384,23 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
+            /// <summary>The review publisher site to filter results by, e.g. nytimes.com.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("reviewPublisherSiteFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ReviewPublisherSiteFilter { get; set; }
+
             /// <summary>The pagination size. We will return up to that many results. Defaults to 10 if not
             /// set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>The review publisher site to filter results by, e.g. nytimes.com.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("reviewPublisherSiteFilter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ReviewPublisherSiteFilter { get; set; }
+            /// <summary>Textual query string. Required unless `review_publisher_site_filter` is specified.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
+            /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". Can be used to restrict results by
+            /// language, though we do not currently consider the region.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -426,24 +426,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "maxAgeDays", new Google.Apis.Discovery.Parameter
                     {
@@ -472,6 +454,15 @@ namespace Google.Apis.FactCheckTools.v1alpha1
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "reviewPublisherSiteFilter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "reviewPublisherSiteFilter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -481,9 +472,18 @@ namespace Google.Apis.FactCheckTools.v1alpha1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "reviewPublisherSiteFilter", new Google.Apis.Discovery.Parameter
+                    "query", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "reviewPublisherSiteFilter",
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

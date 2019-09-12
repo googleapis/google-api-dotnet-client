@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190908 (1711)
+ *      <tr><th>API Rev<td>20190910 (1713)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7797,10 +7797,6 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>A list of all Google Groups, as email addresses, that define testers for this track.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleGroups")]
         public virtual System.Collections.Generic.IList<string> GoogleGroups { get; set; } 
-
-        /// <summary>A list of all Google+ Communities, as URLs, that define testers for this track.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("googlePlusCommunities")]
-        public virtual System.Collections.Generic.IList<string> GooglePlusCommunities { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

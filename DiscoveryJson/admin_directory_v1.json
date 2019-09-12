@@ -1,6 +1,6 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/5HuD5_WBYDvRWcfO5I5hjCFh4pY\"",
+  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/5HuD5_WBYDvRWcfO5I5hjCFh4pY\"",
   "discoveryVersion": "v1",
   "id": "admin:directory_v1",
   "name": "admin",

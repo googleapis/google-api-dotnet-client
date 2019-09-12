@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/2OMYwfrgYoo_mlwX0OWUGwIO9sM\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/pBLlVFuRXUL8z1AKbwcQNPAN0vA\"",
  "discoveryVersion": "v1",
  "id": "calendar:v3",
  "name": "calendar",
  "version": "v3",
- "revision": "20190903",
+ "revision": "20190910",
  "title": "Calendar API",
  "description": "Manipulates events and other calendar data.",
  "ownerDomain": "google.com",
@@ -884,7 +884,7 @@
     },
     "privateCopy": {
      "type": "boolean",
-     "description": "Whether this is a private event copy where changes are not shared with other copies on other calendars. Optional. Immutable. The default is False.",
+     "description": "If set to True, Event propagation is disabled. Note that it is not the same thing as Private event properties. Optional. Immutable. The default is False.",
      "default": "false"
     },
     "recurrence": {

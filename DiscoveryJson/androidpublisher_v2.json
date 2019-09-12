@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/_tm2MjejjU96YzxcIz1H2LtBZME\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/_TjFdWvetKD4N1AdKqi9eovr8vY\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v2",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v2",
- "revision": "20190908",
+ "revision": "20190910",
  "title": "Google Play Developer API",
  "description": "Accesses Android application developers' Google Play accounts.",
  "ownerDomain": "google.com",
@@ -1040,13 +1040,6 @@
     "googleGroups": {
      "type": "array",
      "description": "A list of all Google Groups, as email addresses, that define testers for this track.",
-     "items": {
-      "type": "string"
-     }
-    },
-    "googlePlusCommunities": {
-     "type": "array",
-     "description": "A list of all Google+ Communities, as URLs, that define testers for this track.",
      "items": {
       "type": "string"
      }

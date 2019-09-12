@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190903 (1706)
+ *      <tr><th>API Rev<td>20190908 (1711)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -4485,8 +4485,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
 
-        /// <summary>Lists all the managed configurations settings for the specified app. Only the ID and the name is
-        /// set.</summary>
+        /// <summary>Lists all the managed configurations settings for the specified app.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="productId">The ID of the product
         /// for which the managed configurations settings applies to.</param>
@@ -4495,8 +4494,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new ListRequest(service, enterpriseId, productId);
         }
 
-        /// <summary>Lists all the managed configurations settings for the specified app. Only the ID and the name is
-        /// set.</summary>
+        /// <summary>Lists all the managed configurations settings for the specified app.</summary>
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfigurationsSettingsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -9027,10 +9025,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// 1970-01-01T00:00:00Z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestampMillis")]
         public virtual System.Nullable<long> LastUpdatedTimestampMillis { get; set; } 
-
-        /// <summary>The set of managed properties for this configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("managedProperty")]
-        public virtual System.Collections.Generic.IList<ManagedProperty> ManagedProperty { get; set; } 
 
         /// <summary>The ID of the managed configurations settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mcmId")]
