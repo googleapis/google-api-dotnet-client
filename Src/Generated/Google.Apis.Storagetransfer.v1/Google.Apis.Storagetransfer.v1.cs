@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190903 (1706)
+ *      <tr><th>API Rev<td>20190907 (1710)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>
  *              https://cloud.google.com/storage-transfer/docs</a>
@@ -589,6 +589,14 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
+            /// <summary>The list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The list page size. The max allowed value is 256.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Required. A list of query parameters specified as JSON text in the form of:
             /// {"project_id":"my_project_id", "job_names":["jobid1","jobid2",...],
             /// "job_statuses":["status1","status2",...]}. Since `job_names` and `job_statuses` support multiple values,
@@ -597,14 +605,6 @@ namespace Google.Apis.Storagetransfer.v1
             /// `DISABLED`, and `DELETED`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>The list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The list page size. The max allowed value is 256.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -631,15 +631,6 @@ namespace Google.Apis.Storagetransfer.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -652,6 +643,15 @@ namespace Google.Apis.Storagetransfer.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -955,6 +955,10 @@ namespace Google.Apis.Storagetransfer.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The list page size. The max allowed value is 256.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Required. A list of query parameters specified as JSON text in the form of:
             /// {"project_id":"my_project_id", "job_names":["jobid1","jobid2",...],
             /// "operation_names":["opid1","opid2",...], "transfer_statuses":["status1","status2",...]}. Since
@@ -968,10 +972,6 @@ namespace Google.Apis.Storagetransfer.v1
             /// <summary>The list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The list page size. The max allowed value is 256.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1007,6 +1007,15 @@ namespace Google.Apis.Storagetransfer.v1
                         Pattern = @"^transferOperations$",
                     });
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -1019,15 +1028,6 @@ namespace Google.Apis.Storagetransfer.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1504,21 +1504,39 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>Transfers can be scheduled to recur or to run just once.</summary>
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The last day the recurring transfer will be run. If `scheduleEndDate` is the same as
-        /// `scheduleStartDate`, the transfer will be executed only once.</summary>
+        /// <summary>The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run
+        /// once per 24 hours within the following guidelines:
+        ///
+        /// *   If `scheduleEndDate` and `scheduleStartDate` are the same and in the future relative to UTC, the
+        /// transfer is executed only one time. *   If `scheduleEndDate` is later than `scheduleStartDate` and
+        /// `scheduleEndDate` is in the future relative to UTC, the job will run each day at `startTimeOfDay` through
+        /// `scheduleEndDate`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndDate")]
         public virtual Date ScheduleEndDate { get; set; } 
 
-        /// <summary>Required. The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in
-        /// the past, the transfer will run for the first time on the following day.</summary>
+        /// <summary>Required. The start date of a transfer. Date boundaries are determined relative to UTC time. If
+        /// `scheduleStartDate` and `startTimeOfDay` are in the past relative to the job's creation time, the transfer
+        /// starts the day after you schedule the transfer request.
+        ///
+        /// Note: When starting jobs at or near midnight UTC it is possible that a job will start later than expected.
+        /// For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage
+        /// Transfer Service server receives the request on June 2, then it will create a TransferJob with
+        /// `scheduleStartDate` set to June 2 and a `startTimeOfDay` set to midnight UTC. The first scheduled
+        /// TransferOperation will take place on June 3 at midnight UTC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartDate")]
         public virtual Date ScheduleStartDate { get; set; } 
 
-        /// <summary>The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start
-        /// later than this time. If not specified, recurring and one-time transfers that are scheduled to run today
-        /// will run immediately; recurring transfers that are scheduled to run on a future date will start at
-        /// approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform
-        /// Console, the transfer's start time in a day is specified in your local timezone.</summary>
+        /// <summary>The time in UTC that a transfer job is scheduled to run. Transfers may start later than this time.
+        ///
+        /// If `startTimeOfDay` is not specified:
+        ///
+        /// *   One-time transfers run immediately. *   Recurring transfers run immediately, and each day at midnight
+        /// UTC, through `scheduleEndDate`.
+        ///
+        /// If `startTimeOfDay` is specified:
+        ///
+        /// *   One-time transfers run at the specified time. *   Recurring transfers run at the specified time each
+        /// day, through `scheduleEndDate`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeOfDay")]
         public virtual TimeOfDay StartTimeOfDay { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta3
- *      <tr><th>API Rev<td>20190823 (1695)
+ *      <tr><th>API Rev<td>20190906 (1709)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tasks/'>
  *              https://cloud.google.com/tasks/</a>
@@ -698,6 +698,15 @@ namespace Google.Apis.CloudTasks.v2beta3
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>Maximum page size.
+                        ///
+                        /// Fewer tasks than requested might be returned, even if more tasks exist; use next_page_token
+                        /// in the response to determine if more tasks exist.
+                        ///
+                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
                         /// <summary>The response_view specifies which subset of the Task will be returned.
                         ///
                         /// By default response_view is BASIC; not all information is retrieved by default because some
@@ -737,15 +746,6 @@ namespace Google.Apis.CloudTasks.v2beta3
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
-                        /// <summary>Maximum page size.
-                        ///
-                        /// Fewer tasks than requested might be returned, even if more tasks exist; use next_page_token
-                        /// in the response to determine if more tasks exist.
-                        ///
-                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
 
                         ///<summary>Gets the method name.</summary>
                         public override string MethodName
@@ -780,6 +780,15 @@ namespace Google.Apis.CloudTasks.v2beta3
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "responseView", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "responseView",
@@ -792,15 +801,6 @@ namespace Google.Apis.CloudTasks.v2beta3
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2418,8 +2418,12 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If the value
-        /// is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+        /// <summary>Optional. The policy format version to be returned.
+        ///
+        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        ///
+        /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
+        /// bindings may specify any valid value or leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
 
@@ -2686,7 +2690,12 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Deprecated.</summary>
+        /// <summary>Specifies the format of the policy.
+        ///
+        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        ///
+        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
+        /// specify any valid value or leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190813 (1685)
+ *      <tr><th>API Rev<td>20190830 (1702)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -416,6 +416,12 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Filtering currently only supports equality on the networkProjectId and must be in the
+                    /// form: "networkProjectId=[PROJECTID]", where `networkProjectId` is the project which owns the
+                    /// listed subnetworks. This defaults to the parent project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>Specifies a page token to use. Set this to the nextPageToken returned by previous list
                     /// requests to get the next page of results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -427,12 +433,6 @@ namespace Google.Apis.Container.v1beta1
                     /// (Default: 500)</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Filtering currently only supports equality on the networkProjectId and must be in the
-                    /// form: "networkProjectId=[PROJECTID]", where `networkProjectId` is the project which owns the
-                    /// listed subnetworks. This defaults to the parent project ID.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -468,6 +468,15 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -480,15 +489,6 @@ namespace Google.Apis.Container.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1628,11 +1628,6 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster to delete. This field has been deprecated and
-                    /// replaced by the name field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterId { get; set; }
-
                     /// <summary>Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
@@ -1644,6 +1639,11 @@ namespace Google.Apis.Container.v1beta1
                     /// field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
+
+                    /// <summary>Deprecated. The name of the cluster to delete. This field has been deprecated and
+                    /// replaced by the name field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1679,15 +1679,6 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -1700,6 +1691,15 @@ namespace Google.Apis.Container.v1beta1
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6743,7 +6743,7 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual System.Nullable<long> AcceleratorCount { get; set; } 
 
         /// <summary>The accelerator type resource name. List of supported accelerators
-        /// [here](/compute/docs/gpus/#Introduction)</summary>
+        /// [here](/compute/docs/gpus)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; } 
 
@@ -7946,6 +7946,13 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>MaintenancePolicy defines the maintenance policy to be used for the cluster.</summary>
     public class MaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A hash identifying the version of this policy, so that updates to fields of the policy won't
+        /// accidentally undo intermediate changes (and so that users of the API unaware of some fields won't
+        /// accidentally remove other fields). Make a get() request to the cluster to get the current resource version
+        /// and include it with requests to set the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceVersion")]
+        public virtual string ResourceVersion { get; set; } 
+
         /// <summary>Specifies the maintenance window in which maintenance may be performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("window")]
         public virtual MaintenanceWindow Window { get; set; } 
@@ -7960,6 +7967,16 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>DailyMaintenanceWindow specifies a daily maintenance operation window.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dailyMaintenanceWindow")]
         public virtual DailyMaintenanceWindow DailyMaintenanceWindow { get; set; } 
+
+        /// <summary>Exceptions to maintenance window. Non-emergency maintenance should not occur in these
+        /// windows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceExclusions")]
+        public virtual System.Collections.Generic.IDictionary<string,TimeWindow> MaintenanceExclusions { get; set; } 
+
+        /// <summary>RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time
+        /// windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurringWindow")]
+        public virtual RecurringTimeWindow RecurringWindow { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8142,8 +8159,8 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>The number of local SSD disks to be attached to the node.
         ///
-        /// The limit for this value is dependant upon the maximum number of disks available on a machine per zone. See:
-        /// https://cloud.google.com/compute/docs/disks/local-ssd#local_ssd_limits for more information.</summary>
+        /// The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See:
+        /// https://cloud.google.com/compute/docs/disks/local-ssd for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localSsdCount")]
         public virtual System.Nullable<int> LocalSsdCount { get; set; } 
 
@@ -8514,6 +8531,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterIpv4CidrBlock")]
         public virtual string MasterIpv4CidrBlock { get; set; } 
 
+        /// <summary>Output only. The peering name in the customer VPC used by this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peeringName")]
+        public virtual string PeeringName { get; set; } 
+
         /// <summary>Output only. The internal IP address of this cluster's master endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateEndpoint")]
         public virtual string PrivateEndpoint { get; set; } 
@@ -8521,6 +8542,38 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Output only. The external IP address of this cluster's master endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicEndpoint")]
         public virtual string PublicEndpoint { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an arbitrary window of time that recurs.</summary>
+    public class RecurringTimeWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how this window reccurs. They go
+        /// on for the span of time between the start and end time.
+        ///
+        /// For example, to have something repeat every weekday, you'd use: FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR To repeat
+        /// some window daily (equivalent to the DailyMaintenanceWindow): FREQ=DAILY For the first weekend of every
+        /// month: FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU This specifies how frequently the window starts. Eg, if you
+        /// wanted to have a 9-5 UTC-4 window every weekday, you'd use something like:
+        ///
+        /// start time = 2019-01-01T09:00:00-0400 end time = 2019-01-01T17:00:00-0400 recurrence =
+        /// FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR
+        ///
+        /// Windows can span multiple days. Eg, to make the window encompass every weekend from midnight Saturday till
+        /// the last minute of Sunday UTC:
+        ///
+        /// start time = 2019-01-05T00:00:00Z end time = 2019-01-07T23:59:00Z recurrence = FREQ=WEEKLY;BYDAY=SA
+        ///
+        /// Note the start and end time's specific dates are largely arbitrary except to specify duration of the window
+        /// and when it first starts. The FREQ values of HOURLY, MINUTELY, and SECONDLY are not supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurrence")]
+        public virtual string Recurrence { get; set; } 
+
+        /// <summary>The window of the first recurrence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("window")]
+        public virtual TimeWindow Window { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9202,6 +9255,21 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Cluster tier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an arbitrary window of time.</summary>
+    public class TimeWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time that the window ends. The end time should take place after the start time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The time that the window first starts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

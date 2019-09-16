@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190814 (1686)
+ *      <tr><th>API Rev<td>20190911 (1714)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -940,6 +940,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -947,10 +951,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -986,6 +986,15 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -998,15 +1007,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1700,6 +1700,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
+        /// <summary>Presence label annotations on video level or user specified segment level. There is exactly one
+        /// element for each unique label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segmentPresenceLabelAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1LabelAnnotation> SegmentPresenceLabelAnnotations { get; set; } 
+
         /// <summary>Shot annotations. Each shot is represented as a video segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1VideoSegment> ShotAnnotations { get; set; } 
@@ -1708,6 +1713,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         /// label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1LabelAnnotation> ShotLabelAnnotations { get; set; } 
+
+        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique
+        /// label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shotPresenceLabelAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1LabelAnnotation> ShotPresenceLabelAnnotations { get; set; } 
 
         /// <summary>Speech transcription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechTranscriptions")]
@@ -2205,6 +2215,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
+        /// <summary>Presence label annotations on video level or user specified segment level. There is exactly one
+        /// element for each unique label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segmentPresenceLabelAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2LabelAnnotation> SegmentPresenceLabelAnnotations { get; set; } 
+
         /// <summary>Shot annotations. Each shot is represented as a video segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2VideoSegment> ShotAnnotations { get; set; } 
@@ -2213,6 +2228,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         /// label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2LabelAnnotation> ShotLabelAnnotations { get; set; } 
+
+        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique
+        /// label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shotPresenceLabelAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2LabelAnnotation> ShotPresenceLabelAnnotations { get; set; } 
 
         /// <summary>Speech transcription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechTranscriptions")]
@@ -2674,6 +2694,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
+        /// <summary>Presence label annotations on video level or user specified segment level. There is exactly one
+        /// element for each unique label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segmentPresenceLabelAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> SegmentPresenceLabelAnnotations { get; set; } 
+
         /// <summary>Shot annotations. Each shot is represented as a video segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1VideoSegment> ShotAnnotations { get; set; } 
@@ -2682,6 +2707,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         /// label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> ShotLabelAnnotations { get; set; } 
+
+        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique
+        /// label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shotPresenceLabelAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> ShotPresenceLabelAnnotations { get; set; } 
 
         /// <summary>Speech transcription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechTranscriptions")]
@@ -3143,6 +3173,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
+        /// <summary>Presence label annotations on video level or user specified segment level. There is exactly one
+        /// element for each unique label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segmentPresenceLabelAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> SegmentPresenceLabelAnnotations { get; set; } 
+
         /// <summary>Shot annotations. Each shot is represented as a video segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1VideoSegment> ShotAnnotations { get; set; } 
@@ -3151,6 +3186,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         /// label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> ShotLabelAnnotations { get; set; } 
+
+        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique
+        /// label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shotPresenceLabelAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> ShotPresenceLabelAnnotations { get; set; } 
 
         /// <summary>Speech transcription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechTranscriptions")]
@@ -3750,6 +3790,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("segmentLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
+        /// <summary>Presence label annotations on video level or user specified segment level. There is exactly one
+        /// element for each unique label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segmentPresenceLabelAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> SegmentPresenceLabelAnnotations { get; set; } 
+
         /// <summary>Shot annotations. Each shot is represented as a video segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1VideoSegment> ShotAnnotations { get; set; } 
@@ -3758,6 +3803,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         /// label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> ShotLabelAnnotations { get; set; } 
+
+        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique
+        /// label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shotPresenceLabelAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> ShotPresenceLabelAnnotations { get; set; } 
 
         /// <summary>Speech transcription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechTranscriptions")]

@@ -462,6 +462,21 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The value returned by the last `ListAssetsResponse`; indicates that this is a continuation
+                /// of a prior `ListAssets` call, and that the system should return the next page of data.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. A field mask to specify the ListAssetsResult fields to be listed in the response.
+                /// An empty field mask will list all fields.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object FieldMask { get; set; }
+
+                /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                /// maximum is 1000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
                 /// existing at the supplied time and their values are those at that specific time. Absence of this
                 /// field will default to the API's version of NOW.</summary>
@@ -523,21 +538,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The value returned by the last `ListAssetsResponse`; indicates that this is a continuation
-                /// of a prior `ListAssets` call, and that the system should return the next page of data.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional. A field mask to specify the ListAssetsResult fields to be listed in the response.
-                /// An empty field mask will list all fields.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object FieldMask { get; set; }
-
-                /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is 1,
-                /// maximum is 1000.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -572,6 +572,33 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "fieldMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "readTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "readTime",
@@ -602,33 +629,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fieldMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1079,6 +1079,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1086,10 +1090,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1125,6 +1125,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                             Pattern = @"^organizations/[^/]+/operations$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1137,15 +1146,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1442,16 +1442,16 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
+                    /// <summary>Optional. A field mask to specify the Finding fields to be listed in the response. An
+                    /// empty field mask will list all fields.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object FieldMask { get; set; }
+
                     /// <summary>The value returned by the last `ListFindingsResponse`; indicates that this is a
                     /// continuation of a prior `ListFindings` call, and that the system should return the next page of
                     /// data.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. A field mask to specify the Finding fields to be listed in the response. An
-                    /// empty field mask will list all fields.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object FieldMask { get; set; }
 
                     /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is
                     /// 1, maximum is 1000.</summary>
@@ -1519,18 +1519,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "fieldMask", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "fieldMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "fieldMask", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "fieldMask",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

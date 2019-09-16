@@ -1,18 +1,75 @@
 {
-  "basePath": "",
-  "ownerDomain": "google.com",
-  "name": "genomics",
-  "batchPath": "batch",
-  "revision": "20190907",
-  "documentationLink": "https://cloud.google.com/genomics",
-  "id": "genomics:v1",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Genomics API",
-  "discoveryVersion": "v1",
-  "ownerName": "Google",
   "resources": {
     "operations": {
       "methods": {
+        "list": {
+          "path": "v1/{+name}",
+          "id": "genomics.operations.list",
+          "description": "Lists operations that match the specified filter in the request.\nAuthorization requires the following [Google IAM](https://cloud.google.com/iam) permission&#58;\n\n* `genomics.operations.list`",
+          "response": {
+            "$ref": "ListOperationsResponse"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/genomics"
+          ],
+          "parameters": {
+            "filter": {
+              "location": "query",
+              "description": "A string for filtering Operations.\nIn v2alpha1, the following filter fields are supported&#58;\n\n* createTime&#58; The time this job was created\n* events&#58; The set of event (names) that have occurred while running\n  the pipeline.  The &#58; operator can be used to determine if a\n  particular event has occurred.\n* error&#58; If the pipeline is running, this value is NULL.  Once the\n  pipeline finishes, the value is the standard Google error code.\n* labels.key or labels.\"key with space\" where key is a label key.\n* done&#58; If the pipeline is running, this value is false. Once the\n  pipeline finishes, the value is true.\n\nIn v1 and v1alpha2, the following filter fields are supported&#58;\n\n* projectId&#58; Required. Corresponds to\n  OperationMetadata.projectId.\n* createTime&#58; The time this job was created, in seconds from the\n  [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `\u003e=` and/or `\u003c=`\n  operators.\n* status&#58; Can be `RUNNING`, `SUCCESS`, `FAILURE`, or `CANCELED`. Only\n  one status may be specified.\n* labels.key where key is a label key.\n\nExamples&#58;\n\n* `projectId = my-project AND createTime \u003e= 1432140000`\n* `projectId = my-project AND createTime \u003e= 1432140000 AND createTime \u003c= 1432150000 AND status = RUNNING`\n* `projectId = my-project AND labels.color = *`\n* `projectId = my-project AND labels.color = red`",
+              "type": "string"
+            },
+            "name": {
+              "pattern": "^operations$",
+              "location": "path",
+              "description": "The name of the operation's parent resource.",
+              "required": true,
+              "type": "string"
+            },
+            "pageToken": {
+              "location": "query",
+              "description": "The standard list page token.",
+              "type": "string"
+            },
+            "pageSize": {
+              "location": "query",
+              "description": "The maximum number of results to return. The maximum value is 256.",
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "flatPath": "v1/operations"
+        },
+        "get": {
+          "description": "Gets the latest state of a long-running operation.\nClients can use this method to poll the operation result at intervals as\nrecommended by the API service.\nAuthorization requires the following [Google IAM](https://cloud.google.com/iam) permission&#58;\n\n* `genomics.operations.get`",
+          "httpMethod": "GET",
+          "parameterOrder": [
+            "name"
+          ],
+          "response": {
+            "$ref": "Operation"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/genomics"
+          ],
+          "parameters": {
+            "name": {
+              "required": true,
+              "type": "string",
+              "pattern": "^operations/.+$",
+              "location": "path",
+              "description": "The name of the operation resource."
+            }
+          },
+          "flatPath": "v1/operations/{operationsId}",
+          "id": "genomics.operations.get",
+          "path": "v1/{+name}"
+        },
         "cancel": {
           "httpMethod": "POST",
           "parameterOrder": [
@@ -41,99 +98,15 @@
           "request": {
             "$ref": "CancelOperationRequest"
           }
-        },
-        "list": {
-          "response": {
-            "$ref": "ListOperationsResponse"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "GET",
-          "parameters": {
-            "name": {
-              "required": true,
-              "type": "string",
-              "pattern": "^operations$",
-              "location": "path",
-              "description": "The name of the operation's parent resource."
-            },
-            "pageToken": {
-              "type": "string",
-              "location": "query",
-              "description": "The standard list page token."
-            },
-            "pageSize": {
-              "type": "integer",
-              "location": "query",
-              "description": "The maximum number of results to return. The maximum value is 256.",
-              "format": "int32"
-            },
-            "filter": {
-              "location": "query",
-              "description": "A string for filtering Operations.\nIn v2alpha1, the following filter fields are supported&#58;\n\n* createTime&#58; The time this job was created\n* events&#58; The set of event (names) that have occurred while running\n  the pipeline.  The &#58; operator can be used to determine if a\n  particular event has occurred.\n* error&#58; If the pipeline is running, this value is NULL.  Once the\n  pipeline finishes, the value is the standard Google error code.\n* labels.key or labels.\"key with space\" where key is a label key.\n* done&#58; If the pipeline is running, this value is false. Once the\n  pipeline finishes, the value is true.\n\nIn v1 and v1alpha2, the following filter fields are supported&#58;\n\n* projectId&#58; Required. Corresponds to\n  OperationMetadata.projectId.\n* createTime&#58; The time this job was created, in seconds from the\n  [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `\u003e=` and/or `\u003c=`\n  operators.\n* status&#58; Can be `RUNNING`, `SUCCESS`, `FAILURE`, or `CANCELED`. Only\n  one status may be specified.\n* labels.key where key is a label key.\n\nExamples&#58;\n\n* `projectId = my-project AND createTime \u003e= 1432140000`\n* `projectId = my-project AND createTime \u003e= 1432140000 AND createTime \u003c= 1432150000 AND status = RUNNING`\n* `projectId = my-project AND labels.color = *`\n* `projectId = my-project AND labels.color = red`",
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/genomics"
-          ],
-          "flatPath": "v1/operations",
-          "path": "v1/{+name}",
-          "id": "genomics.operations.list",
-          "description": "Lists operations that match the specified filter in the request.\nAuthorization requires the following [Google IAM](https://cloud.google.com/iam) permission&#58;\n\n* `genomics.operations.list`"
-        },
-        "get": {
-          "response": {
-            "$ref": "Operation"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/genomics"
-          ],
-          "parameters": {
-            "name": {
-              "required": true,
-              "type": "string",
-              "pattern": "^operations/.+$",
-              "location": "path",
-              "description": "The name of the operation resource."
-            }
-          },
-          "flatPath": "v1/operations/{operationsId}",
-          "path": "v1/{+name}",
-          "id": "genomics.operations.get",
-          "description": "Gets the latest state of a long-running operation.\nClients can use this method to poll the operation result at intervals as\nrecommended by the API service.\nAuthorization requires the following [Google IAM](https://cloud.google.com/iam) permission&#58;\n\n* `genomics.operations.get`"
         }
       }
     }
   },
   "parameters": {
-    "alt": {
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query"
-    },
     "access_token": {
-      "type": "string",
       "location": "query",
-      "description": "OAuth access token."
+      "description": "OAuth access token.",
+      "type": "string"
     },
     "key": {
       "type": "string",
@@ -141,25 +114,25 @@
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
     },
     "upload_protocol": {
+      "type": "string",
       "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
     },
     "quotaUser": {
+      "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "prettyPrint": {
-      "type": "boolean",
-      "default": "true",
       "location": "query",
-      "description": "Returns response with indentations and line breaks."
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
     },
     "fields": {
-      "type": "string",
       "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
     },
     "uploadType": {
       "type": "string",
@@ -167,14 +140,14 @@
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
     },
     "callback": {
+      "description": "JSONP",
       "type": "string",
-      "location": "query",
-      "description": "JSONP"
+      "location": "query"
     },
     "oauth_token": {
-      "location": "query",
       "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "$.xgafv": {
       "location": "query",
@@ -188,9 +161,142 @@
         "v1 error format",
         "v2 error format"
       ]
+    },
+    "alt": {
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response."
     }
   },
   "schemas": {
+    "RunPipelineResponse": {
+      "type": "object",
+      "properties": {},
+      "id": "RunPipelineResponse",
+      "description": "The response to the RunPipeline method, returned in the operation's result\nfield on success."
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "message": {
+          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+          "type": "string"
+        },
+        "details": {
+          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
+            }
+          }
+        }
+      },
+      "id": "Status",
+      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors)."
+    },
+    "DelayedEvent": {
+      "type": "object",
+      "properties": {
+        "metrics": {
+          "description": "If the delay was caused by a resource shortage, this field lists the\nCompute Engine metrics that are preventing this operation from running\n(for example, `CPUS` or `INSTANCES`). If the particular metric is not\nknown, a single `UNKNOWN` metric will be present.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cause": {
+          "description": "A textual description of the cause of the delay. The string can change\nwithout notice because it is often generated by another service (such as\nCompute Engine).",
+          "type": "string"
+        }
+      },
+      "id": "DelayedEvent",
+      "description": "An event generated whenever a resource limitation or transient error\ndelays execution of a pipeline that was otherwise ready to run."
+    },
+    "Event": {
+      "description": "Carries information about events that occur during pipeline execution.",
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "description": "The time at which the event occurred.",
+          "format": "google-datetime"
+        },
+        "details": {
+          "description": "Machine-readable details about the event.",
+          "type": "object",
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          }
+        },
+        "description": {
+          "description": "A human-readable description of the event. Note that these strings can\nchange at any time without notice. Any application logic must use the\ninformation in the `details` field.",
+          "type": "string"
+        }
+      },
+      "id": "Event"
+    },
+    "Empty": {
+      "type": "object",
+      "properties": {},
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
+    },
+    "OperationEvent": {
+      "description": "An event that occurred during an Operation.",
+      "type": "object",
+      "properties": {
+        "endTime": {
+          "description": "Optional time of when event finished. An event can have a start time and no\nfinish time. If an event has a finish time, there must be a start time.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "startTime": {
+          "description": "Optional time of when event started.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "description": {
+          "description": "Required description of event.",
+          "type": "string"
+        }
+      },
+      "id": "OperationEvent"
+    },
+    "WorkerReleasedEvent": {
+      "id": "WorkerReleasedEvent",
+      "description": "An event generated when the worker VM that was assigned to the pipeline\nhas been released (deleted).",
+      "type": "object",
+      "properties": {
+        "zone": {
+          "description": "The zone the worker was running in.",
+          "type": "string"
+        },
+        "instance": {
+          "type": "string",
+          "description": "The worker's instance name."
+        }
+      }
+    },
     "ListOperationsResponse": {
       "id": "ListOperationsResponse",
       "description": "The response message for Operations.ListOperations.",
@@ -210,7 +316,6 @@
       }
     },
     "OperationMetadata": {
-      "id": "OperationMetadata",
       "description": "Metadata describing an Operation.",
       "type": "object",
       "properties": {
@@ -223,16 +328,16 @@
           "type": "string"
         },
         "events": {
+          "description": "Optional event messages that were generated during the job's execution.\nThis also contains any warnings that were generated during import\nor export.",
           "type": "array",
           "items": {
             "$ref": "OperationEvent"
-          },
-          "description": "Optional event messages that were generated during the job's execution.\nThis also contains any warnings that were generated during import\nor export."
+          }
         },
         "endTime": {
+          "type": "string",
           "description": "The time at which the job stopped running.",
-          "format": "google-datetime",
-          "type": "string"
+          "format": "google-datetime"
         },
         "startTime": {
           "description": "The time at which the job began to run.",
@@ -248,17 +353,17 @@
           "type": "object"
         },
         "runtimeMetadata": {
+          "description": "Runtime metadata on this Operation.",
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
-          },
-          "description": "Runtime metadata on this Operation.",
-          "type": "object"
+          }
         },
         "createTime": {
-          "type": "string",
           "description": "The time at which the job was submitted to the Genomics service.",
-          "format": "google-datetime"
+          "format": "google-datetime",
+          "type": "string"
         },
         "labels": {
           "additionalProperties": {
@@ -267,7 +372,8 @@
           "description": "Optionally provided by the caller when submitting the request that creates\nthe operation.",
           "type": "object"
         }
-      }
+      },
+      "id": "OperationMetadata"
     },
     "FailedEvent": {
       "description": "An event generated when the execution of a pipeline has failed. Note\nthat other events can continue to occur after this event.",
@@ -323,6 +429,7 @@
       "id": "FailedEvent"
     },
     "ContainerKilledEvent": {
+      "id": "ContainerKilledEvent",
       "description": "An event generated when a container is forcibly terminated by the\nworker. Currently, this only occurs when the container outlives the\ntimeout specified by the user.",
       "type": "object",
       "properties": {
@@ -331,16 +438,11 @@
           "format": "int32",
           "type": "integer"
         }
-      },
-      "id": "ContainerKilledEvent"
+      }
     },
     "ContainerStoppedEvent": {
       "type": "object",
       "properties": {
-        "stderr": {
-          "type": "string",
-          "description": "The tail end of any content written to standard error by the container.\nIf the content emits large amounts of debugging noise or contains\nsensitive information, you can prevent the content from being printed by\nsetting the `DISABLE_STANDARD_ERROR_CAPTURE` flag.\n\nNote that only a small amount of the end of the stream is captured here.\nThe entire stream is stored in the `/google/logs` directory mounted into\neach action, and can be copied off the machine as described elsewhere."
-        },
         "exitStatus": {
           "description": "The exit status of the container.",
           "format": "int32",
@@ -350,6 +452,10 @@
           "description": "The numeric ID of the action that started this container.",
           "format": "int32",
           "type": "integer"
+        },
+        "stderr": {
+          "description": "The tail end of any content written to standard error by the container.\nIf the content emits large amounts of debugging noise or contains\nsensitive information, you can prevent the content from being printed by\nsetting the `DISABLE_STANDARD_ERROR_CAPTURE` flag.\n\nNote that only a small amount of the end of the stream is captured here.\nThe entire stream is stored in the `/google/logs` directory mounted into\neach action, and can be copied off the machine as described elsewhere.",
+          "type": "string"
         }
       },
       "id": "ContainerStoppedEvent",
@@ -359,50 +465,50 @@
       "description": "An event generated when a container starts.",
       "type": "object",
       "properties": {
-        "actionId": {
-          "description": "The numeric ID of the action that started this container.",
-          "format": "int32",
-          "type": "integer"
-        },
         "ipAddress": {
           "description": "The public IP address that can be used to connect to the container. This\nfield is only populated when at least one port mapping is present. If the\ninstance was created with a private address, this field will be empty even\nif port mappings exist.",
           "type": "string"
         },
         "portMappings": {
+          "type": "object",
           "additionalProperties": {
             "format": "int32",
             "type": "integer"
           },
-          "description": "The container-to-host port mappings installed for this container. This\nset will contain any ports exposed using the `PUBLISH_EXPOSED_PORTS` flag\nas well as any specified in the `Action` definition.",
-          "type": "object"
+          "description": "The container-to-host port mappings installed for this container. This\nset will contain any ports exposed using the `PUBLISH_EXPOSED_PORTS` flag\nas well as any specified in the `Action` definition."
+        },
+        "actionId": {
+          "type": "integer",
+          "description": "The numeric ID of the action that started this container.",
+          "format": "int32"
         }
       },
       "id": "ContainerStartedEvent"
     },
     "PullStartedEvent": {
+      "id": "PullStartedEvent",
+      "description": "An event generated when the worker starts pulling an image.",
       "type": "object",
       "properties": {
         "imageUri": {
           "description": "The URI of the image that was pulled.",
           "type": "string"
         }
-      },
-      "id": "PullStartedEvent",
-      "description": "An event generated when the worker starts pulling an image."
+      }
     },
     "UnexpectedExitStatusEvent": {
       "description": "An event generated when the execution of a container results in a\nnon-zero exit status that was not otherwise ignored. Execution will\ncontinue, but only actions that are flagged as `ALWAYS_RUN` will be\nexecuted. Other actions will be skipped.",
       "type": "object",
       "properties": {
+        "actionId": {
+          "description": "The numeric ID of the action that started the container.",
+          "format": "int32",
+          "type": "integer"
+        },
         "exitStatus": {
           "description": "The exit status of the container.",
           "format": "int32",
           "type": "integer"
-        },
-        "actionId": {
-          "type": "integer",
-          "description": "The numeric ID of the action that started the container.",
-          "format": "int32"
         }
       },
       "id": "UnexpectedExitStatusEvent"
@@ -413,14 +519,21 @@
       "properties": {},
       "id": "CancelOperationRequest"
     },
+    "PullStoppedEvent": {
+      "description": "An event generated when the worker stops pulling an image.",
+      "type": "object",
+      "properties": {
+        "imageUri": {
+          "description": "The URI of the image that was pulled.",
+          "type": "string"
+        }
+      },
+      "id": "PullStoppedEvent"
+    },
     "ComputeEngine": {
       "description": "Describes a Compute Engine resource that is being managed by a running\npipeline.",
       "type": "object",
       "properties": {
-        "zone": {
-          "type": "string",
-          "description": "The availability zone in which the instance resides."
-        },
         "machineType": {
           "description": "The machine type of the instance.",
           "type": "string"
@@ -435,23 +548,15 @@
         "instanceName": {
           "description": "The instance on which the operation is running.",
           "type": "string"
+        },
+        "zone": {
+          "type": "string",
+          "description": "The availability zone in which the instance resides."
         }
       },
       "id": "ComputeEngine"
     },
-    "PullStoppedEvent": {
-      "description": "An event generated when the worker stops pulling an image.",
-      "type": "object",
-      "properties": {
-        "imageUri": {
-          "description": "The URI of the image that was pulled.",
-          "type": "string"
-        }
-      },
-      "id": "PullStoppedEvent"
-    },
     "WorkerAssignedEvent": {
-      "id": "WorkerAssignedEvent",
       "description": "An event generated after a worker VM has been assigned to run the\npipeline.",
       "type": "object",
       "properties": {
@@ -467,12 +572,17 @@
           "type": "string",
           "description": "The worker's instance name."
         }
-      }
+      },
+      "id": "WorkerAssignedEvent"
     },
     "Operation": {
       "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
       "type": "object",
       "properties": {
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
+          "type": "boolean"
+        },
         "response": {
           "description": "An Empty object.",
           "type": "object",
@@ -490,152 +600,31 @@
           "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
-          },
           "description": "An OperationMetadata or Metadata object. This will always be returned with the Operation.",
-          "type": "object"
-        },
-        "done": {
-          "type": "boolean",
-          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."
+          "type": "object",
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          }
         }
       },
       "id": "Operation"
     },
     "RuntimeMetadata": {
-      "description": "Runtime metadata that will be populated in the\nruntimeMetadata\nfield of the Operation associated with a RunPipeline execution.",
       "type": "object",
       "properties": {
         "computeEngine": {
-          "description": "Execution information specific to Google Compute Engine.",
-          "$ref": "ComputeEngine"
+          "$ref": "ComputeEngine",
+          "description": "Execution information specific to Google Compute Engine."
         }
       },
-      "id": "RuntimeMetadata"
-    },
-    "RunPipelineResponse": {
-      "id": "RunPipelineResponse",
-      "description": "The response to the RunPipeline method, returned in the operation's result\nfield on success.",
-      "type": "object",
-      "properties": {}
-    },
-    "DelayedEvent": {
-      "id": "DelayedEvent",
-      "description": "An event generated whenever a resource limitation or transient error\ndelays execution of a pipeline that was otherwise ready to run.",
-      "type": "object",
-      "properties": {
-        "metrics": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "If the delay was caused by a resource shortage, this field lists the\nCompute Engine metrics that are preventing this operation from running\n(for example, `CPUS` or `INSTANCES`). If the particular metric is not\nknown, a single `UNKNOWN` metric will be present."
-        },
-        "cause": {
-          "description": "A textual description of the cause of the delay. The string can change\nwithout notice because it is often generated by another service (such as\nCompute Engine).",
-          "type": "string"
-        }
-      }
-    },
-    "Status": {
-      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
-      "type": "object",
-      "properties": {
-        "code": {
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "message": {
-          "type": "string",
-          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "any",
-              "description": "Properties of the object. Contains field @type with type URL."
-            }
-          },
-          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."
-        }
-      },
-      "id": "Status"
-    },
-    "Event": {
-      "id": "Event",
-      "description": "Carries information about events that occur during pipeline execution.",
-      "type": "object",
-      "properties": {
-        "timestamp": {
-          "description": "The time at which the event occurred.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "details": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "Machine-readable details about the event.",
-          "type": "object"
-        },
-        "description": {
-          "description": "A human-readable description of the event. Note that these strings can\nchange at any time without notice. Any application logic must use the\ninformation in the `details` field.",
-          "type": "string"
-        }
-      }
-    },
-    "Empty": {
-      "type": "object",
-      "properties": {},
-      "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
-    },
-    "OperationEvent": {
-      "description": "An event that occurred during an Operation.",
-      "type": "object",
-      "properties": {
-        "endTime": {
-          "description": "Optional time of when event finished. An event can have a start time and no\nfinish time. If an event has a finish time, there must be a start time.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "startTime": {
-          "description": "Optional time of when event started.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "description": {
-          "description": "Required description of event.",
-          "type": "string"
-        }
-      },
-      "id": "OperationEvent"
-    },
-    "WorkerReleasedEvent": {
-      "id": "WorkerReleasedEvent",
-      "description": "An event generated when the worker VM that was assigned to the pipeline\nhas been released (deleted).",
-      "type": "object",
-      "properties": {
-        "instance": {
-          "description": "The worker's instance name.",
-          "type": "string"
-        },
-        "zone": {
-          "type": "string",
-          "description": "The zone the worker was running in."
-        }
-      }
+      "id": "RuntimeMetadata",
+      "description": "Runtime metadata that will be populated in the\nruntimeMetadata\nfield of the Operation associated with a RunPipeline execution."
     }
   },
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "protocol": "rest",
   "version": "v1",
@@ -652,8 +641,19 @@
       }
     }
   },
-  "servicePath": "",
-  "description": "Uploads, processes, queries, and searches Genomics data in the cloud.",
   "kind": "discovery#restDescription",
-  "rootUrl": "https://genomics.googleapis.com/"
+  "description": "Uploads, processes, queries, and searches Genomics data in the cloud.",
+  "servicePath": "",
+  "rootUrl": "https://genomics.googleapis.com/",
+  "basePath": "",
+  "ownerDomain": "google.com",
+  "name": "genomics",
+  "batchPath": "batch",
+  "revision": "20190907",
+  "id": "genomics:v1",
+  "documentationLink": "https://cloud.google.com/genomics",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Genomics API",
+  "discoveryVersion": "v1",
+  "ownerName": "Google"
 }

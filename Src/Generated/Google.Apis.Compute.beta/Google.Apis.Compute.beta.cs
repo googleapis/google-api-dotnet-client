@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20190815 (1687)
+ *      <tr><th>API Rev<td>20190825 (1697)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -15222,6 +15222,134 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Creates instances with per-instance configs in this managed instance group. Instances are created
+        /// using the current instance template. The create instances operation is marked DONE if the createInstances
+        /// request is successful. The underlying actions take additional time. You must separately verify the status of
+        /// the creating or actions with the listmanagedinstances method.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone where the
+        /// managed instance group is located. It should conform to RFC1035.</param>
+        /// <param
+        /// name="instanceGroupManager">The name of the managed instance group. It should conform to RFC1035.</param>
+        public virtual CreateInstancesRequest CreateInstances(Google.Apis.Compute.beta.Data.InstanceGroupManagersCreateInstancesRequest body, string project, string zone, string instanceGroupManager)
+        {
+            return new CreateInstancesRequest(service, body, project, zone, instanceGroupManager);
+        }
+
+        /// <summary>Creates instances with per-instance configs in this managed instance group. Instances are created
+        /// using the current instance template. The create instances operation is marked DONE if the createInstances
+        /// request is successful. The underlying actions take additional time. You must separately verify the status of
+        /// the creating or actions with the listmanagedinstances method.</summary>
+        public class CreateInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new CreateInstances request.</summary>
+            public CreateInstancesRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.InstanceGroupManagersCreateInstancesRequest body, string project, string zone, string instanceGroupManager)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                InstanceGroupManager = instanceGroupManager;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone where the managed instance group is located. It should conform to
+            /// RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>The name of the managed instance group. It should conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.InstanceGroupManagersCreateInstancesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "createInstances"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/createInstances"; }
+            }
+
+            /// <summary>Initializes CreateInstances parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instanceGroupManager",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -38920,6 +39048,134 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Creates instances with per-instance configs in this regional managed instance group. Instances are
+        /// created using the current instance template. The create instances operation is marked DONE if the
+        /// createInstances request is successful. The underlying actions take additional time. You must separately
+        /// verify the status of the creating or actions with the listmanagedinstances method.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region where
+        /// the managed instance group is located. It should conform to RFC1035.</param>
+        /// <param
+        /// name="instanceGroupManager">The name of the managed instance group. It should conform to RFC1035.</param>
+        public virtual CreateInstancesRequest CreateInstances(Google.Apis.Compute.beta.Data.RegionInstanceGroupManagersCreateInstancesRequest body, string project, string region, string instanceGroupManager)
+        {
+            return new CreateInstancesRequest(service, body, project, region, instanceGroupManager);
+        }
+
+        /// <summary>Creates instances with per-instance configs in this regional managed instance group. Instances are
+        /// created using the current instance template. The create instances operation is marked DONE if the
+        /// createInstances request is successful. The underlying actions take additional time. You must separately
+        /// verify the status of the creating or actions with the listmanagedinstances method.</summary>
+        public class CreateInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new CreateInstances request.</summary>
+            public CreateInstancesRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.RegionInstanceGroupManagersCreateInstancesRequest body, string project, string region, string instanceGroupManager)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InstanceGroupManager = instanceGroupManager;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region where the managed instance group is located. It should conform to
+            /// RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>The name of the managed instance group. It should conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.RegionInstanceGroupManagersCreateInstancesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "createInstances"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/createInstances"; }
+            }
+
+            /// <summary>Initializes CreateInstances parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instanceGroupManager",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -64004,7 +64260,8 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string Mode { get; set; } 
 
         /// <summary>Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new
-        /// instance, one of initializeParams.sourceImage or disks.source is required except for local SSD.
+        /// instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required
+        /// except for local SSD.
         ///
         /// If desired, you can also attach existing non-root persistent disks using this property. This field is only
         /// applicable for persistent disks.
@@ -64075,7 +64332,8 @@ namespace Google.Apis.Compute.beta.Data
         public virtual System.Collections.Generic.IList<string> ResourcePolicies { get; set; } 
 
         /// <summary>The source image to create this disk. When creating a new instance, one of
-        /// initializeParams.sourceImage or disks.source is required except for local SSD.
+        /// initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local
+        /// SSD.
         ///
         /// To create a disk with one of the public operating system images, specify the image by its family name. For
         /// example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-
@@ -64103,7 +64361,8 @@ namespace Google.Apis.Compute.beta.Data
         public virtual CustomerEncryptionKey SourceImageEncryptionKey { get; set; } 
 
         /// <summary>The source snapshot to create this disk. When creating a new instance, one of
-        /// initializeParams.sourceSnapshot or disks.source is required except for local SSD.
+        /// initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local
+        /// SSD.
         ///
         /// To create a disk with a snapshot that you created, specify the snapshot name in the following format:
         /// global/snapshots/my-backup
@@ -70607,6 +70866,17 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>InstanceGroupManagers.createInstances</summary>
+    public class InstanceGroupManagersCreateInstancesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Required] List of specifications of per-instance configs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
+        public virtual System.Collections.Generic.IList<PerInstanceConfig> Instances { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class InstanceGroupManagersDeleteInstancesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The URLs of one or more instances to delete. This can be a full URL or a partial URL, such as
@@ -73070,6 +73340,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; } 
 
+        /// <summary>[Output Only] Health state of the instance per health-check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceHealth")]
+        public virtual System.Collections.Generic.IList<ManagedInstanceInstanceHealth> InstanceHealth { get; set; } 
+
         /// <summary>[Output Only] The status of the instance. This field is empty when the instance does not
         /// exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceStatus")]
@@ -73082,6 +73356,20 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Intended version of this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual ManagedInstanceVersion Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ManagedInstanceInstanceHealth : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The current detailed instance health state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailedHealthState")]
+        public virtual string DetailedHealthState { get; set; } 
+
+        /// <summary>[Output Only] The URL for the health check that verifies whether the instance is healthy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthCheck")]
+        public virtual string HealthCheck { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -75529,6 +75817,26 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class PerInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fingerprint of this per-instance config. This field may be used in optimistic locking. It will be
+        /// ignored when inserting a per-instance config. An up-to-date fingerprint must be provided in order to update
+        /// an existing per-instance config or the field needs to be unset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; } 
+
+        /// <summary>The name of the per-instance config and the corresponding instance. Serves as a merge key during
+        /// UpdatePerInstanceConfigs operation, i.e. if per-instance config with the same name exists then it will be
+        /// updated, otherwise a new one will be created for the VM instance with the same name. An attempt to create a
+        /// per-instance config for a VM instance that either doesn't exist or is not part of the group will result in a
+        /// failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
     /// for Cloud Platform resources.
     ///
@@ -76189,6 +76497,17 @@ namespace Google.Apis.Compute.beta.Data
         /// request will fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mostDisruptiveAllowedAction")]
         public virtual string MostDisruptiveAllowedAction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>RegionInstanceGroupManagers.createInstances</summary>
+    public class RegionInstanceGroupManagersCreateInstancesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Required] List of specifications of per-instance configs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
+        public virtual System.Collections.Generic.IList<PerInstanceConfig> Instances { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -81249,7 +81568,7 @@ namespace Google.Apis.Compute.beta.Data
 
     /// <summary>Represents a Target TCP Proxy resource.
     ///
-    /// A target TCP proxy is a component of a TCP Proxy load balancer. Global forwarding rules reference ta target TCP
+    /// A target TCP proxy is a component of a TCP Proxy load balancer. Global forwarding rules reference target TCP
     /// proxy, and the target proxy then references an external backend service. For more information, read TCP Proxy
     /// Load Balancing Concepts. (== resource_for beta.targetTcpProxies ==) (== resource_for v1.targetTcpProxies
     /// ==)</summary>

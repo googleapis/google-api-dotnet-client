@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/knowledge-graph/'>Knowledge Graph Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190824 (1696)
+ *      <tr><th>API Rev<td>20190913 (1716)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/knowledge-graph/'>
  *              https://developers.google.com/knowledge-graph/</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigtable/'>Cloud Bigtable Admin API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190821 (1693)
+ *      <tr><th>API Rev<td>20190906 (1709)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigtable/'>
  *              https://cloud.google.com/bigtable/</a>
@@ -2101,6 +2101,78 @@ namespace Google.Apis.BigtableAdmin.v2
 
                 }
 
+                /// <summary>Gets the access control policy for an instance resource. Returns an empty policy if an
+                /// table exists but does not have a policy set.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest body, string resource)
+                {
+                    return new GetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>Gets the access control policy for an instance resource. Returns an empty policy if an
+                /// table exists but does not have a policy set.</summary>
+                public class GetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                    /// documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "getIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+resource}:getIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/tables/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Lists all tables served from a specified instance.</summary>
                 /// <param name="parent">The unique name of the instance for which tables should be listed. Values are of the form
                 /// `projects//instances/`.</param>
@@ -2291,6 +2363,146 @@ namespace Google.Apis.BigtableAdmin.v2
                             "name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/tables/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Sets the access control policy on a table resource. Replaces any existing policy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>Sets the access control policy on a table resource. Replaces any existing policy.</summary>
+                public class SetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                    /// documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "setIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+resource}:setIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/tables/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Returns permissions that the caller has on the specified table resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>Returns permissions that the caller has on the specified table resource.</summary>
+                public class TestIamPermissionsRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
+                    /// operation documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "testIamPermissions"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2/{+resource}:testIamPermissions"; }
+                    }
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -3046,10 +3258,6 @@ namespace Google.Apis.BigtableAdmin.v2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -3057,6 +3265,10 @@ namespace Google.Apis.BigtableAdmin.v2
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3092,15 +3304,6 @@ namespace Google.Apis.BigtableAdmin.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3113,6 +3316,15 @@ namespace Google.Apis.BigtableAdmin.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3577,8 +3789,12 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If the value
-        /// is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+        /// <summary>Optional. The policy format version to be returned.
+        ///
+        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        ///
+        /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
+        /// bindings may specify any valid value or leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
 
@@ -3915,7 +4131,12 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Deprecated.</summary>
+        /// <summary>Specifies the format of the policy.
+        ///
+        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        ///
+        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
+        /// specify any valid value or leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

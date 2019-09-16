@@ -1904,6 +1904,10 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
             }
 
 
+            /// <summary>The resource name of the parent resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
             /// <summary>A pagination token returned from a previous call to ListCatalogs that indicates where this
             /// listing should continue from. This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1912,10 +1916,6 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
             /// <summary>The maximum number of catalogs to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The resource name of the parent resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1942,6 +1942,15 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1954,15 +1963,6 @@ namespace Google.Apis.CloudPrivateCatalogProducer.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

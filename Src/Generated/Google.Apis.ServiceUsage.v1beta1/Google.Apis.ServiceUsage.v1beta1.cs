@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190910 (1713)
+ *      <tr><th>API Rev<td>20190912 (1715)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -1753,6 +1753,23 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// `"type.googleapis.com/google.protobuf.Timestamp"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeUrl")]
         public virtual string TypeUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for getting service identity.</summary>
+    public class GetServiceIdentityResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Service identity that service producer can use to access consumer resources. If exists is true, it
+        /// contains email and unique_id. If exists is false, it contains pre-constructed email and empty
+        /// unique_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identity")]
+        public virtual ServiceIdentity Identity { get; set; } 
+
+        /// <summary>Service identity state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/_HxnFcDuWv0XiowFyqa_EWts2_0\"",
+ "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/W_vQ0YXzUgwSwcTHj0Z0-Fx4Wsc\"",
  "discoveryVersion": "v1",
  "id": "dfareporting:v3.3",
  "name": "dfareporting",
  "version": "v3.3",
- "revision": "20190904",
+ "revision": "20190911",
  "title": "DCM/DFA Reporting And Trafficking API",
  "description": "Manages your DoubleClick Campaign Manager ad campaigns and reports.",
  "ownerDomain": "google.com",

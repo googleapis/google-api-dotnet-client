@@ -1,4 +1,88 @@
 {
+  "basePath": "",
+  "revision": "20190718",
+  "id": "verifiedaccess:v1",
+  "documentationLink": "https://www.google.com/work/chrome/",
+  "discoveryVersion": "v1",
+  "version_module": true,
+  "schemas": {
+    "SignedData": {
+      "description": "The wrapper message of any data and its signature.",
+      "type": "object",
+      "properties": {
+        "data": {
+          "description": "The data to be signed.",
+          "format": "byte",
+          "type": "string"
+        },
+        "signature": {
+          "type": "string",
+          "description": "The signature of the data field.",
+          "format": "byte"
+        }
+      },
+      "id": "SignedData"
+    },
+    "Challenge": {
+      "type": "object",
+      "properties": {
+        "challenge": {
+          "$ref": "SignedData",
+          "description": "Generated challenge"
+        },
+        "alternativeChallenge": {
+          "$ref": "SignedData",
+          "description": "Challenge generated with the old signing key\n(this will only be present during key rotation)"
+        }
+      },
+      "id": "Challenge",
+      "description": "Result message for VerifiedAccess.CreateChallenge."
+    },
+    "VerifyChallengeResponseRequest": {
+      "id": "VerifyChallengeResponseRequest",
+      "description": "signed ChallengeResponse",
+      "type": "object",
+      "properties": {
+        "challengeResponse": {
+          "$ref": "SignedData",
+          "description": "The generated response to the challenge"
+        },
+        "expectedIdentity": {
+          "description": "Service can optionally provide identity information about the device\nor user associated with the key.\nFor an EMK, this value is the enrolled domain.\nFor an EUK, this value is the user's email address.\nIf present, this value will be checked against contents\nof the response, and verification will fail if there is no match.",
+          "type": "string"
+        }
+      }
+    },
+    "VerifyChallengeResponseResult": {
+      "description": "Result message for VerifiedAccess.VerifyChallengeResponse.",
+      "type": "object",
+      "properties": {
+        "signedPublicKeyAndChallenge": {
+          "description": "Certificate Signing Request (in the SPKAC format, base64 encoded) is\nreturned in this field. This field will be set only if device has included\nCSR in its challenge response.\n(the option to include CSR is now available for both user and machine\nresponses)",
+          "type": "string"
+        },
+        "deviceEnrollmentId": {
+          "description": "Device enrollment id is returned in this field (for the machine response\nonly).",
+          "type": "string"
+        },
+        "devicePermanentId": {
+          "description": "Device permanent id is returned in this field (for the machine response\nonly).",
+          "type": "string"
+        },
+        "verificationOutput": {
+          "description": "For EMCert check, device permanent id is returned here.\nFor EUCert check, signed_public_key_and_challenge [base64 encoded]\nis returned if present, otherwise empty string is returned.\nThis field is deprecated, please use device_permanent_id or\nsigned_public_key_and_challenge fields.",
+          "type": "string"
+        }
+      },
+      "id": "VerifyChallengeResponseResult"
+    },
+    "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object",
+      "properties": {},
+      "id": "Empty"
+    }
+  },
   "protocol": "rest",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
@@ -25,10 +109,6 @@
     "challenge": {
       "methods": {
         "verify": {
-          "request": {
-            "$ref": "VerifyChallengeResponseRequest"
-          },
-          "description": "VerifyChallengeResponse API",
           "response": {
             "$ref": "VerifyChallengeResponseResult"
           },
@@ -40,9 +120,19 @@
           "parameters": {},
           "flatPath": "v1/challenge:verify",
           "path": "v1/challenge:verify",
-          "id": "verifiedaccess.challenge.verify"
+          "id": "verifiedaccess.challenge.verify",
+          "request": {
+            "$ref": "VerifyChallengeResponseRequest"
+          },
+          "description": "VerifyChallengeResponse API"
         },
         "create": {
+          "path": "v1/challenge",
+          "id": "verifiedaccess.challenge.create",
+          "description": "CreateChallenge API",
+          "request": {
+            "$ref": "Empty"
+          },
           "response": {
             "$ref": "Challenge"
           },
@@ -52,67 +142,12 @@
           "scopes": [
             "https://www.googleapis.com/auth/verifiedaccess"
           ],
-          "flatPath": "v1/challenge",
-          "path": "v1/challenge",
-          "id": "verifiedaccess.challenge.create",
-          "description": "CreateChallenge API",
-          "request": {
-            "$ref": "Empty"
-          }
+          "flatPath": "v1/challenge"
         }
       }
     }
   },
   "parameters": {
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
-    },
-    "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json"
-    },
     "key": {
       "type": "string",
       "location": "query",
@@ -129,104 +164,69 @@
       "type": "string"
     },
     "quotaUser": {
-      "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "prettyPrint": {
       "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
       "default": "true"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ]
+    },
+    "alt": {
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query"
     }
   },
   "version": "v1",
   "baseUrl": "https://verifiedaccess.googleapis.com/",
   "kind": "discovery#restDescription",
   "description": "API for Verified Access chrome extension to provide credential verification for chrome devices connecting to an enterprise network",
-  "servicePath": "",
-  "basePath": "",
-  "revision": "20190718",
-  "id": "verifiedaccess:v1",
-  "documentationLink": "https://www.google.com/work/chrome/",
-  "discoveryVersion": "v1",
-  "version_module": true,
-  "schemas": {
-    "Challenge": {
-      "description": "Result message for VerifiedAccess.CreateChallenge.",
-      "type": "object",
-      "properties": {
-        "challenge": {
-          "$ref": "SignedData",
-          "description": "Generated challenge"
-        },
-        "alternativeChallenge": {
-          "$ref": "SignedData",
-          "description": "Challenge generated with the old signing key\n(this will only be present during key rotation)"
-        }
-      },
-      "id": "Challenge"
-    },
-    "VerifyChallengeResponseRequest": {
-      "description": "signed ChallengeResponse",
-      "type": "object",
-      "properties": {
-        "challengeResponse": {
-          "description": "The generated response to the challenge",
-          "$ref": "SignedData"
-        },
-        "expectedIdentity": {
-          "description": "Service can optionally provide identity information about the device\nor user associated with the key.\nFor an EMK, this value is the enrolled domain.\nFor an EUK, this value is the user's email address.\nIf present, this value will be checked against contents\nof the response, and verification will fail if there is no match.",
-          "type": "string"
-        }
-      },
-      "id": "VerifyChallengeResponseRequest"
-    },
-    "VerifyChallengeResponseResult": {
-      "id": "VerifyChallengeResponseResult",
-      "description": "Result message for VerifiedAccess.VerifyChallengeResponse.",
-      "type": "object",
-      "properties": {
-        "signedPublicKeyAndChallenge": {
-          "description": "Certificate Signing Request (in the SPKAC format, base64 encoded) is\nreturned in this field. This field will be set only if device has included\nCSR in its challenge response.\n(the option to include CSR is now available for both user and machine\nresponses)",
-          "type": "string"
-        },
-        "deviceEnrollmentId": {
-          "description": "Device enrollment id is returned in this field (for the machine response\nonly).",
-          "type": "string"
-        },
-        "devicePermanentId": {
-          "description": "Device permanent id is returned in this field (for the machine response\nonly).",
-          "type": "string"
-        },
-        "verificationOutput": {
-          "description": "For EMCert check, device permanent id is returned here.\nFor EUCert check, signed_public_key_and_challenge [base64 encoded]\nis returned if present, otherwise empty string is returned.\nThis field is deprecated, please use device_permanent_id or\nsigned_public_key_and_challenge fields.",
-          "type": "string"
-        }
-      }
-    },
-    "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-      "type": "object",
-      "properties": {},
-      "id": "Empty"
-    },
-    "SignedData": {
-      "description": "The wrapper message of any data and its signature.",
-      "type": "object",
-      "properties": {
-        "data": {
-          "description": "The data to be signed.",
-          "format": "byte",
-          "type": "string"
-        },
-        "signature": {
-          "description": "The signature of the data field.",
-          "format": "byte",
-          "type": "string"
-        }
-      },
-      "id": "SignedData"
-    }
-  }
+  "servicePath": ""
 }

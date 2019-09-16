@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190902 (1705)
+ *      <tr><th>API Rev<td>20190907 (1710)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -955,7 +955,8 @@ namespace Google.Apis.Logging.v2
 
             /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
             /// entries are listed.</summary>
-            /// <param name="parent">Required. To be deprecated in Logging Data Model V2.</param>
+            /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -974,7 +975,9 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. To be deprecated in Logging Data Model V2.</summary>
+                /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -989,12 +992,6 @@ namespace Google.Apis.Logging.v2
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
-                /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
-                /// "folders/FOLDER_ID"</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1042,15 +1039,6 @@ namespace Google.Apis.Logging.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "resourceNames", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceNames",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2719,7 +2707,8 @@ namespace Google.Apis.Logging.v2
 
             /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
             /// entries are listed.</summary>
-            /// <param name="parent">Required. To be deprecated in Logging Data Model V2.</param>
+            /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -2738,7 +2727,9 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. To be deprecated in Logging Data Model V2.</summary>
+                /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2753,12 +2744,6 @@ namespace Google.Apis.Logging.v2
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
-                /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
-                /// "folders/FOLDER_ID"</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2806,15 +2791,6 @@ namespace Google.Apis.Logging.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "resourceNames", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceNames",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3494,7 +3470,8 @@ namespace Google.Apis.Logging.v2
 
         /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
         /// entries are listed.</summary>
-        /// <param name="parent">Required. To be deprecated in Logging Data Model V2.</param>
+        /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
+        /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
         public virtual ListRequest List(string parent)
         {
             return new ListRequest(service, parent);
@@ -3513,7 +3490,9 @@ namespace Google.Apis.Logging.v2
             }
 
 
-            /// <summary>Required. To be deprecated in Logging Data Model V2.</summary>
+            /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -3528,12 +3507,6 @@ namespace Google.Apis.Logging.v2
             /// available.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
-            /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
-            /// "folders/FOLDER_ID"</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3581,15 +3554,6 @@ namespace Google.Apis.Logging.v2
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "resourceNames", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resourceNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4226,7 +4190,8 @@ namespace Google.Apis.Logging.v2
 
             /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
             /// entries are listed.</summary>
-            /// <param name="parent">Required. To be deprecated in Logging Data Model V2.</param>
+            /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -4245,7 +4210,9 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. To be deprecated in Logging Data Model V2.</summary>
+                /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -4260,12 +4227,6 @@ namespace Google.Apis.Logging.v2
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
-                /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
-                /// "folders/FOLDER_ID"</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -4313,15 +4274,6 @@ namespace Google.Apis.Logging.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "resourceNames", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceNames",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5448,7 +5400,8 @@ namespace Google.Apis.Logging.v2
 
             /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
             /// entries are listed.</summary>
-            /// <param name="parent">Required. To be deprecated in Logging Data Model V2.</param>
+            /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -5467,15 +5420,11 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. To be deprecated in Logging Data Model V2.</summary>
+                /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
-                /// <summary>Required for Logging Data Model V2. The resource name that owns the logs:
-                /// "projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/BILLING_ACCOUNT_ID"
-                /// "folders/FOLDER_ID"</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
@@ -5521,15 +5470,6 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "resourceNames", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceNames",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
@@ -6972,6 +6912,20 @@ namespace Google.Apis.Logging.v2
 namespace Google.Apis.Logging.v2.Data
 {    
 
+    /// <summary>Options that change functionality of a sink exporting data to BigQuery.</summary>
+    public class BigQueryOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether to use BigQuery's partition tables. By default, Logging creates dated tables
+        /// based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no
+        /// longer present and special query syntax has to be used instead. In both cases, tables are sharded based on
+        /// UTC timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usePartitionedTables")]
+        public virtual System.Nullable<bool> UsePartitionedTables { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>BucketOptions describes the bucket boundaries used to create a histogram for the distribution. The
     /// buckets can be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly.
     /// BucketOptions does not include the number of values in each bucket.A bucket has an inclusive lower bound and
@@ -7634,6 +7588,10 @@ namespace Google.Apis.Logging.v2.Data
     /// exported. The sink must be created within a project, organization, billing account, or folder.</summary>
     public class LogSink : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Options that affect sinks exporting data to BigQuery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryOptions")]
+        public virtual BigQueryOptions BigqueryOptions { get; set; } 
+
         /// <summary>Output only. The creation timestamp of the sink.This field may not be present for older
         /// sinks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]

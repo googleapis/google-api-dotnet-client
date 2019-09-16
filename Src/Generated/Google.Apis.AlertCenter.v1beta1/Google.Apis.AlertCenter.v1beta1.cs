@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190821 (1693)
+ *      <tr><th>API Rev<td>20190910 (1713)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -909,12 +909,6 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
 
-            /// <summary>Optional. A query string for filtering alert results. For more details, see [Query filters
-            /// ](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-
-            /// sdk/alertcenter/reference/filter-fields#alerts.list).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>Optional. A token identifying a page of results the server should return. If empty, a new
             /// iteration is started. To continue an iteration, pass in the value from the previous ListAlertsResponse's
             /// next_page_token field.</summary>
@@ -937,6 +931,12 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// unspecified, server picks an appropriate default.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. A query string for filtering alert results. For more details, see [Query filters
+            /// ](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-
+            /// sdk/alertcenter/reference/filter-fields#alerts.list).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -962,15 +962,6 @@ namespace Google.Apis.AlertCenter.v1beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
@@ -1002,6 +993,15 @@ namespace Google.Apis.AlertCenter.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1463,6 +1463,17 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
 
     }    
 
+    /// <summary>Alerts from App Maker to notify admins to set up default SQL instance.</summary>
+    public class AppMakerSqlSetupNotification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of applications with requests for default SQL set up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestInfo")]
+        public virtual System.Collections.Generic.IList<RequestInfo> RequestInfo { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Attachment with application-specific information about an alert.</summary>
     public class Attachment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1878,6 +1889,25 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>The list of messages contained by this alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<GmailMessageInfo> Messages { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Requests for one application that needs default SQL setup.</summary>
+    public class RequestInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of app developers who triggered notifications for above application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appDeveloperEmail")]
+        public virtual System.Collections.Generic.IList<string> AppDeveloperEmail { get; set; } 
+
+        /// <summary>Required. The application that requires the SQL setup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appKey")]
+        public virtual string AppKey { get; set; } 
+
+        /// <summary>Required. Number of requests sent for this application to set up default SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberOfRequests")]
+        public virtual System.Nullable<long> NumberOfRequests { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,4 +1,9 @@
 {
+  "protocol": "rest",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
   "canonicalName": "Texttospeech",
   "auth": {
     "oauth2": {
@@ -20,16 +25,6 @@
     "voices": {
       "methods": {
         "list": {
-          "parameters": {
-            "languageCode": {
-              "type": "string",
-              "location": "query",
-              "description": "Optional (but recommended)\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If\nspecified, the ListVoices call will only return voices that can be used to\nsynthesize this language_code. E.g. when specifying \"en-NZ\", you will get\nsupported \"en-*\" voices; when specifying \"no\", you will get supported\n\"no-*\" (Norwegian) and \"nb-*\" (Norwegian Bokmal) voices; specifying \"zh\"\nwill also get supported \"cmn-*\" voices; specifying \"zh-hk\" will also get\nsupported \"yue-*\" voices."
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
           "flatPath": "v1/voices",
           "id": "texttospeech.voices.list",
           "path": "v1/voices",
@@ -38,6 +33,16 @@
           "parameterOrder": [],
           "response": {
             "$ref": "ListVoicesResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "languageCode": {
+              "location": "query",
+              "description": "Optional (but recommended)\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If\nspecified, the ListVoices call will only return voices that can be used to\nsynthesize this language_code. E.g. when specifying \"en-NZ\", you will get\nsupported \"en-*\" voices; when specifying \"no\", you will get supported\n\"no-*\" (Norwegian) and \"nb-*\" (Norwegian Bokmal) voices; specifying \"zh\"\nwill also get supported \"cmn-*\" voices; specifying \"zh-hk\" will also get\nsupported \"yue-*\" voices.",
+              "type": "string"
+            }
           }
         }
       }
@@ -45,74 +50,65 @@
     "text": {
       "methods": {
         "synthesize": {
-          "description": "Synthesizes speech synchronously: receive results after all text input\nhas been processed.",
-          "request": {
-            "$ref": "SynthesizeSpeechRequest"
-          },
-          "response": {
-            "$ref": "SynthesizeSpeechResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "POST",
           "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
           "flatPath": "v1/text:synthesize",
+          "id": "texttospeech.text.synthesize",
           "path": "v1/text:synthesize",
-          "id": "texttospeech.text.synthesize"
+          "description": "Synthesizes speech synchronously: receive results after all text input\nhas been processed.",
+          "request": {
+            "$ref": "SynthesizeSpeechRequest"
+          },
+          "httpMethod": "POST",
+          "parameterOrder": [],
+          "response": {
+            "$ref": "SynthesizeSpeechResponse"
+          }
         }
       }
     }
   },
   "parameters": {
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
     "key": {
       "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string"
     },
-    "upload_protocol": {
+    "access_token": {
       "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "description": "OAuth access token.",
       "type": "string"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
     },
     "quotaUser": {
       "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
     },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
     "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
       "location": "query",
-      "description": "JSONP",
+      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
-    "oauth_token": {
-      "type": "string",
+    "uploadType": {
       "location": "query",
-      "description": "OAuth 2.0 token for the current user."
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
     },
     "$.xgafv": {
+      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -122,10 +118,25 @@
         "1",
         "2"
       ],
-      "description": "V1 error format.",
-      "type": "string"
+      "description": "V1 error format."
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "callback": {
+      "type": "string",
+      "location": "query",
+      "description": "JSONP"
     },
     "alt": {
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
       "description": "Data format for response.",
       "default": "json",
       "enum": [
@@ -133,13 +144,7 @@
         "media",
         "proto"
       ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query"
+      "type": "string"
     }
   },
   "version": "v1",
@@ -154,92 +159,8 @@
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "VoiceSelectionParams": {
-      "description": "Description of which voice to use for a synthesis request.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "The name of the voice. Optional; if not set, the service will choose a\nvoice based on the other parameters such as language_code and gender.",
-          "type": "string"
-        },
-        "ssmlGender": {
-          "enumDescriptions": [
-            "An unspecified gender.\nIn VoiceSelectionParams, this means that the client doesn't care which\ngender the selected voice will have. In the Voice field of\nListVoicesResponse, this may mean that the voice doesn't fit any of the\nother categories in this enum, or that the gender of the voice isn't known.",
-            "A male voice.",
-            "A female voice.",
-            "A gender-neutral voice."
-          ],
-          "enum": [
-            "SSML_VOICE_GENDER_UNSPECIFIED",
-            "MALE",
-            "FEMALE",
-            "NEUTRAL"
-          ],
-          "description": "The preferred gender of the voice. Optional; if not set, the service will\nchoose a voice based on the other parameters such as language_code and\nname. Note that this is only a preference, not requirement; if a\nvoice of the appropriate gender is not available, the synthesizer should\nsubstitute a voice with a different gender rather than failing the request.",
-          "type": "string"
-        },
-        "languageCode": {
-          "description": "The language (and optionally also the region) of the voice expressed as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g.\n\"en-US\". Required. This should not include a script tag (e.g. use\n\"cmn-cn\" rather than \"cmn-Hant-cn\"), because the script will be inferred\nfrom the input provided in the SynthesisInput.  The TTS service\nwill use this parameter to help choose an appropriate voice.  Note that\nthe TTS service may choose a voice with a slightly different language code\nthan the one selected; it may substitute a different region\n(e.g. using en-US rather than en-CA if there isn't a Canadian voice\navailable), or even a different language, e.g. using \"nb\" (Norwegian\nBokmal) instead of \"no\" (Norwegian)\".",
-          "type": "string"
-        }
-      },
-      "id": "VoiceSelectionParams"
-    },
-    "SynthesisInput": {
-      "description": "Contains text input to be synthesized. Either `text` or `ssml` must be\nsupplied. Supplying both or neither returns\ngoogle.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000\ncharacters.",
-      "type": "object",
-      "properties": {
-        "ssml": {
-          "description": "The SSML document to be synthesized. The SSML document must be valid\nand well-formed. Otherwise the RPC will fail and return\ngoogle.rpc.Code.INVALID_ARGUMENT. For more information, see\n[SSML](/speech/text-to-speech/docs/ssml).",
-          "type": "string"
-        },
-        "text": {
-          "description": "The raw text to be synthesized.",
-          "type": "string"
-        }
-      },
-      "id": "SynthesisInput"
-    },
-    "Voice": {
-      "description": "Description of a voice supported by the TTS service.",
-      "type": "object",
-      "properties": {
-        "languageCodes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "The languages that this voice supports, expressed as\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g.\n\"en-US\", \"es-419\", \"cmn-tw\")."
-        },
-        "naturalSampleRateHertz": {
-          "type": "integer",
-          "description": "The natural sample rate (in hertz) for this voice.",
-          "format": "int32"
-        },
-        "name": {
-          "description": "The name of this voice.  Each distinct voice has a unique name.",
-          "type": "string"
-        },
-        "ssmlGender": {
-          "enum": [
-            "SSML_VOICE_GENDER_UNSPECIFIED",
-            "MALE",
-            "FEMALE",
-            "NEUTRAL"
-          ],
-          "description": "The gender of this voice.",
-          "type": "string",
-          "enumDescriptions": [
-            "An unspecified gender.\nIn VoiceSelectionParams, this means that the client doesn't care which\ngender the selected voice will have. In the Voice field of\nListVoicesResponse, this may mean that the voice doesn't fit any of the\nother categories in this enum, or that the gender of the voice isn't known.",
-            "A male voice.",
-            "A female voice.",
-            "A gender-neutral voice."
-          ]
-        }
-      },
-      "id": "Voice"
-    },
     "AudioConfig": {
+      "description": "Description of audio data to be synthesized.",
       "type": "object",
       "properties": {
         "effectsProfileId": {
@@ -286,10 +207,10 @@
           ]
         }
       },
-      "id": "AudioConfig",
-      "description": "Description of audio data to be synthesized."
+      "id": "AudioConfig"
     },
     "ListVoicesResponse": {
+      "description": "The message returned to the client by the `ListVoices` method.",
       "type": "object",
       "properties": {
         "voices": {
@@ -300,10 +221,11 @@
           "description": "The list of voices."
         }
       },
-      "id": "ListVoicesResponse",
-      "description": "The message returned to the client by the `ListVoices` method."
+      "id": "ListVoicesResponse"
     },
     "SynthesizeSpeechResponse": {
+      "id": "SynthesizeSpeechResponse",
+      "description": "The message returned to the client by the `SynthesizeSpeech` method.",
       "type": "object",
       "properties": {
         "audioContent": {
@@ -311,17 +233,11 @@
           "format": "byte",
           "type": "string"
         }
-      },
-      "id": "SynthesizeSpeechResponse",
-      "description": "The message returned to the client by the `SynthesizeSpeech` method."
+      }
     },
     "SynthesizeSpeechRequest": {
       "type": "object",
       "properties": {
-        "input": {
-          "$ref": "SynthesisInput",
-          "description": "Required. The Synthesizer requires either plain text or SSML as input."
-        },
         "voice": {
           "$ref": "VoiceSelectionParams",
           "description": "Required. The desired voice of the synthesized audio."
@@ -329,15 +245,99 @@
         "audioConfig": {
           "$ref": "AudioConfig",
           "description": "Required. The configuration of the synthesized audio."
+        },
+        "input": {
+          "$ref": "SynthesisInput",
+          "description": "Required. The Synthesizer requires either plain text or SSML as input."
         }
       },
       "id": "SynthesizeSpeechRequest",
       "description": "The top-level message sent by the client for the `SynthesizeSpeech` method."
+    },
+    "VoiceSelectionParams": {
+      "description": "Description of which voice to use for a synthesis request.",
+      "type": "object",
+      "properties": {
+        "languageCode": {
+          "description": "The language (and optionally also the region) of the voice expressed as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g.\n\"en-US\". Required. This should not include a script tag (e.g. use\n\"cmn-cn\" rather than \"cmn-Hant-cn\"), because the script will be inferred\nfrom the input provided in the SynthesisInput.  The TTS service\nwill use this parameter to help choose an appropriate voice.  Note that\nthe TTS service may choose a voice with a slightly different language code\nthan the one selected; it may substitute a different region\n(e.g. using en-US rather than en-CA if there isn't a Canadian voice\navailable), or even a different language, e.g. using \"nb\" (Norwegian\nBokmal) instead of \"no\" (Norwegian)\".",
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the voice. Optional; if not set, the service will choose a\nvoice based on the other parameters such as language_code and gender."
+        },
+        "ssmlGender": {
+          "type": "string",
+          "enumDescriptions": [
+            "An unspecified gender.\nIn VoiceSelectionParams, this means that the client doesn't care which\ngender the selected voice will have. In the Voice field of\nListVoicesResponse, this may mean that the voice doesn't fit any of the\nother categories in this enum, or that the gender of the voice isn't known.",
+            "A male voice.",
+            "A female voice.",
+            "A gender-neutral voice."
+          ],
+          "enum": [
+            "SSML_VOICE_GENDER_UNSPECIFIED",
+            "MALE",
+            "FEMALE",
+            "NEUTRAL"
+          ],
+          "description": "The preferred gender of the voice. Optional; if not set, the service will\nchoose a voice based on the other parameters such as language_code and\nname. Note that this is only a preference, not requirement; if a\nvoice of the appropriate gender is not available, the synthesizer should\nsubstitute a voice with a different gender rather than failing the request."
+        }
+      },
+      "id": "VoiceSelectionParams"
+    },
+    "Voice": {
+      "description": "Description of a voice supported by the TTS service.",
+      "type": "object",
+      "properties": {
+        "languageCodes": {
+          "description": "The languages that this voice supports, expressed as\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g.\n\"en-US\", \"es-419\", \"cmn-tw\").",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "naturalSampleRateHertz": {
+          "description": "The natural sample rate (in hertz) for this voice.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "description": "The name of this voice.  Each distinct voice has a unique name.",
+          "type": "string"
+        },
+        "ssmlGender": {
+          "description": "The gender of this voice.",
+          "type": "string",
+          "enumDescriptions": [
+            "An unspecified gender.\nIn VoiceSelectionParams, this means that the client doesn't care which\ngender the selected voice will have. In the Voice field of\nListVoicesResponse, this may mean that the voice doesn't fit any of the\nother categories in this enum, or that the gender of the voice isn't known.",
+            "A male voice.",
+            "A female voice.",
+            "A gender-neutral voice."
+          ],
+          "enum": [
+            "SSML_VOICE_GENDER_UNSPECIFIED",
+            "MALE",
+            "FEMALE",
+            "NEUTRAL"
+          ]
+        }
+      },
+      "id": "Voice"
+    },
+    "SynthesisInput": {
+      "id": "SynthesisInput",
+      "description": "Contains text input to be synthesized. Either `text` or `ssml` must be\nsupplied. Supplying both or neither returns\ngoogle.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000\ncharacters.",
+      "type": "object",
+      "properties": {
+        "text": {
+          "description": "The raw text to be synthesized.",
+          "type": "string"
+        },
+        "ssml": {
+          "description": "The SSML document to be synthesized. The SSML document must be valid\nand well-formed. Otherwise the RPC will fail and return\ngoogle.rpc.Code.INVALID_ARGUMENT. For more information, see\n[SSML](/speech/text-to-speech/docs/ssml).",
+          "type": "string"
+        }
+      }
     }
-  },
-  "protocol": "rest",
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   }
 }

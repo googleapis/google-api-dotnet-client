@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190910 (1713)
+ *      <tr><th>API Rev<td>20190912 (1715)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -996,6 +996,16 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ResourceName { get; private set; }
 
+                /// <summary>**Required.** A field mask to restrict which fields on each person are returned. Multiple
+                /// fields can be specified by separating them with commas. Valid values are:
+                ///
+                /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
+                /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
+                /// occupations * organizations * phoneNumbers * photos * relations * relationshipInterests *
+                /// relationshipStatuses * residences * sipAddresses * skills * taglines * urls * userDefined</summary>
+                [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object PersonFields { get; set; }
+
                 /// <summary>The order in which the connections should be sorted. Defaults to
                 /// `LAST_MODIFIED_ASCENDING`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
@@ -1041,16 +1051,6 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string SyncToken { get; set; }
 
-                /// <summary>**Required.** A field mask to restrict which fields on each person are returned. Multiple
-                /// fields can be specified by separating them with commas. Valid values are:
-                ///
-                /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
-                /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
-                /// occupations * organizations * phoneNumbers * photos * relations * relationshipInterests *
-                /// relationshipStatuses * residences * sipAddresses * skills * taglines * urls * userDefined</summary>
-                [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object PersonFields { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1083,6 +1083,15 @@ namespace Google.Apis.PeopleService.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^people/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "personFields", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "personFields",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "sortOrder", new Google.Apis.Discovery.Parameter
@@ -1133,15 +1142,6 @@ namespace Google.Apis.PeopleService.v1
                         "syncToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "syncToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "personFields", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "personFields",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
