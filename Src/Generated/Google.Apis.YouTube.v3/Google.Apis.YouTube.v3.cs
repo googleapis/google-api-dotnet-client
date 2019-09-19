@@ -697,17 +697,13 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>The publishedAfter parameter specifies the earliest date and time that an activity could have
-            /// occurred for that activity to be included in the API response. If the parameter value specifies a day,
-            /// but not a time, then any activities that occurred that day will be included in the result set. The value
-            /// is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.</summary>
+            /// <summary>The publishedAfter parameter indicates that the API response should only contain resources created at or after the specified time.
+            /// The value is an RFC 3339 formatted date-time value (1970-01-01T00:00:00Z).</summary>
             [Google.Apis.Util.RequestParameterAttribute("publishedAfter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<System.DateTime> PublishedAfter { get; set; }
 
-            /// <summary>The publishedBefore parameter specifies the date and time before which an activity must have
-            /// occurred for that activity to be included in the API response. If the parameter value specifies a day,
-            /// but not a time, then any activities that occurred that day will be excluded from the result set. The
-            /// value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.</summary>
+            /// <summary>The publishedBefore parameter indicates that the API response should only contain resources created before or at the specified time.
+            /// The value is an RFC 3339 formatted date-time value (1970-01-01T00:00:00Z).</summary>
             [Google.Apis.Util.RequestParameterAttribute("publishedBefore", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<System.DateTime> PublishedBefore { get; set; }
 
