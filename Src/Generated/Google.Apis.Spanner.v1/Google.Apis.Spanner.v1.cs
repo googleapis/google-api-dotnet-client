@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190719 (1660)
+ *      <tr><th>API Rev<td>20190911 (1714)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -941,8 +941,7 @@ namespace Google.Apis.Spanner.v1
                     }
 
 
-                    /// <summary>Creates multiple new sessions. If the requested number of sessions would cause the
-                    /// database to exceed its session limit, returns a RESOURCE_EXHAUSTED error.
+                    /// <summary>Creates multiple new sessions.
                     ///
                     /// This API can be used to initialize a session cache on the clients. See https://goo.gl/TgSFN2 for
                     /// best practices on session cache management.</summary>
@@ -953,8 +952,7 @@ namespace Google.Apis.Spanner.v1
                         return new BatchCreateRequest(service, body, database);
                     }
 
-                    /// <summary>Creates multiple new sessions. If the requested number of sessions would cause the
-                    /// database to exceed its session limit, returns a RESOURCE_EXHAUSTED error.
+                    /// <summary>Creates multiple new sessions.
                     ///
                     /// This API can be used to initialize a session cache on the clients. See https://goo.gl/TgSFN2 for
                     /// best practices on session cache management.</summary>
@@ -3067,10 +3065,6 @@ namespace Google.Apis.Spanner.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -3078,6 +3072,10 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3113,15 +3111,6 @@ namespace Google.Apis.Spanner.v1
                                 Pattern = @"^projects/[^/]+/instances/[^/]+/operations$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -3134,6 +3123,15 @@ namespace Google.Apis.Spanner.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3503,6 +3501,16 @@ namespace Google.Apis.Spanner.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
+                /// ListInstancesResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
+                /// maximum allowed page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>An expression for filtering the results of the request. Filter rules are case insensitive.
                 /// The fields eligible for filtering are:
                 ///
@@ -3518,16 +3526,6 @@ namespace Google.Apis.Spanner.v1
                 /// "dev".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
-                /// ListInstancesResponse.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
-                /// maximum allowed page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3563,15 +3561,6 @@ namespace Google.Apis.Spanner.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3584,6 +3573,15 @@ namespace Google.Apis.Spanner.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3884,8 +3882,7 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>Required. The number of sessions to be created in this batch call. The API may return fewer than
         /// the requested number of sessions. If a specific number of sessions are desired, the client can make
-        /// additional calls to BatchCreateSessions (adjusting session_count as necessary). The maximum allowed sessions
-        /// are documented at https://goo.gl/hBUQED.</summary>
+        /// additional calls to BatchCreateSessions (adjusting session_count as necessary).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionCount")]
         public virtual System.Nullable<int> SessionCount { get; set; } 
 
@@ -4369,8 +4366,8 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0 and 1. If the value is
-        /// 0, or the field is omitted, policy format version 1 will be returned.</summary>
+        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If the value
+        /// is 0, or the field is omitted, policy format version 1 will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
 
@@ -4668,8 +4665,11 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual Write InsertOrUpdate { get; set; } 
 
         /// <summary>Like insert, except that if the row already exists, it is deleted, and the column values provided
-        /// are inserted instead. Unlike insert_or_update, this means any values not explicitly written become
-        /// `NULL`.</summary>
+        /// are inserted instead. Unlike insert_or_update, this means any values not explicitly written become `NULL`.
+        ///
+        /// In an interleaved table, if you create the child table with the `ON DELETE CASCADE` annotation, then
+        /// replacing a parent row also deletes the child rows. Otherwise, you must delete the child rows before you
+        /// replace the parent row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replace")]
         public virtual Write Replace { get; set; } 
 

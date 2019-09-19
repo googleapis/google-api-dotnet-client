@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20190903 (1706)
+ *      <tr><th>API Rev<td>20190917 (1720)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -1874,11 +1874,11 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
     /// <summary>AcceleratorConfig defines the accelerator cards to attach to the VM.</summary>
     public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of the guest accelerator cards exposed to this VM.</summary>
+        /// <summary>The number of guest accelerator cards exposed to each VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
         public virtual System.Nullable<long> AcceleratorCount { get; set; } 
 
-        /// <summary>The type of accelerator to attach to this VM, e.g. "nvidia-tesla-k80" for nVidia Tesla
+        /// <summary>The type of accelerator to attach to each VM, e.g. "nvidia-tesla-k80" for nVidia Tesla
         /// K80.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; } 
@@ -2123,6 +2123,14 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// Platforms](https://cloud.google.com/compute/docs/cpu-platforms).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
+
+        /// <summary>Determines the type of network access granted to workers. Possible values:
+        ///
+        /// - "public": Workers can connect to the public internet. - "private": Workers can only connect to Google APIs
+        /// and services. - "restricted-private": Workers can only connect to Google APIs that are reachable through
+        /// `restricted.googleapis.com` (`199.36.153.4/30`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAccess")]
+        public virtual string NetworkAccess { get; set; } 
 
         /// <summary>Determines whether the worker is reserved (equivalent to a Compute Engine on-demand VM and
         /// therefore won't be preempted). See [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for more

@@ -980,15 +980,15 @@ namespace Google.Apis.CloudDebugger.v2
                         LOG,
                     }
 
-                    /// <summary>When set to `true`, the response includes the list of breakpoints set by any user.
-                    /// Otherwise, it includes only breakpoints set by the caller.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeAllUsers", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeAllUsers { get; set; }
-
                     /// <summary>When set to `true`, the response includes active and inactive breakpoints. Otherwise,
                     /// it includes only active breakpoints.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeInactive { get; set; }
+
+                    /// <summary>When set to `true`, the response includes the list of breakpoints set by any user.
+                    /// Otherwise, it includes only breakpoints set by the caller.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeAllUsers", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeAllUsers { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1060,18 +1060,18 @@ namespace Google.Apis.CloudDebugger.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "includeAllUsers", new Google.Apis.Discovery.Parameter
+                            "includeInactive", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "includeAllUsers",
+                                Name = "includeInactive",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "includeInactive", new Google.Apis.Discovery.Parameter
+                            "includeAllUsers", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "includeInactive",
+                                Name = "includeAllUsers",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

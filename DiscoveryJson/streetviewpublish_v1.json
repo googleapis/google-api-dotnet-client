@@ -1,111 +1,80 @@
 {
-  "parameters": {
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "type": "string",
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "type": "boolean",
-      "default": "true",
-      "location": "query",
-      "description": "Returns response with indentations and line breaks."
-    },
-    "fields": {
-      "type": "string",
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format."
-    },
-    "alt": {
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query"
-    }
-  },
-  "version": "v1",
-  "baseUrl": "https://streetviewpublish.googleapis.com/",
-  "servicePath": "",
-  "description": "Publishes 360 photos to Google Maps, along with position, orientation, and connectivity metadata. Apps can offer an interface for positioning, connecting, and uploading user-generated Street View images.\n",
-  "kind": "discovery#restDescription",
-  "basePath": "",
-  "id": "streetviewpublish:v1",
-  "documentationLink": "https://developers.google.com/streetview/publish/",
-  "revision": "20190911",
-  "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "Pose": {
-      "id": "Pose",
-      "description": "Raw pose measurement for an entity.",
+    "LatLng": {
+      "id": "LatLng",
+      "description": "An object representing a latitude/longitude pair. This is expressed as a pair\nof doubles representing degrees latitude and degrees longitude. Unless\nspecified otherwise, this must conform to the\n\u003ca href=\"http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf\"\u003eWGS84\nstandard\u003c/a\u003e. Values must be within normalized ranges.",
       "type": "object",
       "properties": {
-        "roll": {
-          "description": "Roll, measured in degrees. Value must be \u003e= 0 and \u003c360. A value of 0\nmeans level with the horizon.\nNaN indicates an unmeasured quantity.",
+        "latitude": {
+          "description": "The latitude in degrees. It must be in the range [-90.0, +90.0].",
           "format": "double",
           "type": "number"
         },
-        "accuracyMeters": {
-          "description": "The estimated horizontal accuracy of this pose in meters with 68%\nconfidence (one standard deviation). For example, on Android, this value is\navailable from this method:\nhttps://developer.android.com/reference/android/location/Location#getAccuracy().\nOther platforms have different methods of obtaining similar accuracy\nestimations.",
-          "format": "float",
+        "longitude": {
+          "description": "The longitude in degrees. It must be in the range [-180.0, +180.0].",
+          "format": "double",
           "type": "number"
+        }
+      }
+    },
+    "BatchDeletePhotosRequest": {
+      "description": "Request to delete multiple Photos.",
+      "type": "object",
+      "properties": {
+        "photoIds": {
+          "description": "Required. IDs of the Photos. HTTP\nGET requests require the following syntax for the URL query parameter:\n`photoIds=\u003cid1\u003e&photoIds=\u003cid2\u003e&...`.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "BatchDeletePhotosRequest"
+    },
+    "UpdatePhotoRequest": {
+      "id": "UpdatePhotoRequest",
+      "description": "Request to update the metadata of a\nPhoto. Updating the pixels of a photo\nis not supported.",
+      "type": "object",
+      "properties": {
+        "photo": {
+          "$ref": "Photo",
+          "description": "Required. Photo object containing the\nnew metadata."
+        },
+        "updateMask": {
+          "description": "Required. Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n\n\u003caside class=\"note\"\u003e\u003cb\u003eNote:\u003c/b\u003e When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.\u003c/aside\u003e",
+          "format": "google-fieldmask",
+          "type": "string"
+        }
+      }
+    },
+    "PhotoId": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Required. A unique identifier for a photo.",
+          "type": "string"
+        }
+      },
+      "id": "PhotoId",
+      "description": "Identifier for a Photo."
+    },
+    "Pose": {
+      "type": "object",
+      "properties": {
+        "roll": {
+          "type": "number",
+          "description": "Roll, measured in degrees. Value must be \u003e= 0 and \u003c360. A value of 0\nmeans level with the horizon.\nNaN indicates an unmeasured quantity.",
+          "format": "double"
+        },
+        "accuracyMeters": {
+          "type": "number",
+          "description": "The estimated horizontal accuracy of this pose in meters with 68%\nconfidence (one standard deviation). For example, on Android, this value is\navailable from this method:\nhttps://developer.android.com/reference/android/location/Location#getAccuracy().\nOther platforms have different methods of obtaining similar accuracy\nestimations.",
+          "format": "float"
         },
         "level": {
-          "$ref": "Level",
-          "description": "Level (the floor in a building) used to configure vertical navigation."
+          "description": "Level (the floor in a building) used to configure vertical navigation.",
+          "$ref": "Level"
         },
         "heading": {
           "description": "Compass heading, measured at the center of the photo in degrees clockwise\nfrom North. Value must be \u003e=0 and \u003c360.\nNaN indicates an unmeasured quantity.",
@@ -118,26 +87,17 @@
           "format": "double"
         },
         "pitch": {
+          "type": "number",
           "description": "Pitch, measured at the center of the photo in degrees. Value must be \u003e=-90\nand \u003c= 90. A value of -90 means looking directly down, and a value of 90\nmeans looking directly up.\nNaN indicates an unmeasured quantity.",
-          "format": "double",
-          "type": "number"
+          "format": "double"
         },
         "latLngPair": {
           "description": "Latitude and longitude pair of the pose, as explained here:\nhttps://cloud.google.com/datastore/docs/reference/rest/Shared.Types/LatLng\nWhen creating a Photo, if the\nlatitude and longitude pair are not provided, the geolocation from the\nexif header is used. A latitude and longitude pair not provided in the\nphoto or exif header causes the photo process to fail.",
           "$ref": "LatLng"
         }
-      }
-    },
-    "PhotoId": {
-      "description": "Identifier for a Photo.",
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Required. A unique identifier for a photo."
-        }
       },
-      "id": "PhotoId"
+      "id": "Pose",
+      "description": "Raw pose measurement for an entity."
     },
     "BatchUpdatePhotosRequest": {
       "description": "Request to update the metadata of photos.\nUpdating the pixels of photos is not supported.",
@@ -154,6 +114,7 @@
       "id": "BatchUpdatePhotosRequest"
     },
     "ListPhotosResponse": {
+      "id": "ListPhotosResponse",
       "description": "Response to list all photos that belong to a user.",
       "type": "object",
       "properties": {
@@ -168,13 +129,34 @@
           "description": "Token to retrieve the next page of results, or empty if there are no more\nresults in the list.",
           "type": "string"
         }
-      },
-      "id": "ListPhotosResponse"
+      }
     },
     "Photo": {
-      "description": "Photo is used to store 360 photos along with photo metadata.",
       "type": "object",
       "properties": {
+        "mapsPublishStatus": {
+          "type": "string",
+          "enumDescriptions": [
+            "The status of the photo is unknown.",
+            "The photo is published to the public through Google Maps.",
+            "The photo has been rejected for an unknown reason."
+          ],
+          "enum": [
+            "UNSPECIFIED_MAPS_PUBLISH_STATUS",
+            "PUBLISHED",
+            "REJECTED_UNKNOWN"
+          ],
+          "description": "Output only. Status in Google Maps, whether this photo was published or\nrejected."
+        },
+        "viewCount": {
+          "description": "Output only. View count of the photo.",
+          "format": "int64",
+          "type": "string"
+        },
+        "downloadUrl": {
+          "type": "string",
+          "description": "Output only. The download URL for the photo bytes. This field is set only\nwhen\nGetPhotoRequest.view\nis set to\nPhotoView.INCLUDE_DOWNLOAD_URL."
+        },
         "places": {
           "type": "array",
           "items": {
@@ -183,12 +165,12 @@
           "description": "Places where this photo belongs."
         },
         "uploadReference": {
-          "$ref": "UploadRef",
-          "description": "Required when creating a photo. Input only. The resource URL where the\nphoto bytes are uploaded to."
+          "description": "Required when creating a photo. Input only. The resource URL where the\nphoto bytes are uploaded to.",
+          "$ref": "UploadRef"
         },
         "photoId": {
-          "description": "Required when updating a photo. Output only when creating a photo.\nIdentifier for the photo, which is unique among all photos in\nGoogle.",
-          "$ref": "PhotoId"
+          "$ref": "PhotoId",
+          "description": "Required when updating a photo. Output only when creating a photo.\nIdentifier for the photo, which is unique among all photos in\nGoogle."
         },
         "shareLink": {
           "type": "string",
@@ -206,6 +188,16 @@
           "description": "Pose of the photo."
         },
         "transferStatus": {
+          "enum": [
+            "TRANSFER_STATUS_UNKNOWN",
+            "NEVER_TRANSFERRED",
+            "PENDING",
+            "COMPLETED",
+            "REJECTED",
+            "EXPIRED",
+            "CANCELLED",
+            "RECEIVED_VIA_TRANSFER"
+          ],
           "description": "Output only. Status of rights transfer on this photo.",
           "type": "string",
           "enumDescriptions": [
@@ -217,16 +209,6 @@
             "The photo transfer expired before the recipient took any action.",
             "The sender cancelled this photo transfer.",
             "The recipient owns this photo due to a rights transfer."
-          ],
-          "enum": [
-            "TRANSFER_STATUS_UNKNOWN",
-            "NEVER_TRANSFERRED",
-            "PENDING",
-            "COMPLETED",
-            "REJECTED",
-            "EXPIRED",
-            "CANCELLED",
-            "RECEIVED_VIA_TRANSFER"
           ]
         },
         "captureTime": {
@@ -237,64 +219,42 @@
         "thumbnailUrl": {
           "description": "Output only. The thumbnail URL for showing a preview of the given photo.",
           "type": "string"
-        },
-        "viewCount": {
-          "description": "Output only. View count of the photo.",
-          "format": "int64",
-          "type": "string"
-        },
-        "mapsPublishStatus": {
-          "description": "Output only. Status in Google Maps, whether this photo was published or\nrejected.",
-          "type": "string",
-          "enumDescriptions": [
-            "The status of the photo is unknown.",
-            "The photo is published to the public through Google Maps.",
-            "The photo has been rejected for an unknown reason."
-          ],
-          "enum": [
-            "UNSPECIFIED_MAPS_PUBLISH_STATUS",
-            "PUBLISHED",
-            "REJECTED_UNKNOWN"
-          ]
-        },
-        "downloadUrl": {
-          "type": "string",
-          "description": "Output only. The download URL for the photo bytes. This field is set only\nwhen\nGetPhotoRequest.view\nis set to\nPhotoView.INCLUDE_DOWNLOAD_URL."
         }
       },
-      "id": "Photo"
+      "id": "Photo",
+      "description": "Photo is used to store 360 photos along with photo metadata."
     },
     "Operation": {
       "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
       "type": "object",
       "properties": {
+        "name": {
+          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`.",
+          "type": "string"
+        },
+        "error": {
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
+        },
         "metadata": {
-          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
-          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."
+          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+          "type": "object"
         },
         "done": {
           "type": "boolean",
           "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."
         },
         "response": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
           "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
-          "type": "object"
-        },
-        "name": {
-          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`.",
-          "type": "string"
-        },
-        "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
+          "type": "object",
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          }
         }
       },
       "id": "Operation"
@@ -303,13 +263,13 @@
       "description": "Response payload for a single\nPhoto\nin batch operations including\nBatchGetPhotos\nand\nBatchUpdatePhotos.",
       "type": "object",
       "properties": {
-        "status": {
-          "$ref": "Status",
-          "description": "The status for the operation to get or update a single photo in the batch\nrequest."
-        },
         "photo": {
           "$ref": "Photo",
           "description": "The Photo resource, if the request\nwas successful."
+        },
+        "status": {
+          "$ref": "Status",
+          "description": "The status for the operation to get or update a single photo in the batch\nrequest."
         }
       },
       "id": "PhotoResponse"
@@ -326,62 +286,61 @@
       "id": "Connection"
     },
     "BatchUpdatePhotosResponse": {
+      "description": "Response to batch update of metadata of one or more\nPhotos.",
       "type": "object",
       "properties": {
         "results": {
-          "description": "List of results for each individual\nPhoto updated, in the same order as\nthe request.",
           "type": "array",
           "items": {
             "$ref": "PhotoResponse"
-          }
+          },
+          "description": "List of results for each individual\nPhoto updated, in the same order as\nthe request."
         }
       },
-      "id": "BatchUpdatePhotosResponse",
-      "description": "Response to batch update of metadata of one or more\nPhotos."
+      "id": "BatchUpdatePhotosResponse"
     },
     "Status": {
+      "id": "Status",
+      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
       "type": "object",
       "properties": {
         "code": {
-          "type": "integer",
           "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "format": "int32"
+          "format": "int32",
+          "type": "integer"
         },
         "message": {
           "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
           "type": "string"
         },
         "details": {
+          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
           "type": "array",
           "items": {
+            "type": "object",
             "additionalProperties": {
               "type": "any",
               "description": "Properties of the object. Contains field @type with type URL."
-            },
-            "type": "object"
-          },
-          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."
+            }
+          }
         }
-      },
-      "id": "Status",
-      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors)."
+      }
     },
     "BatchDeletePhotosResponse": {
+      "id": "BatchDeletePhotosResponse",
       "description": "Response to batch delete of one or more\nPhotos.",
       "type": "object",
       "properties": {
         "status": {
-          "description": "The status for the operation to delete a single\nPhoto in the batch request.",
           "type": "array",
           "items": {
             "$ref": "Status"
-          }
+          },
+          "description": "The status for the operation to delete a single\nPhoto in the batch request."
         }
-      },
-      "id": "BatchDeletePhotosResponse"
+      }
     },
     "Level": {
-      "description": "Level information containing level number and its corresponding name.",
       "type": "object",
       "properties": {
         "number": {
@@ -390,17 +349,18 @@
           "type": "number"
         },
         "name": {
-          "type": "string",
-          "description": "Required. A name assigned to this Level, restricted to 3 characters.\nConsider how the elevator buttons would be labeled for this level if there\nwas an elevator."
+          "description": "Required. A name assigned to this Level, restricted to 3 characters.\nConsider how the elevator buttons would be labeled for this level if there\nwas an elevator.",
+          "type": "string"
         }
       },
-      "id": "Level"
+      "id": "Level",
+      "description": "Level information containing level number and its corresponding name."
     },
     "Empty": {
-      "id": "Empty",
       "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
-      "properties": {}
+      "properties": {},
+      "id": "Empty"
     },
     "BatchGetPhotosResponse": {
       "id": "BatchGetPhotosResponse",
@@ -408,34 +368,35 @@
       "type": "object",
       "properties": {
         "results": {
-          "description": "List of results for each individual\nPhoto requested, in the same order as\nthe requests in\nBatchGetPhotos.",
           "type": "array",
           "items": {
             "$ref": "PhotoResponse"
-          }
+          },
+          "description": "List of results for each individual\nPhoto requested, in the same order as\nthe requests in\nBatchGetPhotos."
         }
       }
     },
     "Place": {
+      "id": "Place",
+      "description": "Place metadata for an entity.",
       "type": "object",
       "properties": {
         "languageCode": {
-          "description": "Output-only. The language_code that the name is localized with. This should\nbe the language_code specified in the request, but may be a fallback.",
-          "type": "string"
+          "type": "string",
+          "description": "Output-only. The language_code that the name is localized with. This should\nbe the language_code specified in the request, but may be a fallback."
         },
         "name": {
-          "type": "string",
-          "description": "Output-only. The name of the place, localized to the language_code."
+          "description": "Output-only. The name of the place, localized to the language_code.",
+          "type": "string"
         },
         "placeId": {
           "description": "Place identifier, as described in\nhttps://developers.google.com/places/place-id.",
           "type": "string"
         }
-      },
-      "id": "Place",
-      "description": "Place metadata for an entity."
+      }
     },
     "UploadRef": {
+      "description": "Upload reference for media files.",
       "type": "object",
       "properties": {
         "uploadUrl": {
@@ -443,62 +404,14 @@
           "description": "Required. An upload reference should be unique for each user. It follows\nthe form:\n\"https://streetviewpublish.googleapis.com/media/user/{account_id}/photo/{upload_reference}\""
         }
       },
-      "id": "UploadRef",
-      "description": "Upload reference for media files."
-    },
-    "LatLng": {
-      "description": "An object representing a latitude/longitude pair. This is expressed as a pair\nof doubles representing degrees latitude and degrees longitude. Unless\nspecified otherwise, this must conform to the\n\u003ca href=\"http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf\"\u003eWGS84\nstandard\u003c/a\u003e. Values must be within normalized ranges.",
-      "type": "object",
-      "properties": {
-        "latitude": {
-          "type": "number",
-          "description": "The latitude in degrees. It must be in the range [-90.0, +90.0].",
-          "format": "double"
-        },
-        "longitude": {
-          "type": "number",
-          "description": "The longitude in degrees. It must be in the range [-180.0, +180.0].",
-          "format": "double"
-        }
-      },
-      "id": "LatLng"
-    },
-    "BatchDeletePhotosRequest": {
-      "id": "BatchDeletePhotosRequest",
-      "description": "Request to delete multiple Photos.",
-      "type": "object",
-      "properties": {
-        "photoIds": {
-          "description": "Required. IDs of the Photos. HTTP\nGET requests require the following syntax for the URL query parameter:\n`photoIds=\u003cid1\u003e&photoIds=\u003cid2\u003e&...`.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "UpdatePhotoRequest": {
-      "description": "Request to update the metadata of a\nPhoto. Updating the pixels of a photo\nis not supported.",
-      "type": "object",
-      "properties": {
-        "photo": {
-          "$ref": "Photo",
-          "description": "Required. Photo object containing the\nnew metadata."
-        },
-        "updateMask": {
-          "type": "string",
-          "description": "Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n\n\u003caside class=\"note\"\u003e\u003cb\u003eNote:\u003c/b\u003e When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.\u003c/aside\u003e",
-          "format": "google-fieldmask"
-        }
-      },
-      "id": "UpdatePhotoRequest"
+      "id": "UploadRef"
     }
   },
+  "protocol": "rest",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "protocol": "rest",
   "canonicalName": "Street View Publish",
   "auth": {
     "oauth2": {
@@ -520,17 +433,14 @@
     "photo": {
       "methods": {
         "delete": {
-          "flatPath": "v1/photo/{photoId}",
-          "id": "streetviewpublish.photo.delete",
-          "path": "v1/photo/{photoId}",
           "description": "Deletes a Photo and its metadata.\n\nThis method returns the following error codes:\n\n* google.rpc.Code.PERMISSION_DENIED if the requesting user did not\ncreate the requested photo.\n* google.rpc.Code.NOT_FOUND if the photo ID does not exist.",
-          "httpMethod": "DELETE",
-          "parameterOrder": [
-            "photoId"
-          ],
           "response": {
             "$ref": "Empty"
           },
+          "parameterOrder": [
+            "photoId"
+          ],
+          "httpMethod": "DELETE",
           "scopes": [
             "https://www.googleapis.com/auth/streetviewpublish"
           ],
@@ -541,78 +451,81 @@
               "required": true,
               "type": "string"
             }
-          }
+          },
+          "flatPath": "v1/photo/{photoId}",
+          "path": "v1/photo/{photoId}",
+          "id": "streetviewpublish.photo.delete"
         },
         "get": {
+          "flatPath": "v1/photo/{photoId}",
+          "path": "v1/photo/{photoId}",
+          "id": "streetviewpublish.photo.get",
           "description": "Gets the metadata of the specified\nPhoto.\n\nThis method returns the following error codes:\n\n* google.rpc.Code.PERMISSION_DENIED if the requesting user did not\ncreate the requested Photo.\n* google.rpc.Code.NOT_FOUND if the requested\nPhoto does not exist.\n* google.rpc.Code.UNAVAILABLE if the requested\nPhoto is still being indexed.",
-          "httpMethod": "GET",
-          "parameterOrder": [
-            "photoId"
-          ],
           "response": {
             "$ref": "Photo"
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/streetviewpublish"
+          "parameterOrder": [
+            "photoId"
           ],
+          "httpMethod": "GET",
           "parameters": {
-            "photoId": {
-              "required": true,
+            "languageCode": {
+              "description": "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nIf language_code is unspecified, the user's language preference for Google\nservices is used.",
               "type": "string",
+              "location": "query"
+            },
+            "photoId": {
               "location": "path",
-              "description": "Required. ID of the Photo."
+              "description": "Required. ID of the Photo.",
+              "required": true,
+              "type": "string"
             },
             "view": {
-              "description": "Specifies if a download URL for the photo bytes should be returned in the\nPhoto response.",
+              "description": "Required. Specifies if a download URL for the photo bytes should be returned in the\nPhoto response.",
               "type": "string",
               "location": "query",
               "enum": [
                 "BASIC",
                 "INCLUDE_DOWNLOAD_URL"
               ]
-            },
-            "languageCode": {
-              "description": "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nIf language_code is unspecified, the user's language preference for Google\nservices is used.",
-              "type": "string",
-              "location": "query"
             }
           },
-          "flatPath": "v1/photo/{photoId}",
-          "id": "streetviewpublish.photo.get",
-          "path": "v1/photo/{photoId}"
+          "scopes": [
+            "https://www.googleapis.com/auth/streetviewpublish"
+          ]
         },
         "update": {
-          "description": "Updates the metadata of a Photo, such\nas pose, place association, connections, etc. Changing the pixels of a\nphoto is not supported.\n\nOnly the fields specified in the\nupdateMask\nfield are used. If `updateMask` is not present, the update applies to all\nfields.\n\nThis method returns the following error codes:\n\n* google.rpc.Code.PERMISSION_DENIED if the requesting user did not\ncreate the requested photo.\n* google.rpc.Code.INVALID_ARGUMENT if the request is malformed.\n* google.rpc.Code.NOT_FOUND if the requested photo does not exist.\n* google.rpc.Code.UNAVAILABLE if the requested\nPhoto is still being indexed.",
           "request": {
             "$ref": "Photo"
           },
-          "response": {
-            "$ref": "Photo"
-          },
+          "description": "Updates the metadata of a Photo, such\nas pose, place association, connections, etc. Changing the pixels of a\nphoto is not supported.\n\nOnly the fields specified in the\nupdateMask\nfield are used. If `updateMask` is not present, the update applies to all\nfields.\n\nThis method returns the following error codes:\n\n* google.rpc.Code.PERMISSION_DENIED if the requesting user did not\ncreate the requested photo.\n* google.rpc.Code.INVALID_ARGUMENT if the request is malformed.\n* google.rpc.Code.NOT_FOUND if the requested photo does not exist.\n* google.rpc.Code.UNAVAILABLE if the requested\nPhoto is still being indexed.",
+          "httpMethod": "PUT",
           "parameterOrder": [
             "id"
           ],
-          "httpMethod": "PUT",
+          "response": {
+            "$ref": "Photo"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/streetviewpublish"
+          ],
           "parameters": {
             "id": {
+              "location": "path",
               "description": "Required. A unique identifier for a photo.",
               "required": true,
-              "type": "string",
-              "location": "path"
+              "type": "string"
             },
             "updateMask": {
-              "description": "Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n\n\u003caside class=\"note\"\u003e\u003cb\u003eNote:\u003c/b\u003e When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.\u003c/aside\u003e",
+              "description": "Required. Mask that identifies fields on the photo metadata to update.\nIf not present, the old Photo\nmetadata is entirely replaced with the\nnew Photo metadata in this request.\nThe update fails if invalid fields are specified. Multiple fields can be\nspecified in a comma-delimited list.\n\nThe following fields are valid:\n\n* `pose.heading`\n* `pose.latLngPair`\n* `pose.pitch`\n* `pose.roll`\n* `pose.level`\n* `pose.altitude`\n* `connections`\n* `places`\n\n\n\u003caside class=\"note\"\u003e\u003cb\u003eNote:\u003c/b\u003e When\nupdateMask\ncontains repeated fields, the entire set of repeated values get replaced\nwith the new contents. For example, if\nupdateMask\ncontains `connections` and `UpdatePhotoRequest.photo.connections` is empty,\nall connections are removed.\u003c/aside\u003e",
               "format": "google-fieldmask",
               "type": "string",
               "location": "query"
             }
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/streetviewpublish"
-          ],
           "flatPath": "v1/photo/{id}",
-          "path": "v1/photo/{id}",
-          "id": "streetviewpublish.photo.update"
+          "id": "streetviewpublish.photo.update",
+          "path": "v1/photo/{id}"
         },
         "create": {
           "parameters": {},
@@ -620,31 +533,31 @@
             "https://www.googleapis.com/auth/streetviewpublish"
           ],
           "flatPath": "v1/photo",
-          "path": "v1/photo",
           "id": "streetviewpublish.photo.create",
+          "path": "v1/photo",
           "description": "After the client finishes uploading the photo with the returned\nUploadRef,\nCreatePhoto\npublishes the uploaded Photo to\nStreet View on Google Maps.\n\nCurrently, the only way to set heading, pitch, and roll in CreatePhoto is\nthrough the [Photo Sphere XMP\nmetadata](https://developers.google.com/streetview/spherical-metadata) in\nthe photo bytes. CreatePhoto ignores the  `pose.heading`, `pose.pitch`,\n`pose.roll`, `pose.altitude`, and `pose.level` fields in Pose.\n\nThis method returns the following error codes:\n\n* google.rpc.Code.INVALID_ARGUMENT if the request is malformed or if\nthe uploaded photo is not a 360 photo.\n* google.rpc.Code.NOT_FOUND if the upload reference does not exist.\n* google.rpc.Code.RESOURCE_EXHAUSTED if the account has reached the\nstorage limit.",
           "request": {
             "$ref": "Photo"
           },
+          "httpMethod": "POST",
+          "parameterOrder": [],
           "response": {
             "$ref": "Photo"
-          },
-          "parameterOrder": [],
-          "httpMethod": "POST"
+          }
         },
         "startUpload": {
+          "httpMethod": "POST",
+          "parameterOrder": [],
           "response": {
             "$ref": "UploadRef"
           },
-          "parameterOrder": [],
-          "httpMethod": "POST",
           "scopes": [
             "https://www.googleapis.com/auth/streetviewpublish"
           ],
           "parameters": {},
           "flatPath": "v1/photo:startUpload",
-          "path": "v1/photo:startUpload",
           "id": "streetviewpublish.photo.startUpload",
+          "path": "v1/photo:startUpload",
           "request": {
             "$ref": "Empty"
           },
@@ -654,16 +567,101 @@
     },
     "photos": {
       "methods": {
+        "list": {
+          "response": {
+            "$ref": "ListPhotosResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "parameters": {
+            "filter": {
+              "location": "query",
+              "description": "Required. The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.\n\nThe only filter supported at the moment is `placeId`.",
+              "type": "string"
+            },
+            "languageCode": {
+              "description": "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nIf language_code is unspecified, the user's language preference for Google\nservices is used.",
+              "type": "string",
+              "location": "query"
+            },
+            "pageToken": {
+              "location": "query",
+              "description": "The\nnextPageToken\nvalue returned from a previous\nListPhotos\nrequest, if any.",
+              "type": "string"
+            },
+            "pageSize": {
+              "description": "The maximum number of photos to return.\n`pageSize` must be non-negative. If `pageSize` is zero or is not provided,\nthe default page size of 100 is used.\nThe number of photos returned in the response may be less than `pageSize`\nif the number of photos that belong to the user is less than `pageSize`.",
+              "format": "int32",
+              "type": "integer",
+              "location": "query"
+            },
+            "view": {
+              "location": "query",
+              "enum": [
+                "BASIC",
+                "INCLUDE_DOWNLOAD_URL"
+              ],
+              "description": "Required. Specifies if a download URL for the photos bytes should be returned in the\nPhotos response.",
+              "type": "string"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/streetviewpublish"
+          ],
+          "flatPath": "v1/photos",
+          "path": "v1/photos",
+          "id": "streetviewpublish.photos.list",
+          "description": "Lists all the Photos that belong to\nthe user.\n\n\u003caside class=\"note\"\u003e\u003cb\u003eNote:\u003c/b\u003e Recently created photos that are still\nbeing indexed are not returned in the response.\u003c/aside\u003e"
+        },
+        "batchUpdate": {
+          "response": {
+            "$ref": "BatchUpdatePhotosResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "parameters": {},
+          "scopes": [
+            "https://www.googleapis.com/auth/streetviewpublish"
+          ],
+          "flatPath": "v1/photos:batchUpdate",
+          "path": "v1/photos:batchUpdate",
+          "id": "streetviewpublish.photos.batchUpdate",
+          "description": "Updates the metadata of Photos, such\nas pose, place association, connections, etc. Changing the pixels of photos\nis not supported.\n\nNote that if\nBatchUpdatePhotos\nfails, either critical fields are missing or there is an authentication\nerror. Even if\nBatchUpdatePhotos\nsucceeds, individual photos in the batch may have failures.\nThese failures are specified in each\nPhotoResponse.status\nin\nBatchUpdatePhotosResponse.results.\nSee\nUpdatePhoto\nfor specific failures that can occur per photo.\n\nOnly the fields specified in\nupdateMask\nfield are used. If `updateMask` is not present, the update applies to all\nfields.\n\nThe number of\nUpdatePhotoRequest\nmessages in a\nBatchUpdatePhotosRequest\nmust not exceed 20.\n\n\u003caside class=\"note\"\u003e\u003cb\u003eNote:\u003c/b\u003e To update\nPose.altitude,\nPose.latLngPair has to be\nfilled as well. Otherwise, the request will fail.\u003c/aside\u003e",
+          "request": {
+            "$ref": "BatchUpdatePhotosRequest"
+          }
+        },
+        "batchDelete": {
+          "response": {
+            "$ref": "BatchDeletePhotosResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/streetviewpublish"
+          ],
+          "parameters": {},
+          "flatPath": "v1/photos:batchDelete",
+          "path": "v1/photos:batchDelete",
+          "id": "streetviewpublish.photos.batchDelete",
+          "request": {
+            "$ref": "BatchDeletePhotosRequest"
+          },
+          "description": "Deletes a list of Photos and their\nmetadata.\n\nNote that if\nBatchDeletePhotos\nfails, either critical fields are missing or there is an authentication\nerror. Even if\nBatchDeletePhotos\nsucceeds, individual photos in the batch may have failures.\nThese failures are specified in each\nPhotoResponse.status\nin\nBatchDeletePhotosResponse.results.\nSee\nDeletePhoto\nfor specific failures that can occur per photo."
+        },
         "batchGet": {
           "flatPath": "v1/photos:batchGet",
           "id": "streetviewpublish.photos.batchGet",
           "path": "v1/photos:batchGet",
           "description": "Gets the metadata of the specified\nPhoto batch.\n\nNote that if\nBatchGetPhotos\nfails, either critical fields are missing or there is an authentication\nerror. Even if\nBatchGetPhotos\nsucceeds, individual photos in the batch may have failures.\nThese failures are specified in each\nPhotoResponse.status\nin\nBatchGetPhotosResponse.results.\nSee\nGetPhoto\nfor specific failures that can occur per photo.",
           "httpMethod": "GET",
+          "parameterOrder": [],
           "response": {
             "$ref": "BatchGetPhotosResponse"
           },
-          "parameterOrder": [],
+          "scopes": [
+            "https://www.googleapis.com/auth/streetviewpublish"
+          ],
           "parameters": {
             "view": {
               "location": "query",
@@ -671,108 +669,110 @@
                 "BASIC",
                 "INCLUDE_DOWNLOAD_URL"
               ],
-              "description": "Specifies if a download URL for the photo bytes should be returned in the\nPhoto response.",
+              "description": "Required. Specifies if a download URL for the photo bytes should be returned in the\nPhoto response.",
               "type": "string"
             },
             "languageCode": {
+              "type": "string",
               "location": "query",
-              "description": "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nIf language_code is unspecified, the user's language preference for Google\nservices is used.",
-              "type": "string"
+              "description": "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nIf language_code is unspecified, the user's language preference for Google\nservices is used."
             },
             "photoIds": {
+              "repeated": true,
               "location": "query",
               "description": "Required. IDs of the Photos. For HTTP\nGET requests, the URL query parameter should be\n`photoIds=\u003cid1\u003e&photoIds=\u003cid2\u003e&...`.",
-              "type": "string",
-              "repeated": true
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/streetviewpublish"
-          ]
-        },
-        "list": {
-          "scopes": [
-            "https://www.googleapis.com/auth/streetviewpublish"
-          ],
-          "parameters": {
-            "pageToken": {
-              "type": "string",
-              "location": "query",
-              "description": "The\nnextPageToken\nvalue returned from a previous\nListPhotos\nrequest, if any."
-            },
-            "pageSize": {
-              "type": "integer",
-              "location": "query",
-              "description": "The maximum number of photos to return.\n`pageSize` must be non-negative. If `pageSize` is zero or is not provided,\nthe default page size of 100 is used.\nThe number of photos returned in the response may be less than `pageSize`\nif the number of photos that belong to the user is less than `pageSize`.",
-              "format": "int32"
-            },
-            "view": {
-              "location": "query",
-              "enum": [
-                "BASIC",
-                "INCLUDE_DOWNLOAD_URL"
-              ],
-              "description": "Specifies if a download URL for the photos bytes should be returned in the\nPhotos response.",
-              "type": "string"
-            },
-            "filter": {
-              "type": "string",
-              "location": "query",
-              "description": "The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.\n\nThe only filter supported at the moment is `placeId`."
-            },
-            "languageCode": {
-              "location": "query",
-              "description": "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more\ninformation, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nIf language_code is unspecified, the user's language preference for Google\nservices is used.",
               "type": "string"
             }
-          },
-          "flatPath": "v1/photos",
-          "path": "v1/photos",
-          "id": "streetviewpublish.photos.list",
-          "description": "Lists all the Photos that belong to\nthe user.\n\n\u003caside class=\"note\"\u003e\u003cb\u003eNote:\u003c/b\u003e Recently created photos that are still\nbeing indexed are not returned in the response.\u003c/aside\u003e",
-          "response": {
-            "$ref": "ListPhotosResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "GET"
-        },
-        "batchUpdate": {
-          "httpMethod": "POST",
-          "parameterOrder": [],
-          "response": {
-            "$ref": "BatchUpdatePhotosResponse"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/streetviewpublish"
-          ],
-          "parameters": {},
-          "flatPath": "v1/photos:batchUpdate",
-          "id": "streetviewpublish.photos.batchUpdate",
-          "path": "v1/photos:batchUpdate",
-          "request": {
-            "$ref": "BatchUpdatePhotosRequest"
-          },
-          "description": "Updates the metadata of Photos, such\nas pose, place association, connections, etc. Changing the pixels of photos\nis not supported.\n\nNote that if\nBatchUpdatePhotos\nfails, either critical fields are missing or there is an authentication\nerror. Even if\nBatchUpdatePhotos\nsucceeds, individual photos in the batch may have failures.\nThese failures are specified in each\nPhotoResponse.status\nin\nBatchUpdatePhotosResponse.results.\nSee\nUpdatePhoto\nfor specific failures that can occur per photo.\n\nOnly the fields specified in\nupdateMask\nfield are used. If `updateMask` is not present, the update applies to all\nfields.\n\nThe number of\nUpdatePhotoRequest\nmessages in a\nBatchUpdatePhotosRequest\nmust not exceed 20.\n\n\u003caside class=\"note\"\u003e\u003cb\u003eNote:\u003c/b\u003e To update\nPose.altitude,\nPose.latLngPair has to be\nfilled as well. Otherwise, the request will fail.\u003c/aside\u003e"
-        },
-        "batchDelete": {
-          "parameters": {},
-          "scopes": [
-            "https://www.googleapis.com/auth/streetviewpublish"
-          ],
-          "flatPath": "v1/photos:batchDelete",
-          "path": "v1/photos:batchDelete",
-          "id": "streetviewpublish.photos.batchDelete",
-          "description": "Deletes a list of Photos and their\nmetadata.\n\nNote that if\nBatchDeletePhotos\nfails, either critical fields are missing or there is an authentication\nerror. Even if\nBatchDeletePhotos\nsucceeds, individual photos in the batch may have failures.\nThese failures are specified in each\nPhotoResponse.status\nin\nBatchDeletePhotosResponse.results.\nSee\nDeletePhoto\nfor specific failures that can occur per photo.",
-          "request": {
-            "$ref": "BatchDeletePhotosRequest"
-          },
-          "response": {
-            "$ref": "BatchDeletePhotosResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "POST"
+          }
         }
       }
     }
-  }
+  },
+  "parameters": {
+    "uploadType": {
+      "type": "string",
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string"
+    },
+    "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "access_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth access token."
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "quotaUser": {
+      "type": "string",
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    }
+  },
+  "version": "v1",
+  "baseUrl": "https://streetviewpublish.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "Publishes 360 photos to Google Maps, along with position, orientation, and connectivity metadata. Apps can offer an interface for positioning, connecting, and uploading user-generated Street View images.\n",
+  "servicePath": "",
+  "basePath": "",
+  "id": "streetviewpublish:v1",
+  "documentationLink": "https://developers.google.com/streetview/publish/",
+  "revision": "20190917",
+  "discoveryVersion": "v1"
 }

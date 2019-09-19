@@ -1,18 +1,23 @@
 {
+  "ownerDomain": "google.com",
+  "name": "abusiveexperiencereport",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Abusive Experience Report API",
   "ownerName": "Google",
   "resources": {
     "violatingSites": {
       "methods": {
         "list": {
           "flatPath": "v1/violatingSites",
-          "id": "abusiveexperiencereport.violatingSites.list",
           "path": "v1/violatingSites",
+          "id": "abusiveexperiencereport.violatingSites.list",
           "description": "Lists sites that are failing in the Abusive Experience Report.",
-          "httpMethod": "GET",
-          "parameterOrder": [],
           "response": {
             "$ref": "ViolatingSitesResponse"
           },
+          "parameterOrder": [],
+          "httpMethod": "GET",
           "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/xapi.zoo"
@@ -24,58 +29,78 @@
       "methods": {
         "get": {
           "description": "Gets a site's Abusive Experience Report summary.",
+          "httpMethod": "GET",
           "response": {
             "$ref": "SiteSummaryResponse"
           },
           "parameterOrder": [
             "name"
           ],
-          "httpMethod": "GET",
           "parameters": {
             "name": {
+              "location": "path",
+              "description": "Required. The name of the site whose summary to get, e.g.\n`sites/http%3A%2F%2Fwww.google.com%2F`.\n\nFormat: `sites/{site}`",
               "required": true,
               "type": "string",
-              "pattern": "^sites/[^/]+$",
-              "location": "path",
-              "description": "Required. The name of the site whose summary to get, e.g.\n`sites/http%3A%2F%2Fwww.google.com%2F`.\n\nFormat: `sites/{site}`"
+              "pattern": "^sites/[^/]+$"
             }
           },
           "scopes": [
             "https://www.googleapis.com/auth/xapi.zoo"
           ],
           "flatPath": "v1/sites/{sitesId}",
-          "path": "v1/{+name}",
-          "id": "abusiveexperiencereport.sites.get"
+          "id": "abusiveexperiencereport.sites.get",
+          "path": "v1/{+name}"
         }
       }
     }
   },
   "parameters": {
-    "$.xgafv": {
+    "quotaUser": {
       "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
     },
-    "oauth_token": {
+    "prettyPrint": {
+      "type": "boolean",
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks."
+    },
+    "uploadType": {
       "type": "string",
       "location": "query",
-      "description": "OAuth 2.0 token for the current user."
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
     },
     "callback": {
       "location": "query",
       "description": "JSONP",
       "type": "string"
     },
-    "alt": {
+    "oauth_token": {
+      "type": "string",
       "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "$.xgafv": {
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format."
+    },
+    "alt": {
       "description": "Data format for response.",
       "default": "json",
       "enum": [
@@ -88,7 +113,8 @@
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
-      ]
+      ],
+      "location": "query"
     },
     "key": {
       "location": "query",
@@ -96,35 +122,14 @@
       "type": "string"
     },
     "access_token": {
-      "location": "query",
       "description": "OAuth access token.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "upload_protocol": {
+      "type": "string",
       "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "type": "boolean",
-      "default": "true",
-      "location": "query",
-      "description": "Returns response with indentations and line breaks."
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
     }
   },
   "version": "v1",
@@ -133,15 +138,13 @@
   "description": "Views Abusive Experience Report data, and gets a list of sites that have a significant number of abusive experiences.",
   "servicePath": "",
   "basePath": "",
+  "revision": "20190916",
   "id": "abusiveexperiencereport:v1",
   "documentationLink": "https://developers.google.com/abusive-experience-report/",
-  "revision": "20190909",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "SiteSummaryResponse": {
-      "id": "SiteSummaryResponse",
-      "description": "Response message for GetSiteSummary.",
       "type": "object",
       "properties": {
         "abusiveStatus": {
@@ -164,14 +167,6 @@
           "type": "string"
         },
         "filterStatus": {
-          "enum": [
-            "UNKNOWN",
-            "ON",
-            "OFF",
-            "PAUSED",
-            "PENDING"
-          ],
-          "description": "The site's [enforcement\nstatus](https://support.google.com/webtools/answer/7538608).",
           "type": "string",
           "enumDescriptions": [
             "N/A.",
@@ -179,7 +174,15 @@
             "Enforcement is off.",
             "Enforcement is paused.",
             "Enforcement is pending."
-          ]
+          ],
+          "enum": [
+            "UNKNOWN",
+            "ON",
+            "OFF",
+            "PAUSED",
+            "PENDING"
+          ],
+          "description": "The site's [enforcement\nstatus](https://support.google.com/webtools/answer/7538608)."
         },
         "underReview": {
           "description": "Whether the site is currently under review.",
@@ -198,10 +201,11 @@
           "description": "The name of the reviewed site, e.g. `google.com`.",
           "type": "string"
         }
-      }
+      },
+      "id": "SiteSummaryResponse",
+      "description": "Response message for GetSiteSummary."
     },
     "ViolatingSitesResponse": {
-      "id": "ViolatingSitesResponse",
       "description": "Response message for ListViolatingSites.",
       "type": "object",
       "properties": {
@@ -212,7 +216,8 @@
             "$ref": "SiteSummaryResponse"
           }
         }
-      }
+      },
+      "id": "ViolatingSitesResponse"
     }
   },
   "protocol": "rest",
@@ -230,10 +235,5 @@
       }
     }
   },
-  "rootUrl": "https://abusiveexperiencereport.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "abusiveexperiencereport",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Abusive Experience Report API"
+  "rootUrl": "https://abusiveexperiencereport.googleapis.com/"
 }

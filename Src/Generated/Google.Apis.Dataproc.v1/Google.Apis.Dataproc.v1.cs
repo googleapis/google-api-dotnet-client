@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190823 (1695)
+ *      <tr><th>API Rev<td>20190905 (1708)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -362,10 +362,650 @@ namespace Google.Apis.Dataproc.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                autoscalingPolicies = new AutoscalingPoliciesResource(service);
                 workflowTemplates = new WorkflowTemplatesResource(service);
 
             }
 
+            private readonly AutoscalingPoliciesResource autoscalingPolicies;
+
+            /// <summary>Gets the AutoscalingPolicies resource.</summary>
+            public virtual AutoscalingPoliciesResource AutoscalingPolicies
+            {
+                get { return autoscalingPolicies; }
+            }
+
+            /// <summary>The "autoscalingPolicies" collection of methods.</summary>
+            public class AutoscalingPoliciesResource
+            {
+                private const string Resource = "autoscalingPolicies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AutoscalingPoliciesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Creates new autoscaling policy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The "resource name" of the region or location, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.create, the resource
+                /// name  of the region has the following format:  projects/{project_id}/regions/{region} For
+                /// projects.locations.autoscalingPolicies.create, the resource name  of the location has the following format:
+                /// projects/{project_id}/locations/{location}</param>
+                public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates new autoscaling policy.</summary>
+                public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AutoscalingPolicy>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The "resource name" of the region or location, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.autoscalingPolicies.create, the resource name  of the region has the following
+                    /// format:  projects/{project_id}/regions/{region} For
+                    /// projects.locations.autoscalingPolicies.create, the resource name  of the location has the
+                    /// following format:  projects/{project_id}/locations/{location}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.AutoscalingPolicy Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/autoscalingPolicies"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes an autoscaling policy. It is an error to delete an autoscaling policy that is in
+                /// use by one or more clusters.</summary>
+                /// <param name="name">Required. The "resource name" of the autoscaling policy, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.delete, the resource
+                /// name  of the policy has the following format:
+                /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                /// projects.locations.autoscalingPolicies.delete, the resource name  of the policy has the following format:
+                /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes an autoscaling policy. It is an error to delete an autoscaling policy that is in
+                /// use by one or more clusters.</summary>
+                public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The "resource name" of the autoscaling policy, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.autoscalingPolicies.delete, the resource name  of the policy has the following
+                    /// format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                    /// projects.locations.autoscalingPolicies.delete, the resource name  of the policy has the
+                    /// following format:
+                    /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Retrieves autoscaling policy.</summary>
+                /// <param name="name">Required. The "resource name" of the autoscaling policy, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.get, the resource name
+                /// of the policy has the following format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                /// projects.locations.autoscalingPolicies.get, the resource name  of the policy has the following format:
+                /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieves autoscaling policy.</summary>
+                public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AutoscalingPolicy>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The "resource name" of the autoscaling policy, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.autoscalingPolicies.get, the resource name  of the policy has the following
+                    /// format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                    /// projects.locations.autoscalingPolicies.get, the resource name  of the policy has the following
+                    /// format:  projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                /// exists and does not have a policy set.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
+                {
+                    return new GetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                /// exists and does not have a policy set.</summary>
+                public class GetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                    /// documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "getIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+resource}:getIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists autoscaling policies in the project.</summary>
+                /// <param name="parent">Required. The "resource name" of the region or location, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.list, the resource
+                /// name  of the region has the following format:  projects/{project_id}/regions/{region} For
+                /// projects.locations.autoscalingPolicies.list, the resource name  of the location has the following format:
+                /// projects/{project_id}/locations/{location}</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists autoscaling policies in the project.</summary>
+                public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.ListAutoscalingPoliciesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The "resource name" of the region or location, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.autoscalingPolicies.list, the resource name  of the region has the following
+                    /// format:  projects/{project_id}/regions/{region} For projects.locations.autoscalingPolicies.list,
+                    /// the resource name  of the location has the following format:
+                    /// projects/{project_id}/locations/{location}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
+                    /// results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The maximum number of results to return in each response. Must be less than
+                    /// or equal to 1000. Defaults to 100.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/autoscalingPolicies"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                /// policy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                /// policy.</summary>
+                public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                    /// documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "setIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+resource}:setIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.</summary>
+                public class TestIamPermissionsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
+                    /// operation documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "testIamPermissions"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+resource}:testIamPermissions"; }
+                    }
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Updates (replaces) autoscaling policy.Disabled check for update_mask, because all updates
+                /// will be full replacements.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Output only. The "resource name" of the autoscaling policy, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of
+                /// the  policy has the following format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                /// projects.locations.autoscalingPolicies, the resource name of the  policy has the following format:
+                /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</param>
+                public virtual UpdateRequest Update(Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string name)
+                {
+                    return new UpdateRequest(service, body, name);
+                }
+
+                /// <summary>Updates (replaces) autoscaling policy.Disabled check for update_mask, because all updates
+                /// will be full replacements.</summary>
+                public class UpdateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AutoscalingPolicy>
+                {
+                    /// <summary>Constructs a new Update request.</summary>
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Output only. The "resource name" of the autoscaling policy, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies,
+                    /// the resource name of the  policy has the following format:
+                    /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                    /// projects.locations.autoscalingPolicies, the resource name of the  policy has the following
+                    /// format:  projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.AutoscalingPolicy Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "update"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PUT"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Update parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$",
+                            });
+                    }
+
+                }
+            }
             private readonly WorkflowTemplatesResource workflowTemplates;
 
             /// <summary>Gets the WorkflowTemplates resource.</summary>
@@ -1249,6 +1889,7 @@ namespace Google.Apis.Dataproc.v1
             public RegionsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                autoscalingPolicies = new AutoscalingPoliciesResource(service);
                 clusters = new ClustersResource(service);
                 jobs = new JobsResource(service);
                 operations = new OperationsResource(service);
@@ -1256,6 +1897,645 @@ namespace Google.Apis.Dataproc.v1
 
             }
 
+            private readonly AutoscalingPoliciesResource autoscalingPolicies;
+
+            /// <summary>Gets the AutoscalingPolicies resource.</summary>
+            public virtual AutoscalingPoliciesResource AutoscalingPolicies
+            {
+                get { return autoscalingPolicies; }
+            }
+
+            /// <summary>The "autoscalingPolicies" collection of methods.</summary>
+            public class AutoscalingPoliciesResource
+            {
+                private const string Resource = "autoscalingPolicies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AutoscalingPoliciesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Creates new autoscaling policy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The "resource name" of the region or location, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.create, the resource
+                /// name  of the region has the following format:  projects/{project_id}/regions/{region} For
+                /// projects.locations.autoscalingPolicies.create, the resource name  of the location has the following format:
+                /// projects/{project_id}/locations/{location}</param>
+                public virtual CreateRequest Create(Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates new autoscaling policy.</summary>
+                public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AutoscalingPolicy>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The "resource name" of the region or location, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.autoscalingPolicies.create, the resource name  of the region has the following
+                    /// format:  projects/{project_id}/regions/{region} For
+                    /// projects.locations.autoscalingPolicies.create, the resource name  of the location has the
+                    /// following format:  projects/{project_id}/locations/{location}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.AutoscalingPolicy Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/autoscalingPolicies"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes an autoscaling policy. It is an error to delete an autoscaling policy that is in
+                /// use by one or more clusters.</summary>
+                /// <param name="name">Required. The "resource name" of the autoscaling policy, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.delete, the resource
+                /// name  of the policy has the following format:
+                /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                /// projects.locations.autoscalingPolicies.delete, the resource name  of the policy has the following format:
+                /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes an autoscaling policy. It is an error to delete an autoscaling policy that is in
+                /// use by one or more clusters.</summary>
+                public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The "resource name" of the autoscaling policy, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.autoscalingPolicies.delete, the resource name  of the policy has the following
+                    /// format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                    /// projects.locations.autoscalingPolicies.delete, the resource name  of the policy has the
+                    /// following format:
+                    /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Retrieves autoscaling policy.</summary>
+                /// <param name="name">Required. The "resource name" of the autoscaling policy, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.get, the resource name
+                /// of the policy has the following format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                /// projects.locations.autoscalingPolicies.get, the resource name  of the policy has the following format:
+                /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieves autoscaling policy.</summary>
+                public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AutoscalingPolicy>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The "resource name" of the autoscaling policy, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.autoscalingPolicies.get, the resource name  of the policy has the following
+                    /// format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                    /// projects.locations.autoscalingPolicies.get, the resource name  of the policy has the following
+                    /// format:  projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                /// exists and does not have a policy set.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
+                {
+                    return new GetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                /// exists and does not have a policy set.</summary>
+                public class GetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                    /// documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.GetIamPolicyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "getIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+resource}:getIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists autoscaling policies in the project.</summary>
+                /// <param name="parent">Required. The "resource name" of the region or location, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.list, the resource
+                /// name  of the region has the following format:  projects/{project_id}/regions/{region} For
+                /// projects.locations.autoscalingPolicies.list, the resource name  of the location has the following format:
+                /// projects/{project_id}/locations/{location}</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists autoscaling policies in the project.</summary>
+                public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.ListAutoscalingPoliciesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The "resource name" of the region or location, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For
+                    /// projects.regions.autoscalingPolicies.list, the resource name  of the region has the following
+                    /// format:  projects/{project_id}/regions/{region} For projects.locations.autoscalingPolicies.list,
+                    /// the resource name  of the location has the following format:
+                    /// projects/{project_id}/locations/{location}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
+                    /// results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The maximum number of results to return in each response. Must be less than
+                    /// or equal to 1000. Defaults to 100.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+parent}/autoscalingPolicies"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                /// policy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                /// policy.</summary>
+                public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                    /// documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "setIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+resource}:setIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.</summary>
+                public class TestIamPermissionsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
+                    /// operation documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "testIamPermissions"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+resource}:testIamPermissions"; }
+                    }
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Updates (replaces) autoscaling policy.Disabled check for update_mask, because all updates
+                /// will be full replacements.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Output only. The "resource name" of the autoscaling policy, as described in
+                /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of
+                /// the  policy has the following format:  projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                /// projects.locations.autoscalingPolicies, the resource name of the  policy has the following format:
+                /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</param>
+                public virtual UpdateRequest Update(Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string name)
+                {
+                    return new UpdateRequest(service, body, name);
+                }
+
+                /// <summary>Updates (replaces) autoscaling policy.Disabled check for update_mask, because all updates
+                /// will be full replacements.</summary>
+                public class UpdateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.AutoscalingPolicy>
+                {
+                    /// <summary>Constructs a new Update request.</summary>
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.AutoscalingPolicy body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Output only. The "resource name" of the autoscaling policy, as described in
+                    /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies,
+                    /// the resource name of the  policy has the following format:
+                    /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+                    /// projects.locations.autoscalingPolicies, the resource name of the  policy has the following
+                    /// format:  projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.AutoscalingPolicy Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "update"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PUT"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Update parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$",
+                            });
+                    }
+
+                }
+            }
             private readonly ClustersResource clusters;
 
             /// <summary>Gets the Clusters resource.</summary>
@@ -2637,20 +3917,6 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
-                    /// named cluster.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterName { get; set; }
-
-                    /// <summary>Optional. A filter constraining the jobs to list. Filters are case-sensitive and have
-                    /// the following syntax:field = value AND field = value ...where field is status.state or
-                    /// labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be
-                    /// either ACTIVE or NON_ACTIVE. Only the logical AND operator is supported; space-separated items
-                    /// are treated as having an implicit AND operator.Example filter:status.state = ACTIVE AND
-                    /// labels.env = staging AND labels.starred = *</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>Optional. Specifies enumerated categories of jobs to list. (default = match ALL
                     /// jobs).If filter is provided, jobStateMatcher will be ignored.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobStateMatcher", Google.Apis.Util.RequestParameterType.Query)]
@@ -2676,6 +3942,20 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>Optional. The number of results to return in each response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
+                    /// named cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterName { get; set; }
+
+                    /// <summary>Optional. A filter constraining the jobs to list. Filters are case-sensitive and have
+                    /// the following syntax:field = value AND field = value ...where field is status.state or
+                    /// labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be
+                    /// either ACTIVE or NON_ACTIVE. Only the logical AND operator is supported; space-separated items
+                    /// are treated as having an implicit AND operator.Example filter:status.state = ACTIVE AND
+                    /// labels.env = staging AND labels.starred = *</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2720,24 +4000,6 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "jobStateMatcher", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "jobStateMatcher",
@@ -2759,6 +4021,24 @@ namespace Google.Apis.Dataproc.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterName",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4562,6 +5842,111 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Autoscaling Policy config associated with the cluster.</summary>
+    public class AutoscalingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The autoscaling policy used by the cluster.Only resource names including projectid and
+        /// location (region) are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/locations
+        /// /[dataproc_region]/autoscalingPolicies/[policy_id]
+        /// projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must
+        /// be in the same project and Cloud Dataproc region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyUri")]
+        public virtual string PolicyUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Describes an autoscaling policy for Dataproc cluster autoscaler.</summary>
+    public class AutoscalingPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("basicAlgorithm")]
+        public virtual BasicAutoscalingAlgorithm BasicAlgorithm { get; set; } 
+
+        /// <summary>Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores
+        /// (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50
+        /// characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Output only. The "resource name" of the autoscaling policy, as described in
+        /// https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource
+        /// name of the  policy has the following format:
+        /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For
+        /// projects.locations.autoscalingPolicies, the resource name of the  policy has the following format:
+        /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Optional. Describes how the autoscaler will operate for secondary workers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryWorkerConfig")]
+        public virtual InstanceGroupAutoscalingPolicyConfig SecondaryWorkerConfig { get; set; } 
+
+        /// <summary>Required. Describes how the autoscaler will operate for primary workers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
+        public virtual InstanceGroupAutoscalingPolicyConfig WorkerConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Basic algorithm for autoscaling.</summary>
+    public class BasicAutoscalingAlgorithm : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Duration between scaling events. A scaling period starts after the update operation from
+        /// the previous event has completed.Bounds: 2m, 1d. Default: 2m.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cooldownPeriod")]
+        public virtual object CooldownPeriod { get; set; } 
+
+        /// <summary>Required. YARN autoscaling configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yarnConfig")]
+        public virtual BasicYarnAutoscalingConfig YarnConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Basic autoscaling configurations for YARN.</summary>
+    public class BasicYarnAutoscalingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to
+        /// wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only
+        /// applicable to downscaling operations.Bounds: 0s, 1d.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gracefulDecommissionTimeout")]
+        public virtual object GracefulDecommissionTimeout { get; set; } 
+
+        /// <summary>Required. Fraction of average pending memory in the last cooldown period for which to remove
+        /// workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining
+        /// after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be
+        /// beneficial for autoscaling a single job.Bounds: 0.0, 1.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleDownFactor")]
+        public virtual System.Nullable<double> ScaleDownFactor { get; set; } 
+
+        /// <summary>Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs.
+        /// For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2
+        /// worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any
+        /// recommended change.Bounds: 0.0, 1.0. Default: 0.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleDownMinWorkerFraction")]
+        public virtual System.Nullable<double> ScaleDownMinWorkerFraction { get; set; } 
+
+        /// <summary>Required. Fraction of average pending memory in the last cooldown period for which to add workers.
+        /// A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the
+        /// update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of
+        /// scaling up (less aggressive scaling).Bounds: 0.0, 1.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleUpFactor")]
+        public virtual System.Nullable<double> ScaleUpFactor { get; set; } 
+
+        /// <summary>Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For
+        /// example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker
+        /// scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended
+        /// change.Bounds: 0.0, 1.0. Default: 0.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleUpMinWorkerFraction")]
+        public virtual System.Nullable<double> ScaleUpMinWorkerFraction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Associates members with a role.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4649,6 +6034,11 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>The cluster config.</summary>
     public class ClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale
+        /// if this field is unset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingConfig")]
+        public virtual AutoscalingConfig AutoscalingConfig { get; set; } 
+
         /// <summary>Optional. A Google Cloud Storage bucket used to stage job dependencies, config files, and job
         /// driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage
         /// location (US, ASIA, or EU) for your cluster's staging bucket according to the Google Compute Engine zone
@@ -5012,8 +6402,10 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If the value
-        /// is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+        /// <summary>Optional. The policy format version to be returned.Valid values are 0, 1, and 3. Requests
+        /// specifying an invalid value will be rejected.Requests for policies with any conditional bindings must
+        /// specify version 3. Policies without any conditional bindings may specify any valid value or leave the field
+        /// unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
 
@@ -5102,6 +6494,39 @@ namespace Google.Apis.Dataproc.v1.Data
         /// name="value";).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptVariables")]
         public virtual System.Collections.Generic.IDictionary<string,string> ScriptVariables { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for the size bounds of an instance group, including its proportional size to other
+    /// groups.</summary>
+    public class InstanceGroupAutoscalingPolicyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Maximum number of instances for this group. Required for primary workers. Note that by
+        /// default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary
+        /// instances is set.Primary workers - Bounds: [min_instances, ). Required. Secondary workers - Bounds:
+        /// [min_instances, ). Default: 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxInstances")]
+        public virtual System.Nullable<int> MaxInstances { get; set; } 
+
+        /// <summary>Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances.
+        /// Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minInstances")]
+        public virtual System.Nullable<int> MinInstances { get; set; } 
+
+        /// <summary>Optional. Weight for the instance group, which is used to determine the fraction of total workers
+        /// in the cluster from this instance group. For example, if primary workers have weight 2, and secondary
+        /// workers have weight 1, the cluster will have approximately 2 primary workers for each secondary worker.The
+        /// cluster may not reach the specified balance if constrained by min/max bounds or other autoscaling settings.
+        /// For example, if max_instances for secondary workers is 0, then only primary workers will be added. The
+        /// cluster can also be out of balance when created.If weight is not set on any instance group, the cluster will
+        /// default to equal weight for all groups: the cluster will attempt to maintain an equal number of workers in
+        /// each group within the configured size bounds for each group. If weight is set for one group only, the
+        /// cluster will default to zero weight on the unset group. For example if weight is set only on primary
+        /// workers, the cluster will use primary workers only and no secondary workers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<int> Weight { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5440,6 +6865,21 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A response to a request to list autoscaling policies in a project.</summary>
+    public class ListAutoscalingPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. This token is included in the response if there are more results to fetch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>Output only. Autoscaling policies list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
+        public virtual System.Collections.Generic.IList<AutoscalingPolicy> Policies { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The list of all clusters in a project.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5743,7 +7183,9 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Deprecated.</summary>
+        /// <summary>Specifies the format of the policy.Valid values are 0, 1, and 3. Requests specifying an invalid
+        /// value will be rejected.Policies with any conditional bindings must specify version 3. Policies without any
+        /// conditional bindings may specify any valid value or leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

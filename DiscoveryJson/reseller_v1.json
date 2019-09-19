@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/pox8safIyKhQhE-OIi12fI9ZcrM\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/pox8safIyKhQhE-OIi12fI9ZcrM\"",
  "discoveryVersion": "v1",
  "id": "reseller:v1",
  "name": "reseller",

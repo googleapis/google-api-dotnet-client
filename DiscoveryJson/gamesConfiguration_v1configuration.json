@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/34a5TwsbXVW6Uz9s9xqUqRjGNdI\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/34a5TwsbXVW6Uz9s9xqUqRjGNdI\"",
  "discoveryVersion": "v1",
  "id": "gamesConfiguration:v1configuration",
  "name": "gamesConfiguration",
