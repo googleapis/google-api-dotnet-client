@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/9Oh4KBZowCPgFtht1bjglfUQ9l0\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/e_9svBDKpEhKzNCPExvJZYx1qaM\"",
  "discoveryVersion": "v1",
  "id": "storage:v1",
  "name": "storage",
  "version": "v1",
- "revision": "20190812",
+ "revision": "20190913",
  "title": "Cloud Storage JSON API",
  "description": "Stores and retrieves potentially large, immutable data objects.",
  "ownerDomain": "google.com",
@@ -207,7 +207,8 @@
         },
         "lockedTime": {
          "type": "string",
-         "description": "The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable."
+         "description": "The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.",
+         "format": "date-time"
         }
        }
       }

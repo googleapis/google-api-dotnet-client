@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker'>Service Broker API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190909 (1712)
+ *      <tr><th>API Rev<td>20190918 (1721)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker'>
  *              https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/binary-authorization/'>Binary Authorization API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190906 (1709)
+ *      <tr><th>API Rev<td>20190916 (1719)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/binary-authorization/'>
  *              https://cloud.google.com/binary-authorization/</a>
@@ -338,6 +338,7 @@ namespace Google.Apis.BinaryAuthorization.v1
         {
             this.service = service;
             attestors = new AttestorsResource(service);
+            policy = new PolicyResource(service);
 
         }
 
@@ -572,6 +573,88 @@ namespace Google.Apis.BinaryAuthorization.v1
 
             }
 
+            /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
+            /// and does not have a policy set.</summary>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+            /// documentation for the appropriate value for this field.</param>
+            public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+            {
+                return new GetIamPolicyRequest(service, resource);
+            }
+
+            /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
+            /// and does not have a policy set.</summary>
+            public class GetIamPolicyRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.IamPolicy>
+            {
+                /// <summary>Constructs a new GetIamPolicy request.</summary>
+                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
+                    : base(service)
+                {
+                    Resource = resource;
+                    InitParameters();
+                }
+
+
+                /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                /// documentation for the appropriate value for this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Resource { get; private set; }
+
+                /// <summary>Optional. The policy format version to be returned.
+                ///
+                /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+                ///
+                /// Requests for policies with any conditional bindings must specify version 3. Policies without any
+                /// conditional bindings may specify any valid value or leave the field unset.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "getIamPolicy"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+resource}:getIamPolicy"; }
+                }
+
+                /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/attestors/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
             /// <summary>Lists attestors. Returns INVALID_ARGUMENT if the project does not exist.</summary>
             /// <param name="parent">Required. The resource name of the project associated with the attestors, in the format
             /// `projects`.</param>
@@ -663,6 +746,156 @@ namespace Google.Apis.BinaryAuthorization.v1
 
             }
 
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+            /// policy.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+            /// documentation for the appropriate value for this field.</param>
+            public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BinaryAuthorization.v1.Data.SetIamPolicyRequest body, string resource)
+            {
+                return new SetIamPolicyRequest(service, body, resource);
+            }
+
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+            /// policy.</summary>
+            public class SetIamPolicyRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.IamPolicy>
+            {
+                /// <summary>Constructs a new SetIamPolicy request.</summary>
+                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BinaryAuthorization.v1.Data.SetIamPolicyRequest body, string resource)
+                    : base(service)
+                {
+                    Resource = resource;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                /// documentation for the appropriate value for this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Resource { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.BinaryAuthorization.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "setIamPolicy"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+resource}:setIamPolicy"; }
+                }
+
+                /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/attestors/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            ///
+            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+            /// documentation for the appropriate value for this field.</param>
+            public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BinaryAuthorization.v1.Data.TestIamPermissionsRequest body, string resource)
+            {
+                return new TestIamPermissionsRequest(service, body, resource);
+            }
+
+            /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            ///
+            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            public class TestIamPermissionsRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.TestIamPermissionsResponse>
+            {
+                /// <summary>Constructs a new TestIamPermissions request.</summary>
+                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.BinaryAuthorization.v1.Data.TestIamPermissionsRequest body, string resource)
+                    : base(service)
+                {
+                    Resource = resource;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Resource { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.BinaryAuthorization.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "testIamPermissions"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+resource}:testIamPermissions"; }
+                }
+
+                /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/attestors/[^/]+$",
+                        });
+                }
+
+            }
+
             /// <summary>Updates an attestor. Returns NOT_FOUND if the attestor does not exist.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The resource name, in the format: `projects/attestors`. This field may not be
@@ -728,6 +961,262 @@ namespace Google.Apis.BinaryAuthorization.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/attestors/[^/]+$",
+                        });
+                }
+
+            }
+        }
+        private readonly PolicyResource policy;
+
+        /// <summary>Gets the Policy resource.</summary>
+        public virtual PolicyResource Policy
+        {
+            get { return policy; }
+        }
+
+        /// <summary>The "policy" collection of methods.</summary>
+        public class PolicyResource
+        {
+            private const string Resource = "policy";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public PolicyResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
+            /// and does not have a policy set.</summary>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+            /// documentation for the appropriate value for this field.</param>
+            public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+            {
+                return new GetIamPolicyRequest(service, resource);
+            }
+
+            /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
+            /// and does not have a policy set.</summary>
+            public class GetIamPolicyRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.IamPolicy>
+            {
+                /// <summary>Constructs a new GetIamPolicy request.</summary>
+                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
+                    : base(service)
+                {
+                    Resource = resource;
+                    InitParameters();
+                }
+
+
+                /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                /// documentation for the appropriate value for this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Resource { get; private set; }
+
+                /// <summary>Optional. The policy format version to be returned.
+                ///
+                /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+                ///
+                /// Requests for policies with any conditional bindings must specify version 3. Policies without any
+                /// conditional bindings may specify any valid value or leave the field unset.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "getIamPolicy"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+resource}:getIamPolicy"; }
+                }
+
+                /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/policy$",
+                        });
+                    RequestParameters.Add(
+                        "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+            /// policy.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+            /// documentation for the appropriate value for this field.</param>
+            public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BinaryAuthorization.v1.Data.SetIamPolicyRequest body, string resource)
+            {
+                return new SetIamPolicyRequest(service, body, resource);
+            }
+
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+            /// policy.</summary>
+            public class SetIamPolicyRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.IamPolicy>
+            {
+                /// <summary>Constructs a new SetIamPolicy request.</summary>
+                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BinaryAuthorization.v1.Data.SetIamPolicyRequest body, string resource)
+                    : base(service)
+                {
+                    Resource = resource;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                /// documentation for the appropriate value for this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Resource { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.BinaryAuthorization.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "setIamPolicy"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+resource}:setIamPolicy"; }
+                }
+
+                /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/policy$",
+                        });
+                }
+
+            }
+
+            /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            ///
+            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+            /// documentation for the appropriate value for this field.</param>
+            public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BinaryAuthorization.v1.Data.TestIamPermissionsRequest body, string resource)
+            {
+                return new TestIamPermissionsRequest(service, body, resource);
+            }
+
+            /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            ///
+            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            public class TestIamPermissionsRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.TestIamPermissionsResponse>
+            {
+                /// <summary>Constructs a new TestIamPermissions request.</summary>
+                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.BinaryAuthorization.v1.Data.TestIamPermissionsRequest body, string resource)
+                    : base(service)
+                {
+                    Resource = resource;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Resource { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.BinaryAuthorization.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "testIamPermissions"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+resource}:testIamPermissions"; }
+                }
+
+                /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/policy$",
                         });
                 }
 
@@ -984,6 +1473,48 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Associates `members` with a `role`.</summary>
+    public class Binding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow
+        /// user access via current binding. Different bindings, including their conditions, are examined
+        /// independently.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual Expr Condition { get; set; } 
+
+        /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
+        /// following values:
+        ///
+        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
+        /// account.
+        ///
+        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
+        /// account or a service account.
+        ///
+        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
+        /// `alice@example.com` .
+        ///
+        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
+        /// app@appspot.gserviceaccount.com`.
+        ///
+        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
+        ///
+        /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
+        /// `google.com` or `example.com`.
+        ///
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+
+        /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
+        /// `roles/owner`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -994,6 +1525,86 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an expression text. Example:
+    ///
+    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
+    /// "size(request.user) > 0"</summary>
+    public class Expr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
+        /// e.g. when hovered over it in a UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.
+        ///
+        /// The application context of the containing message determines which well-known feature set of CEL is
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; } 
+
+        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// and a position in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// e.g. in UIs which allow to enter the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
+    /// for Cloud Platform resources.
+    ///
+    /// A `Policy` consists of a list of `bindings`. A `binding` binds a list of `members` to a `role`, where the
+    /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
+    /// permissions defined by IAM.
+    ///
+    /// **JSON Example**
+    ///
+    /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
+    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role": "roles/viewer",
+    /// "members": ["user:sean@example.com"] } ] }
+    ///
+    /// **YAML Example**
+    ///
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
+    /// other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com role: roles/viewer
+    ///
+    /// For a description of IAM and its features, see the [IAM developer's
+    /// guide](https://cloud.google.com/iam/docs).</summary>
+    public class IamPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
+        /// error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+
+        /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
+        /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
+        /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
+        ///
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Specifies the format of the policy.
+        ///
+        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        ///
+        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
+        /// specify any valid value or leave the field unset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; } 
+
     }    
 
     /// <summary>Response message for BinauthzManagementService.ListAttestors.</summary>
@@ -1070,6 +1681,43 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// <summary>Output only. Time when the policy was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for `SetIamPolicy` method.</summary>
+    public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to
+        /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
+        /// might reject them.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual IamPolicy Policy { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for `TestIamPermissions` method.</summary>
+    public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or
+        /// 'storage.*') are not allowed. For more information see [IAM
+        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for `TestIamPermissions` method.</summary>
+    public class TestIamPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

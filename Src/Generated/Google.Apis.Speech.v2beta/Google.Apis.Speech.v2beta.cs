@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech-to-Text API</a>
  *      <tr><th>API Version<td>v2beta
- *      <tr><th>API Rev<td>20190830 (1702)
+ *      <tr><th>API Rev<td>20190918 (1721)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -488,10 +488,6 @@ namespace Google.Apis.Speech.v2beta
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -499,6 +495,10 @@ namespace Google.Apis.Speech.v2beta
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -534,15 +534,6 @@ namespace Google.Apis.Speech.v2beta
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -555,6 +546,15 @@ namespace Google.Apis.Speech.v2beta
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -747,8 +747,8 @@ namespace Google.Apis.Speech.v2beta.Data
         /// <summary>Output only. Time offset relative to the beginning of the audio, and corresponding to the end of
         /// the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis.
         /// This is an experimental feature and the accuracy of the time offset can vary.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
+        public virtual object EndOffset { get; set; } 
 
         /// <summary>Output only. A distinct integer value is assigned for every speaker within the audio. This field
         /// specifies which one of those speakers was detected to have spoken this word. Value ranges from `1` to
@@ -760,8 +760,8 @@ namespace Google.Apis.Speech.v2beta.Data
         /// <summary>Output only. Time offset relative to the beginning of the audio, and corresponding to the start of
         /// the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis.
         /// This is an experimental feature and the accuracy of the time offset can vary.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
+        public virtual object StartOffset { get; set; } 
 
         /// <summary>Output only. The word corresponding to this set of information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("word")]

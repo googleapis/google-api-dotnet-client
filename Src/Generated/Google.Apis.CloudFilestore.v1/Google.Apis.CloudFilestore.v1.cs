@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/filestore/'>Cloud Filestore API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190812 (1684)
+ *      <tr><th>API Rev<td>20190917 (1720)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/filestore/'>
  *              https://cloud.google.com/filestore/</a>
@@ -747,7 +747,8 @@ namespace Google.Apis.CloudFilestore.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>Mask of fields to update.  At least one path must be supplied in this field.  The
-                    /// elements of the repeated paths field may only include these fields: "description"</summary>
+                    /// elements of the repeated paths field may only include these fields: "description" "file_shares"
+                    /// "labels"</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -1455,6 +1456,11 @@ namespace Google.Apis.CloudFilestore.v1.Data
         /// <summary>The scheduled end time for the maintenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
+
+        /// <summary>The rollout management policy this maintenance schedule is associated with. When doing reschedule
+        /// update request, the reschedule should be against this given policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutManagementPolicy")]
+        public virtual string RolloutManagementPolicy { get; set; } 
 
         /// <summary>The scheduled start time for the maintenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]

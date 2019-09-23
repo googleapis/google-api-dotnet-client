@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/Mc_GzGwR9ClBd94tvbqptFNCmMM\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/rA4XrkQXRfMJJQlNvJhTbHl0DwY\"",
  "discoveryVersion": "v1",
  "id": "doubleclicksearch:v2",
  "name": "doubleclicksearch",
  "version": "v2",
- "revision": "20190910",
+ "revision": "20190917",
  "title": "Search Ads 360 API",
  "description": "Reports and modifies your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).",
  "ownerDomain": "google.com",

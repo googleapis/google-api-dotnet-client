@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/2xwup7-cYal25t28EQf2AqLmCtw\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/EpTgmyPeHqlRqqzcWrgSB3inSME\"",
  "discoveryVersion": "v1",
  "id": "fitness:v1",
  "name": "fitness",
  "version": "v1",
- "revision": "20190910",
+ "revision": "20190916",
  "title": "Fitness",
  "description": "Stores and accesses user data in the fitness store from apps on any platform.",
  "ownerDomain": "google.com",
@@ -70,58 +70,58 @@
   "oauth2": {
    "scopes": {
     "https://www.googleapis.com/auth/fitness.activity.read": {
-     "description": "View your activity information in Google Fit"
+     "description": "Use Google Fit to see and store your physical activity data"
     },
     "https://www.googleapis.com/auth/fitness.activity.write": {
-     "description": "View and store your activity information in Google Fit"
+     "description": "See and add to your Google Fit physical activity data"
     },
     "https://www.googleapis.com/auth/fitness.blood_glucose.read": {
-     "description": "View blood glucose data in Google Fit"
+     "description": "See info about your blood glucose in Google Fit"
     },
     "https://www.googleapis.com/auth/fitness.blood_glucose.write": {
-     "description": "View and store blood glucose data in Google Fit"
+     "description": "See and add info about your blood glucose to Google Fit"
     },
     "https://www.googleapis.com/auth/fitness.blood_pressure.read": {
-     "description": "View blood pressure data in Google Fit"
+     "description": "See info about your blood pressure in Google Fit"
     },
     "https://www.googleapis.com/auth/fitness.blood_pressure.write": {
-     "description": "View and store blood pressure data in Google Fit"
+     "description": "See and add info about your blood pressure in Google Fit"
     },
     "https://www.googleapis.com/auth/fitness.body.read": {
-     "description": "View body sensor information in Google Fit"
+     "description": "See info about your body measurements and heart rate in Google Fit"
     },
     "https://www.googleapis.com/auth/fitness.body.write": {
-     "description": "View and store body sensor data in Google Fit"
+     "description": "See and add info about your body measurements and heart rate to Google Fit"
     },
     "https://www.googleapis.com/auth/fitness.body_temperature.read": {
-     "description": "View body temperature data in Google Fit"
+     "description": "See info about your body temperature in Google Fit"
     },
     "https://www.googleapis.com/auth/fitness.body_temperature.write": {
-     "description": "View and store body temperature data in Google Fit"
+     "description": "See and add to info about your body temperature in Google Fit"
     },
     "https://www.googleapis.com/auth/fitness.location.read": {
-     "description": "View your stored location data in Google Fit"
+     "description": "See your Google Fit speed and distance data"
     },
     "https://www.googleapis.com/auth/fitness.location.write": {
-     "description": "View and store your location data in Google Fit"
+     "description": "See and add to your Google Fit location data"
     },
     "https://www.googleapis.com/auth/fitness.nutrition.read": {
-     "description": "View nutrition information in Google Fit"
+     "description": "See info about your nutrition in Google Fit"
     },
     "https://www.googleapis.com/auth/fitness.nutrition.write": {
-     "description": "View and store nutrition information in Google Fit"
+     "description": "See and add to info about your nutrition in Google Fit"
     },
     "https://www.googleapis.com/auth/fitness.oxygen_saturation.read": {
-     "description": "View oxygen saturation data in Google Fit"
+     "description": "See info about your oxygen saturation in Google Fit"
     },
     "https://www.googleapis.com/auth/fitness.oxygen_saturation.write": {
-     "description": "View and store oxygen saturation data in Google Fit"
+     "description": "See and add info about your oxygen saturation in Google Fit"
     },
     "https://www.googleapis.com/auth/fitness.reproductive_health.read": {
-     "description": "View reproductive health data in Google Fit"
+     "description": "See info about your reproductive health in Google Fit"
     },
     "https://www.googleapis.com/auth/fitness.reproductive_health.write": {
-     "description": "View and store reproductive health data in Google Fit"
+     "description": "See and add info about your reproductive health in Google Fit"
     }
    }
   }

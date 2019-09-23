@@ -1,27 +1,45 @@
 {
+  "batchPath": "batch",
+  "revision": "20190812",
+  "documentationLink": "https://developers.google.com/amp/cache/",
+  "id": "acceleratedmobilepageurl:v1",
+  "title": "Accelerated Mobile Pages (AMP) URL API",
+  "discoveryVersion": "v1",
+  "ownerName": "Google",
+  "version_module": true,
+  "resources": {
+    "ampUrls": {
+      "methods": {
+        "batchGet": {
+          "flatPath": "v1/ampUrls:batchGet",
+          "path": "v1/ampUrls:batchGet",
+          "id": "acceleratedmobilepageurl.ampUrls.batchGet",
+          "description": "Returns AMP URL(s) and equivalent\n[AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).",
+          "request": {
+            "$ref": "BatchGetAmpUrlsRequest"
+          },
+          "response": {
+            "$ref": "BatchGetAmpUrlsResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "parameters": {}
+        }
+      }
+    }
+  },
   "parameters": {
-    "fields": {
+    "callback": {
       "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
+      "description": "JSONP",
       "type": "string"
     },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "callback": {
-      "type": "string",
-      "location": "query",
-      "description": "JSONP"
-    },
     "oauth_token": {
-      "type": "string",
       "location": "query",
-      "description": "OAuth 2.0 token for the current user."
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
     },
     "$.xgafv": {
-      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -31,14 +49,10 @@
         "1",
         "2"
       ],
-      "description": "V1 error format."
+      "description": "V1 error format.",
+      "type": "string"
     },
     "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
@@ -47,17 +61,22 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json"
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
     },
     "access_token": {
+      "location": "query",
       "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "key": {
+      "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "upload_protocol": {
       "location": "query",
@@ -65,20 +84,29 @@
       "type": "string"
     },
     "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string",
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+      "location": "query"
     },
     "prettyPrint": {
-      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true"
+      "default": "true",
+      "location": "query"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
     }
   },
   "schemas": {
     "BatchGetAmpUrlsResponse": {
-      "id": "BatchGetAmpUrlsResponse",
       "description": "Batch AMP URL response.",
       "type": "object",
       "properties": {
@@ -96,7 +124,8 @@
             "$ref": "AmpUrlError"
           }
         }
-      }
+      },
+      "id": "BatchGetAmpUrlsResponse"
     },
     "AmpUrl": {
       "description": "AMP URL response for a requested URL.",
@@ -107,8 +136,8 @@
           "type": "string"
         },
         "originalUrl": {
-          "type": "string",
-          "description": "The original non-AMP URL."
+          "description": "The original non-AMP URL.",
+          "type": "string"
         },
         "ampUrl": {
           "description": "The AMP URL pointing to the publisher's web server.",
@@ -121,6 +150,10 @@
       "description": "AMP URL Error resource for a requested URL that couldn't be found.",
       "type": "object",
       "properties": {
+        "errorMessage": {
+          "description": "An optional descriptive error message.",
+          "type": "string"
+        },
         "errorCode": {
           "description": "The error code of an API call.",
           "type": "string",
@@ -144,18 +177,23 @@
         "originalUrl": {
           "description": "The original non-AMP URL.",
           "type": "string"
-        },
-        "errorMessage": {
-          "description": "An optional descriptive error message.",
-          "type": "string"
         }
       },
       "id": "AmpUrlError"
     },
     "BatchGetAmpUrlsRequest": {
+      "description": "AMP URL request for a batch of URLs.",
       "type": "object",
       "properties": {
+        "urls": {
+          "description": "List of URLs to look up for the paired AMP URLs.\nThe URLs are case-sensitive. Up to 50 URLs per lookup\n(see [Usage Limits](/amp/cache/reference/limits)).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "lookupStrategy": {
+          "description": "The lookup_strategy being requested.",
           "type": "string",
           "enumDescriptions": [
             "FETCH_LIVE_DOC strategy involves live document fetch of URLs not found in\nthe index. Any request URL not found in the index is crawled in realtime\nto validate if there is a corresponding AMP URL. This strategy has higher\ncoverage but with extra latency introduced by realtime crawling. This is\nthe default strategy. Applications using this strategy should set higher\nHTTP timeouts of the API calls.",
@@ -164,26 +202,17 @@
           "enum": [
             "FETCH_LIVE_DOC",
             "IN_INDEX_DOC"
-          ],
-          "description": "The lookup_strategy being requested."
-        },
-        "urls": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "List of URLs to look up for the paired AMP URLs.\nThe URLs are case-sensitive. Up to 50 URLs per lookup\n(see [Usage Limits](/amp/cache/reference/limits))."
+          ]
         }
       },
-      "id": "BatchGetAmpUrlsRequest",
-      "description": "AMP URL request for a batch of URLs."
+      "id": "BatchGetAmpUrlsRequest"
     }
   },
-  "protocol": "rest",
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
+  "protocol": "rest",
   "version": "v1",
   "baseUrl": "https://acceleratedmobilepageurl.googleapis.com/",
   "kind": "discovery#restDescription",
@@ -192,34 +221,5 @@
   "rootUrl": "https://acceleratedmobilepageurl.googleapis.com/",
   "basePath": "",
   "ownerDomain": "google.com",
-  "name": "acceleratedmobilepageurl",
-  "batchPath": "batch",
-  "revision": "20190812",
-  "documentationLink": "https://developers.google.com/amp/cache/",
-  "id": "acceleratedmobilepageurl:v1",
-  "title": "Accelerated Mobile Pages (AMP) URL API",
-  "discoveryVersion": "v1",
-  "ownerName": "Google",
-  "version_module": true,
-  "resources": {
-    "ampUrls": {
-      "methods": {
-        "batchGet": {
-          "request": {
-            "$ref": "BatchGetAmpUrlsRequest"
-          },
-          "description": "Returns AMP URL(s) and equivalent\n[AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).",
-          "httpMethod": "POST",
-          "parameterOrder": [],
-          "response": {
-            "$ref": "BatchGetAmpUrlsResponse"
-          },
-          "parameters": {},
-          "flatPath": "v1/ampUrls:batchGet",
-          "id": "acceleratedmobilepageurl.ampUrls.batchGet",
-          "path": "v1/ampUrls:batchGet"
-        }
-      }
-    }
-  }
+  "name": "acceleratedmobilepageurl"
 }

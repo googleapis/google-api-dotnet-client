@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190812 (1684)
+ *      <tr><th>API Rev<td>20190913 (1716)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -86,9 +86,9 @@ namespace Google.Apis.Storage.v1beta1
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/storage/v1beta1/"; }
+            get { return BaseUriOverride ?? "https://storage.googleapis.com/storage/v1beta1/"; }
         #else
-            get { return "https://www.googleapis.com/storage/v1beta1/"; }
+            get { return "https://storage.googleapis.com/storage/v1beta1/"; }
         #endif
         }
 
@@ -102,7 +102,7 @@ namespace Google.Apis.Storage.v1beta1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/storage/v1beta1"; }
+            get { return "https://storage.googleapis.com/batch/storage/v1beta1"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>

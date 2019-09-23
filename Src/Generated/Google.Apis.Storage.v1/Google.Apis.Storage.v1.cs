@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190812 (1684)
+ *      <tr><th>API Rev<td>20190913 (1716)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -8393,7 +8393,21 @@ namespace Google.Apis.Storage.v1.Data
                 /// false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from
                 /// true to false until the locked time, after which the field is immutable.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("lockedTime")]
-                public virtual string LockedTime { get; set; } 
+                public virtual string LockedTimeRaw { get; set; }
+
+                /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LockedTimeRaw"/>.</summary>
+                [Newtonsoft.Json.JsonIgnore]
+                public virtual System.Nullable<System.DateTime> LockedTime
+                {
+                    get
+                    {
+                        return Google.Apis.Util.Utilities.GetDateTimeFromString(LockedTimeRaw);
+                    }
+                    set
+                    {
+                        LockedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+                    }
+                }
 
             }
         }    

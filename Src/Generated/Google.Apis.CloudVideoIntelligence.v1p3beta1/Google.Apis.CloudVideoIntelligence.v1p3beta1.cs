@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1p3beta1
- *      <tr><th>API Rev<td>20190911 (1714)
+ *      <tr><th>API Rev<td>20190916 (1719)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -797,7 +797,9 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
         /// <summary>Presence label annotations on video level or user specified segment level. There is exactly one
-        /// element for each unique label.</summary>
+        /// element for each unique label. Compared to the existing topical `segment_label_annotations`, this field
+        /// presents more fine-grained, segment-level labels detected in video content and is made available only when
+        /// the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentPresenceLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1LabelAnnotation> SegmentPresenceLabelAnnotations { get; set; } 
 
@@ -810,8 +812,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1LabelAnnotation> ShotLabelAnnotations { get; set; } 
 
-        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique
-        /// label.</summary>
+        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique label.
+        /// Compared to the existing topical `shot_label_annotations`, this field presents more fine-grained, shot-level
+        /// labels detected in video content and is made available only when the client sets
+        /// `LabelDetectionConfig.model` to "builtin/latest" in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotPresenceLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1LabelAnnotation> ShotPresenceLabelAnnotations { get; set; } 
 
@@ -1276,7 +1280,9 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
         /// <summary>Presence label annotations on video level or user specified segment level. There is exactly one
-        /// element for each unique label.</summary>
+        /// element for each unique label. Compared to the existing topical `segment_label_annotations`, this field
+        /// presents more fine-grained, segment-level labels detected in video content and is made available only when
+        /// the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentPresenceLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2LabelAnnotation> SegmentPresenceLabelAnnotations { get; set; } 
 
@@ -1289,8 +1295,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2LabelAnnotation> ShotLabelAnnotations { get; set; } 
 
-        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique
-        /// label.</summary>
+        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique label.
+        /// Compared to the existing topical `shot_label_annotations`, this field presents more fine-grained, shot-level
+        /// labels detected in video content and is made available only when the client sets
+        /// `LabelDetectionConfig.model` to "builtin/latest" in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotPresenceLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2LabelAnnotation> ShotPresenceLabelAnnotations { get; set; } 
 
@@ -1755,7 +1763,9 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
         /// <summary>Presence label annotations on video level or user specified segment level. There is exactly one
-        /// element for each unique label.</summary>
+        /// element for each unique label. Compared to the existing topical `segment_label_annotations`, this field
+        /// presents more fine-grained, segment-level labels detected in video content and is made available only when
+        /// the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentPresenceLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> SegmentPresenceLabelAnnotations { get; set; } 
 
@@ -1768,8 +1778,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> ShotLabelAnnotations { get; set; } 
 
-        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique
-        /// label.</summary>
+        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique label.
+        /// Compared to the existing topical `shot_label_annotations`, this field presents more fine-grained, shot-level
+        /// labels detected in video content and is made available only when the client sets
+        /// `LabelDetectionConfig.model` to "builtin/latest" in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotPresenceLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> ShotPresenceLabelAnnotations { get; set; } 
 
@@ -2234,7 +2246,9 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
         /// <summary>Presence label annotations on video level or user specified segment level. There is exactly one
-        /// element for each unique label.</summary>
+        /// element for each unique label. Compared to the existing topical `segment_label_annotations`, this field
+        /// presents more fine-grained, segment-level labels detected in video content and is made available only when
+        /// the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentPresenceLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> SegmentPresenceLabelAnnotations { get; set; } 
 
@@ -2247,8 +2261,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> ShotLabelAnnotations { get; set; } 
 
-        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique
-        /// label.</summary>
+        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique label.
+        /// Compared to the existing topical `shot_label_annotations`, this field presents more fine-grained, shot-level
+        /// labels detected in video content and is made available only when the client sets
+        /// `LabelDetectionConfig.model` to "builtin/latest" in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotPresenceLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation> ShotPresenceLabelAnnotations { get; set; } 
 
@@ -3061,7 +3077,9 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> SegmentLabelAnnotations { get; set; } 
 
         /// <summary>Presence label annotations on video level or user specified segment level. There is exactly one
-        /// element for each unique label.</summary>
+        /// element for each unique label. Compared to the existing topical `segment_label_annotations`, this field
+        /// presents more fine-grained, segment-level labels detected in video content and is made available only when
+        /// the client sets `LabelDetectionConfig.model` to "builtin/latest" in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentPresenceLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> SegmentPresenceLabelAnnotations { get; set; } 
 
@@ -3074,8 +3092,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shotLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> ShotLabelAnnotations { get; set; } 
 
-        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique
-        /// label.</summary>
+        /// <summary>Presence label annotations on shot level. There is exactly one element for each unique label.
+        /// Compared to the existing topical `shot_label_annotations`, this field presents more fine-grained, shot-level
+        /// labels detected in video content and is made available only when the client sets
+        /// `LabelDetectionConfig.model` to "builtin/latest" in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotPresenceLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> ShotPresenceLabelAnnotations { get; set; } 
 

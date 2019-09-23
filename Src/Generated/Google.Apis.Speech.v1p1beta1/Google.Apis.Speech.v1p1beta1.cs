@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech-to-Text API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20190830 (1702)
+ *      <tr><th>API Rev<td>20190918 (1721)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -452,10 +452,6 @@ namespace Google.Apis.Speech.v1p1beta1
             }
 
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -467,6 +463,10 @@ namespace Google.Apis.Speech.v1p1beta1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -493,15 +493,6 @@ namespace Google.Apis.Speech.v1p1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -523,6 +514,15 @@ namespace Google.Apis.Speech.v1p1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -696,10 +696,6 @@ namespace Google.Apis.Speech.v1p1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -707,6 +703,10 @@ namespace Google.Apis.Speech.v1p1beta1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -742,15 +742,6 @@ namespace Google.Apis.Speech.v1p1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -763,6 +754,15 @@ namespace Google.Apis.Speech.v1p1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -950,11 +950,11 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     /// <summary>The top-level message sent by the client for the `LongRunningRecognize` method.</summary>
     public class LongRunningRecognizeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>*Required* The audio data to be recognized.</summary>
+        /// <summary>Required. The audio data to be recognized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audio")]
         public virtual RecognitionAudio Audio { get; set; } 
 
-        /// <summary>*Required* Provides information to the recognizer that specifies how to process the
+        /// <summary>Required. Provides information to the recognizer that specifies how to process the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual RecognitionConfig Config { get; set; } 
@@ -968,8 +968,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     /// `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations` service.</summary>
     public class LongRunningRecognizeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Sequential list of transcription results corresponding to sequential portions of
-        /// audio.</summary>
+        /// <summary>Sequential list of transcription results corresponding to sequential portions of audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; } 
 
@@ -1038,8 +1037,8 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     /// <summary>Provides information to the recognizer that specifies how to process the request.</summary>
     public class RecognitionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>*Optional* A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
-        /// language tags, listing possible alternative languages of the supplied audio. See [Language
+        /// <summary>A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags,
+        /// listing possible alternative languages of the supplied audio. See [Language
         /// Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of the currently supported
         /// language codes. If alternative languages are listed, recognition result will contain recognition in the most
         /// likely language detected including the main language_code. The recognition result will include the language
@@ -1048,33 +1047,33 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alternativeLanguageCodes")]
         public virtual System.Collections.Generic.IList<string> AlternativeLanguageCodes { get; set; } 
 
-        /// <summary>*Optional* The number of channels in the input audio data. ONLY set this for MULTI-CHANNEL
-        /// recognition. Valid values for LINEAR16 and FLAC are `1`-`8`. Valid values for OGG_OPUS are '1'-'254'. Valid
-        /// value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or omitted, defaults to one
-        /// channel (mono). Note: We only recognize the first channel by default. To perform independent recognition on
-        /// each channel set `enable_separate_recognition_per_channel` to 'true'.</summary>
+        /// <summary>The number of channels in the input audio data. ONLY set this for MULTI-CHANNEL recognition. Valid
+        /// values for LINEAR16 and FLAC are `1`-`8`. Valid values for OGG_OPUS are '1'-'254'. Valid value for MULAW,
+        /// AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or omitted, defaults to one channel (mono). Note:
+        /// We only recognize the first channel by default. To perform independent recognition on each channel set
+        /// `enable_separate_recognition_per_channel` to 'true'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioChannelCount")]
         public virtual System.Nullable<int> AudioChannelCount { get; set; } 
 
-        /// <summary>*Optional* Config to enable speaker diarization and set additional parameters to make diarization
-        /// better suited for your application. Note: When this is enabled, we send all the words from the beginning of
-        /// the audio for the top alternative in every consecutive STREAMING responses. This is done in order to improve
-        /// our speaker tags as our models learn to identify the speakers in the conversation over time. For non-
-        /// streaming requests, the diarization results will be provided only in the top alternative of the FINAL
+        /// <summary>Config to enable speaker diarization and set additional parameters to make diarization better
+        /// suited for your application. Note: When this is enabled, we send all the words from the beginning of the
+        /// audio for the top alternative in every consecutive STREAMING responses. This is done in order to improve our
+        /// speaker tags as our models learn to identify the speakers in the conversation over time. For non-streaming
+        /// requests, the diarization results will be provided only in the top alternative of the FINAL
         /// SpeechRecognitionResult.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diarizationConfig")]
         public virtual SpeakerDiarizationConfig DiarizationConfig { get; set; } 
 
-        /// <summary>*Optional* If set, specifies the estimated number of speakers in the conversation. Defaults to '2'.
-        /// Ignored unless enable_speaker_diarization is set to true. Note: Use diarization_config instead.</summary>
+        /// <summary>If set, specifies the estimated number of speakers in the conversation. Defaults to '2'. Ignored
+        /// unless enable_speaker_diarization is set to true. Note: Use diarization_config instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diarizationSpeakerCount")]
         public virtual System.Nullable<int> DiarizationSpeakerCount { get; set; } 
 
-        /// <summary>*Optional* If 'true', adds punctuation to recognition result hypotheses. This feature is only
-        /// available in select languages. Setting this for requests in other languages has no effect at all. The
-        /// default 'false' value does not add punctuation to result hypotheses. Note: This is currently offered as an
-        /// experimental service, complimentary to all users. In the future this may be exclusively available as a
-        /// premium feature.</summary>
+        /// <summary>If 'true', adds punctuation to recognition result hypotheses. This feature is only available in
+        /// select languages. Setting this for requests in other languages has no effect at all. The default 'false'
+        /// value does not add punctuation to result hypotheses. Note: This is currently offered as an experimental
+        /// service, complimentary to all users. In the future this may be exclusively available as a premium
+        /// feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAutomaticPunctuation")]
         public virtual System.Nullable<bool> EnableAutomaticPunctuation { get; set; } 
 
@@ -1086,19 +1085,19 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableSeparateRecognitionPerChannel")]
         public virtual System.Nullable<bool> EnableSeparateRecognitionPerChannel { get; set; } 
 
-        /// <summary>*Optional* If 'true', enables speaker detection for each recognized word in the top alternative of
-        /// the recognition result using a speaker_tag provided in the WordInfo. Note: Use diarization_config
+        /// <summary>If 'true', enables speaker detection for each recognized word in the top alternative of the
+        /// recognition result using a speaker_tag provided in the WordInfo. Note: Use diarization_config
         /// instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSpeakerDiarization")]
         public virtual System.Nullable<bool> EnableSpeakerDiarization { get; set; } 
 
-        /// <summary>*Optional* If `true`, the top result includes a list of words and the confidence for those words.
-        /// If `false`, no word-level confidence information is returned. The default is `false`.</summary>
+        /// <summary>If `true`, the top result includes a list of words and the confidence for those words. If `false`,
+        /// no word-level confidence information is returned. The default is `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableWordConfidence")]
         public virtual System.Nullable<bool> EnableWordConfidence { get; set; } 
 
-        /// <summary>*Optional* If `true`, the top result includes a list of words and the start and end time offsets
-        /// (timestamps) for those words. If `false`, no word-level time offset information is returned. The default is
+        /// <summary>If `true`, the top result includes a list of words and the start and end time offsets (timestamps)
+        /// for those words. If `false`, no word-level time offset information is returned. The default is
         /// `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableWordTimeOffsets")]
         public virtual System.Nullable<bool> EnableWordTimeOffsets { get; set; } 
@@ -1108,27 +1107,27 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; } 
 
-        /// <summary>*Required* The language of the supplied audio as a [BCP-47](https://www.rfc-
+        /// <summary>Required. The language of the supplied audio as a [BCP-47](https://www.rfc-
         /// editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US". See [Language
         /// Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of the currently supported
         /// language codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 
-        /// <summary>*Optional* Maximum number of recognition hypotheses to be returned. Specifically, the maximum
-        /// number of `SpeechRecognitionAlternative` messages within each `SpeechRecognitionResult`. The server may
-        /// return fewer than `max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will return a maximum
-        /// of one. If omitted, will return a maximum of one.</summary>
+        /// <summary>Maximum number of recognition hypotheses to be returned. Specifically, the maximum number of
+        /// `SpeechRecognitionAlternative` messages within each `SpeechRecognitionResult`. The server may return fewer
+        /// than `max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will return a maximum of one. If
+        /// omitted, will return a maximum of one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAlternatives")]
         public virtual System.Nullable<int> MaxAlternatives { get; set; } 
 
-        /// <summary>*Optional* Metadata regarding this request.</summary>
+        /// <summary>Metadata regarding this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual RecognitionMetadata Metadata { get; set; } 
 
-        /// <summary>*Optional* Which model to select for the given request. Select the model best suited to your domain
-        /// to get best results. If a model is not explicitly specified, then we auto-select a model based on the
-        /// parameters in the RecognitionConfig.
+        /// <summary>Which model to select for the given request. Select the model best suited to your domain to get
+        /// best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in
+        /// the RecognitionConfig.
         ///
         /// Model Description
         ///
@@ -1147,9 +1146,9 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; } 
 
-        /// <summary>*Optional* If set to `true`, the server will attempt to filter out profanities, replacing all but
-        /// the initial character in each filtered word with asterisks, e.g. "f***". If set to `false` or omitted,
-        /// profanities won't be filtered out.</summary>
+        /// <summary>If set to `true`, the server will attempt to filter out profanities, replacing all but the initial
+        /// character in each filtered word with asterisks, e.g. "f***". If set to `false` or omitted, profanities won't
+        /// be filtered out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profanityFilter")]
         public virtual System.Nullable<bool> ProfanityFilter { get; set; } 
 
@@ -1161,15 +1160,15 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
         public virtual System.Nullable<int> SampleRateHertz { get; set; } 
 
-        /// <summary>*Optional* array of SpeechContext. A means to provide context to assist the speech recognition. For
-        /// more information, see [speech adaptation](https://cloud.google.com/speech-to-text/docs/context-
+        /// <summary>Array of SpeechContext. A means to provide context to assist the speech recognition. For more
+        /// information, see [speech adaptation](https://cloud.google.com/speech-to-text/docs/context-
         /// strength).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechContexts")]
         public virtual System.Collections.Generic.IList<SpeechContext> SpeechContexts { get; set; } 
 
-        /// <summary>*Optional* Set to true to use an enhanced model for speech recognition. If `use_enhanced` is set to
-        /// true and the `model` field is not set, then an appropriate enhanced model is chosen if an enhanced model
-        /// exists for the audio.
+        /// <summary>Set to true to use an enhanced model for speech recognition. If `use_enhanced` is set to true and
+        /// the `model` field is not set, then an appropriate enhanced model is chosen if an enhanced model exists for
+        /// the audio.
         ///
         /// If `use_enhanced` is true and an enhanced version of the specified model does not exist, then the speech is
         /// recognized using the standard version of the specified model.</summary>
@@ -1232,16 +1231,16 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     /// <summary>The top-level message sent by the client for the `Recognize` method.</summary>
     public class RecognizeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>*Required* The audio data to be recognized.</summary>
+        /// <summary>Required. The audio data to be recognized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audio")]
         public virtual RecognitionAudio Audio { get; set; } 
 
-        /// <summary>*Required* Provides information to the recognizer that specifies how to process the
+        /// <summary>Required. Provides information to the recognizer that specifies how to process the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual RecognitionConfig Config { get; set; } 
 
-        /// <summary>*Optional* The name of the model to use for recognition.</summary>
+        /// <summary>The name of the model to use for recognition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1253,8 +1252,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     /// more sequential `SpeechRecognitionResult` messages.</summary>
     public class RecognizeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Sequential list of transcription results corresponding to sequential portions of
-        /// audio.</summary>
+        /// <summary>Sequential list of transcription results corresponding to sequential portions of audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; } 
 
@@ -1262,23 +1260,23 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>*Optional* Config to enable speaker diarization.</summary>
+    /// <summary>Config to enable speaker diarization.</summary>
     public class SpeakerDiarizationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>*Optional* If 'true', enables speaker detection for each recognized word in the top alternative of
-        /// the recognition result using a speaker_tag provided in the WordInfo.</summary>
+        /// <summary>If 'true', enables speaker detection for each recognized word in the top alternative of the
+        /// recognition result using a speaker_tag provided in the WordInfo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSpeakerDiarization")]
         public virtual System.Nullable<bool> EnableSpeakerDiarization { get; set; } 
 
-        /// <summary>*Optional* Maximum number of speakers in the conversation. This range gives you more flexibility by
-        /// allowing the system to automatically determine the correct number of speakers. If not set, the default value
-        /// is 6.</summary>
+        /// <summary>Maximum number of speakers in the conversation. This range gives you more flexibility by allowing
+        /// the system to automatically determine the correct number of speakers. If not set, the default value is
+        /// 6.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxSpeakerCount")]
         public virtual System.Nullable<int> MaxSpeakerCount { get; set; } 
 
-        /// <summary>*Optional* Minimum number of speakers in the conversation. This range gives you more flexibility by
-        /// allowing the system to automatically determine the correct number of speakers. If not set, the default value
-        /// is 2.</summary>
+        /// <summary>Minimum number of speakers in the conversation. This range gives you more flexibility by allowing
+        /// the system to automatically determine the correct number of speakers. If not set, the default value is
+        /// 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minSpeakerCount")]
         public virtual System.Nullable<int> MinSpeakerCount { get; set; } 
 
@@ -1298,8 +1296,8 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boost")]
         public virtual System.Nullable<float> Boost { get; set; } 
 
-        /// <summary>*Optional* A list of strings containing words and phrases "hints" so that the speech recognition is
-        /// more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for
+        /// <summary>A list of strings containing words and phrases "hints" so that the speech recognition is more
+        /// likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for
         /// example, if specific commands are typically spoken by the user. This can also be used to add additional
         /// words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-
         /// text/quotas#content).
@@ -1317,19 +1315,19 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     /// <summary>Alternative hypotheses (a.k.a. n-best list).</summary>
     public class SpeechRecognitionAlternative : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
-        /// greater likelihood that the recognized words are correct. This field is set only for the top alternative of
-        /// a non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be
+        /// <summary>The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater
+        /// likelihood that the recognized words are correct. This field is set only for the top alternative of a non-
+        /// streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be
         /// accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value
         /// indicating `confidence` was not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
-        /// <summary>Output only. Transcript text representing the words that the user spoke.</summary>
+        /// <summary>Transcript text representing the words that the user spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; } 
 
-        /// <summary>Output only. A list of word-specific information for each recognized word. Note: When
+        /// <summary>A list of word-specific information for each recognized word. Note: When
         /// `enable_speaker_diarization` is true, you will see all the words from the beginning of the audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
         public virtual System.Collections.Generic.IList<WordInfo> Words { get; set; } 
@@ -1341,9 +1339,9 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     /// <summary>A speech recognition result corresponding to a portion of the audio.</summary>
     public class SpeechRecognitionResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. May contain one or more recognition hypotheses (up to the maximum specified in
-        /// `max_alternatives`). These alternatives are ordered in terms of accuracy, with the top (first) alternative
-        /// being the most probable, as ranked by the recognizer.</summary>
+        /// <summary>May contain one or more recognition hypotheses (up to the maximum specified in `max_alternatives`).
+        /// These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most
+        /// probable, as ranked by the recognizer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionAlternative> Alternatives { get; set; } 
 
@@ -1352,9 +1350,8 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("channelTag")]
         public virtual System.Nullable<int> ChannelTag { get; set; } 
 
-        /// <summary>Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
-        /// language in this result. This language code was detected to have the most likelihood of being spoken in the
-        /// audio.</summary>
+        /// <summary>The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this
+        /// result. This language code was detected to have the most likelihood of being spoken in the audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 
@@ -1391,34 +1388,34 @@ namespace Google.Apis.Speech.v1p1beta1.Data
     /// <summary>Word-specific information for recognized words.</summary>
     public class WordInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
-        /// greater likelihood that the recognized words are correct. This field is set only for the top alternative of
-        /// a non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be
+        /// <summary>The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater
+        /// likelihood that the recognized words are correct. This field is set only for the top alternative of a non-
+        /// streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be
         /// accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value
         /// indicating `confidence` was not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
-        /// <summary>Output only. Time offset relative to the beginning of the audio, and corresponding to the end of
-        /// the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis.
-        /// This is an experimental feature and the accuracy of the time offset can vary.</summary>
+        /// <summary>Time offset relative to the beginning of the audio, and corresponding to the end of the spoken
+        /// word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        /// experimental feature and the accuracy of the time offset can vary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>Output only. A distinct integer value is assigned for every speaker within the audio. This field
-        /// specifies which one of those speakers was detected to have spoken this word. Value ranges from '1' to
+        /// <summary>A distinct integer value is assigned for every speaker within the audio. This field specifies which
+        /// one of those speakers was detected to have spoken this word. Value ranges from '1' to
         /// diarization_speaker_count. speaker_tag is set if enable_speaker_diarization = 'true' and only in the top
         /// alternative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]
         public virtual System.Nullable<int> SpeakerTag { get; set; } 
 
-        /// <summary>Output only. Time offset relative to the beginning of the audio, and corresponding to the start of
-        /// the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis.
-        /// This is an experimental feature and the accuracy of the time offset can vary.</summary>
+        /// <summary>Time offset relative to the beginning of the audio, and corresponding to the start of the spoken
+        /// word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        /// experimental feature and the accuracy of the time offset can vary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>Output only. The word corresponding to this set of information.</summary>
+        /// <summary>The word corresponding to this set of information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("word")]
         public virtual string Word { get; set; } 
 
