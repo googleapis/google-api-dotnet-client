@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20190918 (1721)
+ *      <tr><th>API Rev<td>20190922 (1725)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -2059,6 +2059,12 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
         public virtual string MetricKind { get; set; } 
 
+        /// <summary>Read-only. If present, then a time series, which is identified partially by a metric type and a
+        /// MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the
+        /// monitored resource types listed here.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoredResourceTypes")]
+        public virtual System.Collections.Generic.IList<string> MonitoredResourceTypes { get; set; } 
+
         /// <summary>The resource name of the metric descriptor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -2130,8 +2136,7 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ingestDelay")]
         public virtual object IngestDelay { get; set; } 
 
-        /// <summary>Deprecated. Please use the MetricDescriptor.launch_stage instead. The launch stage of the metric
-        /// definition.</summary>
+        /// <summary>Deprecated. Must use the MetricDescriptor.launch_stage instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
         public virtual string LaunchStage { get; set; } 
 

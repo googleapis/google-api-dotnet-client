@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20190902 (1705)
+ *      <tr><th>API Rev<td>20190920 (1723)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -367,170 +367,11 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-                operations = new OperationsResource(service);
                 reservationGrants = new ReservationGrantsResource(service);
                 reservations = new ReservationsResource(service);
 
             }
 
-            private readonly OperationsResource operations;
-
-            /// <summary>Gets the Operations resource.</summary>
-            public virtual OperationsResource Operations
-            {
-                get { return operations; }
-            }
-
-            /// <summary>The "operations" collection of methods.</summary>
-            public class OperationsResource
-            {
-                private const string Resource = "operations";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public OperationsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-
-                }
-
-
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
-                /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
-                /// `Code.CANCELLED`.</summary>
-                /// <param name="name">The name of the operation resource to be cancelled.</param>
-                public virtual CancelRequest Cancel(string name)
-                {
-                    return new CancelRequest(service, name);
-                }
-
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
-                /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
-                /// `Code.CANCELLED`.</summary>
-                public class CancelRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1alpha2.Data.Empty>
-                {
-                    /// <summary>Constructs a new Cancel request.</summary>
-                    public CancelRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The name of the operation resource to be cancelled.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "cancel"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "POST"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1alpha2/{+name}:cancel"; }
-                    }
-
-                    /// <summary>Initializes Cancel parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
-                    }
-
-                }
-
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
-                /// operation result at intervals as recommended by the API service.</summary>
-                /// <param name="name">The name of the operation resource.</param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
-                /// operation result at intervals as recommended by the API service.</summary>
-                public class GetRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1alpha2.Data.Operation>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The name of the operation resource.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "get"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "GET"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1alpha2/{+name}"; }
-                    }
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
-                    }
-
-                }
-            }
             private readonly ReservationGrantsResource reservationGrants;
 
             /// <summary>Gets the ReservationGrants resource.</summary>
@@ -1403,12 +1244,6 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Can be used to filter out reservations based on names, capacity, etc, e.g.:
-                    /// filter="reservation.slot_capacity > 200" filter="reservation.name = \"*dev\"" Advanced filtering
-                    /// syntax can be [here](https://cloud.google.com/logging/docs/view/advanced-filters).</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1416,6 +1251,12 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                     /// <summary>The maximum number of items to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Can be used to filter out reservations based on names, capacity, etc, e.g.:
+                    /// filter="reservation.slot_capacity > 200" filter="reservation.name = \"*dev\"" Advanced filtering
+                    /// syntax can be [here](https://cloud.google.com/logging/docs/view/advanced-filters).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1451,15 +1292,6 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1472,6 +1304,15 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1567,165 +1408,6 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                 }
             }
 
-            /// <summary>Gets information about a location.</summary>
-            /// <param name="name">Resource name for the location.</param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(service, name);
-            }
-
-            /// <summary>Gets information about a location.</summary>
-            public class GetRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1alpha2.Data.Location>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-
-                /// <summary>Resource name for the location.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "get"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1alpha2/{+name}"; }
-                }
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                }
-
-            }
-
-            /// <summary>Lists information about the supported locations for this service.</summary>
-            /// <param name="name">The resource that owns the locations collection, if applicable.</param>
-            public virtual ListRequest List(string name)
-            {
-                return new ListRequest(service, name);
-            }
-
-            /// <summary>Lists information about the supported locations for this service.</summary>
-            public class ListRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1alpha2.Data.ListLocationsResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-
-                /// <summary>The resource that owns the locations collection, if applicable.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "list"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1alpha2/{+name}/locations"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-
             /// <summary>Look up grants for a specified resource for a particular region. If the request is about a
             /// project: 1) Grants created on the project will be returned if they exist. 2) Otherwise grants created on
             /// the closest ancestor will be returned. 3) Grants for different JobTypes will all be returned. Same logic
@@ -1763,11 +1445,6 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Please specify resource name as grantee in the query. e.g., "grantee=projects/myproject"
-                /// "grantee=folders/123" "grantee=organizations/456"</summary>
-                [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Query { get; set; }
-
                 /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1775,6 +1452,11 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                 /// <summary>The maximum number of items to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Please specify resource name as grantee in the query. e.g., "grantee=projects/myproject"
+                /// "grantee=folders/123" "grantee=organizations/456"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Query { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1810,15 +1492,6 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "query", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "query",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1831,6 +1504,15 @@ namespace Google.Apis.BigQueryReservation.v1alpha2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "query", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "query",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1866,21 +1548,6 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
     /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The response message for Locations.ListLocations.</summary>
-    public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of locations that matches the specified filter in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
-
-        /// <summary>The standard List next-page token.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1933,36 +1600,6 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
-    public class Location : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
-
-        /// <summary>Cross-service attributes for the location. For example
-        ///
-        /// {"cloud.googleapis.com/region": "us-east1"}</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
-
-        /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
-
-        /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
-
-        /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
-        /// /example-project/locations/us-east1"`</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>BigQuery-specific metadata about a location. This will be set on
     /// google.cloud.location.Location.metadata in Cloud Location API responses.</summary>
     public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -1971,42 +1608,6 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         /// that need the legacy “US” and “EU” locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacyLocationId")]
         public virtual string LegacyLocationId { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
-    public class Operation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
-        /// completed, and either `error` or `response` is available.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
-
-        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
-
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
-
-        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
-        /// `operations/{unique_id}`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2118,32 +1719,6 @@ namespace Google.Apis.BigQueryReservation.v1alpha2.Data
         /// <summary>Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
-    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
-    public class Status : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
-
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
-
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -6459,9 +6459,9 @@ namespace Google.Apis.DLP.v2.Data
         /// When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what
         /// detectors to run. By default this may be all types, but may change over time as detectors are updated.
         ///
-        /// The special InfoType name "ALL_BASIC" can be used to trigger all detectors, but may change over time as new
-        /// InfoTypes are added. If you need precise control and predictability as to what detectors are run you should
-        /// specify specific InfoTypes listed in the reference.</summary>
+        /// If you need precise control and predictability as to what detectors are run you should specify specific
+        /// InfoTypes listed in the reference, otherwise a default list will be used, which may change over
+        /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; } 
 
@@ -7659,7 +7659,7 @@ namespace Google.Apis.DLP.v2.Data
         /// items and executing the reverse. This requires that only reversible transformations be provided here. The
         /// reversible transformations are:
         ///
-        /// - `CryptoReplaceFfxFpeConfig`</summary>
+        /// - `CryptoDeterministicConfig` - `CryptoReplaceFfxFpeConfig`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reidentifyConfig")]
         public virtual GooglePrivacyDlpV2DeidentifyConfig ReidentifyConfig { get; set; } 
 
@@ -8068,10 +8068,14 @@ namespace Google.Apis.DLP.v2.Data
         public virtual object StartTime { get; set; } 
 
         /// <summary>Specification of the field containing the timestamp of scanned items. Used for data sources like
-        /// Datastore or BigQuery. If not specified for BigQuery, table last modification timestamp is checked against
-        /// given time span. The valid data types of the timestamp field are: for BigQuery - timestamp, date, datetime;
-        /// for Datastore - timestamp. Datastore entity will be scanned if the timestamp property does not exist or its
-        /// value is empty or invalid.</summary>
+        /// Datastore and BigQuery.
+        ///
+        /// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the
+        /// table was modified between the given start and end times, the entire table will be scanned. The valid data
+        /// types of the timestamp field are: `INTEGER`, `DATE`, `TIMESTAMP`, or `DATETIME` BigQuery column.
+        ///
+        /// For Datastore. Valid data types of the timestamp field are: `TIMESTAMP`. Datastore entity will be scanned if
+        /// the timestamp property does not exist or its value is empty or invalid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampField")]
         public virtual GooglePrivacyDlpV2FieldId TimestampField { get; set; } 
 

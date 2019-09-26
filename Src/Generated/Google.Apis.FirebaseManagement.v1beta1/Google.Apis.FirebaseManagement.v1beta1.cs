@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190919 (1722)
+ *      <tr><th>API Rev<td>20190925 (1728)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -3806,6 +3806,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("app")]
         public virtual string App { get; set; } 
 
+        /// <summary>Analytics-provided measurement ID, for use in the gtag.js library. Will only be present for
+        /// Firebase Web Apps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
+        public virtual string MeasurementId { get; set; } 
+
         /// <summary>The unique Google-assigned identifier of the Google Analytics data stream associated with the
         /// Firebase App.
         ///
@@ -3897,6 +3902,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         /// services to your project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
+
+        /// <summary>Analytics-provided measurement ID, for use in the gtag.js library. Will only be present for
+        /// Firebase Web Apps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
+        public virtual string MeasurementId { get; set; } 
 
         /// <summary>The sender ID for use with Firebase Cloud Messaging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messagingSenderId")]

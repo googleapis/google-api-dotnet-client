@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190915 (1718)
+ *      <tr><th>API Rev<td>20190924 (1727)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1620,6 +1620,28 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A test of an iOS application that implements one or more game loop scenarios. This test type accepts an
+    /// archived application (.ipa file) and a list of integer scenarios that will be executed on the app
+    /// sequentially.</summary>
+    public class IosTestLoop : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The bundle id for the application under test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appBundleId")]
+        public virtual string AppBundleId { get; set; } 
+
+        /// <summary>Required. The .ipa of the application to test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appIpa")]
+        public virtual FileReference AppIpa { get; set; } 
+
+        /// <summary>The list of scenarios that should be run during the test. Defaults to the single scenario 0 if
+        /// unspecified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scenarios")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> Scenarios { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A description of how to set up an iOS device prior to running the test.</summary>
     public class IosTestSetup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2114,6 +2136,10 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Disables video recording. May reduce test latency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableVideoRecording")]
         public virtual System.Nullable<bool> DisableVideoRecording { get; set; } 
+
+        /// <summary>An iOS application with a test loop.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosTestLoop")]
+        public virtual IosTestLoop IosTestLoop { get; set; } 
 
         /// <summary>Test setup requirements for iOS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosTestSetup")]

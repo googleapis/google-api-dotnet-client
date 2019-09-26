@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://github.com/conversationai/perspectiveapi/blob/master/README.md'>Perspective Comment Analyzer API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190915 (1718)
+ *      <tr><th>API Rev<td>20190922 (1725)
  *      <tr><th>API Docs
  *          <td><a href='https://github.com/conversationai/perspectiveapi/blob/master/README.md'>
  *              https://github.com/conversationai/perspectiveapi/blob/master/README.md</a>
@@ -487,12 +487,11 @@ namespace Google.Apis.CommentAnalyzer.v1alpha1.Data
         public virtual System.Collections.Generic.IList<string> Languages { get; set; } 
 
         /// <summary>Specification of requested attributes. The AttributeParameters serve as configuration for each
-        /// associated attribute. The map keys are attribute names. The following attributes are available:
-        /// "ATTACK_ON_AUTHOR" - Attack on author of original article or post. "ATTACK_ON_COMMENTER" - Attack on fellow
-        /// commenter. "ATTACK_ON_PUBLISHER" - Attack on publisher of article/post. "INCOHERENT" - Difficult to
-        /// understand, nonsensical. "INFLAMMATORY" - Intending to provoke or inflame. "OBSCENE" - Obscene, such as
-        /// cursing. "OFF_TOPIC" - Not related to the original topic. "SPAM" - Commercial/advertising spam content.
-        /// "UNSUBSTANTIAL" - Trivial.</summary>
+        /// associated attribute. The map keys are attribute names. The available attributes may be different on each
+        /// RFE installation, and can be seen by calling ListAttributes (see above). For the prod installation, known as
+        /// Perspective API, at blade:commentanalyzer-esf and commentanalyzer.googleapis.com, see go/checker-models
+        /// (internal) and
+        /// https://github.com/conversationai/perspectiveapi/blob/master/api_reference.md#models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedAttributes")]
         public virtual System.Collections.Generic.IDictionary<string,AttributeParameters> RequestedAttributes { get; set; } 
 

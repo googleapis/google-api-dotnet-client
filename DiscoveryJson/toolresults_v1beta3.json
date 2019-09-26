@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/QLgW0kaEaXHKFbiL1ixiz1ccrzo\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/iAINRXzN4sRYkGU-V0kwUJT1XAE\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3",
- "revision": "20190919",
+ "revision": "20190925",
  "title": "Cloud Tool Results API",
  "description": "Reads and publishes results from Firebase Test Lab.",
  "ownerDomain": "google.com",
@@ -902,7 +902,7 @@
    "properties": {
     "sampleTime": {
      "$ref": "Timestamp",
-     "description": "Timestamp of collection"
+     "description": "Timestamp of collection."
     },
     "value": {
      "type": "number",
@@ -1119,7 +1119,7 @@
   "Step": {
    "id": "Step",
    "type": "object",
-   "description": "A Step represents a single operation performed as part of Execution. A step can be used to represent the execution of a tool ( for example a test runner execution or an execution of a compiler).\n\nSteps can overlap (for instance two steps might have the same start time if some operations are done in parallel).\n\nHere is an example, let's consider that we have a continuous build is executing a test runner for each iteration. The workflow would look like: - user creates a Execution with id 1 - user creates an TestExecutionStep with id 100 for Execution 1 - user update TestExecutionStep with id 100 to add a raw xml log + the service parses the xml logs and returns a TestExecutionStep with updated TestResult(s). - user update the status of TestExecutionStep with id 100 to COMPLETE\n\nA Step can be updated until its state is set to COMPLETE at which points it becomes immutable.\n\nNext tag: 23",
+   "description": "A Step represents a single operation performed as part of Execution. A step can be used to represent the execution of a tool ( for example a test runner execution or an execution of a compiler).\n\nSteps can overlap (for instance two steps might have the same start time if some operations are done in parallel).\n\nHere is an example, let's consider that we have a continuous build is executing a test runner for each iteration. The workflow would look like: - user creates a Execution with id 1 - user creates an TestExecutionStep with id 100 for Execution 1 - user update TestExecutionStep with id 100 to add a raw xml log + the service parses the xml logs and returns a TestExecutionStep with updated TestResult(s). - user update the status of TestExecutionStep with id 100 to COMPLETE\n\nA Step can be updated until its state is set to COMPLETE at which points it becomes immutable.\n\nNext tag: 27",
    "properties": {
     "completionTime": {
      "$ref": "Timestamp",

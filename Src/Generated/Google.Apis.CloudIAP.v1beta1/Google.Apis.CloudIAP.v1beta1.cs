@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iap'>Cloud Identity-Aware Proxy API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190906 (1709)
+ *      <tr><th>API Rev<td>20190913 (1716)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iap'>
  *              https://cloud.google.com/iap</a>

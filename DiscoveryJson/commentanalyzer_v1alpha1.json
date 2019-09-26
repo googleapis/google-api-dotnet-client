@@ -1,14 +1,126 @@
 {
-  "basePath": "",
-  "revision": "20190915",
+  "revision": "20190922",
   "documentationLink": "https://github.com/conversationai/perspectiveapi/blob/master/README.md",
   "id": "commentanalyzer:v1alpha1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "AttributeScores": {
-      "description": "This holds score values for a single attribute. It contains both per-span\nscores as well as an overall summary score..",
+    "TextEntry": {
+      "id": "TextEntry",
+      "description": "Represents a body of text.",
       "type": "object",
+      "properties": {
+        "text": {
+          "description": "UTF-8 encoded text.",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "TEXT_TYPE_UNSPECIFIED",
+            "PLAIN_TEXT",
+            "HTML"
+          ],
+          "description": "Type of the text field.",
+          "type": "string",
+          "enumDescriptions": [
+            "The content type is not specified. Text will be interpreted as plain text\nby default.",
+            "Plain text.",
+            "HTML."
+          ]
+        }
+      }
+    },
+    "AnalyzeCommentRequest": {
+      "description": "The comment analysis request message.\nLINT.IfChange",
+      "type": "object",
+      "properties": {
+        "spanAnnotations": {
+          "description": "An advisory parameter that will return span annotations if the model\nis capable of providing scores with sub-comment resolution. This will\nlikely increase the size of the returned message.",
+          "type": "boolean"
+        },
+        "requestedAttributes": {
+          "additionalProperties": {
+            "$ref": "AttributeParameters"
+          },
+          "description": "Specification of requested attributes. The AttributeParameters serve as\nconfiguration for each associated attribute. The map keys are attribute\nnames. The available attributes may be different on each RFE installation,\nand can be seen by calling ListAttributes (see above).\nFor the prod installation, known as Perspective API, at\nblade:commentanalyzer-esf and commentanalyzer.googleapis.com, see\ngo/checker-models (internal) and\nhttps://github.com/conversationai/perspectiveapi/blob/master/api_reference.md#models.",
+          "type": "object"
+        },
+        "clientToken": {
+          "description": "Opaque token that is echoed from the request to the response.",
+          "type": "string"
+        },
+        "communityId": {
+          "description": "Optional identifier associating this AnalyzeCommentRequest with a\nparticular client's community. Different communities may have different\nnorms and rules. Specifying this value enables us to explore building\ncommunity-specific models for clients.",
+          "type": "string"
+        },
+        "languages": {
+          "description": "The language(s) of the comment and context (if none are specified, the\nlanguage is automatically detected). If multiple languages are specified,\nthe text is checked in all of them that are supported. Both ISO and BCP-47\nlanguage codes are accepted.\nCurrent Language Restrictions:\n * Only English text (\"en\") is supported.\nIf none of the languages specified by the caller are supported, an\n`UNIMPLEMENTED` error is returned.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "comment": {
+          "description": "The comment to analyze.",
+          "$ref": "TextEntry"
+        },
+        "context": {
+          "$ref": "Context",
+          "description": "The context of the comment."
+        },
+        "sessionId": {
+          "description": "Session ID. Used to join related RPCs into a single session. For example,\nan interactive tool that calls both the AnalyzeComment and\nSuggestCommentScore RPCs should set all invocations of both RPCs to the\nsame Session ID, typically a random 64-bit integer.",
+          "type": "string"
+        },
+        "doNotStore": {
+          "description": "Do not store the comment or context sent in this request. By default, the\nservice may store comments/context for debugging purposes.",
+          "type": "boolean"
+        }
+      },
+      "id": "AnalyzeCommentRequest"
+    },
+    "SuggestCommentScoreRequest": {
+      "type": "object",
+      "properties": {
+        "attributeScores": {
+          "description": "Attribute scores for the comment. The map keys are attribute names, same as\nthe requested_attribute field in AnalyzeCommentRequest (for example\n\"ATTACK_ON_AUTHOR\", \"INFLAMMATORY\", etc.). This field has the same type as\nthe `attribute_scores` field in AnalyzeCommentResponse.\n\nTo specify an overall attribute score for the entire comment as a whole,\nuse the `summary_score` field of the mapped AttributeScores object. To\nspecify scores on specific subparts of the comment, use the `span_scores`\nfield. All SpanScore objects must have begin and end fields set.\n\nAll Score objects must be explicitly set (for binary classification, use\nthe score values 0 and 1). If Score objects don't include a ScoreType,\n`PROBABILITY` is assumed.\n\n`attribute_scores` must not be empty. The mapped AttributeScores objects\nalso must not be empty. An `INVALID_ARGUMENT` error is returned for all\nmalformed requests.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "AttributeScores"
+          }
+        },
+        "sessionId": {
+          "description": "Session ID. Used to join related RPCs into a single session. For example,\nan interactive tool that calls both the AnalyzeComment and\nSuggestCommentScore RPCs should set all invocations of both RPCs to the\nsame Session ID, typically a random 64-bit integer.",
+          "type": "string"
+        },
+        "clientToken": {
+          "description": "Opaque token that is echoed from the request to the response.",
+          "type": "string"
+        },
+        "communityId": {
+          "description": "Optional identifier associating this comment score suggestion with a\nparticular sub-community. Different communities may have different norms\nand rules. Specifying this value enables training community-specific\nmodels.",
+          "type": "string"
+        },
+        "languages": {
+          "description": "The language(s) of the comment and context (if none are specified, the\nlanguage is automatically detected). If multiple languages are specified,\nthe text is checked in all of them that are supported. Both ISO and BCP-47\nlanguage codes are accepted.\nCurrent Language Restrictions:\n * Only English text (\"en\") is supported.\nIf none of the languages specified by the caller are supported, an\n`UNIMPLEMENTED` error is returned.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "comment": {
+          "$ref": "TextEntry",
+          "description": "The comment being scored."
+        },
+        "context": {
+          "description": "The context of the comment.",
+          "$ref": "Context"
+        }
+      },
+      "id": "SuggestCommentScoreRequest",
+      "description": "The comment score suggestion request message."
+    },
+    "AttributeScores": {
       "properties": {
         "spanScores": {
           "type": "array",
@@ -22,7 +134,9 @@
           "$ref": "Score"
         }
       },
-      "id": "AttributeScores"
+      "id": "AttributeScores",
+      "description": "This holds score values for a single attribute. It contains both per-span\nscores as well as an overall summary score..",
+      "type": "object"
     },
     "AnalyzeCommentResponse": {
       "description": "The comment analysis response message.",
@@ -43,11 +157,11 @@
           "type": "object"
         },
         "detectedLanguages": {
-          "description": "Contains the languages detected from the text content, sorted in order of\nlikelihood.",
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "Contains the languages detected from the text content, sorted in order of\nlikelihood."
         },
         "clientToken": {
           "description": "Same token from the original AnalyzeCommentRequest.",
@@ -60,16 +174,16 @@
       "description": "Context is typically something that a Comment is referencing or replying to\n(such as an article, or previous comment).\nNote: Populate only ONE OF the following fields. The oneof syntax cannot be\nused because that would require nesting entries inside another message and\nbreaking backwards compatibility. The server will return an error if more\nthan one of the following fields is present.",
       "type": "object",
       "properties": {
-        "articleAndParentComment": {
-          "$ref": "ArticleAndParentComment",
-          "description": "Information about the source for which the original comment was made, and\nany parent comment info."
-        },
         "entries": {
           "description": "A list of messages. For example, a linear comments section or forum thread.",
           "type": "array",
           "items": {
             "$ref": "TextEntry"
           }
+        },
+        "articleAndParentComment": {
+          "$ref": "ArticleAndParentComment",
+          "description": "Information about the source for which the original comment was made, and\nany parent comment info."
         }
       },
       "id": "Context"
@@ -112,22 +226,17 @@
           ]
         },
         "scoreThreshold": {
-          "type": "number",
           "description": "Don't return scores for this attribute that are below this threshold. If\nunset, a default threshold will be applied. A FloatValue wrapper is used to\ndistinguish between 0 vs. default/unset.",
-          "format": "float"
+          "format": "float",
+          "type": "number"
         }
       },
       "id": "AttributeParameters"
     },
     "Score": {
-      "type": "object",
       "properties": {
-        "value": {
-          "description": "Score value. Semantics described by type below.",
-          "format": "float",
-          "type": "number"
-        },
         "type": {
+          "description": "The type of the above value.",
           "type": "string",
           "enumDescriptions": [
             "Unspecified. Defaults to PROBABILITY scores if available, and otherwise\nRAW. Every model has a RAW score.",
@@ -142,17 +251,27 @@
             "STD_DEV_SCORE",
             "PERCENTILE",
             "RAW"
-          ],
-          "description": "The type of the above value."
+          ]
+        },
+        "value": {
+          "description": "Score value. Semantics described by type below.",
+          "format": "float",
+          "type": "number"
         }
       },
       "id": "Score",
-      "description": "Analysis scores are described by a value and a ScoreType."
+      "description": "Analysis scores are described by a value and a ScoreType.",
+      "type": "object"
     },
     "SuggestCommentScoreResponse": {
+      "id": "SuggestCommentScoreResponse",
       "description": "The comment score suggestion response message.",
       "type": "object",
       "properties": {
+        "clientToken": {
+          "description": "Same token from the original SuggestCommentScoreRequest.",
+          "type": "string"
+        },
         "requestedLanguages": {
           "description": "The list of languages provided in the request.",
           "type": "array",
@@ -166,15 +285,11 @@
           "items": {
             "type": "string"
           }
-        },
-        "clientToken": {
-          "description": "Same token from the original SuggestCommentScoreRequest.",
-          "type": "string"
         }
-      },
-      "id": "SuggestCommentScoreResponse"
+      }
     },
     "SpanScore": {
+      "description": "This is a single score for a given span of text.",
       "type": "object",
       "properties": {
         "begin": {
@@ -191,130 +306,14 @@
           "type": "integer"
         }
       },
-      "id": "SpanScore",
-      "description": "This is a single score for a given span of text."
-    },
-    "TextEntry": {
-      "description": "Represents a body of text.",
-      "type": "object",
-      "properties": {
-        "text": {
-          "description": "UTF-8 encoded text.",
-          "type": "string"
-        },
-        "type": {
-          "enum": [
-            "TEXT_TYPE_UNSPECIFIED",
-            "PLAIN_TEXT",
-            "HTML"
-          ],
-          "description": "Type of the text field.",
-          "type": "string",
-          "enumDescriptions": [
-            "The content type is not specified. Text will be interpreted as plain text\nby default.",
-            "Plain text.",
-            "HTML."
-          ]
-        }
-      },
-      "id": "TextEntry"
-    },
-    "AnalyzeCommentRequest": {
-      "description": "The comment analysis request message.\nLINT.IfChange",
-      "type": "object",
-      "properties": {
-        "comment": {
-          "$ref": "TextEntry",
-          "description": "The comment to analyze."
-        },
-        "context": {
-          "$ref": "Context",
-          "description": "The context of the comment."
-        },
-        "sessionId": {
-          "type": "string",
-          "description": "Session ID. Used to join related RPCs into a single session. For example,\nan interactive tool that calls both the AnalyzeComment and\nSuggestCommentScore RPCs should set all invocations of both RPCs to the\nsame Session ID, typically a random 64-bit integer."
-        },
-        "doNotStore": {
-          "description": "Do not store the comment or context sent in this request. By default, the\nservice may store comments/context for debugging purposes.",
-          "type": "boolean"
-        },
-        "requestedAttributes": {
-          "additionalProperties": {
-            "$ref": "AttributeParameters"
-          },
-          "description": "Specification of requested attributes. The AttributeParameters serve as\nconfiguration for each associated attribute. The map keys are attribute\nnames. The following attributes are available:\n\"ATTACK_ON_AUTHOR\" - Attack on author of original article or post.\n\"ATTACK_ON_COMMENTER\" - Attack on fellow commenter.\n\"ATTACK_ON_PUBLISHER\" - Attack on publisher of article/post.\n\"INCOHERENT\" - Difficult to understand, nonsensical.\n\"INFLAMMATORY\" - Intending to provoke or inflame.\n\"OBSCENE\" - Obscene, such as cursing.\n\"OFF_TOPIC\" - Not related to the original topic.\n\"SPAM\" - Commercial/advertising spam content.\n\"UNSUBSTANTIAL\" - Trivial.",
-          "type": "object"
-        },
-        "spanAnnotations": {
-          "description": "An advisory parameter that will return span annotations if the model\nis capable of providing scores with sub-comment resolution. This will\nlikely increase the size of the returned message.",
-          "type": "boolean"
-        },
-        "clientToken": {
-          "type": "string",
-          "description": "Opaque token that is echoed from the request to the response."
-        },
-        "communityId": {
-          "description": "Optional identifier associating this AnalyzeCommentRequest with a\nparticular client's community. Different communities may have different\nnorms and rules. Specifying this value enables us to explore building\ncommunity-specific models for clients.",
-          "type": "string"
-        },
-        "languages": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "The language(s) of the comment and context (if none are specified, the\nlanguage is automatically detected). If multiple languages are specified,\nthe text is checked in all of them that are supported. Both ISO and BCP-47\nlanguage codes are accepted.\nCurrent Language Restrictions:\n * Only English text (\"en\") is supported.\nIf none of the languages specified by the caller are supported, an\n`UNIMPLEMENTED` error is returned."
-        }
-      },
-      "id": "AnalyzeCommentRequest"
-    },
-    "SuggestCommentScoreRequest": {
-      "type": "object",
-      "properties": {
-        "sessionId": {
-          "type": "string",
-          "description": "Session ID. Used to join related RPCs into a single session. For example,\nan interactive tool that calls both the AnalyzeComment and\nSuggestCommentScore RPCs should set all invocations of both RPCs to the\nsame Session ID, typically a random 64-bit integer."
-        },
-        "clientToken": {
-          "description": "Opaque token that is echoed from the request to the response.",
-          "type": "string"
-        },
-        "communityId": {
-          "description": "Optional identifier associating this comment score suggestion with a\nparticular sub-community. Different communities may have different norms\nand rules. Specifying this value enables training community-specific\nmodels.",
-          "type": "string"
-        },
-        "languages": {
-          "description": "The language(s) of the comment and context (if none are specified, the\nlanguage is automatically detected). If multiple languages are specified,\nthe text is checked in all of them that are supported. Both ISO and BCP-47\nlanguage codes are accepted.\nCurrent Language Restrictions:\n * Only English text (\"en\") is supported.\nIf none of the languages specified by the caller are supported, an\n`UNIMPLEMENTED` error is returned.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "comment": {
-          "description": "The comment being scored.",
-          "$ref": "TextEntry"
-        },
-        "context": {
-          "$ref": "Context",
-          "description": "The context of the comment."
-        },
-        "attributeScores": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "AttributeScores"
-          },
-          "description": "Attribute scores for the comment. The map keys are attribute names, same as\nthe requested_attribute field in AnalyzeCommentRequest (for example\n\"ATTACK_ON_AUTHOR\", \"INFLAMMATORY\", etc.). This field has the same type as\nthe `attribute_scores` field in AnalyzeCommentResponse.\n\nTo specify an overall attribute score for the entire comment as a whole,\nuse the `summary_score` field of the mapped AttributeScores object. To\nspecify scores on specific subparts of the comment, use the `span_scores`\nfield. All SpanScore objects must have begin and end fields set.\n\nAll Score objects must be explicitly set (for binary classification, use\nthe score values 0 and 1). If Score objects don't include a ScoreType,\n`PROBABILITY` is assumed.\n\n`attribute_scores` must not be empty. The mapped AttributeScores objects\nalso must not be empty. An `INVALID_ARGUMENT` error is returned for all\nmalformed requests."
-        }
-      },
-      "id": "SuggestCommentScoreRequest",
-      "description": "The comment score suggestion request message."
+      "id": "SpanScore"
     }
   },
-  "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
   "protocol": "rest",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
   "canonicalName": "Comment Analyzer",
   "auth": {
     "oauth2": {
@@ -335,59 +334,59 @@
     "comments": {
       "methods": {
         "analyze": {
+          "request": {
+            "$ref": "AnalyzeCommentRequest"
+          },
+          "description": "Analyzes the provided text and returns scores for requested attributes.",
+          "httpMethod": "POST",
+          "parameterOrder": [],
           "response": {
             "$ref": "AnalyzeCommentResponse"
           },
-          "parameterOrder": [],
-          "httpMethod": "POST",
-          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/userinfo.email"
           ],
+          "parameters": {},
           "flatPath": "v1alpha1/comments:analyze",
-          "path": "v1alpha1/comments:analyze",
           "id": "commentanalyzer.comments.analyze",
-          "description": "Analyzes the provided text and returns scores for requested attributes.",
-          "request": {
-            "$ref": "AnalyzeCommentRequest"
-          }
+          "path": "v1alpha1/comments:analyze"
         },
         "suggestscore": {
           "request": {
             "$ref": "SuggestCommentScoreRequest"
           },
           "description": "Suggest comment scores as training data.",
+          "httpMethod": "POST",
+          "parameterOrder": [],
           "response": {
             "$ref": "SuggestCommentScoreResponse"
           },
-          "parameterOrder": [],
-          "httpMethod": "POST",
           "scopes": [
             "https://www.googleapis.com/auth/userinfo.email"
           ],
           "parameters": {},
           "flatPath": "v1alpha1/comments:suggestscore",
-          "path": "v1alpha1/comments:suggestscore",
-          "id": "commentanalyzer.comments.suggestscore"
+          "id": "commentanalyzer.comments.suggestscore",
+          "path": "v1alpha1/comments:suggestscore"
         }
       }
     }
   },
   "parameters": {
-    "fields": {
-      "type": "string",
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
-    },
     "uploadType": {
-      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
+      "type": "string",
+      "location": "query"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
     },
     "callback": {
-      "location": "query",
       "description": "JSONP",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "oauth_token": {
       "description": "OAuth 2.0 token for the current user.",
@@ -395,20 +394,19 @@
       "location": "query"
     },
     "$.xgafv": {
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
       "location": "query",
       "enum": [
         "1",
         "2"
       ],
-      "description": "V1 error format."
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ]
     },
     "alt": {
-      "default": "json",
       "enum": [
         "json",
         "media",
@@ -421,16 +419,17 @@
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "description": "Data format for response."
+      "description": "Data format for response.",
+      "default": "json"
+    },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
     },
     "access_token": {
       "location": "query",
       "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string"
     },
     "upload_protocol": {
@@ -438,21 +437,22 @@
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string"
     },
-    "prettyPrint": {
-      "type": "boolean",
-      "default": "true",
-      "location": "query",
-      "description": "Returns response with indentations and line breaks."
-    },
     "quotaUser": {
       "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
     }
   },
   "version": "v1alpha1",
   "baseUrl": "https://commentanalyzer.googleapis.com/",
   "servicePath": "",
+  "kind": "discovery#restDescription",
   "description": "The Perspective Comment Analyzer API provides information about the potential impact of a comment on a conversation (e.g. it can provide a score for the \"toxicity\" of a comment). Users can leverage the \"SuggestCommentScore\" method to submit corrections to improve Perspective over time. Users can set the \"doNotStore\" flag to ensure that all submitted comments are automatically deleted after scores are returned.",
-  "kind": "discovery#restDescription"
+  "basePath": ""
 }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Cloud Security Command Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190913 (1716)
+ *      <tr><th>API Rev<td>20190920 (1723)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -369,7 +369,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Filters an organization's assets and  groups them by their specified properties.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Name of the organization to groupBy. Its format is
+            /// <param name="parent">Required. Name of the organization to groupBy. Its format is
             /// "organizations/[organization_id]".</param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
             {
@@ -389,7 +389,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
 
-                /// <summary>Name of the organization to groupBy. Its format is
+                /// <summary>Required. Name of the organization to groupBy. Its format is
                 /// "organizations/[organization_id]".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -438,7 +438,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             }
 
             /// <summary>Lists an organization's assets.</summary>
-            /// <param name="parent">Name of the organization assets should belong to. Its format is
+            /// <param name="parent">Required. Name of the organization assets should belong to. Its format is
             /// "organizations/[organization_id]".</param>
             public virtual ListRequest List(string parent)
             {
@@ -457,7 +457,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
 
-                /// <summary>Name of the organization assets should belong to. Its format is
+                /// <summary>Required. Name of the organization assets should belong to. Its format is
                 /// "organizations/[organization_id]".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -665,7 +665,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// This API can only be called with limited frequency for an organization. If it is called too frequently
             /// the caller will receive a TOO_MANY_REQUESTS error.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Name of the organization to run asset discovery for. Its format is
+            /// <param name="parent">Required. Name of the organization to run asset discovery for. Its format is
             /// "organizations/[organization_id]".</param>
             public virtual RunDiscoveryRequest RunDiscovery(Google.Apis.SecurityCommandCenter.v1.Data.RunAssetDiscoveryRequest body, string parent)
             {
@@ -688,7 +688,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
 
-                /// <summary>Name of the organization to run asset discovery for. Its format is
+                /// <summary>Required. Name of the organization to run asset discovery for. Its format is
                 /// "organizations/[organization_id]".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1098,10 +1098,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1109,6 +1105,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1144,15 +1144,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             Pattern = @"^organizations/[^/]+/operations$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1165,6 +1156,15 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1225,7 +1225,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Creates a finding. The corresponding source must exist for finding creation to
                 /// succeed.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Resource name of the new finding's parent. Its format should be
+                /// <param name="parent">Required. Resource name of the new finding's parent. Its format should be
                 /// "organizations/[organization_id]/sources/[source_id]".</param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.Finding body, string parent)
                 {
@@ -1246,12 +1246,12 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     }
 
 
-                    /// <summary>Resource name of the new finding's parent. Its format should be
+                    /// <summary>Required. Resource name of the new finding's parent. Its format should be
                     /// "organizations/[organization_id]/sources/[source_id]".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Unique identifier provided by the client within the parent scope. It must be
+                    /// <summary>Required. Unique identifier provided by the client within the parent scope. It must be
                     /// alphanumeric and less than or equal to 32 characters and greater than 0 characters in
                     /// length.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("findingId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1315,7 +1315,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// To group across all sources provide a `-` as the source id. Example:
                 /// /v1/organizations/123/sources/-/findings</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Name of the source to groupBy. Its format is
+                /// <param name="parent">Required. Name of the source to groupBy. Its format is
                 /// "organizations/[organization_id]/sources/[source_id]". To groupBy across all sources provide a source_id of `-`. For
                 /// example: organizations/123/sources/-</param>
                 public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsRequest body, string parent)
@@ -1340,7 +1340,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     }
 
 
-                    /// <summary>Name of the source to groupBy. Its format is
+                    /// <summary>Required. Name of the source to groupBy. Its format is
                     /// "organizations/[organization_id]/sources/[source_id]". To groupBy across all sources provide a
                     /// source_id of `-`. For example: organizations/123/sources/-</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1393,7 +1393,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 ///
                 /// To list across all sources provide a `-` as the source id. Example:
                 /// /v1/organizations/123/sources/-/findings</summary>
-                /// <param name="parent">Name of the source the findings belong to. Its format is
+                /// <param name="parent">Required. Name of the source the findings belong to. Its format is
                 /// "organizations/[organization_id]/sources/[source_id]". To list across all sources provide a source_id of `-`. For
                 /// example: organizations/123/sources/-</param>
                 public virtual ListRequest List(string parent)
@@ -1416,11 +1416,16 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     }
 
 
-                    /// <summary>Name of the source the findings belong to. Its format is
+                    /// <summary>Required. Name of the source the findings belong to. Its format is
                     /// "organizations/[organization_id]/sources/[source_id]". To list across all sources provide a
                     /// source_id of `-`. For example: organizations/123/sources/-</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
+
+                    /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is
+                    /// 1, maximum is 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>Expression that defines what fields and order to use for sorting. The string value
                     /// should follow SQL syntax: comma separated list of fields. For example:
@@ -1507,11 +1512,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is
-                    /// 1, maximum is 1000.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -1544,6 +1544,15 @@ namespace Google.Apis.SecurityCommandCenter.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^organizations/[^/]+/sources/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         RequestParameters.Add(
                             "orderBy", new Google.Apis.Discovery.Parameter
@@ -1594,15 +1603,6 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1706,7 +1706,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>Updates the state of a finding.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The relative resource name of the finding. See:
+                /// <param name="name">Required. The relative resource name of the finding. See:
                 /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
                 /// "organizations/123/sources/456/finding/789".</param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
@@ -1727,7 +1727,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     }
 
 
-                    /// <summary>The relative resource name of the finding. See:
+                    /// <summary>Required. The relative resource name of the finding. See:
                     /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
                     /// "organizations/123/sources/456/finding/789".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1884,7 +1884,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>Creates a source.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Resource name of the new source's parent. Its format should be
+            /// <param name="parent">Required. Resource name of the new source's parent. Its format should be
             /// "organizations/[organization_id]".</param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.Source body, string parent)
             {
@@ -1904,7 +1904,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
 
-                /// <summary>Resource name of the new source's parent. Its format should be
+                /// <summary>Required. Resource name of the new source's parent. Its format should be
                 /// "organizations/[organization_id]".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1953,7 +1953,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             }
 
             /// <summary>Gets a source.</summary>
-            /// <param name="name">Relative resource name of the source. Its format is
+            /// <param name="name">Required. Relative resource name of the source. Its format is
             /// "organizations/[organization_id]/source/[source_id]".</param>
             public virtual GetRequest Get(string name)
             {
@@ -1972,7 +1972,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
 
-                /// <summary>Relative resource name of the source. Its format is
+                /// <summary>Required. Relative resource name of the source. Its format is
                 /// "organizations/[organization_id]/source/[source_id]".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2085,7 +2085,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             }
 
             /// <summary>Lists all sources belonging to an organization.</summary>
-            /// <param name="parent">Resource name of the parent of sources to list. Its format should be
+            /// <param name="parent">Required. Resource name of the parent of sources to list. Its format should be
             /// "organizations/[organization_id]".</param>
             public virtual ListRequest List(string parent)
             {
@@ -2104,20 +2104,20 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 }
 
 
-                /// <summary>Resource name of the parent of sources to list. Its format should be
+                /// <summary>Required. Resource name of the parent of sources to list. Its format should be
                 /// "organizations/[organization_id]".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
-                /// <summary>The value returned by the last `ListSourcesResponse`; indicates that this is a continuation
-                /// of a prior `ListSources` call, and that the system should return the next page of data.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
                 /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is 1,
                 /// maximum is 1000.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The value returned by the last `ListSourcesResponse`; indicates that this is a continuation
+                /// of a prior `ListSources` call, and that the system should return the next page of data.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2153,18 +2153,18 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2403,7 +2403,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
         }
 
         /// <summary>Gets the settings for an organization.</summary>
-        /// <param name="name">Name of the organization to get organization settings for. Its format is
+        /// <param name="name">Required. Name of the organization to get organization settings for. Its format is
         /// "organizations/[organization_id]/organizationSettings".</param>
         public virtual GetOrganizationSettingsRequest GetOrganizationSettings(string name)
         {
@@ -2422,7 +2422,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             }
 
 
-            /// <summary>Name of the organization to get organization settings for. Its format is
+            /// <summary>Required. Name of the organization to get organization settings for. Its format is
             /// "organizations/[organization_id]/organizationSettings".</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -2943,8 +2943,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
-        /// <summary>Expression that defines what assets fields to use for grouping. The string value should follow SQL
-        /// syntax: comma separated list of fields. For example:
+        /// <summary>Required. Expression that defines what assets fields to use for grouping. The string value should
+        /// follow SQL syntax: comma separated list of fields. For example:
         /// "security_center_properties.resource_project,security_center_properties.project".
         ///
         /// The following fields are supported when compare_duration is not set:
@@ -3061,8 +3061,9 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
-        /// <summary>Expression that defines what assets fields to use for grouping (including `state_change`). The
-        /// string value should follow SQL syntax: comma separated list of fields. For example: "parent,resource_name".
+        /// <summary>Required. Expression that defines what assets fields to use for grouping (including
+        /// `state_change`). The string value should follow SQL syntax: comma separated list of fields. For example:
+        /// "parent,resource_name".
         ///
         /// The following fields are supported:
         ///
@@ -3315,20 +3316,27 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
     /// for Cloud Platform resources.
     ///
-    /// A `Policy` consists of a list of `bindings`. A `binding` binds a list of `members` to a `role`, where the
-    /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
-    /// permissions defined by IAM.
+    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
+    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
+    /// of permissions (defined by IAM or configured by users). A `binding` can optionally specify a `condition`, which
+    /// is a logic expression that further constrains the role binding based on attributes about the request and/or
+    /// target resource.
     ///
     /// **JSON Example**
     ///
-    /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role": "roles/viewer",
-    /// "members": ["user:sean@example.com"] } ] }
+    /// { "bindings": [ { "role": "role/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ] }
     ///
     /// **YAML Example**
     ///
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com role: roles/viewer
+    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
+    /// description: Does not grant access after Sep 2020 expression: request.time <
+    /// timestamp('2020-10-01T00:00:00.000Z')
     ///
     /// For a description of IAM and its features, see the [IAM developer's
     /// guide](https://cloud.google.com/iam/docs).</summary>
@@ -3338,8 +3346,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 
-        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
-        /// error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. Optionally may specify a `condition` that determines
+        /// when binding is in effect. `bindings` with no members will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -3349,7 +3357,9 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
+        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if either of incoming or
+        /// stored policy does not meet the version requirements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -3357,8 +3367,12 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         ///
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
-        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
-        /// specify any valid value or leave the field unset.</summary>
+        /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
+        /// policy, modifying a conditional binding, or removing a conditional binding from the stored conditional
+        /// policy. Operations on non-conditional policies may specify any valid value or leave the field unset.
+        ///
+        /// If no etag is provided in the call to `setIamPolicy`, any version compliance checks on the incoming and/or
+        /// stored policy is skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -3430,11 +3444,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>Request message for updating a finding's state.</summary>
     public class SetFindingStateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time at which the updated state takes effect.</summary>
+        /// <summary>Required. The time at which the updated state takes effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>The desired State of the finding.</summary>
+        /// <summary>Required. The desired State of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 

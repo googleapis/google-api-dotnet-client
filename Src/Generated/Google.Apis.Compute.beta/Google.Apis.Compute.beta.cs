@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20190825 (1697)
+ *      <tr><th>API Rev<td>20190905 (1708)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -64428,8 +64428,6 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
 
-        /// <summary>Specifies whether principals can be exempted for the same LogType in lower-level resource policies.
-        /// If true, any lower-level exemptions will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreChildExemptions")]
         public virtual System.Nullable<bool> IgnoreChildExemptions { get; set; } 
 
@@ -75765,15 +75763,16 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>The list of path rules. Use this list instead of routeRules when routing based on simple path
         /// matching is all that's required. The order by which path rules are specified does not matter. Matches are
         /// always done on the longest-path-first basis. For example: a pathRule with a path /a/b/c will match before
-        /// /a/b irrespective of the order in which those paths appear in this list. Only one of pathRules or routeRules
-        /// must be set.</summary>
+        /// /a/b irrespective of the order in which those paths appear in this list. Within a given pathMatcher, only
+        /// one of pathRules or routeRules must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathRules")]
         public virtual System.Collections.Generic.IList<PathRule> PathRules { get; set; } 
 
         /// <summary>The list of ordered HTTP route rules. Use this list instead of pathRules when advanced route
         /// matching and routing actions are desired. The order of specifying routeRules matters: the first rule that
-        /// matches will cause its specified routing action to take effect. Only one of pathRules or routeRules must be
-        /// set.</summary>
+        /// matches will cause its specified routing action to take effect. Within a given pathMatcher, only one of
+        /// pathRules or routeRules must be set. routeRules are not supported in UrlMaps intended for External Load
+        /// balancers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routeRules")]
         public virtual System.Collections.Generic.IList<HttpRouteRule> RouteRules { get; set; } 
 
@@ -75889,7 +75888,12 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 
 
-        /// <summary>Deprecated.</summary>
+        /// <summary>Specifies the format of the policy.
+        ///
+        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        ///
+        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
+        /// specify any valid value or leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

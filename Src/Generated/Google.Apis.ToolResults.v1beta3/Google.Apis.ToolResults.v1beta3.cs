@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20190919 (1722)
+ *      <tr><th>API Rev<td>20190925 (1728)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -4731,7 +4731,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>Resource representing a single performance measure or data point</summary>
     public class PerfSample : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp of collection</summary>
+        /// <summary>Timestamp of collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
         public virtual Timestamp SampleTime { get; set; } 
 
@@ -4958,7 +4958,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     ///
     /// A Step can be updated until its state is set to COMPLETE at which points it becomes immutable.
     ///
-    /// Next tag: 23</summary>
+    /// Next tag: 27</summary>
     public class Step : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time when the step status was set to complete.

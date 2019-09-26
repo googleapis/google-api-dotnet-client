@@ -1,4 +1,97 @@
 {
+  "schemas": {
+    "ViolatingSitesResponse": {
+      "type": "object",
+      "properties": {
+        "violatingSites": {
+          "description": "The list of violating sites.",
+          "type": "array",
+          "items": {
+            "$ref": "SiteSummaryResponse"
+          }
+        }
+      },
+      "id": "ViolatingSitesResponse",
+      "description": "Response message for ListViolatingSites."
+    },
+    "SiteSummaryResponse": {
+      "description": "Response message for GetSiteSummary.",
+      "type": "object",
+      "properties": {
+        "filterStatus": {
+          "enumDescriptions": [
+            "N/A.",
+            "Enforcement is on.",
+            "Enforcement is off.",
+            "Enforcement is paused.",
+            "Enforcement is pending."
+          ],
+          "enum": [
+            "UNKNOWN",
+            "ON",
+            "OFF",
+            "PAUSED",
+            "PENDING"
+          ],
+          "description": "The site's [enforcement\nstatus](https://support.google.com/webtools/answer/7538608).",
+          "type": "string"
+        },
+        "underReview": {
+          "description": "Whether the site is currently under review.",
+          "type": "boolean"
+        },
+        "reportUrl": {
+          "description": "A link to the full Abusive Experience Report for the site.\n\nNot set in\nViolatingSitesResponse.\n\nNote that you must complete the [Search Console verification\nprocess](https://support.google.com/webmasters/answer/9008080) for the site\nbefore you can access the full report.",
+          "type": "string"
+        },
+        "reviewedSite": {
+          "type": "string",
+          "description": "The name of the reviewed site, e.g. `google.com`."
+        },
+        "lastChangeTime": {
+          "description": "The time at which the site's status last changed.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "abusiveStatus": {
+          "type": "string",
+          "enumDescriptions": [
+            "Not reviewed.",
+            "Passing.",
+            "Failing."
+          ],
+          "enum": [
+            "UNKNOWN",
+            "PASSING",
+            "FAILING"
+          ],
+          "description": "The site's Abusive Experience Report status."
+        },
+        "enforcementTime": {
+          "description": "The time at which\n[enforcement](https://support.google.com/webtools/answer/7538608) against\nthe site began or will begin.\n\nNot set when the\nfilter_status\nis OFF.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "id": "SiteSummaryResponse"
+    }
+  },
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "protocol": "rest",
+  "canonicalName": "Abusive Experience Report",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/xapi.zoo": {
+          "description": "Test scope for access to the Zoo service"
+        }
+      }
+    }
+  },
+  "rootUrl": "https://abusiveexperiencereport.googleapis.com/",
   "ownerDomain": "google.com",
   "name": "abusiveexperiencereport",
   "batchPath": "batch",
@@ -56,31 +149,47 @@
     }
   },
   "parameters": {
+    "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
+    },
     "key": {
-      "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string",
       "location": "query"
     },
-    "quotaUser": {
+    "access_token": {
+      "type": "string",
       "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "description": "OAuth access token."
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string"
     },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
     "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
       "default": "true",
-      "location": "query"
+      "location": "query",
+      "description": "Returns response with indentations and line breaks."
     },
     "uploadType": {
       "type": "string",
@@ -93,43 +202,27 @@
       "description": "Selector specifying which fields to include in a partial response."
     },
     "callback": {
-      "type": "string",
-      "location": "query",
-      "description": "JSONP"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
+      "description": "JSONP",
       "type": "string",
       "location": "query"
     },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
     "$.xgafv": {
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
       "location": "query",
       "enum": [
         "1",
         "2"
       ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
-    },
-    "alt": {
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
+      "description": "V1 error format."
     }
   },
   "version": "v1",
@@ -140,100 +233,7 @@
   "basePath": "",
   "id": "abusiveexperiencereport:v1",
   "documentationLink": "https://developers.google.com/abusive-experience-report/",
-  "revision": "20190916",
+  "revision": "20190920",
   "discoveryVersion": "v1",
-  "version_module": true,
-  "schemas": {
-    "SiteSummaryResponse": {
-      "description": "Response message for GetSiteSummary.",
-      "type": "object",
-      "properties": {
-        "abusiveStatus": {
-          "type": "string",
-          "enumDescriptions": [
-            "Not reviewed.",
-            "Passing.",
-            "Failing."
-          ],
-          "enum": [
-            "UNKNOWN",
-            "PASSING",
-            "FAILING"
-          ],
-          "description": "The site's Abusive Experience Report status."
-        },
-        "enforcementTime": {
-          "type": "string",
-          "description": "The time at which\n[enforcement](https://support.google.com/webtools/answer/7538608) against\nthe site began or will begin.\n\nNot set when the\nfilter_status\nis OFF.",
-          "format": "google-datetime"
-        },
-        "filterStatus": {
-          "type": "string",
-          "enumDescriptions": [
-            "N/A.",
-            "Enforcement is on.",
-            "Enforcement is off.",
-            "Enforcement is paused.",
-            "Enforcement is pending."
-          ],
-          "enum": [
-            "UNKNOWN",
-            "ON",
-            "OFF",
-            "PAUSED",
-            "PENDING"
-          ],
-          "description": "The site's [enforcement\nstatus](https://support.google.com/webtools/answer/7538608)."
-        },
-        "underReview": {
-          "type": "boolean",
-          "description": "Whether the site is currently under review."
-        },
-        "reportUrl": {
-          "description": "A link to the full Abusive Experience Report for the site.\n\nNot set in\nViolatingSitesResponse.\n\nNote that you must complete the [Search Console verification\nprocess](https://support.google.com/webmasters/answer/9008080) for the site\nbefore you can access the full report.",
-          "type": "string"
-        },
-        "reviewedSite": {
-          "type": "string",
-          "description": "The name of the reviewed site, e.g. `google.com`."
-        },
-        "lastChangeTime": {
-          "type": "string",
-          "description": "The time at which the site's status last changed.",
-          "format": "google-datetime"
-        }
-      },
-      "id": "SiteSummaryResponse"
-    },
-    "ViolatingSitesResponse": {
-      "description": "Response message for ListViolatingSites.",
-      "type": "object",
-      "properties": {
-        "violatingSites": {
-          "type": "array",
-          "items": {
-            "$ref": "SiteSummaryResponse"
-          },
-          "description": "The list of violating sites."
-        }
-      },
-      "id": "ViolatingSitesResponse"
-    }
-  },
-  "protocol": "rest",
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  },
-  "canonicalName": "Abusive Experience Report",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/xapi.zoo": {
-          "description": "Test scope for access to the Zoo service"
-        }
-      }
-    }
-  },
-  "rootUrl": "https://abusiveexperiencereport.googleapis.com/"
+  "version_module": true
 }

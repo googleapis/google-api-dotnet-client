@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/security-scanner/'>Web Security Scanner API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20190903 (1706)
+ *      <tr><th>API Rev<td>20190919 (1722)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/security-scanner/'>
  *              https://cloud.google.com/security-scanner/</a>
@@ -704,8 +704,8 @@ namespace Google.Apis.WebSecurityScanner.v1beta
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The filter expression. The expression must be in the format: . Supported field:
-                        /// 'finding_type'. Supported operator: '='.</summary>
+                        /// <summary>Required. The filter expression. The expression must be in the format: . Supported
+                        /// field: 'finding_type'. Supported operator: '='.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
@@ -1477,15 +1477,15 @@ namespace Google.Apis.WebSecurityScanner.v1beta.Data
     /// against.</summary>
     public class CrawledUrl : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The body of the request that was used to visit the URL.</summary>
+        /// <summary>The body of the request that was used to visit the URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual string Body { get; set; } 
 
-        /// <summary>Output only. The http method of the request that was used to visit the URL, in uppercase.</summary>
+        /// <summary>The http method of the request that was used to visit the URL, in uppercase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
         public virtual string HttpMethod { get; set; } 
 
-        /// <summary>Output only. The URL that was crawled.</summary>
+        /// <summary>The URL that was crawled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -1528,78 +1528,75 @@ namespace Google.Apis.WebSecurityScanner.v1beta.Data
     /// <summary>A Finding resource represents a vulnerability instance identified during a ScanRun.</summary>
     public class Finding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The body of the request that triggered the vulnerability.</summary>
+        /// <summary>The body of the request that triggered the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual string Body { get; set; } 
 
-        /// <summary>Output only. The description of the vulnerability.</summary>
+        /// <summary>The description of the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Output only. The URL where the browser lands when the vulnerability is detected.</summary>
+        /// <summary>The URL where the browser lands when the vulnerability is detected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
         public virtual string FinalUrl { get; set; } 
 
-        /// <summary>Output only. The type of the Finding. Detailed and up-to-date information on findings can be found
-        /// here: https://cloud.google.com/security-scanner/docs/scan-result-details</summary>
+        /// <summary>The type of the Finding. Detailed and up-to-date information on findings can be found here:
+        /// https://cloud.google.com/security-scanner/docs/scan-result-details</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingType")]
         public virtual string FindingType { get; set; } 
 
-        /// <summary>Output only. An addon containing information reported for a vulnerability with an HTML form, if
-        /// any.</summary>
+        /// <summary>An addon containing information reported for a vulnerability with an HTML form, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("form")]
         public virtual Form Form { get; set; } 
 
-        /// <summary>Output only. If the vulnerability was originated from nested IFrame, the immediate parent IFrame is
+        /// <summary>If the vulnerability was originated from nested IFrame, the immediate parent IFrame is
         /// reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameUrl")]
         public virtual string FrameUrl { get; set; } 
 
-        /// <summary>Output only. The URL produced by the server-side fuzzer and used in the request that triggered the
+        /// <summary>The URL produced by the server-side fuzzer and used in the request that triggered the
         /// vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fuzzedUrl")]
         public virtual string FuzzedUrl { get; set; } 
 
-        /// <summary>Output only. The http method of the request that triggered the vulnerability, in
-        /// uppercase.</summary>
+        /// <summary>The http method of the request that triggered the vulnerability, in uppercase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
         public virtual string HttpMethod { get; set; } 
 
-        /// <summary>Output only. The resource name of the Finding. The name follows the format of
+        /// <summary>The resource name of the Finding. The name follows the format of
         /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanruns/{scanRunId}/findings/{findingId}'. The finding IDs
         /// are generated by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Output only. An addon containing information about outdated libraries.</summary>
+        /// <summary>An addon containing information about outdated libraries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outdatedLibrary")]
         public virtual OutdatedLibrary OutdatedLibrary { get; set; } 
 
-        /// <summary>Output only. The URL containing human-readable payload that user can leverage to reproduce the
+        /// <summary>The URL containing human-readable payload that user can leverage to reproduce the
         /// vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reproductionUrl")]
         public virtual string ReproductionUrl { get; set; } 
 
-        /// <summary>Output only. The tracking ID uniquely identifies a vulnerability instance across multiple
-        /// ScanRuns.</summary>
+        /// <summary>The tracking ID uniquely identifies a vulnerability instance across multiple ScanRuns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
         public virtual string TrackingId { get; set; } 
 
-        /// <summary>Output only. An addon containing detailed information regarding any resource causing the
-        /// vulnerability such as JavaScript sources, image, audio files, etc.</summary>
+        /// <summary>An addon containing detailed information regarding any resource causing the vulnerability such as
+        /// JavaScript sources, image, audio files, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violatingResource")]
         public virtual ViolatingResource ViolatingResource { get; set; } 
 
-        /// <summary>Output only. An addon containing information about vulnerable or missing HTTP headers.</summary>
+        /// <summary>An addon containing information about vulnerable or missing HTTP headers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerableHeaders")]
         public virtual VulnerableHeaders VulnerableHeaders { get; set; } 
 
-        /// <summary>Output only. An addon containing information about request parameters which were found to be
+        /// <summary>An addon containing information about request parameters which were found to be
         /// vulnerable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerableParameters")]
         public virtual VulnerableParameters VulnerableParameters { get; set; } 
 
-        /// <summary>Output only. An addon containing information reported for an XSS, if any.</summary>
+        /// <summary>An addon containing information reported for an XSS, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xss")]
         public virtual Xss Xss { get; set; } 
 
@@ -1611,11 +1608,11 @@ namespace Google.Apis.WebSecurityScanner.v1beta.Data
     /// ScanRun.</summary>
     public class FindingTypeStats : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The count of findings belonging to this finding type.</summary>
+        /// <summary>The count of findings belonging to this finding type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingCount")]
         public virtual System.Nullable<int> FindingCount { get; set; } 
 
-        /// <summary>Output only. The finding type associated with the stats.</summary>
+        /// <summary>The finding type associated with the stats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingType")]
         public virtual string FindingType { get; set; } 
 
@@ -1829,11 +1826,11 @@ namespace Google.Apis.WebSecurityScanner.v1beta.Data
     /// fails due to a scan configuration error.</summary>
     public class ScanConfigError : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Indicates the reason code for a configuration failure.</summary>
+        /// <summary>Indicates the reason code for a configuration failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; } 
 
-        /// <summary>Output only. Indicates the full name of the ScanConfig field that triggers this error, for example
+        /// <summary>Indicates the full name of the ScanConfig field that triggers this error, for example
         /// "scan_config.max_qps". This field is provided for troubleshooting purposes only and its actual value can
         /// change in the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
@@ -1846,57 +1843,56 @@ namespace Google.Apis.WebSecurityScanner.v1beta.Data
     /// <summary>A ScanRun is a output-only resource representing an actual run of the scan. Next id: 12</summary>
     public class ScanRun : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The time at which the ScanRun reached termination state - that the ScanRun is either
-        /// finished or stopped by user.</summary>
+        /// <summary>The time at which the ScanRun reached termination state - that the ScanRun is either finished or
+        /// stopped by user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>Output only. If result_state is an ERROR, this field provides the primary reason for scan's
-        /// termination and more details, if such are available.</summary>
+        /// <summary>If result_state is an ERROR, this field provides the primary reason for scan's termination and more
+        /// details, if such are available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorTrace")]
         public virtual ScanRunErrorTrace ErrorTrace { get; set; } 
 
-        /// <summary>Output only. The execution state of the ScanRun.</summary>
+        /// <summary>The execution state of the ScanRun.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionState")]
         public virtual string ExecutionState { get; set; } 
 
-        /// <summary>Output only. Whether the scan run has found any vulnerabilities.</summary>
+        /// <summary>Whether the scan run has found any vulnerabilities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasVulnerabilities")]
         public virtual System.Nullable<bool> HasVulnerabilities { get; set; } 
 
-        /// <summary>Output only. The resource name of the ScanRun. The name follows the format of
+        /// <summary>The resource name of the ScanRun. The name follows the format of
         /// 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. The ScanRun IDs are generated by the
         /// system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Output only. The percentage of total completion ranging from 0 to 100. If the scan is in queue, the
-        /// value is 0. If the scan is running, the value ranges from 0 to 100. If the scan is finished, the value is
-        /// 100.</summary>
+        /// <summary>The percentage of total completion ranging from 0 to 100. If the scan is in queue, the value is 0.
+        /// If the scan is running, the value ranges from 0 to 100. If the scan is finished, the value is 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; } 
 
-        /// <summary>Output only. The result state of the ScanRun. This field is only available after the execution
-        /// state reaches "FINISHED".</summary>
+        /// <summary>The result state of the ScanRun. This field is only available after the execution state reaches
+        /// "FINISHED".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultState")]
         public virtual string ResultState { get; set; } 
 
-        /// <summary>Output only. The time at which the ScanRun started.</summary>
+        /// <summary>The time at which the ScanRun started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>Output only. The number of URLs crawled during this ScanRun. If the scan is in progress, the value
-        /// represents the number of URLs crawled up to now.</summary>
+        /// <summary>The number of URLs crawled during this ScanRun. If the scan is in progress, the value represents
+        /// the number of URLs crawled up to now.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlsCrawledCount")]
         public virtual System.Nullable<long> UrlsCrawledCount { get; set; } 
 
-        /// <summary>Output only. The number of URLs tested during this ScanRun. If the scan is in progress, the value
-        /// represents the number of URLs tested up to now. The number of URLs tested is usually larger than the number
-        /// URLS crawled because typically a crawled URL is tested with multiple test payloads.</summary>
+        /// <summary>The number of URLs tested during this ScanRun. If the scan is in progress, the value represents the
+        /// number of URLs tested up to now. The number of URLs tested is usually larger than the number URLS crawled
+        /// because typically a crawled URL is tested with multiple test payloads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlsTestedCount")]
         public virtual System.Nullable<long> UrlsTestedCount { get; set; } 
 
-        /// <summary>Output only. A list of warnings, if such are encountered during this scan run.</summary>
+        /// <summary>A list of warnings, if such are encountered during this scan run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningTraces")]
         public virtual System.Collections.Generic.IList<ScanRunWarningTrace> WarningTraces { get; set; } 
 
@@ -1907,18 +1903,18 @@ namespace Google.Apis.WebSecurityScanner.v1beta.Data
     /// <summary>Output only. Defines an error trace message for a ScanRun.</summary>
     public class ScanRunErrorTrace : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Indicates the error reason code.</summary>
+        /// <summary>Indicates the error reason code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; } 
 
-        /// <summary>Output only. If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP
-        /// error code, if such is available. For example, if this code is 404, the scan has encountered too many
-        /// NOT_FOUND responses.</summary>
+        /// <summary>If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP error code,
+        /// if such is available. For example, if this code is 404, the scan has encountered too many NOT_FOUND
+        /// responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mostCommonHttpErrorCode")]
         public virtual System.Nullable<int> MostCommonHttpErrorCode { get; set; } 
 
-        /// <summary>Output only. If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error message
-        /// encountered during scan configuration validation that is performed before each scan run.</summary>
+        /// <summary>If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error message encountered during
+        /// scan configuration validation that is performed before each scan run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanConfigError")]
         public virtual ScanConfigError ScanConfigError { get; set; } 
 
@@ -1930,7 +1926,7 @@ namespace Google.Apis.WebSecurityScanner.v1beta.Data
     /// information that helps make the scanning process more effective.</summary>
     public class ScanRunWarningTrace : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Indicates the warning code.</summary>
+        /// <summary>Indicates the warning code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190825 (1697)
+ *      <tr><th>API Rev<td>20190905 (1708)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -57862,8 +57862,6 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
 
-        /// <summary>Specifies whether principals can be exempted for the same LogType in lower-level resource policies.
-        /// If true, any lower-level exemptions will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreChildExemptions")]
         public virtual System.Nullable<bool> IgnoreChildExemptions { get; set; } 
 
@@ -58578,8 +58576,28 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cdnPolicy")]
         public virtual BackendServiceCdnPolicy CdnPolicy { get; set; } 
 
+        /// <summary>Settings controlling the volume of connections to a backend service.
+        ///
+        /// This field is applicable to either: - A regional backend service with the service_protocol set to HTTP,
+        /// HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the
+        /// load_balancing_scheme set to INTERNAL_SELF_MANAGED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("circuitBreakers")]
+        public virtual CircuitBreakers CircuitBreakers { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("connectionDraining")]
         public virtual ConnectionDraining ConnectionDraining { get; set; } 
+
+        /// <summary>Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP
+        /// headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections.
+        /// The affinity to a particular destination host will be lost when one or more hosts are added/removed from the
+        /// destination service. This field specifies parameters that control consistent hashing. This field is only
+        /// applicable when localityLbPolicy is set to MAGLEV or RING_HASH.
+        ///
+        /// This field is applicable to either: - A regional backend service with the service_protocol set to HTTP,
+        /// HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the
+        /// load_balancing_scheme set to INTERNAL_SELF_MANAGED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consistentHash")]
+        public virtual ConsistentHashLoadBalancerSettings ConsistentHash { get; set; } 
 
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
@@ -58635,6 +58653,24 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; } 
 
+        /// <summary>The load balancing algorithm used within the scope of the locality. The possible values are: -
+        /// ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is
+        /// the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host
+        /// which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent
+        /// hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N
+        /// hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. -
+        /// ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections
+        /// are opened to the same address as the destination address of the incoming connection before the connection
+        /// was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load
+        /// balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection
+        /// times. For more information about Maglev, refer to https://ai.google/research/pubs/pub44824
+        ///
+        /// This field is applicable to either: - A regional backend service with the service_protocol set to HTTP,
+        /// HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the
+        /// load_balancing_scheme set to INTERNAL_SELF_MANAGED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localityLbPolicy")]
+        public virtual string LocalityLbPolicy { get; set; } 
+
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
         /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
@@ -58642,6 +58678,13 @@ namespace Google.Apis.Compute.v1.Data
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is
+        /// applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
+        /// and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme
+        /// set to INTERNAL_SELF_MANAGED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outlierDetection")]
+        public virtual OutlierDetection OutlierDetection { get; set; } 
 
         /// <summary>Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
         ///
@@ -59056,6 +59099,39 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Settings controlling the volume of connections to a backend service.</summary>
+    public class CircuitBreakers : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum number of connections to the backend cluster. If not specified, the default is
+        /// 1024.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConnections")]
+        public virtual System.Nullable<int> MaxConnections { get; set; } 
+
+        /// <summary>The maximum number of pending requests allowed to the backend cluster. If not specified, the
+        /// default is 1024.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxPendingRequests")]
+        public virtual System.Nullable<int> MaxPendingRequests { get; set; } 
+
+        /// <summary>The maximum number of parallel requests that allowed to the backend cluster. If not specified, the
+        /// default is 1024.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRequests")]
+        public virtual System.Nullable<int> MaxRequests { get; set; } 
+
+        /// <summary>Maximum requests for a single backend connection. This parameter is respected by both the HTTP/1.1
+        /// and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will
+        /// effectively disable keep alive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRequestsPerConnection")]
+        public virtual System.Nullable<int> MaxRequestsPerConnection { get; set; } 
+
+        /// <summary>The maximum number of parallel retries allowed to the backend cluster. If not specified, the
+        /// default is 3.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRetries")]
+        public virtual System.Nullable<int> MaxRetries { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a regional Commitment resource.
     ///
     /// Creating a commitment resource means that you are purchasing a committed use contract with an explicit start and
@@ -59366,6 +59442,97 @@ namespace Google.Apis.Compute.v1.Data
         /// VMs. Only applicable if the protocol is not UDP. The valid range is [0, 3600].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drainingTimeoutSec")]
         public virtual System.Nullable<int> DrainingTimeoutSec { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This message defines settings for a consistent hash style load balancer.</summary>
+    public class ConsistentHashLoadBalancerSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key
+        /// for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is
+        /// applicable if the sessionAffinity is set to HTTP_COOKIE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpCookie")]
+        public virtual ConsistentHashLoadBalancerSettingsHttpCookie HttpCookie { get; set; } 
+
+        /// <summary>The hash based on the value of the specified header field. This field is applicable if the
+        /// sessionAffinity is set to HEADER_FIELD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpHeaderName")]
+        public virtual string HttpHeaderName { get; set; } 
+
+        /// <summary>The minimum number of virtual nodes to use for the hash ring. Defaults to 1024. Larger ring sizes
+        /// result in more granular load distributions. If the number of hosts in the load balancing pool is larger than
+        /// the ring size, each host will be assigned a single virtual node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumRingSize")]
+        public virtual System.Nullable<long> MinimumRingSize { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The information about the HTTP Cookie on which the hash function is based for load balancing policies
+    /// that use a consistent hash.</summary>
+    public class ConsistentHashLoadBalancerSettingsHttpCookie : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the cookie.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Path to set for the cookie.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; } 
+
+        /// <summary>Lifetime of the cookie.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual Duration Ttl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The specification for allowing client side cross-origin requests. Please see W3C Recommendation for
+    /// Cross Origin Resource Sharing</summary>
+    public class CorsPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>In response to a preflight request, setting this to true indicates that the actual request can
+        /// include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is
+        /// false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowCredentials")]
+        public virtual System.Nullable<bool> AllowCredentials { get; set; } 
+
+        /// <summary>Specifies the content for the Access-Control-Allow-Headers header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowHeaders")]
+        public virtual System.Collections.Generic.IList<string> AllowHeaders { get; set; } 
+
+        /// <summary>Specifies the content for the Access-Control-Allow-Methods header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMethods")]
+        public virtual System.Collections.Generic.IList<string> AllowMethods { get; set; } 
+
+        /// <summary>Specifies the regualar expression patterns that match allowed origins. For regular expression
+        /// grammar please see en.cppreference.com/w/cpp/regex/ecmascript An origin is allowed if it matches either
+        /// allow_origins or allow_origin_regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowOriginRegexes")]
+        public virtual System.Collections.Generic.IList<string> AllowOriginRegexes { get; set; } 
+
+        /// <summary>Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it
+        /// matches either allow_origins or allow_origin_regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowOrigins")]
+        public virtual System.Collections.Generic.IList<string> AllowOrigins { get; set; } 
+
+        /// <summary>If true, specifies the CORS policy is disabled. The default value of false, which indicates that
+        /// the CORS policy is in effect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
+
+        /// <summary>Specifies the content for the Access-Control-Expose-Headers header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposeHeaders")]
+        public virtual System.Collections.Generic.IList<string> ExposeHeaders { get; set; } 
+
+        /// <summary>Specifies how long the results of a preflight request can be cached. This translates to the content
+        /// for the Access-Control-Max-Age header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxAge")]
+        public virtual System.Nullable<int> MaxAge { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60218,6 +60385,26 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A Duration represents a fixed-length span of time represented as a count of seconds and fractions of
+    /// seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". Range is
+    /// approximately 10,000 years.</summary>
+    public class Duration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second
+        /// are represented with a 0 `seconds` field and a positive `nanos` field. Must be from 0 to 999,999,999
+        /// inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; } 
+
+        /// <summary>Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these
+        /// bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<long> Seconds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents an expression text. Example:
     ///
     /// title: "User account presence" description: "Determines whether the request has a user account" expression:
@@ -60782,6 +60969,17 @@ namespace Google.Apis.Compute.v1.Data
         /// (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; } 
+
+        /// <summary>Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set xDS
+        /// compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. If a match
+        /// takes place, the relevant routing configuration is made available to those proxies. For each metadataFilter
+        /// in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match
+        /// the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all
+        /// of its filterLabels must match with corresponding labels in the provided metadata. metadataFilters specified
+        /// here can be overridden by those specified in the UrlMap that this ForwardingRule references. metadataFilters
+        /// only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataFilters")]
+        public virtual System.Collections.Generic.IList<MetadataFilter> MetadataFilters { get; set; } 
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -61710,6 +61908,162 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Specification for how requests are aborted as part of fault injection.</summary>
+    public class HttpFaultAbort : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HTTP status code used to abort the request. The value must be between 200 and 599
+        /// inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpStatus")]
+        public virtual System.Nullable<long> HttpStatus { get; set; } 
+
+        /// <summary>The percentage of traffic (connections/operations/requests) which will be aborted as part of fault
+        /// injection. The value must be between 0.0 and 100.0 inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
+        public virtual System.Nullable<double> Percentage { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as
+    /// part of fault injection.</summary>
+    public class HttpFaultDelay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the value of the fixed delay interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedDelay")]
+        public virtual Duration FixedDelay { get; set; } 
+
+        /// <summary>The percentage of traffic (connections/operations/requests) on which delay will be introduced as
+        /// part of fault injection. The value must be between 0.0 and 100.0 inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
+        public virtual System.Nullable<double> Percentage { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The specification for fault injection introduced into traffic to test the resiliency of clients to
+    /// backend service failure. As part of fault injection, when clients send requests to a backend service, delays can
+    /// be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service.
+    /// Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests.</summary>
+    public class HttpFaultInjection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The specification for how client requests are aborted as part of fault injection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abort")]
+        public virtual HttpFaultAbort Abort { get; set; } 
+
+        /// <summary>The specification for how client requests are delayed as part of fault injection, before being sent
+        /// to a backend service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delay")]
+        public virtual HttpFaultDelay Delay { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request and response header transformations that take effect before the request is passed along to
+    /// the selected backendService.</summary>
+    public class HttpHeaderAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Headers to add to a matching request prior to forwarding the request to the
+        /// backendService.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestHeadersToAdd")]
+        public virtual System.Collections.Generic.IList<HttpHeaderOption> RequestHeadersToAdd { get; set; } 
+
+        /// <summary>A list of header names for headers that need to be removed from the request prior to forwarding the
+        /// request to the backendService.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestHeadersToRemove")]
+        public virtual System.Collections.Generic.IList<string> RequestHeadersToRemove { get; set; } 
+
+        /// <summary>Headers to add the response prior to sending the response back to the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseHeadersToAdd")]
+        public virtual System.Collections.Generic.IList<HttpHeaderOption> ResponseHeadersToAdd { get; set; } 
+
+        /// <summary>A list of header names for headers that need to be removed from the response prior to sending the
+        /// response back to the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseHeadersToRemove")]
+        public virtual System.Collections.Generic.IList<string> ResponseHeadersToRemove { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>matchRule criteria for request header matches.</summary>
+    public class HttpHeaderMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The value should exactly match contents of exactMatch. Only one of exactMatch, prefixMatch,
+        /// suffixMatch, regexMatch, presentMatch or rangeMatch must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exactMatch")]
+        public virtual string ExactMatch { get; set; } 
+
+        /// <summary>The name of the HTTP header to match. For matching against the HTTP request's authority, use a
+        /// headerMatch with the header name ":authority". For matching a request's method, use the headerName
+        /// ":method".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerName")]
+        public virtual string HeaderName { get; set; } 
+
+        /// <summary>If set to false, the headerMatch is considered a match if the match criteria above are met. If set
+        /// to true, the headerMatch is considered a match if the match criteria above are NOT met. The default setting
+        /// is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invertMatch")]
+        public virtual System.Nullable<bool> InvertMatch { get; set; } 
+
+        /// <summary>The value of the header must start with the contents of prefixMatch. Only one of exactMatch,
+        /// prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixMatch")]
+        public virtual string PrefixMatch { get; set; } 
+
+        /// <summary>A header with the contents of headerName must exist. The match takes place whether or not the
+        /// request's header has a value or not. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch,
+        /// presentMatch or rangeMatch must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("presentMatch")]
+        public virtual System.Nullable<bool> PresentMatch { get; set; } 
+
+        /// <summary>The header value must be an integer and its value must be in the range specified in rangeMatch. If
+        /// the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0]
+        /// - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of
+        /// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeMatch")]
+        public virtual Int64RangeMatch RangeMatch { get; set; } 
+
+        /// <summary>The value of the header must match the regualar expression specified in regexMatch. For regular
+        /// expression grammar, please see:  en.cppreference.com/w/cpp/regex/ecmascript For matching against a port
+        /// specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that
+        /// satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch,
+        /// regexMatch, presentMatch or rangeMatch must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regexMatch")]
+        public virtual string RegexMatch { get; set; } 
+
+        /// <summary>The value of the header must end with the contents of suffixMatch. Only one of exactMatch,
+        /// prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suffixMatch")]
+        public virtual string SuffixMatch { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specification determining how headers are added to requests or responses.</summary>
+    public class HttpHeaderOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerName")]
+        public virtual string HeaderName { get; set; } 
+
+        /// <summary>The value of the header to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerValue")]
+        public virtual string HeaderValue { get; set; } 
+
+        /// <summary>If false, headerValue is appended to any values that already exist for the header. If true,
+        /// headerValue is set for the header, discarding any values that were set for that header. The default value is
+        /// false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replace")]
+        public virtual System.Nullable<bool> Replace { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a legacy HTTP Health Check resource.
     ///
     /// Legacy health checks are required by network load balancers. For more information, read Health Check
@@ -61854,6 +62208,255 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    /// <summary>HttpRouteRuleMatch criteria for a request's query parameter.</summary>
+    public class HttpQueryParameterMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The queryParameterMatch matches if the value of the parameter exactly matches the contents of
+        /// exactMatch. Only one of presentMatch, exactMatch and regexMatch must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exactMatch")]
+        public virtual string ExactMatch { get; set; } 
+
+        /// <summary>The name of the query parameter to match. The query parameter must exist in the request, in the
+        /// absence of which the request match fails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Specifies that the queryParameterMatch matches if the request contains the query parameter,
+        /// irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch and
+        /// regexMatch must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("presentMatch")]
+        public virtual System.Nullable<bool> PresentMatch { get; set; } 
+
+        /// <summary>The queryParameterMatch matches if the value of the parameter matches the regular expression
+        /// specified by regexMatch. For the regular expression grammar, please see
+        /// en.cppreference.com/w/cpp/regex/ecmascript Only one of presentMatch, exactMatch and regexMatch must be
+        /// set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regexMatch")]
+        public virtual string RegexMatch { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies settings for an HTTP redirect.</summary>
+    public class HttpRedirectAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The host that will be used in the redirect response instead of the one that was supplied in the
+        /// request. The value must be between 1 and 255 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostRedirect")]
+        public virtual string HostRedirect { get; set; } 
+
+        /// <summary>If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL
+        /// scheme of the redirected request will remain the same as that of the request. This must only be set for
+        /// UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is
+        /// set to false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpsRedirect")]
+        public virtual System.Nullable<bool> HttpsRedirect { get; set; } 
+
+        /// <summary>The path that will be used in the redirect response instead of the one that was supplied in the
+        /// request. Only one of pathRedirect or prefixRedirect must be specified. The value must be between 1 and 1024
+        /// characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pathRedirect")]
+        public virtual string PathRedirect { get; set; } 
+
+        /// <summary>The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the
+        /// remaining portion of the URL before redirecting the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixRedirect")]
+        public virtual string PrefixRedirect { get; set; } 
+
+        /// <summary>The HTTP Status code to use for this RedirectAction. Supported values are: -
+        /// MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. - FOUND, which corresponds to
+        /// 302. - SEE_OTHER which corresponds to 303. - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the
+        /// request method will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request
+        /// method will be retained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectResponseCode")]
+        public virtual string RedirectResponseCode { get; set; } 
+
+        /// <summary>If set to true, any accompanying query portion of the original URL is removed prior to redirecting
+        /// the request. If set to false, the query portion of the original URL is retained. The default is set to
+        /// false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stripQuery")]
+        public virtual System.Nullable<bool> StripQuery { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The retry policy associates with HttpRouteRule</summary>
+    public class HttpRetryPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the allowed number retries. This number must be > 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numRetries")]
+        public virtual System.Nullable<long> NumRetries { get; set; } 
+
+        /// <summary>Specifies a non-zero timeout per retry attempt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perTryTimeout")]
+        public virtual Duration PerTryTimeout { get; set; } 
+
+        /// <summary>Specfies one or more conditions when this retry rule applies. Valid values are: - 5xx: Loadbalancer
+        /// will attempt a retry if the backend service responds with any 5xx response code, or if the backend service
+        /// does not respond at all, example: disconnects, reset, read timeout, connection failure, and refused streams.
+        /// - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504. - - connect-failure:
+        /// Loadbalancer will retry on failures connecting to backend services, for example due to connection timeouts.
+        /// - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes. Currently the only retriable
+        /// error supported is 409. - refused-stream:Loadbalancer will retry if the backend service resets the stream
+        /// with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. -
+        /// cancelledLoadbalancer will retry if the gRPC status code in the response header is set to cancelled -
+        /// deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to
+        /// deadline-exceeded - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
+        /// header is set to resource-exhausted - unavailable: Loadbalancer will retry if the gRPC status code in the
+        /// response header is set to unavailable</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryConditions")]
+        public virtual System.Collections.Generic.IList<string> RetryConditions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class HttpRouteAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The specification for allowing client side cross-origin requests. Please see W3C Recommendation for
+        /// Cross Origin Resource Sharing</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("corsPolicy")]
+        public virtual CorsPolicy CorsPolicy { get; set; } 
+
+        /// <summary>The specification for fault injection introduced into traffic to test the resiliency of clients to
+        /// backend service failure. As part of fault injection, when clients send requests to a backend service, delays
+        /// can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend
+        /// service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests.
+        /// timeout and retry_policy will be ignored by clients that are configured with a
+        /// fault_injection_policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("faultInjectionPolicy")]
+        public virtual HttpFaultInjection FaultInjectionPolicy { get; set; } 
+
+        /// <summary>Specifies the policy on how requests intended for the route's backends are shadowed to a separate
+        /// mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending
+        /// traffic to the shadow service, the host / authority header is suffixed with -shadow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestMirrorPolicy")]
+        public virtual RequestMirrorPolicy RequestMirrorPolicy { get; set; } 
+
+        /// <summary>Specifies the retry policy associated with this route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryPolicy")]
+        public virtual HttpRetryPolicy RetryPolicy { get; set; } 
+
+        /// <summary>Specifies the timeout for the selected route. Timeout is computed from the time the request is has
+        /// been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout
+        /// includes all retries. If not specified, the default value is 15 seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual Duration Timeout { get; set; } 
+
+        /// <summary>The spec to modify the URL of the request, prior to forwarding the request to the matched
+        /// service</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlRewrite")]
+        public virtual UrlRewrite UrlRewrite { get; set; } 
+
+        /// <summary>A list of weighted backend services to send traffic to when a route match occurs. The weights
+        /// determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to
+        /// go to a single backend service, there must be one  weightedBackendService with weight set to a non 0 number.
+        /// Once a backendService is identified and before forwarding the request to the backend service, advanced
+        /// routing actions like Url rewrites and header transformations are applied depending on additional settings
+        /// specified in this HttpRouteAction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weightedBackendServices")]
+        public virtual System.Collections.Generic.IList<WeightedBackendService> WeightedBackendServices { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An HttpRouteRule specifies how to match an HTTP request and the corresponding routing action that load
+    /// balancing proxies will perform.</summary>
+    public class HttpRouteRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies changes to request and response headers that need to take effect for the selected
+        /// backendService. The headerAction specified here are applied before the matching pathMatchers[].headerAction
+        /// and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].header
+        /// Action</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerAction")]
+        public virtual HttpHeaderAction HeaderAction { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("matchRules")]
+        public virtual System.Collections.Generic.IList<HttpRouteRuleMatch> MatchRules { get; set; } 
+
+        /// <summary>In response to a matching matchRule, the load balancer performs advanced routing actions like URL
+        /// rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If
+        /// routeAction specifies any  weightedBackendServices, service must not be set. Conversely if service is set,
+        /// routeAction cannot contain any  weightedBackendServices. Only one of routeAction or urlRedirect must be
+        /// set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeAction")]
+        public virtual HttpRouteAction RouteAction { get; set; } 
+
+        /// <summary>The full or partial URL of the backend service resource to which traffic is directed if this rule
+        /// is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take
+        /// effect prior to sending the request to the backend. However, if service is specified, routeAction cannot
+        /// contain any weightedBackendService s. Conversely, if routeAction specifies any  weightedBackendServices,
+        /// service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must
+        /// be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; } 
+
+        /// <summary>When this rule is matched, the request is redirected to a URL specified by urlRedirect. If
+        /// urlRedirect is specified, service or routeAction must not be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlRedirect")]
+        public virtual HttpRedirectAction UrlRedirect { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>HttpRouteRuleMatch specifies a set of criteria for matching requests to an HttpRouteRule. All specified
+    /// criteria must be satisfied for a match to occur.</summary>
+    public class HttpRouteRuleMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For satifying the matchRule condition, the path of the request must exactly match the value
+        /// specified in fullPathMatch after removing any query parameters and anchor that may be part of the original
+        /// URL. FullPathMatch must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
+        /// regexMatch must be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullPathMatch")]
+        public virtual string FullPathMatch { get; set; } 
+
+        /// <summary>Specifies a list of header match criteria, all of which must match corresponding headers in the
+        /// request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerMatches")]
+        public virtual System.Collections.Generic.IList<HttpHeaderMatch> HeaderMatches { get; set; } 
+
+        /// <summary>Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is
+        /// false. caseSensitive must not be used with regexMatch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreCase")]
+        public virtual System.Nullable<bool> IgnoreCase { get; set; } 
+
+        /// <summary>Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set xDS
+        /// compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. If a match
+        /// takes place, the relevant routing configuration is made available to those proxies. For each metadataFilter
+        /// in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match
+        /// the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all
+        /// of its filterLabels must match with corresponding labels in the provided metadata. metadataFilters specified
+        /// here can be overrides those specified in ForwardingRule that refers to this UrlMap. metadataFilters only
+        /// applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataFilters")]
+        public virtual System.Collections.Generic.IList<MetadataFilter> MetadataFilters { get; set; } 
+
+        /// <summary>For satifying the matchRule condition, the request's path must begin with the specified
+        /// prefixMatch. prefixMatch must begin with a /. The value must be between 1 and 1024 characters. Only one of
+        /// prefixMatch, fullPathMatch or regexMatch must be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixMatch")]
+        public virtual string PrefixMatch { get; set; } 
+
+        /// <summary>Specifies a list of query parameter match criteria, all of which must match corresponding query
+        /// parameters in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryParameterMatches")]
+        public virtual System.Collections.Generic.IList<HttpQueryParameterMatch> QueryParameterMatches { get; set; } 
+
+        /// <summary>For satifying the matchRule condition, the path of the request must satisfy the regular expression
+        /// specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For
+        /// regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript Only one of prefixMatch,
+        /// fullPathMatch or regexMatch must be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regexMatch")]
+        public virtual string RegexMatch { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Represents a legacy HTTPS Health Check resource.
@@ -63978,6 +64581,22 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>HttpRouteRuleMatch criteria for field values that must stay within the specified integer
+    /// range.</summary>
+    public class Int64RangeMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The end of the range (exclusive) in signed long integer format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeEnd")]
+        public virtual System.Nullable<long> RangeEnd { get; set; } 
+
+        /// <summary>The start of the range (inclusive) in signed long integer format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeStart")]
+        public virtual System.Nullable<long> RangeStart { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents an Interconnect resource.
     ///
     /// An Interconnect resource is a dedicated connection between the GCP network and your on-premises network. For
@@ -65627,6 +66246,51 @@ namespace Google.Apis.Compute.v1.Data
             public virtual string Value { get; set; } 
 
         }
+    }    
+
+    /// <summary>Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of
+    /// loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the
+    /// loadbalancers which need to match criteria specified here. If a match takes place, the relevant routing
+    /// configuration is made available to those proxies. For each metadataFilter in this list, if its
+    /// filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label
+    /// provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must
+    /// match with corresponding labels in the provided metadata. An example for using metadataFilters would be: if
+    /// loadbalancing involves  Envoys, they will only receive routing configuration when values in metadataFilters
+    /// match values supplied in </summary>
+    public class MetadataFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of label value pairs that must match labels in the provided metadata based on
+        /// filterMatchCriteria This list must not be empty and can have at the most 64 entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterLabels")]
+        public virtual System.Collections.Generic.IList<MetadataFilterLabelMatch> FilterLabels { get; set; } 
+
+        /// <summary>Specifies how individual filterLabel matches within the list of filterLabels contribute towards the
+        /// overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have
+        /// a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the
+        /// provided metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterMatchCriteria")]
+        public virtual string FilterMatchCriteria { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>MetadataFilter label name value pairs that are expected to match corresponding labels presented as
+    /// metadata to the loadbalancer.</summary>
+    public class MetadataFilterLabelMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of metadata label. The name can have a maximum length of 1024 characters and must be at least
+        /// 1 character long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The value of the label must match the specified value. value can have a maximum length of 1024
+        /// characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>The named port. For example: .</summary>
@@ -67692,10 +68356,90 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    /// <summary>Settings controlling eviction of unhealthy hosts from the load balancing pool.</summary>
+    public class OutlierDetection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base time that a host is ejected for. The real time is equal to the base time multiplied by the
+        /// number of times the host has been ejected. Defaults to 30000ms or 30s.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseEjectionTime")]
+        public virtual Duration BaseEjectionTime { get; set; } 
+
+        /// <summary>Number of errors before a host is ejected from the connection pool. When the backend host is
+        /// accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consecutiveErrors")]
+        public virtual System.Nullable<int> ConsecutiveErrors { get; set; } 
+
+        /// <summary>The number of consecutive gateway failures (502, 503, 504 status or connection errors that are
+        /// mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to
+        /// 5.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consecutiveGatewayFailure")]
+        public virtual System.Nullable<int> ConsecutiveGatewayFailure { get; set; } 
+
+        /// <summary>The percentage chance that a host will be actually ejected when an outlier status is detected
+        /// through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to
+        /// 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcingConsecutiveErrors")]
+        public virtual System.Nullable<int> EnforcingConsecutiveErrors { get; set; } 
+
+        /// <summary>The percentage chance that a host will be actually ejected when an outlier status is detected
+        /// through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly.
+        /// Defaults to 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcingConsecutiveGatewayFailure")]
+        public virtual System.Nullable<int> EnforcingConsecutiveGatewayFailure { get; set; } 
+
+        /// <summary>The percentage chance that a host will be actually ejected when an outlier status is detected
+        /// through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly.
+        /// Defaults to 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcingSuccessRate")]
+        public virtual System.Nullable<int> EnforcingSuccessRate { get; set; } 
+
+        /// <summary>Time interval between ejection sweep analysis. This can result in both new ejections as well as
+        /// hosts being returned to service. Defaults to 10 seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual Duration Interval { get; set; } 
+
+        /// <summary>Maximum percentage of hosts in the load balancing pool for the backend service that can be ejected.
+        /// Defaults to 10%.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxEjectionPercent")]
+        public virtual System.Nullable<int> MaxEjectionPercent { get; set; } 
+
+        /// <summary>The number of hosts in a cluster that must have enough request volume to detect success rate
+        /// outliers. If the number of hosts is less than this setting, outlier detection via success rate statistics is
+        /// not performed for any host in the cluster. Defaults to 5.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successRateMinimumHosts")]
+        public virtual System.Nullable<int> SuccessRateMinimumHosts { get; set; } 
+
+        /// <summary>The minimum number of total requests that must be collected in one interval (as defined by the
+        /// interval duration above) to include this host in success rate based outlier detection. If the volume is
+        /// lower than this setting, outlier detection via success rate statistics is not performed for that host.
+        /// Defaults to 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successRateRequestVolume")]
+        public virtual System.Nullable<int> SuccessRateRequestVolume { get; set; } 
+
+        /// <summary>This factor is used to determine the ejection threshold for success rate outlier ejection. The
+        /// ejection threshold is the difference between the mean success rate, and the product of this factor and the
+        /// standard deviation of the mean success rate: mean - (stdev * success_rate_stdev_factor). This factor is
+        /// divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be
+        /// 1900. Defaults to 1900.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successRateStdevFactor")]
+        public virtual System.Nullable<int> SuccessRateStdevFactor { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve
     /// the URL. If no rule was matched, the default service will be used.</summary>
     public class PathMatcher : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>defaultRouteAction takes effect when none of the  pathRules or routeRules match. The load balancer
+        /// performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the
+        /// request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService
+        /// must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any
+        /// weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultRouteAction")]
+        public virtual HttpRouteAction DefaultRouteAction { get; set; } 
+
         /// <summary>The full or partial URL to the BackendService resource. This will be used if none of the pathRules
         /// or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a
         /// BackendService resource: -
@@ -67711,10 +68455,22 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultService")]
         public virtual string DefaultService { get; set; } 
 
+        /// <summary>When when none of the specified pathRules or routeRules match, the request is redirected to a URL
+        /// specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction
+        /// must not be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultUrlRedirect")]
+        public virtual HttpRedirectAction DefaultUrlRedirect { get; set; } 
+
         /// <summary>An optional description of this resource. Provide this property when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>Specifies changes to request and response headers that need to take effect for the selected
+        /// backendService. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and
+        /// before the HeaderAction in the UrlMap</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerAction")]
+        public virtual HttpHeaderAction HeaderAction { get; set; } 
 
         /// <summary>The name to which this PathMatcher is referred by the HostRule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -67723,10 +68479,18 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The list of path rules. Use this list instead of routeRules when routing based on simple path
         /// matching is all that's required. The order by which path rules are specified does not matter. Matches are
         /// always done on the longest-path-first basis. For example: a pathRule with a path /a/b/c will match before
-        /// /a/b irrespective of the order in which those paths appear in this list. Only one of pathRules or routeRules
-        /// must be set.</summary>
+        /// /a/b irrespective of the order in which those paths appear in this list. Within a given pathMatcher, only
+        /// one of pathRules or routeRules must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathRules")]
         public virtual System.Collections.Generic.IList<PathRule> PathRules { get; set; } 
+
+        /// <summary>The list of ordered HTTP route rules. Use this list instead of pathRules when advanced route
+        /// matching and routing actions are desired. The order of specifying routeRules matters: the first rule that
+        /// matches will cause its specified routing action to take effect. Within a given pathMatcher, only one of
+        /// pathRules or routeRules must be set. routeRules are not supported in UrlMaps intended for External Load
+        /// balancers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeRules")]
+        public virtual System.Collections.Generic.IList<HttpRouteRule> RouteRules { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -67742,6 +68506,14 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<string> Paths { get; set; } 
 
+        /// <summary>In response to a matching path, the load balancer performs advanced routing actions like URL
+        /// rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If
+        /// routeAction specifies any  weightedBackendServices, service must not be set. Conversely if service is set,
+        /// routeAction cannot contain any  weightedBackendServices. Only one of routeAction or urlRedirect must be
+        /// set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeAction")]
+        public virtual HttpRouteAction RouteAction { get; set; } 
+
         /// <summary>The full or partial URL of the backend service resource to which traffic is directed if this rule
         /// is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take
         /// effect prior to sending the request to the backend. However, if service is specified, routeAction cannot
@@ -67750,6 +68522,11 @@ namespace Google.Apis.Compute.v1.Data
         /// be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
+
+        /// <summary>When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If
+        /// urlRedirect is specified, service or routeAction must not be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlRedirect")]
+        public virtual HttpRedirectAction UrlRedirect { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -67807,7 +68584,12 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 
 
-        /// <summary>Deprecated.</summary>
+        /// <summary>Specifies the format of the policy.
+        ///
+        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        ///
+        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
+        /// specify any valid value or leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -68660,6 +69442,19 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Content of the UrlMap to be validated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual UrlMap Resource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A policy that specifies how requests intended for the route's backends are shadowed to a separate
+    /// mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending
+    /// traffic to the shadow service, the host / authority header is suffixed with -shadow.</summary>
+    public class RequestMirrorPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The full or partial URL to the BackendService resource being mirrored to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendService")]
+        public virtual string BackendService { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -73533,6 +74328,14 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
+        /// <summary>defaultRouteAction takes effect when none of the  hostRules match. The load balancer performs
+        /// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to
+        /// the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not
+        /// be set. Conversely if defaultService is set, defaultRouteAction cannot contain any  weightedBackendServices.
+        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultRouteAction")]
+        public virtual HttpRouteAction DefaultRouteAction { get; set; } 
+
         /// <summary>The full or partial URL of the defaultService resource to which traffic is directed if none of the
         /// hostRules match. If defaultRouteAction is additionally specified, advanced routing actions like URL
         /// Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is
@@ -73541,6 +74344,12 @@ namespace Google.Apis.Compute.v1.Data
         /// defaultUrlRedirect  or defaultRouteAction.weightedBackendService must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultService")]
         public virtual string DefaultService { get; set; } 
+
+        /// <summary>When none of the specified hostRules match, the request is redirected to a URL specified by
+        /// defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be
+        /// set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultUrlRedirect")]
+        public virtual HttpRedirectAction DefaultUrlRedirect { get; set; } 
 
         /// <summary>An optional description of this resource. Provide this property when you create the
         /// resource.</summary>
@@ -73554,6 +74363,12 @@ namespace Google.Apis.Compute.v1.Data
         /// To see the latest fingerprint, make a get() request to retrieve a UrlMap.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
+
+        /// <summary>Specifies changes to request and response headers that need to take effect for the selected
+        /// backendService. The headerAction specified here take effect after headerAction specified under
+        /// pathMatcher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerAction")]
+        public virtual HttpHeaderAction HeaderAction { get; set; } 
 
         /// <summary>The list of HostRules to use against the URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostRules")]
@@ -73863,6 +74678,23 @@ namespace Google.Apis.Compute.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual UrlMapValidationResult Result { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The spec for modifying the path before sending the request to the matched backend service.</summary>
+    public class UrlRewrite : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Prior to forwarding the request to the selected service, the request's host header is replaced with
+        /// contents of hostRewrite. The value must be between 1 and 255 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostRewrite")]
+        public virtual string HostRewrite { get; set; } 
+
+        /// <summary>Prior to forwarding the request to the selected backend service, the matching portion of the
+        /// request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pathPrefixRewrite")]
+        public virtual string PathPrefixRewrite { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -74796,6 +75628,35 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    /// <summary>In contrast to a single BackendService in  HttpRouteAction to which all matching traffic is directed
+    /// to, WeightedBackendService allows traffic to be split across multiple BackendServices. The volume of traffic for
+    /// each BackendService is proportional to the weight specified in each WeightedBackendService</summary>
+    public class WeightedBackendService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The full or partial URL to the default BackendService resource. Before forwarding the request to
+        /// backendService, the loadbalancer applies any relevant headerActions specified as part of this
+        /// backendServiceWeight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendService")]
+        public virtual string BackendService { get; set; } 
+
+        /// <summary>Specifies changes to request and response headers that need to take effect for the selected
+        /// backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule,
+        /// PathMatcher and UrlMap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerAction")]
+        public virtual HttpHeaderAction HeaderAction { get; set; } 
+
+        /// <summary>Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all
+        /// weightedBackendService weights in routeAction) . The selection of a backend service is determined only for
+        /// new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent
+        /// to the same backendService as determined by the BackendService's session affinity policy. The value must be
+        /// between 0 and 1000</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<long> Weight { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class XpnHostList : Google.Apis.Requests.IDirectResponseSchema

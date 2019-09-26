@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190902 (1705)
+ *      <tr><th>API Rev<td>20190920 (1723)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -448,6 +448,10 @@ namespace Google.Apis.BigQueryReservation.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -455,10 +459,6 @@ namespace Google.Apis.BigQueryReservation.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -494,6 +494,15 @@ namespace Google.Apis.BigQueryReservation.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -511,15 +520,6 @@ namespace Google.Apis.BigQueryReservation.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
@@ -529,13 +529,13 @@ namespace Google.Apis.BigQueryReservation.v1
 namespace Google.Apis.BigQueryReservation.v1.Data
 {    
 
-    /// <summary>The metadata for operation returned from ReservationService.CreateSlotPool.</summary>
-    public class CreateSlotPoolMetadata : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>The metadata for operation returned from ReservationService.CreateCapacityCommitment.</summary>
+    public class CreateCapacityCommitmentMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Resource name of the slot pool that is being created. E.g., projects/myproject/locations/us-
-        /// central1/reservations/foo/slotPools/123</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("slotPool")]
-        public virtual string SlotPool { get; set; } 
+        /// <summary>Resource name of the capacity commitment that is being created. E.g.,
+        /// projects/myproject/locations/US/capacityCommitments/123</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityCommitment")]
+        public virtual string CapacityCommitment { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

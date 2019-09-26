@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/'>Cloud OS Login API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20190907 (1710)
+ *      <tr><th>API Rev<td>20190921 (1724)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/'>
  *              https://cloud.google.com/compute/docs/oslogin/</a>
@@ -970,6 +970,10 @@ namespace Google.Apis.CloudOSLogin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("homeDirectory")]
         public virtual string HomeDirectory { get; set; } 
 
+        /// <summary>Output only. The canonical resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
         /// <summary>The operating system type where this account applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemType")]
         public virtual string OperatingSystemType { get; set; } 
@@ -1013,6 +1017,10 @@ namespace Google.Apis.CloudOSLogin.v1alpha.Data
         /// <summary>Public key text in SSH format, defined by RFC4253 section 6.6.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
+
+        /// <summary>Output only. The canonical resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

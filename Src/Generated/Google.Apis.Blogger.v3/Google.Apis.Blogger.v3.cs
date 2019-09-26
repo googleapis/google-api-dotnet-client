@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/blogger/docs/3.0/getting_started'>Blogger API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20150422 (111)
+ *      <tr><th>API Rev<td>20190917 (1720)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/blogger/docs/3.0/getting_started'>
  *              https://developers.google.com/blogger/docs/3.0/getting_started</a>
@@ -342,8 +342,8 @@ namespace Google.Apis.Blogger.v3
 
 
         /// <summary>Gets one blog and user info pair by blogId and userId.</summary>
-        /// <param name="userId">ID of the user whose blogs are to be fetched. Either the word 'self' (sans quote marks) or the
-        /// user's profile identifier.</param>
+        /// <param name="userId">ID of the user whose blogs are to be fetched. Either the word 'self' or the user's profile
+        /// identifier.</param>
         /// <param name="blogId">The ID of the blog to get.</param>
         public virtual GetRequest Get(string userId, string blogId)
         {
@@ -363,8 +363,8 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            /// <summary>ID of the user whose blogs are to be fetched. Either the word 'self' (sans quote marks) or the
-            /// user's profile identifier.</summary>
+            /// <summary>ID of the user whose blogs are to be fetched. Either the word 'self' or the user's profile
+            /// identifier.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
@@ -640,8 +640,8 @@ namespace Google.Apis.Blogger.v3
         }
 
         /// <summary>Retrieves a list of blogs, possibly filtered.</summary>
-        /// <param name="userId">ID of the user whose blogs are to be fetched. Either the word 'self' (sans quote marks) or the
-        /// user's profile identifier.</param>
+        /// <param name="userId">ID of the user whose blogs are to be fetched. Either the word 'self' or the user's profile
+        /// identifier.</param>
         public virtual ListByUserRequest ListByUser(string userId)
         {
             return new ListByUserRequest(service, userId);
@@ -659,8 +659,8 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            /// <summary>ID of the user whose blogs are to be fetched. Either the word 'self' (sans quote marks) or the
-            /// user's profile identifier.</summary>
+            /// <summary>ID of the user whose blogs are to be fetched. Either the word 'self' or the user's profile
+            /// identifier.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
@@ -2581,11 +2581,11 @@ namespace Google.Apis.Blogger.v3
 
         /// <summary>Gets one post and user info pair, by post ID and user ID. The post user info contains per-user
         /// information about the post, such as access rights, specific to the user.</summary>
-        /// <param name="userId">ID of the user for the per-user information to be fetched. Either the word 'self' (sans quote
-        /// marks) or the user's profile identifier.</param>
+        /// <param name="userId">ID of the user for the per-user information to be fetched. Either the word 'self' or the user's
+        /// profile identifier.</param>
         /// <param name="blogId">The ID of the blog.</param>
-        ///
-        /// <param name="postId">The ID of the post to get.</param>
+        /// <param
+        /// name="postId">The ID of the post to get.</param>
         public virtual GetRequest Get(string userId, string blogId, string postId)
         {
             return new GetRequest(service, userId, blogId, postId);
@@ -2606,8 +2606,8 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            /// <summary>ID of the user for the per-user information to be fetched. Either the word 'self' (sans quote
-            /// marks) or the user's profile identifier.</summary>
+            /// <summary>ID of the user for the per-user information to be fetched. Either the word 'self' or the user's
+            /// profile identifier.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
@@ -2689,10 +2689,9 @@ namespace Google.Apis.Blogger.v3
 
         /// <summary>Retrieves a list of post and post user info pairs, possibly filtered. The post user info contains
         /// per-user information about the post, such as access rights, specific to the user.</summary>
-        /// <param name="userId">ID of the user for the per-user information to be fetched. Either the word 'self' (sans quote
-        /// marks) or the user's profile identifier.</param>
-        /// <param name="blogId">ID of the blog to fetch posts
-        /// from.</param>
+        /// <param name="userId">ID of the user for the per-user information to be fetched. Either the word 'self' or the user's
+        /// profile identifier.</param>
+        /// <param name="blogId">ID of the blog to fetch posts from.</param>
         public virtual ListRequest List(string userId, string blogId)
         {
             return new ListRequest(service, userId, blogId);
@@ -2712,8 +2711,8 @@ namespace Google.Apis.Blogger.v3
             }
 
 
-            /// <summary>ID of the user for the per-user information to be fetched. Either the word 'self' (sans quote
-            /// marks) or the user's profile identifier.</summary>
+            /// <summary>ID of the user for the per-user information to be fetched. Either the word 'self' or the user's
+            /// profile identifier.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 

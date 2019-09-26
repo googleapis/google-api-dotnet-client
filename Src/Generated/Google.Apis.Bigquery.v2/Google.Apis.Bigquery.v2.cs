@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190910 (1713)
+ *      <tr><th>API Rev<td>20190917 (1720)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -631,6 +631,10 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
+            /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The maximum number of results to return</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
@@ -644,10 +648,6 @@ namespace Google.Apis.Bigquery.v2
             /// labels.active". See Filtering datasets using labels for details.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -683,6 +683,15 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
@@ -704,15 +713,6 @@ namespace Google.Apis.Bigquery.v2
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1129,6 +1129,15 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobId { get; private set; }
 
+            /// <summary>Zero-based index of the starting row</summary>
+            [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> StartIndex { get; set; }
+
+            /// <summary>The geographic location where the job should run. Required except for US and EU. See details at
+            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1142,15 +1151,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Maximum number of results to read</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
-
-            /// <summary>Zero-based index of the starting row</summary>
-            [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ulong> StartIndex { get; set; }
-
-            /// <summary>The geographic location where the job should run. Required except for US and EU. See details at
-            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Location { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1195,6 +1195,24 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "startIndex", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startIndex",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1216,24 +1234,6 @@ namespace Google.Apis.Bigquery.v2
                     "maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startIndex", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startIndex",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "location", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "location",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1407,14 +1407,32 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
-            /// <summary>Maximum number of results to return</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
+            /// <summary>Min value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
+            /// created after or at this timestamp are returned</summary>
+            [Google.Apis.Util.RequestParameterAttribute("minCreationTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> MinCreationTime { get; set; }
+
+            /// <summary>If set, retrieves only jobs whose parent is this job. Otherwise, retrieves only jobs which have
+            /// no parent</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parentJobId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ParentJobId { get; set; }
+
+            /// <summary>Whether to display jobs owned by all users in the project. Default false</summary>
+            [Google.Apis.Util.RequestParameterAttribute("allUsers", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AllUsers { get; set; }
+
+            /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
             /// <summary>Max value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
             /// created before or at this timestamp are returned</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxCreationTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ulong> MaxCreationTime { get; set; }
+
+            /// <summary>Maximum number of results to return</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>Filter for job state</summary>
             [Google.Apis.Util.RequestParameterAttribute("stateFilter", Google.Apis.Util.RequestParameterType.Query)]
@@ -1448,24 +1466,6 @@ namespace Google.Apis.Bigquery.v2
                 [Google.Apis.Util.StringValueAttribute("minimal")]
                 Minimal,
             }
-
-            /// <summary>If set, retrieves only jobs whose parent is this job. Otherwise, retrieves only jobs which have
-            /// no parent</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parentJobId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ParentJobId { get; set; }
-
-            /// <summary>Min value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
-            /// created after or at this timestamp are returned</summary>
-            [Google.Apis.Util.RequestParameterAttribute("minCreationTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ulong> MinCreationTime { get; set; }
-
-            /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Whether to display jobs owned by all users in the project. Default false</summary>
-            [Google.Apis.Util.RequestParameterAttribute("allUsers", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> AllUsers { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1501,9 +1501,36 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
+                    "minCreationTime", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxResults",
+                        Name = "minCreationTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parentJobId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parentJobId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "allUsers", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "allUsers",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1513,6 +1540,15 @@ namespace Google.Apis.Bigquery.v2
                     "maxCreationTime", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxCreationTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1531,42 +1567,6 @@ namespace Google.Apis.Bigquery.v2
                     "projection", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projection",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parentJobId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parentJobId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "minCreationTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "minCreationTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "allUsers", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "allUsers",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3295,13 +3295,13 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DatasetId { get; private set; }
 
-            /// <summary>Maximum number of results to return</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
             /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Maximum number of results to return</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3346,18 +3346,18 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxResults",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "maxResults", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -5422,6 +5422,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reservation_id")]
         public virtual string ReservationId { get; set; } 
 
+        /// <summary>[Output-only] Statistics for a child job of a script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scriptStatistics")]
+        public virtual ScriptStatistics ScriptStatistics { get; set; } 
+
         /// <summary>[Output-only] Start time of this job, in milliseconds since the epoch. This field will be present
         /// when the job transitions from the PENDING state to either RUNNING or DONE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
@@ -6322,6 +6326,51 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Info describing predicted label distribution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<Entry> Entries { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ScriptStackFrame : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output-only] One-based end column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endColumn")]
+        public virtual System.Nullable<int> EndColumn { get; set; } 
+
+        /// <summary>[Output-only] One-based end line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endLine")]
+        public virtual System.Nullable<int> EndLine { get; set; } 
+
+        /// <summary>[Output-only] Name of the active procedure, empty if in a top-level script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("procedureId")]
+        public virtual string ProcedureId { get; set; } 
+
+        /// <summary>[Output-only] One-based start column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startColumn")]
+        public virtual System.Nullable<int> StartColumn { get; set; } 
+
+        /// <summary>[Output-only] One-based start line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startLine")]
+        public virtual System.Nullable<int> StartLine { get; set; } 
+
+        /// <summary>[Output-only] Text of the current statement/expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ScriptStatistics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output-only] Whether this child job was a statement or expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationKind")]
+        public virtual string EvaluationKind { get; set; } 
+
+        /// <summary>Stack trace showing the line/column/procedure name of each frame on the stack at the point where
+        /// the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackFrames")]
+        public virtual System.Collections.Generic.IList<ScriptStackFrame> StackFrames { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

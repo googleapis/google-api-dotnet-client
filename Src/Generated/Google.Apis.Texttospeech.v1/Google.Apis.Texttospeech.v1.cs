@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/text-to-speech/'>Cloud Text-to-Speech API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190903 (1706)
+ *      <tr><th>API Rev<td>20190920 (1723)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/text-to-speech/'>
  *              https://cloud.google.com/text-to-speech/</a>
@@ -439,8 +439,8 @@ namespace Google.Apis.Texttospeech.v1
             }
 
 
-            /// <summary>Optional (but recommended) [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
-            /// If specified, the ListVoices call will only return voices that can be used to synthesize this
+            /// <summary>Optional. Recommended. [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If
+            /// specified, the ListVoices call will only return voices that can be used to synthesize this
             /// language_code. E.g. when specifying "en-NZ", you will get supported "en-*" voices; when specifying "no",
             /// you will get supported "no-*" (Norwegian) and "nb-*" (Norwegian Bokmal) voices; specifying "zh" will
             /// also get supported "cmn-*" voices; specifying "zh-hk" will also get supported "yue-*" voices.</summary>
@@ -508,7 +508,7 @@ namespace Google.Apis.Texttospeech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pitch")]
         public virtual System.Nullable<double> Pitch { get; set; } 
 
-        /// <summary>The synthesis sample rate (in hertz) for this audio. Optional. When this is specified in
+        /// <summary>Optional. The synthesis sample rate (in hertz) for this audio. When this is specified in
         /// SynthesizeSpeechRequest, if this is different from the voice's natural sample rate, then the synthesizer
         /// will honor this request by converting to the desired sample rate (which might result in worse audio
         /// quality), unless the specified sample rate is not supported for the encoding chosen, in which case it will
@@ -624,26 +624,26 @@ namespace Google.Apis.Texttospeech.v1.Data
     /// <summary>Description of which voice to use for a synthesis request.</summary>
     public class VoiceSelectionParams : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The language (and optionally also the region) of the voice expressed as a [BCP-47](https://www.rfc-
-        /// editor.org/rfc/bcp/bcp47.txt) language tag, e.g. "en-US". Required. This should not include a script tag
-        /// (e.g. use "cmn-cn" rather than "cmn-Hant-cn"), because the script will be inferred from the input provided
-        /// in the SynthesisInput.  The TTS service will use this parameter to help choose an appropriate voice.  Note
-        /// that the TTS service may choose a voice with a slightly different language code than the one selected; it
-        /// may substitute a different region (e.g. using en-US rather than en-CA if there isn't a Canadian voice
-        /// available), or even a different language, e.g. using "nb" (Norwegian Bokmal) instead of "no"
+        /// <summary>Required. The language (and potentially also the region) of the voice expressed as a
+        /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g. "en-US". This should not include a
+        /// script tag (e.g. use "cmn-cn" rather than "cmn-Hant-cn"), because the script will be inferred from the input
+        /// provided in the SynthesisInput.  The TTS service will use this parameter to help choose an appropriate
+        /// voice.  Note that the TTS service may choose a voice with a slightly different language code than the one
+        /// selected; it may substitute a different region (e.g. using en-US rather than en-CA if there isn't a Canadian
+        /// voice available), or even a different language, e.g. using "nb" (Norwegian Bokmal) instead of "no"
         /// (Norwegian)".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 
-        /// <summary>The name of the voice. Optional; if not set, the service will choose a voice based on the other
-        /// parameters such as language_code and gender.</summary>
+        /// <summary>The name of the voice. If not set, the service will choose a voice based on the other parameters
+        /// such as language_code and gender.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The preferred gender of the voice. Optional; if not set, the service will choose a voice based on
-        /// the other parameters such as language_code and name. Note that this is only a preference, not requirement;
-        /// if a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a
-        /// different gender rather than failing the request.</summary>
+        /// <summary>The preferred gender of the voice. If not set, the service will choose a voice based on the other
+        /// parameters such as language_code and name. Note that this is only a preference, not requirement; if a voice
+        /// of the appropriate gender is not available, the synthesizer should substitute a voice with a different
+        /// gender rather than failing the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssmlGender")]
         public virtual string SsmlGender { get; set; } 
 

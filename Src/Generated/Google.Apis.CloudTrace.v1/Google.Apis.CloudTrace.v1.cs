@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190904 (1707)
+ *      <tr><th>API Rev<td>20190917 (1720)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -378,9 +378,9 @@ namespace Google.Apis.CloudTrace.v1
 
 
             /// <summary>Gets a single trace by its ID.</summary>
-            /// <param name="projectId">ID of the Cloud project where the trace data is stored.</param>
+            /// <param name="projectId">Required. ID of the Cloud project where the trace data is stored.</param>
             /// <param
-            /// name="traceId">ID of the trace to return.</param>
+            /// name="traceId">Required. ID of the trace to return.</param>
             public virtual GetRequest Get(string projectId, string traceId)
             {
                 return new GetRequest(service, projectId, traceId);
@@ -399,11 +399,11 @@ namespace Google.Apis.CloudTrace.v1
                 }
 
 
-                /// <summary>ID of the Cloud project where the trace data is stored.</summary>
+                /// <summary>Required. ID of the Cloud project where the trace data is stored.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>ID of the trace to return.</summary>
+                /// <summary>Required. ID of the trace to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("traceId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string TraceId { get; private set; }
 
@@ -454,7 +454,7 @@ namespace Google.Apis.CloudTrace.v1
             }
 
             /// <summary>Returns of a list of traces that match the specified filter conditions.</summary>
-            /// <param name="projectId">ID of the Cloud project where the trace data is stored.</param>
+            /// <param name="projectId">Required. ID of the Cloud project where the trace data is stored.</param>
             public virtual ListRequest List(string projectId)
             {
                 return new ListRequest(service, projectId);
@@ -472,11 +472,28 @@ namespace Google.Apis.CloudTrace.v1
                 }
 
 
-                /// <summary>ID of the Cloud project where the trace data is stored.</summary>
+                /// <summary>Required. ID of the Cloud project where the trace data is stored.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>Field used to sort the returned traces. Optional. Can be one of the following:
+                /// <summary>Optional. Type of data returned for traces in the list. Default is `MINIMAL`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>Optional. Type of data returned for traces in the list. Default is `MINIMAL`.</summary>
+                public enum ViewEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
+                    VIEWTYPEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("MINIMAL")]
+                    MINIMAL,
+                    [Google.Apis.Util.StringValueAttribute("ROOTSPAN")]
+                    ROOTSPAN,
+                    [Google.Apis.Util.StringValueAttribute("COMPLETE")]
+                    COMPLETE,
+                }
+
+                /// <summary>Optional. Field used to sort the returned traces. Can be one of the following:
                 ///
                 /// *   `trace_id` *   `name` (`name` field of root span in the trace) *   `duration` (difference
                 /// between `end_time` and `start_time` fields of the root span) *   `start` (`start_time` field of the
@@ -488,7 +505,7 @@ namespace Google.Apis.CloudTrace.v1
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
-                /// <summary>An optional filter against labels for the request.
+                /// <summary>Optional. A filter against labels for the request.
                 ///
                 /// By default, searches use prefix matching. To specify exact match, prepend a plus symbol (`+`) to the
                 /// search term. Multiple terms are ANDed. Syntax:
@@ -515,38 +532,21 @@ namespace Google.Apis.CloudTrace.v1
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object EndTime { get; set; }
 
+                /// <summary>Token identifying the page of results to return. If provided, use the value of the
+                /// `next_page_token` field from a previous request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Start of the time interval (inclusive) during which the trace data was collected from the
                 /// application.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
 
-                /// <summary>Token identifying the page of results to return. If provided, use the value of the
-                /// `next_page_token` field from a previous request. Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Maximum number of traces to return. If not specified or <= 0, the implementation selects a
-                /// reasonable value.  The implementation may return fewer traces than the requested page size.
-                /// Optional.</summary>
+                /// <summary>Optional. Maximum number of traces to return. If not specified or <= 0, the implementation
+                /// selects a reasonable value.  The implementation may return fewer traces than the requested page
+                /// size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Type of data returned for traces in the list. Optional. Default is `MINIMAL`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ViewEnum> View { get; set; }
-
-                /// <summary>Type of data returned for traces in the list. Optional. Default is `MINIMAL`.</summary>
-                public enum ViewEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                    VIEWTYPEUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("MINIMAL")]
-                    MINIMAL,
-                    [Google.Apis.Util.StringValueAttribute("ROOTSPAN")]
-                    ROOTSPAN,
-                    [Google.Apis.Util.StringValueAttribute("COMPLETE")]
-                    COMPLETE,
-                }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -582,6 +582,15 @@ namespace Google.Apis.CloudTrace.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -609,15 +618,6 @@ namespace Google.Apis.CloudTrace.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "startTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -627,18 +627,18 @@ namespace Google.Apis.CloudTrace.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "startTime", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "startTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "view",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -654,7 +654,7 @@ namespace Google.Apis.CloudTrace.v1
         /// the provided values, and any new fields provided are merged with the existing trace data. If the ID does not
         /// match, a new trace is created.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">ID of the Cloud project where the trace data is stored.</param>
+        /// <param name="projectId">Required. ID of the Cloud project where the trace data is stored.</param>
         public virtual PatchTracesRequest PatchTraces(Google.Apis.CloudTrace.v1.Data.Traces body, string projectId)
         {
             return new PatchTracesRequest(service, body, projectId);
@@ -676,7 +676,7 @@ namespace Google.Apis.CloudTrace.v1
             }
 
 
-            /// <summary>ID of the Cloud project where the trace data is stored.</summary>
+            /// <summary>Required. ID of the Cloud project where the trace data is stored.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -819,7 +819,7 @@ namespace Google.Apis.CloudTrace.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>ID of the parent span, if any. Optional.</summary>
+        /// <summary>Optional. ID of the parent span, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentSpanId")]
         public virtual System.Nullable<ulong> ParentSpanId { get; set; } 
 

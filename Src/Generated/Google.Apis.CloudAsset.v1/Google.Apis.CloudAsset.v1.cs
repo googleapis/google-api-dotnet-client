@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190907 (1710)
+ *      <tr><th>API Rev<td>20190924 (1727)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>
  *              https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory</a>
@@ -462,6 +462,21 @@ namespace Google.Apis.CloudAsset.v1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
+            /// <summary>Start time of the time window (exclusive).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadTimeWindowStartTime { get; set; }
+
+            /// <summary>A list of the full names of the assets. For example:
+            /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
+            /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) and [Resource Name
+            /// Format](https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/resource-name-format) for
+            /// more info.
+            ///
+            /// The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is
+            /// 100 in one request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("assetNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> AssetNames { get; set; }
+
             /// <summary>Required. The content type.</summary>
             [Google.Apis.Util.RequestParameterAttribute("contentType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ContentTypeEnum> ContentType { get; set; }
@@ -484,21 +499,6 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>End time of the time window (inclusive). Current timestamp if not specified.</summary>
             [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.endTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadTimeWindowEndTime { get; set; }
-
-            /// <summary>Start time of the time window (exclusive).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object ReadTimeWindowStartTime { get; set; }
-
-            /// <summary>A list of the full names of the assets. For example:
-            /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
-            /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) and [Resource Name
-            /// Format](https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/resource-name-format) for
-            /// more info.
-            ///
-            /// The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is
-            /// 100 in one request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("assetNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> AssetNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -534,24 +534,6 @@ namespace Google.Apis.CloudAsset.v1
                         Pattern = @"^[^/]+/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "contentType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "contentType",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "readTimeWindow.endTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "readTimeWindow.endTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "readTimeWindow.startTime", new Google.Apis.Discovery.Parameter
                     {
                         Name = "readTimeWindow.startTime",
@@ -564,6 +546,24 @@ namespace Google.Apis.CloudAsset.v1
                     "assetNames", new Google.Apis.Discovery.Parameter
                     {
                         Name = "assetNames",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "contentType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "contentType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "readTimeWindow.endTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "readTimeWindow.endTime",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -663,6 +663,14 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("accessPolicy")]
         public virtual GoogleIdentityAccesscontextmanagerV1AccessPolicy AccessPolicy { get; set; } 
+
+        /// <summary>Asset's ancestry path in Cloud Resource Manager (CRM) hierarchy, represented as a list of relative
+        /// resource names. Ancestry path starts with the closest CRM ancestor and ends at root. If the asset is a CRM
+        /// project/folder/organization, this starts from the asset itself.
+        ///
+        /// Example: ["projects/123456789", "folders/5432", "organizations/1234"]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ancestors")]
+        public virtual System.Collections.Generic.IList<string> Ancestors { get; set; } 
 
         /// <summary>Type of the asset. Example: "compute.googleapis.com/Disk".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
@@ -1425,20 +1433,27 @@ namespace Google.Apis.CloudAsset.v1.Data
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
     /// for Cloud Platform resources.
     ///
-    /// A `Policy` consists of a list of `bindings`. A `binding` binds a list of `members` to a `role`, where the
-    /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
-    /// permissions defined by IAM.
+    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
+    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
+    /// of permissions (defined by IAM or configured by users). A `binding` can optionally specify a `condition`, which
+    /// is a logic expression that further constrains the role binding based on attributes about the request and/or
+    /// target resource.
     ///
     /// **JSON Example**
     ///
-    /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role": "roles/viewer",
-    /// "members": ["user:sean@example.com"] } ] }
+    /// { "bindings": [ { "role": "role/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ] }
     ///
     /// **YAML Example**
     ///
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com role: roles/viewer
+    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
+    /// description: Does not grant access after Sep 2020 expression: request.time <
+    /// timestamp('2020-10-01T00:00:00.000Z')
     ///
     /// For a description of IAM and its features, see the [IAM developer's
     /// guide](https://cloud.google.com/iam/docs).</summary>
@@ -1448,8 +1463,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 
-        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
-        /// error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. Optionally may specify a `condition` that determines
+        /// when binding is in effect. `bindings` with no members will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -1459,7 +1474,9 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
+        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if either of incoming or
+        /// stored policy does not meet the version requirements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -1467,8 +1484,12 @@ namespace Google.Apis.CloudAsset.v1.Data
         ///
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
-        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
-        /// specify any valid value or leave the field unset.</summary>
+        /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
+        /// policy, modifying a conditional binding, or removing a conditional binding from the stored conditional
+        /// policy. Operations on non-conditional policies may specify any valid value or leave the field unset.
+        ///
+        /// If no etag is provided in the call to `setIamPolicy`, any version compliance checks on the incoming and/or
+        /// stored policy is skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

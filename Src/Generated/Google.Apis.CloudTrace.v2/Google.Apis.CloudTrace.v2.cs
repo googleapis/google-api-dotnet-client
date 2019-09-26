@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190904 (1707)
+ *      <tr><th>API Rev<td>20190917 (1720)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -611,7 +611,7 @@ namespace Google.Apis.CloudTrace.v2.Data
     /// <summary>The request message for the `BatchWriteSpans` method.</summary>
     public class BatchWriteSpansRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of new spans. The span names must not match existing spans, or the results are
+        /// <summary>Required. A list of new spans. The span names must not match existing spans, or the results are
         /// undefined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spans")]
         public virtual System.Collections.Generic.IList<Span> Spans { get; set; } 
@@ -725,7 +725,7 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual Attributes Attributes { get; set; } 
 
-        /// <summary>An optional number of child spans that were generated while this span was active. If set, allows
+        /// <summary>Optional. The number of child spans that were generated while this span was active. If set, allows
         /// implementation to detect missing child spans.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childSpanCount")]
         public virtual System.Nullable<int> ChildSpanCount { get; set; } 
@@ -763,8 +763,8 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentSpanId")]
         public virtual string ParentSpanId { get; set; } 
 
-        /// <summary>(Optional) Set this parameter to indicate whether this span is in the same process as its parent.
-        /// If you do not set this parameter, Stackdriver Trace is unable to take advantage of this helpful
+        /// <summary>Optional. Set this parameter to indicate whether this span is in the same process as its parent. If
+        /// you do not set this parameter, Stackdriver Trace is unable to take advantage of this helpful
         /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sameProcessAsParentSpan")]
         public virtual System.Nullable<bool> SameProcessAsParentSpan { get; set; } 
@@ -788,7 +788,7 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>An optional final status for this span.</summary>
+        /// <summary>Optional. The final status for this span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; } 
 
