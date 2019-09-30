@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190916 (1719)
+ *      <tr><th>API Rev<td>20190920 (1723)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -569,7 +569,7 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>Delete an auto domain mapping.</summary>
-            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.K8sIoApimachineryPkgApisMetaV1Status>
+            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -750,6 +750,20 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The maximum number of records that should be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> Limit { get; set; }
+
+                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
+                /// used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> Watch { get; set; }
+
+                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
+                /// and notIn.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LabelSelector { get; set; }
+
                 /// <summary>The baseline resource version from which the list or watch operation should start. Not
                 /// currently used by Cloud Run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -767,20 +781,6 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Optional encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Continue { get; set; }
-
-                /// <summary>The maximum number of records that should be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> Limit { get; set; }
-
-                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
-                /// used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> Watch { get; set; }
-
-                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
-                /// and notIn.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LabelSelector { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -816,6 +816,33 @@ namespace Google.Apis.CloudRun.v1
                             Pattern = @"^namespaces/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "limit", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "limit",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "watch", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "watch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "labelSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "labelSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "resourceVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "resourceVersion",
@@ -846,33 +873,6 @@ namespace Google.Apis.CloudRun.v1
                         "continue", new Google.Apis.Discovery.Parameter
                         {
                             Name = "continue",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "limit", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "limit",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "watch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "labelSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelSelector",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1069,7 +1069,7 @@ namespace Google.Apis.CloudRun.v1
             /// <summary>delete a configuration. This will cause the configuration to delete all child revisions. Prior
             /// to calling this, any route referencing the configuration (or revision from the configuration) must be
             /// deleted.</summary>
-            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.K8sIoApimachineryPkgApisMetaV1Status>
+            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -1563,7 +1563,7 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>Delete a domain mapping.</summary>
-            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.K8sIoApimachineryPkgApisMetaV1Status>
+            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -1742,24 +1742,6 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
-                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string FieldSelector { get; set; }
-
-                /// <summary>Not currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
-
-                /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                /// currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ResourceVersion { get; set; }
-
-                /// <summary>Optional encoded string to continue paging.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Continue { get; set; }
-
                 /// <summary>The maximum number of records that should be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> Limit { get; set; }
@@ -1773,6 +1755,24 @@ namespace Google.Apis.CloudRun.v1
                 /// and notIn.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LabelSelector { get; set; }
+
+                /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                /// currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ResourceVersion { get; set; }
+
+                /// <summary>Not currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
+
+                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
+                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string FieldSelector { get; set; }
+
+                /// <summary>Optional encoded string to continue paging.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Continue { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1808,42 +1808,6 @@ namespace Google.Apis.CloudRun.v1
                             Pattern = @"^namespaces/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "fieldSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeUninitialized", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeUninitialized",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "resourceVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "continue", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "continue",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "limit", new Google.Apis.Discovery.Parameter
                         {
                             Name = "limit",
@@ -1865,6 +1829,42 @@ namespace Google.Apis.CloudRun.v1
                         "labelSelector", new Google.Apis.Discovery.Parameter
                         {
                             Name = "labelSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "resourceVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "includeUninitialized", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeUninitialized",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "fieldSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "continue", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "continue",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1989,7 +1989,7 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>Delete a revision.</summary>
-            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.K8sIoApimachineryPkgApisMetaV1Status>
+            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -2168,20 +2168,6 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of records that should be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> Limit { get; set; }
-
-                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
-                /// used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> Watch { get; set; }
-
-                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
-                /// and notIn.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LabelSelector { get; set; }
-
                 /// <summary>The baseline resource version from which the list or watch operation should start. Not
                 /// currently used by Cloud Run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -2199,6 +2185,20 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Optional encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Continue { get; set; }
+
+                /// <summary>The maximum number of records that should be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> Limit { get; set; }
+
+                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
+                /// used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> Watch { get; set; }
+
+                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
+                /// and notIn.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LabelSelector { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2234,33 +2234,6 @@ namespace Google.Apis.CloudRun.v1
                             Pattern = @"^namespaces/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "limit", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "limit",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "watch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "labelSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "resourceVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "resourceVersion",
@@ -2291,6 +2264,33 @@ namespace Google.Apis.CloudRun.v1
                         "continue", new Google.Apis.Discovery.Parameter
                         {
                             Name = "continue",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "limit", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "limit",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "watch", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "watch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "labelSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "labelSelector",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2401,7 +2401,7 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>Delete a route. This will cause the route to stop serving traffic.</summary>
-            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.K8sIoApimachineryPkgApisMetaV1Status>
+            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -2417,6 +2417,10 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Cloud Run currently ignores this parameter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ApiVersion { get; set; }
+
                 /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and
                 /// deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers/garbage-
                 /// collection/ for more information.</summary>
@@ -2426,10 +2430,6 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Kind { get; set; }
-
-                /// <summary>Cloud Run currently ignores this parameter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ApiVersion { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2465,6 +2465,15 @@ namespace Google.Apis.CloudRun.v1
                             Pattern = @"^namespaces/[^/]+/routes/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "apiVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "apiVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "propagationPolicy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "propagationPolicy",
@@ -2477,15 +2486,6 @@ namespace Google.Apis.CloudRun.v1
                         "kind", new Google.Apis.Discovery.Parameter
                         {
                             Name = "kind",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "apiVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "apiVersion",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2580,24 +2580,19 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
-                /// and notIn.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LabelSelector { get; set; }
-
-                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
-                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string FieldSelector { get; set; }
+                /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                /// currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ResourceVersion { get; set; }
 
                 /// <summary>Not currently used by Cloud Run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
 
-                /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                /// currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ResourceVersion { get; set; }
+                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
+                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string FieldSelector { get; set; }
 
                 /// <summary>Optional encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
@@ -2611,6 +2606,11 @@ namespace Google.Apis.CloudRun.v1
                 /// used by Cloud Run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Watch { get; set; }
+
+                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
+                /// and notIn.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LabelSelector { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2646,18 +2646,9 @@ namespace Google.Apis.CloudRun.v1
                             Pattern = @"^namespaces/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "labelSelector", new Google.Apis.Discovery.Parameter
+                        "resourceVersion", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "labelSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fieldSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldSelector",
+                            Name = "resourceVersion",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2673,9 +2664,9 @@ namespace Google.Apis.CloudRun.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "resourceVersion", new Google.Apis.Discovery.Parameter
+                        "fieldSelector", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "resourceVersion",
+                            Name = "fieldSelector",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2703,6 +2694,15 @@ namespace Google.Apis.CloudRun.v1
                         "watch", new Google.Apis.Discovery.Parameter
                         {
                             Name = "watch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "labelSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "labelSelector",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2897,7 +2897,7 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Delete a service. This will cause the Service to stop serving traffic and will delete the child
             /// entities like Routes, Configurations and Revisions.</summary>
-            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.K8sIoApimachineryPkgApisMetaV1Status>
+            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -3076,11 +3076,6 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
-                /// and notIn.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LabelSelector { get; set; }
-
                 /// <summary>The baseline resource version from which the list or watch operation should start. Not
                 /// currently used by Cloud Run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -3107,6 +3102,11 @@ namespace Google.Apis.CloudRun.v1
                 /// used by Cloud Run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Watch { get; set; }
+
+                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
+                /// and notIn.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LabelSelector { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3140,15 +3140,6 @@ namespace Google.Apis.CloudRun.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^namespaces/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "labelSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "resourceVersion", new Google.Apis.Discovery.Parameter
@@ -3199,6 +3190,15 @@ namespace Google.Apis.CloudRun.v1
                         "watch", new Google.Apis.Discovery.Parameter
                         {
                             Name = "watch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "labelSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "labelSelector",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3551,7 +3551,7 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>Delete an auto domain mapping.</summary>
-                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.K8sIoApimachineryPkgApisMetaV1Status>
+                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -3732,6 +3732,29 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
+                    /// in, and notIn.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LabelSelector { get; set; }
+
+                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
+                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FieldSelector { get; set; }
+
+                    /// <summary>Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
+
+                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ResourceVersion { get; set; }
+
+                    /// <summary>Optional encoded string to continue paging.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Continue { get; set; }
+
                     /// <summary>The maximum number of records that should be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Limit { get; set; }
@@ -3740,29 +3763,6 @@ namespace Google.Apis.CloudRun.v1
                     /// currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Watch { get; set; }
-
-                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
-                    /// in, and notIn.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LabelSelector { get; set; }
-
-                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ResourceVersion { get; set; }
-
-                    /// <summary>Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
-
-                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
-                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string FieldSelector { get; set; }
-
-                    /// <summary>Optional encoded string to continue paging.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Continue { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3798,45 +3798,9 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "limit", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "limit",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "labelSelector", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "labelSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resourceVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeUninitialized", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeUninitialized",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3852,9 +3816,45 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "includeUninitialized", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "includeUninitialized",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "resourceVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resourceVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "continue", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "continue",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "limit", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "limit",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "watch", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "watch",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4052,7 +4052,7 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>delete a configuration. This will cause the configuration to delete all child revisions.
                 /// Prior to calling this, any route referencing the configuration (or revision from the configuration)
                 /// must be deleted.</summary>
-                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.K8sIoApimachineryPkgApisMetaV1Status>
+                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -4068,10 +4068,6 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Cloud Run currently ignores this parameter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ApiVersion { get; set; }
-
                     /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting,
                     /// and deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers
                     /// /garbage-collection/ for more information.</summary>
@@ -4081,6 +4077,10 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Kind { get; set; }
+
+                    /// <summary>Cloud Run currently ignores this parameter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ApiVersion { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4116,15 +4116,6 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/configurations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "apiVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "apiVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "propagationPolicy", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "propagationPolicy",
@@ -4137,6 +4128,15 @@ namespace Google.Apis.CloudRun.v1
                             "kind", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "kind",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "apiVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "apiVersion",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4232,6 +4232,20 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>The maximum number of records that should be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> Limit { get; set; }
+
+                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Watch { get; set; }
+
+                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
+                    /// in, and notIn.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LabelSelector { get; set; }
+
                     /// <summary>The baseline resource version from which the list or watch operation should start. Not
                     /// currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -4249,20 +4263,6 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Optional encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Continue { get; set; }
-
-                    /// <summary>The maximum number of records that should be returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> Limit { get; set; }
-
-                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> Watch { get; set; }
-
-                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
-                    /// in, and notIn.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LabelSelector { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4298,6 +4298,33 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "limit", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "limit",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "watch", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "watch",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "labelSelector", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "labelSelector",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "resourceVersion", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "resourceVersion",
@@ -4328,33 +4355,6 @@ namespace Google.Apis.CloudRun.v1
                             "continue", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "continue",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "limit", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "limit",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "labelSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "labelSelector",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4548,7 +4548,7 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>Delete a domain mapping.</summary>
-                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.K8sIoApimachineryPkgApisMetaV1Status>
+                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -4975,7 +4975,7 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>Delete a revision.</summary>
-                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.K8sIoApimachineryPkgApisMetaV1Status>
+                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -5159,19 +5159,19 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LabelSelector { get; set; }
 
-                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ResourceVersion { get; set; }
+                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
+                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FieldSelector { get; set; }
 
                     /// <summary>Not currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
 
-                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
-                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string FieldSelector { get; set; }
+                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ResourceVersion { get; set; }
 
                     /// <summary>Optional encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
@@ -5229,9 +5229,9 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
+                            "fieldSelector", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "resourceVersion",
+                                Name = "fieldSelector",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5247,9 +5247,9 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
+                            "resourceVersion", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "fieldSelector",
+                                Name = "resourceVersion",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5387,7 +5387,7 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>Delete a route. This will cause the route to stop serving traffic.</summary>
-                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.K8sIoApimachineryPkgApisMetaV1Status>
+                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -5403,10 +5403,6 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Cloud Run currently ignores this parameter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ApiVersion { get; set; }
-
                     /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting,
                     /// and deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers
                     /// /garbage-collection/ for more information.</summary>
@@ -5416,6 +5412,10 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Kind { get; set; }
+
+                    /// <summary>Cloud Run currently ignores this parameter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ApiVersion { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5451,15 +5451,6 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/routes/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "apiVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "apiVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "propagationPolicy", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "propagationPolicy",
@@ -5472,6 +5463,15 @@ namespace Google.Apis.CloudRun.v1
                             "kind", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "kind",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "apiVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "apiVersion",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5571,19 +5571,19 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LabelSelector { get; set; }
 
-                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
-                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string FieldSelector { get; set; }
+                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ResourceVersion { get; set; }
 
                     /// <summary>Not currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
 
-                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ResourceVersion { get; set; }
+                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
+                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FieldSelector { get; set; }
 
                     /// <summary>Optional encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
@@ -5641,9 +5641,9 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
+                            "resourceVersion", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "fieldSelector",
+                                Name = "resourceVersion",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5659,9 +5659,9 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
+                            "fieldSelector", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "resourceVersion",
+                                Name = "fieldSelector",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5883,7 +5883,7 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Delete a service. This will cause the Service to stop serving traffic and will delete the
                 /// child entities like Routes, Configurations and Revisions.</summary>
-                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.K8sIoApimachineryPkgApisMetaV1Status>
+                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.Status>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -6149,19 +6149,19 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LabelSelector { get; set; }
 
-                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
-                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string FieldSelector { get; set; }
+                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ResourceVersion { get; set; }
 
                     /// <summary>Not currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
 
-                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ResourceVersion { get; set; }
+                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
+                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FieldSelector { get; set; }
 
                     /// <summary>Optional encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
@@ -6219,9 +6219,9 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
+                            "resourceVersion", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "fieldSelector",
+                                Name = "resourceVersion",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6237,9 +6237,9 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
+                            "fieldSelector", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "resourceVersion",
+                                Name = "fieldSelector",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6764,7 +6764,7 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>Metadata associated with this BuildTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual K8sIoApimachineryPkgApisMetaV1ObjectMeta Metadata { get; set; } 
+        public virtual ObjectMeta Metadata { get; set; } 
 
         /// <summary>The spec for this AutoDomainMapping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
@@ -7018,7 +7018,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Metadata associated with this Configuration, including name, namespace, labels, and
         /// annotations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual K8sIoApimachineryPkgApisMetaV1ObjectMeta Metadata { get; set; } 
+        public virtual ObjectMeta Metadata { get; set; } 
 
         /// <summary>Spec holds the desired state of the Configuration (from the client).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
@@ -7315,7 +7315,7 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>Metadata associated with this BuildTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual K8sIoApimachineryPkgApisMetaV1ObjectMeta Metadata { get; set; } 
+        public virtual ObjectMeta Metadata { get; set; } 
 
         /// <summary>The spec for this DomainMapping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
@@ -7571,32 +7571,6 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details.
-    ///
-    /// You can find out more about this error model and how to work with it in the [API Design
-    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
-    public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
-
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
-
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Cloud Run fully managed: not supported
     ///
     /// Cloud Run for Anthos: supported
@@ -7738,9 +7712,160 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Cloud Run fully managed: not supported
+    ///
+    /// Cloud Run for Anthos: supported
+    ///
+    /// Maps a string key to a path within a volume.</summary>
+    public class KeyToPath : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Run fully managed: not supported
+        ///
+        /// Cloud Run for Anthos: supported
+        ///
+        /// The key to project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>(Optional)
+        ///
+        /// Cloud Run fully managed: not supported
+        ///
+        /// Cloud Run for Anthos: supported
+        ///
+        /// Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode
+        /// will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the
+        /// result can be other mode bits set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual System.Nullable<int> Mode { get; set; } 
+
+        /// <summary>Cloud Run fully managed: not supported
+        ///
+        /// Cloud Run for Anthos: supported
+        ///
+        /// The relative path of the file to map the key to. May not be an absolute path. May not contain the path
+        /// element '..'. May not start with the string '..'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A list of Authorized Domains.</summary>
+    public class ListAuthorizedDomainsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The authorized domains belonging to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<AuthorizedDomain> Domains { get; set; } 
+
+        /// <summary>Continuation token for fetching the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>ListAutoDomainMappingsResponse is a list of AutoDomainMapping resources.</summary>
+    public class ListAutoDomainMappingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The API version for this call such as "serving.knative.dev/v1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; } 
+
+        /// <summary>List of AutoDomainMappings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<AutoDomainMapping> Items { get; set; } 
+
+        /// <summary>The kind of this resource, in this case "AutoDomainMappingList".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Metadata associated with this AutoDomainMapping list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ListMeta Metadata { get; set; } 
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>ListConfigurationsResponse is a list of Configuration resources.</summary>
+    public class ListConfigurationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The API version for this call such as "serving.knative.dev/v1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; } 
+
+        /// <summary>List of Configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Configuration> Items { get; set; } 
+
+        /// <summary>The kind of this resource, in this case "ConfigurationList".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Metadata associated with this Configuration list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ListMeta Metadata { get; set; } 
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>ListDomainMappingsResponse is a list of DomainMapping resources.</summary>
+    public class ListDomainMappingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The API version for this call such as "domains.cloudrun.com/v1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; } 
+
+        /// <summary>List of DomainMappings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<DomainMapping> Items { get; set; } 
+
+        /// <summary>The kind of this resource, in this case "DomainMappingList".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Metadata associated with this DomainMapping list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ListMeta Metadata { get; set; } 
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for Locations.ListLocations.</summary>
+    public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of locations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>ListMeta describes metadata that synthetic resources must have, including lists and various status
     /// objects. A resource may have only one of {ObjectMeta, ListMeta}.</summary>
-    public class K8sIoApimachineryPkgApisMetaV1ListMeta : Google.Apis.Requests.IDirectResponseSchema
+    public class ListMeta : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>continue may be set if the user set a limit on the number of items returned, and indicates that the
         /// server has more data available. The value is opaque and may be used to issue another request to the endpoint
@@ -7766,9 +7891,143 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>ListRevisionsResponse is a list of Revision resources.</summary>
+    public class ListRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The API version for this call such as "serving.knative.dev/v1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; } 
+
+        /// <summary>List of Revisions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Revision> Items { get; set; } 
+
+        /// <summary>The kind of this resource, in this case "RevisionList".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Metadata associated with this revision list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ListMeta Metadata { get; set; } 
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>ListRoutesResponse is a list of Route resources.</summary>
+    public class ListRoutesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The API version for this call such as "serving.knative.dev/v1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; } 
+
+        /// <summary>List of Routes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Route> Items { get; set; } 
+
+        /// <summary>The kind of this resource, in this case always "RouteList".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Metadata associated with this Route list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ListMeta Metadata { get; set; } 
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A list of Service resources.</summary>
+    public class ListServicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The API version for this call such as "serving.knative.dev/v1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; } 
+
+        /// <summary>List of Services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Service> Items { get; set; } 
+
+        /// <summary>The kind of this resource, in this case "ServiceList".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Metadata associated with this Service list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ListMeta Metadata { get; set; } 
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud Run fully managed: not supported
+    ///
+    /// Cloud Run for Anthos: supported
+    ///
+    /// LocalObjectReference contains enough information to let you locate the referenced object inside the same
+    /// namespace.</summary>
+    public class LocalObjectReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>(Optional)
+        ///
+        /// Cloud Run fully managed: not supported
+        ///
+        /// Cloud Run for Anthos: supported
+        ///
+        /// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-
+        /// objects/names/#names</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    public class Location : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Cross-service attributes for the location. For example
+        ///
+        /// {"cloud.googleapis.com/region": "us-east1"}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
+        public virtual string LocationId { get; set; } 
+
+        /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+
+        /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
+        /// /example-project/locations/us-east1"`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have,
     /// which includes all objects users must create.</summary>
-    public class K8sIoApimachineryPkgApisMetaV1ObjectMeta : Google.Apis.Requests.IDirectResponseSchema
+    public class ObjectMeta : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>(Optional)
         ///
@@ -7906,7 +8165,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// List of objects that own this object. If ALL objects in the list have been deleted, this object will be
         /// garbage collected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerReferences")]
-        public virtual System.Collections.Generic.IList<K8sIoApimachineryPkgApisMetaV1OwnerReference> OwnerReferences { get; set; } 
+        public virtual System.Collections.Generic.IList<OwnerReference> OwnerReferences { get; set; } 
 
         /// <summary>(Optional)
         ///
@@ -7944,7 +8203,7 @@ namespace Google.Apis.CloudRun.v1.Data
 
     /// <summary>OwnerReference contains enough information to let you identify an owning object. Currently, an owning
     /// object must be in the same namespace, so there is no namespace field.</summary>
-    public class K8sIoApimachineryPkgApisMetaV1OwnerReference : Google.Apis.Requests.IDirectResponseSchema
+    public class OwnerReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>API version of the referent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
@@ -7977,443 +8236,30 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Status is a return value for calls that don't return other objects</summary>
-    public class K8sIoApimachineryPkgApisMetaV1Status : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Suggested HTTP return code for this status, 0 if not set. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
-
-        /// <summary>Extended data associated with the reason.  Each reason may define its own extended details. This
-        /// field is optional and the data returned is not guaranteed to conform to any schema except that defined by
-        /// the reason type. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual K8sIoApimachineryPkgApisMetaV1StatusDetails Details { get; set; } 
-
-        /// <summary>A human-readable description of the status of this operation. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
-
-        /// <summary>Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-
-        /// conventions.md#types-kinds +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual K8sIoApimachineryPkgApisMetaV1ListMeta Metadata { get; set; } 
-
-        /// <summary>A machine-readable description of why this operation is in the "Failure" status. If this value is
-        /// empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
-        /// +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
-
-        /// <summary>Status of the operation. One of: "Success" or "Failure". More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>StatusCause provides more information about an api.Status failure, including cases when multiple errors
-    /// are encountered.</summary>
-    public class K8sIoApimachineryPkgApisMetaV1StatusCause : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The field of the resource that has caused this error, as named by its JSON serialization. May
-        /// include dot and postfix notation for nested attributes. Arrays are zero-indexed.  Fields may appear more
-        /// than once in an array of causes due to fields having multiple errors. Optional.
-        ///
-        /// Examples: "name" - the field "name" on the current resource "items[0].name" - the field "name" on the first
-        /// array entry in "items" +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; } 
-
-        /// <summary>A human-readable description of the cause of the error.  This field may be presented as-is to a
-        /// reader. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
-
-        /// <summary>A machine-readable description of the cause of the error. If this value is empty there is no
-        /// information available. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
-        public virtual string Reason { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>StatusDetails is a set of additional properties that MAY be set by the server to provide additional
-    /// information about a response. The Reason field of a Status object defines what attributes will be set. Clients
-    /// must ignore fields that do not match the defined type of each attribute, and should assume that any attribute
-    /// may be empty, invalid, or under defined.</summary>
-    public class K8sIoApimachineryPkgApisMetaV1StatusDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Causes array includes more details associated with the StatusReason failure. Not all
-        /// StatusReasons may provide detailed causes. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("causes")]
-        public virtual System.Collections.Generic.IList<K8sIoApimachineryPkgApisMetaV1StatusCause> Causes { get; set; } 
-
-        /// <summary>The group attribute of the resource associated with the status StatusReason. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("group")]
-        public virtual string Group { get; set; } 
-
-        /// <summary>The kind attribute of the resource associated with the status StatusReason. On some operations may
-        /// differ from the requested resource Kind. More info: https://git.k8s.io/community/contributors/devel/api-
-        /// conventions.md#types-kinds +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>The name attribute of the resource associated with the status StatusReason (when there is a single
-        /// name which can be described). +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>If specified, the time in seconds before the operation should be retried. Some errors may indicate
-        /// the client must take an alternate action - for those errors this field may indicate how long to wait before
-        /// taking the alternate action. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("retryAfterSeconds")]
-        public virtual System.Nullable<int> RetryAfterSeconds { get; set; } 
-
-        /// <summary>UID of the resource. (when there is a single resource which can be described). More info:
-        /// http://kubernetes.io/docs/user-guide/identifiers#uids +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
-        public virtual string Uid { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// Maps a string key to a path within a volume.</summary>
-    public class KeyToPath : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The key to project.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
-
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode
-        /// will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the
-        /// result can be other mode bits set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
-        public virtual System.Nullable<int> Mode { get; set; } 
-
-        /// <summary>Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// The relative path of the file to map the key to. May not be an absolute path. May not contain the path
-        /// element '..'. May not start with the string '..'.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A list of Authorized Domains.</summary>
-    public class ListAuthorizedDomainsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The authorized domains belonging to the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
-        public virtual System.Collections.Generic.IList<AuthorizedDomain> Domains { get; set; } 
-
-        /// <summary>Continuation token for fetching the next page of results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>ListAutoDomainMappingsResponse is a list of AutoDomainMapping resources.</summary>
-    public class ListAutoDomainMappingsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The API version for this call such as "serving.knative.dev/v1".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
-
-        /// <summary>List of AutoDomainMappings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<AutoDomainMapping> Items { get; set; } 
-
-        /// <summary>The kind of this resource, in this case "AutoDomainMappingList".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Metadata associated with this AutoDomainMapping list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual K8sIoApimachineryPkgApisMetaV1ListMeta Metadata { get; set; } 
-
-        /// <summary>Details for the regions used during a global call including any failures. This is not populated
-        /// when targeting a specific region.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionDetails")]
-        public virtual System.Collections.Generic.IDictionary<string,RegionDetails> RegionDetails { get; set; } 
-
-        /// <summary>Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>ListConfigurationsResponse is a list of Configuration resources.</summary>
-    public class ListConfigurationsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The API version for this call such as "serving.knative.dev/v1".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
-
-        /// <summary>List of Configurations.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Configuration> Items { get; set; } 
-
-        /// <summary>The kind of this resource, in this case "ConfigurationList".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Metadata associated with this Configuration list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual K8sIoApimachineryPkgApisMetaV1ListMeta Metadata { get; set; } 
-
-        /// <summary>Details for the regions used during a global call including any failures. This is not populated
-        /// when targeting a specific region.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionDetails")]
-        public virtual System.Collections.Generic.IDictionary<string,RegionDetails> RegionDetails { get; set; } 
-
-        /// <summary>Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>ListDomainMappingsResponse is a list of DomainMapping resources.</summary>
-    public class ListDomainMappingsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The API version for this call such as "domains.cloudrun.com/v1".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
-
-        /// <summary>List of DomainMappings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<DomainMapping> Items { get; set; } 
-
-        /// <summary>The kind of this resource, in this case "DomainMappingList".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Metadata associated with this DomainMapping list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual K8sIoApimachineryPkgApisMetaV1ListMeta Metadata { get; set; } 
-
-        /// <summary>Details for the regions used during a global call including any failures. This is not populated
-        /// when targeting a specific region.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionDetails")]
-        public virtual System.Collections.Generic.IDictionary<string,RegionDetails> RegionDetails { get; set; } 
-
-        /// <summary>Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The response message for Locations.ListLocations.</summary>
-    public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of locations that matches the specified filter in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
-
-        /// <summary>The standard List next-page token.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>ListRevisionsResponse is a list of Revision resources.</summary>
-    public class ListRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The API version for this call such as "serving.knative.dev/v1".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
-
-        /// <summary>List of Revisions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Revision> Items { get; set; } 
-
-        /// <summary>The kind of this resource, in this case "RevisionList".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Metadata associated with this revision list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual K8sIoApimachineryPkgApisMetaV1ListMeta Metadata { get; set; } 
-
-        /// <summary>Details for the regions used during a global call including any failures. This is not populated
-        /// when targeting a specific region.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionDetails")]
-        public virtual System.Collections.Generic.IDictionary<string,RegionDetails> RegionDetails { get; set; } 
-
-        /// <summary>Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>ListRoutesResponse is a list of Route resources.</summary>
-    public class ListRoutesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The API version for this call such as "serving.knative.dev/v1".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
-
-        /// <summary>List of Routes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Route> Items { get; set; } 
-
-        /// <summary>The kind of this resource, in this case always "RouteList".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Metadata associated with this Route list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual K8sIoApimachineryPkgApisMetaV1ListMeta Metadata { get; set; } 
-
-        /// <summary>Details for the regions used during a global call including any failures. This is not populated
-        /// when targeting a specific region.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionDetails")]
-        public virtual System.Collections.Generic.IDictionary<string,RegionDetails> RegionDetails { get; set; } 
-
-        /// <summary>Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A list of Service resources.</summary>
-    public class ListServicesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The API version for this call such as "serving.knative.dev/v1".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
-
-        /// <summary>List of Services.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Service> Items { get; set; } 
-
-        /// <summary>The kind of this resource, in this case "ServiceList".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Metadata associated with this Service list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual K8sIoApimachineryPkgApisMetaV1ListMeta Metadata { get; set; } 
-
-        /// <summary>Details for the regions used during a global call including any failures. This is not populated
-        /// when targeting a specific region.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionDetails")]
-        public virtual System.Collections.Generic.IDictionary<string,RegionDetails> RegionDetails { get; set; } 
-
-        /// <summary>Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Cloud Run fully managed: not supported
-    ///
-    /// Cloud Run for Anthos: supported
-    ///
-    /// LocalObjectReference contains enough information to let you locate the referenced object inside the same
-    /// namespace.</summary>
-    public class LocalObjectReference : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>(Optional)
-        ///
-        /// Cloud Run fully managed: not supported
-        ///
-        /// Cloud Run for Anthos: supported
-        ///
-        /// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-
-        /// objects/names/#names</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
-    public class Location : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
-
-        /// <summary>Cross-service attributes for the location. For example
-        ///
-        /// {"cloud.googleapis.com/region": "us-east1"}</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
-
-        /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
-
-        /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
-
-        /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
-        /// /example-project/locations/us-east1"`</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
     /// for Cloud Platform resources.
     ///
-    /// A `Policy` consists of a list of `bindings`. A `binding` binds a list of `members` to a `role`, where the
-    /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
-    /// permissions defined by IAM.
+    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
+    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
+    /// of permissions (defined by IAM or configured by users). A `binding` can optionally specify a `condition`, which
+    /// is a logic expression that further constrains the role binding based on attributes about the request and/or
+    /// target resource.
     ///
     /// **JSON Example**
     ///
-    /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role": "roles/viewer",
-    /// "members": ["user:sean@example.com"] } ] }
+    /// { "bindings": [ { "role": "role/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ] }
     ///
     /// **YAML Example**
     ///
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com role: roles/viewer
+    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
+    /// description: Does not grant access after Sep 2020 expression: request.time <
+    /// timestamp('2020-10-01T00:00:00.000Z')
     ///
     /// For a description of IAM and its features, see the [IAM developer's
     /// guide](https://cloud.google.com/iam/docs).</summary>
@@ -8423,8 +8269,8 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 
-        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
-        /// error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. Optionally may specify a `condition` that determines
+        /// when binding is in effect. `bindings` with no members will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -8434,7 +8280,9 @@ namespace Google.Apis.CloudRun.v1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
+        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if either of incoming or
+        /// stored policy does not meet the version requirements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -8442,8 +8290,12 @@ namespace Google.Apis.CloudRun.v1.Data
         ///
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
-        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
-        /// specify any valid value or leave the field unset.</summary>
+        /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
+        /// policy, modifying a conditional binding, or removing a conditional binding from the stored conditional
+        /// policy. Operations on non-conditional policies may specify any valid value or leave the field unset.
+        ///
+        /// If no etag is provided in the call to `setIamPolicy`, any version compliance checks on the incoming and/or
+        /// stored policy is skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -8523,17 +8375,6 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Information for a regional call used for a global API.</summary>
-    public class RegionDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The status indicating why the regional call failed</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual GoogleRpcStatus Error { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A DNS resource record.</summary>
     public class ResourceRecord : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8604,7 +8445,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Metadata associated with this Revision, including name, namespace, labels, and
         /// annotations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual K8sIoApimachineryPkgApisMetaV1ObjectMeta Metadata { get; set; } 
+        public virtual ObjectMeta Metadata { get; set; } 
 
         /// <summary>Spec holds the desired state of the Revision (from the client).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
@@ -8707,7 +8548,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// annotation key. To set Cloud SQL connections for the revision, use the "run.googleapis.com/cloudsql-
         /// instances" annotation key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual K8sIoApimachineryPkgApisMetaV1ObjectMeta Metadata { get; set; } 
+        public virtual ObjectMeta Metadata { get; set; } 
 
         /// <summary>RevisionSpec holds the desired state of the Revision (from the client).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
@@ -8737,7 +8578,7 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>Metadata associated with this Route, including name, namespace, labels, and annotations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual K8sIoApimachineryPkgApisMetaV1ObjectMeta Metadata { get; set; } 
+        public virtual ObjectMeta Metadata { get; set; } 
 
         /// <summary>Spec holds the desired state of the Route (from the client).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
@@ -8983,7 +8824,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Metadata associated with this Service, including name, namespace, labels, and
         /// annotations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual K8sIoApimachineryPkgApisMetaV1ObjectMeta Metadata { get; set; } 
+        public virtual ObjectMeta Metadata { get; set; } 
 
         /// <summary>Spec holds the desired state of the Service (from the client).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
@@ -9075,6 +8916,111 @@ namespace Google.Apis.CloudRun.v1.Data
         /// field is only used by Cloud IAM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Status is a return value for calls that don't return other objects</summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Suggested HTTP return code for this status, 0 if not set. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; } 
+
+        /// <summary>Extended data associated with the reason.  Each reason may define its own extended details. This
+        /// field is optional and the data returned is not guaranteed to conform to any schema except that defined by
+        /// the reason type. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual StatusDetails Details { get; set; } 
+
+        /// <summary>A human-readable description of the status of this operation. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
+
+        /// <summary>Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-
+        /// conventions.md#types-kinds +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ListMeta Metadata { get; set; } 
+
+        /// <summary>A machine-readable description of why this operation is in the "Failure" status. If this value is
+        /// empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
+        /// +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>Status of the operation. One of: "Success" or "Failure". More info:
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string StatusValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>StatusCause provides more information about an api.Status failure, including cases when multiple errors
+    /// are encountered.</summary>
+    public class StatusCause : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The field of the resource that has caused this error, as named by its JSON serialization. May
+        /// include dot and postfix notation for nested attributes. Arrays are zero-indexed.  Fields may appear more
+        /// than once in an array of causes due to fields having multiple errors. Optional.
+        ///
+        /// Examples: "name" - the field "name" on the current resource "items[0].name" - the field "name" on the first
+        /// array entry in "items" +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; } 
+
+        /// <summary>A human-readable description of the cause of the error.  This field may be presented as-is to a
+        /// reader. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
+
+        /// <summary>A machine-readable description of the cause of the error. If this value is empty there is no
+        /// information available. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>StatusDetails is a set of additional properties that MAY be set by the server to provide additional
+    /// information about a response. The Reason field of a Status object defines what attributes will be set. Clients
+    /// must ignore fields that do not match the defined type of each attribute, and should assume that any attribute
+    /// may be empty, invalid, or under defined.</summary>
+    public class StatusDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Causes array includes more details associated with the StatusReason failure. Not all
+        /// StatusReasons may provide detailed causes. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("causes")]
+        public virtual System.Collections.Generic.IList<StatusCause> Causes { get; set; } 
+
+        /// <summary>The group attribute of the resource associated with the status StatusReason. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; } 
+
+        /// <summary>The kind attribute of the resource associated with the status StatusReason. On some operations may
+        /// differ from the requested resource Kind. More info: https://git.k8s.io/community/contributors/devel/api-
+        /// conventions.md#types-kinds +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The name attribute of the resource associated with the status StatusReason (when there is a single
+        /// name which can be described). +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>If specified, the time in seconds before the operation should be retried. Some errors may indicate
+        /// the client must take an alternate action - for those errors this field may indicate how long to wait before
+        /// taking the alternate action. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryAfterSeconds")]
+        public virtual System.Nullable<int> RetryAfterSeconds { get; set; } 
+
+        /// <summary>UID of the resource. (when there is a single resource which can be described). More info:
+        /// http://kubernetes.io/docs/user-guide/identifiers#uids +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

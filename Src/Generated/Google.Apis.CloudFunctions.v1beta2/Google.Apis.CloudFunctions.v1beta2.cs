@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/functions'>Cloud Functions API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190807 (1679)
+ *      <tr><th>API Rev<td>20190917 (1720)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>
@@ -594,7 +594,7 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 /// limited traffic is allowed. For more information on the actual limits refer to [API Calls](
                 /// https://cloud.google.com/functions/quotas#rate_limits).</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The name of the function to be called.</param>
+                /// <param name="name">Required. The name of the function to be called.</param>
                 public virtual CallRequest Call(Google.Apis.CloudFunctions.v1beta2.Data.CallFunctionRequest body, string name)
                 {
                     return new CallRequest(service, body, name);
@@ -615,7 +615,7 @@ namespace Google.Apis.CloudFunctions.v1beta2
                     }
 
 
-                    /// <summary>The name of the function to be called.</summary>
+                    /// <summary>Required. The name of the function to be called.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -665,8 +665,8 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 /// <summary>Creates a new function. If a function with the given name already exists in the specified
                 /// project, the long running operation will return `ALREADY_EXISTS` error.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="location">The project and location in which the function should be created, specified in the format
-                /// `projects/locations`</param>
+                /// <param name="location">Required. The project and location in which the function should be created, specified in the
+                /// format `projects/locations`</param>
                 public virtual CreateRequest Create(Google.Apis.CloudFunctions.v1beta2.Data.CloudFunction body, string location)
                 {
                     return new CreateRequest(service, body, location);
@@ -686,8 +686,8 @@ namespace Google.Apis.CloudFunctions.v1beta2
                     }
 
 
-                    /// <summary>The project and location in which the function should be created, specified in the
-                    /// format `projects/locations`</summary>
+                    /// <summary>Required. The project and location in which the function should be created, specified
+                    /// in the format `projects/locations`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
@@ -736,7 +736,7 @@ namespace Google.Apis.CloudFunctions.v1beta2
 
                 /// <summary>Deletes a function with the given name from the specified project. If the given function is
                 /// used by some trigger, the trigger will be updated to remove this function.</summary>
-                /// <param name="name">The name of the function which should be deleted.</param>
+                /// <param name="name">Required. The name of the function which should be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -755,7 +755,7 @@ namespace Google.Apis.CloudFunctions.v1beta2
                     }
 
 
-                    /// <summary>The name of the function which should be deleted.</summary>
+                    /// <summary>Required. The name of the function which should be deleted.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -977,7 +977,7 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 }
 
                 /// <summary>Returns a function with the given name from the requested project.</summary>
-                /// <param name="name">The name of the function which details should be obtained.</param>
+                /// <param name="name">Required. The name of the function which details should be obtained.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -995,7 +995,7 @@ namespace Google.Apis.CloudFunctions.v1beta2
                     }
 
 
-                    /// <summary>The name of the function which details should be obtained.</summary>
+                    /// <summary>Required. The name of the function which details should be obtained.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1037,8 +1037,9 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 }
 
                 /// <summary>Returns a list of functions that belong to the requested project.</summary>
-                /// <param name="location">The project and location from which the function should be listed, specified in the format
-                /// `projects/locations` If you want to list functions in all locations, use "-" in place of a location.</param>
+                /// <param name="location">Required. The project and location from which the function should be listed, specified in the
+                /// format `projects/locations` If you want to list functions in all locations, use "-" in place of a
+                /// location.</param>
                 public virtual ListRequest List(string location)
                 {
                     return new ListRequest(service, location);
@@ -1056,9 +1057,9 @@ namespace Google.Apis.CloudFunctions.v1beta2
                     }
 
 
-                    /// <summary>The project and location from which the function should be listed, specified in the
-                    /// format `projects/locations` If you want to list functions in all locations, use "-" in place of
-                    /// a location.</summary>
+                    /// <summary>Required. The project and location from which the function should be listed, specified
+                    /// in the format `projects/locations` If you want to list functions in all locations, use "-" in
+                    /// place of a location.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
@@ -1129,7 +1130,7 @@ namespace Google.Apis.CloudFunctions.v1beta2
 
                 /// <summary>Updates existing function.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The name of the function to be updated.</param>
+                /// <param name="name">Required. The name of the function to be updated.</param>
                 public virtual UpdateRequest Update(Google.Apis.CloudFunctions.v1beta2.Data.CloudFunction body, string name)
                 {
                     return new UpdateRequest(service, body, name);
@@ -1148,7 +1149,7 @@ namespace Google.Apis.CloudFunctions.v1beta2
                     }
 
 
-                    /// <summary>The name of the function to be updated.</summary>
+                    /// <summary>Required. The name of the function to be updated.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1219,6 +1220,10 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1226,10 +1231,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1265,6 +1266,15 @@ namespace Google.Apis.CloudFunctions.v1beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1277,15 +1287,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1304,7 +1305,7 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
     /// <summary>Request for the `CallFunction` method.</summary>
     public class CallFunctionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input to be passed to the function.</summary>
+        /// <summary>Required. Input to be passed to the function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; } 
 

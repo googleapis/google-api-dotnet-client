@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>Cloud Translation API</a>
  *      <tr><th>API Version<td>v3beta1
- *      <tr><th>API Rev<td>20190906 (1709)
+ *      <tr><th>API Rev<td>20190920 (1723)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>
  *              https://cloud.google.com/translate/docs/quickstarts</a>
@@ -611,6 +611,11 @@ namespace Google.Apis.Translate.v3beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. Filter specifying constraints of a list operation. Filtering is not supported
+                    /// yet, and the parameter currently has no effect. If missing, no filtering is performed.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>Optional. A token identifying a page of results the server should return. Typically,
                     /// this is the value of [ListGlossariesResponse.next_page_token] returned from the previous call to
                     /// `ListGlossaries` method. The first page is returned if `page_token`is empty or
@@ -622,11 +627,6 @@ namespace Google.Apis.Translate.v3beta1
                     /// If unspecified, the server picks an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. Filter specifying constraints of a list operation. Filtering is not supported
-                    /// yet, and the parameter currently has no effect. If missing, no filtering is performed.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -662,6 +662,15 @@ namespace Google.Apis.Translate.v3beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -674,15 +683,6 @@ namespace Google.Apis.Translate.v3beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1488,6 +1488,10 @@ namespace Google.Apis.Translate.v3beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1495,10 +1499,6 @@ namespace Google.Apis.Translate.v3beta1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1534,6 +1534,15 @@ namespace Google.Apis.Translate.v3beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1546,15 +1555,6 @@ namespace Google.Apis.Translate.v3beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1957,7 +1957,7 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// letters, numeric characters, underscores and dashes. International characters are allowed. Label values are
         /// optional. Label keys must start with a letter.
         ///
-        /// See https://goo.gl/xmQnxf for more information on and examples of labels.</summary>
+        /// See https://cloud.google.com/translate/docs/labels for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -2013,7 +2013,7 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// letters, numeric characters, underscores and dashes. International characters are allowed. Label values are
         /// optional. Label keys must start with a letter.
         ///
-        /// See https://goo.gl/xmQnxf for more information on and examples of labels.</summary>
+        /// See https://cloud.google.com/translate/docs/labels for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -2493,7 +2493,7 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// letters, numeric characters, underscores and dashes. International characters are allowed. Label values are
         /// optional. Label keys must start with a letter.
         ///
-        /// See https://goo.gl/xmQnxf for more information on and examples of labels.</summary>
+        /// See https://cloud.google.com/translate/docs/labels for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 

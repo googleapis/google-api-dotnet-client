@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190920 (1723)
+ *      <tr><th>API Rev<td>20190926 (1729)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -552,13 +552,13 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
             [Google.Apis.Util.RequestParameterAttribute("dynamicLink", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DynamicLink { get; private set; }
 
-            /// <summary>The span of time requested in days.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("durationDays", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> DurationDays { get; set; }
-
             /// <summary>Google SDK version. Version takes the form "$major.$minor.$patch"</summary>
             [Google.Apis.Util.RequestParameterAttribute("sdkVersion", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SdkVersion { get; set; }
+
+            /// <summary>The span of time requested in days.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("durationDays", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> DurationDays { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -594,18 +594,18 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "durationDays", new Google.Apis.Discovery.Parameter
+                    "sdkVersion", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "durationDays",
+                        Name = "sdkVersion",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "sdkVersion", new Google.Apis.Discovery.Parameter
+                    "durationDays", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "sdkVersion",
+                        Name = "durationDays",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

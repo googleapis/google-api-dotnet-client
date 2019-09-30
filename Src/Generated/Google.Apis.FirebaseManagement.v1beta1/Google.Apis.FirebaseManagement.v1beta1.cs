@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190925 (1728)
+ *      <tr><th>API Rev<td>20190926 (1729)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -2429,15 +2429,19 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         ///
         /// Using this call, you can either:
         ///
-        /// Provision a new Google Analytics property and associate the new property with your `FirebaseProject`.
-        /// Associate an existing Google Analytics property with your `FirebaseProject`.
+        /// Specify an `analyticsAccountId` to provision a new Google Analytics property within the specified account
+        /// and associate the new property with your `FirebaseProject`. Specify an existing `analyticsPropertyId` to
+        /// associate the property with your `FirebaseProject`.
         ///
         /// Note that when you call `AddGoogleAnalytics`:
         ///
-        /// Any Firebase Apps already in your `FirebaseProject` are automatically provisioned as new data streams in the
-        /// Google Analytics property. Any data streams already in the Google Analytics property are automatically
-        /// associated with their corresponding Firebase Apps (only applies when an app's `packageName` or `bundleId`
-        /// match those for an existing data stream).
+        /// The first check determines if any existing data streams in the Google Analytics property correspond to any
+        /// existing Firebase Apps in your `FirebaseProject` (based on the `packageName` or `bundleId` associated with
+        /// the data stream). Then, as applicable, the data streams and apps are linked. Note that this auto-linking
+        /// only applies to Android Apps and iOS Apps. If no corresponding data streams are found for your Firebase
+        /// Apps, new data streams are provisioned in the Google Analytics property for each of your Firebase Apps. Note
+        /// that a new data stream is always provisioned for a Web App even if it was previously associated with a data
+        /// stream in your Analytics property.
         ///
         /// Learn more about the hierarchy and structure of Google Analytics accounts in the [Analytics
         /// documentation](https://support.google.com/analytics/answer/9303323).
@@ -2469,15 +2473,19 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         ///
         /// Using this call, you can either:
         ///
-        /// Provision a new Google Analytics property and associate the new property with your `FirebaseProject`.
-        /// Associate an existing Google Analytics property with your `FirebaseProject`.
+        /// Specify an `analyticsAccountId` to provision a new Google Analytics property within the specified account
+        /// and associate the new property with your `FirebaseProject`. Specify an existing `analyticsPropertyId` to
+        /// associate the property with your `FirebaseProject`.
         ///
         /// Note that when you call `AddGoogleAnalytics`:
         ///
-        /// Any Firebase Apps already in your `FirebaseProject` are automatically provisioned as new data streams in the
-        /// Google Analytics property. Any data streams already in the Google Analytics property are automatically
-        /// associated with their corresponding Firebase Apps (only applies when an app's `packageName` or `bundleId`
-        /// match those for an existing data stream).
+        /// The first check determines if any existing data streams in the Google Analytics property correspond to any
+        /// existing Firebase Apps in your `FirebaseProject` (based on the `packageName` or `bundleId` associated with
+        /// the data stream). Then, as applicable, the data streams and apps are linked. Note that this auto-linking
+        /// only applies to Android Apps and iOS Apps. If no corresponding data streams are found for your Firebase
+        /// Apps, new data streams are provisioned in the Google Analytics property for each of your Firebase Apps. Note
+        /// that a new data stream is always provisioned for a Web App even if it was previously associated with a data
+        /// stream in your Analytics property.
         ///
         /// Learn more about the hierarchy and structure of Google Analytics accounts in the [Analytics
         /// documentation](https://support.google.com/analytics/answer/9303323).
@@ -2942,7 +2950,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         ///
         /// These resources may be re-associated later to the `FirebaseProject` by calling
         /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and specifying the same
-        /// `analyticsPropertyId`.
+        /// `analyticsPropertyId`. For Android Apps and iOS Apps, this call re-links data streams with their
+        /// corresponding apps. However, for Web Apps, this call provisions a new data stream for each Web App.
         ///
         /// To call `RemoveAnalytics`, a member must be an Owner for the `FirebaseProject`.</summary>
         /// <param name="body">The body of the request.</param>
@@ -2961,7 +2970,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1
         ///
         /// These resources may be re-associated later to the `FirebaseProject` by calling
         /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and specifying the same
-        /// `analyticsPropertyId`.
+        /// `analyticsPropertyId`. For Android Apps and iOS Apps, this call re-links data streams with their
+        /// corresponding apps. However, for Web Apps, this call provisions a new data stream for each Web App.
         ///
         /// To call `RemoveAnalytics`, a member must be an Owner for the `FirebaseProject`.</summary>
         public class RemoveAnalyticsRequest : FirebaseManagementBaseServiceRequest<Google.Apis.FirebaseManagement.v1beta1.Data.Empty>
@@ -3216,8 +3226,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsProperty")]
         public virtual AnalyticsProperty AnalyticsProperty { get; set; } 
 
-        /// <summary>A map of `AppId` to `StreamId` for each Firebase App in the specified `FirebaseProject`. Each
-        /// `AppId` and `StreamId` appears only once.</summary>
+        /// <summary>For Android Apps and iOS Apps: A map of `app` to `streamId` for each Firebase App in the specified
+        /// `FirebaseProject`. Each `app` and `streamId` appears only once.
+        ///
+        /// For Web Apps: A map of `app` to `streamId` and `measurementId` for each Firebase App in the specified
+        /// `FirebaseProject`. Each `app`, `streamId`, and `measurementId` appears only once.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamMappings")]
         public virtual System.Collections.Generic.IList<StreamMapping> StreamMappings { get; set; } 
 
@@ -3802,12 +3815,17 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     public class StreamMapping : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The fully qualified resource name of the Firebase App associated with the Google Analytics data
-        /// stream, in the format: projects/projectId/iosApps/appId or projects/projectId/androidApps/appId</summary>
+        /// stream, in the format: projects/projectId/androidApps/appId or projects/projectId/iosApps/appId or
+        /// projects/projectId/webApps/appId</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("app")]
         public virtual string App { get; set; } 
 
-        /// <summary>Analytics-provided measurement ID, for use in the gtag.js library. Will only be present for
-        /// Firebase Web Apps.</summary>
+        /// <summary>Applicable for Firebase Web Apps only. The unique Google-assigned identifier of the Google
+        /// Analytics web stream associated with the Firebase Web App. Firebase SDKs use this ID to interact with Google
+        /// Analytics APIs.
+        ///
+        /// Learn more about this ID and Google Analytics web streams in the [Analytics
+        /// documentation](https://support.google.com/analytics/topic/9303475).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
         public virtual string MeasurementId { get; set; } 
 
@@ -3903,8 +3921,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
-        /// <summary>Analytics-provided measurement ID, for use in the gtag.js library. Will only be present for
-        /// Firebase Web Apps.</summary>
+        /// <summary>The unique Google-assigned identifier of the Google Analytics web stream associated with the
+        /// Firebase Web App. Firebase SDKs use this ID to interact with Google Analytics APIs.
+        ///
+        /// This field is only present if the App is linked to a web stream in a Google Analytics App + Web property.
+        /// Learn more about this ID and Google Analytics web streams in the [Analytics
+        /// documentation](https://support.google.com/analytics/topic/9303475).
+        ///
+        /// To generate a `measurementId` and link the Web App with a Google Analytics web stream, call
+        /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
         public virtual string MeasurementId { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/functions'>Cloud Functions API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190807 (1679)
+ *      <tr><th>API Rev<td>20190917 (1720)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>
@@ -594,7 +594,7 @@ namespace Google.Apis.CloudFunctions.v1
                 /// limited traffic is allowed. For more information on the actual limits, refer to [Rate
                 /// Limits](https://cloud.google.com/functions/quotas#rate_limits).</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The name of the function to be called.</param>
+                /// <param name="name">Required. The name of the function to be called.</param>
                 public virtual CallRequest Call(Google.Apis.CloudFunctions.v1.Data.CallFunctionRequest body, string name)
                 {
                     return new CallRequest(service, body, name);
@@ -615,7 +615,7 @@ namespace Google.Apis.CloudFunctions.v1
                     }
 
 
-                    /// <summary>The name of the function to be called.</summary>
+                    /// <summary>Required. The name of the function to be called.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -665,8 +665,8 @@ namespace Google.Apis.CloudFunctions.v1
                 /// <summary>Creates a new function. If a function with the given name already exists in the specified
                 /// project, the long running operation will return `ALREADY_EXISTS` error.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="location">The project and location in which the function should be created, specified in the format
-                /// `projects/locations`</param>
+                /// <param name="location">Required. The project and location in which the function should be created, specified in the
+                /// format `projects/locations`</param>
                 public virtual CreateRequest Create(Google.Apis.CloudFunctions.v1.Data.CloudFunction body, string location)
                 {
                     return new CreateRequest(service, body, location);
@@ -686,8 +686,8 @@ namespace Google.Apis.CloudFunctions.v1
                     }
 
 
-                    /// <summary>The project and location in which the function should be created, specified in the
-                    /// format `projects/locations`</summary>
+                    /// <summary>Required. The project and location in which the function should be created, specified
+                    /// in the format `projects/locations`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
@@ -736,7 +736,7 @@ namespace Google.Apis.CloudFunctions.v1
 
                 /// <summary>Deletes a function with the given name from the specified project. If the given function is
                 /// used by some trigger, the trigger will be updated to remove this function.</summary>
-                /// <param name="name">The name of the function which should be deleted.</param>
+                /// <param name="name">Required. The name of the function which should be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -755,7 +755,7 @@ namespace Google.Apis.CloudFunctions.v1
                     }
 
 
-                    /// <summary>The name of the function which should be deleted.</summary>
+                    /// <summary>Required. The name of the function which should be deleted.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -977,7 +977,7 @@ namespace Google.Apis.CloudFunctions.v1
                 }
 
                 /// <summary>Returns a function with the given name from the requested project.</summary>
-                /// <param name="name">The name of the function which details should be obtained.</param>
+                /// <param name="name">Required. The name of the function which details should be obtained.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -995,7 +995,7 @@ namespace Google.Apis.CloudFunctions.v1
                     }
 
 
-                    /// <summary>The name of the function which details should be obtained.</summary>
+                    /// <summary>Required. The name of the function which details should be obtained.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1063,8 +1063,12 @@ namespace Google.Apis.CloudFunctions.v1
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
 
-                    /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3.
-                    /// If the value is 0, or the field is omitted, policy format version 1 will be returned.</summary>
+                    /// <summary>Optional. The policy format version to be returned.
+                    ///
+                    /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+                    ///
+                    /// Requests for policies with any conditional bindings must specify version 3. Policies without any
+                    /// conditional bindings may specify any valid value or leave the field unset.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
 
@@ -1458,6 +1462,10 @@ namespace Google.Apis.CloudFunctions.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1465,10 +1473,6 @@ namespace Google.Apis.CloudFunctions.v1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1504,6 +1508,15 @@ namespace Google.Apis.CloudFunctions.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1516,15 +1529,6 @@ namespace Google.Apis.CloudFunctions.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1639,7 +1643,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
     /// <summary>Request for the `CallFunction` method.</summary>
     public class CallFunctionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input to be passed to the function.</summary>
+        /// <summary>Required. Input to be passed to the function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; } 
 
@@ -2138,7 +2142,12 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Deprecated.</summary>
+        /// <summary>Specifies the format of the policy.
+        ///
+        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        ///
+        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
+        /// specify any valid value or leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

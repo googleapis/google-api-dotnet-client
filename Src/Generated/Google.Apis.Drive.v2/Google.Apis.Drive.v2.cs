@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190912 (1715)
+ *      <tr><th>API Rev<td>20190919 (1722)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -10345,8 +10345,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fullFileExtension")]
         public virtual string FullFileExtension { get; set; } 
 
-        /// <summary>Whether any users are granted file access directly on this file. This field is only populated for
-        /// items in shared drives.</summary>
+        /// <summary>Whether there are permissions directly on this file. This field is only populated for items in
+        /// shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasAugmentedPermissions")]
         public virtual System.Nullable<bool> HasAugmentedPermissions { get; set; } 
 
