@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iot'>Cloud IoT API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190917 (1720)
+ *      <tr><th>API Rev<td>20190924 (1727)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iot'>
  *              https://cloud.google.com/iot</a>
@@ -447,7 +447,7 @@ namespace Google.Apis.CloudIot.v1
 
                         /// <summary>Lists the last few versions of the device configuration in descending order (i.e.:
                         /// newest first).</summary>
-                        /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
+                        /// <param name="name">Required. The name of the device. For example, `projects/p0/locations/us-
                         /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
                         /// central1/registries/registry0/devices/{num_id}`.</param>
                         public virtual ListRequest List(string name)
@@ -468,7 +468,7 @@ namespace Google.Apis.CloudIot.v1
                             }
 
 
-                            /// <summary>The name of the device. For example, `projects/p0/locations/us-
+                            /// <summary>Required. The name of the device. For example, `projects/p0/locations/us-
                             /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
                             /// central1/registries/registry0/devices/{num_id}`.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -552,7 +552,7 @@ namespace Google.Apis.CloudIot.v1
 
                         /// <summary>Lists the last few versions of the device state in descending order (i.e.: newest
                         /// first).</summary>
-                        /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
+                        /// <param name="name">Required. The name of the device. For example, `projects/p0/locations/us-
                         /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
                         /// central1/registries/registry0/devices/{num_id}`.</param>
                         public virtual ListRequest List(string name)
@@ -573,7 +573,7 @@ namespace Google.Apis.CloudIot.v1
                             }
 
 
-                            /// <summary>The name of the device. For example, `projects/p0/locations/us-
+                            /// <summary>Required. The name of the device. For example, `projects/p0/locations/us-
                             /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
                             /// central1/registries/registry0/devices/{num_id}`.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -634,8 +634,8 @@ namespace Google.Apis.CloudIot.v1
 
                     /// <summary>Creates a device in a device registry.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">The name of the device registry where this device should be created. For example, `projects
-                    /// /example-project/locations/us-central1/registries/my-registry`.</param>
+                    /// <param name="parent">Required. The name of the device registry where this device should be created. For example,
+                    /// `projects/example-project/locations/us-central1/registries/my-registry`.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudIot.v1.Data.Device body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
@@ -654,8 +654,8 @@ namespace Google.Apis.CloudIot.v1
                         }
 
 
-                        /// <summary>The name of the device registry where this device should be created. For example,
-                        /// `projects/example-project/locations/us-central1/registries/my-registry`.</summary>
+                        /// <summary>Required. The name of the device registry where this device should be created. For
+                        /// example, `projects/example-project/locations/us-central1/registries/my-registry`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -703,7 +703,7 @@ namespace Google.Apis.CloudIot.v1
                     }
 
                     /// <summary>Deletes a device.</summary>
-                    /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
+                    /// <param name="name">Required. The name of the device. For example, `projects/p0/locations/us-
                     /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
                     /// central1/registries/registry0/devices/{num_id}`.</param>
                     public virtual DeleteRequest Delete(string name)
@@ -723,7 +723,7 @@ namespace Google.Apis.CloudIot.v1
                         }
 
 
-                        /// <summary>The name of the device. For example, `projects/p0/locations/us-
+                        /// <summary>Required. The name of the device. For example, `projects/p0/locations/us-
                         /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
                         /// central1/registries/registry0/devices/{num_id}`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -767,7 +767,7 @@ namespace Google.Apis.CloudIot.v1
                     }
 
                     /// <summary>Gets details about a device.</summary>
-                    /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
+                    /// <param name="name">Required. The name of the device. For example, `projects/p0/locations/us-
                     /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
                     /// central1/registries/registry0/devices/{num_id}`.</param>
                     public virtual GetRequest Get(string name)
@@ -787,7 +787,7 @@ namespace Google.Apis.CloudIot.v1
                         }
 
 
-                        /// <summary>The name of the device. For example, `projects/p0/locations/us-
+                        /// <summary>Required. The name of the device. For example, `projects/p0/locations/us-
                         /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
                         /// central1/registries/registry0/devices/{num_id}`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -845,7 +845,7 @@ namespace Google.Apis.CloudIot.v1
                     }
 
                     /// <summary>List devices in a device registry.</summary>
-                    /// <param name="parent">The device registry path. Required. For example, `projects/my-project/locations/us-
+                    /// <param name="parent">Required. The device registry path. Required. For example, `projects/my-project/locations/us-
                     /// central1/registries/my-registry`.</param>
                     public virtual ListRequest List(string parent)
                     {
@@ -864,21 +864,21 @@ namespace Google.Apis.CloudIot.v1
                         }
 
 
-                        /// <summary>The device registry path. Required. For example, `projects/my-project/locations/us-
-                        /// central1/registries/my-registry`.</summary>
+                        /// <summary>Required. The device registry path. Required. For example, `projects/my-
+                        /// project/locations/us-central1/registries/my-registry`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
+
+                        /// <summary>The fields of the `Device` resource to be returned in the response. The fields `id`
+                        /// and `num_id` are always returned, along with any other fields specified.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object FieldMask { get; set; }
 
                         /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
                         /// continuation of a prior `ListDevices` call and the system should return the next page of
                         /// data.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
-                        /// <summary>The fields of the `Device` resource to be returned in the response. The fields `id`
-                        /// and `num_id` are always returned, along with any other fields specified.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object FieldMask { get; set; }
 
                         /// <summary>The maximum number of devices to return in the response. If this value is zero, the
                         /// service will select a default size. A call may return fewer objects than requested. A non-
@@ -891,17 +891,17 @@ namespace Google.Apis.CloudIot.v1
                         [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
 
-                        /// <summary>A list of device numeric IDs. If empty, this field is ignored. Maximum IDs:
-                        /// 10,000.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
-
                         /// <summary>If set, returns only the gateways with which the specified device is associated.
                         /// The device ID can be numeric (`num_id`) or the user-defined string (`id`). For example, if
                         /// `456` is specified, returns only the gateways to which the device with `num_id` 456 is
                         /// bound.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("gatewayListOptions.associationsDeviceId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string GatewayListOptionsAssociationsDeviceId { get; set; }
+
+                        /// <summary>A list of device numeric IDs. If empty, this field is ignored. Maximum IDs:
+                        /// 10,000.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
 
                         /// <summary>If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY` is
                         /// specified, only non-gateway devices are returned. If `GATEWAY_TYPE_UNSPECIFIED` is
@@ -963,18 +963,18 @@ namespace Google.Apis.CloudIot.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "fieldMask", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "fieldMask",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "fieldMask", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "fieldMask",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -999,18 +999,18 @@ namespace Google.Apis.CloudIot.v1
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "deviceNumIds", new Google.Apis.Discovery.Parameter
+                                "gatewayListOptions.associationsDeviceId", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "deviceNumIds",
+                                    Name = "gatewayListOptions.associationsDeviceId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "gatewayListOptions.associationsDeviceId", new Google.Apis.Discovery.Parameter
+                                "deviceNumIds", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "gatewayListOptions.associationsDeviceId",
+                                    Name = "deviceNumIds",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1041,7 +1041,7 @@ namespace Google.Apis.CloudIot.v1
                     /// <summary>Modifies the configuration for the device, which is eventually sent from the Cloud IoT
                     /// Core servers. Returns the modified configuration version and its metadata.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
+                    /// <param name="name">Required. The name of the device. For example, `projects/p0/locations/us-
                     /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
                     /// central1/registries/registry0/devices/{num_id}`.</param>
                     public virtual ModifyCloudToDeviceConfigRequest ModifyCloudToDeviceConfig(Google.Apis.CloudIot.v1.Data.ModifyCloudToDeviceConfigRequest body, string name)
@@ -1063,7 +1063,7 @@ namespace Google.Apis.CloudIot.v1
                         }
 
 
-                        /// <summary>The name of the device. For example, `projects/p0/locations/us-
+                        /// <summary>Required. The name of the device. For example, `projects/p0/locations/us-
                         /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
                         /// central1/registries/registry0/devices/{num_id}`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1143,9 +1143,9 @@ namespace Google.Apis.CloudIot.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Only updates the `device` fields indicated by this mask. The field mask must not be
-                        /// empty, and it must not contain fields that are immutable or only set by the server. Mutable
-                        /// top-level fields: `credentials`, `blocked`, and `metadata`</summary>
+                        /// <summary>Required. Only updates the `device` fields indicated by this mask. The field mask
+                        /// must not be empty, and it must not contain fields that are immutable or only set by the
+                        /// server. Mutable top-level fields: `credentials`, `blocked`, and `metadata`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
@@ -1212,7 +1212,7 @@ namespace Google.Apis.CloudIot.v1
                     /// QoS 1, at least once delivery will be guaranteed; for QoS 0, no acknowledgment will be expected
                     /// from the device.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
+                    /// <param name="name">Required. The name of the device. For example, `projects/p0/locations/us-
                     /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
                     /// central1/registries/registry0/devices/{num_id}`.</param>
                     public virtual SendCommandToDeviceRequest SendCommandToDevice(Google.Apis.CloudIot.v1.Data.SendCommandToDeviceRequest body, string name)
@@ -1242,7 +1242,7 @@ namespace Google.Apis.CloudIot.v1
                         }
 
 
-                        /// <summary>The name of the device. For example, `projects/p0/locations/us-
+                        /// <summary>Required. The name of the device. For example, `projects/p0/locations/us-
                         /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
                         /// central1/registries/registry0/devices/{num_id}`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1340,7 +1340,7 @@ namespace Google.Apis.CloudIot.v1
 
 
                         /// <summary>List devices in a device registry.</summary>
-                        /// <param name="parent">The device registry path. Required. For example, `projects/my-project/locations/us-
+                        /// <param name="parent">Required. The device registry path. Required. For example, `projects/my-project/locations/us-
                         /// central1/registries/my-registry`.</param>
                         public virtual ListRequest List(string parent)
                         {
@@ -1359,45 +1359,10 @@ namespace Google.Apis.CloudIot.v1
                             }
 
 
-                            /// <summary>The device registry path. Required. For example, `projects/my-project/locations
-                            /// /us-central1/registries/my-registry`.</summary>
+                            /// <summary>Required. The device registry path. Required. For example, `projects/my-
+                            /// project/locations/us-central1/registries/my-registry`.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
-
-                            /// <summary>The fields of the `Device` resource to be returned in the response. The fields
-                            /// `id` and `num_id` are always returned, along with any other fields specified.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual object FieldMask { get; set; }
-
-                            /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
-                            /// continuation of a prior `ListDevices` call and the system should return the next page of
-                            /// data.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
-                            /// <summary>The maximum number of devices to return in the response. If this value is zero,
-                            /// the service will select a default size. A call may return fewer objects than requested.
-                            /// A non-empty `next_page_token` in the response indicates that more data is
-                            /// available.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
-                            /// <summary>A list of device string IDs. For example, `['device0', 'device12']`. If empty,
-                            /// this field is ignored. Maximum IDs: 10,000</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
-
-                            /// <summary>If set, returns only the gateways with which the specified device is
-                            /// associated. The device ID can be numeric (`num_id`) or the user-defined string (`id`).
-                            /// For example, if `456` is specified, returns only the gateways to which the device with
-                            /// `num_id` 456 is bound.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("gatewayListOptions.associationsDeviceId", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string GatewayListOptionsAssociationsDeviceId { get; set; }
-
-                            /// <summary>A list of device numeric IDs. If empty, this field is ignored. Maximum IDs:
-                            /// 10,000.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
 
                             /// <summary>If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY` is
                             /// specified, only non-gateway devices are returned. If `GATEWAY_TYPE_UNSPECIFIED` is
@@ -1424,6 +1389,41 @@ namespace Google.Apis.CloudIot.v1
                             /// returned.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("gatewayListOptions.associationsGatewayId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string GatewayListOptionsAssociationsGatewayId { get; set; }
+
+                            /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
+                            /// continuation of a prior `ListDevices` call and the system should return the next page of
+                            /// data.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>The fields of the `Device` resource to be returned in the response. The fields
+                            /// `id` and `num_id` are always returned, along with any other fields specified.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object FieldMask { get; set; }
+
+                            /// <summary>The maximum number of devices to return in the response. If this value is zero,
+                            /// the service will select a default size. A call may return fewer objects than requested.
+                            /// A non-empty `next_page_token` in the response indicates that more data is
+                            /// available.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>A list of device string IDs. For example, `['device0', 'device12']`. If empty,
+                            /// this field is ignored. Maximum IDs: 10,000</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
+
+                            /// <summary>A list of device numeric IDs. If empty, this field is ignored. Maximum IDs:
+                            /// 10,000.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
+
+                            /// <summary>If set, returns only the gateways with which the specified device is
+                            /// associated. The device ID can be numeric (`num_id`) or the user-defined string (`id`).
+                            /// For example, if `456` is specified, returns only the gateways to which the device with
+                            /// `num_id` 456 is bound.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("gatewayListOptions.associationsDeviceId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string GatewayListOptionsAssociationsDeviceId { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -1459,9 +1459,18 @@ namespace Google.Apis.CloudIot.v1
                                         Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
                                     });
                                 RequestParameters.Add(
-                                    "fieldMask", new Google.Apis.Discovery.Parameter
+                                    "gatewayListOptions.gatewayType", new Google.Apis.Discovery.Parameter
                                     {
-                                        Name = "fieldMask",
+                                        Name = "gatewayListOptions.gatewayType",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "gatewayListOptions.associationsGatewayId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "gatewayListOptions.associationsGatewayId",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1471,6 +1480,15 @@ namespace Google.Apis.CloudIot.v1
                                     "pageToken", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "fieldMask", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "fieldMask",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1495,15 +1513,6 @@ namespace Google.Apis.CloudIot.v1
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
-                                    "gatewayListOptions.associationsDeviceId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "gatewayListOptions.associationsDeviceId",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
                                     "deviceNumIds", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "deviceNumIds",
@@ -1513,18 +1522,9 @@ namespace Google.Apis.CloudIot.v1
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
-                                    "gatewayListOptions.gatewayType", new Google.Apis.Discovery.Parameter
+                                    "gatewayListOptions.associationsDeviceId", new Google.Apis.Discovery.Parameter
                                     {
-                                        Name = "gatewayListOptions.gatewayType",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "gatewayListOptions.associationsGatewayId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "gatewayListOptions.associationsGatewayId",
+                                        Name = "gatewayListOptions.associationsDeviceId",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1754,7 +1754,7 @@ namespace Google.Apis.CloudIot.v1
 
                 /// <summary>Associates the device with the gateway.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The name of the registry. For example, `projects/example-project/locations/us-
+                /// <param name="parent">Required. The name of the registry. For example, `projects/example-project/locations/us-
                 /// central1/registries/my-registry`.</param>
                 public virtual BindDeviceToGatewayRequest BindDeviceToGateway(Google.Apis.CloudIot.v1.Data.BindDeviceToGatewayRequest body, string parent)
                 {
@@ -1774,8 +1774,8 @@ namespace Google.Apis.CloudIot.v1
                     }
 
 
-                    /// <summary>The name of the registry. For example, `projects/example-project/locations/us-
-                    /// central1/registries/my-registry`.</summary>
+                    /// <summary>Required. The name of the registry. For example, `projects/example-project/locations
+                    /// /us-central1/registries/my-registry`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1824,8 +1824,8 @@ namespace Google.Apis.CloudIot.v1
 
                 /// <summary>Creates a device registry that contains devices.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The project and cloud region where this device registry must be created. For example, `projects
-                /// /example-project/locations/us-central1`.</param>
+                /// <param name="parent">Required. The project and cloud region where this device registry must be created. For example,
+                /// `projects/example-project/locations/us-central1`.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudIot.v1.Data.DeviceRegistry body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -1844,8 +1844,8 @@ namespace Google.Apis.CloudIot.v1
                     }
 
 
-                    /// <summary>The project and cloud region where this device registry must be created. For example,
-                    /// `projects/example-project/locations/us-central1`.</summary>
+                    /// <summary>Required. The project and cloud region where this device registry must be created. For
+                    /// example, `projects/example-project/locations/us-central1`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1893,7 +1893,7 @@ namespace Google.Apis.CloudIot.v1
                 }
 
                 /// <summary>Deletes a device registry configuration.</summary>
-                /// <param name="name">The name of the device registry. For example, `projects/example-project/locations/us-
+                /// <param name="name">Required. The name of the device registry. For example, `projects/example-project/locations/us-
                 /// central1/registries/my-registry`.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1912,8 +1912,8 @@ namespace Google.Apis.CloudIot.v1
                     }
 
 
-                    /// <summary>The name of the device registry. For example, `projects/example-project/locations/us-
-                    /// central1/registries/my-registry`.</summary>
+                    /// <summary>Required. The name of the device registry. For example, `projects/example-
+                    /// project/locations/us-central1/registries/my-registry`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1955,7 +1955,7 @@ namespace Google.Apis.CloudIot.v1
                 }
 
                 /// <summary>Gets a device registry configuration.</summary>
-                /// <param name="name">The name of the device registry. For example, `projects/example-project/locations/us-
+                /// <param name="name">Required. The name of the device registry. For example, `projects/example-project/locations/us-
                 /// central1/registries/my-registry`.</param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1974,8 +1974,8 @@ namespace Google.Apis.CloudIot.v1
                     }
 
 
-                    /// <summary>The name of the device registry. For example, `projects/example-project/locations/us-
-                    /// central1/registries/my-registry`.</summary>
+                    /// <summary>Required. The name of the device registry. For example, `projects/example-
+                    /// project/locations/us-central1/registries/my-registry`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2089,8 +2089,8 @@ namespace Google.Apis.CloudIot.v1
                 }
 
                 /// <summary>Lists device registries.</summary>
-                /// <param name="parent">The project and cloud region path. For example, `projects/example-project/locations/us-
-                /// central1`.</param>
+                /// <param name="parent">Required. The project and cloud region path. For example, `projects/example-project/locations
+                /// /us-central1`.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -2108,8 +2108,8 @@ namespace Google.Apis.CloudIot.v1
                     }
 
 
-                    /// <summary>The project and cloud region path. For example, `projects/example-project/locations/us-
-                    /// central1`.</summary>
+                    /// <summary>Required. The project and cloud region path. For example, `projects/example-
+                    /// project/locations/us-central1`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -2207,9 +2207,9 @@ namespace Google.Apis.CloudIot.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Only updates the `device_registry` fields indicated by this mask. The field mask must
-                    /// not be empty, and it must not contain fields that are immutable or only set by the server.
-                    /// Mutable top-level fields: `event_notification_config`, `http_config`, `mqtt_config`, and
+                    /// <summary>Required. Only updates the `device_registry` fields indicated by this mask. The field
+                    /// mask must not be empty, and it must not contain fields that are immutable or only set by the
+                    /// server. Mutable top-level fields: `event_notification_config`, `http_config`, `mqtt_config`, and
                     /// `state_notification_config`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2412,7 +2412,7 @@ namespace Google.Apis.CloudIot.v1
 
                 /// <summary>Deletes the association between the device and the gateway.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The name of the registry. For example, `projects/example-project/locations/us-
+                /// <param name="parent">Required. The name of the registry. For example, `projects/example-project/locations/us-
                 /// central1/registries/my-registry`.</param>
                 public virtual UnbindDeviceFromGatewayRequest UnbindDeviceFromGateway(Google.Apis.CloudIot.v1.Data.UnbindDeviceFromGatewayRequest body, string parent)
                 {
@@ -2432,8 +2432,8 @@ namespace Google.Apis.CloudIot.v1
                     }
 
 
-                    /// <summary>The name of the registry. For example, `projects/example-project/locations/us-
-                    /// central1/registries/my-registry`.</summary>
+                    /// <summary>Required. The name of the registry. For example, `projects/example-project/locations
+                    /// /us-central1/registries/my-registry`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -2490,12 +2490,12 @@ namespace Google.Apis.CloudIot.v1.Data
     /// <summary>Request for `BindDeviceToGateway`.</summary>
     public class BindDeviceToGatewayRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The device to associate with the specified gateway. The value of `device_id` can be either the
-        /// device numeric ID or the user-defined device identifier.</summary>
+        /// <summary>Required. The device to associate with the specified gateway. The value of `device_id` can be
+        /// either the device numeric ID or the user-defined device identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual string DeviceId { get; set; } 
 
-        /// <summary>The value of `gateway_id` can be either the device numeric ID or the user-defined device
+        /// <summary>Required. The value of `gateway_id` can be either the device numeric ID or the user-defined device
         /// identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayId")]
         public virtual string GatewayId { get; set; } 
@@ -2974,7 +2974,7 @@ namespace Google.Apis.CloudIot.v1.Data
     /// <summary>Request for `ModifyCloudToDeviceConfig`.</summary>
     public class ModifyCloudToDeviceConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The configuration data for the device.</summary>
+        /// <summary>Required. The configuration data for the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryData")]
         public virtual string BinaryData { get; set; } 
 
@@ -3004,27 +3004,34 @@ namespace Google.Apis.CloudIot.v1.Data
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
     /// for Cloud Platform resources.
     ///
-    /// A `Policy` consists of a list of `bindings`. A `binding` binds a list of `members` to a `role`, where the
-    /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
-    /// permissions defined by IAM.
+    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
+    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
+    /// of permissions (defined by IAM or configured by users). A `binding` can optionally specify a `condition`, which
+    /// is a logic expression that further constrains the role binding based on attributes about the request and/or
+    /// target resource.
     ///
     /// **JSON Example**
     ///
-    /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role": "roles/viewer",
-    /// "members": ["user:sean@example.com"] } ] }
+    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ] }
     ///
     /// **YAML Example**
     ///
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com role: roles/viewer
+    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
+    /// description: Does not grant access after Sep 2020 expression: request.time <
+    /// timestamp('2020-10-01T00:00:00.000Z')
     ///
     /// For a description of IAM and its features, see the [IAM developer's
     /// guide](https://cloud.google.com/iam/docs).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
-        /// error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. Optionally may specify a `condition` that determines
+        /// when binding is in effect. `bindings` with no members will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -3034,7 +3041,9 @@ namespace Google.Apis.CloudIot.v1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
+        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if either of incoming or
+        /// stored policy does not meet the version requirements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -3042,8 +3051,12 @@ namespace Google.Apis.CloudIot.v1.Data
         ///
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
-        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
-        /// specify any valid value or leave the field unset.</summary>
+        /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
+        /// policy, modifying a conditional binding, or removing a conditional binding from the stored conditional
+        /// policy. Operations on non-conditional policies may specify any valid value or leave the field unset.
+        ///
+        /// If no etag is provided in the call to `setIamPolicy`, any version compliance checks on the incoming and/or
+        /// stored policy is skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -3097,7 +3110,7 @@ namespace Google.Apis.CloudIot.v1.Data
     /// <summary>Request for `SendCommandToDevice`.</summary>
     public class SendCommandToDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The command data to send to the device.</summary>
+        /// <summary>Required. The command data to send to the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryData")]
         public virtual string BinaryData { get; set; } 
 
@@ -3196,12 +3209,12 @@ namespace Google.Apis.CloudIot.v1.Data
     /// <summary>Request for `UnbindDeviceFromGateway`.</summary>
     public class UnbindDeviceFromGatewayRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The device to disassociate from the specified gateway. The value of `device_id` can be either the
-        /// device numeric ID or the user-defined device identifier.</summary>
+        /// <summary>Required. The device to disassociate from the specified gateway. The value of `device_id` can be
+        /// either the device numeric ID or the user-defined device identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual string DeviceId { get; set; } 
 
-        /// <summary>The value of `gateway_id` can be either the device numeric ID or the user-defined device
+        /// <summary>Required. The value of `gateway_id` can be either the device numeric ID or the user-defined device
         /// identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayId")]
         public virtual string GatewayId { get; set; } 

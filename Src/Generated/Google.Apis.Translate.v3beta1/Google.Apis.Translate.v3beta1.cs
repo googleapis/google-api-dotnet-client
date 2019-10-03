@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>Cloud Translation API</a>
  *      <tr><th>API Version<td>v3beta1
- *      <tr><th>API Rev<td>20190920 (1723)
+ *      <tr><th>API Rev<td>20190924 (1727)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>
  *              https://cloud.google.com/translate/docs/quickstarts</a>
@@ -611,11 +611,6 @@ namespace Google.Apis.Translate.v3beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filter specifying constraints of a list operation. Filtering is not supported
-                    /// yet, and the parameter currently has no effect. If missing, no filtering is performed.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>Optional. A token identifying a page of results the server should return. Typically,
                     /// this is the value of [ListGlossariesResponse.next_page_token] returned from the previous call to
                     /// `ListGlossaries` method. The first page is returned if `page_token`is empty or
@@ -627,6 +622,11 @@ namespace Google.Apis.Translate.v3beta1
                     /// If unspecified, the server picks an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Filter specifying constraints of a list operation. Filtering is not supported
+                    /// yet, and the parameter currently has no effect. If missing, no filtering is performed.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -662,15 +662,6 @@ namespace Google.Apis.Translate.v3beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -683,6 +674,15 @@ namespace Google.Apis.Translate.v3beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -959,10 +959,6 @@ namespace Google.Apis.Translate.v3beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -970,6 +966,10 @@ namespace Google.Apis.Translate.v3beta1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1005,15 +1005,6 @@ namespace Google.Apis.Translate.v3beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1026,6 +1017,15 @@ namespace Google.Apis.Translate.v3beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1125,7 +1125,7 @@ namespace Google.Apis.Translate.v3beta1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Location to make a call. Must refer to a caller's project.
             ///
-            /// Format: `projects/{project-id}/locations/{location-id}`.
+            /// Format: `projects/{project-number-or-id}/locations/{location-id}`.
             ///
             /// The `global` location is not supported for batch translation.
             ///
@@ -1156,7 +1156,7 @@ namespace Google.Apis.Translate.v3beta1
 
                 /// <summary>Required. Location to make a call. Must refer to a caller's project.
                 ///
-                /// Format: `projects/{project-id}/locations/{location-id}`.
+                /// Format: `projects/{project-number-or-id}/locations/{location-id}`.
                 ///
                 /// The `global` location is not supported for batch translation.
                 ///
@@ -1212,9 +1212,9 @@ namespace Google.Apis.Translate.v3beta1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Project or location to make a call. Must refer to a caller's project.
             ///
-            /// Format: `projects/{project-id}/locations/{location-id}` or `projects/{project-id}`.
+            /// Format: `projects/{project-number-or-id}/locations/{location-id}` or `projects/{project-number-or-id}`.
             ///
-            /// For global calls, use `projects/{project-id}/locations/global` or `projects/{project-id}`.
+            /// For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`.
             ///
             /// Only models within the same region (has same location-id) can be used. Otherwise an INVALID_ARGUMENT (400) error is
             /// returned.</param>
@@ -1238,9 +1238,11 @@ namespace Google.Apis.Translate.v3beta1
 
                 /// <summary>Required. Project or location to make a call. Must refer to a caller's project.
                 ///
-                /// Format: `projects/{project-id}/locations/{location-id}` or `projects/{project-id}`.
+                /// Format: `projects/{project-number-or-id}/locations/{location-id}` or `projects/{project-number-or-
+                /// id}`.
                 ///
-                /// For global calls, use `projects/{project-id}/locations/global` or `projects/{project-id}`.
+                /// For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-
+                /// number-or-id}`.
                 ///
                 /// Only models within the same region (has same location-id) can be used. Otherwise an INVALID_ARGUMENT
                 /// (400) error is returned.</summary>
@@ -1353,9 +1355,9 @@ namespace Google.Apis.Translate.v3beta1
             /// <summary>Returns a list of supported languages for translation.</summary>
             /// <param name="parent">Required. Project or location to make a call. Must refer to a caller's project.
             ///
-            /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
+            /// Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-id}`.
             ///
-            /// For global calls, use `projects/{project-id}/locations/global` or `projects/{project-id}`.
+            /// For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`.
             ///
             /// Non-global location is required for AutoML models.
             ///
@@ -1380,9 +1382,11 @@ namespace Google.Apis.Translate.v3beta1
 
                 /// <summary>Required. Project or location to make a call. Must refer to a caller's project.
                 ///
-                /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
+                /// Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-
+                /// id}`.
                 ///
-                /// For global calls, use `projects/{project-id}/locations/global` or `projects/{project-id}`.
+                /// For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-
+                /// number-or-id}`.
                 ///
                 /// Non-global location is required for AutoML models.
                 ///
@@ -1395,10 +1399,12 @@ namespace Google.Apis.Translate.v3beta1
                 ///
                 /// The format depends on model type:
                 ///
-                /// - AutoML Translation models: `projects/{project-id}/locations/{location-id}/models/{model-id}`
+                /// - AutoML Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-
+                /// id}`
                 ///
-                /// - General (built-in) models: `projects/{project-id}/locations/{location-id}/models/general/nmt`,
-                /// `projects/{project-id}/locations/{location-id}/models/general/base`
+                /// - General (built-in) models: `projects/{project-number-or-id}/locations/{location-
+                /// id}/models/general/nmt`, `projects/{project-number-or-id}/locations/{location-
+                /// id}/models/general/base`
                 ///
                 /// Returns languages supported by the specified model. If missing, we get supported languages of Google
                 /// general base (PBMT) model.</summary>
@@ -1488,10 +1494,6 @@ namespace Google.Apis.Translate.v3beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1499,6 +1501,10 @@ namespace Google.Apis.Translate.v3beta1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1534,15 +1540,6 @@ namespace Google.Apis.Translate.v3beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1560,6 +1557,15 @@ namespace Google.Apis.Translate.v3beta1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
@@ -1568,9 +1574,9 @@ namespace Google.Apis.Translate.v3beta1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Project or location to make a call. Must refer to a caller's project.
             ///
-            /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
+            /// Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-id}`.
             ///
-            /// For global calls, use `projects/{project-id}/locations/global` or `projects/{project-id}`.
+            /// For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`.
             ///
             /// Non-global location is required for requests using AutoML models or custom glossaries.
             ///
@@ -1596,9 +1602,11 @@ namespace Google.Apis.Translate.v3beta1
 
                 /// <summary>Required. Project or location to make a call. Must refer to a caller's project.
                 ///
-                /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
+                /// Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-
+                /// id}`.
                 ///
-                /// For global calls, use `projects/{project-id}/locations/global` or `projects/{project-id}`.
+                /// For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-
+                /// number-or-id}`.
                 ///
                 /// Non-global location is required for requests using AutoML models or custom glossaries.
                 ///
@@ -1655,9 +1663,9 @@ namespace Google.Apis.Translate.v3beta1
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Required. Project or location to make a call. Must refer to a caller's project.
         ///
-        /// Format: `projects/{project-id}/locations/{location-id}` or `projects/{project-id}`.
+        /// Format: `projects/{project-number-or-id}/locations/{location-id}` or `projects/{project-number-or-id}`.
         ///
-        /// For global calls, use `projects/{project-id}/locations/global` or `projects/{project-id}`.
+        /// For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`.
         ///
         /// Only models within the same region (has same location-id) can be used. Otherwise an INVALID_ARGUMENT (400) error is
         /// returned.</param>
@@ -1681,9 +1689,10 @@ namespace Google.Apis.Translate.v3beta1
 
             /// <summary>Required. Project or location to make a call. Must refer to a caller's project.
             ///
-            /// Format: `projects/{project-id}/locations/{location-id}` or `projects/{project-id}`.
+            /// Format: `projects/{project-number-or-id}/locations/{location-id}` or `projects/{project-number-or-id}`.
             ///
-            /// For global calls, use `projects/{project-id}/locations/global` or `projects/{project-id}`.
+            /// For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-
+            /// or-id}`.
             ///
             /// Only models within the same region (has same location-id) can be used. Otherwise an INVALID_ARGUMENT
             /// (400) error is returned.</summary>
@@ -1736,9 +1745,9 @@ namespace Google.Apis.Translate.v3beta1
         /// <summary>Returns a list of supported languages for translation.</summary>
         /// <param name="parent">Required. Project or location to make a call. Must refer to a caller's project.
         ///
-        /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
+        /// Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-id}`.
         ///
-        /// For global calls, use `projects/{project-id}/locations/global` or `projects/{project-id}`.
+        /// For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`.
         ///
         /// Non-global location is required for AutoML models.
         ///
@@ -1763,9 +1772,10 @@ namespace Google.Apis.Translate.v3beta1
 
             /// <summary>Required. Project or location to make a call. Must refer to a caller's project.
             ///
-            /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
+            /// Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-id}`.
             ///
-            /// For global calls, use `projects/{project-id}/locations/global` or `projects/{project-id}`.
+            /// For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-
+            /// or-id}`.
             ///
             /// Non-global location is required for AutoML models.
             ///
@@ -1778,10 +1788,10 @@ namespace Google.Apis.Translate.v3beta1
             ///
             /// The format depends on model type:
             ///
-            /// - AutoML Translation models: `projects/{project-id}/locations/{location-id}/models/{model-id}`
+            /// - AutoML Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
             ///
-            /// - General (built-in) models: `projects/{project-id}/locations/{location-id}/models/general/nmt`,
-            /// `projects/{project-id}/locations/{location-id}/models/general/base`
+            /// - General (built-in) models: `projects/{project-number-or-id}/locations/{location-
+            /// id}/models/general/nmt`, `projects/{project-number-or-id}/locations/{location-id}/models/general/base`
             ///
             /// Returns languages supported by the specified model. If missing, we get supported languages of Google
             /// general base (PBMT) model.</summary>
@@ -1852,9 +1862,9 @@ namespace Google.Apis.Translate.v3beta1
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">Required. Project or location to make a call. Must refer to a caller's project.
         ///
-        /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
+        /// Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-id}`.
         ///
-        /// For global calls, use `projects/{project-id}/locations/global` or `projects/{project-id}`.
+        /// For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`.
         ///
         /// Non-global location is required for requests using AutoML models or custom glossaries.
         ///
@@ -1880,9 +1890,10 @@ namespace Google.Apis.Translate.v3beta1
 
             /// <summary>Required. Project or location to make a call. Must refer to a caller's project.
             ///
-            /// Format: `projects/{project-id}` or `projects/{project-id}/locations/{location-id}`.
+            /// Format: `projects/{project-number-or-id}` or `projects/{project-number-or-id}/locations/{location-id}`.
             ///
-            /// For global calls, use `projects/{project-id}/locations/global` or `projects/{project-id}`.
+            /// For global calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-
+            /// or-id}`.
             ///
             /// Non-global location is required for requests using AutoML models or custom glossaries.
             ///
@@ -1966,10 +1977,10 @@ namespace Google.Apis.Translate.v3beta1.Data
         ///
         /// The value format depends on model type:
         ///
-        /// - AutoML Translation models: `projects/{project-id}/locations/{location-id}/models/{model-id}`
+        /// - AutoML Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
         ///
-        /// - General (built-in) models: `projects/{project-id}/locations/{location-id}/models/general/nmt`, `projects
-        /// /{project-id}/locations/{location-id}/models/general/base`
+        /// - General (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
+        /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base`
         ///
         /// If the map is empty or a specific model is not requested for a language pair, then default google model
         /// (nmt) is used.</summary>
@@ -2024,10 +2035,10 @@ namespace Google.Apis.Translate.v3beta1.Data
 
         /// <summary>Optional. The language detection model to be used.
         ///
-        /// Format: `projects/{project-id}/locations/{location-id}/models/language-detection/{model-id}`
+        /// Format: `projects/{project-number-or-id}/locations/{location-id}/models/language-detection/{model-id}`
         ///
-        /// Only one language detection model is currently supported: `projects/{project-id}/locations/{location-
-        /// id}/models/language-detection/default`.
+        /// Only one language detection model is currently supported: `projects/{project-number-or-id}/locations
+        /// /{location-id}/models/language-detection/default`.
         ///
         /// If not specified, the default model is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
@@ -2124,7 +2135,7 @@ namespace Google.Apis.Translate.v3beta1.Data
         public virtual LanguageCodePair LanguagePair { get; set; } 
 
         /// <summary>Required. The resource name of the glossary. Glossary names have the form `projects/{project-
-        /// id}/locations/{location-id}/glossaries/{glossary-id}`.</summary>
+        /// number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2506,13 +2517,13 @@ namespace Google.Apis.Translate.v3beta1.Data
         ///
         /// The format depends on model type:
         ///
-        /// - AutoML Translation models: `projects/{project-id}/locations/{location-id}/models/{model-id}`
+        /// - AutoML Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
         ///
-        /// - General (built-in) models: `projects/{project-id}/locations/{location-id}/models/general/nmt`, `projects
-        /// /{project-id}/locations/{location-id}/models/general/base`
+        /// - General (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
+        /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base`
         ///
-        /// For global (non-regionalized) requests, use `location-id` `global`. For example, `projects/{project-
-        /// id}/locations/global/models/general/nmt`.
+        /// For global (non-regionalized) requests, use `location-id` `global`. For example, `projects/{project-number-
+        /// or-id}/locations/global/models/general/nmt`.
         ///
         /// If missing, the system decides which google base model to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
@@ -2563,8 +2574,12 @@ namespace Google.Apis.Translate.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("glossaryConfig")]
         public virtual TranslateTextGlossaryConfig GlossaryConfig { get; set; } 
 
-        /// <summary>Only present when `model` is present in the request. This is same as `model` provided in the
-        /// request.</summary>
+        /// <summary>Only present when `model` is present in the request. `model` here is normalized to have project
+        /// number.
+        ///
+        /// For example: If the `model` requested in TranslationTextRequest is `projects/{project-id}/locations
+        /// /{location-id}/models/general/nmt` then `model` here would be normalized to `projects/{project-
+        /// number}/locations/{location-id}/models/general/nmt`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Cloud Runtime Configuration API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190923 (1726)
+ *      <tr><th>API Rev<td>20190930 (1733)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
@@ -1998,8 +1998,9 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
 
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-            /// policy.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
+            ///
+            /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -2008,8 +2009,9 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 return new SetIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-            /// policy.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
+            ///
+            /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
             public class SetIamPolicyRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>

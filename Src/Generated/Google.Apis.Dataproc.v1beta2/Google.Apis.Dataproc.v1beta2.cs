@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190905 (1708)
+ *      <tr><th>API Rev<td>20190920 (1723)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -2832,7 +2832,7 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 /// <summary>Gets cluster diagnostic information. The returned Operation.metadata will be
                 /// ClusterOperationMetadata. After the operation completes, Operation.response contains
-                /// DiagnoseClusterResults.</summary>
+                /// Empty.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
@@ -2846,7 +2846,7 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 /// <summary>Gets cluster diagnostic information. The returned Operation.metadata will be
                 /// ClusterOperationMetadata. After the operation completes, Operation.response contains
-                /// DiagnoseClusterResults.</summary>
+                /// Empty.</summary>
                 public class DiagnoseRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new Diagnose request.</summary>
@@ -3140,6 +3140,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
+                    /// <summary>Optional. The standard List page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The standard List page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Optional. A filter constraining the clusters to list. Filters are case-sensitive and
                     /// have the following syntax:field = value AND field = value ...where field is one of status.state,
                     /// clusterName, or labels.[KEY], and [KEY] is a label key. value can be * to match all values.
@@ -3151,14 +3159,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// labels.env = staging AND labels.starred = *</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
-
-                    /// <summary>Optional. The standard List page token.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The standard List page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3203,15 +3203,6 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -3224,6 +3215,15 @@ namespace Google.Apis.Dataproc.v1beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3274,24 +3274,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
-                    /// <summary>Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows
-                    /// removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how
-                    /// long to wait for jobs in progress to finish before forcefully removing nodes (and potentially
-                    /// interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed
-                    /// timeout is 1 day.Only supported on Dataproc image versions 1.2 and higher.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("gracefulDecommissionTimeout", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object GracefulDecommissionTimeout { get; set; }
-
-                    /// <summary>Optional. A unique id used to identify the request. If the server receives two
-                    /// UpdateClusterRequest requests with the same id, then the second request will be ignored and the
-                    /// first google.longrunning.Operation created and stored in the backend is returned.It is
-                    /// recommended to always set this value to a UUID
-                    /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters
-                    /// (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
-                    /// characters.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
                     /// <summary>Required. Specifies the path, relative to Cluster, of the field to update. For example,
                     /// to change the number of workers in a cluster to 5, the update_mask parameter would be specified
                     /// as config.worker_config.num_instances, and the PATCH request body would specify the new value,
@@ -3320,6 +3302,24 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows
+                    /// removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how
+                    /// long to wait for jobs in progress to finish before forcefully removing nodes (and potentially
+                    /// interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed
+                    /// timeout is 1 day.Only supported on Dataproc image versions 1.2 and higher.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("gracefulDecommissionTimeout", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object GracefulDecommissionTimeout { get; set; }
+
+                    /// <summary>Optional. A unique id used to identify the request. If the server receives two
+                    /// UpdateClusterRequest requests with the same id, then the second request will be ignored and the
+                    /// first google.longrunning.Operation created and stored in the backend is returned.It is
+                    /// recommended to always set this value to a UUID
+                    /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters
+                    /// (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+                    /// characters.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -3379,6 +3379,15 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "gracefulDecommissionTimeout",
@@ -3391,15 +3400,6 @@ namespace Google.Apis.Dataproc.v1beta2
                             "requestId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5513,10 +5513,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Deprecated. Please use request_id field instead.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string InstanceId { get; set; }
-
                     /// <summary>Optional. A tag that prevents multiple concurrent workflow instances with the same tag
                     /// from running. This mitigates risk of concurrent instances started due to retries.It is
                     /// recommended to always set this value to a UUID
@@ -5525,6 +5521,10 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
+
+                    /// <summary>Deprecated. Please use request_id field instead.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InstanceId { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -5566,18 +5566,18 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = @"^projects/[^/]+/regions/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "instanceId", new Google.Apis.Discovery.Parameter
+                            "requestId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "instanceId",
+                                Name = "requestId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
+                            "instanceId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "requestId",
+                                Name = "instanceId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6359,10 +6359,10 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskType")]
         public virtual string BootDiskType { get; set; } 
 
-        /// <summary>Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot
-        /// disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html)
-        /// data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk
-        /// contains only basic config and installed binaries.</summary>
+        /// <summary>Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is
+        /// used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If
+        /// one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only
+        /// basic config and installed binaries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numLocalSsds")]
         public virtual System.Nullable<int> NumLocalSsds { get; set; } 
 
@@ -6653,8 +6653,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Optional. The config settings for Compute Engine resources in an instance group, such as a master or
-    /// worker group.</summary>
+    /// <summary>The config settings for Compute Engine resources in an instance group, such as a master or worker
+    /// group.</summary>
     public class InstanceGroupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The Compute Engine accelerator configuration for these instances.Beta Feature: This
@@ -6693,7 +6693,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managedGroupConfig")]
         public virtual ManagedGroupConfig ManagedGroupConfig { get; set; } 
 
-        /// <summary>Optional. Specifies the minimum cpu platform for the Instance Group. See Cloud DataprocMinimum CPU
+        /// <summary>Specifies the minimum cpu platform for the Instance Group. See Cloud DataprocMinimum CPU
         /// Platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
@@ -7302,18 +7302,25 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     }    
 
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
-    /// for Cloud Platform resources.A Policy consists of a list of bindings. A binding binds a list of members to a
-    /// role, where the members can be user accounts, Google groups, Google domains, and service accounts. A role is a
-    /// named list of permissions defined by IAM.JSON Example { "bindings": [ { "role": "roles/owner", "members": [
-    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-
-    /// app@appspot.gserviceaccount.com" ] }, { "role": "roles/viewer", "members": ["user:sean@example.com"] } ] } YAML
-    /// Example bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
-    /// serviceAccount:my-other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com
-    /// role: roles/viewer For a description of IAM and its features, see the IAM developer's guide
+    /// for Cloud Platform resources.A Policy is a collection of bindings. A binding binds one or more members to a
+    /// single role. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A
+    /// role is a named list of permissions (defined by IAM or configured by users). A binding can optionally specify a
+    /// condition, which is a logic expression that further constrains the role binding based on attributes about the
+    /// request and/or target resource.JSON Example { "bindings": [ { "role": "role/resourcemanager.organizationAdmin",
+    /// "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-
+    /// project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members":
+    /// ["user:eve@example.com"], "condition": { "title": "expirable access", "description": "Does not grant access
+    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ] } YAML Example
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
+    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
+    /// description: Does not grant access after Sep 2020 expression: request.time <
+    /// timestamp('2020-10-01T00:00:00.000Z') For a description of IAM and its features, see the IAM developer's guide
     /// (https://cloud.google.com/iam/docs).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Associates a list of members to a role. bindings with no members will result in an error.</summary>
+        /// <summary>Associates a list of members to a role. Optionally may specify a condition that determines when
+        /// binding is in effect. bindings with no members will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -7322,13 +7329,18 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the
         /// response to getIamPolicy, and systems are expected to put that etag in the request to setIamPolicy to ensure
         /// that their change will be applied to the same version of the policy.If no etag is provided in the call to
-        /// setIamPolicy, then the existing policy is overwritten.</summary>
+        /// setIamPolicy, then the existing policy is overwritten. Due to blind-set semantics of an etag-less policy,
+        /// 'setIamPolicy' will not fail even if either of incoming or stored policy does not meet the version
+        /// requirements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
         /// <summary>Specifies the format of the policy.Valid values are 0, 1, and 3. Requests specifying an invalid
-        /// value will be rejected.Policies with any conditional bindings must specify version 3. Policies without any
-        /// conditional bindings may specify any valid value or leave the field unset.</summary>
+        /// value will be rejected.Operations affecting conditional bindings must specify version 3. This can be either
+        /// setting a conditional policy, modifying a conditional binding, or removing a conditional binding from the
+        /// stored conditional policy. Operations on non-conditional policies may specify any valid value or leave the
+        /// field unset.If no etag is provided in the call to setIamPolicy, any version compliance checks on the
+        /// incoming and/or stored policy is skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -7513,8 +7525,10 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Cloud Dataproc job for running Apache Spark (http://spark.apache.org/) applications on
-    /// YARN.</summary>
+    /// <summary>A Cloud Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN. The
+    /// specification of the main method to call to drive the job. Specify either the jar file that contains the main
+    /// class or the main class name. To pass both a main jar and a main class in that jar, add the jar to
+    /// CommonJob.jar_file_uris, and then specify the main class name in main_class.</summary>
     public class SparkJob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. HCFS URIs of archives to be extracted in the working directory of Spark drivers and
@@ -7925,21 +7939,21 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// testing purposes only. It may be changed before final release.</summary>
     public class YarnApplication : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The application name.</summary>
+        /// <summary>Output only. The application name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required. The numerical progress of the application, from 1 to 100.</summary>
+        /// <summary>Output only. The numerical progress of the application, from 1 to 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<float> Progress { get; set; } 
 
-        /// <summary>Required. The application state.</summary>
+        /// <summary>Output only. The application state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides
-        /// application-specific information. The URL uses the internal hostname, and requires a proxy server for
-        /// resolution and, possibly, access.</summary>
+        /// <summary>Optional. Output only. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that
+        /// provides application-specific information. The URL uses the internal hostname, and requires a proxy server
+        /// for resolution and, possibly, access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
         public virtual string TrackingUrl { get; set; } 
 

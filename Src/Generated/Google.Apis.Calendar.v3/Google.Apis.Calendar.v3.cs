@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190924 (1727)
+ *      <tr><th>API Rev<td>20190929 (1732)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -5172,7 +5172,7 @@ namespace Google.Apis.Calendar.v3.Data
         /// be able to display the entry points. However, it should disallow modifications. The possible values are: -
         /// "eventHangout" for Hangouts for consumers (http://hangouts.google.com) - "eventNamedHangout" for classic
         /// Hangouts for G Suite users (http://hangouts.google.com) - "hangoutsMeet" for Hangouts Meet
-        /// (http://meet.google.com)</summary>
+        /// (http://meet.google.com) - "addOn" for 3P conference providers</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

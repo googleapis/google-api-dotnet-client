@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>Firebase Cloud Messaging API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190903 (1706)
+ *      <tr><th>API Rev<td>20191002 (1735)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>
  *              https://firebase.google.com/docs/cloud-messaging</a>
@@ -669,13 +669,15 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fcmOptions")]
         public virtual ApnsFcmOptions FcmOptions { get; set; } 
 
-        /// <summary>HTTP request headers defined in Apple Push Notification Service. Refer to [APNs request
-        /// headers](https://goo.gl/C6Yhia) for supported headers, e.g. "apns-priority": "10".</summary>
+        /// <summary>HTTP request headers defined in Apple Push Notification Service. Refer to [APNs request headers](ht
+        /// tps://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_no
+        /// tification_requests_to_apns) for supported headers, e.g. "apns-priority": "10".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
 
         /// <summary>APNs payload as a JSON object, including both `aps` dictionary and custom payload. See [Payload Key
-        /// Reference](https://goo.gl/32Pl5W). If present, it overrides google.firebase.fcm.v1.Notification.title and
+        /// Reference](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_serv
+        /// er/generating_a_remote_notification). If present, it overrides google.firebase.fcm.v1.Notification.title and
         /// google.firebase.fcm.v1.Notification.body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
@@ -838,7 +840,8 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; } 
 
-        /// <summary>Input only. Arbitrary key/value payload.</summary>
+        /// <summary>Input only. Arbitrary key/value payload. The key should not be a reserved word ("from",
+        /// "message_type", or any word starting with "google" or "gcm").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IDictionary<string,string> Data { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kms/'>Cloud Key Management Service (KMS) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190906 (1709)
+ *      <tr><th>API Rev<td>20190926 (1729)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kms/'>
  *              https://cloud.google.com/kms/</a>
@@ -672,7 +672,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// Before the destroy_time is reached, RestoreCryptoKeyVersion may be called to reverse the
                         /// process.</summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">The resource name of the CryptoKeyVersion to destroy.</param>
+                        /// <param name="name">Required. The resource name of the CryptoKeyVersion to destroy.</param>
                         public virtual DestroyRequest Destroy(Google.Apis.CloudKMS.v1.Data.DestroyCryptoKeyVersionRequest body, string name)
                         {
                             return new DestroyRequest(service, body, name);
@@ -698,7 +698,7 @@ namespace Google.Apis.CloudKMS.v1
                             }
 
 
-                            /// <summary>The resource name of the CryptoKeyVersion to destroy.</summary>
+                            /// <summary>Required. The resource name of the CryptoKeyVersion to destroy.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -746,7 +746,7 @@ namespace Google.Apis.CloudKMS.v1
                         }
 
                         /// <summary>Returns metadata for a given CryptoKeyVersion.</summary>
-                        /// <param name="name">The name of the CryptoKeyVersion to get.</param>
+                        /// <param name="name">Required. The name of the CryptoKeyVersion to get.</param>
                         public virtual GetRequest Get(string name)
                         {
                             return new GetRequest(service, name);
@@ -764,7 +764,7 @@ namespace Google.Apis.CloudKMS.v1
                             }
 
 
-                            /// <summary>The name of the CryptoKeyVersion to get.</summary>
+                            /// <summary>Required. The name of the CryptoKeyVersion to get.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -807,7 +807,7 @@ namespace Google.Apis.CloudKMS.v1
 
                         /// <summary>Returns the public key for the given CryptoKeyVersion. The CryptoKey.purpose must
                         /// be ASYMMETRIC_SIGN or ASYMMETRIC_DECRYPT.</summary>
-                        /// <param name="name">The name of the CryptoKeyVersion public key to get.</param>
+                        /// <param name="name">Required. The name of the CryptoKeyVersion public key to get.</param>
                         public virtual GetPublicKeyRequest GetPublicKey(string name)
                         {
                             return new GetPublicKeyRequest(service, name);
@@ -826,7 +826,7 @@ namespace Google.Apis.CloudKMS.v1
                             }
 
 
-                            /// <summary>The name of the CryptoKeyVersion public key to get.</summary>
+                            /// <summary>Required. The name of the CryptoKeyVersion public key to get.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -966,8 +966,26 @@ namespace Google.Apis.CloudKMS.v1
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>Optional limit on the number of CryptoKeyVersions to include in the response.
-                            /// Further CryptoKeyVersions can subsequently be obtained by including the
+                            /// <summary>Optional. Specify how the results should be sorted. If not specified, the
+                            /// results will be sorted in the default order. For more information, see [Sorting and
+                            /// filtering list results](https://cloud.google.com/kms/docs/sorting-and-
+                            /// filtering).</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>Optional. Only include resources that match the filter in the response. For
+                            /// more information, see [Sorting and filtering list
+                            /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Optional. Optional pagination token, returned earlier via
+                            /// ListCryptoKeyVersionsResponse.next_page_token.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Optional. Optional limit on the number of CryptoKeyVersions to include in the
+                            /// response. Further CryptoKeyVersions can subsequently be obtained by including the
                             /// ListCryptoKeyVersionsResponse.next_page_token in a subsequent request. If unspecified,
                             /// the server will pick an appropriate default.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -985,24 +1003,6 @@ namespace Google.Apis.CloudKMS.v1
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
                                 FULL,
                             }
-
-                            /// <summary>Optional. Specify how the results should be sorted. If not specified, the
-                            /// results will be sorted in the default order. For more information, see [Sorting and
-                            /// filtering list results](https://cloud.google.com/kms/docs/sorting-and-
-                            /// filtering).</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string OrderBy { get; set; }
-
-                            /// <summary>Optional. Only include resources that match the filter in the response. For
-                            /// more information, see [Sorting and filtering list
-                            /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string Filter { get; set; }
-
-                            /// <summary>Optional pagination token, returned earlier via
-                            /// ListCryptoKeyVersionsResponse.next_page_token.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -1038,24 +1038,6 @@ namespace Google.Apis.CloudKMS.v1
                                         Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$",
                                     });
                                 RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "view", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "view",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
                                     "orderBy", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "orderBy",
@@ -1077,6 +1059,24 @@ namespace Google.Apis.CloudKMS.v1
                                     "pageToken", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "view", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "view",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1119,7 +1119,7 @@ namespace Google.Apis.CloudKMS.v1
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
-                            /// <summary>Required list of fields to be updated in this request.</summary>
+                            /// <summary>Required. List of fields to be updated in this request.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
 
@@ -1180,7 +1180,7 @@ namespace Google.Apis.CloudKMS.v1
                         /// Upon restoration of the CryptoKeyVersion, state will be set to DISABLED, and destroy_time
                         /// will be cleared.</summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">The resource name of the CryptoKeyVersion to restore.</param>
+                        /// <param name="name">Required. The resource name of the CryptoKeyVersion to restore.</param>
                         public virtual RestoreRequest Restore(Google.Apis.CloudKMS.v1.Data.RestoreCryptoKeyVersionRequest body, string name)
                         {
                             return new RestoreRequest(service, body, name);
@@ -1202,7 +1202,7 @@ namespace Google.Apis.CloudKMS.v1
                             }
 
 
-                            /// <summary>The resource name of the CryptoKeyVersion to restore.</summary>
+                            /// <summary>Required. The resource name of the CryptoKeyVersion to restore.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -1279,16 +1279,16 @@ namespace Google.Apis.CloudKMS.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Required. It must be unique within a KeyRing and match the regular expression
-                        /// `[a-zA-Z0-9_-]{1,63}`</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("cryptoKeyId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string CryptoKeyId { get; set; }
-
                         /// <summary>If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                         /// You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use
                         /// this CryptoKey.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("skipInitialVersionCreation", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> SkipInitialVersionCreation { get; set; }
+
+                        /// <summary>Required. It must be unique within a KeyRing and match the regular expression
+                        /// `[a-zA-Z0-9_-]{1,63}`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("cryptoKeyId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string CryptoKeyId { get; set; }
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
@@ -1330,18 +1330,18 @@ namespace Google.Apis.CloudKMS.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "cryptoKeyId", new Google.Apis.Discovery.Parameter
+                                "skipInitialVersionCreation", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "cryptoKeyId",
+                                    Name = "skipInitialVersionCreation",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "skipInitialVersionCreation", new Google.Apis.Discovery.Parameter
+                                "cryptoKeyId", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "skipInitialVersionCreation",
+                                    Name = "cryptoKeyId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1500,7 +1500,7 @@ namespace Google.Apis.CloudKMS.v1
 
                     /// <summary>Returns metadata for a given CryptoKey, as well as its primary
                     /// CryptoKeyVersion.</summary>
-                    /// <param name="name">The name of the CryptoKey to get.</param>
+                    /// <param name="name">Required. The name of the CryptoKey to get.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
@@ -1519,7 +1519,7 @@ namespace Google.Apis.CloudKMS.v1
                         }
 
 
-                        /// <summary>The name of the CryptoKey to get.</summary>
+                        /// <summary>Required. The name of the CryptoKey to get.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1667,6 +1667,24 @@ namespace Google.Apis.CloudKMS.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>Optional. Only include resources that match the filter in the response. For more
+                        /// information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs
+                        /// /sorting-and-filtering).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. Optional pagination token, returned earlier via
+                        /// ListCryptoKeysResponse.next_page_token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Optional. Optional limit on the number of CryptoKeys to include in the response.
+                        /// Further CryptoKeys can subsequently be obtained by including the
+                        /// ListCryptoKeysResponse.next_page_token in a subsequent request.  If unspecified, the server
+                        /// will pick an appropriate default.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
                         /// <summary>Optional. Specify how the results should be sorted. If not specified, the results
                         /// will be sorted in the default order. For more information, see [Sorting and filtering list
                         /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).</summary>
@@ -1685,24 +1703,6 @@ namespace Google.Apis.CloudKMS.v1
                             [Google.Apis.Util.StringValueAttribute("FULL")]
                             FULL,
                         }
-
-                        /// <summary>Optional. Only include resources that match the filter in the response. For more
-                        /// information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs
-                        /// /sorting-and-filtering).</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
-
-                        /// <summary>Optional pagination token, returned earlier via
-                        /// ListCryptoKeysResponse.next_page_token.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Optional limit on the number of CryptoKeys to include in the response.  Further
-                        /// CryptoKeys can subsequently be obtained by including the
-                        /// ListCryptoKeysResponse.next_page_token in a subsequent request.  If unspecified, the server
-                        /// will pick an appropriate default.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1738,24 +1738,6 @@ namespace Google.Apis.CloudKMS.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "orderBy", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "orderBy",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "versionView", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "versionView",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "filter", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "filter",
@@ -1777,6 +1759,24 @@ namespace Google.Apis.CloudKMS.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "versionView", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "versionView",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1813,7 +1813,7 @@ namespace Google.Apis.CloudKMS.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Required list of fields to be updated in this request.</summary>
+                        /// <summary>Required. List of fields to be updated in this request.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
@@ -2023,7 +2023,7 @@ namespace Google.Apis.CloudKMS.v1
                     ///
                     /// Returns an error if called on an asymmetric key.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">The resource name of the CryptoKey to update.</param>
+                    /// <param name="name">Required. The resource name of the CryptoKey to update.</param>
                     public virtual UpdatePrimaryVersionRequest UpdatePrimaryVersion(Google.Apis.CloudKMS.v1.Data.UpdateCryptoKeyPrimaryVersionRequest body, string name)
                     {
                         return new UpdatePrimaryVersionRequest(service, body, name);
@@ -2044,7 +2044,7 @@ namespace Google.Apis.CloudKMS.v1
                         }
 
 
-                        /// <summary>The resource name of the CryptoKey to update.</summary>
+                        /// <summary>Required. The resource name of the CryptoKey to update.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -2202,7 +2202,7 @@ namespace Google.Apis.CloudKMS.v1
                     }
 
                     /// <summary>Returns metadata for a given ImportJob.</summary>
-                    /// <param name="name">The name of the ImportJob to get.</param>
+                    /// <param name="name">Required. The name of the ImportJob to get.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
@@ -2220,7 +2220,7 @@ namespace Google.Apis.CloudKMS.v1
                         }
 
 
-                        /// <summary>The name of the ImportJob to get.</summary>
+                        /// <summary>Required. The name of the ImportJob to get.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -2368,7 +2368,13 @@ namespace Google.Apis.CloudKMS.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional pagination token, returned earlier via
+                        /// <summary>Optional. Only include resources that match the filter in the response. For more
+                        /// information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs
+                        /// /sorting-and-filtering).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. Optional pagination token, returned earlier via
                         /// ListImportJobsResponse.next_page_token.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -2379,18 +2385,12 @@ namespace Google.Apis.CloudKMS.v1
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
-                        /// <summary>Optional limit on the number of ImportJobs to include in the response. Further
-                        /// ImportJobs can subsequently be obtained by including the
+                        /// <summary>Optional. Optional limit on the number of ImportJobs to include in the response.
+                        /// Further ImportJobs can subsequently be obtained by including the
                         /// ListImportJobsResponse.next_page_token in a subsequent request. If unspecified, the server
                         /// will pick an appropriate default.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>Optional. Only include resources that match the filter in the response. For more
-                        /// information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs
-                        /// /sorting-and-filtering).</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2426,6 +2426,15 @@ namespace Google.Apis.CloudKMS.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -2447,15 +2456,6 @@ namespace Google.Apis.CloudKMS.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2701,7 +2701,7 @@ namespace Google.Apis.CloudKMS.v1
                 }
 
                 /// <summary>Returns metadata for a given KeyRing.</summary>
-                /// <param name="name">The name of the KeyRing to get.</param>
+                /// <param name="name">Required. The name of the KeyRing to get.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -2719,7 +2719,7 @@ namespace Google.Apis.CloudKMS.v1
                     }
 
 
-                    /// <summary>The name of the KeyRing to get.</summary>
+                    /// <summary>Required. The name of the KeyRing to get.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2867,13 +2867,7 @@ namespace Google.Apis.CloudKMS.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Only include resources that match the filter in the response. For more
-                    /// information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-
-                    /// and-filtering).</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
-                    /// <summary>Optional pagination token, returned earlier via
+                    /// <summary>Optional. Optional pagination token, returned earlier via
                     /// ListKeyRingsResponse.next_page_token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2884,11 +2878,17 @@ namespace Google.Apis.CloudKMS.v1
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Optional limit on the number of KeyRings to include in the response.  Further KeyRings
-                    /// can subsequently be obtained by including the ListKeyRingsResponse.next_page_token in a
+                    /// <summary>Optional. Optional limit on the number of KeyRings to include in the response.  Further
+                    /// KeyRings can subsequently be obtained by including the ListKeyRingsResponse.next_page_token in a
                     /// subsequent request.  If unspecified, the server will pick an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Only include resources that match the filter in the response. For more
+                    /// information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-
+                    /// and-filtering).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2924,15 +2924,6 @@ namespace Google.Apis.CloudKMS.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -2954,6 +2945,15 @@ namespace Google.Apis.CloudKMS.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3197,10 +3197,6 @@ namespace Google.Apis.CloudKMS.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -3208,6 +3204,10 @@ namespace Google.Apis.CloudKMS.v1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3243,15 +3243,6 @@ namespace Google.Apis.CloudKMS.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -3264,6 +3255,15 @@ namespace Google.Apis.CloudKMS.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3461,7 +3461,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]
         public virtual CryptoKeyVersion Primary { get; set; } 
 
-        /// <summary>The immutable purpose of this CryptoKey.</summary>
+        /// <summary>Immutable. The immutable purpose of this CryptoKey.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
         public virtual string Purpose { get; set; } 
 
@@ -3576,7 +3576,7 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Request message for KeyManagementService.Decrypt.</summary>
     public class DecryptRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional data that must match the data originally supplied in
+        /// <summary>Optional. Optional data that must match the data originally supplied in
         /// EncryptRequest.additional_authenticated_data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedData")]
         public virtual string AdditionalAuthenticatedData { get; set; } 
@@ -3629,7 +3629,7 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Request message for KeyManagementService.Encrypt.</summary>
     public class EncryptRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional data that, if specified, must also be provided during decryption through
+        /// <summary>Optional. Optional data that, if specified, must also be provided during decryption through
         /// DecryptRequest.additional_authenticated_data.
         ///
         /// The maximum size depends on the key version's protection_level. For SOFTWARE keys, the AAD must be no larger
@@ -3719,6 +3719,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         ///
         /// The key to be imported, wrapped with the ephemeral AES-256 key using AES-KWP (RFC 5649).
         ///
+        /// If importing symmetric key material, it is expected that the unwrapped key contains plain bytes. If
+        /// importing asymmetric key material, it is expected that the unwrapped key is in PKCS#8-encoded DER format
+        /// (the PrivateKeyInfo structure from RFC 5208).
+        ///
         /// This format is the same as the format produced by PKCS#11 mechanism CKM_RSA_AES_KEY_WRAP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rsaAesWrappedKey")]
         public virtual string RsaAesWrappedKey { get; set; } 
@@ -3770,7 +3774,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generateTime")]
         public virtual object GenerateTime { get; set; } 
 
-        /// <summary>Required and immutable. The wrapping method to be used for incoming key material.</summary>
+        /// <summary>Required. Immutable. The wrapping method to be used for incoming key material.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importMethod")]
         public virtual string ImportMethod { get; set; } 
 
@@ -3779,8 +3783,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required and immutable. The protection level of the ImportJob. This must match the protection_level
-        /// of the version_template on the CryptoKey you attempt to import into.</summary>
+        /// <summary>Required. Immutable. The protection level of the ImportJob. This must match the protection_level of
+        /// the version_template on the CryptoKey you attempt to import into.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
         public virtual string ProtectionLevel { get; set; } 
 
@@ -3969,20 +3973,27 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
     /// for Cloud Platform resources.
     ///
-    /// A `Policy` consists of a list of `bindings`. A `binding` binds a list of `members` to a `role`, where the
-    /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
-    /// permissions defined by IAM.
+    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
+    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
+    /// of permissions (defined by IAM or configured by users). A `binding` can optionally specify a `condition`, which
+    /// is a logic expression that further constrains the role binding based on attributes about the request and/or
+    /// target resource.
     ///
     /// **JSON Example**
     ///
-    /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role": "roles/viewer",
-    /// "members": ["user:sean@example.com"] } ] }
+    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ] }
     ///
     /// **YAML Example**
     ///
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com role: roles/viewer
+    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
+    /// description: Does not grant access after Sep 2020 expression: request.time <
+    /// timestamp('2020-10-01T00:00:00.000Z')
     ///
     /// For a description of IAM and its features, see the [IAM developer's
     /// guide](https://cloud.google.com/iam/docs).</summary>
@@ -3992,8 +4003,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 
-        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
-        /// error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. Optionally may specify a `condition` that determines
+        /// when binding is in effect. `bindings` with no members will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -4003,7 +4014,9 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
+        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if either of incoming or
+        /// stored policy does not meet the version requirements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -4011,8 +4024,12 @@ namespace Google.Apis.CloudKMS.v1.Data
         ///
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
-        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
-        /// specify any valid value or leave the field unset.</summary>
+        /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
+        /// policy, modifying a conditional binding, or removing a conditional binding from the stored conditional
+        /// policy. Operations on non-conditional policies may specify any valid value or leave the field unset.
+        ///
+        /// If no etag is provided in the call to `setIamPolicy`, any version compliance checks on the incoming and/or
+        /// stored policy is skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -4089,7 +4106,7 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Request message for KeyManagementService.UpdateCryptoKeyPrimaryVersion.</summary>
     public class UpdateCryptoKeyPrimaryVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The id of the child CryptoKeyVersion to use as primary.</summary>
+        /// <summary>Required. The id of the child CryptoKeyVersion to use as primary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyVersionId")]
         public virtual string CryptoKeyVersionId { get; set; } 
 

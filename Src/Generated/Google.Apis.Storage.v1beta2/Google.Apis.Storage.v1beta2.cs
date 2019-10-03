@@ -88,9 +88,9 @@ namespace Google.Apis.Storage.v1beta2
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://storage.googleapis.com/storage/v1beta2/"; }
+            get { return BaseUriOverride ?? "https://www.googleapis.com/storage/v1beta2/"; }
         #else
-            get { return "https://storage.googleapis.com/storage/v1beta2/"; }
+            get { return "https://www.googleapis.com/storage/v1beta2/"; }
         #endif
         }
 
@@ -104,7 +104,7 @@ namespace Google.Apis.Storage.v1beta2
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://storage.googleapis.com/batch/storage/v1beta2"; }
+            get { return "https://www.googleapis.com/batch/storage/v1beta2"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>

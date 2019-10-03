@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190920 (1723)
+ *      <tr><th>API Rev<td>20190927 (1730)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -1004,6 +1004,10 @@ namespace Google.Apis.Vision.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1011,10 +1015,6 @@ namespace Google.Apis.Vision.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1050,6 +1050,15 @@ namespace Google.Apis.Vision.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1062,15 +1071,6 @@ namespace Google.Apis.Vision.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -8170,10 +8170,6 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imagePropertiesAnnotation")]
         public virtual GoogleCloudVisionV1p4beta1ImageProperties ImagePropertiesAnnotation { get; set; } 
 
-        /// <summary>If present, image quality calculation has completed successfully.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageQualityAnnotation")]
-        public virtual GoogleCloudVisionV1p4beta1ImageQuality ImageQualityAnnotation { get; set; } 
-
         /// <summary>If present, label detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p4beta1EntityAnnotation> LabelAnnotations { get; set; } 
@@ -8194,10 +8190,6 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>If present, product search has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productSearchResults")]
         public virtual GoogleCloudVisionV1p4beta1ProductSearchResults ProductSearchResults { get; set; } 
-
-        /// <summary>If present, image quality optimization has completed successfully.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("qualityOptimizationResult")]
-        public virtual GoogleCloudVisionV1p4beta1QualityOptimizationResult QualityOptimizationResult { get; set; } 
 
         /// <summary>If present, safe-search annotation has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearchAnnotation")]
@@ -8612,19 +8604,6 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Stores image quality scores, could be aesthetic quality or technical quality.</summary>
-    public class GoogleCloudVisionV1p4beta1ImageQuality : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A score representing the aesthetic/technical quality of the image. The score is in range [0, 1].
-        /// Higher value corresponds to more professional looking photos. 0 means the image looks very bad, 1 means the
-        /// image with very high quality.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
-        public virtual System.Nullable<float> QualityScore { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Response message for the `ImportProductSets` method.
     ///
     /// This message is returned by the google.longrunning.Operations.GetOperation method in the returned
@@ -9006,25 +8985,6 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Stores enhanced image bytes.</summary>
-    public class GoogleCloudVisionV1p4beta1QualityOptimizationResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optimized image bytes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual string Image { get; set; } 
-
-        /// <summary>Mime type of the output image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; } 
-
-        /// <summary>Required optimization type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("qualityOptimizationType")]
-        public virtual string QualityOptimizationType { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A `ReferenceImage` represents a product image and its associated metadata, such as bounding
     /// boxes.</summary>
     public class GoogleCloudVisionV1p4beta1ReferenceImage : Google.Apis.Requests.IDirectResponseSchema
@@ -9067,21 +9027,9 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adult")]
         public virtual string Adult { get; set; } 
 
-        /// <summary>Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("adultConfidence")]
-        public virtual System.Nullable<float> AdultConfidence { get; set; } 
-
         /// <summary>Likelihood that this is a medical image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medical")]
         public virtual string Medical { get; set; } 
-
-        /// <summary>Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("medicalConfidence")]
-        public virtual System.Nullable<float> MedicalConfidence { get; set; } 
-
-        /// <summary>Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nsfwConfidence")]
-        public virtual System.Nullable<float> NsfwConfidence { get; set; } 
 
         /// <summary>Likelihood that the request image contains racy content. Racy content may include (but is not
         /// limited to) skimpy or sheer clothing, strategically covered nudity, lewd or provocative poses, or close-ups
@@ -9089,27 +9037,14 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("racy")]
         public virtual string Racy { get; set; } 
 
-        /// <summary>Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("racyConfidence")]
-        public virtual System.Nullable<float> RacyConfidence { get; set; } 
-
         /// <summary>Spoof likelihood. The likelihood that an modification was made to the image's canonical version to
         /// make it appear funny or offensive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spoof")]
         public virtual string Spoof { get; set; } 
 
-        /// <summary>Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("spoofConfidence")]
-        public virtual System.Nullable<float> SpoofConfidence { get; set; } 
-
         /// <summary>Likelihood that this image contains violent content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violence")]
         public virtual string Violence { get; set; } 
-
-        /// <summary>Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means very
-        /// confident.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("violenceConfidence")]
-        public virtual System.Nullable<float> ViolenceConfidence { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10253,21 +10188,9 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adult")]
         public virtual string Adult { get; set; } 
 
-        /// <summary>Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("adultConfidence")]
-        public virtual System.Nullable<float> AdultConfidence { get; set; } 
-
         /// <summary>Likelihood that this is a medical image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medical")]
         public virtual string Medical { get; set; } 
-
-        /// <summary>Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("medicalConfidence")]
-        public virtual System.Nullable<float> MedicalConfidence { get; set; } 
-
-        /// <summary>Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nsfwConfidence")]
-        public virtual System.Nullable<float> NsfwConfidence { get; set; } 
 
         /// <summary>Likelihood that the request image contains racy content. Racy content may include (but is not
         /// limited to) skimpy or sheer clothing, strategically covered nudity, lewd or provocative poses, or close-ups
@@ -10275,27 +10198,14 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("racy")]
         public virtual string Racy { get; set; } 
 
-        /// <summary>Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("racyConfidence")]
-        public virtual System.Nullable<float> RacyConfidence { get; set; } 
-
         /// <summary>Spoof likelihood. The likelihood that an modification was made to the image's canonical version to
         /// make it appear funny or offensive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spoof")]
         public virtual string Spoof { get; set; } 
 
-        /// <summary>Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means very confident.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("spoofConfidence")]
-        public virtual System.Nullable<float> SpoofConfidence { get; set; } 
-
         /// <summary>Likelihood that this image contains violent content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violence")]
         public virtual string Violence { get; set; } 
-
-        /// <summary>Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means very
-        /// confident.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("violenceConfidence")]
-        public virtual System.Nullable<float> ViolenceConfidence { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

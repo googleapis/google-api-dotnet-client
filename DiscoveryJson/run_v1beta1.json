@@ -1,9 +1,244 @@
 {
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "View and manage your data across Google Cloud Platform services"
+        }
+      }
+    }
+  },
+  "rootUrl": "https://run.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "run",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Cloud Run API",
+  "ownerName": "Google",
+  "resources": {
+    "projects": {
+      "resources": {
+        "locations": {
+          "resources": {
+            "customresourcedefinitions": {
+              "methods": {
+                "list": {
+                  "response": {
+                    "$ref": "ListCustomResourceDefinitionsResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "parent": {
+                      "description": "The project ID or project number from which the storages should\nbe listed.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path"
+                    },
+                    "labelSelector": {
+                      "description": "Allows to filter resources based on a label. Supported operations are\n=, !=, exists, in, and notIn.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "resourceVersion": {
+                      "location": "query",
+                      "description": "The baseline resource version from which the list or watch operation should\nstart. Not currently used by Cloud Run.",
+                      "type": "string"
+                    },
+                    "includeUninitialized": {
+                      "description": "Not currently used by Cloud Run.",
+                      "type": "boolean",
+                      "location": "query"
+                    },
+                    "fieldSelector": {
+                      "location": "query",
+                      "description": "Allows to filter resources based on a specific value for a field name.\nSend this in a query string format. i.e. 'metadata.name%3Dlorem'.\nNot currently used by Cloud Run.",
+                      "type": "string"
+                    },
+                    "continue": {
+                      "location": "query",
+                      "description": "Optional encoded string to continue paging.",
+                      "type": "string"
+                    },
+                    "limit": {
+                      "location": "query",
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "watch": {
+                      "location": "query",
+                      "description": "Flag that indicates that the client expects to watch this resource as well.\nNot currently used by Cloud Run.",
+                      "type": "boolean"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/customresourcedefinitions",
+                  "path": "v1beta1/{+parent}/customresourcedefinitions",
+                  "id": "run.projects.locations.customresourcedefinitions.list",
+                  "description": "Rpc to list custom resource definitions."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "customresourcedefinitions": {
+      "methods": {
+        "list": {
+          "description": "Rpc to list custom resource definitions.",
+          "response": {
+            "$ref": "ListCustomResourceDefinitionsResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "limit": {
+              "format": "int32",
+              "type": "integer",
+              "location": "query"
+            },
+            "watch": {
+              "description": "Flag that indicates that the client expects to watch this resource as well.\nNot currently used by Cloud Run.",
+              "type": "boolean",
+              "location": "query"
+            },
+            "parent": {
+              "location": "query",
+              "description": "The project ID or project number from which the storages should\nbe listed.",
+              "type": "string"
+            },
+            "labelSelector": {
+              "description": "Allows to filter resources based on a label. Supported operations are\n=, !=, exists, in, and notIn.",
+              "type": "string",
+              "location": "query"
+            },
+            "fieldSelector": {
+              "location": "query",
+              "description": "Allows to filter resources based on a specific value for a field name.\nSend this in a query string format. i.e. 'metadata.name%3Dlorem'.\nNot currently used by Cloud Run.",
+              "type": "string"
+            },
+            "includeUninitialized": {
+              "location": "query",
+              "description": "Not currently used by Cloud Run.",
+              "type": "boolean"
+            },
+            "resourceVersion": {
+              "location": "query",
+              "description": "The baseline resource version from which the list or watch operation should\nstart. Not currently used by Cloud Run.",
+              "type": "string"
+            },
+            "continue": {
+              "description": "Optional encoded string to continue paging.",
+              "type": "string",
+              "location": "query"
+            }
+          },
+          "flatPath": "apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions",
+          "path": "apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions",
+          "id": "run.customresourcedefinitions.list"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ]
+    },
+    "alt": {
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string"
+    }
+  },
+  "version": "v1beta1",
+  "baseUrl": "https://run.googleapis.com/",
+  "servicePath": "",
+  "description": "Deploy and manage user provided container images that scale automatically based on HTTP traffic.",
+  "kind": "discovery#restDescription",
+  "basePath": "",
+  "id": "run:v1beta1",
+  "documentationLink": "https://cloud.google.com/run/",
+  "revision": "20190920",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "CustomResourceDefinitionSpec": {
-      "id": "CustomResourceDefinitionSpec",
       "description": "CustomResourceDefinitionSpec describes how a user wants their resource to\nappear",
       "type": "object",
       "properties": {
@@ -45,10 +280,10 @@
           "$ref": "CustomResourceSubresources",
           "description": "Subresources describes the subresources for CustomResources\n+optional"
         }
-      }
+      },
+      "id": "CustomResourceDefinitionSpec"
     },
     "CustomResourceDefinitionVersion": {
-      "id": "CustomResourceDefinitionVersion",
       "type": "object",
       "properties": {
         "name": {
@@ -63,13 +298,14 @@
           "description": "Storage flags the version as storage version. There must be exactly one\nflagged as storage version.",
           "type": "boolean"
         }
-      }
+      },
+      "id": "CustomResourceDefinitionVersion"
     },
     "CustomResourceSubresourceStatus": {
-      "id": "CustomResourceSubresourceStatus",
       "description": "CustomResourceSubresourceStatus defines how to serve the status subresource\nfor CustomResources. Status is represented by the `.status` JSON path inside\nof a CustomResource. When set,\n* exposes a /status subresource for the custom resource\n* PUT requests to the /status subresource take a custom resource object, and\nignore changes to anything except the status stanza\n* PUT/POST/PATCH requests to the custom resource ignore changes to the status\nstanza",
       "type": "object",
-      "properties": {}
+      "properties": {},
+      "id": "CustomResourceSubresourceStatus"
     },
     "CustomResourceColumnDefinition": {
       "id": "CustomResourceColumnDefinition",
@@ -104,18 +340,9 @@
       }
     },
     "CustomResourceDefinition": {
-      "id": "CustomResourceDefinition",
       "description": "CustomResourceDefinition represents a resource that should be exposed on the\nAPI server.  Its name MUST be in the format\n\u003c.spec.name\u003e.\u003c.spec.group\u003e.",
       "type": "object",
       "properties": {
-        "apiVersion": {
-          "description": "The API version for this call such as \"k8s.apiextensions.io/v1beta1\".",
-          "type": "string"
-        },
-        "spec": {
-          "$ref": "CustomResourceDefinitionSpec",
-          "description": "Spec describes how the user wants the resources to appear"
-        },
         "kind": {
           "description": "The kind of resource, one example is \"Storage\".",
           "type": "string"
@@ -123,10 +350,20 @@
         "metadata": {
           "description": "Metadata associated with this CustomResourceDefinition.",
           "$ref": "ObjectMeta"
+        },
+        "apiVersion": {
+          "description": "The API version for this call such as \"k8s.apiextensions.io/v1beta1\".",
+          "type": "string"
+        },
+        "spec": {
+          "description": "Spec describes how the user wants the resources to appear",
+          "$ref": "CustomResourceDefinitionSpec"
         }
-      }
+      },
+      "id": "CustomResourceDefinition"
     },
     "Initializer": {
+      "id": "Initializer",
       "description": "Initializer is information about an initializer that has not yet completed.",
       "type": "object",
       "properties": {
@@ -134,11 +371,9 @@
           "description": "name of the process that is responsible for initializing this object.",
           "type": "string"
         }
-      },
-      "id": "Initializer"
+      }
     },
     "ObjectMeta": {
-      "id": "ObjectMeta",
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes\nall objects users must create.",
       "type": "object",
       "properties": {
@@ -148,11 +383,11 @@
           "type": "string"
         },
         "labels": {
-          "description": "Map of string keys and values that can be used to organize and categorize\n(scope and select) objects. May match selectors of replication controllers\nand routes.\nMore info: http://kubernetes.io/docs/user-guide/labels\n+optional",
-          "type": "object",
           "additionalProperties": {
             "type": "string"
-          }
+          },
+          "description": "Map of string keys and values that can be used to organize and categorize\n(scope and select) objects. May match selectors of replication controllers\nand routes.\nMore info: http://kubernetes.io/docs/user-guide/labels\n+optional",
+          "type": "object"
         },
         "initializers": {
           "$ref": "Initializers",
@@ -180,11 +415,11 @@
           "type": "string"
         },
         "annotations": {
-          "description": "Annotations is an unstructured key value map stored with a resource that\nmay be set by external tools to store and retrieve arbitrary metadata. They\nare not queryable and should be preserved when modifying objects. More\ninfo: http://kubernetes.io/docs/user-guide/annotations +optional",
-          "type": "object",
           "additionalProperties": {
             "type": "string"
-          }
+          },
+          "description": "Annotations is an unstructured key value map stored with a resource that\nmay be set by external tools to store and retrieve arbitrary metadata. They\nare not queryable and should be preserved when modifying objects. More\ninfo: http://kubernetes.io/docs/user-guide/annotations +optional",
+          "type": "object"
         },
         "generateName": {
           "description": "Not currently supported by Cloud Run.\n\nGenerateName is an optional prefix, used by the server, to generate a\nunique name ONLY IF the Name field has not been provided. If this field is\nused, the name returned to the client will be different than the name\npassed. This value will also be combined with a unique suffix. The provided\nvalue has the same validation rules as the Name field, and may be truncated\nby the length of the suffix required to make the value unique on the\nserver.\n\nIf this field is specified and the generated name exists, the server will\nNOT return a 409 - instead, it will either return 201 Created or 500 with\nReason ServerTimeout indicating a unique name could not be found in the\ntime allotted, and the client should retry (optionally after the time\nindicated in the Retry-After header).\n\nApplied only if Name is not specified.\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency\n+optional\n string generateName = 2;",
@@ -222,10 +457,10 @@
             "$ref": "OwnerReference"
           }
         }
-      }
+      },
+      "id": "ObjectMeta"
     },
     "CustomResourceSubresources": {
-      "id": "CustomResourceSubresources",
       "description": "CustomResourceSubresources defines the status and scale subresources for\nCustomResources.",
       "type": "object",
       "properties": {
@@ -234,13 +469,13 @@
           "$ref": "CustomResourceSubresourceStatus"
         },
         "scale": {
-          "$ref": "CustomResourceSubresourceScale",
-          "description": "Scale denotes the scale subresource for CustomResources\n+optional"
+          "description": "Scale denotes the scale subresource for CustomResources\n+optional",
+          "$ref": "CustomResourceSubresourceScale"
         }
-      }
+      },
+      "id": "CustomResourceSubresources"
     },
     "ListMeta": {
-      "id": "ListMeta",
       "description": "ListMeta describes metadata that synthetic resources must have, including\nlists and various status objects. A resource may have only one of\n{ObjectMeta, ListMeta}.",
       "type": "object",
       "properties": {
@@ -256,7 +491,8 @@
           "description": "SelfLink is a URL representing this object.\nPopulated by the system.\nRead-only.\n+optional",
           "type": "string"
         }
-      }
+      },
+      "id": "ListMeta"
     },
     "CustomResourceValidation": {
       "id": "CustomResourceValidation",
@@ -264,19 +500,14 @@
       "type": "object",
       "properties": {
         "openAPIV3Schema": {
-          "description": "OpenAPIV3Schema is the OpenAPI v3 schema to be validated against.\n+optional",
-          "$ref": "JSONSchemaProps"
+          "$ref": "JSONSchemaProps",
+          "description": "OpenAPIV3Schema is the OpenAPI v3 schema to be validated against.\n+optional"
         }
       }
     },
     "ListCustomResourceDefinitionsResponse": {
-      "id": "ListCustomResourceDefinitionsResponse",
       "type": "object",
       "properties": {
-        "apiVersion": {
-          "description": "The API version for this call such as \"k8s.apiextensions.io/v1beta1\".",
-          "type": "string"
-        },
         "kind": {
           "description": "The kind of this resource, in this case \"CustomResourceDefinitionList\".",
           "type": "string"
@@ -289,8 +520,8 @@
           }
         },
         "metadata": {
-          "description": "Metadata associated with this CustomResourceDefinition list.",
-          "$ref": "ListMeta"
+          "$ref": "ListMeta",
+          "description": "Metadata associated with this CustomResourceDefinition list."
         },
         "items": {
           "description": "List of CustomResourceDefinitions.",
@@ -298,10 +529,16 @@
           "items": {
             "$ref": "CustomResourceDefinition"
           }
+        },
+        "apiVersion": {
+          "description": "The API version for this call such as \"k8s.apiextensions.io/v1beta1\".",
+          "type": "string"
         }
-      }
+      },
+      "id": "ListCustomResourceDefinitionsResponse"
     },
     "JSON": {
+      "id": "JSON",
       "description": "JSON represents any valid JSON value.\nThese types are supported: bool, int64, float64, string, []interface{},\nmap[string]interface{} and nil.",
       "type": "object",
       "properties": {
@@ -309,11 +546,9 @@
           "format": "byte",
           "type": "string"
         }
-      },
-      "id": "JSON"
+      }
     },
     "ExternalDocumentation": {
-      "id": "ExternalDocumentation",
       "description": "ExternalDocumentation allows referencing an external resource for extended\ndocumentation.",
       "type": "object",
       "properties": {
@@ -323,23 +558,13 @@
         "description": {
           "type": "string"
         }
-      }
+      },
+      "id": "ExternalDocumentation"
     },
     "CustomResourceDefinitionNames": {
       "description": "CustomResourceDefinitionNames indicates the names to serve this\nCustomResourceDefinition",
       "type": "object",
       "properties": {
-        "categories": {
-          "description": "Categories is a list of grouped resources custom resources belong to (e.g.\n'all') +optional",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "kind": {
-          "description": "Kind is the serialized kind of the resource.  It is normally CamelCase and\nsingular.",
-          "type": "string"
-        },
         "listKind": {
           "description": "ListKind is the serialized kind of the list for this resource.  Defaults to\n\u003ckind\u003eList. +optional",
           "type": "string"
@@ -357,6 +582,17 @@
         },
         "plural": {
           "description": "Plural is the plural name of the resource to serve.  It must match the name\nof the CustomResourceDefinition-registration too: plural.group and it must\nbe all lowercase.",
+          "type": "string"
+        },
+        "categories": {
+          "description": "Categories is a list of grouped resources custom resources belong to (e.g.\n'all') +optional",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "kind": {
+          "description": "Kind is the serialized kind of the resource.  It is normally CamelCase and\nsingular.",
           "type": "string"
         }
       },
@@ -409,6 +645,14 @@
       "description": "OwnerReference contains enough information to let you identify an owning\nobject. Currently, an owning object must be in the same namespace, so there\nis no namespace field.",
       "type": "object",
       "properties": {
+        "kind": {
+          "description": "Kind of the referent.\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "blockOwnerDeletion": {
+          "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then\nthe owner cannot be deleted from the key-value store until this\nreference is removed.\nDefaults to false.\nTo set this field, a user needs \"delete\" permission of the owner,\notherwise 422 (Unprocessable Entity) will be returned.\n+optional",
+          "type": "boolean"
+        },
         "apiVersion": {
           "description": "API version of the referent.",
           "type": "string"
@@ -424,20 +668,11 @@
         "controller": {
           "description": "If true, this reference points to the managing controller.\n+optional",
           "type": "boolean"
-        },
-        "kind": {
-          "description": "Kind of the referent.\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "blockOwnerDeletion": {
-          "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then\nthe owner cannot be deleted from the key-value store until this\nreference is removed.\nDefaults to false.\nTo set this field, a user needs \"delete\" permission of the owner,\notherwise 422 (Unprocessable Entity) will be returned.\n+optional",
-          "type": "boolean"
         }
       },
       "id": "OwnerReference"
     },
     "CustomResourceSubresourceScale": {
-      "id": "CustomResourceSubresourceScale",
       "description": "CustomResourceSubresourceScale defines how to serve the scale subresource for\nCustomResources.",
       "type": "object",
       "properties": {
@@ -453,13 +688,19 @@
           "description": "SpecReplicasPath defines the JSON path inside of a CustomResource that\ncorresponds to Scale.Spec.Replicas. Only JSON paths without the array\nnotation are allowed. Must be a JSON Path under .spec. If there is no value\nunder the given path in the CustomResource, the /scale subresource will\nreturn an error on GET.",
           "type": "string"
         }
-      }
+      },
+      "id": "CustomResourceSubresourceScale"
     },
     "JSONSchemaProps": {
-      "id": "JSONSchemaProps",
       "description": "JSONSchemaProps is a JSON-Schema following Specification Draft 4\n(http://json-schema.org/).",
       "type": "object",
       "properties": {
+        "exclusiveMinimum": {
+          "type": "boolean"
+        },
+        "additionalItems": {
+          "$ref": "JSONSchemaPropsOrBool"
+        },
         "oneOf": {
           "type": "array",
           "items": {
@@ -480,10 +721,10 @@
           "type": "string"
         },
         "definitions": {
+          "type": "object",
           "additionalProperties": {
             "$ref": "JSONSchemaProps"
-          },
-          "type": "object"
+          }
         },
         "enum": {
           "type": "array",
@@ -570,10 +811,10 @@
           "type": "string"
         },
         "dependencies": {
-          "type": "object",
           "additionalProperties": {
             "$ref": "JSONSchemaPropsOrStringArray"
-          }
+          },
+          "type": "object"
         },
         "not": {
           "$ref": "JSONSchemaProps"
@@ -586,10 +827,10 @@
           "type": "boolean"
         },
         "patternProperties": {
+          "type": "object",
           "additionalProperties": {
             "$ref": "JSONSchemaProps"
-          },
-          "type": "object"
+          }
         },
         "additionalProperties": {
           "$ref": "JSONSchemaPropsOrBool"
@@ -597,16 +838,12 @@
         "maxItems": {
           "format": "int64",
           "type": "string"
-        },
-        "exclusiveMinimum": {
-          "type": "boolean"
-        },
-        "additionalItems": {
-          "$ref": "JSONSchemaPropsOrBool"
         }
-      }
+      },
+      "id": "JSONSchemaProps"
     },
     "JSONSchemaPropsOrStringArray": {
+      "id": "JSONSchemaPropsOrStringArray",
       "description": "JSONSchemaPropsOrStringArray represents a JSONSchemaProps or a string array.",
       "type": "object",
       "properties": {
@@ -619,8 +856,7 @@
         "schema": {
           "$ref": "JSONSchemaProps"
         }
-      },
-      "id": "JSONSchemaPropsOrStringArray"
+      }
     }
   },
   "protocol": "rest",
@@ -628,241 +864,5 @@
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
-  "canonicalName": "Cloud Run",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "View and manage your data across Google Cloud Platform services"
-        }
-      }
-    }
-  },
-  "rootUrl": "https://run.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "run",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Cloud Run API",
-  "ownerName": "Google",
-  "resources": {
-    "projects": {
-      "resources": {
-        "locations": {
-          "resources": {
-            "customresourcedefinitions": {
-              "methods": {
-                "list": {
-                  "parameters": {
-                    "limit": {
-                      "location": "query",
-                      "format": "int32",
-                      "type": "integer"
-                    },
-                    "watch": {
-                      "description": "Flag that indicates that the client expects to watch this resource as well.\nNot currently used by Cloud Run.",
-                      "type": "boolean",
-                      "location": "query"
-                    },
-                    "parent": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "description": "The project ID or project number from which the storages should\nbe listed.",
-                      "required": true,
-                      "type": "string"
-                    },
-                    "labelSelector": {
-                      "description": "Allows to filter resources based on a label. Supported operations are\n=, !=, exists, in, and notIn.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "resourceVersion": {
-                      "location": "query",
-                      "description": "The baseline resource version from which the list or watch operation should\nstart. Not currently used by Cloud Run.",
-                      "type": "string"
-                    },
-                    "includeUninitialized": {
-                      "location": "query",
-                      "description": "Not currently used by Cloud Run.",
-                      "type": "boolean"
-                    },
-                    "fieldSelector": {
-                      "location": "query",
-                      "description": "Allows to filter resources based on a specific value for a field name.\nSend this in a query string format. i.e. 'metadata.name%3Dlorem'.\nNot currently used by Cloud Run.",
-                      "type": "string"
-                    },
-                    "continue": {
-                      "location": "query",
-                      "description": "Optional encoded string to continue paging.",
-                      "type": "string"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/customresourcedefinitions",
-                  "path": "v1beta1/{+parent}/customresourcedefinitions",
-                  "id": "run.projects.locations.customresourcedefinitions.list",
-                  "description": "Rpc to list custom resource definitions.",
-                  "response": {
-                    "$ref": "ListCustomResourceDefinitionsResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "GET"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "customresourcedefinitions": {
-      "methods": {
-        "list": {
-          "response": {
-            "$ref": "ListCustomResourceDefinitionsResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "parent": {
-              "description": "The project ID or project number from which the storages should\nbe listed.",
-              "type": "string",
-              "location": "query"
-            },
-            "labelSelector": {
-              "location": "query",
-              "description": "Allows to filter resources based on a label. Supported operations are\n=, !=, exists, in, and notIn.",
-              "type": "string"
-            },
-            "fieldSelector": {
-              "location": "query",
-              "description": "Allows to filter resources based on a specific value for a field name.\nSend this in a query string format. i.e. 'metadata.name%3Dlorem'.\nNot currently used by Cloud Run.",
-              "type": "string"
-            },
-            "includeUninitialized": {
-              "location": "query",
-              "description": "Not currently used by Cloud Run.",
-              "type": "boolean"
-            },
-            "resourceVersion": {
-              "description": "The baseline resource version from which the list or watch operation should\nstart. Not currently used by Cloud Run.",
-              "type": "string",
-              "location": "query"
-            },
-            "continue": {
-              "description": "Optional encoded string to continue paging.",
-              "type": "string",
-              "location": "query"
-            },
-            "limit": {
-              "location": "query",
-              "format": "int32",
-              "type": "integer"
-            },
-            "watch": {
-              "location": "query",
-              "description": "Flag that indicates that the client expects to watch this resource as well.\nNot currently used by Cloud Run.",
-              "type": "boolean"
-            }
-          },
-          "flatPath": "apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions",
-          "path": "apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions",
-          "id": "run.customresourcedefinitions.list",
-          "description": "Rpc to list custom resource definitions."
-        }
-      }
-    }
-  },
-  "parameters": {
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ]
-    },
-    "alt": {
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string"
-    }
-  },
-  "version": "v1beta1",
-  "baseUrl": "https://run.googleapis.com/",
-  "servicePath": "",
-  "description": "Deploy and manage user provided container images that scale automatically based on HTTP traffic.",
-  "kind": "discovery#restDescription",
-  "basePath": "",
-  "id": "run:v1beta1",
-  "documentationLink": "https://cloud.google.com/run/",
-  "revision": "20190920"
+  "canonicalName": "Cloud Run"
 }

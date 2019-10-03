@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>Cloud Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190907 (1710)
+ *      <tr><th>API Rev<td>20190925 (1728)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>
  *              https://developers.google.com/cloud-search/docs/guides/</a>
@@ -845,14 +845,6 @@ namespace Google.Apis.CloudSearch.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-
-                    [Google.Apis.Util.RequestParameterAttribute("groupResourceName", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string GroupResourceName { get; set; }
-
-
-                    [Google.Apis.Util.RequestParameterAttribute("userResourceName", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string UserResourceName { get; set; }
-
                     /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -865,6 +857,14 @@ namespace Google.Apis.CloudSearch.v1
                     /// this field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
+
+
+                    [Google.Apis.Util.RequestParameterAttribute("groupResourceName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string GroupResourceName { get; set; }
+
+
+                    [Google.Apis.Util.RequestParameterAttribute("userResourceName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UserResourceName { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -900,24 +900,6 @@ namespace Google.Apis.CloudSearch.v1
                                 Pattern = @"^identitysources/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "groupResourceName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "groupResourceName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "userResourceName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userResourceName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -939,6 +921,24 @@ namespace Google.Apis.CloudSearch.v1
                             "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "debugOptions.enableDebugging",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "groupResourceName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "groupResourceName",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "userResourceName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userResourceName",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -997,11 +997,6 @@ namespace Google.Apis.CloudSearch.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise, ignore
-                    /// this field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
-
                     /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1030,6 +1025,11 @@ namespace Google.Apis.CloudSearch.v1
                         [Google.Apis.Util.StringValueAttribute("INTERNAL_ERROR")]
                         INTERNALERROR,
                     }
+
+                    /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise, ignore
+                    /// this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1065,15 +1065,6 @@ namespace Google.Apis.CloudSearch.v1
                                 Pattern = @"^identitysources/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debugOptions.enableDebugging",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1095,6 +1086,15 @@ namespace Google.Apis.CloudSearch.v1
                             "resolutionStatusCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "resolutionStatusCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "debugOptions.enableDebugging",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1171,7 +1171,9 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Deletes Item resource for the specified resource name.</summary>
+                /// <summary>Deletes Item resource for the specified resource name. This API requires an admin or
+                /// service account to execute. The service account used is the one whitelisted in the corresponding
+                /// data source.</summary>
                 /// <param name="name">Required. Name of the item to delete. Format:
                 /// datasources/{source_id}/items/{item_id}</param>
                 public virtual DeleteRequest Delete(string name)
@@ -1179,7 +1181,9 @@ namespace Google.Apis.CloudSearch.v1
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes Item resource for the specified resource name.</summary>
+                /// <summary>Deletes Item resource for the specified resource name. This API requires an admin or
+                /// service account to execute. The service account used is the one whitelisted in the corresponding
+                /// data source.</summary>
                 public class DeleteRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1304,7 +1308,10 @@ namespace Google.Apis.CloudSearch.v1
 
                 }
 
-                /// <summary>Deletes all items in a queue. This method is useful for deleting stale items.</summary>
+                /// <summary>Deletes all items in a queue. This method is useful for deleting stale items.
+                ///
+                /// This API requires an admin or service account to execute. The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the Data Source to delete items in a queue. Format: datasources/{source_id}</param>
                 public virtual DeleteQueueItemsRequest DeleteQueueItems(Google.Apis.CloudSearch.v1.Data.DeleteQueueItemsRequest body, string name)
@@ -1312,7 +1319,10 @@ namespace Google.Apis.CloudSearch.v1
                     return new DeleteQueueItemsRequest(service, body, name);
                 }
 
-                /// <summary>Deletes all items in a queue. This method is useful for deleting stale items.</summary>
+                /// <summary>Deletes all items in a queue. This method is useful for deleting stale items.
+                ///
+                /// This API requires an admin or service account to execute. The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 public class DeleteQueueItemsRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new DeleteQueueItems request.</summary>
@@ -1373,14 +1383,20 @@ namespace Google.Apis.CloudSearch.v1
 
                 }
 
-                /// <summary>Gets Item resource by item name.</summary>
+                /// <summary>Gets Item resource by item name.
+                ///
+                /// This API requires an admin or service account to execute.  The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 /// <param name="name">Name of the item to get info. Format: datasources/{source_id}/items/{item_id}</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets Item resource by item name.</summary>
+                /// <summary>Gets Item resource by item name.
+                ///
+                /// This API requires an admin or service account to execute.  The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Item>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1463,7 +1479,10 @@ namespace Google.Apis.CloudSearch.v1
 
                 /// <summary>Updates Item ACL, metadata, and content. It will insert the Item if it does not exist. This
                 /// method does not support partial updates.  Fields with no provided values are cleared out in the
-                /// Cloud Search index.</summary>
+                /// Cloud Search index.
+                ///
+                /// This API requires an admin or service account to execute. The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The
                 /// maximum length is 1536 characters.</param>
@@ -1474,7 +1493,10 @@ namespace Google.Apis.CloudSearch.v1
 
                 /// <summary>Updates Item ACL, metadata, and content. It will insert the Item if it does not exist. This
                 /// method does not support partial updates.  Fields with no provided values are cleared out in the
-                /// Cloud Search index.</summary>
+                /// Cloud Search index.
+                ///
+                /// This API requires an admin or service account to execute. The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 public class IndexRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Index request.</summary>
@@ -1535,14 +1557,20 @@ namespace Google.Apis.CloudSearch.v1
 
                 }
 
-                /// <summary>Lists all or a subset of Item resources.</summary>
+                /// <summary>Lists all or a subset of Item resources.
+                ///
+                /// This API requires an admin or service account to execute. The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 /// <param name="name">Name of the Data Source to list Items.  Format: datasources/{source_id}</param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(service, name);
                 }
 
-                /// <summary>Lists all or a subset of Item resources.</summary>
+                /// <summary>Lists all or a subset of Item resources.
+                ///
+                /// This API requires an admin or service account to execute. The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListItemsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1558,9 +1586,17 @@ namespace Google.Apis.CloudSearch.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Name of connector making this call. Format:
+                    /// datasources/{source_id}/connectors/{ID}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("connectorName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ConnectorName { get; set; }
+
                     /// <summary>When set to true, the indexing system only populates the following fields: name,
-                    /// version, metadata.hash, structured_data.hash, content.hash. If this value is false, then all the
-                    /// fields are populated in Item.</summary>
+                    /// version, queue. metadata.hash, metadata.title, metadata.sourceRepositoryURL,
+                    /// metadata.objectType, metadata.createTime, metadata.updateTime, metadata.contentLanguage,
+                    /// metadata.mimeType, structured_data.hash, content.hash, itemType, itemStatus.code,
+                    /// itemStatus.processingError.code, itemStatus.repositoryError.type, If this value is false, then
+                    /// all the fields are populated in Item.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("brief", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Brief { get; set; }
 
@@ -1577,11 +1613,6 @@ namespace Google.Apis.CloudSearch.v1
                     /// this field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
-
-                    /// <summary>Name of connector making this call. Format:
-                    /// datasources/{source_id}/connectors/{ID}</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("connectorName", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ConnectorName { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1615,6 +1646,15 @@ namespace Google.Apis.CloudSearch.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^datasources/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "connectorName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "connectorName",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         RequestParameters.Add(
                             "brief", new Google.Apis.Discovery.Parameter
@@ -1652,15 +1692,6 @@ namespace Google.Apis.CloudSearch.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        RequestParameters.Add(
-                            "connectorName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "connectorName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                     }
 
                 }
@@ -1681,7 +1712,10 @@ namespace Google.Apis.CloudSearch.v1
                 /// either by calling index, or by calling push with the type REQUEUE.
                 ///
                 /// Items automatically become available (unreserved) after 4 hours even if no update or push method is
-                /// called.</summary>
+                /// called.
+                ///
+                /// This API requires an admin or service account to execute. The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the Data Source to poll items. Format: datasources/{source_id}</param>
                 public virtual PollRequest Poll(Google.Apis.CloudSearch.v1.Data.PollItemsRequest body, string name)
@@ -1705,7 +1739,10 @@ namespace Google.Apis.CloudSearch.v1
                 /// either by calling index, or by calling push with the type REQUEUE.
                 ///
                 /// Items automatically become available (unreserved) after 4 hours even if no update or push method is
-                /// called.</summary>
+                /// called.
+                ///
+                /// This API requires an admin or service account to execute. The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 public class PollRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.PollItemsResponse>
                 {
                     /// <summary>Constructs a new Poll request.</summary>
@@ -1765,7 +1802,10 @@ namespace Google.Apis.CloudSearch.v1
 
                 }
 
-                /// <summary>Pushes an item onto a queue for later polling and updating.</summary>
+                /// <summary>Pushes an item onto a queue for later polling and updating.
+                ///
+                /// This API requires an admin or service account to execute. The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the item to push into the indexing queue. Format: datasources/{source_id}/items/{ID} This
                 /// is a required field. The maximum length is 1536 characters.</param>
@@ -1774,7 +1814,10 @@ namespace Google.Apis.CloudSearch.v1
                     return new PushRequest(service, body, name);
                 }
 
-                /// <summary>Pushes an item onto a queue for later polling and updating.</summary>
+                /// <summary>Pushes an item onto a queue for later polling and updating.
+                ///
+                /// This API requires an admin or service account to execute. The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 public class PushRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Item>
                 {
                     /// <summary>Constructs a new Push request.</summary>
@@ -1837,7 +1880,10 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
                 /// <summary>Unreserves all items from a queue, making them all eligible to be polled.  This method is
-                /// useful for resetting the indexing queue after a connector has been restarted.</summary>
+                /// useful for resetting the indexing queue after a connector has been restarted.
+                ///
+                /// This API requires an admin or service account to execute. The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the Data Source to unreserve all items. Format: datasources/{source_id}</param>
                 public virtual UnreserveRequest Unreserve(Google.Apis.CloudSearch.v1.Data.UnreserveItemsRequest body, string name)
@@ -1846,7 +1892,10 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
                 /// <summary>Unreserves all items from a queue, making them all eligible to be polled.  This method is
-                /// useful for resetting the indexing queue after a connector has been restarted.</summary>
+                /// useful for resetting the indexing queue after a connector has been restarted.
+                ///
+                /// This API requires an admin or service account to execute. The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 public class UnreserveRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Unreserve request.</summary>
@@ -1908,7 +1957,10 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
                 /// <summary>Creates an upload session for uploading item content. For items smaller than 100 KB, it's
-                /// easier to embed the content inline within an index request.</summary>
+                /// easier to embed the content inline within an index request.
+                ///
+                /// This API requires an admin or service account to execute. The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the Item to start a resumable upload. Format:
                 /// datasources/{source_id}/items/{item_id}.</param>
@@ -1918,7 +1970,10 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
                 /// <summary>Creates an upload session for uploading item content. For items smaller than 100 KB, it's
-                /// easier to embed the content inline within an index request.</summary>
+                /// easier to embed the content inline within an index request.
+                ///
+                /// This API requires an admin or service account to execute. The service account used is the one
+                /// whitelisted in the corresponding data source.</summary>
                 public class UploadRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.UploadItemRef>
                 {
                     /// <summary>Constructs a new Upload request.</summary>
@@ -3414,6 +3469,11 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
+                /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise, ignore this
+                /// field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
+
                 /// <summary>The next_page_token value returned from a previous List request, if any. The default value
                 /// is 10</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -3422,11 +3482,6 @@ namespace Google.Apis.CloudSearch.v1
                 /// <summary>The maximum number of items to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise, ignore this
-                /// field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3453,6 +3508,15 @@ namespace Google.Apis.CloudSearch.v1
                     base.InitParameters();
 
                     RequestParameters.Add(
+                        "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "debugOptions.enableDebugging",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3465,15 +3529,6 @@ namespace Google.Apis.CloudSearch.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "debugOptions.enableDebugging",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3636,6 +3691,9 @@ namespace Google.Apis.CloudSearch.v1
         {
             this.service = service;
             index = new IndexResource(service);
+            query = new QueryResource(service);
+            session = new SessionResource(service);
+            user = new UserResource(service);
 
         }
 
@@ -3712,14 +3770,6 @@ namespace Google.Apis.CloudSearch.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Month of date. Must be from 1 to 12.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fromDate.month", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> FromDateMonth { get; set; }
-
-                    /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> FromDateDay { get; set; }
-
                     /// <summary>Year of date. Must be from 1 to 9999.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("fromDate.year", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> FromDateYear { get; set; }
@@ -3735,6 +3785,14 @@ namespace Google.Apis.CloudSearch.v1
                     /// <summary>Year of date. Must be from 1 to 9999.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("toDate.year", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> ToDateYear { get; set; }
+
+                    /// <summary>Month of date. Must be from 1 to 12.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fromDate.month", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> FromDateMonth { get; set; }
+
+                    /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> FromDateDay { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3768,6 +3826,393 @@ namespace Google.Apis.CloudSearch.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^datasources/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "fromDate.year", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fromDate.year",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "toDate.day", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "toDate.day",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "toDate.month", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "toDate.month",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "toDate.year", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "toDate.year",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "fromDate.month", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fromDate.month",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "fromDate.day", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fromDate.day",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+        }
+        private readonly QueryResource query;
+
+        /// <summary>Gets the Query resource.</summary>
+        public virtual QueryResource Query
+        {
+            get { return query; }
+        }
+
+        /// <summary>The "query" collection of methods.</summary>
+        public class QueryResource
+        {
+            private const string Resource = "query";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public QueryResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                searchapplications = new SearchapplicationsResource(service);
+
+            }
+
+            private readonly SearchapplicationsResource searchapplications;
+
+            /// <summary>Gets the Searchapplications resource.</summary>
+            public virtual SearchapplicationsResource Searchapplications
+            {
+                get { return searchapplications; }
+            }
+
+            /// <summary>The "searchapplications" collection of methods.</summary>
+            public class SearchapplicationsResource
+            {
+                private const string Resource = "searchapplications";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SearchapplicationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Get the query statistics for search application</summary>
+                /// <param name="name">The resource id of the search application query stats, in the following format:
+                /// searchapplications/{application_id}</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Get the query statistics for search application</summary>
+                public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetSearchApplicationQueryStatsResponse>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource id of the search application query stats, in the following format:
+                    /// searchapplications/{application_id}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Year of date. Must be from 1 to 9999.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fromDate.year", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> FromDateYear { get; set; }
+
+                    /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("toDate.day", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> ToDateDay { get; set; }
+
+                    /// <summary>Month of date. Must be from 1 to 12.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("toDate.month", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> ToDateMonth { get; set; }
+
+                    /// <summary>Year of date. Must be from 1 to 9999.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("toDate.year", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> ToDateYear { get; set; }
+
+                    /// <summary>Month of date. Must be from 1 to 12.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fromDate.month", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> FromDateMonth { get; set; }
+
+                    /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> FromDateDay { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/stats/query/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^searchapplications/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "fromDate.year", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fromDate.year",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "toDate.day", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "toDate.day",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "toDate.month", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "toDate.month",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "toDate.year", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "toDate.year",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "fromDate.month", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fromDate.month",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "fromDate.day", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fromDate.day",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+        }
+        private readonly SessionResource session;
+
+        /// <summary>Gets the Session resource.</summary>
+        public virtual SessionResource Session
+        {
+            get { return session; }
+        }
+
+        /// <summary>The "session" collection of methods.</summary>
+        public class SessionResource
+        {
+            private const string Resource = "session";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SessionResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                searchapplications = new SearchapplicationsResource(service);
+
+            }
+
+            private readonly SearchapplicationsResource searchapplications;
+
+            /// <summary>Gets the Searchapplications resource.</summary>
+            public virtual SearchapplicationsResource Searchapplications
+            {
+                get { return searchapplications; }
+            }
+
+            /// <summary>The "searchapplications" collection of methods.</summary>
+            public class SearchapplicationsResource
+            {
+                private const string Resource = "searchapplications";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SearchapplicationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Get the # of search sessions for the search application</summary>
+                /// <param name="name">The resource id of the search application session stats, in the following format:
+                /// searchapplications/{application_id}</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Get the # of search sessions for the search application</summary>
+                public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetSearchApplicationSessionStatsResponse>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource id of the search application session stats, in the following format:
+                    /// searchapplications/{application_id}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Year of date. Must be from 1 to 9999.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("toDate.year", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> ToDateYear { get; set; }
+
+                    /// <summary>Month of date. Must be from 1 to 12.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fromDate.month", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> FromDateMonth { get; set; }
+
+                    /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> FromDateDay { get; set; }
+
+                    /// <summary>Year of date. Must be from 1 to 9999.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fromDate.year", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> FromDateYear { get; set; }
+
+                    /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("toDate.day", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> ToDateDay { get; set; }
+
+                    /// <summary>Month of date. Must be from 1 to 12.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("toDate.month", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> ToDateMonth { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/stats/session/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^searchapplications/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "toDate.year", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "toDate.year",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         RequestParameters.Add(
                             "fromDate.month", new Google.Apis.Discovery.Parameter
@@ -3814,10 +4259,190 @@ namespace Google.Apis.CloudSearch.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                    }
+
+                }
+            }
+        }
+        private readonly UserResource user;
+
+        /// <summary>Gets the User resource.</summary>
+        public virtual UserResource User
+        {
+            get { return user; }
+        }
+
+        /// <summary>The "user" collection of methods.</summary>
+        public class UserResource
+        {
+            private const string Resource = "user";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public UserResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                searchapplications = new SearchapplicationsResource(service);
+
+            }
+
+            private readonly SearchapplicationsResource searchapplications;
+
+            /// <summary>Gets the Searchapplications resource.</summary>
+            public virtual SearchapplicationsResource Searchapplications
+            {
+                get { return searchapplications; }
+            }
+
+            /// <summary>The "searchapplications" collection of methods.</summary>
+            public class SearchapplicationsResource
+            {
+                private const string Resource = "searchapplications";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SearchapplicationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Get the users statistics for search application</summary>
+                /// <param name="name">The resource id of the search application session stats, in the following format:
+                /// searchapplications/{application_id}</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Get the users statistics for search application</summary>
+                public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetSearchApplicationUserStatsResponse>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource id of the search application session stats, in the following format:
+                    /// searchapplications/{application_id}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Year of date. Must be from 1 to 9999.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fromDate.year", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> FromDateYear { get; set; }
+
+                    /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("toDate.day", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> ToDateDay { get; set; }
+
+                    /// <summary>Month of date. Must be from 1 to 12.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("toDate.month", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> ToDateMonth { get; set; }
+
+                    /// <summary>Year of date. Must be from 1 to 9999.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("toDate.year", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> ToDateYear { get; set; }
+
+                    /// <summary>Month of date. Must be from 1 to 12.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fromDate.month", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> FromDateMonth { get; set; }
+
+                    /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> FromDateDay { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/stats/user/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^searchapplications/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "fromDate.year", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fromDate.year",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "toDate.day", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "toDate.day",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "toDate.month", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "toDate.month",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         RequestParameters.Add(
                             "toDate.year", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "toDate.year",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "fromDate.month", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fromDate.month",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "fromDate.day", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fromDate.day",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3953,6 +4578,375 @@ namespace Google.Apis.CloudSearch.v1
             }
 
         }
+
+        /// <summary>Get the query statistics for customer</summary>
+        public virtual GetQueryRequest GetQuery()
+        {
+            return new GetQueryRequest(service);
+        }
+
+        /// <summary>Get the query statistics for customer</summary>
+        public class GetQueryRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerQueryStatsResponse>
+        {
+            /// <summary>Constructs a new GetQuery request.</summary>
+            public GetQueryRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Year of date. Must be from 1 to 9999.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fromDate.year", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> FromDateYear { get; set; }
+
+            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("toDate.day", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> ToDateDay { get; set; }
+
+            /// <summary>Month of date. Must be from 1 to 12.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("toDate.month", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> ToDateMonth { get; set; }
+
+            /// <summary>Year of date. Must be from 1 to 9999.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("toDate.year", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> ToDateYear { get; set; }
+
+            /// <summary>Month of date. Must be from 1 to 12.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fromDate.month", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> FromDateMonth { get; set; }
+
+            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> FromDateDay { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getQuery"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/stats/query"; }
+            }
+
+            /// <summary>Initializes GetQuery parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "fromDate.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fromDate.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "toDate.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "toDate.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "toDate.month", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "toDate.month",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "toDate.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "toDate.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "fromDate.month", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fromDate.month",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "fromDate.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fromDate.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Get the # of search sessions for the customer</summary>
+        public virtual GetSessionRequest GetSession()
+        {
+            return new GetSessionRequest(service);
+        }
+
+        /// <summary>Get the # of search sessions for the customer</summary>
+        public class GetSessionRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerSessionStatsResponse>
+        {
+            /// <summary>Constructs a new GetSession request.</summary>
+            public GetSessionRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Year of date. Must be from 1 to 9999.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fromDate.year", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> FromDateYear { get; set; }
+
+            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("toDate.day", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> ToDateDay { get; set; }
+
+            /// <summary>Month of date. Must be from 1 to 12.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("toDate.month", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> ToDateMonth { get; set; }
+
+            /// <summary>Year of date. Must be from 1 to 9999.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("toDate.year", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> ToDateYear { get; set; }
+
+            /// <summary>Month of date. Must be from 1 to 12.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fromDate.month", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> FromDateMonth { get; set; }
+
+            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> FromDateDay { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getSession"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/stats/session"; }
+            }
+
+            /// <summary>Initializes GetSession parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "fromDate.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fromDate.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "toDate.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "toDate.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "toDate.month", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "toDate.month",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "toDate.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "toDate.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "fromDate.month", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fromDate.month",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "fromDate.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fromDate.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Get the users statistics for customer</summary>
+        public virtual GetUserRequest GetUser()
+        {
+            return new GetUserRequest(service);
+        }
+
+        /// <summary>Get the users statistics for customer</summary>
+        public class GetUserRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerUserStatsResponse>
+        {
+            /// <summary>Constructs a new GetUser request.</summary>
+            public GetUserRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Year of date. Must be from 1 to 9999.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fromDate.year", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> FromDateYear { get; set; }
+
+            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("toDate.day", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> ToDateDay { get; set; }
+
+            /// <summary>Month of date. Must be from 1 to 12.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("toDate.month", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> ToDateMonth { get; set; }
+
+            /// <summary>Year of date. Must be from 1 to 9999.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("toDate.year", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> ToDateYear { get; set; }
+
+            /// <summary>Month of date. Must be from 1 to 12.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fromDate.month", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> FromDateMonth { get; set; }
+
+            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> FromDateDay { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getUser"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/stats/user"; }
+            }
+
+            /// <summary>Initializes GetUser parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "fromDate.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fromDate.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "toDate.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "toDate.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "toDate.month", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "toDate.month",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "toDate.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "toDate.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "fromDate.month", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fromDate.month",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "fromDate.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fromDate.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
     }
 }
 
@@ -4021,6 +5015,58 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Number of items aggregrated by status code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemCountByStatus")]
         public virtual System.Collections.Generic.IList<ItemCountByStatus> ItemCountByStatus { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class CustomerQueryStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Date for which query stats were calculated. Stats calculated on the next day close to midnight are
+        /// returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("queryCountByStatus")]
+        public virtual System.Collections.Generic.IList<QueryCountByStatus> QueryCountByStatus { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class CustomerSessionStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Date for which session stats were calculated. Stats calculated on the next day close to midnight
+        /// are returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; } 
+
+        /// <summary>The count of search sessions on the day</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchSessionsCount")]
+        public virtual System.Nullable<long> SearchSessionsCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class CustomerUserStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Date for which session stats were calculated. Stats calculated on the next day close to midnight
+        /// are returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; } 
+
+        /// <summary>The count of unique active users in the past one day</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneDayActiveUsersCount")]
+        public virtual System.Nullable<long> OneDayActiveUsersCount { get; set; } 
+
+        /// <summary>The count of unique active users in the past seven days</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sevenDaysActiveUsersCount")]
+        public virtual System.Nullable<long> SevenDaysActiveUsersCount { get; set; } 
+
+        /// <summary>The count of unique active users in the past thirty days</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirtyDaysActiveUsersCount")]
+        public virtual System.Nullable<long> ThirtyDaysActiveUsersCount { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4610,11 +5656,65 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class GetCustomerQueryStatsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual System.Collections.Generic.IList<CustomerQueryStats> Stats { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GetCustomerSessionStatsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual System.Collections.Generic.IList<CustomerSessionStats> Stats { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GetCustomerUserStatsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual System.Collections.Generic.IList<CustomerUserStats> Stats { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class GetDataSourceIndexStatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Summary of indexed item counts, one for each day in the requested range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual System.Collections.Generic.IList<DataSourceIndexStats> Stats { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GetSearchApplicationQueryStatsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual System.Collections.Generic.IList<SearchApplicationQueryStats> Stats { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GetSearchApplicationSessionStatsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual System.Collections.Generic.IList<SearchApplicationSessionStats> Stats { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GetSearchApplicationUserStatsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual System.Collections.Generic.IList<SearchApplicationUserStats> Stats { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5708,6 +6808,19 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class QueryCountByStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; } 
+
+        /// <summary>This represents the http status code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusCode")]
+        public virtual System.Nullable<int> StatusCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class QueryInterpretation : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("interpretationType")]
@@ -5718,6 +6831,11 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// the reason is NO_RESULTS_FOUND_FOR_USER_QUERY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interpretedQuery")]
         public virtual string InterpretedQuery { get; set; } 
+
+        /// <summary>The reason for interpretation of the query. This field will not be UNSPECIFIED if the
+        /// interpretation type is not NONE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5730,6 +6848,12 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// disable natural language interpretation. NL interpretation only applies to predefined datasources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableNlInterpretation")]
         public virtual System.Nullable<bool> DisableNlInterpretation { get; set; } 
+
+        /// <summary>Enable this flag to turn off all internal optimizations like natural language (NL) interpretation
+        /// of queries, supplemental result retrieval, and usage of synonyms including custom ones. Nl interpretation
+        /// will be disabled if either one of the two flags is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableVerbatimMode")]
+        public virtual System.Nullable<bool> EnableVerbatimMode { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6090,6 +7214,58 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Configuration for a sources specified in data_source_restrictions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceConfig")]
         public virtual System.Collections.Generic.IList<SourceConfig> SourceConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SearchApplicationQueryStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Date for which query stats were calculated. Stats calculated on the next day close to midnight are
+        /// returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("queryCountByStatus")]
+        public virtual System.Collections.Generic.IList<QueryCountByStatus> QueryCountByStatus { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SearchApplicationSessionStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Date for which session stats were calculated. Stats calculated on the next day close to midnight
+        /// are returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; } 
+
+        /// <summary>The count of search sessions on the day</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchSessionsCount")]
+        public virtual System.Nullable<long> SearchSessionsCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SearchApplicationUserStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Date for which session stats were calculated. Stats calculated on the next day close to midnight
+        /// are returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; } 
+
+        /// <summary>The count of unique active users in the past one day</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneDayActiveUsersCount")]
+        public virtual System.Nullable<long> OneDayActiveUsersCount { get; set; } 
+
+        /// <summary>The count of unique active users in the past seven days</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sevenDaysActiveUsersCount")]
+        public virtual System.Nullable<long> SevenDaysActiveUsersCount { get; set; } 
+
+        /// <summary>The count of unique active users in the past thirty days</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirtyDaysActiveUsersCount")]
+        public virtual System.Nullable<long> ThirtyDaysActiveUsersCount { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
