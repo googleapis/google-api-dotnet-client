@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/x0hh3gtPLcz1xY-gHYgBU4e236I\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/ixkLftF7SIEiqkkwNYopCpZnQlw\"",
  "discoveryVersion": "v1",
  "id": "drive:v3",
  "name": "drive",
  "version": "v3",
- "revision": "20190919",
+ "revision": "20190926",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -2468,7 +2468,7 @@
       },
       "keepRevisionForever": {
        "type": "boolean",
-       "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive.",
+       "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions.",
        "default": "false",
        "location": "query"
       },
@@ -2520,7 +2520,7 @@
       },
       "keepRevisionForever": {
        "type": "boolean",
-       "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive.",
+       "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions.",
        "default": "false",
        "location": "query"
       },
@@ -2853,7 +2853,7 @@
       },
       "keepRevisionForever": {
        "type": "boolean",
-       "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive.",
+       "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions.",
        "default": "false",
        "location": "query"
       },

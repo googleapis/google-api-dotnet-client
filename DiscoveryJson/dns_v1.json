@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/4XBvQkN5hQomez2poc7wKcvRjxM\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/D8irFZMaRIbo-J4ghLdWbdVZZNg\"",
  "discoveryVersion": "v1",
  "id": "dns:v1",
  "name": "dns",
  "version": "v1",
- "revision": "20190903",
+ "revision": "20190923",
  "title": "Google Cloud DNS API",
  "description": "Configures and serves authoritative DNS records.",
  "ownerDomain": "google.com",
@@ -713,6 +713,10 @@
     "enableInboundForwarding": {
      "type": "boolean",
      "description": "Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy."
+    },
+    "enableLogging": {
+     "type": "boolean",
+     "description": "Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set."
     },
     "id": {
      "type": "string",

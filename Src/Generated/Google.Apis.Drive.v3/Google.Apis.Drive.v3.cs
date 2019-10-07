@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190919 (1722)
+ *      <tr><th>API Rev<td>20190926 (1729)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -2131,7 +2131,8 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IgnoreDefaultVisibility { get; set; }
 
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
-            /// files with binary content in Google Drive.</summary>
+            /// files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the
+            /// limit is reached, try deleting pinned revisions.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }
@@ -2267,7 +2268,8 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IgnoreDefaultVisibility { get; set; }
 
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
-            /// files with binary content in Google Drive.</summary>
+            /// files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the
+            /// limit is reached, try deleting pinned revisions.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }
@@ -2443,7 +2445,8 @@ namespace Google.Apis.Drive.v3
             public virtual System.Nullable<bool> IgnoreDefaultVisibility { get; set; }
 
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
-            /// files with binary content in Google Drive.</summary>
+            /// files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the
+            /// limit is reached, try deleting pinned revisions.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }
@@ -3258,7 +3261,8 @@ namespace Google.Apis.Drive.v3
             public virtual string AddParents { get; set; }
 
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
-            /// files with binary content in Google Drive.</summary>
+            /// files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the
+            /// limit is reached, try deleting pinned revisions.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }
@@ -3458,7 +3462,8 @@ namespace Google.Apis.Drive.v3
             public virtual string AddParents { get; set; }
 
             /// <summary>Whether to set the 'keepForever' field in the new head revision. This is only applicable to
-            /// files with binary content in Google Drive.</summary>
+            /// files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the
+            /// limit is reached, try deleting pinned revisions.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("keepRevisionForever", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> KeepRevisionForever { get; set; }

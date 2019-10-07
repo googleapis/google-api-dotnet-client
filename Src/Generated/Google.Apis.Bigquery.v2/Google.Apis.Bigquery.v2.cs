@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190917 (1720)
+ *      <tr><th>API Rev<td>20190923 (1726)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -1407,32 +1407,32 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
-            /// <summary>Min value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
-            /// created after or at this timestamp are returned</summary>
-            [Google.Apis.Util.RequestParameterAttribute("minCreationTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ulong> MinCreationTime { get; set; }
-
             /// <summary>If set, retrieves only jobs whose parent is this job. Otherwise, retrieves only jobs which have
             /// no parent</summary>
             [Google.Apis.Util.RequestParameterAttribute("parentJobId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ParentJobId { get; set; }
 
-            /// <summary>Whether to display jobs owned by all users in the project. Default false</summary>
-            [Google.Apis.Util.RequestParameterAttribute("allUsers", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> AllUsers { get; set; }
+            /// <summary>Min value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
+            /// created after or at this timestamp are returned</summary>
+            [Google.Apis.Util.RequestParameterAttribute("minCreationTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> MinCreationTime { get; set; }
 
             /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Max value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
-            /// created before or at this timestamp are returned</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxCreationTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ulong> MaxCreationTime { get; set; }
+            /// <summary>Whether to display jobs owned by all users in the project. Default false</summary>
+            [Google.Apis.Util.RequestParameterAttribute("allUsers", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AllUsers { get; set; }
 
             /// <summary>Maximum number of results to return</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Max value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
+            /// created before or at this timestamp are returned</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxCreationTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> MaxCreationTime { get; set; }
 
             /// <summary>Filter for job state</summary>
             [Google.Apis.Util.RequestParameterAttribute("stateFilter", Google.Apis.Util.RequestParameterType.Query)]
@@ -1501,15 +1501,6 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "minCreationTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "minCreationTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "parentJobId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parentJobId",
@@ -1519,9 +1510,9 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "allUsers", new Google.Apis.Discovery.Parameter
+                    "minCreationTime", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "allUsers",
+                        Name = "minCreationTime",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1537,9 +1528,9 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxCreationTime", new Google.Apis.Discovery.Parameter
+                    "allUsers", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxCreationTime",
+                        Name = "allUsers",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1549,6 +1540,15 @@ namespace Google.Apis.Bigquery.v2
                     "maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxCreationTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxCreationTime",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2146,13 +2146,13 @@ namespace Google.Apis.Bigquery.v2
             }
 
 
-            /// <summary>Maximum number of results to return</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
             /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Maximum number of results to return</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2179,18 +2179,18 @@ namespace Google.Apis.Bigquery.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxResults",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "maxResults", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2858,10 +2858,6 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TableId { get; private set; }
 
-            /// <summary>Maximum number of results to return</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
             /// <summary>List of fields to return (comma-separated). If unspecified, all fields are returned</summary>
             [Google.Apis.Util.RequestParameterAttribute("selectedFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SelectedFields { get; set; }
@@ -2873,6 +2869,10 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Page token, returned by a previous call, identifying the result set</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Maximum number of results to return</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2926,15 +2926,6 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "selectedFields", new Google.Apis.Discovery.Parameter
                     {
                         Name = "selectedFields",
@@ -2956,6 +2947,15 @@ namespace Google.Apis.Bigquery.v2
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3638,6 +3638,99 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Optional. The name of this argument. Can be absent for function return argument.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Arima coefficients.</summary>
+    public class ArimaCoefficients : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Auto-regressive coefficients, an array of double.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRegressiveCoefficients")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> AutoRegressiveCoefficients { get; set; } 
+
+        /// <summary>Intercept coefficient, just a double not an array.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interceptCoefficient")]
+        public virtual System.Nullable<double> InterceptCoefficient { get; set; } 
+
+        /// <summary>Moving-average coefficients, an array of double.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("movingAverageCoefficients")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> MovingAverageCoefficients { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>ARIMA model fitting metrics.</summary>
+    public class ArimaFittingMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>AIC</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aic")]
+        public virtual System.Nullable<double> Aic { get; set; } 
+
+        /// <summary>log-likelihood</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logLikelihood")]
+        public virtual System.Nullable<double> LogLikelihood { get; set; } 
+
+        /// <summary>variance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variance")]
+        public virtual System.Nullable<double> Variance { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Arima model information.</summary>
+    public class ArimaModelInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Arima coefficients.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arimaCoefficients")]
+        public virtual ArimaCoefficients ArimaCoefficients { get; set; } 
+
+        /// <summary>Arima fitting metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arimaFittingMetrics")]
+        public virtual ArimaFittingMetrics ArimaFittingMetrics { get; set; } 
+
+        /// <summary>Non-seasonal order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonSeasonalOrder")]
+        public virtual ArimaOrder NonSeasonalOrder { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Arima order, can be used for both non-seasonal and seasonal parts.</summary>
+    public class ArimaOrder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Order of the differencing part.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("d")]
+        public virtual System.Nullable<long> D { get; set; } 
+
+        /// <summary>Order of the autoregressive part.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p")]
+        public virtual System.Nullable<long> P { get; set; } 
+
+        /// <summary>Order of the moving-average part.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("q")]
+        public virtual System.Nullable<long> Q { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>(Auto-)arima fitting result. Wrap everything in ArimaResult for easier refactoring if we want to use
+    /// model-specific iteration results.</summary>
+    public class ArimaResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This message is repeated because there are multiple arima models fitted in auto-arima. For non-
+        /// auto-arima model, its size is one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arimaModelInfo")]
+        public virtual System.Collections.Generic.IList<ArimaModelInfo> ArimaModelInfo { get; set; } 
+
+        /// <summary>Seasonal periods. Repeated because multiple periods are supported for one time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seasonalPeriods")]
+        public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4761,6 +4854,9 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>Information about a single iteration of the training run.</summary>
     public class IterationResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("arimaResult")]
+        public virtual ArimaResult ArimaResult { get; set; } 
+
         /// <summary>Information about top clusters for clustering models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterInfos")]
         public virtual System.Collections.Generic.IList<ClusterInfo> ClusterInfos { get; set; } 

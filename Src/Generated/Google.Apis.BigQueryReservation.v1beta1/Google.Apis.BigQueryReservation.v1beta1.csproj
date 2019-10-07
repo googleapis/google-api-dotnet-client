@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.BigQueryReservation.v1beta1 Client Library</Title>
-    <Version>1.41.1.1729</Version>
+    <Version>1.41.1.1731</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

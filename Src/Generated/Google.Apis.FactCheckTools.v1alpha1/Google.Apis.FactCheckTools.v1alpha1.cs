@@ -700,6 +700,13 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             }
 
 
+            /// <summary>An integer that specifies the current offset (that is, starting result location) in search
+            /// results. This field is only considered if `page_token` is unset, and if the request is not for a
+            /// specific URL. For example, 0 means to return results starting from the first matching result, and 10
+            /// means to return from the 11th result.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("offset", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> Offset { get; set; }
+
             /// <summary>The pagination token. You may provide the `next_page_token` returned from a previous List
             /// request, if any, in order to get the next page. All other fields must have the same values as in the
             /// previous request.</summary>
@@ -721,13 +728,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             /// specified along with an organization.</summary>
             [Google.Apis.Util.RequestParameterAttribute("url", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Url { get; set; }
-
-            /// <summary>An integer that specifies the current offset (that is, starting result location) in search
-            /// results. This field is only considered if `page_token` is unset, and if the request is not for a
-            /// specific URL. For example, 0 means to return results starting from the first matching result, and 10
-            /// means to return from the 11th result.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("offset", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> Offset { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -753,6 +753,15 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "offset", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "offset",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
@@ -784,15 +793,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
                     "url", new Google.Apis.Discovery.Parameter
                     {
                         Name = "url",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "offset", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "offset",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190925 (1728)
+ *      <tr><th>API Rev<td>20191003 (1736)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1683,9 +1683,9 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>Identity of the operation. This is expected to be unique within the scope of the service that
         /// generated the operation, and guarantees idempotency in case of retries.
         ///
-        /// UUID version 4 is recommended, though not required. In scenarios where an operation is computed from
-        /// existing information and an idempotent id is desirable for deduplication purpose, UUID version 5 is
-        /// recommended. See RFC 4122 for details.</summary>
+        /// In order to ensure best performance and latency in the Quota backends, operation_ids are optimally
+        /// associated with time, so that related operations can be accessed fast in storage. For this reason, the
+        /// recommended token for services that intend to operate at a high QPS is Unix time in nanos + UUID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
 

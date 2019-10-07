@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190919 (1722)
+ *      <tr><th>API Rev<td>20190926 (1729)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -11401,8 +11401,9 @@ namespace Google.Apis.Drive.v2.Data
 
         /// <summary>Whether this revision is pinned to prevent automatic purging. This will only be populated and can
         /// only be modified on files with content stored in Drive which are not Google Docs. Revisions can also be
-        /// pinned when they are created through the drive.files.insert/update/copy by using the pinned query
-        /// parameter.</summary>
+        /// pinned when they are created through the drive.files.insert/update/copy by using the pinned query parameter.
+        /// Pinned revisions are stored indefinitely using additional storage quota, up to a maximum of 200
+        /// revisions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pinned")]
         public virtual System.Nullable<bool> Pinned { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker'>Service Broker API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190924 (1727)
+ *      <tr><th>API Rev<td>20190930 (1733)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker'>
  *              https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker</a>
@@ -423,7 +423,9 @@ namespace Google.Apis.ServiceBroker.v1
 
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
+        ///
+        /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -432,7 +434,9 @@ namespace Google.Apis.ServiceBroker.v1
             return new SetIamPolicyRequest(service, body, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
+        ///
+        /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
         public class SetIamPolicyRequest : ServiceBrokerBaseServiceRequest<Google.Apis.ServiceBroker.v1.Data.GoogleIamV1Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>

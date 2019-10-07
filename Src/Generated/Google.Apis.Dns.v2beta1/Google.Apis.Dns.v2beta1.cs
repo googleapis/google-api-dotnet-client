@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20190903 (1706)
+ *      <tr><th>API Rev<td>20190923 (1726)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -3154,6 +3154,11 @@ namespace Google.Apis.Dns.v2beta1.Data
         /// bound to this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableInboundForwarding")]
         public virtual System.Nullable<bool> EnableInboundForwarding { get; set; } 
+
+        /// <summary>Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging
+        /// if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLogging")]
+        public virtual System.Nullable<bool> EnableLogging { get; set; } 
 
         /// <summary>Unique identifier for the resource; defined by the server (output only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]

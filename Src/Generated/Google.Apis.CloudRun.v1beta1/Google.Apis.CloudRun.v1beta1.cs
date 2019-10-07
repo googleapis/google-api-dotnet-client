@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190920 (1723)
+ *      <tr><th>API Rev<td>20190930 (1733)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -65,6 +65,7 @@ namespace Google.Apis.CloudRun.v1beta1
             : base(initializer)
         {
             customresourcedefinitions = new CustomresourcedefinitionsResource(this);
+            namespaces = new NamespacesResource(this);
             projects = new ProjectsResource(this);
         }
 
@@ -110,21 +111,7 @@ namespace Google.Apis.CloudRun.v1beta1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Run API.</summary>
-        public class Scope
-        {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
-            public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-        }
-
-        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Run API.</summary>
-        public static class ScopeConstants
-        {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
-            public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
-        }
 
 
 
@@ -134,6 +121,14 @@ namespace Google.Apis.CloudRun.v1beta1
         public virtual CustomresourcedefinitionsResource Customresourcedefinitions
         {
             get { return customresourcedefinitions; }
+        }
+
+        private readonly NamespacesResource namespaces;
+
+        /// <summary>Gets the Namespaces resource.</summary>
+        public virtual NamespacesResource Namespaces
+        {
+            get { return namespaces; }
         }
 
         private readonly ProjectsResource projects;
@@ -367,10 +362,6 @@ namespace Google.Apis.CloudRun.v1beta1
             }
 
 
-
-            [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> Limit { get; set; }
-
             /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently used
             /// by Cloud Run.</summary>
             [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
@@ -390,18 +381,22 @@ namespace Google.Apis.CloudRun.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string FieldSelector { get; set; }
 
-            /// <summary>Not currently used by Cloud Run.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
-
             /// <summary>The baseline resource version from which the list or watch operation should start. Not
             /// currently used by Cloud Run.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ResourceVersion { get; set; }
 
+            /// <summary>Not currently used by Cloud Run.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
+
             /// <summary>Optional encoded string to continue paging.</summary>
             [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Continue { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> Limit { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -427,15 +422,6 @@ namespace Google.Apis.CloudRun.v1beta1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "limit", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "limit",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "watch", new Google.Apis.Discovery.Parameter
                     {
@@ -473,18 +459,18 @@ namespace Google.Apis.CloudRun.v1beta1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "includeUninitialized", new Google.Apis.Discovery.Parameter
+                    "resourceVersion", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "includeUninitialized",
+                        Name = "resourceVersion",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "resourceVersion", new Google.Apis.Discovery.Parameter
+                    "includeUninitialized", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "resourceVersion",
+                        Name = "includeUninitialized",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -499,8 +485,121 @@ namespace Google.Apis.CloudRun.v1beta1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "limit", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "limit",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
+        }
+    }
+
+    /// <summary>The "namespaces" collection of methods.</summary>
+    public class NamespacesResource
+    {
+        private const string Resource = "namespaces";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public NamespacesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            customresourcedefinitions = new CustomresourcedefinitionsResource(service);
+
+        }
+
+        private readonly CustomresourcedefinitionsResource customresourcedefinitions;
+
+        /// <summary>Gets the Customresourcedefinitions resource.</summary>
+        public virtual CustomresourcedefinitionsResource Customresourcedefinitions
+        {
+            get { return customresourcedefinitions; }
+        }
+
+        /// <summary>The "customresourcedefinitions" collection of methods.</summary>
+        public class CustomresourcedefinitionsResource
+        {
+            private const string Resource = "customresourcedefinitions";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CustomresourcedefinitionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Rpc to get information about a CustomResourceDefinition.</summary>
+            /// <param name="name">The name of the CustomResourceDefinition being retrieved. If needed, replace {namespace_id} with
+            /// the project ID.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Rpc to get information about a CustomResourceDefinition.</summary>
+            public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1beta1.Data.CustomResourceDefinition>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the CustomResourceDefinition being retrieved. If needed, replace {namespace_id}
+                /// with the project ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "apis/apiextensions.k8s.io/v1beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^namespaces/[^/]+/customresourcedefinitions/[^/]+$",
+                        });
+                }
+
+            }
         }
     }
 
@@ -568,6 +667,68 @@ namespace Google.Apis.CloudRun.v1beta1
                 }
 
 
+                /// <summary>Rpc to get information about a CustomResourceDefinition.</summary>
+                /// <param name="name">The name of the CustomResourceDefinition being retrieved. If needed, replace {namespace_id} with
+                /// the project ID.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Rpc to get information about a CustomResourceDefinition.</summary>
+                public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1beta1.Data.CustomResourceDefinition>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the CustomResourceDefinition being retrieved. If needed, replace
+                    /// {namespace_id} with the project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/customresourcedefinitions/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Rpc to list custom resource definitions.</summary>
                 /// <param name="parent">The project ID or project number from which the storages should be listed.</param>
                 public virtual ListRequest List(string parent)
@@ -591,24 +752,29 @@ namespace Google.Apis.CloudRun.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Watch { get; set; }
+
                     /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
                     /// in, and notIn.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LabelSelector { get; set; }
 
-                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ResourceVersion { get; set; }
+                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
+                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FieldSelector { get; set; }
 
                     /// <summary>Not currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
 
-                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
-                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string FieldSelector { get; set; }
+                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ResourceVersion { get; set; }
 
                     /// <summary>Optional encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
@@ -617,11 +783,6 @@ namespace Google.Apis.CloudRun.v1beta1
 
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Limit { get; set; }
-
-                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> Watch { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -657,6 +818,15 @@ namespace Google.Apis.CloudRun.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "watch", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "watch",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "labelSelector", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "labelSelector",
@@ -666,9 +836,9 @@ namespace Google.Apis.CloudRun.v1beta1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
+                            "fieldSelector", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "resourceVersion",
+                                Name = "fieldSelector",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -684,9 +854,9 @@ namespace Google.Apis.CloudRun.v1beta1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
+                            "resourceVersion", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "fieldSelector",
+                                Name = "resourceVersion",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -705,15 +875,6 @@ namespace Google.Apis.CloudRun.v1beta1
                             "limit", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "limit",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -975,31 +1136,6 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Initializer is information about an initializer that has not yet completed.</summary>
-    public class Initializer : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>name of the process that is responsible for initializing this object.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Initializers tracks the progress of initialization.</summary>
-    public class Initializers : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Pending is a list of initializers that must execute in order before this object is visible. When
-        /// the last pending initializer is removed, and no failing result is set, the initializers struct will be set
-        /// to nil and the object is considered as initialized and visible to all clients. +patchMergeKey=name
-        /// +patchStrategy=merge</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pending")]
-        public virtual System.Collections.Generic.IList<Initializer> Pending { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>JSON represents any valid JSON value. These types are supported: bool, int64, float64, string,
     /// []interface{}, map[string]interface{} and nil.</summary>
     public class JSON : Google.Apis.Requests.IDirectResponseSchema
@@ -1221,67 +1357,93 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>ObjectMeta is metadata that all persisted resources must have, which includes all objects users must
-    /// create.</summary>
+    /// <summary>k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have,
+    /// which includes all objects users must create.</summary>
     public class ObjectMeta : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Annotations is an unstructured key value map stored with a resource that may be set by external
-        /// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
-        /// modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional</summary>
+        /// <summary>(Optional)
+        ///
+        /// Annotations is an unstructured key value map stored with a resource that may be set by external tools to
+        /// store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying
+        /// objects. More info: http://kubernetes.io/docs/user-guide/annotations</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string,string> Annotations { get; set; } 
 
-        /// <summary>Not currently supported by Cloud Run.
+        /// <summary>(Optional)
+        ///
+        /// Cloud Run fully managed: not supported
+        ///
+        /// Cloud Run for Anthos: supported
         ///
         /// The name of the cluster which the object belongs to. This is used to distinguish resources with same name
         /// and namespace in different clusters. This field is not set anywhere right now and apiserver is going to
-        /// ignore it if set in create or update request. +optional</summary>
+        /// ignore it if set in create or update request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>CreationTimestamp is a timestamp representing the server time when this object was created. It is
-        /// not guaranteed to be set in happens-before order across separate operations. Clients may not set this value.
-        /// It is represented in RFC3339 form and is in UTC.
+        /// <summary>(Optional)
+        ///
+        /// CreationTimestamp is a timestamp representing the server time when this object was created. It is not
+        /// guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It
+        /// is represented in RFC3339 form and is in UTC.
         ///
         /// Populated by the system. Read-only. Null for lists. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional</summary>
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual object CreationTimestamp { get; set; } 
 
-        /// <summary>Not currently supported by Cloud Run.
+        /// <summary>(Optional)
+        ///
+        /// Cloud Run fully managed: not supported
+        ///
+        /// Cloud Run for Anthos: supported
         ///
         /// Number of seconds allowed for this object to gracefully terminate before it will be removed from the system.
-        /// Only set when deletionTimestamp is also set. May only be shortened. Read-only. +optional</summary>
+        /// Only set when deletionTimestamp is also set. May only be shortened. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionGracePeriodSeconds")]
         public virtual System.Nullable<int> DeletionGracePeriodSeconds { get; set; } 
 
-        /// <summary>DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is
-        /// set by the server when a graceful deletion is requested by the user, and is not directly settable by a
-        /// client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by
-        /// name) after the time in this field, once the finalizers list is empty. As long as the finalizers list
-        /// contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be
-        /// set further into the future, although it may be shortened or the resource may be deleted prior to this time.
-        /// For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a
-        /// graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a
-        /// hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the
+        /// <summary>(Optional)
+        ///
+        /// Cloud Run fully managed: not supported
+        ///
+        /// Cloud Run for Anthos: supported
+        ///
+        /// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the
+        /// server when a graceful deletion is requested by the user, and is not directly settable by a client. The
+        /// resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after
+        /// the time in this field, once the finalizers list is empty. As long as the finalizers list contains items,
+        /// deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into
+        /// the future, although it may be shortened or the resource may be deleted prior to this time. For example, a
+        /// user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful
+        /// termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard
+        /// termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the
         /// presence of network partitions, this object may still exist after this timestamp, until an administrator or
         /// automated process can determine the resource is fully terminated. If not set, graceful deletion of the
         /// object has not been requested.
         ///
         /// Populated by the system when a graceful deletion is requested. Read-only. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional</summary>
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTimestamp")]
         public virtual object DeletionTimestamp { get; set; } 
 
-        /// <summary>Not currently supported by Cloud Run.
+        /// <summary>(Optional)
+        ///
+        /// Cloud Run fully managed: not supported
+        ///
+        /// Cloud Run for Anthos: supported
         ///
         /// Must be empty before the object is deleted from the registry. Each entry is an identifier for the
         /// responsible component that will remove the entry from the list. If the deletionTimestamp of the object is
-        /// non-nil, entries in this list can only be removed. +optional +patchStrategy=merge</summary>
+        /// non-nil, entries in this list can only be removed. +patchStrategy=merge</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalizers")]
         public virtual System.Collections.Generic.IList<string> Finalizers { get; set; } 
 
-        /// <summary>Not currently supported by Cloud Run.
+        /// <summary>(Optional)
+        ///
+        /// Cloud Run fully managed: not supported
+        ///
+        /// Cloud Run for Anthos: supported
         ///
         /// GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has
         /// not been provided. If this field is used, the name returned to the client will be different than the name
@@ -1295,31 +1457,22 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         /// header).
         ///
         /// Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-
-        /// conventions.md#idempotency +optional string generateName = 2;</summary>
+        /// conventions.md#idempotency string generateName = 2;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generateName")]
         public virtual string GenerateName { get; set; } 
 
-        /// <summary>A sequence number representing a specific generation of the desired state. Populated by the system.
-        /// Read-only. +optional</summary>
+        /// <summary>(Optional)
+        ///
+        /// A sequence number representing a specific generation of the desired state. Populated by the system. Read-
+        /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<int> Generation { get; set; } 
 
-        /// <summary>Not currently supported by Cloud Run.
+        /// <summary>(Optional)
         ///
-        /// An initializer is a controller which enforces some system invariant at object creation time. This field is a
-        /// list of initializers that have not yet acted on this object. If nil or empty, this object has been
-        /// completely initialized. Otherwise, the object is considered uninitialized and is hidden (in list/watch and
-        /// get calls) from clients that haven't explicitly asked to observe uninitialized objects.
-        ///
-        /// When an object is created, the system will populate this list with the current set of initializers. Only
-        /// privileged users may set or modify this list. Once it is empty, it may not be modified further by any
-        /// user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initializers")]
-        public virtual Initializers Initializers { get; set; } 
-
-        /// <summary>Map of string keys and values that can be used to organize and categorize (scope and select)
-        /// objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs
-        /// /user-guide/labels +optional</summary>
+        /// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May
+        /// match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-
+        /// guide/labels</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -1335,32 +1488,44 @@ namespace Google.Apis.CloudRun.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; } 
 
-        /// <summary>List of objects that own this object. If ALL objects in the list have been deleted, this object
-        /// will be garbage collected. +optional</summary>
+        /// <summary>(Optional)
+        ///
+        /// Cloud Run fully managed: not supported
+        ///
+        /// Cloud Run for Anthos: supported
+        ///
+        /// List of objects that own this object. If ALL objects in the list have been deleted, this object will be
+        /// garbage collected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerReferences")]
         public virtual System.Collections.Generic.IList<OwnerReference> OwnerReferences { get; set; } 
 
-        /// <summary>An opaque value that represents the internal version of this object that can be used by clients to
-        /// determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch
-        /// operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified
-        /// back to the server. They may only be valid for a particular resource or set of resources.
+        /// <summary>(Optional)
+        ///
+        /// An opaque value that represents the internal version of this object that can be used by clients to determine
+        /// when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation
+        /// on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to
+        /// the server. They may only be valid for a particular resource or set of resources.
         ///
         /// Populated by the system. Read-only. Value must be treated as opaque by clients and . More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
-        /// +optional</summary>
+        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-
+        /// consistency</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVersion")]
         public virtual string ResourceVersion { get; set; } 
 
-        /// <summary>SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string
-        /// selfLink = 4;</summary>
+        /// <summary>(Optional)
+        ///
+        /// SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink =
+        /// 4;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>UID is the unique in time and space value for this object. It is typically generated by the server
-        /// on successful creation of a resource and is not allowed to change on PUT operations.
+        /// <summary>(Optional)
         ///
-        /// Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
-        /// +optional</summary>
+        /// UID is the unique in time and space value for this object. It is typically generated by the server on
+        /// successful creation of a resource and is not allowed to change on PUT operations.
+        ///
+        /// Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-
+        /// guide/identifiers#uids</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; } 
 
