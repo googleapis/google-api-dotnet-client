@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-approval/docs'>Access Approval API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190927 (1730)
+ *      <tr><th>API Rev<td>20191008 (1741)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-approval/docs'>
  *              https://cloud.google.com/access-approval/docs</a>
@@ -626,14 +626,6 @@ namespace Google.Apis.AccessApproval.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>A token identifying the page of results to return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Requested page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
                 ///
                 /// [not set]: Requests that are pending or have active approvals. ALL: All requests. PENDING: Only
@@ -641,6 +633,14 @@ namespace Google.Apis.AccessApproval.v1beta1
                 /// (including expired) requests. </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>A token identifying the page of results to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Requested page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -676,6 +676,15 @@ namespace Google.Apis.AccessApproval.v1beta1
                             Pattern = @"^folders/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -688,15 +697,6 @@ namespace Google.Apis.AccessApproval.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -800,9 +800,9 @@ namespace Google.Apis.AccessApproval.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The update mask applies to the settings. For the `FieldMask` definition, see
-            /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If this field is
-            /// left unset, only the notification_emails field will be updated.</summary>
+            /// <summary>For the `FieldMask` definition, see https://developers.google.com/protocol-
+            /// buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the
+            /// notification_emails field will be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -1142,14 +1142,6 @@ namespace Google.Apis.AccessApproval.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>A token identifying the page of results to return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Requested page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
                 ///
                 /// [not set]: Requests that are pending or have active approvals. ALL: All requests. PENDING: Only
@@ -1157,6 +1149,14 @@ namespace Google.Apis.AccessApproval.v1beta1
                 /// (including expired) requests. </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>A token identifying the page of results to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Requested page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1192,6 +1192,15 @@ namespace Google.Apis.AccessApproval.v1beta1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1204,15 +1213,6 @@ namespace Google.Apis.AccessApproval.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1316,9 +1316,9 @@ namespace Google.Apis.AccessApproval.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The update mask applies to the settings. For the `FieldMask` definition, see
-            /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If this field is
-            /// left unset, only the notification_emails field will be updated.</summary>
+            /// <summary>For the `FieldMask` definition, see https://developers.google.com/protocol-
+            /// buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the
+            /// notification_emails field will be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -1832,9 +1832,9 @@ namespace Google.Apis.AccessApproval.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The update mask applies to the settings. For the `FieldMask` definition, see
-            /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If this field is
-            /// left unset, only the notification_emails field will be updated.</summary>
+            /// <summary>For the `FieldMask` definition, see https://developers.google.com/protocol-
+            /// buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the
+            /// notification_emails field will be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -1904,7 +1904,8 @@ namespace Google.Apis.AccessApproval.v1beta1.Data
         /// If name refers to a folder or project, enrollment can only be done on an all or nothing basis.
         ///
         /// If a cloud_product is repeated in this list, the first entry will be honored and all following entries will
-        /// be discarded.</summary>
+        /// be discarded. A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported
+        /// services is expanded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrolledServices")]
         public virtual System.Collections.Generic.IList<EnrolledService> EnrolledServices { get; set; } 
 
@@ -1917,7 +1918,7 @@ namespace Google.Apis.AccessApproval.v1beta1.Data
 
         /// <summary>A list of email addresses to which notifications relating to approval requests should be sent.
         /// Notifications relating to a resource will be sent to all emails in the settings of ancestor resources of
-        /// that resource.</summary>
+        /// that resource. A maximum of 50 email addresses are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationEmails")]
         public virtual System.Collections.Generic.IList<string> NotificationEmails { get; set; } 
 

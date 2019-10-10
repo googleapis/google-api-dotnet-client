@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20190929 (1732)
+ *      <tr><th>API Rev<td>20191001 (1734)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -1694,23 +1694,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
-                /// <summary>Determines how values in the response should be rendered. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ResponseValueRenderOptionEnum> ResponseValueRenderOption { get; set; }
-
-                /// <summary>Determines how values in the response should be rendered. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.</summary>
-                public enum ResponseValueRenderOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
-                    FORMATTEDVALUE,
-                    [Google.Apis.Util.StringValueAttribute("UNFORMATTED_VALUE")]
-                    UNFORMATTEDVALUE,
-                    [Google.Apis.Util.StringValueAttribute("FORMULA")]
-                    FORMULA,
-                }
-
                 /// <summary>How the input data should be interpreted.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("valueInputOption", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ValueInputOptionEnum> ValueInputOption { get; set; }
@@ -1749,6 +1732,23 @@ namespace Google.Apis.Sheets.v4
                 /// trailing empty rows and columns).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
+
+                /// <summary>Determines how values in the response should be rendered. The default render option is
+                /// ValueRenderOption.FORMATTED_VALUE.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ResponseValueRenderOptionEnum> ResponseValueRenderOption { get; set; }
+
+                /// <summary>Determines how values in the response should be rendered. The default render option is
+                /// ValueRenderOption.FORMATTED_VALUE.</summary>
+                public enum ResponseValueRenderOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
+                    FORMATTEDVALUE,
+                    [Google.Apis.Util.StringValueAttribute("UNFORMATTED_VALUE")]
+                    UNFORMATTEDVALUE,
+                    [Google.Apis.Util.StringValueAttribute("FORMULA")]
+                    FORMULA,
+                }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1799,15 +1799,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "responseValueRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "responseValueRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "valueInputOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "valueInputOption",
@@ -1829,6 +1820,15 @@ namespace Google.Apis.Sheets.v4
                         "includeValuesInResponse", new Google.Apis.Discovery.Parameter
                         {
                             Name = "includeValuesInResponse",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "responseValueRenderOption", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "responseValueRenderOption",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2544,6 +2544,40 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The second color that is alternating. (Required)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondBandColor")]
         public virtual Color SecondBandColor { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Formatting options for baseline value.</summary>
+    public class BaselineValueFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The comparison type of key value with baseline value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparisonType")]
+        public virtual string ComparisonType { get; set; } 
+
+        /// <summary>Description which is appended after the baseline value. This field is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Color to be used, in case baseline value represents a negative change for key value. This field is
+        /// optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negativeColor")]
+        public virtual Color NegativeColor { get; set; } 
+
+        /// <summary>Specifies the horizontal text positioning of baseline value. This field is optional. If not
+        /// specified, default positioning is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("position")]
+        public virtual TextPosition Position { get; set; } 
+
+        /// <summary>Color to be used, in case baseline value represents a positive change for key value. This field is
+        /// optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("positiveColor")]
+        public virtual Color PositiveColor { get; set; } 
+
+        /// <summary>Text formatting options for baseline value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
+        public virtual TextFormat TextFormat { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3352,6 +3386,21 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Custom number formatting options for chart attributes.</summary>
+    public class ChartCustomNumberFormatOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Custom prefix to be prepended to the chart attribute. This field is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
+        public virtual string Prefix { get; set; } 
+
+        /// <summary>Custom suffix to be appended to the chart attribute. This field is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
+        public virtual string Suffix { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The data included in a domain or series.</summary>
     public class ChartData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3432,6 +3481,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>A pie chart specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pieChart")]
         public virtual PieChartSpec PieChart { get; set; } 
+
+        /// <summary>A scorecard chart specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scorecardChart")]
+        public virtual ScorecardChartSpec ScorecardChart { get; set; } 
 
         /// <summary>The subtitle of the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
@@ -4805,6 +4858,22 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Formatting options for key value.</summary>
+    public class KeyValueFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the horizontal text positioning of key value. This field is optional. If not specified,
+        /// default positioning is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("position")]
+        public virtual TextPosition Position { get; set; } 
+
+        /// <summary>Text formatting options for key value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
+        public virtual TextFormat TextFormat { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Properties that describe the style of a line.</summary>
     public class LineStyle : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5736,6 +5805,53 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The values in the row, one per column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<CellData> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A scorecard chart. Scorecard charts are used to highlight key performance indicators, known as KPIs, on
+    /// the spreadsheet. A scorecard chart can represent things like total sales, average cost, or a top selling item.
+    /// You can specify a single data value, or aggregate over a range of data. Percentage or absolute difference from a
+    /// baseline value can be highlighted, like changes over time.</summary>
+    public class ScorecardChartSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The aggregation type for key and baseline chart data in scorecard chart. This field is
+        /// optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateType")]
+        public virtual string AggregateType { get; set; } 
+
+        /// <summary>The data for scorecard baseline value. This field is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baselineValueData")]
+        public virtual ChartData BaselineValueData { get; set; } 
+
+        /// <summary>Formatting options for baseline value. This field is needed only if baseline_value_data field is
+        /// specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baselineValueFormat")]
+        public virtual BaselineValueFormat BaselineValueFormat { get; set; } 
+
+        /// <summary>Custom formatting options for numeric key/baseline values in scorecard chart. This field is used
+        /// only when [number_format_source] field is set to [ChartNumberFormatSource.CUSTOM]. This field is
+        /// optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFormatOptions")]
+        public virtual ChartCustomNumberFormatOptions CustomFormatOptions { get; set; } 
+
+        /// <summary>The data for scorecard key value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyValueData")]
+        public virtual ChartData KeyValueData { get; set; } 
+
+        /// <summary>Formatting options for key value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyValueFormat")]
+        public virtual KeyValueFormat KeyValueFormat { get; set; } 
+
+        /// <summary>The number format source used in the scorecard chart. This field is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberFormatSource")]
+        public virtual string NumberFormatSource { get; set; } 
+
+        /// <summary>Value to scale scorecard key and baseline value. For example, a factor of 10 can be used to divide
+        /// all values in the chart by 10. This field is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleFactor")]
+        public virtual System.Nullable<double> ScaleFactor { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

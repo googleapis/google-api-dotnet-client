@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20190806 (1678)
+ *      <tr><th>API Rev<td>20191003 (1736)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -212,6 +212,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>View user schemas on your domain</summary>
             public static string AdminDirectoryUserschemaReadonly = "https://www.googleapis.com/auth/admin.directory.userschema.readonly";
 
+            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Admin Directory API.</summary>
@@ -297,6 +300,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>View user schemas on your domain</summary>
             public const string AdminDirectoryUserschemaReadonly = "https://www.googleapis.com/auth/admin.directory.userschema.readonly";
+
+            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
         }
 
@@ -11056,7 +11062,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>(Read-only) MAC address used by the Chromebook’s internal ethernet port, and for onboard network
         /// (ethernet) interface. The format is twelve (12) hexadecimal digits without any delimiter (uppercase
-        /// letters). This is only relevant for Dell devices.</summary>
+        /// letters). This is only relevant for some devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ethernetMacAddress0")]
         public virtual string EthernetMacAddress0 { get; set; } 
 
@@ -11113,7 +11119,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("manufactureDate")]
         public virtual string ManufactureDate { get; set; } 
 
-        /// <summary>Mobile Equipment identifier for the 3G mobile card in the Chromebook (Read-only)</summary>
+        /// <summary>Contains either the Mobile Equipment identifier (MEID) or the International Mobile Equipment
+        /// Identity (IMEI) for the 3G mobile card in the Chromebook (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meid")]
         public virtual string Meid { get; set; } 
 

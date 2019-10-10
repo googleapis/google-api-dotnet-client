@@ -1,51 +1,62 @@
 {
+  "rootUrl": "https://youtubereporting.googleapis.com/",
+  "basePath": "",
+  "ownerDomain": "google.com",
+  "name": "youtubereporting",
+  "batchPath": "batch",
+  "revision": "20191008",
+  "documentationLink": "https://developers.google.com/youtube/reporting/v1/reports/",
+  "id": "youtubereporting:v1",
   "title": "YouTube Reporting API",
-  "ownerName": "Google",
   "discoveryVersion": "v1",
+  "ownerName": "Google",
   "resources": {
-    "jobs": {
+    "media": {
       "methods": {
-        "delete": {
+        "download": {
+          "description": "Method for media download. Download is supported\non the URI `/v1/media/{+name}?alt=media`.",
+          "useMediaDownloadService": true,
+          "supportsMediaDownload": true,
           "response": {
-            "$ref": "Empty"
+            "$ref": "GdataMedia"
           },
           "parameterOrder": [
-            "jobId"
+            "resourceName"
           ],
-          "httpMethod": "DELETE",
+          "httpMethod": "GET",
           "parameters": {
-            "onBehalfOfContentOwner": {
-              "location": "query",
-              "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
-              "type": "string"
-            },
-            "jobId": {
-              "location": "path",
-              "description": "The ID of the job to delete.",
+            "resourceName": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "pattern": "^.+$",
+              "location": "path",
+              "description": "Name of the media that is being downloaded."
             }
           },
           "scopes": [
             "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
             "https://www.googleapis.com/auth/yt-analytics.readonly"
           ],
-          "flatPath": "v1/jobs/{jobId}",
-          "path": "v1/jobs/{jobId}",
-          "id": "youtubereporting.jobs.delete",
-          "description": "Deletes a job."
-        },
+          "flatPath": "v1/media/{mediaId}",
+          "path": "v1/media/{+resourceName}",
+          "id": "youtubereporting.media.download"
+        }
+      }
+    },
+    "jobs": {
+      "methods": {
         "list": {
-          "httpMethod": "GET",
+          "description": "Lists jobs.",
           "response": {
             "$ref": "ListJobsResponse"
           },
           "parameterOrder": [],
+          "httpMethod": "GET",
           "parameters": {
             "pageToken": {
+              "location": "query",
               "description": "A token identifying a page of results the server should return. Typically,\nthis is the value of\nListReportTypesResponse.next_page_token\nreturned in response to the previous call to the `ListJobs` method.",
-              "type": "string",
-              "location": "query"
+              "type": "string"
             },
             "includeSystemManaged": {
               "location": "query",
@@ -53,15 +64,15 @@
               "type": "boolean"
             },
             "pageSize": {
+              "type": "integer",
               "location": "query",
               "description": "Requested page size. Server may return fewer jobs than requested.\nIf unspecified, server will pick an appropriate default.",
-              "format": "int32",
-              "type": "integer"
+              "format": "int32"
             },
             "onBehalfOfContentOwner": {
+              "location": "query",
               "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
-              "type": "string",
-              "location": "query"
+              "type": "string"
             }
           },
           "scopes": [
@@ -69,30 +80,29 @@
             "https://www.googleapis.com/auth/yt-analytics.readonly"
           ],
           "flatPath": "v1/jobs",
-          "id": "youtubereporting.jobs.list",
           "path": "v1/jobs",
-          "description": "Lists jobs."
+          "id": "youtubereporting.jobs.list"
         },
         "get": {
           "description": "Gets a job.",
           "httpMethod": "GET",
-          "response": {
-            "$ref": "Job"
-          },
           "parameterOrder": [
             "jobId"
           ],
+          "response": {
+            "$ref": "Job"
+          },
           "parameters": {
             "jobId": {
+              "location": "path",
               "description": "The ID of the job to retrieve.",
               "required": true,
-              "type": "string",
-              "location": "path"
+              "type": "string"
             },
             "onBehalfOfContentOwner": {
-              "location": "query",
               "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
-              "type": "string"
+              "type": "string",
+              "location": "query"
             }
           },
           "scopes": [
@@ -104,6 +114,8 @@
           "path": "v1/jobs/{jobId}"
         },
         "create": {
+          "path": "v1/jobs",
+          "id": "youtubereporting.jobs.create",
           "request": {
             "$ref": "Job"
           },
@@ -119,27 +131,55 @@
           ],
           "parameters": {
             "onBehalfOfContentOwner": {
+              "location": "query",
               "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
-              "type": "string",
-              "location": "query"
+              "type": "string"
             }
           },
-          "flatPath": "v1/jobs",
-          "path": "v1/jobs",
-          "id": "youtubereporting.jobs.create"
+          "flatPath": "v1/jobs"
+        },
+        "delete": {
+          "path": "v1/jobs/{jobId}",
+          "id": "youtubereporting.jobs.delete",
+          "description": "Deletes a job.",
+          "response": {
+            "$ref": "Empty"
+          },
+          "parameterOrder": [
+            "jobId"
+          ],
+          "httpMethod": "DELETE",
+          "parameters": {
+            "jobId": {
+              "required": true,
+              "type": "string",
+              "location": "path",
+              "description": "The ID of the job to delete."
+            },
+            "onBehalfOfContentOwner": {
+              "location": "query",
+              "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
+              "type": "string"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+            "https://www.googleapis.com/auth/yt-analytics.readonly"
+          ],
+          "flatPath": "v1/jobs/{jobId}"
         }
       },
       "resources": {
         "reports": {
           "methods": {
             "list": {
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "jobId"
-              ],
               "response": {
                 "$ref": "ListReportsResponse"
               },
+              "parameterOrder": [
+                "jobId"
+              ],
+              "httpMethod": "GET",
               "scopes": [
                 "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
                 "https://www.googleapis.com/auth/yt-analytics.readonly"
@@ -158,21 +198,21 @@
                   "type": "string"
                 },
                 "startTimeAtOrAfter": {
-                  "description": "If set, only reports whose start time is greater than or equal the\nspecified date/time are returned.",
-                  "format": "google-datetime",
                   "type": "string",
-                  "location": "query"
+                  "location": "query",
+                  "description": "If set, only reports whose start time is greater than or equal the\nspecified date/time are returned.",
+                  "format": "google-datetime"
                 },
                 "pageToken": {
-                  "description": "A token identifying a page of results the server should return. Typically,\nthis is the value of\nListReportsResponse.next_page_token\nreturned in response to the previous call to the `ListReports` method.",
                   "type": "string",
-                  "location": "query"
+                  "location": "query",
+                  "description": "A token identifying a page of results the server should return. Typically,\nthis is the value of\nListReportsResponse.next_page_token\nreturned in response to the previous call to the `ListReports` method."
                 },
                 "pageSize": {
-                  "type": "integer",
                   "location": "query",
                   "description": "Requested page size. Server may return fewer report types than requested.\nIf unspecified, server will pick an appropriate default.",
-                  "format": "int32"
+                  "format": "int32",
+                  "type": "integer"
                 },
                 "onBehalfOfContentOwner": {
                   "location": "query",
@@ -180,41 +220,18 @@
                   "type": "string"
                 },
                 "startTimeBefore": {
-                  "description": "If set, only reports whose start time is smaller than the specified\ndate/time are returned.",
-                  "format": "google-datetime",
                   "type": "string",
-                  "location": "query"
+                  "location": "query",
+                  "description": "If set, only reports whose start time is smaller than the specified\ndate/time are returned.",
+                  "format": "google-datetime"
                 }
               },
               "flatPath": "v1/jobs/{jobId}/reports",
-              "id": "youtubereporting.jobs.reports.list",
               "path": "v1/jobs/{jobId}/reports",
+              "id": "youtubereporting.jobs.reports.list",
               "description": "Lists reports created by a specific job.\nReturns NOT_FOUND if the job does not exist."
             },
             "get": {
-              "scopes": [
-                "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-                "https://www.googleapis.com/auth/yt-analytics.readonly"
-              ],
-              "parameters": {
-                "reportId": {
-                  "required": true,
-                  "type": "string",
-                  "location": "path",
-                  "description": "The ID of the report to retrieve."
-                },
-                "jobId": {
-                  "location": "path",
-                  "description": "The ID of the job.",
-                  "required": true,
-                  "type": "string"
-                },
-                "onBehalfOfContentOwner": {
-                  "type": "string",
-                  "location": "query",
-                  "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel)."
-                }
-              },
               "flatPath": "v1/jobs/{jobId}/reports/{reportId}",
               "path": "v1/jobs/{jobId}/reports/{reportId}",
               "id": "youtubereporting.jobs.reports.get",
@@ -226,7 +243,30 @@
                 "jobId",
                 "reportId"
               ],
-              "httpMethod": "GET"
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+                "https://www.googleapis.com/auth/yt-analytics.readonly"
+              ],
+              "parameters": {
+                "reportId": {
+                  "description": "The ID of the report to retrieve.",
+                  "required": true,
+                  "type": "string",
+                  "location": "path"
+                },
+                "jobId": {
+                  "location": "path",
+                  "description": "The ID of the job.",
+                  "required": true,
+                  "type": "string"
+                },
+                "onBehalfOfContentOwner": {
+                  "location": "query",
+                  "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
+                  "type": "string"
+                }
+              }
             }
           }
         }
@@ -235,142 +275,60 @@
     "reportTypes": {
       "methods": {
         "list": {
-          "id": "youtubereporting.reportTypes.list",
-          "path": "v1/reportTypes",
-          "description": "Lists report types.",
-          "httpMethod": "GET",
-          "parameterOrder": [],
           "response": {
             "$ref": "ListReportTypesResponse"
           },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+            "https://www.googleapis.com/auth/yt-analytics.readonly"
+          ],
           "parameters": {
             "onBehalfOfContentOwner": {
-              "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
               "type": "string",
-              "location": "query"
+              "location": "query",
+              "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel)."
             },
             "pageToken": {
+              "location": "query",
               "description": "A token identifying a page of results the server should return. Typically,\nthis is the value of\nListReportTypesResponse.next_page_token\nreturned in response to the previous call to the `ListReportTypes` method.",
-              "type": "string",
-              "location": "query"
+              "type": "string"
             },
             "includeSystemManaged": {
+              "type": "boolean",
               "location": "query",
-              "description": "If set to true, also system-managed report types will be returned;\notherwise only the report types that can be used to create new reporting\njobs will be returned.",
-              "type": "boolean"
+              "description": "If set to true, also system-managed report types will be returned;\notherwise only the report types that can be used to create new reporting\njobs will be returned."
             },
             "pageSize": {
+              "type": "integer",
               "location": "query",
               "description": "Requested page size. Server may return fewer report types than requested.\nIf unspecified, server will pick an appropriate default.",
-              "format": "int32",
-              "type": "integer"
+              "format": "int32"
             }
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-            "https://www.googleapis.com/auth/yt-analytics.readonly"
-          ],
-          "flatPath": "v1/reportTypes"
-        }
-      }
-    },
-    "media": {
-      "methods": {
-        "download": {
-          "scopes": [
-            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-            "https://www.googleapis.com/auth/yt-analytics.readonly"
-          ],
-          "parameters": {
-            "resourceName": {
-              "required": true,
-              "type": "string",
-              "pattern": "^.+$",
-              "location": "path",
-              "description": "Name of the media that is being downloaded."
-            }
-          },
-          "flatPath": "v1/media/{mediaId}",
-          "path": "v1/media/{+resourceName}",
-          "id": "youtubereporting.media.download",
-          "description": "Method for media download. Download is supported\non the URI `/v1/media/{+name}?alt=media`.",
-          "supportsMediaDownload": true,
-          "useMediaDownloadService": true,
-          "response": {
-            "$ref": "GdataMedia"
-          },
-          "parameterOrder": [
-            "resourceName"
-          ],
-          "httpMethod": "GET"
+          "flatPath": "v1/reportTypes",
+          "path": "v1/reportTypes",
+          "id": "youtubereporting.reportTypes.list",
+          "description": "Lists report types."
         }
       }
     }
   },
   "parameters": {
-    "alt": {
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "type": "string",
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
     "callback": {
       "location": "query",
       "description": "JSONP",
       "type": "string"
     },
     "oauth_token": {
-      "location": "query",
       "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -379,23 +337,237 @@
       "enum": [
         "1",
         "2"
+      ]
+    },
+    "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
       ],
-      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "access_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth access token."
+    },
+    "upload_protocol": {
+      "type": "string",
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     }
   },
   "schemas": {
-    "GdataCompositeMedia": {
+    "GdataDiffDownloadResponse": {
       "type": "object",
       "properties": {
-        "inline": {
+        "objectLocation": {
+          "$ref": "GdataCompositeMedia",
+          "description": "gdata"
+        }
+      },
+      "id": "GdataDiffDownloadResponse",
+      "description": "gdata"
+    },
+    "GdataDiffUploadRequest": {
+      "description": "gdata",
+      "type": "object",
+      "properties": {
+        "objectVersion": {
+          "description": "gdata",
+          "type": "string"
+        },
+        "objectInfo": {
+          "description": "gdata",
+          "$ref": "GdataCompositeMedia"
+        },
+        "checksumsInfo": {
+          "$ref": "GdataCompositeMedia",
+          "description": "gdata"
+        }
+      },
+      "id": "GdataDiffUploadRequest"
+    },
+    "GdataBlobstore2Info": {
+      "description": "gdata",
+      "type": "object",
+      "properties": {
+        "blobId": {
+          "description": "gdata",
+          "type": "string"
+        },
+        "downloadReadHandle": {
+          "description": "gdata",
+          "format": "byte",
+          "type": "string"
+        },
+        "readToken": {
+          "description": "gdata",
+          "type": "string"
+        },
+        "uploadMetadataContainer": {
           "type": "string",
           "description": "gdata",
           "format": "byte"
         },
-        "blobstore2Info": {
+        "blobGeneration": {
           "description": "gdata",
-          "$ref": "GdataBlobstore2Info"
+          "format": "int64",
+          "type": "string"
+        }
+      },
+      "id": "GdataBlobstore2Info"
+    },
+    "ListReportTypesResponse": {
+      "description": "Response message for ReportingService.ListReportTypes.",
+      "type": "object",
+      "properties": {
+        "reportTypes": {
+          "description": "The list of report types.",
+          "type": "array",
+          "items": {
+            "$ref": "ReportType"
+          }
+        },
+        "nextPageToken": {
+          "description": "A token to retrieve next page of results.\nPass this value in the\nListReportTypesRequest.page_token\nfield in the subsequent call to `ListReportTypes` method to retrieve the\nnext page of results.",
+          "type": "string"
+        }
+      },
+      "id": "ListReportTypesResponse"
+    },
+    "ReportType": {
+      "id": "ReportType",
+      "description": "A report type.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the report type (max. 100 characters)."
+        },
+        "id": {
+          "description": "The ID of the report type (max. 100 characters).",
+          "type": "string"
+        },
+        "systemManaged": {
+          "description": "True if this a system-managed report type; otherwise false. Reporting jobs\nfor system-managed report types are created automatically and can thus not\nbe used in the `CreateJob` method.",
+          "type": "boolean"
+        },
+        "deprecateTime": {
+          "type": "string",
+          "description": "The date/time when this report type was/will be deprecated.",
+          "format": "google-datetime"
+        }
+      }
+    },
+    "Empty": {
+      "type": "object",
+      "properties": {},
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
+    },
+    "ListJobsResponse": {
+      "type": "object",
+      "properties": {
+        "jobs": {
+          "type": "array",
+          "items": {
+            "$ref": "Job"
+          },
+          "description": "The list of jobs."
+        },
+        "nextPageToken": {
+          "description": "A token to retrieve next page of results.\nPass this value in the\nListJobsRequest.page_token\nfield in the subsequent call to `ListJobs` method to retrieve the next\npage of results.",
+          "type": "string"
+        }
+      },
+      "id": "ListJobsResponse",
+      "description": "Response message for ReportingService.ListJobs."
+    },
+    "GdataCompositeMedia": {
+      "description": "gdata",
+      "type": "object",
+      "properties": {
+        "path": {
+          "description": "gdata",
+          "type": "string"
+        },
+        "length": {
+          "description": "gdata",
+          "format": "int64",
+          "type": "string"
+        },
+        "cosmoBinaryReference": {
+          "type": "string",
+          "description": "gdata",
+          "format": "byte"
+        },
+        "referenceType": {
+          "enumDescriptions": [
+            "gdata",
+            "gdata",
+            "gdata",
+            "gdata",
+            "gdata"
+          ],
+          "enum": [
+            "PATH",
+            "BLOB_REF",
+            "INLINE",
+            "BIGSTORE_REF",
+            "COSMO_BINARY_REFERENCE"
+          ],
+          "description": "gdata",
+          "type": "string"
+        },
+        "md5Hash": {
+          "type": "string",
+          "description": "gdata",
+          "format": "byte"
+        },
+        "inline": {
+          "description": "gdata",
+          "format": "byte",
+          "type": "string"
+        },
+        "blobstore2Info": {
+          "$ref": "GdataBlobstore2Info",
+          "description": "gdata"
         },
         "blobRef": {
           "description": "gdata",
@@ -412,70 +584,33 @@
           "type": "integer"
         },
         "sha1Hash": {
-          "description": "gdata",
-          "format": "byte",
-          "type": "string"
-        },
-        "path": {
-          "description": "gdata",
-          "type": "string"
-        },
-        "length": {
-          "description": "gdata",
-          "format": "int64",
-          "type": "string"
-        },
-        "cosmoBinaryReference": {
-          "description": "gdata",
-          "format": "byte",
-          "type": "string"
-        },
-        "referenceType": {
-          "description": "gdata",
           "type": "string",
-          "enumDescriptions": [
-            "gdata",
-            "gdata",
-            "gdata",
-            "gdata",
-            "gdata"
-          ],
-          "enum": [
-            "PATH",
-            "BLOB_REF",
-            "INLINE",
-            "BIGSTORE_REF",
-            "COSMO_BINARY_REFERENCE"
-          ]
-        },
-        "md5Hash": {
           "description": "gdata",
-          "format": "byte",
-          "type": "string"
+          "format": "byte"
         }
       },
-      "id": "GdataCompositeMedia",
-      "description": "gdata"
+      "id": "GdataCompositeMedia"
     },
     "ListReportsResponse": {
-      "description": "Response message for ReportingService.ListReports.",
       "type": "object",
       "properties": {
-        "reports": {
-          "description": "The list of report types.",
-          "type": "array",
-          "items": {
-            "$ref": "Report"
-          }
-        },
         "nextPageToken": {
           "description": "A token to retrieve next page of results.\nPass this value in the\nListReportsRequest.page_token\nfield in the subsequent call to `ListReports` method to retrieve the next\npage of results.",
           "type": "string"
+        },
+        "reports": {
+          "type": "array",
+          "items": {
+            "$ref": "Report"
+          },
+          "description": "The list of report types."
         }
       },
-      "id": "ListReportsResponse"
+      "id": "ListReportsResponse",
+      "description": "Response message for ReportingService.ListReports."
     },
     "GdataContentTypeInfo": {
+      "id": "GdataContentTypeInfo",
       "description": "gdata",
       "type": "object",
       "properties": {
@@ -499,27 +634,41 @@
           "description": "gdata",
           "type": "string"
         }
-      },
-      "id": "GdataContentTypeInfo"
+      }
     },
     "GdataDiffUploadResponse": {
       "id": "GdataDiffUploadResponse",
       "description": "gdata",
       "type": "object",
       "properties": {
-        "originalObject": {
-          "$ref": "GdataCompositeMedia",
-          "description": "gdata"
-        },
         "objectVersion": {
           "type": "string",
+          "description": "gdata"
+        },
+        "originalObject": {
+          "$ref": "GdataCompositeMedia",
           "description": "gdata"
         }
       }
     },
     "Report": {
+      "id": "Report",
+      "description": "A report's metadata including the URL from which the report itself can be\ndownloaded.",
       "type": "object",
       "properties": {
+        "createTime": {
+          "type": "string",
+          "description": "The date/time when this report was created.",
+          "format": "google-datetime"
+        },
+        "jobId": {
+          "type": "string",
+          "description": "The ID of the job that created this report."
+        },
+        "id": {
+          "type": "string",
+          "description": "The server-generated ID of the report."
+        },
         "jobExpireTime": {
           "description": "The date/time when the job this report belongs to will expire/expired.",
           "format": "google-datetime",
@@ -531,52 +680,37 @@
           "type": "string"
         },
         "downloadUrl": {
-          "description": "The URL from which the report can be downloaded (max. 1000 characters).",
-          "type": "string"
+          "type": "string",
+          "description": "The URL from which the report can be downloaded (max. 1000 characters)."
         },
         "startTime": {
           "description": "The start of the time period that the report instance covers. The value is\ninclusive.",
           "format": "google-datetime",
           "type": "string"
-        },
-        "createTime": {
-          "type": "string",
-          "description": "The date/time when this report was created.",
-          "format": "google-datetime"
-        },
-        "jobId": {
-          "description": "The ID of the job that created this report.",
-          "type": "string"
-        },
-        "id": {
-          "type": "string",
-          "description": "The server-generated ID of the report."
         }
-      },
-      "id": "Report",
-      "description": "A report's metadata including the URL from which the report itself can be\ndownloaded."
+      }
     },
     "GdataDiffChecksumsResponse": {
       "description": "gdata",
       "type": "object",
       "properties": {
         "objectSizeBytes": {
-          "type": "string",
           "description": "gdata",
-          "format": "int64"
+          "format": "int64",
+          "type": "string"
         },
         "objectLocation": {
-          "description": "gdata",
-          "$ref": "GdataCompositeMedia"
+          "$ref": "GdataCompositeMedia",
+          "description": "gdata"
         },
         "objectVersion": {
           "description": "gdata",
           "type": "string"
         },
         "chunkSizeBytes": {
-          "type": "string",
           "description": "gdata",
-          "format": "int64"
+          "format": "int64",
+          "type": "string"
         },
         "checksumsLocation": {
           "$ref": "GdataCompositeMedia",
@@ -589,11 +723,11 @@
       "description": "gdata",
       "type": "object",
       "properties": {
-        "ignoreRange": {
+        "allowGzipCompression": {
           "description": "gdata",
           "type": "boolean"
         },
-        "allowGzipCompression": {
+        "ignoreRange": {
           "description": "gdata",
           "type": "boolean"
         }
@@ -604,16 +738,8 @@
       "description": "A job creating reports of a specific type.",
       "type": "object",
       "properties": {
-        "systemManaged": {
-          "description": "True if this a system-managed job that cannot be modified by the user;\notherwise false.",
-          "type": "boolean"
-        },
-        "id": {
-          "type": "string",
-          "description": "The server-generated ID of the job (max. 40 characters)."
-        },
-        "createTime": {
-          "description": "The creation date/time of the job.",
+        "expireTime": {
+          "description": "The date/time when this job will expire/expired. After a job expired, no\nnew reports are generated.",
           "format": "google-datetime",
           "type": "string"
         },
@@ -621,77 +747,66 @@
           "type": "string",
           "description": "The type of reports this job creates. Corresponds to the ID of a\nReportType."
         },
-        "expireTime": {
-          "description": "The date/time when this job will expire/expired. After a job expired, no\nnew reports are generated.",
-          "format": "google-datetime",
+        "name": {
+          "type": "string",
+          "description": "The name of the job (max. 100 characters)."
+        },
+        "systemManaged": {
+          "type": "boolean",
+          "description": "True if this a system-managed job that cannot be modified by the user;\notherwise false."
+        },
+        "id": {
+          "description": "The server-generated ID of the job (max. 40 characters).",
           "type": "string"
         },
-        "name": {
-          "description": "The name of the job (max. 100 characters).",
+        "createTime": {
+          "description": "The creation date/time of the job.",
+          "format": "google-datetime",
           "type": "string"
         }
       },
       "id": "Job"
     },
     "GdataObjectId": {
-      "id": "GdataObjectId",
       "description": "gdata",
       "type": "object",
       "properties": {
+        "generation": {
+          "description": "gdata",
+          "format": "int64",
+          "type": "string"
+        },
         "objectName": {
           "description": "gdata",
           "type": "string"
         },
         "bucketName": {
-          "description": "gdata",
-          "type": "string"
-        },
-        "generation": {
           "type": "string",
-          "description": "gdata",
-          "format": "int64"
+          "description": "gdata"
         }
-      }
+      },
+      "id": "GdataObjectId"
     },
     "GdataMedia": {
+      "description": "gdata",
       "type": "object",
       "properties": {
-        "hash": {
-          "description": "gdata",
-          "type": "string"
-        },
-        "filename": {
-          "type": "string",
-          "description": "gdata"
-        },
-        "blobstore2Info": {
-          "$ref": "GdataBlobstore2Info",
-          "description": "gdata"
-        },
-        "hashVerified": {
-          "description": "gdata",
-          "type": "boolean"
-        },
         "diffDownloadResponse": {
-          "$ref": "GdataDiffDownloadResponse",
-          "description": "gdata"
+          "description": "gdata",
+          "$ref": "GdataDiffDownloadResponse"
         },
         "cosmoBinaryReference": {
+          "type": "string",
           "description": "gdata",
-          "format": "byte",
-          "type": "string"
+          "format": "byte"
         },
         "isPotentialRetry": {
           "description": "gdata",
           "type": "boolean"
         },
         "md5Hash": {
-          "type": "string",
           "description": "gdata",
-          "format": "byte"
-        },
-        "algorithm": {
-          "description": "gdata",
+          "format": "byte",
           "type": "string"
         },
         "sha256Hash": {
@@ -699,20 +814,25 @@
           "format": "byte",
           "type": "string"
         },
-        "objectId": {
+        "algorithm": {
           "description": "gdata",
-          "$ref": "GdataObjectId"
+          "type": "string"
+        },
+        "objectId": {
+          "$ref": "GdataObjectId",
+          "description": "gdata"
         },
         "path": {
           "description": "gdata",
           "type": "string"
         },
         "bigstoreObjectRef": {
-          "type": "string",
           "description": "gdata",
-          "format": "byte"
+          "format": "byte",
+          "type": "string"
         },
         "referenceType": {
+          "type": "string",
           "enumDescriptions": [
             "gdata",
             "gdata",
@@ -743,17 +863,16 @@
             "COSMO_BINARY_REFERENCE",
             "ARBITRARY_BYTES"
           ],
-          "description": "gdata",
-          "type": "string"
+          "description": "gdata"
         },
         "inline": {
+          "type": "string",
           "description": "gdata",
-          "format": "byte",
-          "type": "string"
+          "format": "byte"
         },
         "diffUploadRequest": {
-          "description": "gdata",
-          "$ref": "GdataDiffUploadRequest"
+          "$ref": "GdataDiffUploadRequest",
+          "description": "gdata"
         },
         "diffChecksumsResponse": {
           "$ref": "GdataDiffChecksumsResponse",
@@ -775,21 +894,21 @@
           "type": "string"
         },
         "contentTypeInfo": {
-          "description": "gdata",
-          "$ref": "GdataContentTypeInfo"
+          "$ref": "GdataContentTypeInfo",
+          "description": "gdata"
         },
         "contentType": {
           "description": "gdata",
           "type": "string"
         },
         "downloadParameters": {
-          "$ref": "GdataDownloadParameters",
-          "description": "gdata"
+          "description": "gdata",
+          "$ref": "GdataDownloadParameters"
         },
         "mediaId": {
-          "type": "string",
           "description": "gdata",
-          "format": "byte"
+          "format": "byte",
+          "type": "string"
         },
         "compositeMedia": {
           "description": "gdata",
@@ -798,18 +917,18 @@
             "$ref": "GdataCompositeMedia"
           }
         },
+        "diffUploadResponse": {
+          "$ref": "GdataDiffUploadResponse",
+          "description": "gdata"
+        },
         "blobRef": {
           "description": "gdata",
           "format": "byte",
           "type": "string"
         },
-        "diffUploadResponse": {
-          "$ref": "GdataDiffUploadResponse",
-          "description": "gdata"
-        },
         "diffVersionResponse": {
-          "description": "gdata",
-          "$ref": "GdataDiffVersionResponse"
+          "$ref": "GdataDiffVersionResponse",
+          "description": "gdata"
         },
         "timestamp": {
           "description": "gdata",
@@ -817,154 +936,43 @@
           "type": "string"
         },
         "token": {
+          "type": "string",
+          "description": "gdata"
+        },
+        "hash": {
           "description": "gdata",
           "type": "string"
+        },
+        "filename": {
+          "description": "gdata",
+          "type": "string"
+        },
+        "blobstore2Info": {
+          "$ref": "GdataBlobstore2Info",
+          "description": "gdata"
+        },
+        "hashVerified": {
+          "description": "gdata",
+          "type": "boolean"
         }
       },
-      "id": "GdataMedia",
-      "description": "gdata"
+      "id": "GdataMedia"
     },
     "GdataDiffVersionResponse": {
+      "id": "GdataDiffVersionResponse",
       "description": "gdata",
       "type": "object",
       "properties": {
         "objectSizeBytes": {
-          "description": "gdata",
-          "format": "int64",
-          "type": "string"
-        },
-        "objectVersion": {
-          "type": "string",
-          "description": "gdata"
-        }
-      },
-      "id": "GdataDiffVersionResponse"
-    },
-    "GdataDiffDownloadResponse": {
-      "id": "GdataDiffDownloadResponse",
-      "description": "gdata",
-      "type": "object",
-      "properties": {
-        "objectLocation": {
-          "$ref": "GdataCompositeMedia",
-          "description": "gdata"
-        }
-      }
-    },
-    "GdataDiffUploadRequest": {
-      "id": "GdataDiffUploadRequest",
-      "description": "gdata",
-      "type": "object",
-      "properties": {
-        "objectVersion": {
-          "type": "string",
-          "description": "gdata"
-        },
-        "objectInfo": {
-          "$ref": "GdataCompositeMedia",
-          "description": "gdata"
-        },
-        "checksumsInfo": {
-          "$ref": "GdataCompositeMedia",
-          "description": "gdata"
-        }
-      }
-    },
-    "GdataBlobstore2Info": {
-      "type": "object",
-      "properties": {
-        "blobId": {
-          "description": "gdata",
-          "type": "string"
-        },
-        "downloadReadHandle": {
-          "description": "gdata",
-          "format": "byte",
-          "type": "string"
-        },
-        "readToken": {
-          "description": "gdata",
-          "type": "string"
-        },
-        "uploadMetadataContainer": {
-          "description": "gdata",
-          "format": "byte",
-          "type": "string"
-        },
-        "blobGeneration": {
           "type": "string",
           "description": "gdata",
           "format": "int64"
-        }
-      },
-      "id": "GdataBlobstore2Info",
-      "description": "gdata"
-    },
-    "Empty": {
-      "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-      "type": "object",
-      "properties": {}
-    },
-    "ReportType": {
-      "description": "A report type.",
-      "type": "object",
-      "properties": {
-        "deprecateTime": {
-          "type": "string",
-          "description": "The date/time when this report type was/will be deprecated.",
-          "format": "google-datetime"
         },
-        "name": {
-          "description": "The name of the report type (max. 100 characters).",
-          "type": "string"
-        },
-        "id": {
-          "description": "The ID of the report type (max. 100 characters).",
-          "type": "string"
-        },
-        "systemManaged": {
-          "type": "boolean",
-          "description": "True if this a system-managed report type; otherwise false. Reporting jobs\nfor system-managed report types are created automatically and can thus not\nbe used in the `CreateJob` method."
-        }
-      },
-      "id": "ReportType"
-    },
-    "ListReportTypesResponse": {
-      "id": "ListReportTypesResponse",
-      "description": "Response message for ReportingService.ListReportTypes.",
-      "type": "object",
-      "properties": {
-        "reportTypes": {
-          "description": "The list of report types.",
-          "type": "array",
-          "items": {
-            "$ref": "ReportType"
-          }
-        },
-        "nextPageToken": {
-          "description": "A token to retrieve next page of results.\nPass this value in the\nListReportTypesRequest.page_token\nfield in the subsequent call to `ListReportTypes` method to retrieve the\nnext page of results.",
+        "objectVersion": {
+          "description": "gdata",
           "type": "string"
         }
       }
-    },
-    "ListJobsResponse": {
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "type": "string",
-          "description": "A token to retrieve next page of results.\nPass this value in the\nListJobsRequest.page_token\nfield in the subsequent call to `ListJobs` method to retrieve the next\npage of results."
-        },
-        "jobs": {
-          "description": "The list of jobs.",
-          "type": "array",
-          "items": {
-            "$ref": "Job"
-          }
-        }
-      },
-      "id": "ListJobsResponse",
-      "description": "Response message for ReportingService.ListJobs."
     }
   },
   "icons": {
@@ -987,15 +995,7 @@
       }
     }
   },
-  "kind": "discovery#restDescription",
-  "description": "Schedules reporting jobs containing your YouTube Analytics data and downloads the resulting bulk data reports in the form of CSV files.",
   "servicePath": "",
-  "rootUrl": "https://youtubereporting.googleapis.com/",
-  "basePath": "",
-  "ownerDomain": "google.com",
-  "name": "youtubereporting",
-  "batchPath": "batch",
-  "id": "youtubereporting:v1",
-  "documentationLink": "https://developers.google.com/youtube/reporting/v1/reports/",
-  "revision": "20191002"
+  "description": "Schedules reporting jobs containing your YouTube Analytics data and downloads the resulting bulk data reports in the form of CSV files.",
+  "kind": "discovery#restDescription"
 }

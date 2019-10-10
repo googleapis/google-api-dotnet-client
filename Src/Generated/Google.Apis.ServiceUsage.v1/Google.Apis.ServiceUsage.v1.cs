@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191002 (1735)
+ *      <tr><th>API Rev<td>20191008 (1741)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -597,6 +597,10 @@ namespace Google.Apis.ServiceUsage.v1
             }
 
 
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -608,10 +612,6 @@ namespace Google.Apis.ServiceUsage.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -638,6 +638,15 @@ namespace Google.Apis.ServiceUsage.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -659,15 +668,6 @@ namespace Google.Apis.ServiceUsage.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2143,6 +2143,41 @@ namespace Google.Apis.ServiceUsage.v1.Data
         /// <summary>Configuration controlling usage of this service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usage")]
         public virtual Usage Usage { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for getting service identity.</summary>
+    public class GoogleApiServiceusageV1beta1GetServiceIdentityResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Service identity that service producer can use to access consumer resources. If exists is true, it
+        /// contains email and unique_id. If exists is false, it contains pre-constructed email and empty
+        /// unique_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identity")]
+        public virtual GoogleApiServiceusageV1beta1ServiceIdentity Identity { get; set; } 
+
+        /// <summary>Service identity state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Service identity for a service. This is the identity that service producer should use to access
+    /// consumer resources.</summary>
+    public class GoogleApiServiceusageV1beta1ServiceIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The email address of the service account that a service producer would use to access consumer
+        /// resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; } 
+
+        /// <summary>The unique and stable id of the service account.
+        /// https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts#ServiceAccount</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
+        public virtual string UniqueId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

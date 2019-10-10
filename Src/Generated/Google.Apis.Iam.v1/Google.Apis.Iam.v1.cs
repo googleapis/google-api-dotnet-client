@@ -3799,6 +3799,29 @@ namespace Google.Apis.Iam.v1
             }
 
 
+            /// <summary>The `parent` parameter's value depends on the target resource for the request, namely
+            /// [`roles`](/iam/reference/rest/v1/roles), [`projects`](/iam/reference/rest/v1/projects.roles), or
+            /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each resource type's `parent` value
+            /// format is described below:
+            ///
+            /// * [`roles.list()`](/iam/reference/rest/v1/roles/list): An empty string. This method doesn't require a
+            /// resource; it simply returns all [predefined roles](/iam/docs/understanding-roles#predefined_roles) in
+            /// Cloud IAM. Example request URL: `https://iam.googleapis.com/v1/roles`
+            ///
+            /// * [`projects.roles.list()`](/iam/reference/rest/v1/projects.roles/list): `projects/{PROJECT_ID}`. This
+            /// method lists all project-level [custom roles](/iam/docs/understanding-custom-roles). Example request
+            /// URL: `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles`
+            ///
+            /// * [`organizations.roles.list()`](/iam/reference/rest/v1/organizations.roles/list):
+            /// `organizations/{ORGANIZATION_ID}`. This method lists all organization-level [custom roles](/iam/docs
+            /// /understanding-custom-roles). Example request URL:
+            /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
+            ///
+            /// Note: Wildcard (*) values are invalid; you must specify a complete project ID or organization
+            /// ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
             /// <summary>Include Roles that have been deleted.</summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
@@ -3828,29 +3851,6 @@ namespace Google.Apis.Iam.v1
                 FULL,
             }
 
-            /// <summary>The `parent` parameter's value depends on the target resource for the request, namely
-            /// [`roles`](/iam/reference/rest/v1/roles), [`projects`](/iam/reference/rest/v1/projects.roles), or
-            /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each resource type's `parent` value
-            /// format is described below:
-            ///
-            /// * [`roles.list()`](/iam/reference/rest/v1/roles/list): An empty string. This method doesn't require a
-            /// resource; it simply returns all [predefined roles](/iam/docs/understanding-roles#predefined_roles) in
-            /// Cloud IAM. Example request URL: `https://iam.googleapis.com/v1/roles`
-            ///
-            /// * [`projects.roles.list()`](/iam/reference/rest/v1/projects.roles/list): `projects/{PROJECT_ID}`. This
-            /// method lists all project-level [custom roles](/iam/docs/understanding-custom-roles). Example request
-            /// URL: `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles`
-            ///
-            /// * [`organizations.roles.list()`](/iam/reference/rest/v1/organizations.roles/list):
-            /// `organizations/{ORGANIZATION_ID}`. This method lists all organization-level [custom roles](/iam/docs
-            /// /understanding-custom-roles). Example request URL:
-            /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
-            ///
-            /// Note: Wildcard (*) values are invalid; you must specify a complete project ID or organization
-            /// ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -3875,6 +3875,15 @@ namespace Google.Apis.Iam.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "showDeleted", new Google.Apis.Discovery.Parameter
                     {
@@ -3906,15 +3915,6 @@ namespace Google.Apis.Iam.v1
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

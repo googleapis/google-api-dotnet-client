@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/PfsYH4SylfyiPgMQZOnlxmSaIZo\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/E4CTHSN0AHdeHi9lEozbcqqqyUQ\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v3",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v3",
- "revision": "20190930",
+ "revision": "20191009",
  "title": "Google Play Developer API",
  "description": "Accesses Android application developers' Google Play accounts.",
  "ownerDomain": "google.com",
@@ -796,6 +796,10 @@
      "type": "string",
      "description": "The time the product was purchased, in milliseconds since the epoch (Jan 1, 1970).",
      "format": "int64"
+    },
+    "purchaseToken": {
+     "type": "string",
+     "description": "The purchase token generated to identify this purchase."
     },
     "purchaseType": {
      "type": "integer",

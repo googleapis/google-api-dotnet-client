@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190930 (1733)
+ *      <tr><th>API Rev<td>20191008 (1741)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -838,10 +838,6 @@ namespace Google.Apis.RemoteBuildExecution.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -849,6 +845,10 @@ namespace Google.Apis.RemoteBuildExecution.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -884,15 +884,6 @@ namespace Google.Apis.RemoteBuildExecution.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -905,6 +896,15 @@ namespace Google.Apis.RemoteBuildExecution.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1720,9 +1720,21 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dockerPrep")]
         public virtual object DockerPrep { get; set; } 
 
+        /// <summary>The timestamp when docker prepartion begins.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerPrepStartTime")]
+        public virtual object DockerPrepStartTime { get; set; } 
+
         /// <summary>The time spent downloading the input files and constructing the working directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("download")]
         public virtual object Download { get; set; } 
+
+        /// <summary>The timestamp when downloading the input files begins.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadStartTime")]
+        public virtual object DownloadStartTime { get; set; } 
+
+        /// <summary>The timestamp when execution begins.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("execStartTime")]
+        public virtual object ExecStartTime { get; set; } 
 
         /// <summary>The time spent executing the command (i.e., doing useful work).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("execution")]
@@ -1743,6 +1755,10 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         /// <summary>The time spent uploading the output files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upload")]
         public virtual object Upload { get; set; } 
+
+        /// <summary>The timestamp when uploading the output files begins.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadStartTime")]
+        public virtual object UploadStartTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

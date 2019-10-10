@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Policy Troubleshooter API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20190929 (1732)
+ *      <tr><th>API Rev<td>20191005 (1738)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -460,6 +460,7 @@ namespace Google.Apis.PolicyTroubleshooter.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rolePermission")]
         public virtual string RolePermission { get; set; } 
 
+        /// <summary>The relevance of this permission with respect to the BindingExplanation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolePermissionRelevance")]
         public virtual string RolePermissionRelevance { get; set; } 
 
@@ -467,11 +468,15 @@ namespace Google.Apis.PolicyTroubleshooter.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Encapsulated membership and the relevance of that membership with respect to
+    /// BindingExplanation.</summary>
     public class GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembership : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Membership status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membership")]
         public virtual string Membership { get; set; } 
 
+        /// <summary>Relevance of this membership with respect to BindingExplanation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevance")]
         public virtual string Relevance { get; set; } 
 

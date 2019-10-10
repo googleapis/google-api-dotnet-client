@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20190930 (1733)
+ *      <tr><th>API Rev<td>20191008 (1741)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -8425,7 +8425,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 {    
 
     /// <summary>Account data. After the creation of a new account it may take a few minutes before it is fully
-    /// operational. The methods delete, insert, patch, and update require the admin role.</summary>
+    /// operational. The methods delete, insert, and update require the admin role.</summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of linked Ads accounts that are active or pending approval. To create a new link request, add
@@ -9557,7 +9557,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; } 
 
         /// <summary>The list of destinations to include for this target (corresponds to checked check boxes in Merchant
-        /// Center). Default destinations are always included unless provided in excludedDestinations.</summary>
+        /// Center). Default destinations are always included unless provided in excludedDestinations.
+        ///
+        /// List of supported destinations (if available to the account): - DisplayAds - Shopping - ShoppingActions -
+        /// SurfacesAcrossGoogle</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedDestinations")]
         public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; } 
 
@@ -10435,7 +10438,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Order. All methods require the order manager role.</summary>
+    /// <summary>Order. Production access (all methods) requires the order manager role. Sandbox access does
+    /// not.</summary>
     public class Order : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the order was acknowledged.</summary>
@@ -10987,11 +10991,17 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("applicableItems")]
         public virtual System.Collections.Generic.IList<OrderPromotionItem> ApplicableItems { get; set; } 
 
-        /// <summary>Items which this promotion have been applied to.</summary>
+        /// <summary>Items which this promotion have been applied to. Do not provide for
+        /// orders.createtestorder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedItems")]
         public virtual System.Collections.Generic.IList<OrderPromotionItem> AppliedItems { get; set; } 
 
-        /// <summary>The party funding the promotion.</summary>
+        /// <summary>Promotion end time in ISO 8601 format. Date, time, and offset required, e.g.,
+        /// "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTime { get; set; } 
+
+        /// <summary>The party funding the promotion. Only merchant is supported for orders.createtestorder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("funder")]
         public virtual string Funder { get; set; } 
 
@@ -11004,15 +11014,22 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priceValue")]
         public virtual Price PriceValue { get; set; } 
 
-        /// <summary>A short title of the promotion to be shown on the checkout page.</summary>
+        /// <summary>A short title of the promotion to be shown on the checkout page. Do not provide for
+        /// orders.createtestorder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortTitle")]
         public virtual string ShortTitle { get; set; } 
 
-        /// <summary>The category of the promotion.</summary>
+        /// <summary>Promotion start time in ISO 8601 format. Date, time, and offset required, e.g.,
+        /// "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTime { get; set; } 
+
+        /// <summary>The category of the promotion. Only moneyOff is supported for orders.createtestorder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtype")]
         public virtual string Subtype { get; set; } 
 
-        /// <summary>Estimated discount applied to tax (if allowed by law).</summary>
+        /// <summary>Estimated discount applied to tax (if allowed by law). Do not provide for
+        /// orders.createtestorder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxValue")]
         public virtual Price TaxValue { get; set; } 
 
@@ -11020,7 +11037,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
-        /// <summary>The scope of the promotion.</summary>
+        /// <summary>The scope of the promotion. Only product is supported for orders.createtestorder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -11030,13 +11047,19 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class OrderPromotionItem : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The line item ID of a product. Do not provide for orders.createtestorder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; } 
 
+        /// <summary>Offer ID of a product. Only for orders.createtestorder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; } 
+
+        /// <summary>orders.createtestorder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
-        /// <summary>The quantity of the associated product.</summary>
+        /// <summary>The quantity of the associated product. Do not provide for orders.createtestorder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<int> Quantity { get; set; } 
 
@@ -11170,10 +11193,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The carrier handling the shipment.
         ///
         /// Acceptable values for US are: - "gsx" - "ups" - "usps" - "fedex" - "dhl" - "ecourier" - "cxt" - "google" -
-        /// "ontrac" - "emsy" - "ont" - "deliv" - "dynamex" - "lasership" - "mpx" - "uds" - "efw"
+        /// "ontrac" - "emsy" - "ont" - "deliv" - "dynamex" - "lasership" - "mpx" - "uds" - "efw" - "jd logistics"
         ///
         /// Acceptable values for FR are: - "colissimo" - "chronopost" - "gls" - "dpd" - "bpost" - "colis prive" -
-        /// "boxtal" - "geodis"</summary>
+        /// "boxtal" - "geodis" - "tnt" - "la poste"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -12790,7 +12813,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sizeType")]
         public virtual string SizeType { get; set; } 
 
-        /// <summary>Size of the item.</summary>
+        /// <summary>Size of the item. Only one value is allowed. For variants with different sizes, insert a separate
+        /// product for each size with the same itemGroupId value (see size definition).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizes")]
         public virtual System.Collections.Generic.IList<string> Sizes { get; set; } 
 

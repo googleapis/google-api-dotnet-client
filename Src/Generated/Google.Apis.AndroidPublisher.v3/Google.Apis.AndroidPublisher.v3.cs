@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190930 (1733)
+ *      <tr><th>API Rev<td>20191009 (1742)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7443,6 +7443,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The time the product was purchased, in milliseconds since the epoch (Jan 1, 1970).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseTimeMillis")]
         public virtual System.Nullable<long> PurchaseTimeMillis { get; set; } 
+
+        /// <summary>The purchase token generated to identify this purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseToken")]
+        public virtual string PurchaseToken { get; set; } 
 
         /// <summary>The type of purchase of the inapp product. This field is only set if this purchase was not made
         /// using the standard in-app billing flow. Possible values are: - Test (i.e. purchased from a license testing
