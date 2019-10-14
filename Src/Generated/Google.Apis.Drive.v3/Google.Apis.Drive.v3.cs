@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20190926 (1729)
+ *      <tr><th>API Rev<td>20191001 (1734)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>

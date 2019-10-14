@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/OBa_QkKTB5vdgbyhDNHmNGM_I_c\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/i7mJKm2TCUlvIu8ipyKxK7xtu6E\"",
  "discoveryVersion": "v1",
  "id": "appsactivity:v1",
  "name": "appsactivity",
  "version": "v1",
- "revision": "20191006",
+ "revision": "20191008",
  "title": "Drive Activity API",
  "description": "Provides a historical view of activity.",
  "ownerDomain": "google.com",

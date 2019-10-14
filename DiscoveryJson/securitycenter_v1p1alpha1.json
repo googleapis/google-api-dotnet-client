@@ -1,340 +1,7 @@
 {
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Cloud Security Command Center API",
-  "ownerName": "Google",
-  "resources": {
-    "organizations": {
-      "resources": {
-        "operations": {
-          "methods": {
-            "cancel": {
-              "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "name"
-              ],
-              "response": {
-                "$ref": "Empty"
-              },
-              "parameters": {
-                "name": {
-                  "description": "The name of the operation resource to be cancelled.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+/operations/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1p1alpha1/organizations/{organizationsId}/operations/{operationsId}:cancel",
-              "id": "securitycenter.organizations.operations.cancel",
-              "path": "v1p1alpha1/{+name}:cancel"
-            },
-            "delete": {
-              "parameters": {
-                "name": {
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+/operations/[^/]+$",
-                  "location": "path",
-                  "description": "The name of the operation resource to be deleted."
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1p1alpha1/organizations/{organizationsId}/operations/{operationsId}",
-              "path": "v1p1alpha1/{+name}",
-              "id": "securitycenter.organizations.operations.delete",
-              "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
-              "response": {
-                "$ref": "Empty"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "DELETE"
-            },
-            "list": {
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "pattern": "^organizations/[^/]+/operations$",
-                  "location": "path",
-                  "description": "The name of the operation's parent resource.",
-                  "required": true,
-                  "type": "string"
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "The standard list page token.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "The standard list page size.",
-                  "format": "int32",
-                  "type": "integer"
-                },
-                "filter": {
-                  "location": "query",
-                  "description": "The standard list filter.",
-                  "type": "string"
-                }
-              },
-              "flatPath": "v1p1alpha1/organizations/{organizationsId}/operations",
-              "path": "v1p1alpha1/{+name}",
-              "id": "securitycenter.organizations.operations.list",
-              "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.",
-              "response": {
-                "$ref": "ListOperationsResponse"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET"
-            },
-            "get": {
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "name"
-              ],
-              "response": {
-                "$ref": "Operation"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "pattern": "^organizations/[^/]+/operations/[^/]+$",
-                  "location": "path",
-                  "description": "The name of the operation resource.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "flatPath": "v1p1alpha1/organizations/{organizationsId}/operations/{operationsId}",
-              "id": "securitycenter.organizations.operations.get",
-              "path": "v1p1alpha1/{+name}",
-              "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
-            }
-          }
-        }
-      }
-    }
-  },
-  "parameters": {
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "quotaUser": {
-      "type": "string",
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ]
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "type": "string",
-      "location": "query",
-      "description": "JSONP"
-    },
-    "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    }
-  },
-  "version": "v1p1alpha1",
-  "baseUrl": "https://securitycenter.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Cloud Security Command Center API provides access to temporal views of assets and findings within an organization.",
-  "servicePath": "",
-  "basePath": "",
-  "revision": "20191004",
-  "documentationLink": "https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview",
-  "id": "securitycenter:v1p1alpha1",
-  "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-      "type": "object",
-      "properties": {},
-      "id": "Empty"
-    },
-    "GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse": {
-      "description": "Response of asset discovery run",
-      "type": "object",
-      "properties": {
-        "duration": {
-          "description": "The duration between asset discovery run start and end",
-          "format": "google-duration",
-          "type": "string"
-        },
-        "state": {
-          "description": "The state of an asset discovery run.",
-          "type": "string",
-          "enumDescriptions": [
-            "Asset discovery run state was unspecified.",
-            "Asset discovery run completed successfully.",
-            "Asset discovery run was cancelled with tasks still pending, as another\nrun for the same organization was started with a higher priority.",
-            "Asset discovery run was killed and terminated."
-          ],
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "COMPLETED",
-            "SUPERSEDED",
-            "TERMINATED"
-          ]
-        }
-      },
-      "id": "GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse"
-    },
-    "GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse": {
-      "properties": {
-        "state": {
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "COMPLETED",
-            "SUPERSEDED",
-            "TERMINATED"
-          ],
-          "description": "The state of an asset discovery run.",
-          "type": "string",
-          "enumDescriptions": [
-            "Asset discovery run state was unspecified.",
-            "Asset discovery run completed successfully.",
-            "Asset discovery run was cancelled with tasks still pending, as another\nrun for the same organization was started with a higher priority.",
-            "Asset discovery run was killed and terminated."
-          ]
-        },
-        "duration": {
-          "description": "The duration between asset discovery run start and end",
-          "format": "google-duration",
-          "type": "string"
-        }
-      },
-      "id": "GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse",
-      "description": "Response of asset discovery run",
-      "type": "object"
-    },
-    "Operation": {
-      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
-      "type": "object",
-      "properties": {
-        "response": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
-          "type": "object"
-        },
-        "name": {
-          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`.",
-          "type": "string"
-        },
-        "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
-        },
-        "metadata": {
-          "type": "object",
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."
-        },
-        "done": {
-          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
-          "type": "boolean"
-        }
-      },
-      "id": "Operation"
-    },
-    "ListOperationsResponse": {
-      "properties": {
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        },
-        "operations": {
-          "description": "A list of operations that matches the specified filter in the request.",
-          "type": "array",
-          "items": {
-            "$ref": "Operation"
-          }
-        }
-      },
-      "id": "ListOperationsResponse",
-      "description": "The response message for Operations.ListOperations.",
-      "type": "object"
-    },
     "Status": {
-      "id": "Status",
       "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
       "type": "object",
       "properties": {
@@ -358,13 +25,129 @@
           "format": "int32",
           "type": "integer"
         }
+      },
+      "id": "Status"
+    },
+    "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object",
+      "properties": {},
+      "id": "Empty"
+    },
+    "GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse": {
+      "id": "GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse",
+      "description": "Response of asset discovery run",
+      "type": "object",
+      "properties": {
+        "duration": {
+          "description": "The duration between asset discovery run start and end",
+          "format": "google-duration",
+          "type": "string"
+        },
+        "state": {
+          "enumDescriptions": [
+            "Asset discovery run state was unspecified.",
+            "Asset discovery run completed successfully.",
+            "Asset discovery run was cancelled with tasks still pending, as another\nrun for the same organization was started with a higher priority.",
+            "Asset discovery run was killed and terminated."
+          ],
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "COMPLETED",
+            "SUPERSEDED",
+            "TERMINATED"
+          ],
+          "description": "The state of an asset discovery run.",
+          "type": "string"
+        }
+      }
+    },
+    "GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse": {
+      "description": "Response of asset discovery run",
+      "type": "object",
+      "properties": {
+        "duration": {
+          "description": "The duration between asset discovery run start and end",
+          "format": "google-duration",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "COMPLETED",
+            "SUPERSEDED",
+            "TERMINATED"
+          ],
+          "description": "The state of an asset discovery run.",
+          "type": "string",
+          "enumDescriptions": [
+            "Asset discovery run state was unspecified.",
+            "Asset discovery run completed successfully.",
+            "Asset discovery run was cancelled with tasks still pending, as another\nrun for the same organization was started with a higher priority.",
+            "Asset discovery run was killed and terminated."
+          ]
+        }
+      },
+      "id": "GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse"
+    },
+    "ListOperationsResponse": {
+      "description": "The response message for Operations.ListOperations.",
+      "type": "object",
+      "properties": {
+        "operations": {
+          "description": "A list of operations that matches the specified filter in the request.",
+          "type": "array",
+          "items": {
+            "$ref": "Operation"
+          }
+        },
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        }
+      },
+      "id": "ListOperationsResponse"
+    },
+    "Operation": {
+      "id": "Operation",
+      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."
+        },
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
+          "type": "boolean"
+        },
+        "response": {
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          },
+          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
+          "type": "object"
+        },
+        "name": {
+          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`.",
+          "type": "string"
+        },
+        "error": {
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
+        }
       }
     }
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "canonicalName": "Security Command Center",
   "auth": {
@@ -378,5 +161,222 @@
   },
   "rootUrl": "https://securitycenter.googleapis.com/",
   "ownerDomain": "google.com",
-  "name": "securitycenter"
+  "name": "securitycenter",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Cloud Security Command Center API",
+  "ownerName": "Google",
+  "resources": {
+    "organizations": {
+      "resources": {
+        "operations": {
+          "methods": {
+            "list": {
+              "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.",
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "ListOperationsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+/operations$",
+                  "location": "path",
+                  "description": "The name of the operation's parent resource."
+                },
+                "pageToken": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "The standard list page token."
+                },
+                "pageSize": {
+                  "description": "The standard list page size.",
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
+                },
+                "filter": {
+                  "location": "query",
+                  "description": "The standard list filter.",
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1p1alpha1/organizations/{organizationsId}/operations",
+              "id": "securitycenter.organizations.operations.list",
+              "path": "v1p1alpha1/{+name}"
+            },
+            "get": {
+              "path": "v1p1alpha1/{+name}",
+              "id": "securitycenter.organizations.operations.get",
+              "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
+              "response": {
+                "$ref": "Operation"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "name": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+/operations/[^/]+$",
+                  "location": "path",
+                  "description": "The name of the operation resource."
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1p1alpha1/organizations/{organizationsId}/operations/{operationsId}"
+            },
+            "cancel": {
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "Empty"
+              },
+              "parameters": {
+                "name": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+/operations/[^/]+$",
+                  "location": "path",
+                  "description": "The name of the operation resource to be cancelled."
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1p1alpha1/organizations/{organizationsId}/operations/{operationsId}:cancel",
+              "id": "securitycenter.organizations.operations.cancel",
+              "path": "v1p1alpha1/{+name}:cancel",
+              "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`."
+            },
+            "delete": {
+              "response": {
+                "$ref": "Empty"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "DELETE",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+/operations/[^/]+$",
+                  "location": "path",
+                  "description": "The name of the operation resource to be deleted."
+                }
+              },
+              "flatPath": "v1p1alpha1/organizations/{organizationsId}/operations/{operationsId}",
+              "path": "v1p1alpha1/{+name}",
+              "id": "securitycenter.organizations.operations.delete",
+              "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`."
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "quotaUser": {
+      "type": "string",
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format."
+    },
+    "alt": {
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query"
+    }
+  },
+  "version": "v1p1alpha1",
+  "baseUrl": "https://securitycenter.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "Cloud Security Command Center API provides access to temporal views of assets and findings within an organization.",
+  "servicePath": "",
+  "basePath": "",
+  "id": "securitycenter:v1p1alpha1",
+  "documentationLink": "https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview",
+  "revision": "20191004",
+  "discoveryVersion": "v1"
 }

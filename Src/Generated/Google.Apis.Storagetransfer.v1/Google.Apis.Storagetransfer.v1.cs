@@ -589,10 +589,6 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
-            /// <summary>The list page size. The max allowed value is 256.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Required. A list of query parameters specified as JSON text in the form of:
             /// {"project_id":"my_project_id", "job_names":["jobid1","jobid2",...],
             /// "job_statuses":["status1","status2",...]}. Since `job_names` and `job_statuses` support multiple values,
@@ -605,6 +601,10 @@ namespace Google.Apis.Storagetransfer.v1
             /// <summary>The list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The list page size. The max allowed value is 256.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -631,15 +631,6 @@ namespace Google.Apis.Storagetransfer.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -652,6 +643,15 @@ namespace Google.Apis.Storagetransfer.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

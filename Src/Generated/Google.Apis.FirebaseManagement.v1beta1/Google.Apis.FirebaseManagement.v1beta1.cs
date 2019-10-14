@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191008 (1741)
+ *      <tr><th>API Rev<td>20191010 (1743)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>

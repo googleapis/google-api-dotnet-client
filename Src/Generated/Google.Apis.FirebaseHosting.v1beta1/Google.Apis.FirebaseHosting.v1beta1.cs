@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/hosting/'>Firebase Hosting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191009 (1742)
+ *      <tr><th>API Rev<td>20191011 (1744)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/hosting/'>
  *              https://firebase.google.com/docs/hosting/</a>

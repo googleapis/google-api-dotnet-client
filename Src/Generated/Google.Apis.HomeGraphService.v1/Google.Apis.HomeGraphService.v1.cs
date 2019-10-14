@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/actions/smarthome/create-app#request-sync'>HomeGraph API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191004 (1737)
+ *      <tr><th>API Rev<td>20191009 (1742)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/actions/smarthome/create-app#request-sync'>
  *              https://developers.google.com/actions/smarthome/create-app#request-sync</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fact-check/tools/api/'>Fact Check Tools API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20191008 (1741)
+ *      <tr><th>API Rev<td>20191010 (1743)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fact-check/tools/api/'>
  *              https://developers.google.com/fact-check/tools/api/</a>
@@ -367,6 +367,23 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             }
 
 
+            /// <summary>The maximum age of the returned search results, in days. Age is determined by either claim date
+            /// or review date, whichever is newer.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxAgeDays", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> MaxAgeDays { get; set; }
+
+            /// <summary>An integer that specifies the current offset (that is, starting result location) in search
+            /// results. This field is only considered if `page_token` is unset. For example, 0 means to return results
+            /// starting from the first matching result, and 10 means to return from the 11th result.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("offset", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> Offset { get; set; }
+
+            /// <summary>The pagination token. You may provide the `next_page_token` returned from a previous List
+            /// request, if any, in order to get the next page. All other fields must have the same values as in the
+            /// previous request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The pagination size. We will return up to that many results. Defaults to 10 if not
             /// set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -384,23 +401,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             /// language, though we do not currently consider the region.</summary>
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
-
-            /// <summary>The maximum age of the returned search results, in days. Age is determined by either claim date
-            /// or review date, whichever is newer.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxAgeDays", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> MaxAgeDays { get; set; }
-
-            /// <summary>An integer that specifies the current offset (that is, starting result location) in search
-            /// results. This field is only considered if `page_token` is unset. For example, 0 means to return results
-            /// starting from the first matching result, and 10 means to return from the 11th result.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("offset", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> Offset { get; set; }
-
-            /// <summary>The pagination token. You may provide the `next_page_token` returned from a previous List
-            /// request, if any, in order to get the next page. All other fields must have the same values as in the
-            /// previous request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -426,6 +426,33 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "maxAgeDays", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxAgeDays",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "offset", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "offset",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
@@ -457,33 +484,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
                     "languageCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxAgeDays", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxAgeDays",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "offset", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "offset",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

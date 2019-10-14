@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190927 (1730)
+ *      <tr><th>API Rev<td>20191004 (1737)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -447,6 +447,19 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
+            /// <summary>Not used.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of operations to return. If unspecified, defaults to 50. The maximum value
+            /// is 100.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>A string for filtering Operations. The following filter fields are supported
             ///
             /// * serviceName Required. Only `=` operator is allowed. * startTime The time this job was started, in ISO
@@ -464,19 +477,6 @@ namespace Google.Apis.ServiceManagement.v1
             /// ={some-service}.googleapis.com AND (status=done OR startTime>="2017-02-01")`</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>Not used.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Name { get; set; }
-
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of operations to return. If unspecified, defaults to 50. The maximum value
-            /// is 100.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -503,15 +503,6 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -533,6 +524,15 @@ namespace Google.Apis.ServiceManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -592,8 +592,8 @@ namespace Google.Apis.ServiceManagement.v1
             /// Only the 100 most recent service configurations and ones referenced by existing rollouts are kept for
             /// each service. The rest will be deleted eventually.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
-            /// requirements.  For example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
+            /// naming requirements.  For example: `example.googleapis.com`.</param>
             public virtual CreateRequest Create(Google.Apis.ServiceManagement.v1.Data.Service body, string serviceName)
             {
                 return new CreateRequest(service, body, serviceName);
@@ -617,8 +617,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
-                /// requirements.  For example: `example.googleapis.com`.</summary>
+                /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for
+                /// naming requirements.  For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -666,10 +666,10 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
             /// <summary>Gets a service configuration (version) for a managed service.</summary>
-            /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
-            /// requirements.  For example: `example.googleapis.com`.</param>
-            /// <param name="configId">The id of the service
-            /// configuration resource.
+            /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
+            /// naming requirements.  For example: `example.googleapis.com`.</param>
+            /// <param name="configId">Required. The id
+            /// of the service configuration resource.
             ///
             /// This field must be specified for the server to return all fields, including `SourceInfo`.</param>
             public virtual GetRequest Get(string serviceName, string configId)
@@ -690,12 +690,12 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
-                /// requirements.  For example: `example.googleapis.com`.</summary>
+                /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for
+                /// naming requirements.  For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
-                /// <summary>The id of the service configuration resource.
+                /// <summary>Required. The id of the service configuration resource.
                 ///
                 /// This field must be specified for the server to return all fields, including `SourceInfo`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Path)]
@@ -771,8 +771,8 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>Lists the history of the service configuration for a managed service, from the newest to the
             /// oldest.</summary>
-            /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
-            /// requirements.  For example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
+            /// naming requirements.  For example: `example.googleapis.com`.</param>
             public virtual ListRequest List(string serviceName)
             {
                 return new ListRequest(service, serviceName);
@@ -791,8 +791,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
-                /// requirements.  For example: `example.googleapis.com`.</summary>
+                /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for
+                /// naming requirements.  For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -870,8 +870,8 @@ namespace Google.Apis.ServiceManagement.v1
             ///
             /// Operation</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
-            /// requirements.  For example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
+            /// naming requirements.  For example: `example.googleapis.com`.</param>
             public virtual SubmitRequest Submit(Google.Apis.ServiceManagement.v1.Data.SubmitConfigSourceRequest body, string serviceName)
             {
                 return new SubmitRequest(service, body, serviceName);
@@ -898,8 +898,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
-                /// requirements.  For example: `example.googleapis.com`.</summary>
+                /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for
+                /// naming requirements.  For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -1042,8 +1042,9 @@ namespace Google.Apis.ServiceManagement.v1
 
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-            /// policy.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
+            ///
+            /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -1052,8 +1053,9 @@ namespace Google.Apis.ServiceManagement.v1
                 return new SetIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-            /// policy.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
+            ///
+            /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
             public class SetIamPolicyRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1228,8 +1230,8 @@ namespace Google.Apis.ServiceManagement.v1
             ///
             /// Operation</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
-            /// requirements.  For example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
+            /// naming requirements.  For example: `example.googleapis.com`.</param>
             public virtual CreateRequest Create(Google.Apis.ServiceManagement.v1.Data.Rollout body, string serviceName)
             {
                 return new CreateRequest(service, body, serviceName);
@@ -1258,8 +1260,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
-                /// requirements.  For example: `example.googleapis.com`.</summary>
+                /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for
+                /// naming requirements.  For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -1326,10 +1328,10 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
             /// <summary>Gets a service configuration rollout.</summary>
-            /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
-            /// requirements.  For example: `example.googleapis.com`.</param>
-            /// <param name="rolloutId">The id of the rollout
-            /// resource.</param>
+            /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
+            /// naming requirements.  For example: `example.googleapis.com`.</param>
+            /// <param name="rolloutId">Required. The
+            /// id of the rollout resource.</param>
             public virtual GetRequest Get(string serviceName, string rolloutId)
             {
                 return new GetRequest(service, serviceName, rolloutId);
@@ -1348,12 +1350,12 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
-                /// requirements.  For example: `example.googleapis.com`.</summary>
+                /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for
+                /// naming requirements.  For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
-                /// <summary>The id of the rollout resource.</summary>
+                /// <summary>Required. The id of the rollout resource.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("rolloutId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string RolloutId { get; private set; }
 
@@ -1405,8 +1407,8 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>Lists the history of the service configuration rollouts for a managed service, from the newest
             /// to the oldest.</summary>
-            /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
-            /// requirements.  For example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
+            /// naming requirements.  For example: `example.googleapis.com`.</param>
             public virtual ListRequest List(string serviceName)
             {
                 return new ListRequest(service, serviceName);
@@ -1425,8 +1427,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
-                /// requirements.  For example: `example.googleapis.com`.</summary>
+                /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for
+                /// naming requirements.  For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -1439,9 +1441,9 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
-                /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
-                /// filter='status=SUCCESS' -- To limit the results to those in
+                /// <summary>Required. Use `filter` to return subset of rollouts. The following filters are supported:
+                /// -- To limit the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus)
+                /// 'SUCCESS', use filter='status=SUCCESS' -- To limit the results to those in
                 /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or 'FAILED', use
                 /// filter='status=CANCELLED OR status=FAILED'</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -1574,8 +1576,8 @@ namespace Google.Apis.ServiceManagement.v1
         /// the service will be permanently deleted.
         ///
         /// Operation</summary>
-        /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
-        /// requirements.  For example: `example.googleapis.com`.</param>
+        /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
+        /// naming requirements.  For example: `example.googleapis.com`.</param>
         public virtual DeleteRequest Delete(string serviceName)
         {
             return new DeleteRequest(service, serviceName);
@@ -1597,7 +1599,7 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
+            /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for naming
             /// requirements.  For example: `example.googleapis.com`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
@@ -1644,8 +1646,8 @@ namespace Google.Apis.ServiceManagement.v1
         ///
         /// Operation</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="serviceName">Name of the service to disable. Specifying an unknown service name will cause the request
-        /// to fail.</param>
+        /// <param name="serviceName">Required. Name of the service to disable. Specifying an unknown service name will cause
+        /// the request to fail.</param>
         public virtual DisableRequest Disable(Google.Apis.ServiceManagement.v1.Data.DisableServiceRequest body, string serviceName)
         {
             return new DisableRequest(service, body, serviceName);
@@ -1667,8 +1669,8 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>Name of the service to disable. Specifying an unknown service name will cause the request to
-            /// fail.</summary>
+            /// <summary>Required. Name of the service to disable. Specifying an unknown service name will cause the
+            /// request to fail.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
@@ -1720,8 +1722,8 @@ namespace Google.Apis.ServiceManagement.v1
         ///
         /// Operation</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="serviceName">Name of the service to enable. Specifying an unknown service name will cause the request
-        /// to fail.</param>
+        /// <param name="serviceName">Required. Name of the service to enable. Specifying an unknown service name will cause the
+        /// request to fail.</param>
         public virtual EnableRequest Enable(Google.Apis.ServiceManagement.v1.Data.EnableServiceRequest body, string serviceName)
         {
             return new EnableRequest(service, body, serviceName);
@@ -1743,8 +1745,8 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>Name of the service to enable. Specifying an unknown service name will cause the request to
-            /// fail.</summary>
+            /// <summary>Required. Name of the service to enable. Specifying an unknown service name will cause the
+            /// request to fail.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
@@ -1859,8 +1861,8 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
         /// <summary>Gets a managed service. Authentication is required unless the service is public.</summary>
-        /// <param name="serviceName">The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-        /// example: `example.googleapis.com`.</param>
+        /// <param name="serviceName">Required. The name of the service.  See the `ServiceManager` overview for naming
+        /// requirements.  For example: `example.googleapis.com`.</param>
         public virtual GetRequest Get(string serviceName)
         {
             return new GetRequest(service, serviceName);
@@ -1878,8 +1880,8 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-            /// example: `example.googleapis.com`.</summary>
+            /// <summary>Required. The name of the service.  See the `ServiceManager` overview for naming requirements.
+            /// For example: `example.googleapis.com`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
@@ -1921,8 +1923,8 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
         /// <summary>Gets a service configuration (version) for a managed service.</summary>
-        /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
-        /// requirements.  For example: `example.googleapis.com`.</param>
+        /// <param name="serviceName">Required. The name of the service.  See the [overview](/service-management/overview) for
+        /// naming requirements.  For example: `example.googleapis.com`.</param>
         public virtual GetConfigRequest GetConfig(string serviceName)
         {
             return new GetConfigRequest(service, serviceName);
@@ -1940,12 +1942,12 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
+            /// <summary>Required. The name of the service.  See the [overview](/service-management/overview) for naming
             /// requirements.  For example: `example.googleapis.com`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
-            /// <summary>The id of the service configuration resource.
+            /// <summary>Required. The id of the service configuration resource.
             ///
             /// This field must be specified for the server to return all fields, including `SourceInfo`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
@@ -2203,7 +2205,9 @@ namespace Google.Apis.ServiceManagement.v1
 
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
+        ///
+        /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -2212,7 +2216,9 @@ namespace Google.Apis.ServiceManagement.v1
             return new SetIamPolicyRequest(service, body, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
+        ///
+        /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
         public class SetIamPolicyRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -2356,8 +2362,8 @@ namespace Google.Apis.ServiceManagement.v1
         /// within the last 30 days.
         ///
         /// Operation</summary>
-        /// <param name="serviceName">The name of the service. See the [overview](/service-management/overview) for naming
-        /// requirements. For example: `example.googleapis.com`.</param>
+        /// <param name="serviceName">Required. The name of the service. See the [overview](/service-management/overview) for
+        /// naming requirements. For example: `example.googleapis.com`.</param>
         public virtual UndeleteRequest Undelete(string serviceName)
         {
             return new UndeleteRequest(service, serviceName);
@@ -2379,7 +2385,7 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>The name of the service. See the [overview](/service-management/overview) for naming
+            /// <summary>Required. The name of the service. See the [overview](/service-management/overview) for naming
             /// requirements. For example: `example.googleapis.com`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
@@ -3077,7 +3083,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Request message for DisableService method.</summary>
     public class DisableServiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The identity of consumer resource which service disablement will be applied to.
+        /// <summary>Required. The identity of consumer resource which service disablement will be applied to.
         ///
         /// The Google Service Management implementation accepts the following forms: - "project:"
         ///
@@ -3085,6 +3091,13 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumerId")]
         public virtual string ConsumerId { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Operation payload for DisableService method.</summary>
+    public class DisableServiceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3182,7 +3195,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Request message for EnableService method.</summary>
     public class EnableServiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The identity of consumer resource which service enablement will be applied to.
+        /// <summary>Required. The identity of consumer resource which service enablement will be applied to.
         ///
         /// The Google Service Management implementation accepts the following forms: - "project:"
         ///
@@ -3190,6 +3203,13 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumerId")]
         public virtual string ConsumerId { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Operation payload for EnableService method.</summary>
+    public class EnableServiceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3384,15 +3404,15 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Request message for GenerateConfigReport method.</summary>
     public class GenerateConfigReportRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Service configuration for which we want to generate the report. For this version of API, the
-        /// supported types are google.api.servicemanagement.v1.ConfigRef, google.api.servicemanagement.v1.ConfigSource,
-        /// and google.api.Service</summary>
+        /// <summary>Required. Service configuration for which we want to generate the report. For this version of API,
+        /// the supported types are google.api.servicemanagement.v1.ConfigRef,
+        /// google.api.servicemanagement.v1.ConfigSource, and google.api.Service</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newConfig")]
         public virtual System.Collections.Generic.IDictionary<string,object> NewConfig { get; set; } 
 
-        /// <summary>Service configuration against which the comparison will be done. For this version of API, the
-        /// supported types are google.api.servicemanagement.v1.ConfigRef, google.api.servicemanagement.v1.ConfigSource,
-        /// and google.api.Service</summary>
+        /// <summary>Optional. Service configuration against which the comparison will be done. For this version of API,
+        /// the supported types are google.api.servicemanagement.v1.ConfigRef,
+        /// google.api.servicemanagement.v1.ConfigSource, and google.api.Service</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldConfig")]
         public virtual System.Collections.Generic.IDictionary<string,object> OldConfig { get; set; } 
 
@@ -4553,7 +4573,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleteServiceStrategy")]
         public virtual DeleteServiceStrategy DeleteServiceStrategy { get; set; } 
 
-        /// <summary>Optional unique identifier of this Rollout. Only lower case letters, digits and '-' are allowed.
+        /// <summary>Optional. Unique identifier of this Rollout. Only lower case letters, digits and '-' are allowed.
         ///
         /// If not specified by client, the server will generate one. The generated id will have the form of , where
         /// "date" is the create date in ISO 8601 format.  "revision number" is a monotonically increasing positive
@@ -4813,7 +4833,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Request message for SubmitConfigSource method.</summary>
     public class SubmitConfigSourceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The source configuration for the service.</summary>
+        /// <summary>Required. The source configuration for the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configSource")]
         public virtual ConfigSource ConfigSource { get; set; } 
 
@@ -4931,7 +4951,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     }    
 
     /// <summary>Strategy that specifies how clients of Google Service Controller want to send traffic to use different
-    /// config versions. This is generally used by API proxy to split traffic based on your configured precentage for
+    /// config versions. This is generally used by API proxy to split traffic based on your configured percentage for
     /// each config version.
     ///
     /// One example of how to gradually rollout a new service configuration using this strategy: Day 1
