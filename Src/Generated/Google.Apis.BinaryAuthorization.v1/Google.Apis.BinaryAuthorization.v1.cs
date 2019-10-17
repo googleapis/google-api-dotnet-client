@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/binary-authorization/'>Binary Authorization API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190927 (1730)
+ *      <tr><th>API Rev<td>20191011 (1744)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/binary-authorization/'>
  *              https://cloud.google.com/binary-authorization/</a>
@@ -746,8 +746,9 @@ namespace Google.Apis.BinaryAuthorization.v1
 
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-            /// policy.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
+            ///
+            /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -756,8 +757,9 @@ namespace Google.Apis.BinaryAuthorization.v1
                 return new SetIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-            /// policy.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
+            ///
+            /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
             public class SetIamPolicyRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.IamPolicy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1072,8 +1074,9 @@ namespace Google.Apis.BinaryAuthorization.v1
 
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-            /// policy.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
+            ///
+            /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
             /// documentation for the appropriate value for this field.</param>
@@ -1082,8 +1085,9 @@ namespace Google.Apis.BinaryAuthorization.v1
                 return new SetIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-            /// policy.</summary>
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.
+            ///
+            /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
             public class SetIamPolicyRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.IamPolicy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>

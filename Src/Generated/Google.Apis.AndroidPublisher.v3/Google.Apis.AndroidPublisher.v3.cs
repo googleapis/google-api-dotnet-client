@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20191009 (1742)
+ *      <tr><th>API Rev<td>20191013 (1746)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7435,6 +7435,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The order id associated with the purchase of the inapp product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
         public virtual string OrderId { get; set; } 
+
+        /// <summary>The inapp product SKU.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
 
         /// <summary>The purchase state of the order. Possible values are: - Purchased - Canceled - Pending</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseState")]

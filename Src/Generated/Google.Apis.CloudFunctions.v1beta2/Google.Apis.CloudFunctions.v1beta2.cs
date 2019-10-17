@@ -443,6 +443,12 @@ namespace Google.Apis.CloudFunctions.v1beta2
             }
 
 
+            /// <summary>Required. A filter for matching the requested operations. The supported formats of filter are:
+            /// To query for a specific function: project:*,location:*,function:* To query for all of the latest
+            /// operations for a project: project:*,latest:true</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>Must not be set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -457,12 +463,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
             /// function.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Required. A filter for matching the requested operations. The supported formats of filter are:
-            /// To query for a specific function: project:*,location:*,function:* To query for all of the latest
-            /// operations for a project: project:*,latest:true</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -489,6 +489,15 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -510,15 +519,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

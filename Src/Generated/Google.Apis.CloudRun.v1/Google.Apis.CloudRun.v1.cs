@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191005 (1738)
+ *      <tr><th>API Rev<td>20191009 (1742)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -561,8 +561,8 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>Delete an auto domain mapping.</summary>
-            /// <param name="name">The name of the auto domain mapping being deleted. If needed, replace {namespace_id} with the
-            /// project ID.</param>
+            /// <param name="name">The name of the auto domain mapping being deleted. For Cloud Run (fully managed), replace
+            /// {namespace_id} with the project ID or number.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -580,14 +580,10 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the auto domain mapping being deleted. If needed, replace {namespace_id} with
-                /// the project ID.</summary>
+                /// <summary>The name of the auto domain mapping being deleted. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
-                /// <summary>Cloud Run currently ignores this parameter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ApiVersion { get; set; }
 
                 /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and
                 /// deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers/garbage-
@@ -598,6 +594,10 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Kind { get; set; }
+
+                /// <summary>Cloud Run currently ignores this parameter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ApiVersion { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -633,15 +633,6 @@ namespace Google.Apis.CloudRun.v1
                             Pattern = @"^namespaces/[^/]+/autodomainmappings/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "apiVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "apiVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "propagationPolicy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "propagationPolicy",
@@ -659,13 +650,22 @@ namespace Google.Apis.CloudRun.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "apiVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "apiVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
 
             /// <summary>Get information about an auto domain mapping.</summary>
-            /// <param name="name">The name of the auto domain mapping being retrieved. If needed, replace {namespace_id} with the
-            /// project ID.</param>
+            /// <param name="name">The name of the auto domain mapping being retrieved. For Cloud Run (fully managed), replace
+            /// {namespace_id} with the project ID or number.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -683,8 +683,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the auto domain mapping being retrieved. If needed, replace {namespace_id} with
-                /// the project ID.</summary>
+                /// <summary>The name of the auto domain mapping being retrieved. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -750,11 +750,6 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
-                /// used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> Watch { get; set; }
-
                 /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
                 /// and notIn.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
@@ -781,6 +776,11 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>The maximum number of records that should be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> Limit { get; set; }
+
+                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
+                /// used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> Watch { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -814,15 +814,6 @@ namespace Google.Apis.CloudRun.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^namespaces/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "watch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "labelSelector", new Google.Apis.Discovery.Parameter
@@ -878,6 +869,15 @@ namespace Google.Apis.CloudRun.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "watch", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "watch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
@@ -890,8 +890,8 @@ namespace Google.Apis.CloudRun.v1
             /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
             /// control.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the auto domain mapping being retrieved. If needed, replace {namespace_id} with the
-            /// project ID.</param>
+            /// <param name="name">The name of the auto domain mapping being retrieved. For Cloud Run (fully managed), replace
+            /// {namespace_id} with the project ID or number.</param>
             public virtual ReplaceAutoDomainMappingRequest ReplaceAutoDomainMapping(Google.Apis.CloudRun.v1.Data.AutoDomainMapping body, string name)
             {
                 return new ReplaceAutoDomainMappingRequest(service, body, name);
@@ -916,8 +916,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the auto domain mapping being retrieved. If needed, replace {namespace_id} with
-                /// the project ID.</summary>
+                /// <summary>The name of the auto domain mapping being retrieved. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -990,7 +990,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Create a configuration.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The project ID or project number in which this configuration should be created.</param>
+            /// <param name="parent">The namespace in which the configuration should be created. For Cloud Run (fully managed),
+            /// replace {namespace_id} with the project ID or number.</param>
             public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Configuration body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -1009,7 +1010,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The project ID or project number in which this configuration should be created.</summary>
+                /// <summary>The namespace in which the configuration should be created. For Cloud Run (fully managed),
+                /// replace {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1059,8 +1061,8 @@ namespace Google.Apis.CloudRun.v1
             /// <summary>delete a configuration. This will cause the configuration to delete all child revisions. Prior
             /// to calling this, any route referencing the configuration (or revision from the configuration) must be
             /// deleted.</summary>
-            /// <param name="name">The name of the configuration being deleted. If needed, replace {namespace_id} with the project
-            /// ID.</param>
+            /// <param name="name">The name of the configuration to delete. For Cloud Run (fully managed), replace {namespace_id}
+            /// with the project ID or number.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -1080,8 +1082,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the configuration being deleted. If needed, replace {namespace_id} with the
-                /// project ID.</summary>
+                /// <summary>The name of the configuration to delete. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1164,8 +1166,8 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>Get information about a configuration.</summary>
-            /// <param name="name">The name of the configuration being retrieved. If needed, replace {namespace_id} with the project
-            /// ID.</param>
+            /// <param name="name">The name of the configuration to retrieve. For Cloud Run (fully managed), replace {namespace_id}
+            /// with the project ID or number.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1183,8 +1185,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the configuration being retrieved. If needed, replace {namespace_id} with the
-                /// project ID.</summary>
+                /// <summary>The name of the configuration to retrieve. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1226,7 +1228,8 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>List configurations.</summary>
-            /// <param name="parent">The project ID or project number from which the configurations should be listed.</param>
+            /// <param name="parent">The namespace from which the configurations should be listed. For Cloud Run (fully managed),
+            /// replace {namespace_id} with the project ID or number.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1244,9 +1247,19 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The project ID or project number from which the configurations should be listed.</summary>
+                /// <summary>The namespace from which the configurations should be listed. For Cloud Run (fully
+                /// managed), replace {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
+
+                /// <summary>The maximum number of records that should be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> Limit { get; set; }
+
+                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
+                /// used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> Watch { get; set; }
 
                 /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
                 /// and notIn.</summary>
@@ -1270,15 +1283,6 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Optional encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Continue { get; set; }
-
-                /// <summary>The maximum number of records that should be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> Limit { get; set; }
-
-                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
-                /// used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> Watch { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1312,6 +1316,24 @@ namespace Google.Apis.CloudRun.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^namespaces/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "limit", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "limit",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "watch", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "watch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "labelSelector", new Google.Apis.Discovery.Parameter
@@ -1358,24 +1380,6 @@ namespace Google.Apis.CloudRun.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
-                    RequestParameters.Add(
-                        "limit", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "limit",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "watch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
                 }
 
             }
@@ -1388,8 +1392,8 @@ namespace Google.Apis.CloudRun.v1
             /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
             /// control.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the configuration being retrieved. If needed, replace {namespace_id} with the project
-            /// ID.</param>
+            /// <param name="name">The name of the configuration being replaced. For Cloud Run (fully managed), replace
+            /// {namespace_id} with the project ID or number.</param>
             public virtual ReplaceConfigurationRequest ReplaceConfiguration(Google.Apis.CloudRun.v1.Data.Configuration body, string name)
             {
                 return new ReplaceConfigurationRequest(service, body, name);
@@ -1414,8 +1418,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the configuration being retrieved. If needed, replace {namespace_id} with the
-                /// project ID.</summary>
+                /// <summary>The name of the configuration being replaced. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1488,7 +1492,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Create a new domain mapping.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The project ID or project number in which this domain mapping should be created.</param>
+            /// <param name="parent">The namespace in which the domain mapping should be created. For Cloud Run (fully managed),
+            /// replace {namespace_id} with the project ID or number.</param>
             public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.DomainMapping body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -1507,7 +1512,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The project ID or project number in which this domain mapping should be created.</summary>
+                /// <summary>The namespace in which the domain mapping should be created. For Cloud Run (fully managed),
+                /// replace {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1555,8 +1561,8 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>Delete a domain mapping.</summary>
-            /// <param name="name">The name of the domain mapping being deleted. If needed, replace {namespace_id} with the project
-            /// ID.</param>
+            /// <param name="name">The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace_id}
+            /// with the project ID or number.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -1574,8 +1580,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the domain mapping being deleted. If needed, replace {namespace_id} with the
-                /// project ID.</summary>
+                /// <summary>The name of the domain mapping to delete. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1658,8 +1664,8 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>Get information about a domain mapping.</summary>
-            /// <param name="name">The name of the domain mapping being retrieved. If needed, replace {namespace_id} with the
-            /// project ID.</param>
+            /// <param name="name">The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace_id}
+            /// with the project ID or number.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1677,8 +1683,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the domain mapping being retrieved. If needed, replace {namespace_id} with the
-                /// project ID.</summary>
+                /// <summary>The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1720,7 +1726,8 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>List domain mappings.</summary>
-            /// <param name="parent">The project ID or project number from which the domain mappings should be listed.</param>
+            /// <param name="parent">The namespace from which the domain mappings should be listed. For Cloud Run (fully managed),
+            /// replace {namespace_id} with the project ID or number.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1738,7 +1745,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The project ID or project number from which the domain mappings should be listed.</summary>
+                /// <summary>The namespace from which the domain mappings should be listed. For Cloud Run (fully
+                /// managed), replace {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1747,19 +1755,19 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LabelSelector { get; set; }
 
-                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
-                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string FieldSelector { get; set; }
+                /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                /// currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ResourceVersion { get; set; }
 
                 /// <summary>Not currently used by Cloud Run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
 
-                /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                /// currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ResourceVersion { get; set; }
+                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
+                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string FieldSelector { get; set; }
 
                 /// <summary>Optional encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
@@ -1817,9 +1825,9 @@ namespace Google.Apis.CloudRun.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "fieldSelector", new Google.Apis.Discovery.Parameter
+                        "resourceVersion", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "fieldSelector",
+                            Name = "resourceVersion",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1835,9 +1843,9 @@ namespace Google.Apis.CloudRun.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "resourceVersion", new Google.Apis.Discovery.Parameter
+                        "fieldSelector", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "resourceVersion",
+                            Name = "fieldSelector",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1882,8 +1890,8 @@ namespace Google.Apis.CloudRun.v1
             /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
             /// control.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the domain mapping being retrieved. If needed, replace {namespace_id} with the
-            /// project ID.</param>
+            /// <param name="name">The name of the domain mapping being retrieved. For Cloud Run (fully managed), replace
+            /// {namespace_id} with the project ID or number.</param>
             public virtual ReplaceDomainMappingRequest ReplaceDomainMapping(Google.Apis.CloudRun.v1.Data.DomainMapping body, string name)
             {
                 return new ReplaceDomainMappingRequest(service, body, name);
@@ -1908,8 +1916,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the domain mapping being retrieved. If needed, replace {namespace_id} with the
-                /// project ID.</summary>
+                /// <summary>The name of the domain mapping being retrieved. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1981,8 +1989,8 @@ namespace Google.Apis.CloudRun.v1
 
 
             /// <summary>Delete a revision.</summary>
-            /// <param name="name">The name of the revision being deleted. If needed, replace {namespace_id} with the project
-            /// ID.</param>
+            /// <param name="name">The name of the revision to delete. For Cloud Run (fully managed), replace {namespace_id} with
+            /// the project ID or number.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -2000,8 +2008,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the revision being deleted. If needed, replace {namespace_id} with the project
-                /// ID.</summary>
+                /// <summary>The name of the revision to delete. For Cloud Run (fully managed), replace {namespace_id}
+                /// with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2084,8 +2092,8 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>Get information about a revision.</summary>
-            /// <param name="name">The name of the revision being retrieved. If needed, replace {namespace_id} with the project
-            /// ID.</param>
+            /// <param name="name">The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace_id} with
+            /// the project ID or number.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -2103,8 +2111,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the revision being retrieved. If needed, replace {namespace_id} with the
-                /// project ID.</summary>
+                /// <summary>The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace_id}
+                /// with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2146,7 +2154,8 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>List revisions.</summary>
-            /// <param name="parent">The project ID or project number from which the revisions should be listed.</param>
+            /// <param name="parent">The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace
+            /// {namespace_id} with the project ID or number.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -2164,23 +2173,10 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The project ID or project number from which the revisions should be listed.</summary>
+                /// <summary>The namespace from which the revisions should be listed. For Cloud Run (fully managed),
+                /// replace {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
-                /// <summary>The maximum number of records that should be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> Limit { get; set; }
-
-                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
-                /// used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> Watch { get; set; }
-
-                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
-                /// and notIn.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LabelSelector { get; set; }
 
                 /// <summary>The baseline resource version from which the list or watch operation should start. Not
                 /// currently used by Cloud Run.</summary>
@@ -2199,6 +2195,20 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Optional encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Continue { get; set; }
+
+                /// <summary>The maximum number of records that should be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> Limit { get; set; }
+
+                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
+                /// used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> Watch { get; set; }
+
+                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
+                /// and notIn.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LabelSelector { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2232,33 +2242,6 @@ namespace Google.Apis.CloudRun.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^namespaces/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "limit", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "limit",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "watch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "labelSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "resourceVersion", new Google.Apis.Discovery.Parameter
@@ -2296,6 +2279,33 @@ namespace Google.Apis.CloudRun.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "limit", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "limit",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "watch", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "watch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "labelSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "labelSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
@@ -2326,7 +2336,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Create a route.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The project ID or project number in which this route should be created.</param>
+            /// <param name="parent">The namespace in which the route should be created. For Cloud Run (fully managed), replace
+            /// {namespace_id} with the project ID or number.</param>
             public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Route body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -2345,7 +2356,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The project ID or project number in which this route should be created.</summary>
+                /// <summary>The namespace in which the route should be created. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2393,8 +2405,8 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>Delete a route. This will cause the route to stop serving traffic.</summary>
-            /// <param name="name">The name of the route being deleted. If needed, replace {namespace_id} with the project
-            /// ID.</param>
+            /// <param name="name">The name of the route to delete. For Cloud Run (fully managed), replace {namespace_id} with the
+            /// project ID or number.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -2412,8 +2424,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the route being deleted. If needed, replace {namespace_id} with the project
-                /// ID.</summary>
+                /// <summary>The name of the route to delete. For Cloud Run (fully managed), replace {namespace_id} with
+                /// the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2496,8 +2508,8 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>Get information about a route.</summary>
-            /// <param name="name">The name of the route being retrieved. If needed, replace {namespace_id} with the project
-            /// ID.</param>
+            /// <param name="name">The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the
+            /// project ID or number.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -2515,8 +2527,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the route being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</summary>
+                /// <summary>The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace_id}
+                /// with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2558,7 +2570,8 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>List routes.</summary>
-            /// <param name="parent">The project ID or project number from which the routes should be listed.</param>
+            /// <param name="parent">The namespace from which the routes should be listed. For Cloud Run (fully managed), replace
+            /// {namespace_id} with the project ID or number.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -2576,7 +2589,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The project ID or project number from which the routes should be listed.</summary>
+                /// <summary>The namespace from which the routes should be listed. For Cloud Run (fully managed),
+                /// replace {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2720,8 +2734,8 @@ namespace Google.Apis.CloudRun.v1
             /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
             /// control.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the route being replaced. If needed, replace {namespace_id} with the project
-            /// ID.</param>
+            /// <param name="name">The name of the route being replaced. For Cloud Run (fully managed), replace {namespace_id} with
+            /// the project ID or number.</param>
             public virtual ReplaceRouteRequest ReplaceRoute(Google.Apis.CloudRun.v1.Data.Route body, string name)
             {
                 return new ReplaceRouteRequest(service, body, name);
@@ -2746,8 +2760,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the route being replaced. If needed, replace {namespace_id} with the project
-                /// ID.</summary>
+                /// <summary>The name of the route being replaced. For Cloud Run (fully managed), replace {namespace_id}
+                /// with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2820,7 +2834,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Create a service.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The project ID or project number in which this service should be created.</param>
+            /// <param name="parent">The namespace in which the service should be created. For Cloud Run (fully managed), replace
+            /// {namespace_id} with the project ID or number.</param>
             public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Service body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -2839,7 +2854,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The project ID or project number in which this service should be created.</summary>
+                /// <summary>The namespace in which the service should be created. For Cloud Run (fully managed),
+                /// replace {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2888,8 +2904,8 @@ namespace Google.Apis.CloudRun.v1
 
             /// <summary>Delete a service. This will cause the Service to stop serving traffic and will delete the child
             /// entities like Routes, Configurations and Revisions.</summary>
-            /// <param name="name">The name of the service being deleted. If needed, replace {namespace_id} with the project
-            /// ID.</param>
+            /// <param name="name">The name of the service to delete. For Cloud Run (fully managed), replace {namespace_id} with the
+            /// project ID or number.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -2908,8 +2924,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the service being deleted. If needed, replace {namespace_id} with the project
-                /// ID.</summary>
+                /// <summary>The name of the service to delete. For Cloud Run (fully managed), replace {namespace_id}
+                /// with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2992,8 +3008,8 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>Get information about a service.</summary>
-            /// <param name="name">The name of the service being retrieved. If needed, replace {namespace_id} with the project
-            /// ID.</param>
+            /// <param name="name">The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace_id} with
+            /// the project ID or number.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -3011,8 +3027,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the service being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</summary>
+                /// <summary>The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace_id}
+                /// with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -3054,7 +3070,8 @@ namespace Google.Apis.CloudRun.v1
             }
 
             /// <summary>List services.</summary>
-            /// <param name="parent">The project ID or project number from which the services should be listed.</param>
+            /// <param name="parent">The namespace from which the services should be listed. For Cloud Run (fully managed), replace
+            /// {namespace_id} with the project ID or number.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -3072,9 +3089,19 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The project ID or project number from which the services should be listed.</summary>
+                /// <summary>The namespace from which the services should be listed. For Cloud Run (fully managed),
+                /// replace {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
+
+                /// <summary>The maximum number of records that should be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> Limit { get; set; }
+
+                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
+                /// used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> Watch { get; set; }
 
                 /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
                 /// and notIn.</summary>
@@ -3098,15 +3125,6 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Optional encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Continue { get; set; }
-
-                /// <summary>The maximum number of records that should be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> Limit { get; set; }
-
-                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
-                /// used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> Watch { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3140,6 +3158,24 @@ namespace Google.Apis.CloudRun.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^namespaces/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "limit", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "limit",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "watch", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "watch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "labelSelector", new Google.Apis.Discovery.Parameter
@@ -3186,24 +3222,6 @@ namespace Google.Apis.CloudRun.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
-                    RequestParameters.Add(
-                        "limit", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "limit",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "watch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
                 }
 
             }
@@ -3216,8 +3234,8 @@ namespace Google.Apis.CloudRun.v1
             /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
             /// control.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the service being replaced. If needed, replace {namespace_id} with the project
-            /// ID.</param>
+            /// <param name="name">The name of the service being replaced. For Cloud Run (fully managed), replace {namespace_id}
+            /// with the project ID or number.</param>
             public virtual ReplaceServiceRequest ReplaceService(Google.Apis.CloudRun.v1.Data.Service body, string name)
             {
                 return new ReplaceServiceRequest(service, body, name);
@@ -3242,8 +3260,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
 
-                /// <summary>The name of the service being replaced. If needed, replace {namespace_id} with the project
-                /// ID.</summary>
+                /// <summary>The name of the service being replaced. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -3543,8 +3561,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>Delete an auto domain mapping.</summary>
-                /// <param name="name">The name of the auto domain mapping being deleted. If needed, replace {namespace_id} with the
-                /// project ID.</param>
+                /// <param name="name">The name of the auto domain mapping being deleted. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -3562,10 +3580,14 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the auto domain mapping being deleted. If needed, replace {namespace_id}
-                    /// with the project ID.</summary>
+                    /// <summary>The name of the auto domain mapping being deleted. For Cloud Run (fully managed),
+                    /// replace {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
+
+                    /// <summary>Cloud Run currently ignores this parameter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ApiVersion { get; set; }
 
                     /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting,
                     /// and deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers
@@ -3576,10 +3598,6 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Kind { get; set; }
-
-                    /// <summary>Cloud Run currently ignores this parameter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ApiVersion { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3615,6 +3633,15 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/autodomainmappings/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "apiVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "apiVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "propagationPolicy", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "propagationPolicy",
@@ -3632,22 +3659,13 @@ namespace Google.Apis.CloudRun.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        RequestParameters.Add(
-                            "apiVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "apiVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                     }
 
                 }
 
                 /// <summary>Get information about an auto domain mapping.</summary>
-                /// <param name="name">The name of the auto domain mapping being retrieved. If needed, replace {namespace_id} with the
-                /// project ID.</param>
+                /// <param name="name">The name of the auto domain mapping being retrieved. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -3665,8 +3683,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the auto domain mapping being retrieved. If needed, replace {namespace_id}
-                    /// with the project ID.</summary>
+                    /// <summary>The name of the auto domain mapping being retrieved. For Cloud Run (fully managed),
+                    /// replace {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3732,11 +3750,6 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> Watch { get; set; }
-
                     /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
                     /// in, and notIn.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
@@ -3763,6 +3776,11 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>The maximum number of records that should be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Limit { get; set; }
+
+                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Watch { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3796,15 +3814,6 @@ namespace Google.Apis.CloudRun.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
                             });
                         RequestParameters.Add(
                             "labelSelector", new Google.Apis.Discovery.Parameter
@@ -3860,6 +3869,15 @@ namespace Google.Apis.CloudRun.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "watch", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "watch",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
@@ -3872,8 +3890,8 @@ namespace Google.Apis.CloudRun.v1
                 /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
                 /// control.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The name of the auto domain mapping being retrieved. If needed, replace {namespace_id} with the
-                /// project ID.</param>
+                /// <param name="name">The name of the auto domain mapping being retrieved. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</param>
                 public virtual ReplaceAutoDomainMappingRequest ReplaceAutoDomainMapping(Google.Apis.CloudRun.v1.Data.AutoDomainMapping body, string name)
                 {
                     return new ReplaceAutoDomainMappingRequest(service, body, name);
@@ -3898,8 +3916,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the auto domain mapping being retrieved. If needed, replace {namespace_id}
-                    /// with the project ID.</summary>
+                    /// <summary>The name of the auto domain mapping being retrieved. For Cloud Run (fully managed),
+                    /// replace {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3972,7 +3990,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Create a configuration.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The project ID or project number in which this configuration should be created.</param>
+                /// <param name="parent">The namespace in which the configuration should be created. For Cloud Run (fully managed),
+                /// replace {namespace_id} with the project ID or number.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Configuration body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -3991,8 +4010,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The project ID or project number in which this configuration should be
-                    /// created.</summary>
+                    /// <summary>The namespace in which the configuration should be created. For Cloud Run (fully
+                    /// managed), replace {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -4042,8 +4061,8 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>delete a configuration. This will cause the configuration to delete all child revisions.
                 /// Prior to calling this, any route referencing the configuration (or revision from the configuration)
                 /// must be deleted.</summary>
-                /// <param name="name">The name of the configuration being deleted. If needed, replace {namespace_id} with the project
-                /// ID.</param>
+                /// <param name="name">The name of the configuration to delete. For Cloud Run (fully managed), replace {namespace_id}
+                /// with the project ID or number.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -4063,10 +4082,14 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the configuration being deleted. If needed, replace {namespace_id} with the
-                    /// project ID.</summary>
+                    /// <summary>The name of the configuration to delete. For Cloud Run (fully managed), replace
+                    /// {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
+
+                    /// <summary>Cloud Run currently ignores this parameter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ApiVersion { get; set; }
 
                     /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting,
                     /// and deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers
@@ -4077,10 +4100,6 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Kind { get; set; }
-
-                    /// <summary>Cloud Run currently ignores this parameter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ApiVersion { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4116,6 +4135,15 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/configurations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "apiVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "apiVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "propagationPolicy", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "propagationPolicy",
@@ -4133,22 +4161,13 @@ namespace Google.Apis.CloudRun.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        RequestParameters.Add(
-                            "apiVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "apiVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                     }
 
                 }
 
                 /// <summary>Get information about a configuration.</summary>
-                /// <param name="name">The name of the configuration being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</param>
+                /// <param name="name">The name of the configuration to retrieve. For Cloud Run (fully managed), replace {namespace_id}
+                /// with the project ID or number.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -4166,8 +4185,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the configuration being retrieved. If needed, replace {namespace_id} with
-                    /// the project ID.</summary>
+                    /// <summary>The name of the configuration to retrieve. For Cloud Run (fully managed), replace
+                    /// {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4209,7 +4228,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>List configurations.</summary>
-                /// <param name="parent">The project ID or project number from which the configurations should be listed.</param>
+                /// <param name="parent">The namespace from which the configurations should be listed. For Cloud Run (fully managed),
+                /// replace {namespace_id} with the project ID or number.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -4227,10 +4247,29 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The project ID or project number from which the configurations should be
-                    /// listed.</summary>
+                    /// <summary>The namespace from which the configurations should be listed. For Cloud Run (fully
+                    /// managed), replace {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
+
+                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
+                    /// in, and notIn.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LabelSelector { get; set; }
+
+                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ResourceVersion { get; set; }
+
+                    /// <summary>Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
+
+                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
+                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FieldSelector { get; set; }
 
                     /// <summary>Optional encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
@@ -4244,25 +4283,6 @@ namespace Google.Apis.CloudRun.v1
                     /// currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Watch { get; set; }
-
-                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
-                    /// in, and notIn.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LabelSelector { get; set; }
-
-                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
-                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string FieldSelector { get; set; }
-
-                    /// <summary>Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
-
-                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ResourceVersion { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4298,6 +4318,42 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "labelSelector", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "labelSelector",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "resourceVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resourceVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "includeUninitialized", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "includeUninitialized",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "fieldSelector", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fieldSelector",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "continue", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "continue",
@@ -4324,42 +4380,6 @@ namespace Google.Apis.CloudRun.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        RequestParameters.Add(
-                            "labelSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "labelSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fieldSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeUninitialized", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeUninitialized",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resourceVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                     }
 
                 }
@@ -4372,8 +4392,8 @@ namespace Google.Apis.CloudRun.v1
                 /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
                 /// control.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The name of the configuration being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</param>
+                /// <param name="name">The name of the configuration being replaced. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</param>
                 public virtual ReplaceConfigurationRequest ReplaceConfiguration(Google.Apis.CloudRun.v1.Data.Configuration body, string name)
                 {
                     return new ReplaceConfigurationRequest(service, body, name);
@@ -4398,8 +4418,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the configuration being retrieved. If needed, replace {namespace_id} with
-                    /// the project ID.</summary>
+                    /// <summary>The name of the configuration being replaced. For Cloud Run (fully managed), replace
+                    /// {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4472,7 +4492,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Create a new domain mapping.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The project ID or project number in which this domain mapping should be created.</param>
+                /// <param name="parent">The namespace in which the domain mapping should be created. For Cloud Run (fully managed),
+                /// replace {namespace_id} with the project ID or number.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.DomainMapping body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -4491,8 +4512,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The project ID or project number in which this domain mapping should be
-                    /// created.</summary>
+                    /// <summary>The namespace in which the domain mapping should be created. For Cloud Run (fully
+                    /// managed), replace {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -4540,8 +4561,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>Delete a domain mapping.</summary>
-                /// <param name="name">The name of the domain mapping being deleted. If needed, replace {namespace_id} with the project
-                /// ID.</param>
+                /// <param name="name">The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace_id}
+                /// with the project ID or number.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -4559,14 +4580,10 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the domain mapping being deleted. If needed, replace {namespace_id} with
-                    /// the project ID.</summary>
+                    /// <summary>The name of the domain mapping to delete. For Cloud Run (fully managed), replace
+                    /// {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
-                    /// <summary>Cloud Run currently ignores this parameter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ApiVersion { get; set; }
 
                     /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting,
                     /// and deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers
@@ -4577,6 +4594,10 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Kind { get; set; }
+
+                    /// <summary>Cloud Run currently ignores this parameter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ApiVersion { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4612,15 +4633,6 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/domainmappings/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "apiVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "apiVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "propagationPolicy", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "propagationPolicy",
@@ -4638,13 +4650,22 @@ namespace Google.Apis.CloudRun.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "apiVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "apiVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
 
                 /// <summary>Get information about a domain mapping.</summary>
-                /// <param name="name">The name of the domain mapping being retrieved. If needed, replace {namespace_id} with the
-                /// project ID.</param>
+                /// <param name="name">The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace_id}
+                /// with the project ID or number.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -4662,8 +4683,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the domain mapping being retrieved. If needed, replace {namespace_id} with
-                    /// the project ID.</summary>
+                    /// <summary>The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace
+                    /// {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4705,7 +4726,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>List domain mappings.</summary>
-                /// <param name="parent">The project ID or project number from which the domain mappings should be listed.</param>
+                /// <param name="parent">The namespace from which the domain mappings should be listed. For Cloud Run (fully managed),
+                /// replace {namespace_id} with the project ID or number.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -4723,34 +4745,29 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The project ID or project number from which the domain mappings should be
-                    /// listed.</summary>
+                    /// <summary>The namespace from which the domain mappings should be listed. For Cloud Run (fully
+                    /// managed), replace {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
-                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> Watch { get; set; }
 
                     /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
                     /// in, and notIn.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LabelSelector { get; set; }
 
-                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
-                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string FieldSelector { get; set; }
+                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ResourceVersion { get; set; }
 
                     /// <summary>Not currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
 
-                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ResourceVersion { get; set; }
+                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
+                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FieldSelector { get; set; }
 
                     /// <summary>Optional encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
@@ -4759,6 +4776,11 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>The maximum number of records that should be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Limit { get; set; }
+
+                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Watch { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4794,15 +4816,6 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "labelSelector", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "labelSelector",
@@ -4812,9 +4825,9 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
+                            "resourceVersion", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "fieldSelector",
+                                Name = "resourceVersion",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4830,9 +4843,9 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
+                            "fieldSelector", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "resourceVersion",
+                                Name = "fieldSelector",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4856,6 +4869,15 @@ namespace Google.Apis.CloudRun.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "watch", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "watch",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
@@ -4868,8 +4890,8 @@ namespace Google.Apis.CloudRun.v1
                 /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
                 /// control.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The name of the domain mapping being retrieved. If needed, replace {namespace_id} with the
-                /// project ID.</param>
+                /// <param name="name">The name of the domain mapping being retrieved. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</param>
                 public virtual ReplaceDomainMappingRequest ReplaceDomainMapping(Google.Apis.CloudRun.v1.Data.DomainMapping body, string name)
                 {
                     return new ReplaceDomainMappingRequest(service, body, name);
@@ -4894,8 +4916,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the domain mapping being retrieved. If needed, replace {namespace_id} with
-                    /// the project ID.</summary>
+                    /// <summary>The name of the domain mapping being retrieved. For Cloud Run (fully managed), replace
+                    /// {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4967,8 +4989,8 @@ namespace Google.Apis.CloudRun.v1
 
 
                 /// <summary>Delete a revision.</summary>
-                /// <param name="name">The name of the revision being deleted. If needed, replace {namespace_id} with the project
-                /// ID.</param>
+                /// <param name="name">The name of the revision to delete. For Cloud Run (fully managed), replace {namespace_id} with
+                /// the project ID or number.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -4986,14 +5008,10 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the revision being deleted. If needed, replace {namespace_id} with the
-                    /// project ID.</summary>
+                    /// <summary>The name of the revision to delete. For Cloud Run (fully managed), replace
+                    /// {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
-                    /// <summary>Cloud Run currently ignores this parameter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ApiVersion { get; set; }
 
                     /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting,
                     /// and deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers
@@ -5004,6 +5022,10 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Kind { get; set; }
+
+                    /// <summary>Cloud Run currently ignores this parameter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ApiVersion { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5039,15 +5061,6 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/revisions/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "apiVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "apiVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "propagationPolicy", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "propagationPolicy",
@@ -5065,13 +5078,22 @@ namespace Google.Apis.CloudRun.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "apiVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "apiVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
 
                 /// <summary>Get information about a revision.</summary>
-                /// <param name="name">The name of the revision being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</param>
+                /// <param name="name">The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace_id} with
+                /// the project ID or number.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -5089,8 +5111,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the revision being retrieved. If needed, replace {namespace_id} with the
-                    /// project ID.</summary>
+                    /// <summary>The name of the revision to retrieve. For Cloud Run (fully managed), replace
+                    /// {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -5132,7 +5154,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>List revisions.</summary>
-                /// <param name="parent">The project ID or project number from which the revisions should be listed.</param>
+                /// <param name="parent">The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -5150,19 +5173,24 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The project ID or project number from which the revisions should be listed.</summary>
+                    /// <summary>The namespace from which the revisions should be listed. For Cloud Run (fully managed),
+                    /// replace {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
+
+                    /// <summary>The maximum number of records that should be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> Limit { get; set; }
+
+                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Watch { get; set; }
 
                     /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
                     /// in, and notIn.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LabelSelector { get; set; }
-
-                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
-                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string FieldSelector { get; set; }
 
                     /// <summary>The baseline resource version from which the list or watch operation should start. Not
                     /// currently used by Cloud Run.</summary>
@@ -5173,18 +5201,14 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
 
+                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
+                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FieldSelector { get; set; }
+
                     /// <summary>Optional encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Continue { get; set; }
-
-                    /// <summary>The maximum number of records that should be returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> Limit { get; set; }
-
-                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> Watch { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5220,18 +5244,27 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "labelSelector", new Google.Apis.Discovery.Parameter
+                            "limit", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "labelSelector",
+                                Name = "limit",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
+                            "watch", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "fieldSelector",
+                                Name = "watch",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "labelSelector", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "labelSelector",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5256,27 +5289,18 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "fieldSelector", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fieldSelector",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "continue", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "continue",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "limit", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "limit",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5312,7 +5336,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Create a route.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The project ID or project number in which this route should be created.</param>
+                /// <param name="parent">The namespace in which the route should be created. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Route body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -5331,7 +5356,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The project ID or project number in which this route should be created.</summary>
+                    /// <summary>The namespace in which the route should be created. For Cloud Run (fully managed),
+                    /// replace {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -5379,8 +5405,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>Delete a route. This will cause the route to stop serving traffic.</summary>
-                /// <param name="name">The name of the route being deleted. If needed, replace {namespace_id} with the project
-                /// ID.</param>
+                /// <param name="name">The name of the route to delete. For Cloud Run (fully managed), replace {namespace_id} with the
+                /// project ID or number.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -5398,8 +5424,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the route being deleted. If needed, replace {namespace_id} with the project
-                    /// ID.</summary>
+                    /// <summary>The name of the route to delete. For Cloud Run (fully managed), replace {namespace_id}
+                    /// with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -5482,8 +5508,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>Get information about a route.</summary>
-                /// <param name="name">The name of the route being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</param>
+                /// <param name="name">The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace_id} with the
+                /// project ID or number.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -5501,8 +5527,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the route being retrieved. If needed, replace {namespace_id} with the
-                    /// project ID.</summary>
+                    /// <summary>The name of the route to retrieve. For Cloud Run (fully managed), replace
+                    /// {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -5544,7 +5570,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>List routes.</summary>
-                /// <param name="parent">The project ID or project number from which the routes should be listed.</param>
+                /// <param name="parent">The namespace from which the routes should be listed. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -5562,23 +5589,29 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The project ID or project number from which the routes should be listed.</summary>
+                    /// <summary>The namespace from which the routes should be listed. For Cloud Run (fully managed),
+                    /// replace {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
-                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string FieldSelector { get; set; }
-
-                    /// <summary>Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
+                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
+                    /// in, and notIn.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LabelSelector { get; set; }
 
                     /// <summary>The baseline resource version from which the list or watch operation should start. Not
                     /// currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ResourceVersion { get; set; }
+
+                    /// <summary>Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
+
+                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
+                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FieldSelector { get; set; }
 
                     /// <summary>Optional encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
@@ -5592,11 +5625,6 @@ namespace Google.Apis.CloudRun.v1
                     /// currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Watch { get; set; }
-
-                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
-                    /// in, and notIn.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LabelSelector { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5632,9 +5660,18 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
+                            "labelSelector", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "fieldSelector",
+                                Name = "labelSelector",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "resourceVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resourceVersion",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5650,9 +5687,9 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
+                            "fieldSelector", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "resourceVersion",
+                                Name = "fieldSelector",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5685,15 +5722,6 @@ namespace Google.Apis.CloudRun.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        RequestParameters.Add(
-                            "labelSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "labelSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                     }
 
                 }
@@ -5706,8 +5734,8 @@ namespace Google.Apis.CloudRun.v1
                 /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
                 /// control.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The name of the route being replaced. If needed, replace {namespace_id} with the project
-                /// ID.</param>
+                /// <param name="name">The name of the route being replaced. For Cloud Run (fully managed), replace {namespace_id} with
+                /// the project ID or number.</param>
                 public virtual ReplaceRouteRequest ReplaceRoute(Google.Apis.CloudRun.v1.Data.Route body, string name)
                 {
                     return new ReplaceRouteRequest(service, body, name);
@@ -5732,8 +5760,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the route being replaced. If needed, replace {namespace_id} with the
-                    /// project ID.</summary>
+                    /// <summary>The name of the route being replaced. For Cloud Run (fully managed), replace
+                    /// {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -5806,7 +5834,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Create a service.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The project ID or project number in which this service should be created.</param>
+                /// <param name="parent">The namespace in which the service should be created. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudRun.v1.Data.Service body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -5825,7 +5854,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The project ID or project number in which this service should be created.</summary>
+                    /// <summary>The namespace in which the service should be created. For Cloud Run (fully managed),
+                    /// replace {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -5874,8 +5904,8 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Delete a service. This will cause the Service to stop serving traffic and will delete the
                 /// child entities like Routes, Configurations and Revisions.</summary>
-                /// <param name="name">The name of the service being deleted. If needed, replace {namespace_id} with the project
-                /// ID.</param>
+                /// <param name="name">The name of the service to delete. For Cloud Run (fully managed), replace {namespace_id} with the
+                /// project ID or number.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -5894,14 +5924,10 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the service being deleted. If needed, replace {namespace_id} with the
-                    /// project ID.</summary>
+                    /// <summary>The name of the service to delete. For Cloud Run (fully managed), replace
+                    /// {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
-                    /// <summary>Cloud Run currently ignores this parameter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ApiVersion { get; set; }
 
                     /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting,
                     /// and deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers
@@ -5912,6 +5938,10 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Kind { get; set; }
+
+                    /// <summary>Cloud Run currently ignores this parameter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ApiVersion { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5947,15 +5977,6 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "apiVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "apiVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "propagationPolicy", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "propagationPolicy",
@@ -5973,13 +5994,22 @@ namespace Google.Apis.CloudRun.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "apiVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "apiVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
 
                 /// <summary>Get information about a service.</summary>
-                /// <param name="name">The name of the service being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</param>
+                /// <param name="name">The name of the service to retrieve. For Cloud Run (fully managed), replace {namespace_id} with
+                /// the project ID or number.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -5997,8 +6027,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the service being retrieved. If needed, replace {namespace_id} with the
-                    /// project ID.</summary>
+                    /// <summary>The name of the service to retrieve. For Cloud Run (fully managed), replace
+                    /// {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -6122,7 +6152,8 @@ namespace Google.Apis.CloudRun.v1
                 }
 
                 /// <summary>List services.</summary>
-                /// <param name="parent">The project ID or project number from which the services should be listed.</param>
+                /// <param name="parent">The namespace from which the services should be listed. For Cloud Run (fully managed), replace
+                /// {namespace_id} with the project ID or number.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -6140,9 +6171,33 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The project ID or project number from which the services should be listed.</summary>
+                    /// <summary>The namespace from which the services should be listed. For Cloud Run (fully managed),
+                    /// replace {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
+
+                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
+                    /// in, and notIn.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LabelSelector { get; set; }
+
+                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ResourceVersion { get; set; }
+
+                    /// <summary>Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
+
+                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
+                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FieldSelector { get; set; }
+
+                    /// <summary>Optional encoded string to continue paging.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Continue { get; set; }
 
                     /// <summary>The maximum number of records that should be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
@@ -6152,29 +6207,6 @@ namespace Google.Apis.CloudRun.v1
                     /// currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Watch { get; set; }
-
-                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
-                    /// in, and notIn.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LabelSelector { get; set; }
-
-                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
-                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string FieldSelector { get; set; }
-
-                    /// <summary>Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
-
-                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ResourceVersion { get; set; }
-
-                    /// <summary>Optional encoded string to continue paging.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Continue { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -6210,6 +6242,51 @@ namespace Google.Apis.CloudRun.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "labelSelector", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "labelSelector",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "resourceVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resourceVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "includeUninitialized", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "includeUninitialized",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "fieldSelector", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fieldSelector",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "continue", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "continue",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "limit", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "limit",
@@ -6227,51 +6304,6 @@ namespace Google.Apis.CloudRun.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        RequestParameters.Add(
-                            "labelSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "labelSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fieldSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeUninitialized", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeUninitialized",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resourceVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "continue", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "continue",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                     }
 
                 }
@@ -6284,8 +6316,8 @@ namespace Google.Apis.CloudRun.v1
                 /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
                 /// control.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The name of the service being replaced. If needed, replace {namespace_id} with the project
-                /// ID.</param>
+                /// <param name="name">The name of the service being replaced. For Cloud Run (fully managed), replace {namespace_id}
+                /// with the project ID or number.</param>
                 public virtual ReplaceServiceRequest ReplaceService(Google.Apis.CloudRun.v1.Data.Service body, string name)
                 {
                     return new ReplaceServiceRequest(service, body, name);
@@ -6310,8 +6342,8 @@ namespace Google.Apis.CloudRun.v1
                     }
 
 
-                    /// <summary>The name of the service being replaced. If needed, replace {namespace_id} with the
-                    /// project ID.</summary>
+                    /// <summary>The name of the service being replaced. For Cloud Run (fully managed), replace
+                    /// {namespace_id} with the project ID or number.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -6588,10 +6620,6 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -6599,6 +6627,10 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -6634,15 +6666,6 @@ namespace Google.Apis.CloudRun.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -6655,6 +6678,15 @@ namespace Google.Apis.CloudRun.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7094,8 +7126,8 @@ namespace Google.Apis.CloudRun.v1.Data
         /// $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference
         /// in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
         /// $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
-        /// Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-
-        /// argument-container/#running-a-command-in-a-shell</summary>
+        /// More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-
+        /// container/#running-a-command-in-a-shell</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; } 
 
@@ -7108,7 +7140,7 @@ namespace Google.Apis.CloudRun.v1.Data
         ///
         /// Cloud Run for Anthos: supported
         ///
-        /// List of environment variables to set in the container. Cannot be updated.</summary>
+        /// List of environment variables to set in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<EnvVar> Env { get; set; } 
 
@@ -7140,8 +7172,8 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Cloud Run for Anthos: supported
         ///
         /// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or
-        /// IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images
-        /// #updating-images</summary>
+        /// IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-
+        /// images</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imagePullPolicy")]
         public virtual string ImagePullPolicy { get; set; } 
 
@@ -7151,8 +7183,8 @@ namespace Google.Apis.CloudRun.v1.Data
         ///
         /// Cloud Run for Anthos: supported
         ///
-        /// Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated.
-        /// More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes</summary>
+        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("livenessProbe")]
         public virtual Probe LivenessProbe { get; set; } 
 
@@ -7171,7 +7203,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// List of ports to expose from the container. Exposing a port here gives the system additional information
         /// about the network connections a container uses, but is primarily informational. Not specifying a port here
         /// DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address
-        /// inside a container will be accessible from the network. Cannot be updated.</summary>
+        /// inside a container will be accessible from the network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
         public virtual System.Collections.Generic.IList<ContainerPort> Ports { get; set; } 
 
@@ -7182,8 +7214,8 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Cloud Run for Anthos: supported
         ///
         /// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe
-        /// fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle
-        /// #container-probes</summary>
+        /// fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-
+        /// probes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readinessProbe")]
         public virtual Probe ReadinessProbe { get; set; } 
 
@@ -7193,8 +7225,8 @@ namespace Google.Apis.CloudRun.v1.Data
         ///
         /// Cloud Run for Anthos: supported
         ///
-        /// Compute Resources required by this container. Cannot be updated. More info:
-        /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources</summary>
+        /// Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage
+        /// /persistent-volumes#resources</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual ResourceRequirements Resources { get; set; } 
 
@@ -7218,7 +7250,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Path at which the file to which the container's termination message will be written is mounted into the
         /// container's filesystem. Message written is intended to be brief final status, such as an assertion failure
         /// message. Will be truncated by the node if greater than 4096 bytes. The total message length across all
-        /// containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated.</summary>
+        /// containers will be limited to 12kb. Defaults to /dev/termination-log.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terminationMessagePath")]
         public virtual string TerminationMessagePath { get; set; } 
 
@@ -7242,7 +7274,7 @@ namespace Google.Apis.CloudRun.v1.Data
         ///
         /// Cloud Run for Anthos: supported
         ///
-        /// Pod volumes to mount into the container's filesystem. Cannot be updated.</summary>
+        /// Pod volumes to mount into the container's filesystem.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeMounts")]
         public virtual System.Collections.Generic.IList<VolumeMount> VolumeMounts { get; set; } 
 
@@ -7253,7 +7285,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Cloud Run for Anthos: supported
         ///
         /// Container's working directory. If not specified, the container runtime's default will be used, which might
-        /// be configured in the container image. Cannot be updated.</summary>
+        /// be configured in the container image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workingDir")]
         public virtual string WorkingDir { get; set; } 
 

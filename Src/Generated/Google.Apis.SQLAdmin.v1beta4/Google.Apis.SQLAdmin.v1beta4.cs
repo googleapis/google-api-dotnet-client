@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Admin API</a>
+ *          <td><a href='https://developers.google.com/cloud-sql/'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20190827 (1699)
+ *      <tr><th>API Rev<td>20191005 (1738)
  *      <tr><th>API Docs
- *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
- *              https://cloud.google.com/sql/docs/reference/latest</a>
- *      <tr><th>Discovery Name<td>sqladmin
+ *          <td><a href='https://developers.google.com/cloud-sql/'>
+ *              https://developers.google.com/cloud-sql/</a>
+ *      <tr><th>Discovery Name<td>sql
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Cloud SQL Admin API can be found at
- * <a href='https://cloud.google.com/sql/docs/reference/latest'>https://cloud.google.com/sql/docs/reference/latest</a>.
+ * <a href='https://developers.google.com/cloud-sql/'>https://developers.google.com/cloud-sql/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -83,36 +83,36 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>Gets the service name.</summary>
         public override string Name
         {
-            get { return "sqladmin"; }
+            get { return "sql"; }
         }
 
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/sql/v1beta4/"; }
+            get { return BaseUriOverride ?? "https://sqladmin.googleapis.com/"; }
         #else
-            get { return "https://www.googleapis.com/sql/v1beta4/"; }
+            get { return "https://sqladmin.googleapis.com/"; }
         #endif
         }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath
         {
-            get { return "sql/v1beta4/"; }
+            get { return ""; }
         }
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/sqladmin/v1beta4"; }
+            get { return "https://sqladmin.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch/sqladmin/v1beta4"; }
+            get { return "batch"; }
         }
         #endif
 
@@ -214,18 +214,47 @@ namespace Google.Apis.SQLAdmin.v1beta4
         {
         }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>Data format for response.</summary>
         public enum AltEnum
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
         }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -245,14 +274,18 @@ namespace Google.Apis.SQLAdmin.v1beta4
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+        /// assigned to a user, but should not exceed 40 characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>Deprecated. Please use quotaUser instead.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UserIp { get; set; }
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
 
         /// <summary>Initializes SQLAdmin parameter list.</summary>
         protected override void InitParameters()
@@ -260,12 +293,39 @@ namespace Google.Apis.SQLAdmin.v1beta4
             base.InitParameters();
 
             RequestParameters.Add(
+                "$.xgafv", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
                 "alt", new Google.Apis.Discovery.Parameter
                 {
                     Name = "alt",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "json",
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "callback", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "callback",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
             RequestParameters.Add(
@@ -314,9 +374,18 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Pattern = null,
                 });
             RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
+                "uploadType", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "userIp",
+                    Name = "uploadType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "upload_protocol", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "upload_protocol",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -394,7 +463,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/backupRuns/{id}"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns/{id}"; }
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -486,7 +555,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/backupRuns/{id}"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns/{id}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -581,7 +650,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/backupRuns"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns"; }
             }
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -668,7 +737,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/backupRuns"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/backupRuns"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -786,7 +855,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/databases/{database}"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}"; }
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -878,7 +947,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/databases/{database}"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -971,7 +1040,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/databases"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/databases"; }
             }
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -1047,7 +1116,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/databases"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/databases"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1077,8 +1146,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
         }
 
-        /// <summary>Updates a resource containing information about a database inside a Cloud SQL instance. This method
-        /// supports patch semantics.</summary>
+        /// <summary>Partially updates a resource containing information about a database inside a Cloud SQL instance.
+        /// This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param
@@ -1090,8 +1159,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
             return new PatchRequest(service, body, project, instance, database);
         }
 
-        /// <summary>Updates a resource containing information about a database inside a Cloud SQL instance. This method
-        /// supports patch semantics.</summary>
+        /// <summary>Partially updates a resource containing information about a database inside a Cloud SQL instance.
+        /// This method supports patch semantics.</summary>
         public class PatchRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1140,7 +1209,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/databases/{database}"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}"; }
             }
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -1240,7 +1309,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/databases/{database}"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/databases/{database}"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -1334,7 +1403,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "flags"; }
+                get { return "sql/v1beta4/flags"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -1424,7 +1493,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/addServerCa"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/addServerCa"; }
             }
 
             /// <summary>Initializes AddServerCa parameter list.</summary>
@@ -1510,7 +1579,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/clone"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/clone"; }
             }
 
             /// <summary>Initializes Clone parameter list.</summary>
@@ -1586,7 +1655,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}"; }
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -1672,7 +1741,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/demoteMaster"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/demoteMaster"; }
             }
 
             /// <summary>Initializes DemoteMaster parameter list.</summary>
@@ -1758,7 +1827,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/export"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/export"; }
             }
 
             /// <summary>Initializes Export parameter list.</summary>
@@ -1842,7 +1911,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/failover"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/failover"; }
             }
 
             /// <summary>Initializes Failover parameter list.</summary>
@@ -1918,7 +1987,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -1948,7 +2017,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
         }
 
-        /// <summary>Imports data into a Cloud SQL instance from a SQL dump or CSV file in Cloud Storage.</summary>
+        /// <summary>Imports data into a Cloud SQL instance from a SQL dump  or CSV file in Cloud Storage.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param
@@ -1958,7 +2027,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             return new ImportRequest(service, body, project, instance);
         }
 
-        /// <summary>Imports data into a Cloud SQL instance from a SQL dump or CSV file in Cloud Storage.</summary>
+        /// <summary>Imports data into a Cloud SQL instance from a SQL dump  or CSV file in Cloud Storage.</summary>
         public class ImportRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Import request.</summary>
@@ -2002,7 +2071,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/import"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/import"; }
             }
 
             /// <summary>Initializes Import parameter list.</summary>
@@ -2081,7 +2150,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances"; }
+                get { return "sql/v1beta4/projects/{project}/instances"; }
             }
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -2125,18 +2194,18 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>An expression for filtering the results of the request, such as by name or label.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
+            /// <summary>A previously-returned page token representing part of the larger set of results to
+            /// view.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
             /// <summary>The maximum number of results to return per response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>A previously-returned page token representing part of the larger set of results to
-            /// view.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
+            /// <summary>An expression for filtering the results of the request, such as by name or label.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2154,7 +2223,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances"; }
+                get { return "sql/v1beta4/projects/{project}/instances"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -2172,9 +2241,9 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "filter",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2190,9 +2259,9 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "filter", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2254,7 +2323,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/listServerCas"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/listServerCas"; }
             }
 
             /// <summary>Initializes ListServerCas parameter list.</summary>
@@ -2284,9 +2353,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
         }
 
-        /// <summary>Updates settings of a Cloud SQL instance. Caution: This is not a partial update, so you must
-        /// include values for all the settings that you want to retain. For partial updates, use patch.. This method
-        /// supports patch semantics.</summary>
+        /// <summary>Updates settings of a Cloud SQL instance. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param
@@ -2296,9 +2363,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             return new PatchRequest(service, body, project, instance);
         }
 
-        /// <summary>Updates settings of a Cloud SQL instance. Caution: This is not a partial update, so you must
-        /// include values for all the settings that you want to retain. For partial updates, use patch.. This method
-        /// supports patch semantics.</summary>
+        /// <summary>Updates settings of a Cloud SQL instance. This method supports patch semantics.</summary>
         public class PatchRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2342,7 +2407,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}"; }
             }
 
             /// <summary>Initializes Patch parameter list.</summary>
@@ -2418,7 +2483,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/promoteReplica"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/promoteReplica"; }
             }
 
             /// <summary>Initializes PromoteReplica parameter list.</summary>
@@ -2496,7 +2561,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/resetSslConfig"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/resetSslConfig"; }
             }
 
             /// <summary>Initializes ResetSslConfig parameter list.</summary>
@@ -2572,7 +2637,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/restart"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/restart"; }
             }
 
             /// <summary>Initializes Restart parameter list.</summary>
@@ -2656,7 +2721,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/restoreBackup"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/restoreBackup"; }
             }
 
             /// <summary>Initializes RestoreBackup parameter list.</summary>
@@ -2742,7 +2807,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/rotateServerCa"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/rotateServerCa"; }
             }
 
             /// <summary>Initializes RotateServerCa parameter list.</summary>
@@ -2818,7 +2883,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/startReplica"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/startReplica"; }
             }
 
             /// <summary>Initializes StartReplica parameter list.</summary>
@@ -2894,7 +2959,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/stopReplica"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/stopReplica"; }
             }
 
             /// <summary>Initializes StopReplica parameter list.</summary>
@@ -2978,7 +3043,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/truncateLog"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/truncateLog"; }
             }
 
             /// <summary>Initializes TruncateLog parameter list.</summary>
@@ -3064,7 +3129,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -3157,7 +3222,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/operations/{operation}"; }
+                get { return "sql/v1beta4/projects/{project}/operations/{operation}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3190,11 +3255,9 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>Lists all instance operations that have been performed on the given Cloud SQL instance in the
         /// reverse chronological order of the start time.</summary>
         /// <param name="project">Project ID of the project that contains the instance.</param>
-        /// <param
-        /// name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
-        public virtual ListRequest List(string project, string instance)
+        public virtual ListRequest List(string project)
         {
-            return new ListRequest(service, project, instance);
+            return new ListRequest(service, project);
         }
 
         /// <summary>Lists all instance operations that have been performed on the given Cloud SQL instance in the
@@ -3202,11 +3265,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public class ListRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.OperationsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project, string instance)
+            public ListRequest(Google.Apis.Services.IClientService service, string project)
                 : base(service)
             {
                 Project = project;
-                Instance = instance;
                 InitParameters();
             }
 
@@ -3215,13 +3277,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Instance { get; private set; }
-
             /// <summary>Maximum number of operations per response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Instance { get; set; }
 
             /// <summary>A previously-returned page token representing part of the larger set of results to
             /// view.</summary>
@@ -3244,7 +3306,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/operations"; }
+                get { return "sql/v1beta4/projects/{project}/operations"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3262,18 +3324,18 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "instance", new Google.Apis.Discovery.Parameter
+                    "maxResults", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "instance",
-                        IsRequired = true,
+                        Name = "maxResults",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
+                    "instance", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxResults",
+                        Name = "instance",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3367,7 +3429,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/createEphemeral"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/createEphemeral"; }
             }
 
             /// <summary>Initializes CreateEphemeral parameter list.</summary>
@@ -3452,7 +3514,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}"; }
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -3491,8 +3553,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
         }
 
-        /// <summary>Retrieves a particular SSL certificate. Does not include the private key (required for usage). The
-        /// private key must be saved from the response to initial creation.</summary>
+        /// <summary>Retrieves a particular SSL certificate.  Does not include the private key (required for usage).
+        /// The private key must be saved from the response to initial creation.</summary>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param
         /// name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
@@ -3503,8 +3565,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
             return new GetRequest(service, project, instance, sha1Fingerprint);
         }
 
-        /// <summary>Retrieves a particular SSL certificate. Does not include the private key (required for usage). The
-        /// private key must be saved from the response to initial creation.</summary>
+        /// <summary>Retrieves a particular SSL certificate.  Does not include the private key (required for usage).
+        /// The private key must be saved from the response to initial creation.</summary>
         public class GetRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.SslCert>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -3546,7 +3608,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -3586,7 +3648,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>Creates an SSL certificate and returns it along with the private key and server certificate
-        /// authority. The new certificate will not be usable until the instance is restarted.</summary>
+        /// authority.  The new certificate will not be usable until the instance is restarted.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param
@@ -3597,7 +3659,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>Creates an SSL certificate and returns it along with the private key and server certificate
-        /// authority. The new certificate will not be usable until the instance is restarted.</summary>
+        /// authority.  The new certificate will not be usable until the instance is restarted.</summary>
         public class InsertRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.SslCertsInsertResponse>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -3641,7 +3703,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/sslCerts"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts"; }
             }
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -3717,7 +3779,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/sslCerts"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/sslCerts"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3805,7 +3867,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/tiers"; }
+                get { return "sql/v1beta4/projects/{project}/tiers"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -3847,25 +3909,20 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param
         /// name="instance">Database instance ID. This does not include the project ID.</param>
-        /// <param name="host">Host
-        /// of the user in the instance.</param>
-        /// <param name="name">Name of the user in the instance.</param>
-        public virtual DeleteRequest Delete(string project, string instance, string host, string name)
+        public virtual DeleteRequest Delete(string project, string instance)
         {
-            return new DeleteRequest(service, project, instance, host, name);
+            return new DeleteRequest(service, project, instance);
         }
 
         /// <summary>Deletes a user from a Cloud SQL instance.</summary>
         public class DeleteRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string instance, string host, string name)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string instance)
                 : base(service)
             {
                 Project = project;
                 Instance = instance;
-                Host = host;
-                Name = name;
                 InitParameters();
             }
 
@@ -3878,13 +3935,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>Host of the user in the instance.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Host { get; private set; }
-
             /// <summary>Name of the user in the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Name { get; private set; }
+            public virtual string Name { get; set; }
+
+            /// <summary>Host of the user in the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Host { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3902,7 +3959,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/users"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/users"; }
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
@@ -3929,19 +3986,19 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "host", new Google.Apis.Discovery.Parameter
+                    "name", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "host",
-                        IsRequired = true,
+                        Name = "name",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
+                    "host", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "name",
-                        IsRequired = true,
+                        Name = "host",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -4004,7 +4061,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/users"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/users"; }
             }
 
             /// <summary>Initializes Insert parameter list.</summary>
@@ -4080,7 +4137,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/users"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/users"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -4115,23 +4172,20 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param
         /// name="instance">Database instance ID. This does not include the project ID.</param>
-        /// <param name="name">Name
-        /// of the user in the instance.</param>
-        public virtual UpdateRequest Update(Google.Apis.SQLAdmin.v1beta4.Data.User body, string project, string instance, string name)
+        public virtual UpdateRequest Update(Google.Apis.SQLAdmin.v1beta4.Data.User body, string project, string instance)
         {
-            return new UpdateRequest(service, body, project, instance, name);
+            return new UpdateRequest(service, body, project, instance);
         }
 
         /// <summary>Updates an existing user in a Cloud SQL instance.</summary>
         public class UpdateRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.User body, string project, string instance, string name)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.User body, string project, string instance)
                 : base(service)
             {
                 Project = project;
                 Instance = instance;
-                Name = name;
                 Body = body;
                 InitParameters();
             }
@@ -4145,14 +4199,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>Name of the user in the instance.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Name { get; private set; }
-
             /// <summary>Host of the user in the instance. For a MySQL instance, it's required; For a PostgreSQL
             /// instance, it's optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Host { get; set; }
+
+            /// <summary>Name of the user in the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -4176,7 +4230,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "projects/{project}/instances/{instance}/users"; }
+                get { return "sql/v1beta4/projects/{project}/instances/{instance}/users"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -4203,18 +4257,18 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
+                    "host", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "name",
-                        IsRequired = true,
+                        Name = "host",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "host", new Google.Apis.Discovery.Parameter
+                    "name", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "host",
+                        Name = "name",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4235,21 +4289,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The time when this access control entry expires in RFC 3339 format, for example
         /// 2012-11-15T16:19:00.094Z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
-        public virtual string ExpirationTimeRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ExpirationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public virtual System.Nullable<System.DateTime> ExpirationTime
-        {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(ExpirationTimeRaw);
-            }
-            set
-            {
-                ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
-        }
+        public virtual object ExpirationTime { get; set; } 
 
         /// <summary>This is always sql#aclEntry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -4298,7 +4338,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The location of the backup.</summary>
+        /// <summary>Location of the backup</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -4322,52 +4362,24 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Disk encryption configuration specific to a backup. Applies only to Second Generation
+        /// <summary>Encryption configuration specific to a backup. Applies only to Second Generation
         /// instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionConfiguration")]
         public virtual DiskEncryptionConfiguration DiskEncryptionConfiguration { get; set; } 
 
-        /// <summary>Disk encryption status specific to a backup. Applies only to Second Generation instances.</summary>
+        /// <summary>Encryption status specific to a backup. Applies only to Second Generation instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionStatus")]
         public virtual DiskEncryptionStatus DiskEncryptionStatus { get; set; } 
 
         /// <summary>The time the backup operation completed in UTC timezone in RFC 3339 format, for example
         /// 2012-11-15T16:19:00.094Z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public virtual System.Nullable<System.DateTime> EndTime
-        {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(EndTimeRaw);
-            }
-            set
-            {
-                EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
-        }
+        public virtual object EndTime { get; set; } 
 
         /// <summary>The time the run was enqueued in UTC timezone in RFC 3339 format, for example
         /// 2012-11-15T16:19:00.094Z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enqueuedTime")]
-        public virtual string EnqueuedTimeRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="EnqueuedTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public virtual System.Nullable<System.DateTime> EnqueuedTime
-        {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(EnqueuedTimeRaw);
-            }
-            set
-            {
-                EnqueuedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
-        }
+        public virtual object EnqueuedTime { get; set; } 
 
         /// <summary>Information about why the backup operation failed. This is only present if the run has the FAILED
         /// status.</summary>
@@ -4386,7 +4398,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The location of the backup.</summary>
+        /// <summary>Location of the backups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -4397,21 +4409,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The time the backup operation actually started in UTC timezone in RFC 3339 format, for example
         /// 2012-11-15T16:19:00.094Z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public virtual System.Nullable<System.DateTime> StartTime
-        {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(StartTimeRaw);
-            }
-            set
-            {
-                StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
-        }
+        public virtual object StartTime { get; set; } 
 
         /// <summary>The status of this run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -4424,21 +4422,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The start time of the backup window during which this the backup was attempted in RFC 3339 format,
         /// for example 2012-11-15T16:19:00.094Z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowStartTime")]
-        public virtual string WindowStartTimeRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="WindowStartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public virtual System.Nullable<System.DateTime> WindowStartTime
-        {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(WindowStartTimeRaw);
-            }
-            set
-            {
-                WindowStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
-        }
+        public virtual object WindowStartTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4565,7 +4549,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Cloud SQL instance resource.</summary>
+    /// <summary>A Cloud SQL instance resource. If you change this, also change SqlDatabaseInstance</summary>
     public class DatabaseInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>FIRST_GEN: First Generation instance. MySQL only. SECOND_GEN: Second Generation instance or
@@ -4586,8 +4570,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Nullable<long> CurrentDiskSize { get; set; } 
 
         /// <summary>The database engine type and version. The databaseVersion field can not be changed after instance
-        /// creation. MySQL Second Generation instances: MYSQL_5_7 (default) or MYSQL_5_6. PostgreSQL instances:
-        /// POSTGRES_9_6 (default) or POSTGRES_11 Beta. MySQL First Generation instances: MYSQL_5_6 (default) or
+        /// creation.  MySQL Second Generation instances: MYSQL_5_7 (default) or MYSQL_5_6. PostgreSQL instances:
+        /// POSTGRES_9_6 (default) or POSTGRES_11 Beta MySQL First Generation instances: MYSQL_5_6 (default) or
         /// MYSQL_5_5</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; } 
@@ -4713,7 +4697,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public class FailoverReplicaData
         {
             /// <summary>The availability status of the failover replica. A false status indicates that the failover
-            /// replica is out of sync. The master can only failover to the falover replica when the status is
+            /// replica is out of sync. The master can only failover to the failover replica when the status is
             /// true.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("available")]
             public virtual System.Nullable<bool> Available { get; set; } 
@@ -4776,8 +4760,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual DemoteMasterConfiguration ReplicaConfiguration { get; set; } 
 
         /// <summary>Verify GTID consistency for demote operation. Default value: True. Second Generation instances
-        /// only. Setting this flag to false enables you to bypass GTID consistency check between on-premises master and
-        /// Cloud SQL instance during the demotion operation but also exposes you to the risk of future replication
+        /// only.  Setting this flag to false enables you to bypass GTID consistency check between on-premises master
+        /// and Cloud SQL instance during the demotion operation but also exposes you to the risk of future replication
         /// failures. Change the value only if you know the reason for the GTID divergence and are confident that doing
         /// so will not cause any replication issues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifyGtidConsistency")]
@@ -4819,14 +4803,14 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Disk encryption configuration.</summary>
+    /// <summary>Disk encryption configuration for an instance.</summary>
     public class DiskEncryptionConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This is always sql#diskEncryptionConfiguration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>KMS key resource name</summary>
+        /// <summary>Resource name of KMS key for disk encryption</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; } 
 
@@ -4834,14 +4818,14 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Disk encryption status.</summary>
+    /// <summary>Disk encryption status for an instance.</summary>
     public class DiskEncryptionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This is always sql#diskEncryptionStatus.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>KMS key version used to encrypt the Cloud SQL instance disk</summary>
+        /// <summary>KMS key version used to encrypt the Cloud SQL instance resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
         public virtual string KmsKeyVersionName { get; set; } 
 
@@ -4856,11 +4840,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("csvExportOptions")]
         public virtual ExportContext.CsvExportOptionsData CsvExportOptions { get; set; } 
 
-        /// <summary>Databases to be exported. MySQL instances: If fileType is SQL and no database is specified, all
+        /// <summary>Databases to be exported.  MySQL instances: If fileType is SQL and no database is specified, all
         /// databases are exported, except for the mysql system database. If fileType is CSV, you can specify one
         /// database, either by using this property or by using the csvExportOptions.selectQuery property, which takes
-        /// precedence over this property. PostgreSQL instances: Specify exactly one database to be exported. If
-        /// fileType is CSV, this database must match the database used in the csvExportOptions.selectQuery
+        /// precedence over this property.  PostgreSQL instances: You must specify one database to be exported. If
+        /// fileType is CSV, this database must match the one specified in the csvExportOptions.selectQuery
         /// property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databases")]
         public virtual System.Collections.Generic.IList<string> Databases { get; set; } 
@@ -4879,8 +4863,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual ExportContext.SqlExportOptionsData SqlExportOptions { get; set; } 
 
         /// <summary>The path to the file in Google Cloud Storage where the export will be stored. The URI is in the
-        /// form gs://bucketName/fileName. If the file already exists, the requests succeeds, but the operation fails.
-        /// If fileType is SQL and the filename ends with .gz, the contents are compressed.</summary>
+        /// form gs: //bucketName/fileName. If the file already exists, the requests // succeeds, but the operation
+        /// fails. If fileType is // SQL and the filename ends with .gz, the contents are // compressed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -4957,7 +4941,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliesTo")]
         public virtual System.Collections.Generic.IList<string> AppliesTo { get; set; } 
 
-        /// <summary>True if the flag is only released in Beta.</summary>
+        /// <summary>Whether or not the flag is considered in beta.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inBeta")]
         public virtual System.Nullable<bool> InBeta { get; set; } 
 
@@ -5037,9 +5021,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Path to the import file in Cloud Storage, in the form gs://bucketName/fileName. Compressed gzip
-        /// files (.gz) are supported when fileType is SQL. The instance must have write permissions to the bucket and
-        /// read access to the file.</summary>
+        /// <summary>Path to the import file in Cloud Storage, in the form gs: //bucketName/fileName. Compressed gzip
+        /// files (.gz) are supported // when fileType is SQL. The instance must have // write permissions to the bucket
+        /// and read access to the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -5066,7 +5050,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("pvkPassword")]
                 public virtual string PvkPassword { get; set; } 
 
-                /// <summary>Path to the Certificate Private Key (.pvk) in Cloud Storage, in the form
+                /// <summary>Path to the Certificate Private Key (.pvk)  in Cloud Storage, in the form
                 /// gs://bucketName/fileName. The instance must have write permissions to the bucket and read access to
                 /// the file.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("pvkPath")]
@@ -5256,21 +5240,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The due time for this IP to be retired in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
         /// This field is only available when the IP is scheduled to be retired.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeToRetire")]
-        public virtual string TimeToRetireRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeToRetireRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public virtual System.Nullable<System.DateTime> TimeToRetire
-        {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(TimeToRetireRaw);
-            }
-            set
-            {
-                TimeToRetireRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
-        }
+        public virtual object TimeToRetire { get; set; } 
 
         /// <summary>The type of this IP address. A PRIMARY address is a public address that can accept incoming
         /// connections. A PRIVATE address is a private address that can accept incoming connections. An OUTGOING
@@ -5350,9 +5320,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Nullable<int> ConnectRetryInterval { get; set; } 
 
         /// <summary>Path to a SQL dump file in Google Cloud Storage from which the slave instance is to be created. The
-        /// URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps should
-        /// have the binlog co-ordinates from which replication should begin. This can be accomplished by setting
-        /// --master-data to 1 when using mysqldump.</summary>
+        /// URI is in the form gs: //bucketName/fileName. Compressed gzip files (.gz) are also supported. // Dumps
+        /// should have the binlog co-ordinates from which replication should // begin. This can be accomplished by
+        /// setting --master-data to 1 when using // mysqldump.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dumpFilePath")]
         public virtual string DumpFilePath { get; set; } 
 
@@ -5400,28 +5370,14 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An Operation resource. For successful operations that return an Operation resource, only the fields
+    /// <summary>An Operation resource.For successful operations that return an Operation resource, only the fields
     /// relevant to the operation are populated in the resource.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time this operation finished in UTC timezone in RFC 3339 format, for example
         /// 2012-11-15T16:19:00.094Z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public virtual System.Nullable<System.DateTime> EndTime
-        {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(EndTimeRaw);
-            }
-            set
-            {
-                EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
-        }
+        public virtual object EndTime { get; set; } 
 
         /// <summary>If errors occurred during processing of this operation, this field will be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
@@ -5438,21 +5394,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The time this operation was enqueued in UTC timezone in RFC 3339 format, for example
         /// 2012-11-15T16:19:00.094Z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual string InsertTimeRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="InsertTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public virtual System.Nullable<System.DateTime> InsertTime
-        {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(InsertTimeRaw);
-            }
-            set
-            {
-                InsertTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
-        }
+        public virtual object InsertTime { get; set; } 
 
         /// <summary>This is always sql#operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -5475,21 +5417,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The time this operation actually started in UTC timezone in RFC 3339 format, for example
         /// 2012-11-15T16:19:00.094Z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public virtual System.Nullable<System.DateTime> StartTime
-        {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(StartTimeRaw);
-            }
-            set
-            {
-                StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
-        }
+        public virtual object StartTime { get; set; } 
 
         /// <summary>The status of an operation. Valid values are PENDING, RUNNING, DONE, UNKNOWN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -5573,7 +5501,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     {
         /// <summary>Specifies if the replica is the failover target. If the field is set to true the replica will be
         /// designated as a failover replica. In case the master instance fails, the replica instance will be promoted
-        /// as the new master instance. Only one replica can be specified as failover target, and the replica has to be
+        /// as the new master instance.  Only one replica can be specified as failover target, and the replica has to be
         /// in different zone with the master instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failoverTarget")]
         public virtual System.Nullable<bool> FailoverTarget { get; set; } 
@@ -5593,7 +5521,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Database instance restore from backup context.</summary>
+    /// <summary>Database instance restore from backup context. Backup context contains source instance id and project
+    /// id.</summary>
     public class RestoreBackupContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the backup run to restore from.</summary>
@@ -5756,47 +5685,19 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("certSerialNumber")]
         public virtual string CertSerialNumber { get; set; } 
 
-        /// <summary>User supplied name. Constrained to [a-zA-Z.-_ ]+.</summary>
+        /// <summary>User supplied name.  Constrained to [a-zA-Z.-_ ]+.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonName")]
         public virtual string CommonName { get; set; } 
 
         /// <summary>The time when the certificate was created in RFC 3339 format, for example
         /// 2012-11-15T16:19:00.094Z</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public virtual System.Nullable<System.DateTime> CreateTime
-        {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(CreateTimeRaw);
-            }
-            set
-            {
-                CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
-        }
+        public virtual object CreateTime { get; set; } 
 
         /// <summary>The time when the certificate expires in RFC 3339 format, for example
         /// 2012-11-15T16:19:00.094Z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
-        public virtual string ExpirationTimeRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ExpirationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public virtual System.Nullable<System.DateTime> ExpirationTime
-        {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(ExpirationTimeRaw);
-            }
-            set
-            {
-                ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
-        }
+        public virtual object ExpirationTime { get; set; } 
 
         /// <summary>Name of the database instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
@@ -5825,7 +5726,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("certInfo")]
         public virtual SslCert CertInfo { get; set; } 
 
-        /// <summary>The private key for the client cert, in pem format. Keep private in order to protect your
+        /// <summary>The private key for the client cert, in pem format.  Keep private in order to protect your
         /// security.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certPrivateKey")]
         public virtual string CertPrivateKey { get; set; } 
@@ -5848,7 +5749,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>SslCerts insert request.</summary>
     public class SslCertsInsertRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>User supplied name. Must be a distinct name from the other certificates for this
+        /// <summary>User supplied name.  Must be a distinct name from the other certificates for this
         /// instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonName")]
         public virtual string CommonName { get; set; } 
@@ -5860,7 +5761,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>SslCert insert response.</summary>
     public class SslCertsInsertResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The new client certificate and private key. For First Generation instances, the new certificate
+        /// <summary>The new client certificate and private key.  For First Generation instances, the new certificate
         /// does not take effect until the instance is restarted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientCert")]
         public virtual SslCertDetail ClientCert { get; set; } 
@@ -5873,7 +5774,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; } 
 
-        /// <summary>The server Certificate Authority's certificate. If this is missing you can force a new one to be
+        /// <summary>The server Certificate Authority's certificate.  If this is missing you can force a new one to be
         /// generated by calling resetSslConfig method on instances resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverCaCert")]
         public virtual SslCert ServerCaCert { get; set; } 

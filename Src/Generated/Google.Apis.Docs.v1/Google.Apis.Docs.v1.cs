@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191005 (1738)
+ *      <tr><th>API Rev<td>20191010 (1743)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -2904,6 +2904,36 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Replaces the contents of the specified NamedRange or NamedRanges with the given replacement content.
+    ///
+    /// Note that an individual NamedRange may consist of multiple discontinuous ranges. In this case, only the content
+    /// in the first range will be replaced. The other ranges and their content will be deleted.
+    ///
+    /// In cases where replacing or deleting any ranges would result in an invalid document structure, a 400 bad request
+    /// error is returned.</summary>
+    public class ReplaceNamedRangeContentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the named range whose content will be replaced.
+        ///
+        /// If there is no named range with the given ID a 400 bad request error is returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namedRangeId")]
+        public virtual string NamedRangeId { get; set; } 
+
+        /// <summary>The name of the NamedRanges whose content will be replaced.
+        ///
+        /// If there are multiple named ranges with the given name, then the content of each one will be replaced. If
+        /// there are no named ranges with the given name, then the request will be a no-op.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namedRangeName")]
+        public virtual string NamedRangeName { get; set; } 
+
+        /// <summary>Replaces the content of the specified named range(s) with the given text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A single update to apply to a document.</summary>
     public class Request : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2974,6 +3004,10 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Replaces an image in the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceImage")]
         public virtual ReplaceImageRequest ReplaceImage { get; set; } 
+
+        /// <summary>Replaces the content in a named range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replaceNamedRangeContent")]
+        public virtual ReplaceNamedRangeContentRequest ReplaceNamedRangeContent { get; set; } 
 
         /// <summary>Unmerges cells in a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unmergeTableCells")]

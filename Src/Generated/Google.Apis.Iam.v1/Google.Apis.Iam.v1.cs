@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190920 (1723)
+ *      <tr><th>API Rev<td>20191010 (1743)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -1726,6 +1726,14 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Include Roles that have been deleted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Optional limit on the number of roles to include in the response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1746,14 +1754,6 @@ namespace Google.Apis.Iam.v1
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
                 }
-
-                /// <summary>Include Roles that have been deleted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> ShowDeleted { get; set; }
-
-                /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1789,24 +1789,6 @@ namespace Google.Apis.Iam.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "showDeleted", new Google.Apis.Discovery.Parameter
                         {
                             Name = "showDeleted",
@@ -1819,6 +1801,24 @@ namespace Google.Apis.Iam.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3799,29 +3799,6 @@ namespace Google.Apis.Iam.v1
             }
 
 
-            /// <summary>The `parent` parameter's value depends on the target resource for the request, namely
-            /// [`roles`](/iam/reference/rest/v1/roles), [`projects`](/iam/reference/rest/v1/projects.roles), or
-            /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each resource type's `parent` value
-            /// format is described below:
-            ///
-            /// * [`roles.list()`](/iam/reference/rest/v1/roles/list): An empty string. This method doesn't require a
-            /// resource; it simply returns all [predefined roles](/iam/docs/understanding-roles#predefined_roles) in
-            /// Cloud IAM. Example request URL: `https://iam.googleapis.com/v1/roles`
-            ///
-            /// * [`projects.roles.list()`](/iam/reference/rest/v1/projects.roles/list): `projects/{PROJECT_ID}`. This
-            /// method lists all project-level [custom roles](/iam/docs/understanding-custom-roles). Example request
-            /// URL: `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles`
-            ///
-            /// * [`organizations.roles.list()`](/iam/reference/rest/v1/organizations.roles/list):
-            /// `organizations/{ORGANIZATION_ID}`. This method lists all organization-level [custom roles](/iam/docs
-            /// /understanding-custom-roles). Example request URL:
-            /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
-            ///
-            /// Note: Wildcard (*) values are invalid; you must specify a complete project ID or organization
-            /// ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
-
             /// <summary>Include Roles that have been deleted.</summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
@@ -3851,6 +3828,29 @@ namespace Google.Apis.Iam.v1
                 FULL,
             }
 
+            /// <summary>The `parent` parameter's value depends on the target resource for the request, namely
+            /// [`roles`](/iam/reference/rest/v1/roles), [`projects`](/iam/reference/rest/v1/projects.roles), or
+            /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each resource type's `parent` value
+            /// format is described below:
+            ///
+            /// * [`roles.list()`](/iam/reference/rest/v1/roles/list): An empty string. This method doesn't require a
+            /// resource; it simply returns all [predefined roles](/iam/docs/understanding-roles#predefined_roles) in
+            /// Cloud IAM. Example request URL: `https://iam.googleapis.com/v1/roles`
+            ///
+            /// * [`projects.roles.list()`](/iam/reference/rest/v1/projects.roles/list): `projects/{PROJECT_ID}`. This
+            /// method lists all project-level [custom roles](/iam/docs/understanding-custom-roles). Example request
+            /// URL: `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles`
+            ///
+            /// * [`organizations.roles.list()`](/iam/reference/rest/v1/organizations.roles/list):
+            /// `organizations/{ORGANIZATION_ID}`. This method lists all organization-level [custom roles](/iam/docs
+            /// /understanding-custom-roles). Example request URL:
+            /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
+            ///
+            /// Note: Wildcard (*) values are invalid; you must specify a complete project ID or organization
+            /// ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -3875,15 +3875,6 @@ namespace Google.Apis.Iam.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "showDeleted", new Google.Apis.Discovery.Parameter
                     {
@@ -3915,6 +3906,15 @@ namespace Google.Apis.Iam.v1
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4124,8 +4124,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>The condition that is associated with this binding. This field is logged only for Cloud Audit
-        /// Logging.</summary>
+        /// <summary>The condition that is associated with this binding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
@@ -4345,7 +4344,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; } 
 
-        /// <summary>The validation unit name, for instance “lintValidationUnits/ConditionComplexityCheck”.</summary>
+        /// <summary>The validation unit name, for instance "lintValidationUnits/ConditionComplexityCheck".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationUnitName")]
         public virtual string ValidationUnitName { get; set; } 
 
@@ -4475,7 +4474,7 @@ namespace Google.Apis.Iam.v1.Data
     ///
     /// **JSON Example**
     ///
-    /// { "bindings": [ { "role": "role/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time

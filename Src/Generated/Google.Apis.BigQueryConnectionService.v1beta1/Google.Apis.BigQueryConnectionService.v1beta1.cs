@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Connection API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191004 (1737)
+ *      <tr><th>API Rev<td>20191009 (1742)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -703,7 +703,7 @@ namespace Google.Apis.BigQueryConnectionService.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Maximum number of results to return.</summary>
+                    /// <summary>Maximum number of results per page.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<long> MaxResults { get; set; }
 

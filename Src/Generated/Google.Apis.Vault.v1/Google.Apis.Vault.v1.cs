@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/vault'>G Suite Vault API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190918 (1721)
+ *      <tr><th>API Rev<td>20191016 (1749)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/vault'>
  *              https://developers.google.com/vault</a>
@@ -2295,6 +2295,25 @@ namespace Google.Apis.Vault.v1
             }
 
 
+            /// <summary>If set, list only matters with that specific state. The default is listing matters of all
+            /// states.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("state", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<StateEnum> State { get; set; }
+
+            /// <summary>If set, list only matters with that specific state. The default is listing matters of all
+            /// states.</summary>
+            public enum StateEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("STATE_UNSPECIFIED")]
+                STATEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("OPEN")]
+                OPEN,
+                [Google.Apis.Util.StringValueAttribute("CLOSED")]
+                CLOSED,
+                [Google.Apis.Util.StringValueAttribute("DELETED")]
+                DELETED,
+            }
+
             /// <summary>The pagination token as returned in the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -2316,25 +2335,6 @@ namespace Google.Apis.Vault.v1
                 BASIC,
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
-            }
-
-            /// <summary>If set, list only matters with that specific state. The default is listing matters of all
-            /// states.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("state", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<StateEnum> State { get; set; }
-
-            /// <summary>If set, list only matters with that specific state. The default is listing matters of all
-            /// states.</summary>
-            public enum StateEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("STATE_UNSPECIFIED")]
-                STATEUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("OPEN")]
-                OPEN,
-                [Google.Apis.Util.StringValueAttribute("CLOSED")]
-                CLOSED,
-                [Google.Apis.Util.StringValueAttribute("DELETED")]
-                DELETED,
             }
 
 
@@ -2362,6 +2362,15 @@ namespace Google.Apis.Vault.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "state", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "state",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -2383,15 +2392,6 @@ namespace Google.Apis.Vault.v1
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "state", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "state",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

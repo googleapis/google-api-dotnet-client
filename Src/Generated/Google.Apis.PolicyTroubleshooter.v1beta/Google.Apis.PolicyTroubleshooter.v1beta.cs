@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Policy Troubleshooter API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20191005 (1738)
+ *      <tr><th>API Rev<td>20191012 (1745)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -516,6 +516,8 @@ namespace Google.Apis.PolicyTroubleshooter.v1beta.Data
     /// <summary>TroubleshootIamPolicyRequest is used in TroubleshootIamPolicy</summary>
     public class GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Collection of attributes for example user, permission, resource that define troubleshooter's
+        /// input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessTuple")]
         public virtual GoogleCloudPolicytroubleshooterV1betaAccessTuple AccessTuple { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>Access Context Manager API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20191005 (1738)
+ *      <tr><th>API Rev<td>20191012 (1745)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>
  *              https://cloud.google.com/access-context-manager/docs/reference/rest/</a>
@@ -640,6 +640,15 @@ namespace Google.Apis.AccessContextManager.v1beta
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Next page token for the next batch of Access Level instances. Defaults to the first page of
+                /// results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Number of Access Levels to include in the list. Default 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Whether to return `BasicLevels` in the Cloud Common Expression language, as `CustomLevels`,
                 /// rather than as `BasicLevels`. Defaults to returning `AccessLevels` in the format they were
                 /// defined.</summary>
@@ -658,15 +667,6 @@ namespace Google.Apis.AccessContextManager.v1beta
                     [Google.Apis.Util.StringValueAttribute("CEL")]
                     CEL,
                 }
-
-                /// <summary>Next page token for the next batch of Access Level instances. Defaults to the first page of
-                /// results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Number of Access Levels to include in the list. Default 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -702,15 +702,6 @@ namespace Google.Apis.AccessContextManager.v1beta
                             Pattern = @"^accessPolicies/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "accessLevelFormat", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accessLevelFormat",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -723,6 +714,15 @@ namespace Google.Apis.AccessContextManager.v1beta
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "accessLevelFormat", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accessLevelFormat",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1077,14 +1077,14 @@ namespace Google.Apis.AccessContextManager.v1beta
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Number of Service Perimeters to include in the list. Default 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Next page token for the next batch of Service Perimeter instances. Defaults to the first
                 /// page of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Number of Service Perimeters to include in the list. Default 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1120,18 +1120,18 @@ namespace Google.Apis.AccessContextManager.v1beta
                             Pattern = @"^accessPolicies/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1972,8 +1972,8 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         public virtual string OsType { get; set; } 
 
         /// <summary>Only allows requests from devices with a verified Chrome OS. Verifications includes requirements
-        /// that the device is enterprise-managed, conformant to Dasher domain policies, and the caller has permission
-        /// to call the API targeted by the request.</summary>
+        /// that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call
+        /// the API targeted by the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireVerifiedChromeOs")]
         public virtual System.Nullable<bool> RequireVerifiedChromeOs { get; set; } 
 

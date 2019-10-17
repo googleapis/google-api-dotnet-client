@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iap'>Cloud Identity-Aware Proxy API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190920 (1723)
+ *      <tr><th>API Rev<td>20191004 (1737)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iap'>
  *              https://cloud.google.com/iap</a>
@@ -683,7 +683,7 @@ namespace Google.Apis.CloudIAP.v1beta1.Data
     ///
     /// **JSON Example**
     ///
-    /// { "bindings": [ { "role": "role/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time

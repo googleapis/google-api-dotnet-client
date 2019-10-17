@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-approval/docs'>Access Approval API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191008 (1741)
+ *      <tr><th>API Rev<td>20191011 (1744)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-approval/docs'>
  *              https://cloud.google.com/access-approval/docs</a>
@@ -707,6 +707,72 @@ namespace Google.Apis.AccessApproval.v1beta1
             }
         }
 
+        /// <summary>Deletes the settings associated with a project, folder, or organization. This will have the effect
+        /// of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have
+        /// Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access
+        /// Approval will still be enabled at this level as the settings are inherited.</summary>
+        /// <param name="name">Name of the AccessApprovalSettings to delete.</param>
+        public virtual DeleteAccessApprovalSettingsRequest DeleteAccessApprovalSettings(string name)
+        {
+            return new DeleteAccessApprovalSettingsRequest(service, name);
+        }
+
+        /// <summary>Deletes the settings associated with a project, folder, or organization. This will have the effect
+        /// of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have
+        /// Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access
+        /// Approval will still be enabled at this level as the settings are inherited.</summary>
+        public class DeleteAccessApprovalSettingsRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1beta1.Data.Empty>
+        {
+            /// <summary>Constructs a new DeleteAccessApprovalSettings request.</summary>
+            public DeleteAccessApprovalSettingsRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of the AccessApprovalSettings to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "deleteAccessApprovalSettings"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+name}"; }
+            }
+
+            /// <summary>Initializes DeleteAccessApprovalSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/accessApprovalSettings$",
+                    });
+            }
+
+        }
+
         /// <summary>Gets the settings associated with a project, folder, or organization.</summary>
         /// <param name="name">Name of the AccessApprovalSettings to retrieve.</param>
         public virtual GetAccessApprovalSettingsRequest GetAccessApprovalSettings(string name)
@@ -1142,10 +1208,6 @@ namespace Google.Apis.AccessApproval.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>A token identifying the page of results to return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Requested page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1157,6 +1219,10 @@ namespace Google.Apis.AccessApproval.v1beta1
                 /// (including expired) requests. </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>A token identifying the page of results to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1192,15 +1258,6 @@ namespace Google.Apis.AccessApproval.v1beta1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1218,9 +1275,84 @@ namespace Google.Apis.AccessApproval.v1beta1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
+        }
+
+        /// <summary>Deletes the settings associated with a project, folder, or organization. This will have the effect
+        /// of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have
+        /// Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access
+        /// Approval will still be enabled at this level as the settings are inherited.</summary>
+        /// <param name="name">Name of the AccessApprovalSettings to delete.</param>
+        public virtual DeleteAccessApprovalSettingsRequest DeleteAccessApprovalSettings(string name)
+        {
+            return new DeleteAccessApprovalSettingsRequest(service, name);
+        }
+
+        /// <summary>Deletes the settings associated with a project, folder, or organization. This will have the effect
+        /// of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have
+        /// Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access
+        /// Approval will still be enabled at this level as the settings are inherited.</summary>
+        public class DeleteAccessApprovalSettingsRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1beta1.Data.Empty>
+        {
+            /// <summary>Constructs a new DeleteAccessApprovalSettings request.</summary>
+            public DeleteAccessApprovalSettingsRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of the AccessApprovalSettings to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "deleteAccessApprovalSettings"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+name}"; }
+            }
+
+            /// <summary>Initializes DeleteAccessApprovalSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/accessApprovalSettings$",
+                    });
+            }
+
         }
 
         /// <summary>Gets the settings associated with a project, folder, or organization.</summary>
@@ -1739,6 +1871,72 @@ namespace Google.Apis.AccessApproval.v1beta1
             }
         }
 
+        /// <summary>Deletes the settings associated with a project, folder, or organization. This will have the effect
+        /// of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have
+        /// Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access
+        /// Approval will still be enabled at this level as the settings are inherited.</summary>
+        /// <param name="name">Name of the AccessApprovalSettings to delete.</param>
+        public virtual DeleteAccessApprovalSettingsRequest DeleteAccessApprovalSettings(string name)
+        {
+            return new DeleteAccessApprovalSettingsRequest(service, name);
+        }
+
+        /// <summary>Deletes the settings associated with a project, folder, or organization. This will have the effect
+        /// of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have
+        /// Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access
+        /// Approval will still be enabled at this level as the settings are inherited.</summary>
+        public class DeleteAccessApprovalSettingsRequest : AccessApprovalBaseServiceRequest<Google.Apis.AccessApproval.v1beta1.Data.Empty>
+        {
+            /// <summary>Constructs a new DeleteAccessApprovalSettings request.</summary>
+            public DeleteAccessApprovalSettingsRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of the AccessApprovalSettings to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "deleteAccessApprovalSettings"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+name}"; }
+            }
+
+            /// <summary>Initializes DeleteAccessApprovalSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/accessApprovalSettings$",
+                    });
+            }
+
+        }
+
         /// <summary>Gets the settings associated with a project, folder, or organization.</summary>
         /// <param name="name">Name of the AccessApprovalSettings to retrieve.</param>
         public virtual GetAccessApprovalSettingsRequest GetAccessApprovalSettings(string name)
@@ -2053,6 +2251,18 @@ namespace Google.Apis.AccessApproval.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dismissTime")]
         public virtual object DismissTime { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

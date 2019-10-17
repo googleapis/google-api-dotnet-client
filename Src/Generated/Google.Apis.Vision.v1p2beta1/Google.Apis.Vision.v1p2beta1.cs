@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p2beta1
- *      <tr><th>API Rev<td>20191004 (1737)
+ *      <tr><th>API Rev<td>20191011 (1744)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -4202,8 +4202,8 @@ namespace Google.Apis.Vision.v1p2beta1.Data
     /// <summary>Parameters for a product search request.</summary>
     public class GoogleCloudVisionV1p2beta1ProductSearchParams : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The bounding polygon around the area of interest in the image. Optional. If it is not specified,
-        /// system discretion will be applied.</summary>
+        /// <summary>The bounding polygon around the area of interest in the image. If it is not specified, system
+        /// discretion will be applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p2beta1BoundingPoly BoundingPoly { get; set; } 
 

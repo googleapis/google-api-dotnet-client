@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/debugger'>Stackdriver Debugger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190918 (1721)
+ *      <tr><th>API Rev<td>20191003 (1736)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/debugger'>
  *              https://cloud.google.com/debugger</a>
@@ -415,7 +415,7 @@ namespace Google.Apis.CloudDebugger.v2
                 /// same breakpoint on a successive call. Moreover, an agent should remember the breakpoints that are
                 /// completed until the controller removes them from the active list to avoid setting those breakpoints
                 /// again.</summary>
-                /// <param name="debuggeeId">Identifies the debuggee.</param>
+                /// <param name="debuggeeId">Required. Identifies the debuggee.</param>
                 public virtual ListRequest List(string debuggeeId)
                 {
                     return new ListRequest(service, debuggeeId);
@@ -443,7 +443,7 @@ namespace Google.Apis.CloudDebugger.v2
                     }
 
 
-                    /// <summary>Identifies the debuggee.</summary>
+                    /// <summary>Required. Identifies the debuggee.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
@@ -525,9 +525,9 @@ namespace Google.Apis.CloudDebugger.v2
                 /// breakpoint semantics. These may only make changes such as canonicalizing a value or snapping the
                 /// location to the correct line of code.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="debuggeeId">Identifies the debuggee being debugged.</param>
-                /// <param name="id">Breakpoint
-                /// identifier, unique in the scope of the debuggee.</param>
+                /// <param name="debuggeeId">Required. Identifies the debuggee being debugged.</param>
+                /// <param
+                /// name="id">Breakpoint identifier, unique in the scope of the debuggee.</param>
                 public virtual UpdateRequest Update(Google.Apis.CloudDebugger.v2.Data.UpdateActiveBreakpointRequest body, string debuggeeId, string id)
                 {
                     return new UpdateRequest(service, body, debuggeeId, id);
@@ -553,7 +553,7 @@ namespace Google.Apis.CloudDebugger.v2
                     }
 
 
-                    /// <summary>Identifies the debuggee being debugged.</summary>
+                    /// <summary>Required. Identifies the debuggee being debugged.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
@@ -748,9 +748,9 @@ namespace Google.Apis.CloudDebugger.v2
 
 
                 /// <summary>Deletes the breakpoint from the debuggee.</summary>
-                /// <param name="debuggeeId">ID of the debuggee whose breakpoint to delete.</param>
+                /// <param name="debuggeeId">Required. ID of the debuggee whose breakpoint to delete.</param>
                 /// <param
-                /// name="breakpointId">ID of the breakpoint to delete.</param>
+                /// name="breakpointId">Required. ID of the breakpoint to delete.</param>
                 public virtual DeleteRequest Delete(string debuggeeId, string breakpointId)
                 {
                     return new DeleteRequest(service, debuggeeId, breakpointId);
@@ -769,15 +769,15 @@ namespace Google.Apis.CloudDebugger.v2
                     }
 
 
-                    /// <summary>ID of the debuggee whose breakpoint to delete.</summary>
+                    /// <summary>Required. ID of the debuggee whose breakpoint to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
-                    /// <summary>ID of the breakpoint to delete.</summary>
+                    /// <summary>Required. ID of the breakpoint to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("breakpointId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string BreakpointId { get; private set; }
 
-                    /// <summary>The client version making the call. Schema: `domain/type/version` (e.g.,
+                    /// <summary>Required. The client version making the call. Schema: `domain/type/version` (e.g.,
                     /// `google.com/intellij/v1`).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClientVersion { get; set; }
@@ -838,9 +838,9 @@ namespace Google.Apis.CloudDebugger.v2
                 }
 
                 /// <summary>Gets breakpoint information.</summary>
-                /// <param name="debuggeeId">ID of the debuggee whose breakpoint to get.</param>
-                /// <param name="breakpointId">ID
-                /// of the breakpoint to get.</param>
+                /// <param name="debuggeeId">Required. ID of the debuggee whose breakpoint to get.</param>
+                /// <param
+                /// name="breakpointId">Required. ID of the breakpoint to get.</param>
                 public virtual GetRequest Get(string debuggeeId, string breakpointId)
                 {
                     return new GetRequest(service, debuggeeId, breakpointId);
@@ -859,15 +859,15 @@ namespace Google.Apis.CloudDebugger.v2
                     }
 
 
-                    /// <summary>ID of the debuggee whose breakpoint to get.</summary>
+                    /// <summary>Required. ID of the debuggee whose breakpoint to get.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
-                    /// <summary>ID of the breakpoint to get.</summary>
+                    /// <summary>Required. ID of the breakpoint to get.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("breakpointId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string BreakpointId { get; private set; }
 
-                    /// <summary>The client version making the call. Schema: `domain/type/version` (e.g.,
+                    /// <summary>Required. The client version making the call. Schema: `domain/type/version` (e.g.,
                     /// `google.com/intellij/v1`).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClientVersion { get; set; }
@@ -928,7 +928,7 @@ namespace Google.Apis.CloudDebugger.v2
                 }
 
                 /// <summary>Lists all breakpoints for the debuggee.</summary>
-                /// <param name="debuggeeId">ID of the debuggee whose breakpoints to list.</param>
+                /// <param name="debuggeeId">Required. ID of the debuggee whose breakpoints to list.</param>
                 public virtual ListRequest List(string debuggeeId)
                 {
                     return new ListRequest(service, debuggeeId);
@@ -946,9 +946,19 @@ namespace Google.Apis.CloudDebugger.v2
                     }
 
 
-                    /// <summary>ID of the debuggee whose breakpoints to list.</summary>
+                    /// <summary>Required. ID of the debuggee whose breakpoints to list.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
+
+                    /// <summary>When set to `true`, the response includes active and inactive breakpoints. Otherwise,
+                    /// it includes only active breakpoints.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeInactive { get; set; }
+
+                    /// <summary>When set to `true`, the response includes the list of breakpoints set by any user.
+                    /// Otherwise, it includes only breakpoints set by the caller.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeAllUsers", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeAllUsers { get; set; }
 
                     /// <summary>This field is deprecated. The following fields are always stripped out of the result:
                     /// `stack_frames`, `evaluated_expressions` and `variable_table`.</summary>
@@ -962,7 +972,7 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string WaitToken { get; set; }
 
-                    /// <summary>The client version making the call. Schema: `domain/type/version` (e.g.,
+                    /// <summary>Required. The client version making the call. Schema: `domain/type/version` (e.g.,
                     /// `google.com/intellij/v1`).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClientVersion { get; set; }
@@ -979,16 +989,6 @@ namespace Google.Apis.CloudDebugger.v2
                         [Google.Apis.Util.StringValueAttribute("LOG")]
                         LOG,
                     }
-
-                    /// <summary>When set to `true`, the response includes active and inactive breakpoints. Otherwise,
-                    /// it includes only active breakpoints.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeInactive { get; set; }
-
-                    /// <summary>When set to `true`, the response includes the list of breakpoints set by any user.
-                    /// Otherwise, it includes only breakpoints set by the caller.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeAllUsers", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeAllUsers { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1020,6 +1020,24 @@ namespace Google.Apis.CloudDebugger.v2
                                 Name = "debuggeeId",
                                 IsRequired = true,
                                 ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "includeInactive", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "includeInactive",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "includeAllUsers", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "includeAllUsers",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -1059,31 +1077,13 @@ namespace Google.Apis.CloudDebugger.v2
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        RequestParameters.Add(
-                            "includeInactive", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeInactive",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeAllUsers", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeAllUsers",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                     }
 
                 }
 
                 /// <summary>Sets the breakpoint to the debuggee.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="debuggeeId">ID of the debuggee where the breakpoint is to be set.</param>
+                /// <param name="debuggeeId">Required. ID of the debuggee where the breakpoint is to be set.</param>
                 public virtual SetRequest Set(Google.Apis.CloudDebugger.v2.Data.Breakpoint body, string debuggeeId)
                 {
                     return new SetRequest(service, body, debuggeeId);
@@ -1102,11 +1102,11 @@ namespace Google.Apis.CloudDebugger.v2
                     }
 
 
-                    /// <summary>ID of the debuggee where the breakpoint is to be set.</summary>
+                    /// <summary>Required. ID of the debuggee where the breakpoint is to be set.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
-                    /// <summary>The client version making the call. Schema: `domain/type/version` (e.g.,
+                    /// <summary>Required. The client version making the call. Schema: `domain/type/version` (e.g.,
                     /// `google.com/intellij/v1`).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClientVersion { get; set; }
@@ -1181,7 +1181,7 @@ namespace Google.Apis.CloudDebugger.v2
                 }
 
 
-                /// <summary>The client version making the call. Schema: `domain/type/version` (e.g.,
+                /// <summary>Required. The client version making the call. Schema: `domain/type/version` (e.g.,
                 /// `google.com/intellij/v1`).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ClientVersion { get; set; }
@@ -1191,7 +1191,7 @@ namespace Google.Apis.CloudDebugger.v2
                 [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeInactive { get; set; }
 
-                /// <summary>Project number of a Google Cloud project whose debuggees to list.</summary>
+                /// <summary>Required. Project number of a Google Cloud project whose debuggees to list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Project { get; set; }
 
@@ -1675,7 +1675,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
     /// <summary>Request to register a debuggee.</summary>
     public class RegisterDebuggeeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Debuggee information to register. The fields `project`, `uniquifier`, `description` and
+        /// <summary>Required. Debuggee information to register. The fields `project`, `uniquifier`, `description` and
         /// `agent_version` of the debuggee must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debuggee")]
         public virtual Debuggee Debuggee { get; set; } 
@@ -1818,8 +1818,8 @@ namespace Google.Apis.CloudDebugger.v2.Data
     /// <summary>Request to update an active breakpoint.</summary>
     public class UpdateActiveBreakpointRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Updated breakpoint information. The field `id` must be set. The agent must echo all Breakpoint
-        /// specification fields in the update.</summary>
+        /// <summary>Required. Updated breakpoint information. The field `id` must be set. The agent must echo all
+        /// Breakpoint specification fields in the update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakpoint")]
         public virtual Breakpoint Breakpoint { get; set; } 
 

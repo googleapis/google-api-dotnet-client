@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190905 (1708)
+ *      <tr><th>API Rev<td>20190929 (1732)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -905,14 +905,16 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of accelerator types.</summary>
+        /// <summary>Retrieves an aggregated list of accelerator types. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of accelerator types.</summary>
+        /// <summary>Retrieves an aggregated list of accelerator types. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.AcceleratorTypeAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -1046,7 +1048,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified accelerator type.</summary>
+        /// <summary>Returns the specified accelerator type. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -1056,7 +1058,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone, acceleratorType);
         }
 
-        /// <summary>Returns the specified accelerator type.</summary>
+        /// <summary>Returns the specified accelerator type. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.AcceleratorType>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1137,7 +1139,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of accelerator types available to the specified project.</summary>
+        /// <summary>Retrieves a list of accelerator types available to the specified project. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -1146,7 +1149,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves a list of accelerator types available to the specified project.</summary>
+        /// <summary>Retrieves a list of accelerator types available to the specified project. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.AcceleratorTypeList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1311,14 +1315,14 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of addresses.</summary>
+        /// <summary>Retrieves an aggregated list of addresses. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of addresses.</summary>
+        /// <summary>Retrieves an aggregated list of addresses. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.AddressAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -1452,7 +1456,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified address resource.</summary>
+        /// <summary>Deletes the specified address resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -1462,7 +1466,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, address);
         }
 
-        /// <summary>Deletes the specified address resource.</summary>
+        /// <summary>Deletes the specified address resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1565,7 +1569,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified address resource.</summary>
+        /// <summary>Returns the specified address resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -1575,7 +1579,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region, address);
         }
 
-        /// <summary>Returns the specified address resource.</summary>
+        /// <summary>Returns the specified address resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Address>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1656,8 +1660,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates an address resource in the specified project by using the data included in the
-        /// request.</summary>
+        /// <summary>Creates an address resource in the specified project by using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -1667,8 +1671,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates an address resource in the specified project by using the data included in the
-        /// request.</summary>
+        /// <summary>Creates an address resource in the specified project by using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -1764,7 +1768,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of addresses contained within the specified region.</summary>
+        /// <summary>Retrieves a list of addresses contained within the specified region. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -1773,7 +1778,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of addresses contained within the specified region.</summary>
+        /// <summary>Retrieves a list of addresses contained within the specified region. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.AddressList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1938,14 +1944,14 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of autoscalers.</summary>
+        /// <summary>Retrieves an aggregated list of autoscalers. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of autoscalers.</summary>
+        /// <summary>Retrieves an aggregated list of autoscalers. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.AutoscalerAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -2079,7 +2085,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified autoscaler.</summary>
+        /// <summary>Deletes the specified autoscaler. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
         /// request.</param>
@@ -2089,7 +2095,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, zone, autoscaler);
         }
 
-        /// <summary>Deletes the specified autoscaler.</summary>
+        /// <summary>Deletes the specified autoscaler. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -2193,7 +2199,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
         /// request.</param>
@@ -2204,7 +2210,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Autoscaler>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2285,7 +2291,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates an autoscaler in the specified project using the data included in the request.</summary>
+        /// <summary>Creates an autoscaler in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
@@ -2295,7 +2302,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, zone);
         }
 
-        /// <summary>Creates an autoscaler in the specified project using the data included in the request.</summary>
+        /// <summary>Creates an autoscaler in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -2391,7 +2399,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of autoscalers contained within the specified zone.</summary>
+        /// <summary>Retrieves a list of autoscalers contained within the specified zone. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
         /// request.</param>
@@ -2400,7 +2409,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves a list of autoscalers contained within the specified zone.</summary>
+        /// <summary>Retrieves a list of autoscalers contained within the specified zone. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.AutoscalerList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2549,7 +2559,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
-        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
@@ -2560,7 +2571,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
-        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2669,7 +2681,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates an autoscaler in the specified project using the data included in the request.</summary>
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
@@ -2679,7 +2692,8 @@ namespace Google.Apis.Compute.v1
             return new UpdateRequest(service, body, project, zone);
         }
 
-        /// <summary>Updates an autoscaler in the specified project using the data included in the request.</summary>
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -2805,7 +2819,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Adds a key for validating requests with signed URLs for this backend bucket.</summary>
+        /// <summary>Adds a key for validating requests with signed URLs for this backend bucket. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendBucket">Name of the
@@ -2815,7 +2830,8 @@ namespace Google.Apis.Compute.v1
             return new AddSignedUrlKeyRequest(service, body, project, backendBucket);
         }
 
-        /// <summary>Adds a key for validating requests with signed URLs for this backend bucket.</summary>
+        /// <summary>Adds a key for validating requests with signed URLs for this backend bucket. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class AddSignedUrlKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddSignedUrlKey request.</summary>
@@ -2912,7 +2928,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified BackendBucket resource.</summary>
+        /// <summary>Deletes the specified BackendBucket resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendBucket">Name of the
         /// BackendBucket resource to delete.</param>
@@ -2921,7 +2937,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, backendBucket);
         }
 
-        /// <summary>Deletes the specified BackendBucket resource.</summary>
+        /// <summary>Deletes the specified BackendBucket resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -3010,7 +3026,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes a key for validating requests with signed URLs for this backend bucket.</summary>
+        /// <summary>Deletes a key for validating requests with signed URLs for this backend bucket. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendBucket">Name of the
         /// BackendBucket resource to which the Signed URL Key should be added. The name should conform to
@@ -3021,7 +3038,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteSignedUrlKeyRequest(service, project, backendBucket, keyName);
         }
 
-        /// <summary>Deletes a key for validating requests with signed URLs for this backend bucket.</summary>
+        /// <summary>Deletes a key for validating requests with signed URLs for this backend bucket. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteSignedUrlKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new DeleteSignedUrlKey request.</summary>
@@ -3126,7 +3144,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a
-        /// list() request.</summary>
+        /// list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendBucket">Name of the
         /// BackendBucket resource to return.</param>
@@ -3136,7 +3154,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a
-        /// list() request.</summary>
+        /// list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.BackendBucket>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -3203,8 +3221,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a BackendBucket resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a BackendBucket resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.BackendBucket body, string project)
@@ -3212,8 +3230,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a BackendBucket resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a BackendBucket resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -3295,14 +3313,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of BackendBucket resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of BackendBucket resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of BackendBucket resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of BackendBucket resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.BackendBucketList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -3437,7 +3457,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the specified BackendBucket resource with the data included in the request. This method
-        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendBucket">Name of the
@@ -3448,7 +3469,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the specified BackendBucket resource with the data included in the request. This method
-        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -3544,7 +3566,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates the specified BackendBucket resource with the data included in the request.</summary>
+        /// <summary>Updates the specified BackendBucket resource with the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendBucket">Name of the
@@ -3554,7 +3577,8 @@ namespace Google.Apis.Compute.v1
             return new UpdateRequest(service, body, project, backendBucket);
         }
 
-        /// <summary>Updates the specified BackendBucket resource with the data included in the request.</summary>
+        /// <summary>Updates the specified BackendBucket resource with the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -3667,7 +3691,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Adds a key for validating requests with signed URLs for this backend service.</summary>
+        /// <summary>Adds a key for validating requests with signed URLs for this backend service. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
@@ -3678,7 +3703,8 @@ namespace Google.Apis.Compute.v1
             return new AddSignedUrlKeyRequest(service, body, project, backendService);
         }
 
-        /// <summary>Adds a key for validating requests with signed URLs for this backend service.</summary>
+        /// <summary>Adds a key for validating requests with signed URLs for this backend service. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class AddSignedUrlKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddSignedUrlKey request.</summary>
@@ -3776,7 +3802,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of all BackendService resources, regional and global, available to the specified
-        /// project.</summary>
+        /// project. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Name of the project scoping this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
@@ -3784,7 +3810,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of all BackendService resources, regional and global, available to the specified
-        /// project.</summary>
+        /// project. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.BackendServiceAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -3918,7 +3944,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified BackendService resource.</summary>
+        /// <summary>Deletes the specified BackendService resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
         /// BackendService resource to delete.</param>
@@ -3927,7 +3954,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, backendService);
         }
 
-        /// <summary>Deletes the specified BackendService resource.</summary>
+        /// <summary>Deletes the specified BackendService resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -4016,7 +4044,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes a key for validating requests with signed URLs for this backend service.</summary>
+        /// <summary>Deletes a key for validating requests with signed URLs for this backend service. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
         /// BackendService resource to which the Signed URL Key should be added. The name should conform to
@@ -4027,7 +4056,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteSignedUrlKeyRequest(service, project, backendService, keyName);
         }
 
-        /// <summary>Deletes a key for validating requests with signed URLs for this backend service.</summary>
+        /// <summary>Deletes a key for validating requests with signed URLs for this backend service. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteSignedUrlKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new DeleteSignedUrlKey request.</summary>
@@ -4131,7 +4161,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified BackendService resource. Gets a list of available backend services.</summary>
+        /// <summary>Returns the specified BackendService resource. Gets a list of available backend services. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
         /// BackendService resource to return.</param>
@@ -4140,7 +4171,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, backendService);
         }
 
-        /// <summary>Returns the specified BackendService resource. Gets a list of available backend services.</summary>
+        /// <summary>Returns the specified BackendService resource. Gets a list of available backend services. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.BackendService>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -4207,7 +4239,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the most recent health check results for this BackendService.</summary>
+        /// <summary>Gets the most recent health check results for this BackendService. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project"></param>
         /// <param name="backendService">Name of the BackendService resource to which the
@@ -4217,7 +4250,8 @@ namespace Google.Apis.Compute.v1
             return new GetHealthRequest(service, body, project, backendService);
         }
 
-        /// <summary>Gets the most recent health check results for this BackendService.</summary>
+        /// <summary>Gets the most recent health check results for this BackendService. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class GetHealthRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.BackendServiceGroupHealth>
         {
             /// <summary>Constructs a new GetHealth request.</summary>
@@ -4293,7 +4327,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Creates a BackendService resource in the specified project using the data included in the request.
         /// There are several restrictions and guidelines to keep in mind when creating a backend service. Read
-        /// Restrictions and Guidelines for more information.</summary>
+        /// Restrictions and Guidelines for more information. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.BackendService body, string project)
@@ -4303,7 +4337,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Creates a BackendService resource in the specified project using the data included in the request.
         /// There are several restrictions and guidelines to keep in mind when creating a backend service. Read
-        /// Restrictions and Guidelines for more information.</summary>
+        /// Restrictions and Guidelines for more information. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -4385,14 +4419,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of BackendService resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of BackendService resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of BackendService resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of BackendService resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.BackendServiceList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4529,7 +4565,7 @@ namespace Google.Apis.Compute.v1
         /// <summary>Patches the specified BackendService resource with the data included in the request. There are
         /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
         /// Guidelines for more information. This method supports PATCH semantics and uses the JSON merge patch format
-        /// and processing rules.</summary>
+        /// and processing rules. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
@@ -4542,7 +4578,7 @@ namespace Google.Apis.Compute.v1
         /// <summary>Patches the specified BackendService resource with the data included in the request. There are
         /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
         /// Guidelines for more information. This method supports PATCH semantics and uses the JSON merge patch format
-        /// and processing rules.</summary>
+        /// and processing rules. (== suppress_warning http-rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -4638,7 +4674,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the security policy for the specified backend service.</summary>
+        /// <summary>Sets the security policy for the specified backend service. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
@@ -4648,7 +4685,8 @@ namespace Google.Apis.Compute.v1
             return new SetSecurityPolicyRequest(service, body, project, backendService);
         }
 
-        /// <summary>Sets the security policy for the specified backend service.</summary>
+        /// <summary>Sets the security policy for the specified backend service. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class SetSecurityPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetSecurityPolicy request.</summary>
@@ -4747,7 +4785,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Updates the specified BackendService resource with the data included in the request. There are
         /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
-        /// Guidelines for more information.</summary>
+        /// Guidelines for more information. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
@@ -4759,7 +4797,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Updates the specified BackendService resource with the data included in the request. There are
         /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
-        /// Guidelines for more information.</summary>
+        /// Guidelines for more information. (== suppress_warning http-rest-shadowed ==)</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -4872,14 +4910,14 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of disk types.</summary>
+        /// <summary>Retrieves an aggregated list of disk types. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of disk types.</summary>
+        /// <summary>Retrieves an aggregated list of disk types. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.DiskTypeAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -5013,8 +5051,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified disk type. Gets a list of available disk types by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified disk type. Gets a list of available disk types by making a list() request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -5024,8 +5062,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone, diskType);
         }
 
-        /// <summary>Returns the specified disk type. Gets a list of available disk types by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified disk type. Gets a list of available disk types by making a list() request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.DiskType>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5106,7 +5144,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of disk types available to the specified project.</summary>
+        /// <summary>Retrieves a list of disk types available to the specified project. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -5115,7 +5154,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves a list of disk types available to the specified project.</summary>
+        /// <summary>Retrieves a list of disk types available to the specified project. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.DiskTypeList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -5281,7 +5321,7 @@ namespace Google.Apis.Compute.v1
 
 
         /// <summary>Adds existing resource policies to a disk. You can only add one policy which will be applied to
-        /// this disk for scheduling snapshot creation.</summary>
+        /// this disk for scheduling snapshot creation. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -5293,7 +5333,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Adds existing resource policies to a disk. You can only add one policy which will be applied to
-        /// this disk for scheduling snapshot creation.</summary>
+        /// this disk for scheduling snapshot creation. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AddResourcePoliciesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddResourcePolicies request.</summary>
@@ -5403,14 +5443,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves an aggregated list of persistent disks.</summary>
+        /// <summary>Retrieves an aggregated list of persistent disks. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of persistent disks.</summary>
+        /// <summary>Retrieves an aggregated list of persistent disks. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.DiskAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -5544,7 +5586,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a snapshot of a specified persistent disk.</summary>
+        /// <summary>Creates a snapshot of a specified persistent disk. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -5555,7 +5598,8 @@ namespace Google.Apis.Compute.v1
             return new CreateSnapshotRequest(service, body, project, zone, disk);
         }
 
-        /// <summary>Creates a snapshot of a specified persistent disk.</summary>
+        /// <summary>Creates a snapshot of a specified persistent disk. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class CreateSnapshotRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new CreateSnapshot request.</summary>
@@ -5682,7 +5726,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Deletes the specified persistent disk. Deleting a disk removes its data permanently and is
         /// irreversible. However, deleting a disk does not delete any snapshots previously made from the disk. You must
-        /// separately delete snapshots.</summary>
+        /// separately delete snapshots. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -5694,7 +5738,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Deletes the specified persistent disk. Deleting a disk removes its data permanently and is
         /// irreversible. However, deleting a disk does not delete any snapshots previously made from the disk. You must
-        /// separately delete snapshots.</summary>
+        /// separately delete snapshots. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -5798,7 +5842,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns a specified persistent disk. Gets a list of available persistent disks by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -5809,7 +5853,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns a specified persistent disk. Gets a list of available persistent disks by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Disk>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5890,8 +5934,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -5901,8 +5945,8 @@ namespace Google.Apis.Compute.v1
             return new GetIamPolicyRequest(service, project, zone, resource);
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -5985,7 +6029,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Creates a persistent disk in the specified project using the data in the request. You can create a
         /// disk with a sourceImage, a sourceSnapshot, or create an empty 500 GB data disk by omitting all properties.
-        /// You can also create a disk that is larger than the default size by specifying the sizeGb property.</summary>
+        /// You can also create a disk that is larger than the default size by specifying the sizeGb property. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -5997,7 +6042,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Creates a persistent disk in the specified project using the data in the request. You can create a
         /// disk with a sourceImage, a sourceSnapshot, or create an empty 500 GB data disk by omitting all properties.
-        /// You can also create a disk that is larger than the default size by specifying the sizeGb property.</summary>
+        /// You can also create a disk that is larger than the default size by specifying the sizeGb property. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -6106,7 +6152,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of persistent disks contained within the specified zone.</summary>
+        /// <summary>Retrieves a list of persistent disks contained within the specified zone. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -6115,7 +6162,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves a list of persistent disks contained within the specified zone.</summary>
+        /// <summary>Retrieves a list of persistent disks contained within the specified zone. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.DiskList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -6263,7 +6311,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Removes resource policies from a disk.</summary>
+        /// <summary>Removes resource policies from a disk. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -6274,7 +6322,7 @@ namespace Google.Apis.Compute.v1
             return new RemoveResourcePoliciesRequest(service, body, project, zone, disk);
         }
 
-        /// <summary>Removes resource policies from a disk.</summary>
+        /// <summary>Removes resource policies from a disk. (== suppress_warning http-rest-shadowed ==)</summary>
         public class RemoveResourcePoliciesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new RemoveResourcePolicies request.</summary>
@@ -6384,7 +6432,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Resizes the specified persistent disk. You can only increase the size of the disk.</summary>
+        /// <summary>Resizes the specified persistent disk. You can only increase the size of the disk. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -6395,7 +6444,8 @@ namespace Google.Apis.Compute.v1
             return new ResizeRequest(service, body, project, zone, disk);
         }
 
-        /// <summary>Resizes the specified persistent disk. You can only increase the size of the disk.</summary>
+        /// <summary>Resizes the specified persistent disk. You can only increase the size of the disk. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Resize request.</summary>
@@ -6505,7 +6555,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -6516,7 +6567,8 @@ namespace Google.Apis.Compute.v1
             return new SetIamPolicyRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -6604,8 +6656,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources documentation.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -6616,8 +6668,8 @@ namespace Google.Apis.Compute.v1
             return new SetLabelsRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources documentation.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -6727,7 +6779,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -6738,7 +6791,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -6843,7 +6897,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified externalVpnGateway.</summary>
+        /// <summary>Deletes the specified externalVpnGateway. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="externalVpnGateway">Name of the
         /// externalVpnGateways to delete.</param>
@@ -6852,7 +6906,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, externalVpnGateway);
         }
 
-        /// <summary>Deletes the specified externalVpnGateway.</summary>
+        /// <summary>Deletes the specified externalVpnGateway. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -6942,7 +6996,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified externalVpnGateway. Get a list of available externalVpnGateways by making a
-        /// list() request.</summary>
+        /// list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="externalVpnGateway">Name of the
         /// externalVpnGateway to return.</param>
@@ -6952,7 +7006,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified externalVpnGateway. Get a list of available externalVpnGateways by making a
-        /// list() request.</summary>
+        /// list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ExternalVpnGateway>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -7019,8 +7073,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a ExternalVpnGateway in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a ExternalVpnGateway in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.ExternalVpnGateway body, string project)
@@ -7028,8 +7082,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a ExternalVpnGateway in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a ExternalVpnGateway in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -7111,14 +7165,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of ExternalVpnGateway available to the specified project.</summary>
+        /// <summary>Retrieves the list of ExternalVpnGateway available to the specified project. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of ExternalVpnGateway available to the specified project.</summary>
+        /// <summary>Retrieves the list of ExternalVpnGateway available to the specified project. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ExternalVpnGatewayList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -7253,7 +7309,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Sets the labels on an ExternalVpnGateway. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// documentation. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
@@ -7264,7 +7320,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Sets the labels on an ExternalVpnGateway. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// documentation. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -7338,7 +7394,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
@@ -7348,7 +7405,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -7439,7 +7497,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified firewall.</summary>
+        /// <summary>Deletes the specified firewall. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="firewall">Name of the firewall rule
         /// to delete.</param>
@@ -7448,7 +7506,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, firewall);
         }
 
-        /// <summary>Deletes the specified firewall.</summary>
+        /// <summary>Deletes the specified firewall. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -7537,7 +7595,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified firewall.</summary>
+        /// <summary>Returns the specified firewall. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="firewall">Name of the firewall rule
         /// to return.</param>
@@ -7546,7 +7604,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, firewall);
         }
 
-        /// <summary>Returns the specified firewall.</summary>
+        /// <summary>Returns the specified firewall. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Firewall>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -7613,7 +7671,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a firewall rule in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a firewall rule in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Firewall body, string project)
@@ -7621,7 +7680,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a firewall rule in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a firewall rule in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -7703,14 +7763,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of firewall rules available to the specified project.</summary>
+        /// <summary>Retrieves the list of firewall rules available to the specified project. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of firewall rules available to the specified project.</summary>
+        /// <summary>Retrieves the list of firewall rules available to the specified project. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.FirewallList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -7845,7 +7907,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the specified firewall rule with the data included in the request. This method supports
-        /// PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// PATCH semantics and uses the JSON merge patch format and processing rules. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="firewall">Name of the firewall rule
@@ -7856,7 +7919,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the specified firewall rule with the data included in the request. This method supports
-        /// PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// PATCH semantics and uses the JSON merge patch format and processing rules. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -7952,9 +8016,9 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates the specified firewall rule with the data included in the request. The PUT method can only
-        /// update the following fields of firewall rule: allowed, description, sourceRanges, sourceTags,
-        /// targetTags.</summary>
+        /// <summary>Updates the specified firewall rule with the data included in the request. Note that all fields
+        /// will be updated if using PUT, even fields that are not specified. To update individual fields, please use
+        /// PATCH instead. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="firewall">Name of the firewall rule
@@ -7964,9 +8028,9 @@ namespace Google.Apis.Compute.v1
             return new UpdateRequest(service, body, project, firewall);
         }
 
-        /// <summary>Updates the specified firewall rule with the data included in the request. The PUT method can only
-        /// update the following fields of firewall rule: allowed, description, sourceRanges, sourceTags,
-        /// targetTags.</summary>
+        /// <summary>Updates the specified firewall rule with the data included in the request. Note that all fields
+        /// will be updated if using PUT, even fields that are not specified. To update individual fields, please use
+        /// PATCH instead. (== suppress_warning http-rest-shadowed ==)</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -8079,14 +8143,16 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of forwarding rules.</summary>
+        /// <summary>Retrieves an aggregated list of forwarding rules. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of forwarding rules.</summary>
+        /// <summary>Retrieves an aggregated list of forwarding rules. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ForwardingRuleAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -8220,7 +8286,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified ForwardingRule resource.</summary>
+        /// <summary>Deletes the specified ForwardingRule resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -8231,7 +8298,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, forwardingRule);
         }
 
-        /// <summary>Deletes the specified ForwardingRule resource.</summary>
+        /// <summary>Deletes the specified ForwardingRule resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -8334,7 +8402,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified ForwardingRule resource.</summary>
+        /// <summary>Returns the specified ForwardingRule resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -8345,7 +8414,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region, forwardingRule);
         }
 
-        /// <summary>Returns the specified ForwardingRule resource.</summary>
+        /// <summary>Returns the specified ForwardingRule resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ForwardingRule>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -8427,7 +8497,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a ForwardingRule resource in the specified project and region using the data included in
-        /// the request.</summary>
+        /// the request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -8438,7 +8508,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a ForwardingRule resource in the specified project and region using the data included in
-        /// the request.</summary>
+        /// the request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -8534,8 +8604,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of ForwardingRule resources available to the specified project and
-        /// region.</summary>
+        /// <summary>Retrieves a list of ForwardingRule resources available to the specified project and region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -8544,8 +8614,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of ForwardingRule resources available to the specified project and
-        /// region.</summary>
+        /// <summary>Retrieves a list of ForwardingRule resources available to the specified project and region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ForwardingRuleList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -8694,7 +8764,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Changes target URL for forwarding rule. The new target should be of the same type as the old
-        /// target.</summary>
+        /// target. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -8707,7 +8777,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Changes target URL for forwarding rule. The new target should be of the same type as the old
-        /// target.</summary>
+        /// target. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetTargetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetTarget request.</summary>
@@ -8834,7 +8904,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified address resource.</summary>
+        /// <summary>Deletes the specified address resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="address">Name of the address
         /// resource to delete.</param>
@@ -8843,7 +8913,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, address);
         }
 
-        /// <summary>Deletes the specified address resource.</summary>
+        /// <summary>Deletes the specified address resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -8933,7 +9003,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified address resource. Gets a list of available addresses by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="address">Name of the address
         /// resource to return.</param>
@@ -8943,7 +9013,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified address resource. Gets a list of available addresses by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Address>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -9010,8 +9080,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates an address resource in the specified project by using the data included in the
-        /// request.</summary>
+        /// <summary>Creates an address resource in the specified project by using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Address body, string project)
@@ -9019,8 +9089,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates an address resource in the specified project by using the data included in the
-        /// request.</summary>
+        /// <summary>Creates an address resource in the specified project by using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -9102,14 +9172,14 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of global addresses.</summary>
+        /// <summary>Retrieves a list of global addresses. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves a list of global addresses.</summary>
+        /// <summary>Retrieves a list of global addresses. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.AddressList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -9260,7 +9330,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified GlobalForwardingRule resource.</summary>
+        /// <summary>Deletes the specified GlobalForwardingRule resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="forwardingRule">Name of the
         /// ForwardingRule resource to delete.</param>
@@ -9269,7 +9340,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, forwardingRule);
         }
 
-        /// <summary>Deletes the specified GlobalForwardingRule resource.</summary>
+        /// <summary>Deletes the specified GlobalForwardingRule resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -9359,7 +9431,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="forwardingRule">Name of the
         /// ForwardingRule resource to return.</param>
@@ -9369,7 +9441,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ForwardingRule>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -9437,7 +9509,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a GlobalForwardingRule resource in the specified project using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.ForwardingRule body, string project)
@@ -9446,7 +9518,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a GlobalForwardingRule resource in the specified project using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -9528,14 +9600,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of GlobalForwardingRule resources available to the specified project.</summary>
+        /// <summary>Retrieves a list of GlobalForwardingRule resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves a list of GlobalForwardingRule resources available to the specified project.</summary>
+        /// <summary>Retrieves a list of GlobalForwardingRule resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ForwardingRuleList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -9670,7 +9744,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Changes target URL for the GlobalForwardingRule resource. The new target should be of the same type
-        /// as the old target.</summary>
+        /// as the old target. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="forwardingRule">Name of the
@@ -9681,7 +9755,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Changes target URL for the GlobalForwardingRule resource. The new target should be of the same type
-        /// as the old target.</summary>
+        /// as the old target. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetTargetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetTarget request.</summary>
@@ -9794,14 +9868,16 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of all operations.</summary>
+        /// <summary>Retrieves an aggregated list of all operations. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of all operations.</summary>
+        /// <summary>Retrieves an aggregated list of all operations. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.OperationAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -9935,7 +10011,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified Operations resource.</summary>
+        /// <summary>Deletes the specified Operations resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="operation">Name of the Operations
         /// resource to delete.</param>
@@ -9944,7 +10020,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, operation);
         }
 
-        /// <summary>Deletes the specified Operations resource.</summary>
+        /// <summary>Deletes the specified Operations resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -10011,8 +10087,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the specified Operations resource. Gets a list of operations by making a list()
-        /// request.</summary>
+        /// <summary>Retrieves the specified Operations resource. Gets a list of operations by making a list() request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="operation">Name of the Operations
         /// resource to return.</param>
@@ -10021,8 +10097,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, operation);
         }
 
-        /// <summary>Retrieves the specified Operations resource. Gets a list of operations by making a list()
-        /// request.</summary>
+        /// <summary>Retrieves the specified Operations resource. Gets a list of operations by making a list() request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -10089,14 +10165,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of Operation resources contained within the specified project.</summary>
+        /// <summary>Retrieves a list of Operation resources contained within the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves a list of Operation resources contained within the specified project.</summary>
+        /// <summary>Retrieves a list of Operation resources contained within the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.OperationList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -10248,7 +10326,7 @@ namespace Google.Apis.Compute.v1
 
 
         /// <summary>Retrieves the list of all HealthCheck resources, regional and global, available to the specified
-        /// project.</summary>
+        /// project. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Name of the project scoping this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
@@ -10256,7 +10334,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of all HealthCheck resources, regional and global, available to the specified
-        /// project.</summary>
+        /// project. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.HealthChecksAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -10390,7 +10468,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified HealthCheck resource.</summary>
+        /// <summary>Deletes the specified HealthCheck resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="healthCheck">Name of the HealthCheck
         /// resource to delete.</param>
@@ -10399,7 +10477,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, healthCheck);
         }
 
-        /// <summary>Deletes the specified HealthCheck resource.</summary>
+        /// <summary>Deletes the specified HealthCheck resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -10489,7 +10567,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified HealthCheck resource. Gets a list of available health checks by making a
-        /// list() request.</summary>
+        /// list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="healthCheck">Name of the HealthCheck
         /// resource to return.</param>
@@ -10499,7 +10577,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified HealthCheck resource. Gets a list of available health checks by making a
-        /// list() request.</summary>
+        /// list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.HealthCheck>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -10566,8 +10644,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a HealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a HealthCheck resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.HealthCheck body, string project)
@@ -10575,8 +10653,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a HealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a HealthCheck resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -10658,14 +10736,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of HealthCheck resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of HealthCheck resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of HealthCheck resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of HealthCheck resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.HealthCheckList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -10800,7 +10880,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates a HealthCheck resource in the specified project using the data included in the request.
-        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="healthCheck">Name of the HealthCheck
@@ -10811,7 +10892,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates a HealthCheck resource in the specified project using the data included in the request.
-        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -10907,8 +10989,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates a HealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Updates a HealthCheck resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="healthCheck">Name of the HealthCheck
@@ -10918,8 +11000,8 @@ namespace Google.Apis.Compute.v1
             return new UpdateRequest(service, body, project, healthCheck);
         }
 
-        /// <summary>Updates a HealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Updates a HealthCheck resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -11032,7 +11114,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified HttpHealthCheck resource.</summary>
+        /// <summary>Deletes the specified HttpHealthCheck resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpHealthCheck">Name of the
         /// HttpHealthCheck resource to delete.</param>
@@ -11041,7 +11124,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, httpHealthCheck);
         }
 
-        /// <summary>Deletes the specified HttpHealthCheck resource.</summary>
+        /// <summary>Deletes the specified HttpHealthCheck resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -11131,7 +11215,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified HttpHealthCheck resource. Gets a list of available HTTP health checks by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpHealthCheck">Name of the
         /// HttpHealthCheck resource to return.</param>
@@ -11141,7 +11225,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified HttpHealthCheck resource. Gets a list of available HTTP health checks by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.HttpHealthCheck>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -11208,8 +11292,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a HttpHealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a HttpHealthCheck resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.HttpHealthCheck body, string project)
@@ -11217,8 +11301,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a HttpHealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a HttpHealthCheck resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -11300,14 +11384,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of HttpHealthCheck resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of HttpHealthCheck resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of HttpHealthCheck resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of HttpHealthCheck resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.HttpHealthCheckList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -11442,7 +11528,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates a HttpHealthCheck resource in the specified project using the data included in the request.
-        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpHealthCheck">Name of the
@@ -11453,7 +11540,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates a HttpHealthCheck resource in the specified project using the data included in the request.
-        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -11549,8 +11637,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates a HttpHealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Updates a HttpHealthCheck resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpHealthCheck">Name of the
@@ -11560,8 +11648,8 @@ namespace Google.Apis.Compute.v1
             return new UpdateRequest(service, body, project, httpHealthCheck);
         }
 
-        /// <summary>Updates a HttpHealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Updates a HttpHealthCheck resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -11674,7 +11762,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified HttpsHealthCheck resource.</summary>
+        /// <summary>Deletes the specified HttpsHealthCheck resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpsHealthCheck">Name of the
         /// HttpsHealthCheck resource to delete.</param>
@@ -11683,7 +11772,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, httpsHealthCheck);
         }
 
-        /// <summary>Deletes the specified HttpsHealthCheck resource.</summary>
+        /// <summary>Deletes the specified HttpsHealthCheck resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -11773,7 +11863,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified HttpsHealthCheck resource. Gets a list of available HTTPS health checks by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpsHealthCheck">Name of the
         /// HttpsHealthCheck resource to return.</param>
@@ -11783,7 +11873,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified HttpsHealthCheck resource. Gets a list of available HTTPS health checks by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.HttpsHealthCheck>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -11851,7 +11941,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a HttpsHealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.HttpsHealthCheck body, string project)
@@ -11860,7 +11950,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a HttpsHealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -11942,14 +12032,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of HttpsHealthCheck resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of HttpsHealthCheck resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of HttpsHealthCheck resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of HttpsHealthCheck resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.HttpsHealthCheckList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -12084,8 +12176,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates a HttpsHealthCheck resource in the specified project using the data included in the
-        /// request. This method supports PATCH semantics and uses the JSON merge patch format and processing
-        /// rules.</summary>
+        /// request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpsHealthCheck">Name of the
@@ -12096,8 +12188,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates a HttpsHealthCheck resource in the specified project using the data included in the
-        /// request. This method supports PATCH semantics and uses the JSON merge patch format and processing
-        /// rules.</summary>
+        /// request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -12194,7 +12286,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates a HttpsHealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpsHealthCheck">Name of the
@@ -12205,7 +12297,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates a HttpsHealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -12318,7 +12410,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified image.</summary>
+        /// <summary>Deletes the specified image. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="image">Name of the image resource to
         /// delete.</param>
@@ -12327,7 +12419,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, image);
         }
 
-        /// <summary>Deletes the specified image.</summary>
+        /// <summary>Deletes the specified image. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -12418,7 +12510,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Sets the deprecation status of an image.
         ///
-        /// If an empty request body is given, clears the deprecation status instead.</summary>
+        /// If an empty request body is given, clears the deprecation status instead. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="image">Image name.</param>
@@ -12429,7 +12522,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Sets the deprecation status of an image.
         ///
-        /// If an empty request body is given, clears the deprecation status instead.</summary>
+        /// If an empty request body is given, clears the deprecation status instead. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class DeprecateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Deprecate request.</summary>
@@ -12525,7 +12619,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified image. Gets a list of available images by making a list() request.</summary>
+        /// <summary>Returns the specified image. Gets a list of available images by making a list() request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="image">Name of the image resource to
         /// return.</param>
@@ -12534,7 +12629,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, image);
         }
 
-        /// <summary>Returns the specified image. Gets a list of available images by making a list() request.</summary>
+        /// <summary>Returns the specified image. Gets a list of available images by making a list() request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Image>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -12601,7 +12697,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the latest image that is part of an image family and is not deprecated.</summary>
+        /// <summary>Returns the latest image that is part of an image family and is not deprecated. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="family">Name of the image family to
         /// search for.</param>
@@ -12610,7 +12707,8 @@ namespace Google.Apis.Compute.v1
             return new GetFromFamilyRequest(service, project, family);
         }
 
-        /// <summary>Returns the latest image that is part of an image family and is not deprecated.</summary>
+        /// <summary>Returns the latest image that is part of an image family and is not deprecated. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class GetFromFamilyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Image>
         {
             /// <summary>Constructs a new GetFromFamily request.</summary>
@@ -12677,8 +12775,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
         /// for this request.</param>
@@ -12687,8 +12785,8 @@ namespace Google.Apis.Compute.v1
             return new GetIamPolicyRequest(service, project, resource);
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -12755,7 +12853,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates an image in the specified project using the data included in the request.</summary>
+        /// <summary>Creates an image in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Image body, string project)
@@ -12763,7 +12862,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates an image in the specified project using the data included in the request.</summary>
+        /// <summary>Creates an image in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -12861,8 +12961,8 @@ namespace Google.Apis.Compute.v1
         /// <summary>Retrieves the list of custom images available to the specified project. Custom images are images
         /// you create that belong to your project. This method does not get any images that belong to other projects,
         /// including publicly-available images, like Debian 8. If you want to get a list of publicly-available images,
-        /// use this method to make a request to the respective image project, such as debian-cloud or windows-
-        /// cloud.</summary>
+        /// use this method to make a request to the respective image project, such as debian-cloud or windows-cloud.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
@@ -12872,8 +12972,8 @@ namespace Google.Apis.Compute.v1
         /// <summary>Retrieves the list of custom images available to the specified project. Custom images are images
         /// you create that belong to your project. This method does not get any images that belong to other projects,
         /// including publicly-available images, like Debian 8. If you want to get a list of publicly-available images,
-        /// use this method to make a request to the respective image project, such as debian-cloud or windows-
-        /// cloud.</summary>
+        /// use this method to make a request to the respective image project, such as debian-cloud or windows-cloud.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ImageList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -13007,7 +13107,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
@@ -13017,7 +13118,8 @@ namespace Google.Apis.Compute.v1
             return new SetIamPolicyRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -13091,8 +13193,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources documentation.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
@@ -13102,8 +13204,8 @@ namespace Google.Apis.Compute.v1
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources documentation.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -13177,7 +13279,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
@@ -13187,7 +13290,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -13288,7 +13392,8 @@ namespace Google.Apis.Compute.v1
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
-        /// You can specify a maximum of 1000 instances with this method per request.</summary>
+        /// You can specify a maximum of 1000 instances with this method per request. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -13310,7 +13415,8 @@ namespace Google.Apis.Compute.v1
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
-        /// You can specify a maximum of 1000 instances with this method per request.</summary>
+        /// You can specify a maximum of 1000 instances with this method per request. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class AbandonInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AbandonInstances request.</summary>
@@ -13420,14 +13526,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of managed instance groups and groups them by zone.</summary>
+        /// <summary>Retrieves the list of managed instance groups and groups them by zone. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of managed instance groups and groups them by zone.</summary>
+        /// <summary>Retrieves the list of managed instance groups and groups them by zone. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceGroupManagerAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -13562,8 +13670,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Deletes the specified managed instance group and all of the instances in that group. Note that the
-        /// instance group must not belong to a backend service. Read  Deleting an instance group for more
-        /// information.</summary>
+        /// instance group must not belong to a backend service. Read  Deleting an instance group for more information.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// managed instance group is located.</param>
@@ -13575,8 +13683,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Deletes the specified managed instance group and all of the instances in that group. Note that the
-        /// instance group must not belong to a backend service. Read  Deleting an instance group for more
-        /// information.</summary>
+        /// instance group must not belong to a backend service. Read  Deleting an instance group for more information.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -13688,7 +13796,8 @@ namespace Google.Apis.Compute.v1
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
-        /// You can specify a maximum of 1000 instances with this method per request.</summary>
+        /// You can specify a maximum of 1000 instances with this method per request. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -13709,7 +13818,8 @@ namespace Google.Apis.Compute.v1
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
-        /// You can specify a maximum of 1000 instances with this method per request.</summary>
+        /// You can specify a maximum of 1000 instances with this method per request. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class DeleteInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new DeleteInstances request.</summary>
@@ -13820,7 +13930,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns all of the details about the specified managed instance group. Gets a list of available
-        /// managed instance groups by making a list() request.</summary>
+        /// managed instance groups by making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// managed instance group is located.</param>
@@ -13832,7 +13942,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns all of the details about the specified managed instance group. Gets a list of available
-        /// managed instance groups by making a list() request.</summary>
+        /// managed instance groups by making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceGroupManager>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -13919,7 +14029,7 @@ namespace Google.Apis.Compute.v1
         /// You must separately verify the status of the individual instances with the listmanagedinstances method.
         ///
         /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you
-        /// need an increase in this limit.</summary>
+        /// need an increase in this limit. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where you
@@ -13935,7 +14045,7 @@ namespace Google.Apis.Compute.v1
         /// You must separately verify the status of the individual instances with the listmanagedinstances method.
         ///
         /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you
-        /// need an increase in this limit.</summary>
+        /// need an increase in this limit. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -14032,7 +14142,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves a list of managed instance groups that are contained within the specified project and
-        /// zone.</summary>
+        /// zone. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// managed instance group is located.</param>
@@ -14042,7 +14152,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves a list of managed instance groups that are contained within the specified project and
-        /// zone.</summary>
+        /// zone. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceGroupManagerList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -14193,7 +14303,8 @@ namespace Google.Apis.Compute.v1
         /// <summary>Lists all of the instances in the managed instance group. Each instance in the list has a
         /// currentAction, which indicates the action that the managed instance group is performing on the instance. For
         /// example, if the group is still creating an instance, the currentAction is CREATING. If a previous action
-        /// failed, the list displays the errors for that failed action.</summary>
+        /// failed, the list displays the errors for that failed action. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// managed instance group is located.</param>
@@ -14207,7 +14318,8 @@ namespace Google.Apis.Compute.v1
         /// <summary>Lists all of the instances in the managed instance group. Each instance in the list has a
         /// currentAction, which indicates the action that the managed instance group is performing on the instance. For
         /// example, if the group is still creating an instance, the currentAction is CREATING. If a previous action
-        /// failed, the list displays the errors for that failed action.</summary>
+        /// failed, the list displays the errors for that failed action. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class ListManagedInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceGroupManagersListManagedInstancesResponse>
         {
             /// <summary>Constructs a new ListManagedInstances request.</summary>
@@ -14373,7 +14485,7 @@ namespace Google.Apis.Compute.v1
         /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
         /// process of being patched. You must separately verify the status of the individual instances with the
         /// listManagedInstances method. This method supports PATCH semantics and uses the JSON merge patch format and
-        /// processing rules.</summary>
+        /// processing rules. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where you
@@ -14389,7 +14501,7 @@ namespace Google.Apis.Compute.v1
         /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
         /// process of being patched. You must separately verify the status of the individual instances with the
         /// listManagedInstances method. This method supports PATCH semantics and uses the JSON merge patch format and
-        /// processing rules.</summary>
+        /// processing rules. (== suppress_warning http-rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -14507,7 +14619,8 @@ namespace Google.Apis.Compute.v1
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
-        /// You can specify a maximum of 1000 instances with this method per request.</summary>
+        /// You can specify a maximum of 1000 instances with this method per request. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -14527,7 +14640,8 @@ namespace Google.Apis.Compute.v1
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
-        /// You can specify a maximum of 1000 instances with this method per request.</summary>
+        /// You can specify a maximum of 1000 instances with this method per request. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class RecreateInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new RecreateInstances request.</summary>
@@ -14652,7 +14766,8 @@ namespace Google.Apis.Compute.v1
         /// This list is subject to change.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
-        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// managed instance group is located.</param>
@@ -14681,7 +14796,8 @@ namespace Google.Apis.Compute.v1
         /// This list is subject to change.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
-        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Resize request.</summary>
@@ -14801,7 +14917,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Specifies the instance template to use when creating new instances in this group. The templates for
-        /// existing instances in the group do not change unless you recreate them.</summary>
+        /// existing instances in the group do not change unless you recreate them. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -14814,7 +14931,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Specifies the instance template to use when creating new instances in this group. The templates for
-        /// existing instances in the group do not change unless you recreate them.</summary>
+        /// existing instances in the group do not change unless you recreate them. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class SetInstanceTemplateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetInstanceTemplate request.</summary>
@@ -14928,7 +15046,7 @@ namespace Google.Apis.Compute.v1
         /// target pools automatically apply to all of the instances in the managed instance group. This operation is
         /// marked DONE when you make the request even if the instances have not yet been added to their target pools.
         /// The change might take some time to apply to all of the instances in the group depending on the size of the
-        /// group.</summary>
+        /// group. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -14944,7 +15062,7 @@ namespace Google.Apis.Compute.v1
         /// target pools automatically apply to all of the instances in the managed instance group. This operation is
         /// marked DONE when you make the request even if the instances have not yet been added to their target pools.
         /// The change might take some time to apply to all of the instances in the group depending on the size of the
-        /// group.</summary>
+        /// group. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetTargetPoolsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetTargetPools request.</summary>
@@ -15072,7 +15190,8 @@ namespace Google.Apis.Compute.v1
 
 
         /// <summary>Adds a list of instances to the specified instance group. All of the instances in the instance
-        /// group must be in the same network/subnetwork. Read  Adding instances for more information.</summary>
+        /// group must be in the same network/subnetwork. Read  Adding instances for more information. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -15085,7 +15204,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Adds a list of instances to the specified instance group. All of the instances in the instance
-        /// group must be in the same network/subnetwork. Read  Adding instances for more information.</summary>
+        /// group must be in the same network/subnetwork. Read  Adding instances for more information. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class AddInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddInstances request.</summary>
@@ -15195,14 +15315,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of instance groups and sorts them by zone.</summary>
+        /// <summary>Retrieves the list of instance groups and sorts them by zone. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of instance groups and sorts them by zone.</summary>
+        /// <summary>Retrieves the list of instance groups and sorts them by zone. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceGroupAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -15337,8 +15459,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Deletes the specified instance group. The instances in the group are not deleted. Note that
-        /// instance group must not belong to a backend service. Read  Deleting an instance group for more
-        /// information.</summary>
+        /// instance group must not belong to a backend service. Read  Deleting an instance group for more information.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// instance group is located.</param>
@@ -15350,8 +15472,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Deletes the specified instance group. The instances in the group are not deleted. Note that
-        /// instance group must not belong to a backend service. Read  Deleting an instance group for more
-        /// information.</summary>
+        /// instance group must not belong to a backend service. Read  Deleting an instance group for more information.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -15455,7 +15577,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified instance group. Gets a list of available instance groups by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// instance group is located.</param>
@@ -15466,7 +15588,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified instance group. Gets a list of available instance groups by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -15548,7 +15670,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates an instance group in the specified project using the parameters that are included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where you
@@ -15559,7 +15681,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates an instance group in the specified project using the parameters that are included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -15655,7 +15777,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of instance groups that are located in the specified project and zone.</summary>
+        /// <summary>Retrieves the list of instance groups that are located in the specified project and zone. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// instance group is located.</param>
@@ -15664,7 +15787,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves the list of instance groups that are located in the specified project and zone.</summary>
+        /// <summary>Retrieves the list of instance groups that are located in the specified project and zone. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceGroupList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -15812,7 +15936,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Lists the instances in the specified instance group.</summary>
+        /// <summary>Lists the instances in the specified instance group. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -15824,7 +15949,8 @@ namespace Google.Apis.Compute.v1
             return new ListInstancesRequest(service, body, project, zone, instanceGroup);
         }
 
-        /// <summary>Lists the instances in the specified instance group.</summary>
+        /// <summary>Lists the instances in the specified instance group. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class ListInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceGroupsListInstances>
         {
             /// <summary>Constructs a new ListInstances request.</summary>
@@ -15998,7 +16124,8 @@ namespace Google.Apis.Compute.v1
         /// instances.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
-        /// after the connection draining duration before the VM instance is removed or deleted.</summary>
+        /// after the connection draining duration before the VM instance is removed or deleted. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -16014,7 +16141,8 @@ namespace Google.Apis.Compute.v1
         /// instances.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
-        /// after the connection draining duration before the VM instance is removed or deleted.</summary>
+        /// after the connection draining duration before the VM instance is removed or deleted. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class RemoveInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new RemoveInstances request.</summary>
@@ -16124,7 +16252,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the named ports for the specified instance group.</summary>
+        /// <summary>Sets the named ports for the specified instance group. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -16136,7 +16265,8 @@ namespace Google.Apis.Compute.v1
             return new SetNamedPortsRequest(service, body, project, zone, instanceGroup);
         }
 
-        /// <summary>Sets the named ports for the specified instance group.</summary>
+        /// <summary>Sets the named ports for the specified instance group. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class SetNamedPortsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetNamedPorts request.</summary>
@@ -16264,8 +16394,8 @@ namespace Google.Apis.Compute.v1
 
 
         /// <summary>Deletes the specified instance template. Deleting an instance template is permanent and cannot be
-        /// undone. It is not possible to delete templates that are already in use by a managed instance
-        /// group.</summary>
+        /// undone. It is not possible to delete templates that are already in use by a managed instance group. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="instanceTemplate">The name of the
         /// instance template to delete.</param>
@@ -16275,8 +16405,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Deletes the specified instance template. Deleting an instance template is permanent and cannot be
-        /// undone. It is not possible to delete templates that are already in use by a managed instance
-        /// group.</summary>
+        /// undone. It is not possible to delete templates that are already in use by a managed instance group. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -16366,7 +16496,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified instance template. Gets a list of available instance templates by making a
-        /// list() request.</summary>
+        /// list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="instanceTemplate">The name of the
         /// instance template.</param>
@@ -16376,7 +16506,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified instance template. Gets a list of available instance templates by making a
-        /// list() request.</summary>
+        /// list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceTemplate>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -16443,8 +16573,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
         /// for this request.</param>
@@ -16453,8 +16583,8 @@ namespace Google.Apis.Compute.v1
             return new GetIamPolicyRequest(service, project, resource);
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -16523,7 +16653,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Creates an instance template in the specified project using the data that is included in the
         /// request. If you are creating a new template to update an existing instance group, your new instance template
-        /// must use the same network or, if applicable, the same subnetwork as the original template.</summary>
+        /// must use the same network or, if applicable, the same subnetwork as the original template. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.InstanceTemplate body, string project)
@@ -16533,7 +16664,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Creates an instance template in the specified project using the data that is included in the
         /// request. If you are creating a new template to update an existing instance group, your new instance template
-        /// must use the same network or, if applicable, the same subnetwork as the original template.</summary>
+        /// must use the same network or, if applicable, the same subnetwork as the original template. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -16615,14 +16747,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of instance templates that are contained within the specified project.</summary>
+        /// <summary>Retrieves a list of instance templates that are contained within the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves a list of instance templates that are contained within the specified project.</summary>
+        /// <summary>Retrieves a list of instance templates that are contained within the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceTemplateList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -16756,7 +16890,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
@@ -16766,7 +16901,8 @@ namespace Google.Apis.Compute.v1
             return new SetIamPolicyRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -16840,7 +16976,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
@@ -16850,7 +16987,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -16941,7 +17079,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Adds an access config to an instance's network interface.</summary>
+        /// <summary>Adds an access config to an instance's network interface. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -16954,7 +17093,8 @@ namespace Google.Apis.Compute.v1
             return new AddAccessConfigRequest(service, body, project, zone, instance, networkInterface);
         }
 
-        /// <summary>Adds an access config to an instance's network interface.</summary>
+        /// <summary>Adds an access config to an instance's network interface. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class AddAccessConfigRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddAccessConfig request.</summary>
@@ -17078,16 +17218,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves aggregated list of all of the instances in your project across all regions and
-        /// zones.</summary>
+        /// <summary>Retrieves aggregated list of all of the instances in your project across all regions and zones. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves aggregated list of all of the instances in your project across all regions and
-        /// zones.</summary>
+        /// <summary>Retrieves aggregated list of all of the instances in your project across all regions and zones. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -17223,7 +17363,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Attaches an existing Disk resource to an instance. You must first create the disk before you can
         /// attach it. It is not possible to create and attach a disk at the same time. For more information, read
-        /// Adding a persistent disk to your instance.</summary>
+        /// Adding a persistent disk to your instance. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -17236,7 +17376,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Attaches an existing Disk resource to an instance. You must first create the disk before you can
         /// attach it. It is not possible to create and attach a disk at the same time. For more information, read
-        /// Adding a persistent disk to your instance.</summary>
+        /// Adding a persistent disk to your instance. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AttachDiskRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AttachDisk request.</summary>
@@ -17360,7 +17500,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Deletes the specified Instance resource. For more information, see Stopping or Deleting an
-        /// Instance.</summary>
+        /// Instance. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -17371,7 +17511,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Deletes the specified Instance resource. For more information, see Stopping or Deleting an
-        /// Instance.</summary>
+        /// Instance. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -17474,7 +17614,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes an access config from an instance's network interface.</summary>
+        /// <summary>Deletes an access config from an instance's network interface. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -17488,7 +17629,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteAccessConfigRequest(service, project, zone, instance, accessConfig, networkInterface);
         }
 
-        /// <summary>Deletes an access config from an instance's network interface.</summary>
+        /// <summary>Deletes an access config from an instance's network interface. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class DeleteAccessConfigRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new DeleteAccessConfig request.</summary>
@@ -17619,7 +17761,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Detaches a disk from an instance.</summary>
+        /// <summary>Detaches a disk from an instance. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -17632,7 +17774,7 @@ namespace Google.Apis.Compute.v1
             return new DetachDiskRequest(service, project, zone, instance, deviceName);
         }
 
-        /// <summary>Detaches a disk from an instance.</summary>
+        /// <summary>Detaches a disk from an instance. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DetachDiskRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new DetachDisk request.</summary>
@@ -17751,7 +17893,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified Instance resource. Gets a list of available instances by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -17762,7 +17904,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified Instance resource. Gets a list of available instances by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Instance>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -17843,7 +17985,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified guest attributes entry.</summary>
+        /// <summary>Returns the specified guest attributes entry. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -17853,7 +17995,7 @@ namespace Google.Apis.Compute.v1
             return new GetGuestAttributesRequest(service, project, zone, instance);
         }
 
-        /// <summary>Returns the specified guest attributes entry.</summary>
+        /// <summary>Returns the specified guest attributes entry. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetGuestAttributesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.GuestAttributes>
         {
             /// <summary>Constructs a new GetGuestAttributes request.</summary>
@@ -17960,8 +18102,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -17971,8 +18113,8 @@ namespace Google.Apis.Compute.v1
             return new GetIamPolicyRequest(service, project, zone, resource);
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -18053,7 +18195,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the last 1 MB of serial port output from the specified instance.</summary>
+        /// <summary>Returns the last 1 MB of serial port output from the specified instance. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -18063,7 +18206,8 @@ namespace Google.Apis.Compute.v1
             return new GetSerialPortOutputRequest(service, project, zone, instance);
         }
 
-        /// <summary>Returns the last 1 MB of serial port output from the specified instance.</summary>
+        /// <summary>Returns the last 1 MB of serial port output from the specified instance. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class GetSerialPortOutputRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SerialPortOutput>
         {
             /// <summary>Constructs a new GetSerialPortOutput request.</summary>
@@ -18176,7 +18320,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the Shielded Instance Identity of an instance</summary>
+        /// <summary>Returns the Shielded Instance Identity of an instance (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -18186,7 +18331,8 @@ namespace Google.Apis.Compute.v1
             return new GetShieldedInstanceIdentityRequest(service, project, zone, instance);
         }
 
-        /// <summary>Returns the Shielded Instance Identity of an instance</summary>
+        /// <summary>Returns the Shielded Instance Identity of an instance (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class GetShieldedInstanceIdentityRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ShieldedInstanceIdentity>
         {
             /// <summary>Constructs a new GetShieldedInstanceIdentity request.</summary>
@@ -18267,8 +18413,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates an instance resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates an instance resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -18278,8 +18424,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, zone);
         }
 
-        /// <summary>Creates an instance resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates an instance resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -18394,7 +18540,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of instances contained within the specified zone.</summary>
+        /// <summary>Retrieves the list of instances contained within the specified zone. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -18403,7 +18550,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves the list of instances contained within the specified zone.</summary>
+        /// <summary>Retrieves the list of instances contained within the specified zone. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -18552,7 +18700,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of referrers to instances contained within the specified zone. For more
-        /// information, read Viewing Referrers to VM Instances.</summary>
+        /// information, read Viewing Referrers to VM Instances. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -18564,7 +18712,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of referrers to instances contained within the specified zone. For more
-        /// information, read Viewing Referrers to VM Instances.</summary>
+        /// information, read Viewing Referrers to VM Instances. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListReferrersRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceListReferrers>
         {
             /// <summary>Constructs a new ListReferrers request.</summary>
@@ -18728,7 +18876,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Performs a reset on the instance. This is a hard reset the VM does not do a graceful shutdown. For
-        /// more information, see Resetting an instance.</summary>
+        /// more information, see Resetting an instance. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -18739,7 +18887,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Performs a reset on the instance. This is a hard reset the VM does not do a graceful shutdown. For
-        /// more information, see Resetting an instance.</summary>
+        /// more information, see Resetting an instance. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ResetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Reset request.</summary>
@@ -18842,7 +18990,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets deletion protection on the instance.</summary>
+        /// <summary>Sets deletion protection on the instance. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -18852,7 +19000,7 @@ namespace Google.Apis.Compute.v1
             return new SetDeletionProtectionRequest(service, project, zone, resource);
         }
 
-        /// <summary>Sets deletion protection on the instance.</summary>
+        /// <summary>Sets deletion protection on the instance. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetDeletionProtectionRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetDeletionProtection request.</summary>
@@ -18969,7 +19117,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the auto-delete flag for a disk attached to an instance.</summary>
+        /// <summary>Sets the auto-delete flag for a disk attached to an instance. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -18984,7 +19133,8 @@ namespace Google.Apis.Compute.v1
             return new SetDiskAutoDeleteRequest(service, project, zone, instance, autoDelete, deviceName);
         }
 
-        /// <summary>Sets the auto-delete flag for a disk attached to an instance.</summary>
+        /// <summary>Sets the auto-delete flag for a disk attached to an instance. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class SetDiskAutoDeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetDiskAutoDelete request.</summary>
@@ -19116,7 +19266,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -19127,7 +19278,8 @@ namespace Google.Apis.Compute.v1
             return new SetIamPolicyRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -19215,8 +19367,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources documentation.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -19227,8 +19379,8 @@ namespace Google.Apis.Compute.v1
             return new SetLabelsRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources documentation.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -19339,7 +19491,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Changes the number and/or type of accelerator for a stopped instance to the values specified in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -19351,7 +19503,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Changes the number and/or type of accelerator for a stopped instance to the values specified in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetMachineResourcesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetMachineResources request.</summary>
@@ -19461,8 +19613,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Changes the machine type for a stopped instance to the machine type specified in the
-        /// request.</summary>
+        /// <summary>Changes the machine type for a stopped instance to the machine type specified in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -19473,8 +19625,8 @@ namespace Google.Apis.Compute.v1
             return new SetMachineTypeRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Changes the machine type for a stopped instance to the machine type specified in the
-        /// request.</summary>
+        /// <summary>Changes the machine type for a stopped instance to the machine type specified in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class SetMachineTypeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetMachineType request.</summary>
@@ -19584,7 +19736,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets metadata for the specified instance to the data included in the request.</summary>
+        /// <summary>Sets metadata for the specified instance to the data included in the request. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -19595,7 +19748,8 @@ namespace Google.Apis.Compute.v1
             return new SetMetadataRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets metadata for the specified instance to the data included in the request.</summary>
+        /// <summary>Sets metadata for the specified instance to the data included in the request. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class SetMetadataRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetMetadata request.</summary>
@@ -19706,7 +19860,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Changes the minimum CPU platform that this instance should use. This method can only be called on a
-        /// stopped instance. For more information, read Specifying a Minimum CPU Platform.</summary>
+        /// stopped instance. For more information, read Specifying a Minimum CPU Platform. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -19718,7 +19873,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Changes the minimum CPU platform that this instance should use. This method can only be called on a
-        /// stopped instance. For more information, read Specifying a Minimum CPU Platform.</summary>
+        /// stopped instance. For more information, read Specifying a Minimum CPU Platform. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class SetMinCpuPlatformRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetMinCpuPlatform request.</summary>
@@ -19828,7 +19984,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets an instance's scheduling options.</summary>
+        /// <summary>Sets an instance's scheduling options. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -19839,7 +19995,7 @@ namespace Google.Apis.Compute.v1
             return new SetSchedulingRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets an instance's scheduling options.</summary>
+        /// <summary>Sets an instance's scheduling options. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetSchedulingRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetScheduling request.</summary>
@@ -19950,7 +20106,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Sets the service account on the instance. For more information, read Changing the service account
-        /// and access scopes for an instance.</summary>
+        /// and access scopes for an instance. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -19962,7 +20118,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Sets the service account on the instance. For more information, read Changing the service account
-        /// and access scopes for an instance.</summary>
+        /// and access scopes for an instance. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetServiceAccountRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetServiceAccount request.</summary>
@@ -20074,7 +20230,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Sets the Shielded Instance integrity policy for an instance. You can only use this method on a
         /// running instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
-        /// rules.</summary>
+        /// rules. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -20087,7 +20243,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Sets the Shielded Instance integrity policy for an instance. You can only use this method on a
         /// running instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
-        /// rules.</summary>
+        /// rules. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetShieldedInstanceIntegrityPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetShieldedInstanceIntegrityPolicy request.</summary>
@@ -20197,7 +20353,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets network tags for the specified instance to the data included in the request.</summary>
+        /// <summary>Sets network tags for the specified instance to the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -20208,7 +20365,8 @@ namespace Google.Apis.Compute.v1
             return new SetTagsRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets network tags for the specified instance to the data included in the request.</summary>
+        /// <summary>Sets network tags for the specified instance to the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class SetTagsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetTags request.</summary>
@@ -20318,7 +20476,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Simulates a maintenance event on the instance.</summary>
+        /// <summary>Simulates a maintenance event on the instance. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -20328,7 +20487,8 @@ namespace Google.Apis.Compute.v1
             return new SimulateMaintenanceEventRequest(service, project, zone, instance);
         }
 
-        /// <summary>Simulates a maintenance event on the instance.</summary>
+        /// <summary>Simulates a maintenance event on the instance. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class SimulateMaintenanceEventRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SimulateMaintenanceEvent request.</summary>
@@ -20410,7 +20570,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Starts an instance that was stopped using the instances().stop method. For more information, see
-        /// Restart an instance.</summary>
+        /// Restart an instance. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -20421,7 +20581,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Starts an instance that was stopped using the instances().stop method. For more information, see
-        /// Restart an instance.</summary>
+        /// Restart an instance. (== suppress_warning http-rest-shadowed ==)</summary>
         public class StartRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Start request.</summary>
@@ -20525,7 +20685,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Starts an instance that was stopped using the instances().stop method. For more information, see
-        /// Restart an instance.</summary>
+        /// Restart an instance. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -20537,7 +20697,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Starts an instance that was stopped using the instances().stop method. For more information, see
-        /// Restart an instance.</summary>
+        /// Restart an instance. (== suppress_warning http-rest-shadowed ==)</summary>
         public class StartWithEncryptionKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new StartWithEncryptionKey request.</summary>
@@ -20650,7 +20810,8 @@ namespace Google.Apis.Compute.v1
         /// <summary>Stops a running instance, shutting it down cleanly, and allows you to restart the instance at a
         /// later time. Stopped instances do not incur VM usage charges while they are stopped. However, resources that
         /// the VM is using, such as persistent disks and static IP addresses, will continue to be charged until they
-        /// are deleted. For more information, see Stopping an instance.</summary>
+        /// are deleted. For more information, see Stopping an instance. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -20663,7 +20824,8 @@ namespace Google.Apis.Compute.v1
         /// <summary>Stops a running instance, shutting it down cleanly, and allows you to restart the instance at a
         /// later time. Stopped instances do not incur VM usage charges while they are stopped. However, resources that
         /// the VM is using, such as persistent disks and static IP addresses, will continue to be charged until they
-        /// are deleted. For more information, see Stopping an instance.</summary>
+        /// are deleted. For more information, see Stopping an instance. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class StopRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Stop request.</summary>
@@ -20766,7 +20928,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -20777,7 +20940,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -20866,8 +21030,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the specified access config from an instance's network interface with the data included in
-        /// the request. This method supports PATCH semantics and uses the JSON merge patch format and processing
-        /// rules.</summary>
+        /// the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -20881,8 +21045,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the specified access config from an instance's network interface with the data included in
-        /// the request. This method supports PATCH semantics and uses the JSON merge patch format and processing
-        /// rules.</summary>
+        /// the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class UpdateAccessConfigRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new UpdateAccessConfig request.</summary>
@@ -21007,8 +21171,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the Display config for a VM instance. You can only use this method on a stopped VM
-        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
-        /// rules.</summary>
+        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -21020,8 +21184,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the Display config for a VM instance. You can only use this method on a stopped VM
-        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
-        /// rules.</summary>
+        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class UpdateDisplayDeviceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new UpdateDisplayDevice request.</summary>
@@ -21131,7 +21295,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates an instance's network interface. This method follows PATCH semantics.</summary>
+        /// <summary>Updates an instance's network interface. This method follows PATCH semantics. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -21144,7 +21309,8 @@ namespace Google.Apis.Compute.v1
             return new UpdateNetworkInterfaceRequest(service, body, project, zone, instance, networkInterface);
         }
 
-        /// <summary>Updates an instance's network interface. This method follows PATCH semantics.</summary>
+        /// <summary>Updates an instance's network interface. This method follows PATCH semantics. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class UpdateNetworkInterfaceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new UpdateNetworkInterface request.</summary>
@@ -21269,8 +21435,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the Shielded Instance config for an instance. You can only use this method on a stopped
-        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
-        /// rules.</summary>
+        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -21282,8 +21448,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the Shielded Instance config for an instance. You can only use this method on a stopped
-        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing
-        /// rules.</summary>
+        /// instance. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class UpdateShieldedInstanceConfigRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new UpdateShieldedInstanceConfig request.</summary>
@@ -21410,14 +21576,16 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of interconnect attachments.</summary>
+        /// <summary>Retrieves an aggregated list of interconnect attachments. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of interconnect attachments.</summary>
+        /// <summary>Retrieves an aggregated list of interconnect attachments. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InterconnectAttachmentAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -21551,7 +21719,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified interconnect attachment.</summary>
+        /// <summary>Deletes the specified interconnect attachment. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -21562,7 +21731,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, interconnectAttachment);
         }
 
-        /// <summary>Deletes the specified interconnect attachment.</summary>
+        /// <summary>Deletes the specified interconnect attachment. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -21665,7 +21835,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified interconnect attachment.</summary>
+        /// <summary>Returns the specified interconnect attachment. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -21676,7 +21847,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region, interconnectAttachment);
         }
 
-        /// <summary>Returns the specified interconnect attachment.</summary>
+        /// <summary>Returns the specified interconnect attachment. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InterconnectAttachment>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -21757,8 +21929,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates an InterconnectAttachment in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates an InterconnectAttachment in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -21768,8 +21940,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates an InterconnectAttachment in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates an InterconnectAttachment in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -21865,7 +22037,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of interconnect attachments contained within the specified region.</summary>
+        /// <summary>Retrieves the list of interconnect attachments contained within the specified region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -21874,7 +22047,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves the list of interconnect attachments contained within the specified region.</summary>
+        /// <summary>Retrieves the list of interconnect attachments contained within the specified region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InterconnectAttachmentList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -22023,7 +22197,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the specified interconnect attachment with the data included in the request. This method
-        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -22036,7 +22211,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the specified interconnect attachment with the data included in the request. This method
-        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -22164,7 +22340,7 @@ namespace Google.Apis.Compute.v1
 
 
         /// <summary>Returns the details for the specified interconnect location. Gets a list of available interconnect
-        /// locations by making a list() request.</summary>
+        /// locations by making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="interconnectLocation">Name of the
         /// interconnect location to return.</param>
@@ -22174,7 +22350,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the details for the specified interconnect location. Gets a list of available interconnect
-        /// locations by making a list() request.</summary>
+        /// locations by making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InterconnectLocation>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -22241,14 +22417,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of interconnect locations available to the specified project.</summary>
+        /// <summary>Retrieves the list of interconnect locations available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of interconnect locations available to the specified project.</summary>
+        /// <summary>Retrieves the list of interconnect locations available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InterconnectLocationList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -22399,7 +22577,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified interconnect.</summary>
+        /// <summary>Deletes the specified interconnect. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="interconnect">Name of the
         /// interconnect to delete.</param>
@@ -22408,7 +22586,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, interconnect);
         }
 
-        /// <summary>Deletes the specified interconnect.</summary>
+        /// <summary>Deletes the specified interconnect. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -22498,7 +22676,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified interconnect. Get a list of available interconnects by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="interconnect">Name of the
         /// interconnect to return.</param>
@@ -22508,7 +22686,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified interconnect. Get a list of available interconnects by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Interconnect>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -22575,7 +22753,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the interconnectDiagnostics for the specified interconnect.</summary>
+        /// <summary>Returns the interconnectDiagnostics for the specified interconnect. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="interconnect">Name of the
         /// interconnect resource to query.</param>
@@ -22584,7 +22763,8 @@ namespace Google.Apis.Compute.v1
             return new GetDiagnosticsRequest(service, project, interconnect);
         }
 
-        /// <summary>Returns the interconnectDiagnostics for the specified interconnect.</summary>
+        /// <summary>Returns the interconnectDiagnostics for the specified interconnect. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class GetDiagnosticsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InterconnectsGetDiagnosticsResponse>
         {
             /// <summary>Constructs a new GetDiagnostics request.</summary>
@@ -22651,7 +22831,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a Interconnect in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a Interconnect in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Interconnect body, string project)
@@ -22659,7 +22840,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a Interconnect in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a Interconnect in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -22741,14 +22923,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of interconnect available to the specified project.</summary>
+        /// <summary>Retrieves the list of interconnect available to the specified project. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of interconnect available to the specified project.</summary>
+        /// <summary>Retrieves the list of interconnect available to the specified project. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InterconnectList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -22883,7 +23067,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the specified interconnect with the data included in the request. This method supports
-        /// PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// PATCH semantics and uses the JSON merge patch format and processing rules. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="interconnect">Name of the
@@ -22894,7 +23079,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the specified interconnect with the data included in the request. This method supports
-        /// PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// PATCH semantics and uses the JSON merge patch format and processing rules. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -23008,7 +23194,7 @@ namespace Google.Apis.Compute.v1
 
 
         /// <summary>Return a specified license code. License codes are mirrored across all projects that have
-        /// permissions to read the License Code.</summary>
+        /// permissions to read the License Code. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="licenseCode">Number corresponding to
         /// the License code resource to return.</param>
@@ -23018,7 +23204,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Return a specified license code. License codes are mirrored across all projects that have
-        /// permissions to read the License Code.</summary>
+        /// permissions to read the License Code. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.LicenseCode>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -23085,7 +23271,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
@@ -23095,7 +23282,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -23186,7 +23374,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified license.</summary>
+        /// <summary>Deletes the specified license. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="license">Name of the license
         /// resource to delete.</param>
@@ -23195,7 +23383,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, license);
         }
 
-        /// <summary>Deletes the specified license.</summary>
+        /// <summary>Deletes the specified license. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -23284,7 +23472,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified License resource.</summary>
+        /// <summary>Returns the specified License resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="license">Name of the License
         /// resource to return.</param>
@@ -23293,7 +23481,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, license);
         }
 
-        /// <summary>Returns the specified License resource.</summary>
+        /// <summary>Returns the specified License resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.License>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -23360,8 +23548,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
         /// for this request.</param>
@@ -23370,8 +23558,8 @@ namespace Google.Apis.Compute.v1
             return new GetIamPolicyRequest(service, project, resource);
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -23438,7 +23626,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Create a License resource in the specified project.</summary>
+        /// <summary>Create a License resource in the specified project. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.License body, string project)
@@ -23446,7 +23635,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Create a License resource in the specified project.</summary>
+        /// <summary>Create a License resource in the specified project. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -23531,7 +23721,8 @@ namespace Google.Apis.Compute.v1
         /// <summary>Retrieves the list of licenses available in the specified project. This method does not get any
         /// licenses that belong to other projects, including licenses attached to publicly-available images, like
         /// Debian 9. If you want to get a list of publicly-available licenses, use this method to make a request to the
-        /// respective image project, such as debian-cloud or windows-cloud.</summary>
+        /// respective image project, such as debian-cloud or windows-cloud. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
@@ -23541,7 +23732,8 @@ namespace Google.Apis.Compute.v1
         /// <summary>Retrieves the list of licenses available in the specified project. This method does not get any
         /// licenses that belong to other projects, including licenses attached to publicly-available images, like
         /// Debian 9. If you want to get a list of publicly-available licenses, use this method to make a request to the
-        /// respective image project, such as debian-cloud or windows-cloud.</summary>
+        /// respective image project, such as debian-cloud or windows-cloud. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.LicensesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -23675,7 +23867,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
@@ -23685,7 +23878,8 @@ namespace Google.Apis.Compute.v1
             return new SetIamPolicyRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -23759,7 +23953,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
@@ -23769,7 +23964,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -23860,14 +24056,16 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of machine types.</summary>
+        /// <summary>Retrieves an aggregated list of machine types. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of machine types.</summary>
+        /// <summary>Retrieves an aggregated list of machine types. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.MachineTypeAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -24002,7 +24200,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified machine type. Gets a list of available machine types by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -24013,7 +24211,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified machine type. Gets a list of available machine types by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.MachineType>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -24094,7 +24292,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of machine types available to the specified project.</summary>
+        /// <summary>Retrieves a list of machine types available to the specified project. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -24103,7 +24302,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves a list of machine types available to the specified project.</summary>
+        /// <summary>Retrieves a list of machine types available to the specified project. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.MachineTypeList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -24268,14 +24468,16 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves the list of network endpoint groups and sorts them by zone.</summary>
+        /// <summary>Retrieves the list of network endpoint groups and sorts them by zone. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of network endpoint groups and sorts them by zone.</summary>
+        /// <summary>Retrieves the list of network endpoint groups and sorts them by zone. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NetworkEndpointGroupAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -24409,7 +24611,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Attach a list of network endpoints to the specified network endpoint group.</summary>
+        /// <summary>Attach a list of network endpoints to the specified network endpoint group. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -24422,7 +24625,8 @@ namespace Google.Apis.Compute.v1
             return new AttachNetworkEndpointsRequest(service, body, project, zone, networkEndpointGroup);
         }
 
-        /// <summary>Attach a list of network endpoints to the specified network endpoint group.</summary>
+        /// <summary>Attach a list of network endpoints to the specified network endpoint group. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class AttachNetworkEndpointsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AttachNetworkEndpoints request.</summary>
@@ -24536,7 +24740,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Deletes the specified network endpoint group. The network endpoints in the NEG and the VM instances
         /// they belong to are not terminated when the NEG is deleted. Note that the NEG cannot be deleted if there are
-        /// backend services referencing it.</summary>
+        /// backend services referencing it. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// network endpoint group is located. It should comply with RFC1035.</param>
@@ -24550,7 +24754,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Deletes the specified network endpoint group. The network endpoints in the NEG and the VM instances
         /// they belong to are not terminated when the NEG is deleted. Note that the NEG cannot be deleted if there are
-        /// backend services referencing it.</summary>
+        /// backend services referencing it. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -24654,7 +24858,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Detach a list of network endpoints from the specified network endpoint group.</summary>
+        /// <summary>Detach a list of network endpoints from the specified network endpoint group. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -24667,7 +24872,8 @@ namespace Google.Apis.Compute.v1
             return new DetachNetworkEndpointsRequest(service, body, project, zone, networkEndpointGroup);
         }
 
-        /// <summary>Detach a list of network endpoints from the specified network endpoint group.</summary>
+        /// <summary>Detach a list of network endpoints from the specified network endpoint group. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class DetachNetworkEndpointsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new DetachNetworkEndpoints request.</summary>
@@ -24780,7 +24986,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified network endpoint group. Gets a list of available network endpoint groups by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// network endpoint group is located. It should comply with RFC1035.</param>
@@ -24792,7 +24998,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified network endpoint group. Gets a list of available network endpoint groups by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NetworkEndpointGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -24875,7 +25081,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a network endpoint group in the specified project using the parameters that are included in
-        /// the request.</summary>
+        /// the request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where you
@@ -24886,7 +25092,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a network endpoint group in the specified project using the parameters that are included in
-        /// the request.</summary>
+        /// the request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -24983,8 +25189,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of network endpoint groups that are located in the specified project and
-        /// zone.</summary>
+        /// <summary>Retrieves the list of network endpoint groups that are located in the specified project and zone.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// network endpoint group is located. It should comply with RFC1035.</param>
@@ -24993,8 +25199,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves the list of network endpoint groups that are located in the specified project and
-        /// zone.</summary>
+        /// <summary>Retrieves the list of network endpoint groups that are located in the specified project and zone.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NetworkEndpointGroupList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -25143,7 +25349,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Lists the network endpoints in the specified network endpoint group.</summary>
+        /// <summary>Lists the network endpoints in the specified network endpoint group. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -25156,7 +25363,8 @@ namespace Google.Apis.Compute.v1
             return new ListNetworkEndpointsRequest(service, body, project, zone, networkEndpointGroup);
         }
 
-        /// <summary>Lists the network endpoints in the specified network endpoint group.</summary>
+        /// <summary>Lists the network endpoints in the specified network endpoint group. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class ListNetworkEndpointsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NetworkEndpointGroupsListNetworkEndpoints>
         {
             /// <summary>Constructs a new ListNetworkEndpoints request.</summary>
@@ -25327,7 +25535,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -25338,7 +25547,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -25443,7 +25653,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Adds a peering to the specified network.</summary>
+        /// <summary>Adds a peering to the specified network. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="network">Name of the network
@@ -25453,7 +25663,7 @@ namespace Google.Apis.Compute.v1
             return new AddPeeringRequest(service, body, project, network);
         }
 
-        /// <summary>Adds a peering to the specified network.</summary>
+        /// <summary>Adds a peering to the specified network. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AddPeeringRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddPeering request.</summary>
@@ -25549,7 +25759,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified network.</summary>
+        /// <summary>Deletes the specified network. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="network">Name of the network to
         /// delete.</param>
@@ -25558,7 +25768,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, network);
         }
 
-        /// <summary>Deletes the specified network.</summary>
+        /// <summary>Deletes the specified network. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -25647,8 +25857,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified network. Gets a list of available networks by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified network. Gets a list of available networks by making a list() request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="network">Name of the network to
         /// return.</param>
@@ -25657,8 +25867,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, network);
         }
 
-        /// <summary>Returns the specified network. Gets a list of available networks by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified network. Gets a list of available networks by making a list() request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Network>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -25725,7 +25935,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a network in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a network in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Network body, string project)
@@ -25733,7 +25944,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a network in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a network in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -25815,14 +26027,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of networks available to the specified project.</summary>
+        /// <summary>Retrieves the list of networks available to the specified project. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of networks available to the specified project.</summary>
+        /// <summary>Retrieves the list of networks available to the specified project. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NetworkList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -25957,7 +26171,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Patches the specified network with the data included in the request. Only the following fields can
-        /// be modified: routingConfig.routingMode.</summary>
+        /// be modified: routingConfig.routingMode. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="network">Name of the network to
@@ -25968,7 +26182,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Patches the specified network with the data included in the request. Only the following fields can
-        /// be modified: routingConfig.routingMode.</summary>
+        /// be modified: routingConfig.routingMode. (== suppress_warning http-rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -26064,7 +26278,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Removes a peering from the specified network.</summary>
+        /// <summary>Removes a peering from the specified network. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="network">Name of the network
@@ -26074,7 +26288,7 @@ namespace Google.Apis.Compute.v1
             return new RemovePeeringRequest(service, body, project, network);
         }
 
-        /// <summary>Removes a peering from the specified network.</summary>
+        /// <summary>Removes a peering from the specified network. (== suppress_warning http-rest-shadowed ==)</summary>
         public class RemovePeeringRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new RemovePeering request.</summary>
@@ -26170,7 +26384,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Switches the network mode from auto subnet mode to custom subnet mode.</summary>
+        /// <summary>Switches the network mode from auto subnet mode to custom subnet mode. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="network">Name of the network to be
         /// updated.</param>
@@ -26179,7 +26394,8 @@ namespace Google.Apis.Compute.v1
             return new SwitchToCustomModeRequest(service, project, network);
         }
 
-        /// <summary>Switches the network mode from auto subnet mode to custom subnet mode.</summary>
+        /// <summary>Switches the network mode from auto subnet mode to custom subnet mode. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class SwitchToCustomModeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SwitchToCustomMode request.</summary>
@@ -26269,8 +26485,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the specified network peering with the data included in the request Only the following
-        /// fields can be modified: NetworkPeering.export_custom_routes, and
-        /// NetworkPeering.import_custom_routes</summary>
+        /// fields can be modified: NetworkPeering.export_custom_routes, and NetworkPeering.import_custom_routes (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="network">Name of the network
@@ -26281,8 +26497,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates the specified network peering with the data included in the request Only the following
-        /// fields can be modified: NetworkPeering.export_custom_routes, and
-        /// NetworkPeering.import_custom_routes</summary>
+        /// fields can be modified: NetworkPeering.export_custom_routes, and NetworkPeering.import_custom_routes (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class UpdatePeeringRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new UpdatePeering request.</summary>
@@ -26395,7 +26611,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Adds specified number of nodes to the node group.</summary>
+        /// <summary>Adds specified number of nodes to the node group. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -26406,7 +26623,8 @@ namespace Google.Apis.Compute.v1
             return new AddNodesRequest(service, body, project, zone, nodeGroup);
         }
 
-        /// <summary>Adds specified number of nodes to the node group.</summary>
+        /// <summary>Adds specified number of nodes to the node group. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class AddNodesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddNodes request.</summary>
@@ -26517,7 +26735,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves an aggregated list of node groups. Note: use nodeGroups.listNodes for more details about
-        /// each group.</summary>
+        /// each group. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
@@ -26525,7 +26743,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves an aggregated list of node groups. Note: use nodeGroups.listNodes for more details about
-        /// each group.</summary>
+        /// each group. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NodeGroupAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -26659,7 +26877,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified NodeGroup resource.</summary>
+        /// <summary>Deletes the specified NodeGroup resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -26669,7 +26887,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, zone, nodeGroup);
         }
 
-        /// <summary>Deletes the specified NodeGroup resource.</summary>
+        /// <summary>Deletes the specified NodeGroup resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -26772,7 +26990,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes specified nodes from the node group.</summary>
+        /// <summary>Deletes specified nodes from the node group. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -26784,7 +27002,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteNodesRequest(service, body, project, zone, nodeGroup);
         }
 
-        /// <summary>Deletes specified nodes from the node group.</summary>
+        /// <summary>Deletes specified nodes from the node group. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteNodesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new DeleteNodes request.</summary>
@@ -26895,7 +27113,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request.
-        /// Note: the "nodes" field should not be used. Use nodeGroups.listNodes instead.</summary>
+        /// Note: the "nodes" field should not be used. Use nodeGroups.listNodes instead. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -26906,7 +27125,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request.
-        /// Note: the "nodes" field should not be used. Use nodeGroups.listNodes instead.</summary>
+        /// Note: the "nodes" field should not be used. Use nodeGroups.listNodes instead. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NodeGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -26987,8 +27207,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -26998,8 +27218,8 @@ namespace Google.Apis.Compute.v1
             return new GetIamPolicyRequest(service, project, zone, resource);
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -27080,8 +27300,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a NodeGroup resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a NodeGroup resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -27092,8 +27312,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, zone, initialNodeCount);
         }
 
-        /// <summary>Creates a NodeGroup resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a NodeGroup resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -27204,7 +27424,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves a list of node groups available to the specified project. Note: use nodeGroups.listNodes
-        /// for more details about each group.</summary>
+        /// for more details about each group. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -27214,7 +27434,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves a list of node groups available to the specified project. Note: use nodeGroups.listNodes
-        /// for more details about each group.</summary>
+        /// for more details about each group. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NodeGroupList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -27362,7 +27582,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Lists nodes in the node group.</summary>
+        /// <summary>Lists nodes in the node group. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -27373,7 +27593,7 @@ namespace Google.Apis.Compute.v1
             return new ListNodesRequest(service, project, zone, nodeGroup);
         }
 
-        /// <summary>Lists nodes in the node group.</summary>
+        /// <summary>Lists nodes in the node group. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListNodesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NodeGroupsListNodes>
         {
             /// <summary>Constructs a new ListNodes request.</summary>
@@ -27535,7 +27755,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -27546,7 +27767,8 @@ namespace Google.Apis.Compute.v1
             return new SetIamPolicyRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -27634,7 +27856,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates the node template of the node group.</summary>
+        /// <summary>Updates the node template of the node group. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -27645,7 +27867,7 @@ namespace Google.Apis.Compute.v1
             return new SetNodeTemplateRequest(service, body, project, zone, nodeGroup);
         }
 
-        /// <summary>Updates the node template of the node group.</summary>
+        /// <summary>Updates the node template of the node group. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetNodeTemplateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetNodeTemplate request.</summary>
@@ -27755,7 +27977,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -27766,7 +27989,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -27871,14 +28095,16 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of node templates.</summary>
+        /// <summary>Retrieves an aggregated list of node templates. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of node templates.</summary>
+        /// <summary>Retrieves an aggregated list of node templates. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NodeTemplateAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -28012,7 +28238,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified NodeTemplate resource.</summary>
+        /// <summary>Deletes the specified NodeTemplate resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
@@ -28022,7 +28248,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, nodeTemplate);
         }
 
-        /// <summary>Deletes the specified NodeTemplate resource.</summary>
+        /// <summary>Deletes the specified NodeTemplate resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -28126,7 +28352,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified node template. Gets a list of available node templates by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
@@ -28137,7 +28363,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified node template. Gets a list of available node templates by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NodeTemplate>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -28218,8 +28444,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
@@ -28229,8 +28455,8 @@ namespace Google.Apis.Compute.v1
             return new GetIamPolicyRequest(service, project, region, resource);
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -28311,8 +28537,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a NodeTemplate resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a NodeTemplate resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
@@ -28322,8 +28548,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates a NodeTemplate resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a NodeTemplate resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -28419,7 +28645,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of node templates available to the specified project.</summary>
+        /// <summary>Retrieves a list of node templates available to the specified project. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
@@ -28428,7 +28655,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of node templates available to the specified project.</summary>
+        /// <summary>Retrieves a list of node templates available to the specified project. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NodeTemplateList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -28576,7 +28804,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
@@ -28587,7 +28816,8 @@ namespace Google.Apis.Compute.v1
             return new SetIamPolicyRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -28675,7 +28905,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
@@ -28686,7 +28917,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -28791,14 +29023,14 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of node types.</summary>
+        /// <summary>Retrieves an aggregated list of node types. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of node types.</summary>
+        /// <summary>Retrieves an aggregated list of node types. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NodeTypeAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -28932,8 +29164,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified node type. Gets a list of available node types by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified node type. Gets a list of available node types by making a list() request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -28943,8 +29175,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone, nodeType);
         }
 
-        /// <summary>Returns the specified node type. Gets a list of available node types by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified node type. Gets a list of available node types by making a list() request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NodeType>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -29025,7 +29257,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of node types available to the specified project.</summary>
+        /// <summary>Retrieves a list of node types available to the specified project. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -29034,7 +29267,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves a list of node types available to the specified project.</summary>
+        /// <summary>Retrieves a list of node types available to the specified project. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.NodeTypeList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -29199,14 +29433,16 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Disable this project as a shared VPC host project.</summary>
+        /// <summary>Disable this project as a shared VPC host project. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual DisableXpnHostRequest DisableXpnHost(string project)
         {
             return new DisableXpnHostRequest(service, project);
         }
 
-        /// <summary>Disable this project as a shared VPC host project.</summary>
+        /// <summary>Disable this project as a shared VPC host project. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DisableXpnHostRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new DisableXpnHost request.</summary>
@@ -29281,8 +29517,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Disable a service resource (also known as service project) associated with this host
-        /// project.</summary>
+        /// <summary>Disable a service resource (also known as service project) associated with this host project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual DisableXpnResourceRequest DisableXpnResource(Google.Apis.Compute.v1.Data.ProjectsDisableXpnResourceRequest body, string project)
@@ -29290,8 +29526,8 @@ namespace Google.Apis.Compute.v1
             return new DisableXpnResourceRequest(service, body, project);
         }
 
-        /// <summary>Disable a service resource (also known as service project) associated with this host
-        /// project.</summary>
+        /// <summary>Disable a service resource (also known as service project) associated with this host project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class DisableXpnResourceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new DisableXpnResource request.</summary>
@@ -29373,14 +29609,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Enable this project as a shared VPC host project.</summary>
+        /// <summary>Enable this project as a shared VPC host project. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual EnableXpnHostRequest EnableXpnHost(string project)
         {
             return new EnableXpnHostRequest(service, project);
         }
 
-        /// <summary>Enable this project as a shared VPC host project.</summary>
+        /// <summary>Enable this project as a shared VPC host project. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class EnableXpnHostRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new EnableXpnHost request.</summary>
@@ -29456,7 +29694,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Enable service resource (a.k.a service project) for a host project, so that subnets in the host
-        /// project can be used by instances in the service project.</summary>
+        /// project can be used by instances in the service project. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual EnableXpnResourceRequest EnableXpnResource(Google.Apis.Compute.v1.Data.ProjectsEnableXpnResourceRequest body, string project)
@@ -29465,7 +29704,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Enable service resource (a.k.a service project) for a host project, so that subnets in the host
-        /// project can be used by instances in the service project.</summary>
+        /// project can be used by instances in the service project. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class EnableXpnResourceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new EnableXpnResource request.</summary>
@@ -29547,14 +29787,14 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified Project resource.</summary>
+        /// <summary>Returns the specified Project resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual GetRequest Get(string project)
         {
             return new GetRequest(service, project);
         }
 
-        /// <summary>Returns the specified Project resource.</summary>
+        /// <summary>Returns the specified Project resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Project>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -29607,16 +29847,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the shared VPC host project that this project links to. May be empty if no link
-        /// exists.</summary>
+        /// <summary>Gets the shared VPC host project that this project links to. May be empty if no link exists. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual GetXpnHostRequest GetXpnHost(string project)
         {
             return new GetXpnHostRequest(service, project);
         }
 
-        /// <summary>Gets the shared VPC host project that this project links to. May be empty if no link
-        /// exists.</summary>
+        /// <summary>Gets the shared VPC host project that this project links to. May be empty if no link exists. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class GetXpnHostRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Project>
         {
             /// <summary>Constructs a new GetXpnHost request.</summary>
@@ -29669,14 +29909,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets service resources (a.k.a service project) associated with this host project.</summary>
+        /// <summary>Gets service resources (a.k.a service project) associated with this host project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual GetXpnResourcesRequest GetXpnResources(string project)
         {
             return new GetXpnResourcesRequest(service, project);
         }
 
-        /// <summary>Gets service resources (a.k.a service project) associated with this host project.</summary>
+        /// <summary>Gets service resources (a.k.a service project) associated with this host project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class GetXpnResourcesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ProjectsGetXpnResources>
         {
             /// <summary>Constructs a new GetXpnResources request.</summary>
@@ -29810,7 +30052,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Lists all shared VPC host projects visible to the user in an organization.</summary>
+        /// <summary>Lists all shared VPC host projects visible to the user in an organization. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListXpnHostsRequest ListXpnHosts(Google.Apis.Compute.v1.Data.ProjectsListXpnHostsRequest body, string project)
@@ -29818,7 +30061,8 @@ namespace Google.Apis.Compute.v1
             return new ListXpnHostsRequest(service, body, project);
         }
 
-        /// <summary>Lists all shared VPC host projects visible to the user in an organization.</summary>
+        /// <summary>Lists all shared VPC host projects visible to the user in an organization. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class ListXpnHostsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.XpnHostList>
         {
             /// <summary>Constructs a new ListXpnHosts request.</summary>
@@ -29959,7 +30203,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Moves a persistent disk from one zone to another.</summary>
+        /// <summary>Moves a persistent disk from one zone to another. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual MoveDiskRequest MoveDisk(Google.Apis.Compute.v1.Data.DiskMoveRequest body, string project)
@@ -29967,7 +30212,8 @@ namespace Google.Apis.Compute.v1
             return new MoveDiskRequest(service, body, project);
         }
 
-        /// <summary>Moves a persistent disk from one zone to another.</summary>
+        /// <summary>Moves a persistent disk from one zone to another. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class MoveDiskRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new MoveDisk request.</summary>
@@ -30049,7 +30295,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Moves an instance and its attached persistent disks from one zone to another.</summary>
+        /// <summary>Moves an instance and its attached persistent disks from one zone to another. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual MoveInstanceRequest MoveInstance(Google.Apis.Compute.v1.Data.InstanceMoveRequest body, string project)
@@ -30057,7 +30304,8 @@ namespace Google.Apis.Compute.v1
             return new MoveInstanceRequest(service, body, project);
         }
 
-        /// <summary>Moves an instance and its attached persistent disks from one zone to another.</summary>
+        /// <summary>Moves an instance and its attached persistent disks from one zone to another. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class MoveInstanceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new MoveInstance request.</summary>
@@ -30140,7 +30388,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Sets metadata common to all instances within the specified project using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual SetCommonInstanceMetadataRequest SetCommonInstanceMetadata(Google.Apis.Compute.v1.Data.Metadata body, string project)
@@ -30149,7 +30397,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Sets metadata common to all instances within the specified project using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetCommonInstanceMetadataRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetCommonInstanceMetadata request.</summary>
@@ -30232,7 +30480,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Sets the default network tier of the project. The default network tier is used when an
-        /// address/forwardingRule/instance is created without specifying the network tier field.</summary>
+        /// address/forwardingRule/instance is created without specifying the network tier field. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual SetDefaultNetworkTierRequest SetDefaultNetworkTier(Google.Apis.Compute.v1.Data.ProjectsSetDefaultNetworkTierRequest body, string project)
@@ -30241,7 +30490,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Sets the default network tier of the project. The default network tier is used when an
-        /// address/forwardingRule/instance is created without specifying the network tier field.</summary>
+        /// address/forwardingRule/instance is created without specifying the network tier field. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class SetDefaultNetworkTierRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetDefaultNetworkTier request.</summary>
@@ -30324,7 +30574,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Enables the usage export feature and sets the usage export bucket where reports are stored. If you
-        /// provide an empty request body using this method, the usage export feature will be disabled.</summary>
+        /// provide an empty request body using this method, the usage export feature will be disabled. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual SetUsageExportBucketRequest SetUsageExportBucket(Google.Apis.Compute.v1.Data.UsageExportLocation body, string project)
@@ -30333,7 +30584,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Enables the usage export feature and sets the usage export bucket where reports are stored. If you
-        /// provide an empty request body using this method, the usage export feature will be disabled.</summary>
+        /// provide an empty request body using this method, the usage export feature will be disabled. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class SetUsageExportBucketRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetUsageExportBucket request.</summary>
@@ -30432,7 +30684,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified autoscaler.</summary>
+        /// <summary>Deletes the specified autoscaler. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -30442,7 +30694,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, autoscaler);
         }
 
-        /// <summary>Deletes the specified autoscaler.</summary>
+        /// <summary>Deletes the specified autoscaler. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -30545,7 +30797,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified autoscaler.</summary>
+        /// <summary>Returns the specified autoscaler. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -30555,7 +30807,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region, autoscaler);
         }
 
-        /// <summary>Returns the specified autoscaler.</summary>
+        /// <summary>Returns the specified autoscaler. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Autoscaler>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -30636,7 +30888,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates an autoscaler in the specified project using the data included in the request.</summary>
+        /// <summary>Creates an autoscaler in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -30646,7 +30899,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates an autoscaler in the specified project using the data included in the request.</summary>
+        /// <summary>Creates an autoscaler in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -30742,7 +30996,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of autoscalers contained within the specified region.</summary>
+        /// <summary>Retrieves a list of autoscalers contained within the specified region. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -30751,7 +31006,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of autoscalers contained within the specified region.</summary>
+        /// <summary>Retrieves a list of autoscalers contained within the specified region. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RegionAutoscalerList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -30900,7 +31156,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
-        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -30911,7 +31168,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
-        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -31020,7 +31278,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates an autoscaler in the specified project using the data included in the request.</summary>
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -31030,7 +31289,8 @@ namespace Google.Apis.Compute.v1
             return new UpdateRequest(service, body, project, region);
         }
 
-        /// <summary>Updates an autoscaler in the specified project using the data included in the request.</summary>
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -31156,7 +31416,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified regional BackendService resource.</summary>
+        /// <summary>Deletes the specified regional BackendService resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -31167,7 +31428,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, backendService);
         }
 
-        /// <summary>Deletes the specified regional BackendService resource.</summary>
+        /// <summary>Deletes the specified regional BackendService resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -31270,7 +31532,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified regional BackendService resource.</summary>
+        /// <summary>Returns the specified regional BackendService resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -31281,7 +31544,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region, backendService);
         }
 
-        /// <summary>Returns the specified regional BackendService resource.</summary>
+        /// <summary>Returns the specified regional BackendService resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.BackendService>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -31362,7 +31626,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the most recent health check results for this regional BackendService.</summary>
+        /// <summary>Gets the most recent health check results for this regional BackendService. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project"></param>
         /// <param name="region">Name of the region scoping this request.</param>
@@ -31373,7 +31638,8 @@ namespace Google.Apis.Compute.v1
             return new GetHealthRequest(service, body, project, region, backendService);
         }
 
-        /// <summary>Gets the most recent health check results for this regional BackendService.</summary>
+        /// <summary>Gets the most recent health check results for this regional BackendService. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class GetHealthRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.BackendServiceGroupHealth>
         {
             /// <summary>Constructs a new GetHealth request.</summary>
@@ -31463,7 +31729,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Creates a regional BackendService resource in the specified project using the data included in the
         /// request. There are several restrictions and guidelines to keep in mind when creating a regional backend
-        /// service. Read  Restrictions and Guidelines for more information.</summary>
+        /// service. Read  Restrictions and Guidelines for more information. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -31475,7 +31742,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Creates a regional BackendService resource in the specified project using the data included in the
         /// request. There are several restrictions and guidelines to keep in mind when creating a regional backend
-        /// service. Read  Restrictions and Guidelines for more information.</summary>
+        /// service. Read  Restrictions and Guidelines for more information. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -31572,7 +31840,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of regional BackendService resources available to the specified project in the
-        /// given region.</summary>
+        /// given region. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -31582,7 +31850,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of regional BackendService resources available to the specified project in the
-        /// given region.</summary>
+        /// given region. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.BackendServiceList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -31733,7 +32001,7 @@ namespace Google.Apis.Compute.v1
         /// <summary>Updates the specified regional BackendService resource with the data included in the request. There
         /// are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions
         /// and Guidelines for more information. This method supports PATCH semantics and uses the JSON merge patch
-        /// format and processing rules.</summary>
+        /// format and processing rules. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -31748,7 +32016,7 @@ namespace Google.Apis.Compute.v1
         /// <summary>Updates the specified regional BackendService resource with the data included in the request. There
         /// are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions
         /// and Guidelines for more information. This method supports PATCH semantics and uses the JSON merge patch
-        /// format and processing rules.</summary>
+        /// format and processing rules. (== suppress_warning http-rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -31860,7 +32128,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Updates the specified regional BackendService resource with the data included in the request. There
         /// are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions
-        /// and Guidelines for more information.</summary>
+        /// and Guidelines for more information. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -31874,7 +32142,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Updates the specified regional BackendService resource with the data included in the request. There
         /// are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions
-        /// and Guidelines for more information.</summary>
+        /// and Guidelines for more information. (== suppress_warning http-rest-shadowed ==)</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -32001,14 +32269,14 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of commitments.</summary>
+        /// <summary>Retrieves an aggregated list of commitments. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of commitments.</summary>
+        /// <summary>Retrieves an aggregated list of commitments. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.CommitmentAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -32143,7 +32411,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified commitment resource. Gets a list of available commitments by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -32154,7 +32422,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified commitment resource. Gets a list of available commitments by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Commitment>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -32235,7 +32503,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a commitment in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a commitment in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -32245,7 +32514,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates a commitment in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a commitment in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -32341,7 +32611,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of commitments contained within the specified region.</summary>
+        /// <summary>Retrieves a list of commitments contained within the specified region. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -32350,7 +32621,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of commitments contained within the specified region.</summary>
+        /// <summary>Retrieves a list of commitments contained within the specified region. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.CommitmentList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -32516,7 +32788,7 @@ namespace Google.Apis.Compute.v1
 
 
         /// <summary>Returns the specified regional disk type. Gets a list of available disk types by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
@@ -32527,7 +32799,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified regional disk type. Gets a list of available disk types by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.DiskType>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -32608,7 +32880,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of regional disk types available to the specified project.</summary>
+        /// <summary>Retrieves a list of regional disk types available to the specified project. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
@@ -32617,7 +32890,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of regional disk types available to the specified project.</summary>
+        /// <summary>Retrieves a list of regional disk types available to the specified project. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RegionDiskTypeList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -32783,7 +33057,7 @@ namespace Google.Apis.Compute.v1
 
 
         /// <summary>Adds existing resource policies to a regional disk. You can only add one policy which will be
-        /// applied to this disk for scheduling snapshot creation.</summary>
+        /// applied to this disk for scheduling snapshot creation. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
@@ -32795,7 +33069,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Adds existing resource policies to a regional disk. You can only add one policy which will be
-        /// applied to this disk for scheduling snapshot creation.</summary>
+        /// applied to this disk for scheduling snapshot creation. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AddResourcePoliciesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddResourcePolicies request.</summary>
@@ -32905,7 +33179,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a snapshot of this regional disk.</summary>
+        /// <summary>Creates a snapshot of this regional disk. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -32916,7 +33190,7 @@ namespace Google.Apis.Compute.v1
             return new CreateSnapshotRequest(service, body, project, region, disk);
         }
 
-        /// <summary>Creates a snapshot of this regional disk.</summary>
+        /// <summary>Creates a snapshot of this regional disk. (== suppress_warning http-rest-shadowed ==)</summary>
         public class CreateSnapshotRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new CreateSnapshot request.</summary>
@@ -33028,7 +33302,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Deletes the specified regional persistent disk. Deleting a regional disk removes all the replicas
         /// of its data permanently and is irreversible. However, deleting a disk does not delete any snapshots
-        /// previously made from the disk. You must separately delete snapshots.</summary>
+        /// previously made from the disk. You must separately delete snapshots. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -33040,7 +33315,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Deletes the specified regional persistent disk. Deleting a regional disk removes all the replicas
         /// of its data permanently and is irreversible. However, deleting a disk does not delete any snapshots
-        /// previously made from the disk. You must separately delete snapshots.</summary>
+        /// previously made from the disk. You must separately delete snapshots. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -33143,7 +33419,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns a specified regional persistent disk.</summary>
+        /// <summary>Returns a specified regional persistent disk. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -33153,7 +33429,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region, disk);
         }
 
-        /// <summary>Returns a specified regional persistent disk.</summary>
+        /// <summary>Returns a specified regional persistent disk. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Disk>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -33234,8 +33510,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a persistent regional disk in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a persistent regional disk in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -33245,8 +33521,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates a persistent regional disk in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a persistent regional disk in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -33355,7 +33631,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of persistent disks contained within the specified region.</summary>
+        /// <summary>Retrieves the list of persistent disks contained within the specified region. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -33364,7 +33641,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves the list of persistent disks contained within the specified region.</summary>
+        /// <summary>Retrieves the list of persistent disks contained within the specified region. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.DiskList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -33512,7 +33790,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Removes resource policies from a regional disk.</summary>
+        /// <summary>Removes resource policies from a regional disk. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
@@ -33523,7 +33802,8 @@ namespace Google.Apis.Compute.v1
             return new RemoveResourcePoliciesRequest(service, body, project, region, disk);
         }
 
-        /// <summary>Removes resource policies from a regional disk.</summary>
+        /// <summary>Removes resource policies from a regional disk. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class RemoveResourcePoliciesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new RemoveResourcePolicies request.</summary>
@@ -33633,7 +33913,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Resizes the specified regional persistent disk.</summary>
+        /// <summary>Resizes the specified regional persistent disk. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">The project ID for this request.</param>
         /// <param name="region">Name of the region for
@@ -33644,7 +33925,8 @@ namespace Google.Apis.Compute.v1
             return new ResizeRequest(service, body, project, region, disk);
         }
 
-        /// <summary>Resizes the specified regional persistent disk.</summary>
+        /// <summary>Resizes the specified regional persistent disk. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Resize request.</summary>
@@ -33754,7 +34036,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the labels on the target regional disk.</summary>
+        /// <summary>Sets the labels on the target regional disk. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The region for this
@@ -33765,7 +34047,7 @@ namespace Google.Apis.Compute.v1
             return new SetLabelsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Sets the labels on the target regional disk.</summary>
+        /// <summary>Sets the labels on the target regional disk. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -33875,7 +34157,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
@@ -33886,7 +34169,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -33991,7 +34275,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified HealthCheck resource.</summary>
+        /// <summary>Deletes the specified HealthCheck resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -34001,7 +34285,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, healthCheck);
         }
 
-        /// <summary>Deletes the specified HealthCheck resource.</summary>
+        /// <summary>Deletes the specified HealthCheck resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -34105,7 +34389,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified HealthCheck resource. Gets a list of available health checks by making a
-        /// list() request.</summary>
+        /// list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -34116,7 +34400,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified HealthCheck resource. Gets a list of available health checks by making a
-        /// list() request.</summary>
+        /// list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.HealthCheck>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -34197,8 +34481,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a HealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a HealthCheck resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -34208,8 +34492,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates a HealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a HealthCheck resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -34305,7 +34589,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of HealthCheck resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of HealthCheck resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -34314,7 +34599,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves the list of HealthCheck resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of HealthCheck resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.HealthCheckList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -34463,7 +34749,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates a HealthCheck resource in the specified project using the data included in the request.
-        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -34475,7 +34762,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Updates a HealthCheck resource in the specified project using the data included in the request.
-        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -34585,8 +34873,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates a HealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Updates a HealthCheck resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -34597,8 +34885,8 @@ namespace Google.Apis.Compute.v1
             return new UpdateRequest(service, body, project, region, healthCheck);
         }
 
-        /// <summary>Updates a HealthCheck resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Updates a HealthCheck resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -34735,7 +35023,8 @@ namespace Google.Apis.Compute.v1
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
-        /// You can specify a maximum of 1000 instances with this method per request.</summary>
+        /// You can specify a maximum of 1000 instances with this method per request. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -34756,7 +35045,8 @@ namespace Google.Apis.Compute.v1
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
-        /// You can specify a maximum of 1000 instances with this method per request.</summary>
+        /// You can specify a maximum of 1000 instances with this method per request. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class AbandonInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AbandonInstances request.</summary>
@@ -34866,7 +35156,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified managed instance group and all of the instances in that group.</summary>
+        /// <summary>Deletes the specified managed instance group and all of the instances in that group. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -34877,7 +35168,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, instanceGroupManager);
         }
 
-        /// <summary>Deletes the specified managed instance group and all of the instances in that group.</summary>
+        /// <summary>Deletes the specified managed instance group and all of the instances in that group. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -34990,7 +35282,8 @@ namespace Google.Apis.Compute.v1
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
-        /// You can specify a maximum of 1000 instances with this method per request.</summary>
+        /// You can specify a maximum of 1000 instances with this method per request. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -35011,7 +35304,8 @@ namespace Google.Apis.Compute.v1
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
-        /// You can specify a maximum of 1000 instances with this method per request.</summary>
+        /// You can specify a maximum of 1000 instances with this method per request. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class DeleteInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new DeleteInstances request.</summary>
@@ -35121,7 +35415,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns all of the details about the specified managed instance group.</summary>
+        /// <summary>Returns all of the details about the specified managed instance group. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -35132,7 +35427,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region, instanceGroupManager);
         }
 
-        /// <summary>Returns all of the details about the specified managed instance group.</summary>
+        /// <summary>Returns all of the details about the specified managed instance group. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceGroupManager>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -35218,7 +35514,8 @@ namespace Google.Apis.Compute.v1
         /// is marked as DONE when the group is created even if the instances in the group have not yet been created.
         /// You must separately verify the status of the individual instances with the listmanagedinstances method.
         ///
-        /// A regional managed instance group can contain up to 2000 instances.</summary>
+        /// A regional managed instance group can contain up to 2000 instances. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -35233,7 +35530,8 @@ namespace Google.Apis.Compute.v1
         /// is marked as DONE when the group is created even if the instances in the group have not yet been created.
         /// You must separately verify the status of the individual instances with the listmanagedinstances method.
         ///
-        /// A regional managed instance group can contain up to 2000 instances.</summary>
+        /// A regional managed instance group can contain up to 2000 instances. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -35329,8 +35627,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of managed instance groups that are contained within the specified
-        /// region.</summary>
+        /// <summary>Retrieves the list of managed instance groups that are contained within the specified region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -35339,8 +35637,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves the list of managed instance groups that are contained within the specified
-        /// region.</summary>
+        /// <summary>Retrieves the list of managed instance groups that are contained within the specified region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RegionInstanceGroupManagerList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -35489,7 +35787,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Lists the instances in the managed instance group and instances that are scheduled to be created.
-        /// The list includes any current actions that the group has scheduled for its instances.</summary>
+        /// The list includes any current actions that the group has scheduled for its instances. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -35501,7 +35800,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Lists the instances in the managed instance group and instances that are scheduled to be created.
-        /// The list includes any current actions that the group has scheduled for its instances.</summary>
+        /// The list includes any current actions that the group has scheduled for its instances. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class ListManagedInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RegionInstanceGroupManagersListInstancesResponse>
         {
             /// <summary>Constructs a new ListManagedInstances request.</summary>
@@ -35667,7 +35967,7 @@ namespace Google.Apis.Compute.v1
         /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
         /// process of being patched. You must separately verify the status of the individual instances with the
         /// listmanagedinstances method. This method supports PATCH semantics and uses the JSON merge patch format and
-        /// processing rules.</summary>
+        /// processing rules. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -35683,7 +35983,7 @@ namespace Google.Apis.Compute.v1
         /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
         /// process of being patched. You must separately verify the status of the individual instances with the
         /// listmanagedinstances method. This method supports PATCH semantics and uses the JSON merge patch format and
-        /// processing rules.</summary>
+        /// processing rules. (== suppress_warning http-rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -35801,7 +36101,8 @@ namespace Google.Apis.Compute.v1
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
-        /// You can specify a maximum of 1000 instances with this method per request.</summary>
+        /// You can specify a maximum of 1000 instances with this method per request. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -35820,7 +36121,8 @@ namespace Google.Apis.Compute.v1
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
         /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
-        /// You can specify a maximum of 1000 instances with this method per request.</summary>
+        /// You can specify a maximum of 1000 instances with this method per request. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class RecreateInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new RecreateInstances request.</summary>
@@ -35939,7 +36241,8 @@ namespace Google.Apis.Compute.v1
         /// listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
-        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -35960,7 +36263,8 @@ namespace Google.Apis.Compute.v1
         /// listmanagedinstances method.
         ///
         /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
-        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Resize request.</summary>
@@ -36079,7 +36383,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Sets the instance template to use when creating new instances or recreating instances in this
-        /// group. Existing instances are not affected.</summary>
+        /// group. Existing instances are not affected. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -36092,7 +36396,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Sets the instance template to use when creating new instances or recreating instances in this
-        /// group. Existing instances are not affected.</summary>
+        /// group. Existing instances are not affected. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetInstanceTemplateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetInstanceTemplate request.</summary>
@@ -36203,7 +36507,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Modifies the target pools to which all new instances in this group are assigned. Existing instances
-        /// in the group are not affected.</summary>
+        /// in the group are not affected. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -36215,7 +36519,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Modifies the target pools to which all new instances in this group are assigned. Existing instances
-        /// in the group are not affected.</summary>
+        /// in the group are not affected. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetTargetPoolsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetTargetPools request.</summary>
@@ -36342,7 +36646,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Returns the specified instance group resource.</summary>
+        /// <summary>Returns the specified instance group resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -36353,7 +36658,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region, instanceGroup);
         }
 
-        /// <summary>Returns the specified instance group resource.</summary>
+        /// <summary>Returns the specified instance group resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceGroup>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -36434,7 +36740,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of instance group resources contained within the specified region.</summary>
+        /// <summary>Retrieves the list of instance group resources contained within the specified region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -36443,7 +36750,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves the list of instance group resources contained within the specified region.</summary>
+        /// <summary>Retrieves the list of instance group resources contained within the specified region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RegionInstanceGroupList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -36593,7 +36901,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Lists the instances in the specified instance group and displays information about the named ports.
         /// Depending on the specified options, this method can list all instances or only the instances that are
-        /// running.</summary>
+        /// running. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -36607,7 +36915,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Lists the instances in the specified instance group and displays information about the named ports.
         /// Depending on the specified options, this method can list all instances or only the instances that are
-        /// running.</summary>
+        /// running. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RegionInstanceGroupsListInstances>
         {
             /// <summary>Constructs a new ListInstances request.</summary>
@@ -36776,7 +37084,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the named ports for the specified regional instance group.</summary>
+        /// <summary>Sets the named ports for the specified regional instance group. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -36788,7 +37097,8 @@ namespace Google.Apis.Compute.v1
             return new SetNamedPortsRequest(service, body, project, region, instanceGroup);
         }
 
-        /// <summary>Sets the named ports for the specified regional instance group.</summary>
+        /// <summary>Sets the named ports for the specified regional instance group. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class SetNamedPortsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetNamedPorts request.</summary>
@@ -36915,7 +37225,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified region-specific Operations resource.</summary>
+        /// <summary>Deletes the specified region-specific Operations resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -36925,7 +37236,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, operation);
         }
 
-        /// <summary>Deletes the specified region-specific Operations resource.</summary>
+        /// <summary>Deletes the specified region-specific Operations resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -37006,7 +37318,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the specified region-specific Operations resource.</summary>
+        /// <summary>Retrieves the specified region-specific Operations resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -37016,7 +37329,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region, operation);
         }
 
-        /// <summary>Retrieves the specified region-specific Operations resource.</summary>
+        /// <summary>Retrieves the specified region-specific Operations resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -37097,7 +37411,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of Operation resources contained within the specified region.</summary>
+        /// <summary>Retrieves a list of Operation resources contained within the specified region. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -37106,7 +37421,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of Operation resources contained within the specified region.</summary>
+        /// <summary>Retrieves a list of Operation resources contained within the specified region. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.OperationList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -37271,7 +37587,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified SslCertificate resource in the region.</summary>
+        /// <summary>Deletes the specified SslCertificate resource in the region. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -37282,7 +37599,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, sslCertificate);
         }
 
-        /// <summary>Deletes the specified SslCertificate resource in the region.</summary>
+        /// <summary>Deletes the specified SslCertificate resource in the region. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -37386,7 +37704,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified SslCertificate resource in the specified region. Get a list of available SSL
-        /// certificates by making a list() request.</summary>
+        /// certificates by making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -37398,7 +37716,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified SslCertificate resource in the specified region. Get a list of available SSL
-        /// certificates by making a list() request.</summary>
+        /// certificates by making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SslCertificate>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -37480,7 +37798,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a SslCertificate resource in the specified project and region using the data included in
-        /// the request</summary>
+        /// the request (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -37491,7 +37809,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a SslCertificate resource in the specified project and region using the data included in
-        /// the request</summary>
+        /// the request (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -37588,7 +37906,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of SslCertificate resources available to the specified project in the specified
-        /// region.</summary>
+        /// region. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -37598,7 +37916,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of SslCertificate resources available to the specified project in the specified
-        /// region.</summary>
+        /// region. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SslCertificateList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -37763,7 +38081,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified TargetHttpProxy resource.</summary>
+        /// <summary>Deletes the specified TargetHttpProxy resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -37774,7 +38093,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, targetHttpProxy);
         }
 
-        /// <summary>Deletes the specified TargetHttpProxy resource.</summary>
+        /// <summary>Deletes the specified TargetHttpProxy resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -37878,7 +38198,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified TargetHttpProxy resource in the specified region. Gets a list of available
-        /// target HTTP proxies by making a list() request.</summary>
+        /// target HTTP proxies by making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -37890,7 +38210,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified TargetHttpProxy resource in the specified region. Gets a list of available
-        /// target HTTP proxies by making a list() request.</summary>
+        /// target HTTP proxies by making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetHttpProxy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -37972,7 +38292,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a TargetHttpProxy resource in the specified project and region using the data included in
-        /// the request.</summary>
+        /// the request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -37983,7 +38303,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a TargetHttpProxy resource in the specified project and region using the data included in
-        /// the request.</summary>
+        /// the request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -38080,7 +38400,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of TargetHttpProxy resources available to the specified project in the specified
-        /// region.</summary>
+        /// region. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -38090,7 +38410,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of TargetHttpProxy resources available to the specified project in the specified
-        /// region.</summary>
+        /// region. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetHttpProxyList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -38238,7 +38558,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Changes the URL map for TargetHttpProxy.</summary>
+        /// <summary>Changes the URL map for TargetHttpProxy. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -38250,7 +38570,7 @@ namespace Google.Apis.Compute.v1
             return new SetUrlMapRequest(service, body, project, region, targetHttpProxy);
         }
 
-        /// <summary>Changes the URL map for TargetHttpProxy.</summary>
+        /// <summary>Changes the URL map for TargetHttpProxy. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetUrlMapRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetUrlMap request.</summary>
@@ -38377,7 +38697,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified TargetHttpsProxy resource.</summary>
+        /// <summary>Deletes the specified TargetHttpsProxy resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -38388,7 +38709,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, targetHttpsProxy);
         }
 
-        /// <summary>Deletes the specified TargetHttpsProxy resource.</summary>
+        /// <summary>Deletes the specified TargetHttpsProxy resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -38492,7 +38814,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available
-        /// target HTTP proxies by making a list() request.</summary>
+        /// target HTTP proxies by making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -38504,7 +38826,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available
-        /// target HTTP proxies by making a list() request.</summary>
+        /// target HTTP proxies by making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetHttpsProxy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -38586,7 +38908,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a TargetHttpsProxy resource in the specified project and region using the data included in
-        /// the request.</summary>
+        /// the request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -38597,7 +38919,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a TargetHttpsProxy resource in the specified project and region using the data included in
-        /// the request.</summary>
+        /// the request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -38694,7 +39016,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of TargetHttpsProxy resources available to the specified project in the
-        /// specified region.</summary>
+        /// specified region. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -38704,7 +39026,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of TargetHttpsProxy resources available to the specified project in the
-        /// specified region.</summary>
+        /// specified region. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetHttpsProxyList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -38852,7 +39174,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Replaces SslCertificates for TargetHttpsProxy.</summary>
+        /// <summary>Replaces SslCertificates for TargetHttpsProxy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -38864,7 +39187,8 @@ namespace Google.Apis.Compute.v1
             return new SetSslCertificatesRequest(service, body, project, region, targetHttpsProxy);
         }
 
-        /// <summary>Replaces SslCertificates for TargetHttpsProxy.</summary>
+        /// <summary>Replaces SslCertificates for TargetHttpsProxy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class SetSslCertificatesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetSslCertificates request.</summary>
@@ -38974,7 +39298,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Changes the URL map for TargetHttpsProxy.</summary>
+        /// <summary>Changes the URL map for TargetHttpsProxy. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -38986,7 +39310,7 @@ namespace Google.Apis.Compute.v1
             return new SetUrlMapRequest(service, body, project, region, targetHttpsProxy);
         }
 
-        /// <summary>Changes the URL map for TargetHttpsProxy.</summary>
+        /// <summary>Changes the URL map for TargetHttpsProxy. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetUrlMapRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetUrlMap request.</summary>
@@ -39113,7 +39437,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified UrlMap resource.</summary>
+        /// <summary>Deletes the specified UrlMap resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -39123,7 +39447,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, urlMap);
         }
 
-        /// <summary>Deletes the specified UrlMap resource.</summary>
+        /// <summary>Deletes the specified UrlMap resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -39218,7 +39542,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified UrlMap resource. Gets a list of available URL maps by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -39229,7 +39553,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified UrlMap resource. Gets a list of available URL maps by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.UrlMap>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -39310,8 +39634,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a UrlMap resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a UrlMap resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -39321,8 +39645,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates a UrlMap resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a UrlMap resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -39409,8 +39733,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of UrlMap resources available to the specified project in the specified
-        /// region.</summary>
+        /// <summary>Retrieves the list of UrlMap resources available to the specified project in the specified region.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -39419,8 +39743,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves the list of UrlMap resources available to the specified project in the specified
-        /// region.</summary>
+        /// <summary>Retrieves the list of UrlMap resources available to the specified project in the specified region.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.UrlMapList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -39569,7 +39893,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Patches the specified UrlMap resource with the data included in the request. This method supports
-        /// PATCH semantics and uses JSON merge patch format and processing rules.</summary>
+        /// PATCH semantics and uses JSON merge patch format and processing rules. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -39581,7 +39906,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Patches the specified UrlMap resource with the data included in the request. This method supports
-        /// PATCH semantics and uses JSON merge patch format and processing rules.</summary>
+        /// PATCH semantics and uses JSON merge patch format and processing rules. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -39682,7 +40008,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates the specified UrlMap resource with the data included in the request.</summary>
+        /// <summary>Updates the specified UrlMap resource with the data included in the request. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -39693,7 +40020,8 @@ namespace Google.Apis.Compute.v1
             return new UpdateRequest(service, body, project, region, urlMap);
         }
 
-        /// <summary>Updates the specified UrlMap resource with the data included in the request.</summary>
+        /// <summary>Updates the specified UrlMap resource with the data included in the request. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -39795,7 +40123,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Runs static validation for the UrlMap. In particular, the tests of the provided UrlMap will be run.
-        /// Calling this method does NOT create the UrlMap.</summary>
+        /// Calling this method does NOT create the UrlMap. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -39807,7 +40135,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Runs static validation for the UrlMap. In particular, the tests of the provided UrlMap will be run.
-        /// Calling this method does NOT create the UrlMap.</summary>
+        /// Calling this method does NOT create the UrlMap. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ValidateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.UrlMapsValidateResponse>
         {
             /// <summary>Constructs a new Validate request.</summary>
@@ -39912,8 +40240,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Returns the specified Region resource. Gets a list of available regions by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified Region resource. Gets a list of available regions by making a list() request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region resource
         /// to return.</param>
@@ -39922,8 +40250,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region);
         }
 
-        /// <summary>Returns the specified Region resource. Gets a list of available regions by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified Region resource. Gets a list of available regions by making a list() request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Region>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -39990,14 +40318,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of region resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of region resources available to the specified project. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of region resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of region resources available to the specified project. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RegionList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -40148,14 +40478,14 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of reservations.</summary>
+        /// <summary>Retrieves an aggregated list of reservations. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of reservations.</summary>
+        /// <summary>Retrieves an aggregated list of reservations. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ReservationAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -40289,7 +40619,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified reservation.</summary>
+        /// <summary>Deletes the specified reservation. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
         /// request.</param>
@@ -40299,7 +40629,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, zone, reservation);
         }
 
-        /// <summary>Deletes the specified reservation.</summary>
+        /// <summary>Deletes the specified reservation. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -40402,7 +40732,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves information about the specified reservation.</summary>
+        /// <summary>Retrieves information about the specified reservation. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
         /// request.</param>
@@ -40412,7 +40743,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone, reservation);
         }
 
-        /// <summary>Retrieves information about the specified reservation.</summary>
+        /// <summary>Retrieves information about the specified reservation. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Reservation>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -40493,8 +40825,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -40504,8 +40836,8 @@ namespace Google.Apis.Compute.v1
             return new GetIamPolicyRequest(service, project, zone, resource);
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -40586,7 +40918,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a new reservation. For more information, read Reserving zonal resources.</summary>
+        /// <summary>Creates a new reservation. For more information, read Reserving zonal resources. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
@@ -40596,7 +40929,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, zone);
         }
 
-        /// <summary>Creates a new reservation. For more information, read Reserving zonal resources.</summary>
+        /// <summary>Creates a new reservation. For more information, read Reserving zonal resources. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -40693,7 +41027,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>A list of all the reservations that have been configured for the specified project in specified
-        /// zone.</summary>
+        /// zone. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
         /// request.</param>
@@ -40703,7 +41037,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>A list of all the reservations that have been configured for the specified project in specified
-        /// zone.</summary>
+        /// zone. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ReservationList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -40852,7 +41186,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Resizes the reservation (applicable to standalone reservations only). For more information, read
-        /// Modifying reservations.</summary>
+        /// Modifying reservations. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
@@ -40864,7 +41198,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Resizes the reservation (applicable to standalone reservations only). For more information, read
-        /// Modifying reservations.</summary>
+        /// Modifying reservations. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Resize request.</summary>
@@ -40974,7 +41308,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -40985,7 +41320,8 @@ namespace Google.Apis.Compute.v1
             return new SetIamPolicyRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -41073,7 +41409,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -41084,7 +41421,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -41189,14 +41527,16 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of resource policies.</summary>
+        /// <summary>Retrieves an aggregated list of resource policies. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of resource policies.</summary>
+        /// <summary>Retrieves an aggregated list of resource policies. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ResourcePolicyAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -41330,7 +41670,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified resource policy.</summary>
+        /// <summary>Deletes the specified resource policy. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -41340,7 +41680,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, resourcePolicy);
         }
 
-        /// <summary>Deletes the specified resource policy.</summary>
+        /// <summary>Deletes the specified resource policy. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -41443,7 +41783,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves all information of the specified resource policy.</summary>
+        /// <summary>Retrieves all information of the specified resource policy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -41453,7 +41794,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region, resourcePolicy);
         }
 
-        /// <summary>Retrieves all information of the specified resource policy.</summary>
+        /// <summary>Retrieves all information of the specified resource policy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ResourcePolicy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -41534,8 +41876,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
@@ -41545,8 +41887,8 @@ namespace Google.Apis.Compute.v1
             return new GetIamPolicyRequest(service, project, region, resource);
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -41627,7 +41969,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a new resource policy.</summary>
+        /// <summary>Creates a new resource policy. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -41637,7 +41979,7 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates a new resource policy.</summary>
+        /// <summary>Creates a new resource policy. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -41734,7 +42076,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>A list all the resource policies that have been configured for the specified project in specified
-        /// region.</summary>
+        /// region. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -41744,7 +42086,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>A list all the resource policies that have been configured for the specified project in specified
-        /// region.</summary>
+        /// region. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ResourcePolicyList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -41892,7 +42234,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
@@ -41903,7 +42246,8 @@ namespace Google.Apis.Compute.v1
             return new SetIamPolicyRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -41991,7 +42335,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
@@ -42002,7 +42347,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -42107,14 +42453,14 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of routers.</summary>
+        /// <summary>Retrieves an aggregated list of routers. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of routers.</summary>
+        /// <summary>Retrieves an aggregated list of routers. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RouterAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -42248,7 +42594,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified Router resource.</summary>
+        /// <summary>Deletes the specified Router resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -42258,7 +42604,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, router);
         }
 
-        /// <summary>Deletes the specified Router resource.</summary>
+        /// <summary>Deletes the specified Router resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -42361,8 +42707,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified Router resource. Gets a list of available routers by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified Router resource. Gets a list of available routers by making a list() request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -42372,8 +42718,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region, router);
         }
 
-        /// <summary>Returns the specified Router resource. Gets a list of available routers by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified Router resource. Gets a list of available routers by making a list() request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Router>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -42454,7 +42800,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves runtime Nat mapping information of VM endpoints.</summary>
+        /// <summary>Retrieves runtime Nat mapping information of VM endpoints. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -42465,7 +42812,8 @@ namespace Google.Apis.Compute.v1
             return new GetNatMappingInfoRequest(service, project, region, router);
         }
 
-        /// <summary>Retrieves runtime Nat mapping information of VM endpoints.</summary>
+        /// <summary>Retrieves runtime Nat mapping information of VM endpoints. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class GetNatMappingInfoRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.VmEndpointNatMappingsList>
         {
             /// <summary>Constructs a new GetNatMappingInfo request.</summary>
@@ -42627,7 +42975,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves runtime information of the specified router.</summary>
+        /// <summary>Retrieves runtime information of the specified router. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -42637,7 +42986,8 @@ namespace Google.Apis.Compute.v1
             return new GetRouterStatusRequest(service, project, region, router);
         }
 
-        /// <summary>Retrieves runtime information of the specified router.</summary>
+        /// <summary>Retrieves runtime information of the specified router. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class GetRouterStatusRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RouterStatusResponse>
         {
             /// <summary>Constructs a new GetRouterStatus request.</summary>
@@ -42719,7 +43069,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a Router resource in the specified project and region using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -42730,7 +43080,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a Router resource in the specified project and region using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -42826,7 +43176,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of Router resources available to the specified project.</summary>
+        /// <summary>Retrieves a list of Router resources available to the specified project. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -42835,7 +43186,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of Router resources available to the specified project.</summary>
+        /// <summary>Retrieves a list of Router resources available to the specified project. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RouterList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -42984,7 +43336,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Patches the specified Router resource with the data included in the request. This method supports
-        /// PATCH semantics and uses JSON merge patch format and processing rules.</summary>
+        /// PATCH semantics and uses JSON merge patch format and processing rules. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -42996,7 +43349,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Patches the specified Router resource with the data included in the request. This method supports
-        /// PATCH semantics and uses JSON merge patch format and processing rules.</summary>
+        /// PATCH semantics and uses JSON merge patch format and processing rules. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -43107,7 +43461,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Preview fields auto-generated during router create and update operations. Calling this method does
-        /// NOT create or update the router.</summary>
+        /// NOT create or update the router. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -43119,7 +43473,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Preview fields auto-generated during router create and update operations. Calling this method does
-        /// NOT create or update the router.</summary>
+        /// NOT create or update the router. (== suppress_warning http-rest-shadowed ==)</summary>
         public class PreviewRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RoutersPreviewResponse>
         {
             /// <summary>Constructs a new Preview request.</summary>
@@ -43209,7 +43563,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Updates the specified Router resource with the data included in the request. This method conforms
         /// to PUT semantics, which requests that the state of the target resource be created or replaced with the state
-        /// defined by the representation enclosed in the request message payload.</summary>
+        /// defined by the representation enclosed in the request message payload. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -43222,7 +43577,8 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Updates the specified Router resource with the data included in the request. This method conforms
         /// to PUT semantics, which requests that the state of the target resource be created or replaced with the state
-        /// defined by the representation enclosed in the request message payload.</summary>
+        /// defined by the representation enclosed in the request message payload. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -43349,7 +43705,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified Route resource.</summary>
+        /// <summary>Deletes the specified Route resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="route">Name of the Route resource to
         /// delete.</param>
@@ -43358,7 +43714,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, route);
         }
 
-        /// <summary>Deletes the specified Route resource.</summary>
+        /// <summary>Deletes the specified Route resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -43447,8 +43803,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified Route resource. Gets a list of available routes by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified Route resource. Gets a list of available routes by making a list() request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="route">Name of the Route resource to
         /// return.</param>
@@ -43457,8 +43813,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, route);
         }
 
-        /// <summary>Returns the specified Route resource. Gets a list of available routes by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified Route resource. Gets a list of available routes by making a list() request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Route>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -43525,7 +43881,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a Route resource in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a Route resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Route body, string project)
@@ -43533,7 +43890,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a Route resource in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a Route resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -43615,14 +43973,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of Route resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of Route resources available to the specified project. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of Route resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of Route resources available to the specified project. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RouteList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -43773,7 +44133,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Inserts a rule into a security policy.</summary>
+        /// <summary>Inserts a rule into a security policy. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="securityPolicy">Name of the security
@@ -43783,7 +44143,7 @@ namespace Google.Apis.Compute.v1
             return new AddRuleRequest(service, body, project, securityPolicy);
         }
 
-        /// <summary>Inserts a rule into a security policy.</summary>
+        /// <summary>Inserts a rule into a security policy. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AddRuleRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddRule request.</summary>
@@ -43857,7 +44217,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified policy.</summary>
+        /// <summary>Deletes the specified policy. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="securityPolicy">Name of the security
         /// policy to delete.</param>
@@ -43866,7 +44226,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, securityPolicy);
         }
 
-        /// <summary>Deletes the specified policy.</summary>
+        /// <summary>Deletes the specified policy. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -43955,7 +44315,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>List all of the ordered rules present in a single specified policy.</summary>
+        /// <summary>List all of the ordered rules present in a single specified policy. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="securityPolicy">Name of the security
         /// policy to get.</param>
@@ -43964,7 +44325,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, securityPolicy);
         }
 
-        /// <summary>List all of the ordered rules present in a single specified policy.</summary>
+        /// <summary>List all of the ordered rules present in a single specified policy. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SecurityPolicy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -44031,7 +44393,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets a rule at the specified priority.</summary>
+        /// <summary>Gets a rule at the specified priority. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="securityPolicy">Name of the security
         /// policy to which the queried rule belongs.</param>
@@ -44040,7 +44402,7 @@ namespace Google.Apis.Compute.v1
             return new GetRuleRequest(service, project, securityPolicy);
         }
 
-        /// <summary>Gets a rule at the specified priority.</summary>
+        /// <summary>Gets a rule at the specified priority. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRuleRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SecurityPolicyRule>
         {
             /// <summary>Constructs a new GetRule request.</summary>
@@ -44120,7 +44482,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a new policy in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a new policy in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.SecurityPolicy body, string project)
@@ -44128,7 +44491,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a new policy in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a new policy in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -44210,14 +44574,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>List all the policies that have been configured for the specified project.</summary>
+        /// <summary>List all the policies that have been configured for the specified project. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>List all the policies that have been configured for the specified project.</summary>
+        /// <summary>List all the policies that have been configured for the specified project. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SecurityPolicyList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -44351,7 +44717,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Patches the specified policy with the data included in the request.</summary>
+        /// <summary>Patches the specified policy with the data included in the request. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="securityPolicy">Name of the security
@@ -44361,7 +44728,8 @@ namespace Google.Apis.Compute.v1
             return new PatchRequest(service, body, project, securityPolicy);
         }
 
-        /// <summary>Patches the specified policy with the data included in the request.</summary>
+        /// <summary>Patches the specified policy with the data included in the request. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -44457,7 +44825,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Patches a rule at the specified priority.</summary>
+        /// <summary>Patches a rule at the specified priority. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="securityPolicy">Name of the security
@@ -44467,7 +44835,7 @@ namespace Google.Apis.Compute.v1
             return new PatchRuleRequest(service, body, project, securityPolicy);
         }
 
-        /// <summary>Patches a rule at the specified priority.</summary>
+        /// <summary>Patches a rule at the specified priority. (== suppress_warning http-rest-shadowed ==)</summary>
         public class PatchRuleRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new PatchRule request.</summary>
@@ -44554,7 +44922,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes a rule at the specified priority.</summary>
+        /// <summary>Deletes a rule at the specified priority. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="securityPolicy">Name of the security
         /// policy to update.</param>
@@ -44563,7 +44931,7 @@ namespace Google.Apis.Compute.v1
             return new RemoveRuleRequest(service, project, securityPolicy);
         }
 
-        /// <summary>Deletes a rule at the specified priority.</summary>
+        /// <summary>Deletes a rule at the specified priority. (== suppress_warning http-rest-shadowed ==)</summary>
         public class RemoveRuleRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new RemoveRule request.</summary>
@@ -44664,7 +45032,7 @@ namespace Google.Apis.Compute.v1
         /// necessarily delete all the data on that snapshot. If any data on the snapshot that is marked for deletion is
         /// needed for subsequent snapshots, the data will be moved to the next corresponding snapshot.
         ///
-        /// For more information, see Deleting snapshots.</summary>
+        /// For more information, see Deleting snapshots. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="snapshot">Name of the Snapshot
         /// resource to delete.</param>
@@ -44677,7 +45045,7 @@ namespace Google.Apis.Compute.v1
         /// necessarily delete all the data on that snapshot. If any data on the snapshot that is marked for deletion is
         /// needed for subsequent snapshots, the data will be moved to the next corresponding snapshot.
         ///
-        /// For more information, see Deleting snapshots.</summary>
+        /// For more information, see Deleting snapshots. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -44767,7 +45135,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified Snapshot resource. Gets a list of available snapshots by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="snapshot">Name of the Snapshot
         /// resource to return.</param>
@@ -44777,7 +45145,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified Snapshot resource. Gets a list of available snapshots by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Snapshot>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -44844,8 +45212,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
         /// for this request.</param>
@@ -44854,8 +45222,8 @@ namespace Google.Apis.Compute.v1
             return new GetIamPolicyRequest(service, project, resource);
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -44922,14 +45290,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of Snapshot resources contained within the specified project.</summary>
+        /// <summary>Retrieves the list of Snapshot resources contained within the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of Snapshot resources contained within the specified project.</summary>
+        /// <summary>Retrieves the list of Snapshot resources contained within the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SnapshotList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -45063,7 +45433,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
@@ -45073,7 +45444,8 @@ namespace Google.Apis.Compute.v1
             return new SetIamPolicyRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -45148,7 +45520,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// documentation. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
@@ -45159,7 +45531,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// documentation. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -45233,7 +45605,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name or id of the resource
@@ -45243,7 +45616,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -45335,7 +45709,7 @@ namespace Google.Apis.Compute.v1
 
 
         /// <summary>Retrieves the list of all SslCertificate resources, regional and global, available to the specified
-        /// project.</summary>
+        /// project. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Name of the project scoping this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
@@ -45343,7 +45717,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of all SslCertificate resources, regional and global, available to the specified
-        /// project.</summary>
+        /// project. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SslCertificateAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -45477,7 +45851,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified SslCertificate resource.</summary>
+        /// <summary>Deletes the specified SslCertificate resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="sslCertificate">Name of the
         /// SslCertificate resource to delete.</param>
@@ -45486,7 +45861,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, sslCertificate);
         }
 
-        /// <summary>Deletes the specified SslCertificate resource.</summary>
+        /// <summary>Deletes the specified SslCertificate resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -45576,7 +45952,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making
-        /// a list() request.</summary>
+        /// a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="sslCertificate">Name of the
         /// SslCertificate resource to return.</param>
@@ -45586,7 +45962,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making
-        /// a list() request.</summary>
+        /// a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SslCertificate>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -45653,8 +46029,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a SslCertificate resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a SslCertificate resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.SslCertificate body, string project)
@@ -45662,8 +46038,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a SslCertificate resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a SslCertificate resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -45745,14 +46121,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of SslCertificate resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of SslCertificate resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of SslCertificate resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of SslCertificate resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SslCertificateList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -45904,7 +46282,7 @@ namespace Google.Apis.Compute.v1
 
 
         /// <summary>Deletes the specified SSL policy. The SSL policy resource can be deleted only if it is not in use
-        /// by any TargetHttpsProxy or TargetSslProxy resources.</summary>
+        /// by any TargetHttpsProxy or TargetSslProxy resources. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="sslPolicy">Name of the SSL policy to
         /// delete. The name must be 1-63 characters long, and comply with RFC1035.</param>
@@ -45914,7 +46292,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Deletes the specified SSL policy. The SSL policy resource can be deleted only if it is not in use
-        /// by any TargetHttpsProxy or TargetSslProxy resources.</summary>
+        /// by any TargetHttpsProxy or TargetSslProxy resources. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -46004,7 +46382,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Lists all of the ordered rules present in a single specified policy.</summary>
+        /// <summary>Lists all of the ordered rules present in a single specified policy. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="sslPolicy">Name of the SSL policy to
         /// update. The name must be 1-63 characters long, and comply with RFC1035.</param>
@@ -46013,7 +46392,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, sslPolicy);
         }
 
-        /// <summary>Lists all of the ordered rules present in a single specified policy.</summary>
+        /// <summary>Lists all of the ordered rules present in a single specified policy. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SslPolicy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -46082,7 +46462,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified SSL policy resource. Gets a list of available SSL policies by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.SslPolicy body, string project)
@@ -46091,7 +46471,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified SSL policy resource. Gets a list of available SSL policies by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -46173,14 +46553,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Lists all the SSL policies that have been configured for the specified project.</summary>
+        /// <summary>Lists all the SSL policies that have been configured for the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Lists all the SSL policies that have been configured for the specified project.</summary>
+        /// <summary>Lists all the SSL policies that have been configured for the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SslPoliciesList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -46314,14 +46696,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Lists all features that can be specified in the SSL policy when using custom profile.</summary>
+        /// <summary>Lists all features that can be specified in the SSL policy when using custom profile. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListAvailableFeaturesRequest ListAvailableFeatures(string project)
         {
             return new ListAvailableFeaturesRequest(service, project);
         }
 
-        /// <summary>Lists all features that can be specified in the SSL policy when using custom profile.</summary>
+        /// <summary>Lists all features that can be specified in the SSL policy when using custom profile. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListAvailableFeaturesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SslPoliciesListAvailableFeaturesResponse>
         {
             /// <summary>Constructs a new ListAvailableFeatures request.</summary>
@@ -46455,7 +46839,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Patches the specified SSL policy with the data included in the request.</summary>
+        /// <summary>Patches the specified SSL policy with the data included in the request. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="sslPolicy">Name of the SSL policy to
@@ -46465,7 +46850,8 @@ namespace Google.Apis.Compute.v1
             return new PatchRequest(service, body, project, sslPolicy);
         }
 
-        /// <summary>Patches the specified SSL policy with the data included in the request.</summary>
+        /// <summary>Patches the specified SSL policy with the data included in the request. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -46579,14 +46965,14 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of subnetworks.</summary>
+        /// <summary>Retrieves an aggregated list of subnetworks. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of subnetworks.</summary>
+        /// <summary>Retrieves an aggregated list of subnetworks. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SubnetworkAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -46720,7 +47106,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified subnetwork.</summary>
+        /// <summary>Deletes the specified subnetwork. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -46730,7 +47116,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, subnetwork);
         }
 
-        /// <summary>Deletes the specified subnetwork.</summary>
+        /// <summary>Deletes the specified subnetwork. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -46833,7 +47219,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Expands the IP CIDR range of the subnetwork to a specified value.</summary>
+        /// <summary>Expands the IP CIDR range of the subnetwork to a specified value. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -46844,7 +47231,8 @@ namespace Google.Apis.Compute.v1
             return new ExpandIpCidrRangeRequest(service, body, project, region, subnetwork);
         }
 
-        /// <summary>Expands the IP CIDR range of the subnetwork to a specified value.</summary>
+        /// <summary>Expands the IP CIDR range of the subnetwork to a specified value. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class ExpandIpCidrRangeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new ExpandIpCidrRange request.</summary>
@@ -46954,7 +47342,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified subnetwork. Gets a list of available subnetworks list() request.</summary>
+        /// <summary>Returns the specified subnetwork. Gets a list of available subnetworks list() request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -46964,7 +47353,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region, subnetwork);
         }
 
-        /// <summary>Returns the specified subnetwork. Gets a list of available subnetworks list() request.</summary>
+        /// <summary>Returns the specified subnetwork. Gets a list of available subnetworks list() request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Subnetwork>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -47045,8 +47435,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
         /// this request.</param>
@@ -47056,8 +47446,8 @@ namespace Google.Apis.Compute.v1
             return new GetIamPolicyRequest(service, project, region, resource);
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -47138,7 +47528,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a subnetwork in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a subnetwork in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -47148,7 +47539,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates a subnetwork in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a subnetwork in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -47244,7 +47636,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of subnetworks available to the specified project.</summary>
+        /// <summary>Retrieves a list of subnetworks available to the specified project. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -47253,7 +47646,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of subnetworks available to the specified project.</summary>
+        /// <summary>Retrieves a list of subnetworks available to the specified project. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SubnetworkList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -47402,7 +47796,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves an aggregated list of all usable subnetworks in the project. The list contains all of the
-        /// subnetworks in the project and the subnetworks that were shared by a Shared VPC host project.</summary>
+        /// subnetworks in the project and the subnetworks that were shared by a Shared VPC host project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListUsableRequest ListUsable(string project)
         {
@@ -47410,7 +47805,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves an aggregated list of all usable subnetworks in the project. The list contains all of the
-        /// subnetworks in the project and the subnetworks that were shared by a Shared VPC host project.</summary>
+        /// subnetworks in the project and the subnetworks that were shared by a Shared VPC host project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListUsableRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.UsableSubnetworksAggregatedList>
         {
             /// <summary>Constructs a new ListUsable request.</summary>
@@ -47546,7 +47942,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Patches the specified subnetwork with the data included in the request. Only certain fields can up
         /// updated with a patch request as indicated in the field descriptions. You must specify the current fingeprint
-        /// of the subnetwork resource being patched.</summary>
+        /// of the subnetwork resource being patched. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -47559,7 +47955,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Patches the specified subnetwork with the data included in the request. Only certain fields can up
         /// updated with a patch request as indicated in the field descriptions. You must specify the current fingeprint
-        /// of the subnetwork resource being patched.</summary>
+        /// of the subnetwork resource being patched. (== suppress_warning http-rest-shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -47669,7 +48065,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
@@ -47680,7 +48077,8 @@ namespace Google.Apis.Compute.v1
             return new SetIamPolicyRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -47769,7 +48167,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Set whether VMs in this subnet can access Google services without assigning external IP addresses
-        /// through Private Google Access.</summary>
+        /// through Private Google Access. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -47781,7 +48179,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Set whether VMs in this subnet can access Google services without assigning external IP addresses
-        /// through Private Google Access.</summary>
+        /// through Private Google Access. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetPrivateIpGoogleAccessRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetPrivateIpGoogleAccess request.</summary>
@@ -47891,7 +48289,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
@@ -47902,7 +48301,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -48008,7 +48408,7 @@ namespace Google.Apis.Compute.v1
 
 
         /// <summary>Retrieves the list of all TargetHttpProxy resources, regional and global, available to the
-        /// specified project.</summary>
+        /// specified project. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Name of the project scoping this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
@@ -48016,7 +48416,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of all TargetHttpProxy resources, regional and global, available to the
-        /// specified project.</summary>
+        /// specified project. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetHttpProxyAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -48150,7 +48550,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified TargetHttpProxy resource.</summary>
+        /// <summary>Deletes the specified TargetHttpProxy resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpProxy">Name of the
         /// TargetHttpProxy resource to delete.</param>
@@ -48159,7 +48560,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, targetHttpProxy);
         }
 
-        /// <summary>Deletes the specified TargetHttpProxy resource.</summary>
+        /// <summary>Deletes the specified TargetHttpProxy resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -48249,7 +48651,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified TargetHttpProxy resource. Gets a list of available target HTTP proxies by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpProxy">Name of the
         /// TargetHttpProxy resource to return.</param>
@@ -48259,7 +48661,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified TargetHttpProxy resource. Gets a list of available target HTTP proxies by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetHttpProxy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -48326,8 +48728,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a TargetHttpProxy resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a TargetHttpProxy resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.TargetHttpProxy body, string project)
@@ -48335,8 +48737,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a TargetHttpProxy resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a TargetHttpProxy resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -48418,14 +48820,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of TargetHttpProxy resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of TargetHttpProxy resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of TargetHttpProxy resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of TargetHttpProxy resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetHttpProxyList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -48559,7 +48963,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Changes the URL map for TargetHttpProxy.</summary>
+        /// <summary>Changes the URL map for TargetHttpProxy. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpProxy">Name of the
@@ -48569,7 +48973,7 @@ namespace Google.Apis.Compute.v1
             return new SetUrlMapRequest(service, body, project, targetHttpProxy);
         }
 
-        /// <summary>Changes the URL map for TargetHttpProxy.</summary>
+        /// <summary>Changes the URL map for TargetHttpProxy. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetUrlMapRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetUrlMap request.</summary>
@@ -48683,7 +49087,7 @@ namespace Google.Apis.Compute.v1
 
 
         /// <summary>Retrieves the list of all TargetHttpsProxy resources, regional and global, available to the
-        /// specified project.</summary>
+        /// specified project. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Name of the project scoping this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
@@ -48691,7 +49095,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of all TargetHttpsProxy resources, regional and global, available to the
-        /// specified project.</summary>
+        /// specified project. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetHttpsProxyAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -48825,7 +49229,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified TargetHttpsProxy resource.</summary>
+        /// <summary>Deletes the specified TargetHttpsProxy resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpsProxy">Name of the
         /// TargetHttpsProxy resource to delete.</param>
@@ -48834,7 +49239,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, targetHttpsProxy);
         }
 
-        /// <summary>Deletes the specified TargetHttpsProxy resource.</summary>
+        /// <summary>Deletes the specified TargetHttpsProxy resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -48924,7 +49330,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpsProxy">Name of the
         /// TargetHttpsProxy resource to return.</param>
@@ -48934,7 +49340,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetHttpsProxy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -49002,7 +49408,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a TargetHttpsProxy resource in the specified project using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.TargetHttpsProxy body, string project)
@@ -49011,7 +49417,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a TargetHttpsProxy resource in the specified project using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -49093,14 +49499,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of TargetHttpsProxy resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of TargetHttpsProxy resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of TargetHttpsProxy resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of TargetHttpsProxy resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetHttpsProxyList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -49234,7 +49642,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the QUIC override policy for TargetHttpsProxy.</summary>
+        /// <summary>Sets the QUIC override policy for TargetHttpsProxy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpsProxy">Name of the
@@ -49244,7 +49653,8 @@ namespace Google.Apis.Compute.v1
             return new SetQuicOverrideRequest(service, body, project, targetHttpsProxy);
         }
 
-        /// <summary>Sets the QUIC override policy for TargetHttpsProxy.</summary>
+        /// <summary>Sets the QUIC override policy for TargetHttpsProxy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class SetQuicOverrideRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetQuicOverride request.</summary>
@@ -49341,7 +49751,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Replaces SslCertificates for TargetHttpsProxy.</summary>
+        /// <summary>Replaces SslCertificates for TargetHttpsProxy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpsProxy">Name of the
@@ -49351,7 +49762,8 @@ namespace Google.Apis.Compute.v1
             return new SetSslCertificatesRequest(service, body, project, targetHttpsProxy);
         }
 
-        /// <summary>Replaces SslCertificates for TargetHttpsProxy.</summary>
+        /// <summary>Replaces SslCertificates for TargetHttpsProxy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class SetSslCertificatesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetSslCertificates request.</summary>
@@ -49449,7 +49861,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Sets the SSL policy for TargetHttpsProxy. The SSL policy specifies the server-side support for SSL
         /// features. This affects connections between clients and the HTTPS proxy load balancer. They do not affect the
-        /// connection between the load balancer and the backends.</summary>
+        /// connection between the load balancer and the backends. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpsProxy">Name of the
@@ -49462,7 +49874,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Sets the SSL policy for TargetHttpsProxy. The SSL policy specifies the server-side support for SSL
         /// features. This affects connections between clients and the HTTPS proxy load balancer. They do not affect the
-        /// connection between the load balancer and the backends.</summary>
+        /// connection between the load balancer and the backends. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetSslPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetSslPolicy request.</summary>
@@ -49559,7 +49971,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Changes the URL map for TargetHttpsProxy.</summary>
+        /// <summary>Changes the URL map for TargetHttpsProxy. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpsProxy">Name of the
@@ -49569,7 +49981,7 @@ namespace Google.Apis.Compute.v1
             return new SetUrlMapRequest(service, body, project, targetHttpsProxy);
         }
 
-        /// <summary>Changes the URL map for TargetHttpsProxy.</summary>
+        /// <summary>Changes the URL map for TargetHttpsProxy. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetUrlMapRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetUrlMap request.</summary>
@@ -49682,14 +50094,16 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of target instances.</summary>
+        /// <summary>Retrieves an aggregated list of target instances. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of target instances.</summary>
+        /// <summary>Retrieves an aggregated list of target instances. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetInstanceAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -49823,7 +50237,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified TargetInstance resource.</summary>
+        /// <summary>Deletes the specified TargetInstance resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone scoping this
         /// request.</param>
@@ -49833,7 +50248,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, zone, targetInstance);
         }
 
-        /// <summary>Deletes the specified TargetInstance resource.</summary>
+        /// <summary>Deletes the specified TargetInstance resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -49937,7 +50353,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified TargetInstance resource. Gets a list of available target instances by making
-        /// a list() request.</summary>
+        /// a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone scoping this
         /// request.</param>
@@ -49948,7 +50364,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified TargetInstance resource. Gets a list of available target instances by making
-        /// a list() request.</summary>
+        /// a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetInstance>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -50030,7 +50446,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a TargetInstance resource in the specified project and zone using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone scoping this
@@ -50041,7 +50457,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a TargetInstance resource in the specified project and zone using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -50137,7 +50553,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of TargetInstance resources available to the specified project and zone.</summary>
+        /// <summary>Retrieves a list of TargetInstance resources available to the specified project and zone. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone scoping this
         /// request.</param>
@@ -50146,7 +50563,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves a list of TargetInstance resources available to the specified project and zone.</summary>
+        /// <summary>Retrieves a list of TargetInstance resources available to the specified project and zone. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetInstanceList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -50311,7 +50729,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Adds health check URLs to a target pool.</summary>
+        /// <summary>Adds health check URLs to a target pool. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -50323,7 +50741,7 @@ namespace Google.Apis.Compute.v1
             return new AddHealthCheckRequest(service, body, project, region, targetPool);
         }
 
-        /// <summary>Adds health check URLs to a target pool.</summary>
+        /// <summary>Adds health check URLs to a target pool. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AddHealthCheckRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddHealthCheck request.</summary>
@@ -50433,7 +50851,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Adds an instance to a target pool.</summary>
+        /// <summary>Adds an instance to a target pool. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -50445,7 +50863,7 @@ namespace Google.Apis.Compute.v1
             return new AddInstanceRequest(service, body, project, region, targetPool);
         }
 
-        /// <summary>Adds an instance to a target pool.</summary>
+        /// <summary>Adds an instance to a target pool. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AddInstanceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AddInstance request.</summary>
@@ -50555,14 +50973,14 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves an aggregated list of target pools.</summary>
+        /// <summary>Retrieves an aggregated list of target pools. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of target pools.</summary>
+        /// <summary>Retrieves an aggregated list of target pools. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetPoolAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -50696,7 +51114,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified target pool.</summary>
+        /// <summary>Deletes the specified target pool. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -50706,7 +51124,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, targetPool);
         }
 
-        /// <summary>Deletes the specified target pool.</summary>
+        /// <summary>Deletes the specified target pool. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -50810,7 +51228,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified target pool. Gets a list of available target pools by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -50821,7 +51239,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified target pool. Gets a list of available target pools by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetPool>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -50903,7 +51321,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Gets the most recent health check results for each IP for the instance that is referenced by the
-        /// given target pool.</summary>
+        /// given target pool. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -50916,7 +51334,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Gets the most recent health check results for each IP for the instance that is referenced by the
-        /// given target pool.</summary>
+        /// given target pool. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetHealthRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetPoolInstanceHealth>
         {
             /// <summary>Constructs a new GetHealth request.</summary>
@@ -51004,8 +51422,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a target pool in the specified project and region using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a target pool in the specified project and region using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -51015,8 +51433,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates a target pool in the specified project and region using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a target pool in the specified project and region using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -51112,7 +51530,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of target pools available to the specified project and region.</summary>
+        /// <summary>Retrieves a list of target pools available to the specified project and region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -51121,7 +51540,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of target pools available to the specified project and region.</summary>
+        /// <summary>Retrieves a list of target pools available to the specified project and region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetPoolList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -51269,7 +51689,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Removes health check URL from a target pool.</summary>
+        /// <summary>Removes health check URL from a target pool. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -51280,7 +51700,7 @@ namespace Google.Apis.Compute.v1
             return new RemoveHealthCheckRequest(service, body, project, region, targetPool);
         }
 
-        /// <summary>Removes health check URL from a target pool.</summary>
+        /// <summary>Removes health check URL from a target pool. (== suppress_warning http-rest-shadowed ==)</summary>
         public class RemoveHealthCheckRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new RemoveHealthCheck request.</summary>
@@ -51390,7 +51810,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Removes instance URL from a target pool.</summary>
+        /// <summary>Removes instance URL from a target pool. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -51402,7 +51822,7 @@ namespace Google.Apis.Compute.v1
             return new RemoveInstanceRequest(service, body, project, region, targetPool);
         }
 
-        /// <summary>Removes instance URL from a target pool.</summary>
+        /// <summary>Removes instance URL from a target pool. (== suppress_warning http-rest-shadowed ==)</summary>
         public class RemoveInstanceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new RemoveInstance request.</summary>
@@ -51512,7 +51932,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Changes a backup target pool's configurations.</summary>
+        /// <summary>Changes a backup target pool's configurations. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -51524,7 +51945,8 @@ namespace Google.Apis.Compute.v1
             return new SetBackupRequest(service, body, project, region, targetPool);
         }
 
-        /// <summary>Changes a backup target pool's configurations.</summary>
+        /// <summary>Changes a backup target pool's configurations. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class SetBackupRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetBackup request.</summary>
@@ -51664,7 +52086,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified TargetSslProxy resource.</summary>
+        /// <summary>Deletes the specified TargetSslProxy resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetSslProxy">Name of the
         /// TargetSslProxy resource to delete.</param>
@@ -51673,7 +52096,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, targetSslProxy);
         }
 
-        /// <summary>Deletes the specified TargetSslProxy resource.</summary>
+        /// <summary>Deletes the specified TargetSslProxy resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -51763,7 +52187,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified TargetSslProxy resource. Gets a list of available target SSL proxies by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetSslProxy">Name of the
         /// TargetSslProxy resource to return.</param>
@@ -51773,7 +52197,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified TargetSslProxy resource. Gets a list of available target SSL proxies by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetSslProxy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -51840,8 +52264,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a TargetSslProxy resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a TargetSslProxy resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.TargetSslProxy body, string project)
@@ -51849,8 +52273,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a TargetSslProxy resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a TargetSslProxy resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -51932,14 +52356,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of TargetSslProxy resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of TargetSslProxy resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of TargetSslProxy resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of TargetSslProxy resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetSslProxyList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -52073,7 +52499,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Changes the BackendService for TargetSslProxy.</summary>
+        /// <summary>Changes the BackendService for TargetSslProxy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetSslProxy">Name of the
@@ -52083,7 +52510,8 @@ namespace Google.Apis.Compute.v1
             return new SetBackendServiceRequest(service, body, project, targetSslProxy);
         }
 
-        /// <summary>Changes the BackendService for TargetSslProxy.</summary>
+        /// <summary>Changes the BackendService for TargetSslProxy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class SetBackendServiceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetBackendService request.</summary>
@@ -52179,7 +52607,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Changes the ProxyHeaderType for TargetSslProxy.</summary>
+        /// <summary>Changes the ProxyHeaderType for TargetSslProxy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetSslProxy">Name of the
@@ -52189,7 +52618,8 @@ namespace Google.Apis.Compute.v1
             return new SetProxyHeaderRequest(service, body, project, targetSslProxy);
         }
 
-        /// <summary>Changes the ProxyHeaderType for TargetSslProxy.</summary>
+        /// <summary>Changes the ProxyHeaderType for TargetSslProxy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class SetProxyHeaderRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetProxyHeader request.</summary>
@@ -52285,7 +52715,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Changes SslCertificates for TargetSslProxy.</summary>
+        /// <summary>Changes SslCertificates for TargetSslProxy. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetSslProxy">Name of the
@@ -52295,7 +52725,7 @@ namespace Google.Apis.Compute.v1
             return new SetSslCertificatesRequest(service, body, project, targetSslProxy);
         }
 
-        /// <summary>Changes SslCertificates for TargetSslProxy.</summary>
+        /// <summary>Changes SslCertificates for TargetSslProxy. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetSslCertificatesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetSslCertificates request.</summary>
@@ -52393,7 +52823,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Sets the SSL policy for TargetSslProxy. The SSL policy specifies the server-side support for SSL
         /// features. This affects connections between clients and the SSL proxy load balancer. They do not affect the
-        /// connection between the load balancer and the backends.</summary>
+        /// connection between the load balancer and the backends. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetSslProxy">Name of the
@@ -52406,7 +52836,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Sets the SSL policy for TargetSslProxy. The SSL policy specifies the server-side support for SSL
         /// features. This affects connections between clients and the SSL proxy load balancer. They do not affect the
-        /// connection between the load balancer and the backends.</summary>
+        /// connection between the load balancer and the backends. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetSslPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetSslPolicy request.</summary>
@@ -52520,7 +52950,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified TargetTcpProxy resource.</summary>
+        /// <summary>Deletes the specified TargetTcpProxy resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetTcpProxy">Name of the
         /// TargetTcpProxy resource to delete.</param>
@@ -52529,7 +52960,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, targetTcpProxy);
         }
 
-        /// <summary>Deletes the specified TargetTcpProxy resource.</summary>
+        /// <summary>Deletes the specified TargetTcpProxy resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -52619,7 +53051,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetTcpProxy">Name of the
         /// TargetTcpProxy resource to return.</param>
@@ -52629,7 +53061,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by
-        /// making a list() request.</summary>
+        /// making a list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetTcpProxy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -52696,8 +53128,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a TargetTcpProxy resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a TargetTcpProxy resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.TargetTcpProxy body, string project)
@@ -52705,8 +53137,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a TargetTcpProxy resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a TargetTcpProxy resource in the specified project using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -52788,14 +53220,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of TargetTcpProxy resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of TargetTcpProxy resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of TargetTcpProxy resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of TargetTcpProxy resources available to the specified project. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetTcpProxyList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -52929,7 +53363,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Changes the BackendService for TargetTcpProxy.</summary>
+        /// <summary>Changes the BackendService for TargetTcpProxy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetTcpProxy">Name of the
@@ -52939,7 +53374,8 @@ namespace Google.Apis.Compute.v1
             return new SetBackendServiceRequest(service, body, project, targetTcpProxy);
         }
 
-        /// <summary>Changes the BackendService for TargetTcpProxy.</summary>
+        /// <summary>Changes the BackendService for TargetTcpProxy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class SetBackendServiceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetBackendService request.</summary>
@@ -53035,7 +53471,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Changes the ProxyHeaderType for TargetTcpProxy.</summary>
+        /// <summary>Changes the ProxyHeaderType for TargetTcpProxy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetTcpProxy">Name of the
@@ -53045,7 +53482,8 @@ namespace Google.Apis.Compute.v1
             return new SetProxyHeaderRequest(service, body, project, targetTcpProxy);
         }
 
-        /// <summary>Changes the ProxyHeaderType for TargetTcpProxy.</summary>
+        /// <summary>Changes the ProxyHeaderType for TargetTcpProxy. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class SetProxyHeaderRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetProxyHeader request.</summary>
@@ -53158,14 +53596,16 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of target VPN gateways.</summary>
+        /// <summary>Retrieves an aggregated list of target VPN gateways. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of target VPN gateways.</summary>
+        /// <summary>Retrieves an aggregated list of target VPN gateways. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetVpnGatewayAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -53299,7 +53739,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified target VPN gateway.</summary>
+        /// <summary>Deletes the specified target VPN gateway. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -53309,7 +53749,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, targetVpnGateway);
         }
 
-        /// <summary>Deletes the specified target VPN gateway.</summary>
+        /// <summary>Deletes the specified target VPN gateway. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -53413,7 +53853,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified target VPN gateway. Gets a list of available target VPN gateways by making a
-        /// list() request.</summary>
+        /// list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -53424,7 +53864,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified target VPN gateway. Gets a list of available target VPN gateways by making a
-        /// list() request.</summary>
+        /// list() request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetVpnGateway>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -53506,7 +53946,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a target VPN gateway in the specified project and region using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -53517,7 +53957,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a target VPN gateway in the specified project and region using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -53613,7 +54053,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of target VPN gateways available to the specified project and region.</summary>
+        /// <summary>Retrieves a list of target VPN gateways available to the specified project and region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -53622,7 +54063,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of target VPN gateways available to the specified project and region.</summary>
+        /// <summary>Retrieves a list of target VPN gateways available to the specified project and region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetVpnGatewayList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -53788,7 +54230,7 @@ namespace Google.Apis.Compute.v1
 
 
         /// <summary>Retrieves the list of all UrlMap resources, regional and global, available to the specified
-        /// project.</summary>
+        /// project. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Name of the project scoping this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
@@ -53796,7 +54238,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Retrieves the list of all UrlMap resources, regional and global, available to the specified
-        /// project.</summary>
+        /// project. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.UrlMapsAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -53930,7 +54372,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified UrlMap resource.</summary>
+        /// <summary>Deletes the specified UrlMap resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="urlMap">Name of the UrlMap resource
         /// to delete.</param>
@@ -53939,7 +54381,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, urlMap);
         }
 
-        /// <summary>Deletes the specified UrlMap resource.</summary>
+        /// <summary>Deletes the specified UrlMap resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -54029,7 +54471,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified UrlMap resource. Gets a list of available URL maps by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="urlMap">Name of the UrlMap resource
         /// to return.</param>
@@ -54039,7 +54481,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified UrlMap resource. Gets a list of available URL maps by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.UrlMap>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -54106,8 +54548,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a UrlMap resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a UrlMap resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.UrlMap body, string project)
@@ -54115,8 +54557,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a UrlMap resource in the specified project using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a UrlMap resource in the specified project using the data included in the request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -54199,7 +54641,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Initiates a cache invalidation operation, invalidating the specified path, scoped to the specified
-        /// UrlMap.</summary>
+        /// UrlMap. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="urlMap">Name of the UrlMap scoping
@@ -54210,7 +54652,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Initiates a cache invalidation operation, invalidating the specified path, scoped to the specified
-        /// UrlMap.</summary>
+        /// UrlMap. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InvalidateCacheRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new InvalidateCache request.</summary>
@@ -54306,14 +54748,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of UrlMap resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of UrlMap resources available to the specified project. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of UrlMap resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of UrlMap resources available to the specified project. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.UrlMapList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -54448,7 +54892,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Patches the specified UrlMap resource with the data included in the request. This method supports
-        /// PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// PATCH semantics and uses the JSON merge patch format and processing rules. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="urlMap">Name of the UrlMap resource
@@ -54459,7 +54904,8 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Patches the specified UrlMap resource with the data included in the request. This method supports
-        /// PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
+        /// PATCH semantics and uses the JSON merge patch format and processing rules. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -54555,7 +55001,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates the specified UrlMap resource with the data included in the request.</summary>
+        /// <summary>Updates the specified UrlMap resource with the data included in the request. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="urlMap">Name of the UrlMap resource
@@ -54565,7 +55012,8 @@ namespace Google.Apis.Compute.v1
             return new UpdateRequest(service, body, project, urlMap);
         }
 
-        /// <summary>Updates the specified UrlMap resource with the data included in the request.</summary>
+        /// <summary>Updates the specified UrlMap resource with the data included in the request. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -54662,7 +55110,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Runs static validation for the UrlMap. In particular, the tests of the provided UrlMap will be run.
-        /// Calling this method does NOT create the UrlMap.</summary>
+        /// Calling this method does NOT create the UrlMap. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="urlMap">Name of the UrlMap resource
@@ -54673,7 +55121,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Runs static validation for the UrlMap. In particular, the tests of the provided UrlMap will be run.
-        /// Calling this method does NOT create the UrlMap.</summary>
+        /// Calling this method does NOT create the UrlMap. (== suppress_warning http-rest-shadowed ==)</summary>
         public class ValidateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.UrlMapsValidateResponse>
         {
             /// <summary>Constructs a new Validate request.</summary>
@@ -54764,14 +55212,14 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of VPN gateways.</summary>
+        /// <summary>Retrieves an aggregated list of VPN gateways. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of VPN gateways.</summary>
+        /// <summary>Retrieves an aggregated list of VPN gateways. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.VpnGatewayAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -54905,7 +55353,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified VPN gateway.</summary>
+        /// <summary>Deletes the specified VPN gateway. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -54915,7 +55363,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, vpnGateway);
         }
 
-        /// <summary>Deletes the specified VPN gateway.</summary>
+        /// <summary>Deletes the specified VPN gateway. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -55019,7 +55467,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified VPN gateway. Gets a list of available VPN gateways by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -55030,7 +55478,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified VPN gateway. Gets a list of available VPN gateways by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.VpnGateway>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -55111,7 +55559,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the status for the specified VPN gateway.</summary>
+        /// <summary>Returns the status for the specified VPN gateway. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -55121,7 +55570,8 @@ namespace Google.Apis.Compute.v1
             return new GetStatusRequest(service, project, region, vpnGateway);
         }
 
-        /// <summary>Returns the status for the specified VPN gateway.</summary>
+        /// <summary>Returns the status for the specified VPN gateway. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class GetStatusRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.VpnGatewaysGetStatusResponse>
         {
             /// <summary>Constructs a new GetStatus request.</summary>
@@ -55202,8 +55652,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a VPN gateway in the specified project and region using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a VPN gateway in the specified project and region using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -55213,8 +55663,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates a VPN gateway in the specified project and region using the data included in the
-        /// request.</summary>
+        /// <summary>Creates a VPN gateway in the specified project and region using the data included in the request.
+        /// (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -55310,7 +55760,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of VPN gateways available to the specified project and region.</summary>
+        /// <summary>Retrieves a list of VPN gateways available to the specified project and region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -55319,7 +55770,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of VPN gateways available to the specified project and region.</summary>
+        /// <summary>Retrieves a list of VPN gateways available to the specified project and region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.VpnGatewayList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -55468,7 +55920,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Sets the labels on a VpnGateway. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// documentation. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The region for this
@@ -55480,7 +55932,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Sets the labels on a VpnGateway. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// documentation. (== suppress_warning http-rest-shadowed ==)</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -55590,7 +56042,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
@@ -55601,7 +56054,8 @@ namespace Google.Apis.Compute.v1
             return new TestIamPermissionsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. (== suppress_warning http-rest-
+        /// shadowed ==)</summary>
         public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -55706,14 +56160,14 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Retrieves an aggregated list of VPN tunnels.</summary>
+        /// <summary>Retrieves an aggregated list of VPN tunnels. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual AggregatedListRequest AggregatedList(string project)
         {
             return new AggregatedListRequest(service, project);
         }
 
-        /// <summary>Retrieves an aggregated list of VPN tunnels.</summary>
+        /// <summary>Retrieves an aggregated list of VPN tunnels. (== suppress_warning http-rest-shadowed ==)</summary>
         public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.VpnTunnelAggregatedList>
         {
             /// <summary>Constructs a new AggregatedList request.</summary>
@@ -55847,7 +56301,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Deletes the specified VpnTunnel resource.</summary>
+        /// <summary>Deletes the specified VpnTunnel resource. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -55857,7 +56311,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, region, vpnTunnel);
         }
 
-        /// <summary>Deletes the specified VpnTunnel resource.</summary>
+        /// <summary>Deletes the specified VpnTunnel resource. (== suppress_warning http-rest-shadowed ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -55961,7 +56415,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -55972,7 +56426,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list()
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.VpnTunnel>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -56054,7 +56508,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a VpnTunnel resource in the specified project and region using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -56065,7 +56519,7 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Creates a VpnTunnel resource in the specified project and region using the data included in the
-        /// request.</summary>
+        /// request. (== suppress_warning http-rest-shadowed ==)</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -56161,7 +56615,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of VpnTunnel resources contained in the specified project and region.</summary>
+        /// <summary>Retrieves a list of VpnTunnel resources contained in the specified project and region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -56170,7 +56625,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, region);
         }
 
-        /// <summary>Retrieves a list of VpnTunnel resources contained in the specified project and region.</summary>
+        /// <summary>Retrieves a list of VpnTunnel resources contained in the specified project and region. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.VpnTunnelList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -56335,7 +56791,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified zone-specific Operations resource.</summary>
+        /// <summary>Deletes the specified zone-specific Operations resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
         /// request.</param>
@@ -56345,7 +56802,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, zone, operation);
         }
 
-        /// <summary>Deletes the specified zone-specific Operations resource.</summary>
+        /// <summary>Deletes the specified zone-specific Operations resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -56426,7 +56884,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the specified zone-specific Operations resource.</summary>
+        /// <summary>Retrieves the specified zone-specific Operations resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
         /// request.</param>
@@ -56436,7 +56895,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone, operation);
         }
 
-        /// <summary>Retrieves the specified zone-specific Operations resource.</summary>
+        /// <summary>Retrieves the specified zone-specific Operations resource. (== suppress_warning http-rest-shadowed
+        /// ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -56517,7 +56977,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of Operation resources contained within the specified zone.</summary>
+        /// <summary>Retrieves a list of Operation resources contained within the specified zone. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for
         /// request.</param>
@@ -56526,7 +56987,8 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project, zone);
         }
 
-        /// <summary>Retrieves a list of Operation resources contained within the specified zone.</summary>
+        /// <summary>Retrieves a list of Operation resources contained within the specified zone. (== suppress_warning
+        /// http-rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.OperationList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -56691,8 +57153,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Returns the specified Zone resource. Gets a list of available zones by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified Zone resource. Gets a list of available zones by making a list() request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone resource to
         /// return.</param>
@@ -56701,8 +57163,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone);
         }
 
-        /// <summary>Returns the specified Zone resource. Gets a list of available zones by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified Zone resource. Gets a list of available zones by making a list() request. (==
+        /// suppress_warning http-rest-shadowed ==)</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Zone>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -56769,14 +57231,16 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of Zone resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of Zone resources available to the specified project. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of Zone resources available to the specified project.</summary>
+        /// <summary>Retrieves the list of Zone resources available to the specified project. (== suppress_warning http-
+        /// rest-shadowed ==)</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ZoneList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -58552,15 +59016,11 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a Backend Service resource.
     ///
-    /// Backend services must have an associated health check. Backend services also store information about session
-    /// affinity. For more information, read Backend Services.
+    /// A backend service contains configuration values for Google Cloud Platform load balancing services.
     ///
-    /// A backendServices resource represents a global backend service. Global backend services are used for HTTP(S),
-    /// SSL Proxy, TCP Proxy load balancing and Traffic Director.
+    /// For more information, read Backend Services.
     ///
-    /// A regionBackendServices resource represents a regional backend service. Regional backend services are used for
-    /// internal TCP/UDP load balancing. For more information, read Internal TCP/UDP Load balancing. (== resource_for
-    /// v1.backendService ==) (== resource_for beta.backendService ==)</summary>
+    /// (== resource_for v1.backendService ==) (== resource_for beta.backendService ==)</summary>
     public class BackendService : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or
@@ -58647,9 +59107,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Indicates whether the backend service will be used with internal or external load balancing. A
-        /// backend service created for one type of load balancing cannot be used with the other. Possible values are
-        /// INTERNAL and EXTERNAL.</summary>
+        /// <summary>Specifies the load balancer type. Choose EXTERNAL for load balancers that receive traffic from
+        /// external clients. Choose INTERNAL for Internal TCP/UDP Load Balancing. Choose INTERNAL_MANAGED for Internal
+        /// HTTP(S) Load Balancing. Choose INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one
+        /// type of load balancing cannot be used with another. For more information, refer to Choosing a load
+        /// balancer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; } 
 
@@ -58703,8 +59165,8 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>The protocol this BackendService uses to communicate with backends.
         ///
-        /// Possible values are HTTP, HTTPS, TCP, SSL, or UDP, depending on the chosen load balancer or Traffic Director
-        /// configuration. Refer to the documentation for the load balancer or for Traffic director for more
+        /// Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, or UDP, depending on the chosen load balancer or Traffic
+        /// Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more
         /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
@@ -60873,30 +61335,15 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a Forwarding Rule resource.
     ///
-    /// A forwardingRules resource represents a regional forwarding rule.
+    /// A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud
+    /// Platform load balancer. Forwarding rules can also reference target instances and Cloud VPN Classic gateways
+    /// (targetVpnGateway).
     ///
-    /// Regional external forwarding rules can reference any of the following resources:
+    /// For more information, read Forwarding rule concepts and Using protocol forwarding.
     ///
-    /// - A target instance - A Cloud VPN Classic gateway (targetVpnGateway), - A target pool for a Network Load
-    /// Balancer - A global target HTTP(S) proxy for an HTTP(S) load balancer using Standard Tier - A target SSL proxy
-    /// for a SSL Proxy load balancer using Standard Tier - A target TCP proxy for a TCP Proxy load balancer using
-    /// Standard Tier.
-    ///
-    /// Regional internal forwarding rules can reference the backend service of an internal TCP/UDP load balancer.
-    ///
-    /// For regional internal forwarding rules, the following applies: - If the loadBalancingScheme for the load
-    /// balancer is INTERNAL, then the forwarding rule references a regional internal backend service. - If the
-    /// loadBalancingScheme for the load balancer is INTERNAL_MANAGED, then the forwarding rule must reference a
-    /// regional target HTTP(S) proxy.
-    ///
-    /// For more information, read Using Forwarding rules.
-    ///
-    /// A globalForwardingRules resource represents a global forwarding rule.
-    ///
-    /// Global forwarding rules are only used by load balancers that use Premium Tier. (== resource_for
-    /// beta.forwardingRules ==) (== resource_for v1.forwardingRules ==) (== resource_for beta.globalForwardingRules ==)
-    /// (== resource_for v1.globalForwardingRules ==) (== resource_for beta.regionForwardingRules ==) (== resource_for
-    /// v1.regionForwardingRules ==)</summary>
+    /// (== resource_for beta.forwardingRules ==) (== resource_for v1.forwardingRules ==) (== resource_for
+    /// beta.globalForwardingRules ==) (== resource_for v1.globalForwardingRules ==) (== resource_for
+    /// beta.regionForwardingRules ==) (== resource_for v1.regionForwardingRules ==)</summary>
     public class ForwardingRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>IP address that this forwarding rule serves. When a client sends traffic to this IP address, the
@@ -60918,8 +61365,12 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or ICMP.
         ///
-        /// When the load balancing scheme is INTERNAL, only TCP and UDP are valid. When the load balancing scheme is
-        /// INTERNAL_SELF_MANAGED, only TCPis valid.</summary>
+        /// For Internal TCP/UDP Load Balancing, the load balancing scheme is INTERNAL, and one of TCP or UDP are valid.
+        /// For Traffic Director, the load balancing scheme is INTERNAL_SELF_MANAGED, and only TCPis valid. For Internal
+        /// HTTP(S) Load Balancing, the load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. For HTTP(S),
+        /// SSL Proxy, and TCP Proxy Load Balancing, the load balancing scheme is EXTERNAL and only TCP is valid. For
+        /// Network TCP/UDP Load Balancing, the load balancing scheme is EXTERNAL, and one of TCP or UDP is
+        /// valid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
         public virtual string IPProtocol { get; set; } 
 
@@ -60962,11 +61413,18 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>This signifies what the ForwardingRule will be used for and can only take the following values:
-        /// INTERNAL, INTERNAL_SELF_MANAGED, EXTERNAL. The value of INTERNAL means that this will be used for Internal
-        /// Network Load Balancing (TCP, UDP). The value of INTERNAL_SELF_MANAGED means that this will be used for
-        /// Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used for External Load Balancing
-        /// (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)</summary>
+        /// <summary>Specifies the forwarding rule type. EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol
+        /// forwarding to VMs from an external IP address - The following load balancers: HTTP(S), SSL Proxy, TCP Proxy,
+        /// and Network TCP/UDP.
+        ///
+        /// INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP load
+        /// balancers
+        ///
+        /// INTERNAL_MANAGED is used for: - Internal HTTP(S) load balancers
+        ///
+        /// INTERNAL_SELF_MANAGED is used for: - Traffic Director
+        ///
+        /// For more information about forwarding rules, refer to Forwarding rule concepts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; } 
 
@@ -62369,6 +62827,11 @@ namespace Google.Apis.Compute.v1.Data
     /// balancing proxies will perform.</summary>
     public class HttpRouteRule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The short description conveying the intent of this routeRule. The description can have a maximum
+        /// length of 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
         /// <summary>Specifies changes to request and response headers that need to take effect for the selected
         /// backendService. The headerAction specified here are applied before the matching pathMatchers[].headerAction
         /// and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].header
@@ -62378,6 +62841,17 @@ namespace Google.Apis.Compute.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("matchRules")]
         public virtual System.Collections.Generic.IList<HttpRouteRuleMatch> MatchRules { get; set; } 
+
+        /// <summary>For routeRules within a given pathMatcher, priority determines the order in which load balancer
+        /// will interpret routeRules. RouteRules are evaluated in order of priority, from the lowest to highest number.
+        /// The priority of a rule decreases as its number increases (1, 2, 3, N+1). The first rule that matches the
+        /// request is applied. You cannot configure two or more routeRules with the same priority. Priority for each
+        /// rule must be set to a number between 0 and 2147483647 inclusive. Priority numbers can have gaps, which
+        /// enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2,
+        /// 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which you could add rules numbered from 6 to 8,
+        /// 10 to 11, and 13 to 15 in the future without any impact on existing rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; } 
 
         /// <summary>In response to a matching matchRule, the load balancer performs advanced routing actions like URL
         /// rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If
@@ -65802,6 +66276,10 @@ namespace Google.Apis.Compute.v1.Data
     /// At this time we do not support multiple field names (though this may be supported in the future).</summary>
     public class LogConfigCounterOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Custom fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFields")]
+        public virtual System.Collections.Generic.IList<LogConfigCounterOptionsCustomField> CustomFields { get; set; } 
+
         /// <summary>The field value to attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; } 
@@ -65809,6 +66287,23 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The metric to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
         public virtual string Metric { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Custom fields. These can be used to create a counter with arbitrary field/value pairs. See: go/rpcsp-
+    /// custom-fields.</summary>
+    public class LogConfigCounterOptionsCustomField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name is the field name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Value is the field value. It is important that in contrast to the CounterOptions.field, the value
+        /// here is a constant that is not derived from the IAMContext.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -68535,20 +69030,27 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
     /// for Cloud Platform resources.
     ///
-    /// A `Policy` consists of a list of `bindings`. A `binding` binds a list of `members` to a `role`, where the
-    /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
-    /// permissions defined by IAM.
+    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
+    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
+    /// of permissions (defined by IAM or configured by users). A `binding` can optionally specify a `condition`, which
+    /// is a logic expression that further constrains the role binding based on attributes about the request and/or
+    /// target resource.
     ///
     /// **JSON Example**
     ///
-    /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role": "roles/viewer",
-    /// "members": ["user:sean@example.com"] } ] }
+    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ] }
     ///
     /// **YAML Example**
     ///
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com role: roles/viewer
+    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
+    /// description: Does not grant access after Sep 2020 expression: request.time <
+    /// timestamp('2020-10-01T00:00:00.000Z')
     ///
     /// For a description of IAM and its features, see the [IAM developer's
     /// guide](https://cloud.google.com/iam/docs).</summary>
@@ -68558,8 +69060,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 
-        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
-        /// error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. Optionally may specify a `condition` that determines
+        /// when binding is in effect. `bindings` with no members will result in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -68569,7 +69071,9 @@ namespace Google.Apis.Compute.v1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten.</summary>
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
+        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if either of incoming or
+        /// stored policy does not meet the version requirements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -68588,8 +69092,12 @@ namespace Google.Apis.Compute.v1.Data
         ///
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
-        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
-        /// specify any valid value or leave the field unset.</summary>
+        /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
+        /// policy, modifying a conditional binding, or removing a conditional binding from the stored conditional
+        /// policy. Operations on non-conditional policies may specify any valid value or leave the field unset.
+        ///
+        /// If no etag is provided in the call to `setIamPolicy`, any version compliance checks on the incoming and/or
+        /// stored policy is skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -70221,6 +70729,14 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopGateway")]
         public virtual string NextHopGateway { get; set; } 
 
+        /// <summary>The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching
+        /// packets. You can only specify the forwarding rule as a partial or full URL. For example, the following are
+        /// all valid URLs: -
+        /// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule -
+        /// regions/region/forwardingRules/forwardingRule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextHopIlb")]
+        public virtual string NextHopIlb { get; set; } 
+
         /// <summary>The URL to an instance that should handle matching packets. You can specify this as a full or
         /// partial URL. For example:
         /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/</summary>
@@ -70742,6 +71258,11 @@ namespace Google.Apis.Compute.v1.Data
     /// no external IPs are provided.</summary>
     public class RouterNat : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that
+        /// have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drainNatIps")]
+        public virtual System.Collections.Generic.IList<string> DrainNatIps { get; set; } 
+
         /// <summary>Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icmpIdleTimeoutSec")]
         public virtual System.Nullable<int> IcmpIdleTimeoutSec { get; set; } 
@@ -70919,6 +71440,16 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>A list of IPs auto-allocated for NAT. Example: ["1.1.1.1", "129.2.16.89"]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoAllocatedNatIps")]
         public virtual System.Collections.Generic.IList<string> AutoAllocatedNatIps { get; set; } 
+
+        /// <summary>A list of IPs auto-allocated for NAT that are in drain mode. Example: ["1.1.1.1",
+        /// ?179.12.26.133?].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drainAutoAllocatedNatIps")]
+        public virtual System.Collections.Generic.IList<string> DrainAutoAllocatedNatIps { get; set; } 
+
+        /// <summary>A list of IPs user-allocated for NAT that are in drain mode. Example: ["1.1.1.1",
+        /// ?179.12.26.133?].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drainUserAllocatedNatIps")]
+        public virtual System.Collections.Generic.IList<string> DrainUserAllocatedNatIps { get; set; } 
 
         /// <summary>The number of extra IPs to allocate. This will be greater than 0 only if user-specified IPs are NOT
         /// enough to allow all configured VMs to use NAT. This value is meaningful only when auto-allocation of NAT IPs
@@ -72910,11 +73441,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Specifies the QUIC override policy for this TargetHttpsProxy resource. This determines whether the
-        /// load balancer will attempt to negotiate QUIC with clients or not. Can specify one of NONE, ENABLE, or
-        /// DISABLE. Specify ENABLE to always enable QUIC, Enables QUIC when set to ENABLE, and disables QUIC when set
-        /// to DISABLE. If NONE is specified, uses the QUIC policy with no user overrides, which is equivalent to
-        /// DISABLE. Not specifying this field is equivalent to specifying NONE.</summary>
+        /// <summary>Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines
+        /// whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.
+        /// - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to
+        /// ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer
+        /// doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied. -</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quicOverride")]
         public virtual string QuicOverride { get; set; } 
 
@@ -72934,7 +73465,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Collections.Generic.IList<string> SslCertificates { get; set; } 
 
         /// <summary>URL of SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set,
-        /// the TargetHttpsProxy resource will not have any SSL policy configured.</summary>
+        /// the TargetHttpsProxy resource has no SSL policy configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslPolicy")]
         public virtual string SslPolicy { get; set; } 
 
@@ -74852,11 +75383,22 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Contain information of Nat mapping for an interface of this endpoint.</summary>
     public class VmEndpointNatMappingsInterfaceNatMappings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>List of all drain IP:port-range mappings assigned to this interface. These ranges are inclusive,
+        /// that is, both the first and the last ports can be used for NAT. Example: ["2.2.2.2:12345-12355",
+        /// "1.1.1.1:2234-2234"].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drainNatIpPortRanges")]
+        public virtual System.Collections.Generic.IList<string> DrainNatIpPortRanges { get; set; } 
+
         /// <summary>A list of all IP:port-range mappings assigned to this interface. These ranges are inclusive, that
         /// is, both the first and the last ports can be used for NAT. Example: ["2.2.2.2:12345-12355",
         /// "1.1.1.1:2234-2234"].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("natIpPortRanges")]
         public virtual System.Collections.Generic.IList<string> NatIpPortRanges { get; set; } 
+
+        /// <summary>Total number of drain ports across all NAT IPs allocated to this interface. It equals to the
+        /// aggregated port number in the field drain_nat_ip_port_ranges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numTotalDrainNatPorts")]
+        public virtual System.Nullable<int> NumTotalDrainNatPorts { get; set; } 
 
         /// <summary>Total number of ports across all NAT IPs allocated to this interface. It equals to the aggregated
         /// port number in the field nat_ip_port_ranges.</summary>
@@ -75412,7 +75954,12 @@ namespace Google.Apis.Compute.v1.Data
         /// ESTABLISHED: Secure session is successfully established with the peer VPN. - NETWORK_ERROR: Deprecated,
         /// replaced by NO_INCOMING_PACKETS - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret). -
         /// NEGOTIATION_FAILURE: Handshake failed. - DEPROVISIONING: Resources are being deallocated for the VPN tunnel.
-        /// - FAILED: Tunnel creation has failed and the tunnel is not ready to be used.</summary>
+        /// - FAILED: Tunnel creation has failed and the tunnel is not ready to be used. - NO_INCOMING_PACKETS: No
+        /// incoming packets from peer. - REJECTED: Tunnel configuration was rejected, can be result of being
+        /// blacklisted. - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required resources. -
+        /// STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for Classic VPN tunnels or the project
+        /// is in frozen state. - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably behind NAT. -
+        /// TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-VPN tunnel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 

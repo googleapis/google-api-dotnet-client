@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191005 (1738)
+ *      <tr><th>API Rev<td>20191011 (1744)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>
  *              https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory</a>
@@ -469,8 +469,7 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>A list of the full names of the assets. For example:
             /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
             /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) and [Resource Name
-            /// Format](https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/resource-name-format) for
-            /// more info.
+            /// Format](https://cloud.google.com/asset-inventory/docs/resource-name-format) for more info.
             ///
             /// The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is
             /// 100 in one request.</summary>
@@ -840,8 +839,7 @@ namespace Google.Apis.CloudAsset.v1.Data
     {
         /// <summary>A list of asset types of which to take a snapshot for. For example: "compute.googleapis.com/Disk".
         /// If specified, only matching assets will be returned. See [Introduction to Cloud Asset
-        /// Inventory](https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/overview) for all supported
-        /// asset types.</summary>
+        /// Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetTypes")]
         public virtual System.Collections.Generic.IList<string> AssetTypes { get; set; } 
 
@@ -960,8 +958,8 @@ namespace Google.Apis.CloudAsset.v1.Data
     /// `denied_values` fields. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix
     /// is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required
     /// only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix.
-    /// Ancestry subtrees must be in one of the following formats: - “projects/”, e.g. “projects/tokyo-rain-123” -
-    /// “folders/”, e.g. “folders/1234” - “organizations/”, e.g. “organizations/1234” The `supports_under` field of the
+    /// Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" -
+    /// "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the
     /// associated `Constraint`  defines whether ancestry prefixes can be used. You can set `allowed_values` and
     /// `denied_values` in the same `Policy` if `all_values` is `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to
     /// allow or deny all values. If `all_values` is set to either `ALLOW` or `DENY`, `allowed_values` and
@@ -1003,13 +1001,13 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// The following examples demonstrate different possible layerings for `projects/bar` parented by
         /// `organizations/foo`:
         ///
-        /// Example 1 (no inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: “E1”
-        /// allowed_values:”E2”} `projects/bar` has `inherit_from_parent` `false` and values: {allowed_values: "E3"
+        /// Example 1 (no inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
+        /// allowed_values:"E2"} `projects/bar` has `inherit_from_parent` `false` and values: {allowed_values: "E3"
         /// allowed_values: "E4"} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at
         /// `projects/bar` are `E3`, and `E4`.
         ///
-        /// Example 2 (inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: “E1”
-        /// allowed_values:”E2”} `projects/bar` has a `Policy` with values: {value: “E3” value: ”E4”
+        /// Example 2 (inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
+        /// allowed_values:"E2"} `projects/bar` has a `Policy` with values: {value: "E3" value: "E4"
         /// inherit_from_parent: true} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at
         /// `projects/bar` are `E1`, `E2`, `E3`, and `E4`.
         ///
@@ -1017,8 +1015,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {denied_values: "E1"} The
         /// accepted values at `organizations/foo` are `E1`, `E2`. The value accepted at `projects/bar` is `E2`.
         ///
-        /// Example 4 (RestoreDefault): `organizations/foo` has a `Policy` with values: {allowed_values: “E1”
-        /// allowed_values:”E2”} `projects/bar` has a `Policy` with values: {RestoreDefault: {}} The accepted values at
+        /// Example 4 (RestoreDefault): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
+        /// allowed_values:"E2"} `projects/bar` has a `Policy` with values: {RestoreDefault: {}} The accepted values at
         /// `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are either all or none depending
         /// on the value of `constraint_default` (if `ALLOW`, all; if `DENY`, none).
         ///
@@ -1027,11 +1025,11 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// `constraint_default` (if `ALLOW`, all; if `DENY`, none).
         ///
         /// Example 6 (ListConstraint allowing all): `organizations/foo` has a `Policy` with values: {allowed_values:
-        /// “E1” allowed_values: ”E2”} `projects/bar` has a `Policy` with: {all: ALLOW} The accepted values at
+        /// "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: ALLOW} The accepted values at
         /// `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`.
         ///
         /// Example 7 (ListConstraint allowing none): `organizations/foo` has a `Policy` with values: {allowed_values:
-        /// “E1” allowed_values: ”E2”} `projects/bar` has a `Policy` with: {all: DENY} The accepted values at
+        /// "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: DENY} The accepted values at
         /// `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`.
         ///
         /// Example 10 (allowed and denied subtrees of Resource Manager hierarchy): Given the following resource
@@ -1294,8 +1292,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string OsType { get; set; } 
 
         /// <summary>Only allows requests from devices with a verified Chrome OS. Verifications includes requirements
-        /// that the device is enterprise-managed, conformant to Dasher domain policies, and the caller has permission
-        /// to call the API targeted by the request.</summary>
+        /// that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call
+        /// the API targeted by the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireVerifiedChromeOs")]
         public virtual System.Nullable<bool> RequireVerifiedChromeOs { get; set; } 
 

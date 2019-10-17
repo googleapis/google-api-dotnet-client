@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191008 (1741)
+ *      <tr><th>API Rev<td>20191012 (1745)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -1064,8 +1064,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
         /// <summary>Updates a Group.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in the format:
-        /// `groups/{group_id}`, where group_id is the unique id assigned to the Group.
+        /// <param name="name">Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in
+        /// the format: `groups/{group_id}`, where group_id is the unique id assigned to the Group.
         ///
         /// Must be left blank while creating a Group</param>
         public virtual PatchRequest Patch(Google.Apis.CloudIdentity.v1beta1.Data.Group body, string name)
@@ -1086,8 +1086,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
-            /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in the
-            /// format: `groups/{group_id}`, where group_id is the unique id assigned to the Group.
+            /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group
+            /// in the format: `groups/{group_id}`, where group_id is the unique id assigned to the Group.
             ///
             /// Must be left blank while creating a Group</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1166,6 +1166,15 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
+            /// <summary>The next_page_token value returned from a previous search request, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The default page size is 200 (max 1000) for the BASIC view, and 50 (max 500) for the FULL
+            /// view.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Query string for performing search on groups. Users can search on namespace and label
             /// attributes of groups. EXACT match ('=') is supported on namespace, and CONTAINS match (':') is supported
             /// on labels. This is a `required` field. Multiple queries can be combined using `AND` operator. The
@@ -1185,15 +1194,6 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
-
-            /// <summary>The next_page_token value returned from a previous search request, if any.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The default page size is 200 (max 1000) for the BASIC view, and 50 (max 500) for the FULL
-            /// view.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1220,24 +1220,6 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1250,6 +1232,24 @@ namespace Google.Apis.CloudIdentity.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1292,7 +1292,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalGroupKeys")]
         public virtual System.Collections.Generic.IList<EntityKey> AdditionalGroupKeys { get; set; } 
 
-        /// <summary>The time when the Group was created. Output only</summary>
+        /// <summary>Output only. The time when the Group was created. Output only</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
@@ -1306,32 +1306,32 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>EntityKey of the Group.
+        /// <summary>Required. Immutable. EntityKey of the Group.
         ///
         /// Must be set when creating a Group, read-only afterwards.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupKey")]
         public virtual EntityKey GroupKey { get; set; } 
 
-        /// <summary>Labels for Group resource. Required. For creating Groups under a namespace, set label key to
-        /// 'labels/system/groups/external' and label value as empty.</summary>
+        /// <summary>Required. Labels for Group resource. Required. For creating Groups under a namespace, set label key
+        /// to 'labels/system/groups/external' and label value as empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in the format:
-        /// `groups/{group_id}`, where group_id is the unique id assigned to the Group.
+        /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in
+        /// the format: `groups/{group_id}`, where group_id is the unique id assigned to the Group.
         ///
         /// Must be left blank while creating a Group</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The entity under which this Group resides in Cloud Identity resource hierarchy. Must be set when
-        /// creating a Group, read-only afterwards.
+        /// <summary>Required. Immutable. The entity under which this Group resides in Cloud Identity resource
+        /// hierarchy. Must be set when creating a Group, read-only afterwards.
         ///
         /// Currently allowed types: 'identitysources'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
-        /// <summary>The time when the Group was last updated. Output only</summary>
+        /// <summary>Output only. The time when the Group was last updated. Output only</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
