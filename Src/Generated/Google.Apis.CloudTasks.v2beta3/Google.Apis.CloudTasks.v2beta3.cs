@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta3
- *      <tr><th>API Rev<td>20190916 (1719)
+ *      <tr><th>API Rev<td>20190813 (1685)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tasks/'>
  *              https://cloud.google.com/tasks/</a>
@@ -2418,12 +2418,8 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned.
-        ///
-        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-        ///
-        /// Requests for policies with any conditional bindings must specify version 3. Policies without any conditional
-        /// bindings may specify any valid value or leave the field unset.</summary>
+        /// <summary>Optional. The policy format version to be returned. Acceptable values are 0, 1, and 3. If the value
+        /// is 0, or the field is omitted, policy format version 1 will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
 
@@ -2445,7 +2441,7 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
     ///
     /// System throttling happens because:
     ///
-    /// * Cloud Tasks backs off on all errors. Normally the backoff specified in rate limits will be used. But if the
+    /// * Cloud Tasks backoffs on all errors. Normally the backoff specified in rate limits will be used. But if the
     /// worker returns `429` (Too Many Requests), `503` (Service Unavailable), or the rate of errors is high, Cloud
     /// Tasks will use a higher backoff rate. The retry specified in the `Retry-After` HTTP response header is
     /// considered.
@@ -2690,12 +2686,7 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Specifies the format of the policy.
-        ///
-        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
-        ///
-        /// Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may
-        /// specify any valid value or leave the field unset.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

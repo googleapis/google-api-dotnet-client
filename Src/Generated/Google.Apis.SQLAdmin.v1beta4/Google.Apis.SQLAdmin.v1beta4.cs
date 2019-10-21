@@ -3935,13 +3935,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>Name of the user in the instance.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Name { get; set; }
-
             /// <summary>Host of the user in the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Host { get; set; }
+
+            /// <summary>Name of the user in the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3986,18 +3986,18 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
+                    "host", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "name",
+                        Name = "host",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "host", new Google.Apis.Discovery.Parameter
+                    "name", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "host",
+                        Name = "name",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4199,14 +4199,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Name of the user in the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
             /// <summary>Host of the user in the instance. For a MySQL instance, it's required; For a PostgreSQL
             /// instance, it's optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Host { get; set; }
-
-            /// <summary>Name of the user in the instance.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Name { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -4257,18 +4257,18 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "host", new Google.Apis.Discovery.Parameter
+                    "name", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "host",
+                        Name = "name",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
+                    "host", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "name",
+                        Name = "host",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

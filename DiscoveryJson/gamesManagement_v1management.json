@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/WphGxFbYOI1DRCVHdKjhHzqcnCo\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/WphGxFbYOI1DRCVHdKjhHzqcnCo\"",
  "discoveryVersion": "v1",
  "id": "gamesManagement:v1management",
  "name": "gamesManagement",

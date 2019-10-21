@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190927 (1730)
+ *      <tr><th>API Rev<td>20191003 (1736)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>

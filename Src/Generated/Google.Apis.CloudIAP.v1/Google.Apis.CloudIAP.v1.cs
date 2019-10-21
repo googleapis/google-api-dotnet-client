@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iap'>Cloud Identity-Aware Proxy API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191004 (1737)
+ *      <tr><th>API Rev<td>20191011 (1744)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iap'>
  *              https://cloud.google.com/iap</a>
@@ -415,6 +415,68 @@ namespace Google.Apis.CloudIAP.v1
 
         }
 
+        /// <summary>Gets the IAP settings on a particular IAP protected resource.</summary>
+        /// <param name="name">Required. The resource name for which to retrieve the settings. Authorization: Requires the
+        /// `getSettings` permission for the associated resource.</param>
+        public virtual GetIapSettingsRequest GetIapSettings(string name)
+        {
+            return new GetIapSettingsRequest(service, name);
+        }
+
+        /// <summary>Gets the IAP settings on a particular IAP protected resource.</summary>
+        public class GetIapSettingsRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.IapSettings>
+        {
+            /// <summary>Constructs a new GetIapSettings request.</summary>
+            public GetIapSettingsRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The resource name for which to retrieve the settings. Authorization: Requires the
+            /// `getSettings` permission for the associated resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIapSettings"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+name}:iapSettings"; }
+            }
+
+            /// <summary>Initializes GetIapSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^.+$",
+                    });
+            }
+
+        }
+
         /// <summary>Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any
         /// existing policy. More information about managing access via IAP can be found at:
         /// https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api</summary>
@@ -562,11 +624,126 @@ namespace Google.Apis.CloudIAP.v1
             }
 
         }
+
+        /// <summary>Updates the IAP settings on a particular IAP protected resource. It replaces all fields unless the
+        /// `update_mask` is set.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Required. The resource name of the IAP protected resource.</param>
+        public virtual UpdateIapSettingsRequest UpdateIapSettings(Google.Apis.CloudIAP.v1.Data.IapSettings body, string name)
+        {
+            return new UpdateIapSettingsRequest(service, body, name);
+        }
+
+        /// <summary>Updates the IAP settings on a particular IAP protected resource. It replaces all fields unless the
+        /// `update_mask` is set.</summary>
+        public class UpdateIapSettingsRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.IapSettings>
+        {
+            /// <summary>Constructs a new UpdateIapSettings request.</summary>
+            public UpdateIapSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.IapSettings body, string name)
+                : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The resource name of the IAP protected resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>The field mask specifying which IAP settings should be updated. If omitted, the all of the
+            /// settings are updated. See https://developers.google.com/protocol-
+            /// buffers/docs/reference/google.protobuf#fieldmask</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIAP.v1.Data.IapSettings Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateIapSettings"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+name}:iapSettings"; }
+            }
+
+            /// <summary>Initializes UpdateIapSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^.+$",
+                    });
+                RequestParameters.Add(
+                    "updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
     }
 }
 
 namespace Google.Apis.CloudIAP.v1.Data
 {    
+
+    /// <summary>Access related settings for IAP protected apps.</summary>
+    public class AccessSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration to allow cross-origin requests via IAP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("corsSettings")]
+        public virtual CorsSettings CorsSettings { get; set; } 
+
+        /// <summary>GCIP claims and endpoint configurations for 3p identity providers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcipSettings")]
+        public virtual GcipSettings GcipSettings { get; set; } 
+
+        /// <summary>Settings to configure IAP's OAuth behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthSettings")]
+        public virtual OAuthSettings OauthSettings { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Wrapper over application specific settings for IAP.</summary>
+    public class ApplicationSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Settings to configure IAP's behavior for a CSM mesh.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("csmSettings")]
+        public virtual CsmSettings CsmSettings { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
@@ -610,6 +787,32 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Allows customers to configure HTTP request paths that'll allow HTTP OPTIONS call to bypass
+    /// authentication and authorization.</summary>
+    public class CorsSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration to allow HTTP OPTIONS calls to skip authorization. If undefined, IAP will not apply
+        /// any special logic to OPTIONS requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowHttpOptions")]
+        public virtual System.Nullable<bool> AllowHttpOptions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for RCTokens generated for CSM workloads protected by IAP. RCTokens are IAP generated
+    /// JWTs that can be verified at the application. The RCToken is primarily used for ISTIO deployments, and can be
+    /// scoped to a single mesh by configuring the audience field accordingly</summary>
+    public class CsmSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Audience claim set in the generated RCToken. This value is not validated by IAP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rctokenAud")]
+        public virtual string RctokenAud { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents an expression text. Example:
     ///
     /// title: "User account presence" description: "Determines whether the request has a user account" expression:
@@ -642,6 +845,25 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Allows customers to configure tenant_id for GCIP instance per-app.</summary>
+    public class GcipSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Login page URI associated with the GCIP tenants. Typically, all resources within the same project
+        /// share the same login page, though it could be overridden at the sub resource level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loginPageUri")]
+        public virtual string LoginPageUri { get; set; } 
+
+        /// <summary>GCIP tenant ids that are linked to the IAP resource. tenant_ids could be a string beginning with a
+        /// number character to indicate authenticating with GCIP tenant flow, or in the format of _ to indicate
+        /// authenticating with GCIP agent flow. If agent flow is used, tenant_ids should only contain one single
+        /// element, while for tenant flow, tenant_ids can contain multiple elements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantIds")]
+        public virtual System.Collections.Generic.IList<string> TenantIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -665,6 +887,39 @@ namespace Google.Apis.CloudIAP.v1.Data
         /// bindings may specify any valid value or leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The IAP configurable settings.</summary>
+    public class IapSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Top level wrapper for all access related setting in IAP</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessSettings")]
+        public virtual AccessSettings AccessSettings { get; set; } 
+
+        /// <summary>Top level wrapper for all application related settings in IAP</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationSettings")]
+        public virtual ApplicationSettings ApplicationSettings { get; set; } 
+
+        /// <summary>Required. The resource name of the IAP protected resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for OAuth login flow behavior.</summary>
+    public class OAuthSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Domain hint to send as hd=? parameter in OAuth request flow. Enables redirect to primary IDP by
+        /// skipping Google's login screen. https://developers.google.com/identity/protocols/OpenIDConnect#hd-param
+        /// Note: IAP does not verify that the id token's hd claim matches this value since access behavior is managed
+        /// by IAM policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loginHint")]
+        public virtual string LoginHint { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

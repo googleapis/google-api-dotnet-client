@@ -1,25 +1,54 @@
 {
-  "revision": "20191005",
+  "basePath": "",
+  "revision": "20191013",
   "documentationLink": "https://cloud.google.com/monitoring/api/",
   "id": "monitoring:v1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "Field": {
-      "id": "Field",
       "description": "A single field of a message type.",
       "type": "object",
       "properties": {
-        "typeUrl": {
-          "description": "The field type URL, without the scheme, for message or enumeration types. Example: \"type.googleapis.com/google.protobuf.Timestamp\".",
+        "defaultValue": {
+          "description": "The string value of the default value of this field. Proto2 syntax only.",
           "type": "string"
         },
+        "name": {
+          "description": "The field name.",
+          "type": "string"
+        },
+        "typeUrl": {
+          "type": "string",
+          "description": "The field type URL, without the scheme, for message or enumeration types. Example: \"type.googleapis.com/google.protobuf.Timestamp\"."
+        },
         "number": {
-          "type": "integer",
           "description": "The field number.",
-          "format": "int32"
+          "format": "int32",
+          "type": "integer"
         },
         "kind": {
+          "enum": [
+            "TYPE_UNKNOWN",
+            "TYPE_DOUBLE",
+            "TYPE_FLOAT",
+            "TYPE_INT64",
+            "TYPE_UINT64",
+            "TYPE_INT32",
+            "TYPE_FIXED64",
+            "TYPE_FIXED32",
+            "TYPE_BOOL",
+            "TYPE_STRING",
+            "TYPE_GROUP",
+            "TYPE_MESSAGE",
+            "TYPE_BYTES",
+            "TYPE_UINT32",
+            "TYPE_ENUM",
+            "TYPE_SFIXED32",
+            "TYPE_SFIXED64",
+            "TYPE_SINT32",
+            "TYPE_SINT64"
+          ],
           "description": "The field type.",
           "type": "string",
           "enumDescriptions": [
@@ -42,32 +71,11 @@
             "Field type sfixed64.",
             "Field type sint32.",
             "Field type sint64."
-          ],
-          "enum": [
-            "TYPE_UNKNOWN",
-            "TYPE_DOUBLE",
-            "TYPE_FLOAT",
-            "TYPE_INT64",
-            "TYPE_UINT64",
-            "TYPE_INT32",
-            "TYPE_FIXED64",
-            "TYPE_FIXED32",
-            "TYPE_BOOL",
-            "TYPE_STRING",
-            "TYPE_GROUP",
-            "TYPE_MESSAGE",
-            "TYPE_BYTES",
-            "TYPE_UINT32",
-            "TYPE_ENUM",
-            "TYPE_SFIXED32",
-            "TYPE_SFIXED64",
-            "TYPE_SINT32",
-            "TYPE_SINT64"
           ]
         },
         "jsonName": {
-          "type": "string",
-          "description": "The field JSON name."
+          "description": "The field JSON name.",
+          "type": "string"
         },
         "options": {
           "type": "array",
@@ -82,8 +90,8 @@
           "type": "integer"
         },
         "packed": {
-          "description": "Whether to use alternative packed wire representation.",
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether to use alternative packed wire representation."
         },
         "cardinality": {
           "type": "string",
@@ -100,48 +108,42 @@
             "CARDINALITY_REPEATED"
           ],
           "description": "The field cardinality."
-        },
-        "defaultValue": {
-          "description": "The string value of the default value of this field. Proto2 syntax only.",
-          "type": "string"
-        },
-        "name": {
-          "type": "string",
-          "description": "The field name."
         }
-      }
+      },
+      "id": "Field"
     },
     "SourceContext": {
       "type": "object",
       "properties": {
         "fileName": {
-          "type": "string",
-          "description": "The path-qualified name of the .proto file that contained the associated protobuf element. For example: \"google/protobuf/source_context.proto\"."
+          "description": "The path-qualified name of the .proto file that contained the associated protobuf element. For example: \"google/protobuf/source_context.proto\".",
+          "type": "string"
         }
       },
       "id": "SourceContext",
       "description": "SourceContext represents information about the source of a protobuf element, like the file in which it is defined."
     },
     "Option": {
+      "id": "Option",
       "description": "A protocol buffer option, which can be attached to a message, field, enumeration, etc.",
       "type": "object",
       "properties": {
-        "name": {
-          "description": "The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, \"map_entry\". For custom options, it should be the fully-qualified name. For example, \"google.api.http\".",
-          "type": "string"
-        },
         "value": {
-          "description": "The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.",
-          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
-          }
+          },
+          "description": "The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.",
+          "type": "object"
+        },
+        "name": {
+          "description": "The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, \"map_entry\". For custom options, it should be the fully-qualified name. For example, \"google.api.http\".",
+          "type": "string"
         }
-      },
-      "id": "Option"
+      }
     },
     "Type": {
+      "id": "Type",
       "description": "A protocol buffer message type.",
       "type": "object",
       "properties": {
@@ -161,6 +163,7 @@
           "description": "The source context."
         },
         "syntax": {
+          "type": "string",
           "enumDescriptions": [
             "Syntax proto2.",
             "Syntax proto3."
@@ -169,8 +172,7 @@
             "SYNTAX_PROTO2",
             "SYNTAX_PROTO3"
           ],
-          "description": "The source syntax.",
-          "type": "string"
+          "description": "The source syntax."
         },
         "options": {
           "description": "The protocol buffer options.",
@@ -180,24 +182,23 @@
           }
         },
         "fields": {
+          "description": "The list of fields.",
           "type": "array",
           "items": {
             "$ref": "Field"
-          },
-          "description": "The list of fields."
+          }
         }
-      },
-      "id": "Type"
+      }
     },
     "DroppedLabels": {
       "type": "object",
       "properties": {
         "label": {
+          "description": "Map from label to its value, for all labels dropped in any aggregation.",
           "type": "object",
           "additionalProperties": {
             "type": "string"
-          },
-          "description": "Map from label to its value, for all labels dropped in any aggregation."
+          }
         }
       },
       "id": "DroppedLabels",
@@ -230,6 +231,16 @@
   "ownerName": "Google",
   "resources": {},
   "parameters": {
+    "callback": {
+      "type": "string",
+      "location": "query",
+      "description": "JSONP"
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
     "$.xgafv": {
       "description": "V1 error format.",
       "type": "string",
@@ -242,16 +253,6 @@
         "1",
         "2"
       ]
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
     },
     "alt": {
       "enum": [
@@ -269,20 +270,25 @@
       "description": "Data format for response.",
       "default": "json"
     },
-    "key": {
-      "type": "string",
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    },
     "access_token": {
-      "location": "query",
       "description": "OAuth access token.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
     },
     "upload_protocol": {
       "type": "string",
       "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+    },
+    "quotaUser": {
+      "type": "string",
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
     },
     "prettyPrint": {
       "location": "query",
@@ -290,26 +296,20 @@
       "type": "boolean",
       "default": "true"
     },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
     "fields": {
       "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
     "uploadType": {
+      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     }
   },
   "version": "v1",
   "baseUrl": "https://monitoring.googleapis.com/",
   "kind": "discovery#restDescription",
   "description": "Manages your Stackdriver Monitoring data and configurations. Most projects must be associated with a Stackdriver account, with a few exceptions as noted on the individual method pages. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the Stackdriver Monitoring documentation.",
-  "servicePath": "",
-  "basePath": ""
+  "servicePath": ""
 }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/shell/docs/'>Cloud Shell API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191014 (1747)
+ *      <tr><th>API Rev<td>20191016 (1749)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/shell/docs/'>
  *              https://cloud.google.com/shell/docs/</a>
@@ -582,6 +582,10 @@ namespace Google.Apis.CloudShell.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -589,10 +593,6 @@ namespace Google.Apis.CloudShell.v1
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -628,6 +628,15 @@ namespace Google.Apis.CloudShell.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -640,15 +649,6 @@ namespace Google.Apis.CloudShell.v1
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -709,6 +709,11 @@ namespace Google.Apis.CloudShell.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeys")]
         public virtual System.Collections.Generic.IList<PublicKey> PublicKeys { get; set; } 
 
+        /// <summary>Indicates the size of the backing VM running the environment.  If set to something other than
+        /// DEFAULT, it will be reverted to the default VM size after vm_size_expire_time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual string Size { get; set; } 
+
         /// <summary>Output only. Host to which clients can connect to initiate SSH sessions with the
         /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshHost")]
@@ -727,6 +732,10 @@ namespace Google.Apis.CloudShell.v1.Data
         /// <summary>Output only. Current execution state of this environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
+
+        /// <summary>Output only. The time when the Environment will expire back to the default VM size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmSizeExpireTime")]
+        public virtual object VmSizeExpireTime { get; set; } 
 
         /// <summary>Output only. Host to which clients can connect to initiate HTTPS or WSS connections with the
         /// environment.</summary>

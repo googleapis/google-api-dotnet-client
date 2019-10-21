@@ -416,6 +416,11 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Specifies a page token to use. Set this to the nextPageToken returned by previous list
+                    /// requests to get the next page of results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>The max number of results per page that should be returned. If the number of available
                     /// results is larger than `page_size`, a `next_page_token` is returned which can be used to get the
                     /// next page of results in subsequent requests. Acceptable values are 0 to 500, inclusive.
@@ -428,11 +433,6 @@ namespace Google.Apis.Container.v1beta1
                     /// listed subnetworks. This defaults to the parent project ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
-
-                    /// <summary>Specifies a page token to use. Set this to the nextPageToken returned by previous list
-                    /// requests to get the next page of results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -468,6 +468,15 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -480,15 +489,6 @@ namespace Google.Apis.Container.v1beta1
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -668,11 +668,6 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
-                        /// replaced by the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string NodePoolId { get; set; }
-
                         /// <summary>Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the name field.</summary>
@@ -689,6 +684,11 @@ namespace Google.Apis.Container.v1beta1
                         /// the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ClusterId { get; set; }
+
+                        /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
+                        /// replaced by the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string NodePoolId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -724,15 +724,6 @@ namespace Google.Apis.Container.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "projectId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "projectId",
@@ -754,6 +745,15 @@ namespace Google.Apis.Container.v1beta1
                                 "clusterId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "clusterId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "nodePoolId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "nodePoolId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -788,6 +788,12 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
+                        /// deprecated and replaced by the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ProjectId { get; set; }
+
                         /// <summary>Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the name field.</summary>
@@ -803,12 +809,6 @@ namespace Google.Apis.Container.v1beta1
                         /// by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string NodePoolId { get; set; }
-
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                        /// deprecated and replaced by the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string ProjectId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -844,6 +844,15 @@ namespace Google.Apis.Container.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "zone", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "zone",
@@ -865,15 +874,6 @@ namespace Google.Apis.Container.v1beta1
                                 "nodePoolId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "nodePoolId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1628,6 +1628,11 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Deprecated. The name of the cluster to delete. This field has been deprecated and
+                    /// replaced by the name field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterId { get; set; }
+
                     /// <summary>Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
@@ -1639,11 +1644,6 @@ namespace Google.Apis.Container.v1beta1
                     /// field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
-
-                    /// <summary>Deprecated. The name of the cluster to delete. This field has been deprecated and
-                    /// replaced by the name field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1679,6 +1679,15 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -1691,15 +1700,6 @@ namespace Google.Apis.Container.v1beta1
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2932,12 +2932,6 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Zone { get; set; }
-
                     /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
                     /// and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
@@ -2948,6 +2942,12 @@ namespace Google.Apis.Container.v1beta1
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProjectId { get; set; }
+
+                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+                    /// in which the cluster resides. This field has been deprecated and replaced by the name
+                    /// field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Zone { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2983,15 +2983,6 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "operationId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "operationId",
@@ -3004,6 +2995,15 @@ namespace Google.Apis.Container.v1beta1
                             "projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
