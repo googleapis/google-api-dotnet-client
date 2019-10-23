@@ -627,16 +627,11 @@ namespace Google.Apis.Upload
             new ServerErrorCallback(this).AddToRequest(request);
 
             // Prepare next chunk to send. This is always read into memory one way or another.
-            byte[] chunk;
-            int chunkLength;
-            if (ContentStream.CanSeek)
-            {
-                PrepareNextChunkKnownSize(stream, cancellationToken, out chunk, out chunkLength);
-            }
-            else
-            {
-                PrepareNextChunkUnknownSize(stream, cancellationToken, out chunk, out chunkLength);
-            }
+            var tuple = ContentStream.CanSeek
+                ? await PrepareNextChunkKnownSizeAsync(stream, cancellationToken).ConfigureAwait(false)
+                : await PrepareNextChunkUnknownSizeAsync(stream, cancellationToken).ConfigureAwait(false);
+            var chunk = tuple.Item1;
+            var chunkLength = tuple.Item2;
             var content = new ByteArrayContent(chunk, 0, chunkLength);
             content.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, chunkLength));
             request.Content = content;
@@ -711,7 +706,7 @@ namespace Google.Apis.Upload
         // TODO: Make this and the next method read the stream using ReadAsync?
 
         /// <summary>Prepares the given request with the next chunk in case the steam length is unknown.</summary>
-        private void PrepareNextChunkUnknownSize(Stream stream, CancellationToken cancellationToken, out byte[] chunk, out int chunkLength)
+        private async Task<Tuple<byte[], int>> PrepareNextChunkUnknownSizeAsync(Stream stream, CancellationToken cancellationToken)
         {
             if (LastMediaRequest == null)
             {
@@ -737,7 +732,7 @@ namespace Google.Apis.Upload
             {
                 cancellationToken.ThrowIfCancellationRequested();
                 int readSize = Math.Min(BufferSize, ChunkSize + 1 - LastMediaLength);
-                int len = stream.Read(LastMediaRequest, LastMediaLength, readSize);
+                int len = await stream.ReadAsync(LastMediaRequest, LastMediaLength, readSize, cancellationToken).ConfigureAwait(false);
                 LastMediaLength += len;
                 if (len == 0)
                 {
@@ -746,12 +741,11 @@ namespace Google.Apis.Upload
                 }
             }
             // If we've read an extra byte, it'll be included in the next chunk.
-            chunkLength = Math.Min(ChunkSize, LastMediaLength);
-            chunk = LastMediaRequest;
+            return new Tuple<byte[], int>(LastMediaRequest, Math.Min(ChunkSize, LastMediaLength));
         }
 
         /// <summary>Prepares the given request with the next chunk in case the steam length is known.</summary>
-        private void PrepareNextChunkKnownSize(Stream stream, CancellationToken cancellationToken, out byte[] chunk, out int chunkLength)
+        private async Task<Tuple<byte[], int>> PrepareNextChunkKnownSizeAsync(Stream stream, CancellationToken cancellationToken)
         {
             int chunkSize = (int)Math.Min(StreamLength - BytesServerReceived, (long)ChunkSize);
 
@@ -764,7 +758,7 @@ namespace Google.Apis.Upload
                 stream.Position = BytesServerReceived;
             }
 
-            chunk = new byte[chunkSize];
+            var chunk = new byte[chunkSize];
             int bytesLeft = chunkSize;
             int bytesRead = 0;
             while (bytesLeft > 0)
@@ -772,7 +766,7 @@ namespace Google.Apis.Upload
                 cancellationToken.ThrowIfCancellationRequested();
                 // Make sure we only read at most BufferSize bytes at a time.
                 int readSize = Math.Min(bytesLeft, BufferSize);
-                int len = stream.Read(chunk, bytesRead, readSize);
+                int len = await stream.ReadAsync(chunk, bytesRead, readSize, cancellationToken).ConfigureAwait(false);
                 if (len == 0)
                 {
                     // Presumably the stream lied about its length. Not great, but we still have a chunk to send.
@@ -781,7 +775,7 @@ namespace Google.Apis.Upload
                 bytesRead += len;
                 bytesLeft -= len;
             }
-            chunkLength = bytesRead;
+            return new Tuple<byte[], int>(chunk, bytesRead);
         }
 
         /// <summary>Returns the next byte index need to be sent.</summary>
