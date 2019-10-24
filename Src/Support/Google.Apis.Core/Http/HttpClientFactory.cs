@@ -116,7 +116,7 @@ namespace Google.Apis.Http
         /// Configuring these within this method will have no effect.
         /// </description></item>
         /// <item><description>
-        /// Return a new instance of a <see cref="HttpClientHandler"/> for each call to this method.
+        /// Return a new instance of an <see cref="HttpClientHandler"/> for each call to this method.
         /// </description></item>
         /// <item><description>
         /// This method may be called once, or more than once, when initializing a single client service.
