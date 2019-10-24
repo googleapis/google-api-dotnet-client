@@ -1,5 +1,22 @@
 {% doc_comment_if method.description %}
 {% noblank %}
+/// <remarks>
+/// Considerations regarding <paramref name="stream"/>:
+/// <list type="bullet">
+/// <item><description>
+/// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+/// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+/// seekable, then it will be read from its current position.
+/// </description></item>
+/// <item><description>
+/// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+/// upload is completed.
+/// </description></item>
+/// <item><description>
+/// Caller is responsible for closing the <paramref name="stream"/>.
+/// </description></item>
+/// </list>
+/// </remarks>
 {% filter block_comment %}
 {% if method.requestType %}/// <param name="body">The body of the request.</param>{% endif %}{% eol %}
 {% endfilter %}
@@ -7,7 +24,7 @@
 {% for param in method.requiredParameters %}/// <param name={% literal param.codeName %}>{{ param.description }}</param>{% eol %}{% endfor %}
 {% endfilter %}
 {% filter block_comment %}
-/// <param name="stream">The stream to upload.</param>{% eol %}
+/// <param name="stream">The stream to upload. See remarks for further information.</param>{% eol %}
 {% endfilter %}
 {% filter block_comment %}
 /// <param name="contentType">The content type of the stream to upload.</param>{% eol %}
@@ -88,6 +105,23 @@ public class {{ method.className }}MediaUpload : Google.Apis.Upload.ResumableUpl
 {% call_template _parameter parameter=p %}
 {% endfor %}{% endindent %}
     /// <summary>Constructs a new {{ method.className }} media upload instance.</summary>
+    /// <remarks>
+    /// Considerations regarding <paramref name="stream"/>:
+    /// <list type="bullet">
+    /// <item><description>
+    /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+    /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+    /// seekable, then it will be read from its current position.
+    /// </description></item>
+    /// <item><description>
+    /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+    /// upload is completed.
+    /// </description></item>
+    /// <item><description>
+    /// Caller is responsible for closing the <paramref name="stream"/>.
+    /// </description></item>
+    /// </list>
+    /// </remarks>
     public {{ method.className }}MediaUpload({% parameter_list %}
 {% parameter %}
 Google.Apis.Services.IClientService service

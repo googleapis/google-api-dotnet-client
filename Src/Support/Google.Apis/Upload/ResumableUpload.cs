@@ -1025,10 +1025,21 @@ namespace Google.Apis.Upload
         /// <param name="contentStream">The stream containing the content to upload.</param>
         /// <param name="contentType">Content type of the content to be uploaded.</param>
         /// <remarks>
-        /// The stream <paramref name="contentStream"/> must support the "Length" property.
+        /// Considerations regarding <paramref name="contentStream"/>:
+        /// <list type="bullet">
+        /// <item><description>
+        /// If <paramref name="contentStream"/> is seekable, then the stream position will be reset to
+        /// <c>0</c> before reading commences. If <paramref name="contentStream"/> is not
+        /// seekable, then it will be read from its current position.
+        /// </description></item>
+        /// <item><description>
         /// Caller is responsible for maintaining the <paramref name="contentStream"/> open until the 
         /// upload is completed.
+        /// </description></item>
+        /// <item><description>
         /// Caller is responsible for closing the <paramref name="contentStream"/>.
+        /// </description></item>
+        /// </list>
         /// </remarks>
         protected ResumableUpload(IClientService service, string path, string httpMethod,
             Stream contentStream, string contentType)
