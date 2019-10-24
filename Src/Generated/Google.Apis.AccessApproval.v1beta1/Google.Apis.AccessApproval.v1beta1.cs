@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-approval/docs'>Access Approval API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191011 (1744)
+ *      <tr><th>API Rev<td>20191018 (1751)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-approval/docs'>
  *              https://cloud.google.com/access-approval/docs</a>
@@ -626,14 +626,6 @@ namespace Google.Apis.AccessApproval.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>A token identifying the page of results to return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Requested page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
                 ///
                 /// [not set]: Requests that are pending or have active approvals. ALL: All requests. PENDING: Only
@@ -641,6 +633,14 @@ namespace Google.Apis.AccessApproval.v1beta1
                 /// (including expired) requests. </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>A token identifying the page of results to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Requested page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -676,6 +676,15 @@ namespace Google.Apis.AccessApproval.v1beta1
                             Pattern = @"^folders/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -688,15 +697,6 @@ namespace Google.Apis.AccessApproval.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1790,14 +1790,6 @@ namespace Google.Apis.AccessApproval.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
-                ///
-                /// [not set]: Requests that are pending or have active approvals. ALL: All requests. PENDING: Only
-                /// pending requests. ACTIVE: Only active (i.e. currently approved) requests. DISMISSED: Only dismissed
-                /// (including expired) requests. </summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>A token identifying the page of results to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1805,6 +1797,14 @@ namespace Google.Apis.AccessApproval.v1beta1
                 /// <summary>Requested page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>A filter on the type of approval requests to retrieve. Must be one of the following values:
+                ///
+                /// [not set]: Requests that are pending or have active approvals. ALL: All requests. PENDING: Only
+                /// pending requests. ACTIVE: Only active (i.e. currently approved) requests. DISMISSED: Only dismissed
+                /// (including expired) requests. </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1840,15 +1840,6 @@ namespace Google.Apis.AccessApproval.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1861,6 +1852,15 @@ namespace Google.Apis.AccessApproval.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2096,6 +2096,13 @@ namespace Google.Apis.AccessApproval.v1beta1.Data
     /// <summary>Settings on a Project/Folder/Organization related to Access Approval.</summary>
     public class AccessApprovalSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. This field is read only (not settable via UpdateAccessAccessApprovalSettings method).
+        /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or
+        /// more ancestors of the Project or Folder (this field will always be unset for the organization since
+        /// organizations do not have ancestors).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrolledAncestor")]
+        public virtual System.Nullable<bool> EnrolledAncestor { get; set; } 
+
         /// <summary>A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access
         /// requests for the resource given by name against any of these services contained here will be required to
         /// have explicit approval. If name refers to an organization, enrollment can be done for individual services.

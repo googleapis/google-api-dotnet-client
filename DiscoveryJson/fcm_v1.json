@@ -1,157 +1,115 @@
 {
-  "rootUrl": "https://fcm.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "fcm",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Firebase Cloud Messaging API",
-  "ownerName": "Google",
-  "resources": {
-    "projects": {
-      "resources": {
-        "messages": {
-          "methods": {
-            "send": {
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "parent": {
-                  "description": "Required. It contains the Firebase project id (i.e. the unique identifier\nfor your Firebase project), in the format of `projects/{project_id}`.\nFor legacy support, the numeric project number with no padding is also\nsupported in the format of `projects/{project_number}`.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v1/projects/{projectsId}/messages:send",
-              "path": "v1/{+parent}/messages:send",
-              "id": "fcm.projects.messages.send",
-              "request": {
-                "$ref": "SendMessageRequest"
-              },
-              "description": "Send a message to specified target (a registration token, topic\nor condition).",
-              "response": {
-                "$ref": "Message"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "POST"
-            }
-          }
-        }
-      }
-    }
-  },
-  "parameters": {
-    "alt": {
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format."
-    }
-  },
-  "version": "v1",
-  "baseUrl": "https://fcm.googleapis.com/",
-  "servicePath": "",
-  "description": "FCM send API that provides a cross-platform messaging solution to reliably deliver messages at no cost.",
-  "kind": "discovery#restDescription",
-  "basePath": "",
-  "documentationLink": "https://firebase.google.com/docs/cloud-messaging",
   "id": "fcm:v1",
-  "revision": "20191002",
+  "documentationLink": "https://firebase.google.com/docs/cloud-messaging",
+  "revision": "20191021",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
+    "WebpushFcmOptions": {
+      "description": "Options for features provided by the FCM SDK for Web.",
+      "type": "object",
+      "properties": {
+        "link": {
+          "type": "string",
+          "description": "The link to open when the user clicks on the notification.\nFor all URL values, HTTPS is required."
+        }
+      },
+      "id": "WebpushFcmOptions"
+    },
+    "Color": {
+      "type": "object",
+      "properties": {
+        "red": {
+          "type": "number",
+          "description": "The amount of red in the color as a value in the interval [0, 1].",
+          "format": "float"
+        },
+        "green": {
+          "description": "The amount of green in the color as a value in the interval [0, 1].",
+          "format": "float",
+          "type": "number"
+        },
+        "blue": {
+          "description": "The amount of blue in the color as a value in the interval [0, 1].",
+          "format": "float",
+          "type": "number"
+        },
+        "alpha": {
+          "description": "The fraction of this color that should be applied to the pixel. That is,\nthe final pixel color is defined by the equation:\n\n  pixel color = alpha * (this color) + (1.0 - alpha) * (background color)\n\nThis means that a value of 1.0 corresponds to a solid color, whereas\na value of 0.0 corresponds to a completely transparent color. This\nuses a wrapper message rather than a simple float scalar so that it is\npossible to distinguish between a default value and the value being unset.\nIf omitted, this color object is to be rendered as a solid color\n(as if the alpha value had been explicitly given with a value of 1.0).",
+          "format": "float",
+          "type": "number"
+        }
+      },
+      "id": "Color",
+      "description": "Represents a color in the RGBA color space. This representation is designed\nfor simplicity of conversion to/from color representations in various\nlanguages over compactness; for example, the fields of this representation\ncan be trivially provided to the constructor of \"java.awt.Color\" in Java; it\ncan also be trivially provided to UIColor's \"+colorWithRed:green:blue:alpha\"\nmethod in iOS; and, with just a little work, it can be easily formatted into\na CSS \"rgba()\" string in JavaScript, as well.\n\nNote: this proto does not carry information about the absolute color space\nthat should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,\nDCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color\nspace.\n\nExample (Java):\n\n     import com.google.type.Color;\n\n     // ...\n     public static java.awt.Color fromProto(Color protocolor) {\n       float alpha = protocolor.hasAlpha()\n           ? protocolor.getAlpha().getValue()\n           : 1.0;\n\n       return new java.awt.Color(\n           protocolor.getRed(),\n           protocolor.getGreen(),\n           protocolor.getBlue(),\n           alpha);\n     }\n\n     public static Color toProto(java.awt.Color color) {\n       float red = (float) color.getRed();\n       float green = (float) color.getGreen();\n       float blue = (float) color.getBlue();\n       float denominator = 255.0;\n       Color.Builder resultBuilder =\n           Color\n               .newBuilder()\n               .setRed(red / denominator)\n               .setGreen(green / denominator)\n               .setBlue(blue / denominator);\n       int alpha = color.getAlpha();\n       if (alpha != 255) {\n         result.setAlpha(\n             FloatValue\n                 .newBuilder()\n                 .setValue(((float) alpha) / denominator)\n                 .build());\n       }\n       return resultBuilder.build();\n     }\n     // ...\n\nExample (iOS / Obj-C):\n\n     // ...\n     static UIColor* fromProto(Color* protocolor) {\n        float red = [protocolor red];\n        float green = [protocolor green];\n        float blue = [protocolor blue];\n        FloatValue* alpha_wrapper = [protocolor alpha];\n        float alpha = 1.0;\n        if (alpha_wrapper != nil) {\n          alpha = [alpha_wrapper value];\n        }\n        return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];\n     }\n\n     static Color* toProto(UIColor* color) {\n         CGFloat red, green, blue, alpha;\n         if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) {\n           return nil;\n         }\n         Color* result = [[Color alloc] init];\n         [result setRed:red];\n         [result setGreen:green];\n         [result setBlue:blue];\n         if (alpha \u003c= 0.9999) {\n           [result setAlpha:floatWrapperWithValue(alpha)];\n         }\n         [result autorelease];\n         return result;\n    }\n    // ...\n\n Example (JavaScript):\n\n    // ...\n\n    var protoToCssColor = function(rgb_color) {\n       var redFrac = rgb_color.red || 0.0;\n       var greenFrac = rgb_color.green || 0.0;\n       var blueFrac = rgb_color.blue || 0.0;\n       var red = Math.floor(redFrac * 255);\n       var green = Math.floor(greenFrac * 255);\n       var blue = Math.floor(blueFrac * 255);\n\n       if (!('alpha' in rgb_color)) {\n          return rgbToCssColor_(red, green, blue);\n       }\n\n       var alphaFrac = rgb_color.alpha.value || 0.0;\n       var rgbParams = [red, green, blue].join(',');\n       return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');\n    };\n\n    var rgbToCssColor_ = function(red, green, blue) {\n      var rgbNumber = new Number((red \u003c\u003c 16) | (green \u003c\u003c 8) | blue);\n      var hexString = rgbNumber.toString(16);\n      var missingZeros = 6 - hexString.length;\n      var resultBuilder = ['#'];\n      for (var i = 0; i \u003c missingZeros; i++) {\n         resultBuilder.push('0');\n      }\n      resultBuilder.push(hexString);\n      return resultBuilder.join('');\n    };\n\n    // ..."
+    },
+    "Message": {
+      "type": "object",
+      "properties": {
+        "apns": {
+          "$ref": "ApnsConfig",
+          "description": "Input only. [Apple Push Notification Service](https://goo.gl/MXRTPa)\nspecific options."
+        },
+        "webpush": {
+          "$ref": "WebpushConfig",
+          "description": "Input only. [Webpush protocol](https://tools.ietf.org/html/rfc8030)\noptions."
+        },
+        "name": {
+          "description": "Output Only. The identifier of the message sent, in the format of\n`projects/*/messages/{message_id}`.",
+          "type": "string"
+        },
+        "topic": {
+          "description": "Topic name to send a message to, e.g. \"weather\".\nNote: \"/topics/\" prefix should not be provided.",
+          "type": "string"
+        },
+        "notification": {
+          "description": "Input only. Basic notification template to use across all platforms.",
+          "$ref": "Notification"
+        },
+        "fcmOptions": {
+          "description": "Input only. Template for FCM SDK feature options to use across all\nplatforms.",
+          "$ref": "FcmOptions"
+        },
+        "data": {
+          "description": "Input only. Arbitrary key/value payload. The key should not be a reserved\nword (\"from\", \"message_type\", or any word starting with \"google\" or \"gcm\").",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "token": {
+          "description": "Registration token to send a message to.",
+          "type": "string"
+        },
+        "android": {
+          "$ref": "AndroidConfig",
+          "description": "Input only. Android specific options for messages sent through\n[FCM connection server](https://goo.gl/4GLdUl)."
+        },
+        "condition": {
+          "type": "string",
+          "description": "Condition to send a message to,\ne.g. \"'foo' in topics && 'bar' in topics\"."
+        }
+      },
+      "id": "Message",
+      "description": "Message to send by Firebase Cloud Messaging Service."
+    },
     "AndroidFcmOptions": {
-      "id": "AndroidFcmOptions",
       "description": "Options for features provided by the FCM SDK for Android.",
       "type": "object",
       "properties": {
         "analyticsLabel": {
-          "type": "string",
-          "description": "Label associated with the message's analytics data."
+          "description": "Label associated with the message's analytics data.",
+          "type": "string"
         }
-      }
+      },
+      "id": "AndroidFcmOptions"
     },
     "Notification": {
-      "id": "Notification",
-      "description": "Basic notification template to use across all platforms.",
       "type": "object",
       "properties": {
         "title": {
-          "type": "string",
-          "description": "The notification's title."
+          "description": "The notification's title.",
+          "type": "string"
         },
         "image": {
           "description": "Contains the URL of an image that is going to be downloaded on the device\nand displayed in a notification.\nJPEG, PNG, BMP have full support across platforms. Animated GIF and video\nonly work on iOS. WebP and HEIF have varying levels of support across\nplatforms and platform versions.\nAndroid has 1MB image size limit.\nQuota usage and implications/costs for hosting image on Firebase Storage:\nhttps://firebase.google.com/pricing",
@@ -161,7 +119,9 @@
           "description": "The notification's body text.",
           "type": "string"
         }
-      }
+      },
+      "id": "Notification",
+      "description": "Basic notification template to use across all platforms."
     },
     "FcmOptions": {
       "description": "Platform independent options for features provided by the FCM SDKs.",
@@ -175,9 +135,17 @@
       "id": "FcmOptions"
     },
     "WebpushConfig": {
+      "id": "WebpushConfig",
       "description": "[Webpush protocol](https://tools.ietf.org/html/rfc8030) options.",
       "type": "object",
       "properties": {
+        "data": {
+          "description": "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
         "notification": {
           "additionalProperties": {
             "type": "any",
@@ -191,39 +159,30 @@
           "description": "Options for features provided by the FCM SDK for Web."
         },
         "headers": {
-          "additionalProperties": {
-            "type": "string"
-          },
           "description": "HTTP headers defined in webpush protocol. Refer to\n[Webpush protocol](https://tools.ietf.org/html/rfc8030#section-5) for\nsupported headers, e.g. \"TTL\": \"15\".",
-          "type": "object"
-        },
-        "data": {
+          "type": "object",
           "additionalProperties": {
             "type": "string"
-          },
-          "description": "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data.",
-          "type": "object"
+          }
         }
-      },
-      "id": "WebpushConfig"
+      }
     },
     "SendMessageRequest": {
+      "id": "SendMessageRequest",
       "description": "Request to send a message to specified target.",
       "type": "object",
       "properties": {
-        "validateOnly": {
-          "description": "Flag for testing the request without actually delivering the message.",
-          "type": "boolean"
-        },
         "message": {
           "$ref": "Message",
           "description": "Required. Message to send."
+        },
+        "validateOnly": {
+          "type": "boolean",
+          "description": "Flag for testing the request without actually delivering the message."
         }
-      },
-      "id": "SendMessageRequest"
+      }
     },
     "LightSettings": {
-      "id": "LightSettings",
       "description": "Settings to control notification LED.",
       "type": "object",
       "properties": {
@@ -237,57 +196,51 @@
           "type": "string"
         },
         "lightOffDuration": {
+          "type": "string",
           "description": "Required. Along with `light_on_duration `, define the blink rate of LED\nflashes. Resolution defined by\n[proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)",
-          "format": "google-duration",
-          "type": "string"
+          "format": "google-duration"
         }
-      }
+      },
+      "id": "LightSettings"
     },
     "ApnsFcmOptions": {
-      "id": "ApnsFcmOptions",
       "description": "Options for features provided by the FCM SDK for iOS.",
       "type": "object",
       "properties": {
-        "image": {
-          "description": "Contains the URL of an image that is going to be displayed in a\nnotification. If present, it will override\ngoogle.firebase.fcm.v1.Notification.image.",
-          "type": "string"
-        },
         "analyticsLabel": {
           "description": "Label associated with the message's analytics data.",
           "type": "string"
+        },
+        "image": {
+          "description": "Contains the URL of an image that is going to be displayed in a\nnotification. If present, it will override\ngoogle.firebase.fcm.v1.Notification.image.",
+          "type": "string"
         }
-      }
+      },
+      "id": "ApnsFcmOptions"
     },
     "AndroidConfig": {
-      "id": "AndroidConfig",
       "description": "Android specific options for messages sent through\n[FCM connection server](https://goo.gl/4GLdUl).",
       "type": "object",
       "properties": {
-        "fcmOptions": {
-          "description": "Options for features provided by the FCM SDK for Android.",
-          "$ref": "AndroidFcmOptions"
-        },
-        "notification": {
-          "$ref": "AndroidNotification",
-          "description": "Notification to send to android devices."
-        },
         "restrictedPackageName": {
           "description": "Package name of the application where the registration token must match in\norder to receive the message.",
           "type": "string"
         },
-        "ttl": {
-          "description": "How long (in seconds) the message should be kept in FCM storage if the\ndevice is offline. The maximum time to live supported is 4 weeks, and the\ndefault value is 4 weeks if not set. Set it to 0 if want to send the\nmessage immediately.\nIn JSON format, the Duration type is encoded as a string rather than an\nobject, where the string ends in the suffix \"s\" (indicating seconds) and\nis preceded by the number of seconds, with nanoseconds expressed as\nfractional seconds. For example, 3 seconds with 0 nanoseconds should be\nencoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should\nbe expressed in JSON format as \"3.000000001s\". The ttl will be rounded down\nto the nearest second.",
-          "format": "google-duration",
-          "type": "string"
+        "notification": {
+          "description": "Notification to send to android devices.",
+          "$ref": "AndroidNotification"
         },
-        "data": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data.",
-          "type": "object"
+        "fcmOptions": {
+          "description": "Options for features provided by the FCM SDK for Android.",
+          "$ref": "AndroidFcmOptions"
+        },
+        "ttl": {
+          "type": "string",
+          "description": "How long (in seconds) the message should be kept in FCM storage if the\ndevice is offline. The maximum time to live supported is 4 weeks, and the\ndefault value is 4 weeks if not set. Set it to 0 if want to send the\nmessage immediately.\nIn JSON format, the Duration type is encoded as a string rather than an\nobject, where the string ends in the suffix \"s\" (indicating seconds) and\nis preceded by the number of seconds, with nanoseconds expressed as\nfractional seconds. For example, 3 seconds with 0 nanoseconds should be\nencoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should\nbe expressed in JSON format as \"3.000000001s\". The ttl will be rounded down\nto the nearest second.",
+          "format": "google-duration"
         },
         "priority": {
+          "type": "string",
           "enumDescriptions": [
             "Default priority for data messages. Normal priority messages won't open\nnetwork connections on a sleeping device, and their delivery may be\ndelayed to conserve the battery. For less time-sensitive messages, such\nas notifications of new email or other data to sync, choose normal\ndelivery priority.",
             "Default priority for notification messages. FCM attempts to deliver high\npriority messages immediately, allowing the FCM service to wake a\nsleeping device when possible and open a network connection to your app\nserver. Apps with instant messaging, chat, or voice call alerts, for\nexample, generally need to open a network connection and make sure FCM\ndelivers the message to the device without delay. Set high priority if\nthe message is time-critical and requires the user's immediate\ninteraction, but beware that setting your messages to high priority\ncontributes more to battery drain compared with normal priority messages."
@@ -296,30 +249,37 @@
             "NORMAL",
             "HIGH"
           ],
-          "description": "Message priority. Can take \"normal\" and \"high\" values.\nFor more information, see [Setting the priority of a\nmessage](https://goo.gl/GjONJv).",
-          "type": "string"
+          "description": "Message priority. Can take \"normal\" and \"high\" values.\nFor more information, see [Setting the priority of a\nmessage](https://goo.gl/GjONJv)."
+        },
+        "data": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Arbitrary key/value payload. If present, it will override\ngoogle.firebase.fcm.v1.Message.data.",
+          "type": "object"
         },
         "collapseKey": {
           "description": "An identifier of a group of messages that can be collapsed, so that only\nthe last message gets sent when delivery can be resumed. A maximum of 4\ndifferent collapse keys is allowed at any given time.",
           "type": "string"
         }
-      }
+      },
+      "id": "AndroidConfig"
     },
     "ApnsConfig": {
       "description": "[Apple Push Notification Service](https://goo.gl/MXRTPa) specific options.",
       "type": "object",
       "properties": {
         "payload": {
-          "description": "APNs payload as a JSON object, including both `aps` dictionary and custom\npayload. See [Payload Key\nReference](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification).\nIf present, it overrides google.firebase.fcm.v1.Notification.title\nand google.firebase.fcm.v1.Notification.body.",
           "type": "object",
           "additionalProperties": {
             "description": "Properties of the object.",
             "type": "any"
-          }
+          },
+          "description": "APNs payload as a JSON object, including both `aps` dictionary and custom\npayload. See [Payload Key\nReference](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification).\nIf present, it overrides google.firebase.fcm.v1.Notification.title\nand google.firebase.fcm.v1.Notification.body."
         },
         "fcmOptions": {
-          "$ref": "ApnsFcmOptions",
-          "description": "Options for features provided by the FCM SDK for iOS."
+          "description": "Options for features provided by the FCM SDK for iOS.",
+          "$ref": "ApnsFcmOptions"
         },
         "headers": {
           "additionalProperties": {
@@ -332,9 +292,31 @@
       "id": "ApnsConfig"
     },
     "AndroidNotification": {
-      "description": "Notification to send to android devices.",
       "type": "object",
       "properties": {
+        "title": {
+          "description": "The notification's title. If present, it will override\ngoogle.firebase.fcm.v1.Notification.title.",
+          "type": "string"
+        },
+        "defaultSound": {
+          "description": "If set to true, use the Android framework's default sound for the\nnotification. Default values are specified in\n[config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).",
+          "type": "boolean"
+        },
+        "sticky": {
+          "description": "When set to false or unset, the notification is automatically\ndismissed when the user clicks it in the panel. When set to true, the\nnotification persists even when the user clicks it.",
+          "type": "boolean"
+        },
+        "titleLocArgs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Variable string values to be used in place of the format specifiers in\ntitle_loc_key to use to localize the title text to the user's current\nlocalization.\nSee [Formatting and Styling](https://goo.gl/MalYE3) for more information."
+        },
+        "channelId": {
+          "type": "string",
+          "description": "The [notification's channel\nid](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels)\n(new in Android O). The app must create a channel with this channel ID\nbefore any notification with this channel ID is received. If you don't send\nthis channel ID in the request, or if the channel ID provided has not yet\nbeen created by the app, FCM uses the channel ID specified in the app\nmanifest."
+        },
         "defaultVibrateTimings": {
           "type": "boolean",
           "description": "If set to true, use the Android framework's default vibrate pattern for the\nnotification. Default values are specified in\n[config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).\nIf `default_vibrate_timings` is set to true and `vibrate_timings` is also\nset, the default value is used instead of the user-specified\n`vibrate_timings`."
@@ -344,13 +326,13 @@
           "description": "The action associated with a user click on the notification.\nIf specified, an activity with a matching intent filter is launched when\na user clicks on the notification."
         },
         "eventTime": {
-          "type": "string",
           "description": "Set the time that the event in the notification occurred. Notifications in\nthe panel are sorted by this time. A point in time is represented using\n[protobuf.Timestamp](https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/Timestamp).",
-          "format": "google-datetime"
+          "format": "google-datetime",
+          "type": "string"
         },
         "defaultLightSettings": {
-          "description": "If set to true, use the Android framework's default LED light settings for\nthe notification. Default values are specified in\n[config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).\nIf `default_light_settings` is set to true and `light_settings` is also\nset, the user-specified `light_settings` is used instead of the\ndefault value.",
-          "type": "boolean"
+          "type": "boolean",
+          "description": "If set to true, use the Android framework's default LED light settings for\nthe notification. Default values are specified in\n[config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).\nIf `default_light_settings` is set to true and `light_settings` is also\nset, the user-specified `light_settings` is used instead of the\ndefault value."
         },
         "localOnly": {
           "description": "Set whether or not this notification is relevant only to the current\ndevice. Some notifications can be bridged to other devices for remote\ndisplay, such as a Wear OS watch. This hint can be set to recommend this\nnotification not be bridged. See [Wear OS\nguides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-preventing-bridging)",
@@ -377,60 +359,62 @@
           ]
         },
         "vibrateTimings": {
+          "description": "Set the vibration pattern to use. Pass in an array of\n[protobuf.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)\nto turn on or off the vibrator. The first value indicates the `Duration` to\nwait before turning the vibrator on. The next value indicates the\n`Duration` to keep the vibrator on. Subsequent values alternate between\n`Duration` to turn the vibrator off and to turn the vibrator on.\nIf `vibrate_timings` is set and `default_vibrate_timings` is set to `true`,\nthe default value is used instead of the user-specified `vibrate_timings`.",
           "type": "array",
           "items": {
             "format": "google-duration",
             "type": "string"
-          },
-          "description": "Set the vibration pattern to use. Pass in an array of\n[protobuf.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)\nto turn on or off the vibrator. The first value indicates the `Duration` to\nwait before turning the vibrator on. The next value indicates the\n`Duration` to keep the vibrator on. Subsequent values alternate between\n`Duration` to turn the vibrator off and to turn the vibrator on.\nIf `vibrate_timings` is set and `default_vibrate_timings` is set to `true`,\nthe default value is used instead of the user-specified `vibrate_timings`."
+          }
         },
         "sound": {
-          "description": "The sound to play when the device receives the notification.\nSupports \"default\" or the filename of a sound resource bundled in the app.\nSound files must reside in /res/raw/.",
-          "type": "string"
+          "type": "string",
+          "description": "The sound to play when the device receives the notification.\nSupports \"default\" or the filename of a sound resource bundled in the app.\nSound files must reside in /res/raw/."
         },
         "bodyLocKey": {
           "description": "The key to the body string in the app's string resources to use to localize\nthe body text to the user's current localization.\nSee [String Resources](https://goo.gl/NdFZGI) for more information.",
           "type": "string"
         },
         "notificationCount": {
-          "type": "integer",
           "description": "Sets the number of items this notification represents. May be displayed as\na badge count for launchers that support badging.See [Notification\nBadge](https://developer.android.com/training/notify-user/badges).\nFor example, this might be useful if you're using just one notification to\nrepresent multiple new messages but you want the count here to represent\nthe number of total new messages.\nIf zero or unspecified, systems that support badging use the default, which\nis to increment a number displayed on the long-press menu each time a new\nnotification arrives.",
-          "format": "int32"
+          "format": "int32",
+          "type": "integer"
         },
         "bodyLocArgs": {
-          "description": "Variable string values to be used in place of the format specifiers in\nbody_loc_key to use to localize the body text to the user's current\nlocalization.\nSee [Formatting and Styling](https://goo.gl/MalYE3) for more information.",
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "Variable string values to be used in place of the format specifiers in\nbody_loc_key to use to localize the body text to the user's current\nlocalization.\nSee [Formatting and Styling](https://goo.gl/MalYE3) for more information."
         },
         "body": {
           "description": "The notification's body text. If present, it will override\ngoogle.firebase.fcm.v1.Notification.body.",
           "type": "string"
         },
         "lightSettings": {
-          "$ref": "LightSettings",
-          "description": "Settings to control the notification's LED blinking rate and color if LED\nis available on the device. The total blinking time is controlled by the\nOS."
+          "description": "Settings to control the notification's LED blinking rate and color if LED\nis available on the device. The total blinking time is controlled by the\nOS.",
+          "$ref": "LightSettings"
         },
         "icon": {
-          "description": "The notification's icon.\nSets the notification icon to myicon for drawable resource myicon.\nIf you don't send this key in the request, FCM displays the launcher icon\nspecified in your app manifest.",
-          "type": "string"
+          "type": "string",
+          "description": "The notification's icon.\nSets the notification icon to myicon for drawable resource myicon.\nIf you don't send this key in the request, FCM displays the launcher icon\nspecified in your app manifest."
         },
         "color": {
           "description": "The notification's icon color, expressed in #rrggbb format.",
           "type": "string"
         },
         "tag": {
-          "type": "string",
-          "description": "Identifier used to replace existing notifications in the notification\ndrawer.\nIf not specified, each request creates a new notification.\nIf specified and a notification with the same tag is already being shown,\nthe new notification replaces the existing one in the notification drawer."
+          "description": "Identifier used to replace existing notifications in the notification\ndrawer.\nIf not specified, each request creates a new notification.\nIf specified and a notification with the same tag is already being shown,\nthe new notification replaces the existing one in the notification drawer.",
+          "type": "string"
         },
         "titleLocKey": {
           "description": "The key to the title string in the app's string resources to use to\nlocalize the title text to the user's current localization.\nSee [String Resources](https://goo.gl/NdFZGI) for more information.",
           "type": "string"
         },
-        "visibility": {
-          "description": "Set the\n[Notification.visibility](https://developer.android.com/reference/android/app/Notification.html#visibility)\nof the notification.",
+        "image": {
           "type": "string",
+          "description": "Contains the URL of an image that is going to be displayed in a\nnotification. If present, it will override\ngoogle.firebase.fcm.v1.Notification.image."
+        },
+        "visibility": {
           "enumDescriptions": [
             "If unspecified, default to `Visibility.PRIVATE`.",
             "Show this notification on all lockscreens, but conceal sensitive or\nprivate information on secure lockscreens.",
@@ -442,129 +426,17 @@
             "PRIVATE",
             "PUBLIC",
             "SECRET"
-          ]
-        },
-        "image": {
-          "description": "Contains the URL of an image that is going to be displayed in a\nnotification. If present, it will override\ngoogle.firebase.fcm.v1.Notification.image.",
+          ],
+          "description": "Set the\n[Notification.visibility](https://developer.android.com/reference/android/app/Notification.html#visibility)\nof the notification.",
           "type": "string"
         },
         "ticker": {
           "description": "Sets the \"ticker\" text, which is sent to accessibility services.\nPrior to API level 21 (`Lollipop`), sets the text that is displayed in the\nstatus bar when the notification first arrives.",
           "type": "string"
-        },
-        "title": {
-          "type": "string",
-          "description": "The notification's title. If present, it will override\ngoogle.firebase.fcm.v1.Notification.title."
-        },
-        "defaultSound": {
-          "description": "If set to true, use the Android framework's default sound for the\nnotification. Default values are specified in\n[config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).",
-          "type": "boolean"
-        },
-        "sticky": {
-          "description": "When set to false or unset, the notification is automatically\ndismissed when the user clicks it in the panel. When set to true, the\nnotification persists even when the user clicks it.",
-          "type": "boolean"
-        },
-        "titleLocArgs": {
-          "description": "Variable string values to be used in place of the format specifiers in\ntitle_loc_key to use to localize the title text to the user's current\nlocalization.\nSee [Formatting and Styling](https://goo.gl/MalYE3) for more information.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "channelId": {
-          "description": "The [notification's channel\nid](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels)\n(new in Android O). The app must create a channel with this channel ID\nbefore any notification with this channel ID is received. If you don't send\nthis channel ID in the request, or if the channel ID provided has not yet\nbeen created by the app, FCM uses the channel ID specified in the app\nmanifest.",
-          "type": "string"
         }
       },
-      "id": "AndroidNotification"
-    },
-    "WebpushFcmOptions": {
-      "type": "object",
-      "properties": {
-        "link": {
-          "type": "string",
-          "description": "The link to open when the user clicks on the notification.\nFor all URL values, HTTPS is required."
-        }
-      },
-      "id": "WebpushFcmOptions",
-      "description": "Options for features provided by the FCM SDK for Web."
-    },
-    "Color": {
-      "id": "Color",
-      "description": "Represents a color in the RGBA color space. This representation is designed\nfor simplicity of conversion to/from color representations in various\nlanguages over compactness; for example, the fields of this representation\ncan be trivially provided to the constructor of \"java.awt.Color\" in Java; it\ncan also be trivially provided to UIColor's \"+colorWithRed:green:blue:alpha\"\nmethod in iOS; and, with just a little work, it can be easily formatted into\na CSS \"rgba()\" string in JavaScript, as well.\n\nNote: this proto does not carry information about the absolute color space\nthat should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,\nDCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color\nspace.\n\nExample (Java):\n\n     import com.google.type.Color;\n\n     // ...\n     public static java.awt.Color fromProto(Color protocolor) {\n       float alpha = protocolor.hasAlpha()\n           ? protocolor.getAlpha().getValue()\n           : 1.0;\n\n       return new java.awt.Color(\n           protocolor.getRed(),\n           protocolor.getGreen(),\n           protocolor.getBlue(),\n           alpha);\n     }\n\n     public static Color toProto(java.awt.Color color) {\n       float red = (float) color.getRed();\n       float green = (float) color.getGreen();\n       float blue = (float) color.getBlue();\n       float denominator = 255.0;\n       Color.Builder resultBuilder =\n           Color\n               .newBuilder()\n               .setRed(red / denominator)\n               .setGreen(green / denominator)\n               .setBlue(blue / denominator);\n       int alpha = color.getAlpha();\n       if (alpha != 255) {\n         result.setAlpha(\n             FloatValue\n                 .newBuilder()\n                 .setValue(((float) alpha) / denominator)\n                 .build());\n       }\n       return resultBuilder.build();\n     }\n     // ...\n\nExample (iOS / Obj-C):\n\n     // ...\n     static UIColor* fromProto(Color* protocolor) {\n        float red = [protocolor red];\n        float green = [protocolor green];\n        float blue = [protocolor blue];\n        FloatValue* alpha_wrapper = [protocolor alpha];\n        float alpha = 1.0;\n        if (alpha_wrapper != nil) {\n          alpha = [alpha_wrapper value];\n        }\n        return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];\n     }\n\n     static Color* toProto(UIColor* color) {\n         CGFloat red, green, blue, alpha;\n         if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) {\n           return nil;\n         }\n         Color* result = [[Color alloc] init];\n         [result setRed:red];\n         [result setGreen:green];\n         [result setBlue:blue];\n         if (alpha \u003c= 0.9999) {\n           [result setAlpha:floatWrapperWithValue(alpha)];\n         }\n         [result autorelease];\n         return result;\n    }\n    // ...\n\n Example (JavaScript):\n\n    // ...\n\n    var protoToCssColor = function(rgb_color) {\n       var redFrac = rgb_color.red || 0.0;\n       var greenFrac = rgb_color.green || 0.0;\n       var blueFrac = rgb_color.blue || 0.0;\n       var red = Math.floor(redFrac * 255);\n       var green = Math.floor(greenFrac * 255);\n       var blue = Math.floor(blueFrac * 255);\n\n       if (!('alpha' in rgb_color)) {\n          return rgbToCssColor_(red, green, blue);\n       }\n\n       var alphaFrac = rgb_color.alpha.value || 0.0;\n       var rgbParams = [red, green, blue].join(',');\n       return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');\n    };\n\n    var rgbToCssColor_ = function(red, green, blue) {\n      var rgbNumber = new Number((red \u003c\u003c 16) | (green \u003c\u003c 8) | blue);\n      var hexString = rgbNumber.toString(16);\n      var missingZeros = 6 - hexString.length;\n      var resultBuilder = ['#'];\n      for (var i = 0; i \u003c missingZeros; i++) {\n         resultBuilder.push('0');\n      }\n      resultBuilder.push(hexString);\n      return resultBuilder.join('');\n    };\n\n    // ...",
-      "type": "object",
-      "properties": {
-        "green": {
-          "type": "number",
-          "description": "The amount of green in the color as a value in the interval [0, 1].",
-          "format": "float"
-        },
-        "blue": {
-          "description": "The amount of blue in the color as a value in the interval [0, 1].",
-          "format": "float",
-          "type": "number"
-        },
-        "alpha": {
-          "description": "The fraction of this color that should be applied to the pixel. That is,\nthe final pixel color is defined by the equation:\n\n  pixel color = alpha * (this color) + (1.0 - alpha) * (background color)\n\nThis means that a value of 1.0 corresponds to a solid color, whereas\na value of 0.0 corresponds to a completely transparent color. This\nuses a wrapper message rather than a simple float scalar so that it is\npossible to distinguish between a default value and the value being unset.\nIf omitted, this color object is to be rendered as a solid color\n(as if the alpha value had been explicitly given with a value of 1.0).",
-          "format": "float",
-          "type": "number"
-        },
-        "red": {
-          "description": "The amount of red in the color as a value in the interval [0, 1].",
-          "format": "float",
-          "type": "number"
-        }
-      }
-    },
-    "Message": {
-      "type": "object",
-      "properties": {
-        "condition": {
-          "description": "Condition to send a message to,\ne.g. \"'foo' in topics && 'bar' in topics\".",
-          "type": "string"
-        },
-        "android": {
-          "$ref": "AndroidConfig",
-          "description": "Input only. Android specific options for messages sent through\n[FCM connection server](https://goo.gl/4GLdUl)."
-        },
-        "apns": {
-          "$ref": "ApnsConfig",
-          "description": "Input only. [Apple Push Notification Service](https://goo.gl/MXRTPa)\nspecific options."
-        },
-        "webpush": {
-          "$ref": "WebpushConfig",
-          "description": "Input only. [Webpush protocol](https://tools.ietf.org/html/rfc8030)\noptions."
-        },
-        "name": {
-          "type": "string",
-          "description": "Output Only. The identifier of the message sent, in the format of\n`projects/*/messages/{message_id}`."
-        },
-        "topic": {
-          "description": "Topic name to send a message to, e.g. \"weather\".\nNote: \"/topics/\" prefix should not be provided.",
-          "type": "string"
-        },
-        "fcmOptions": {
-          "$ref": "FcmOptions",
-          "description": "Input only. Template for FCM SDK feature options to use across all\nplatforms."
-        },
-        "notification": {
-          "$ref": "Notification",
-          "description": "Input only. Basic notification template to use across all platforms."
-        },
-        "data": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Input only. Arbitrary key/value payload. The key should not be a reserved\nword (\"from\", \"message_type\", or any word starting with \"google\" or \"gcm\").",
-          "type": "object"
-        },
-        "token": {
-          "description": "Registration token to send a message to.",
-          "type": "string"
-        }
-      },
-      "id": "Message",
-      "description": "Message to send by Firebase Cloud Messaging Service."
+      "id": "AndroidNotification",
+      "description": "Notification to send to android devices."
     }
   },
   "protocol": "rest",
@@ -581,5 +453,133 @@
         }
       }
     }
-  }
+  },
+  "rootUrl": "https://fcm.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "fcm",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Firebase Cloud Messaging API",
+  "ownerName": "Google",
+  "resources": {
+    "projects": {
+      "resources": {
+        "messages": {
+          "methods": {
+            "send": {
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "parent": {
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path",
+                  "description": "Required. It contains the Firebase project id (i.e. the unique identifier\nfor your Firebase project), in the format of `projects/{project_id}`.\nFor legacy support, the numeric project number with no padding is also\nsupported in the format of `projects/{project_number}`.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1/projects/{projectsId}/messages:send",
+              "path": "v1/{+parent}/messages:send",
+              "id": "fcm.projects.messages.send",
+              "request": {
+                "$ref": "SendMessageRequest"
+              },
+              "description": "Send a message to specified target (a registration token, topic\nor condition).",
+              "response": {
+                "$ref": "Message"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "POST"
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ]
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "callback": {
+      "type": "string",
+      "location": "query",
+      "description": "JSONP"
+    },
+    "alt": {
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
+    },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
+    }
+  },
+  "version": "v1",
+  "baseUrl": "https://fcm.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "FCM send API that provides a cross-platform messaging solution to reliably deliver messages at no cost.",
+  "servicePath": "",
+  "basePath": ""
 }

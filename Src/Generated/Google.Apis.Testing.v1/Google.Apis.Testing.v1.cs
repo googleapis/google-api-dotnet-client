@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191019 (1752)
+ *      <tr><th>API Rev<td>20191021 (1754)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -954,6 +954,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orchestratorOption")]
         public virtual string OrchestratorOption { get; set; } 
 
+        /// <summary>The option to run tests in multiple shards in parallel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shardingOption")]
+        public virtual ShardingOption ShardingOption { get; set; } 
+
         /// <summary>Required. The APK containing the test code to be executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testApk")]
         public virtual FileReference TestApk { get; set; } 
@@ -1744,6 +1748,21 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Shards test cases into the specified groups of packages, classes, and/or methods.
+    ///
+    /// With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is
+    /// invalid.</summary>
+    public class ManualSharding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Group of packages, classes, and/or test methods to be run for each shard. The number of
+        /// shard_test_targets must be > 1, and <= 50.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testTargetsForShard")]
+        public virtual System.Collections.Generic.IList<TestTargetsForShard> TestTargetsForShard { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class NetworkConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The emulation rule applying to the download traffic.</summary>
@@ -1911,6 +1930,40 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Output only. Details about the shard.</summary>
+    public class Shard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The total number of shards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numShards")]
+        public virtual System.Nullable<int> NumShards { get; set; } 
+
+        /// <summary>Output only. The index of the shard among all the shards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shardIndex")]
+        public virtual System.Nullable<int> ShardIndex { get; set; } 
+
+        /// <summary>Output only. Test targets for each shard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testTargetsForShard")]
+        public virtual TestTargetsForShard TestTargetsForShard { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Options for enabling sharding.</summary>
+    public class ShardingOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Shards test cases into the specified groups of packages, classes, and/or methods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualSharding")]
+        public virtual ManualSharding ManualSharding { get; set; } 
+
+        /// <summary>Uniformly shards test cases given a total number of shards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniformSharding")]
+        public virtual UniformSharding UniformSharding { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A starting intent specified by an action, uri, and categories.</summary>
     public class StartActivityIntent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1990,6 +2043,10 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Output only. The cloud project that owns the test execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
+
+        /// <summary>Output only. Details about the shard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shard")]
+        public virtual Shard Shard { get; set; } 
 
         /// <summary>Output only. Indicates the current progress of the test execution (e.g., FINISHED).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -2162,6 +2219,21 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Test targets for a shard.</summary>
+    public class TestTargetsForShard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Group of packages, classes, and/or test methods to be run for each shard. The targets need to be
+        /// specified in AndroidJUnitRunner argument format. For example, “package com.my.packages” “class
+        /// com.my.package.MyClass”.
+        ///
+        /// The number of shard_test_targets must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testTargets")]
+        public virtual System.Collections.Generic.IList<string> TestTargets { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a tool results execution resource.
     ///
     /// This has the results of a TestMatrix.</summary>
@@ -2245,6 +2317,21 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Packet loss ratio (0.0 - 1.0).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packetLossRatio")]
         public virtual System.Nullable<float> PacketLossRatio { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Uniformly shards test cases given a total number of shards.
+    ///
+    /// For Instrumentation test, it will be translated to “-e numShard” “-e shardIndex” AndroidJUnitRunner arguments.
+    /// With uniform sharding enabled, specifying these sharding arguments via environment_variables is
+    /// invalid.</summary>
+    public class UniformSharding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Total number of shards. The number must be > 1, and <= 50.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numShards")]
+        public virtual System.Nullable<int> NumShards { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

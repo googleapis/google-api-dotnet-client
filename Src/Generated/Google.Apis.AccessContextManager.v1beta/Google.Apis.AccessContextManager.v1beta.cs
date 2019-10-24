@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>Access Context Manager API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20191012 (1745)
+ *      <tr><th>API Rev<td>20191018 (1751)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>
  *              https://cloud.google.com/access-context-manager/docs/reference/rest/</a>
@@ -1435,6 +1435,12 @@ namespace Google.Apis.AccessContextManager.v1beta
             }
 
 
+            /// <summary>Required. Resource name for the container to list AccessPolicy instances from.
+            ///
+            /// Format: `organizations/{org_id}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
             /// <summary>Next page token for the next batch of AccessPolicy instances. Defaults to the first page of
             /// results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1443,12 +1449,6 @@ namespace Google.Apis.AccessContextManager.v1beta
             /// <summary>Number of AccessPolicy instances to include in the list. Default 100.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Required. Resource name for the container to list AccessPolicy instances from.
-            ///
-            /// Format: `organizations/{org_id}`</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1475,6 +1475,15 @@ namespace Google.Apis.AccessContextManager.v1beta
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1487,15 +1496,6 @@ namespace Google.Apis.AccessContextManager.v1beta
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1759,22 +1759,6 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Alpha. Specifies which services are granted access via this Bridge Service Perimeter.</summary>
-    public class BridgeServiceRestriction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of APIs usable through the Bridge Perimeter. Must be empty unless 'enable_restriction' is
-        /// True.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowedServices")]
-        public virtual System.Collections.Generic.IList<string> AllowedServices { get; set; } 
-
-        /// <summary>Whether to restrict the set of APIs callable through the Bridge Service Perimeter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableRestriction")]
-        public virtual System.Nullable<bool> EnableRestriction { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A condition necessary for an `AccessLevel` to be granted. The Condition is an AND over its fields. So a
     /// Condition is true if: 1) the request IP is from one of the listed subnetworks AND 2) the originating device
     /// complies with the listed device policy AND 3) all listed access levels are granted AND 4) the request was sent
@@ -1853,23 +1837,6 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         /// `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireScreenlock")]
         public virtual System.Nullable<bool> RequireScreenlock { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Alpha. Specifies how Access Levels are to be used for accessing the Service Perimeter.</summary>
-    public class IngressServiceRestriction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of APIs usable with a valid Access Level. Must be empty unless 'enable_restriction' is
-        /// True.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowedServices")]
-        public virtual System.Collections.Generic.IList<string> AllowedServices { get; set; } 
-
-        /// <summary>Whether to restrict the set of APIs callable outside the Service Perimeter via Access
-        /// Levels.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableRestriction")]
-        public virtual System.Nullable<bool> EnableRestriction { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2039,15 +2006,6 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         /// `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
         public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; } 
-
-        /// <summary>Alpha. Configuration for what services are accessible via the Bridge Perimeter. Must be empty for
-        /// non-Bridge Perimeters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bridgeServiceRestriction")]
-        public virtual BridgeServiceRestriction BridgeServiceRestriction { get; set; } 
-
-        /// <summary>Alpha. Configuration for which services may be used with Access Levels.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ingressServiceRestriction")]
-        public virtual IngressServiceRestriction IngressServiceRestriction { get; set; } 
 
         /// <summary>A list of GCP resources that are inside of the service perimeter. Currently only projects are
         /// allowed. Format: `projects/{project_number}`</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191010 (1743)
+ *      <tr><th>API Rev<td>20191021 (1754)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -799,6 +799,54 @@ namespace Google.Apis.Docs.v1.Data
         /// content layout as well as the styling of text inserted adjacent to it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
         public virtual TextStyle TextStyle { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Creates a Footer. The new footer will be applied to the DocumentStyle.
+    ///
+    /// If a footer of the specified type already exists then a 400 bad request error will be returned.</summary>
+    public class CreateFooterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of footer to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of creating a footer.</summary>
+    public class CreateFooterResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the created footer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("footerId")]
+        public virtual string FooterId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Creates a Header. The new header will be applied to the DocumentStyle.
+    ///
+    /// If a header of the specified type already exists then a 400 bad request error will be returned.</summary>
+    public class CreateHeaderRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of header to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of creating a header.</summary>
+    public class CreateHeaderResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the created header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerId")]
+        public virtual string HeaderId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2937,6 +2985,14 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A single update to apply to a document.</summary>
     public class Request : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Creates a footer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createFooter")]
+        public virtual CreateFooterRequest CreateFooter { get; set; } 
+
+        /// <summary>Creates a header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createHeader")]
+        public virtual CreateHeaderRequest CreateHeader { get; set; } 
+
         /// <summary>Creates a named range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createNamedRange")]
         public virtual CreateNamedRangeRequest CreateNamedRange { get; set; } 
@@ -3044,6 +3100,14 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A single response from an update.</summary>
     public class Response : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The result of creating a footer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createFooter")]
+        public virtual CreateFooterResponse CreateFooter { get; set; } 
+
+        /// <summary>The result of creating a header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createHeader")]
+        public virtual CreateHeaderResponse CreateHeader { get; set; } 
+
         /// <summary>The result of creating a named range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createNamedRange")]
         public virtual CreateNamedRangeResponse CreateNamedRange { get; set; } 
