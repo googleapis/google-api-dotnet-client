@@ -56,7 +56,7 @@ namespace Google.Apis.Http
             // - Compression requested but not supported by HttpClientHandler (easy; just GzipDeflateHandler on top of an interceptor on top of HttpClientHandler)
             // - Compression requested and HttpClientHandler (complex: create two different handlers and decide which to use on a per-request basis)
 
-            var clientHandler = CreateSimpleClientHandler();
+            var clientHandler = CreateAndConfigureClientHandler();
 
             if (!args.GZipEnabled)
             {
@@ -80,7 +80,7 @@ namespace Google.Apis.Http
                     clientHandler,
                     // Alternative handler for requests that might be intercepted, and need that interception to happen
                     // before decompression. We need to delegate to a new client handler that *doesn't* 
-                    new GzipDeflateHandler(new StreamInterceptionHandler(CreateSimpleClientHandler())),
+                    new GzipDeflateHandler(new StreamInterceptionHandler(CreateAndConfigureClientHandler())),
                     request => StreamInterceptionHandler.GetInterceptorProvider(request) != null);
             }
         }
@@ -88,9 +88,9 @@ namespace Google.Apis.Http
         /// <summary>
         /// Creates a simple client handler with redirection and compression disabled.
         /// </summary>
-        private HttpClientHandler CreateSimpleClientHandler()
+        private HttpClientHandler CreateAndConfigureClientHandler()
         {
-            var handler = new HttpClientHandler();
+            var handler = CreateClientHandler();
             if (handler.SupportsRedirectConfiguration)
             {
                 handler.AllowAutoRedirect = false;
@@ -101,5 +101,29 @@ namespace Google.Apis.Http
             }
             return handler;
         }
+
+        /// <summary>
+        /// Create a <see cref="HttpClientHandler"/> for use when communicating with the server.
+        /// Please read the remarks closely before overriding this method.
+        /// </summary>
+        /// <remarks>
+        /// When overriding this method, please observe the following:
+        /// <list type="bullet">
+        /// <item><description>
+        /// <see cref="HttpClientHandler.AllowAutoRedirect"/> and
+        /// <see cref="HttpClientHandler.AutomaticDecompression"/>
+        /// of the returned instance are configured after this method returns.
+        /// Configuring these within this method will have no effect.
+        /// </description></item>
+        /// <item><description>
+        /// Return a new instance of an <see cref="HttpClientHandler"/> for each call to this method.
+        /// </description></item>
+        /// <item><description>
+        /// This method may be called once, or more than once, when initializing a single client service.
+        /// </description></item>
+        /// </list>
+        /// </remarks>
+        /// <returns>A suitable <see cref="HttpClientHandler"/>.</returns>
+        protected virtual HttpClientHandler CreateClientHandler() => new HttpClientHandler();
     }
 }
