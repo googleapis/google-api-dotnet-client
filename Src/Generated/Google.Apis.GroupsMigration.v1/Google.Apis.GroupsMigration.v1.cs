@@ -333,9 +333,26 @@ namespace Google.Apis.GroupsMigration.v1
         }
 
         /// <summary>Inserts a new mail into the archive of the Google group.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item><description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+        /// seekable, then it will be read from its current position.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+        /// upload is completed.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for closing the <paramref name="stream"/>.
+        /// </description></item>
+        /// </list>
+        /// </remarks>
 
         /// <param name="groupId">The group ID</param>
-        /// <param name="stream">The stream to upload.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual InsertMediaUpload Insert(string groupId, System.IO.Stream stream, string contentType)
         {
@@ -392,6 +409,23 @@ namespace Google.Apis.GroupsMigration.v1
             public virtual string GroupId { get; private set; }
 
             /// <summary>Constructs a new Insert media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             public InsertMediaUpload(Google.Apis.Services.IClientService service, string
              groupId, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{groupId}/archive"), "POST", stream, contentType)

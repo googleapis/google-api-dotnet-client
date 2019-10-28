@@ -19,24 +19,24 @@
 
 /**
  * \brief
- *   Enterprise License Manager API Version v1
+ *   Licensing API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/google-apps/licensing/'>Enterprise License Manager API</a>
+ *          <td><a href='https://developers.google.com/admin-sdk/licensing/'>Licensing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170213 (774)
+ *      <tr><th>API Rev<td>20190916 (1719)
  *      <tr><th>API Docs
- *          <td><a href='https://developers.google.com/google-apps/licensing/'>
- *              https://developers.google.com/google-apps/licensing/</a>
+ *          <td><a href='https://developers.google.com/admin-sdk/licensing/'>
+ *              https://developers.google.com/admin-sdk/licensing/</a>
  *      <tr><th>Discovery Name<td>licensing
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Enterprise License Manager API can be found at
- * <a href='https://developers.google.com/google-apps/licensing/'>https://developers.google.com/google-apps/licensing/</a>.
+ * The complete API documentation for using Licensing API can be found at
+ * <a href='https://developers.google.com/admin-sdk/licensing/'>https://developers.google.com/admin-sdk/licensing/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -109,7 +109,7 @@ namespace Google.Apis.Licensing.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Enterprise License Manager API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Licensing API.</summary>
         public class Scope
         {
             /// <summary>View and manage G Suite licenses for your domain</summary>
@@ -117,7 +117,7 @@ namespace Google.Apis.Licensing.v1
 
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Enterprise License Manager API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Licensing API.</summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage G Suite licenses for your domain</summary>
@@ -272,17 +272,22 @@ namespace Google.Apis.Licensing.v1
         }
 
 
-        /// <summary>Revoke License.</summary>
-        /// <param name="productId">Name for product</param>
-        /// <param name="skuId">Name for sku</param>
+        /// <summary>Revoke a license.</summary>
+        /// <param name="productId">A product's unique identifier. For more information about products in this version of the
+        /// API, see Products and SKUs.</param>
+        /// <param name="skuId">A product SKU's unique identifier. For more
+        /// information about available SKUs in this version of the API, see Products and SKUs.</param>
         /// <param
-        /// name="userId">email id or unique Id of the user</param>
+        /// name="userId">The user's current primary email address. If the user's email address changes, use the new email
+        /// address in your API requests. Since a userId is subject to change, do not use a userId value as a key for persistent
+        /// data. This key could break if the current user's email address changes. If the userId is suspended, the license
+        /// status changes.</param>
         public virtual DeleteRequest Delete(string productId, string skuId, string userId)
         {
             return new DeleteRequest(service, productId, skuId, userId);
         }
 
-        /// <summary>Revoke License.</summary>
+        /// <summary>Revoke a license.</summary>
         public class DeleteRequest : LicensingBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -296,15 +301,20 @@ namespace Google.Apis.Licensing.v1
             }
 
 
-            /// <summary>Name for product</summary>
+            /// <summary>A product's unique identifier. For more information about products in this version of the API,
+            /// see Products and SKUs.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
-            /// <summary>Name for sku</summary>
+            /// <summary>A product SKU's unique identifier. For more information about available SKUs in this version of
+            /// the API, see Products and SKUs.</summary>
             [Google.Apis.Util.RequestParameterAttribute("skuId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SkuId { get; private set; }
 
-            /// <summary>email id or unique Id of the user</summary>
+            /// <summary>The user's current primary email address. If the user's email address changes, use the new
+            /// email address in your API requests. Since a userId is subject to change, do not use a userId value as a
+            /// key for persistent data. This key could break if the current user's email address changes. If the userId
+            /// is suspended, the license status changes.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
@@ -363,17 +373,22 @@ namespace Google.Apis.Licensing.v1
 
         }
 
-        /// <summary>Get license assignment of a particular product and sku for a user</summary>
-        /// <param name="productId">Name for product</param>
-        /// <param name="skuId">Name for sku</param>
+        /// <summary>Get a specific user's license by product SKU.</summary>
+        /// <param name="productId">A product's unique identifier. For more information about products in this version of the
+        /// API, see Products and SKUs.</param>
+        /// <param name="skuId">A product SKU's unique identifier. For more
+        /// information about available SKUs in this version of the API, see Products and SKUs.</param>
         /// <param
-        /// name="userId">email id or unique Id of the user</param>
+        /// name="userId">The user's current primary email address. If the user's email address changes, use the new email
+        /// address in your API requests. Since a userId is subject to change, do not use a userId value as a key for persistent
+        /// data. This key could break if the current user's email address changes. If the userId is suspended, the license
+        /// status changes.</param>
         public virtual GetRequest Get(string productId, string skuId, string userId)
         {
             return new GetRequest(service, productId, skuId, userId);
         }
 
-        /// <summary>Get license assignment of a particular product and sku for a user</summary>
+        /// <summary>Get a specific user's license by product SKU.</summary>
         public class GetRequest : LicensingBaseServiceRequest<Google.Apis.Licensing.v1.Data.LicenseAssignment>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -387,15 +402,20 @@ namespace Google.Apis.Licensing.v1
             }
 
 
-            /// <summary>Name for product</summary>
+            /// <summary>A product's unique identifier. For more information about products in this version of the API,
+            /// see Products and SKUs.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
-            /// <summary>Name for sku</summary>
+            /// <summary>A product SKU's unique identifier. For more information about available SKUs in this version of
+            /// the API, see Products and SKUs.</summary>
             [Google.Apis.Util.RequestParameterAttribute("skuId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SkuId { get; private set; }
 
-            /// <summary>email id or unique Id of the user</summary>
+            /// <summary>The user's current primary email address. If the user's email address changes, use the new
+            /// email address in your API requests. Since a userId is subject to change, do not use a userId value as a
+            /// key for persistent data. This key could break if the current user's email address changes. If the userId
+            /// is suspended, the license status changes.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
@@ -454,16 +474,18 @@ namespace Google.Apis.Licensing.v1
 
         }
 
-        /// <summary>Assign License.</summary>
+        /// <summary>Assign a license.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="productId">Name for product</param>
-        /// <param name="skuId">Name for sku</param>
+        /// <param name="productId">A product's unique identifier. For more information about products in this version of the
+        /// API, see Products and SKUs.</param>
+        /// <param name="skuId">A product SKU's unique identifier. For more
+        /// information about available SKUs in this version of the API, see Products and SKUs.</param>
         public virtual InsertRequest Insert(Google.Apis.Licensing.v1.Data.LicenseAssignmentInsert body, string productId, string skuId)
         {
             return new InsertRequest(service, body, productId, skuId);
         }
 
-        /// <summary>Assign License.</summary>
+        /// <summary>Assign a license.</summary>
         public class InsertRequest : LicensingBaseServiceRequest<Google.Apis.Licensing.v1.Data.LicenseAssignment>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -477,11 +499,13 @@ namespace Google.Apis.Licensing.v1
             }
 
 
-            /// <summary>Name for product</summary>
+            /// <summary>A product's unique identifier. For more information about products in this version of the API,
+            /// see Products and SKUs.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
-            /// <summary>Name for sku</summary>
+            /// <summary>A product SKU's unique identifier. For more information about available SKUs in this version of
+            /// the API, see Products and SKUs.</summary>
             [Google.Apis.Util.RequestParameterAttribute("skuId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SkuId { get; private set; }
 
@@ -537,16 +561,18 @@ namespace Google.Apis.Licensing.v1
 
         }
 
-        /// <summary>List license assignments for given product of the customer.</summary>
-        /// <param name="productId">Name for product</param>
-        /// <param name="customerId">CustomerId represents the customer
-        /// for whom licenseassignments are queried</param>
+        /// <summary>List all users assigned licenses for a specific product SKU.</summary>
+        /// <param name="productId">A product's unique identifier. For more information about products in this version of the
+        /// API, see Products and SKUs.</param>
+        /// <param name="customerId">Customer's customerId. A previous version of
+        /// this API accepted the primary domain name as a value for this field. If the customer is suspended, the server
+        /// returns an error.</param>
         public virtual ListForProductRequest ListForProduct(string productId, string customerId)
         {
             return new ListForProductRequest(service, productId, customerId);
         }
 
-        /// <summary>List license assignments for given product of the customer.</summary>
+        /// <summary>List all users assigned licenses for a specific product SKU.</summary>
         public class ListForProductRequest : LicensingBaseServiceRequest<Google.Apis.Licensing.v1.Data.LicenseAssignmentList>
         {
             /// <summary>Constructs a new ListForProduct request.</summary>
@@ -559,23 +585,27 @@ namespace Google.Apis.Licensing.v1
             }
 
 
-            /// <summary>Name for product</summary>
+            /// <summary>A product's unique identifier. For more information about products in this version of the API,
+            /// see Products and SKUs.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
-            /// <summary>CustomerId represents the customer for whom licenseassignments are queried</summary>
+            /// <summary>Customer's customerId. A previous version of this API accepted the primary domain name as a
+            /// value for this field. If the customer is suspended, the server returns an error.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Maximum number of campaigns to return at one time. Must be positive. Optional. Default value is
-            /// 100.</summary>
+            /// <summary>The maxResults query string determines how many entries are returned on each page of a large
+            /// response. This is an optional parameter. The value must be a positive number.</summary>
             /// [default: 100]
             /// [minimum: 1]
             /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>Token to fetch the next page.Optional. By default server will return first page</summary>
+            /// <summary>Token to fetch the next page of data. The maxResults query string is related to the pageToken
+            /// since maxResults determines how many entries are returned on each page. This is an optional query
+            /// string. If not specified, the server returns the first page.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -643,17 +673,20 @@ namespace Google.Apis.Licensing.v1
 
         }
 
-        /// <summary>List license assignments for given product and sku of the customer.</summary>
-        /// <param name="productId">Name for product</param>
-        /// <param name="skuId">Name for sku</param>
+        /// <summary>List all users assigned licenses for a specific product SKU.</summary>
+        /// <param name="productId">A product's unique identifier. For more information about products in this version of the
+        /// API, see Products and SKUs.</param>
+        /// <param name="skuId">A product SKU's unique identifier. For more
+        /// information about available SKUs in this version of the API, see Products and SKUs.</param>
         /// <param
-        /// name="customerId">CustomerId represents the customer for whom licenseassignments are queried</param>
+        /// name="customerId">Customer's customerId. A previous version of this API accepted the primary domain name as a value
+        /// for this field. If the customer is suspended, the server returns an error.</param>
         public virtual ListForProductAndSkuRequest ListForProductAndSku(string productId, string skuId, string customerId)
         {
             return new ListForProductAndSkuRequest(service, productId, skuId, customerId);
         }
 
-        /// <summary>List license assignments for given product and sku of the customer.</summary>
+        /// <summary>List all users assigned licenses for a specific product SKU.</summary>
         public class ListForProductAndSkuRequest : LicensingBaseServiceRequest<Google.Apis.Licensing.v1.Data.LicenseAssignmentList>
         {
             /// <summary>Constructs a new ListForProductAndSku request.</summary>
@@ -667,27 +700,32 @@ namespace Google.Apis.Licensing.v1
             }
 
 
-            /// <summary>Name for product</summary>
+            /// <summary>A product's unique identifier. For more information about products in this version of the API,
+            /// see Products and SKUs.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
-            /// <summary>Name for sku</summary>
+            /// <summary>A product SKU's unique identifier. For more information about available SKUs in this version of
+            /// the API, see Products and SKUs.</summary>
             [Google.Apis.Util.RequestParameterAttribute("skuId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SkuId { get; private set; }
 
-            /// <summary>CustomerId represents the customer for whom licenseassignments are queried</summary>
+            /// <summary>Customer's customerId. A previous version of this API accepted the primary domain name as a
+            /// value for this field. If the customer is suspended, the server returns an error.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Maximum number of campaigns to return at one time. Must be positive. Optional. Default value is
-            /// 100.</summary>
+            /// <summary>The maxResults query string determines how many entries are returned on each page of a large
+            /// response. This is an optional parameter. The value must be a positive number.</summary>
             /// [default: 100]
             /// [minimum: 1]
             /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>Token to fetch the next page.Optional. By default server will return first page</summary>
+            /// <summary>Token to fetch the next page of data. The maxResults query string is related to the pageToken
+            /// since maxResults determines how many entries are returned on each page. This is an optional query
+            /// string. If not specified, the server returns the first page.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -764,18 +802,25 @@ namespace Google.Apis.Licensing.v1
 
         }
 
-        /// <summary>Assign License. This method supports patch semantics.</summary>
+        /// <summary>Reassign a user's product SKU with a different SKU in the same product. This method supports patch
+        /// semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="productId">Name for product</param>
-        /// <param name="skuId">Name for sku for which license would be
-        /// revoked</param>
-        /// <param name="userId">email id or unique Id of the user</param>
+        /// <param name="productId">A product's unique identifier. For more information about products in this version of the
+        /// API, see Products and SKUs.</param>
+        /// <param name="skuId">A product SKU's unique identifier. For more
+        /// information about available SKUs in this version of the API, see Products and SKUs.</param>
+        /// <param
+        /// name="userId">The user's current primary email address. If the user's email address changes, use the new email
+        /// address in your API requests. Since a userId is subject to change, do not use a userId value as a key for persistent
+        /// data. This key could break if the current user's email address changes. If the userId is suspended, the license
+        /// status changes.</param>
         public virtual PatchRequest Patch(Google.Apis.Licensing.v1.Data.LicenseAssignment body, string productId, string skuId, string userId)
         {
             return new PatchRequest(service, body, productId, skuId, userId);
         }
 
-        /// <summary>Assign License. This method supports patch semantics.</summary>
+        /// <summary>Reassign a user's product SKU with a different SKU in the same product. This method supports patch
+        /// semantics.</summary>
         public class PatchRequest : LicensingBaseServiceRequest<Google.Apis.Licensing.v1.Data.LicenseAssignment>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -790,15 +835,20 @@ namespace Google.Apis.Licensing.v1
             }
 
 
-            /// <summary>Name for product</summary>
+            /// <summary>A product's unique identifier. For more information about products in this version of the API,
+            /// see Products and SKUs.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
-            /// <summary>Name for sku for which license would be revoked</summary>
+            /// <summary>A product SKU's unique identifier. For more information about available SKUs in this version of
+            /// the API, see Products and SKUs.</summary>
             [Google.Apis.Util.RequestParameterAttribute("skuId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SkuId { get; private set; }
 
-            /// <summary>email id or unique Id of the user</summary>
+            /// <summary>The user's current primary email address. If the user's email address changes, use the new
+            /// email address in your API requests. Since a userId is subject to change, do not use a userId value as a
+            /// key for persistent data. This key could break if the current user's email address changes. If the userId
+            /// is suspended, the license status changes.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
@@ -863,18 +913,23 @@ namespace Google.Apis.Licensing.v1
 
         }
 
-        /// <summary>Assign License.</summary>
+        /// <summary>Reassign a user's product SKU with a different SKU in the same product.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="productId">Name for product</param>
-        /// <param name="skuId">Name for sku for which license would be
-        /// revoked</param>
-        /// <param name="userId">email id or unique Id of the user</param>
+        /// <param name="productId">A product's unique identifier. For more information about products in this version of the
+        /// API, see Products and SKUs.</param>
+        /// <param name="skuId">A product SKU's unique identifier. For more
+        /// information about available SKUs in this version of the API, see Products and SKUs.</param>
+        /// <param
+        /// name="userId">The user's current primary email address. If the user's email address changes, use the new email
+        /// address in your API requests. Since a userId is subject to change, do not use a userId value as a key for persistent
+        /// data. This key could break if the current user's email address changes. If the userId is suspended, the license
+        /// status changes.</param>
         public virtual UpdateRequest Update(Google.Apis.Licensing.v1.Data.LicenseAssignment body, string productId, string skuId, string userId)
         {
             return new UpdateRequest(service, body, productId, skuId, userId);
         }
 
-        /// <summary>Assign License.</summary>
+        /// <summary>Reassign a user's product SKU with a different SKU in the same product.</summary>
         public class UpdateRequest : LicensingBaseServiceRequest<Google.Apis.Licensing.v1.Data.LicenseAssignment>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -889,15 +944,20 @@ namespace Google.Apis.Licensing.v1
             }
 
 
-            /// <summary>Name for product</summary>
+            /// <summary>A product's unique identifier. For more information about products in this version of the API,
+            /// see Products and SKUs.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
-            /// <summary>Name for sku for which license would be revoked</summary>
+            /// <summary>A product SKU's unique identifier. For more information about available SKUs in this version of
+            /// the API, see Products and SKUs.</summary>
             [Google.Apis.Util.RequestParameterAttribute("skuId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SkuId { get; private set; }
 
-            /// <summary>email id or unique Id of the user</summary>
+            /// <summary>The user's current primary email address. If the user's email address changes, use the new
+            /// email address in your API requests. Since a userId is subject to change, do not use a userId value as a
+            /// key for persistent data. This key could break if the current user's email address changes. If the userId
+            /// is suspended, the license status changes.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
@@ -967,7 +1027,7 @@ namespace Google.Apis.Licensing.v1
 namespace Google.Apis.Licensing.v1.Data
 {    
 
-    /// <summary>Template for LiscenseAssignment Resource</summary>
+    /// <summary>Representation of a license assignment.</summary>
     public class LicenseAssignment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ETag of the resource.</summary>
@@ -978,7 +1038,8 @@ namespace Google.Apis.Licensing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Id of the product.</summary>
+        /// <summary>A product's unique identifier. For more information about products in this version of the API, see
+        /// Product and SKU IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
@@ -990,7 +1051,8 @@ namespace Google.Apis.Licensing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>Id of the sku of the product.</summary>
+        /// <summary>A product SKU's unique identifier. For more information about available SKUs in this version of the
+        /// API, see Products and SKUs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuId")]
         public virtual string SkuId { get; set; } 
 
@@ -998,7 +1060,10 @@ namespace Google.Apis.Licensing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("skuName")]
         public virtual string SkuName { get; set; } 
 
-        /// <summary>Email id of the user.</summary>
+        /// <summary>The user's current primary email address. If the user's email address changes, use the new email
+        /// address in your API requests. Since a userId is subject to change, do not use a userId value as a key for
+        /// persistent data. This key could break if the current user's email address changes. If the userId is
+        /// suspended, the license status changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; } 
 
@@ -1006,7 +1071,7 @@ namespace Google.Apis.Licensing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Template for LicenseAssignment Insert request</summary>
+    /// <summary>Representation of a license assignment.</summary>
     public class LicenseAssignmentInsert : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Email id of the user</summary>
@@ -1032,8 +1097,9 @@ namespace Google.Apis.Licensing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The continuation token, used to page through large result sets. Provide this value in a subsequent
-        /// request to return the next page of results.</summary>
+        /// <summary>The token that you must submit in a subsequent request to retrieve additional license results
+        /// matching your query parameters. The maxResults query string is related to the nextPageToken since maxResults
+        /// determines how many entries are returned on each next page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 

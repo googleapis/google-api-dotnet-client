@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/reseller/'>Enterprise Apps Reseller API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190228 (1519)
+ *      <tr><th>API Rev<td>20191008 (1741)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/reseller/'>
  *              https://developers.google.com/google-apps/reseller/</a>
@@ -1136,7 +1136,7 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Cancel or transfer a subscription to direct.</summary>
+        /// <summary>Cancel, suspend, or transfer a subscription to direct.</summary>
         /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
         /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
         /// customerId is changed, the Google system automatically updates.</param>
@@ -1152,7 +1152,7 @@ namespace Google.Apis.Reseller.v1
             return new DeleteRequest(service, customerId, subscriptionId, deletionType);
         }
 
-        /// <summary>Cancel or transfer a subscription to direct.</summary>
+        /// <summary>Cancel, suspend, or transfer a subscription to direct.</summary>
         public class DeleteRequest : ResellerBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>

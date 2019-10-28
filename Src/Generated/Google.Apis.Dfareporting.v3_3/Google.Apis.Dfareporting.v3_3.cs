@@ -7071,11 +7071,28 @@ namespace Google.Apis.Dfareporting.v3_3
         }
 
         /// <summary>Inserts a new creative asset.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item><description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+        /// seekable, then it will be read from its current position.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+        /// upload is completed.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for closing the <paramref name="stream"/>.
+        /// </description></item>
+        /// </list>
+        /// </remarks>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param
         /// name="advertiserId">Advertiser ID of this creative. This is a required field.</param>
-        /// <param name="stream">The stream to upload.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual InsertMediaUpload Insert(Google.Apis.Dfareporting.v3_3.Data.CreativeAssetMetadata body, long profileId, long advertiserId, System.IO.Stream stream, string contentType)
         {
@@ -7136,6 +7153,23 @@ namespace Google.Apis.Dfareporting.v3_3
             public virtual long AdvertiserId { get; private set; }
 
             /// <summary>Constructs a new Insert media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v3_3.Data.CreativeAssetMetadata body, long
              profileId, long
              advertiserId, System.IO.Stream stream, string contentType)

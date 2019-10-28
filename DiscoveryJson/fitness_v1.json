@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/P-RJIKReViqGcuxXz7Rzv0_ZXTM\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/Soxy876ekH_sXwnArF197wS9-Dk\"",
  "discoveryVersion": "v1",
  "id": "fitness:v1",
  "name": "fitness",
  "version": "v1",
- "revision": "20191007",
+ "revision": "20191014",
  "title": "Fitness",
  "description": "Stores and accesses user data in the fitness store from apps on any platform.",
  "ownerDomain": "google.com",
@@ -1423,7 +1423,7 @@
        "id": "fitness.users.dataset.aggregate",
        "path": "{userId}/dataset:aggregate",
        "httpMethod": "POST",
-       "description": "Aggregates data of a certain type or stream into buckets divided by a given type of boundary. Multiple data sets of multiple types and from multiple sources can be aggreated into exactly one bucket type per request.",
+       "description": "Aggregates data of a certain type or stream into buckets divided by a given type of boundary. Multiple data sets of multiple types and from multiple sources can be aggregated into exactly one bucket type per request.",
        "parameters": {
         "userId": {
          "type": "string",

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191015 (1748)
+ *      <tr><th>API Rev<td>20191022 (1755)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -541,9 +541,26 @@ namespace Google.Apis.RemoteBuildExecution.v1
         }
 
         /// <summary>Uploads media. Upload is supported on the URI `/upload/v1/media/{+name}`.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item><description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+        /// seekable, then it will be read from its current position.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+        /// upload is completed.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for closing the <paramref name="stream"/>.
+        /// </description></item>
+        /// </list>
+        /// </remarks>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceName">Name of the media that is being downloaded.  See ReadRequest.resource_name.</param>
-        /// <param name="stream">The stream to upload.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual UploadMediaUpload Upload(Google.Apis.RemoteBuildExecution.v1.Data.GoogleBytestreamMedia body, string resourceName, System.IO.Stream stream, string contentType)
         {
@@ -633,6 +650,23 @@ namespace Google.Apis.RemoteBuildExecution.v1
             public virtual string ResourceName { get; private set; }
 
             /// <summary>Constructs a new Upload media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.RemoteBuildExecution.v1.Data.GoogleBytestreamMedia body, string
              resourceName, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v1/media/{+resourceName}"), "POST", stream, contentType)

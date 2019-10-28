@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/data-transfer/'>Admin Data Transfer API</a>
  *      <tr><th>API Version<td>datatransfer_v1
- *      <tr><th>API Rev<td>20160223 (418)
+ *      <tr><th>API Rev<td>20190829 (1701)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/data-transfer/'>
  *              https://developers.google.com/admin-sdk/data-transfer/</a>
@@ -364,7 +364,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
             }
 
 
-            /// <summary>Immutable ID of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
 
@@ -582,7 +582,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
             }
 
 
-            /// <summary>Immutable ID of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
 
@@ -715,7 +715,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         public virtual string Name { get; set; } 
 
         /// <summary>The list of all possible transfer parameters for this application. These parameters can be used to
-        /// select the data of the user in this application to be transfered.</summary>
+        /// select the data of the user in this application to be transferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferParams")]
         public virtual System.Collections.Generic.IList<ApplicationTransferParam> TransferParams { get; set; } 
 
@@ -729,7 +729,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         public virtual System.Nullable<long> ApplicationId { get; set; } 
 
         /// <summary>The transfer parameters for the application. These parameters are used to select the data which
-        /// will get transfered in context of this application.</summary>
+        /// will get transferred in context of this application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationTransferParams")]
         public virtual System.Collections.Generic.IList<ApplicationTransferParam> ApplicationTransferParams { get; set; } 
 
@@ -748,7 +748,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
-        /// <summary>The value of the coressponding transfer parameter. eg: 'PRIVATE' or 'SHARED'</summary>
+        /// <summary>The value of the corresponding transfer parameter. eg: 'PRIVATE' or 'SHARED'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IList<string> Value { get; set; } 
 
@@ -798,11 +798,11 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>ID of the user to whom the data is being transfered.</summary>
+        /// <summary>ID of the user to whom the data is being transferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newOwnerUserId")]
         public virtual string NewOwnerUserId { get; set; } 
 
-        /// <summary>ID of the user whose data is being transfered.</summary>
+        /// <summary>ID of the user whose data is being transferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldOwnerUserId")]
         public virtual string OldOwnerUserId { get; set; } 
 

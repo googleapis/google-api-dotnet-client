@@ -365,9 +365,26 @@ namespace Google.Apis.Playcustomapp.v1
             }
 
             /// <summary>Create and publish a new custom app.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             /// <param name="body">The body of the request.</param>
             /// <param name="account">Developer account ID.</param>
-            /// <param name="stream">The stream to upload.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual CreateMediaUpload Create(Google.Apis.Playcustomapp.v1.Data.CustomApp body, long account, System.IO.Stream stream, string contentType)
             {
@@ -424,6 +441,23 @@ namespace Google.Apis.Playcustomapp.v1
                 public virtual long Account { get; private set; }
 
                 /// <summary>Constructs a new Create media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item><description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+                /// seekable, then it will be read from its current position.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+                /// upload is completed.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for closing the <paramref name="stream"/>.
+                /// </description></item>
+                /// </list>
+                /// </remarks>
                 public CreateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Playcustomapp.v1.Data.CustomApp body, long
                  account, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{account}/customApps"), "POST", stream, contentType)

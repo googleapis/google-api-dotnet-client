@@ -1059,11 +1059,28 @@ namespace Google.Apis.PlusDomains.v1
         }
 
         /// <summary>Shut down. See https://developers.google.com/+/api-shutdown for more details.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item><description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+        /// seekable, then it will be read from its current position.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+        /// upload is completed.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for closing the <paramref name="stream"/>.
+        /// </description></item>
+        /// </list>
+        /// </remarks>
         /// <param name="body">The body of the request.</param>
         /// <param name="userId">The ID of the user to create the activity on behalf of.</param>
         /// <param
         /// name="collection"></param>
-        /// <param name="stream">The stream to upload.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual InsertMediaUpload Insert(Google.Apis.PlusDomains.v1.Data.Media body, string userId, InsertMediaUpload.CollectionEnum collection, System.IO.Stream stream, string contentType)
         {
@@ -1132,6 +1149,23 @@ namespace Google.Apis.PlusDomains.v1
             }
 
             /// <summary>Constructs a new Insert media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.PlusDomains.v1.Data.Media body, string
              userId, InsertMediaUpload.CollectionEnum
              collection, System.IO.Stream stream, string contentType)

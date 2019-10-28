@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/'>Cloud OS Login API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191005 (1738)
+ *      <tr><th>API Rev<td>20191018 (1751)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/'>
  *              https://cloud.google.com/compute/docs/oslogin/</a>
@@ -373,8 +373,9 @@ namespace Google.Apis.CloudOSLogin.v1
 
 
             /// <summary>Deletes a POSIX account.</summary>
-            /// <param name="name">A reference to the POSIX account to update. POSIX accounts are identified by the project ID they
-            /// are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`.</param>
+            /// <param name="name">Required. A reference to the POSIX account to update. POSIX accounts are identified by the
+            /// project ID they are associated with. A reference to the POSIX account is in format
+            /// `users/{user}/projects/{project}`.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -392,8 +393,8 @@ namespace Google.Apis.CloudOSLogin.v1
                 }
 
 
-                /// <summary>A reference to the POSIX account to update. POSIX accounts are identified by the project ID
-                /// they are associated with. A reference to the POSIX account is in format
+                /// <summary>Required. A reference to the POSIX account to update. POSIX accounts are identified by the
+                /// project ID they are associated with. A reference to the POSIX account is in format
                 /// `users/{user}/projects/{project}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -460,8 +461,9 @@ namespace Google.Apis.CloudOSLogin.v1
 
 
             /// <summary>Deletes an SSH public key.</summary>
-            /// <param name="name">The fingerprint of the public key to update. Public keys are identified by their SHA-256
-            /// fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.</param>
+            /// <param name="name">Required. The fingerprint of the public key to update. Public keys are identified by their
+            /// SHA-256 fingerprint. The fingerprint of the public key is in format
+            /// `users/{user}/sshPublicKeys/{fingerprint}`.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -479,8 +481,8 @@ namespace Google.Apis.CloudOSLogin.v1
                 }
 
 
-                /// <summary>The fingerprint of the public key to update. Public keys are identified by their SHA-256
-                /// fingerprint. The fingerprint of the public key is in format
+                /// <summary>Required. The fingerprint of the public key to update. Public keys are identified by their
+                /// SHA-256 fingerprint. The fingerprint of the public key is in format
                 /// `users/{user}/sshPublicKeys/{fingerprint}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -588,8 +590,9 @@ namespace Google.Apis.CloudOSLogin.v1
             /// <summary>Updates an SSH public key and returns the profile information. This method supports patch
             /// semantics.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The fingerprint of the public key to update. Public keys are identified by their SHA-256
-            /// fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.</param>
+            /// <param name="name">Required. The fingerprint of the public key to update. Public keys are identified by their
+            /// SHA-256 fingerprint. The fingerprint of the public key is in format
+            /// `users/{user}/sshPublicKeys/{fingerprint}`.</param>
             public virtual PatchRequest Patch(Google.Apis.CloudOSLogin.v1.Data.SshPublicKey body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -609,8 +612,8 @@ namespace Google.Apis.CloudOSLogin.v1
                 }
 
 
-                /// <summary>The fingerprint of the public key to update. Public keys are identified by their SHA-256
-                /// fingerprint. The fingerprint of the public key is in format
+                /// <summary>Required. The fingerprint of the public key to update. Public keys are identified by their
+                /// SHA-256 fingerprint. The fingerprint of the public key is in format
                 /// `users/{user}/sshPublicKeys/{fingerprint}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -674,7 +677,7 @@ namespace Google.Apis.CloudOSLogin.v1
 
         /// <summary>Retrieves the profile information used for logging in to a virtual machine on Google Compute
         /// Engine.</summary>
-        /// <param name="name">The unique ID for the user in format `users/{user}`.</param>
+        /// <param name="name">Required. The unique ID for the user in format `users/{user}`.</param>
         public virtual GetLoginProfileRequest GetLoginProfile(string name)
         {
             return new GetLoginProfileRequest(service, name);
@@ -693,7 +696,7 @@ namespace Google.Apis.CloudOSLogin.v1
             }
 
 
-            /// <summary>The unique ID for the user in format `users/{user}`.</summary>
+            /// <summary>Required. The unique ID for the user in format `users/{user}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -763,7 +766,7 @@ namespace Google.Apis.CloudOSLogin.v1
         /// <summary>Adds an SSH public key and returns the profile information. Default POSIX account information is
         /// set when no username and UID exist as part of the login profile.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="parent">The unique ID for the user in format `users/{user}`.</param>
+        /// <param name="parent">Required. The unique ID for the user in format `users/{user}`.</param>
         public virtual ImportSshPublicKeyRequest ImportSshPublicKey(Google.Apis.CloudOSLogin.v1.Data.SshPublicKey body, string parent)
         {
             return new ImportSshPublicKeyRequest(service, body, parent);
@@ -783,7 +786,7 @@ namespace Google.Apis.CloudOSLogin.v1
             }
 
 
-            /// <summary>The unique ID for the user in format `users/{user}`.</summary>
+            /// <summary>Required. The unique ID for the user in format `users/{user}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -875,7 +878,7 @@ namespace Google.Apis.CloudOSLogin.v1.Data
     /// Engine.</summary>
     public class LoginProfile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A unique user ID.</summary>
+        /// <summary>Required. A unique user ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

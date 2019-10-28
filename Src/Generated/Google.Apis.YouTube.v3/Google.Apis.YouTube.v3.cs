@@ -1264,10 +1264,27 @@ namespace Google.Apis.YouTube.v3
         }
 
         /// <summary>Uploads a caption track.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item><description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+        /// seekable, then it will be read from its current position.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+        /// upload is completed.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for closing the <paramref name="stream"/>.
+        /// </description></item>
+        /// </list>
+        /// </remarks>
         /// <param name="body">The body of the request.</param>
         /// <param name="part">The part parameter specifies the caption resource parts that the API response will include. Set
         /// the parameter value to snippet.</param>
-        /// <param name="stream">The stream to upload.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual InsertMediaUpload Insert(Google.Apis.YouTube.v3.Data.Caption body, string part, System.IO.Stream stream, string contentType)
         {
@@ -1349,6 +1366,23 @@ namespace Google.Apis.YouTube.v3
             public virtual System.Nullable<bool> Sync { get; set; }
 
             /// <summary>Constructs a new Insert media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.Caption body, string
              part, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "captions"), "POST", stream, contentType)
@@ -1619,11 +1653,28 @@ namespace Google.Apis.YouTube.v3
 
         /// <summary>Updates a caption track. When updating a caption track, you can change the track's draft status,
         /// upload a new caption file for the track, or both.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item><description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+        /// seekable, then it will be read from its current position.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+        /// upload is completed.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for closing the <paramref name="stream"/>.
+        /// </description></item>
+        /// </list>
+        /// </remarks>
         /// <param name="body">The body of the request.</param>
         /// <param name="part">The part parameter serves two purposes in this operation. It identifies the properties that the
         /// write operation will set as well as the properties that the API response will include. Set the property value to
         /// snippet if you are updating the track's draft status. Otherwise, set the property value to id.</param>
-        /// <param name="stream">The stream to upload.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual UpdateMediaUpload Update(Google.Apis.YouTube.v3.Data.Caption body, string part, System.IO.Stream stream, string contentType)
         {
@@ -1707,6 +1758,23 @@ namespace Google.Apis.YouTube.v3
             public virtual System.Nullable<bool> Sync { get; set; }
 
             /// <summary>Constructs a new Update media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             public UpdateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.Caption body, string
              part, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "captions"), "PUT", stream, contentType)
@@ -1846,8 +1914,25 @@ namespace Google.Apis.YouTube.v3
         /// that the API returns for step 1. - Call the channels.update method to update the channel's branding
         /// settings. Set the brandingSettings.image.bannerExternalUrl property's value to the URL obtained in step
         /// 2.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item><description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+        /// seekable, then it will be read from its current position.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+        /// upload is completed.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for closing the <paramref name="stream"/>.
+        /// </description></item>
+        /// </list>
+        /// </remarks>
         /// <param name="body">The body of the request.</param>
-        /// <param name="stream">The stream to upload.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual InsertMediaUpload Insert(Google.Apis.YouTube.v3.Data.ChannelBannerResource body, System.IO.Stream stream, string contentType)
         {
@@ -1920,6 +2005,23 @@ namespace Google.Apis.YouTube.v3
             public virtual string OnBehalfOfContentOwner { get; set; }
 
             /// <summary>Constructs a new Insert media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.ChannelBannerResource body, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "channelBanners/insert"), "POST", stream, contentType)
             {
@@ -9178,10 +9280,27 @@ namespace Google.Apis.YouTube.v3
         }
 
         /// <summary>Uploads a custom video thumbnail to YouTube and sets it for a video.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item><description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+        /// seekable, then it will be read from its current position.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+        /// upload is completed.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for closing the <paramref name="stream"/>.
+        /// </description></item>
+        /// </list>
+        /// </remarks>
 
         /// <param name="videoId">The videoId parameter specifies a YouTube video ID for which the custom video thumbnail is
         /// being provided.</param>
-        /// <param name="stream">The stream to upload.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual SetMediaUpload Set(string videoId, System.IO.Stream stream, string contentType)
         {
@@ -9250,6 +9369,23 @@ namespace Google.Apis.YouTube.v3
             public virtual string OnBehalfOfContentOwner { get; set; }
 
             /// <summary>Constructs a new Set media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             public SetMediaUpload(Google.Apis.Services.IClientService service, string
              videoId, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "thumbnails/set"), "POST", stream, contentType)
@@ -9831,6 +9967,23 @@ namespace Google.Apis.YouTube.v3
         }
 
         /// <summary>Uploads a video to YouTube and optionally sets the video's metadata.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item><description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+        /// seekable, then it will be read from its current position.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+        /// upload is completed.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for closing the <paramref name="stream"/>.
+        /// </description></item>
+        /// </list>
+        /// </remarks>
         /// <param name="body">The body of the request.</param>
         /// <param name="part">The part parameter serves two purposes in this operation. It identifies the properties that the
         /// write operation will set as well as the properties that the API response will include.
@@ -9839,7 +9992,7 @@ namespace Google.Apis.YouTube.v3
         /// statistics object encapsulates statistics that YouTube calculates for a video and does not contain values that you
         /// can set or modify. If the parameter value specifies a part that does not contain mutable values, that part will
         /// still be included in the API response.</param>
-        /// <param name="stream">The stream to upload.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual InsertMediaUpload Insert(Google.Apis.YouTube.v3.Data.Video body, string part, System.IO.Stream stream, string contentType)
         {
@@ -9950,6 +10103,23 @@ namespace Google.Apis.YouTube.v3
             public virtual System.Nullable<bool> Stabilize { get; set; }
 
             /// <summary>Constructs a new Insert media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.Video body, string
              part, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "videos"), "POST", stream, contentType)
@@ -10633,10 +10803,27 @@ namespace Google.Apis.YouTube.v3
         }
 
         /// <summary>Uploads a watermark image to YouTube and sets it for a channel.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item><description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+        /// seekable, then it will be read from its current position.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+        /// upload is completed.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for closing the <paramref name="stream"/>.
+        /// </description></item>
+        /// </list>
+        /// </remarks>
         /// <param name="body">The body of the request.</param>
         /// <param name="channelId">The channelId parameter specifies the YouTube channel ID for which the watermark is being
         /// provided.</param>
-        /// <param name="stream">The stream to upload.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual SetMediaUpload Set(Google.Apis.YouTube.v3.Data.InvideoBranding body, string channelId, System.IO.Stream stream, string contentType)
         {
@@ -10705,6 +10892,23 @@ namespace Google.Apis.YouTube.v3
             public virtual string OnBehalfOfContentOwner { get; set; }
 
             /// <summary>Constructs a new Set media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             public SetMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.InvideoBranding body, string
              channelId, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "watermarks/set"), "POST", stream, contentType)

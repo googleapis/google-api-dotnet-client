@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.3
- *      <tr><th>API Rev<td>20190614 (1625)
+ *      <tr><th>API Rev<td>20191018 (1751)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -2244,9 +2244,22 @@ namespace Google.Apis.AdExchangeBuyer.v1_3.Data
 
         public class AdTechnologyProvidersData
         {
+            /// <summary>The detected ad technology provider IDs for this creative. See https://storage.googleapis.com
+            /// /adx-rtb-dictionaries/providers.csv for mapping of provider ID to provided name, a privacy policy URL,
+            /// and a list of domains which can be attributed to the provider. If this creative contains provider IDs
+            /// that are outside of those listed in the
+            /// `BidRequest.adslot.consented_providers_settings.consented_providers` field on the  Authorized Buyers
+            /// Real-Time Bidding protocol or the `BidRequest.user.ext.consented_providers_settings.consented_providers`
+            /// field on the OpenRTB protocol, a bid submitted for a European Economic Area (EEA) user with this
+            /// creative is not compliant with the GDPR policies as mentioned in the "Third-party Ad Technology Vendors"
+            /// section of Authorized Buyers Program Guidelines.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("detectedProviderIds")]
             public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedProviderIds { get; set; } 
 
+            /// <summary>Whether the creative contains an unidentified ad technology provider. If true, a bid submitted
+            /// for a European Economic Area (EEA) user with this creative is not compliant with the GDPR policies as
+            /// mentioned in the "Third-party Ad Technology Vendors" section of Authorized Buyers Program
+            /// Guidelines.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("hasUnidentifiedProvider")]
             public virtual System.Nullable<bool> HasUnidentifiedProvider { get; set; } 
 

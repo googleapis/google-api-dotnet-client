@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/glass'>Google Mirror API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190424 (1574)
+ *      <tr><th>API Rev<td>20190927 (1730)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/glass'>
  *              https://developers.google.com/glass</a>
@@ -1548,9 +1548,26 @@ namespace Google.Apis.Mirror.v1
             }
 
             /// <summary>Adds a new attachment to a timeline item.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
 
             /// <param name="itemId">The ID of the timeline item the attachment belongs to.</param>
-            /// <param name="stream">The stream to upload.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual InsertMediaUpload Insert(string itemId, System.IO.Stream stream, string contentType)
             {
@@ -1607,6 +1624,23 @@ namespace Google.Apis.Mirror.v1
                 public virtual string ItemId { get; private set; }
 
                 /// <summary>Constructs a new Insert media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item><description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+                /// seekable, then it will be read from its current position.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+                /// upload is completed.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for closing the <paramref name="stream"/>.
+                /// </description></item>
+                /// </list>
+                /// </remarks>
                 public InsertMediaUpload(Google.Apis.Services.IClientService service, string
                  itemId, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "timeline/{itemId}/attachments"), "POST", stream, contentType)
@@ -1850,8 +1884,25 @@ namespace Google.Apis.Mirror.v1
         }
 
         /// <summary>Inserts a new item into the timeline.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item><description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+        /// seekable, then it will be read from its current position.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+        /// upload is completed.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for closing the <paramref name="stream"/>.
+        /// </description></item>
+        /// </list>
+        /// </remarks>
         /// <param name="body">The body of the request.</param>
-        /// <param name="stream">The stream to upload.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual InsertMediaUpload Insert(Google.Apis.Mirror.v1.Data.TimelineItem body, System.IO.Stream stream, string contentType)
         {
@@ -1904,6 +1955,23 @@ namespace Google.Apis.Mirror.v1
 
 
             /// <summary>Constructs a new Insert media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Mirror.v1.Data.TimelineItem body, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "timeline"), "POST", stream, contentType)
             {
@@ -2197,9 +2265,26 @@ namespace Google.Apis.Mirror.v1
         }
 
         /// <summary>Updates a timeline item in place.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item><description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+        /// seekable, then it will be read from its current position.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+        /// upload is completed.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for closing the <paramref name="stream"/>.
+        /// </description></item>
+        /// </list>
+        /// </remarks>
         /// <param name="body">The body of the request.</param>
         /// <param name="id">The ID of the timeline item.</param>
-        /// <param name="stream">The stream to upload.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual UpdateMediaUpload Update(Google.Apis.Mirror.v1.Data.TimelineItem body, string id, System.IO.Stream stream, string contentType)
         {
@@ -2256,6 +2341,23 @@ namespace Google.Apis.Mirror.v1
             public virtual string Id { get; private set; }
 
             /// <summary>Constructs a new Update media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             public UpdateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Mirror.v1.Data.TimelineItem body, string
              id, System.IO.Stream stream, string contentType)
                 : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "timeline/{id}"), "PUT", stream, contentType)

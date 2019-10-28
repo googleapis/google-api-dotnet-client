@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-sql/'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20191005 (1738)
+ *      <tr><th>API Rev<td>20191018 (1751)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-sql/'>
  *              https://developers.google.com/cloud-sql/</a>
@@ -539,6 +539,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long Id { get; private set; }
 
+            /// <summary>Name of the resource backupRun. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}/backupRuns/{backupRun}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ResourceName { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -590,6 +595,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "resourceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -627,6 +641,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL should create this backupRun. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -676,6 +695,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -712,14 +740,19 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>Maximum number of backup runs per response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> MaxResults { get; set; }
+            /// <summary>The parent, which owns this collection of backupRuns. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
             /// <summary>A previously-returned page token representing part of the larger set of results to
             /// view.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Maximum number of backup runs per response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> MaxResults { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -764,9 +797,9 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
+                    "parent", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxResults",
+                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -776,6 +809,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -931,6 +973,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Database { get; private set; }
 
+            /// <summary>Name of the resource database. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}/databases/{database}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ResourceName { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -982,6 +1029,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "resourceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1017,6 +1073,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Database instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL should add this database. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1066,6 +1127,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1099,6 +1169,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent, which owns this collection of databases. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1139,6 +1214,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -1477,6 +1561,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>The parent resource where Cloud SQL should add this server CA. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1519,6 +1608,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1556,6 +1654,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL should clone this instance. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1602,6 +1705,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -1719,6 +1831,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>The parent resource where Cloud SQL demotes this master database instance. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesDemoteMasterRequest Body { get; set; }
@@ -1767,6 +1884,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1804,6 +1930,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL exports this database instance. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1853,6 +1984,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1888,6 +2028,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL sends this database instance during a failover. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1937,6 +2082,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1970,6 +2124,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Database instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>Name of the resource database instance. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ResourceName { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2013,6 +2172,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "resourceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2048,6 +2216,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL imports this database instance. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2097,6 +2270,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2127,6 +2309,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// belong.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL creates this database instance. Format:
+            /// projects/{project}/locations/{location}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2167,6 +2354,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2194,6 +2390,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>The maximum number of results to return per response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
             /// <summary>An expression for filtering the results of the request, such as by name or label.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -2202,10 +2402,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// view.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of results to return per response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2241,6 +2437,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -2253,15 +2458,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2307,6 +2503,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>The parent, which owns this collection of server CAs. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2346,6 +2547,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -2467,6 +2677,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>The parent resource where Cloud SQL promotes this replica database instance. Format:
+            /// projects/{project}/locations/{location}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2509,6 +2724,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2544,6 +2768,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL resets this SSL config. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2587,6 +2816,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2620,6 +2858,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL restarts this database instance. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2663,6 +2906,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2698,6 +2950,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL restores this database instance from backup. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2747,6 +3004,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2784,6 +3050,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL rotates these server CAs. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2833,6 +3104,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2866,6 +3146,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL read replica instance name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL starts this database instance replication. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2909,6 +3194,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2942,6 +3236,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL read replica instance name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL stops this database instance replication. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2985,6 +3284,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -3020,6 +3328,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL truncates this log. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -3066,6 +3379,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -3277,6 +3599,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>Indirect parent. The direct parent should combine with the instance name, which owns this
+            /// collection of operations. Format: projects/{project}/locations/{location}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Instance { get; set; }
@@ -3320,6 +3647,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "project",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -3407,6 +3743,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>The parent resource where Cloud SQL creates this ephemeral certificate. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.SslCertsCreateEphemeralRequest Body { get; set; }
@@ -3452,6 +3793,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -3592,6 +3942,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("sha1Fingerprint", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Sha1Fingerprint { get; private set; }
 
+            /// <summary>Name of the resource ssl certificate. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}/sslCerts/{sslCert}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ResourceName { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -3643,6 +3998,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "resourceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -3680,6 +4044,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL creates this SSL certificate. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -3729,6 +4098,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -3762,6 +4140,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent, which owns this collection of SSL certificates. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3802,6 +4185,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -3935,13 +4327,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>Host of the user in the instance.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Host { get; set; }
-
             /// <summary>Name of the user in the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
+
+            /// <summary>Host of the user in the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Host { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3986,18 +4378,18 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "host", new Google.Apis.Discovery.Parameter
+                    "name", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "host",
+                        Name = "name",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
+                    "host", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "name",
+                        Name = "host",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4038,6 +4430,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Database instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent resource where Cloud SQL creates this user. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -4087,6 +4484,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -4120,6 +4526,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Database instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>The parent, which owns this collection of users. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -4160,6 +4571,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4529,6 +4949,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlserverDatabaseDetails")]
+        public virtual SqlServerDatabaseDetails SqlserverDatabaseDetails { get; set; } 
+
     }    
 
     /// <summary>Database flags for Cloud SQL instances.</summary>
@@ -4660,6 +5083,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Initial root password. Use only on creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootPassword")]
         public virtual string RootPassword { get; set; } 
+
+        /// <summary>The start time of any upcoming scheduled maintenance for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledMaintenance")]
+        public virtual SqlScheduledMaintenance ScheduledMaintenance { get; set; } 
 
         /// <summary>The URI of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -5669,6 +6096,36 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// pair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
         public virtual System.Collections.Generic.IDictionary<string,string> UserLabels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Any scheduled maintenancce for this instance.</summary>
+    public class SqlScheduledMaintenance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the scheduled maintenance can be deferred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canDefer")]
+        public virtual System.Nullable<bool> CanDefer { get; set; } 
+
+        /// <summary>The start time of any upcoming scheduled maintenance for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a Sql Server database on the Cloud SQL instance.</summary>
+    public class SqlServerDatabaseDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The version of SQL Server with which the database is to be made compatible</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compatibilityLevel")]
+        public virtual System.Nullable<int> CompatibilityLevel { get; set; } 
+
+        /// <summary>The recovery model of a SQL Server database</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryModel")]
+        public virtual string RecoveryModel { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

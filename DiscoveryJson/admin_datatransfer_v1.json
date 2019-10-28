@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/sO76R3ImJWyHTWFAs7zvdNuGNOQ\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/4nXC3yxZNbcRmDAehf253f0RsHM\"",
  "discoveryVersion": "v1",
  "id": "admin:datatransfer_v1",
  "name": "admin",
  "canonicalName": "DataTransfer",
  "version": "datatransfer_v1",
- "revision": "20160223",
+ "revision": "20190829",
  "title": "Admin Data Transfer API",
  "description": "Transfers user data from one user to another.",
  "ownerDomain": "google.com",
@@ -106,7 +106,7 @@
     },
     "transferParams": {
      "type": "array",
-     "description": "The list of all possible transfer parameters for this application. These parameters can be used to select the data of the user in this application to be transfered.",
+     "description": "The list of all possible transfer parameters for this application. These parameters can be used to select the data of the user in this application to be transferred.",
      "items": {
       "$ref": "ApplicationTransferParam"
      }
@@ -125,7 +125,7 @@
     },
     "applicationTransferParams": {
      "type": "array",
-     "description": "The transfer parameters for the application. These parameters are used to select the data which will get transfered in context of this application.",
+     "description": "The transfer parameters for the application. These parameters are used to select the data which will get transferred in context of this application.",
      "items": {
       "$ref": "ApplicationTransferParam"
      }
@@ -147,7 +147,7 @@
     },
     "value": {
      "type": "array",
-     "description": "The value of the coressponding transfer parameter. eg: 'PRIVATE' or 'SHARED'",
+     "description": "The value of the corresponding transfer parameter. eg: 'PRIVATE' or 'SHARED'",
      "items": {
       "type": "string"
      }
@@ -208,11 +208,11 @@
     },
     "newOwnerUserId": {
      "type": "string",
-     "description": "ID of the user to whom the data is being transfered."
+     "description": "ID of the user to whom the data is being transferred."
     },
     "oldOwnerUserId": {
      "type": "string",
-     "description": "ID of the user whose data is being transfered."
+     "description": "ID of the user whose data is being transferred."
     },
     "overallTransferStatusCode": {
      "type": "string",
@@ -289,7 +289,7 @@
      "parameters": {
       "customerId": {
        "type": "string",
-       "description": "Immutable ID of the Google Apps account.",
+       "description": "Immutable ID of the G Suite account.",
        "location": "query"
       },
       "maxResults": {
@@ -365,7 +365,7 @@
      "parameters": {
       "customerId": {
        "type": "string",
-       "description": "Immutable ID of the Google Apps account.",
+       "description": "Immutable ID of the G Suite account.",
        "location": "query"
       },
       "maxResults": {

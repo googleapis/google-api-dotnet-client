@@ -427,10 +427,27 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Creates a new draft with the DRAFT label.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
             /// user.</param>
-            /// <param name="stream">The stream to upload.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual CreateMediaUpload Create(Google.Apis.Gmail.v1.Data.Draft body, string userId, System.IO.Stream stream, string contentType)
             {
@@ -489,6 +506,23 @@ namespace Google.Apis.Gmail.v1
                 public virtual string UserId { get; private set; }
 
                 /// <summary>Constructs a new Create media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item><description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+                /// seekable, then it will be read from its current position.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+                /// upload is completed.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for closing the <paramref name="stream"/>.
+                /// </description></item>
+                /// </list>
+                /// </remarks>
                 public CreateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string
                  userId, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{userId}/drafts"), "POST", stream, contentType)
@@ -871,10 +905,27 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Sends the specified, existing draft to the recipients in the To, Cc, and Bcc headers.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
             /// user.</param>
-            /// <param name="stream">The stream to upload.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual SendMediaUpload Send(Google.Apis.Gmail.v1.Data.Draft body, string userId, System.IO.Stream stream, string contentType)
             {
@@ -933,6 +984,23 @@ namespace Google.Apis.Gmail.v1
                 public virtual string UserId { get; private set; }
 
                 /// <summary>Constructs a new Send media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item><description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+                /// seekable, then it will be read from its current position.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+                /// upload is completed.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for closing the <paramref name="stream"/>.
+                /// </description></item>
+                /// </list>
+                /// </remarks>
                 public SendMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string
                  userId, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{userId}/drafts/send"), "POST", stream, contentType)
@@ -1029,11 +1097,28 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Replaces a draft's content.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
             /// user.</param>
             /// <param name="id">The ID of the draft to update.</param>
-            /// <param name="stream">The stream to upload.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual UpdateMediaUpload Update(Google.Apis.Gmail.v1.Data.Draft body, string userId, string id, System.IO.Stream stream, string contentType)
             {
@@ -1096,6 +1181,23 @@ namespace Google.Apis.Gmail.v1
                 public virtual string Id { get; private set; }
 
                 /// <summary>Constructs a new Update media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item><description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+                /// seekable, then it will be read from its current position.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+                /// upload is completed.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for closing the <paramref name="stream"/>.
+                /// </description></item>
+                /// </list>
+                /// </remarks>
                 public UpdateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Draft body, string
                  userId, string
                  id, System.IO.Stream stream, string contentType)
@@ -2398,10 +2500,27 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>Imports a message into only this user's mailbox, with standard email delivery scanning and
             /// classification similar to receiving via SMTP. Does not send a message.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
             /// user.</param>
-            /// <param name="stream">The stream to upload.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual ImportMediaUpload Import(Google.Apis.Gmail.v1.Data.Message body, string userId, System.IO.Stream stream, string contentType)
             {
@@ -2492,6 +2611,23 @@ namespace Google.Apis.Gmail.v1
                 public virtual System.Nullable<bool> ProcessForCalendar { get; set; }
 
                 /// <summary>Constructs a new Import media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item><description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+                /// seekable, then it will be read from its current position.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+                /// upload is completed.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for closing the <paramref name="stream"/>.
+                /// </description></item>
+                /// </list>
+                /// </remarks>
                 public ImportMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string
                  userId, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{userId}/messages/import"), "POST", stream, contentType)
@@ -2614,10 +2750,27 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>Directly inserts a message into only this user's mailbox similar to IMAP APPEND, bypassing most
             /// scanning and classification. Does not send a message.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
             /// user.</param>
-            /// <param name="stream">The stream to upload.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual InsertMediaUpload Insert(Google.Apis.Gmail.v1.Data.Message body, string userId, System.IO.Stream stream, string contentType)
             {
@@ -2696,6 +2849,23 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Constructs a new Insert media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item><description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+                /// seekable, then it will be read from its current position.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+                /// upload is completed.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for closing the <paramref name="stream"/>.
+                /// </description></item>
+                /// </list>
+                /// </remarks>
                 public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string
                  userId, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{userId}/messages"), "POST", stream, contentType)
@@ -2995,10 +3165,27 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Sends the specified message to the recipients in the To, Cc, and Bcc headers.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
             /// user.</param>
-            /// <param name="stream">The stream to upload.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual SendMediaUpload Send(Google.Apis.Gmail.v1.Data.Message body, string userId, System.IO.Stream stream, string contentType)
             {
@@ -3057,6 +3244,23 @@ namespace Google.Apis.Gmail.v1
                 public virtual string UserId { get; private set; }
 
                 /// <summary>Constructs a new Send media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item><description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+                /// seekable, then it will be read from its current position.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+                /// upload is completed.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for closing the <paramref name="stream"/>.
+                /// </description></item>
+                /// </list>
+                /// </remarks>
                 public SendMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.Message body, string
                  userId, System.IO.Stream stream, string contentType)
                     : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{userId}/messages/send"), "POST", stream, contentType)

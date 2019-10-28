@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/pox8safIyKhQhE-OIi12fI9ZcrM\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/4xq0Bw2LuAbeJZTw0U29AruL5y4\"",
  "discoveryVersion": "v1",
  "id": "reseller:v1",
  "name": "reseller",
  "version": "v1",
- "revision": "20190228",
+ "revision": "20191008",
  "title": "Enterprise Apps Reseller API",
  "description": "Creates and manages your customers and their subscriptions.",
  "ownerDomain": "google.com",
@@ -720,7 +720,7 @@
      "id": "reseller.subscriptions.delete",
      "path": "customers/{customerId}/subscriptions/{subscriptionId}",
      "httpMethod": "DELETE",
-     "description": "Cancel or transfer a subscription to direct.",
+     "description": "Cancel, suspend, or transfer a subscription to direct.",
      "parameters": {
       "customerId": {
        "type": "string",

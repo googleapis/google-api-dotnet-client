@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20191002 (1735)
+ *      <tr><th>API Rev<td>20191018 (1751)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -1384,7 +1384,7 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
     /// <summary>Video annotation request.</summary>
     public class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Requested video annotation features.</summary>
+        /// <summary>Required. Requested video annotation features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IList<string> Features { get; set; } 
 
@@ -1402,16 +1402,16 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
 
-        /// <summary>Optional cloud region where annotation should take place. Supported cloud regions: `us-east1`, `us-
-        /// west1`, `europe-west1`, `asia-east1`. If no region is specified, a region will be determined based on video
-        /// file location.</summary>
+        /// <summary>Optional. Cloud region where annotation should take place. Supported cloud regions: `us-east1`,
+        /// `us-west1`, `europe-west1`, `asia-east1`. If no region is specified, a region will be determined based on
+        /// video file location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
-        /// <summary>Optional location where the output (in JSON format) should be stored. Currently, only [Google Cloud
-        /// Storage](https://cloud.google.com/storage/) URIs are supported, which must be specified in the following
-        /// format: `gs://bucket-id/object-id` (other URI formats return google.rpc.Code.INVALID_ARGUMENT). For more
-        /// information, see [Request URIs](/storage/docs/reference-uris).</summary>
+        /// <summary>Optional. Location where the output (in JSON format) should be stored. Currently, only [Google
+        /// Cloud Storage](https://cloud.google.com/storage/) URIs are supported, which must be specified in the
+        /// following format: `gs://bucket-id/object-id` (other URI formats return google.rpc.Code.INVALID_ARGUMENT).
+        /// For more information, see [Request URIs](/storage/docs/reference-uris).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
         public virtual string OutputUri { get; set; } 
 
@@ -1721,7 +1721,7 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
     /// <summary>Provides "hints" to the speech recognizer to favor specific words and phrases in the results.</summary>
     public class GoogleCloudVideointelligenceV1p1beta1SpeechContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>*Optional* A list of strings containing words and phrases "hints" so that the speech recognition is
+        /// <summary>Optional. A list of strings containing words and phrases "hints" so that the speech recognition is
         /// more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for
         /// example, if specific commands are typically spoken by the user. This can also be used to add additional
         /// words to the vocabulary of the recognizer. See [usage
@@ -1778,17 +1778,17 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
     /// <summary>Config for SPEECH_TRANSCRIPTION.</summary>
     public class GoogleCloudVideointelligenceV1p1beta1SpeechTranscriptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>*Optional* For file formats, such as MXF or MKV, supporting multiple audio tracks, specify up to
-        /// two tracks. Default: track 0.</summary>
+        /// <summary>Optional. For file formats, such as MXF or MKV, supporting multiple audio tracks, specify up to two
+        /// tracks. Default: track 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioTracks")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> AudioTracks { get; set; } 
 
-        /// <summary>*Optional* If set, specifies the estimated number of speakers in the conversation. If not set,
+        /// <summary>Optional. If set, specifies the estimated number of speakers in the conversation. If not set,
         /// defaults to '2'. Ignored unless enable_speaker_diarization is set to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diarizationSpeakerCount")]
         public virtual System.Nullable<int> DiarizationSpeakerCount { get; set; } 
 
-        /// <summary>*Optional* If 'true', adds punctuation to recognition result hypotheses. This feature is only
+        /// <summary>Optional. If 'true', adds punctuation to recognition result hypotheses. This feature is only
         /// available in select languages. Setting this for requests in other languages has no effect at all. The
         /// default 'false' value does not add punctuation to result hypotheses. NOTE: "This is currently offered as an
         /// experimental service, complimentary to all users. In the future this may be exclusively available as a
@@ -1796,7 +1796,7 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableAutomaticPunctuation")]
         public virtual System.Nullable<bool> EnableAutomaticPunctuation { get; set; } 
 
-        /// <summary>*Optional* If 'true', enables speaker detection for each recognized word in the top alternative of
+        /// <summary>Optional. If 'true', enables speaker detection for each recognized word in the top alternative of
         /// the recognition result using a speaker_tag provided in the WordInfo. Note: When this is true, we send all
         /// the words from the beginning of the audio for the top alternative in every consecutive responses. This is
         /// done in order to improve our speaker tags as our models learn to identify the speakers in the conversation
@@ -1804,32 +1804,32 @@ namespace Google.Apis.CloudVideoIntelligence.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableSpeakerDiarization")]
         public virtual System.Nullable<bool> EnableSpeakerDiarization { get; set; } 
 
-        /// <summary>*Optional* If `true`, the top result includes a list of words and the confidence for those words.
-        /// If `false`, no word-level confidence information is returned. The default is `false`.</summary>
+        /// <summary>Optional. If `true`, the top result includes a list of words and the confidence for those words. If
+        /// `false`, no word-level confidence information is returned. The default is `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableWordConfidence")]
         public virtual System.Nullable<bool> EnableWordConfidence { get; set; } 
 
-        /// <summary>*Optional* If set to `true`, the server will attempt to filter out profanities, replacing all but
+        /// <summary>Optional. If set to `true`, the server will attempt to filter out profanities, replacing all but
         /// the initial character in each filtered word with asterisks, e.g. "f***". If set to `false` or omitted,
         /// profanities won't be filtered out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterProfanity")]
         public virtual System.Nullable<bool> FilterProfanity { get; set; } 
 
-        /// <summary>*Required* The language of the supplied audio as a [BCP-47](https://www.rfc-
+        /// <summary>Required. *Required* The language of the supplied audio as a [BCP-47](https://www.rfc-
         /// editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US". See [Language
         /// Support](https://cloud.google.com/speech/docs/languages) for a list of the currently supported language
         /// codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 
-        /// <summary>*Optional* Maximum number of recognition hypotheses to be returned. Specifically, the maximum
-        /// number of `SpeechRecognitionAlternative` messages within each `SpeechTranscription`. The server may return
-        /// fewer than `max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will return a maximum of
-        /// one. If omitted, will return a maximum of one.</summary>
+        /// <summary>Optional. Maximum number of recognition hypotheses to be returned. Specifically, the maximum number
+        /// of `SpeechRecognitionAlternative` messages within each `SpeechTranscription`. The server may return fewer
+        /// than `max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will return a maximum of one. If
+        /// omitted, will return a maximum of one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAlternatives")]
         public virtual System.Nullable<int> MaxAlternatives { get; set; } 
 
-        /// <summary>*Optional* A means to provide context to assist the speech recognition.</summary>
+        /// <summary>Optional. A means to provide context to assist the speech recognition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechContexts")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1SpeechContext> SpeechContexts { get; set; } 
 

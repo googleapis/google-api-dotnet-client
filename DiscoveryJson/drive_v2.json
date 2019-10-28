@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/HS5nOCrvqlknsBW7s8QhLxtUQr8\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/oBMvKC4XV0NjxxOx_Y5WENsew0Q\"",
  "discoveryVersion": "v1",
  "id": "drive:v2",
  "name": "drive",
  "version": "v2",
- "revision": "20191001",
+ "revision": "20191015",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -304,7 +304,7 @@
     },
     "quotaBytesTotal": {
      "type": "string",
-     "description": "The total number of quota bytes.",
+     "description": "The total number of quota bytes. This is only relevant when quotaType is LIMITED.",
      "format": "int64"
     },
     "quotaBytesUsed": {

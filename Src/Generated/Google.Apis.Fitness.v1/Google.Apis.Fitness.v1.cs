@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191007 (1740)
+ *      <tr><th>API Rev<td>20191014 (1747)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -1381,7 +1381,7 @@ namespace Google.Apis.Fitness.v1
 
 
             /// <summary>Aggregates data of a certain type or stream into buckets divided by a given type of boundary.
-            /// Multiple data sets of multiple types and from multiple sources can be aggreated into exactly one bucket
+            /// Multiple data sets of multiple types and from multiple sources can be aggregated into exactly one bucket
             /// type per request.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">Aggregate data for the person identified. Use me to indicate the authenticated user. Only me is
@@ -1392,7 +1392,7 @@ namespace Google.Apis.Fitness.v1
             }
 
             /// <summary>Aggregates data of a certain type or stream into buckets divided by a given type of boundary.
-            /// Multiple data sets of multiple types and from multiple sources can be aggreated into exactly one bucket
+            /// Multiple data sets of multiple types and from multiple sources can be aggregated into exactly one bucket
             /// type per request.</summary>
             public class AggregateRequest : FitnessBaseServiceRequest<Google.Apis.Fitness.v1.Data.AggregateResponse>
             {

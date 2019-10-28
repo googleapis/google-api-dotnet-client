@@ -8038,13 +8038,30 @@ namespace Google.Apis.Analytics.v3
             }
 
             /// <summary>Upload data for a custom data source.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
 
             /// <param name="accountId">Account Id associated with the upload.</param>
             /// <param name="webPropertyId">Web
             /// property UA-string associated with the upload.</param>
             /// <param name="customDataSourceId">Custom data source
             /// Id to which the data being uploaded belongs.</param>
-            /// <param name="stream">The stream to upload.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual UploadDataMediaUpload UploadData(string accountId, string webPropertyId, string customDataSourceId, System.IO.Stream stream, string contentType)
             {
@@ -8109,6 +8126,23 @@ namespace Google.Apis.Analytics.v3
                 public virtual string CustomDataSourceId { get; private set; }
 
                 /// <summary>Constructs a new UploadData media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item><description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+                /// seekable, then it will be read from its current position.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+                /// upload is completed.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for closing the <paramref name="stream"/>.
+                /// </description></item>
+                /// </list>
+                /// </remarks>
                 public UploadDataMediaUpload(Google.Apis.Services.IClientService service, string
                  accountId, string
                  webPropertyId, string

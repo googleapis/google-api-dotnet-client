@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services'>Google Play Game Services Publishing API</a>
  *      <tr><th>API Version<td>v1configuration
- *      <tr><th>API Rev<td>20191003 (1736)
+ *      <tr><th>API Rev<td>20191014 (1747)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services'>
  *              https://developers.google.com/games/services</a>
@@ -811,11 +811,28 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         }
 
         /// <summary>Uploads an image for a resource with the given ID and image type.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item><description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+        /// seekable, then it will be read from its current position.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+        /// upload is completed.
+        /// </description></item>
+        /// <item><description>
+        /// Caller is responsible for closing the <paramref name="stream"/>.
+        /// </description></item>
+        /// </list>
+        /// </remarks>
 
         /// <param name="resourceId">The ID of the resource used by this method.</param>
         /// <param name="imageType">Selects
         /// which image in a resource for this method.</param>
-        /// <param name="stream">The stream to upload.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual UploadMediaUpload Upload(string resourceId, UploadMediaUpload.ImageTypeEnum imageType, System.IO.Stream stream, string contentType)
         {
@@ -887,6 +904,23 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             }
 
             /// <summary>Constructs a new Upload media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
             public UploadMediaUpload(Google.Apis.Services.IClientService service, string
              resourceId, UploadMediaUpload.ImageTypeEnum
              imageType, System.IO.Stream stream, string contentType)

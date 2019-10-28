@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191013 (1746)
+ *      <tr><th>API Rev<td>20191015 (1748)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -1259,11 +1259,28 @@ namespace Google.Apis.AndroidPublisher.v2
             }
 
 
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
 
             /// <param name="packageName">Unique identifier for the Android app that is being updated; for example,
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
-            /// <param name="stream">The stream to upload.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual UploadMediaUpload Upload(string packageName, string editId, System.IO.Stream stream, string contentType)
             {
@@ -1325,6 +1342,23 @@ namespace Google.Apis.AndroidPublisher.v2
                 public virtual string EditId { get; private set; }
 
                 /// <summary>Constructs a new Upload media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item><description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+                /// seekable, then it will be read from its current position.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+                /// upload is completed.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for closing the <paramref name="stream"/>.
+                /// </description></item>
+                /// </list>
+                /// </remarks>
                 public UploadMediaUpload(Google.Apis.Services.IClientService service, string
                  packageName, string
                  editId, System.IO.Stream stream, string contentType)
@@ -1537,11 +1571,28 @@ namespace Google.Apis.AndroidPublisher.v2
             /// libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2
             /// minutes is recommended). See: https://developers.google.com/api-client-library/java/google-api-java-
             /// client/errors for an example in java.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
 
             /// <param name="packageName">Unique identifier for the Android app that is being updated; for example,
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
-            /// <param name="stream">The stream to upload.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual UploadMediaUpload Upload(string packageName, string editId, System.IO.Stream stream, string contentType)
             {
@@ -1608,6 +1659,23 @@ namespace Google.Apis.AndroidPublisher.v2
                 public virtual System.Nullable<bool> AckBundleInstallationWarning { get; set; }
 
                 /// <summary>Constructs a new Upload media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item><description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+                /// seekable, then it will be read from its current position.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+                /// upload is completed.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for closing the <paramref name="stream"/>.
+                /// </description></item>
+                /// </list>
+                /// </remarks>
                 public UploadMediaUpload(Google.Apis.Services.IClientService service, string
                  packageName, string
                  editId, System.IO.Stream stream, string contentType)
@@ -1762,6 +1830,23 @@ namespace Google.Apis.AndroidPublisher.v2
 
             /// <summary>Uploads the deobfuscation file of the specified APK. If a deobfuscation file already exists, it
             /// will be replaced.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
 
             /// <param name="packageName">Unique identifier of the Android app for which the deobfuscatiuon files are being
             /// uploaded; for example, "com.spiffygame".</param>
@@ -1770,7 +1855,7 @@ namespace Google.Apis.AndroidPublisher.v2
             /// <param name="apkVersionCode">The version code of the APK whose deobfuscation file is being
             /// uploaded.</param>
             /// <param name="deobfuscationFileType"></param>
-            /// <param name="stream">The stream to upload.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual UploadMediaUpload Upload(string packageName, string editId, int apkVersionCode, UploadMediaUpload.DeobfuscationFileTypeEnum deobfuscationFileType, System.IO.Stream stream, string contentType)
             {
@@ -1847,6 +1932,23 @@ namespace Google.Apis.AndroidPublisher.v2
                 }
 
                 /// <summary>Constructs a new Upload media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item><description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+                /// seekable, then it will be read from its current position.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+                /// upload is completed.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for closing the <paramref name="stream"/>.
+                /// </description></item>
+                /// </list>
+                /// </remarks>
                 public UploadMediaUpload(Google.Apis.Services.IClientService service, string
                  packageName, string
                  editId, int
@@ -2655,6 +2757,23 @@ namespace Google.Apis.AndroidPublisher.v2
             }
 
             /// <summary>Uploads and attaches a new Expansion File to the APK specified.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
 
             /// <param name="packageName">Unique identifier for the Android app that is being updated; for example,
             /// "com.spiffygame".</param>
@@ -2663,7 +2782,7 @@ namespace Google.Apis.AndroidPublisher.v2
             /// name="apkVersionCode">The version code of the APK whose Expansion File configuration is being read or
             /// modified.</param>
             /// <param name="expansionFileType"></param>
-            /// <param name="stream">The stream to upload.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual UploadMediaUpload Upload(string packageName, string editId, int apkVersionCode, UploadMediaUpload.ExpansionFileTypeEnum expansionFileType, System.IO.Stream stream, string contentType)
             {
@@ -2743,6 +2862,23 @@ namespace Google.Apis.AndroidPublisher.v2
                 }
 
                 /// <summary>Constructs a new Upload media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item><description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+                /// seekable, then it will be read from its current position.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+                /// upload is completed.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for closing the <paramref name="stream"/>.
+                /// </description></item>
+                /// </list>
+                /// </remarks>
                 public UploadMediaUpload(Google.Apis.Services.IClientService service, string
                  packageName, string
                  editId, int
@@ -3337,6 +3473,23 @@ namespace Google.Apis.AndroidPublisher.v2
 
             /// <summary>Uploads a new image and adds it to the list of images for the specified language and image
             /// type.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item><description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+            /// seekable, then it will be read from its current position.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+            /// upload is completed.
+            /// </description></item>
+            /// <item><description>
+            /// Caller is responsible for closing the <paramref name="stream"/>.
+            /// </description></item>
+            /// </list>
+            /// </remarks>
 
             /// <param name="packageName">Unique identifier for the Android app that is being updated; for example,
             /// "com.spiffygame".</param>
@@ -3346,7 +3499,7 @@ namespace Google.Apis.AndroidPublisher.v2
             /// modified. For example, to select Austrian German, pass "de-AT".</param>
             /// <param
             /// name="imageType"></param>
-            /// <param name="stream">The stream to upload.</param>
+            /// <param name="stream">The stream to upload. See remarks for further information.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
             public virtual UploadMediaUpload Upload(string packageName, string editId, string language, UploadMediaUpload.ImageTypeEnum imageType, System.IO.Stream stream, string contentType)
             {
@@ -3440,6 +3593,23 @@ namespace Google.Apis.AndroidPublisher.v2
                 }
 
                 /// <summary>Constructs a new Upload media upload instance.</summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item><description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
+                /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
+                /// seekable, then it will be read from its current position.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
+                /// upload is completed.
+                /// </description></item>
+                /// <item><description>
+                /// Caller is responsible for closing the <paramref name="stream"/>.
+                /// </description></item>
+                /// </list>
+                /// </remarks>
                 public UploadMediaUpload(Google.Apis.Services.IClientService service, string
                  packageName, string
                  editId, string

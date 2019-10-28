@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/civic-information'>Google Civic Information API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190402 (1552)
+ *      <tr><th>API Rev<td>20191010 (1743)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/civic-information'>
  *              https://developers.google.com/civic-information</a>
@@ -1869,10 +1869,10 @@ namespace Google.Apis.CivicInfo.v2.Data
         public virtual System.Nullable<long> StartHouseNumber { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("startLatE7")]
-        public virtual System.Nullable<long> StartLatE7 { get; set; } 
+        public virtual System.Nullable<int> StartLatE7 { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("startLngE7")]
-        public virtual System.Nullable<long> StartLngE7 { get; set; } 
+        public virtual System.Nullable<int> StartLngE7 { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
