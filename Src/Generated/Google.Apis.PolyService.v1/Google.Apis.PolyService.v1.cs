@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/poly/'>Poly API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191022 (1755)
+ *      <tr><th>API Rev<td>20191027 (1760)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/poly/'>
  *              https://developers.google.com/poly/</a>
@@ -417,6 +417,11 @@ namespace Google.Apis.PolyService.v1
             }
 
 
+            /// <summary>Filter assets based on the specified category. Supported values are: `animals`, `architecture`,
+            /// `art`, `food`, `nature`, `objects`, `people`, `scenes`, `technology`, and `transport`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("category", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Category { get; set; }
+
             /// <summary>Returns assets that are of the specified complexity or less. Defaults to COMPLEX. For example,
             /// a request for MEDIUM assets also includes SIMPLE assets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxComplexity", Google.Apis.Util.RequestParameterType.Query)]
@@ -466,11 +471,6 @@ namespace Google.Apis.PolyService.v1
             [Google.Apis.Util.RequestParameterAttribute("curated", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Curated { get; set; }
 
-            /// <summary>Filter assets based on the specified category. Supported values are: `animals`, `architecture`,
-            /// `art`, `food`, `nature`, `objects`, `people`, `scenes`, `technology`, and `transport`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("category", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Category { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -495,6 +495,15 @@ namespace Google.Apis.PolyService.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "category", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "category",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "maxComplexity", new Google.Apis.Discovery.Parameter
                     {
@@ -553,15 +562,6 @@ namespace Google.Apis.PolyService.v1
                     "curated", new Google.Apis.Discovery.Parameter
                     {
                         Name = "curated",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "category", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "category",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

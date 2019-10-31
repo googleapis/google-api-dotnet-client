@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>AI Platform Training & Prediction API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191021 (1754)
+ *      <tr><th>API Rev<td>20191025 (1758)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -1610,10 +1610,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     ///
                     /// For example, to change the description of a version to "foo", the `update_mask` parameter would
                     /// be specified as `description`, and the `PATCH` request body would specify the new value, as
-                    /// follows: { "description": "foo" }
+                    /// follows:
                     ///
-                    /// Currently the only supported update mask fields are `description` and
-                    /// `autoScaling.minNodes`.</summary>
+                    /// ``` { "description": "foo" } ```
+                    ///
+                    /// Currently the only supported update mask fields are `description`, `autoScaling.minNodes`, and
+                    /// `manualScaling.nodes`. However, you can only update `manualScaling.nodes` if the version uses a
+                    /// [Compute Engine (N1) machine type](/ml-engine/docs/machine-types-online-prediction).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -2594,6 +2597,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2601,10 +2608,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2640,6 +2643,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2652,15 +2664,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2859,8 +2862,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a hardware accelerator request config. Note that the AcceleratorConfig could be used in both
-    /// Jobs and Versions.</summary>
+    /// <summary>Represents a hardware accelerator request config. Note that the AcceleratorConfig can be used in both
+    /// Jobs and Versions. Learn more about [accelerators for training](/ml-engine/docs/using-gpus) and [accelerators
+    /// for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).</summary>
     public class GoogleCloudMlV1AcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of accelerators to attach to each machine running the job.</summary>
@@ -2888,8 +2892,17 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// add nodes to handle the increased load as well as scale back as traffic drops, always maintaining at least
         /// `min_nodes`. You will be charged for the time in which additional nodes are used.
         ///
-        /// If not specified, `min_nodes` defaults to 0, in which case, when traffic to a model stops (and after a cool-
-        /// down period), nodes will be shut down and no charges will be incurred until traffic to the model resumes.
+        /// If `min_nodes` is not specified and AutoScaling is used with a [legacy (MLS1) machine type](/ml-engine/docs
+        /// /machine-types-online-prediction), `min_nodes` defaults to 0, in which case, when traffic to a model stops
+        /// (and after a cool-down period), nodes will be shut down and no charges will be incurred until traffic to the
+        /// model resumes.
+        ///
+        /// If `min_nodes` is not specified and AutoScaling is used with a [Compute Engine (N1) machine type](/ml-
+        /// engine/docs/machine-types-online-prediction), `min_nodes` defaults to 1. `min_nodes` must be at least 1 for
+        /// use with a Compute Engine machine type.
+        ///
+        /// Note that you cannot use AutoScaling if your version uses [GPUs](#Version.FIELDS.accelerator_config).
+        /// Instead, you must use ManualScaling.
         ///
         /// You can set `min_nodes` when creating the model version, and you can also update `min_nodes` for an existing
         /// version:
@@ -3848,13 +3861,18 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).</summary>
     public class GoogleCloudMlV1Version : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Accelerator config for GPU serving.</summary>
+        /// <summary>Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field
+        /// if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using
+        /// GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
         public virtual GoogleCloudMlV1AcceleratorConfig AcceleratorConfig { get; set; } 
 
         /// <summary>Automatically scale the number of nodes used to serve the model in response to increases and
         /// decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or
-        /// you will start seeing increases in latency and 429 response codes.</summary>
+        /// you will start seeing increases in latency and 429 response codes.
+        ///
+        /// Note that you cannot use AutoScaling if your version uses [GPUs](#Version.FIELDS.accelerator_config).
+        /// Instead, you must use specify `manual_scaling`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoScaling")]
         public virtual GoogleCloudMlV1AutoScaling AutoScaling { get; set; } 
 
@@ -3894,7 +3912,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// must also set the runtime version of the model to 1.4 or greater.
         ///
         /// Do **not** specify a framework if you're deploying a [custom prediction routine](/ml-engine/docs/tensorflow
-        /// /custom-prediction-routines).</summary>
+        /// /custom-prediction-routines).
+        ///
+        /// If you specify a [Compute Engine (N1) machine type](/ml-engine/docs/machine-types-online-prediction) in the
+        /// `machineType` field, you must specify `TENSORFLOW` for the framework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("framework")]
         public virtual string Framework { get; set; } 
 
@@ -3917,19 +3938,16 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual object LastUseTime { get; set; } 
 
         /// <summary>Optional. The type of machine on which to serve the model. Currently only applies to online
-        /// prediction service.
+        /// prediction service. If this field is not specified, it defaults to `mls1-c1-m2`.
         ///
-        /// mls1-c1-m2
+        /// Online prediction supports the following machine types:
         ///
-        /// The default machine type, with 1 core and 2 GB RAM. The deprecated name for this machine type is
-        /// "mls1-highmem-1".
+        /// * `mls1-c1-m2` * `mls1-c4-m2` * `n1-standard-2` * `n1-standard-4` * `n1-standard-8` * `n1-standard-16` *
+        /// `n1-standard-32` * `n1-highmem-2` * `n1-highmem-4` * `n1-highmem-8` * `n1-highmem-16` * `n1-highmem-32` *
+        /// `n1-highcpu-2` * `n1-highcpu-4` * `n1-highcpu-8` * `n1-highcpu-16` * `n1-highcpu-32`
         ///
-        /// mls1-c4-m2
-        ///
-        /// In Beta. This machine type has 4 cores and 2 GB RAM. The deprecated name for this machine type is
-        /// "mls1-highcpu-4".
-        ///
-        /// </summary>
+        /// `mls1-c1-m2` is generally available. All other machine types are available in beta. Learn more about the
+        /// [differences between machine types](/ml-engine/docs/machine-types-online-prediction).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
 
@@ -3966,11 +3984,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         ///
         /// Specify this field if and only if you are deploying a [custom prediction routine (beta)](/ml-
         /// engine/docs/tensorflow/custom-prediction-routines). If you specify this field, you must set
-        /// [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
+        /// [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and you must set `machineType` to a
+        /// [legacy (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction).
         ///
         /// The following code sample provides the Predictor interface:
         ///
-        /// ```py class Predictor(object): Interface for constructing custom predictors.
+        /// class Predictor(object): Interface for constructing custom predictors.
         ///
         /// def predict(self, instances, **kwargs): Performs custom prediction.
         ///
@@ -3992,7 +4011,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         ///
         /// Returns: An instance implementing this Predictor class.
         ///
-        /// raise NotImplementedError() ```
+        /// raise NotImplementedError()
         ///
         /// Learn more about [the Predictor interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-
         /// prediction-routines).</summary>

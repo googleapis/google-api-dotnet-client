@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190919 (1722)
+ *      <tr><th>API Rev<td>20191021 (1754)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -668,16 +668,6 @@ namespace Google.Apis.Container.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
-                        /// the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string ClusterId { get; set; }
-
-                        /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
-                        /// replaced by the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string NodePoolId { get; set; }
-
                         /// <summary>Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the name field.</summary>
@@ -689,6 +679,16 @@ namespace Google.Apis.Container.v1
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Zone { get; set; }
+
+                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
+                        /// the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ClusterId { get; set; }
+
+                        /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
+                        /// replaced by the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string NodePoolId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -724,24 +724,6 @@ namespace Google.Apis.Container.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "nodePoolId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "nodePoolId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "projectId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "projectId",
@@ -754,6 +736,24 @@ namespace Google.Apis.Container.v1
                                 "zone", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "zone",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "clusterId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "clusterId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "nodePoolId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "nodePoolId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -908,6 +908,11 @@ namespace Google.Apis.Container.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
+                        /// the parent field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ClusterId { get; set; }
+
                         /// <summary>Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the parent field.</summary>
@@ -919,11 +924,6 @@ namespace Google.Apis.Container.v1
                         /// deprecated and replaced by the parent field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Zone { get; set; }
-
-                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
-                        /// the parent field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string ClusterId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -959,6 +959,15 @@ namespace Google.Apis.Container.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "clusterId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "clusterId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "projectId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "projectId",
@@ -971,15 +980,6 @@ namespace Google.Apis.Container.v1
                                 "zone", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "zone",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "clusterId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "clusterId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -6721,6 +6721,22 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration for returning group information from authenticators.</summary>
+    public class AuthenticatorGroupsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether this cluster should return group membership lookups during authentication using a group of
+        /// security groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>The name of the security group-of-groups to be used. Only relevant if enabled = true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityGroup")]
+        public virtual string SecurityGroup { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>AutoUpgradeOptions defines the set of options for the user to control how the Auto Upgrades will
     /// proceed.</summary>
     public class AutoUpgradeOptions : Google.Apis.Requests.IDirectResponseSchema
@@ -6734,6 +6750,23 @@ namespace Google.Apis.Container.v1.Data
         /// upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.</summary>
+    public class AutoprovisioningNodePoolDefaults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Scopes that are used by NAP when creating node pools. If oauth_scopes are specified,
+        /// service_account should be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
+        public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; } 
+
+        /// <summary>The Google Cloud Platform Service Account to be used by the node VMs. If service_account is
+        /// specified, scopes should be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6822,6 +6855,14 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Configurations for the various addons available to run in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addonsConfig")]
         public virtual AddonsConfig AddonsConfig { get; set; } 
+
+        /// <summary>Configuration controlling RBAC group membership information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticatorGroupsConfig")]
+        public virtual AuthenticatorGroupsConfig AuthenticatorGroupsConfig { get; set; } 
+
+        /// <summary>Cluster-level autoscaling configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscaling")]
+        public virtual ClusterAutoscaling Autoscaling { get; set; } 
 
         /// <summary>Configuration for Binary Authorization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorization")]
@@ -6947,8 +6988,8 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The logging service the cluster should use to write logs. Currently available options:
         ///
         /// * "logging.googleapis.com/kubernetes" - the Google Cloud Logging service with Kubernetes-native resource
-        /// model in Stackdriver * `logging.googleapis.com` - the Google Cloud Logging service. * `none` - no logs will
-        /// be exported from the cluster. * if left as an empty string,`logging.googleapis.com` will be used.</summary>
+        /// model * `logging.googleapis.com` - the Google Cloud Logging service. * `none` - no logs will be exported
+        /// from the cluster. * if left as an empty string,`logging.googleapis.com` will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingService")]
         public virtual string LoggingService { get; set; } 
 
@@ -7058,10 +7099,40 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tpuIpv4CidrBlock")]
         public virtual string TpuIpv4CidrBlock { get; set; } 
 
+        /// <summary>Cluster-level Vertical Pod Autoscaling configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalPodAutoscaling")]
+        public virtual VerticalPodAutoscaling VerticalPodAutoscaling { get; set; } 
+
         /// <summary>[Output only] The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
         /// the cluster resides. This field is deprecated, use location instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>ClusterAutoscaling contains global, per-cluster information required by Cluster Autoscaler to
+    /// automatically adjust the size of the cluster and create/delete node pools based on the current needs.</summary>
+    public class ClusterAutoscaling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Google Compute Engine [zones](/compute/docs/zones#available) in which the NodePool's
+        /// nodes can be created by NAP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoprovisioningLocations")]
+        public virtual System.Collections.Generic.IList<string> AutoprovisioningLocations { get; set; } 
+
+        /// <summary>AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoprovisioningNodePoolDefaults")]
+        public virtual AutoprovisioningNodePoolDefaults AutoprovisioningNodePoolDefaults { get; set; } 
+
+        /// <summary>Enables automatic node pool creation and deletion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableNodeAutoprovisioning")]
+        public virtual System.Nullable<bool> EnableNodeAutoprovisioning { get; set; } 
+
+        /// <summary>Contains global constraints regarding minimum and maximum amount of resources in the
+        /// cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLimits")]
+        public virtual System.Collections.Generic.IList<ResourceLimit> ResourceLimits { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7078,6 +7149,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The desired configuration options for the Binary Authorization feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredBinaryAuthorization")]
         public virtual BinaryAuthorization DesiredBinaryAuthorization { get; set; } 
+
+        /// <summary>Cluster-level autoscaling configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredClusterAutoscaling")]
+        public virtual ClusterAutoscaling DesiredClusterAutoscaling { get; set; } 
 
         /// <summary>Configuration of etcd encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDatabaseEncryption")]
@@ -7103,8 +7178,8 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The logging service the cluster should use to write logs. Currently available options:
         ///
         /// * "logging.googleapis.com/kubernetes" - the Google Cloud Logging service with Kubernetes-native resource
-        /// model in Stackdriver * "logging.googleapis.com" - the Google Cloud Logging service * "none" - no logs will
-        /// be exported from the cluster</summary>
+        /// model * "logging.googleapis.com" - the Google Cloud Logging service * "none" - no logs will be exported from
+        /// the cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredLoggingService")]
         public virtual string DesiredLoggingService { get; set; } 
 
@@ -7126,8 +7201,8 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The monitoring service the cluster should use to write metrics. Currently available options:
         ///
         /// * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring service with Kubernetes-native
-        /// resource model in Stackdriver * "monitoring.googleapis.com" - the Google Cloud Monitoring service * "none" -
-        /// no metrics will be exported from the cluster</summary>
+        /// resource model * "monitoring.googleapis.com" - the Google Cloud Monitoring service * "none" - no metrics
+        /// will be exported from the cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMonitoringService")]
         public virtual string DesiredMonitoringService { get; set; } 
 
@@ -7157,6 +7232,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The desired configuration for exporting resource usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredResourceUsageExportConfig")]
         public virtual ResourceUsageExportConfig DesiredResourceUsageExportConfig { get; set; } 
+
+        /// <summary>Cluster-level Vertical Pod Autoscaling configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredVerticalPodAutoscaling")]
+        public virtual VerticalPodAutoscaling DesiredVerticalPodAutoscaling { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8010,6 +8089,10 @@ namespace Google.Apis.Container.v1.Data
     /// pool to the current cluster usage.</summary>
     public class NodePoolAutoscaling : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Can this node pool be deleted automatically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoprovisioned")]
+        public virtual System.Nullable<bool> Autoprovisioned { get; set; } 
+
         /// <summary>Is autoscaling enabled for this node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; } 
@@ -8140,6 +8223,26 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Output only. The external IP address of this cluster's master endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicEndpoint")]
         public virtual string PublicEndpoint { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains information about amount of some resource in the cluster. For memory, value should be in
+    /// GB.</summary>
+    public class ResourceLimit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Maximum amount of the resource in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
+        public virtual System.Nullable<long> Maximum { get; set; } 
+
+        /// <summary>Minimum amount of the resource in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
+        public virtual System.Nullable<long> Minimum { get; set; } 
+
+        /// <summary>Resource name "cpu", "memory" or gpu-specific string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8479,8 +8582,8 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The monitoring service the cluster should use to write metrics. Currently available options:
         ///
         /// * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring service with Kubernetes-native
-        /// resource model in Stackdriver * "monitoring.googleapis.com" - the Google Cloud Monitoring service * "none" -
-        /// no metrics will be exported from the cluster</summary>
+        /// resource model * "monitoring.googleapis.com" - the Google Cloud Monitoring service * "none" - no metrics
+        /// will be exported from the cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringService")]
         public virtual string MonitoringService { get; set; } 
 
@@ -8882,6 +8985,18 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>This field is to determine the status of the secondary range programmably.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>VerticalPodAutoscaling contains global, per-cluster information required by Vertical Pod Autoscaler to
+    /// automatically adjust the resources of pods controlled by it.</summary>
+    public class VerticalPodAutoscaling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enables vertical pod autoscaling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

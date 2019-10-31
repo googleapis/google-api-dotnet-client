@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/hosting/'>Firebase Hosting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191025 (1758)
+ *      <tr><th>API Rev<td>20191029 (1762)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/hosting/'>
  *              https://firebase.google.com/docs/hosting/</a>
@@ -1115,15 +1115,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The self-reported size of the version. This value is used for a pre-emptive quota check for
-                /// legacy version uploads.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> SizeBytes { get; set; }
-
                 /// <summary>A unique id for the new version. This is only specified for legacy version
                 /// creations.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("versionId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string VersionId { get; set; }
+
+                /// <summary>The self-reported size of the version. This value is used for a pre-emptive quota check for
+                /// legacy version uploads.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> SizeBytes { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1165,18 +1165,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^sites/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "sizeBytes", new Google.Apis.Discovery.Parameter
+                        "versionId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "sizeBytes",
+                            Name = "versionId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "versionId", new Google.Apis.Discovery.Parameter
+                        "sizeBytes", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "versionId",
+                            Name = "sizeBytes",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1825,6 +1825,23 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Version preview configuration. If active and unexpired, this version will be accessible via a custom
+    /// URL even if it is not the currently released version.</summary>
+    public class PreviewConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, preview URLs are enabled for this version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("active")]
+        public virtual System.Nullable<bool> Active { get; set; } 
+
+        /// <summary>Indicates the expiration time for previewing this version; preview URL requests received after this
+        /// time will 404.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A [`redirect`](/docs/hosting/full-config#redirects) represents the configuration for returning an HTTP
     /// redirect response given a matching request URL path.</summary>
     public class Redirect : Google.Apis.Requests.IDirectResponseSchema
@@ -2020,6 +2037,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Version preview configuration for the site version. This configuration specfies whether previewing
+        /// is enabled for this site version. Version previews allow you to preview your site at a custom URL before
+        /// releasing it as the live version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preview")]
+        public virtual PreviewConfig Preview { get; set; } 
 
         /// <summary>The deploy status of a version.
         ///

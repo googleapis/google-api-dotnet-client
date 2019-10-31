@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/digital-asset-links/'>Digital Asset Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190904 (1707)
+ *      <tr><th>API Rev<td>20191030 (1763)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/digital-asset-links/'>
  *              https://developers.google.com/digital-asset-links/</a>
@@ -387,32 +387,6 @@ namespace Google.Apis.Digitalassetlinks.v1
             }
 
 
-            /// <summary>Android App assets are naturally identified by their Java package name. For example, the Google
-            /// Maps app uses the package name `com.google.android.apps.maps`. REQUIRED</summary>
-            [Google.Apis.Util.RequestParameterAttribute("target.androidApp.packageName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string TargetAndroidAppPackageName { get; set; }
-
-            /// <summary>The uppercase SHA-265 fingerprint of the certificate.  From the PEM certificate, it can be
-            /// acquired like this:
-            ///
-            /// $ keytool -printcert -file $CERTFILE | grep SHA256: SHA256:
-            /// 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \ 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-            ///
-            /// or like this:
-            ///
-            /// $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256 SHA256
-            /// Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
-            /// 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-            ///
-            /// In this example, the contents of this field would be `14:6D:E9:83:C5:73:
-            /// 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`.
-            ///
-            /// If these tools are not available to you, you can convert the PEM certificate into the DER format,
-            /// compute the SHA-256 hash of that string and represent the result as a hexstring (that is, uppercase
-            /// hexadecimal representations of each octet, separated by colons).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("source.androidApp.certificate.sha256Fingerprint", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SourceAndroidAppCertificateSha256Fingerprint { get; set; }
-
             /// <summary>Query string for the relation.
             ///
             /// We identify relations with strings of the format `/`, where `` must be one of a set of pre-defined
@@ -512,6 +486,32 @@ namespace Google.Apis.Digitalassetlinks.v1
             [Google.Apis.Util.RequestParameterAttribute("source.web.site", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceWebSite { get; set; }
 
+            /// <summary>Android App assets are naturally identified by their Java package name. For example, the Google
+            /// Maps app uses the package name `com.google.android.apps.maps`. REQUIRED</summary>
+            [Google.Apis.Util.RequestParameterAttribute("target.androidApp.packageName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TargetAndroidAppPackageName { get; set; }
+
+            /// <summary>The uppercase SHA-265 fingerprint of the certificate.  From the PEM certificate, it can be
+            /// acquired like this:
+            ///
+            /// $ keytool -printcert -file $CERTFILE | grep SHA256: SHA256:
+            /// 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \ 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
+            ///
+            /// or like this:
+            ///
+            /// $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256 SHA256
+            /// Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
+            /// 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
+            ///
+            /// In this example, the contents of this field would be `14:6D:E9:83:C5:73:
+            /// 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`.
+            ///
+            /// If these tools are not available to you, you can convert the PEM certificate into the DER format,
+            /// compute the SHA-256 hash of that string and represent the result as a hexstring (that is, uppercase
+            /// hexadecimal representations of each octet, separated by colons).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("source.androidApp.certificate.sha256Fingerprint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SourceAndroidAppCertificateSha256Fingerprint { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -536,24 +536,6 @@ namespace Google.Apis.Digitalassetlinks.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "target.androidApp.packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "target.androidApp.packageName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source.androidApp.certificate.sha256Fingerprint", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source.androidApp.certificate.sha256Fingerprint",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "relation", new Google.Apis.Discovery.Parameter
                     {
@@ -594,6 +576,24 @@ namespace Google.Apis.Digitalassetlinks.v1
                     "source.web.site", new Google.Apis.Discovery.Parameter
                     {
                         Name = "source.web.site",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "target.androidApp.packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "target.androidApp.packageName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "source.androidApp.certificate.sha256Fingerprint", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source.androidApp.certificate.sha256Fingerprint",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -661,27 +661,6 @@ namespace Google.Apis.Digitalassetlinks.v1
             }
 
 
-            /// <summary>The uppercase SHA-265 fingerprint of the certificate.  From the PEM certificate, it can be
-            /// acquired like this:
-            ///
-            /// $ keytool -printcert -file $CERTFILE | grep SHA256: SHA256:
-            /// 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \ 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-            ///
-            /// or like this:
-            ///
-            /// $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256 SHA256
-            /// Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
-            /// 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
-            ///
-            /// In this example, the contents of this field would be `14:6D:E9:83:C5:73:
-            /// 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`.
-            ///
-            /// If these tools are not available to you, you can convert the PEM certificate into the DER format,
-            /// compute the SHA-256 hash of that string and represent the result as a hexstring (that is, uppercase
-            /// hexadecimal representations of each octet, separated by colons).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("source.androidApp.certificate.sha256Fingerprint", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SourceAndroidAppCertificateSha256Fingerprint { get; set; }
-
             /// <summary>Use only associations that match the specified relation.
             ///
             /// See the [`Statement`](#Statement) message for a detailed definition of relation strings.
@@ -729,6 +708,27 @@ namespace Google.Apis.Digitalassetlinks.v1
             [Google.Apis.Util.RequestParameterAttribute("source.androidApp.packageName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceAndroidAppPackageName { get; set; }
 
+            /// <summary>The uppercase SHA-265 fingerprint of the certificate.  From the PEM certificate, it can be
+            /// acquired like this:
+            ///
+            /// $ keytool -printcert -file $CERTFILE | grep SHA256: SHA256:
+            /// 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \ 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
+            ///
+            /// or like this:
+            ///
+            /// $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256 SHA256
+            /// Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \
+            /// 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5
+            ///
+            /// In this example, the contents of this field would be `14:6D:E9:83:C5:73:
+            /// 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`.
+            ///
+            /// If these tools are not available to you, you can convert the PEM certificate into the DER format,
+            /// compute the SHA-256 hash of that string and represent the result as a hexstring (that is, uppercase
+            /// hexadecimal representations of each octet, separated by colons).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("source.androidApp.certificate.sha256Fingerprint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SourceAndroidAppCertificateSha256Fingerprint { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -754,15 +754,6 @@ namespace Google.Apis.Digitalassetlinks.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "source.androidApp.certificate.sha256Fingerprint", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source.androidApp.certificate.sha256Fingerprint",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "relation", new Google.Apis.Discovery.Parameter
                     {
                         Name = "relation",
@@ -784,6 +775,15 @@ namespace Google.Apis.Digitalassetlinks.v1
                     "source.androidApp.packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "source.androidApp.packageName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "source.androidApp.certificate.sha256Fingerprint", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source.androidApp.certificate.sha256Fingerprint",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>Cloud Translation API</a>
  *      <tr><th>API Version<td>v3beta1
- *      <tr><th>API Rev<td>20191018 (1751)
+ *      <tr><th>API Rev<td>20191025 (1758)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>
  *              https://cloud.google.com/translate/docs/quickstarts</a>
@@ -1784,6 +1784,11 @@ namespace Google.Apis.Translate.v3beta1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
+            /// <summary>Optional. The language to use to return localized, human readable names of supported languages.
+            /// If missing, then display names are not returned in a response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("displayLanguageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DisplayLanguageCode { get; set; }
+
             /// <summary>Optional. Get supported languages of this model.
             ///
             /// The format depends on model type:
@@ -1797,11 +1802,6 @@ namespace Google.Apis.Translate.v3beta1
             /// general base (PBMT) model.</summary>
             [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Model { get; set; }
-
-            /// <summary>Optional. The language to use to return localized, human readable names of supported languages.
-            /// If missing, then display names are not returned in a response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("displayLanguageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string DisplayLanguageCode { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1837,18 +1837,18 @@ namespace Google.Apis.Translate.v3beta1
                         Pattern = @"^projects/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "model", new Google.Apis.Discovery.Parameter
+                    "displayLanguageCode", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "model",
+                        Name = "displayLanguageCode",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "displayLanguageCode", new Google.Apis.Discovery.Parameter
+                    "model", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "displayLanguageCode",
+                        Name = "model",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

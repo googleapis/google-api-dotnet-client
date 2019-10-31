@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/recommender/docs/'>Recommender API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191018 (1751)
+ *      <tr><th>API Rev<td>20191027 (1760)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/recommender/docs/'>
  *              https://cloud.google.com/recommender/docs/</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191004 (1737)
+ *      <tr><th>API Rev<td>20191018 (1751)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -411,8 +411,8 @@ namespace Google.Apis.CloudResourceManager.v2
             }
 
 
-            /// <summary>The resource name of the new Folder's parent. Must be of the form `folders/{folder_id}` or
-            /// `organizations/{org_id}`.</summary>
+            /// <summary>Required. The resource name of the new Folder's parent. Must be of the form
+            /// `folders/{folder_id}` or `organizations/{org_id}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
 
@@ -463,7 +463,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// is deleted approximately 30 days later. This method may only be called on an empty Folder in the ACTIVE
         /// state, where a Folder is empty if it doesn't contain any Folders or Projects in the ACTIVE state. The caller
         /// must have `resourcemanager.folders.delete` permission on the identified folder.</summary>
-        /// <param name="name">the resource name of the Folder to be deleted. Must be of the form
+        /// <param name="name">Required. the resource name of the Folder to be deleted. Must be of the form
         /// `folders/{folder_id}`.</param>
         public virtual DeleteRequest Delete(string name)
         {
@@ -485,7 +485,7 @@ namespace Google.Apis.CloudResourceManager.v2
             }
 
 
-            /// <summary>the resource name of the Folder to be deleted. Must be of the form
+            /// <summary>Required. the resource name of the Folder to be deleted. Must be of the form
             /// `folders/{folder_id}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -530,7 +530,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// <summary>Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the
         /// format `folders/{folder_id}` (for example, `folders/1234`). The caller must have
         /// `resourcemanager.folders.get` permission on the identified folder.</summary>
-        /// <param name="name">The resource name of the Folder to retrieve. Must be of the form
+        /// <param name="name">Required. The resource name of the Folder to retrieve. Must be of the form
         /// `folders/{folder_id}`.</param>
         public virtual GetRequest Get(string name)
         {
@@ -551,7 +551,7 @@ namespace Google.Apis.CloudResourceManager.v2
             }
 
 
-            /// <summary>The resource name of the Folder to retrieve. Must be of the form
+            /// <summary>Required. The resource name of the Folder to retrieve. Must be of the form
             /// `folders/{folder_id}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -690,25 +690,25 @@ namespace Google.Apis.CloudResourceManager.v2
             }
 
 
-            /// <summary>A pagination token returned from a previous call to `ListFolders` that indicates where this
-            /// listing should continue from. This field is optional.</summary>
+            /// <summary>Optional. Controls whether Folders in the DELETE_REQUESTED state should be returned. Defaults
+            /// to false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+            /// <summary>Optional. A pagination token returned from a previous call to `ListFolders` that indicates
+            /// where this listing should continue from.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>The maximum number of Folders to return in the response. This field is optional.</summary>
+            /// <summary>Optional. The maximum number of Folders to return in the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>The resource name of the Organization or Folder whose Folders are being listed. Must be of the
-            /// form `folders/{folder_id}` or `organizations/{org_id}`. Access to this method is controlled by checking
-            /// the `resourcemanager.folders.list` permission on the `parent`.</summary>
+            /// <summary>Required. The resource name of the Organization or Folder whose Folders are being listed. Must
+            /// be of the form `folders/{folder_id}` or `organizations/{org_id}`. Access to this method is controlled by
+            /// checking the `resourcemanager.folders.list` permission on the `parent`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
-
-            /// <summary>Controls whether Folders in the DELETE_REQUESTED state should be returned. Defaults to false.
-            /// This field is optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -734,6 +734,15 @@ namespace Google.Apis.CloudResourceManager.v2
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
@@ -761,15 +770,6 @@ namespace Google.Apis.CloudResourceManager.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
@@ -784,7 +784,8 @@ namespace Google.Apis.CloudResourceManager.v2
         /// constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.move`
         /// permission on the folder's current and proposed new parent.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the Folder to move. Must be of the form folders/{folder_id}</param>
+        /// <param name="name">Required. The resource name of the Folder to move. Must be of the form
+        /// folders/{folder_id}</param>
         public virtual MoveRequest Move(Google.Apis.CloudResourceManager.v2.Data.MoveFolderRequest body, string name)
         {
             return new MoveRequest(service, body, name);
@@ -811,7 +812,8 @@ namespace Google.Apis.CloudResourceManager.v2
             }
 
 
-            /// <summary>The resource name of the Folder to move. Must be of the form folders/{folder_id}</summary>
+            /// <summary>Required. The resource name of the Folder to move. Must be of the form
+            /// folders/{folder_id}</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -905,7 +907,7 @@ namespace Google.Apis.CloudResourceManager.v2
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Fields to be updated. Only the `display_name` can be updated.</summary>
+            /// <summary>Required. Fields to be updated. Only the `display_name` can be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -1178,7 +1180,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// described in the CreateFolder documentation. The caller must have `resourcemanager.folders.undelete`
         /// permission on the identified folder.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the Folder to undelete. Must be of the form
+        /// <param name="name">Required. The resource name of the Folder to undelete. Must be of the form
         /// `folders/{folder_id}`.</param>
         public virtual UndeleteRequest Undelete(Google.Apis.CloudResourceManager.v2.Data.UndeleteFolderRequest body, string name)
         {
@@ -1202,7 +1204,7 @@ namespace Google.Apis.CloudResourceManager.v2
             }
 
 
-            /// <summary>The resource name of the Folder to undelete. Must be of the form
+            /// <summary>Required. The resource name of the Folder to undelete. Must be of the form
             /// `folders/{folder_id}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -1488,7 +1490,7 @@ namespace Google.Apis.CloudResourceManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The Folder’s parent's resource name. Updates to the folder's parent must be performed via
+        /// <summary>Required. The Folder’s parent's resource name. Updates to the folder's parent must be performed via
         /// MoveFolder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
@@ -1570,7 +1572,7 @@ namespace Google.Apis.CloudResourceManager.v2.Data
         public virtual System.Collections.Generic.IList<Folder> Folders { get; set; } 
 
         /// <summary>A pagination token returned from a previous call to `ListFolders` that indicates from where listing
-        /// should continue. This field is optional.</summary>
+        /// should continue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -1581,8 +1583,8 @@ namespace Google.Apis.CloudResourceManager.v2.Data
     /// <summary>The MoveFolder request message.</summary>
     public class MoveFolderRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of the Folder or Organization to reparent the folder under. Must be of the form
-        /// `folders/{folder_id}` or `organizations/{org_id}`.</summary>
+        /// <summary>Required. The resource name of the Folder or Organization to reparent the folder under. Must be of
+        /// the form `folders/{folder_id}` or `organizations/{org_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationParent")]
         public virtual string DestinationParent { get; set; } 
 
@@ -1715,12 +1717,12 @@ namespace Google.Apis.CloudResourceManager.v2.Data
     /// <summary>The request message for searching folders.</summary>
     public class SearchFoldersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The maximum number of folders to return in the response. This field is optional.</summary>
+        /// <summary>Optional. The maximum number of folders to return in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; } 
 
-        /// <summary>A pagination token returned from a previous call to `SearchFolders` that indicates from where
-        /// search should continue. This field is optional.</summary>
+        /// <summary>Optional. A pagination token returned from a previous call to `SearchFolders` that indicates from
+        /// where search should continue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; } 
 
@@ -1756,7 +1758,7 @@ namespace Google.Apis.CloudResourceManager.v2.Data
         public virtual System.Collections.Generic.IList<Folder> Folders { get; set; } 
 
         /// <summary>A pagination token returned from a previous call to `SearchFolders` that indicates from where
-        /// searching should continue. This field is optional.</summary>
+        /// searching should continue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 

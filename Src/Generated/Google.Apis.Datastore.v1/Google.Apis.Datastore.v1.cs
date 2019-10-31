@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190922 (1725)
+ *      <tr><th>API Rev<td>20191020 (1753)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -371,6 +371,178 @@ namespace Google.Apis.Datastore.v1
 
             }
 
+
+            /// <summary>Creates the specified index. A newly created index's initial state is `CREATING`. On completion
+            /// of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists,
+            /// the call will return an `ALREADY_EXISTS` status.
+            ///
+            /// During index creation, the process could result in an error, in which case the index will move to the
+            /// `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index
+            /// with delete, then re-creating the index with create.
+            ///
+            /// Indexes with a single property cannot be created.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="projectId">Project ID against which to make the request.</param>
+            public virtual CreateRequest Create(Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1Index body, string projectId)
+            {
+                return new CreateRequest(service, body, projectId);
+            }
+
+            /// <summary>Creates the specified index. A newly created index's initial state is `CREATING`. On completion
+            /// of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists,
+            /// the call will return an `ALREADY_EXISTS` status.
+            ///
+            /// During index creation, the process could result in an error, in which case the index will move to the
+            /// `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index
+            /// with delete, then re-creating the index with create.
+            ///
+            /// Indexes with a single property cannot be created.</summary>
+            public class CreateRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1Index body, string projectId)
+                    : base(service)
+                {
+                    ProjectId = projectId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Project ID against which to make the request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProjectId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1Index Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/projects/{projectId}/indexes"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes an existing index. An index can only be deleted if it is in a `READY` or `ERROR` state.
+            /// On successful execution of the request, the index will be in a `DELETING` state. And on completion of
+            /// the returned google.longrunning.Operation, the index will be removed.
+            ///
+            /// During index deletion, the process could result in an error, in which case the index will move to the
+            /// `ERROR` state. The process can be recovered by fixing the data that caused the error, followed by
+            /// calling delete again.</summary>
+            /// <param name="projectId">Project ID against which to make the request.</param>
+            /// <param name="indexId">The
+            /// resource ID of the index to delete.</param>
+            public virtual DeleteRequest Delete(string projectId, string indexId)
+            {
+                return new DeleteRequest(service, projectId, indexId);
+            }
+
+            /// <summary>Deletes an existing index. An index can only be deleted if it is in a `READY` or `ERROR` state.
+            /// On successful execution of the request, the index will be in a `DELETING` state. And on completion of
+            /// the returned google.longrunning.Operation, the index will be removed.
+            ///
+            /// During index deletion, the process could result in an error, in which case the index will move to the
+            /// `ERROR` state. The process can be recovered by fixing the data that caused the error, followed by
+            /// calling delete again.</summary>
+            public class DeleteRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string indexId)
+                    : base(service)
+                {
+                    ProjectId = projectId;
+                    IndexId = indexId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Project ID against which to make the request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProjectId { get; private set; }
+
+                /// <summary>The resource ID of the index to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("indexId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string IndexId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/projects/{projectId}/indexes/{indexId}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "indexId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "indexId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
 
             /// <summary>Gets an index.</summary>
             /// <param name="projectId">Project ID against which to make the request.</param>
@@ -1310,7 +1482,8 @@ namespace Google.Apis.Datastore.v1
 
         }
 
-        /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.</summary>
+        /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore. Used for imports
+        /// only; other workloads are not supported.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">The ID of the project against which to make the request.</param>
         public virtual ReserveIdsRequest ReserveIds(Google.Apis.Datastore.v1.Data.ReserveIdsRequest body, string projectId)
@@ -1318,7 +1491,8 @@ namespace Google.Apis.Datastore.v1
             return new ReserveIdsRequest(service, body, projectId);
         }
 
-        /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.</summary>
+        /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore. Used for imports
+        /// only; other workloads are not supported.</summary>
         public class ReserveIdsRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.ReserveIdsResponse>
         {
             /// <summary>Constructs a new ReserveIds request.</summary>

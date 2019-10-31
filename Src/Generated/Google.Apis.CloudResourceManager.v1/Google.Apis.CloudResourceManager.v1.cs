@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191004 (1737)
+ *      <tr><th>API Rev<td>20191018 (1751)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -2657,6 +2657,20 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
+            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
+            /// listing should continue.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
+            /// than requested. If unspecified, server picks an appropriate default.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>An expression for filtering the results of the request.  Filter rules are case insensitive. The
             /// fields eligible for filtering are:
             ///
@@ -2685,20 +2699,6 @@ namespace Google.Apis.CloudResourceManager.v1
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
-            /// listing should continue.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
-            /// than requested. If unspecified, server picks an appropriate default.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2724,15 +2724,6 @@ namespace Google.Apis.CloudResourceManager.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -2745,6 +2736,15 @@ namespace Google.Apis.CloudResourceManager.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3867,8 +3867,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     /// `denied_values` fields. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix
     /// is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required
     /// only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix.
-    /// Ancestry subtrees must be in one of the following formats: - “projects/”, e.g. “projects/tokyo-rain-123” -
-    /// “folders/”, e.g. “folders/1234” - “organizations/”, e.g. “organizations/1234” The `supports_under` field of the
+    /// Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" -
+    /// "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the
     /// associated `Constraint`  defines whether ancestry prefixes can be used. You can set `allowed_values` and
     /// `denied_values` in the same `Policy` if `all_values` is `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to
     /// allow or deny all values. If `all_values` is set to either `ALLOW` or `DENY`, `allowed_values` and
@@ -3910,13 +3910,13 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         /// The following examples demonstrate different possible layerings for `projects/bar` parented by
         /// `organizations/foo`:
         ///
-        /// Example 1 (no inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: “E1”
-        /// allowed_values:”E2”} `projects/bar` has `inherit_from_parent` `false` and values: {allowed_values: "E3"
+        /// Example 1 (no inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
+        /// allowed_values:"E2"} `projects/bar` has `inherit_from_parent` `false` and values: {allowed_values: "E3"
         /// allowed_values: "E4"} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at
         /// `projects/bar` are `E3`, and `E4`.
         ///
-        /// Example 2 (inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: “E1”
-        /// allowed_values:”E2”} `projects/bar` has a `Policy` with values: {value: “E3” value: ”E4”
+        /// Example 2 (inherited values): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
+        /// allowed_values:"E2"} `projects/bar` has a `Policy` with values: {value: "E3" value: "E4"
         /// inherit_from_parent: true} The accepted values at `organizations/foo` are `E1`, `E2`. The accepted values at
         /// `projects/bar` are `E1`, `E2`, `E3`, and `E4`.
         ///
@@ -3924,8 +3924,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         /// {allowed_values: "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {denied_values: "E1"} The
         /// accepted values at `organizations/foo` are `E1`, `E2`. The value accepted at `projects/bar` is `E2`.
         ///
-        /// Example 4 (RestoreDefault): `organizations/foo` has a `Policy` with values: {allowed_values: “E1”
-        /// allowed_values:”E2”} `projects/bar` has a `Policy` with values: {RestoreDefault: {}} The accepted values at
+        /// Example 4 (RestoreDefault): `organizations/foo` has a `Policy` with values: {allowed_values: "E1"
+        /// allowed_values:"E2"} `projects/bar` has a `Policy` with values: {RestoreDefault: {}} The accepted values at
         /// `organizations/foo` are `E1`, `E2`. The accepted values at `projects/bar` are either all or none depending
         /// on the value of `constraint_default` (if `ALLOW`, all; if `DENY`, none).
         ///
@@ -3934,11 +3934,11 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         /// `constraint_default` (if `ALLOW`, all; if `DENY`, none).
         ///
         /// Example 6 (ListConstraint allowing all): `organizations/foo` has a `Policy` with values: {allowed_values:
-        /// “E1” allowed_values: ”E2”} `projects/bar` has a `Policy` with: {all: ALLOW} The accepted values at
+        /// "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: ALLOW} The accepted values at
         /// `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`.
         ///
         /// Example 7 (ListConstraint allowing none): `organizations/foo` has a `Policy` with values: {allowed_values:
-        /// “E1” allowed_values: ”E2”} `projects/bar` has a `Policy` with: {all: DENY} The accepted values at
+        /// "E1" allowed_values: "E2"} `projects/bar` has a `Policy` with: {all: DENY} The accepted values at
         /// `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`.
         ///
         /// Example 10 (allowed and denied subtrees of Resource Manager hierarchy): Given the following resource

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/shell/docs/'>Cloud Shell API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20191023 (1756)
+ *      <tr><th>API Rev<td>20191028 (1761)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/shell/docs/'>
  *              https://cloud.google.com/shell/docs/</a>
@@ -882,10 +882,6 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dockerImage")]
         public virtual string DockerImage { get; set; } 
 
-        /// <summary>Output only. List of ports users can connect to on the environment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("httpsPorts")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> HttpsPorts { get; set; } 
-
         /// <summary>Output only. The environment's identifier, which is always "default".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
@@ -935,6 +931,11 @@ namespace Google.Apis.CloudShell.v1alpha1.Data
         /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webHost")]
         public virtual string WebHost { get; set; } 
+
+        /// <summary>Output only. Ports to which clients can connect to initiate HTTPS or WSS connections with the
+        /// environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webPorts")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> WebPorts { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

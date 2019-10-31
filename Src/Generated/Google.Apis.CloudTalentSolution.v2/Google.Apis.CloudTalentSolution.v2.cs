@@ -418,12 +418,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                 [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CompanyName { get; private set; }
 
-                /// <summary>Optional. The requisition ID, also known as posting ID, assigned by the company to the job.
-                ///
-                /// The maximum number of allowable characters is 225.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("jobRequisitionId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string JobRequisitionId { get; set; }
-
                 /// <summary>Deprecated. Please DO NOT use this field except for small companies. Suggest counting jobs
                 /// page by page instead.
                 ///
@@ -456,6 +450,12 @@ namespace Google.Apis.CloudTalentSolution.v2
                 /// Default is 100 if empty or a number < 1 is specified.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. The requisition ID, also known as posting ID, assigned by the company to the job.
+                ///
+                /// The maximum number of allowable characters is 225.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("jobRequisitionId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string JobRequisitionId { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -491,15 +491,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                             Pattern = @"^companies/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "jobRequisitionId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobRequisitionId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "includeJobsCount", new Google.Apis.Discovery.Parameter
                         {
                             Name = "includeJobsCount",
@@ -530,6 +521,15 @@ namespace Google.Apis.CloudTalentSolution.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "jobRequisitionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobRequisitionId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1324,6 +1324,20 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
+            /// <summary>Required. The filter string specifies the jobs to be enumerated.
+            ///
+            /// Supported operator: =, AND
+            ///
+            /// The fields eligible for filtering are:
+            ///
+            /// * `companyName` (Required) * `requisitionId` (Optional)
+            ///
+            /// Sample Query:
+            ///
+            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>Optional. The starting point of a query result.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1345,20 +1359,6 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// Defaults to false.</summary>
             [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IdsOnly { get; set; }
-
-            /// <summary>Required. The filter string specifies the jobs to be enumerated.
-            ///
-            /// Supported operator: =, AND
-            ///
-            /// The fields eligible for filtering are:
-            ///
-            /// * `companyName` (Required) * `requisitionId` (Optional)
-            ///
-            /// Sample Query:
-            ///
-            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1385,6 +1385,15 @@ namespace Google.Apis.CloudTalentSolution.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1406,15 +1415,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                     "idsOnly", new Google.Apis.Discovery.Parameter
                     {
                         Name = "idsOnly",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

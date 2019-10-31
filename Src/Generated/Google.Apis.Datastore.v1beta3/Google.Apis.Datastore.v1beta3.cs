@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20190922 (1725)
+ *      <tr><th>API Rev<td>20191020 (1753)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -621,7 +621,8 @@ namespace Google.Apis.Datastore.v1beta3
 
         }
 
-        /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.</summary>
+        /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore. Used for imports
+        /// only; other workloads are not supported.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">The ID of the project against which to make the request.</param>
         public virtual ReserveIdsRequest ReserveIds(Google.Apis.Datastore.v1beta3.Data.ReserveIdsRequest body, string projectId)
@@ -629,7 +630,8 @@ namespace Google.Apis.Datastore.v1beta3
             return new ReserveIdsRequest(service, body, projectId);
         }
 
-        /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.</summary>
+        /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore. Used for imports
+        /// only; other workloads are not supported.</summary>
         public class ReserveIdsRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1beta3.Data.ReserveIdsResponse>
         {
             /// <summary>Constructs a new ReserveIds request.</summary>

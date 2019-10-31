@@ -7,24 +7,13 @@
         "databases": {
           "methods": {
             "exportDocuments": {
-              "description": "Exports a copy of all or a subset of documents from Google Cloud Firestore\nto another storage system, such as Google Cloud Storage. Recent updates to\ndocuments may not be reflected in the export. The export occurs in the\nbackground and its progress can be monitored and managed via the\nOperation resource that is created. The output of an export may only be\nused once the associated operation is done. If an export operation is\ncancelled before completion it may leave partial data behind in Google\nCloud Storage.",
-              "request": {
-                "$ref": "GoogleFirestoreAdminV1beta2ExportDocumentsRequest"
-              },
-              "response": {
-                "$ref": "GoogleLongrunningOperation"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "POST",
               "parameters": {
                 "name": {
+                  "location": "path",
+                  "description": "Database to export. Should be of the form:\n`projects/{project_id}/databases/{database_id}`.",
                   "required": true,
                   "type": "string",
-                  "pattern": "^projects/[^/]+/databases/[^/]+$",
-                  "location": "path",
-                  "description": "Database to export. Should be of the form:\n`projects/{project_id}/databases/{database_id}`."
+                  "pattern": "^projects/[^/]+/databases/[^/]+$"
                 }
               },
               "scopes": [
@@ -32,24 +21,35 @@
                 "https://www.googleapis.com/auth/datastore"
               ],
               "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}:exportDocuments",
+              "id": "firestore.projects.databases.exportDocuments",
               "path": "v1beta2/{+name}:exportDocuments",
-              "id": "firestore.projects.databases.exportDocuments"
-            },
-            "importDocuments": {
-              "response": {
-                "$ref": "GoogleLongrunningOperation"
+              "description": "Exports a copy of all or a subset of documents from Google Cloud Firestore\nto another storage system, such as Google Cloud Storage. Recent updates to\ndocuments may not be reflected in the export. The export occurs in the\nbackground and its progress can be monitored and managed via the\nOperation resource that is created. The output of an export may only be\nused once the associated operation is done. If an export operation is\ncancelled before completion it may leave partial data behind in Google\nCloud Storage.",
+              "request": {
+                "$ref": "GoogleFirestoreAdminV1beta2ExportDocumentsRequest"
               },
+              "httpMethod": "POST",
               "parameterOrder": [
                 "name"
               ],
+              "response": {
+                "$ref": "GoogleLongrunningOperation"
+              }
+            },
+            "importDocuments": {
               "httpMethod": "POST",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "GoogleLongrunningOperation"
+              },
               "parameters": {
                 "name": {
+                  "required": true,
+                  "type": "string",
                   "pattern": "^projects/[^/]+/databases/[^/]+$",
                   "location": "path",
-                  "description": "Database to import into. Should be of the form:\n`projects/{project_id}/databases/{database_id}`.",
-                  "required": true,
-                  "type": "string"
+                  "description": "Database to import into. Should be of the form:\n`projects/{project_id}/databases/{database_id}`."
                 }
               },
               "scopes": [
@@ -57,8 +57,8 @@
                 "https://www.googleapis.com/auth/datastore"
               ],
               "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}:importDocuments",
-              "path": "v1beta2/{+name}:importDocuments",
               "id": "firestore.projects.databases.importDocuments",
+              "path": "v1beta2/{+name}:importDocuments",
               "description": "Imports documents into Google Cloud Firestore. Existing documents with the\nsame name are overwritten. The import occurs in the background and its\nprogress can be monitored and managed via the Operation resource that is\ncreated. If an ImportDocuments operation is cancelled, it is possible\nthat a subset of the data has already been imported to Cloud Firestore.",
               "request": {
                 "$ref": "GoogleFirestoreAdminV1beta2ImportDocumentsRequest"
@@ -71,50 +71,57 @@
                 "fields": {
                   "methods": {
                     "get": {
-                      "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields/{fieldsId}",
-                      "path": "v1beta2/{+name}",
-                      "id": "firestore.projects.databases.collectionGroups.fields.get",
-                      "description": "Gets the metadata and configuration for a Field.",
-                      "response": {
-                        "$ref": "GoogleFirestoreAdminV1beta2Field"
-                      },
+                      "httpMethod": "GET",
                       "parameterOrder": [
                         "name"
                       ],
-                      "httpMethod": "GET",
+                      "response": {
+                        "$ref": "GoogleFirestoreAdminV1beta2Field"
+                      },
                       "parameters": {
                         "name": {
-                          "location": "path",
                           "description": "A name of the form\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_id}`",
                           "required": true,
                           "type": "string",
-                          "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$"
+                          "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$",
+                          "location": "path"
                         }
                       },
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/datastore"
-                      ]
+                      ],
+                      "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields/{fieldsId}",
+                      "id": "firestore.projects.databases.collectionGroups.fields.get",
+                      "path": "v1beta2/{+name}",
+                      "description": "Gets the metadata and configuration for a Field."
                     },
                     "patch": {
-                      "description": "Updates a field configuration. Currently, field updates apply only to\nsingle field index configuration. However, calls to\nFirestoreAdmin.UpdateField should provide a field mask to avoid\nchanging any configuration that the caller isn't aware of. The field mask\nshould be specified as: `{ paths: \"index_config\" }`.\n\nThis call returns a google.longrunning.Operation which may be used to\ntrack the status of the field update. The metadata for\nthe operation will be the type FieldOperationMetadata.\n\nTo configure the default field settings for the database, use\nthe special `Field` with resource name:\n`projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*`.",
+                      "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields/{fieldsId}",
+                      "id": "firestore.projects.databases.collectionGroups.fields.patch",
+                      "path": "v1beta2/{+name}",
                       "request": {
                         "$ref": "GoogleFirestoreAdminV1beta2Field"
                       },
-                      "response": {
-                        "$ref": "GoogleLongrunningOperation"
-                      },
+                      "description": "Updates a field configuration. Currently, field updates apply only to\nsingle field index configuration. However, calls to\nFirestoreAdmin.UpdateField should provide a field mask to avoid\nchanging any configuration that the caller isn't aware of. The field mask\nshould be specified as: `{ paths: \"index_config\" }`.\n\nThis call returns a google.longrunning.Operation which may be used to\ntrack the status of the field update. The metadata for\nthe operation will be the type FieldOperationMetadata.\n\nTo configure the default field settings for the database, use\nthe special `Field` with resource name:\n`projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*`.",
+                      "httpMethod": "PATCH",
                       "parameterOrder": [
                         "name"
                       ],
-                      "httpMethod": "PATCH",
+                      "response": {
+                        "$ref": "GoogleLongrunningOperation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/datastore"
+                      ],
                       "parameters": {
                         "name": {
-                          "description": "A field name of the form\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`\n\nA field path may be a simple field name, e.g. `address` or a path to fields\nwithin map_value , e.g. `address.city`,\nor a special field path. The only valid special field is `*`, which\nrepresents any field.\n\nField paths may be quoted using ` (backtick). The only character that needs\nto be escaped within a quoted field path is the backtick character itself,\nescaped using a backslash. Special characters in field paths that\nmust be quoted include: `*`, `.`,\n``` (backtick), `[`, `]`, as well as any ascii symbolic characters.\n\nExamples:\n(Note: Comments here are written in markdown syntax, so there is an\n additional layer of backticks to represent a code block)\n`\\`address.city\\`` represents a field named `address.city`, not the map key\n`city` in the field `address`.\n`\\`*\\`` represents a field named `*`, not any field.\n\nA special `Field` contains the default indexing settings for all fields.\nThis field's resource name is:\n`projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*`\nIndexes defined on this `Field` will be applied to all fields which do not\nhave their own `Field` index configuration.",
                           "required": true,
                           "type": "string",
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$",
-                          "location": "path"
+                          "location": "path",
+                          "description": "A field name of the form\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`\n\nA field path may be a simple field name, e.g. `address` or a path to fields\nwithin map_value , e.g. `address.city`,\nor a special field path. The only valid special field is `*`, which\nrepresents any field.\n\nField paths may be quoted using ` (backtick). The only character that needs\nto be escaped within a quoted field path is the backtick character itself,\nescaped using a backslash. Special characters in field paths that\nmust be quoted include: `*`, `.`,\n``` (backtick), `[`, `]`, as well as any ascii symbolic characters.\n\nExamples:\n(Note: Comments here are written in markdown syntax, so there is an\n additional layer of backticks to represent a code block)\n`\\`address.city\\`` represents a field named `address.city`, not the map key\n`city` in the field `address`.\n`\\`*\\`` represents a field named `*`, not any field.\n\nA special `Field` contains the default indexing settings for all fields.\nThis field's resource name is:\n`projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*`\nIndexes defined on this `Field` will be applied to all fields which do not\nhave their own `Field` index configuration."
                         },
                         "updateMask": {
                           "location": "query",
@@ -122,32 +129,25 @@
                           "format": "google-fieldmask",
                           "type": "string"
                         }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/datastore"
-                      ],
-                      "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields/{fieldsId}",
-                      "path": "v1beta2/{+name}",
-                      "id": "firestore.projects.databases.collectionGroups.fields.patch"
+                      }
                     },
                     "list": {
-                      "response": {
-                        "$ref": "GoogleFirestoreAdminV1beta2ListFieldsResponse"
-                      },
+                      "httpMethod": "GET",
                       "parameterOrder": [
                         "parent"
                       ],
-                      "httpMethod": "GET",
+                      "response": {
+                        "$ref": "GoogleFirestoreAdminV1beta2ListFieldsResponse"
+                      },
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/datastore"
                       ],
                       "parameters": {
                         "pageToken": {
-                          "location": "query",
                           "description": "A page token, returned from a previous call to\nFirestoreAdmin.ListFields, that may be used to get the next\npage of results.",
-                          "type": "string"
+                          "type": "string",
+                          "location": "query"
                         },
                         "pageSize": {
                           "location": "query",
@@ -156,21 +156,21 @@
                           "type": "integer"
                         },
                         "parent": {
+                          "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
+                          "location": "path",
                           "description": "A parent name of the form\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`",
                           "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
-                          "location": "path"
+                          "type": "string"
                         },
                         "filter": {
+                          "description": "The filter to apply to list results. Currently,\nFirestoreAdmin.ListFields only supports listing fields\nthat have been explicitly overridden. To issue this query, call\nFirestoreAdmin.ListFields with the filter set to\n`indexConfig.usesAncestorConfig:false`.",
                           "type": "string",
-                          "location": "query",
-                          "description": "The filter to apply to list results. Currently,\nFirestoreAdmin.ListFields only supports listing fields\nthat have been explicitly overridden. To issue this query, call\nFirestoreAdmin.ListFields with the filter set to\n`indexConfig.usesAncestorConfig:false`."
+                          "location": "query"
                         }
                       },
                       "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields",
-                      "path": "v1beta2/{+parent}/fields",
                       "id": "firestore.projects.databases.collectionGroups.fields.list",
+                      "path": "v1beta2/{+parent}/fields",
                       "description": "Lists the field configuration and metadata for this database.\n\nCurrently, FirestoreAdmin.ListFields only supports listing fields\nthat have been explicitly overridden. To issue this query, call\nFirestoreAdmin.ListFields with the filter set to\n`indexConfig.usesAncestorConfig:false`."
                     }
                   }
@@ -178,6 +178,19 @@
                 "indexes": {
                   "methods": {
                     "delete": {
+                      "parameters": {
+                        "name": {
+                          "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
+                          "location": "path",
+                          "description": "A name of the form\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/datastore"
+                      ],
                       "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes/{indexesId}",
                       "path": "v1beta2/{+name}",
                       "id": "firestore.projects.databases.collectionGroups.indexes.delete",
@@ -188,29 +201,9 @@
                       "parameterOrder": [
                         "name"
                       ],
-                      "httpMethod": "DELETE",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/datastore"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "description": "A name of the form\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
-                          "location": "path"
-                        }
-                      }
+                      "httpMethod": "DELETE"
                     },
                     "list": {
-                      "response": {
-                        "$ref": "GoogleFirestoreAdminV1beta2ListIndexesResponse"
-                      },
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "httpMethod": "GET",
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/datastore"
@@ -224,26 +217,33 @@
                           "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$"
                         },
                         "filter": {
-                          "type": "string",
-                          "location": "query",
-                          "description": "The filter to apply to list results."
-                        },
-                        "pageToken": {
-                          "description": "A page token, returned from a previous call to\nFirestoreAdmin.ListIndexes, that may be used to get the next\npage of results.",
+                          "description": "The filter to apply to list results.",
                           "type": "string",
                           "location": "query"
                         },
-                        "pageSize": {
+                        "pageToken": {
+                          "type": "string",
                           "location": "query",
+                          "description": "A page token, returned from a previous call to\nFirestoreAdmin.ListIndexes, that may be used to get the next\npage of results."
+                        },
+                        "pageSize": {
                           "description": "The number of results to return.",
                           "format": "int32",
-                          "type": "integer"
+                          "type": "integer",
+                          "location": "query"
                         }
                       },
                       "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes",
                       "path": "v1beta2/{+parent}/indexes",
                       "id": "firestore.projects.databases.collectionGroups.indexes.list",
-                      "description": "Lists composite indexes."
+                      "description": "Lists composite indexes.",
+                      "response": {
+                        "$ref": "GoogleFirestoreAdminV1beta2ListIndexesResponse"
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "httpMethod": "GET"
                     },
                     "get": {
                       "response": {
@@ -253,52 +253,52 @@
                         "name"
                       ],
                       "httpMethod": "GET",
-                      "parameters": {
-                        "name": {
-                          "description": "A name of the form\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
-                          "location": "path"
-                        }
-                      },
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/datastore"
                       ],
+                      "parameters": {
+                        "name": {
+                          "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$",
+                          "location": "path",
+                          "description": "A name of the form\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
                       "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes/{indexesId}",
                       "path": "v1beta2/{+name}",
                       "id": "firestore.projects.databases.collectionGroups.indexes.get",
                       "description": "Gets a composite index."
                     },
                     "create": {
+                      "description": "Creates a composite index. This returns a google.longrunning.Operation\nwhich may be used to track the status of the creation. The metadata for\nthe operation will be the type IndexOperationMetadata.",
                       "request": {
                         "$ref": "GoogleFirestoreAdminV1beta2Index"
                       },
-                      "description": "Creates a composite index. This returns a google.longrunning.Operation\nwhich may be used to track the status of the creation. The metadata for\nthe operation will be the type IndexOperationMetadata.",
-                      "response": {
-                        "$ref": "GoogleLongrunningOperation"
-                      },
+                      "httpMethod": "POST",
                       "parameterOrder": [
                         "parent"
                       ],
-                      "httpMethod": "POST",
+                      "response": {
+                        "$ref": "GoogleLongrunningOperation"
+                      },
+                      "parameters": {
+                        "parent": {
+                          "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
+                          "location": "path",
+                          "description": "A parent name of the form\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/datastore"
                       ],
-                      "parameters": {
-                        "parent": {
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$",
-                          "location": "path",
-                          "description": "A parent name of the form\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`"
-                        }
-                      },
                       "flatPath": "v1beta2/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes",
-                      "path": "v1beta2/{+parent}/indexes",
-                      "id": "firestore.projects.databases.collectionGroups.indexes.create"
+                      "id": "firestore.projects.databases.collectionGroups.indexes.create",
+                      "path": "v1beta2/{+parent}/indexes"
                     }
                   }
                 }
@@ -310,62 +310,40 @@
     }
   },
   "parameters": {
-    "upload_protocol": {
-      "type": "string",
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
     "fields": {
-      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "uploadType": {
-      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "callback": {
-      "location": "query",
       "description": "JSONP",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "oauth_token": {
-      "location": "query",
       "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
       "location": "query",
       "enum": [
         "1",
         "2"
       ],
       "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
+      "type": "string"
     },
     "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -373,7 +351,13 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json"
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string"
     },
     "access_token": {
       "type": "string",
@@ -381,80 +365,128 @@
       "description": "OAuth access token."
     },
     "key": {
+      "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string",
       "location": "query"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks."
     }
   },
   "version": "v1beta2",
   "baseUrl": "https://firestore.googleapis.com/",
   "servicePath": "",
-  "description": "Accesses the NoSQL document database built for automatic scaling, high performance, and ease of application development.\n",
   "kind": "discovery#restDescription",
+  "description": "Accesses the NoSQL document database built for automatic scaling, high performance, and ease of application development.\n",
   "basePath": "",
   "id": "firestore:v1beta2",
   "documentationLink": "https://cloud.google.com/firestore",
-  "revision": "20190921",
+  "revision": "20191018",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
+    "GoogleFirestoreAdminV1beta2IndexField": {
+      "type": "object",
+      "properties": {
+        "fieldPath": {
+          "description": "Can be __name__.\nFor single field indexes, this must match the name of the field or may\nbe omitted.",
+          "type": "string"
+        },
+        "order": {
+          "enumDescriptions": [
+            "The ordering is unspecified. Not a valid option.",
+            "The field is ordered by ascending field value.",
+            "The field is ordered by descending field value."
+          ],
+          "enum": [
+            "ORDER_UNSPECIFIED",
+            "ASCENDING",
+            "DESCENDING"
+          ],
+          "description": "Indicates that this field supports ordering by the specified order or\ncomparing using =, \u003c, \u003c=, \u003e, \u003e=.",
+          "type": "string"
+        },
+        "arrayConfig": {
+          "enum": [
+            "ARRAY_CONFIG_UNSPECIFIED",
+            "CONTAINS"
+          ],
+          "description": "Indicates that this field supports operations on `array_value`s.",
+          "type": "string",
+          "enumDescriptions": [
+            "The index does not support additional array queries.",
+            "The index supports array containment queries."
+          ]
+        }
+      },
+      "id": "GoogleFirestoreAdminV1beta2IndexField",
+      "description": "A field in an index.\nThe field_path describes which field is indexed, the value_mode describes\nhow the field value is indexed."
+    },
     "GoogleFirestoreAdminV1beta2ExportDocumentsRequest": {
-      "id": "GoogleFirestoreAdminV1beta2ExportDocumentsRequest",
       "description": "The request for FirestoreAdmin.ExportDocuments.",
       "type": "object",
       "properties": {
-        "collectionIds": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Which collection ids to export. Unspecified means all collections."
-        },
         "outputUriPrefix": {
           "description": "The output URI. Currently only supports Google Cloud Storage URIs of the\nform: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name\nof the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional\nGoogle Cloud Storage namespace path. When\nchoosing a name, be sure to consider Google Cloud Storage naming\nguidelines: https://cloud.google.com/storage/docs/naming.\nIf the URI is a bucket (without a namespace path), a prefix will be\ngenerated based on the start time.",
           "type": "string"
+        },
+        "collectionIds": {
+          "description": "Which collection ids to export. Unspecified means all collections.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
-      }
+      },
+      "id": "GoogleFirestoreAdminV1beta2ExportDocumentsRequest"
     },
     "GoogleFirestoreAdminV1beta2Progress": {
       "id": "GoogleFirestoreAdminV1beta2Progress",
       "description": "Describes the progress of the operation.\nUnit of work is generic and must be interpreted based on where Progress\nis used.",
       "type": "object",
       "properties": {
-        "estimatedWork": {
-          "description": "The amount of work estimated.",
+        "completedWork": {
+          "description": "The amount of work completed.",
           "format": "int64",
           "type": "string"
         },
-        "completedWork": {
-          "description": "The amount of work completed.",
+        "estimatedWork": {
+          "description": "The amount of work estimated.",
           "format": "int64",
           "type": "string"
         }
       }
     },
     "GoogleFirestoreAdminV1beta2ImportDocumentsMetadata": {
-      "id": "GoogleFirestoreAdminV1beta2ImportDocumentsMetadata",
       "description": "Metadata for google.longrunning.Operation results from\nFirestoreAdmin.ImportDocuments.",
       "type": "object",
       "properties": {
-        "progressDocuments": {
-          "$ref": "GoogleFirestoreAdminV1beta2Progress",
-          "description": "The progress, in documents, of this operation."
-        },
         "endTime": {
           "description": "The time this operation completed. Will be unset if operation still in\nprogress.",
           "format": "google-datetime",
           "type": "string"
         },
         "inputUriPrefix": {
-          "description": "The location of the documents being imported.",
-          "type": "string"
+          "type": "string",
+          "description": "The location of the documents being imported."
         },
         "startTime": {
-          "type": "string",
           "description": "The time this operation started.",
-          "format": "google-datetime"
+          "format": "google-datetime",
+          "type": "string"
         },
         "progressBytes": {
           "$ref": "GoogleFirestoreAdminV1beta2Progress",
@@ -468,7 +500,6 @@
           }
         },
         "operationState": {
-          "type": "string",
           "enumDescriptions": [
             "Unspecified.",
             "Request is being prepared for processing.",
@@ -489,34 +520,41 @@
             "FAILED",
             "CANCELLED"
           ],
-          "description": "The state of the import operation."
-        }
-      }
-    },
-    "GoogleFirestoreAdminV1beta2ImportDocumentsRequest": {
-      "type": "object",
-      "properties": {
-        "inputUriPrefix": {
-          "description": "Location of the exported files.\nThis must match the output_uri_prefix of an ExportDocumentsResponse from\nan export that has completed successfully.\nSee:\ngoogle.firestore.admin.v1beta2.ExportDocumentsResponse.output_uri_prefix.",
+          "description": "The state of the import operation.",
           "type": "string"
         },
+        "progressDocuments": {
+          "description": "The progress, in documents, of this operation.",
+          "$ref": "GoogleFirestoreAdminV1beta2Progress"
+        }
+      },
+      "id": "GoogleFirestoreAdminV1beta2ImportDocumentsMetadata"
+    },
+    "GoogleFirestoreAdminV1beta2ImportDocumentsRequest": {
+      "description": "The request for FirestoreAdmin.ImportDocuments.",
+      "type": "object",
+      "properties": {
         "collectionIds": {
+          "description": "Which collection ids to import. Unspecified means all collections included\nin the import.",
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "Which collection ids to import. Unspecified means all collections included\nin the import."
+          }
+        },
+        "inputUriPrefix": {
+          "description": "Location of the exported files.\nThis must match the output_uri_prefix of an ExportDocumentsResponse from\nan export that has completed successfully.\nSee:\ngoogle.firestore.admin.v1beta2.ExportDocumentsResponse.output_uri_prefix.",
+          "type": "string"
         }
       },
-      "id": "GoogleFirestoreAdminV1beta2ImportDocumentsRequest",
-      "description": "The request for FirestoreAdmin.ImportDocuments."
+      "id": "GoogleFirestoreAdminV1beta2ImportDocumentsRequest"
     },
     "GoogleFirestoreAdminV1beta2ListIndexesResponse": {
+      "description": "The response for FirestoreAdmin.ListIndexes.",
       "type": "object",
       "properties": {
         "nextPageToken": {
-          "type": "string",
-          "description": "A page token that may be used to request another page of results. If blank,\nthis is the last page."
+          "description": "A page token that may be used to request another page of results. If blank,\nthis is the last page.",
+          "type": "string"
         },
         "indexes": {
           "description": "The requested indexes.",
@@ -526,31 +564,30 @@
           }
         }
       },
-      "id": "GoogleFirestoreAdminV1beta2ListIndexesResponse",
-      "description": "The response for FirestoreAdmin.ListIndexes."
+      "id": "GoogleFirestoreAdminV1beta2ListIndexesResponse"
     },
     "GoogleFirestoreAdminV1beta2IndexConfig": {
       "description": "The index configuration for this field.",
       "type": "object",
       "properties": {
-        "reverting": {
-          "description": "Output only\nWhen true, the `Field`'s index configuration is in the process of being\nreverted. Once complete, the index config will transition to the same\nstate as the field specified by `ancestor_field`, at which point\n`uses_ancestor_config` will be `true` and `reverting` will be `false`.",
-          "type": "boolean"
-        },
-        "ancestorField": {
-          "description": "Output only. Specifies the resource name of the `Field` from which this field's\nindex configuration is set (when `uses_ancestor_config` is true),\nor from which it *would* be set if this field had no index configuration\n(when `uses_ancestor_config` is false).",
-          "type": "string"
-        },
         "indexes": {
+          "description": "The indexes supported for this field.",
           "type": "array",
           "items": {
             "$ref": "GoogleFirestoreAdminV1beta2Index"
-          },
-          "description": "The indexes supported for this field."
+          }
         },
         "usesAncestorConfig": {
           "description": "Output only. When true, the `Field`'s index configuration is set from the\nconfiguration specified by the `ancestor_field`.\nWhen false, the `Field`'s index configuration is defined explicitly.",
           "type": "boolean"
+        },
+        "reverting": {
+          "type": "boolean",
+          "description": "Output only\nWhen true, the `Field`'s index configuration is in the process of being\nreverted. Once complete, the index config will transition to the same\nstate as the field specified by `ancestor_field`, at which point\n`uses_ancestor_config` will be `true` and `reverting` will be `false`."
+        },
+        "ancestorField": {
+          "description": "Output only. Specifies the resource name of the `Field` from which this field's\nindex configuration is set (when `uses_ancestor_config` is true),\nor from which it *would* be set if this field had no index configuration\n(when `uses_ancestor_config` is false).",
+          "type": "string"
         }
       },
       "id": "GoogleFirestoreAdminV1beta2IndexConfig"
@@ -564,45 +601,16 @@
           "$ref": "GoogleFirestoreAdminV1beta2IndexConfig"
         },
         "name": {
-          "description": "A field name of the form\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`\n\nA field path may be a simple field name, e.g. `address` or a path to fields\nwithin map_value , e.g. `address.city`,\nor a special field path. The only valid special field is `*`, which\nrepresents any field.\n\nField paths may be quoted using ` (backtick). The only character that needs\nto be escaped within a quoted field path is the backtick character itself,\nescaped using a backslash. Special characters in field paths that\nmust be quoted include: `*`, `.`,\n``` (backtick), `[`, `]`, as well as any ascii symbolic characters.\n\nExamples:\n(Note: Comments here are written in markdown syntax, so there is an\n additional layer of backticks to represent a code block)\n`\\`address.city\\`` represents a field named `address.city`, not the map key\n`city` in the field `address`.\n`\\`*\\`` represents a field named `*`, not any field.\n\nA special `Field` contains the default indexing settings for all fields.\nThis field's resource name is:\n`projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*`\nIndexes defined on this `Field` will be applied to all fields which do not\nhave their own `Field` index configuration.",
-          "type": "string"
+          "type": "string",
+          "description": "A field name of the form\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`\n\nA field path may be a simple field name, e.g. `address` or a path to fields\nwithin map_value , e.g. `address.city`,\nor a special field path. The only valid special field is `*`, which\nrepresents any field.\n\nField paths may be quoted using ` (backtick). The only character that needs\nto be escaped within a quoted field path is the backtick character itself,\nescaped using a backslash. Special characters in field paths that\nmust be quoted include: `*`, `.`,\n``` (backtick), `[`, `]`, as well as any ascii symbolic characters.\n\nExamples:\n(Note: Comments here are written in markdown syntax, so there is an\n additional layer of backticks to represent a code block)\n`\\`address.city\\`` represents a field named `address.city`, not the map key\n`city` in the field `address`.\n`\\`*\\`` represents a field named `*`, not any field.\n\nA special `Field` contains the default indexing settings for all fields.\nThis field's resource name is:\n`projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*`\nIndexes defined on this `Field` will be applied to all fields which do not\nhave their own `Field` index configuration."
         }
       },
       "id": "GoogleFirestoreAdminV1beta2Field"
     },
     "GoogleFirestoreAdminV1beta2Index": {
-      "description": "Cloud Firestore indexes enable simple and complex queries against\ndocuments in a database.",
       "type": "object",
       "properties": {
-        "fields": {
-          "description": "The fields supported by this index.\n\nFor composite indexes, this is always 2 or more fields.\nThe last field entry is always for the field path `__name__`. If, on\ncreation, `__name__` was not specified as the last field, it will be added\nautomatically with the same direction as that of the last field defined. If\nthe final field in a composite index is not directional, the `__name__`\nwill be ordered ASCENDING (unless explicitly specified).\n\nFor single field indexes, this will always be exactly one entry with a\nfield path equal to the field path of the associated field.",
-          "type": "array",
-          "items": {
-            "$ref": "GoogleFirestoreAdminV1beta2IndexField"
-          }
-        },
-        "state": {
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "CREATING",
-            "READY",
-            "NEEDS_REPAIR"
-          ],
-          "description": "Output only. The serving state of the index.",
-          "type": "string",
-          "enumDescriptions": [
-            "The state is unspecified.",
-            "The index is being created.\nThere is an active long-running operation for the index.\nThe index is updated when writing a document.\nSome index data may exist.",
-            "The index is ready to be used.\nThe index is updated when writing a document.\nThe index is fully populated from all stored documents it applies to.",
-            "The index was being created, but something went wrong.\nThere is no active long-running operation for the index,\nand the most recently finished long-running operation failed.\nThe index is not updated when writing a document.\nSome index data may exist.\nUse the google.longrunning.Operations API to determine why the operation\nthat last attempted to create this index failed, then re-create the\nindex."
-          ]
-        },
-        "name": {
-          "description": "Output only. A server defined name for this index.\nThe form of this name for composite indexes will be:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}`\nFor single field indexes, this field will be empty.",
-          "type": "string"
-        },
         "queryScope": {
-          "type": "string",
           "enumDescriptions": [
             "The query scope is unspecified. Not a valid option.",
             "Indexes with a collection query scope specified allow queries\nagainst a collection that is the child of a specific document, specified\nat query time, and that has the collection id specified by the index.",
@@ -613,10 +621,39 @@
             "COLLECTION",
             "COLLECTION_GROUP"
           ],
-          "description": "Indexes with a collection query scope specified allow queries\nagainst a collection that is the child of a specific document, specified at\nquery time, and that has the same collection id.\n\nIndexes with a collection group query scope specified allow queries against\nall collections descended from a specific document, specified at query\ntime, and that have the same collection id as this index."
+          "description": "Indexes with a collection query scope specified allow queries\nagainst a collection that is the child of a specific document, specified at\nquery time, and that has the same collection id.\n\nIndexes with a collection group query scope specified allow queries against\nall collections descended from a specific document, specified at query\ntime, and that have the same collection id as this index.",
+          "type": "string"
+        },
+        "fields": {
+          "description": "The fields supported by this index.\n\nFor composite indexes, this is always 2 or more fields.\nThe last field entry is always for the field path `__name__`. If, on\ncreation, `__name__` was not specified as the last field, it will be added\nautomatically with the same direction as that of the last field defined. If\nthe final field in a composite index is not directional, the `__name__`\nwill be ordered ASCENDING (unless explicitly specified).\n\nFor single field indexes, this will always be exactly one entry with a\nfield path equal to the field path of the associated field.",
+          "type": "array",
+          "items": {
+            "$ref": "GoogleFirestoreAdminV1beta2IndexField"
+          }
+        },
+        "state": {
+          "description": "Output only. The serving state of the index.",
+          "type": "string",
+          "enumDescriptions": [
+            "The state is unspecified.",
+            "The index is being created.\nThere is an active long-running operation for the index.\nThe index is updated when writing a document.\nSome index data may exist.",
+            "The index is ready to be used.\nThe index is updated when writing a document.\nThe index is fully populated from all stored documents it applies to.",
+            "The index was being created, but something went wrong.\nThere is no active long-running operation for the index,\nand the most recently finished long-running operation failed.\nThe index is not updated when writing a document.\nSome index data may exist.\nUse the google.longrunning.Operations API to determine why the operation\nthat last attempted to create this index failed, then re-create the\nindex."
+          ],
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "CREATING",
+            "READY",
+            "NEEDS_REPAIR"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "Output only. A server defined name for this index.\nThe form of this name for composite indexes will be:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}`\nFor single field indexes, this field will be empty."
         }
       },
-      "id": "GoogleFirestoreAdminV1beta2Index"
+      "id": "GoogleFirestoreAdminV1beta2Index",
+      "description": "Cloud Firestore indexes enable simple and complex queries against\ndocuments in a database."
     },
     "GoogleFirestoreAdminV1beta2IndexConfigDelta": {
       "id": "GoogleFirestoreAdminV1beta2IndexConfigDelta",
@@ -624,6 +661,7 @@
       "type": "object",
       "properties": {
         "changeType": {
+          "type": "string",
           "enumDescriptions": [
             "The type of change is not specified or known.",
             "The single field index is being added.",
@@ -634,8 +672,7 @@
             "ADD",
             "REMOVE"
           ],
-          "description": "Specifies how the index is changing.",
-          "type": "string"
+          "description": "Specifies how the index is changing."
         },
         "index": {
           "$ref": "GoogleFirestoreAdminV1beta2Index",
@@ -644,18 +681,10 @@
       }
     },
     "Status": {
+      "id": "Status",
       "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
       "type": "object",
       "properties": {
-        "code": {
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "message": {
-          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
-          "type": "string"
-        },
         "details": {
           "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
           "type": "array",
@@ -666,17 +695,20 @@
               "type": "any"
             }
           }
+        },
+        "code": {
+          "type": "integer",
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string",
+          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."
         }
-      },
-      "id": "Status"
-    },
-    "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-      "type": "object",
-      "properties": {},
-      "id": "Empty"
+      }
     },
     "GoogleFirestoreAdminV1beta2ExportDocumentsResponse": {
+      "description": "Returned in the google.longrunning.Operation response field.",
       "type": "object",
       "properties": {
         "outputUriPrefix": {
@@ -684,19 +716,17 @@
           "type": "string"
         }
       },
-      "id": "GoogleFirestoreAdminV1beta2ExportDocumentsResponse",
-      "description": "Returned in the google.longrunning.Operation response field."
+      "id": "GoogleFirestoreAdminV1beta2ExportDocumentsResponse"
+    },
+    "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object",
+      "properties": {},
+      "id": "Empty"
     },
     "GoogleFirestoreAdminV1beta2ExportDocumentsMetadata": {
       "type": "object",
       "properties": {
-        "collectionIds": {
-          "description": "Which collection ids are being exported.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "operationState": {
           "type": "string",
           "enumDescriptions": [
@@ -742,21 +772,22 @@
         "progressBytes": {
           "$ref": "GoogleFirestoreAdminV1beta2Progress",
           "description": "The progress, in bytes, of this operation."
+        },
+        "collectionIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Which collection ids are being exported."
         }
       },
       "id": "GoogleFirestoreAdminV1beta2ExportDocumentsMetadata",
       "description": "Metadata for google.longrunning.Operation results from\nFirestoreAdmin.ExportDocuments."
     },
     "GoogleFirestoreAdminV1beta2FieldOperationMetadata": {
-      "id": "GoogleFirestoreAdminV1beta2FieldOperationMetadata",
       "description": "Metadata for google.longrunning.Operation results from\nFirestoreAdmin.UpdateField.",
       "type": "object",
       "properties": {
-        "startTime": {
-          "type": "string",
-          "description": "The time this operation started.",
-          "format": "google-datetime"
-        },
         "indexConfigDeltas": {
           "description": "A list of IndexConfigDelta, which describe the intent of this\noperation.",
           "type": "array",
@@ -789,8 +820,8 @@
           ]
         },
         "documentProgress": {
-          "description": "The progress, in documents, of this operation.",
-          "$ref": "GoogleFirestoreAdminV1beta2Progress"
+          "$ref": "GoogleFirestoreAdminV1beta2Progress",
+          "description": "The progress, in documents, of this operation."
         },
         "field": {
           "description": "The field resource that this operation is acting on. For example:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`",
@@ -804,25 +835,18 @@
           "description": "The time this operation completed. Will be unset if operation still in\nprogress.",
           "format": "google-datetime",
           "type": "string"
+        },
+        "startTime": {
+          "description": "The time this operation started.",
+          "format": "google-datetime",
+          "type": "string"
         }
-      }
+      },
+      "id": "GoogleFirestoreAdminV1beta2FieldOperationMetadata"
     },
     "GoogleLongrunningOperation": {
-      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
       "type": "object",
       "properties": {
-        "done": {
-          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
-          "type": "boolean"
-        },
-        "response": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
-          "type": "object"
-        },
         "name": {
           "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`.",
           "type": "string"
@@ -832,15 +856,28 @@
           "description": "The error result of the operation in case of failure or cancellation."
         },
         "metadata": {
+          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
+          }
+        },
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
+          "type": "boolean"
+        },
+        "response": {
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
           },
-          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
           "type": "object"
         }
       },
-      "id": "GoogleLongrunningOperation"
+      "id": "GoogleLongrunningOperation",
+      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call."
     },
     "GoogleFirestoreAdminV1beta2IndexOperationMetadata": {
       "description": "Metadata for google.longrunning.Operation results from\nFirestoreAdmin.CreateIndex.",
@@ -851,13 +888,13 @@
           "description": "The progress, in documents, of this operation."
         },
         "endTime": {
-          "type": "string",
           "description": "The time this operation completed. Will be unset if operation still in\nprogress.",
-          "format": "google-datetime"
+          "format": "google-datetime",
+          "type": "string"
         },
         "index": {
-          "description": "The index resource that this operation is acting on. For example:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`",
-          "type": "string"
+          "type": "string",
+          "description": "The index resource that this operation is acting on. For example:\n`projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`"
         },
         "startTime": {
           "description": "The time this operation started.",
@@ -869,6 +906,8 @@
           "$ref": "GoogleFirestoreAdminV1beta2Progress"
         },
         "state": {
+          "description": "The state of the operation.",
+          "type": "string",
           "enumDescriptions": [
             "Unspecified.",
             "Request is being prepared for processing.",
@@ -888,72 +927,33 @@
             "SUCCESSFUL",
             "FAILED",
             "CANCELLED"
-          ],
-          "description": "The state of the operation.",
-          "type": "string"
+          ]
         }
       },
       "id": "GoogleFirestoreAdminV1beta2IndexOperationMetadata"
     },
     "GoogleFirestoreAdminV1beta2ListFieldsResponse": {
+      "id": "GoogleFirestoreAdminV1beta2ListFieldsResponse",
+      "description": "The response for FirestoreAdmin.ListFields.",
       "type": "object",
       "properties": {
         "fields": {
+          "description": "The requested fields.",
           "type": "array",
           "items": {
             "$ref": "GoogleFirestoreAdminV1beta2Field"
-          },
-          "description": "The requested fields."
+          }
         },
         "nextPageToken": {
           "description": "A page token that may be used to request another page of results. If blank,\nthis is the last page.",
           "type": "string"
         }
-      },
-      "id": "GoogleFirestoreAdminV1beta2ListFieldsResponse",
-      "description": "The response for FirestoreAdmin.ListFields."
-    },
-    "GoogleFirestoreAdminV1beta2IndexField": {
-      "type": "object",
-      "properties": {
-        "fieldPath": {
-          "description": "Can be __name__.\nFor single field indexes, this must match the name of the field or may\nbe omitted.",
-          "type": "string"
-        },
-        "order": {
-          "description": "Indicates that this field supports ordering by the specified order or\ncomparing using =, \u003c, \u003c=, \u003e, \u003e=.",
-          "type": "string",
-          "enumDescriptions": [
-            "The ordering is unspecified. Not a valid option.",
-            "The field is ordered by ascending field value.",
-            "The field is ordered by descending field value."
-          ],
-          "enum": [
-            "ORDER_UNSPECIFIED",
-            "ASCENDING",
-            "DESCENDING"
-          ]
-        },
-        "arrayConfig": {
-          "type": "string",
-          "enumDescriptions": [
-            "The index does not support additional array queries.",
-            "The index supports array containment queries."
-          ],
-          "enum": [
-            "ARRAY_CONFIG_UNSPECIFIED",
-            "CONTAINS"
-          ],
-          "description": "Indicates that this field supports operations on `array_value`s."
-        }
-      },
-      "id": "GoogleFirestoreAdminV1beta2IndexField",
-      "description": "A field in an index.\nThe field_path describes which field is indexed, the value_mode describes\nhow the field value is indexed."
+      }
     }
   },
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "protocol": "rest",
   "canonicalName": "Firestore",

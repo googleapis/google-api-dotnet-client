@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191023 (1756)
+ *      <tr><th>API Rev<td>20191027 (1760)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -1003,6 +1003,11 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
+            /// <summary>The id of the entity within the given namespace. The id must be unique within its
+            /// namespace.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("groupKey.id", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string GroupKeyId { get; set; }
+
             /// <summary>Namespaces provide isolation for ids, i.e an id only needs to be unique within its namespace.
             ///
             /// Namespaces are currently only created as part of IdentitySource creation from Admin Console. A namespace
@@ -1010,11 +1015,6 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// `identity_source_id`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey.namespace", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string GroupKeyNamespace { get; set; }
-
-            /// <summary>The id of the entity within the given namespace. The id must be unique within its
-            /// namespace.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("groupKey.id", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string GroupKeyId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1041,18 +1041,18 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "groupKey.namespace", new Google.Apis.Discovery.Parameter
+                    "groupKey.id", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "groupKey.namespace",
+                        Name = "groupKey.id",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "groupKey.id", new Google.Apis.Discovery.Parameter
+                    "groupKey.namespace", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "groupKey.id",
+                        Name = "groupKey.namespace",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1166,6 +1166,15 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
+            /// <summary>The next_page_token value returned from a previous search request, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The default page size is 200 (max 1000) for the BASIC view, and 50 (max 500) for the FULL
+            /// view.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Query string for performing search on groups. Users can search on namespace and label
             /// attributes of groups. EXACT match ('=') is supported on namespace, and CONTAINS match (':') is supported
             /// on labels. This is a `required` field. Multiple queries can be combined using `AND` operator. The
@@ -1185,15 +1194,6 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
-
-            /// <summary>The next_page_token value returned from a previous search request, if any.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The default page size is 200 (max 1000) for the BASIC view, and 50 (max 500) for the FULL
-            /// view.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1220,24 +1220,6 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1250,6 +1232,24 @@ namespace Google.Apis.CloudIdentity.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1389,7 +1389,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Required. Immutable. EntityKey of the entity to be added as the member. Must be set while creating
         /// a Membership, read-only afterwards.
         ///
-        /// Currently allowed entity types: `Users`, `Groups`.</summary>
+        /// Currently allowed entity types: `Users`, `Groups`. This field will be deprecated soon.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberKey")]
         public virtual EntityKey MemberKey { get; set; } 
 
