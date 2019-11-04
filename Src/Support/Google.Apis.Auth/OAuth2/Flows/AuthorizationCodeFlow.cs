@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,7 +29,6 @@ using Google.Apis.Logging;
 using Google.Apis.Util;
 using Google.Apis.Util.Store;
 using Google.Apis.Testing;
-using System.Net;
 
 namespace Google.Apis.Auth.OAuth2.Flows
 {
