@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/life-sciences'>Cloud Life Sciences API</a>
  *      <tr><th>API Version<td>v2beta
- *      <tr><th>API Rev<td>20191022 (1755)
+ *      <tr><th>API Rev<td>20191030 (1763)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/life-sciences'>
  *              https://cloud.google.com/life-sciences</a>
@@ -955,7 +955,7 @@ namespace Google.Apis.CloudLifeSciences.v2beta.Data
     {
         /// <summary>By default, after an action fails, no further actions are run. This flag indicates that this action
         /// must be run even if the pipeline has already failed. This is useful for actions that copy output files off
-        /// of the VM or for debugging.</summary>
+        /// of the VM or for debugging. Note that no actions will be run if image prefetching fails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alwaysRun")]
         public virtual System.Nullable<bool> AlwaysRun { get; set; } 
 

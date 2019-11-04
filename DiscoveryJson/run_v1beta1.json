@@ -1,56 +1,291 @@
 {
+  "ownerDomain": "google.com",
+  "name": "run",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Cloud Run API",
+  "ownerName": "Google",
+  "resources": {
+    "projects": {
+      "resources": {
+        "locations": {
+          "resources": {
+            "customresourcedefinitions": {
+              "methods": {
+                "get": {
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the CustomResourceDefinition being retrieved. If needed,\nreplace {namespace_id} with the project ID.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/customresourcedefinitions/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/customresourcedefinitions/{customresourcedefinitionsId}",
+                  "id": "run.projects.locations.customresourcedefinitions.get",
+                  "path": "v1beta1/{+name}",
+                  "description": "Rpc to get information about a CustomResourceDefinition.",
+                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "CustomResourceDefinition"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ]
+                },
+                "list": {
+                  "description": "Rpc to list custom resource definitions.",
+                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "ListCustomResourceDefinitionsResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "parameters": {
+                    "fieldSelector": {
+                      "description": "Allows to filter resources based on a specific value for a field name.\nSend this in a query string format. i.e. 'metadata.name%3Dlorem'.\nNot currently used by Cloud Run.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "includeUninitialized": {
+                      "description": "Not currently used by Cloud Run.",
+                      "type": "boolean",
+                      "location": "query"
+                    },
+                    "resourceVersion": {
+                      "location": "query",
+                      "description": "The baseline resource version from which the list or watch operation should\nstart. Not currently used by Cloud Run.",
+                      "type": "string"
+                    },
+                    "continue": {
+                      "location": "query",
+                      "description": "Optional encoded string to continue paging.",
+                      "type": "string"
+                    },
+                    "limit": {
+                      "location": "query",
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "watch": {
+                      "location": "query",
+                      "description": "Flag that indicates that the client expects to watch this resource as well.\nNot currently used by Cloud Run.",
+                      "type": "boolean"
+                    },
+                    "parent": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "description": "The project ID or project number from which the storages should\nbe listed."
+                    },
+                    "labelSelector": {
+                      "description": "Allows to filter resources based on a label. Supported operations are\n=, !=, exists, in, and notIn.",
+                      "type": "string",
+                      "location": "query"
+                    }
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/customresourcedefinitions",
+                  "id": "run.projects.locations.customresourcedefinitions.list",
+                  "path": "v1beta1/{+parent}/customresourcedefinitions"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "customresourcedefinitions": {
+      "methods": {
+        "list": {
+          "id": "run.customresourcedefinitions.list",
+          "path": "apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions",
+          "description": "Rpc to list custom resource definitions.",
+          "httpMethod": "GET",
+          "parameterOrder": [],
+          "response": {
+            "$ref": "ListCustomResourceDefinitionsResponse"
+          },
+          "parameters": {
+            "continue": {
+              "description": "Optional encoded string to continue paging.",
+              "type": "string",
+              "location": "query"
+            },
+            "limit": {
+              "location": "query",
+              "format": "int32",
+              "type": "integer"
+            },
+            "watch": {
+              "location": "query",
+              "description": "Flag that indicates that the client expects to watch this resource as well.\nNot currently used by Cloud Run.",
+              "type": "boolean"
+            },
+            "parent": {
+              "description": "The project ID or project number from which the storages should\nbe listed.",
+              "type": "string",
+              "location": "query"
+            },
+            "labelSelector": {
+              "location": "query",
+              "description": "Allows to filter resources based on a label. Supported operations are\n=, !=, exists, in, and notIn.",
+              "type": "string"
+            },
+            "resourceVersion": {
+              "location": "query",
+              "description": "The baseline resource version from which the list or watch operation should\nstart. Not currently used by Cloud Run.",
+              "type": "string"
+            },
+            "includeUninitialized": {
+              "location": "query",
+              "description": "Not currently used by Cloud Run.",
+              "type": "boolean"
+            },
+            "fieldSelector": {
+              "description": "Allows to filter resources based on a specific value for a field name.\nSend this in a query string format. i.e. 'metadata.name%3Dlorem'.\nNot currently used by Cloud Run.",
+              "type": "string",
+              "location": "query"
+            }
+          },
+          "flatPath": "apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions"
+        }
+      }
+    },
+    "namespaces": {
+      "resources": {
+        "customresourcedefinitions": {
+          "methods": {
+            "get": {
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "CustomResourceDefinition"
+              },
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "The name of the CustomResourceDefinition being retrieved. If needed,\nreplace {namespace_id} with the project ID.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^namespaces/[^/]+/customresourcedefinitions/[^/]+$"
+                }
+              },
+              "flatPath": "apis/apiextensions.k8s.io/v1beta1/namespaces/{namespacesId}/customresourcedefinitions/{customresourcedefinitionsId}",
+              "id": "run.namespaces.customresourcedefinitions.get",
+              "path": "apis/apiextensions.k8s.io/v1beta1/{+name}",
+              "description": "Rpc to get information about a CustomResourceDefinition."
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
+    },
+    "uploadType": {
+      "type": "string",
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "type": "string",
+      "location": "query",
+      "description": "JSONP"
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ]
+    },
+    "alt": {
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    }
+  },
+  "version": "v1beta1",
+  "baseUrl": "https://run.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "Deploy and manage user provided container images that scale automatically based on HTTP traffic.",
+  "servicePath": "",
+  "basePath": "",
   "id": "run:v1beta1",
   "revision": "20191023",
   "documentationLink": "https://cloud.google.com/run/",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "CustomResourceDefinition": {
-      "description": "CustomResourceDefinition represents a resource that should be exposed on the\nAPI server.  Its name MUST be in the format\n\u003c.spec.name\u003e.\u003c.spec.group\u003e.",
-      "type": "object",
-      "properties": {
-        "kind": {
-          "description": "The kind of resource, one example is \"Storage\".",
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "ObjectMeta",
-          "description": "Metadata associated with this CustomResourceDefinition."
-        },
-        "apiVersion": {
-          "description": "The API version for this call such as \"k8s.apiextensions.io/v1beta1\".",
-          "type": "string"
-        },
-        "spec": {
-          "$ref": "CustomResourceDefinitionSpec",
-          "description": "Spec describes how the user wants the resources to appear"
-        }
-      },
-      "id": "CustomResourceDefinition"
-    },
     "ObjectMeta": {
       "description": "k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all\npersisted resources must have, which includes all objects users must create.",
       "type": "object",
       "properties": {
-        "annotations": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "(Optional)\n\nAnnotations is an unstructured key value map stored with a resource that\nmay be set by external tools to store and retrieve arbitrary metadata. They\nare not queryable and should be preserved when modifying objects. More\ninfo: http://kubernetes.io/docs/user-guide/annotations",
-          "type": "object"
-        },
-        "generateName": {
-          "type": "string",
-          "description": "(Optional)\n\nCloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nGenerateName is an optional prefix, used by the server, to generate a\nunique name ONLY IF the Name field has not been provided. If this field is\nused, the name returned to the client will be different than the name\npassed. This value will also be combined with a unique suffix. The provided\nvalue has the same validation rules as the Name field, and may be truncated\nby the length of the suffix required to make the value unique on the\nserver.\n\nIf this field is specified and the generated name exists, the server will\nNOT return a 409 - instead, it will either return 201 Created or 500 with\nReason ServerTimeout indicating a unique name could not be found in the\ntime allotted, and the client should retry (optionally after the time\nindicated in the Retry-After header).\n\nApplied only if Name is not specified.\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency\n string generateName = 2;"
-        },
         "name": {
           "description": "Name must be unique within a namespace, within a Cloud Run region.\nIs required when creating\nresources, although some resources may allow a client to request the\ngeneration of an appropriate name automatically. Name is primarily intended\nfor creation idempotence and configuration definition. Cannot be updated.\nMore info: http://kubernetes.io/docs/user-guide/identifiers#names\n+optional",
           "type": "string"
         },
         "deletionGracePeriodSeconds": {
-          "type": "integer",
           "description": "(Optional)\n\nCloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nNumber of seconds allowed for this object to gracefully terminate before\nit will be removed from the system. Only set when deletionTimestamp is also\nset. May only be shortened. Read-only.",
-          "format": "int32"
+          "format": "int32",
+          "type": "integer"
         },
         "clusterName": {
           "description": "(Optional)\n\nCloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nThe name of the cluster which the object belongs to.\nThis is used to distinguish resources with same name and namespace in\ndifferent clusters. This field is not set anywhere right now and apiserver\nis going to ignore it if set in create or update request.",
@@ -93,41 +328,51 @@
           "type": "integer"
         },
         "resourceVersion": {
-          "type": "string",
-          "description": "(Optional)\n\nAn opaque value that represents the internal version of this object that\ncan be used by clients to determine when objects have changed. May be used\nfor optimistic concurrency, change detection, and the watch operation on a\nresource or set of resources. Clients must treat these values as opaque and\npassed unmodified back to the server. They may only be valid for a\nparticular resource or set of resources.\n\nPopulated by the system.\nRead-only.\nValue must be treated as opaque by clients and .\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency"
+          "description": "(Optional)\n\nAn opaque value that represents the internal version of this object that\ncan be used by clients to determine when objects have changed. May be used\nfor optimistic concurrency, change detection, and the watch operation on a\nresource or set of resources. Clients must treat these values as opaque and\npassed unmodified back to the server. They may only be valid for a\nparticular resource or set of resources.\n\nPopulated by the system.\nRead-only.\nValue must be treated as opaque by clients and .\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency",
+          "type": "string"
         },
         "uid": {
-          "type": "string",
-          "description": "(Optional)\n\nUID is the unique in time and space value for this object. It is typically\ngenerated by the server on successful creation of a resource and is not\nallowed to change on PUT operations.\n\nPopulated by the system.\nRead-only.\nMore info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+          "description": "(Optional)\n\nUID is the unique in time and space value for this object. It is typically\ngenerated by the server on successful creation of a resource and is not\nallowed to change on PUT operations.\n\nPopulated by the system.\nRead-only.\nMore info: http://kubernetes.io/docs/user-guide/identifiers#uids",
+          "type": "string"
         },
         "selfLink": {
           "description": "(Optional)\n\nSelfLink is a URL representing this object.\nPopulated by the system.\nRead-only.\n string selfLink = 4;",
           "type": "string"
         },
         "namespace": {
-          "type": "string",
-          "description": "Namespace defines the space within each name must be unique, within a\nCloud Run region. In Cloud Run the namespace must be equal to either the\nproject ID or project number."
+          "description": "Namespace defines the space within each name must be unique, within a\nCloud Run region. In Cloud Run the namespace must be equal to either the\nproject ID or project number.",
+          "type": "string"
+        },
+        "annotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "(Optional)\n\nAnnotations is an unstructured key value map stored with a resource that\nmay be set by external tools to store and retrieve arbitrary metadata. They\nare not queryable and should be preserved when modifying objects. More\ninfo: http://kubernetes.io/docs/user-guide/annotations",
+          "type": "object"
+        },
+        "generateName": {
+          "description": "(Optional)\n\nCloud Run fully managed: not supported\n\nCloud Run for Anthos: supported\n\nGenerateName is an optional prefix, used by the server, to generate a\nunique name ONLY IF the Name field has not been provided. If this field is\nused, the name returned to the client will be different than the name\npassed. This value will also be combined with a unique suffix. The provided\nvalue has the same validation rules as the Name field, and may be truncated\nby the length of the suffix required to make the value unique on the\nserver.\n\nIf this field is specified and the generated name exists, the server will\nNOT return a 409 - instead, it will either return 201 Created or 500 with\nReason ServerTimeout indicating a unique name could not be found in the\ntime allotted, and the client should retry (optionally after the time\nindicated in the Retry-After header).\n\nApplied only if Name is not specified.\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency\n string generateName = 2;",
+          "type": "string"
         }
       },
       "id": "ObjectMeta"
     },
     "CustomResourceSubresources": {
-      "id": "CustomResourceSubresources",
       "description": "CustomResourceSubresources defines the status and scale subresources for\nCustomResources.",
       "type": "object",
       "properties": {
         "status": {
-          "$ref": "CustomResourceSubresourceStatus",
-          "description": "Status denotes the status subresource for CustomResources\n+optional"
+          "description": "Status denotes the status subresource for CustomResources\n+optional",
+          "$ref": "CustomResourceSubresourceStatus"
         },
         "scale": {
           "$ref": "CustomResourceSubresourceScale",
           "description": "Scale denotes the scale subresource for CustomResources\n+optional"
         }
-      }
+      },
+      "id": "CustomResourceSubresources"
     },
     "ListMeta": {
-      "id": "ListMeta",
       "description": "ListMeta describes metadata that synthetic resources must have, including\nlists and various status objects. A resource may have only one of\n{ObjectMeta, ListMeta}.",
       "type": "object",
       "properties": {
@@ -136,25 +381,26 @@
           "type": "string"
         },
         "continue": {
-          "description": "continue may be set if the user set a limit on the number of items\nreturned, and indicates that the server has more data available. The value\nis opaque and may be used to issue another request to the endpoint that\nserved this list to retrieve the next set of available objects. Continuing\na list may not be possible if the server configuration has changed or more\nthan a few minutes have passed. The resourceVersion field returned when\nusing this continue value will be identical to the value in the first\nresponse.",
-          "type": "string"
+          "type": "string",
+          "description": "continue may be set if the user set a limit on the number of items\nreturned, and indicates that the server has more data available. The value\nis opaque and may be used to issue another request to the endpoint that\nserved this list to retrieve the next set of available objects. Continuing\na list may not be possible if the server configuration has changed or more\nthan a few minutes have passed. The resourceVersion field returned when\nusing this continue value will be identical to the value in the first\nresponse."
         },
         "selfLink": {
-          "type": "string",
-          "description": "SelfLink is a URL representing this object.\nPopulated by the system.\nRead-only.\n+optional"
+          "description": "SelfLink is a URL representing this object.\nPopulated by the system.\nRead-only.\n+optional",
+          "type": "string"
         }
-      }
+      },
+      "id": "ListMeta"
     },
     "CustomResourceValidation": {
-      "id": "CustomResourceValidation",
       "description": "CustomResourceValidation is a list of validation methods for CustomResources.",
       "type": "object",
       "properties": {
         "openAPIV3Schema": {
-          "description": "OpenAPIV3Schema is the OpenAPI v3 schema to be validated against.\n+optional",
-          "$ref": "JSONSchemaProps"
+          "$ref": "JSONSchemaProps",
+          "description": "OpenAPIV3Schema is the OpenAPI v3 schema to be validated against.\n+optional"
         }
-      }
+      },
+      "id": "CustomResourceValidation"
     },
     "JSON": {
       "description": "JSON represents any valid JSON value.\nThese types are supported: bool, int64, float64, string, []interface{},\nmap[string]interface{} and nil.",
@@ -168,8 +414,6 @@
       "id": "JSON"
     },
     "ExternalDocumentation": {
-      "id": "ExternalDocumentation",
-      "description": "ExternalDocumentation allows referencing an external resource for extended\ndocumentation.",
       "type": "object",
       "properties": {
         "url": {
@@ -178,10 +422,11 @@
         "description": {
           "type": "string"
         }
-      }
+      },
+      "id": "ExternalDocumentation",
+      "description": "ExternalDocumentation allows referencing an external resource for extended\ndocumentation."
     },
     "ListCustomResourceDefinitionsResponse": {
-      "id": "ListCustomResourceDefinitionsResponse",
       "type": "object",
       "properties": {
         "apiVersion": {
@@ -204,29 +449,19 @@
           "description": "Metadata associated with this CustomResourceDefinition list."
         },
         "items": {
+          "description": "List of CustomResourceDefinitions.",
           "type": "array",
           "items": {
             "$ref": "CustomResourceDefinition"
-          },
-          "description": "List of CustomResourceDefinitions."
+          }
         }
-      }
+      },
+      "id": "ListCustomResourceDefinitionsResponse"
     },
     "CustomResourceDefinitionNames": {
       "description": "CustomResourceDefinitionNames indicates the names to serve this\nCustomResourceDefinition",
       "type": "object",
       "properties": {
-        "categories": {
-          "description": "Categories is a list of grouped resources custom resources belong to (e.g.\n'all') +optional",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "kind": {
-          "description": "Kind is the serialized kind of the resource.  It is normally CamelCase and\nsingular.",
-          "type": "string"
-        },
         "listKind": {
           "description": "ListKind is the serialized kind of the list for this resource.  Defaults to\n\u003ckind\u003eList. +optional",
           "type": "string"
@@ -239,17 +474,30 @@
           }
         },
         "singular": {
-          "description": "Singular is the singular name of the resource.  It must be all lowercase\nDefaults to lowercased \u003ckind\u003e +optional",
-          "type": "string"
+          "type": "string",
+          "description": "Singular is the singular name of the resource.  It must be all lowercase\nDefaults to lowercased \u003ckind\u003e +optional"
         },
         "plural": {
           "description": "Plural is the plural name of the resource to serve.  It must match the name\nof the CustomResourceDefinition-registration too: plural.group and it must\nbe all lowercase.",
+          "type": "string"
+        },
+        "categories": {
+          "description": "Categories is a list of grouped resources custom resources belong to (e.g.\n'all') +optional",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "kind": {
+          "description": "Kind is the serialized kind of the resource.  It is normally CamelCase and\nsingular.",
           "type": "string"
         }
       },
       "id": "CustomResourceDefinitionNames"
     },
     "JSONSchemaPropsOrBool": {
+      "id": "JSONSchemaPropsOrBool",
+      "description": "JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value.\nDefaults to true for the boolean property.",
       "type": "object",
       "properties": {
         "allows": {
@@ -258,11 +506,10 @@
         "schema": {
           "$ref": "JSONSchemaProps"
         }
-      },
-      "id": "JSONSchemaPropsOrBool",
-      "description": "JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value.\nDefaults to true for the boolean property."
+      }
     },
     "JSONSchemaPropsOrArray": {
+      "id": "JSONSchemaPropsOrArray",
       "description": "JSONSchemaPropsOrArray represents a value that can either be a\nJSONSchemaProps or an array of JSONSchemaProps. Mainly here for serialization\npurposes.",
       "type": "object",
       "properties": {
@@ -275,35 +522,34 @@
         "schema": {
           "$ref": "JSONSchemaProps"
         }
-      },
-      "id": "JSONSchemaPropsOrArray"
+      }
     },
     "OwnerReference": {
       "description": "OwnerReference contains enough information to let you identify an owning\nobject. Currently, an owning object must be in the same namespace, so there\nis no namespace field.",
       "type": "object",
       "properties": {
-        "blockOwnerDeletion": {
-          "type": "boolean",
-          "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then\nthe owner cannot be deleted from the key-value store until this\nreference is removed.\nDefaults to false.\nTo set this field, a user needs \"delete\" permission of the owner,\notherwise 422 (Unprocessable Entity) will be returned.\n+optional"
-        },
-        "apiVersion": {
-          "type": "string",
-          "description": "API version of the referent."
-        },
-        "name": {
-          "description": "Name of the referent.\nMore info: http://kubernetes.io/docs/user-guide/identifiers#names",
-          "type": "string"
-        },
-        "uid": {
-          "type": "string",
-          "description": "UID of the referent.\nMore info: http://kubernetes.io/docs/user-guide/identifiers#uids"
-        },
         "controller": {
           "description": "If true, this reference points to the managing controller.\n+optional",
           "type": "boolean"
         },
         "kind": {
           "description": "Kind of the referent.\nMore info:\nhttps://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "blockOwnerDeletion": {
+          "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then\nthe owner cannot be deleted from the key-value store until this\nreference is removed.\nDefaults to false.\nTo set this field, a user needs \"delete\" permission of the owner,\notherwise 422 (Unprocessable Entity) will be returned.\n+optional",
+          "type": "boolean"
+        },
+        "apiVersion": {
+          "description": "API version of the referent.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the referent.\nMore info: http://kubernetes.io/docs/user-guide/identifiers#names",
+          "type": "string"
+        },
+        "uid": {
+          "description": "UID of the referent.\nMore info: http://kubernetes.io/docs/user-guide/identifiers#uids",
           "type": "string"
         }
       },
@@ -314,17 +560,17 @@
       "description": "CustomResourceSubresourceScale defines how to serve the scale subresource for\nCustomResources.",
       "type": "object",
       "properties": {
+        "specReplicasPath": {
+          "description": "SpecReplicasPath defines the JSON path inside of a CustomResource that\ncorresponds to Scale.Spec.Replicas. Only JSON paths without the array\nnotation are allowed. Must be a JSON Path under .spec. If there is no value\nunder the given path in the CustomResource, the /scale subresource will\nreturn an error on GET.",
+          "type": "string"
+        },
         "statusReplicasPath": {
           "description": "StatusReplicasPath defines the JSON path inside of a CustomResource that\ncorresponds to Scale.Status.Replicas. Only JSON paths without the array\nnotation are allowed. Must be a JSON Path under .status. If there is no\nvalue under the given path in the CustomResource, the status replica value\nin the /scale subresource will default to 0.",
           "type": "string"
         },
         "labelSelectorPath": {
-          "description": "LabelSelectorPath defines the JSON path inside of a CustomResource that\ncorresponds to Scale.Status.Selector. Only JSON paths without the array\nnotation are allowed. Must be a JSON Path under .status. Must be set to\nwork with HPA. If there is no value under the given path in the\nCustomResource, the status label selector value in the /scale subresource\nwill default to the empty string. +optional",
-          "type": "string"
-        },
-        "specReplicasPath": {
-          "description": "SpecReplicasPath defines the JSON path inside of a CustomResource that\ncorresponds to Scale.Spec.Replicas. Only JSON paths without the array\nnotation are allowed. Must be a JSON Path under .spec. If there is no value\nunder the given path in the CustomResource, the /scale subresource will\nreturn an error on GET.",
-          "type": "string"
+          "type": "string",
+          "description": "LabelSelectorPath defines the JSON path inside of a CustomResource that\ncorresponds to Scale.Status.Selector. Only JSON paths without the array\nnotation are allowed. Must be a JSON Path under .status. Must be set to\nwork with HPA. If there is no value under the given path in the\nCustomResource, the status label selector value in the /scale subresource\nwill default to the empty string. +optional"
         }
       }
     },
@@ -332,52 +578,6 @@
       "description": "JSONSchemaProps is a JSON-Schema following Specification Draft 4\n(http://json-schema.org/).",
       "type": "object",
       "properties": {
-        "additionalItems": {
-          "$ref": "JSONSchemaPropsOrBool"
-        },
-        "oneOf": {
-          "type": "array",
-          "items": {
-            "$ref": "JSONSchemaProps"
-          }
-        },
-        "required": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "minItems": {
-          "type": "string",
-          "format": "int64"
-        },
-        "title": {
-          "type": "string"
-        },
-        "definitions": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "JSONSchemaProps"
-          }
-        },
-        "enum": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "uniqueItems": {
-          "type": "boolean"
-        },
-        "anyOf": {
-          "type": "array",
-          "items": {
-            "$ref": "JSONSchemaProps"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
         "default": {
           "$ref": "JSON"
         },
@@ -461,27 +661,71 @@
           "type": "boolean"
         },
         "patternProperties": {
+          "type": "object",
           "additionalProperties": {
             "$ref": "JSONSchemaProps"
-          },
-          "type": "object"
+          }
         },
         "additionalProperties": {
           "$ref": "JSONSchemaPropsOrBool"
         },
         "maxItems": {
-          "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "type": "string"
         },
         "exclusiveMinimum": {
           "type": "boolean"
+        },
+        "additionalItems": {
+          "$ref": "JSONSchemaPropsOrBool"
+        },
+        "oneOf": {
+          "type": "array",
+          "items": {
+            "$ref": "JSONSchemaProps"
+          }
+        },
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "minItems": {
+          "format": "int64",
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "definitions": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "JSONSchemaProps"
+          }
+        },
+        "enum": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "uniqueItems": {
+          "type": "boolean"
+        },
+        "anyOf": {
+          "type": "array",
+          "items": {
+            "$ref": "JSONSchemaProps"
+          }
+        },
+        "description": {
+          "type": "string"
         }
       },
       "id": "JSONSchemaProps"
     },
     "JSONSchemaPropsOrStringArray": {
-      "id": "JSONSchemaPropsOrStringArray",
-      "description": "JSONSchemaPropsOrStringArray represents a JSONSchemaProps or a string array.",
       "type": "object",
       "properties": {
         "schema": {
@@ -493,19 +737,28 @@
             "type": "string"
           }
         }
-      }
+      },
+      "id": "JSONSchemaPropsOrStringArray",
+      "description": "JSONSchemaPropsOrStringArray represents a JSONSchemaProps or a string array."
     },
     "CustomResourceDefinitionSpec": {
       "description": "CustomResourceDefinitionSpec describes how a user wants their resource to\nappear",
       "type": "object",
       "properties": {
+        "additionalPrinterColumns": {
+          "description": "AdditionalPrinterColumns are additional columns shown e.g. in kubectl next\nto the name. Defaults to a created-at column. +optional",
+          "type": "array",
+          "items": {
+            "$ref": "CustomResourceColumnDefinition"
+          }
+        },
         "validation": {
-          "description": "Validation describes the validation methods for CustomResources\n+optional",
-          "$ref": "CustomResourceValidation"
+          "$ref": "CustomResourceValidation",
+          "description": "Validation describes the validation methods for CustomResources\n+optional"
         },
         "group": {
-          "description": "Group is the group this resource belongs in",
-          "type": "string"
+          "type": "string",
+          "description": "Group is the group this resource belongs in"
         },
         "version": {
           "type": "string",
@@ -524,18 +777,11 @@
           "type": "string"
         },
         "versions": {
-          "description": "Versions is the list of all supported versions for this resource.\nIf Version field is provided, this field is optional.\nValidation: All versions must use the same validation schema for now. i.e.,\ntop level Validation field is applied to all of these versions. Order: The\nversion name will be used to compute the order. If the version string is\n\"kube-like\", it will sort above non \"kube-like\" version strings, which are\nordered lexicographically. \"Kube-like\" versions start with a \"v\", then are\nfollowed by a number (the major version), then optionally the string\n\"alpha\" or \"beta\" and another number (the minor version). These are sorted\nfirst by GA \u003e beta \u003e alpha (where GA is a version with no suffix such as\nbeta or alpha), and then by comparing major version, then minor version. An\nexample sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1,\nv12alpha1, v11alpha2, foo1, foo10. +optional",
           "type": "array",
           "items": {
             "$ref": "CustomResourceDefinitionVersion"
-          }
-        },
-        "additionalPrinterColumns": {
-          "description": "AdditionalPrinterColumns are additional columns shown e.g. in kubectl next\nto the name. Defaults to a created-at column. +optional",
-          "type": "array",
-          "items": {
-            "$ref": "CustomResourceColumnDefinition"
-          }
+          },
+          "description": "Versions is the list of all supported versions for this resource.\nIf Version field is provided, this field is optional.\nValidation: All versions must use the same validation schema for now. i.e.,\ntop level Validation field is applied to all of these versions. Order: The\nversion name will be used to compute the order. If the version string is\n\"kube-like\", it will sort above non \"kube-like\" version strings, which are\nordered lexicographically. \"Kube-like\" versions start with a \"v\", then are\nfollowed by a number (the major version), then optionally the string\n\"alpha\" or \"beta\" and another number (the minor version). These are sorted\nfirst by GA \u003e beta \u003e alpha (where GA is a version with no suffix such as\nbeta or alpha), and then by comparing major version, then minor version. An\nexample sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1,\nv12alpha1, v11alpha2, foo1, foo10. +optional"
         }
       },
       "id": "CustomResourceDefinitionSpec"
@@ -544,8 +790,8 @@
       "type": "object",
       "properties": {
         "name": {
-          "description": "Name is the version name, e.g. “v1”, “v2beta1”, etc.",
-          "type": "string"
+          "type": "string",
+          "description": "Name is the version name, e.g. “v1”, “v2beta1”, etc."
         },
         "served": {
           "description": "Served is a flag enabling/disabling this version from being served via REST\nAPIs",
@@ -559,318 +805,72 @@
       "id": "CustomResourceDefinitionVersion"
     },
     "CustomResourceColumnDefinition": {
-      "id": "CustomResourceColumnDefinition",
       "description": "CustomResourceColumnDefinition specifies a column for server side printing.",
       "type": "object",
       "properties": {
         "name": {
-          "description": "name is a human readable name for the column.",
-          "type": "string"
+          "type": "string",
+          "description": "name is a human readable name for the column."
         },
         "format": {
           "description": "format is an optional OpenAPI type definition for this column. The 'name'\nformat is applied to the primary identifier column to assist in clients\nidentifying column is the resource name. See\nhttps://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types\nfor more. +optional",
           "type": "string"
         },
         "type": {
-          "type": "string",
-          "description": "type is an OpenAPI type definition for this column.\nSee\nhttps://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types\nfor more."
+          "description": "type is an OpenAPI type definition for this column.\nSee\nhttps://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types\nfor more.",
+          "type": "string"
         },
         "jsonPath": {
           "type": "string",
           "description": "JSONPath is a simple JSON path, i.e. with array notation."
         },
         "priority": {
-          "type": "integer",
           "description": "priority is an integer defining the relative importance of this column\ncompared to others. Lower numbers are considered higher priority. Columns\nthat may be omitted in limited space scenarios should be given a higher\npriority. +optional",
-          "format": "int32"
+          "format": "int32",
+          "type": "integer"
         },
         "description": {
           "description": "description is a human readable description of this column.\n+optional",
           "type": "string"
         }
-      }
+      },
+      "id": "CustomResourceColumnDefinition"
     },
     "CustomResourceSubresourceStatus": {
       "description": "CustomResourceSubresourceStatus defines how to serve the status subresource\nfor CustomResources. Status is represented by the `.status` JSON path inside\nof a CustomResource. When set,\n* exposes a /status subresource for the custom resource\n* PUT requests to the /status subresource take a custom resource object, and\nignore changes to anything except the status stanza\n* PUT/POST/PATCH requests to the custom resource ignore changes to the status\nstanza",
       "type": "object",
       "properties": {},
       "id": "CustomResourceSubresourceStatus"
+    },
+    "CustomResourceDefinition": {
+      "description": "CustomResourceDefinition represents a resource that should be exposed on the\nAPI server.  Its name MUST be in the format\n\u003c.spec.name\u003e.\u003c.spec.group\u003e.",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "description": "The kind of resource, one example is \"Storage\".",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "Metadata associated with this CustomResourceDefinition.",
+          "$ref": "ObjectMeta"
+        },
+        "apiVersion": {
+          "type": "string",
+          "description": "The API version for this call such as \"k8s.apiextensions.io/v1beta1\"."
+        },
+        "spec": {
+          "$ref": "CustomResourceDefinitionSpec",
+          "description": "Spec describes how the user wants the resources to appear"
+        }
+      },
+      "id": "CustomResourceDefinition"
     }
   },
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "protocol": "rest",
   "canonicalName": "Cloud Run",
-  "rootUrl": "https://run.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "run",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Cloud Run API",
-  "ownerName": "Google",
-  "resources": {
-    "namespaces": {
-      "resources": {
-        "customresourcedefinitions": {
-          "methods": {
-            "get": {
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "name"
-              ],
-              "response": {
-                "$ref": "CustomResourceDefinition"
-              },
-              "parameters": {
-                "name": {
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^namespaces/[^/]+/customresourcedefinitions/[^/]+$",
-                  "location": "path",
-                  "description": "The name of the CustomResourceDefinition being retrieved. If needed,\nreplace {namespace_id} with the project ID."
-                }
-              },
-              "flatPath": "apis/apiextensions.k8s.io/v1beta1/namespaces/{namespacesId}/customresourcedefinitions/{customresourcedefinitionsId}",
-              "id": "run.namespaces.customresourcedefinitions.get",
-              "path": "apis/apiextensions.k8s.io/v1beta1/{+name}",
-              "description": "Rpc to get information about a CustomResourceDefinition."
-            }
-          }
-        }
-      }
-    },
-    "projects": {
-      "resources": {
-        "locations": {
-          "resources": {
-            "customresourcedefinitions": {
-              "methods": {
-                "get": {
-                  "httpMethod": "GET",
-                  "response": {
-                    "$ref": "CustomResourceDefinition"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/customresourcedefinitions/[^/]+$",
-                      "location": "path",
-                      "description": "The name of the CustomResourceDefinition being retrieved. If needed,\nreplace {namespace_id} with the project ID.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/customresourcedefinitions/{customresourcedefinitionsId}",
-                  "id": "run.projects.locations.customresourcedefinitions.get",
-                  "path": "v1beta1/{+name}",
-                  "description": "Rpc to get information about a CustomResourceDefinition."
-                },
-                "list": {
-                  "httpMethod": "GET",
-                  "response": {
-                    "$ref": "ListCustomResourceDefinitionsResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "parameters": {
-                    "watch": {
-                      "location": "query",
-                      "description": "Flag that indicates that the client expects to watch this resource as well.\nNot currently used by Cloud Run.",
-                      "type": "boolean"
-                    },
-                    "parent": {
-                      "description": "The project ID or project number from which the storages should\nbe listed.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    },
-                    "labelSelector": {
-                      "location": "query",
-                      "description": "Allows to filter resources based on a label. Supported operations are\n=, !=, exists, in, and notIn.",
-                      "type": "string"
-                    },
-                    "fieldSelector": {
-                      "type": "string",
-                      "location": "query",
-                      "description": "Allows to filter resources based on a specific value for a field name.\nSend this in a query string format. i.e. 'metadata.name%3Dlorem'.\nNot currently used by Cloud Run."
-                    },
-                    "includeUninitialized": {
-                      "location": "query",
-                      "description": "Not currently used by Cloud Run.",
-                      "type": "boolean"
-                    },
-                    "resourceVersion": {
-                      "location": "query",
-                      "description": "The baseline resource version from which the list or watch operation should\nstart. Not currently used by Cloud Run.",
-                      "type": "string"
-                    },
-                    "continue": {
-                      "location": "query",
-                      "description": "Optional encoded string to continue paging.",
-                      "type": "string"
-                    },
-                    "limit": {
-                      "type": "integer",
-                      "location": "query",
-                      "format": "int32"
-                    }
-                  },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/customresourcedefinitions",
-                  "id": "run.projects.locations.customresourcedefinitions.list",
-                  "path": "v1beta1/{+parent}/customresourcedefinitions",
-                  "description": "Rpc to list custom resource definitions."
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "customresourcedefinitions": {
-      "methods": {
-        "list": {
-          "parameters": {
-            "parent": {
-              "location": "query",
-              "description": "The project ID or project number from which the storages should\nbe listed.",
-              "type": "string"
-            },
-            "labelSelector": {
-              "type": "string",
-              "location": "query",
-              "description": "Allows to filter resources based on a label. Supported operations are\n=, !=, exists, in, and notIn."
-            },
-            "resourceVersion": {
-              "location": "query",
-              "description": "The baseline resource version from which the list or watch operation should\nstart. Not currently used by Cloud Run.",
-              "type": "string"
-            },
-            "includeUninitialized": {
-              "location": "query",
-              "description": "Not currently used by Cloud Run.",
-              "type": "boolean"
-            },
-            "fieldSelector": {
-              "location": "query",
-              "description": "Allows to filter resources based on a specific value for a field name.\nSend this in a query string format. i.e. 'metadata.name%3Dlorem'.\nNot currently used by Cloud Run.",
-              "type": "string"
-            },
-            "continue": {
-              "location": "query",
-              "description": "Optional encoded string to continue paging.",
-              "type": "string"
-            },
-            "limit": {
-              "location": "query",
-              "format": "int32",
-              "type": "integer"
-            },
-            "watch": {
-              "description": "Flag that indicates that the client expects to watch this resource as well.\nNot currently used by Cloud Run.",
-              "type": "boolean",
-              "location": "query"
-            }
-          },
-          "flatPath": "apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions",
-          "id": "run.customresourcedefinitions.list",
-          "path": "apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions",
-          "description": "Rpc to list custom resource definitions.",
-          "httpMethod": "GET",
-          "parameterOrder": [],
-          "response": {
-            "$ref": "ListCustomResourceDefinitionsResponse"
-          }
-        }
-      }
-    }
-  },
-  "parameters": {
-    "key": {
-      "type": "string",
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    },
-    "access_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth access token."
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user."
-    },
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
-    },
-    "alt": {
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ]
-    }
-  },
-  "version": "v1beta1",
-  "baseUrl": "https://run.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Deploy and manage user provided container images that scale automatically based on HTTP traffic.",
-  "servicePath": "",
-  "basePath": ""
+  "rootUrl": "https://run.googleapis.com/"
 }

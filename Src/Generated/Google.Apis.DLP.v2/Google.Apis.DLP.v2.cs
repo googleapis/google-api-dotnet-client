@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191027 (1760)
+ *      <tr><th>API Rev<td>20191031 (1764)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -3866,6 +3866,26 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional page token to continue retrieval. Comes from previous call to ListJobTriggers.
+                /// `order_by` field must not change for subsequent calls.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional comma separated list of triggeredJob fields to order by, followed by `asc` or
+                /// `desc` postfix. This list is case-insensitive, default sorting order is ascending, redundant space
+                /// characters are insignificant.
+                ///
+                /// Example: `name asc,update_time, create_time desc`
+                ///
+                /// Supported fields are:
+                ///
+                /// - `create_time`: corresponds to time the JobTrigger was created. - `update_time`: corresponds to
+                /// time the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the JobTrigger
+                /// ran. - `name`: corresponds to JobTrigger's name. - `display_name`: corresponds to JobTrigger's
+                /// display name. - `status`: corresponds to JobTrigger's status.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
                 /// <summary>Optional size of the page, can be limited by a server.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -3891,26 +3911,6 @@ namespace Google.Apis.DLP.v2
                 /// The length of this field should be no more than 500 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>Optional page token to continue retrieval. Comes from previous call to ListJobTriggers.
-                /// `order_by` field must not change for subsequent calls.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional comma separated list of triggeredJob fields to order by, followed by `asc` or
-                /// `desc` postfix. This list is case-insensitive, default sorting order is ascending, redundant space
-                /// characters are insignificant.
-                ///
-                /// Example: `name asc,update_time, create_time desc`
-                ///
-                /// Supported fields are:
-                ///
-                /// - `create_time`: corresponds to time the JobTrigger was created. - `update_time`: corresponds to
-                /// time the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the JobTrigger
-                /// ran. - `name`: corresponds to JobTrigger's name. - `display_name`: corresponds to JobTrigger's
-                /// display name. - `status`: corresponds to JobTrigger's status.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3946,24 +3946,6 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3976,6 +3958,24 @@ namespace Google.Apis.DLP.v2
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

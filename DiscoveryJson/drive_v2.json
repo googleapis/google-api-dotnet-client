@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/oBMvKC4XV0NjxxOx_Y5WENsew0Q\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/46Qjt4BhPnhiVVSUSh-Zxw9mvPw\"",
  "discoveryVersion": "v1",
  "id": "drive:v2",
  "name": "drive",
  "version": "v2",
- "revision": "20191015",
+ "revision": "20191017",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -768,7 +768,7 @@
     },
     "author": {
      "$ref": "User",
-     "description": "The user who wrote this comment."
+     "description": "The author of the comment. The author's email address and permission ID will not be populated."
     },
     "commentId": {
      "type": "string",
@@ -885,7 +885,7 @@
    "properties": {
     "author": {
      "$ref": "User",
-     "description": "The user who wrote this reply."
+     "description": "The author of the reply. The author's email address and permission ID will not be populated."
     },
     "content": {
      "type": "string",
@@ -3257,7 +3257,7 @@
      "id": "drive.comments.patch",
      "path": "files/{fileId}/comments/{commentId}",
      "httpMethod": "PATCH",
-     "description": "Updates an existing comment. This method supports patch semantics.",
+     "description": "Updates an existing comment.",
      "parameters": {
       "commentId": {
        "type": "string",
@@ -5467,7 +5467,7 @@
      "id": "drive.replies.patch",
      "path": "files/{fileId}/comments/{commentId}/replies/{replyId}",
      "httpMethod": "PATCH",
-     "description": "Updates an existing reply. This method supports patch semantics.",
+     "description": "Updates an existing reply.",
      "parameters": {
       "commentId": {
        "type": "string",
@@ -5661,7 +5661,7 @@
      "id": "drive.revisions.patch",
      "path": "files/{fileId}/revisions/{revisionId}",
      "httpMethod": "PATCH",
-     "description": "Updates a revision. This method supports patch semantics.",
+     "description": "Updates a revision.",
      "parameters": {
       "fileId": {
        "type": "string",

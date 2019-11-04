@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services'>Google Play Game Services Management API</a>
  *      <tr><th>API Version<td>v1management
- *      <tr><th>API Rev<td>20191014 (1747)
+ *      <tr><th>API Rev<td>20191017 (1750)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services'>
  *              https://developers.google.com/games/services</a>
@@ -68,7 +68,6 @@ namespace Google.Apis.GamesManagement.v1management
             applications = new ApplicationsResource(this);
             events = new EventsResource(this);
             players = new PlayersResource(this);
-            quests = new QuestsResource(this);
             rooms = new RoomsResource(this);
             scores = new ScoresResource(this);
             turnBasedMatches = new TurnBasedMatchesResource(this);
@@ -164,14 +163,6 @@ namespace Google.Apis.GamesManagement.v1management
         public virtual PlayersResource Players
         {
             get { return players; }
-        }
-
-        private readonly QuestsResource quests;
-
-        /// <summary>Gets the Quests resource.</summary>
-        public virtual QuestsResource Quests
-        {
-            get { return quests; }
         }
 
         private readonly RoomsResource rooms;
@@ -1189,296 +1180,6 @@ namespace Google.Apis.GamesManagement.v1management
         }
     }
 
-    /// <summary>The "quests" collection of methods.</summary>
-    public class QuestsResource
-    {
-        private const string Resource = "quests";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public QuestsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-
-        }
-
-
-        /// <summary>Resets all player progress on the quest with the given ID for the currently authenticated player.
-        /// This method is only accessible to whitelisted tester accounts for your application.</summary>
-        /// <param name="questId">The ID of the quest.</param>
-        public virtual ResetRequest Reset(string questId)
-        {
-            return new ResetRequest(service, questId);
-        }
-
-        /// <summary>Resets all player progress on the quest with the given ID for the currently authenticated player.
-        /// This method is only accessible to whitelisted tester accounts for your application.</summary>
-        public class ResetRequest : GamesManagementBaseServiceRequest<string>
-        {
-            /// <summary>Constructs a new Reset request.</summary>
-            public ResetRequest(Google.Apis.Services.IClientService service, string questId)
-                : base(service)
-            {
-                QuestId = questId;
-                InitParameters();
-            }
-
-
-            /// <summary>The ID of the quest.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("questId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string QuestId { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "reset"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "quests/{questId}/reset"; }
-            }
-
-            /// <summary>Initializes Reset parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "questId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "questId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Resets all player progress on all quests for the currently authenticated player. This method is
-        /// only accessible to whitelisted tester accounts for your application.</summary>
-        public virtual ResetAllRequest ResetAll()
-        {
-            return new ResetAllRequest(service);
-        }
-
-        /// <summary>Resets all player progress on all quests for the currently authenticated player. This method is
-        /// only accessible to whitelisted tester accounts for your application.</summary>
-        public class ResetAllRequest : GamesManagementBaseServiceRequest<string>
-        {
-            /// <summary>Constructs a new ResetAll request.</summary>
-            public ResetAllRequest(Google.Apis.Services.IClientService service)
-                : base(service)
-            {
-                InitParameters();
-            }
-
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "resetAll"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "quests/reset"; }
-            }
-
-            /// <summary>Initializes ResetAll parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-            }
-
-        }
-
-        /// <summary>Resets all draft quests for all players. This method is only available to user accounts for your
-        /// developer console.</summary>
-        public virtual ResetAllForAllPlayersRequest ResetAllForAllPlayers()
-        {
-            return new ResetAllForAllPlayersRequest(service);
-        }
-
-        /// <summary>Resets all draft quests for all players. This method is only available to user accounts for your
-        /// developer console.</summary>
-        public class ResetAllForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
-        {
-            /// <summary>Constructs a new ResetAllForAllPlayers request.</summary>
-            public ResetAllForAllPlayersRequest(Google.Apis.Services.IClientService service)
-                : base(service)
-            {
-                InitParameters();
-            }
-
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "resetAllForAllPlayers"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "quests/resetAllForAllPlayers"; }
-            }
-
-            /// <summary>Initializes ResetAllForAllPlayers parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-            }
-
-        }
-
-        /// <summary>Resets all player progress on the quest with the given ID for all players. This method is only
-        /// available to user accounts for your developer console. Only draft quests can be reset.</summary>
-        /// <param name="questId">The ID of the quest.</param>
-        public virtual ResetForAllPlayersRequest ResetForAllPlayers(string questId)
-        {
-            return new ResetForAllPlayersRequest(service, questId);
-        }
-
-        /// <summary>Resets all player progress on the quest with the given ID for all players. This method is only
-        /// available to user accounts for your developer console. Only draft quests can be reset.</summary>
-        public class ResetForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
-        {
-            /// <summary>Constructs a new ResetForAllPlayers request.</summary>
-            public ResetForAllPlayersRequest(Google.Apis.Services.IClientService service, string questId)
-                : base(service)
-            {
-                QuestId = questId;
-                InitParameters();
-            }
-
-
-            /// <summary>The ID of the quest.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("questId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string QuestId { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "resetForAllPlayers"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "quests/{questId}/resetForAllPlayers"; }
-            }
-
-            /// <summary>Initializes ResetForAllPlayers parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "questId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "questId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Resets quests with the given IDs for all players. This method is only available to user accounts
-        /// for your developer console. Only draft quests may be reset.</summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual ResetMultipleForAllPlayersRequest ResetMultipleForAllPlayers(Google.Apis.GamesManagement.v1management.Data.QuestsResetMultipleForAllRequest body)
-        {
-            return new ResetMultipleForAllPlayersRequest(service, body);
-        }
-
-        /// <summary>Resets quests with the given IDs for all players. This method is only available to user accounts
-        /// for your developer console. Only draft quests may be reset.</summary>
-        public class ResetMultipleForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
-        {
-            /// <summary>Constructs a new ResetMultipleForAllPlayers request.</summary>
-            public ResetMultipleForAllPlayersRequest(Google.Apis.Services.IClientService service, Google.Apis.GamesManagement.v1management.Data.QuestsResetMultipleForAllRequest body)
-                : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.GamesManagement.v1management.Data.QuestsResetMultipleForAllRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "resetMultipleForAllPlayers"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "quests/resetMultipleForAllPlayers"; }
-            }
-
-            /// <summary>Initializes ResetMultipleForAllPlayers parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-            }
-
-        }
-    }
-
     /// <summary>The "rooms" collection of methods.</summary>
     public class RoomsResource
     {
@@ -2216,6 +1917,9 @@ namespace Google.Apis.GamesManagement.v1management.Data
         [Newtonsoft.Json.JsonPropertyAttribute("playerId")]
         public virtual string PlayerId { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("playerStattus")]
+        public virtual string PlayerStattus { get; set; } 
+
         /// <summary>The player's profile settings. Controls whether or not the player's profile is visible to other
         /// players.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileSettings")]
@@ -2291,22 +1995,6 @@ namespace Google.Apis.GamesManagement.v1management.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("profileVisible")]
         public virtual System.Nullable<bool> ProfileVisible { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>This is a JSON template for multiple quests reset all request.</summary>
-    public class QuestsResetMultipleForAllRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// gamesManagement#questsResetMultipleForAllRequest.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>The IDs of quests to reset.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("quest_ids")]
-        public virtual System.Collections.Generic.IList<string> QuestIds { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

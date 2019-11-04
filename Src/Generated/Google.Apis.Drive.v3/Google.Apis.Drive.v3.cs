@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20191015 (1748)
+ *      <tr><th>API Rev<td>20191017 (1750)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -6066,7 +6066,8 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("anchor")]
         public virtual string Anchor { get; set; } 
 
-        /// <summary>The user who created the comment.</summary>
+        /// <summary>The author of the comment. The author's email address and permission ID will not be
+        /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
         public virtual User Author { get; set; } 
 
@@ -7272,7 +7273,8 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>The user who created the reply.</summary>
+        /// <summary>The author of the reply. The author's email address and permission ID will not be
+        /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
         public virtual User Author { get; set; } 
 

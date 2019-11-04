@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1p2beta1
- *      <tr><th>API Rev<td>20191018 (1751)
+ *      <tr><th>API Rev<td>20191028 (1761)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -3000,8 +3000,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1p2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>For tracking related features, such as LOGO_RECOGNITION, FACE_DETECTION, CELEBRITY_RECOGNITION,
-    /// PERSON_DETECTION. An object at time_offset with attributes, and located with normalized_bounding_box.</summary>
+    /// <summary>For tracking related features. An object at time_offset with attributes, and located with
+    /// normalized_bounding_box.</summary>
     public class GoogleCloudVideointelligenceV1p3beta1TimestampedObject : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The attributes of the object in the bounding box.</summary>

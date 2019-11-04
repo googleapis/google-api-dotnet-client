@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191018 (1751)
+ *      <tr><th>API Rev<td>20191027 (1760)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1544,13 +1544,6 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// check request. If this is not specified, no quota check will be performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaProperties")]
         public virtual QuotaProperties QuotaProperties { get; set; } 
-
-        /// <summary>DO NOT USE. This field is deprecated, use "resources" field instead. The resource name of the
-        /// parent of a resource in the resource hierarchy.
-        ///
-        /// This can be in one of the following formats: - “projects/” - “folders/” - “organizations/”</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
-        public virtual string ResourceContainer { get; set; } 
 
         /// <summary>The resources that are involved in the operation. The maximum supported number of entries in this
         /// field is 100.</summary>

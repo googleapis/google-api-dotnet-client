@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191027 (1760)
+ *      <tr><th>API Rev<td>20191031 (1764)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -422,7 +422,7 @@ namespace Google.Apis.PeopleService.v1
             /// `contactGroups/starred`. Other system contact groups are deprecated and can only have contacts
             /// removed.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resourceName">The resource name of the contact group to modify.</param>
+            /// <param name="resourceName">Required. The resource name of the contact group to modify.</param>
             public virtual ModifyRequest Modify(Google.Apis.PeopleService.v1.Data.ModifyContactGroupMembersRequest body, string resourceName)
             {
                 return new ModifyRequest(service, body, resourceName);
@@ -445,7 +445,7 @@ namespace Google.Apis.PeopleService.v1
                 }
 
 
-                /// <summary>The resource name of the contact group to modify.</summary>
+                /// <summary>Required. The resource name of the contact group to modify.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ResourceName { get; private set; }
 
@@ -512,11 +512,12 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>Specifies the maximum number of members to return for each group.</summary>
+            /// <summary>Optional. Specifies the maximum number of members to return for each group. Defaults to 0 if
+            /// not set, which will return zero members.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxMembers", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxMembers { get; set; }
 
-            /// <summary>The resource names of the contact groups to get.</summary>
+            /// <summary>Required. The resource names of the contact groups to get.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
@@ -621,7 +622,7 @@ namespace Google.Apis.PeopleService.v1
 
         /// <summary>Delete an existing contact group owned by the authenticated user by specifying a contact group
         /// resource name.</summary>
-        /// <param name="resourceName">The resource name of the contact group to delete.</param>
+        /// <param name="resourceName">Required. The resource name of the contact group to delete.</param>
         public virtual DeleteRequest Delete(string resourceName)
         {
             return new DeleteRequest(service, resourceName);
@@ -640,11 +641,11 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>The resource name of the contact group to delete.</summary>
+            /// <summary>Required. The resource name of the contact group to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
-            /// <summary>Set to true to also delete the contacts in the specified group.</summary>
+            /// <summary>Optional. Set to true to also delete the contacts in the specified group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("deleteContacts", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DeleteContacts { get; set; }
 
@@ -696,7 +697,7 @@ namespace Google.Apis.PeopleService.v1
 
         /// <summary>Get a specific contact group owned by the authenticated user by specifying a contact group resource
         /// name.</summary>
-        /// <param name="resourceName">The resource name of the contact group to get.</param>
+        /// <param name="resourceName">Required. The resource name of the contact group to get.</param>
         public virtual GetRequest Get(string resourceName)
         {
             return new GetRequest(service, resourceName);
@@ -715,11 +716,12 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>The resource name of the contact group to get.</summary>
+            /// <summary>Required. The resource name of the contact group to get.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
-            /// <summary>Specifies the maximum number of members to return.</summary>
+            /// <summary>Optional. Specifies the maximum number of members to return. Defaults to 0 if not set, which
+            /// will return zero members.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxMembers", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxMembers { get; set; }
 
@@ -788,20 +790,21 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
+            /// <summary>A sync token, returned by a previous call to `contactgroups.list`. Only resources changed since
+            /// the sync token was created will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SyncToken { get; set; }
+
             /// <summary>The next_page_token value returned from a previous call to
             /// [ListContactGroups](/people/api/rest/v1/contactgroups/list). Requests the next page of
             /// resources.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>The maximum number of resources to return.</summary>
+            /// <summary>Optional. The maximum number of resources to return. Valid values are between 1 and 1000,
+            /// inclusive. Defaults to 30 if not set or set to 0.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>A sync token, returned by a previous call to `contactgroups.list`. Only resources changed since
-            /// the sync token was created will be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SyncToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -828,6 +831,15 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "syncToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "syncToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -840,15 +852,6 @@ namespace Google.Apis.PeopleService.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "syncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -972,7 +975,8 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>Provides a list of the authenticated user's contacts merged with any connected profiles.
             ///
             /// The request throws a 400 error if 'personFields' is not specified.</summary>
-            /// <param name="resourceName">The resource name to return connections for. Only `people/me` is valid.</param>
+            /// <param name="resourceName">Required. The resource name to return connections for. Only `people/me` is
+            /// valid.</param>
             public virtual ListRequest List(string resourceName)
             {
                 return new ListRequest(service, resourceName);
@@ -992,7 +996,7 @@ namespace Google.Apis.PeopleService.v1
                 }
 
 
-                /// <summary>The resource name to return connections for. Only `people/me` is valid.</summary>
+                /// <summary>Required. The resource name to return connections for. Only `people/me` is valid.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ResourceName { get; private set; }
 
@@ -1025,13 +1029,13 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>The number of connections to include in the response. Valid values are between 1 and 2000,
-                /// inclusive. Defaults to 100.</summary>
+                /// <summary>Optional. The number of connections to include in the response. Valid values are between 1
+                /// and 2000, inclusive. Defaults to 100 if not set or set to 0.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each
-                /// path should start with `person.`: for example, `person.names` or `person.photos`.</summary>
+                /// <summary>Required. Comma-separated list of person fields to be included in the response. Each path
+                /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object RequestMaskIncludeField { get; set; }
 
@@ -1041,7 +1045,7 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string SyncToken { get; set; }
 
-                /// <summary>**Required.** A field mask to restrict which fields on each person are returned. Multiple
+                /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple
                 /// fields can be specified by separating them with commas. Valid values are:
                 ///
                 /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
@@ -1171,10 +1175,6 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>The resource name of the owning person resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.PeopleService.v1.Data.Person Body { get; set; }
@@ -1205,21 +1205,12 @@ namespace Google.Apis.PeopleService.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
 
         /// <summary>Delete a contact person. Any non-contact data will not be deleted.</summary>
-        /// <param name="resourceName">The resource name of the contact to delete.</param>
+        /// <param name="resourceName">Required. The resource name of the contact to delete.</param>
         public virtual DeleteContactRequest DeleteContact(string resourceName)
         {
             return new DeleteContactRequest(service, resourceName);
@@ -1237,7 +1228,7 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>The resource name of the contact to delete.</summary>
+            /// <summary>Required. The resource name of the contact to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
@@ -1279,7 +1270,7 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>Delete a contact's photo.</summary>
-        /// <param name="resourceName">The resource name of the contact whose photo will be deleted.</param>
+        /// <param name="resourceName">Required. The resource name of the contact whose photo will be deleted.</param>
         public virtual DeleteContactPhotoRequest DeleteContactPhoto(string resourceName)
         {
             return new DeleteContactPhotoRequest(service, resourceName);
@@ -1297,13 +1288,13 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>The resource name of the contact whose photo will be deleted.</summary>
+            /// <summary>Required. The resource name of the contact whose photo will be deleted.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
-            /// <summary>**Optional.** Not specifying any fields will skip the post mutate read. A field mask to
-            /// restrict which fields on the person are returned. Multiple fields can be specified by separating them
-            /// with commas. Valid values are:
+            /// <summary>Optional. A field mask to restrict which fields on the person are returned. Multiple fields can
+            /// be specified by separating them with commas. Defaults to empty if not set, which will skip the post
+            /// mutate get. Valid values are:
             ///
             /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
             /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
@@ -1362,7 +1353,7 @@ namespace Google.Apis.PeopleService.v1
         /// authenticated user.
         ///
         /// The request throws a 400 error if 'personFields' is not specified.</summary>
-        /// <param name="resourceName">The resource name of the person to provide information about.
+        /// <param name="resourceName">Required. The resource name of the person to provide information about.
         ///
         /// - To get information about the authenticated user, specify `people/me`. - To get information about a google account,
         /// specify  `people/`account_id. - To get information about a contact, specify the resource name that   identifies the
@@ -1387,7 +1378,7 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>The resource name of the person to provide information about.
+            /// <summary>Required. The resource name of the person to provide information about.
             ///
             /// - To get information about the authenticated user, specify `people/me`. - To get information about a
             /// google account, specify `people/`account_id. - To get information about a contact, specify the resource
@@ -1396,8 +1387,8 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
-            /// <summary>**Required.** A field mask to restrict which fields on the person are returned. Multiple fields
-            /// can be specified by separating them with commas. Valid values are:
+            /// <summary>Required. A field mask to restrict which fields on the person are returned. Multiple fields can
+            /// be specified by separating them with commas. Valid values are:
             ///
             /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
             /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
@@ -1406,7 +1397,7 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
-            /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each path
+            /// <summary>Required. Comma-separated list of person fields to be included in the response. Each path
             /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object RequestMaskIncludeField { get; set; }
@@ -1489,8 +1480,8 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>**Required.** A field mask to restrict which fields on each person are returned. Multiple
-            /// fields can be specified by separating them with commas. Valid values are:
+            /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
+            /// can be specified by separating them with commas. Valid values are:
             ///
             /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
             /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
@@ -1499,12 +1490,12 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
 
-            /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each path
+            /// <summary>Required. Comma-separated list of person fields to be included in the response. Each path
             /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object RequestMaskIncludeField { get; set; }
 
-            /// <summary>The resource names of the people to provide information about.
+            /// <summary>Required. The resource names of the people to provide information about.
             ///
             /// - To get information about the authenticated user, specify `people/me`. - To get information about a
             /// google account, specify `people/`account_id. - To get information about a contact, specify the resource
@@ -1615,8 +1606,8 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
-            /// <summary>**Required.** A field mask to restrict which fields on the person are updated. Multiple fields
-            /// can be specified by separating them with commas. All updated fields will be replaced. Valid values are:
+            /// <summary>Required. A field mask to restrict which fields on the person are updated. Multiple fields can
+            /// be specified by separating them with commas. All updated fields will be replaced. Valid values are:
             ///
             /// * addresses * biographies * birthdays * emailAddresses * events * genders * imClients * interests *
             /// locales * memberships * names * nicknames * occupations * organizations * phoneNumbers * relations *
@@ -1678,7 +1669,7 @@ namespace Google.Apis.PeopleService.v1
 
         /// <summary>Update a contact's photo.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resourceName">Person resource name</param>
+        /// <param name="resourceName">Required. Person resource name</param>
         public virtual UpdateContactPhotoRequest UpdateContactPhoto(Google.Apis.PeopleService.v1.Data.UpdateContactPhotoRequest body, string resourceName)
         {
             return new UpdateContactPhotoRequest(service, body, resourceName);
@@ -1697,7 +1688,7 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>Person resource name</summary>
+            /// <summary>Required. Person resource name</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
@@ -1769,7 +1760,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("extendedAddress")]
         public virtual string ExtendedAddress { get; set; } 
 
-        /// <summary>The read-only type of the address translated and formatted in the viewer's account locale or the
+        /// <summary>Output only. The type of the address translated and formatted in the viewer's account locale or the
         /// `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
         public virtual string FormattedType { get; set; } 
@@ -1897,27 +1888,28 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The read-only name translated and formatted in the viewer's account locale or the `Accept-Language`
-        /// HTTP header locale for system groups names. Group names set by the owner are the same as name.</summary>
+        /// <summary>Output only. The name translated and formatted in the viewer's account locale or the `Accept-
+        /// Language` HTTP header locale for system groups names. Group names set by the owner are the same as
+        /// name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedName")]
         public virtual string FormattedName { get; set; } 
 
-        /// <summary>The read-only contact group type.</summary>
+        /// <summary>Output only. The contact group type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupType")]
         public virtual string GroupType { get; set; } 
 
-        /// <summary>The total number of contacts in the group irrespective of max members in specified in the
-        /// request.</summary>
+        /// <summary>Output only. The total number of contacts in the group irrespective of max members in specified in
+        /// the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberCount")]
         public virtual System.Nullable<int> MemberCount { get; set; } 
 
-        /// <summary>The list of contact person resource names that are members of the contact group. The field is not
-        /// populated for LIST requests and can only be updated through the
+        /// <summary>Output only. The list of contact person resource names that are members of the contact group. The
+        /// field is not populated for LIST requests and can only be updated through the
         /// [ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberResourceNames")]
         public virtual System.Collections.Generic.IList<string> MemberResourceNames { get; set; } 
 
-        /// <summary>Metadata about the contact group.</summary>
+        /// <summary>Output only. Metadata about the contact group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ContactGroupMetadata Metadata { get; set; } 
 
@@ -1936,7 +1928,7 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>A Google contact group membership.</summary>
     public class ContactGroupMembership : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The read-only contact group ID for the contact group membership.</summary>
+        /// <summary>Output only. The contact group ID for the contact group membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroupId")]
         public virtual string ContactGroupId { get; set; } 
 
@@ -1951,15 +1943,15 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The read-only metadata about a contact group.</summary>
+    /// <summary>The metadata about a contact group.</summary>
     public class ContactGroupMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if the contact group resource has been deleted. Populated only for
+        /// <summary>Output only. True if the contact group resource has been deleted. Populated only for
         /// [`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests that include a sync token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; } 
 
-        /// <summary>The time the group was last updated.</summary>
+        /// <summary>Output only. The time the group was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -1986,8 +1978,8 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A person's read-only cover photo. A large image shown on the person's profile page that represents who
-    /// they are or what they care about.</summary>
+    /// <summary>A person's cover photo. A large image shown on the person's profile page that represents who they are
+    /// or what they care about.</summary>
     public class CoverPhoto : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>True if the cover photo is the default cover photo; false if the cover photo is a user-provided
@@ -2010,7 +2002,7 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>A request to create a new contact group.</summary>
     public class CreateContactGroupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The contact group to create.</summary>
+        /// <summary>Required. The contact group to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroup")]
         public virtual ContactGroup ContactGroup { get; set; } 
 
@@ -2058,7 +2050,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A read-only G Suite Domain membership.</summary>
+    /// <summary>A G Suite Domain membership.</summary>
     public class DomainMembership : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>True if the person is in the viewer's G Suite domain.</summary>
@@ -2076,8 +2068,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The read-only type of the email address translated and formatted in the viewer's account locale or
-        /// the `Accept-Language` HTTP header locale.</summary>
+        /// <summary>Output only. The type of the email address translated and formatted in the viewer's account locale
+        /// or the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
         public virtual string FormattedType { get; set; } 
 
@@ -2118,7 +2110,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; } 
 
-        /// <summary>The read-only type of the event translated and formatted in the viewer's account locale or the
+        /// <summary>Output only. The type of the event translated and formatted in the viewer's account locale or the
         /// `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
         public virtual string FormattedType { get; set; } 
@@ -2148,8 +2140,9 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; } 
 
-        /// <summary>True if the field is verified; false if the field is unverified. A verified field is typically a
-        /// name, email address, phone number, or website that has been confirmed to be owned by the person.</summary>
+        /// <summary>Output only. True if the field is verified; false if the field is unverified. A verified field is
+        /// typically a name, email address, phone number, or website that has been confirmed to be owned by the
+        /// person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verified")]
         public virtual System.Nullable<bool> Verified { get; set; } 
 
@@ -2160,7 +2153,7 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>A person's gender.</summary>
     public class Gender : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The read-only value of the gender translated and formatted in the viewer's account locale or the
+        /// <summary>Output only. The value of the gender translated and formatted in the viewer's account locale or the
         /// `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedValue")]
         public virtual string FormattedValue { get; set; } 
@@ -2192,13 +2185,13 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>A person's instant messaging client.</summary>
     public class ImClient : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The read-only protocol of the IM client formatted in the viewer's account locale or the `Accept-
+        /// <summary>Output only. The protocol of the IM client formatted in the viewer's account locale or the `Accept-
         /// Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedProtocol")]
         public virtual string FormattedProtocol { get; set; } 
 
-        /// <summary>The read-only type of the IM client translated and formatted in the viewer's account locale or the
-        /// `Accept-Language` HTTP header locale.</summary>
+        /// <summary>Output only. The type of the IM client translated and formatted in the viewer's account locale or
+        /// the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
         public virtual string FormattedType { get; set; } 
 
@@ -2314,7 +2307,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroupMembership")]
         public virtual ContactGroupMembership ContactGroupMembership { get; set; } 
 
-        /// <summary>The read-only domain membership.</summary>
+        /// <summary>Output only. The domain membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainMembership")]
         public virtual DomainMembership DomainMembership { get; set; } 
 
@@ -2330,13 +2323,11 @@ namespace Google.Apis.PeopleService.v1.Data
     /// they can only be added to a user group or "myContacts" or "starred" system groups.</summary>
     public class ModifyContactGroupMembersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource names of the contact people to add in the form of in the form
-        /// `people/`person_id.</summary>
+        /// <summary>The resource names of the contact people to add in the form of `people/`person_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNamesToAdd")]
         public virtual System.Collections.Generic.IList<string> ResourceNamesToAdd { get; set; } 
 
-        /// <summary>The resource names of the contact people to remove in the form of in the form of
-        /// `people/`person_id.</summary>
+        /// <summary>The resource names of the contact people to remove in the form of `people/`person_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNamesToRemove")]
         public virtual System.Collections.Generic.IList<string> ResourceNamesToRemove { get; set; } 
 
@@ -2362,13 +2353,13 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>A person's name. If the name is a mononym, the family name is empty.</summary>
     public class Name : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The read-only display name formatted according to the locale specified by the viewer's account or
-        /// the `Accept-Language` HTTP header.</summary>
+        /// <summary>Output only. The display name formatted according to the locale specified by the viewer's account
+        /// or the `Accept-Language` HTTP header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The read-only display name with the last name first formatted according to the locale specified by
-        /// the viewer's account or the `Accept-Language` HTTP header.</summary>
+        /// <summary>Output only. The display name with the last name first formatted according to the locale specified
+        /// by the viewer's account or the `Accept-Language` HTTP header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayNameLastFirst")]
         public virtual string DisplayNameLastFirst { get; set; } 
 
@@ -2478,8 +2469,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual Date EndDate { get; set; } 
 
-        /// <summary>The read-only type of the organization translated and formatted in the viewer's account locale or
-        /// the `Accept-Language` HTTP header locale.</summary>
+        /// <summary>Output only. The type of the organization translated and formatted in the viewer's account locale
+        /// or the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
         public virtual string FormattedType { get; set; } 
 
@@ -2537,13 +2528,13 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
         public virtual System.Collections.Generic.IList<Address> Addresses { get; set; } 
 
-        /// <summary>**DEPRECATED** (Please use `person.ageRanges` instead)**
+        /// <summary>Output only. **DEPRECATED** (Please use `person.ageRanges` instead)**
         ///
-        /// The person's read-only age range.</summary>
+        /// The person's age range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
         public virtual string AgeRange { get; set; } 
 
-        /// <summary>The person's read-only age ranges.</summary>
+        /// <summary>Output only. The person's age ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRanges")]
         public virtual System.Collections.Generic.IList<AgeRangeType> AgeRanges { get; set; } 
 
@@ -2559,7 +2550,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("braggingRights")]
         public virtual System.Collections.Generic.IList<BraggingRights> BraggingRights { get; set; } 
 
-        /// <summary>The person's read-only cover photos.</summary>
+        /// <summary>Output only. The person's cover photos.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coverPhotos")]
         public virtual System.Collections.Generic.IList<CoverPhoto> CoverPhotos { get; set; } 
 
@@ -2596,7 +2587,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
         public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; } 
 
-        /// <summary>Read-only metadata about the person.</summary>
+        /// <summary>Output only. Metadata about the person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual PersonMetadata Metadata { get; set; } 
 
@@ -2620,7 +2611,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumbers")]
         public virtual System.Collections.Generic.IList<PhoneNumber> PhoneNumbers { get; set; } 
 
-        /// <summary>The person's read-only photos.</summary>
+        /// <summary>Output only. The person's photos.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photos")]
         public virtual System.Collections.Generic.IList<Photo> Photos { get; set; } 
 
@@ -2628,11 +2619,11 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relations")]
         public virtual System.Collections.Generic.IList<Relation> Relations { get; set; } 
 
-        /// <summary>The person's read-only relationship interests.</summary>
+        /// <summary>Output only. The person's relationship interests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationshipInterests")]
         public virtual System.Collections.Generic.IList<RelationshipInterest> RelationshipInterests { get; set; } 
 
-        /// <summary>The person's read-only relationship statuses.</summary>
+        /// <summary>Output only. The person's relationship statuses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationshipStatuses")]
         public virtual System.Collections.Generic.IList<RelationshipStatus> RelationshipStatuses { get; set; } 
 
@@ -2653,7 +2644,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("skills")]
         public virtual System.Collections.Generic.IList<Skill> Skills { get; set; } 
 
-        /// <summary>The person's read-only taglines.</summary>
+        /// <summary>Output only. The person's taglines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taglines")]
         public virtual System.Collections.Generic.IList<Tagline> Taglines { get; set; } 
 
@@ -2667,26 +2658,27 @@ namespace Google.Apis.PeopleService.v1.Data
 
     }    
 
-    /// <summary>The read-only metadata about a person.</summary>
+    /// <summary>The metadata about a person.</summary>
     public class PersonMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if the person resource has been deleted. Populated only for
+        /// <summary>Output only. True if the person resource has been deleted. Populated only for
         /// [`connections.list`](/people/api/rest/v1/people.connections/list) requests that include a sync
         /// token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; } 
 
-        /// <summary>Resource names of people linked to this resource.</summary>
+        /// <summary>Output only. Resource names of people linked to this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedPeopleResourceNames")]
         public virtual System.Collections.Generic.IList<string> LinkedPeopleResourceNames { get; set; } 
 
-        /// <summary>**DEPRECATED** (Please use `person.metadata.sources.profileMetadata.objectType` instead)
+        /// <summary>Output only. **DEPRECATED** (Please use `person.metadata.sources.profileMetadata.objectType`
+        /// instead)
         ///
         /// The type of the person object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
         public virtual string ObjectType { get; set; } 
 
-        /// <summary>Any former resource names this person has had. Populated only for
+        /// <summary>Output only. Any former resource names this person has had. Populated only for
         /// [`connections.list`](/people/api/rest/v1/people.connections/list) requests that include a sync token.
         ///
         /// The resource name may change when adding or removing fields that link a contact and profile such as a
@@ -2734,14 +2726,14 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>A person's phone number.</summary>
     public class PhoneNumber : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The read-only canonicalized [ITU-T
+        /// <summary>Output only. The canonicalized [ITU-T
         /// E.164](https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.164.1.2008.pdf) form of the phone
         /// number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalForm")]
         public virtual string CanonicalForm { get; set; } 
 
-        /// <summary>The read-only type of the phone number translated and formatted in the viewer's account locale or
-        /// the `Accept-Language` HTTP header locale.</summary>
+        /// <summary>Output only. The type of the phone number translated and formatted in the viewer's account locale
+        /// or the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
         public virtual string FormattedType { get; set; } 
 
@@ -2764,7 +2756,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A person's read-only photo. A picture shown next to the person's name to help others recognize the
+    /// <summary>A person's photo. A picture shown next to the person's name to help others recognize the
     /// person.</summary>
     public class Photo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2786,14 +2778,14 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The read-only metadata about a profile.</summary>
+    /// <summary>The metadata about a profile.</summary>
     public class ProfileMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The profile object type.</summary>
+        /// <summary>Output only. The profile object type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
         public virtual string ObjectType { get; set; } 
 
-        /// <summary>The user types.</summary>
+        /// <summary>Output only. The user types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userTypes")]
         public virtual System.Collections.Generic.IList<string> UserTypes { get; set; } 
 
@@ -2804,8 +2796,8 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>A person's relation to another person.</summary>
     public class Relation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of the relation translated and formatted in the viewer's account locale or the locale
-        /// specified in the Accept-Language HTTP header.</summary>
+        /// <summary>Output only. The type of the relation translated and formatted in the viewer's account locale or
+        /// the locale specified in the Accept-Language HTTP header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
         public virtual string FormattedType { get; set; } 
 
@@ -2829,11 +2821,11 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A person's read-only relationship interest .</summary>
+    /// <summary>A person's relationship interest .</summary>
     public class RelationshipInterest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The value of the relationship interest translated and formatted in the viewer's account locale or
-        /// the locale specified in the Accept-Language HTTP header.</summary>
+        /// <summary>Output only. The value of the relationship interest translated and formatted in the viewer's
+        /// account locale or the locale specified in the Accept-Language HTTP header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedValue")]
         public virtual string FormattedValue { get; set; } 
 
@@ -2852,10 +2844,10 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A person's read-only relationship status.</summary>
+    /// <summary>A person's relationship status.</summary>
     public class RelationshipStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The read-only value of the relationship status translated and formatted in the viewer's account
+        /// <summary>Output only. The value of the relationship status translated and formatted in the viewer's account
         /// locale or the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedValue")]
         public virtual string FormattedValue { get; set; } 
@@ -2899,7 +2891,7 @@ namespace Google.Apis.PeopleService.v1.Data
     /// voice or video calls over the internet.</summary>
     public class SipAddress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The read-only type of the SIP address translated and formatted in the viewer's account locale or
+        /// <summary>Output only. The type of the SIP address translated and formatted in the viewer's account locale or
         /// the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
         public virtual string FormattedType { get; set; } 
@@ -2952,7 +2944,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>**Only populated in `person.metadata.sources`.**
+        /// <summary>Output only. **Only populated in `person.metadata.sources`.**
         ///
         /// Metadata about a source of type PROFILE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileMetadata")]
@@ -2962,7 +2954,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>**Only populated in `person.metadata.sources`.**
+        /// <summary>Output only. **Only populated in `person.metadata.sources`.**
         ///
         /// Last update timestamp of this source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
@@ -2996,7 +2988,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A read-only brief one-line description of the person.</summary>
+    /// <summary>A brief one-line description of the person.</summary>
     public class Tagline : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata about the tagline.</summary>
@@ -3014,7 +3006,7 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>A request to update an existing user contact group. All updated fields will be replaced.</summary>
     public class UpdateContactGroupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The contact group to update.</summary>
+        /// <summary>Required. The contact group to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroup")]
         public virtual ContactGroup ContactGroup { get; set; } 
 
@@ -3026,8 +3018,8 @@ namespace Google.Apis.PeopleService.v1.Data
     /// PNG.</summary>
     public class UpdateContactPhotoRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>**Optional.** Not specifying any fields will skip the post mutate read. A field mask to restrict
-        /// which fields on the person are returned. Multiple fields can be specified by separating them with commas.
+        /// <summary>Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be
+        /// specified by separating them with commas. Defaults to empty if not set, which will skip the post mutate get.
         /// Valid values are:
         ///
         /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses * events *
@@ -3037,7 +3029,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("personFields")]
         public virtual object PersonFields { get; set; } 
 
-        /// <summary>Raw photo bytes</summary>
+        /// <summary>Required. Raw photo bytes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoBytes")]
         public virtual string PhotoBytes { get; set; } 
 
@@ -3060,7 +3052,7 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>A person's associated URLs.</summary>
     public class Url : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The read-only type of the URL translated and formatted in the viewer's account locale or the
+        /// <summary>Output only. The type of the URL translated and formatted in the viewer's account locale or the
         /// `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
         public virtual string FormattedType { get; set; } 

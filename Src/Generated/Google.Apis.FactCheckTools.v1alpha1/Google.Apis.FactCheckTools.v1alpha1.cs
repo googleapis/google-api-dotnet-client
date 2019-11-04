@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fact-check/tools/api/'>Fact Check Tools API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20191027 (1760)
+ *      <tr><th>API Rev<td>20191031 (1764)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fact-check/tools/api/'>
  *              https://developers.google.com/fact-check/tools/api/</a>
@@ -379,14 +379,14 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
+            /// <summary>The review publisher site to filter results by, e.g. nytimes.com.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("reviewPublisherSiteFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ReviewPublisherSiteFilter { get; set; }
+
             /// <summary>The pagination size. We will return up to that many results. Defaults to 10 if not
             /// set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The review publisher site to filter results by, e.g. nytimes.com.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("reviewPublisherSiteFilter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ReviewPublisherSiteFilter { get; set; }
 
             /// <summary>Textual query string. Required unless `review_publisher_site_filter` is specified.</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
@@ -445,18 +445,18 @@ namespace Google.Apis.FactCheckTools.v1alpha1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "reviewPublisherSiteFilter", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "reviewPublisherSiteFilter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "reviewPublisherSiteFilter", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "reviewPublisherSiteFilter",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -700,6 +700,16 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             }
 
 
+            /// <summary>The organization for which we want to fetch markups for. For instance, "site.com". Cannot be
+            /// specified along with an URL.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Organization { get; set; }
+
+            /// <summary>The pagination size. We will return up to that many results. Defaults to 10 if not set. Has no
+            /// effect if a URL is requested.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>The URL from which to get `ClaimReview` markup. There will be at most one result. If markup is
             /// associated with a more canonical version of the URL provided, we will return that URL instead. Cannot be
             /// specified along with an organization.</summary>
@@ -718,16 +728,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             /// previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The organization for which we want to fetch markups for. For instance, "site.com". Cannot be
-            /// specified along with an URL.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Organization { get; set; }
-
-            /// <summary>The pagination size. We will return up to that many results. Defaults to 10 if not set. Has no
-            /// effect if a URL is requested.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -754,6 +754,24 @@ namespace Google.Apis.FactCheckTools.v1alpha1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "organization", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "organization",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "url", new Google.Apis.Discovery.Parameter
                     {
                         Name = "url",
@@ -775,24 +793,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "organization", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "organization",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

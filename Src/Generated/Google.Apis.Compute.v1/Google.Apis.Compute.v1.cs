@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190929 (1732)
+ *      <tr><th>API Rev<td>20191009 (1742)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -47982,6 +47982,15 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Subnetwork { get; private set; }
 
+            /// <summary>The drain timeout specifies the upper bound in seconds on the amount of time allowed to drain
+            /// connections from the current ACTIVE subnetwork to the current BACKUP subnetwork. The drain timeout is
+            /// only applicable when the following conditions are true: - the subnetwork being patched has purpose =
+            /// INTERNAL_HTTPS_LOAD_BALANCER - the subnetwork being patched has role = BACKUP - the patch request is
+            /// setting the role to ACTIVE. Note that after this patch operation the roles of the ACTIVE and BACKUP
+            /// subnetworks will be swapped.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("drainTimeoutSeconds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> DrainTimeoutSeconds { get; set; }
+
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
@@ -48051,6 +48060,15 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "drainTimeoutSeconds", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "drainTimeoutSeconds",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -59036,7 +59054,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cdnPolicy")]
         public virtual BackendServiceCdnPolicy CdnPolicy { get; set; } 
 
-        /// <summary>Settings controlling the volume of connections to a backend service.
+        /// <summary>Settings controlling the volume of connections to a backend service. If not set, this feature is
+        /// considered disabled.
         ///
         /// This field is applicable to either: - A regional backend service with the service_protocol set to HTTP,
         /// HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the
@@ -59141,10 +59160,12 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is
-        /// applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
-        /// and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme
-        /// set to INTERNAL_SELF_MANAGED.</summary>
+        /// <summary>Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend
+        /// service. If not set, this feature is considered disabled.
+        ///
+        /// This field is applicable to either: - A regional backend service with the service_protocol set to HTTP,
+        /// HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the
+        /// load_balancing_scheme set to INTERNAL_SELF_MANAGED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outlierDetection")]
         public virtual OutlierDetection OutlierDetection { get; set; } 
 
@@ -59564,29 +59585,29 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Settings controlling the volume of connections to a backend service.</summary>
     public class CircuitBreakers : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The maximum number of connections to the backend cluster. If not specified, the default is
-        /// 1024.</summary>
+        /// <summary>The maximum number of connections to the backend service. If not specified, there is no
+        /// limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConnections")]
         public virtual System.Nullable<int> MaxConnections { get; set; } 
 
-        /// <summary>The maximum number of pending requests allowed to the backend cluster. If not specified, the
-        /// default is 1024.</summary>
+        /// <summary>The maximum number of pending requests allowed to the backend service. If not specified, there is
+        /// no limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxPendingRequests")]
         public virtual System.Nullable<int> MaxPendingRequests { get; set; } 
 
-        /// <summary>The maximum number of parallel requests that allowed to the backend cluster. If not specified, the
-        /// default is 1024.</summary>
+        /// <summary>The maximum number of parallel requests that allowed to the backend service. If not specified,
+        /// there is no limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRequests")]
         public virtual System.Nullable<int> MaxRequests { get; set; } 
 
-        /// <summary>Maximum requests for a single backend connection. This parameter is respected by both the HTTP/1.1
-        /// and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will
-        /// effectively disable keep alive.</summary>
+        /// <summary>Maximum requests for a single connection to the backend service. This parameter is respected by
+        /// both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to
+        /// 1 will effectively disable keep alive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRequestsPerConnection")]
         public virtual System.Nullable<int> MaxRequestsPerConnection { get; set; } 
 
         /// <summary>The maximum number of parallel retries allowed to the backend cluster. If not specified, the
-        /// default is 3.</summary>
+        /// default is 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetries")]
         public virtual System.Nullable<int> MaxRetries { get; set; } 
 
@@ -60733,7 +60754,8 @@ namespace Google.Apis.Compute.v1.Data
 
     public class DisksAddResourcePoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Resource policies to be added to this disk.</summary>
+        /// <summary>Resource policies to be added to this disk. Currently you can only specify one policy
+        /// here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicies")]
         public virtual System.Collections.Generic.IList<string> ResourcePolicies { get; set; } 
 
@@ -62745,11 +62767,14 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>The retry policy associates with HttpRouteRule</summary>
     public class HttpRetryPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies the allowed number retries. This number must be > 0.</summary>
+        /// <summary>Specifies the allowed number retries. This number must be > 0. If not specified, defaults to
+        /// 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numRetries")]
         public virtual System.Nullable<long> NumRetries { get; set; } 
 
-        /// <summary>Specifies a non-zero timeout per retry attempt.</summary>
+        /// <summary>Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in
+        /// HttpRouteAction. If timeout in HttpRouteAction is not set, will use the largest timeout among all backend
+        /// services associated with the route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perTryTimeout")]
         public virtual Duration PerTryTimeout { get; set; } 
 
@@ -62799,9 +62824,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retryPolicy")]
         public virtual HttpRetryPolicy RetryPolicy { get; set; } 
 
-        /// <summary>Specifies the timeout for the selected route. Timeout is computed from the time the request is has
+        /// <summary>Specifies the timeout for the selected route. Timeout is computed from the time the request has
         /// been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout
-        /// includes all retries. If not specified, the default value is 15 seconds.</summary>
+        /// includes all retries. If not specified, will use the largest timeout among all backend services associated
+        /// with the route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
         public virtual Duration Timeout { get; set; } 
 
@@ -66271,9 +66297,9 @@ namespace Google.Apis.Compute.v1.Data
     /// "" (empty string), resulting in a counter with no fields.
     ///
     /// Examples: counter { metric: "/debug_access_count" field: "iam_principal" } ==> increment counter
-    /// /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}
+    /// /iam/policy/debug_access_count {iam_principal=[value of IAMContext.principal]}
     ///
-    /// At this time we do not support multiple field names (though this may be supported in the future).</summary>
+    /// TODO(b/141846426): Consider supporting "authority" and "iam_principal" fields in the same counter.</summary>
     public class LogConfigCounterOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Custom fields.</summary>
@@ -68851,11 +68877,12 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>Settings controlling eviction of unhealthy hosts from the load balancing pool.</summary>
+    /// <summary>Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend
+    /// service.</summary>
     public class OutlierDetection : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The base time that a host is ejected for. The real time is equal to the base time multiplied by the
-        /// number of times the host has been ejected. Defaults to 30000ms or 30s.</summary>
+        /// <summary>The base time that a host is ejected for. The real ejection time is equal to the base ejection time
+        /// multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseEjectionTime")]
         public virtual Duration BaseEjectionTime { get; set; } 
 
@@ -68866,19 +68893,19 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>The number of consecutive gateway failures (502, 503, 504 status or connection errors that are
         /// mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to
-        /// 5.</summary>
+        /// 3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consecutiveGatewayFailure")]
         public virtual System.Nullable<int> ConsecutiveGatewayFailure { get; set; } 
 
         /// <summary>The percentage chance that a host will be actually ejected when an outlier status is detected
         /// through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to
-        /// 100.</summary>
+        /// 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcingConsecutiveErrors")]
         public virtual System.Nullable<int> EnforcingConsecutiveErrors { get; set; } 
 
         /// <summary>The percentage chance that a host will be actually ejected when an outlier status is detected
         /// through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly.
-        /// Defaults to 0.</summary>
+        /// Defaults to 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcingConsecutiveGatewayFailure")]
         public virtual System.Nullable<int> EnforcingConsecutiveGatewayFailure { get; set; } 
 
@@ -68889,12 +68916,12 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Nullable<int> EnforcingSuccessRate { get; set; } 
 
         /// <summary>Time interval between ejection sweep analysis. This can result in both new ejections as well as
-        /// hosts being returned to service. Defaults to 10 seconds.</summary>
+        /// hosts being returned to service. Defaults to 1 seconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
         public virtual Duration Interval { get; set; } 
 
         /// <summary>Maximum percentage of hosts in the load balancing pool for the backend service that can be ejected.
-        /// Defaults to 10%.</summary>
+        /// Defaults to 50%.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxEjectionPercent")]
         public virtual System.Nullable<int> MaxEjectionPercent { get; set; } 
 

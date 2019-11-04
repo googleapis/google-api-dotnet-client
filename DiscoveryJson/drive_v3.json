@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/1IN94yfOqzZSLP1QW4pousMXRLw\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/9DRQtjCJI84oZSC4iB474iWR2g8\"",
  "discoveryVersion": "v1",
  "id": "drive:v3",
  "name": "drive",
  "version": "v3",
- "revision": "20191015",
+ "revision": "20191017",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -377,7 +377,7 @@
     },
     "author": {
      "$ref": "User",
-     "description": "The user who created the comment."
+     "description": "The author of the comment. The author's email address and permission ID will not be populated."
     },
     "content": {
      "type": "string",
@@ -1388,7 +1388,7 @@
     },
     "author": {
      "$ref": "User",
-     "description": "The user who created the reply."
+     "description": "The author of the reply. The author's email address and permission ID will not be populated."
     },
     "content": {
      "type": "string",

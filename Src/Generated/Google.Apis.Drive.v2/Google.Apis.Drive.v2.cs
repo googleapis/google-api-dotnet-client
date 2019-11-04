@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191015 (1748)
+ *      <tr><th>API Rev<td>20191017 (1750)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -2241,7 +2241,7 @@ namespace Google.Apis.Drive.v2
 
         }
 
-        /// <summary>Updates an existing comment. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing comment.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="commentId">The ID of the comment.</param>
@@ -2250,7 +2250,7 @@ namespace Google.Apis.Drive.v2
             return new PatchRequest(service, body, fileId, commentId);
         }
 
-        /// <summary>Updates an existing comment. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing comment.</summary>
         public class PatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.Comment>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -8186,7 +8186,7 @@ namespace Google.Apis.Drive.v2
 
         }
 
-        /// <summary>Updates an existing reply. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing reply.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="commentId">The ID of the
@@ -8197,7 +8197,7 @@ namespace Google.Apis.Drive.v2
             return new PatchRequest(service, body, fileId, commentId, replyId);
         }
 
-        /// <summary>Updates an existing reply. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing reply.</summary>
         public class PatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.CommentReply>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -8647,7 +8647,7 @@ namespace Google.Apis.Drive.v2
 
         }
 
-        /// <summary>Updates a revision. This method supports patch semantics.</summary>
+        /// <summary>Updates a revision.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID for the file.</param>
         /// <param name="revisionId">The ID for the
@@ -8657,7 +8657,7 @@ namespace Google.Apis.Drive.v2
             return new PatchRequest(service, body, fileId, revisionId);
         }
 
-        /// <summary>Updates a revision. This method supports patch semantics.</summary>
+        /// <summary>Updates a revision.</summary>
         public class PatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.Revision>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -9855,7 +9855,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("anchor")]
         public virtual string Anchor { get; set; } 
 
-        /// <summary>The user who wrote this comment.</summary>
+        /// <summary>The author of the comment. The author's email address and permission ID will not be
+        /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
         public virtual User Author { get; set; } 
 
@@ -9995,7 +9996,8 @@ namespace Google.Apis.Drive.v2.Data
     /// <summary>A comment on a file in Google Drive.</summary>
     public class CommentReply : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The user who wrote this reply.</summary>
+        /// <summary>The author of the reply. The author's email address and permission ID will not be
+        /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
         public virtual User Author { get; set; } 
 

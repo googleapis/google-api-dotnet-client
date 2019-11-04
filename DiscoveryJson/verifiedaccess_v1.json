@@ -1,24 +1,8 @@
 {
+  "discoveryVersion": "v1",
+  "version_module": true,
   "schemas": {
-    "SignedData": {
-      "description": "The wrapper message of any data and its signature.",
-      "type": "object",
-      "properties": {
-        "signature": {
-          "description": "The signature of the data field.",
-          "format": "byte",
-          "type": "string"
-        },
-        "data": {
-          "description": "The data to be signed.",
-          "format": "byte",
-          "type": "string"
-        }
-      },
-      "id": "SignedData"
-    },
     "Challenge": {
-      "id": "Challenge",
       "description": "Result message for VerifiedAccess.CreateChallenge.",
       "type": "object",
       "properties": {
@@ -27,28 +11,28 @@
           "description": "Generated challenge"
         },
         "alternativeChallenge": {
-          "$ref": "SignedData",
-          "description": "Challenge generated with the old signing key\n(this will only be present during key rotation)"
+          "description": "Challenge generated with the old signing key\n(this will only be present during key rotation)",
+          "$ref": "SignedData"
         }
-      }
+      },
+      "id": "Challenge"
     },
     "VerifyChallengeResponseRequest": {
       "description": "signed ChallengeResponse",
       "type": "object",
       "properties": {
-        "expectedIdentity": {
-          "type": "string",
-          "description": "Service can optionally provide identity information about the device\nor user associated with the key.\nFor an EMK, this value is the enrolled domain.\nFor an EUK, this value is the user's email address.\nIf present, this value will be checked against contents\nof the response, and verification will fail if there is no match."
-        },
         "challengeResponse": {
           "$ref": "SignedData",
           "description": "The generated response to the challenge"
+        },
+        "expectedIdentity": {
+          "description": "Service can optionally provide identity information about the device\nor user associated with the key.\nFor an EMK, this value is the enrolled domain.\nFor an EUK, this value is the user's email address.\nIf present, this value will be checked against contents\nof the response, and verification will fail if there is no match.",
+          "type": "string"
         }
       },
       "id": "VerifyChallengeResponseRequest"
     },
     "VerifyChallengeResponseResult": {
-      "description": "Result message for VerifiedAccess.VerifyChallengeResponse.",
       "type": "object",
       "properties": {
         "signedPublicKeyAndChallenge": {
@@ -64,23 +48,41 @@
           "type": "string"
         },
         "verificationOutput": {
-          "description": "For EMCert check, device permanent id is returned here.\nFor EUCert check, signed_public_key_and_challenge [base64 encoded]\nis returned if present, otherwise empty string is returned.\nThis field is deprecated, please use device_permanent_id or\nsigned_public_key_and_challenge fields.",
-          "type": "string"
+          "type": "string",
+          "description": "For EMCert check, device permanent id is returned here.\nFor EUCert check, signed_public_key_and_challenge [base64 encoded]\nis returned if present, otherwise empty string is returned.\nThis field is deprecated, please use device_permanent_id or\nsigned_public_key_and_challenge fields."
         }
       },
-      "id": "VerifyChallengeResponseResult"
+      "id": "VerifyChallengeResponseResult",
+      "description": "Result message for VerifiedAccess.VerifyChallengeResponse."
     },
     "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
       "properties": {},
-      "id": "Empty"
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
+    },
+    "SignedData": {
+      "description": "The wrapper message of any data and its signature.",
+      "type": "object",
+      "properties": {
+        "signature": {
+          "description": "The signature of the data field.",
+          "format": "byte",
+          "type": "string"
+        },
+        "data": {
+          "type": "string",
+          "description": "The data to be signed.",
+          "format": "byte"
+        }
+      },
+      "id": "SignedData"
     }
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "canonicalName": "verifiedaccess",
   "auth": {
@@ -103,10 +105,6 @@
     "challenge": {
       "methods": {
         "create": {
-          "scopes": [
-            "https://www.googleapis.com/auth/verifiedaccess"
-          ],
-          "parameters": {},
           "flatPath": "v1/challenge",
           "path": "v1/challenge",
           "id": "verifiedaccess.challenge.create",
@@ -118,7 +116,11 @@
             "$ref": "Challenge"
           },
           "parameterOrder": [],
-          "httpMethod": "POST"
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/verifiedaccess"
+          ],
+          "parameters": {}
         },
         "verify": {
           "response": {
@@ -142,41 +144,56 @@
     }
   },
   "parameters": {
-    "fields": {
+    "upload_protocol": {
       "type": "string",
       "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
     },
-    "uploadType": {
+    "prettyPrint": {
       "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "quotaUser": {
+      "type": "string",
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
-    "$.xgafv": {
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
+      "location": "query"
+    },
+    "$.xgafv": {
       "location": "query",
       "enum": [
         "1",
         "2"
       ],
-      "description": "V1 error format."
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ]
     },
     "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
       "type": "string",
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user."
+      "location": "query"
     },
     "callback": {
-      "location": "query",
       "description": "JSONP",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "alt": {
-      "description": "Data format for response.",
       "default": "json",
       "enum": [
         "json",
@@ -189,33 +206,18 @@
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
-      "location": "query"
+      "location": "query",
+      "description": "Data format for response."
     },
     "key": {
-      "type": "string",
       "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string"
     },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+    "access_token": {
       "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "type": "boolean",
-      "default": "true",
       "location": "query",
-      "description": "Returns response with indentations and line breaks."
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
+      "description": "OAuth access token."
     }
   },
   "version": "v1",
@@ -226,7 +228,5 @@
   "basePath": "",
   "id": "verifiedaccess:v1",
   "documentationLink": "https://www.google.com/work/chrome/",
-  "revision": "20190718",
-  "discoveryVersion": "v1",
-  "version_module": true
+  "revision": "20190718"
 }

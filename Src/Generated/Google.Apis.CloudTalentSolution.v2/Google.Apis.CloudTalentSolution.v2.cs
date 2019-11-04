@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191021 (1754)
+ *      <tr><th>API Rev<td>20191101 (1765)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -734,15 +734,6 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
-            /// <summary>Optional. The starting indicator from which to return results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Optional. The maximum number of companies to be returned, at most 100. Default is 100 if a non-
-            /// positive number is provided.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Optional. Set to true if the companies request must have open jobs.
             ///
             /// Defaults to false.
@@ -751,6 +742,15 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("mustHaveOpenJobs", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> MustHaveOpenJobs { get; set; }
+
+            /// <summary>Optional. The starting indicator from which to return results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Optional. The maximum number of companies to be returned, at most 100. Default is 100 if a non-
+            /// positive number is provided.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -777,6 +777,15 @@ namespace Google.Apis.CloudTalentSolution.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "mustHaveOpenJobs",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -789,15 +798,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "mustHaveOpenJobs", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "mustHaveOpenJobs",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1324,20 +1324,6 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
-            /// <summary>Required. The filter string specifies the jobs to be enumerated.
-            ///
-            /// Supported operator: =, AND
-            ///
-            /// The fields eligible for filtering are:
-            ///
-            /// * `companyName` (Required) * `requisitionId` (Optional)
-            ///
-            /// Sample Query:
-            ///
-            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>Optional. The starting point of a query result.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1359,6 +1345,20 @@ namespace Google.Apis.CloudTalentSolution.v2
             /// Defaults to false.</summary>
             [Google.Apis.Util.RequestParameterAttribute("idsOnly", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IdsOnly { get; set; }
+
+            /// <summary>Required. The filter string specifies the jobs to be enumerated.
+            ///
+            /// Supported operator: =, AND
+            ///
+            /// The fields eligible for filtering are:
+            ///
+            /// * `companyName` (Required) * `requisitionId` (Optional)
+            ///
+            /// Sample Query:
+            ///
+            /// * companyName = "companies/123" * companyName = "companies/123" AND requisitionId = "req-1"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1385,15 +1385,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1415,6 +1406,15 @@ namespace Google.Apis.CloudTalentSolution.v2
                     "idsOnly", new Google.Apis.Discovery.Parameter
                     {
                         Name = "idsOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1666,6 +1666,19 @@ namespace Google.Apis.CloudTalentSolution.v2
             }
 
 
+            /// <summary>Required. The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-
+            /// Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+            ///
+            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
+            ///
+            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
+            /// returned.
+            ///
+            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
+            /// with same language_code are returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
             /// <summary>Optional. The completion topic. The default is CompletionType.COMBINED.</summary>
             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<TypeEnum> Type { get; set; }
@@ -1710,19 +1723,6 @@ namespace Google.Apis.CloudTalentSolution.v2
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>Required. The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-
-            /// Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-            ///
-            /// For CompletionType.JOB_TITLE type, only open jobs with same language_code are returned.
-            ///
-            /// For CompletionType.COMPANY_NAME type, only companies having open jobs with same language_code are
-            /// returned.
-            ///
-            /// For CompletionType.COMBINED type, only open jobs with same language_code or companies having open jobs
-            /// with same language_code are returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LanguageCode { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1747,6 +1747,15 @@ namespace Google.Apis.CloudTalentSolution.v2
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "type", new Google.Apis.Discovery.Parameter
                     {
@@ -1787,15 +1796,6 @@ namespace Google.Apis.CloudTalentSolution.v2
                     "query", new Google.Apis.Discovery.Parameter
                     {
                         Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languageCode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languageCode",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3668,6 +3668,23 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Message representing input to a Mendel server for debug forcing. See go/mendel-debug-forcing for more
+    /// details. Next ID: 2</summary>
+    public class MendelDebugInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>When a request spans multiple servers, a MendelDebugInput may travel with the request and take
+        /// effect in all the servers. This field is a map of namespaces to NamespacedMendelDebugInput protos. In a
+        /// single server, up to two NamespacedMendelDebugInput protos are applied: 1. NamespacedMendelDebugInput with
+        /// the global namespace (key == ""). 2. NamespacedMendelDebugInput with the server's namespace. When both
+        /// NamespacedMendelDebugInput protos are present, they are merged. See go/mendel-debug-forcing for more
+        /// details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespacedDebugInput")]
+        public virtual System.Collections.Generic.IDictionary<string,NamespacedDebugInput> NamespacedDebugInput { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents an amount of money with its currency type.</summary>
     public class Money : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3686,6 +3703,94 @@ namespace Google.Apis.CloudTalentSolution.v2.Data
         /// dollar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
         public virtual System.Nullable<long> Units { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Next ID: 15</summary>
+    public class NamespacedDebugInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set of experiment names to be absolutely forced. These experiments will be forced without
+        /// evaluating the conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("absolutelyForcedExpNames")]
+        public virtual System.Collections.Generic.IList<string> AbsolutelyForcedExpNames { get; set; } 
+
+        /// <summary>Set of experiment tags to be absolutely forced. The experiments with these tags will be forced
+        /// without evaluating the conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("absolutelyForcedExpTags")]
+        public virtual System.Collections.Generic.IList<string> AbsolutelyForcedExpTags { get; set; } 
+
+        /// <summary>Set of experiment ids to be absolutely forced. These ids will be forced without evaluating the
+        /// conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("absolutelyForcedExps")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> AbsolutelyForcedExps { get; set; } 
+
+        /// <summary>Set of experiment names to be conditionally forced. These experiments will be forced only if their
+        /// conditions and their parent domain's conditions are true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionallyForcedExpNames")]
+        public virtual System.Collections.Generic.IList<string> ConditionallyForcedExpNames { get; set; } 
+
+        /// <summary>Set of experiment tags to be conditionally forced. The experiments with these tags will be forced
+        /// only if their conditions and their parent domain's conditions are true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionallyForcedExpTags")]
+        public virtual System.Collections.Generic.IList<string> ConditionallyForcedExpTags { get; set; } 
+
+        /// <summary>Set of experiment ids to be conditionally forced. These ids will be forced only if their conditions
+        /// and their parent domain's conditions are true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionallyForcedExps")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> ConditionallyForcedExps { get; set; } 
+
+        /// <summary>If true, disable automatic enrollment selection (at all diversion points). Automatic enrollment
+        /// selection means experiment selection process based on the experiment's automatic enrollment condition. This
+        /// does not disable selection of forced experiments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAutomaticEnrollmentSelection")]
+        public virtual System.Nullable<bool> DisableAutomaticEnrollmentSelection { get; set; } 
+
+        /// <summary>Set of experiment names to be disabled. If an experiment is disabled, it is never selected nor
+        /// forced. If an aggregate experiment is disabled, its partitions are disabled together. If an experiment with
+        /// an enrollment is disabled, the enrollment is disabled together. If a name corresponds to a domain, the
+        /// domain itself and all descendant experiments and domains are disabled together.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableExpNames")]
+        public virtual System.Collections.Generic.IList<string> DisableExpNames { get; set; } 
+
+        /// <summary>Set of experiment tags to be disabled. All experiments that are tagged with one or more of these
+        /// tags are disabled. If an experiment is disabled, it is never selected nor forced. If an aggregate experiment
+        /// is disabled, its partitions are disabled together. If an experiment with an enrollment is disabled, the
+        /// enrollment is disabled together.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableExpTags")]
+        public virtual System.Collections.Generic.IList<string> DisableExpTags { get; set; } 
+
+        /// <summary>Set of experiment ids to be disabled. If an experiment is disabled, it is never selected nor
+        /// forced. If an aggregate experiment is disabled, its partitions are disabled together. If an experiment with
+        /// an enrollment is disabled, the enrollment is disabled together. If an ID corresponds to a domain, the domain
+        /// itself and all descendant experiments and domains are disabled together.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableExps")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> DisableExps { get; set; } 
+
+        /// <summary>If true, disable manual enrollment selection (at all diversion points). Manual enrollment selection
+        /// means experiment selection process based on the request's manual enrollment states (a.k.a. opt-in
+        /// experiments). This does not disable selection of forced experiments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableManualEnrollmentSelection")]
+        public virtual System.Nullable<bool> DisableManualEnrollmentSelection { get; set; } 
+
+        /// <summary>If true, disable organic experiment selection (at all diversion points). Organic selection means
+        /// experiment selection process based on traffic allocation and diversion condition evaluation. This does not
+        /// disable selection of forced experiments.
+        ///
+        /// This is useful in cases when it is not known whether experiment selection behavior is responsible for a
+        /// error or breakage. Disabling organic selection may help to isolate the cause of a given problem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableOrganicSelection")]
+        public virtual System.Nullable<bool> DisableOrganicSelection { get; set; } 
+
+        /// <summary>Flags to force in a particular experiment state. Map from flag name to flag value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forcedFlags")]
+        public virtual System.Collections.Generic.IDictionary<string,string> ForcedFlags { get; set; } 
+
+        /// <summary>Rollouts to force in a particular experiment state. Map from rollout name to rollout
+        /// value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forcedRollouts")]
+        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<bool>> ForcedRollouts { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
