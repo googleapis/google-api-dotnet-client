@@ -1,36 +1,13 @@
 {
+  "name": "cloudshell",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Cloud Shell API",
+  "ownerName": "Google",
   "resources": {
     "operations": {
       "methods": {
         "list": {
-          "parameters": {
-            "name": {
-              "description": "The name of the operation's parent resource.",
-              "required": true,
-              "type": "string",
-              "pattern": "^operations$",
-              "location": "path"
-            },
-            "pageToken": {
-              "location": "query",
-              "description": "The standard list page token.",
-              "type": "string"
-            },
-            "pageSize": {
-              "description": "The standard list page size.",
-              "format": "int32",
-              "type": "integer",
-              "location": "query"
-            },
-            "filter": {
-              "location": "query",
-              "description": "The standard list filter.",
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
           "flatPath": "v1/operations",
           "path": "v1/{+name}",
           "id": "cloudshell.operations.list",
@@ -41,41 +18,44 @@
           "parameterOrder": [
             "name"
           ],
-          "httpMethod": "GET"
-        },
-        "get": {
-          "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
           "httpMethod": "GET",
-          "parameterOrder": [
-            "name"
-          ],
-          "response": {
-            "$ref": "Operation"
-          },
           "parameters": {
+            "filter": {
+              "location": "query",
+              "description": "The standard list filter.",
+              "type": "string"
+            },
             "name": {
-              "description": "The name of the operation resource.",
+              "description": "The name of the operation's parent resource.",
               "required": true,
               "type": "string",
-              "pattern": "^operations/.+$",
+              "pattern": "^operations$",
               "location": "path"
+            },
+            "pageToken": {
+              "type": "string",
+              "location": "query",
+              "description": "The standard list page token."
+            },
+            "pageSize": {
+              "description": "The standard list page size.",
+              "format": "int32",
+              "type": "integer",
+              "location": "query"
             }
           },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1/operations/{operationsId}",
-          "id": "cloudshell.operations.get",
-          "path": "v1/{+name}"
+          ]
         },
-        "cancel": {
+        "get": {
           "response": {
-            "$ref": "Empty"
+            "$ref": "Operation"
           },
           "parameterOrder": [
             "name"
           ],
-          "httpMethod": "POST",
+          "httpMethod": "GET",
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
@@ -85,19 +65,16 @@
               "type": "string",
               "pattern": "^operations/.+$",
               "location": "path",
-              "description": "The name of the operation resource to be cancelled."
+              "description": "The name of the operation resource."
             }
           },
-          "flatPath": "v1/operations/{operationsId}:cancel",
-          "path": "v1/{+name}:cancel",
-          "id": "cloudshell.operations.cancel",
-          "request": {
-            "$ref": "CancelOperationRequest"
-          },
-          "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`."
+          "flatPath": "v1/operations/{operationsId}",
+          "path": "v1/{+name}",
+          "id": "cloudshell.operations.get",
+          "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
         },
-        "delete": {
-          "httpMethod": "DELETE",
+        "cancel": {
+          "httpMethod": "POST",
           "parameterOrder": [
             "name"
           ],
@@ -109,31 +86,59 @@
           ],
           "parameters": {
             "name": {
-              "description": "The name of the operation resource to be deleted.",
+              "pattern": "^operations/.+$",
+              "location": "path",
+              "description": "The name of the operation resource to be cancelled.",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "flatPath": "v1/operations/{operationsId}:cancel",
+          "id": "cloudshell.operations.cancel",
+          "path": "v1/{+name}:cancel",
+          "request": {
+            "$ref": "CancelOperationRequest"
+          },
+          "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`."
+        },
+        "delete": {
+          "parameters": {
+            "name": {
               "required": true,
               "type": "string",
               "pattern": "^operations/.+$",
-              "location": "path"
+              "location": "path",
+              "description": "The name of the operation resource to be deleted."
             }
           },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
           "flatPath": "v1/operations/{operationsId}",
-          "id": "cloudshell.operations.delete",
           "path": "v1/{+name}",
-          "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`."
+          "id": "cloudshell.operations.delete",
+          "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
+          "response": {
+            "$ref": "Empty"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "DELETE"
         }
       }
     }
   },
   "parameters": {
-    "key": {
-      "type": "string",
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    },
     "access_token": {
       "location": "query",
       "description": "OAuth access token.",
       "type": "string"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
     },
     "upload_protocol": {
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
@@ -141,10 +146,10 @@
       "location": "query"
     },
     "prettyPrint": {
-      "type": "boolean",
-      "default": "true",
       "location": "query",
-      "description": "Returns response with indentations and line breaks."
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
     },
     "quotaUser": {
       "location": "query",
@@ -161,9 +166,17 @@
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string"
     },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
     "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -172,19 +185,12 @@
       "enum": [
         "1",
         "2"
-      ]
-    },
-    "oauth_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user."
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
+      ],
+      "description": "V1 error format.",
+      "type": "string"
     },
     "alt": {
+      "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -197,29 +203,61 @@
         "json",
         "media",
         "proto"
-      ],
-      "type": "string"
+      ]
     }
   },
   "version": "v1",
   "baseUrl": "https://cloudshell.googleapis.com/",
-  "servicePath": "",
-  "description": "Allows users to start, configure, and connect to interactive shell sessions running in the cloud.\n",
   "kind": "discovery#restDescription",
+  "description": "Allows users to start, configure, and connect to interactive shell sessions running in the cloud.\n",
+  "servicePath": "",
   "basePath": "",
   "id": "cloudshell:v1",
   "documentationLink": "https://cloud.google.com/shell/docs/",
-  "revision": "20191031",
+  "revision": "20191102",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+    "Status": {
       "type": "object",
-      "properties": {},
-      "id": "Empty"
+      "properties": {
+        "code": {
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "message": {
+          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
+            }
+          },
+          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."
+        }
+      },
+      "id": "Status",
+      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors)."
+    },
+    "StartEnvironmentResponse": {
+      "description": "Message included in the response field of operations returned from\nStartEnvironment once the\noperation is complete.",
+      "type": "object",
+      "properties": {
+        "environment": {
+          "$ref": "Environment",
+          "description": "Environment that was started."
+        }
+      },
+      "id": "StartEnvironmentResponse"
     },
     "PublicKey": {
+      "id": "PublicKey",
       "description": "A public SSH key, corresponding to a private SSH key held by the client.",
       "type": "object",
       "properties": {
@@ -252,8 +290,13 @@
             "ECDSA_SHA2_NISTP521"
           ]
         }
-      },
-      "id": "PublicKey"
+      }
+    },
+    "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object",
+      "properties": {},
+      "id": "Empty"
     },
     "CancelOperationRequest": {
       "description": "The request message for Operations.CancelOperation.",
@@ -262,7 +305,6 @@
       "id": "CancelOperationRequest"
     },
     "StartEnvironmentMetadata": {
-      "description": "Message included in the metadata field of operations returned from\nStartEnvironment.",
       "type": "object",
       "properties": {
         "state": {
@@ -282,7 +324,43 @@
           ]
         }
       },
-      "id": "StartEnvironmentMetadata"
+      "id": "StartEnvironmentMetadata",
+      "description": "Message included in the metadata field of operations returned from\nStartEnvironment."
+    },
+    "Operation": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
+          "type": "object"
+        },
+        "name": {
+          "type": "string",
+          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."
+        },
+        "error": {
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
+        },
+        "metadata": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+          "type": "object"
+        },
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
+          "type": "boolean"
+        }
+      },
+      "id": "Operation",
+      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call."
     },
     "ListOperationsResponse": {
       "description": "The response message for Operations.ListOperations.",
@@ -302,57 +380,37 @@
       },
       "id": "ListOperationsResponse"
     },
-    "Operation": {
-      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`.",
-          "type": "string"
-        },
-        "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
-        },
-        "metadata": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
-          "type": "object"
-        },
-        "done": {
-          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
-          "type": "boolean"
-        },
-        "response": {
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
-          },
-          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
-          "type": "object"
-        }
-      },
-      "id": "Operation"
-    },
     "Environment": {
-      "description": "A Cloud Shell environment, which is defined as the combination of a Docker\nimage specifying what is installed on the environment and a home directory\ncontaining the user's data that will remain across sessions. Each user has a\nsingle environment with the ID \"default\".",
       "type": "object",
       "properties": {
-        "name": {
+        "state": {
+          "description": "Output only. Current execution state of this environment.",
           "type": "string",
-          "description": "Output only. Full name of this resource, in the format\n`users/{owner_email}/environments/{environment_id}`. `{owner_email}` is the\nemail address of the user to whom this environment belongs, and\n`{environment_id}` is the identifier of this environment. For example,\n`users/someone@example.com/environments/default`."
+          "enumDescriptions": [
+            "The environment's states is unknown.",
+            "The environment is not running and can't be connected to. Starting the\nenvironment will transition it to the STARTING state.",
+            "The environment is being started but is not yet ready to accept\nconnections.",
+            "The environment is running and ready to accept connections. It will\nautomatically transition back to DISABLED after a period of inactivity or\nif another environment is started."
+          ],
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "DISABLED",
+            "STARTING",
+            "RUNNING"
+          ]
+        },
+        "name": {
+          "description": "Output only. Full name of this resource, in the format\n`users/{owner_email}/environments/{environment_id}`. `{owner_email}` is the\nemail address of the user to whom this environment belongs, and\n`{environment_id}` is the identifier of this environment. For example,\n`users/someone@example.com/environments/default`.",
+          "type": "string"
         },
         "vmSizeExpireTime": {
-          "type": "string",
           "description": "Output only. The time when the Environment will expire back to the default\nVM size.",
-          "format": "google-datetime"
+          "format": "google-datetime",
+          "type": "string"
         },
         "id": {
-          "description": "Output only. The environment's identifier, which is always \"default\".",
-          "type": "string"
+          "type": "string",
+          "description": "Output only. The environment's identifier, unique among the user's\nenvironments."
         },
         "size": {
           "enum": [
@@ -369,8 +427,8 @@
           ]
         },
         "webHost": {
-          "description": "Output only. Host to which clients can connect to initiate HTTPS or WSS\nconnections with the environment.",
-          "type": "string"
+          "type": "string",
+          "description": "Output only. Host to which clients can connect to initiate HTTPS or WSS\nconnections with the environment."
         },
         "publicKeys": {
           "description": "Output only. Public keys associated with the environment. Clients can\nconnect to this environment via SSH only if they possess a private key\ncorresponding to at least one of these public keys. Keys can be added to or\nremoved from the environment using the CreatePublicKey and DeletePublicKey\nmethods.",
@@ -384,16 +442,16 @@
           "type": "string"
         },
         "webPorts": {
-          "description": "Output only. Ports to which clients can connect to initiate HTTPS or WSS\nconnections with the environment.",
           "type": "array",
           "items": {
-            "type": "integer",
-            "format": "int32"
-          }
+            "format": "int32",
+            "type": "integer"
+          },
+          "description": "Output only. Ports to which clients can connect to initiate HTTPS or WSS\nconnections with the environment."
         },
         "sshHost": {
-          "description": "Output only. Host to which clients can connect to initiate SSH sessions\nwith the environment.",
-          "type": "string"
+          "type": "string",
+          "description": "Output only. Host to which clients can connect to initiate SSH sessions\nwith the environment."
         },
         "sshPort": {
           "description": "Output only. Port to which clients can connect to initiate SSH sessions\nwith the environment.",
@@ -401,72 +459,19 @@
           "type": "integer"
         },
         "sshUsername": {
-          "description": "Output only. Username that clients should use when initiating SSH sessions\nwith the environment.",
-          "type": "string"
-        },
-        "state": {
-          "description": "Output only. Current execution state of this environment.",
           "type": "string",
-          "enumDescriptions": [
-            "The environment's states is unknown.",
-            "The environment is not running and can't be connected to. Starting the\nenvironment will transition it to the STARTING state.",
-            "The environment is being started but is not yet ready to accept\nconnections.",
-            "The environment is running and ready to accept connections. It will\nautomatically transition back to DISABLED after a period of inactivity or\nif another environment is started."
-          ],
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "DISABLED",
-            "STARTING",
-            "RUNNING"
-          ]
+          "description": "Output only. Username that clients should use when initiating SSH sessions\nwith the environment."
         }
       },
-      "id": "Environment"
-    },
-    "StartEnvironmentResponse": {
-      "id": "StartEnvironmentResponse",
-      "description": "Message included in the response field of operations returned from\nStartEnvironment once the\noperation is complete.",
-      "type": "object",
-      "properties": {
-        "environment": {
-          "$ref": "Environment",
-          "description": "Environment that was started."
-        }
-      }
-    },
-    "Status": {
-      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "format": "int32"
-        },
-        "message": {
-          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
-          "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "additionalProperties": {
-              "description": "Properties of the object. Contains field @type with type URL.",
-              "type": "any"
-            },
-            "type": "object"
-          },
-          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."
-        }
-      },
-      "id": "Status"
+      "id": "Environment",
+      "description": "A Cloud Shell environment, which is defined as the combination of a Docker\nimage specifying what is installed on the environment and a home directory\ncontaining the user's data that will remain across sessions. Each user has a\nsingle environment with the ID \"default\"."
     }
   },
-  "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
   "protocol": "rest",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
   "canonicalName": "Cloud Shell",
   "auth": {
     "oauth2": {
@@ -478,10 +483,5 @@
     }
   },
   "rootUrl": "https://cloudshell.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "cloudshell",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Cloud Shell API",
-  "ownerName": "Google"
+  "ownerDomain": "google.com"
 }
