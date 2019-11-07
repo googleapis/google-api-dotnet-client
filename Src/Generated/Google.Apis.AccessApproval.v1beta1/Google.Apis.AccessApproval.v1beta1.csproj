@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.AccessApproval.v1beta1 Client Library</Title>
-    <Version>1.42.0.1758</Version>
+    <Version>1.42.0.1769</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

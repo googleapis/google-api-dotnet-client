@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191011 (1744)
+ *      <tr><th>API Rev<td>20191104 (1768)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>
@@ -870,7 +870,9 @@ namespace Google.Apis.CloudRedis.v1
                 /// <summary>Lists all Redis instances owned by a project in either the specified location (region) or
                 /// all locations.
                 ///
-                /// The location should have the following format: * `projects/{project_id}/locations/{location_id}`
+                /// The location should have the following format:
+                ///
+                /// * `projects/{project_id}/locations/{location_id}`
                 ///
                 /// If `location_id` is specified as `-` (wildcard), then all regions available to the project are
                 /// queried, and the results are aggregated.</summary>
@@ -884,7 +886,9 @@ namespace Google.Apis.CloudRedis.v1
                 /// <summary>Lists all Redis instances owned by a project in either the specified location (region) or
                 /// all locations.
                 ///
-                /// The location should have the following format: * `projects/{project_id}/locations/{location_id}`
+                /// The location should have the following format:
+                ///
+                /// * `projects/{project_id}/locations/{location_id}`
                 ///
                 /// If `location_id` is specified as `-` (wildcard), then all regions available to the project are
                 /// queried, and the results are aggregated.</summary>
@@ -905,18 +909,19 @@ namespace Google.Apis.CloudRedis.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>The `next_page_token` value returned from a previous ListInstances request, if
+                    /// any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>The maximum number of items to return.
                     ///
                     /// If not specified, a default value of 1000 will be used by the service. Regardless of the
                     /// page_size value, the response may include a partial list and a caller should only rely on
-                    /// response's next_page_token to determine if there are more instances left to be
+                    /// response's `next_page_token` to determine if there are more instances left to be
                     /// queried.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -952,18 +957,18 @@ namespace Google.Apis.CloudRedis.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -984,7 +989,7 @@ namespace Google.Apis.CloudRedis.v1
                 ///
                 /// Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region;
                 /// however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should
-                /// be provisioned in. Refer to [location_id] and [alternative_location_id] fields for more details.</param>
+                /// be provisioned in. Refer to location_id and alternative_location_id fields for more details.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudRedis.v1.Data.Instance body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -1012,8 +1017,8 @@ namespace Google.Apis.CloudRedis.v1
                     ///
                     /// Note: Redis instances are managed and addressed at regional level so location_id here refers to
                     /// a GCP region; however, users may choose which specific zone (or collection of zones for cross-
-                    /// zone instances) an instance should be provisioned in. Refer to [location_id] and
-                    /// [alternative_location_id] fields for more details.</summary>
+                    /// zone instances) an instance should be provisioned in. Refer to location_id and
+                    /// alternative_location_id fields for more details.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1335,6 +1340,10 @@ namespace Google.Apis.CloudRedis.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1342,10 +1351,6 @@ namespace Google.Apis.CloudRedis.v1
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1381,6 +1386,15 @@ namespace Google.Apis.CloudRedis.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1393,15 +1407,6 @@ namespace Google.Apis.CloudRedis.v1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1495,6 +1500,10 @@ namespace Google.Apis.CloudRedis.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1502,10 +1511,6 @@ namespace Google.Apis.CloudRedis.v1
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1541,6 +1546,15 @@ namespace Google.Apis.CloudRedis.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1553,15 +1567,6 @@ namespace Google.Apis.CloudRedis.v1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1720,7 +1725,7 @@ namespace Google.Apis.CloudRedis.v1.Data
     {
         /// <summary>Optional. Only applicable to STANDARD_HA tier which protects the instance against zonal failures by
         /// provisioning it across two zones. If provided, it must be a different zone from the one provided in
-        /// [location_id].</summary>
+        /// location_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternativeLocationId")]
         public virtual string AlternativeLocationId { get; set; } 
 
@@ -1735,8 +1740,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual object CreateTime { get; set; } 
 
         /// <summary>Output only. The current zone where the Redis endpoint is placed. For Basic Tier instances, this
-        /// will always be the same as the [location_id] provided by the user at creation time. For Standard Tier
-        /// instances, this can be either [location_id] or [alternative_location_id] and can change after a failover
+        /// will always be the same as the location_id provided by the user at creation time. For Standard Tier
+        /// instances, this can be either location_id or alternative_location_id and can change after a failover
         /// event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentLocationId")]
         public virtual string CurrentLocationId { get; set; } 
@@ -1756,8 +1761,8 @@ namespace Google.Apis.CloudRedis.v1.Data
 
         /// <summary>Optional. The zone where the instance will be provisioned. If not provided, the service will choose
         /// a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection
-        /// against zonal failures. If [alternative_location_id] is also provided, it must be different from
-        /// [location_id].</summary>
+        /// against zonal failures. If alternative_location_id is also provided, it must be different from
+        /// location_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -1770,7 +1775,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         ///
         /// Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP
         /// region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an
-        /// instance should be provisioned in. Refer to [location_id] and [alternative_location_id] fields for more
+        /// instance should be provisioned in. Refer to location_id and alternative_location_id fields for more
         /// details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -1836,9 +1841,9 @@ namespace Google.Apis.CloudRedis.v1.Data
         ///
         /// If the `location_id` in the parent field of the request is "-", all regions available to the project are
         /// queried, and the results aggregated. If in such an aggregated query a location is unavailable, a dummy Redis
-        /// entry is included in the response with the "name" field set to a value of the form
-        /// projects/{project_id}/locations/{location_id}/instances/- and the "status" field set to ERROR and
-        /// "status_message" field set to "location not available for ListInstances".</summary>
+        /// entry is included in the response with the `name` field set to a value of the form
+        /// `projects/{project_id}/locations/{location_id}/instances/`- and the `status` field set to ERROR and
+        /// `status_message` field set to "location not available for ListInstances".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<Instance> Instances { get; set; } 
 

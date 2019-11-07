@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20191021 (1754)
+ *      <tr><th>API Rev<td>20191105 (1769)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -1694,13 +1694,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
-                /// <summary>Determines if the update response should include the values of the cells that were updated.
-                /// By default, responses do not include the updated values. If the range to write was larger than than
-                /// the range actually written, the response will include all values in the requested range (excluding
-                /// trailing empty rows and columns).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
-
                 /// <summary>Determines how values in the response should be rendered. The default render option is
                 /// ValueRenderOption.FORMATTED_VALUE.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
@@ -1749,6 +1742,13 @@ namespace Google.Apis.Sheets.v4
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
                     FORMATTEDSTRING,
                 }
+
+                /// <summary>Determines if the update response should include the values of the cells that were updated.
+                /// By default, responses do not include the updated values. If the range to write was larger than than
+                /// the range actually written, the response will include all values in the requested range (excluding
+                /// trailing empty rows and columns).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1799,15 +1799,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeValuesInResponse",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "responseValueRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseValueRenderOption",
@@ -1829,6 +1820,15 @@ namespace Google.Apis.Sheets.v4
                         "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseDateTimeRenderOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeValuesInResponse",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2387,6 +2387,30 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The properties of the newly added sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual SheetProperties Properties { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Adds a slicer to a sheet in the spreadsheet.</summary>
+    public class AddSlicerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The slicer that should be added to the spreadsheet, including the position where it should be
+        /// placed. The slicerId field is optional; if one is not set, an id will be randomly generated. (It is an error
+        /// to specify the ID of a slicer that already exists.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slicer")]
+        public virtual Slicer Slicer { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of adding a slicer to a spreadsheet.</summary>
+    public class AddSlicerResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The newly added slicer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slicer")]
+        public virtual Slicer Slicer { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4414,6 +4438,18 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenValues")]
         public virtual System.Collections.Generic.IList<string> HiddenValues { get; set; } 
 
+        /// <summary>The background fill color to filter by; only cells with this fill color are shown. Mutually
+        /// exclusive with all other filter criteria. Requests to set this field will fail with a 400 error if any other
+        /// filter criteria field is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibleBackgroundColor")]
+        public virtual Color VisibleBackgroundColor { get; set; } 
+
+        /// <summary>The text color to filter by; only cells with this text color are shown. Mutually exclusive with all
+        /// other filter criteria. Requests to set this field will fail with a 400 error if any other filter criteria
+        /// field is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibleForegroundColor")]
+        public virtual Color VisibleForegroundColor { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -5511,6 +5547,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addSheet")]
         public virtual AddSheetRequest AddSheet { get; set; } 
 
+        /// <summary>Adds a slicer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addSlicer")]
+        public virtual AddSlicerRequest AddSlicer { get; set; } 
+
         /// <summary>Appends cells after the last row with data in a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appendCells")]
         public virtual AppendCellsRequest AppendCells { get; set; } 
@@ -5708,6 +5748,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateSheetProperties")]
         public virtual UpdateSheetPropertiesRequest UpdateSheetProperties { get; set; } 
 
+        /// <summary>Updates a slicer's specifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateSlicerSpec")]
+        public virtual UpdateSlicerSpecRequest UpdateSlicerSpec { get; set; } 
+
         /// <summary>Updates the spreadsheet's properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateSpreadsheetProperties")]
         public virtual UpdateSpreadsheetPropertiesRequest UpdateSpreadsheetProperties { get; set; } 
@@ -5746,6 +5790,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>A reply from adding a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addSheet")]
         public virtual AddSheetResponse AddSheet { get; set; } 
+
+        /// <summary>A reply from adding a slicer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addSlicer")]
+        public virtual AddSlicerResponse AddSlicer { get; set; } 
 
         /// <summary>A reply from creating a developer metadata entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createDeveloperMetadata")]
@@ -5825,14 +5873,13 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("baselineValueData")]
         public virtual ChartData BaselineValueData { get; set; } 
 
-        /// <summary>Formatting options for baseline value. This field is needed only if baseline_value_data field is
+        /// <summary>Formatting options for baseline value. This field is needed only if baseline_value_data is
         /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baselineValueFormat")]
         public virtual BaselineValueFormat BaselineValueFormat { get; set; } 
 
         /// <summary>Custom formatting options for numeric key/baseline values in scorecard chart. This field is used
-        /// only when [number_format_source] field is set to [ChartNumberFormatSource.CUSTOM]. This field is
-        /// optional.</summary>
+        /// only when number_format_source is set to CUSTOM. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFormatOptions")]
         public virtual ChartCustomNumberFormatOptions CustomFormatOptions { get; set; } 
 
@@ -5965,6 +6012,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rowGroups")]
         public virtual System.Collections.Generic.IList<DimensionGroup> RowGroups { get; set; } 
 
+        /// <summary>The slicers on this sheet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slicers")]
+        public virtual System.Collections.Generic.IList<Slicer> Slicers { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -6015,6 +6066,65 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A slicer in a sheet.</summary>
+    public class Slicer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The position of the slicer. Note that slicer can be positioned only on existing sheet. Also, width
+        /// and height of slicer can be automatically adjusted to keep it within permitted limits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("position")]
+        public virtual EmbeddedObjectPosition Position { get; set; } 
+
+        /// <summary>The ID of the slicer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slicerId")]
+        public virtual System.Nullable<int> SlicerId { get; set; } 
+
+        /// <summary>The specification of the slicer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual SlicerSpec Spec { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The specifications of a slicer.</summary>
+    public class SlicerSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>True if the filter should apply to pivot tables. If not set, default to `True`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applyToPivotTables")]
+        public virtual System.Nullable<bool> ApplyToPivotTables { get; set; } 
+
+        /// <summary>The background color of the slicer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
+        public virtual Color BackgroundColor { get; set; } 
+
+        /// <summary>The column index in the data table on which the filter is applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnIndex")]
+        public virtual System.Nullable<int> ColumnIndex { get; set; } 
+
+        /// <summary>The data range of the slicer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRange")]
+        public virtual GridRange DataRange { get; set; } 
+
+        /// <summary>The filtering criteria of the slicer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterCriteria")]
+        public virtual FilterCriteria FilterCriteria { get; set; } 
+
+        /// <summary>The horizontal alignment of title in the slicer. If unspecified, defaults to `LEFT`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
+        public virtual string HorizontalAlignment { get; set; } 
+
+        /// <summary>The text format of title in the slicer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
+        public virtual TextFormat TextFormat { get; set; } 
+
+        /// <summary>The title of the slicer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Sorts data in rows based on a sort order per column.</summary>
     public class SortRangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6034,9 +6144,19 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A sort order associated with a specific column or row.</summary>
     public class SortSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The background fill color to sort by. Mutually exclusive with sorting by text color. Requests to
+        /// set this field will fail with a 400 error if foreground color is also set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
+        public virtual Color BackgroundColor { get; set; } 
+
         /// <summary>The dimension the sort should be applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionIndex")]
         public virtual System.Nullable<int> DimensionIndex { get; set; } 
+
+        /// <summary>The text color to sort by. Mutually exclusive with sorting by background fill color. Requests to
+        /// set this field will fail with a 400 error if background color is also set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foregroundColor")]
+        public virtual Color ForegroundColor { get; set; } 
 
         /// <summary>The order data should be sorted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
@@ -6704,6 +6824,28 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The properties to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual SheetProperties Properties { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Updates a slicer’s specifications. (This does not move or resize a slicer. To move or resize a slicer
+    /// use UpdateEmbeddedObjectPositionRequest.</summary>
+    public class UpdateSlicerSpecRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fields that should be updated.  At least one field must be specified. The root `SlicerSpec` is
+        /// implied and should not be specified. A single "*"` can be used as short-hand for listing every
+        /// field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; } 
+
+        /// <summary>The id of the slicer to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slicerId")]
+        public virtual System.Nullable<int> SlicerId { get; set; } 
+
+        /// <summary>The specification to apply to the slicer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual SlicerSpec Spec { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>AI Platform Training & Prediction API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191025 (1758)
+ *      <tr><th>API Rev<td>20191101 (1765)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -1118,6 +1118,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. A page token to request the next page of results.
+                ///
+                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Optional. The number of locations to retrieve per "page" of results. If there are more
                 /// remaining results than this number, the response message will contain a valid value in the
                 /// `next_page_token` field.
@@ -1125,12 +1131,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. A page token to request the next page of results.
-                ///
-                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1166,18 +1166,18 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1493,10 +1493,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Specifies the subset of versions to retrieve.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>Optional. A page token to request the next page of results.
                     ///
                     /// You get the token from the `next_page_token` field of the response from the previous
@@ -1511,6 +1507,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// The default value is 20, and the maximum page size is 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Specifies the subset of versions to retrieve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1546,15 +1546,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                                 Pattern = @"^projects/[^/]+/models/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1567,6 +1558,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2078,6 +2078,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. Specifies the subset of models to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>Optional. A page token to request the next page of results.
                 ///
                 /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
@@ -2091,10 +2095,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. Specifies the subset of models to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2130,6 +2130,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2142,15 +2151,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2597,10 +2597,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2608,6 +2604,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2643,15 +2643,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2664,6 +2655,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3622,84 +3622,29 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterConfig")]
         public virtual GoogleCloudMlV1ReplicaConfig MasterConfig { get; set; } 
 
-        /// <summary>Optional. Specifies the type of virtual machine to use for your training job's master worker.
+        /// <summary>Optional. Specifies the type of virtual machine to use for your training job's master worker. You
+        /// must specify this field when `scaleTier` is set to `CUSTOM`.
         ///
-        /// The following types are supported:
-        ///
-        /// standard
-        ///
-        /// A basic machine configuration suitable for training simple models with small to moderate datasets.
-        ///
-        /// large_model
-        ///
-        /// A machine with a lot of memory, specially suited for parameter servers when your model is large (having many
-        /// hidden layers or layers with very large numbers of nodes).
-        ///
-        /// complex_model_s
-        ///
-        /// A machine suitable for the master and workers of the cluster when your model requires more computation than
-        /// the standard machine can handle satisfactorily.
-        ///
-        /// complex_model_m
-        ///
-        /// A machine with roughly twice the number of cores and roughly double the memory of complex_model_s.
-        ///
-        /// complex_model_l
-        ///
-        /// A machine with roughly twice the number of cores and roughly double the memory of complex_model_m.
-        ///
-        /// standard_gpu
-        ///
-        /// A machine equivalent to standard that also includes a single NVIDIA Tesla K80 GPU. See more about using GPUs
-        /// to train your model.
-        ///
-        /// complex_model_m_gpu
-        ///
-        /// A machine equivalent to complex_model_m that also includes four NVIDIA Tesla K80 GPUs.
-        ///
-        /// complex_model_l_gpu
-        ///
-        /// A machine equivalent to complex_model_l that also includes eight NVIDIA Tesla K80 GPUs.
-        ///
-        /// standard_p100
-        ///
-        /// A machine equivalent to standard that also includes a single NVIDIA Tesla P100 GPU.
-        ///
-        /// complex_model_m_p100
-        ///
-        /// A machine equivalent to complex_model_m that also includes four NVIDIA Tesla P100 GPUs.
-        ///
-        /// standard_v100
-        ///
-        /// A machine equivalent to standard that also includes a single NVIDIA Tesla V100 GPU.
-        ///
-        /// large_model_v100
-        ///
-        /// A machine equivalent to large_model that also includes a single NVIDIA Tesla V100 GPU.
-        ///
-        /// complex_model_m_v100
-        ///
-        /// A machine equivalent to complex_model_m that also includes four NVIDIA Tesla V100 GPUs.
-        ///
-        /// complex_model_l_v100
-        ///
-        /// A machine equivalent to complex_model_l that also includes eight NVIDIA Tesla V100 GPUs.
-        ///
-        /// cloud_tpu
-        ///
-        /// A TPU VM including one Cloud TPU. See more about using TPUs to train your model.
-        ///
-        /// You may also use certain Compute Engine machine types directly in this field. The following types are
-        /// supported:
+        /// You can use certain Compute Engine machine types directly in this field. The following types are supported:
         ///
         /// - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` -
         /// `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` -
         /// `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96`
         ///
-        /// See more about [using Compute Engine machine types](/ml-engine/docs/tensorflow/machine-types#compute-engine-
-        /// machine-types).
+        /// Learn more about [using Compute Engine machine types](/ml-engine/docs/machine-types#compute-engine-machine-
+        /// types).
         ///
-        /// You must set this value when `scaleTier` is set to `CUSTOM`.</summary>
+        /// Alternatively, you can use the following legacy machine types:
+        ///
+        /// - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` -
+        /// `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` -
+        /// `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100`
+        ///
+        /// Learn more about [using legacy machine types](/ml-engine/docs/machine-types#legacy-machine-types).
+        ///
+        /// Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the
+        /// [special configuration options for training with TPUs](/ml-engine/docs/tensorflow/using-
+        /// tpus#configuring_a_custom_tpu_machine).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterType")]
         public virtual string MasterType { get; set; } 
 
@@ -3735,7 +3680,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// The supported values are the same as those described in the entry for `master_type`.
         ///
         /// This value must be consistent with the category of machine type that `masterType` uses. In other words, both
-        /// must be AI Platform machine types or both must be Compute Engine machine types.
+        /// must be Compute Engine machine types or both must be legacy machine types.
         ///
         /// This value must be present when `scaleTier` is set to `CUSTOM` and `parameter_server_count` is greater than
         /// zero.</summary>
@@ -3802,7 +3747,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// The supported values are the same as those described in the entry for `masterType`.
         ///
         /// This value must be consistent with the category of machine type that `masterType` uses. In other words, both
-        /// must be AI Platform machine types or both must be Compute Engine machine types.
+        /// must be Compute Engine machine types or both must be legacy machine types.
         ///
         /// If you use `cloud_tpu` for this value, see special instructions for [configuring a custom TPU machine](/ml-
         /// engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine).

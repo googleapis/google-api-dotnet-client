@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p2beta1
- *      <tr><th>API Rev<td>20191027 (1760)
+ *      <tr><th>API Rev<td>20191105 (1769)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -6002,6 +6002,25 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A Celebrity is a group of Faces with an identity.</summary>
+    public class GoogleCloudVisionV1p4beta1Celebrity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Celebrity's description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The Celebrity's display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The resource name of the preloaded Celebrity. Has the format `builtin/{mid}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Color information consists of RGB channels, score, and the fraction of the image that the color
     /// occupies in the image.</summary>
     public class GoogleCloudVisionV1p4beta1ColorInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -6168,6 +6187,12 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("panAngle")]
         public virtual System.Nullable<float> PanAngle { get; set; } 
 
+        /// <summary>Additional recognition information. Only computed if image_context.face_recognition_params is
+        /// provided, **and** a match is found to a Celebrity in the input CelebritySet. This field is sorted in order
+        /// of decreasing confidence values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recognitionResult")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p4beta1FaceRecognitionResult> RecognitionResult { get; set; } 
+
         /// <summary>Roll angle, which indicates the amount of clockwise/anti-clockwise rotation of the face relative to
         /// the image vertical about the axis perpendicular to the face. Range [-180,180].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollAngle")]
@@ -6204,6 +6229,21 @@ namespace Google.Apis.Vision.v1p2beta1.Data
         /// <summary>Face landmark type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about a face's identity.</summary>
+    public class GoogleCloudVisionV1p4beta1FaceRecognitionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Celebrity that this face was matched to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("celebrity")]
+        public virtual GoogleCloudVisionV1p4beta1Celebrity Celebrity { get; set; } 
+
+        /// <summary>Recognition confidence. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
