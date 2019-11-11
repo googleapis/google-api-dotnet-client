@@ -14,16 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.OAuth2.Flows;
+using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Http;
+using Google.Apis.Logging;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Google.Apis.Auth.OAuth2.Flows;
-using Google.Apis.Auth.OAuth2.Responses;
-using Google.Apis.Http;
-using Google.Apis.Logging;
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -31,7 +30,7 @@ namespace Google.Apis.Auth.OAuth2
     /// OAuth 2.0 credential for accessing protected resources using an access token, as well as optionally refreshing 
     /// the access token when it expires using a refresh token.
     /// </summary>
-    public class UserCredential : ICredential, IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler
+    public class UserCredential : ICredential, IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler, ITokenAccessWithHeaders
     {
         /// <summary>Logger for this class.</summary>
         protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<UserCredential>();
@@ -49,6 +48,12 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Gets the user identity.</summary>
         public string UserId { get; }
 
+        /// <summary>
+        /// The ID of the project associated to this credential for the purposes of
+        /// quota calculation and billing.
+        /// </summary>
+        public string QuotaProject { get; }
+
         private readonly TokenRefreshManager _refreshManager;
 
         /// <summary>Constructs a new credential instance.</summary>
@@ -56,11 +61,22 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="userId">User identifier.</param>
         /// <param name="token">An initial token for the user.</param>
         public UserCredential(IAuthorizationCodeFlow flow, string userId, TokenResponse token)
+            : this(flow, userId, token, null)
+        { }
+
+        /// <summary>Constructs a new credential instance.</summary>
+        /// <param name="flow">Authorization code flow.</param>
+        /// <param name="userId">User identifier.</param>
+        /// <param name="token">An initial token for the user.</param>
+        /// <param name="quotaProjectId">The ID of the project associated 
+        /// to this credential for the purposes of quota calculation and billing. Can be null.</param>
+        public UserCredential(IAuthorizationCodeFlow flow, string userId, TokenResponse token, string quotaProjectId)
         {
-            this.Flow = flow;
-            this.UserId = userId;
+            Flow = flow;
+            UserId = userId;
             _refreshManager = new TokenRefreshManager(RefreshTokenAsync, flow.Clock, Logger);
-            this.Token = token;
+            Token = token;
+            QuotaProject = quotaProjectId;
         }
 
         #region IHttpExecuteInterceptor
@@ -72,8 +88,13 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public async Task InterceptAsync(HttpRequestMessage request, CancellationToken taskCancellationToken)
         {
-            var accessToken = await GetAccessTokenForRequestAsync(request.RequestUri.AbsoluteUri, taskCancellationToken).ConfigureAwait(false);
+            var accessToken = await GetAccessTokenWithHeadersForRequestAsync(request.RequestUri.AbsoluteUri, taskCancellationToken).ConfigureAwait(false);
             Flow.AccessMethod.Intercept(request, Token.AccessToken);
+
+            foreach (var header in accessToken.Headers)
+            {
+                request.Headers.Add(header.Key, header.Value);
+            }
         }
 
         #endregion
@@ -110,7 +131,16 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc />
         public virtual Task<string> GetAccessTokenForRequestAsync(string authUri = null,
             CancellationToken cancellationToken = default(CancellationToken)) =>
-            _refreshManager.GetAccessTokenForRequestAsync(cancellationToken);    
+            _refreshManager.GetAccessTokenForRequestAsync(cancellationToken);
+        #endregion
+
+        #region ITokenAccessWithHeaders implementation
+        /// <inheritdoc />
+        public async Task<AccessTokenWithHeaders> GetAccessTokenWithHeadersForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string token = await GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false);
+            return new AccessTokenWithHeaders(token, QuotaProject);
+        }
         #endregion
 
         /// <summary>
