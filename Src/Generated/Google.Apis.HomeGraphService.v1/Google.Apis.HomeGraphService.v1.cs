@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/actions/smarthome/create-app#request-sync'>HomeGraph API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191101 (1765)
+ *      <tr><th>API Rev<td>20191106 (1770)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/actions/smarthome/create-app#request-sync'>
  *              https://developers.google.com/actions/smarthome/create-app#request-sync</a>
@@ -761,6 +761,15 @@ namespace Google.Apis.HomeGraphService.v1.Data
         /// party device manufacturer's app, model names for the device, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual DeviceNames Name { get; set; } 
+
+        /// <summary>Indicates whether the device is capable of sending notifications. This field will be set by the
+        /// agent (partner) on an incoming SYNC. If a device is not capable of generating notifications, the partner
+        /// should set this flag to false. If a partner is not capable of calling ReportStateAndNotification to send
+        /// notifications to Google, the partner should set this flag to false. If there is a user setting in the
+        /// partner app to enable notifications and it is turned off, the partner should set this flag to
+        /// false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationSupportedByAgent")]
+        public virtual System.Nullable<bool> NotificationSupportedByAgent { get; set; } 
 
         /// <summary>IDs of other devices associated with this device. This is used to represent a device group (e.g.
         /// bonded zone) or "facets" synced through different flows (e.g. Google Nest Hub Max with a Nest Camera).

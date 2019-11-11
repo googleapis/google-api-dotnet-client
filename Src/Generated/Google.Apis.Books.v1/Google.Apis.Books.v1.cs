@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>Books API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20181212 (1441)
+ *      <tr><th>API Rev<td>20191103 (1767)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>
  *              https://developers.google.com/books/docs/v1/getting_started</a>
@@ -8205,14 +8205,23 @@ namespace Google.Apis.Books.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("bannerImageUrl")]
             public virtual string BannerImageUrl { get; set; } 
 
+            [Newtonsoft.Json.JsonPropertyAttribute("eligibleForSubscription")]
+            public virtual System.Nullable<bool> EligibleForSubscription { get; set; } 
+
             [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
             public virtual string ImageUrl { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("isComplete")]
+            public virtual System.Nullable<bool> IsComplete { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("seriesId")]
             public virtual string SeriesId { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("seriesType")]
             public virtual string SeriesType { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("subscriptionId")]
+            public virtual string SubscriptionId { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("title")]
             public virtual string Title { get; set; } 

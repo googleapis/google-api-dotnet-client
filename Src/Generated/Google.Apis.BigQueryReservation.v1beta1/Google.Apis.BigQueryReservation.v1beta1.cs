@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191009 (1742)
+ *      <tr><th>API Rev<td>20191029 (1762)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -368,7 +368,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1
             {
                 this.service = service;
                 capacityCommitments = new CapacityCommitmentsResource(service);
-                operations = new OperationsResource(service);
                 reservations = new ReservationsResource(service);
 
             }
@@ -547,13 +546,13 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The maximum number of items to return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>The maximum number of items to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -589,15 +588,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -606,163 +596,14 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                    }
-
-                }
-            }
-            private readonly OperationsResource operations;
-
-            /// <summary>Gets the Operations resource.</summary>
-            public virtual OperationsResource Operations
-            {
-                get { return operations; }
-            }
-
-            /// <summary>The "operations" collection of methods.</summary>
-            public class OperationsResource
-            {
-                private const string Resource = "operations";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public OperationsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-
-                }
-
-
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
-                /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
-                /// `Code.CANCELLED`.</summary>
-                /// <param name="name">The name of the operation resource to be cancelled.</param>
-                public virtual CancelRequest Cancel(string name)
-                {
-                    return new CancelRequest(service, name);
-                }
-
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
-                /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
-                /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
-                /// `Code.CANCELLED`.</summary>
-                public class CancelRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.Empty>
-                {
-                    /// <summary>Constructs a new Cancel request.</summary>
-                    public CancelRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The name of the operation resource to be cancelled.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "cancel"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "POST"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1beta1/{+name}:cancel"; }
-                    }
-
-                    /// <summary>Initializes Cancel parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
                         RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                            });
-                    }
-
-                }
-
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
-                /// operation result at intervals as recommended by the API service.</summary>
-                /// <param name="name">The name of the operation resource.</param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
-                /// operation result at intervals as recommended by the API service.</summary>
-                public class GetRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.Operation>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The name of the operation resource.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "get"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "GET"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1beta1/{+name}"; }
-                    }
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                                Pattern = null,
                             });
                     }
 
@@ -822,7 +663,7 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     /// location of the reservation.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">The parent resource name of the assignment E.g.:
-                    /// projects/myproject/location/US/reservations/team1-prod</param>
+                    /// projects/myproject/locations/US/reservations/team1-prod</param>
                     public virtual CreateRequest Create(Google.Apis.BigQueryReservation.v1beta1.Data.Assignment body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
@@ -845,7 +686,7 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
 
                         /// <summary>The parent resource name of the assignment E.g.:
-                        /// projects/myproject/location/US/reservations/team1-prod</summary>
+                        /// projects/myproject/locations/US/reservations/team1-prod</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -972,8 +813,8 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     /// expansion/merge will happen. Wildcard "-" can be used for reservations in the request. In that
                     /// case all assignments belongs to the specified project and location will be listed. Note "-"
                     /// cannot be used for projects nor locations.</summary>
-                    /// <param name="parent">The parent resource name e.g.: projects/myproject/location/US/reservations/team1-prod Or:
-                    /// projects/myproject/location/US/reservations/-</param>
+                    /// <param name="parent">The parent resource name e.g.: projects/myproject/locations/US/reservations/team1-prod Or:
+                    /// projects/myproject/locations/US/reservations/-</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -999,18 +840,18 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
 
                         /// <summary>The parent resource name e.g.:
-                        /// projects/myproject/location/US/reservations/team1-prod Or:
-                        /// projects/myproject/location/US/reservations/-</summary>
+                        /// projects/myproject/locations/US/reservations/team1-prod Or:
+                        /// projects/myproject/locations/US/reservations/-</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
-
-                        /// <summary>The maximum number of items to return.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>The maximum number of items to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1046,18 +887,18 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1072,11 +913,12 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     /// method provides a transactional way to do so, to make sure the assignee always has an associated
                     /// reservation. Without the method customers might see some queries run on-demand which might be
                     /// unexpected.</summary>
+                    /// <param name="body">The body of the request.</param>
                     /// <param name="name">The resource name of the assignment, e.g.:
                     /// projects/myproject/locations/US/reservations/team1-prod/assignments/123</param>
-                    public virtual MoveRequest Move(string name)
+                    public virtual MoveRequest Move(Google.Apis.BigQueryReservation.v1beta1.Data.MoveAssignmentRequest body, string name)
                     {
-                        return new MoveRequest(service, name);
+                        return new MoveRequest(service, body, name);
                     }
 
                     /// <summary>Moves a assignment under a new reservation. Customers can do this by deleting the
@@ -1087,10 +929,11 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     public class MoveRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.Assignment>
                     {
                         /// <summary>Constructs a new Move request.</summary>
-                        public MoveRequest(Google.Apis.Services.IClientService service, string name)
+                        public MoveRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1beta1.Data.MoveAssignmentRequest body, string name)
                             : base(service)
                         {
                             Name = name;
+                            Body = body;
                             InitParameters();
                         }
 
@@ -1100,11 +943,12 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>The new reservation ID, e.g.:
-                        /// projects/myotherproject/locations/US/reservations/team2-prod</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("destinationId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string DestinationId { get; set; }
 
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BigQueryReservation.v1beta1.Data.MoveAssignmentRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
 
                         ///<summary>Gets the method name.</summary>
                         public override string MethodName
@@ -1137,15 +981,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/reservations/[^/]+/assignments/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "destinationId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "destinationId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
                                 });
                         }
 
@@ -1235,8 +1070,7 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                 }
 
                 /// <summary>Deletes a reservation. Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has
-                /// assignments. This check can be bypassed by setting DeleteReservationRequest.force flag to
-                /// true.</summary>
+                /// assignments.</summary>
                 /// <param name="name">Resource name of the reservation to retrieve. E.g.,
                 /// projects/myproject/locations/US/reservations/team1-prod</param>
                 public virtual DeleteRequest Delete(string name)
@@ -1245,8 +1079,7 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                 }
 
                 /// <summary>Deletes a reservation. Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has
-                /// assignments. This check can be bypassed by setting DeleteReservationRequest.force flag to
-                /// true.</summary>
+                /// assignments.</summary>
                 public class DeleteRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1632,6 +1465,10 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1639,10 +1476,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1678,6 +1511,15 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1695,15 +1537,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                             DefaultValue = null,
                             Pattern = null,
                         });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
                 }
 
             }
@@ -1715,9 +1548,8 @@ namespace Google.Apis.BigQueryReservation.v1beta1
             /// organization, then assignments created on the organization will be returned (organization doesn't have
             /// ancestors). Comparing to ListAssignments, there are some behavior differences: 1) permission on the
             /// assignee will be verified in this API. 2) Hierarchy lookup (project->folder->organization) happens in
-            /// this API. 3) Parent here is projects/locations, instead of projects/locationsreservations. Wildcard "-"
-            /// can be used for projects in SearchAssignmentsRequest.parent. Note "-" cannot be used for projects nor
-            /// locations.</summary>
+            /// this API. 3) Parent here is projects/locations, instead of projects/locationsreservations. Note "-"
+            /// cannot be used for projects nor locations.</summary>
             /// <param name="parent">The resource name of the admin project(containing project and location), e.g.:
             /// "projects/myproject/locations/US".</param>
             public virtual SearchAssignmentsRequest SearchAssignments(string parent)
@@ -1732,9 +1564,8 @@ namespace Google.Apis.BigQueryReservation.v1beta1
             /// organization, then assignments created on the organization will be returned (organization doesn't have
             /// ancestors). Comparing to ListAssignments, there are some behavior differences: 1) permission on the
             /// assignee will be verified in this API. 2) Hierarchy lookup (project->folder->organization) happens in
-            /// this API. 3) Parent here is projects/locations, instead of projects/locationsreservations. Wildcard "-"
-            /// can be used for projects in SearchAssignmentsRequest.parent. Note "-" cannot be used for projects nor
-            /// locations.</summary>
+            /// this API. 3) Parent here is projects/locations, instead of projects/locationsreservations. Note "-"
+            /// cannot be used for projects nor locations.</summary>
             public class SearchAssignmentsRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.SearchAssignmentsResponse>
             {
                 /// <summary>Constructs a new SearchAssignments request.</summary>
@@ -1751,6 +1582,10 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>The maximum number of items to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1759,10 +1594,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                 /// "assignee=folders/123" "assignee=organizations/456"</summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
-
-                /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1798,6 +1629,15 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1810,15 +1650,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                         "query", new Google.Apis.Discovery.Parameter
                         {
                             Name = "query",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1859,7 +1690,7 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
     /// <summary>Capacity commitment is a way to purchase compute capacity for BigQuery jobs (in the form of slots) with
     /// some minimum committed period of usage. Capacity commitment is immutable and cannot be deleted until the end of
     /// the commitment period. After the end of the commitment period, slots are still available but can be freely
-    /// removed any time.
+    /// removed any time. Annual commitments will automatically be downgraded to monthly after the commitment ends.
     ///
     /// A capacity commitment resource exists as a child resource of the admin project.</summary>
     public class CapacityCommitment : Google.Apis.Requests.IDirectResponseSchema
@@ -1869,6 +1700,10 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         /// of the plan and the time when the capacity commitment became ACTIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitmentEndTime")]
         public virtual object CommitmentEndTime { get; set; } 
+
+        /// <summary>Output only. For FAILED commitment plan, provides the reason of failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureStatus")]
+        public virtual Status FailureStatus { get; set; } 
 
         /// <summary>Output only. The resource name of the capacity commitment, e.g.,
         /// projects/myproject/locations/US/capacityCommitments/123</summary>
@@ -1886,18 +1721,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         /// <summary>Output only. State of the commitment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The metadata for operation returned from ReservationService.CreateCapacityCommitment.</summary>
-    public class CreateCapacityCommitmentMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Resource name of the capacity commitment that is being created. E.g.,
-        /// projects/myproject/locations/US/capacityCommitments/123</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("capacityCommitment")]
-        public virtual string CapacityCommitment { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2021,37 +1844,15 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
-    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>The request for ReservationService.MoveAssignment. Note: "bigquery.reservationAssignments.create"
+    /// permission is required on the destination_id. Note: "bigquery.reservationAssignments.create" and
+    /// "bigquery.reservationAssignments.delete" permission is required on the related assignee.</summary>
+    public class MoveAssignmentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
-        /// completed, and either `error` or `response` is available.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
-
-        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
-
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
-
-        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
-        /// `operations/{unique_id}`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        /// <summary>The new reservation ID, e.g.:
+        /// projects/myotherproject/locations/US/reservations/team2-prod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationId")]
+        public virtual string DestinationId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2060,9 +1861,9 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
     /// <summary>A reservation is a mechanism used to guarantee slots to users.</summary>
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, any query using this reservation might be able to use the idle slots from other
-        /// reservations within the same admin project. If false, a query using this reservation will execute with the
-        /// maximum slot capacity as specified above. If not specified, default value is true.</summary>
+        /// <summary>If false, any query using this reservation will use idle slots from other reservations within the
+        /// same admin project. If true, a query using this reservation will execute with the maximum slot capacity as
+        /// specified above.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreIdleSlots")]
         public virtual System.Nullable<bool> IgnoreIdleSlots { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/error-reporting/'>Stackdriver Error Reporting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191023 (1756)
+ *      <tr><th>API Rev<td>20191030 (1763)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/error-reporting/'>
  *              https://cloud.google.com/error-reporting/</a>
@@ -394,6 +394,28 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
+                /// <summary>Required. The group for which events shall be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string GroupId { get; set; }
+
+                /// <summary>Optional. A `next_page_token` provided by a previous response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The exact value to match against [`ServiceContext.service`](/error-
+                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.service", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ServiceFilterService { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return per response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. The exact value to match against [`ServiceContext.version`](/error-
+                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.version", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ServiceFilterVersion { get; set; }
+
                 /// <summary>Optional. The exact value to match against [`ServiceContext.resource_type`](/error-
                 /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.resourceType", Google.Apis.Util.RequestParameterType.Query)]
@@ -419,28 +441,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     [Google.Apis.Util.StringValueAttribute("PERIOD_30_DAYS")]
                     PERIOD30DAYS,
                 }
-
-                /// <summary>Required. The group for which events shall be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string GroupId { get; set; }
-
-                /// <summary>Optional. The exact value to match against [`ServiceContext.service`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.service", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ServiceFilterService { get; set; }
-
-                /// <summary>Optional. A `next_page_token` provided by a previous response.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional. The maximum number of results to return per response.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. The exact value to match against [`ServiceContext.version`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.version", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ServiceFilterVersion { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -476,24 +476,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "serviceFilter.resourceType", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceFilter.resourceType",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "timeRange.period", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "timeRange.period",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "groupId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "groupId",
@@ -503,18 +485,18 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "serviceFilter.service", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "serviceFilter.service",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "serviceFilter.service", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "serviceFilter.service",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -533,6 +515,24 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         "serviceFilter.version", new Google.Apis.Discovery.Parameter
                         {
                             Name = "serviceFilter.version",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "serviceFilter.resourceType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "serviceFilter.resourceType",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "timeRange.period", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "timeRange.period",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -681,52 +681,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
-                /// <summary>Optional. The sort order in which the results are returned. Default is
-                /// `COUNT_DESC`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("order", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<OrderEnum> Order { get; set; }
-
-                /// <summary>Optional. The sort order in which the results are returned. Default is
-                /// `COUNT_DESC`.</summary>
-                public enum OrderEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("GROUP_ORDER_UNSPECIFIED")]
-                    GROUPORDERUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("COUNT_DESC")]
-                    COUNTDESC,
-                    [Google.Apis.Util.StringValueAttribute("LAST_SEEN_DESC")]
-                    LASTSEENDESC,
-                    [Google.Apis.Util.StringValueAttribute("CREATED_DESC")]
-                    CREATEDDESC,
-                    [Google.Apis.Util.StringValueAttribute("AFFECTED_USERS_DESC")]
-                    AFFECTEDUSERSDESC,
-                }
-
-                /// <summary>Optional. The exact value to match against [`ServiceContext.version`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.version", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ServiceFilterVersion { get; set; }
-
-                /// <summary>Optional. The exact value to match against [`ServiceContext.resource_type`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.resourceType", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ServiceFilterResourceType { get; set; }
-
-                /// <summary>Optional. Time where the timed counts shall be aligned if rounded alignment is chosen.
-                /// Default is 00:00 UTC.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("alignmentTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object AlignmentTime { get; set; }
-
-                /// <summary>Optional. The preferred duration for a single returned `TimedCount`. If not set, no timed
-                /// counts are returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("timedCountDuration", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object TimedCountDuration { get; set; }
-
-                /// <summary>Optional. A `next_page_token` provided by a previous response. To view additional results,
-                /// pass this token along with the identical query parameters as the first request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Restricts the query to the specified time range.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("timeRange.period", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<TimeRangePeriodEnum> TimeRangePeriod { get; set; }
@@ -778,6 +732,52 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
+                /// <summary>Optional. The sort order in which the results are returned. Default is
+                /// `COUNT_DESC`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("order", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<OrderEnum> Order { get; set; }
+
+                /// <summary>Optional. The sort order in which the results are returned. Default is
+                /// `COUNT_DESC`.</summary>
+                public enum OrderEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("GROUP_ORDER_UNSPECIFIED")]
+                    GROUPORDERUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("COUNT_DESC")]
+                    COUNTDESC,
+                    [Google.Apis.Util.StringValueAttribute("LAST_SEEN_DESC")]
+                    LASTSEENDESC,
+                    [Google.Apis.Util.StringValueAttribute("CREATED_DESC")]
+                    CREATEDDESC,
+                    [Google.Apis.Util.StringValueAttribute("AFFECTED_USERS_DESC")]
+                    AFFECTEDUSERSDESC,
+                }
+
+                /// <summary>Optional. The exact value to match against [`ServiceContext.version`](/error-
+                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.version", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ServiceFilterVersion { get; set; }
+
+                /// <summary>Optional. The exact value to match against [`ServiceContext.resource_type`](/error-
+                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.resourceType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ServiceFilterResourceType { get; set; }
+
+                /// <summary>Optional. Time where the timed counts shall be aligned if rounded alignment is chosen.
+                /// Default is 00:00 UTC.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("alignmentTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object AlignmentTime { get; set; }
+
+                /// <summary>Optional. The preferred duration for a single returned `TimedCount`. If not set, no timed
+                /// counts are returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("timedCountDuration", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object TimedCountDuration { get; set; }
+
+                /// <summary>Optional. A `next_page_token` provided by a previous response. To view additional results,
+                /// pass this token along with the identical query parameters as the first request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -810,6 +810,51 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "timeRange.period", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "timeRange.period",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "alignment", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "alignment",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "groupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "groupId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "serviceFilter.service", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "serviceFilter.service",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "order", new Google.Apis.Discovery.Parameter
@@ -860,51 +905,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "timeRange.period", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "timeRange.period",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "alignment", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "alignment",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "groupId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "groupId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "serviceFilter.service", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceFilter.service",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

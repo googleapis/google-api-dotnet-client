@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191009 (1742)
+ *      <tr><th>API Rev<td>20191029 (1762)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -528,18 +528,6 @@ namespace Google.Apis.BigQueryReservation.v1
 
 namespace Google.Apis.BigQueryReservation.v1.Data
 {    
-
-    /// <summary>The metadata for operation returned from ReservationService.CreateCapacityCommitment.</summary>
-    public class CreateCapacityCommitmentMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Resource name of the capacity commitment that is being created. E.g.,
-        /// projects/myproject/locations/US/capacityCommitments/123</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("capacityCommitment")]
-        public virtual string CapacityCommitment { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:

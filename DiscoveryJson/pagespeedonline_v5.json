@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/WoDVu14FNziqSFWMWSbzsOZPZNQ\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/0NYpZPBBXGhzfbqEP9bLgGyZsRk\"",
  "discoveryVersion": "v1",
  "id": "pagespeedonline:v5",
  "name": "pagespeedonline",
  "version": "v5",
- "revision": "20190906",
+ "revision": "20191028",
  "title": "PageSpeed Insights API",
  "description": "Analyzes the performance of a web page and provides tailored suggestions to make that page faster.",
  "ownerDomain": "google.com",
@@ -108,6 +108,11 @@
     "id": {
      "type": "string",
      "description": "The audit's id."
+    },
+    "numericValue": {
+     "type": "number",
+     "description": "A numeric value that has a meaning specific to the audit, e.g. the number of nodes in the DOM or the timestamp of a specific load event. More information can be found in the audit details, if present.",
+     "format": "double"
     },
     "score": {
      "type": "any"

@@ -1,296 +1,12 @@
 {
-  "ownerDomain": "google.com",
-  "name": "domainsrdap",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "Domains RDAP API",
-  "ownerName": "Google",
-  "resources": {
-    "nameserver": {
-      "methods": {
-        "get": {
-          "response": {
-            "$ref": "RdapResponse"
-          },
-          "parameterOrder": [
-            "nameserverId"
-          ],
-          "httpMethod": "GET",
-          "parameters": {
-            "nameserverId": {
-              "required": true,
-              "type": "string",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1/nameserver/{nameserverId}",
-          "path": "v1/nameserver/{nameserverId}",
-          "id": "domainsrdap.nameserver.get",
-          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error."
-        }
-      }
-    },
-    "autnum": {
-      "methods": {
-        "get": {
-          "response": {
-            "$ref": "RdapResponse"
-          },
-          "parameterOrder": [
-            "autnumId"
-          ],
-          "httpMethod": "GET",
-          "parameters": {
-            "autnumId": {
-              "location": "path",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "flatPath": "v1/autnum/{autnumId}",
-          "path": "v1/autnum/{autnumId}",
-          "id": "domainsrdap.autnum.get",
-          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error."
-        }
-      }
-    },
-    "entity": {
-      "methods": {
-        "get": {
-          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error.",
-          "response": {
-            "$ref": "RdapResponse"
-          },
-          "parameterOrder": [
-            "entityId"
-          ],
-          "httpMethod": "GET",
-          "parameters": {
-            "entityId": {
-              "location": "path",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "flatPath": "v1/entity/{entityId}",
-          "path": "v1/entity/{entityId}",
-          "id": "domainsrdap.entity.get"
-        }
-      }
-    },
-    "domain": {
-      "methods": {
-        "get": {
-          "description": "Look up RDAP information for a domain by name.",
-          "httpMethod": "GET",
-          "parameterOrder": [
-            "domainName"
-          ],
-          "response": {
-            "$ref": "HttpBody"
-          },
-          "parameters": {
-            "domainName": {
-              "pattern": "^[^/]+$",
-              "location": "path",
-              "description": "Full domain name to look up. Example: \"example.com\"",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "flatPath": "v1/domain/{domainId}",
-          "id": "domainsrdap.domain.get",
-          "path": "v1/domain/{+domainName}"
-        }
-      }
-    },
-    "v1": {
-      "methods": {
-        "getNameservers": {
-          "response": {
-            "$ref": "RdapResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "GET",
-          "parameters": {},
-          "flatPath": "v1/nameservers",
-          "path": "v1/nameservers",
-          "id": "domainsrdap.getNameservers",
-          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error."
-        },
-        "getHelp": {
-          "id": "domainsrdap.getHelp",
-          "path": "v1/help",
-          "description": "Get help information for the RDAP API, including links to documentation.",
-          "httpMethod": "GET",
-          "parameterOrder": [],
-          "response": {
-            "$ref": "HttpBody"
-          },
-          "parameters": {},
-          "flatPath": "v1/help"
-        },
-        "getIp": {
-          "httpMethod": "GET",
-          "parameterOrder": [],
-          "response": {
-            "$ref": "HttpBody"
-          },
-          "parameters": {},
-          "flatPath": "v1/ip",
-          "id": "domainsrdap.getIp",
-          "path": "v1/ip",
-          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error."
-        },
-        "getDomains": {
-          "httpMethod": "GET",
-          "parameterOrder": [],
-          "response": {
-            "$ref": "RdapResponse"
-          },
-          "parameters": {},
-          "flatPath": "v1/domains",
-          "id": "domainsrdap.getDomains",
-          "path": "v1/domains",
-          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error."
-        },
-        "getEntities": {
-          "response": {
-            "$ref": "RdapResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "GET",
-          "parameters": {},
-          "flatPath": "v1/entities",
-          "path": "v1/entities",
-          "id": "domainsrdap.getEntities",
-          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error."
-        }
-      }
-    },
-    "ip": {
-      "methods": {
-        "get": {
-          "httpMethod": "GET",
-          "parameterOrder": [
-            "ipId",
-            "ipId1"
-          ],
-          "response": {
-            "$ref": "RdapResponse"
-          },
-          "parameters": {
-            "ipId": {
-              "required": true,
-              "type": "string",
-              "location": "path"
-            },
-            "ipId1": {
-              "location": "path",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "flatPath": "v1/ip/{ipId}/{ipId1}",
-          "id": "domainsrdap.ip.get",
-          "path": "v1/ip/{ipId}/{ipId1}",
-          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error."
-        }
-      }
-    }
-  },
-  "parameters": {
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "type": "boolean",
-      "default": "true",
-      "location": "query",
-      "description": "Returns response with indentations and line breaks."
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ]
-    },
-    "alt": {
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
-    }
-  },
-  "version": "v1",
-  "baseUrl": "https://domainsrdap.googleapis.com/",
-  "servicePath": "",
-  "description": "Read-only public API that lets users search for information about domain names.",
-  "kind": "discovery#restDescription",
   "basePath": "",
-  "id": "domainsrdap:v1",
   "documentationLink": "https://developers.google.com/domains/rdap/",
-  "revision": "20191105",
+  "revision": "20191108",
+  "id": "domainsrdap:v1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "Notice": {
-      "id": "Notice",
-      "description": "Notices object defined in [section 4.3 of RFC\n7483](https://tools.ietf.org/html/rfc7483#section-4.3).",
       "type": "object",
       "properties": {
         "type": {
@@ -315,16 +31,17 @@
             "type": "string"
           }
         }
-      }
+      },
+      "id": "Notice",
+      "description": "Notices object defined in [section 4.3 of RFC\n7483](https://tools.ietf.org/html/rfc7483#section-4.3)."
     },
     "Link": {
-      "id": "Link",
       "description": "Links object defined in [section 4.2 of RFC\n7483](https://tools.ietf.org/html/rfc7483#section-4.2).",
       "type": "object",
       "properties": {
         "type": {
-          "description": "Content type of the link. Example: \"application/json\".",
-          "type": "string"
+          "type": "string",
+          "description": "Content type of the link. Example: \"application/json\"."
         },
         "media": {
           "description": "Media type of the link destination. Example: \"screen\".",
@@ -335,12 +52,12 @@
           "type": "string"
         },
         "rel": {
-          "description": "Relation type of a link. Example: \"previous\".",
-          "type": "string"
+          "type": "string",
+          "description": "Relation type of a link. Example: \"previous\"."
         },
         "title": {
-          "type": "string",
-          "description": "Title of this link. Example: \"title\"."
+          "description": "Title of this link. Example: \"title\".",
+          "type": "string"
         },
         "href": {
           "description": "Target URL of a link. Example: \"http://example.com/previous\".",
@@ -350,10 +67,10 @@
           "type": "string",
           "description": "Language code of a link. Example: \"en\"."
         }
-      }
+      },
+      "id": "Link"
     },
     "RdapResponse": {
-      "id": "RdapResponse",
       "description": "Response to a general RDAP query.",
       "type": "object",
       "properties": {
@@ -369,11 +86,11 @@
           }
         },
         "description": {
-          "description": "Error description.",
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "Error description."
         },
         "rdapConformance": {
           "description": "RDAP conformance level.",
@@ -395,19 +112,13 @@
           "description": "Error HTTP code. Example: \"501\".",
           "format": "int32"
         }
-      }
+      },
+      "id": "RdapResponse"
     },
     "HttpBody": {
-      "id": "HttpBody",
-      "description": "Message that represents an arbitrary HTTP body. It should only be used for\npayload formats that can't be represented as JSON, such as raw binary or\nan HTML page.\n\n\nThis message can be used both in streaming and non-streaming API methods in\nthe request as well as the response.\n\nIt can be used as a top-level request field, which is convenient if one\nwants to extract parameters from either the URL or HTTP template into the\nrequest fields and also want access to the raw HTTP body.\n\nExample:\n\n    message GetResourceRequest {\n      // A unique request id.\n      string request_id = 1;\n\n      // The raw HTTP body is bound to this field.\n      google.api.HttpBody http_body = 2;\n    }\n\n    service ResourceService {\n      rpc GetResource(GetResourceRequest) returns (google.api.HttpBody);\n      rpc UpdateResource(google.api.HttpBody) returns\n      (google.protobuf.Empty);\n    }\n\nExample with streaming methods:\n\n    service CaldavService {\n      rpc GetCalendar(stream google.api.HttpBody)\n        returns (stream google.api.HttpBody);\n      rpc UpdateCalendar(stream google.api.HttpBody)\n        returns (stream google.api.HttpBody);\n    }\n\nUse of this type only changes how the request and response bodies are\nhandled, all other features will continue to work unchanged.",
       "type": "object",
       "properties": {
-        "contentType": {
-          "description": "The HTTP Content-Type header value specifying the content type of the body.",
-          "type": "string"
-        },
         "extensions": {
-          "description": "Application specific response metadata. Must be set in the first response\nfor streaming APIs.",
           "type": "array",
           "items": {
             "type": "object",
@@ -415,14 +126,21 @@
               "description": "Properties of the object. Contains field @type with type URL.",
               "type": "any"
             }
-          }
+          },
+          "description": "Application specific response metadata. Must be set in the first response\nfor streaming APIs."
         },
         "data": {
           "description": "The HTTP request/response body as raw binary.",
           "format": "byte",
           "type": "string"
+        },
+        "contentType": {
+          "description": "The HTTP Content-Type header value specifying the content type of the body.",
+          "type": "string"
         }
-      }
+      },
+      "id": "HttpBody",
+      "description": "Message that represents an arbitrary HTTP body. It should only be used for\npayload formats that can't be represented as JSON, such as raw binary or\nan HTML page.\n\n\nThis message can be used both in streaming and non-streaming API methods in\nthe request as well as the response.\n\nIt can be used as a top-level request field, which is convenient if one\nwants to extract parameters from either the URL or HTTP template into the\nrequest fields and also want access to the raw HTTP body.\n\nExample:\n\n    message GetResourceRequest {\n      // A unique request id.\n      string request_id = 1;\n\n      // The raw HTTP body is bound to this field.\n      google.api.HttpBody http_body = 2;\n    }\n\n    service ResourceService {\n      rpc GetResource(GetResourceRequest) returns (google.api.HttpBody);\n      rpc UpdateResource(google.api.HttpBody) returns\n      (google.protobuf.Empty);\n    }\n\nExample with streaming methods:\n\n    service CaldavService {\n      rpc GetCalendar(stream google.api.HttpBody)\n        returns (stream google.api.HttpBody);\n      rpc UpdateCalendar(stream google.api.HttpBody)\n        returns (stream google.api.HttpBody);\n    }\n\nUse of this type only changes how the request and response bodies are\nhandled, all other features will continue to work unchanged."
     }
   },
   "icons": {
@@ -431,5 +149,287 @@
   },
   "protocol": "rest",
   "canonicalName": "Domains RDAP",
-  "rootUrl": "https://domainsrdap.googleapis.com/"
+  "rootUrl": "https://domainsrdap.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "domainsrdap",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Domains RDAP API",
+  "ownerName": "Google",
+  "resources": {
+    "entity": {
+      "methods": {
+        "get": {
+          "response": {
+            "$ref": "RdapResponse"
+          },
+          "parameterOrder": [
+            "entityId"
+          ],
+          "httpMethod": "GET",
+          "parameters": {
+            "entityId": {
+              "required": true,
+              "type": "string",
+              "location": "path"
+            }
+          },
+          "flatPath": "v1/entity/{entityId}",
+          "path": "v1/entity/{entityId}",
+          "id": "domainsrdap.entity.get",
+          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error."
+        }
+      }
+    },
+    "domain": {
+      "methods": {
+        "get": {
+          "response": {
+            "$ref": "HttpBody"
+          },
+          "parameterOrder": [
+            "domainName"
+          ],
+          "httpMethod": "GET",
+          "parameters": {
+            "domainName": {
+              "location": "path",
+              "description": "Full domain name to look up. Example: \"example.com\"",
+              "required": true,
+              "type": "string",
+              "pattern": "^[^/]+$"
+            }
+          },
+          "flatPath": "v1/domain/{domainId}",
+          "path": "v1/domain/{+domainName}",
+          "id": "domainsrdap.domain.get",
+          "description": "Look up RDAP information for a domain by name."
+        }
+      }
+    },
+    "v1": {
+      "methods": {
+        "getDomains": {
+          "httpMethod": "GET",
+          "parameterOrder": [],
+          "response": {
+            "$ref": "RdapResponse"
+          },
+          "parameters": {},
+          "flatPath": "v1/domains",
+          "id": "domainsrdap.getDomains",
+          "path": "v1/domains",
+          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error."
+        },
+        "getEntities": {
+          "response": {
+            "$ref": "RdapResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "parameters": {},
+          "flatPath": "v1/entities",
+          "path": "v1/entities",
+          "id": "domainsrdap.getEntities",
+          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error."
+        },
+        "getNameservers": {
+          "response": {
+            "$ref": "RdapResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "parameters": {},
+          "flatPath": "v1/nameservers",
+          "path": "v1/nameservers",
+          "id": "domainsrdap.getNameservers",
+          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error."
+        },
+        "getHelp": {
+          "flatPath": "v1/help",
+          "path": "v1/help",
+          "id": "domainsrdap.getHelp",
+          "description": "Get help information for the RDAP API, including links to documentation.",
+          "response": {
+            "$ref": "HttpBody"
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "parameters": {}
+        },
+        "getIp": {
+          "response": {
+            "$ref": "HttpBody"
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "parameters": {},
+          "flatPath": "v1/ip",
+          "path": "v1/ip",
+          "id": "domainsrdap.getIp",
+          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error."
+        }
+      }
+    },
+    "ip": {
+      "methods": {
+        "get": {
+          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error.",
+          "response": {
+            "$ref": "RdapResponse"
+          },
+          "parameterOrder": [
+            "ipId",
+            "ipId1"
+          ],
+          "httpMethod": "GET",
+          "parameters": {
+            "ipId": {
+              "required": true,
+              "type": "string",
+              "location": "path"
+            },
+            "ipId1": {
+              "required": true,
+              "type": "string",
+              "location": "path"
+            }
+          },
+          "flatPath": "v1/ip/{ipId}/{ipId1}",
+          "path": "v1/ip/{ipId}/{ipId1}",
+          "id": "domainsrdap.ip.get"
+        }
+      }
+    },
+    "nameserver": {
+      "methods": {
+        "get": {
+          "flatPath": "v1/nameserver/{nameserverId}",
+          "path": "v1/nameserver/{nameserverId}",
+          "id": "domainsrdap.nameserver.get",
+          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error.",
+          "response": {
+            "$ref": "RdapResponse"
+          },
+          "parameterOrder": [
+            "nameserverId"
+          ],
+          "httpMethod": "GET",
+          "parameters": {
+            "nameserverId": {
+              "required": true,
+              "type": "string",
+              "location": "path"
+            }
+          }
+        }
+      }
+    },
+    "autnum": {
+      "methods": {
+        "get": {
+          "description": "The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error.",
+          "response": {
+            "$ref": "RdapResponse"
+          },
+          "parameterOrder": [
+            "autnumId"
+          ],
+          "httpMethod": "GET",
+          "parameters": {
+            "autnumId": {
+              "required": true,
+              "type": "string",
+              "location": "path"
+            }
+          },
+          "flatPath": "v1/autnum/{autnumId}",
+          "path": "v1/autnum/{autnumId}",
+          "id": "domainsrdap.autnum.get"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "uploadType": {
+      "type": "string",
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
+    "callback": {
+      "type": "string",
+      "location": "query",
+      "description": "JSONP"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format."
+    },
+    "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
+    },
+    "access_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth access token."
+    },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "upload_protocol": {
+      "type": "string",
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks."
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    }
+  },
+  "version": "v1",
+  "baseUrl": "https://domainsrdap.googleapis.com/",
+  "servicePath": "",
+  "description": "Read-only public API that lets users search for information about domain names.",
+  "kind": "discovery#restDescription"
 }

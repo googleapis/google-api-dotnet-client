@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190923 (1726)
+ *      <tr><th>API Rev<td>20191029 (1762)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -2864,6 +2864,12 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateVisibilityConfig")]
         public virtual ManagedZonePrivateVisibilityConfig PrivateVisibilityConfig { get; set; } 
 
+        /// <summary>The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS will
+        /// resolve reverse lookup queries using automatically configured records for VPC resources. This only applies
+        /// to networks listed under private_visibility_config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reverseLookupConfig")]
+        public virtual ManagedZoneReverseLookupConfig ReverseLookupConfig { get; set; } 
+
         /// <summary>The zone's visibility: public zones are exposed to the Internet, while private zones are visible
         /// only to Virtual Private Cloud resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
@@ -2916,6 +2922,13 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     public class ManagedZoneForwardingConfigNameServerTarget : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Forwarding path for this NameServerTarget, if unset or set to DEFAULT, Cloud DNS will make
+        /// forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+        /// to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this
+        /// target</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardingPath")]
+        public virtual string ForwardingPath { get; set; } 
+
         /// <summary>IPv4 address of a target name server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv4Address")]
         public virtual string Ipv4Address { get; set; } 
@@ -3019,6 +3032,17 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
         public virtual string NetworkUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ManagedZoneReverseLookupConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "dns#managedZoneReverseLookupConfig".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3241,6 +3265,13 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     public class PolicyAlternativeNameServerConfigTargetNameServer : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Forwarding path for this TargetNameServer, if unset or set to DEFAULT, Cloud DNS will make
+        /// forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+        /// to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this
+        /// target</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardingPath")]
+        public virtual string ForwardingPath { get; set; } 
+
         /// <summary>IPv4 address to forward to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv4Address")]
         public virtual string Ipv4Address { get; set; } 

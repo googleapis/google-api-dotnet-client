@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/u_DF1eqwsVwJ293plket7MTk1pk\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/keAz3lpqQqjiyJjBvJRqliew5V8\"",
  "discoveryVersion": "v1",
  "id": "dns:v1beta2",
  "name": "dns",
  "version": "v1beta2",
- "revision": "20190923",
+ "revision": "20191029",
  "title": "Google Cloud DNS API",
  "description": "Configures and serves authoritative DNS records.",
  "ownerDomain": "google.com",
@@ -402,6 +402,10 @@
      "$ref": "ManagedZonePrivateVisibilityConfig",
      "description": "For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from."
     },
+    "reverseLookupConfig": {
+     "$ref": "ManagedZoneReverseLookupConfig",
+     "description": "The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS will resolve reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config."
+    },
     "visibility": {
      "type": "string",
      "description": "The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.",
@@ -482,6 +486,18 @@
    "id": "ManagedZoneForwardingConfigNameServerTarget",
    "type": "object",
    "properties": {
+    "forwardingPath": {
+     "type": "string",
+     "description": "Forwarding path for this NameServerTarget, if unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target",
+     "enum": [
+      "default",
+      "private"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
+    },
     "ipv4Address": {
      "type": "string",
      "description": "IPv4 address of a target name server."
@@ -582,6 +598,17 @@
     "networkUrl": {
      "type": "string",
      "description": "The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}"
+    }
+   }
+  },
+  "ManagedZoneReverseLookupConfig": {
+   "id": "ManagedZoneReverseLookupConfig",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZoneReverseLookupConfig\".",
+     "default": "dns#managedZoneReverseLookupConfig"
     }
    }
   },
@@ -801,6 +828,18 @@
    "id": "PolicyAlternativeNameServerConfigTargetNameServer",
    "type": "object",
    "properties": {
+    "forwardingPath": {
+     "type": "string",
+     "description": "Forwarding path for this TargetNameServer, if unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target",
+     "enum": [
+      "default",
+      "private"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
+    },
     "ipv4Address": {
      "type": "string",
      "description": "IPv4 address to forward to."

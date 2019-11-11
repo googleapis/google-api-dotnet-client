@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/LoMq-aN5m_nNht4FNT2R3L_tihc\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/T19OORkkQSIX4IkNsxi-fWDdN9c\"",
  "discoveryVersion": "v1",
  "id": "pagespeedonline:v2",
  "name": "pagespeedonline",
  "version": "v2",
- "revision": "20190906",
+ "revision": "20191028",
  "title": "PageSpeed Insights API",
  "description": "Analyzes the performance of a web page and provides tailored suggestions to make that page faster.",
  "ownerDomain": "google.com",

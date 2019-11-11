@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/speed/docs/insights/v5/get-started'>PageSpeed Insights API</a>
  *      <tr><th>API Version<td>v5
- *      <tr><th>API Rev<td>20190906 (1709)
+ *      <tr><th>API Rev<td>20191028 (1761)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/speed/docs/insights/v5/get-started'>
  *              https://developers.google.com/speed/docs/insights/v5/get-started</a>
@@ -443,6 +443,12 @@ namespace Google.Apis.Pagespeedonline.v5.Data
         /// <summary>The audit's id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
+
+        /// <summary>A numeric value that has a meaning specific to the audit, e.g. the number of nodes in the DOM or
+        /// the timestamp of a specific load event. More information can be found in the audit details, if
+        /// present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericValue")]
+        public virtual System.Nullable<double> NumericValue { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual object Score { get; set; } 

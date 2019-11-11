@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191027 (1760)
+ *      <tr><th>API Rev<td>20191102 (1766)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -850,6 +850,11 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// operations that fail with a "permission denied" error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
         public virtual string PrincipalEmail { get; set; } 
+
+        /// <summary>String representation of identity of requesting party. Populated for both first and third party
+        /// identities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalSubject")]
+        public virtual string PrincipalSubject { get; set; } 
 
         /// <summary>Identity delegation history of an authenticated service account that makes the request. It contains
         /// information on the real authorities that try to access GCP resources by delegating on a service account.
