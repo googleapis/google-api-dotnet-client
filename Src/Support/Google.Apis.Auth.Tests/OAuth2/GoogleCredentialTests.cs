@@ -15,17 +15,21 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
+using Google.Apis.Auth.OAuth2.Flows;
+using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Json;
+using Google.Apis.Tests.Mocks;
+using Moq;
 using System;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
-using System.Threading;
-using System.Collections.Generic;
-using System.Net.Http.Headers;
-using Google.Apis.Auth.OAuth2.Flows;
+using static Google.Apis.Auth.OAuth2.BearerToken;
 
 namespace Google.Apis.Auth.Tests.OAuth2
 {
@@ -38,6 +42,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 ""client_secret"": ""CLIENT_SECRET"",
 ""refresh_token"": ""REFRESH_TOKEN"",
 ""project_id"": ""PROJECT_ID"",
+""quota_project"": ""QUOTA_PROJECT"",
 ""type"": ""authorized_user""}";
         private const string DummyServiceAccountCredentialFileContents = @"{
 ""private_key_id"": ""PRIVATE_KEY_ID"",
@@ -75,6 +80,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.Equal("CLIENT_ID", flow.ClientSecrets.ClientId);
             Assert.Equal("CLIENT_SECRET", flow.ClientSecrets.ClientSecret);
             Assert.Equal("PROJECT_ID", flow.ProjectId);
+            Assert.Equal("QUOTA_PROJECT", userCred.QuotaProject);
         }
 
         [Fact]
@@ -185,10 +191,10 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         {
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
-                AuthHeaders.Add(request.Headers.Authorization);
+                RequestHeaders = request.Headers;
                 return Task.FromResult(new HttpResponseMessage());
             }
-            public List<AuthenticationHeaderValue> AuthHeaders { get; } = new List<AuthenticationHeaderValue>();
+            public HttpRequestHeaders RequestHeaders { get; set; }
         }
 
         [Fact]
@@ -203,9 +209,43 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             var httpClient = new Http.ConfigurableHttpClient(new Http.ConfigurableMessageHandler(httpHandler));
             cred.Initialize(httpClient);
             await httpClient.GetAsync("http://localhost/TestRequest");
-            Assert.Single(httpHandler.AuthHeaders);
-            Assert.Equal("Bearer", httpHandler.AuthHeaders[0].Scheme);
-            Assert.Equal(fakeAccessToken, httpHandler.AuthHeaders[0].Parameter);
+            Assert.Equal("Bearer", httpHandler.RequestHeaders.Authorization.Scheme);
+            Assert.Equal(fakeAccessToken, httpHandler.RequestHeaders.Authorization.Parameter);
+        }
+
+        [Fact]
+        public async Task AccessTokenWithHeadersCredential()
+        {
+            var mockClock = new MockClock();
+            var tokenResponse = new TokenResponse
+            {
+                AccessToken = "ACCESS_TOKEN",
+                ExpiresInSeconds = 60 * 10,
+                IssuedUtc = DateTime.Now,
+                RefreshToken = "REFRESH_TOKEN",
+            };
+            var flowMock = new Mock<IAuthorizationCodeFlow>(MockBehavior.Strict);
+            flowMock
+                .Setup(flow => flow.Clock)
+                .Returns(mockClock);
+            flowMock
+                .Setup(flow => flow.AccessMethod)
+                .Returns(new AuthorizationHeaderAccessMethod());
+
+            var userCred = new UserCredential(flowMock.Object, "USER_ID", tokenResponse, "QUOTA_PROJECT");
+            ICredential cred = new GoogleCredential(userCred);
+
+            var httpHandler = new FakeHandler();
+            var httpClient = new Http.ConfigurableHttpClient(new Http.ConfigurableMessageHandler(httpHandler));
+            cred.Initialize(httpClient);
+            await httpClient.GetAsync("http://localhost/TestRequest");
+
+            Assert.Equal("Bearer", httpHandler.RequestHeaders.Authorization.Scheme);
+            Assert.Equal("ACCESS_TOKEN", httpHandler.RequestHeaders.Authorization.Parameter);
+
+            Assert.True(httpHandler.RequestHeaders.TryGetValues("x-goog-user-project", out var values));
+            Assert.Single(values);
+            Assert.Equal("QUOTA_PROJECT", values.First());
         }
     }
 }

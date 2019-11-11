@@ -33,7 +33,7 @@ namespace Google.Apis.Auth.OAuth2
     /// See <see cref="GetApplicationDefaultAsync"/> for the credential retrieval logic.
     /// </para>
     /// </summary>
-    public class GoogleCredential : ICredential
+    public class GoogleCredential : ICredential, ITokenAccessWithHeaders
     {
         /// <summary>Provider implements the logic for creating the application default credential.</summary>
         private static DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
@@ -236,6 +236,14 @@ namespace Google.Apis.Auth.OAuth2
         Task<string> ITokenAccess.GetAccessTokenForRequestAsync(string authUri, CancellationToken cancellationToken)
         {
             return credential.GetAccessTokenForRequestAsync(authUri, cancellationToken);
+        }
+
+        async Task<AccessTokenWithHeaders> ITokenAccessWithHeaders.GetAccessTokenWithHeadersForRequestAsync(
+            string authUri, CancellationToken cancellationToken)
+        {
+            return (credential is ITokenAccessWithHeaders credentialWithHeaders) ?
+                await credentialWithHeaders.GetAccessTokenWithHeadersForRequestAsync(authUri, cancellationToken).ConfigureAwait(false) :
+                new AccessTokenWithHeaders(await credential.GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false));
         }
 
         /// <summary>

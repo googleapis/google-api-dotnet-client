@@ -54,6 +54,13 @@ namespace Google.Apis.Auth.OAuth2
         public string ProjectId { get; set; }
 
         /// <summary>
+        /// Project ID associated with this credential for the purposes
+        /// of quota calculations and billing.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("quota_project")]
+        public string QuotaProject { get; set; }
+
+        /// <summary>
         /// Client Id associated with UserCredential created by
         /// <a href="https://cloud.google.com/sdk/gcloud/reference/auth/login">GCloud Auth Login</a>.
         /// </summary>

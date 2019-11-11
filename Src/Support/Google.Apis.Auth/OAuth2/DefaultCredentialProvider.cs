@@ -233,7 +233,7 @@ namespace Google.Apis.Auth.OAuth2
                 ProjectId = credentialParameters.ProjectId
             };
             var flow = new GoogleAuthorizationCodeFlow(initializer);
-            return new UserCredential(flow, "ApplicationDefaultCredentials", token);
+            return new UserCredential(flow, "ApplicationDefaultCredentials", token, credentialParameters.QuotaProject);
         }
 
         /// <summary>Creates a <see cref="ServiceAccountCredential"/> from JSON data.</summary>
