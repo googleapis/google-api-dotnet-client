@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Cloud Security Command Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191101 (1765)
+ *      <tr><th>API Rev<td>20191115 (1779)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -462,6 +462,27 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The value returned by the last `ListAssetsResponse`; indicates that this is a continuation
+                /// of a prior `ListAssets` call, and that the system should return the next page of data.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. A field mask to specify the ListAssetsResult fields to be listed in the response.
+                /// An empty field mask will list all fields.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object FieldMask { get; set; }
+
+                /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                /// maximum is 1000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
+                /// existing at the supplied time and their values are those at that specific time. Absence of this
+                /// field will default to the API's version of NOW.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object ReadTime { get; set; }
+
                 /// <summary>Expression that defines what fields and order to use for sorting. The string value should
                 /// follow SQL syntax: comma separated list of fields. For example:
                 /// "name,resource_properties.a_property". The default sorting order is ascending. To specify descending
@@ -471,12 +492,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 /// " are equivalent.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
-
-                /// <summary>Time used as a reference point when filtering assets. The filter is limited to assets
-                /// existing at the supplied time and their values are those at that specific time. Absence of this
-                /// field will default to the API's version of NOW.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object ReadTime { get; set; }
 
                 /// <summary>When compare_duration is set, the ListAssetResult's "state" attribute is updated to
                 /// indicate whether the asset was added, removed, or remained present during the compare_duration
@@ -523,21 +538,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Optional. A field mask to specify the ListAssetsResult fields to be listed in the response.
-                /// An empty field mask will list all fields.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object FieldMask { get; set; }
-
-                /// <summary>The value returned by the last `ListAssetsResponse`; indicates that this is a continuation
-                /// of a prior `ListAssets` call, and that the system should return the next page of data.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The maximum number of results to return in a single response. Default is 10, minimum is 1,
-                /// maximum is 1000.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -572,9 +572,27 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "orderBy",
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "fieldMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -584,6 +602,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                         "readTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -602,33 +629,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fieldMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1403,6 +1403,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Time used as a reference point when filtering findings. The filter is limited to
+                    /// findings existing at the supplied time and their values are those at that specific time. Absence
+                    /// of this field will default to the API's version of NOW.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadTime { get; set; }
+
                     /// <summary>Expression that defines what fields and order to use for sorting. The string value
                     /// should follow SQL syntax: comma separated list of fields. For example:
                     /// "name,resource_properties.a_property". The default sorting order is ascending. To specify
@@ -1412,12 +1418,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                     /// source_properties.a_property  " are equivalent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
-
-                    /// <summary>Time used as a reference point when filtering findings. The filter is limited to
-                    /// findings existing at the supplied time and their values are those at that specific time. Absence
-                    /// of this field will default to the API's version of NOW.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object ReadTime { get; set; }
 
                     /// <summary>Expression that defines the filter to apply across findings. The expression is a list
                     /// of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are not
@@ -1492,18 +1492,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                                 Pattern = @"^organizations/[^/]+/sources/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "orderBy", new Google.Apis.Discovery.Parameter
+                            "readTime", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "orderBy",
+                                Name = "readTime",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "readTime", new Google.Apis.Discovery.Parameter
+                            "orderBy", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "readTime",
+                                Name = "orderBy",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2720,9 +2720,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
-        /// <summary>The full resource name of the Google Cloud Platform (GCP) resource this finding is for. See:
-        /// https://cloud.google.com/apis/design/resource_names#full_resource_name This field is immutable after
-        /// creation time.</summary>
+        /// <summary>For findings on Google Cloud Platform (GCP) resources, the full resource name of the GCP resource
+        /// this finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the
+        /// finding is for a non-GCP resource, the resourceName can be a customer or partner defined string. This field
+        /// is immutable after creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; } 
 
@@ -3190,8 +3191,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
         /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
-        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if either of incoming or
-        /// stored policy does not meet the version requirements.</summary>
+        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if the incoming policy version
+        /// does not meet the requirements for modifying the stored policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -3200,11 +3201,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
         /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
-        /// policy, modifying a conditional binding, or removing a conditional binding from the stored conditional
-        /// policy. Operations on non-conditional policies may specify any valid value or leave the field unset.
+        /// policy, modifying a conditional binding, or removing a binding (conditional or unconditional) from the
+        /// stored conditional policy. Operations on non-conditional policies may specify any valid value or leave the
+        /// field unset.
         ///
-        /// If no etag is provided in the call to `setIamPolicy`, any version compliance checks on the incoming and/or
-        /// stored policy is skipped.</summary>
+        /// If no etag is provided in the call to `setIamPolicy`, version compliance checks against the stored policy is
+        /// skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -3257,8 +3259,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     public class SecurityMarks : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Mutable user specified security marks belonging to the parent resource. Constraints are as follows:
-        /// - Keys and values are treated as case insensitive - Keys must be between 1 - 256 characters (inclusive) -
-        /// Keys must be letters, numbers, underscores, or dashes - Values have leading and trailing whitespace trimmed,
+        ///
+        /// * Keys and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) *
+        /// Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed,
         /// remaining characters must be between 1 - 4096 characters (inclusive)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marks")]
         public virtual System.Collections.Generic.IDictionary<string,string> Marks { get; set; } 
@@ -3320,7 +3323,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>The source’s display name. A source’s display name must be unique amongst its siblings, for
+        /// <summary>The source's display name. A source's display name must be unique amongst its siblings, for
         /// example, two sources with the same parent can't share the same display name. The display name must have a
         /// length between 1 and 64 characters (inclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]

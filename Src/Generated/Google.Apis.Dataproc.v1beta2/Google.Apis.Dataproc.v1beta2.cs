@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20190924 (1727)
+ *      <tr><th>API Rev<td>20191031 (1764)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -786,8 +786,8 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -796,8 +796,8 @@ namespace Google.Apis.Dataproc.v1beta2
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1499,6 +1499,10 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Deprecated. Please use request_id field instead.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InstanceId { get; set; }
+
                     /// <summary>Optional. A tag that prevents multiple concurrent workflow instances with the same tag
                     /// from running. This mitigates risk of concurrent instances started due to retries.It is
                     /// recommended to always set this value to a UUID
@@ -1507,10 +1511,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
-
-                    /// <summary>Deprecated. Please use request_id field instead.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string InstanceId { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1552,18 +1552,18 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
+                            "instanceId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "requestId",
+                                Name = "instanceId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "instanceId", new Google.Apis.Discovery.Parameter
+                            "requestId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "instanceId",
+                                Name = "requestId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1669,8 +1669,8 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -1679,8 +1679,8 @@ namespace Google.Apis.Dataproc.v1beta2
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -2344,8 +2344,8 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -2354,8 +2354,8 @@ namespace Google.Apis.Dataproc.v1beta2
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -3140,14 +3140,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Optional. The standard List page token.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The standard List page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. A filter constraining the clusters to list. Filters are case-sensitive and
                     /// have the following syntax:field = value AND field = value ...where field is one of status.state,
                     /// clusterName, or labels.[KEY], and [KEY] is a label key. value can be * to match all values.
@@ -3159,6 +3151,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// labels.env = staging AND labels.starred = *</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. The standard List page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The standard List page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3203,6 +3203,15 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -3215,15 +3224,6 @@ namespace Google.Apis.Dataproc.v1beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3274,24 +3274,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
-                    /// <summary>Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows
-                    /// removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how
-                    /// long to wait for jobs in progress to finish before forcefully removing nodes (and potentially
-                    /// interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed
-                    /// timeout is 1 day.Only supported on Dataproc image versions 1.2 and higher.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("gracefulDecommissionTimeout", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object GracefulDecommissionTimeout { get; set; }
-
-                    /// <summary>Optional. A unique id used to identify the request. If the server receives two
-                    /// UpdateClusterRequest requests with the same id, then the second request will be ignored and the
-                    /// first google.longrunning.Operation created and stored in the backend is returned.It is
-                    /// recommended to always set this value to a UUID
-                    /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters
-                    /// (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
-                    /// characters.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
                     /// <summary>Required. Specifies the path, relative to Cluster, of the field to update. For example,
                     /// to change the number of workers in a cluster to 5, the update_mask parameter would be specified
                     /// as config.worker_config.num_instances, and the PATCH request body would specify the new value,
@@ -3320,6 +3302,24 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows
+                    /// removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how
+                    /// long to wait for jobs in progress to finish before forcefully removing nodes (and potentially
+                    /// interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed
+                    /// timeout is 1 day.Only supported on Dataproc image versions 1.2 and higher.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("gracefulDecommissionTimeout", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object GracefulDecommissionTimeout { get; set; }
+
+                    /// <summary>Optional. A unique id used to identify the request. If the server receives two
+                    /// UpdateClusterRequest requests with the same id, then the second request will be ignored and the
+                    /// first google.longrunning.Operation created and stored in the backend is returned.It is
+                    /// recommended to always set this value to a UUID
+                    /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters
+                    /// (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+                    /// characters.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -3379,6 +3379,15 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "gracefulDecommissionTimeout",
@@ -3396,21 +3405,12 @@ namespace Google.Apis.Dataproc.v1beta2
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                     }
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -3419,8 +3419,8 @@ namespace Google.Apis.Dataproc.v1beta2
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -3984,11 +3984,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
-                    /// named cluster.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterName { get; set; }
-
                     /// <summary>Optional. A filter constraining the jobs to list. Filters are case-sensitive and have
                     /// the following syntax:field = value AND field = value ...where field is status.state or
                     /// labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be
@@ -4023,6 +4018,11 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// <summary>Optional. The number of results to return in each response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
+                    /// named cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterName { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4067,15 +4067,6 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -4106,6 +4097,15 @@ namespace Google.Apis.Dataproc.v1beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterName",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4232,8 +4232,8 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -4242,8 +4242,8 @@ namespace Google.Apis.Dataproc.v1beta2
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -4879,8 +4879,8 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -4889,8 +4889,8 @@ namespace Google.Apis.Dataproc.v1beta2
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -5683,8 +5683,8 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -5693,8 +5693,8 @@ namespace Google.Apis.Dataproc.v1beta2
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -6657,8 +6657,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// group.</summary>
     public class InstanceGroupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The Compute Engine accelerator configuration for these instances.Beta Feature: This
-        /// feature is still under development. It may be changed before final release.</summary>
+        /// <summary>Optional. The Compute Engine accelerator configuration for these instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; } 
 
@@ -7306,7 +7305,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// single role. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A
     /// role is a named list of permissions (defined by IAM or configured by users). A binding can optionally specify a
     /// condition, which is a logic expression that further constrains the role binding based on attributes about the
-    /// request and/or target resource.JSON Example { "bindings": [ { "role": "role/resourcemanager.organizationAdmin",
+    /// request and/or target resource.JSON Example { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin",
     /// "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-
     /// project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members":
     /// ["user:eve@example.com"], "condition": { "title": "expirable access", "description": "Does not grant access

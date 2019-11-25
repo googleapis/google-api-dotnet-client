@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.3
- *      <tr><th>API Rev<td>20191018 (1751)
+ *      <tr><th>API Rev<td>20191108 (1772)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -2701,6 +2701,12 @@ namespace Google.Apis.AdExchangeBuyer.v1_3.Data
         /// <summary>Request containing any of these language codes will match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
         public virtual System.Collections.Generic.IList<string> Languages { get; set; } 
+
+        /// <summary>The maximum QPS allocated to this pretargeting configuration, used for pretargeting-level QPS
+        /// limits. By default, this is not set, which indicates that there is no QPS limit at the configuration level
+        /// (a global or account-level limit may still be imposed).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumQps")]
+        public virtual System.Nullable<long> MaximumQps { get; set; } 
 
         /// <summary>Requests containing any of these mobile carrier ids will match. Values are from mobile-carriers.csv
         /// in the downloadable files section.</summary>

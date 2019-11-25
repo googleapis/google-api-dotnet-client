@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20191017 (1750)
+ *      <tr><th>API Rev<td>20191108 (1772)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -7131,7 +7131,10 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; } 
 
-        /// <summary>A displayable name for users, groups or domains.</summary>
+        /// <summary>The "pretty" name of the value of the permission. The following is a list of examples for each type
+        /// of permission: - user - User's full name, as defined for their Google account, such as "Joe Smith." - group
+        /// - Name of the Google Group, such as "The Company Administrators." - domain - String domain name, such as
+        /// "thecompany.com." - anyone - No displayName is present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -7164,7 +7167,7 @@ namespace Google.Apis.Drive.v3.Data
         }
 
         /// <summary>The ID of this permission. This is a unique identifier for the grantee, and is published in User
-        /// resources as permissionId.</summary>
+        /// resources as permissionId. IDs should be treated as opaque values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -7190,7 +7193,9 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("teamDrivePermissionDetails")]
         public virtual System.Collections.Generic.IList<Permission.TeamDrivePermissionDetailsData> TeamDrivePermissionDetails { get; set; } 
 
-        /// <summary>The type of the grantee. Valid values are: - user - group - domain - anyone</summary>
+        /// <summary>The type of the grantee. Valid values are: - user - group - domain - anyone  When creating a
+        /// permission, if type is user or group, you must provide an emailAddress for the user or group. When type is
+        /// domain, you must provide a domain. There isn't extra information required for a anyone type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

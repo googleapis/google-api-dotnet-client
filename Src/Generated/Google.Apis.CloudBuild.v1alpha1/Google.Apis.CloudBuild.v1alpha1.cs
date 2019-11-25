@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20190824 (1696)
+ *      <tr><th>API Rev<td>20191120 (1784)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -664,6 +664,10 @@ namespace Google.Apis.CloudBuild.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>A mask specifying which fields in `WorkerPool` should be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudBuild.v1alpha1.Data.WorkerPool Body { get; set; }
@@ -702,6 +706,15 @@ namespace Google.Apis.CloudBuild.v1alpha1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/workerPools/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 
@@ -1205,9 +1218,13 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Name of the Cloud Source Repository. If omitted, the name "default" is assumed.</summary>
+        /// <summary>Required. Name of the Cloud Source Repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoName")]
         public virtual string RepoName { get; set; } 
+
+        /// <summary>Substitutions to use in a triggered build. Should only be used with RunBuildTrigger</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("substitutions")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Substitutions { get; set; } 
 
         /// <summary>Regex matching tags to build.
         ///

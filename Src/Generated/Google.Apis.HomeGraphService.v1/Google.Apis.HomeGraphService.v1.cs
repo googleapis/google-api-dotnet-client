@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/actions/smarthome/create-app#request-sync'>HomeGraph API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191106 (1770)
+ *      <tr><th>API Rev<td>20191120 (1784)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/actions/smarthome/create-app#request-sync'>
  *              https://developers.google.com/actions/smarthome/create-app#request-sync</a>
@@ -747,7 +747,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
         /// <summary>Custom JSON data provided by the manufacturer and attached to QUERY and EXECUTE requests in
         /// AoG.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customData")]
-        public virtual string CustomData { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string,object> CustomData { get; set; } 
 
         /// <summary>Device manufacturer, model, hardware version, and software version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceInfo")]

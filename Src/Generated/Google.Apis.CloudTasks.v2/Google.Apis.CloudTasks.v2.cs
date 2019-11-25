@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191023 (1756)
+ *      <tr><th>API Rev<td>20191111 (1775)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tasks/'>
  *              https://cloud.google.com/tasks/</a>
@@ -1961,10 +1961,6 @@ namespace Google.Apis.CloudTasks.v2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1972,6 +1968,10 @@ namespace Google.Apis.CloudTasks.v2
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2007,15 +2007,6 @@ namespace Google.Apis.CloudTasks.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2028,6 +2019,15 @@ namespace Google.Apis.CloudTasks.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2413,6 +2413,95 @@ namespace Google.Apis.CloudTasks.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>HTTP request.
+    ///
+    /// The task will be pushed to the worker as an HTTP request. If the worker or the redirected worker acknowledges
+    /// the task by returning a successful HTTP response code ([`200` - `299`]), the task will removed from the queue.
+    /// If any other HTTP response code is returned or no response is received, the task will be retried according to
+    /// the following:
+    ///
+    /// * User-specified throttling: retry configuration, rate limits, and the queue's state.
+    ///
+    /// * System throttling: To prevent the worker from overloading, Cloud Tasks may temporarily reduce the queue's
+    /// effective rate. User-specified settings will not be changed.
+    ///
+    /// System throttling happens because:
+    ///
+    /// * Cloud Tasks backs off on all errors. Normally the backoff specified in rate limits will be used. But if the
+    /// worker returns `429` (Too Many Requests), `503` (Service Unavailable), or the rate of errors is high, Cloud
+    /// Tasks will use a higher backoff rate. The retry specified in the `Retry-After` HTTP response header is
+    /// considered.
+    ///
+    /// * To prevent traffic spikes and to smooth sudden large traffic spikes, dispatches ramp up slowly when the queue
+    /// is newly created or idle and if large numbers of tasks suddenly become available to dispatch (due to spikes in
+    /// create task rates, the queue being unpaused, or many tasks that are scheduled at the same time).</summary>
+    public class HttpRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>HTTP request body.
+        ///
+        /// A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a
+        /// task with an incompatible HttpMethod.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual string Body { get; set; } 
+
+        /// <summary>HTTP request headers.
+        ///
+        /// This map contains the header field names and values. Headers can be set when the task is created.
+        ///
+        /// These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP
+        /// request headers will be ignored or replaced.
+        ///
+        /// A partial list of headers that will be ignored or replaced is:
+        ///
+        /// * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will
+        /// be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * X-Google-*: Google
+        /// use only. * X-AppEngine-*: Google use only.
+        ///
+        /// `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the
+        /// task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or
+        /// `"application/json"`.
+        ///
+        /// Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values.
+        ///
+        /// The size of the headers must be less than 80KB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
+
+        /// <summary>The HTTP method to use for the request. The default is POST.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
+        public virtual string HttpMethod { get; set; } 
+
+        /// <summary>If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be
+        /// generated and attached as an `Authorization` header in the HTTP request.
+        ///
+        /// This type of authorization should generally only be used when calling Google APIs hosted on
+        /// *.googleapis.com.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthToken")]
+        public virtual OAuthToken OauthToken { get; set; } 
+
+        /// <summary>If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will
+        /// be generated and attached as an `Authorization` header in the HTTP request.
+        ///
+        /// This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where
+        /// you intend to validate the token yourself.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oidcToken")]
+        public virtual OidcToken OidcToken { get; set; } 
+
+        /// <summary>Required. The full url path that the request will be sent to.
+        ///
+        /// This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and
+        /// `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The
+        /// maximum allowed URL length is 2083 characters after encoding.
+        ///
+        /// The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not
+        /// counted as a separate attempt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2498,6 +2587,47 @@ namespace Google.Apis.CloudTasks.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Contains information needed for generating an [OAuth
+    /// token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally
+    /// only be used when calling Google APIs hosted on *.googleapis.com.</summary>
+    public class OAuthToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>OAuth scope to be used for generating OAuth access token. If not specified,
+        /// "https://www.googleapis.com/auth/cloud-platform" will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; } 
+
+        /// <summary>[Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for
+        /// generating OAuth token. The service account must be within the same project as the queue. The caller must
+        /// have iam.serviceAccounts.actAs permission for the service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains information needed for generating an [OpenID Connect
+    /// token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used
+    /// for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token
+    /// yourself.</summary>
+    public class OidcToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Audience to be used when generating OIDC token. If not specified, the URI specified in target will
+        /// be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual string Audience { get; set; } 
+
+        /// <summary>[Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for
+        /// generating OIDC token. The service account must be within the same project as the queue. The caller must
+        /// have iam.serviceAccounts.actAs permission for the service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for PauseQueue.</summary>
     public class PauseQueueRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2546,8 +2676,8 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
         /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
-        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if either of incoming or
-        /// stored policy does not meet the version requirements.</summary>
+        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if the incoming policy version
+        /// does not meet the requirements for modifying the stored policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -2556,11 +2686,12 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
         /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
-        /// policy, modifying a conditional binding, or removing a conditional binding from the stored conditional
-        /// policy. Operations on non-conditional policies may specify any valid value or leave the field unset.
+        /// policy, modifying a conditional binding, or removing a binding (conditional or unconditional) from the
+        /// stored conditional policy. Operations on non-conditional policies may specify any valid value or leave the
+        /// field unset.
         ///
-        /// If no etag is provided in the call to `setIamPolicy`, any version compliance checks on the incoming and/or
-        /// stored policy is skipped.</summary>
+        /// If no etag is provided in the call to `setIamPolicy`, version compliance checks against the stored policy is
+        /// skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -2578,7 +2709,7 @@ namespace Google.Apis.CloudTasks.v2.Data
     public class Queue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Overrides for task-level app_engine_routing. These settings apply only to App Engine tasks in this
-        /// queue.
+        /// queue. Http tasks are not affected.
         ///
         /// If set, `app_engine_routing_override` is used for all App Engine tasks in the queue, no matter what the
         /// setting is for the task-level app_engine_routing.</summary>
@@ -2886,6 +3017,8 @@ namespace Google.Apis.CloudTasks.v2.Data
         ///
         /// The default and maximum values depend on the type of request:
         ///
+        /// * For HTTP tasks, the default is 10 minutes. The deadline must be in the interval [15 seconds, 30 minutes].
+        ///
         /// * For App Engine tasks, 0 indicates that the request has the default deadline. The default deadline depends
         /// on the [scaling type](https://cloud.google.com/appengine/docs/standard/go/how-instances-are-
         /// managed#instance_scaling) of the service: 10 minutes for standard apps with automatic scaling, 24 hours for
@@ -2905,6 +3038,12 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// Only dispatch_time will be set. The other Attempt information is not retained by Cloud Tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstAttempt")]
         public virtual Attempt FirstAttempt { get; set; } 
+
+        /// <summary>HTTP request that is sent to the worker.
+        ///
+        /// An HTTP task is a task that has HttpRequest set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpRequest")]
+        public virtual HttpRequest HttpRequest { get; set; } 
 
         /// <summary>Output only. The status of the task's last attempt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastAttempt")]

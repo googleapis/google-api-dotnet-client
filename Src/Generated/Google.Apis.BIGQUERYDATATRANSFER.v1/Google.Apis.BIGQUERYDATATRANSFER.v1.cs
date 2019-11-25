@@ -1754,14 +1754,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional version info. If users want to find a very recent access token, that is,
-                    /// immediately after approving access, users have to set the version_info claim in the token
-                    /// request. To obtain the version_info, users must use the "none+gsession" response type. which be
-                    /// return a version_info back in the authorization response which be be put in a JWT claim in the
-                    /// token request.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("versionInfo", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string VersionInfo { get; set; }
-
                     /// <summary>Optional OAuth2 authorization code to use with this transfer configuration. If it is
                     /// provided, the transfer configuration will be associated with the authorizing user. In order to
                     /// obtain authorization_code, please make a request to
@@ -1787,6 +1779,14 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// account.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("serviceAccountName", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ServiceAccountName { get; set; }
+
+                    /// <summary>Optional version info. If users want to find a very recent access token, that is,
+                    /// immediately after approving access, users have to set the version_info claim in the token
+                    /// request. To obtain the version_info, users must use the "none+gsession" response type. which be
+                    /// return a version_info back in the authorization response which be be put in a JWT claim in the
+                    /// token request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("versionInfo", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string VersionInfo { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1828,15 +1828,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "versionInfo", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "versionInfo",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "authorizationCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "authorizationCode",
@@ -1858,6 +1849,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             "serviceAccountName", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "serviceAccountName",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "versionInfo", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "versionInfo",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3028,6 +3028,20 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Optional service account name. If this field is set and "service_account_name" is set in
+                /// update_mask, transfer config will be updated to use this service account credentials. It requires
+                /// that requesting user calling this API has permissions to act as this service account.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("serviceAccountName", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ServiceAccountName { get; set; }
+
+                /// <summary>Optional version info. If users want to find a very recent access token, that is,
+                /// immediately after approving access, users have to set the version_info claim in the token request.
+                /// To obtain the version_info, users must use the "none+gsession" response type. which be return a
+                /// version_info back in the authorization response which be be put in a JWT claim in the token
+                /// request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("versionInfo", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string VersionInfo { get; set; }
+
                 /// <summary>Optional OAuth2 authorization code to use with this transfer configuration. If it is
                 /// provided, the transfer configuration will be associated with the authorizing user. In order to
                 /// obtain authorization_code, please make a request to
@@ -3046,20 +3060,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// <summary>Required. Required list of fields to be updated in this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
-                /// <summary>Optional service account name. If this field is set and "service_account_name" is set in
-                /// update_mask, transfer config will be updated to use this service account credentials. It requires
-                /// that requesting user calling this API has permissions to act as this service account.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("serviceAccountName", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ServiceAccountName { get; set; }
-
-                /// <summary>Optional version info. If users want to find a very recent access token, that is,
-                /// immediately after approving access, users have to set the version_info claim in the token request.
-                /// To obtain the version_info, users must use the "none+gsession" response type. which be return a
-                /// version_info back in the authorization response which be be put in a JWT claim in the token
-                /// request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("versionInfo", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string VersionInfo { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -3101,24 +3101,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             Pattern = @"^projects/[^/]+/transferConfigs/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "authorizationCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "authorizationCode",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "serviceAccountName", new Google.Apis.Discovery.Parameter
                         {
                             Name = "serviceAccountName",
@@ -3131,6 +3113,24 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         "versionInfo", new Google.Apis.Discovery.Parameter
                         {
                             Name = "versionInfo",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "authorizationCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "authorizationCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

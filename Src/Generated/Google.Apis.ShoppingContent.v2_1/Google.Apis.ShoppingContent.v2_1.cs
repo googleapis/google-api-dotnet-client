@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20191022 (1755)
+ *      <tr><th>API Rev<td>20191107 (1771)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -10586,7 +10586,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; } 
 
-        /// <summary>The reason for the cancellation. Orders that are cancelled with a noInventory reason will lead to
+        /// <summary>The reason for the cancellation. Orders that are canceled with a noInventory reason will lead to
         /// the removal of the product from Shopping Actions until you make an update to that product. This will not
         /// affect your Shopping ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
@@ -11193,10 +11193,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The carrier handling the shipment.
         ///
         /// Acceptable values for US are: - "gsx" - "ups" - "usps" - "fedex" - "dhl" - "ecourier" - "cxt" - "google" -
-        /// "ontrac" - "emsy" - "ont" - "deliv" - "dynamex" - "lasership" - "mpx" - "uds" - "efw" - "jd logistics"
+        /// "ontrac" - "emsy" - "ont" - "deliv" - "dynamex" - "lasership" - "mpx" - "uds" - "efw" - "yunexpress" -
+        /// "china post" - "china ems" - "singapore post" - "pos malaysia" - "postnl" - "ptt" - "eub" - "chukou1"
         ///
         /// Acceptable values for FR are: - "colissimo" - "chronopost" - "gls" - "dpd" - "bpost" - "colis prive" -
-        /// "boxtal" - "geodis" - "tnt" - "la poste"</summary>
+        /// "boxtal" - "geodis" - "tnt" - "la poste" - "ups"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -11235,7 +11236,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class OrderShipmentLineItemShipment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the line item that is shipped. Either lineItemId or productId is required.</summary>
+        /// <summary>The ID of the line item that is shipped. This value is assigned by Google when an order is created.
+        /// Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Policy Troubleshooter API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20191102 (1766)
+ *      <tr><th>API Rev<td>20191118 (1782)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -683,8 +683,8 @@ namespace Google.Apis.PolicyTroubleshooter.v1beta.Data
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
         /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
-        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if either of incoming or
-        /// stored policy does not meet the version requirements.</summary>
+        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if the incoming policy version
+        /// does not meet the requirements for modifying the stored policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -693,11 +693,12 @@ namespace Google.Apis.PolicyTroubleshooter.v1beta.Data
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
         /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
-        /// policy, modifying a conditional binding, or removing a conditional binding from the stored conditional
-        /// policy. Operations on non-conditional policies may specify any valid value or leave the field unset.
+        /// policy, modifying a conditional binding, or removing a binding (conditional or unconditional) from the
+        /// stored conditional policy. Operations on non-conditional policies may specify any valid value or leave the
+        /// field unset.
         ///
-        /// If no etag is provided in the call to `setIamPolicy`, any version compliance checks on the incoming and/or
-        /// stored policy is skipped.</summary>
+        /// If no etag is provided in the call to `setIamPolicy`, version compliance checks against the stored policy is
+        /// skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

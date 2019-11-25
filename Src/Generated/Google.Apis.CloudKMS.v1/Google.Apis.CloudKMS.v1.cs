@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kms/'>Cloud Key Management Service (KMS) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191101 (1765)
+ *      <tr><th>API Rev<td>20191119 (1783)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kms/'>
  *              https://cloud.google.com/kms/</a>
@@ -1667,24 +1667,6 @@ namespace Google.Apis.CloudKMS.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. Optional pagination token, returned earlier via
-                        /// ListCryptoKeysResponse.next_page_token.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Optional. Optional limit on the number of CryptoKeys to include in the response.
-                        /// Further CryptoKeys can subsequently be obtained by including the
-                        /// ListCryptoKeysResponse.next_page_token in a subsequent request.  If unspecified, the server
-                        /// will pick an appropriate default.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>Optional. Specify how the results should be sorted. If not specified, the results
-                        /// will be sorted in the default order. For more information, see [Sorting and filtering list
-                        /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string OrderBy { get; set; }
-
                         /// <summary>The fields of the primary version to include in the response.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("versionView", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<VersionViewEnum> VersionView { get; set; }
@@ -1703,6 +1685,24 @@ namespace Google.Apis.CloudKMS.v1
                         /// /sorting-and-filtering).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. Optional pagination token, returned earlier via
+                        /// ListCryptoKeysResponse.next_page_token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Optional. Optional limit on the number of CryptoKeys to include in the response.
+                        /// Further CryptoKeys can subsequently be obtained by including the
+                        /// ListCryptoKeysResponse.next_page_token in a subsequent request.  If unspecified, the server
+                        /// will pick an appropriate default.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. Specify how the results should be sorted. If not specified, the results
+                        /// will be sorted in the default order. For more information, see [Sorting and filtering list
+                        /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1738,6 +1738,24 @@ namespace Google.Apis.CloudKMS.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "versionView", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "versionView",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -1759,24 +1777,6 @@ namespace Google.Apis.CloudKMS.v1
                                 "orderBy", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "orderBy",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "versionView", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "versionView",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3203,10 +3203,6 @@ namespace Google.Apis.CloudKMS.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -3214,6 +3210,10 @@ namespace Google.Apis.CloudKMS.v1
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3249,15 +3249,6 @@ namespace Google.Apis.CloudKMS.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -3270,6 +3261,15 @@ namespace Google.Apis.CloudKMS.v1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3463,7 +3463,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         ///
         /// The CryptoKey's primary version can be updated via UpdateCryptoKeyPrimaryVersion.
         ///
-        /// All keys with purpose ENCRYPT_DECRYPT have a primary. For other keys, this field will be omitted.</summary>
+        /// Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]
         public virtual CryptoKeyVersion Primary { get; set; } 
 
@@ -4021,8 +4021,8 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
         /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
-        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if either of incoming or
-        /// stored policy does not meet the version requirements.</summary>
+        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if the incoming policy version
+        /// does not meet the requirements for modifying the stored policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -4031,11 +4031,12 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
         /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
-        /// policy, modifying a conditional binding, or removing a conditional binding from the stored conditional
-        /// policy. Operations on non-conditional policies may specify any valid value or leave the field unset.
+        /// policy, modifying a conditional binding, or removing a binding (conditional or unconditional) from the
+        /// stored conditional policy. Operations on non-conditional policies may specify any valid value or leave the
+        /// field unset.
         ///
-        /// If no etag is provided in the call to `setIamPolicy`, any version compliance checks on the incoming and/or
-        /// stored policy is skipped.</summary>
+        /// If no etag is provided in the call to `setIamPolicy`, version compliance checks against the stored policy is
+        /// skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

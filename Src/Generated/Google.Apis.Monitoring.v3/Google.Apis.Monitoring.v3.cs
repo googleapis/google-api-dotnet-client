@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20191102 (1766)
+ *      <tr><th>API Rev<td>20191118 (1782)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -65,6 +65,7 @@ namespace Google.Apis.Monitoring.v3
             : base(initializer)
         {
             projects = new ProjectsResource(this);
+            services = new ServicesResource(this);
             uptimeCheckIps = new UptimeCheckIpsResource(this);
         }
 
@@ -154,6 +155,14 @@ namespace Google.Apis.Monitoring.v3
         public virtual ProjectsResource Projects
         {
             get { return projects; }
+        }
+
+        private readonly ServicesResource services;
+
+        /// <summary>Gets the Services resource.</summary>
+        public virtual ServicesResource Services
+        {
+            get { return services; }
         }
 
         private readonly UptimeCheckIpsResource uptimeCheckIps;
@@ -630,6 +639,11 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>If provided, this field specifies the criteria that must be met by alert policies to be
+                /// included in the response.For more details, see sorting and filtering.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>A comma-separated list of fields by which to sort the result. Supports the same set of
                 /// field references as the filter field. Entries can be prefixed with a minus sign to sort by the field
                 /// in descending order.For more details, see sorting and filtering.</summary>
@@ -645,11 +659,6 @@ namespace Google.Apis.Monitoring.v3
                 /// <summary>The maximum number of results to return in a single response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>If provided, this field specifies the criteria that must be met by alert policies to be
-                /// included in the response.For more details, see sorting and filtering.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -685,6 +694,15 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -706,15 +724,6 @@ namespace Google.Apis.Monitoring.v3
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -995,17 +1004,6 @@ namespace Google.Apis.Monitoring.v3
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Required. The end of the time interval.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object IntervalEndTime { get; set; }
-
-                    /// <summary>An optional list filter describing the members to be returned. The filter may reference
-                    /// the type, labels, and metadata of monitored resources that comprise the group. For example, to
-                    /// return only resources representing Compute Engine VM instances, use this filter: resource.type =
-                    /// "gce_instance" </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
                     /// previous call to this method. Using this field causes the method to return additional results
                     /// from the previous method call.</summary>
@@ -1020,6 +1018,17 @@ namespace Google.Apis.Monitoring.v3
                     /// the end time. The start time must not be later than the end time.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object IntervalStartTime { get; set; }
+
+                    /// <summary>Required. The end of the time interval.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object IntervalEndTime { get; set; }
+
+                    /// <summary>An optional list filter describing the members to be returned. The filter may reference
+                    /// the type, labels, and metadata of monitored resources that comprise the group. For example, to
+                    /// return only resources representing Compute Engine VM instances, use this filter: resource.type =
+                    /// "gce_instance" </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1055,24 +1064,6 @@ namespace Google.Apis.Monitoring.v3
                                 Pattern = @"^projects/[^/]+/groups/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "interval.endTime", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "interval.endTime",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1094,6 +1085,24 @@ namespace Google.Apis.Monitoring.v3
                             "interval.startTime", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "interval.startTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "interval.endTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "interval.endTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1351,6 +1360,18 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
+                /// parentName field contains the group name. If no groups have this parent, the results are
+                /// empty.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("childrenOfGroup", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ChildrenOfGroup { get; set; }
+
+                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns the descendants
+                /// of the specified group. This is a superset of the results returned by the childrenOfGroup filter,
+                /// and includes children-of-children, and so forth.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("descendantsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DescendantsOfGroup { get; set; }
+
                 /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
                 /// previous call to this method. Using this field causes the method to return additional results from
                 /// the previous method call.</summary>
@@ -1367,18 +1388,6 @@ namespace Google.Apis.Monitoring.v3
                 /// the results are empty.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("ancestorsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AncestorsOfGroup { get; set; }
-
-                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
-                /// parentName field contains the group name. If no groups have this parent, the results are
-                /// empty.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("childrenOfGroup", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ChildrenOfGroup { get; set; }
-
-                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns the descendants
-                /// of the specified group. This is a superset of the results returned by the childrenOfGroup filter,
-                /// and includes children-of-children, and so forth.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("descendantsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string DescendantsOfGroup { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1414,6 +1423,24 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "childrenOfGroup", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "childrenOfGroup",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "descendantsOfGroup", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "descendantsOfGroup",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1435,24 +1462,6 @@ namespace Google.Apis.Monitoring.v3
                         "ancestorsOfGroup", new Google.Apis.Discovery.Parameter
                         {
                             Name = "ancestorsOfGroup",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "childrenOfGroup", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "childrenOfGroup",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "descendantsOfGroup", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "descendantsOfGroup",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2634,11 +2643,6 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>If provided, this field specifies the criteria that must be met by notification channels to
-                /// be included in the response.For more details, see sorting and filtering.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>A comma-separated list of fields by which to sort the result. Supports the same set of
                 /// fields as in filter. Entries can be prefixed with a minus sign to sort in descending rather than
                 /// ascending order.For more details, see sorting and filtering.</summary>
@@ -2654,6 +2658,11 @@ namespace Google.Apis.Monitoring.v3
                 /// number, a reasonable value will be chosen by the service.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>If provided, this field specifies the criteria that must be met by notification channels to
+                /// be included in the response.For more details, see sorting and filtering.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2689,15 +2698,6 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -2719,6 +2719,15 @@ namespace Google.Apis.Monitoring.v3
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3080,19 +3089,6 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Specifies which information is returned about the time series.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ViewEnum> View { get; set; }
-
-                /// <summary>Specifies which information is returned about the time series.</summary>
-                public enum ViewEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("FULL")]
-                    FULL,
-                    [Google.Apis.Util.StringValueAttribute("HEADERS")]
-                    HEADERS,
-                }
-
                 /// <summary>The set of fields to preserve when crossSeriesReducer is specified. The groupByFields
                 /// determine how the time series are partitioned into subsets prior to applying the aggregation
                 /// function. Each subset contains time series that have the same value for each of the grouping fields.
@@ -3251,6 +3247,19 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object IntervalStartTime { get; set; }
 
+                /// <summary>Specifies which information is returned about the time series.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>Specifies which information is returned about the time series.</summary>
+                public enum ViewEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("FULL")]
+                    FULL,
+                    [Google.Apis.Util.StringValueAttribute("HEADERS")]
+                    HEADERS,
+                }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -3283,15 +3292,6 @@ namespace Google.Apis.Monitoring.v3
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "aggregation.groupByFields", new Google.Apis.Discovery.Parameter
@@ -3378,6 +3378,15 @@ namespace Google.Apis.Monitoring.v3
                         "interval.startTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "interval.startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3798,6 +3807,896 @@ namespace Google.Apis.Monitoring.v3
         }
     }
 
+    /// <summary>The "services" collection of methods.</summary>
+    public class ServicesResource
+    {
+        private const string Resource = "services";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ServicesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            serviceLevelObjectives = new ServiceLevelObjectivesResource(service);
+
+        }
+
+        private readonly ServiceLevelObjectivesResource serviceLevelObjectives;
+
+        /// <summary>Gets the ServiceLevelObjectives resource.</summary>
+        public virtual ServiceLevelObjectivesResource ServiceLevelObjectives
+        {
+            get { return serviceLevelObjectives; }
+        }
+
+        /// <summary>The "serviceLevelObjectives" collection of methods.</summary>
+        public class ServiceLevelObjectivesResource
+        {
+            private const string Resource = "serviceLevelObjectives";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ServiceLevelObjectivesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Create a ServiceLevelObjective for the given Service.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Resource name of the parent Service. Of the form
+            /// projects/{project_id}/services/{service_id}.</param>
+            public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.ServiceLevelObjective body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Create a ServiceLevelObjective for the given Service.</summary>
+            public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ServiceLevelObjective>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.ServiceLevelObjective body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of the parent Service. Of the form
+                /// projects/{project_id}/services/{service_id}.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted,
+                /// an id will be generated instead. Must match the pattern a-z0-9-+</summary>
+                [Google.Apis.Util.RequestParameterAttribute("serviceLevelObjectiveId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ServiceLevelObjectiveId { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Monitoring.v3.Data.ServiceLevelObjective Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+parent}/serviceLevelObjectives"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/services/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "serviceLevelObjectiveId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "serviceLevelObjectiveId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Delete the given ServiceLevelObjective.</summary>
+            /// <param name="name">Resource name of the ServiceLevelObjective to delete. Of the form
+            /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Delete the given ServiceLevelObjective.</summary>
+            public class DeleteRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of the ServiceLevelObjective to delete. Of the form
+                /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/services/[^/]+/serviceLevelObjectives/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Get a ServiceLevelObjective by name.</summary>
+            /// <param name="name">Resource name of the ServiceLevelObjective to get. Of the form
+            /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Get a ServiceLevelObjective by name.</summary>
+            public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ServiceLevelObjective>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of the ServiceLevelObjective to get. Of the form
+                /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>View of the ServiceLevelObjective to return. If DEFAULT, return the ServiceLevelObjective
+                /// as originally defined. If EXPLICIT and the ServiceLevelObjective is defined in terms of a BasicSli,
+                /// replace the BasicSli with a RequestBasedSli spelling out how the SLI is computed.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>View of the ServiceLevelObjective to return. If DEFAULT, return the ServiceLevelObjective
+                /// as originally defined. If EXPLICIT and the ServiceLevelObjective is defined in terms of a BasicSli,
+                /// replace the BasicSli with a RequestBasedSli spelling out how the SLI is computed.</summary>
+                public enum ViewEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
+                    VIEWUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("FULL")]
+                    FULL,
+                    [Google.Apis.Util.StringValueAttribute("EXPLICIT")]
+                    EXPLICIT__,
+                }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/services/[^/]+/serviceLevelObjectives/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>List the ServiceLevelObjectives for the given Service.</summary>
+            /// <param name="parent">Resource name of the parent Service. Of the form
+            /// projects/{project_id}/services/{service_id}.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>List the ServiceLevelObjectives for the given Service.</summary>
+            public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListServiceLevelObjectivesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of the parent Service. Of the form
+                /// projects/{project_id}/services/{service_id}.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>A filter specifying what ServiceLevelObjectives to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
+                /// previous call to this method. Using this field causes the method to return additional results from
+                /// the previous method call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>A non-negative number that is the maximum number of results to return. When 0, use default
+                /// page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>View of the ServiceLevelObjectives to return. If DEFAULT, return each ServiceLevelObjective
+                /// as originally defined. If EXPLICIT and the ServiceLevelObjective is defined in terms of a BasicSli,
+                /// replace the BasicSli with a RequestBasedSli spelling out how the SLI is computed.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>View of the ServiceLevelObjectives to return. If DEFAULT, return each ServiceLevelObjective
+                /// as originally defined. If EXPLICIT and the ServiceLevelObjective is defined in terms of a BasicSli,
+                /// replace the BasicSli with a RequestBasedSli spelling out how the SLI is computed.</summary>
+                public enum ViewEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
+                    VIEWUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("FULL")]
+                    FULL,
+                    [Google.Apis.Util.StringValueAttribute("EXPLICIT")]
+                    EXPLICIT__,
+                }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+parent}/serviceLevelObjectives"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/services/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Update the given ServiceLevelObjective.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Resource name for this ServiceLevelObjective. Of the form
+            /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.</param>
+            public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.ServiceLevelObjective body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Update the given ServiceLevelObjective.</summary>
+            public class PatchRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ServiceLevelObjective>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.ServiceLevelObjective body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name for this ServiceLevelObjective. Of the form
+                /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>A set of field paths defining which fields to use for the update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Monitoring.v3.Data.ServiceLevelObjective Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+/[^/]+/services/[^/]+/serviceLevelObjectives/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+
+        /// <summary>Create a Service.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">Resource name of the parent workspace. Of the form projects/{project_id}.</param>
+        public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.Service body, string parent)
+        {
+            return new CreateRequest(service, body, parent);
+        }
+
+        /// <summary>Create a Service.</summary>
+        public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Service>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.Service body, string parent)
+                : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Resource name of the parent workspace. Of the form projects/{project_id}.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Optional. The Service id to use for this Service. If omitted, an id will be generated instead.
+            /// Must match the pattern a-z0-9-+</summary>
+            [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ServiceId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Monitoring.v3.Data.Service Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v3/{+parent}/services"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "serviceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Soft delete this Service.</summary>
+        /// <param name="name">Resource name of the Service to delete. Of the form
+        /// projects/{project_id}/service/{service_id}.</param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(service, name);
+        }
+
+        /// <summary>Soft delete this Service.</summary>
+        public class DeleteRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>Resource name of the Service to delete. Of the form
+            /// projects/{project_id}/service/{service_id}.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v3/{+name}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/services/[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Get the named Service.</summary>
+        /// <param name="name">Resource name of the Service. Of the form
+        /// projects/{project_id}/services/{service_id}.</param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>Get the named Service.</summary>
+        public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Service>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>Resource name of the Service. Of the form
+            /// projects/{project_id}/services/{service_id}.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v3/{+name}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/services/[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>List Services for this workspace.</summary>
+        /// <param name="parent">Resource name of the parent Workspace. Of the form projects/{project_id}.</param>
+        public virtual ListRequest List(string parent)
+        {
+            return new ListRequest(service, parent);
+        }
+
+        /// <summary>List Services for this workspace.</summary>
+        public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListServicesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                : base(service)
+            {
+                Parent = parent;
+                InitParameters();
+            }
+
+
+            /// <summary>Resource name of the parent Workspace. Of the form projects/{project_id}.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>A filter specifying what Services to return. The filter currently supports the following
+            /// fields: - `identifier_case` - `app_engine.module_id` - `cloud_endpoints.service` -
+            /// `cluster_istio.location` - `cluster_istio.cluster_name` - `cluster_istio.service_namespace` -
+            /// `cluster_istio.service_name` identifier_case refers to which option in the identifier oneof is
+            /// populated. For example, the filter identifier_case = "CUSTOM" would match all services with a value for
+            /// the custom field. Valid options are "CUSTOM", "APP_ENGINE", "CLOUD_ENDPOINTS", and
+            /// "CLUSTER_ISTIO".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a previous
+            /// call to this method. Using this field causes the method to return additional results from the previous
+            /// method call.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>A non-negative number that is the maximum number of results to return. When 0, use default page
+            /// size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v3/{+parent}/services"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Update this Service.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Resource name for this Service. Of the form
+        /// projects/{project_id}/services/{service_id}.</param>
+        public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.Service body, string name)
+        {
+            return new PatchRequest(service, body, name);
+        }
+
+        /// <summary>Update this Service.</summary>
+        public class PatchRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Service>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.Service body, string name)
+                : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Resource name for this Service. Of the form
+            /// projects/{project_id}/services/{service_id}.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>A set of field paths defining which fields to use for the update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Monitoring.v3.Data.Service Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v3/{+name}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/services/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "uptimeCheckIps" collection of methods.</summary>
     public class UptimeCheckIpsResource
     {
@@ -4017,6 +4916,26 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>App Engine service. Learn more at https://cloud.google.com/appengine.</summary>
+    public class AppEngine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the App Engine module underlying this service. Corresponds to the module_id resource
+        /// label in the gae_app monitored resource:
+        /// https://cloud.google.com/monitoring/api/resources#tag_gae_app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moduleId")]
+        public virtual string ModuleId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Future parameters for the availability SLI.</summary>
+    public class AvailabilityCriteria : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The authentication parameters to provide to the specified resource or URL that requires a username and
     /// password. Currently, only Basic HTTP authentication (https://tools.ietf.org/html/rfc7617) is supported in Uptime
     /// checks.</summary>
@@ -4029,6 +4948,47 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The username to use when authenticating with the HTTP server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An SLI measuring performance on a well-known service type. Performance will be computed on the basis of
+    /// pre-defined metrics. The type of the service_resource determines the metrics to use and the
+    /// service_resource.labels and metric_labels are used to construct a monitoring filter to filter that metric down
+    /// to just the data relevant to this service.</summary>
+    public class BasicSli : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Good service is defined to be the count of requests made to this service that return
+        /// successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availability")]
+        public virtual AvailabilityCriteria Availability { get; set; } 
+
+        /// <summary>Good service is defined to be the count of requests made to this service that are fast enough with
+        /// respect to latency.threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latency")]
+        public virtual LatencyCriteria Latency { get; set; } 
+
+        /// <summary>OPTIONAL: The set of locations to which this SLI is relevant. Telemetry from other locations will
+        /// not be used to calculate performance for this SLI. If omitted, this SLI applies to all locations in which
+        /// the Service has activity. For service types that don't support breaking down by location, setting this field
+        /// will result in an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual System.Collections.Generic.IList<string> Location { get; set; } 
+
+        /// <summary>OPTIONAL: The set of RPCs to which this SLI is relevant. Telemetry from other methods will not be
+        /// used to calculate performance for this SLI. If omitted, this SLI applies to all the Service's methods. For
+        /// service types that don't support breaking down by method, setting this field will result in an
+        /// error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual System.Collections.Generic.IList<string> Method { get; set; } 
+
+        /// <summary>OPTIONAL: The set of API versions to which this SLI is relevant. Telemetry from other API versions
+        /// will not be used to calculate performance for this SLI. If omitted, this SLI applies to all API versions.
+        /// For service types that don't support breaking down by version, setting this field will result in an
+        /// error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Collections.Generic.IList<string> Version { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4057,6 +5017,46 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The linear bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linearBuckets")]
         public virtual Linear LinearBuckets { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.</summary>
+    public class CloudEndpoints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the Cloud Endpoints service underlying this service. Corresponds to the service
+        /// resource label in the api monitored resource:
+        /// https://cloud.google.com/monitoring/api/resources#tag_api</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Istio service. Learn more at http://istio.io.</summary>
+    public class ClusterIstio : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the
+        /// cluster_name resource label in k8s_cluster resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
+        public virtual string ClusterName { get; set; } 
+
+        /// <summary>The location of the Kubernetes cluster in which this Istio service is defined. Corresponds to the
+        /// location resource label in k8s_cluster resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>The name of the Istio service underlying this service. Corresponds to the destination_service_name
+        /// metric label in Istio metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; } 
+
+        /// <summary>The namespace of the Istio service underlying this service. Corresponds to the
+        /// destination_service_namespace metric label in Istio metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceNamespace")]
+        public virtual string ServiceNamespace { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4286,6 +5286,13 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Custom view of service telemetry. Currently a place-holder pending final design.</summary>
+    public class Custom : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Distribution contains summary statistics for a population of values. It optionally contains a histogram
     /// representing the distribution of those values across a set of buckets.The summary statistics are the count,
     /// mean, sum of the squared deviation from the mean, the minimum, and the maximum of the set of population of
@@ -4334,6 +5341,27 @@ namespace Google.Apis.Monitoring.v3.Data
         /// zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sumOfSquaredDeviation")]
         public virtual System.Nullable<double> SumOfSquaredDeviation { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total
+    /// service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
+    /// The computed good_service will be the count of values x in the Distribution such that range.min <= x <
+    /// range.max.</summary>
+    public class DistributionCut : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries
+        /// aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind =
+        /// CUMULATIVE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distributionFilter")]
+        public virtual string DistributionFilter { get; set; } 
+
+        /// <summary>Range of values considered "good." For a one-sided range, set one bound to an infinite
+        /// value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual GoogleMonitoringV3Range Range { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4547,6 +5575,23 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Range of numerical values, inclusive of min and exclusive of max. If the open range "< range.max" is
+    /// desired, set range.min = -infinity. If the open range ">= range.min" is desired, set range.max =
+    /// infinity.</summary>
+    public class GoogleMonitoringV3Range : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Range maximum.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("max")]
+        public virtual System.Nullable<double> Max { get; set; } 
+
+        /// <summary>Range minimum.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("min")]
+        public virtual System.Nullable<double> Min { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The description of a dynamic collection of monitored resources. Each group has a filter that is matched
     /// against monitored resources and their associated metadata. If a group's filter matches an available monitored
     /// resource, then that resource is a member of that group. Groups can contain any number of monitored resources,
@@ -4699,6 +5744,18 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Parameters for a latency threshold SLI.</summary>
+    public class LatencyCriteria : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Good service is defined to be the count of requests made to this service that return in no more
+        /// than threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual object Threshold { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
     /// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are
     /// num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset +
@@ -4837,6 +5894,38 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The notification channels defined for the specified project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationChannels")]
         public virtual System.Collections.Generic.IList<NotificationChannel> NotificationChannels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The ListServiceLevelObjectives response.</summary>
+    public class ListServiceLevelObjectivesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
+        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ServiceLevelObjectives matching the specified filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceLevelObjectives")]
+        public virtual System.Collections.Generic.IList<ServiceLevelObjective> ServiceLevelObjectives { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The ListServices response.</summary>
+    public class ListServicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
+        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The Services matching the specified filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<Service> Services { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5056,6 +6145,25 @@ namespace Google.Apis.Monitoring.v3.Data
         /// granularity have a smaller sampling period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("samplePeriod")]
         public virtual object SamplePeriod { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies
+    /// range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and
+    /// MetricKind = GAUGE.</summary>
+    public class MetricRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Range of values considered "good." For a one-sided range, set one bound to an infinite
+        /// value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual GoogleMonitoringV3Range Range { get; set; } 
+
+        /// <summary>A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying the TimeSeries
+        /// to use for evaluating window quality.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeries")]
+        public virtual string TimeSeries { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5356,6 +6464,26 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A PerformanceThreshold is used when each window is good when that window has a sufficiently high
+    /// performance.</summary>
+    public class PerformanceThreshold : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>BasicSli to evaluate to judge window quality.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basicSliPerformance")]
+        public virtual BasicSli BasicSliPerformance { get; set; } 
+
+        /// <summary>RequestBasedSli to evaluate to judge window quality.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("performance")]
+        public virtual RequestBasedSli Performance { get; set; } 
+
+        /// <summary>If window performance >= threshold, the window is counted as good.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
+        public virtual System.Nullable<double> Threshold { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A single data point in a time series.</summary>
     public class Point : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5391,6 +6519,24 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Service Level Indicators for which atomic units of service are counted directly.</summary>
+    public class RequestBasedSli : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>distribution_cut is used when good_service is a count of values aggregated in a Distribution that
+        /// fall into a good range. The total_service is the total count of all values aggregated in the
+        /// Distribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distributionCut")]
+        public virtual DistributionCut DistributionCut { get; set; } 
+
+        /// <summary>good_total_ratio is used when the ratio of good_service to total_service is computed from two
+        /// TimeSeries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goodTotalRatio")]
+        public virtual TimeSeriesRatio GoodTotalRatio { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The resource submessage for group checks. It can be used instead of a monitored resource, when multiple
     /// resources are being monitored.</summary>
     public class ResourceGroup : Google.Apis.Requests.IDirectResponseSchema
@@ -5411,6 +6557,110 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>The SendNotificationChannelVerificationCode request.</summary>
     public class SendNotificationChannelVerificationCodeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Service is a discrete, autonomous, and network-accessible unit, designed to solve an individual
+    /// concern (Wikipedia (https://en.wikipedia.org/wiki/Service-orientation)). In Stackdriver Monitoring, a Service
+    /// acts as the root resource under which operational aspects of the service are accessible.</summary>
+    public class Service : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type used for App Engine services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appEngine")]
+        public virtual AppEngine AppEngine { get; set; } 
+
+        /// <summary>Type used for Cloud Endpoints services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudEndpoints")]
+        public virtual CloudEndpoints CloudEndpoints { get; set; } 
+
+        /// <summary>Type used for Istio services that live in a Kubernetes cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterIstio")]
+        public virtual ClusterIstio ClusterIstio { get; set; } 
+
+        /// <summary>Custom service type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("custom")]
+        public virtual Custom Custom { get; set; } 
+
+        /// <summary>Name used for UI elements listing this Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Resource name for this Service. Of the form projects/{project_id}/services/{service_id}.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Configuration for how to query telemetry on a Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("telemetry")]
+        public virtual Telemetry Telemetry { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Service-Level Indicator (SLI) describes the "performance" of a service. For some services, the SLI is
+    /// well-defined. In such cases, the SLI can be described easily by referencing the well-known SLI and providing the
+    /// needed parameters. Alternatively, a "custom" SLI can be defined with a query to the underlying metric store. An
+    /// SLI is defined to be good_service / total_service over any queried time interval. The value of performance
+    /// always falls into the range 0 <= performance <= 1. A custom SLI describes how to compute this ratio, whether
+    /// this is by dividing values from a pair of time series, cutting a Distribution into good and bad counts, or
+    /// counting time windows in which the service complies with a criterion. For separation of concerns, a single
+    /// Service-Level Indicator measures performance for only one aspect of service quality, such as fraction of
+    /// successful queries or fast-enough queries.</summary>
+    public class ServiceLevelIndicator : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Basic SLI on a well-known service type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basicSli")]
+        public virtual BasicSli BasicSli { get; set; } 
+
+        /// <summary>Request-based SLIs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestBased")]
+        public virtual RequestBasedSli RequestBased { get; set; } 
+
+        /// <summary>Windows-based SLIs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowsBased")]
+        public virtual WindowsBasedSli WindowsBased { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Service-Level Objective (SLO) describes a level of desired good service. It consists of a service-
+    /// level indicator (SLI), a performance goal, and a period over which the objective is to be evaluated against that
+    /// goal. The SLO can use SLIs defined in a number of different manners. Typical SLOs might include "99% of requests
+    /// in each rolling week have latency below 200 milliseconds" or "99.5% of requests in each calendar month return
+    /// successfully."</summary>
+    public class ServiceLevelObjective : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK,
+        /// FORTNIGHT, and MONTH are supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calendarPeriod")]
+        public virtual string CalendarPeriod { get; set; } 
+
+        /// <summary>Name used for UI elements listing this SLO.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The fraction of service that must be good in order for this objective to be met. 0 < goal <=
+        /// 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goal")]
+        public virtual System.Nullable<double> Goal { get; set; } 
+
+        /// <summary>Resource name for this ServiceLevelObjective. Of the form
+        /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger
+        /// than 30 days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollingPeriod")]
+        public virtual object RollingPeriod { get; set; } 
+
+        /// <summary>The definition of good service, used to measure and calculate the quality of the Service's
+        /// performance with respect to a single aspect of service quality.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceLevelIndicator")]
+        public virtual ServiceLevelIndicator ServiceLevelIndicator { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -5475,6 +6725,18 @@ namespace Google.Apis.Monitoring.v3.Data
         /// within the monitored_resource) to construct the full URL. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for how to query telemetry on a Service.</summary>
+    public class Telemetry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The full name of the resource that defines this service. Formatted as described in
+        /// https://cloud.google.com/apis/design/resource_names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5548,6 +6810,35 @@ namespace Google.Apis.Monitoring.v3.Data
         /// the data in the points field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A TimeSeriesRatio specifies two TimeSeries to use for computing the good_service / total_service ratio.
+    /// The specified TimeSeries must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or
+    /// MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two of good, bad, and total, and the
+    /// relationship good_service + bad_service = total_service will be assumed.</summary>
+    public class TimeSeriesRatio : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries
+        /// quantifying bad service, either demanded service that was not provided or demanded service that was of
+        /// inadequate quality. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or
+        /// MetricKind = CUMULATIVE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("badServiceFilter")]
+        public virtual string BadServiceFilter { get; set; } 
+
+        /// <summary>A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries
+        /// quantifying good service provided. Must have ValueType = DOUBLE or ValueType = INT64 and must have
+        /// MetricKind = DELTA or MetricKind = CUMULATIVE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goodServiceFilter")]
+        public virtual string GoodServiceFilter { get; set; } 
+
+        /// <summary>A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries
+        /// quantifying total demanded service. Must have ValueType = DOUBLE or ValueType = INT64 and must have
+        /// MetricKind = DELTA or MetricKind = CUMULATIVE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalServiceFilter")]
+        public virtual string TotalServiceFilter { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5738,6 +7029,38 @@ namespace Google.Apis.Monitoring.v3.Data
         /// regarding the structure or format of the code).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A WindowsBasedSli defines good_service as the count of time windows for which the provided service was
+    /// of good quality. Criteria for determining if service was good are embedded in the window_criterion.</summary>
+    public class WindowsBasedSli : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries
+        /// with ValueType = BOOL. The window is good if any true values appear in the window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goodBadMetricFilter")]
+        public virtual string GoodBadMetricFilter { get; set; } 
+
+        /// <summary>A window is good if its performance is high enough.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goodTotalRatioThreshold")]
+        public virtual PerformanceThreshold GoodTotalRatioThreshold { get; set; } 
+
+        /// <summary>A window is good if the metric's value is in a good range, averaged across returned
+        /// streams.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricMeanInRange")]
+        public virtual MetricRange MetricMeanInRange { get; set; } 
+
+        /// <summary>A window is good if the metric's value is in a good range, summed across returned
+        /// streams.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricSumInRange")]
+        public virtual MetricRange MetricSumInRange { get; set; } 
+
+        /// <summary>Duration over which window quality is evaluated. Must be an integer fraction of a day and at least
+        /// 60s.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowPeriod")]
+        public virtual object WindowPeriod { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

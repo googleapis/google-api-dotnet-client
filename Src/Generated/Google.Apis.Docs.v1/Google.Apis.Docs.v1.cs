@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191029 (1762)
+ *      <tr><th>API Rev<td>20191113 (1777)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -804,7 +804,7 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Creates a Footer. The new footer will be applied to SectionStyle or the DocumentStyle.
+    /// <summary>Creates a Footer. The new footer will be applied to the DocumentStyle.
     ///
     /// If a footer of the specified type already exists then a 400 bad request error will be returned.</summary>
     public class CreateFooterRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -828,7 +828,7 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Creates a Header. The new header will be applied to SectionStyle or the DocumentStyle.
+    /// <summary>Creates a Header. The new header will be applied to the DocumentStyle.
     ///
     /// If a header of the specified type already exists then a 400 bad request error will be returned.</summary>
     public class CreateHeaderRequest : Google.Apis.Requests.IDirectResponseSchema

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>Firebase Cloud Messaging API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191030 (1763)
+ *      <tr><th>API Rev<td>20191119 (1783)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/cloud-messaging'>
  *              https://firebase.google.com/docs/cloud-messaging</a>
@@ -456,6 +456,12 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// google.firebase.fcm.v1.Message.data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IDictionary<string,string> Data { get; set; } 
+
+        /// <summary>If set to true, messages will be allowed to be delivered to the app while the device is in direct
+        /// boot mode. See [Support Direct Boot mode](https://developer.android.com/training/articles/direct-
+        /// boot).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directBootOk")]
+        public virtual System.Nullable<bool> DirectBootOk { get; set; } 
 
         /// <summary>Options for features provided by the FCM SDK for Android.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fcmOptions")]
@@ -944,6 +950,10 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     /// <summary>Options for features provided by the FCM SDK for Web.</summary>
     public class WebpushFcmOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Label associated with the message's analytics data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyticsLabel")]
+        public virtual string AnalyticsLabel { get; set; } 
+
         /// <summary>The link to open when the user clicks on the notification. For all URL values, HTTPS is
         /// required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]

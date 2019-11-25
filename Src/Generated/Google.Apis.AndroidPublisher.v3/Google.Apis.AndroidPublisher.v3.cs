@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20191102 (1766)
+ *      <tr><th>API Rev<td>20191113 (1777)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7153,6 +7153,18 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class Control : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("modRanges")]
+        public virtual System.Collections.Generic.IList<ModRange> ModRanges { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> VersionCodes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class CountryTargeting : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("countries")]
@@ -7601,6 +7613,33 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The text in the given `language`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class MendelSampling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("modRanges")]
+        public virtual System.Collections.Generic.IList<ModRange> ModRanges { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("modulus")]
+        public virtual System.Nullable<long> Modulus { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("salt")]
+        public virtual System.Nullable<int> Salt { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ModRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual System.Nullable<long> End { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual System.Nullable<long> Start { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8089,6 +8128,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
     public class TrackRelease : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("controls")]
+        public virtual System.Collections.Generic.IList<Control> Controls { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("countryTargeting")]
         public virtual CountryTargeting CountryTargeting { get; set; } 
 
@@ -8100,6 +8142,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The description of what is new in the app in this release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseNotes")]
         public virtual System.Collections.Generic.IList<LocalizedText> ReleaseNotes { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sampling")]
+        public virtual MendelSampling Sampling { get; set; } 
 
         /// <summary>The desired status of this release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]

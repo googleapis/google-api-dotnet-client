@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/uW0v7qtcbrarZ2Ljov2AeFqC07Y\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/1WnlVFZbiNK3xcDMHn8dwHwgifk\"",
  "discoveryVersion": "v1",
  "id": "civicinfo:v2",
  "name": "civicinfo",
  "canonicalName": "Civic Info",
  "version": "v2",
- "revision": "20191010",
+ "revision": "20191030",
  "title": "Google Civic Information API",
  "description": "Provides polling places, early vote locations, contest data, election officials, and government representatives for U.S. residential addresses.",
  "ownerDomain": "google.com",
@@ -581,88 +581,6 @@
     }
    }
   },
-  "LivegraphBacktraceRecordInfo": {
-   "id": "LivegraphBacktraceRecordInfo",
-   "type": "object",
-   "properties": {
-    "dataSourcePublishMsec": {
-     "type": "string",
-     "format": "int64"
-    },
-    "expId": {
-     "type": "string"
-    },
-    "expInfo": {
-     "$ref": "LivegraphBacktraceRecordInfoExpInfo"
-    },
-    "isRecon": {
-     "type": "boolean"
-    },
-    "isWlmThrottled": {
-     "type": "boolean"
-    },
-    "numberOfTriples": {
-     "type": "string",
-     "format": "int64"
-    },
-    "priority": {
-     "type": "string"
-    },
-    "process": {
-     "type": "string"
-    },
-    "proxyReceiveMsec": {
-     "type": "string",
-     "format": "int64"
-    },
-    "proxySentMsec": {
-     "type": "string",
-     "format": "int64"
-    },
-    "recordId": {
-     "type": "string"
-    },
-    "shouldMonitorLatency": {
-     "type": "boolean"
-    },
-    "subscriberReceiveMsec": {
-     "type": "string",
-     "format": "int64"
-    },
-    "topicBuildFinishMsec": {
-     "type": "string",
-     "format": "int64"
-    },
-    "topicBuildStartMsec": {
-     "type": "string",
-     "format": "int64"
-    },
-    "version": {
-     "type": "string"
-    }
-   }
-  },
-  "LivegraphBacktraceRecordInfoExpInfo": {
-   "id": "LivegraphBacktraceRecordInfoExpInfo",
-   "type": "object",
-   "properties": {
-    "deletedIns": {
-     "type": "array",
-     "items": {
-      "type": "string"
-     }
-    }
-   }
-  },
-  "MessageSet": {
-   "id": "MessageSet",
-   "type": "object",
-   "properties": {
-    "recordMessageSetExt": {
-     "$ref": "LivegraphBacktraceRecordInfo"
-    }
-   }
-  },
   "Office": {
    "id": "Office",
    "type": "object",
@@ -775,9 +693,6 @@
     },
     "metadata": {
      "$ref": "FieldMetadataProto"
-    },
-    "temporaryData": {
-     "$ref": "MessageSet"
     }
    }
   },

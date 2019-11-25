@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191101 (1765)
+ *      <tr><th>API Rev<td>20191121 (1785)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>
  *              https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory</a>
@@ -659,19 +659,6 @@ namespace Google.Apis.CloudAsset.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>Start time of the time window (exclusive).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object ReadTimeWindowStartTime { get; set; }
-
-            /// <summary>A list of the full names of the assets. For example:
-            /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
-            /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
-            ///
-            /// The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is
-            /// 100 in one request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("assetNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> AssetNames { get; set; }
-
             /// <summary>Optional. The content type.</summary>
             [Google.Apis.Util.RequestParameterAttribute("contentType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ContentTypeEnum> ContentType { get; set; }
@@ -690,6 +677,19 @@ namespace Google.Apis.CloudAsset.v1beta1
             /// <summary>End time of the time window (inclusive). Current timestamp if not specified.</summary>
             [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.endTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadTimeWindowEndTime { get; set; }
+
+            /// <summary>Start time of the time window (exclusive).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadTimeWindowStartTime { get; set; }
+
+            /// <summary>A list of the full names of the assets. For example:
+            /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
+            /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
+            ///
+            /// The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is
+            /// 100 in one request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("assetNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> AssetNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -725,24 +725,6 @@ namespace Google.Apis.CloudAsset.v1beta1
                         Pattern = @"^organizations/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "readTimeWindow.startTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "readTimeWindow.startTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "assetNames", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "assetNames",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "contentType", new Google.Apis.Discovery.Parameter
                     {
                         Name = "contentType",
@@ -755,6 +737,24 @@ namespace Google.Apis.CloudAsset.v1beta1
                     "readTimeWindow.endTime", new Google.Apis.Discovery.Parameter
                     {
                         Name = "readTimeWindow.endTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "readTimeWindow.startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "readTimeWindow.startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "assetNames", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "assetNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -977,19 +977,6 @@ namespace Google.Apis.CloudAsset.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>Start time of the time window (exclusive).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object ReadTimeWindowStartTime { get; set; }
-
-            /// <summary>A list of the full names of the assets. For example:
-            /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
-            /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
-            ///
-            /// The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is
-            /// 100 in one request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("assetNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> AssetNames { get; set; }
-
             /// <summary>Optional. The content type.</summary>
             [Google.Apis.Util.RequestParameterAttribute("contentType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ContentTypeEnum> ContentType { get; set; }
@@ -1008,6 +995,19 @@ namespace Google.Apis.CloudAsset.v1beta1
             /// <summary>End time of the time window (inclusive). Current timestamp if not specified.</summary>
             [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.endTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadTimeWindowEndTime { get; set; }
+
+            /// <summary>Start time of the time window (exclusive).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadTimeWindowStartTime { get; set; }
+
+            /// <summary>A list of the full names of the assets. For example:
+            /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
+            /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
+            ///
+            /// The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is
+            /// 100 in one request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("assetNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> AssetNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1043,24 +1043,6 @@ namespace Google.Apis.CloudAsset.v1beta1
                         Pattern = @"^projects/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "readTimeWindow.startTime", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "readTimeWindow.startTime",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "assetNames", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "assetNames",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "contentType", new Google.Apis.Discovery.Parameter
                     {
                         Name = "contentType",
@@ -1073,6 +1055,24 @@ namespace Google.Apis.CloudAsset.v1beta1
                     "readTimeWindow.endTime", new Google.Apis.Discovery.Parameter
                     {
                         Name = "readTimeWindow.endTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "readTimeWindow.startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "readTimeWindow.startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "assetNames", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "assetNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1474,8 +1474,8 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
         /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
-        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if either of incoming or
-        /// stored policy does not meet the version requirements.</summary>
+        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if the incoming policy version
+        /// does not meet the requirements for modifying the stored policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -1484,11 +1484,12 @@ namespace Google.Apis.CloudAsset.v1beta1.Data
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
         /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
-        /// policy, modifying a conditional binding, or removing a conditional binding from the stored conditional
-        /// policy. Operations on non-conditional policies may specify any valid value or leave the field unset.
+        /// policy, modifying a conditional binding, or removing a binding (conditional or unconditional) from the
+        /// stored conditional policy. Operations on non-conditional policies may specify any valid value or leave the
+        /// field unset.
         ///
-        /// If no etag is provided in the call to `setIamPolicy`, any version compliance checks on the incoming and/or
-        /// stored policy is skipped.</summary>
+        /// If no etag is provided in the call to `setIamPolicy`, version compliance checks against the stored policy is
+        /// skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

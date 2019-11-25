@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/data-transfer/'>Admin Data Transfer API</a>
  *      <tr><th>API Version<td>datatransfer_v1
- *      <tr><th>API Rev<td>20190829 (1701)
+ *      <tr><th>API Rev<td>20191105 (1769)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/data-transfer/'>
  *              https://developers.google.com/admin-sdk/data-transfer/</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v2alpha1
- *      <tr><th>API Rev<td>20191102 (1766)
+ *      <tr><th>API Rev<td>20191121 (1785)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -989,6 +989,10 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
         public virtual System.Collections.Generic.IDictionary<string,object> Event__ { get; set; } 
 
+        /// <summary>A list of timestamped events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("events")]
+        public virtual System.Collections.Generic.IList<TimestampedEvent> Events { get; set; } 
+
         /// <summary>The operation has finished with the given result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual Status Result { get; set; } 
@@ -1583,6 +1587,21 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An event that occured in the operation assigned to the worker and the time of occurance.</summary>
+    public class TimestampedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The event data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Data { get; set; } 
+
+        /// <summary>The time when the event happened.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual object Timestamp { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

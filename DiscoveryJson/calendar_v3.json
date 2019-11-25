@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/P9zRwJfzHpK0xO1J5nVaD-OCW6A\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/GRm3c2ODiqPegIjaMSf2yLVHc90\"",
  "discoveryVersion": "v1",
  "id": "calendar:v3",
  "name": "calendar",
  "version": "v3",
- "revision": "20191103",
+ "revision": "20191117",
  "title": "Calendar API",
  "description": "Manipulates events and other calendar data.",
  "ownerDomain": "google.com",
@@ -717,7 +717,7 @@
     },
     "description": {
      "type": "string",
-     "description": "Description of the event. Optional."
+     "description": "Description of the event. Can contain HTML. Optional."
     },
     "end": {
      "$ref": "EventDateTime",
@@ -2088,7 +2088,7 @@
      "parameters": {
       "alwaysIncludeEmail": {
        "type": "boolean",
-       "description": "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False.",
+       "description": "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).",
        "location": "query"
       },
       "calendarId": {
@@ -2245,7 +2245,7 @@
      "parameters": {
       "alwaysIncludeEmail": {
        "type": "boolean",
-       "description": "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False.",
+       "description": "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).",
        "location": "query"
       },
       "calendarId": {
@@ -2330,7 +2330,7 @@
      "parameters": {
       "alwaysIncludeEmail": {
        "type": "boolean",
-       "description": "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False.",
+       "description": "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).",
        "location": "query"
       },
       "calendarId": {
@@ -2518,7 +2518,7 @@
      "parameters": {
       "alwaysIncludeEmail": {
        "type": "boolean",
-       "description": "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False.",
+       "description": "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).",
        "location": "query"
       },
       "calendarId": {
@@ -2648,7 +2648,7 @@
      "parameters": {
       "alwaysIncludeEmail": {
        "type": "boolean",
-       "description": "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False.",
+       "description": "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).",
        "location": "query"
       },
       "calendarId": {
@@ -2727,7 +2727,7 @@
      "parameters": {
       "alwaysIncludeEmail": {
        "type": "boolean",
-       "description": "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False.",
+       "description": "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).",
        "location": "query"
       },
       "calendarId": {

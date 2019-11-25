@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191107 (1771)
+ *      <tr><th>API Rev<td>20191109 (1773)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -940,6 +940,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -947,10 +951,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -986,6 +986,15 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -998,15 +1007,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3299,6 +3299,55 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Celebrity definition.</summary>
+    public class GoogleCloudVideointelligenceV1p3beta1Celebrity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Textual description of additional information about the celebrity, if applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The celebrity name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The resource name of the celebrity. Have the format `video-intelligence/kg-mid` indicates a
+        /// celebrity from preloaded gallery. kg-mid is the id in Google knowledge graph, which is unique for the
+        /// celebrity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Celebrity recognition annotation per video.</summary>
+    public class GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The tracks detected from the input video, including recognized celebrities and other detected faces
+        /// in the video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("celebrityTracks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1CelebrityTrack> CelebrityTracks { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The annotation result of a celebrity face track. RecognizedCelebrity field could be empty if the face
+    /// track does not have any matched celebrities.</summary>
+    public class GoogleCloudVideointelligenceV1p3beta1CelebrityTrack : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Top N match of the celebrities for the face in this track.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("celebrities")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity> Celebrities { get; set; } 
+
+        /// <summary>A track of a person's face.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("faceTrack")]
+        public virtual GoogleCloudVideointelligenceV1p3beta1Track FaceTrack { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic detected attribute represented by name in string format.</summary>
     public class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3553,6 +3602,21 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The recognized celebrity with confidence score.</summary>
+    public class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The recognized celebrity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("celebrity")]
+        public virtual GoogleCloudVideointelligenceV1p3beta1Celebrity Celebrity { get; set; } 
+
+        /// <summary>Recognition confidence. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Alternative hypotheses (a.k.a. n-best list).</summary>
     public class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3772,6 +3836,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Annotation results for a single video.</summary>
     public class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Celebrity recognition annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("celebrityRecognitionAnnotations")]
+        public virtual GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation CelebrityRecognitionAnnotations { get; set; } 
+
         /// <summary>If set, indicates an error. Note that for a single `AnnotateVideoRequest` some videos may succeed
         /// and some may fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]

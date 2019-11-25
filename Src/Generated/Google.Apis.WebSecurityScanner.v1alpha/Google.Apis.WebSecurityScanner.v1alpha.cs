@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/security-scanner/'>Web Security Scanner API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20191102 (1766)
+ *      <tr><th>API Rev<td>20191121 (1785)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/security-scanner/'>
  *              https://cloud.google.com/security-scanner/</a>

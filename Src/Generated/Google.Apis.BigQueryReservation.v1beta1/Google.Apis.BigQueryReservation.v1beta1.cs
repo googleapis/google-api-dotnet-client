@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191029 (1762)
+ *      <tr><th>API Rev<td>20191113 (1777)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -395,6 +395,75 @@ namespace Google.Apis.BigQueryReservation.v1beta1
 
                 }
 
+
+                /// <summary>Creates a new capacity commitment resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Resource name of the parent reservation. E.g.,    projects/myproject/locations/US</param>
+                public virtual CreateRequest Create(Google.Apis.BigQueryReservation.v1beta1.Data.CapacityCommitment body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new capacity commitment resource.</summary>
+                public class CreateRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.CapacityCommitment>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1beta1.Data.CapacityCommitment body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Resource name of the parent reservation. E.g.,
+                    /// projects/myproject/locations/US</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigQueryReservation.v1beta1.Data.CapacityCommitment Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+parent}/capacityCommitments"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                    }
+
+                }
 
                 /// <summary>Deletes a capacity commitment. Attempting to delete capacity commitment before its
                 /// commitment_end_time will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`.</summary>
@@ -1012,7 +1081,7 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The reservation ID. This field must only contain alphanumeric characters or
+                    /// <summary>The reservation ID. This field must only contain lower case alphanumeric characters or
                     /// dash.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("reservationId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ReservationId { get; set; }
@@ -1220,12 +1289,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Can be used to filter out reservations based on names, capacity, etc, e.g.:
-                    /// filter="reservation.slot_capacity > 200" filter="reservation.name = \"*dev\"" Advanced filtering
-                    /// syntax can be [here](https://cloud.google.com/logging/docs/view/advanced-filters).</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1233,6 +1296,12 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     /// <summary>The maximum number of items to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Can be used to filter out reservations based on names, capacity, etc, e.g.:
+                    /// filter="reservation.slot_capacity > 200" filter="reservation.name = \"*dev\"" Advanced filtering
+                    /// syntax can be [here](https://cloud.google.com/logging/docs/view/advanced-filters).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1268,15 +1337,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1289,6 +1349,15 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1437,6 +1506,68 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Retrieves a BI reservation.</summary>
+            /// <param name="name">Name of the requested reservation, for example:
+            /// `projects/{project_id}/locations/{location_id}/bireservation`</param>
+            public virtual GetBiReservationRequest GetBiReservation(string name)
+            {
+                return new GetBiReservationRequest(service, name);
+            }
+
+            /// <summary>Retrieves a BI reservation.</summary>
+            public class GetBiReservationRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.BiReservation>
+            {
+                /// <summary>Constructs a new GetBiReservation request.</summary>
+                public GetBiReservationRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Name of the requested reservation, for example:
+                /// `projects/{project_id}/locations/{location_id}/bireservation`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "getBiReservation"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes GetBiReservation parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/biReservation$",
                         });
                 }
 
@@ -1658,6 +1789,93 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                 }
 
             }
+
+            /// <summary>Updates a BI reservation. Only fields specified in the field_mask are updated. Singleton BI
+            /// reservation always exists with default size 0. In order to reserve BI capacity it needs to be updated to
+            /// an amount greater than 0. In order to release BI capacity reservation size must be set to 0.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The resource name of the singleton BI reservation. Reservation names have the form
+            /// `projects/{project_id}/locations/{location_id}/bireservation`.</param>
+            public virtual UpdateBiReservationRequest UpdateBiReservation(Google.Apis.BigQueryReservation.v1beta1.Data.BiReservation body, string name)
+            {
+                return new UpdateBiReservationRequest(service, body, name);
+            }
+
+            /// <summary>Updates a BI reservation. Only fields specified in the field_mask are updated. Singleton BI
+            /// reservation always exists with default size 0. In order to reserve BI capacity it needs to be updated to
+            /// an amount greater than 0. In order to release BI capacity reservation size must be set to 0.</summary>
+            public class UpdateBiReservationRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.BiReservation>
+            {
+                /// <summary>Constructs a new UpdateBiReservation request.</summary>
+                public UpdateBiReservationRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1beta1.Data.BiReservation body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource name of the singleton BI reservation. Reservation names have the form
+                /// `projects/{project_id}/locations/{location_id}/bireservation`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>A list of fields to be updated in this request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.BigQueryReservation.v1beta1.Data.BiReservation Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "updateBiReservation"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes UpdateBiReservation parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/biReservation$",
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
         }
     }
 }
@@ -1682,6 +1900,26 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         /// projects/myproject/locations/US/reservations/team1-prod/assignments/123.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a BI Reservation.</summary>
+    public class BiReservation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the singleton BI reservation. Reservation names have the form
+        /// `projects/{project_id}/locations/{location_id}/bireservation`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Size of a reservation, in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual System.Nullable<long> Size { get; set; } 
+
+        /// <summary>Output only. The last update timestamp of a reservation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

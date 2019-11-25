@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190924 (1727)
+ *      <tr><th>API Rev<td>20191031 (1764)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -779,8 +779,8 @@ namespace Google.Apis.Dataproc.v1
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -789,8 +789,8 @@ namespace Google.Apis.Dataproc.v1
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1641,8 +1641,8 @@ namespace Google.Apis.Dataproc.v1
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -1651,8 +1651,8 @@ namespace Google.Apis.Dataproc.v1
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -2309,8 +2309,8 @@ namespace Google.Apis.Dataproc.v1
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -2319,8 +2319,8 @@ namespace Google.Apis.Dataproc.v1
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -3352,8 +3352,8 @@ namespace Google.Apis.Dataproc.v1
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -3362,8 +3362,8 @@ namespace Google.Apis.Dataproc.v1
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -4167,8 +4167,8 @@ namespace Google.Apis.Dataproc.v1
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -4177,8 +4177,8 @@ namespace Google.Apis.Dataproc.v1
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -4730,10 +4730,6 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list page token.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -4741,6 +4737,10 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
+
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4776,15 +4776,6 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = @"^projects/[^/]+/regions/[^/]+/operations$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -4802,12 +4793,21 @@ namespace Google.Apis.Dataproc.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -4816,8 +4816,8 @@ namespace Google.Apis.Dataproc.v1
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -5525,14 +5525,14 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Optional. The page token, returned by a previous call, to request the next page of
                     /// results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5568,18 +5568,18 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = @"^projects/[^/]+/regions/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5589,8 +5589,8 @@ namespace Google.Apis.Dataproc.v1
 
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -5599,8 +5599,8 @@ namespace Google.Apis.Dataproc.v1
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
-                /// policy.</summary>
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.Can
+                /// return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED</summary>
                 public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -6538,8 +6538,7 @@ namespace Google.Apis.Dataproc.v1.Data
     /// worker group.</summary>
     public class InstanceGroupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The Compute Engine accelerator configuration for these instances.Beta Feature: This
-        /// feature is still under development. It may be changed before final release.</summary>
+        /// <summary>Optional. The Compute Engine accelerator configuration for these instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; } 
 
@@ -6573,6 +6572,11 @@ namespace Google.Apis.Dataproc.v1.Data
         /// only used for preemptible instance groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedGroupConfig")]
         public virtual ManagedGroupConfig ManagedGroupConfig { get; set; } 
+
+        /// <summary>Optional. Specifies the minimum cpu platform for the Instance Group. See Cloud DataprocMinimum CPU
+        /// Platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
+        public virtual string MinCpuPlatform { get; set; } 
 
         /// <summary>Optional. The number of VM instances in the instance group. For master instance groups, must be set
         /// to 1.</summary>
@@ -6667,6 +6671,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Job is a Spark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkJob")]
         public virtual SparkJob SparkJob { get; set; } 
+
+        /// <summary>Job is a SparkR job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkRJob")]
+        public virtual SparkRJob SparkRJob { get; set; } 
 
         /// <summary>Job is a SparkSql job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkSqlJob")]
@@ -7165,7 +7173,7 @@ namespace Google.Apis.Dataproc.v1.Data
     /// single role. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A
     /// role is a named list of permissions (defined by IAM or configured by users). A binding can optionally specify a
     /// condition, which is a logic expression that further constrains the role binding based on attributes about the
-    /// request and/or target resource.JSON Example { "bindings": [ { "role": "role/resourcemanager.organizationAdmin",
+    /// request and/or target resource.JSON Example { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin",
     /// "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-
     /// project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members":
     /// ["user:eve@example.com"], "condition": { "title": "expirable access", "description": "Does not grant access
@@ -7363,6 +7371,43 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string MainJarFileUri { get; set; } 
 
         /// <summary>Optional. A mapping of property names to values, used to configure Spark. Properties that conflict
+        /// with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf
+        /// /spark-defaults.conf and classes in user code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Cloud Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html)
+    /// applications on YARN.</summary>
+    public class SparkRJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. HCFS URIs of archives to be extracted in the working directory of Spark drivers and
+        /// tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
+        public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; } 
+
+        /// <summary>Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can
+        /// be set as job properties, since a collision may occur that causes an incorrect job submission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; } 
+
+        /// <summary>Optional. HCFS URIs of files to be copied to the working directory of R drivers and distributed
+        /// tasks. Useful for naively parallel tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
+        public virtual System.Collections.Generic.IList<string> FileUris { get; set; } 
+
+        /// <summary>Optional. The runtime log config for job execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; } 
+
+        /// <summary>Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainRFileUri")]
+        public virtual string MainRFileUri { get; set; } 
+
+        /// <summary>Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict
         /// with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf
         /// /spark-defaults.conf and classes in user code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]

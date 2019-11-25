@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>Cloud Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191009 (1742)
+ *      <tr><th>API Rev<td>20191112 (1776)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-search/docs/guides/'>
  *              https://developers.google.com/cloud-search/docs/guides/</a>
@@ -121,28 +121,28 @@ namespace Google.Apis.CloudSearch.v1
             /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public static string CloudSearch = "https://www.googleapis.com/auth/cloud_search";
 
-            /// <summary>New Service: https://www.googleapis.com/auth/cloud_search.debug</summary>
+            /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public static string CloudSearchDebug = "https://www.googleapis.com/auth/cloud_search.debug";
 
-            /// <summary>New Service: https://www.googleapis.com/auth/cloud_search.indexing</summary>
+            /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public static string CloudSearchIndexing = "https://www.googleapis.com/auth/cloud_search.indexing";
 
             /// <summary>Search your organization's data in the Cloud Search index</summary>
             public static string CloudSearchQuery = "https://www.googleapis.com/auth/cloud_search.query";
 
-            /// <summary>New Service: https://www.googleapis.com/auth/cloud_search.settings</summary>
+            /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public static string CloudSearchSettings = "https://www.googleapis.com/auth/cloud_search.settings";
 
-            /// <summary>New Service: https://www.googleapis.com/auth/cloud_search.settings.indexing</summary>
+            /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public static string CloudSearchSettingsIndexing = "https://www.googleapis.com/auth/cloud_search.settings.indexing";
 
-            /// <summary>New Service: https://www.googleapis.com/auth/cloud_search.settings.query</summary>
+            /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public static string CloudSearchSettingsQuery = "https://www.googleapis.com/auth/cloud_search.settings.query";
 
-            /// <summary>New Service: https://www.googleapis.com/auth/cloud_search.stats</summary>
+            /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public static string CloudSearchStats = "https://www.googleapis.com/auth/cloud_search.stats";
 
-            /// <summary>New Service: https://www.googleapis.com/auth/cloud_search.stats.indexing</summary>
+            /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public static string CloudSearchStatsIndexing = "https://www.googleapis.com/auth/cloud_search.stats.indexing";
 
         }
@@ -153,28 +153,28 @@ namespace Google.Apis.CloudSearch.v1
             /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public const string CloudSearch = "https://www.googleapis.com/auth/cloud_search";
 
-            /// <summary>New Service: https://www.googleapis.com/auth/cloud_search.debug</summary>
+            /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public const string CloudSearchDebug = "https://www.googleapis.com/auth/cloud_search.debug";
 
-            /// <summary>New Service: https://www.googleapis.com/auth/cloud_search.indexing</summary>
+            /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public const string CloudSearchIndexing = "https://www.googleapis.com/auth/cloud_search.indexing";
 
             /// <summary>Search your organization's data in the Cloud Search index</summary>
             public const string CloudSearchQuery = "https://www.googleapis.com/auth/cloud_search.query";
 
-            /// <summary>New Service: https://www.googleapis.com/auth/cloud_search.settings</summary>
+            /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public const string CloudSearchSettings = "https://www.googleapis.com/auth/cloud_search.settings";
 
-            /// <summary>New Service: https://www.googleapis.com/auth/cloud_search.settings.indexing</summary>
+            /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public const string CloudSearchSettingsIndexing = "https://www.googleapis.com/auth/cloud_search.settings.indexing";
 
-            /// <summary>New Service: https://www.googleapis.com/auth/cloud_search.settings.query</summary>
+            /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public const string CloudSearchSettingsQuery = "https://www.googleapis.com/auth/cloud_search.settings.query";
 
-            /// <summary>New Service: https://www.googleapis.com/auth/cloud_search.stats</summary>
+            /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public const string CloudSearchStats = "https://www.googleapis.com/auth/cloud_search.stats";
 
-            /// <summary>New Service: https://www.googleapis.com/auth/cloud_search.stats.indexing</summary>
+            /// <summary>Index and serve your organization's data with Cloud Search</summary>
             public const string CloudSearchStatsIndexing = "https://www.googleapis.com/auth/cloud_search.stats.indexing";
 
         }
@@ -516,14 +516,18 @@ namespace Google.Apis.CloudSearch.v1
                     }
 
 
-                    /// <summary>List all unmapped identities for a specific item.</summary>
+                    /// <summary>List all unmapped identities for a specific item.
+                    ///
+                    /// **Note:** This API requires an admin account to execute.</summary>
                     /// <param name="parent">The name of the item, in the following format: datasources/{source_id}/items/{ID}</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>List all unmapped identities for a specific item.</summary>
+                    /// <summary>List all unmapped identities for a specific item.
+                    ///
+                    /// **Note:** This API requires an admin account to execute.</summary>
                     public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListUnmappedIdentitiesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -540,6 +544,11 @@ namespace Google.Apis.CloudSearch.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise,
+                        /// ignore this field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
+
                         /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -547,11 +556,6 @@ namespace Google.Apis.CloudSearch.v1
                         /// <summary>Maximum number of items to fetch in a request. Defaults to 100.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise,
-                        /// ignore this field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -587,6 +591,15 @@ namespace Google.Apis.CloudSearch.v1
                                     Pattern = @"^datasources/[^/]+/items/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "debugOptions.enableDebugging",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -604,21 +617,14 @@ namespace Google.Apis.CloudSearch.v1
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
-                            RequestParameters.Add(
-                                "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "debugOptions.enableDebugging",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
                         }
 
                     }
                 }
 
-                /// <summary>Checks whether an item is accessible by specified principal.</summary>
+                /// <summary>Checks whether an item is accessible by specified principal.
+                ///
+                /// **Note:** This API requires an admin account to execute.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Item name, format: datasources/{source_id}/items/{item_id}</param>
                 public virtual CheckAccessRequest CheckAccess(Google.Apis.CloudSearch.v1.Data.Principal body, string name)
@@ -626,7 +632,9 @@ namespace Google.Apis.CloudSearch.v1
                     return new CheckAccessRequest(service, body, name);
                 }
 
-                /// <summary>Checks whether an item is accessible by specified principal.</summary>
+                /// <summary>Checks whether an item is accessible by specified principal.
+                ///
+                /// **Note:** This API requires an admin account to execute.</summary>
                 public class CheckAccessRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.CheckAccessResponse>
                 {
                     /// <summary>Constructs a new CheckAccess request.</summary>
@@ -700,8 +708,9 @@ namespace Google.Apis.CloudSearch.v1
 
                 }
 
-                /// <summary>Fetches the item whose viewUrl exactly matches that of the URL provided in the
-                /// request.</summary>
+                /// <summary>Fetches the item whose viewUrl exactly matches that of the URL provided in the request.
+                ///
+                /// **Note:** This API requires an admin account to execute.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Source name, format: datasources/{source_id}</param>
                 public virtual SearchByViewUrlRequest SearchByViewUrl(Google.Apis.CloudSearch.v1.Data.SearchItemsByViewUrlRequest body, string name)
@@ -709,8 +718,9 @@ namespace Google.Apis.CloudSearch.v1
                     return new SearchByViewUrlRequest(service, body, name);
                 }
 
-                /// <summary>Fetches the item whose viewUrl exactly matches that of the URL provided in the
-                /// request.</summary>
+                /// <summary>Fetches the item whose viewUrl exactly matches that of the URL provided in the request.
+                ///
+                /// **Note:** This API requires an admin account to execute.</summary>
                 public class SearchByViewUrlRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.SearchItemsByViewUrlResponse>
                 {
                     /// <summary>Constructs a new SearchByViewUrl request.</summary>
@@ -820,7 +830,9 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Lists names of items associated with an unmapped identity.</summary>
+                /// <summary>Lists names of items associated with an unmapped identity.
+                ///
+                /// **Note:** This API requires an admin account to execute.</summary>
                 /// <param name="parent">The name of the identity source, in the following format:
                 /// identitysources/{source_id}}</param>
                 public virtual ListForunmappedidentityRequest ListForunmappedidentity(string parent)
@@ -828,7 +840,9 @@ namespace Google.Apis.CloudSearch.v1
                     return new ListForunmappedidentityRequest(service, parent);
                 }
 
-                /// <summary>Lists names of items associated with an unmapped identity.</summary>
+                /// <summary>Lists names of items associated with an unmapped identity.
+                ///
+                /// **Note:** This API requires an admin account to execute.</summary>
                 public class ListForunmappedidentityRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListItemNamesForUnmappedIdentityResponse>
                 {
                     /// <summary>Constructs a new ListForunmappedidentity request.</summary>
@@ -845,14 +859,6 @@ namespace Google.Apis.CloudSearch.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Maximum number of items to fetch in a request. Defaults to 100.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise, ignore
                     /// this field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
@@ -865,6 +871,14 @@ namespace Google.Apis.CloudSearch.v1
 
                     [Google.Apis.Util.RequestParameterAttribute("userResourceName", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string UserResourceName { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Maximum number of items to fetch in a request. Defaults to 100.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -900,24 +914,6 @@ namespace Google.Apis.CloudSearch.v1
                                 Pattern = @"^identitysources/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "debugOptions.enableDebugging",
@@ -939,6 +935,24 @@ namespace Google.Apis.CloudSearch.v1
                             "userResourceName", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "userResourceName",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -972,7 +986,9 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Lists unmapped user identities for an identity source.</summary>
+                /// <summary>Lists unmapped user identities for an identity source.
+                ///
+                /// **Note:** This API requires an admin account to execute.</summary>
                 /// <param name="parent">The name of the identity source, in the following format:
                 /// identitysources/{source_id}</param>
                 public virtual ListRequest List(string parent)
@@ -980,7 +996,9 @@ namespace Google.Apis.CloudSearch.v1
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists unmapped user identities for an identity source.</summary>
+                /// <summary>Lists unmapped user identities for an identity source.
+                ///
+                /// **Note:** This API requires an admin account to execute.</summary>
                 public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListUnmappedIdentitiesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -996,6 +1014,11 @@ namespace Google.Apis.CloudSearch.v1
                     /// identitysources/{source_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
+
+                    /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise, ignore
+                    /// this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
                     /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1025,11 +1048,6 @@ namespace Google.Apis.CloudSearch.v1
                         [Google.Apis.Util.StringValueAttribute("INTERNAL_ERROR")]
                         INTERNALERROR,
                     }
-
-                    /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise, ignore
-                    /// this field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1065,6 +1083,15 @@ namespace Google.Apis.CloudSearch.v1
                                 Pattern = @"^identitysources/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "debugOptions.enableDebugging",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1086,15 +1113,6 @@ namespace Google.Apis.CloudSearch.v1
                             "resolutionStatusCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "resolutionStatusCode",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debugOptions.enableDebugging",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1200,11 +1218,6 @@ namespace Google.Apis.CloudSearch.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Name of connector making this call. Format:
-                    /// datasources/{source_id}/connectors/{ID}</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("connectorName", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ConnectorName { get; set; }
-
                     /// <summary>Required. The incremented version of the item to delete from the index. The indexing
                     /// system stores the version from the datasource as a byte string and compares the Item version in
                     /// the index to the version of the queued Item using lexical ordering.
@@ -1234,6 +1247,11 @@ namespace Google.Apis.CloudSearch.v1
                         [Google.Apis.Util.StringValueAttribute("ASYNCHRONOUS")]
                         ASYNCHRONOUS,
                     }
+
+                    /// <summary>Name of connector making this call. Format:
+                    /// datasources/{source_id}/connectors/{ID}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("connectorName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ConnectorName { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1269,15 +1287,6 @@ namespace Google.Apis.CloudSearch.v1
                                 Pattern = @"^datasources/[^/]+/items/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "connectorName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "connectorName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "version", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "version",
@@ -1299,6 +1308,15 @@ namespace Google.Apis.CloudSearch.v1
                             "mode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "mode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "connectorName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "connectorName",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1586,6 +1604,11 @@ namespace Google.Apis.CloudSearch.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise, ignore
+                    /// this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
+
                     /// <summary>Name of connector making this call. Format:
                     /// datasources/{source_id}/connectors/{ID}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("connectorName", Google.Apis.Util.RequestParameterType.Query)]
@@ -1608,11 +1631,6 @@ namespace Google.Apis.CloudSearch.v1
                     /// true.  The max value is 10 if brief is false. The default value is 10</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise, ignore
-                    /// this field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1648,6 +1666,15 @@ namespace Google.Apis.CloudSearch.v1
                                 Pattern = @"^datasources/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "debugOptions.enableDebugging",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "connectorName", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "connectorName",
@@ -1678,15 +1705,6 @@ namespace Google.Apis.CloudSearch.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "debugOptions.enableDebugging",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2035,14 +2053,18 @@ namespace Google.Apis.CloudSearch.v1
                 }
             }
 
-            /// <summary>Deletes the schema of a data source.</summary>
+            /// <summary>Deletes the schema of a data source.
+            ///
+            /// **Note:** This API requires an admin or service account to execute.</summary>
             /// <param name="name">Name of the data source to delete Schema.  Format: datasources/{source_id}</param>
             public virtual DeleteSchemaRequest DeleteSchema(string name)
             {
                 return new DeleteSchemaRequest(service, name);
             }
 
-            /// <summary>Deletes the schema of a data source.</summary>
+            /// <summary>Deletes the schema of a data source.
+            ///
+            /// **Note:** This API requires an admin or service account to execute.</summary>
             public class DeleteSchemaRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new DeleteSchema request.</summary>
@@ -2109,14 +2131,18 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Gets the schema of a data source.</summary>
+            /// <summary>Gets the schema of a data source.
+            ///
+            /// **Note:** This API requires an admin or service account to execute.</summary>
             /// <param name="name">Name of the data source to get Schema.  Format: datasources/{source_id}</param>
             public virtual GetSchemaRequest GetSchema(string name)
             {
                 return new GetSchemaRequest(service, name);
             }
 
-            /// <summary>Gets the schema of a data source.</summary>
+            /// <summary>Gets the schema of a data source.
+            ///
+            /// **Note:** This API requires an admin or service account to execute.</summary>
             public class GetSchemaRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Schema>
             {
                 /// <summary>Constructs a new GetSchema request.</summary>
@@ -2183,7 +2209,10 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Updates the schema of a data source.</summary>
+            /// <summary>Updates the schema of a data source. This method does not perform incremental updates to the
+            /// schema. Instead, this method updates the schema by overwriting the entire schema.
+            ///
+            /// **Note:** This API requires an admin or service account to execute.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the data source to update Schema.  Format: datasources/{source_id}</param>
             public virtual UpdateSchemaRequest UpdateSchema(Google.Apis.CloudSearch.v1.Data.UpdateSchemaRequest body, string name)
@@ -2191,7 +2220,10 @@ namespace Google.Apis.CloudSearch.v1
                 return new UpdateSchemaRequest(service, body, name);
             }
 
-            /// <summary>Updates the schema of a data source.</summary>
+            /// <summary>Updates the schema of a data source. This method does not perform incremental updates to the
+            /// schema. Instead, this method updates the schema by overwriting the entire schema.
+            ///
+            /// **Note:** This API requires an admin or service account to execute.</summary>
             public class UpdateSchemaRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new UpdateSchema request.</summary>
@@ -2281,7 +2313,9 @@ namespace Google.Apis.CloudSearch.v1
         /// search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with the UploadItemRef from step 1.
         ///
         /// For additional information, see [Create a content connector using the REST
-        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).</summary>
+        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).
+        ///
+        /// **Note:** This API requires a service account to execute.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceName">Name of the media that is being downloaded.  See ReadRequest.resource_name.</param>
         public virtual UploadRequest Upload(Google.Apis.CloudSearch.v1.Data.Media body, string resourceName)
@@ -2301,7 +2335,9 @@ namespace Google.Apis.CloudSearch.v1
         /// search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with the UploadItemRef from step 1.
         ///
         /// For additional information, see [Create a content connector using the REST
-        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).</summary>
+        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).
+        ///
+        /// **Note:** This API requires a service account to execute.</summary>
         public class UploadRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Media>
         {
             /// <summary>Constructs a new Upload request.</summary>
@@ -2373,7 +2409,9 @@ namespace Google.Apis.CloudSearch.v1
         /// search/docs/reference/rest/v1/indexing.datasources.items#ItemContent) with the UploadItemRef from step 1.
         ///
         /// For additional information, see [Create a content connector using the REST
-        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).</summary>
+        /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).
+        ///
+        /// **Note:** This API requires a service account to execute.</summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">
@@ -2629,13 +2667,17 @@ namespace Google.Apis.CloudSearch.v1
             }
 
 
-            /// <summary>Returns list of sources that user can use for Search and Suggest APIs.</summary>
+            /// <summary>Returns list of sources that user can use for Search and Suggest APIs.
+            ///
+            /// **Note:** This API requires a standard end user account to execute.</summary>
             public virtual ListRequest List()
             {
                 return new ListRequest(service);
             }
 
-            /// <summary>Returns list of sources that user can use for Search and Suggest APIs.</summary>
+            /// <summary>Returns list of sources that user can use for Search and Suggest APIs.
+            ///
+            /// **Note:** This API requires a standard end user account to execute.</summary>
             public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListQuerySourcesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2645,6 +2687,11 @@ namespace Google.Apis.CloudSearch.v1
                     InitParameters();
                 }
 
+
+                /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise, ignore this
+                /// field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestOptions.debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> RequestOptionsDebugOptionsEnableDebugging { get; set; }
 
                 /// <summary>The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
                 /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations.
@@ -2676,11 +2723,6 @@ namespace Google.Apis.CloudSearch.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise, ignore this
-                /// field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("requestOptions.debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> RequestOptionsDebugOptionsEnableDebugging { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -2705,6 +2747,15 @@ namespace Google.Apis.CloudSearch.v1
                 {
                     base.InitParameters();
 
+                    RequestParameters.Add(
+                        "requestOptions.debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.debugOptions.enableDebugging",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     RequestParameters.Add(
                         "requestOptions.languageCode", new Google.Apis.Discovery.Parameter
                         {
@@ -2741,15 +2792,6 @@ namespace Google.Apis.CloudSearch.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
-                    RequestParameters.Add(
-                        "requestOptions.debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestOptions.debugOptions.enableDebugging",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
                 }
 
             }
@@ -2757,7 +2799,9 @@ namespace Google.Apis.CloudSearch.v1
 
         /// <summary>The Cloud Search Query API provides the search method, which returns the most relevant results from
         /// a user query.  The results can come from G Suite Apps, such as Gmail or Google Drive, or they can come from
-        /// data that you have indexed from a third party.</summary>
+        /// data that you have indexed from a third party.
+        ///
+        /// **Note:** This API requires a standard end user account to execute.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual SearchRequest Search(Google.Apis.CloudSearch.v1.Data.SearchRequest body)
         {
@@ -2766,7 +2810,9 @@ namespace Google.Apis.CloudSearch.v1
 
         /// <summary>The Cloud Search Query API provides the search method, which returns the most relevant results from
         /// a user query.  The results can come from G Suite Apps, such as Gmail or Google Drive, or they can come from
-        /// data that you have indexed from a third party.</summary>
+        /// data that you have indexed from a third party.
+        ///
+        /// **Note:** This API requires a standard end user account to execute.</summary>
         public class SearchRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.SearchResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
@@ -2812,14 +2858,18 @@ namespace Google.Apis.CloudSearch.v1
 
         }
 
-        /// <summary>Provides suggestions for autocompleting the query.</summary>
+        /// <summary>Provides suggestions for autocompleting the query.
+        ///
+        /// **Note:** This API requires a standard end user account to execute.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual SuggestRequest Suggest(Google.Apis.CloudSearch.v1.Data.SuggestRequest body)
         {
             return new SuggestRequest(service, body);
         }
 
-        /// <summary>Provides suggestions for autocompleting the query.</summary>
+        /// <summary>Provides suggestions for autocompleting the query.
+        ///
+        /// **Note:** This API requires a standard end user account to execute.</summary>
         public class SuggestRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.SuggestResponse>
         {
             /// <summary>Constructs a new Suggest request.</summary>
@@ -2907,14 +2957,18 @@ namespace Google.Apis.CloudSearch.v1
             }
 
 
-            /// <summary>Creates a datasource.</summary>
+            /// <summary>Creates a datasource.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             /// <param name="body">The body of the request.</param>
             public virtual CreateRequest Create(Google.Apis.CloudSearch.v1.Data.DataSource body)
             {
                 return new CreateRequest(service, body);
             }
 
-            /// <summary>Creates a datasource.</summary>
+            /// <summary>Creates a datasource.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             public class CreateRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -2960,14 +3014,18 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Deletes a datasource.</summary>
+            /// <summary>Deletes a datasource.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             /// <param name="name">Name of the datasource. Format: datasources/{source_id}.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a datasource.</summary>
+            /// <summary>Deletes a datasource.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             public class DeleteRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -3034,14 +3092,18 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Gets a datasource.</summary>
+            /// <summary>Gets a datasource.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             /// <param name="name">Name of the datasource resource. Format: datasources/{source_id}.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a datasource.</summary>
+            /// <summary>Gets a datasource.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.DataSource>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -3108,13 +3170,17 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Lists datasources.</summary>
+            /// <summary>Lists datasources.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             public virtual ListRequest List()
             {
                 return new ListRequest(service);
             }
 
-            /// <summary>Lists datasources.</summary>
+            /// <summary>Lists datasources.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListDataSourceResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3194,7 +3260,9 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Updates a datasource.</summary>
+            /// <summary>Updates a datasource.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when
             /// creating a datasource.</param>
@@ -3203,7 +3271,9 @@ namespace Google.Apis.CloudSearch.v1
                 return new UpdateRequest(service, body, name);
             }
 
-            /// <summary>Updates a datasource.</summary>
+            /// <summary>Updates a datasource.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             public class UpdateRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -3288,14 +3358,18 @@ namespace Google.Apis.CloudSearch.v1
             }
 
 
-            /// <summary>Creates a search application.</summary>
+            /// <summary>Creates a search application.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             /// <param name="body">The body of the request.</param>
             public virtual CreateRequest Create(Google.Apis.CloudSearch.v1.Data.SearchApplication body)
             {
                 return new CreateRequest(service, body);
             }
 
-            /// <summary>Creates a search application.</summary>
+            /// <summary>Creates a search application.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             public class CreateRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -3341,7 +3415,9 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Deletes a search application.</summary>
+            /// <summary>Deletes a search application.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             /// <param name="name">The name of the search application to be deleted. Format:
             /// applications/{application_id}.</param>
             public virtual DeleteRequest Delete(string name)
@@ -3349,7 +3425,9 @@ namespace Google.Apis.CloudSearch.v1
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a search application.</summary>
+            /// <summary>Deletes a search application.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             public class DeleteRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -3417,14 +3495,18 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Gets the specified search application.</summary>
+            /// <summary>Gets the specified search application.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             /// <param name="name">Name of the search application. Format: applications/{application_id}.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets the specified search application.</summary>
+            /// <summary>Gets the specified search application.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.SearchApplication>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -3491,13 +3573,17 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Lists all search applications.</summary>
+            /// <summary>Lists all search applications.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             public virtual ListRequest List()
             {
                 return new ListRequest(service);
             }
 
-            /// <summary>Lists all search applications.</summary>
+            /// <summary>Lists all search applications.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             public class ListRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.ListSearchApplicationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3508,11 +3594,6 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise, ignore this
-                /// field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
-
                 /// <summary>The next_page_token value returned from a previous List request, if any. The default value
                 /// is 10</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -3521,6 +3602,11 @@ namespace Google.Apis.CloudSearch.v1
                 /// <summary>The maximum number of items to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>If you are asked by Google to help with debugging, set this field. Otherwise, ignore this
+                /// field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> DebugOptionsEnableDebugging { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3547,15 +3633,6 @@ namespace Google.Apis.CloudSearch.v1
                     base.InitParameters();
 
                     RequestParameters.Add(
-                        "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "debugOptions.enableDebugging",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3573,11 +3650,22 @@ namespace Google.Apis.CloudSearch.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "debugOptions.enableDebugging", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "debugOptions.enableDebugging",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
 
-            /// <summary>Resets a search application to default settings. This will return an empty response.</summary>
+            /// <summary>Resets a search application to default settings. This will return an empty response.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the search application to be reset. Format:
             /// applications/{application_id}.</param>
@@ -3586,7 +3674,9 @@ namespace Google.Apis.CloudSearch.v1
                 return new ResetRequest(service, body, name);
             }
 
-            /// <summary>Resets a search application to default settings. This will return an empty response.</summary>
+            /// <summary>Resets a search application to default settings. This will return an empty response.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             public class ResetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Reset request.</summary>
@@ -3647,7 +3737,9 @@ namespace Google.Apis.CloudSearch.v1
 
             }
 
-            /// <summary>Updates a search application.</summary>
+            /// <summary>Updates a search application.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the Search Application. Format: searchapplications/{application_id}.</param>
             public virtual UpdateRequest Update(Google.Apis.CloudSearch.v1.Data.SearchApplication body, string name)
@@ -3655,7 +3747,9 @@ namespace Google.Apis.CloudSearch.v1
                 return new UpdateRequest(service, body, name);
             }
 
-            /// <summary>Updates a search application.</summary>
+            /// <summary>Updates a search application.
+            ///
+            /// **Note:** This API requires an admin account to execute.</summary>
             public class UpdateRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -3784,7 +3878,9 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Gets indexed item statistics for a single data source.</summary>
+                /// <summary>Gets indexed item statistics for a single data source.
+                ///
+                /// **Note:** This API requires a standard end user account to execute.</summary>
                 /// <param name="name">The resource id of the data source to retrieve statistics for, in the following format:
                 /// "datasources/{source_id}"</param>
                 public virtual GetRequest Get(string name)
@@ -3792,7 +3888,9 @@ namespace Google.Apis.CloudSearch.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets indexed item statistics for a single data source.</summary>
+                /// <summary>Gets indexed item statistics for a single data source.
+                ///
+                /// **Note:** This API requires a standard end user account to execute.</summary>
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetDataSourceIndexStatsResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -3809,6 +3907,14 @@ namespace Google.Apis.CloudSearch.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Year of date. Must be from 1 to 9999.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("toDate.year", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> ToDateYear { get; set; }
+
+                    /// <summary>Month of date. Must be from 1 to 12.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fromDate.month", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> FromDateMonth { get; set; }
+
                     /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> FromDateDay { get; set; }
@@ -3824,14 +3930,6 @@ namespace Google.Apis.CloudSearch.v1
                     /// <summary>Month of date. Must be from 1 to 12.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("toDate.month", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> ToDateMonth { get; set; }
-
-                    /// <summary>Year of date. Must be from 1 to 9999.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("toDate.year", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> ToDateYear { get; set; }
-
-                    /// <summary>Month of date. Must be from 1 to 12.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fromDate.month", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> FromDateMonth { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3867,6 +3965,24 @@ namespace Google.Apis.CloudSearch.v1
                                 Pattern = @"^datasources/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "toDate.year", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "toDate.year",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "fromDate.month", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fromDate.month",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "fromDate.day", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "fromDate.day",
@@ -3897,24 +4013,6 @@ namespace Google.Apis.CloudSearch.v1
                             "toDate.month", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "toDate.month",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "toDate.year", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "toDate.year",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fromDate.month", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fromDate.month",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3973,7 +4071,9 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Get the query statistics for search application</summary>
+                /// <summary>Get the query statistics for search application.
+                ///
+                /// **Note:** This API requires a standard end user account to execute.</summary>
                 /// <param name="name">The resource id of the search application query stats, in the following format:
                 /// searchapplications/{application_id}</param>
                 public virtual GetRequest Get(string name)
@@ -3981,7 +4081,9 @@ namespace Google.Apis.CloudSearch.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Get the query statistics for search application</summary>
+                /// <summary>Get the query statistics for search application.
+                ///
+                /// **Note:** This API requires a standard end user account to execute.</summary>
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetSearchApplicationQueryStatsResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -3997,6 +4099,10 @@ namespace Google.Apis.CloudSearch.v1
                     /// searchapplications/{application_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
+
+                    /// <summary>Month of date. Must be from 1 to 12.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("toDate.month", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> ToDateMonth { get; set; }
 
                     /// <summary>Year of date. Must be from 1 to 9999.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("toDate.year", Google.Apis.Util.RequestParameterType.Query)]
@@ -4017,10 +4123,6 @@ namespace Google.Apis.CloudSearch.v1
                     /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("toDate.day", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> ToDateDay { get; set; }
-
-                    /// <summary>Month of date. Must be from 1 to 12.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("toDate.month", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> ToDateMonth { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4054,6 +4156,15 @@ namespace Google.Apis.CloudSearch.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^searchapplications/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "toDate.month", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "toDate.month",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         RequestParameters.Add(
                             "toDate.year", new Google.Apis.Discovery.Parameter
@@ -4095,15 +4206,6 @@ namespace Google.Apis.CloudSearch.v1
                             "toDate.day", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "toDate.day",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "toDate.month", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "toDate.month",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4162,7 +4264,10 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Get the # of search sessions for the search application</summary>
+                /// <summary>Get the # of search sessions, % of successful sessions with a click query statistics for
+                /// search application.
+                ///
+                /// **Note:** This API requires a standard end user account to execute.</summary>
                 /// <param name="name">The resource id of the search application session stats, in the following format:
                 /// searchapplications/{application_id}</param>
                 public virtual GetRequest Get(string name)
@@ -4170,7 +4275,10 @@ namespace Google.Apis.CloudSearch.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Get the # of search sessions for the search application</summary>
+                /// <summary>Get the # of search sessions, % of successful sessions with a click query statistics for
+                /// search application.
+                ///
+                /// **Note:** This API requires a standard end user account to execute.</summary>
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetSearchApplicationSessionStatsResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -4351,7 +4459,9 @@ namespace Google.Apis.CloudSearch.v1
                 }
 
 
-                /// <summary>Get the users statistics for search application</summary>
+                /// <summary>Get the users statistics for search application.
+                ///
+                /// **Note:** This API requires a standard end user account to execute.</summary>
                 /// <param name="name">The resource id of the search application session stats, in the following format:
                 /// searchapplications/{application_id}</param>
                 public virtual GetRequest Get(string name)
@@ -4359,7 +4469,9 @@ namespace Google.Apis.CloudSearch.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Get the users statistics for search application</summary>
+                /// <summary>Get the users statistics for search application.
+                ///
+                /// **Note:** This API requires a standard end user account to execute.</summary>
                 public class GetRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetSearchApplicationUserStatsResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -4494,14 +4606,18 @@ namespace Google.Apis.CloudSearch.v1
         }
 
         /// <summary>Gets indexed item statistics aggreggated across all data sources. This API only returns statistics
-        /// for previous dates; it doesn't return statistics for the current day.</summary>
+        /// for previous dates; it doesn't return statistics for the current day.
+        ///
+        /// **Note:** This API requires a standard end user account to execute.</summary>
         public virtual GetIndexRequest GetIndex()
         {
             return new GetIndexRequest(service);
         }
 
         /// <summary>Gets indexed item statistics aggreggated across all data sources. This API only returns statistics
-        /// for previous dates; it doesn't return statistics for the current day.</summary>
+        /// for previous dates; it doesn't return statistics for the current day.
+        ///
+        /// **Note:** This API requires a standard end user account to execute.</summary>
         public class GetIndexRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerIndexStatsResponse>
         {
             /// <summary>Constructs a new GetIndex request.</summary>
@@ -4618,13 +4734,17 @@ namespace Google.Apis.CloudSearch.v1
 
         }
 
-        /// <summary>Get the query statistics for customer</summary>
+        /// <summary>Get the query statistics for customer.
+        ///
+        /// **Note:** This API requires a standard end user account to execute.</summary>
         public virtual GetQueryRequest GetQuery()
         {
             return new GetQueryRequest(service);
         }
 
-        /// <summary>Get the query statistics for customer</summary>
+        /// <summary>Get the query statistics for customer.
+        ///
+        /// **Note:** This API requires a standard end user account to execute.</summary>
         public class GetQueryRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerQueryStatsResponse>
         {
             /// <summary>Constructs a new GetQuery request.</summary>
@@ -4634,10 +4754,6 @@ namespace Google.Apis.CloudSearch.v1
                 InitParameters();
             }
 
-
-            /// <summary>Year of date. Must be from 1 to 9999.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("fromDate.year", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> FromDateYear { get; set; }
 
             /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
             [Google.Apis.Util.RequestParameterAttribute("toDate.day", Google.Apis.Util.RequestParameterType.Query)]
@@ -4658,6 +4774,10 @@ namespace Google.Apis.CloudSearch.v1
             /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> FromDateDay { get; set; }
+
+            /// <summary>Year of date. Must be from 1 to 9999.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fromDate.year", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> FromDateYear { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -4684,15 +4804,6 @@ namespace Google.Apis.CloudSearch.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "fromDate.year", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.year",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "toDate.day", new Google.Apis.Discovery.Parameter
                     {
                         Name = "toDate.day",
@@ -4737,17 +4848,30 @@ namespace Google.Apis.CloudSearch.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "fromDate.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fromDate.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
 
-        /// <summary>Get the # of search sessions for the customer</summary>
+        /// <summary>Get the # of search sessions, % of successful sessions with a click query statistics for customer.
+        ///
+        /// **Note:** This API requires a standard end user account to execute.</summary>
         public virtual GetSessionRequest GetSession()
         {
             return new GetSessionRequest(service);
         }
 
-        /// <summary>Get the # of search sessions for the customer</summary>
+        /// <summary>Get the # of search sessions, % of successful sessions with a click query statistics for customer.
+        ///
+        /// **Note:** This API requires a standard end user account to execute.</summary>
         public class GetSessionRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerSessionStatsResponse>
         {
             /// <summary>Constructs a new GetSession request.</summary>
@@ -4757,18 +4881,6 @@ namespace Google.Apis.CloudSearch.v1
                 InitParameters();
             }
 
-
-            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> FromDateDay { get; set; }
-
-            /// <summary>Year of date. Must be from 1 to 9999.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("fromDate.year", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> FromDateYear { get; set; }
-
-            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("toDate.day", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> ToDateDay { get; set; }
 
             /// <summary>Month of date. Must be from 1 to 12.</summary>
             [Google.Apis.Util.RequestParameterAttribute("toDate.month", Google.Apis.Util.RequestParameterType.Query)]
@@ -4781,6 +4893,18 @@ namespace Google.Apis.CloudSearch.v1
             /// <summary>Month of date. Must be from 1 to 12.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fromDate.month", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> FromDateMonth { get; set; }
+
+            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> FromDateDay { get; set; }
+
+            /// <summary>Year of date. Must be from 1 to 9999.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fromDate.year", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> FromDateYear { get; set; }
+
+            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("toDate.day", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> ToDateDay { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -4807,33 +4931,6 @@ namespace Google.Apis.CloudSearch.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "fromDate.day", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.day",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "fromDate.year", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.year",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "toDate.day", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "toDate.day",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "toDate.month", new Google.Apis.Discovery.Parameter
                     {
                         Name = "toDate.month",
@@ -4860,17 +4957,48 @@ namespace Google.Apis.CloudSearch.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "fromDate.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fromDate.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "fromDate.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fromDate.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "toDate.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "toDate.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
 
-        /// <summary>Get the users statistics for customer</summary>
+        /// <summary>Get the users statistics for customer.
+        ///
+        /// **Note:** This API requires a standard end user account to execute.</summary>
         public virtual GetUserRequest GetUser()
         {
             return new GetUserRequest(service);
         }
 
-        /// <summary>Get the users statistics for customer</summary>
+        /// <summary>Get the users statistics for customer.
+        ///
+        /// **Note:** This API requires a standard end user account to execute.</summary>
         public class GetUserRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.GetCustomerUserStatsResponse>
         {
             /// <summary>Constructs a new GetUser request.</summary>
@@ -4880,10 +5008,6 @@ namespace Google.Apis.CloudSearch.v1
                 InitParameters();
             }
 
-
-            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> FromDateDay { get; set; }
 
             /// <summary>Year of date. Must be from 1 to 9999.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fromDate.year", Google.Apis.Util.RequestParameterType.Query)]
@@ -4904,6 +5028,10 @@ namespace Google.Apis.CloudSearch.v1
             /// <summary>Month of date. Must be from 1 to 12.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fromDate.month", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> FromDateMonth { get; set; }
+
+            /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fromDate.day", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> FromDateDay { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -4930,15 +5058,6 @@ namespace Google.Apis.CloudSearch.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "fromDate.day", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "fromDate.day",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "fromDate.year", new Google.Apis.Discovery.Parameter
                     {
                         Name = "fromDate.year",
@@ -4978,6 +5097,15 @@ namespace Google.Apis.CloudSearch.v1
                     "fromDate.month", new Google.Apis.Discovery.Parameter
                     {
                         Name = "fromDate.month",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "fromDate.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fromDate.day",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -5754,56 +5882,6 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual System.Collections.Generic.IList<SearchApplicationUserStats> Stats { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Gmail Action restricts (i.e. read/replied/snoozed).</summary>
-    public class GmailActionRestrict : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Gmail Attachment restricts (i.e. has:attachment, has:drive, filename:pdf).</summary>
-    public class GmailAttachmentRestrict : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Gmail Folder restricts (i.e. in Drafts/Sent/Chats/User Generated Labels).</summary>
-    public class GmailFolderRestrict : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Gmail Intelligent restricts (i.e. smartlabels, important).</summary>
-    public class GmailIntelligentRestrict : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Gmail Time restricts (i.e. received today, this week).</summary>
-    public class GmailTimeRestrict : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6612,7 +6690,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
         public virtual DebugOptions DebugOptions { get; set; } 
 
-        /// <summary>Maximum number of items to return. The maximum and the default value is 1000</summary>
+        /// <summary>Maximum number of items to return. The maximum value is 100 and the default value is 20.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<int> Limit { get; set; } 
 
@@ -7088,22 +7166,6 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("driveTimeSpanRestrict")]
         public virtual DriveTimeSpanRestrict DriveTimeSpanRestrict { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("gmailActionRestrict")]
-        public virtual GmailActionRestrict GmailActionRestrict { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("gmailAttachmentRestrict")]
-        public virtual GmailAttachmentRestrict GmailAttachmentRestrict { get; set; } 
-
-        /// <summary>Gmail Types.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gmailFolderRestrict")]
-        public virtual GmailFolderRestrict GmailFolderRestrict { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("gmailIntelligentRestrict")]
-        public virtual GmailIntelligentRestrict GmailIntelligentRestrict { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("gmailTimeRestrict")]
-        public virtual GmailTimeRestrict GmailTimeRestrict { get; set; } 
 
         /// <summary>The search restrict (e.g. "after:2017-09-11 before:2017-09-12").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchOperator")]
@@ -7681,9 +7743,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Request of suggest API.</summary>
     public class SuggestRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The sources to use for suggestions. If not specified, all data sources from the current search
-        /// application are used. Suggestions are based on Gmail titles. Suggestions from third party sources are not
-        /// available.</summary>
+        /// <summary>The sources to use for suggestions. If not specified, the data sources are taken from the current
+        /// search application.
+        ///
+        /// NOTE: Suggestions are supported only for third party data sources and people (i.e.
+        /// PredefinedSource.PERSON).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceRestrictions")]
         public virtual System.Collections.Generic.IList<DataSourceRestriction> DataSourceRestrictions { get; set; } 
 

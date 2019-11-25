@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20191103 (1767)
+ *      <tr><th>API Rev<td>20191117 (1781)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -2455,10 +2455,9 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("eventId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EventId { get; private set; }
 
-            /// <summary>Whether to always include a value in the email field for the organizer, creator and attendees,
-            /// even if no real email is available (i.e. a generated, non-working value will be provided). The use of
-            /// this option is discouraged and should only be used by clients which cannot handle the absence of an
-            /// email address value in the mentioned places. Optional. The default is False.</summary>
+            /// <summary>Deprecated and ignored. A value will always be returned in the email field for the organizer,
+            /// creator and attendees, even if no real email address is available (i.e. a generated, non-working value
+            /// will be provided).</summary>
             [Google.Apis.Util.RequestParameterAttribute("alwaysIncludeEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
@@ -2845,10 +2844,9 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("eventId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EventId { get; private set; }
 
-            /// <summary>Whether to always include a value in the email field for the organizer, creator and attendees,
-            /// even if no real email is available (i.e. a generated, non-working value will be provided). The use of
-            /// this option is discouraged and should only be used by clients which cannot handle the absence of an
-            /// email address value in the mentioned places. Optional. The default is False.</summary>
+            /// <summary>Deprecated and ignored. A value will always be returned in the email field for the organizer,
+            /// creator and attendees, even if no real email address is available (i.e. a generated, non-working value
+            /// will be provided).</summary>
             [Google.Apis.Util.RequestParameterAttribute("alwaysIncludeEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
@@ -3045,10 +3043,9 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("calendarId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CalendarId { get; private set; }
 
-            /// <summary>Whether to always include a value in the email field for the organizer, creator and attendees,
-            /// even if no real email is available (i.e. a generated, non-working value will be provided). The use of
-            /// this option is discouraged and should only be used by clients which cannot handle the absence of an
-            /// email address value in the mentioned places. Optional. The default is False.</summary>
+            /// <summary>Deprecated and ignored. A value will always be returned in the email field for the organizer,
+            /// creator and attendees, even if no real email address is available (i.e. a generated, non-working value
+            /// will be provided).</summary>
             [Google.Apis.Util.RequestParameterAttribute("alwaysIncludeEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
@@ -3526,10 +3523,9 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("eventId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EventId { get; private set; }
 
-            /// <summary>Whether to always include a value in the email field for the organizer, creator and attendees,
-            /// even if no real email is available (i.e. a generated, non-working value will be provided). The use of
-            /// this option is discouraged and should only be used by clients which cannot handle the absence of an
-            /// email address value in the mentioned places. Optional. The default is False.</summary>
+            /// <summary>Deprecated and ignored. A value will always be returned in the email field for the organizer,
+            /// creator and attendees, even if no real email address is available (i.e. a generated, non-working value
+            /// will be provided).</summary>
             [Google.Apis.Util.RequestParameterAttribute("alwaysIncludeEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
@@ -3843,10 +3839,9 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("eventId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EventId { get; private set; }
 
-            /// <summary>Whether to always include a value in the email field for the organizer, creator and attendees,
-            /// even if no real email is available (i.e. a generated, non-working value will be provided). The use of
-            /// this option is discouraged and should only be used by clients which cannot handle the absence of an
-            /// email address value in the mentioned places. Optional. The default is False.</summary>
+            /// <summary>Deprecated and ignored. A value will always be returned in the email field for the organizer,
+            /// creator and attendees, even if no real email address is available (i.e. a generated, non-working value
+            /// will be provided).</summary>
             [Google.Apis.Util.RequestParameterAttribute("alwaysIncludeEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
@@ -4031,10 +4026,9 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("calendarId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CalendarId { get; private set; }
 
-            /// <summary>Whether to always include a value in the email field for the organizer, creator and attendees,
-            /// even if no real email is available (i.e. a generated, non-working value will be provided). The use of
-            /// this option is discouraged and should only be used by clients which cannot handle the absence of an
-            /// email address value in the mentioned places. Optional. The default is False.</summary>
+            /// <summary>Deprecated and ignored. A value will always be returned in the email field for the organizer,
+            /// creator and attendees, even if no real email address is available (i.e. a generated, non-working value
+            /// will be provided).</summary>
             [Google.Apis.Util.RequestParameterAttribute("alwaysIncludeEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
@@ -5348,7 +5342,7 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual Event.CreatorData Creator { get; set; } 
 
-        /// <summary>Description of the event. Optional.</summary>
+        /// <summary>Description of the event. Can contain HTML. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 

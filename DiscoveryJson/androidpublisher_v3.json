@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/agYp6yDTI20JX9-XIpYigqmbtxM\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/xy04ood3kp7DhJc1iZopsRriYwM\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v3",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v3",
- "revision": "20191102",
+ "revision": "20191113",
  "title": "Google Play Developer API",
  "description": "Accesses Android application developers' Google Play accounts.",
  "ownerDomain": "google.com",
@@ -228,6 +228,25 @@
     "userComment": {
      "$ref": "UserComment",
      "description": "A comment from a user."
+    }
+   }
+  },
+  "Control": {
+   "id": "Control",
+   "type": "object",
+   "properties": {
+    "modRanges": {
+     "type": "array",
+     "items": {
+      "$ref": "ModRange"
+     }
+    },
+    "versionCodes": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "format": "int64"
+     }
     }
    }
   },
@@ -711,6 +730,40 @@
     }
    }
   },
+  "MendelSampling": {
+   "id": "MendelSampling",
+   "type": "object",
+   "properties": {
+    "modRanges": {
+     "type": "array",
+     "items": {
+      "$ref": "ModRange"
+     }
+    },
+    "modulus": {
+     "type": "string",
+     "format": "int64"
+    },
+    "salt": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  },
+  "ModRange": {
+   "id": "ModRange",
+   "type": "object",
+   "properties": {
+    "end": {
+     "type": "string",
+     "format": "int64"
+    },
+    "start": {
+     "type": "string",
+     "format": "int64"
+    }
+   }
+  },
   "MonthDay": {
    "id": "MonthDay",
    "type": "object",
@@ -1182,6 +1235,12 @@
    "id": "TrackRelease",
    "type": "object",
    "properties": {
+    "controls": {
+     "type": "array",
+     "items": {
+      "$ref": "Control"
+     }
+    },
     "countryTargeting": {
      "$ref": "CountryTargeting"
     },
@@ -1195,6 +1254,9 @@
      "items": {
       "$ref": "LocalizedText"
      }
+    },
+    "sampling": {
+     "$ref": "MendelSampling"
     },
     "status": {
      "type": "string",

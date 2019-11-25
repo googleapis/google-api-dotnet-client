@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/civic-information'>Google Civic Information API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191010 (1743)
+ *      <tr><th>API Rev<td>20191030 (1763)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/civic-information'>
  *              https://developers.google.com/civic-information</a>
@@ -1342,78 +1342,6 @@ namespace Google.Apis.CivicInfo.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    public class LivegraphBacktraceRecordInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("dataSourcePublishMsec")]
-        public virtual System.Nullable<long> DataSourcePublishMsec { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("expId")]
-        public virtual string ExpId { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("expInfo")]
-        public virtual LivegraphBacktraceRecordInfoExpInfo ExpInfo { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("isRecon")]
-        public virtual System.Nullable<bool> IsRecon { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("isWlmThrottled")]
-        public virtual System.Nullable<bool> IsWlmThrottled { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("numberOfTriples")]
-        public virtual System.Nullable<long> NumberOfTriples { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
-        public virtual string Priority { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("process")]
-        public virtual string Process { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("proxyReceiveMsec")]
-        public virtual System.Nullable<long> ProxyReceiveMsec { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("proxySentMsec")]
-        public virtual System.Nullable<long> ProxySentMsec { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("recordId")]
-        public virtual string RecordId { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("shouldMonitorLatency")]
-        public virtual System.Nullable<bool> ShouldMonitorLatency { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("subscriberReceiveMsec")]
-        public virtual System.Nullable<long> SubscriberReceiveMsec { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("topicBuildFinishMsec")]
-        public virtual System.Nullable<long> TopicBuildFinishMsec { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("topicBuildStartMsec")]
-        public virtual System.Nullable<long> TopicBuildStartMsec { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class LivegraphBacktraceRecordInfoExpInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("deletedIns")]
-        public virtual System.Collections.Generic.IList<string> DeletedIns { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class MessageSet : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("recordMessageSetExt")]
-        public virtual LivegraphBacktraceRecordInfo RecordMessageSetExt { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Information about an Office held by one or more Officials.</summary>
     public class Office : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1500,9 +1428,6 @@ namespace Google.Apis.CivicInfo.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadataProto Metadata { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("temporaryData")]
-        public virtual MessageSet TemporaryData { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

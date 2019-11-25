@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190824 (1696)
+ *      <tr><th>API Rev<td>20191120 (1784)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -527,10 +527,6 @@ namespace Google.Apis.CloudBuild.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -538,6 +534,10 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -573,15 +573,6 @@ namespace Google.Apis.CloudBuild.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -594,6 +585,15 @@ namespace Google.Apis.CloudBuild.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -647,8 +647,9 @@ namespace Google.Apis.CloudBuild.v1
 
             /// <summary>Cancels a build in progress.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="projectId">ID of the project.</param>
-            /// <param name="id">ID of the build.</param>
+            /// <param name="projectId">Required. ID of the project.</param>
+            /// <param name="id">Required. ID of the
+            /// build.</param>
             public virtual CancelRequest Cancel(Google.Apis.CloudBuild.v1.Data.CancelBuildRequest body, string projectId, string id)
             {
                 return new CancelRequest(service, body, projectId, id);
@@ -668,11 +669,11 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
 
-                /// <summary>ID of the project.</summary>
+                /// <summary>Required. ID of the project.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>ID of the build.</summary>
+                /// <summary>Required. ID of the build.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Id { get; private set; }
 
@@ -733,7 +734,7 @@ namespace Google.Apis.CloudBuild.v1
             /// This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to
             /// `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="projectId">ID of the project.</param>
+            /// <param name="projectId">Required. ID of the project.</param>
             public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.Build body, string projectId)
             {
                 return new CreateRequest(service, body, projectId);
@@ -755,7 +756,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
 
-                /// <summary>ID of the project.</summary>
+                /// <summary>Required. ID of the project.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
@@ -806,8 +807,9 @@ namespace Google.Apis.CloudBuild.v1
             ///
             /// The `Build` that is returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and
             /// timing information.</summary>
-            /// <param name="projectId">ID of the project.</param>
-            /// <param name="id">ID of the build.</param>
+            /// <param name="projectId">Required. ID of the project.</param>
+            /// <param name="id">Required. ID of the
+            /// build.</param>
             public virtual GetRequest Get(string projectId, string id)
             {
                 return new GetRequest(service, projectId, id);
@@ -829,11 +831,11 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
 
-                /// <summary>ID of the project.</summary>
+                /// <summary>Required. ID of the project.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>ID of the build.</summary>
+                /// <summary>Required. ID of the build.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Id { get; private set; }
 
@@ -887,7 +889,7 @@ namespace Google.Apis.CloudBuild.v1
             ///
             /// Previously requested builds may still be in-progress, or may have finished successfully or
             /// unsuccessfully.</summary>
-            /// <param name="projectId">ID of the project.</param>
+            /// <param name="projectId">Required. ID of the project.</param>
             public virtual ListRequest List(string projectId)
             {
                 return new ListRequest(service, projectId);
@@ -908,7 +910,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
 
-                /// <summary>ID of the project.</summary>
+                /// <summary>Required. ID of the project.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
@@ -1012,9 +1014,9 @@ namespace Google.Apis.CloudBuild.v1
             /// object, the new build will attempt to use the same object, which may or may not be available depending
             /// on the bucket's lifecycle management settings.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="projectId">ID of the project.</param>
-            /// <param name="id">Build ID of the original
-            /// build.</param>
+            /// <param name="projectId">Required. ID of the project.</param>
+            /// <param name="id">Required. Build ID of the
+            /// original build.</param>
             public virtual RetryRequest Retry(Google.Apis.CloudBuild.v1.Data.RetryBuildRequest body, string projectId, string id)
             {
                 return new RetryRequest(service, body, projectId, id);
@@ -1056,11 +1058,11 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
 
-                /// <summary>ID of the project.</summary>
+                /// <summary>Required. ID of the project.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>Build ID of the original build.</summary>
+                /// <summary>Required. Build ID of the original build.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Id { get; private set; }
 
@@ -1144,7 +1146,7 @@ namespace Google.Apis.CloudBuild.v1
             ///
             /// This API is experimental.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="projectId">ID of the project for which to configure automatic builds.</param>
+            /// <param name="projectId">Required. ID of the project for which to configure automatic builds.</param>
             public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.BuildTrigger body, string projectId)
             {
                 return new CreateRequest(service, body, projectId);
@@ -1165,7 +1167,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
 
-                /// <summary>ID of the project for which to configure automatic builds.</summary>
+                /// <summary>Required. ID of the project for which to configure automatic builds.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
@@ -1215,9 +1217,9 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>Deletes a `BuildTrigger` by its project ID and trigger ID.
             ///
             /// This API is experimental.</summary>
-            /// <param name="projectId">ID of the project that owns the trigger.</param>
-            /// <param name="triggerId">ID of the
-            /// `BuildTrigger` to delete.</param>
+            /// <param name="projectId">Required. ID of the project that owns the trigger.</param>
+            /// <param
+            /// name="triggerId">Required. ID of the `BuildTrigger` to delete.</param>
             public virtual DeleteRequest Delete(string projectId, string triggerId)
             {
                 return new DeleteRequest(service, projectId, triggerId);
@@ -1238,11 +1240,11 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
 
-                /// <summary>ID of the project that owns the trigger.</summary>
+                /// <summary>Required. ID of the project that owns the trigger.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>ID of the `BuildTrigger` to delete.</summary>
+                /// <summary>Required. ID of the `BuildTrigger` to delete.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string TriggerId { get; private set; }
 
@@ -1295,9 +1297,9 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>Returns information about a `BuildTrigger`.
             ///
             /// This API is experimental.</summary>
-            /// <param name="projectId">ID of the project that owns the trigger.</param>
-            /// <param name="triggerId">ID of the
-            /// `BuildTrigger` to get.</param>
+            /// <param name="projectId">Required. ID of the project that owns the trigger.</param>
+            /// <param
+            /// name="triggerId">Required. Identifier (`id` or `name`) of the `BuildTrigger` to get.</param>
             public virtual GetRequest Get(string projectId, string triggerId)
             {
                 return new GetRequest(service, projectId, triggerId);
@@ -1318,11 +1320,11 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
 
-                /// <summary>ID of the project that owns the trigger.</summary>
+                /// <summary>Required. ID of the project that owns the trigger.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>ID of the `BuildTrigger` to get.</summary>
+                /// <summary>Required. Identifier (`id` or `name`) of the `BuildTrigger` to get.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string TriggerId { get; private set; }
 
@@ -1375,7 +1377,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>Lists existing `BuildTrigger`s.
             ///
             /// This API is experimental.</summary>
-            /// <param name="projectId">ID of the project for which to list BuildTriggers.</param>
+            /// <param name="projectId">Required. ID of the project for which to list BuildTriggers.</param>
             public virtual ListRequest List(string projectId)
             {
                 return new ListRequest(service, projectId);
@@ -1395,7 +1397,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
 
-                /// <summary>ID of the project for which to list BuildTriggers.</summary>
+                /// <summary>Required. ID of the project for which to list BuildTriggers.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
@@ -1466,9 +1468,9 @@ namespace Google.Apis.CloudBuild.v1
             ///
             /// This API is experimental.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="projectId">ID of the project that owns the trigger.</param>
-            /// <param name="triggerId">ID of the
-            /// `BuildTrigger` to update.</param>
+            /// <param name="projectId">Required. ID of the project that owns the trigger.</param>
+            /// <param
+            /// name="triggerId">Required. ID of the `BuildTrigger` to update.</param>
             public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.BuildTrigger body, string projectId, string triggerId)
             {
                 return new PatchRequest(service, body, projectId, triggerId);
@@ -1490,11 +1492,11 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
 
-                /// <summary>ID of the project that owns the trigger.</summary>
+                /// <summary>Required. ID of the project that owns the trigger.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>ID of the `BuildTrigger` to update.</summary>
+                /// <summary>Required. ID of the `BuildTrigger` to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string TriggerId { get; private set; }
 
@@ -1552,8 +1554,9 @@ namespace Google.Apis.CloudBuild.v1
 
             /// <summary>Runs a `BuildTrigger` at a particular source revision.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="projectId">ID of the project.</param>
-            /// <param name="triggerId">ID of the trigger.</param>
+            /// <param name="projectId">Required. ID of the project.</param>
+            /// <param name="triggerId">Required. ID of the
+            /// trigger.</param>
             public virtual RunRequest Run(Google.Apis.CloudBuild.v1.Data.RepoSource body, string projectId, string triggerId)
             {
                 return new RunRequest(service, body, projectId, triggerId);
@@ -1573,11 +1576,11 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
 
-                /// <summary>ID of the project.</summary>
+                /// <summary>Required. ID of the project.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>ID of the trigger.</summary>
+                /// <summary>Required. ID of the trigger.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string TriggerId { get; private set; }
 
@@ -2037,7 +2040,9 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string Filename { get; set; } 
 
         /// <summary>GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub
-        /// event is received.</summary>
+        /// event is received.
+        ///
+        /// Mutually exclusive with `trigger_template`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("github")]
         public virtual GitHubEventsConfig Github { get; set; } 
 
@@ -2080,7 +2085,9 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Template describing the types of source changes to trigger a build.
         ///
         /// Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change
-        /// that matches that regular expression will trigger a build.</summary>
+        /// that matches that regular expression will trigger a build.
+        ///
+        /// Mutually exclusive with `github`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerTemplate")]
         public virtual RepoSource TriggerTemplate { get; set; } 
 
@@ -2339,9 +2346,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Name of the Cloud Source Repository. If omitted, the name "default" is assumed.</summary>
+        /// <summary>Required. Name of the Cloud Source Repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoName")]
         public virtual string RepoName { get; set; } 
+
+        /// <summary>Substitutions to use in a triggered build. Should only be used with RunBuildTrigger</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("substitutions")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Substitutions { get; set; } 
 
         /// <summary>Regex matching tags to build.
         ///

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191030 (1763)
+ *      <tr><th>API Rev<td>20191115 (1779)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -7470,7 +7470,8 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string Filter { get; set; } 
 
         /// <summary>Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited
-        /// to 100 characters and can include only letters, digits, underscores, hyphens, and periods.</summary>
+        /// to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character
+        /// has to be alphanumeric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -7607,6 +7608,11 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
+        /// <summary>Optional. A description of this sink. The maximum length of the description is 8000
+        /// characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
         /// <summary>Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]"
         /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
         /// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the
@@ -7614,6 +7620,11 @@ namespace Google.Apis.Logging.v2.Data
         /// For more information, see Exporting Logs with Sinks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; } 
+
+        /// <summary>Optional. If set to True, then this sink is disabled and it does not export any log
+        /// entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
 
         /// <summary>Do not use. This field is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
@@ -7639,7 +7650,8 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-
         /// errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following
-        /// characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.</summary>
+        /// characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character
+        /// has to be alphanumeric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

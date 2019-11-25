@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191105 (1769)
+ *      <tr><th>API Rev<td>20191122 (1786)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -2789,6 +2789,25 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         /// <summary>The list of worker pools in a given instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPools")]
         public virtual System.Collections.Generic.IList<GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool> WorkerPools { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request used for `UpdateInstance`.</summary>
+    public class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to enable Stackdriver logging for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingEnabled")]
+        public virtual System.Nullable<bool> LoggingEnabled { get; set; } 
+
+        /// <summary>Name of the instance to update. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The fields to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

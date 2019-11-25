@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191022 (1755)
+ *      <tr><th>API Rev<td>20191111 (1775)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -385,11 +385,9 @@ namespace Google.Apis.Pubsub.v1
             /// the returned Snapshot object. Note that for REST API requests, you must specify a name in the
             /// request.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Optional user-provided name for this snapshot. If the name is not provided in the request, the
-            /// server will assign a random name for this snapshot on the same project as the subscription. Note that for REST API
-            /// requests, you must specify a name.  See the
-            ///
-            /// resource name rules. Format is `projects/{project}/snapshots/{snap}`.</param>
+            /// <param name="name">User-provided name for this snapshot. If the name is not provided in the request, the server will
+            /// assign a random name for this snapshot on the same project as the subscription. Note that for REST API requests, you
+            /// must specify a name.  See the  resource name rules. Format is `projects/{project}/snapshots/{snap}`.</param>
             public virtual CreateRequest Create(Google.Apis.Pubsub.v1.Data.CreateSnapshotRequest body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -418,11 +416,10 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>Optional user-provided name for this snapshot. If the name is not provided in the request,
-                /// the server will assign a random name for this snapshot on the same project as the subscription. Note
-                /// that for REST API requests, you must specify a name.  See the
-                ///
-                /// resource name rules. Format is `projects/{project}/snapshots/{snap}`.</summary>
+                /// <summary>User-provided name for this snapshot. If the name is not provided in the request, the
+                /// server will assign a random name for this snapshot on the same project as the subscription. Note
+                /// that for REST API requests, you must specify a name.  See the  resource name rules. Format is
+                /// `projects/{project}/snapshots/{snap}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -3298,8 +3295,8 @@ namespace Google.Apis.Pubsub.v1.Data
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
         /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
-        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if either of incoming or
-        /// stored policy does not meet the version requirements.</summary>
+        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if the incoming policy version
+        /// does not meet the requirements for modifying the stored policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -3308,11 +3305,12 @@ namespace Google.Apis.Pubsub.v1.Data
         /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
         ///
         /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
-        /// policy, modifying a conditional binding, or removing a conditional binding from the stored conditional
-        /// policy. Operations on non-conditional policies may specify any valid value or leave the field unset.
+        /// policy, modifying a conditional binding, or removing a binding (conditional or unconditional) from the
+        /// stored conditional policy. Operations on non-conditional policies may specify any valid value or leave the
+        /// field unset.
         ///
-        /// If no etag is provided in the call to `setIamPolicy`, any version compliance checks on the incoming and/or
-        /// stored policy is skipped.</summary>
+        /// If no etag is provided in the call to `setIamPolicy`, version compliance checks against the stored policy is
+        /// skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -3347,7 +3345,8 @@ namespace Google.Apis.Pubsub.v1.Data
     /// and limits for more information about message limits.</summary>
     public class PubsubMessage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional attributes for this message.</summary>
+        /// <summary>Attributes for this message. If this field is empty, the message must contain non-empty
+        /// data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
 

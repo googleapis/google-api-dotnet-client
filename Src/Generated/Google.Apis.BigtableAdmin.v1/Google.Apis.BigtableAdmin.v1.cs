@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigtable/'>Cloud Bigtable Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191007 (1740)
+ *      <tr><th>API Rev<td>20191102 (1766)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigtable/'>
  *              https://cloud.google.com/bigtable/</a>
@@ -413,7 +413,7 @@ namespace Google.Apis.BigtableAdmin.v1.Data
     {
         /// <summary>The clusters to be created within the instance, mapped by desired cluster ID, e.g., just
         /// `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked
-        /// `OutputOnly` must be left blank. Currently, at most two clusters can be specified.</summary>
+        /// `OutputOnly` must be left blank. Currently, at most four clusters can be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
         public virtual System.Collections.Generic.IDictionary<string,Cluster> Clusters { get; set; } 
 

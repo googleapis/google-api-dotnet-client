@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191106 (1770)
+ *      <tr><th>API Rev<td>20191119 (1783)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -597,10 +597,6 @@ namespace Google.Apis.ServiceNetworking.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -608,6 +604,10 @@ namespace Google.Apis.ServiceNetworking.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -643,15 +643,6 @@ namespace Google.Apis.ServiceNetworking.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -664,6 +655,15 @@ namespace Google.Apis.ServiceNetworking.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1148,6 +1148,80 @@ namespace Google.Apis.ServiceNetworking.v1
             }
 
         }
+
+        /// <summary>Service producers use this method to validate if the consumer provided network, project and the
+        /// requested range is valid. This allows them to use a fail-fast mechanism for consumer requests, and not have
+        /// to wait for AddSubnetwork operation completion to determine if user request is invalid.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">Required. This is in a form services/{service} where {service} is the name of the private
+        /// access management service. For example 'service-peering.example.com'.</param>
+        public virtual ValidateRequest Validate(Google.Apis.ServiceNetworking.v1.Data.ValidateConsumerConfigRequest body, string parent)
+        {
+            return new ValidateRequest(service, body, parent);
+        }
+
+        /// <summary>Service producers use this method to validate if the consumer provided network, project and the
+        /// requested range is valid. This allows them to use a fail-fast mechanism for consumer requests, and not have
+        /// to wait for AddSubnetwork operation completion to determine if user request is invalid.</summary>
+        public class ValidateRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.ValidateConsumerConfigResponse>
+        {
+            /// <summary>Constructs a new Validate request.</summary>
+            public ValidateRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceNetworking.v1.Data.ValidateConsumerConfigRequest body, string parent)
+                : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. This is in a form services/{service} where {service} is the name of the private
+            /// access management service. For example 'service-peering.example.com'.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ServiceNetworking.v1.Data.ValidateConsumerConfigRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "validate"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+parent}:validate"; }
+            }
+
+            /// <summary>Initializes Validate parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^services/[^/]+$",
+                    });
+            }
+
+        }
     }
 }
 
@@ -1171,7 +1245,7 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
         public virtual string ConsumerNetwork { get; set; } 
 
-        /// <summary>An optional description of the subnet.</summary>
+        /// <summary>Optional. Description of the subnet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -1518,6 +1592,19 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// following format: `services/{service name}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a consumer project.</summary>
+    public class ConsumerProject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Project number of the consumer that is launching the service instance. It can own the
+        /// network that is peered with Google or, be a service project in an XPN where the host project has the
+        /// network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNum")]
+        public virtual System.Nullable<long> ProjectNum { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2885,6 +2972,19 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a range reservation.</summary>
+    public class RangeReservation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The size of the desired subnet. Use usual CIDR range notation. For example, '30' to find
+        /// unused x.x.x.x/30 CIDR range. The goal is to determine if one of the allocated ranges has enough free space
+        /// for a subnet of the requested size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipPrefixLength")]
+        public virtual System.Nullable<int> IpPrefixLength { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request to search for an unused range within allocated ranges.</summary>
     public class SearchRangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2894,8 +2994,8 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipPrefixLength")]
         public virtual System.Nullable<int> IpPrefixLength { get; set; } 
 
-        /// <summary>Network name in the consumer project.   This network must have been already peered with a shared
-        /// VPC network using CreateConnection method. Must be in a form 'projects/{project}/global/networks/{network}'.
+        /// <summary>Network name in the consumer project. This network must have been already peered with a shared VPC
+        /// network using CreateConnection method. Must be in a form 'projects/{project}/global/networks/{network}'.
         /// {project} is a project number, as in '12345' {network} is network name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
@@ -2976,8 +3076,8 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual Http Http { get; set; } 
 
         /// <summary>A unique ID for a specific instance of this message, typically assigned by the client for tracking
-        /// purpose. If empty, the server may choose to generate one instead. Must be no longer than 60
-        /// characters.</summary>
+        /// purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are
+        /// allowed. If empty, the server may choose to generate one instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -3287,6 +3387,48 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// internal methods, such as service health check methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipServiceControl")]
         public virtual System.Nullable<bool> SkipServiceControl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ValidateConsumerConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The network that the consumer is using to connect with services. Must be in the form of
+        /// projects/{project}/global/networks/{network} {project} is a project number, as in '12345' {network} is
+        /// network name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
+        public virtual string ConsumerNetwork { get; set; } 
+
+        /// <summary>NETWORK_NOT_IN_CONSUMERS_PROJECT, NETWORK_NOT_IN_CONSUMERS_HOST_PROJECT, and HOST_PROJECT_NOT_FOUND
+        /// are done when consumer_project is provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerProject")]
+        public virtual ConsumerProject ConsumerProject { get; set; } 
+
+        /// <summary>RANGES_EXHAUSTED, RANGES_EXHAUSTED, and RANGES_DELETED_LATER are done when range_reservation is
+        /// provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeReservation")]
+        public virtual RangeReservation RangeReservation { get; set; } 
+
+        /// <summary>The validations will be performed in the order listed in the ValidationError enum. The first
+        /// failure will return. If a validation is not requested, then the next one will be performed.
+        /// SERVICE_NETWORKING_NOT_ENABLED and NETWORK_NOT_PEERED checks are performed for all requests where validation
+        /// is requested. NETWORK_NOT_FOUND and NETWORK_DISCONNECTED checks are done for requests that have
+        /// validate_network set to true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateNetwork")]
+        public virtual System.Nullable<bool> ValidateNetwork { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ValidateConsumerConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("isValid")]
+        public virtual System.Nullable<bool> IsValid { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("validationError")]
+        public virtual string ValidationError { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

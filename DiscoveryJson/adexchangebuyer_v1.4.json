@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/lcHWEHJSjcR2oDTKvEdNwPbXDEA\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/kylXz47Q3_sc3JaxX2Y-ulfwPrA\"",
  "discoveryVersion": "v1",
  "id": "adexchangebuyer:v1.4",
  "name": "adexchangebuyer",
  "canonicalName": "Ad Exchange Buyer",
  "version": "v1.4",
- "revision": "20191018",
+ "revision": "20191108",
  "title": "Ad Exchange Buyer API",
  "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
  "ownerDomain": "google.com",
@@ -1739,6 +1739,11 @@
      "items": {
       "type": "string"
      }
+    },
+    "maximumQps": {
+     "type": "string",
+     "description": "The maximum QPS allocated to this pretargeting configuration, used for pretargeting-level QPS limits. By default, this is not set, which indicates that there is no QPS limit at the configuration level (a global or account-level limit may still be imposed).",
+     "format": "int64"
     },
     "minimumViewabilityDecile": {
      "type": "integer",

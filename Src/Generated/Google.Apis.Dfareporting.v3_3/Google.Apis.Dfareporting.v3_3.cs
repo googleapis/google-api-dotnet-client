@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v3.3
- *      <tr><th>API Rev<td>20190911 (1714)
+ *      <tr><th>API Rev<td>20191112 (1776)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -5586,7 +5586,7 @@ namespace Google.Apis.Dfareporting.v3_3
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>Select only change logs whose change time is before the specified minChangeTime.The time should
+            /// <summary>Select only change logs whose change time is after the specified minChangeTime.The time should
             /// be formatted as an RFC3339 date/time string. For example, for 10:54 PM on July 18th, 2015, in the
             /// America/New York time zone, the format is "2015-07-18T22:54:00-04:00". In other words, the year, month,
             /// day, the letter T, the hour (24-hour clock system), minute, second, and then the time zone
@@ -22715,7 +22715,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// NZD - "24" for MYR - "25" for BRL - "26" for PTE - "27" for MXP - "28" for CLP - "29" for TRY - "30" for ARS
         /// - "31" for PEN - "32" for ILS - "33" for CHF - "34" for VEF - "35" for COP - "36" for GTQ - "37" for PLN -
         /// "39" for INR - "40" for THB - "41" for IDR - "42" for CZK - "43" for RON - "44" for HUF - "45" for RUB -
-        /// "46" for AED - "47" for BGN - "48" for HRK - "49" for MXN - "50" for NGN</summary>
+        /// "46" for AED - "47" for BGN - "48" for HRK - "49" for MXN - "50" for NGN - "51" for EGP</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyId")]
         public virtual System.Nullable<long> CurrencyId { get; set; } 
 
@@ -24194,10 +24194,10 @@ namespace Google.Apis.Dfareporting.v3_3.Data
 
         /// <summary>A list of the alphanumeric encrypted user IDs. Any user ID with exposure prior to the conversion
         /// timestamp will be used in the inserted conversion. If no such user ID is found then the conversion will be
-        /// rejected with NO_COOKIE_MATCH_FOUND error. When set, encryptionInfo should also be specified. This field may
-        /// only be used when calling batchinsert; it is not supported by batchupdate. This field is mutually exclusive
-        /// with encryptedUserId, matchId, mobileDeviceId and gclid. This or encryptedUserId or matchId or
-        /// mobileDeviceId or gclid is a required field.</summary>
+        /// rejected with INVALID_ARGUMENT error. When set, encryptionInfo should also be specified. This field may only
+        /// be used when calling batchinsert; it is not supported by batchupdate. This field is mutually exclusive with
+        /// encryptedUserId, matchId, mobileDeviceId and gclid. This or encryptedUserId or matchId or mobileDeviceId or
+        /// gclid is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedUserIdCandidates")]
         public virtual System.Collections.Generic.IList<string> EncryptedUserIdCandidates { get; set; } 
 
@@ -29398,7 +29398,13 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         /// - "1" for "America/New_York" - "2" for "Europe/London" - "3" for "Europe/Paris" - "4" for
         /// "Africa/Johannesburg" - "5" for "Asia/Jerusalem" - "6" for "Asia/Shanghai" - "7" for "Asia/Hong_Kong" - "8"
         /// for "Asia/Tokyo" - "9" for "Australia/Sydney" - "10" for "Asia/Dubai" - "11" for "America/Los_Angeles" -
-        /// "12" for "Pacific/Auckland" - "13" for "America/Sao_Paulo"</summary>
+        /// "12" for "Pacific/Auckland" - "13" for "America/Sao_Paulo" - "16" for "America/Asuncion" - "17" for
+        /// "America/Chicago" - "18" for "America/Denver" - "19" for "America/St_Johns" - "20" for "Asia/Dhaka" - "21"
+        /// for "Asia/Jakarta" - "22" for "Asia/Kabul" - "23" for "Asia/Karachi" - "24" for "Asia/Calcutta" - "25" for
+        /// "Asia/Pyongyang" - "26" for "Asia/Rangoon" - "27" for "Atlantic/Cape_Verde" - "28" for
+        /// "Atlantic/South_Georgia" - "29" for "Australia/Adelaide" - "30" for "Australia/Lord_Howe" - "31" for
+        /// "Europe/Moscow" - "32" for "Pacific/Kiritimati" - "35" for "Pacific/Norfolk" - "36" for
+        /// "Pacific/Tongatapu"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportGenerationTimeZoneId")]
         public virtual System.Nullable<long> ReportGenerationTimeZoneId { get; set; } 
 

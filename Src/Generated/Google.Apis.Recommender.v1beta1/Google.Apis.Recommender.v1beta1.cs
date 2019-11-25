@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/recommender/docs/'>Recommender API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191102 (1766)
+ *      <tr><th>API Rev<td>20191118 (1782)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/recommender/docs/'>
  *              https://cloud.google.com/recommender/docs/</a>
@@ -592,12 +592,12 @@ namespace Google.Apis.Recommender.v1beta1
 
                     }
 
-                    /// <summary>Mark the Recommendation State as Claimed. Users can use this method to indicate to the
+                    /// <summary>Marks the Recommendation State as Claimed. Users can use this method to indicate to the
                     /// Recommender API that they are starting to apply the recommendation themselves. This stops the
-                    /// recommendation content from being updated.
+                    /// recommendation content from being updated. Associated insights are frozen and placed in the
+                    /// ACCEPTED state.
                     ///
-                    /// MarkRecommendationClaimed can be applied to recommendations in CLAIMED, SUCCEEDED, FAILED, or
-                    /// ACTIVE state.
+                    /// MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state.
                     ///
                     /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
                     /// <param name="body">The body of the request.</param>
@@ -607,12 +607,12 @@ namespace Google.Apis.Recommender.v1beta1
                         return new MarkClaimedRequest(service, body, name);
                     }
 
-                    /// <summary>Mark the Recommendation State as Claimed. Users can use this method to indicate to the
+                    /// <summary>Marks the Recommendation State as Claimed. Users can use this method to indicate to the
                     /// Recommender API that they are starting to apply the recommendation themselves. This stops the
-                    /// recommendation content from being updated.
+                    /// recommendation content from being updated. Associated insights are frozen and placed in the
+                    /// ACCEPTED state.
                     ///
-                    /// MarkRecommendationClaimed can be applied to recommendations in CLAIMED, SUCCEEDED, FAILED, or
-                    /// ACTIVE state.
+                    /// MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state.
                     ///
                     /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
                     public class MarkClaimedRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1Recommendation>
@@ -674,9 +674,10 @@ namespace Google.Apis.Recommender.v1beta1
 
                     }
 
-                    /// <summary>Mark the Recommendation State as Failed. Users can use this method to indicate to the
+                    /// <summary>Marks the Recommendation State as Failed. Users can use this method to indicate to the
                     /// Recommender API that they have applied the recommendation themselves, and the operation failed.
-                    /// This stops the recommendation content from being updated.
+                    /// This stops the recommendation content from being updated. Associated insights are frozen and
+                    /// placed in the ACCEPTED state.
                     ///
                     /// MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or
                     /// FAILED state.
@@ -689,9 +690,10 @@ namespace Google.Apis.Recommender.v1beta1
                         return new MarkFailedRequest(service, body, name);
                     }
 
-                    /// <summary>Mark the Recommendation State as Failed. Users can use this method to indicate to the
+                    /// <summary>Marks the Recommendation State as Failed. Users can use this method to indicate to the
                     /// Recommender API that they have applied the recommendation themselves, and the operation failed.
-                    /// This stops the recommendation content from being updated.
+                    /// This stops the recommendation content from being updated. Associated insights are frozen and
+                    /// placed in the ACCEPTED state.
                     ///
                     /// MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or
                     /// FAILED state.
@@ -756,9 +758,10 @@ namespace Google.Apis.Recommender.v1beta1
 
                     }
 
-                    /// <summary>Mark the Recommendation State as Succeeded. Users can use this method to indicate to
+                    /// <summary>Marks the Recommendation State as Succeeded. Users can use this method to indicate to
                     /// the Recommender API that they have applied the recommendation themselves, and the operation was
-                    /// successful. This stops the recommendation content from being updated.
+                    /// successful. This stops the recommendation content from being updated. Associated insights are
+                    /// frozen and placed in the ACCEPTED state.
                     ///
                     /// MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or
                     /// FAILED state.
@@ -771,9 +774,10 @@ namespace Google.Apis.Recommender.v1beta1
                         return new MarkSucceededRequest(service, body, name);
                     }
 
-                    /// <summary>Mark the Recommendation State as Succeeded. Users can use this method to indicate to
+                    /// <summary>Marks the Recommendation State as Succeeded. Users can use this method to indicate to
                     /// the Recommender API that they have applied the recommendation themselves, and the operation was
-                    /// successful. This stops the recommendation content from being updated.
+                    /// successful. This stops the recommendation content from being updated. Associated insights are
+                    /// frozen and placed in the ACCEPTED state.
                     ///
                     /// MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or
                     /// FAILED state.
@@ -942,7 +946,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
     public class GoogleCloudRecommenderV1beta1Operation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Type of this operation. Contains one of 'and', 'remove', 'replace', 'move', 'copy', 'test' and
-        /// custom operations. This field is case-insensitive and always populated.</summary>
+        /// 'custom' operations. This field is case-insensitive and always populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 

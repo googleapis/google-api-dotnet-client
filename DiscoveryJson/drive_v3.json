@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/9DRQtjCJI84oZSC4iB474iWR2g8\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/PorHXWkzCl6hdMxMR0HVf8TWRb0\"",
  "discoveryVersion": "v1",
  "id": "drive:v3",
  "name": "drive",
  "version": "v3",
- "revision": "20191017",
+ "revision": "20191108",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -1256,7 +1256,7 @@
     },
     "displayName": {
      "type": "string",
-     "description": "A displayable name for users, groups or domains."
+     "description": "The \"pretty\" name of the value of the permission. The following is a list of examples for each type of permission:  \n- user - User's full name, as defined for their Google account, such as \"Joe Smith.\" \n- group - Name of the Google Group, such as \"The Company Administrators.\" \n- domain - String domain name, such as \"thecompany.com.\" \n- anyone - No displayName is present."
     },
     "domain": {
      "type": "string",
@@ -1273,7 +1273,7 @@
     },
     "id": {
      "type": "string",
-     "description": "The ID of this permission. This is a unique identifier for the grantee, and is published in User resources as permissionId."
+     "description": "The ID of this permission. This is a unique identifier for the grantee, and is published in User resources as permissionId. IDs should be treated as opaque values."
     },
     "kind": {
      "type": "string",
@@ -1345,7 +1345,7 @@
     },
     "type": {
      "type": "string",
-     "description": "The type of the grantee. Valid values are:  \n- user \n- group \n- domain \n- anyone",
+     "description": "The type of the grantee. Valid values are:  \n- user \n- group \n- domain \n- anyone  When creating a permission, if type is user or group, you must provide an emailAddress for the user or group. When type is domain, you must provide a domain. There isn't extra information required for a anyone type.",
      "annotations": {
       "required": [
        "drive.permissions.create"
