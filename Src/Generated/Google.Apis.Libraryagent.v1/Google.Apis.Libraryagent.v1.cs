@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/docs/quota'>Library Agent API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191121 (1785)
+ *      <tr><th>API Rev<td>20191126 (1790)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/docs/quota'>
  *              https://cloud.google.com/docs/quota</a>

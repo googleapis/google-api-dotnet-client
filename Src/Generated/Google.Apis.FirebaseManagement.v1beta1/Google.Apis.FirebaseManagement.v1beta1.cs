@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com'>Firebase Management API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191120 (1784)
+ *      <tr><th>API Rev<td>20191126 (1790)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com'>
  *              https://firebase.google.com</a>
@@ -1234,14 +1234,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// <summary>Returns a list of valid Google Cloud Platform (GCP) resource locations for the specified
             /// Project (including a FirebaseProject).
             ///
-            /// The default GCP resource location of a project defines the geographical location where project
-            /// resources, such as Cloud Firestore, will be provisioned by default.
+            /// One of these locations can be selected as the Project's [_default_ GCP resource
+            /// location](https://firebase.google.com/docs/projects/locations), which is the geographical location where
+            /// project resources, such as Cloud Firestore, will be provisioned by default. However, if the default GCP
+            /// resource location has already been set for the Project, then this setting cannot be changed.
             ///
-            /// The returned list are the available [GCP resource
-            /// locations](https://firebase.google.com/docs/projects/locations). This call checks for any location
-            /// restrictions for the specified Project and, thus, might return a subset of all possible GCP resource
-            /// locations. To list all GCP resource locations (regardless of any restrictions), call the endpoint
-            /// without specifying a `projectId` (that is, `/v1beta1/{parent=projects/-}/listAvailableLocations`).
+            /// This call checks for any location restrictions for the specified Project and, thus, might return a
+            /// subset of all possible GCP resource locations. To list all GCP resource locations (regardless of any
+            /// restrictions), call the endpoint without specifying a `projectId` (that is,
+            /// `/v1beta1/{parent=projects/-}/listAvailableLocations`).
             ///
             /// To call `ListAvailableLocations` with a specified project, a member must be at minimum a Viewer of the
             /// project. Calls without a specified project do not require any specific project permissions.</summary>
@@ -1256,14 +1257,15 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             /// <summary>Returns a list of valid Google Cloud Platform (GCP) resource locations for the specified
             /// Project (including a FirebaseProject).
             ///
-            /// The default GCP resource location of a project defines the geographical location where project
-            /// resources, such as Cloud Firestore, will be provisioned by default.
+            /// One of these locations can be selected as the Project's [_default_ GCP resource
+            /// location](https://firebase.google.com/docs/projects/locations), which is the geographical location where
+            /// project resources, such as Cloud Firestore, will be provisioned by default. However, if the default GCP
+            /// resource location has already been set for the Project, then this setting cannot be changed.
             ///
-            /// The returned list are the available [GCP resource
-            /// locations](https://firebase.google.com/docs/projects/locations). This call checks for any location
-            /// restrictions for the specified Project and, thus, might return a subset of all possible GCP resource
-            /// locations. To list all GCP resource locations (regardless of any restrictions), call the endpoint
-            /// without specifying a `projectId` (that is, `/v1beta1/{parent=projects/-}/listAvailableLocations`).
+            /// This call checks for any location restrictions for the specified Project and, thus, might return a
+            /// subset of all possible GCP resource locations. To list all GCP resource locations (regardless of any
+            /// restrictions), call the endpoint without specifying a `projectId` (that is,
+            /// `/v1beta1/{parent=projects/-}/listAvailableLocations`).
             ///
             /// To call `ListAvailableLocations` with a specified project, a member must be at minimum a Viewer of the
             /// project. Calls without a specified project do not require any specific project permissions.</summary>
@@ -3608,8 +3610,8 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
     /// <summary>A GCP resource location that can be selected for a Project.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the default GCP resource location. It must be one of the available [GCP resource
-        /// locations](https://firebase.google.com/docs/projects/locations).</summary>
+        /// <summary>The ID of the GCP resource location. It will be one of the available [GCP resource
+        /// locations](https://firebase.google.com/docs/projects/locations#types).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://github.com/conversationai/perspectiveapi/blob/master/README.md'>Perspective Comment Analyzer API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20191103 (1767)
+ *      <tr><th>API Rev<td>20191124 (1788)
  *      <tr><th>API Docs
  *          <td><a href='https://github.com/conversationai/perspectiveapi/blob/master/README.md'>
  *              https://github.com/conversationai/perspectiveapi/blob/master/README.md</a>
@@ -478,11 +478,13 @@ namespace Google.Apis.CommentAnalyzer.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("doNotStore")]
         public virtual System.Nullable<bool> DoNotStore { get; set; } 
 
-        /// <summary>The language(s) of the comment and context (if none are specified, the language is automatically
-        /// detected). If multiple languages are specified, the text is checked in all of them that are supported. Both
-        /// ISO and BCP-47 language codes are accepted. Current Language Restrictions: * Only English text ("en") is
-        /// supported. If none of the languages specified by the caller are supported, an `UNIMPLEMENTED` error is
-        /// returned.</summary>
+        /// <summary>The language(s) of the comment and context. If none are specified, we attempt to automatically
+        /// detect the language. Specifying multiple languages means the text contains multiple lanugages. Both ISO and
+        /// BCP-47 language codes are accepted.
+        ///
+        /// The server returns an error if no language was specified and language detection fails. The server also
+        /// returns an error if the languages (either specified by the caller, or auto-detected) are not *all* supported
+        /// by the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
         public virtual System.Collections.Generic.IList<string> Languages { get; set; } 
 
@@ -529,8 +531,8 @@ namespace Google.Apis.CommentAnalyzer.v1alpha1.Data
 
         /// <summary>The language(s) used by CommentAnalyzer service to choose which Model to use when analyzing the
         /// comment. Might better be called "effective_languages". The logic used to make the choice is as follows: if
-        /// Request.languages.empty() effective_languages = detected_languages else effective_languages =
-        /// Request.languages</summary>
+        /// !Request.languages.empty() effective_languages = Request.languages else effective_languages =
+        /// detected_languages[0]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
         public virtual System.Collections.Generic.IList<string> Languages { get; set; } 
 
@@ -682,11 +684,8 @@ namespace Google.Apis.CommentAnalyzer.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual Context Context { get; set; } 
 
-        /// <summary>The language(s) of the comment and context (if none are specified, the language is automatically
-        /// detected). If multiple languages are specified, the text is checked in all of them that are supported. Both
-        /// ISO and BCP-47 language codes are accepted. Current Language Restrictions: * Only English text ("en") is
-        /// supported. If none of the languages specified by the caller are supported, an `UNIMPLEMENTED` error is
-        /// returned.</summary>
+        /// <summary>The language(s) of the comment and context. If none are specified, we attempt to automatically
+        /// detect the language. Both ISO and BCP-47 language codes are accepted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
         public virtual System.Collections.Generic.IList<string> Languages { get; set; } 
 

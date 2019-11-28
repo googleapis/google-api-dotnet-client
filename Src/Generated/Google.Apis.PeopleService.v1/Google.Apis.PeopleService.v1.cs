@@ -512,14 +512,14 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
+            /// <summary>Required. The resource names of the contact groups to get.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
+
             /// <summary>Optional. Specifies the maximum number of members to return for each group. Defaults to 0 if
             /// not set, which will return zero members.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxMembers", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxMembers { get; set; }
-
-            /// <summary>Required. The resource names of the contact groups to get.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -546,18 +546,18 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "maxMembers", new Google.Apis.Discovery.Parameter
+                    "resourceNames", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxMembers",
+                        Name = "resourceNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "resourceNames", new Google.Apis.Discovery.Parameter
+                    "maxMembers", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "resourceNames",
+                        Name = "maxMembers",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -790,6 +790,11 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
+            /// <summary>A sync token, returned by a previous call to `contactgroups.list`. Only resources changed since
+            /// the sync token was created will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SyncToken { get; set; }
+
             /// <summary>The next_page_token value returned from a previous call to
             /// [ListContactGroups](/people/api/rest/v1/contactgroups/list). Requests the next page of
             /// resources.</summary>
@@ -800,11 +805,6 @@ namespace Google.Apis.PeopleService.v1
             /// inclusive. Defaults to 30 if not set or set to 0.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>A sync token, returned by a previous call to `contactgroups.list`. Only resources changed since
-            /// the sync token was created will be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SyncToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -831,6 +831,15 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "syncToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "syncToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -843,15 +852,6 @@ namespace Google.Apis.PeopleService.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "syncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1000,10 +1000,6 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ResourceName { get; private set; }
 
-                /// <summary>The token of the page to be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The number of connections to include in the response. Valid values are between 1
                 /// and 2000, inclusive. Defaults to 100 if not set or set to 0.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -1055,6 +1051,10 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> RequestSyncToken { get; set; }
 
+                /// <summary>The token of the page to be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1087,15 +1087,6 @@ namespace Google.Apis.PeopleService.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^people/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -1146,6 +1137,15 @@ namespace Google.Apis.PeopleService.v1
                         "requestSyncToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestSyncToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1480,17 +1480,6 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>Required. The resource names of the people to provide information about.
-            ///
-            /// - To get information about the authenticated user, specify `people/me`. - To get information about a
-            /// google account, specify `people/`account_id. - To get information about a contact, specify the resource
-            /// name that identifies the contact as returned by
-            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
-            ///
-            /// You can include up to 50 resource names in one request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
-
             /// <summary>Required. A field mask to restrict which fields on each person are returned. Multiple fields
             /// can be specified by separating them with commas. Valid values are:
             ///
@@ -1505,6 +1494,17 @@ namespace Google.Apis.PeopleService.v1
             /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object RequestMaskIncludeField { get; set; }
+
+            /// <summary>Required. The resource names of the people to provide information about.
+            ///
+            /// - To get information about the authenticated user, specify `people/me`. - To get information about a
+            /// google account, specify `people/`account_id. - To get information about a contact, specify the resource
+            /// name that identifies the contact as returned by
+            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
+            ///
+            /// You can include up to 50 resource names in one request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1531,15 +1531,6 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "resourceNames", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resourceNames",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "personFields", new Google.Apis.Discovery.Parameter
                     {
                         Name = "personFields",
@@ -1552,6 +1543,15 @@ namespace Google.Apis.PeopleService.v1
                     "requestMask.includeField", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMask.includeField",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "resourceNames", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
