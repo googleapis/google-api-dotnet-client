@@ -1403,12 +1403,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Time used as a reference point when filtering findings. The filter is limited to
-                    /// findings existing at the supplied time and their values are those at that specific time. Absence
-                    /// of this field will default to the API's version of NOW.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object ReadTime { get; set; }
-
                     /// <summary>Expression that defines what fields and order to use for sorting. The string value
                     /// should follow SQL syntax: comma separated list of fields. For example:
                     /// "name,resource_properties.a_property". The default sorting order is ascending. To specify
@@ -1418,6 +1412,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                     /// source_properties.a_property  " are equivalent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
+
+                    /// <summary>Time used as a reference point when filtering findings. The filter is limited to
+                    /// findings existing at the supplied time and their values are those at that specific time. Absence
+                    /// of this field will default to the API's version of NOW.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadTime { get; set; }
 
                     /// <summary>Expression that defines the filter to apply across findings. The expression is a list
                     /// of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are not
@@ -1492,18 +1492,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
                                 Pattern = @"^organizations/[^/]+/sources/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "readTime", new Google.Apis.Discovery.Parameter
+                            "orderBy", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "readTime",
+                                Name = "orderBy",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "orderBy", new Google.Apis.Discovery.Parameter
+                            "readTime", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "orderBy",
+                                Name = "readTime",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

@@ -417,11 +417,6 @@ namespace Google.Apis.PolyService.v1
             }
 
 
-            /// <summary>One or more search terms to be matched against all text that Poly has indexed for assets, which
-            /// includes display_name, description, and tags. Multiple keywords should be separated by spaces.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("keywords", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Keywords { get; set; }
-
             /// <summary>Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`. Defaults
             /// to `BEST`, which ranks assets based on a combination of popularity and other features.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -471,6 +466,11 @@ namespace Google.Apis.PolyService.v1
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
+            /// <summary>One or more search terms to be matched against all text that Poly has indexed for assets, which
+            /// includes display_name, description, and tags. Multiple keywords should be separated by spaces.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("keywords", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Keywords { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -495,15 +495,6 @@ namespace Google.Apis.PolyService.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "keywords", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "keywords",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "orderBy", new Google.Apis.Discovery.Parameter
                     {
@@ -562,6 +553,15 @@ namespace Google.Apis.PolyService.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "keywords", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "keywords",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

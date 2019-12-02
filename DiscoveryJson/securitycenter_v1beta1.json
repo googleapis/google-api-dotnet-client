@@ -1,42 +1,883 @@
 {
+  "id": "securitycenter:v1beta1",
+  "documentationLink": "https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview",
+  "revision": "20191115",
+  "discoveryVersion": "v1",
+  "version_module": true,
+  "schemas": {
+    "GroupAssetsRequest": {
+      "description": "Request message for grouping by assets.",
+      "type": "object",
+      "properties": {
+        "readTime": {
+          "description": "Time used as a reference point when filtering assets. The filter is limited\nto assets existing at the supplied time and their values are those at that\nspecific time. Absence of this field will default to the API's version of\nNOW.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "compareDuration": {
+          "description": "When compare_duration is set, the Asset's \"state\" property is updated to\nindicate whether the asset was added, removed, or remained present during\nthe compare_duration period of time that precedes the read_time. This is\nthe time between (read_time - compare_duration) and read_time.\n\nThe state value is derived based on the presence of the asset at the two\npoints in time. Intermediate state changes between the two times don't\naffect the result. For example, the results aren't affected if the asset is\nremoved and re-created again.\n\nPossible \"state\" values when compare_duration is specified:\n\n* \"ADDED\": indicates that the asset was not present before\n             compare_duration, but present at reference_time.\n* \"REMOVED\": indicates that the asset was present at the start of\n             compare_duration, but not present at reference_time.\n* \"ACTIVE\": indicates that the asset was present at both the\n             start and the end of the time period defined by\n             compare_duration and reference_time.\n\nThis field is ignored if `state` is not a field in `group_by`.",
+          "format": "google-duration",
+          "type": "string"
+        },
+        "groupBy": {
+          "description": "Required. Expression that defines what assets fields to use for grouping. The string\nvalue should follow SQL syntax: comma separated list of fields. For\nexample:\n\"security_center_properties.resource_project,security_center_properties.project\".\n\nThe following fields are supported when compare_duration is not set:\n\n* security_center_properties.resource_project\n* security_center_properties.resource_type\n* security_center_properties.resource_parent\n\nThe following fields are supported when compare_duration is set:\n\n* security_center_properties.resource_type",
+          "type": "string"
+        },
+        "filter": {
+          "description": "Expression that defines the filter to apply across assets.\nThe expression is a list of zero or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are not supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `\u003cfield\u003e \u003coperator\u003e \u003cvalue\u003e` and may have a `-`\ncharacter in front of them to indicate negation. The fields map to those\ndefined in the Asset resource. Examples include:\n\n* name\n* security_center_properties.resource_name\n* resource_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `\u003e`, `\u003c`, `\u003e=`, `\u003c=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nFor example, `resource_properties.size = 100` is a valid filter string.",
+          "type": "string"
+        },
+        "pageToken": {
+          "description": "The value returned by the last `GroupAssetsResponse`; indicates\nthat this is a continuation of a prior `GroupAssets` call, and that the\nsystem should return the next page of data.",
+          "type": "string"
+        },
+        "pageSize": {
+          "description": "The maximum number of results to return in a single response. Default is\n10, minimum is 1, maximum is 1000.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "id": "GroupAssetsRequest"
+    },
+    "Finding": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified state.",
+            "The finding requires attention and has not been addressed yet.",
+            "The finding has been fixed, triaged as a non-issue or otherwise addressed\nand is no longer active."
+          ],
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "ACTIVE",
+            "INACTIVE"
+          ],
+          "description": "The state of the finding."
+        },
+        "name": {
+          "description": "The relative resource name of this finding. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\"",
+          "type": "string"
+        },
+        "category": {
+          "description": "The additional taxonomy group within findings from a given source.\nThis field is immutable after creation time.\nExample: \"XSS_FLASH_INJECTION\"",
+          "type": "string"
+        },
+        "externalUri": {
+          "description": "The URI that, if available, points to a web page outside of Cloud SCC\nwhere additional information about the finding can be found. This field is\nguaranteed to be either empty or a well formed URL.",
+          "type": "string"
+        },
+        "resourceName": {
+          "description": "For findings on Google Cloud Platform (GCP) resources, the full resource\nname of the GCP resource this finding is for. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name\nWhen the finding is for a non-GCP resource, the resourceName can be a\ncustomer or partner defined string.\nThis field is immutable after creation time.",
+          "type": "string"
+        },
+        "eventTime": {
+          "description": "The time at which the event took place. For example, if the finding\nrepresents an open firewall it would capture the time the detector believes\nthe firewall became open. The accuracy is determined by the detector.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "sourceProperties": {
+          "additionalProperties": {
+            "type": "any"
+          },
+          "description": "Source specific properties. These properties are managed by the source\nthat writes the finding. The key names in the source_properties map must be\nbetween 1 and 255 characters, and must start with a letter and contain\nalphanumeric characters or underscores only.",
+          "type": "object"
+        },
+        "parent": {
+          "description": "Immutable. The relative resource name of the source the finding belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nThis field is immutable after creation time.\nFor example:\n\"organizations/{organization_id}/sources/{source_id}\"",
+          "type": "string"
+        },
+        "securityMarks": {
+          "description": "Output only. User specified security marks. These marks are entirely\nmanaged by the user and come from the SecurityMarks resource that belongs\nto the finding.",
+          "$ref": "SecurityMarks"
+        },
+        "createTime": {
+          "description": "The time at which the finding was created in Cloud SCC.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "id": "Finding",
+      "description": "Cloud Security Command Center (Cloud SCC) finding.\n\nA finding is a record of assessment data (security, risk, health or privacy)\ningested into Cloud SCC for presentation, notification, analysis,\npolicy testing, and enforcement. For example, an XSS vulnerability in an\nApp Engine application is a finding."
+    },
+    "AuditLogConfig": {
+      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:jose@example.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\njose@example.com from DATA_READ logging.",
+      "type": "object",
+      "properties": {
+        "exemptedMembers": {
+          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "logType": {
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
+          ],
+          "enum": [
+            "LOG_TYPE_UNSPECIFIED",
+            "ADMIN_READ",
+            "DATA_WRITE",
+            "DATA_READ"
+          ],
+          "description": "The log type that this config enables.",
+          "type": "string"
+        }
+      },
+      "id": "AuditLogConfig"
+    },
+    "Source": {
+      "description": "Cloud Security Command Center's (Cloud SCC) finding source. A finding source\nis an entity or a mechanism that can produce a finding. A source is like a\ncontainer of findings that come from the same scanner, logger, monitor, etc.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The relative resource name of this source. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}\"",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "The source's display name.\nA source's display name must be unique amongst its siblings, for example,\ntwo sources with the same parent can't share the same display name.\nThe display name must have a length between 1 and 64 characters\n(inclusive).",
+          "type": "string"
+        },
+        "description": {
+          "description": "The description of the source (max of 1024 characters).\nExample:\n\"Cloud Security Scanner is a web security scanner for common\nvulnerabilities in App Engine applications. It can automatically\nscan and detect four common vulnerabilities, including cross-site-scripting\n(XSS), Flash injection, mixed content (HTTP in HTTPS), and\noutdated/insecure libraries.\"",
+          "type": "string"
+        }
+      },
+      "id": "Source"
+    },
+    "RunAssetDiscoveryRequest": {
+      "properties": {},
+      "id": "RunAssetDiscoveryRequest",
+      "description": "Request message for running asset discovery for an organization.",
+      "type": "object"
+    },
+    "TestIamPermissionsRequest": {
+      "id": "TestIamPermissionsRequest",
+      "description": "Request message for `TestIamPermissions` method.",
+      "type": "object",
+      "properties": {
+        "permissions": {
+          "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Policy": {
+      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` is a collection of `bindings`. A `binding` binds one or more\n`members` to a single `role`. Members can be user accounts, service accounts,\nGoogle groups, and domains (such as G Suite). A `role` is a named list of\npermissions (defined by IAM or configured by users). A `binding` can\noptionally specify a `condition`, which is a logic expression that further\nconstrains the role binding based on attributes about the request and/or\ntarget resource.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/resourcemanager.organizationAdmin\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/resourcemanager.organizationViewer\",\n          \"members\": [\"user:eve@example.com\"],\n          \"condition\": {\n            \"title\": \"expirable access\",\n            \"description\": \"Does not grant access after Sep 2020\",\n            \"expression\": \"request.time \u003c\n            timestamp('2020-10-01T00:00:00.000Z')\",\n          }\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-project-id@appspot.gserviceaccount.com\n      role: roles/resourcemanager.organizationAdmin\n    - members:\n      - user:eve@example.com\n      role: roles/resourcemanager.organizationViewer\n      condition:\n        title: expirable access\n        description: Does not grant access after Sep 2020\n        expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
+      "type": "object",
+      "properties": {
+        "etag": {
+          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten. Due to blind-set semantics of an etag-less policy,\n'setIamPolicy' will not fail even if the incoming policy version does not\nmeet the requirements for modifying the stored policy.",
+          "format": "byte",
+          "type": "string"
+        },
+        "version": {
+          "description": "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nOperations affecting conditional bindings must specify version 3. This can\nbe either setting a conditional policy, modifying a conditional binding,\nor removing a binding (conditional or unconditional) from the stored\nconditional policy.\nOperations on non-conditional policies may specify any valid value or\nleave the field unset.\n\nIf no etag is provided in the call to `setIamPolicy`, version compliance\nchecks against the stored policy is skipped.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "auditConfigs": {
+          "description": "Specifies cloud audit logging configuration for this policy.",
+          "type": "array",
+          "items": {
+            "$ref": "AuditConfig"
+          }
+        },
+        "bindings": {
+          "description": "Associates a list of `members` to a `role`. Optionally may specify a\n`condition` that determines when binding is in effect.\n`bindings` with no members will result in an error.",
+          "type": "array",
+          "items": {
+            "$ref": "Binding"
+          }
+        }
+      },
+      "id": "Policy"
+    },
+    "CancelOperationRequest": {
+      "description": "The request message for Operations.CancelOperation.",
+      "type": "object",
+      "properties": {},
+      "id": "CancelOperationRequest"
+    },
+    "Operation": {
+      "id": "Operation",
+      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
+      "type": "object",
+      "properties": {
+        "error": {
+          "description": "The error result of the operation in case of failure or cancellation.",
+          "$ref": "Status"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+          "type": "object"
+        },
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
+          "type": "boolean"
+        },
+        "response": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
+          "type": "object"
+        },
+        "name": {
+          "type": "string",
+          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."
+        }
+      }
+    },
+    "AuditConfig": {
+      "properties": {
+        "service": {
+          "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services.",
+          "type": "string"
+        },
+        "auditLogConfigs": {
+          "description": "The configuration for logging of each type of permission.",
+          "type": "array",
+          "items": {
+            "$ref": "AuditLogConfig"
+          }
+        }
+      },
+      "id": "AuditConfig",
+      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:jose@example.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"sampleservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:aliya@example.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts jose@example.com from DATA_READ logging, and\naliya@example.com from DATA_WRITE logging.",
+      "type": "object"
+    },
+    "ListAssetsResponse": {
+      "type": "object",
+      "properties": {
+        "listAssetsResults": {
+          "type": "array",
+          "items": {
+            "$ref": "ListAssetsResult"
+          },
+          "description": "Assets matching the list request."
+        },
+        "nextPageToken": {
+          "description": "Token to retrieve the next page of results, or empty if there are no more\nresults.",
+          "type": "string"
+        },
+        "readTime": {
+          "description": "Time used for executing the list request.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "totalSize": {
+          "type": "integer",
+          "description": "The total number of assets matching the query.",
+          "format": "int32"
+        }
+      },
+      "id": "ListAssetsResponse",
+      "description": "Response message for listing assets."
+    },
+    "Asset": {
+      "id": "Asset",
+      "description": "Cloud Security Command Center's (Cloud SCC) representation of a Google Cloud\nPlatform (GCP) resource.\n\nThe Asset is a Cloud SCC resource that captures information about a single\nGCP resource. All modifications to an Asset are only within the context of\nCloud SCC and don't affect the referenced GCP resource.",
+      "type": "object",
+      "properties": {
+        "updateTime": {
+          "description": "The time at which the asset was last updated, added, or deleted in Cloud\nSCC.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "resourceProperties": {
+          "additionalProperties": {
+            "type": "any"
+          },
+          "description": "Resource managed properties. These properties are managed and defined by\nthe GCP resource and cannot be modified by the user.",
+          "type": "object"
+        },
+        "name": {
+          "description": "The relative resource name of this asset. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/assets/{asset_id}\".",
+          "type": "string"
+        },
+        "securityCenterProperties": {
+          "description": "Cloud SCC managed properties. These properties are managed by\nCloud SCC and cannot be modified by the user.",
+          "$ref": "SecurityCenterProperties"
+        },
+        "securityMarks": {
+          "$ref": "SecurityMarks",
+          "description": "User specified security marks. These marks are entirely managed by the user\nand come from the SecurityMarks resource that belongs to the asset."
+        },
+        "createTime": {
+          "type": "string",
+          "description": "The time at which the asset was created in Cloud SCC.",
+          "format": "google-datetime"
+        }
+      }
+    },
+    "Status": {
+      "properties": {
+        "code": {
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "message": {
+          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+          "type": "string"
+        },
+        "details": {
+          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
+          "type": "array",
+          "items": {
+            "additionalProperties": {
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
+            },
+            "type": "object"
+          }
+        }
+      },
+      "id": "Status",
+      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
+      "type": "object"
+    },
+    "Binding": {
+      "description": "Associates `members` with a `role`.",
+      "type": "object",
+      "properties": {
+        "role": {
+          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+          "type": "string"
+        },
+        "condition": {
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
+        },
+        "members": {
+          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "Binding"
+    },
+    "AssetDiscoveryConfig": {
+      "description": "The configuration used for Asset Discovery runs.",
+      "type": "object",
+      "properties": {
+        "projectIds": {
+          "description": "The project ids to use for filtering asset discovery.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "inclusionMode": {
+          "enumDescriptions": [
+            "Unspecified. Setting the mode with this value will disable\ninclusion/exclusion filtering for Asset Discovery.",
+            "Asset Discovery will capture only the resources within the projects\nspecified. All other resources will be ignored.",
+            "Asset Discovery will ignore all resources under the projects specified.\nAll other resources will be retrieved."
+          ],
+          "enum": [
+            "INCLUSION_MODE_UNSPECIFIED",
+            "INCLUDE_ONLY",
+            "EXCLUDE"
+          ],
+          "description": "The mode to use for filtering asset discovery.",
+          "type": "string"
+        }
+      },
+      "id": "AssetDiscoveryConfig"
+    },
+    "Expr": {
+      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
+      "type": "object",
+      "properties": {
+        "description": {
+          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
+          "type": "string"
+        },
+        "expression": {
+          "type": "string",
+          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."
+        },
+        "title": {
+          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
+          "type": "string"
+        },
+        "location": {
+          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
+          "type": "string"
+        }
+      },
+      "id": "Expr"
+    },
+    "SetFindingStateRequest": {
+      "description": "Request message for updating a finding's state.",
+      "type": "object",
+      "properties": {
+        "state": {
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "ACTIVE",
+            "INACTIVE"
+          ],
+          "description": "Required. The desired State of the finding.",
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified state.",
+            "The finding requires attention and has not been addressed yet.",
+            "The finding has been fixed, triaged as a non-issue or otherwise addressed\nand is no longer active."
+          ]
+        },
+        "startTime": {
+          "description": "Required. The time at which the updated state takes effect.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "id": "SetFindingStateRequest"
+    },
+    "GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse": {
+      "properties": {
+        "state": {
+          "description": "The state of an asset discovery run.",
+          "type": "string",
+          "enumDescriptions": [
+            "Asset discovery run state was unspecified.",
+            "Asset discovery run completed successfully.",
+            "Asset discovery run was cancelled with tasks still pending, as another\nrun for the same organization was started with a higher priority.",
+            "Asset discovery run was killed and terminated."
+          ],
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "COMPLETED",
+            "SUPERSEDED",
+            "TERMINATED"
+          ]
+        },
+        "duration": {
+          "description": "The duration between asset discovery run start and end",
+          "format": "google-duration",
+          "type": "string"
+        }
+      },
+      "id": "GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse",
+      "description": "Response of asset discovery run",
+      "type": "object"
+    },
+    "GetPolicyOptions": {
+      "id": "GetPolicyOptions",
+      "description": "Encapsulates settings provided to GetIamPolicy.",
+      "type": "object",
+      "properties": {
+        "requestedPolicyVersion": {
+          "type": "integer",
+          "description": "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.",
+          "format": "int32"
+        }
+      }
+    },
+    "GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse": {
+      "description": "Response of asset discovery run",
+      "type": "object",
+      "properties": {
+        "state": {
+          "enumDescriptions": [
+            "Asset discovery run state was unspecified.",
+            "Asset discovery run completed successfully.",
+            "Asset discovery run was cancelled with tasks still pending, as another\nrun for the same organization was started with a higher priority.",
+            "Asset discovery run was killed and terminated."
+          ],
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "COMPLETED",
+            "SUPERSEDED",
+            "TERMINATED"
+          ],
+          "description": "The state of an asset discovery run.",
+          "type": "string"
+        },
+        "duration": {
+          "type": "string",
+          "description": "The duration between asset discovery run start and end",
+          "format": "google-duration"
+        }
+      },
+      "id": "GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse"
+    },
+    "ListOperationsResponse": {
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        },
+        "operations": {
+          "description": "A list of operations that matches the specified filter in the request.",
+          "type": "array",
+          "items": {
+            "$ref": "Operation"
+          }
+        }
+      },
+      "id": "ListOperationsResponse",
+      "description": "The response message for Operations.ListOperations."
+    },
+    "GetIamPolicyRequest": {
+      "description": "Request message for `GetIamPolicy` method.",
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "GetPolicyOptions",
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."
+        }
+      },
+      "id": "GetIamPolicyRequest"
+    },
+    "ListAssetsResult": {
+      "properties": {
+        "asset": {
+          "description": "Asset matching the search request.",
+          "$ref": "Asset"
+        },
+        "state": {
+          "description": "State of the asset.",
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified state.",
+            "Request did not specify use of this field in the result.",
+            "Asset was added between the points in time.",
+            "Asset was removed between the points in time.",
+            "Asset was active at both point(s) in time."
+          ],
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "UNUSED",
+            "ADDED",
+            "REMOVED",
+            "ACTIVE"
+          ]
+        }
+      },
+      "id": "ListAssetsResult",
+      "description": "Result containing the Asset and its State.",
+      "type": "object"
+    },
+    "TestIamPermissionsResponse": {
+      "id": "TestIamPermissionsResponse",
+      "description": "Response message for `TestIamPermissions` method.",
+      "type": "object",
+      "properties": {
+        "permissions": {
+          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GroupFindingsResponse": {
+      "description": "Response message for group by findings.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "type": "string",
+          "description": "Token to retrieve the next page of results, or empty if there are no more\nresults."
+        },
+        "readTime": {
+          "description": "Time used for executing the groupBy request.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "groupByResults": {
+          "type": "array",
+          "items": {
+            "$ref": "GroupResult"
+          },
+          "description": "Group results. There exists an element for each existing unique\ncombination of property/values. The element contains a count for the number\nof times those specific property/values appear."
+        }
+      },
+      "id": "GroupFindingsResponse"
+    },
+    "ListSourcesResponse": {
+      "description": "Response message for listing sources.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "Token to retrieve the next page of results, or empty if there are no more\nresults.",
+          "type": "string"
+        },
+        "sources": {
+          "description": "Sources belonging to the requested parent.",
+          "type": "array",
+          "items": {
+            "$ref": "Source"
+          }
+        }
+      },
+      "id": "ListSourcesResponse"
+    },
+    "OrganizationSettings": {
+      "description": "User specified settings that are attached to the Cloud Security Command\nCenter (Cloud SCC) organization.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The relative resource name of the settings. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/organizationSettings\".",
+          "type": "string"
+        },
+        "assetDiscoveryConfig": {
+          "description": "The configuration used for Asset Discovery runs.",
+          "$ref": "AssetDiscoveryConfig"
+        },
+        "enableAssetDiscovery": {
+          "type": "boolean",
+          "description": "A flag that indicates if Asset Discovery should be enabled. If the flag is\nset to `true`, then discovery of assets will occur. If it is set to `false,\nall historical assets will remain, but discovery of future assets will not\noccur."
+        }
+      },
+      "id": "OrganizationSettings"
+    },
+    "ListFindingsResponse": {
+      "id": "ListFindingsResponse",
+      "description": "Response message for listing findings.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "type": "string",
+          "description": "Token to retrieve the next page of results, or empty if there are no more\nresults."
+        },
+        "readTime": {
+          "type": "string",
+          "description": "Time used for executing the list request.",
+          "format": "google-datetime"
+        },
+        "totalSize": {
+          "description": "The total number of findings matching the query.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "findings": {
+          "description": "Findings matching the list request.",
+          "type": "array",
+          "items": {
+            "$ref": "Finding"
+          }
+        }
+      }
+    },
+    "SecurityCenterProperties": {
+      "description": "Cloud SCC managed properties. These properties are managed by Cloud SCC and\ncannot be modified by the user.",
+      "type": "object",
+      "properties": {
+        "resourceName": {
+          "description": "Immutable. The full resource name of the GCP resource this asset\nrepresents. This field is immutable after create time. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name",
+          "type": "string"
+        },
+        "resourceType": {
+          "description": "The type of the GCP resource. Examples include: APPLICATION,\nPROJECT, and ORGANIZATION. This is a case insensitive field defined by\nCloud SCC and/or the producer of the resource and is immutable\nafter create time.",
+          "type": "string"
+        },
+        "resourceProject": {
+          "description": "The full resource name of the project the resource belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name",
+          "type": "string"
+        },
+        "resourceOwners": {
+          "description": "Owners of the Google Cloud resource.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "resourceParent": {
+          "description": "The full resource name of the immediate parent of the resource. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name",
+          "type": "string"
+        }
+      },
+      "id": "SecurityCenterProperties"
+    },
+    "SetIamPolicyRequest": {
+      "description": "Request message for `SetIamPolicy` method.",
+      "type": "object",
+      "properties": {
+        "updateMask": {
+          "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM.",
+          "format": "google-fieldmask",
+          "type": "string"
+        },
+        "policy": {
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
+        }
+      },
+      "id": "SetIamPolicyRequest"
+    },
+    "GroupAssetsResponse": {
+      "description": "Response message for grouping by assets.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "Token to retrieve the next page of results, or empty if there are no more\nresults.",
+          "type": "string"
+        },
+        "readTime": {
+          "description": "Time used for executing the groupBy request.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "groupByResults": {
+          "description": "Group results. There exists an element for each existing unique\ncombination of property/values. The element contains a count for the number\nof times those specific property/values appear.",
+          "type": "array",
+          "items": {
+            "$ref": "GroupResult"
+          }
+        }
+      },
+      "id": "GroupAssetsResponse"
+    },
+    "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object",
+      "properties": {},
+      "id": "Empty"
+    },
+    "GroupFindingsRequest": {
+      "description": "Request message for grouping by findings.",
+      "type": "object",
+      "properties": {
+        "pageSize": {
+          "description": "The maximum number of results to return in a single response. Default is\n10, minimum is 1, maximum is 1000.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "groupBy": {
+          "type": "string",
+          "description": "Required. Expression that defines what assets fields to use for grouping (including\n`state`). The string value should follow SQL syntax: comma separated list\nof fields. For example:\n\"parent,resource_name\".\n\nThe following fields are supported:\n\n* resource_name\n* category\n* state\n* parent"
+        },
+        "filter": {
+          "description": "Expression that defines the filter to apply across findings.\nThe expression is a list of one or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are not supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `\u003cfield\u003e \u003coperator\u003e \u003cvalue\u003e` and may have a `-`\ncharacter in front of them to indicate negation. Examples include:\n\n * name\n * source_properties.a_property\n * security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `\u003e`, `\u003c`, `\u003e=`, `\u003c=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nFor example, `source_properties.size = 100` is a valid filter string.",
+          "type": "string"
+        },
+        "readTime": {
+          "description": "Time used as a reference point when filtering findings. The filter is\nlimited to findings existing at the supplied time and their values are\nthose at that specific time. Absence of this field will default to the\nAPI's version of NOW.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "pageToken": {
+          "description": "The value returned by the last `GroupFindingsResponse`; indicates\nthat this is a continuation of a prior `GroupFindings` call, and\nthat the system should return the next page of data.",
+          "type": "string"
+        }
+      },
+      "id": "GroupFindingsRequest"
+    },
+    "SecurityMarks": {
+      "properties": {
+        "name": {
+          "description": "The relative resource name of the SecurityMarks. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExamples:\n\"organizations/{organization_id}/assets/{asset_id}/securityMarks\"\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
+          "type": "string"
+        },
+        "marks": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Mutable user specified security marks belonging to the parent resource.\nConstraints are as follows:\n\n  * Keys and values are treated as case insensitive\n  * Keys must be between 1 - 256 characters (inclusive)\n  * Keys must be letters, numbers, underscores, or dashes\n  * Values have leading and trailing whitespace trimmed, remaining\n    characters must be between 1 - 4096 characters (inclusive)",
+          "type": "object"
+        }
+      },
+      "id": "SecurityMarks",
+      "description": "User specified security marks that are attached to the parent Cloud Security\nCommand Center (Cloud SCC) resource. Security marks are scoped within a Cloud\nSCC organization -- they can be modified and viewed by all users who have\nproper permissions on the organization.",
+      "type": "object"
+    },
+    "GroupResult": {
+      "description": "Result containing the properties and count of a groupBy request.",
+      "type": "object",
+      "properties": {
+        "count": {
+          "description": "Total count of resources for the given properties.",
+          "format": "int64",
+          "type": "string"
+        },
+        "properties": {
+          "additionalProperties": {
+            "type": "any"
+          },
+          "description": "Properties matching the groupBy fields in the request.",
+          "type": "object"
+        }
+      },
+      "id": "GroupResult"
+    }
+  },
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "protocol": "rest",
+  "canonicalName": "Security Command Center",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "View and manage your data across Google Cloud Platform services"
+        }
+      }
+    }
+  },
+  "rootUrl": "https://securitycenter.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "securitycenter",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
   "title": "Cloud Security Command Center API",
   "ownerName": "Google",
   "resources": {
     "organizations": {
       "methods": {
         "updateOrganizationSettings": {
-          "id": "securitycenter.organizations.updateOrganizationSettings",
-          "path": "v1beta1/{+name}",
-          "request": {
+          "response": {
             "$ref": "OrganizationSettings"
           },
-          "description": "Updates an organization's settings.",
-          "httpMethod": "PATCH",
           "parameterOrder": [
             "name"
           ],
-          "response": {
-            "$ref": "OrganizationSettings"
+          "httpMethod": "PATCH",
+          "parameters": {
+            "updateMask": {
+              "location": "query",
+              "description": "The FieldMask to use when updating the settings resource.",
+              "format": "google-fieldmask",
+              "type": "string"
+            },
+            "name": {
+              "pattern": "^organizations/[^/]+/organizationSettings$",
+              "location": "path",
+              "description": "The relative resource name of the settings. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/organizationSettings\".",
+              "required": true,
+              "type": "string"
+            }
           },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "parameters": {
-            "updateMask": {
-              "type": "string",
-              "location": "query",
-              "description": "The FieldMask to use when updating the settings resource.",
-              "format": "google-fieldmask"
-            },
-            "name": {
-              "required": true,
-              "type": "string",
-              "pattern": "^organizations/[^/]+/organizationSettings$",
-              "location": "path",
-              "description": "The relative resource name of the settings. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/organizationSettings\"."
-            }
-          },
-          "flatPath": "v1beta1/organizations/{organizationsId}/organizationSettings"
+          "flatPath": "v1beta1/organizations/{organizationsId}/organizationSettings",
+          "path": "v1beta1/{+name}",
+          "id": "securitycenter.organizations.updateOrganizationSettings",
+          "description": "Updates an organization's settings.",
+          "request": {
+            "$ref": "OrganizationSettings"
+          }
         },
         "getOrganizationSettings": {
           "httpMethod": "GET",
@@ -46,18 +887,18 @@
           "response": {
             "$ref": "OrganizationSettings"
           },
-          "parameters": {
-            "name": {
-              "location": "path",
-              "description": "Required. Name of the organization to get organization settings for. Its format is\n\"organizations/[organization_id]/organizationSettings\".",
-              "required": true,
-              "type": "string",
-              "pattern": "^organizations/[^/]+/organizationSettings$"
-            }
-          },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
+          "parameters": {
+            "name": {
+              "pattern": "^organizations/[^/]+/organizationSettings$",
+              "location": "path",
+              "description": "Required. Name of the organization to get organization settings for. Its format is\n\"organizations/[organization_id]/organizationSettings\".",
+              "required": true,
+              "type": "string"
+            }
+          },
           "flatPath": "v1beta1/organizations/{organizationsId}/organizationSettings",
           "id": "securitycenter.organizations.getOrganizationSettings",
           "path": "v1beta1/{+name}",
@@ -68,9 +909,20 @@
         "assets": {
           "methods": {
             "group": {
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
+              "flatPath": "v1beta1/organizations/{organizationsId}/assets:group",
+              "path": "v1beta1/{+parent}/assets:group",
+              "id": "securitycenter.organizations.assets.group",
+              "description": "Filters an organization's assets and  groups them by their specified\nproperties.",
+              "request": {
+                "$ref": "GroupAssetsRequest"
+              },
+              "response": {
+                "$ref": "GroupAssetsResponse"
+              },
+              "parameterOrder": [
+                "parent"
               ],
+              "httpMethod": "POST",
               "parameters": {
                 "parent": {
                   "description": "Required. Name of the organization to groupBy. Its format is\n\"organizations/[organization_id]\".",
@@ -80,38 +932,28 @@
                   "location": "path"
                 }
               },
-              "flatPath": "v1beta1/organizations/{organizationsId}/assets:group",
-              "id": "securitycenter.organizations.assets.group",
-              "path": "v1beta1/{+parent}/assets:group",
-              "request": {
-                "$ref": "GroupAssetsRequest"
-              },
-              "description": "Filters an organization's assets and  groups them by their specified\nproperties.",
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "parent"
-              ],
-              "response": {
-                "$ref": "GroupAssetsResponse"
-              }
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
             },
             "list": {
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "parent"
-              ],
+              "description": "Lists an organization's assets.",
               "response": {
                 "$ref": "ListAssetsResponse"
               },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "GET",
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
               "parameters": {
                 "readTime": {
+                  "location": "query",
                   "description": "Time used as a reference point when filtering assets. The filter is limited\nto assets existing at the supplied time and their values are those at that\nspecific time. Absence of this field will default to the API's version of\nNOW.",
                   "format": "google-datetime",
-                  "type": "string",
-                  "location": "query"
+                  "type": "string"
                 },
                 "orderBy": {
                   "location": "query",
@@ -125,14 +967,14 @@
                   "type": "string"
                 },
                 "filter": {
-                  "location": "query",
                   "description": "Expression that defines the filter to apply across assets.\nThe expression is a list of zero or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are not supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `\u003cfield\u003e \u003coperator\u003e \u003cvalue\u003e` and may have a `-`\ncharacter in front of them to indicate negation. The fields map to those\ndefined in the Asset resource. Examples include:\n\n* name\n* security_center_properties.resource_name\n* resource_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `\u003e`, `\u003c`, `\u003e=`, `\u003c=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nFor example, `resource_properties.size = 100` is a valid filter string.",
-                  "type": "string"
-                },
-                "pageToken": {
-                  "description": "The value returned by the last `ListAssetsResponse`; indicates\nthat this is a continuation of a prior `ListAssets` call, and\nthat the system should return the next page of data.",
                   "type": "string",
                   "location": "query"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "The value returned by the last `ListAssetsResponse`; indicates\nthat this is a continuation of a prior `ListAssets` call, and\nthat the system should return the next page of data.",
+                  "type": "string"
                 },
                 "fieldMask": {
                   "location": "query",
@@ -141,25 +983,28 @@
                   "type": "string"
                 },
                 "pageSize": {
-                  "type": "integer",
                   "location": "query",
                   "description": "The maximum number of results to return in a single response. Default is\n10, minimum is 1, maximum is 1000.",
-                  "format": "int32"
+                  "format": "int32",
+                  "type": "integer"
                 },
                 "parent": {
+                  "pattern": "^organizations/[^/]+$",
+                  "location": "path",
                   "description": "Required. Name of the organization assets should belong to. Its format is\n\"organizations/[organization_id]\".",
                   "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+$",
-                  "location": "path"
+                  "type": "string"
                 }
               },
               "flatPath": "v1beta1/organizations/{organizationsId}/assets",
-              "id": "securitycenter.organizations.assets.list",
               "path": "v1beta1/{+parent}/assets",
-              "description": "Lists an organization's assets."
+              "id": "securitycenter.organizations.assets.list"
             },
             "runDiscovery": {
+              "description": "Runs asset discovery. The discovery is tracked with a long-running\noperation.\n\nThis API can only be called with limited frequency for an organization. If\nit is called too frequently the caller will receive a TOO_MANY_REQUESTS\nerror.",
+              "request": {
+                "$ref": "RunAssetDiscoveryRequest"
+              },
               "response": {
                 "$ref": "Operation"
               },
@@ -167,155 +1012,103 @@
                 "parent"
               ],
               "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "parameters": {
                 "parent": {
+                  "description": "Required. Name of the organization to run asset discovery for. Its format is\n\"organizations/[organization_id]\".",
                   "required": true,
                   "type": "string",
                   "pattern": "^organizations/[^/]+$",
-                  "location": "path",
-                  "description": "Required. Name of the organization to run asset discovery for. Its format is\n\"organizations/[organization_id]\"."
-                }
-              },
-              "flatPath": "v1beta1/organizations/{organizationsId}/assets:runDiscovery",
-              "path": "v1beta1/{+parent}/assets:runDiscovery",
-              "id": "securitycenter.organizations.assets.runDiscovery",
-              "request": {
-                "$ref": "RunAssetDiscoveryRequest"
-              },
-              "description": "Runs asset discovery. The discovery is tracked with a long-running\noperation.\n\nThis API can only be called with limited frequency for an organization. If\nit is called too frequently the caller will receive a TOO_MANY_REQUESTS\nerror."
-            },
-            "updateSecurityMarks": {
-              "httpMethod": "PATCH",
-              "parameterOrder": [
-                "name"
-              ],
-              "response": {
-                "$ref": "SecurityMarks"
-              },
-              "parameters": {
-                "name": {
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+/assets/[^/]+/securityMarks$",
-                  "location": "path",
-                  "description": "The relative resource name of the SecurityMarks. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExamples:\n\"organizations/{organization_id}/assets/{asset_id}/securityMarks\"\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\"."
-                },
-                "startTime": {
-                  "description": "The time at which the updated SecurityMarks take effect.",
-                  "format": "google-datetime",
-                  "type": "string",
-                  "location": "query"
-                },
-                "updateMask": {
-                  "type": "string",
-                  "location": "query",
-                  "description": "The FieldMask to use when updating the security marks resource.",
-                  "format": "google-fieldmask"
+                  "location": "path"
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "flatPath": "v1beta1/organizations/{organizationsId}/assets/{assetsId}/securityMarks",
-              "id": "securitycenter.organizations.assets.updateSecurityMarks",
-              "path": "v1beta1/{+name}",
-              "description": "Updates security marks.",
+              "flatPath": "v1beta1/organizations/{organizationsId}/assets:runDiscovery",
+              "path": "v1beta1/{+parent}/assets:runDiscovery",
+              "id": "securitycenter.organizations.assets.runDiscovery"
+            },
+            "updateSecurityMarks": {
               "request": {
                 "$ref": "SecurityMarks"
-              }
+              },
+              "description": "Updates security marks.",
+              "response": {
+                "$ref": "SecurityMarks"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "PATCH",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "The relative resource name of the SecurityMarks. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExamples:\n\"organizations/{organization_id}/assets/{asset_id}/securityMarks\"\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+/assets/[^/]+/securityMarks$"
+                },
+                "startTime": {
+                  "location": "query",
+                  "description": "The time at which the updated SecurityMarks take effect.",
+                  "format": "google-datetime",
+                  "type": "string"
+                },
+                "updateMask": {
+                  "location": "query",
+                  "description": "The FieldMask to use when updating the security marks resource.",
+                  "format": "google-fieldmask",
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1beta1/organizations/{organizationsId}/assets/{assetsId}/securityMarks",
+              "path": "v1beta1/{+name}",
+              "id": "securitycenter.organizations.assets.updateSecurityMarks"
             }
           }
         },
         "sources": {
           "methods": {
-            "create": {
-              "response": {
-                "$ref": "Source"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "POST",
-              "parameters": {
-                "parent": {
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+$",
-                  "location": "path",
-                  "description": "Required. Resource name of the new source's parent. Its format should be\n\"organizations/[organization_id]\"."
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/organizations/{organizationsId}/sources",
-              "path": "v1beta1/{+parent}/sources",
-              "id": "securitycenter.organizations.sources.create",
-              "description": "Creates a source.",
+            "patch": {
               "request": {
                 "$ref": "Source"
-              }
-            },
-            "setIamPolicy": {
+              },
+              "description": "Updates a source.",
               "response": {
-                "$ref": "Policy"
+                "$ref": "Source"
               },
               "parameterOrder": [
-                "resource"
+                "name"
               ],
-              "httpMethod": "POST",
+              "httpMethod": "PATCH",
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
               "parameters": {
-                "resource": {
-                  "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+                "updateMask": {
+                  "description": "The FieldMask to use when updating the source resource.",
+                  "format": "google-fieldmask",
+                  "type": "string",
+                  "location": "query"
+                },
+                "name": {
+                  "description": "The relative resource name of this source. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}\"",
                   "required": true,
                   "type": "string",
                   "pattern": "^organizations/[^/]+/sources/[^/]+$",
                   "location": "path"
                 }
               },
-              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}:setIamPolicy",
-              "path": "v1beta1/{+resource}:setIamPolicy",
-              "id": "securitycenter.organizations.sources.setIamPolicy",
-              "request": {
-                "$ref": "SetIamPolicyRequest"
-              },
-              "description": "Sets the access control policy on the specified Source."
-            },
-            "getIamPolicy": {
-              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}:getIamPolicy",
-              "id": "securitycenter.organizations.sources.getIamPolicy",
-              "path": "v1beta1/{+resource}:getIamPolicy",
-              "description": "Gets the access control policy on the specified Source.",
-              "request": {
-                "$ref": "GetIamPolicyRequest"
-              },
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "resource"
-              ],
-              "response": {
-                "$ref": "Policy"
-              },
-              "parameters": {
-                "resource": {
-                  "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+/sources/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ]
+              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}",
+              "path": "v1beta1/{+name}",
+              "id": "securitycenter.organizations.sources.patch"
             },
             "get": {
+              "path": "v1beta1/{+name}",
+              "id": "securitycenter.organizations.sources.get",
               "description": "Gets a source.",
               "response": {
                 "$ref": "Source"
@@ -326,38 +1119,8 @@
               "httpMethod": "GET",
               "parameters": {
                 "name": {
-                  "pattern": "^organizations/[^/]+/sources/[^/]+$",
                   "location": "path",
                   "description": "Required. Relative resource name of the source. Its format is\n\"organizations/[organization_id]/source/[source_id]\".",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}",
-              "path": "v1beta1/{+name}",
-              "id": "securitycenter.organizations.sources.get"
-            },
-            "patch": {
-              "response": {
-                "$ref": "Source"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "PATCH",
-              "parameters": {
-                "updateMask": {
-                  "type": "string",
-                  "location": "query",
-                  "description": "The FieldMask to use when updating the source resource.",
-                  "format": "google-fieldmask"
-                },
-                "name": {
-                  "location": "path",
-                  "description": "The relative resource name of this source. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}\"",
                   "required": true,
                   "type": "string",
                   "pattern": "^organizations/[^/]+/sources/[^/]+$"
@@ -366,30 +1129,9 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}",
-              "path": "v1beta1/{+name}",
-              "id": "securitycenter.organizations.sources.patch",
-              "description": "Updates a source.",
-              "request": {
-                "$ref": "Source"
-              }
+              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}"
             },
             "testIamPermissions": {
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "resource": {
-                  "pattern": "^organizations/[^/]+/sources/[^/]+$",
-                  "location": "path",
-                  "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}:testIamPermissions",
-              "path": "v1beta1/{+resource}:testIamPermissions",
-              "id": "securitycenter.organizations.sources.testIamPermissions",
               "request": {
                 "$ref": "TestIamPermissionsRequest"
               },
@@ -400,7 +1142,22 @@
               "parameterOrder": [
                 "resource"
               ],
-              "httpMethod": "POST"
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "resource": {
+                  "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+/sources/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}:testIamPermissions",
+              "path": "v1beta1/{+resource}:testIamPermissions",
+              "id": "securitycenter.organizations.sources.testIamPermissions"
             },
             "list": {
               "response": {
@@ -437,200 +1194,113 @@
               "path": "v1beta1/{+parent}/sources",
               "id": "securitycenter.organizations.sources.list",
               "description": "Lists all sources belonging to an organization."
+            },
+            "setIamPolicy": {
+              "response": {
+                "$ref": "Policy"
+              },
+              "parameterOrder": [
+                "resource"
+              ],
+              "httpMethod": "POST",
+              "parameters": {
+                "resource": {
+                  "location": "path",
+                  "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+/sources/[^/]+$"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}:setIamPolicy",
+              "path": "v1beta1/{+resource}:setIamPolicy",
+              "id": "securitycenter.organizations.sources.setIamPolicy",
+              "description": "Sets the access control policy on the specified Source.",
+              "request": {
+                "$ref": "SetIamPolicyRequest"
+              }
+            },
+            "create": {
+              "request": {
+                "$ref": "Source"
+              },
+              "description": "Creates a source.",
+              "response": {
+                "$ref": "Source"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "parent": {
+                  "location": "path",
+                  "description": "Required. Resource name of the new source's parent. Its format should be\n\"organizations/[organization_id]\".",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+$"
+                }
+              },
+              "flatPath": "v1beta1/organizations/{organizationsId}/sources",
+              "path": "v1beta1/{+parent}/sources",
+              "id": "securitycenter.organizations.sources.create"
+            },
+            "getIamPolicy": {
+              "path": "v1beta1/{+resource}:getIamPolicy",
+              "id": "securitycenter.organizations.sources.getIamPolicy",
+              "request": {
+                "$ref": "GetIamPolicyRequest"
+              },
+              "description": "Gets the access control policy on the specified Source.",
+              "response": {
+                "$ref": "Policy"
+              },
+              "parameterOrder": [
+                "resource"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "resource": {
+                  "pattern": "^organizations/[^/]+/sources/[^/]+$",
+                  "location": "path",
+                  "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}:getIamPolicy"
             }
           },
           "resources": {
             "findings": {
               "methods": {
-                "group": {
-                  "path": "v1beta1/{+parent}/findings:group",
-                  "id": "securitycenter.organizations.sources.findings.group",
-                  "description": "Filters an organization or source's findings and  groups them by their\nspecified properties.\n\nTo group across all sources provide a `-` as the source id.\nExample: /v1beta1/organizations/{organization_id}/sources/-/findings",
-                  "request": {
-                    "$ref": "GroupFindingsRequest"
-                  },
-                  "response": {
-                    "$ref": "GroupFindingsResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "POST",
-                  "parameters": {
-                    "parent": {
-                      "pattern": "^organizations/[^/]+/sources/[^/]+$",
-                      "location": "path",
-                      "description": "Required. Name of the source to groupBy. Its format is\n\"organizations/[organization_id]/sources/[source_id]\". To groupBy across\nall sources provide a source_id of `-`. For example:\norganizations/{organization_id}/sources/-",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings:group"
-                },
-                "patch": {
-                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}",
-                  "path": "v1beta1/{+name}",
-                  "id": "securitycenter.organizations.sources.findings.patch",
-                  "description": "Creates or updates a finding. The corresponding source must exist for a\nfinding creation to succeed.",
-                  "request": {
-                    "$ref": "Finding"
-                  },
-                  "response": {
-                    "$ref": "Finding"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "PATCH",
-                  "parameters": {
-                    "updateMask": {
-                      "type": "string",
-                      "location": "query",
-                      "description": "The FieldMask to use when updating the finding resource. This field should\nnot be specified when creating a finding.",
-                      "format": "google-fieldmask"
-                    },
-                    "name": {
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^organizations/[^/]+/sources/[^/]+/findings/[^/]+$",
-                      "location": "path",
-                      "description": "The relative resource name of this finding. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\""
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "updateSecurityMarks": {
-                  "response": {
-                    "$ref": "SecurityMarks"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "PATCH",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "updateMask": {
-                      "location": "query",
-                      "description": "The FieldMask to use when updating the security marks resource.",
-                      "format": "google-fieldmask",
-                      "type": "string"
-                    },
-                    "name": {
-                      "description": "The relative resource name of the SecurityMarks. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExamples:\n\"organizations/{organization_id}/assets/{asset_id}/securityMarks\"\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^organizations/[^/]+/sources/[^/]+/findings/[^/]+/securityMarks$",
-                      "location": "path"
-                    },
-                    "startTime": {
-                      "location": "query",
-                      "description": "The time at which the updated SecurityMarks take effect.",
-                      "format": "google-datetime",
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}/securityMarks",
-                  "path": "v1beta1/{+name}",
-                  "id": "securitycenter.organizations.sources.findings.updateSecurityMarks",
-                  "request": {
-                    "$ref": "SecurityMarks"
-                  },
-                  "description": "Updates security marks."
-                },
-                "setState": {
-                  "parameters": {
-                    "name": {
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^organizations/[^/]+/sources/[^/]+/findings/[^/]+$",
-                      "location": "path",
-                      "description": "Required. The relative resource name of the finding. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}/finding/{finding_id}\"."
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}:setState",
-                  "id": "securitycenter.organizations.sources.findings.setState",
-                  "path": "v1beta1/{+name}:setState",
-                  "description": "Updates the state of a finding.",
-                  "request": {
-                    "$ref": "SetFindingStateRequest"
-                  },
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "Finding"
-                  }
-                },
-                "list": {
-                  "response": {
-                    "$ref": "ListFindingsResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "parent": {
-                      "description": "Required. Name of the source the findings belong to. Its format is\n\"organizations/[organization_id]/sources/[source_id]\". To list across all\nsources provide a source_id of `-`. For example:\norganizations/{organization_id}/sources/-",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^organizations/[^/]+/sources/[^/]+$",
-                      "location": "path"
-                    },
-                    "readTime": {
-                      "location": "query",
-                      "description": "Time used as a reference point when filtering findings. The filter is\nlimited to findings existing at the supplied time and their values are\nthose at that specific time. Absence of this field will default to the\nAPI's version of NOW.",
-                      "format": "google-datetime",
-                      "type": "string"
-                    },
-                    "orderBy": {
-                      "description": "Expression that defines what fields and order to use for sorting. The\nstring value should follow SQL syntax: comma separated list of fields. For\nexample: \"name,resource_properties.a_property\". The default sorting order\nis ascending. To specify descending order for a field, a suffix \" desc\"\nshould be appended to the field name. For example: \"name\ndesc,source_properties.a_property\". Redundant space characters in the\nsyntax are insignificant. \"name desc,source_properties.a_property\" and \"\nname     desc  ,   source_properties.a_property  \" are equivalent.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "filter": {
-                      "location": "query",
-                      "description": "Expression that defines the filter to apply across findings.\nThe expression is a list of one or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are not supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `\u003cfield\u003e \u003coperator\u003e \u003cvalue\u003e` and may have a `-`\ncharacter in front of them to indicate negation. Examples include:\n\n * name\n * source_properties.a_property\n * security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `\u003e`, `\u003c`, `\u003e=`, `\u003c=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nFor example, `source_properties.size = 100` is a valid filter string.",
-                      "type": "string"
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "description": "The value returned by the last `ListFindingsResponse`; indicates\nthat this is a continuation of a prior `ListFindings` call, and\nthat the system should return the next page of data.",
-                      "type": "string"
-                    },
-                    "fieldMask": {
-                      "location": "query",
-                      "description": "Optional. A field mask to specify the Finding fields to be listed in the response.\nAn empty field mask will list all fields.",
-                      "format": "google-fieldmask",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "description": "The maximum number of results to return in a single response. Default is\n10, minimum is 1, maximum is 1000.",
-                      "format": "int32",
-                      "type": "integer",
-                      "location": "query"
-                    }
-                  },
-                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings",
-                  "path": "v1beta1/{+parent}/findings",
-                  "id": "securitycenter.organizations.sources.findings.list",
-                  "description": "Lists an organization or source's findings.\n\nTo list across all sources provide a `-` as the source id.\nExample: /v1beta1/organizations/{organization_id}/sources/-/findings"
-                },
                 "create": {
+                  "parameters": {
+                    "findingId": {
+                      "description": "Required. Unique identifier provided by the client within the parent scope.\nIt must be alphanumeric and less than or equal to 32 characters and\ngreater than 0 characters in length.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "parent": {
+                      "description": "Required. Resource name of the new finding's parent. Its format should be\n\"organizations/[organization_id]/sources/[source_id]\".",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^organizations/[^/]+/sources/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
                   "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings",
                   "path": "v1beta1/{+parent}/findings",
                   "id": "securitycenter.organizations.sources.findings.create",
@@ -644,19 +1314,190 @@
                   "parameterOrder": [
                     "parent"
                   ],
+                  "httpMethod": "POST"
+                },
+                "group": {
+                  "request": {
+                    "$ref": "GroupFindingsRequest"
+                  },
+                  "description": "Filters an organization or source's findings and  groups them by their\nspecified properties.\n\nTo group across all sources provide a `-` as the source id.\nExample: /v1beta1/organizations/{organization_id}/sources/-/findings",
+                  "response": {
+                    "$ref": "GroupFindingsResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
                   "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
                   "parameters": {
-                    "findingId": {
+                    "parent": {
+                      "location": "path",
+                      "description": "Required. Name of the source to groupBy. Its format is\n\"organizations/[organization_id]/sources/[source_id]\". To groupBy across\nall sources provide a source_id of `-`. For example:\norganizations/{organization_id}/sources/-",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^organizations/[^/]+/sources/[^/]+$"
+                    }
+                  },
+                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings:group",
+                  "path": "v1beta1/{+parent}/findings:group",
+                  "id": "securitycenter.organizations.sources.findings.group"
+                },
+                "patch": {
+                  "response": {
+                    "$ref": "Finding"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "PATCH",
+                  "parameters": {
+                    "name": {
+                      "description": "The relative resource name of this finding. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\"",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^organizations/[^/]+/sources/[^/]+/findings/[^/]+$",
+                      "location": "path"
+                    },
+                    "updateMask": {
+                      "description": "The FieldMask to use when updating the finding resource. This field should\nnot be specified when creating a finding.",
+                      "format": "google-fieldmask",
+                      "type": "string",
+                      "location": "query"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}",
+                  "path": "v1beta1/{+name}",
+                  "id": "securitycenter.organizations.sources.findings.patch",
+                  "description": "Creates or updates a finding. The corresponding source must exist for a\nfinding creation to succeed.",
+                  "request": {
+                    "$ref": "Finding"
+                  }
+                },
+                "setState": {
+                  "request": {
+                    "$ref": "SetFindingStateRequest"
+                  },
+                  "description": "Updates the state of a finding.",
+                  "response": {
+                    "$ref": "Finding"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^organizations/[^/]+/sources/[^/]+/findings/[^/]+$",
+                      "location": "path",
+                      "description": "Required. The relative resource name of the finding. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}/finding/{finding_id}\"."
+                    }
+                  },
+                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}:setState",
+                  "path": "v1beta1/{+name}:setState",
+                  "id": "securitycenter.organizations.sources.findings.setState"
+                },
+                "updateSecurityMarks": {
+                  "description": "Updates security marks.",
+                  "request": {
+                    "$ref": "SecurityMarks"
+                  },
+                  "httpMethod": "PATCH",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "SecurityMarks"
+                  },
+                  "parameters": {
+                    "updateMask": {
                       "type": "string",
                       "location": "query",
-                      "description": "Required. Unique identifier provided by the client within the parent scope.\nIt must be alphanumeric and less than or equal to 32 characters and\ngreater than 0 characters in length."
+                      "description": "The FieldMask to use when updating the security marks resource.",
+                      "format": "google-fieldmask"
+                    },
+                    "name": {
+                      "pattern": "^organizations/[^/]+/sources/[^/]+/findings/[^/]+/securityMarks$",
+                      "location": "path",
+                      "description": "The relative resource name of the SecurityMarks. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExamples:\n\"organizations/{organization_id}/assets/{asset_id}/securityMarks\"\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "startTime": {
+                      "location": "query",
+                      "description": "The time at which the updated SecurityMarks take effect.",
+                      "format": "google-datetime",
+                      "type": "string"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}/securityMarks",
+                  "id": "securitycenter.organizations.sources.findings.updateSecurityMarks",
+                  "path": "v1beta1/{+name}"
+                },
+                "list": {
+                  "flatPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings",
+                  "id": "securitycenter.organizations.sources.findings.list",
+                  "path": "v1beta1/{+parent}/findings",
+                  "description": "Lists an organization or source's findings.\n\nTo list across all sources provide a `-` as the source id.\nExample: /v1beta1/organizations/{organization_id}/sources/-/findings",
+                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "ListFindingsResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "parameters": {
+                    "orderBy": {
+                      "description": "Expression that defines what fields and order to use for sorting. The\nstring value should follow SQL syntax: comma separated list of fields. For\nexample: \"name,resource_properties.a_property\". The default sorting order\nis ascending. To specify descending order for a field, a suffix \" desc\"\nshould be appended to the field name. For example: \"name\ndesc,source_properties.a_property\". Redundant space characters in the\nsyntax are insignificant. \"name desc,source_properties.a_property\" and \"\nname     desc  ,   source_properties.a_property  \" are equivalent.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "readTime": {
+                      "location": "query",
+                      "description": "Time used as a reference point when filtering findings. The filter is\nlimited to findings existing at the supplied time and their values are\nthose at that specific time. Absence of this field will default to the\nAPI's version of NOW.",
+                      "format": "google-datetime",
+                      "type": "string"
+                    },
+                    "filter": {
+                      "location": "query",
+                      "description": "Expression that defines the filter to apply across findings.\nThe expression is a list of one or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are not supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `\u003cfield\u003e \u003coperator\u003e \u003cvalue\u003e` and may have a `-`\ncharacter in front of them to indicate negation. Examples include:\n\n * name\n * source_properties.a_property\n * security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `\u003e`, `\u003c`, `\u003e=`, `\u003c=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nFor example, `source_properties.size = 100` is a valid filter string.",
+                      "type": "string"
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "The value returned by the last `ListFindingsResponse`; indicates\nthat this is a continuation of a prior `ListFindings` call, and\nthat the system should return the next page of data."
+                    },
+                    "fieldMask": {
+                      "location": "query",
+                      "description": "Optional. A field mask to specify the Finding fields to be listed in the response.\nAn empty field mask will list all fields.",
+                      "format": "google-fieldmask",
+                      "type": "string"
+                    },
+                    "pageSize": {
+                      "description": "The maximum number of results to return in a single response. Default is\n10, minimum is 1, maximum is 1000.",
+                      "format": "int32",
+                      "type": "integer",
+                      "location": "query"
                     },
                     "parent": {
+                      "description": "Required. Name of the source the findings belong to. Its format is\n\"organizations/[organization_id]/sources/[source_id]\". To list across all\nsources provide a source_id of `-`. For example:\norganizations/{organization_id}/sources/-",
                       "required": true,
                       "type": "string",
                       "pattern": "^organizations/[^/]+/sources/[^/]+$",
-                      "location": "path",
-                      "description": "Required. Resource name of the new finding's parent. Its format should be\n\"organizations/[organization_id]/sources/[source_id]\"."
+                      "location": "path"
                     }
                   },
                   "scopes": [
@@ -670,13 +1511,10 @@
         "operations": {
           "methods": {
             "cancel": {
-              "flatPath": "v1beta1/organizations/{organizationsId}/operations/{operationsId}:cancel",
-              "path": "v1beta1/{+name}:cancel",
-              "id": "securitycenter.organizations.operations.cancel",
+              "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
               "request": {
                 "$ref": "CancelOperationRequest"
               },
-              "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
               "response": {
                 "$ref": "Empty"
               },
@@ -684,43 +1522,46 @@
                 "name"
               ],
               "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "parameters": {
                 "name": {
+                  "description": "The name of the operation resource to be cancelled.",
                   "required": true,
                   "type": "string",
                   "pattern": "^organizations/[^/]+/operations/[^/]+$",
-                  "location": "path",
-                  "description": "The name of the operation resource to be cancelled."
+                  "location": "path"
                 }
-              }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1beta1/organizations/{organizationsId}/operations/{operationsId}:cancel",
+              "path": "v1beta1/{+name}:cancel",
+              "id": "securitycenter.organizations.operations.cancel"
             },
             "delete": {
-              "path": "v1beta1/{+name}",
+              "flatPath": "v1beta1/organizations/{organizationsId}/operations/{operationsId}",
               "id": "securitycenter.organizations.operations.delete",
+              "path": "v1beta1/{+name}",
               "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
+              "httpMethod": "DELETE",
               "response": {
                 "$ref": "Empty"
               },
               "parameterOrder": [
                 "name"
               ],
-              "httpMethod": "DELETE",
               "parameters": {
                 "name": {
-                  "required": true,
-                  "type": "string",
                   "pattern": "^organizations/[^/]+/operations/[^/]+$",
                   "location": "path",
-                  "description": "The name of the operation resource to be deleted."
+                  "description": "The name of the operation resource to be deleted.",
+                  "required": true,
+                  "type": "string"
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/organizations/{organizationsId}/operations/{operationsId}"
+              ]
             },
             "list": {
               "response": {
@@ -735,27 +1576,27 @@
               ],
               "parameters": {
                 "filter": {
-                  "type": "string",
                   "location": "query",
-                  "description": "The standard list filter."
-                },
-                "name": {
-                  "location": "path",
-                  "description": "The name of the operation's parent resource.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+/operations$"
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "The standard list page token.",
+                  "description": "The standard list filter.",
                   "type": "string"
                 },
+                "name": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+/operations$",
+                  "location": "path",
+                  "description": "The name of the operation's parent resource."
+                },
+                "pageToken": {
+                  "description": "The standard list page token.",
+                  "type": "string",
+                  "location": "query"
+                },
                 "pageSize": {
-                  "type": "integer",
                   "location": "query",
                   "description": "The standard list page size.",
-                  "format": "int32"
+                  "format": "int32",
+                  "type": "integer"
                 }
               },
               "flatPath": "v1beta1/organizations/{organizationsId}/operations",
@@ -764,9 +1605,6 @@
               "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id."
             },
             "get": {
-              "path": "v1beta1/{+name}",
-              "id": "securitycenter.organizations.operations.get",
-              "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
               "response": {
                 "$ref": "Operation"
               },
@@ -786,7 +1624,10 @@
                   "description": "The name of the operation resource."
                 }
               },
-              "flatPath": "v1beta1/organizations/{organizationsId}/operations/{operationsId}"
+              "flatPath": "v1beta1/organizations/{organizationsId}/operations/{operationsId}",
+              "path": "v1beta1/{+name}",
+              "id": "securitycenter.organizations.operations.get",
+              "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
             }
           }
         }
@@ -794,56 +1635,13 @@
     }
   },
   "parameters": {
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "quotaUser": {
-      "type": "string",
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "type": "string",
-      "location": "query",
-      "description": "JSONP"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ]
-    },
     "alt": {
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
@@ -851,23 +1649,66 @@
         "Responses with Content-Type of application/x-protobuf"
       ],
       "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
+      "description": "Data format for response."
     },
     "access_token": {
+      "location": "query",
       "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string",
       "location": "query"
     },
-    "key": {
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "quotaUser": {
       "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query"
     }
   },
   "version": "v1beta1",
@@ -875,846 +1716,5 @@
   "kind": "discovery#restDescription",
   "description": "Cloud Security Command Center API provides access to temporal views of assets and findings within an organization.",
   "servicePath": "",
-  "basePath": "",
-  "revision": "20191115",
-  "documentationLink": "https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview",
-  "id": "securitycenter:v1beta1",
-  "discoveryVersion": "v1",
-  "version_module": true,
-  "schemas": {
-    "Status": {
-      "id": "Status",
-      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "format": "int32"
-        },
-        "message": {
-          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
-          "type": "string"
-        },
-        "details": {
-          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "any",
-              "description": "Properties of the object. Contains field @type with type URL."
-            }
-          }
-        }
-      }
-    },
-    "AssetDiscoveryConfig": {
-      "id": "AssetDiscoveryConfig",
-      "description": "The configuration used for Asset Discovery runs.",
-      "type": "object",
-      "properties": {
-        "projectIds": {
-          "description": "The project ids to use for filtering asset discovery.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "inclusionMode": {
-          "enum": [
-            "INCLUSION_MODE_UNSPECIFIED",
-            "INCLUDE_ONLY",
-            "EXCLUDE"
-          ],
-          "description": "The mode to use for filtering asset discovery.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified. Setting the mode with this value will disable\ninclusion/exclusion filtering for Asset Discovery.",
-            "Asset Discovery will capture only the resources within the projects\nspecified. All other resources will be ignored.",
-            "Asset Discovery will ignore all resources under the projects specified.\nAll other resources will be retrieved."
-          ]
-        }
-      }
-    },
-    "Binding": {
-      "id": "Binding",
-      "description": "Associates `members` with a `role`.",
-      "type": "object",
-      "properties": {
-        "condition": {
-          "$ref": "Expr",
-          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
-        },
-        "members": {
-          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "role": {
-          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
-          "type": "string"
-        }
-      }
-    },
-    "Expr": {
-      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
-      "type": "object",
-      "properties": {
-        "title": {
-          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
-          "type": "string"
-        },
-        "location": {
-          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
-          "type": "string"
-        },
-        "description": {
-          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
-          "type": "string"
-        },
-        "expression": {
-          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
-          "type": "string"
-        }
-      },
-      "id": "Expr"
-    },
-    "SetFindingStateRequest": {
-      "description": "Request message for updating a finding's state.",
-      "type": "object",
-      "properties": {
-        "startTime": {
-          "description": "Required. The time at which the updated state takes effect.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "state": {
-          "enumDescriptions": [
-            "Unspecified state.",
-            "The finding requires attention and has not been addressed yet.",
-            "The finding has been fixed, triaged as a non-issue or otherwise addressed\nand is no longer active."
-          ],
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "ACTIVE",
-            "INACTIVE"
-          ],
-          "description": "Required. The desired State of the finding.",
-          "type": "string"
-        }
-      },
-      "id": "SetFindingStateRequest"
-    },
-    "GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse": {
-      "id": "GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse",
-      "description": "Response of asset discovery run",
-      "type": "object",
-      "properties": {
-        "state": {
-          "enumDescriptions": [
-            "Asset discovery run state was unspecified.",
-            "Asset discovery run completed successfully.",
-            "Asset discovery run was cancelled with tasks still pending, as another\nrun for the same organization was started with a higher priority.",
-            "Asset discovery run was killed and terminated."
-          ],
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "COMPLETED",
-            "SUPERSEDED",
-            "TERMINATED"
-          ],
-          "description": "The state of an asset discovery run.",
-          "type": "string"
-        },
-        "duration": {
-          "description": "The duration between asset discovery run start and end",
-          "format": "google-duration",
-          "type": "string"
-        }
-      }
-    },
-    "GetPolicyOptions": {
-      "description": "Encapsulates settings provided to GetIamPolicy.",
-      "type": "object",
-      "properties": {
-        "requestedPolicyVersion": {
-          "description": "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.",
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "id": "GetPolicyOptions"
-    },
-    "GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse": {
-      "type": "object",
-      "properties": {
-        "duration": {
-          "description": "The duration between asset discovery run start and end",
-          "format": "google-duration",
-          "type": "string"
-        },
-        "state": {
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "COMPLETED",
-            "SUPERSEDED",
-            "TERMINATED"
-          ],
-          "description": "The state of an asset discovery run.",
-          "type": "string",
-          "enumDescriptions": [
-            "Asset discovery run state was unspecified.",
-            "Asset discovery run completed successfully.",
-            "Asset discovery run was cancelled with tasks still pending, as another\nrun for the same organization was started with a higher priority.",
-            "Asset discovery run was killed and terminated."
-          ]
-        }
-      },
-      "id": "GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse",
-      "description": "Response of asset discovery run"
-    },
-    "TestIamPermissionsResponse": {
-      "description": "Response message for `TestIamPermissions` method.",
-      "type": "object",
-      "properties": {
-        "permissions": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."
-        }
-      },
-      "id": "TestIamPermissionsResponse"
-    },
-    "ListAssetsResult": {
-      "type": "object",
-      "properties": {
-        "asset": {
-          "$ref": "Asset",
-          "description": "Asset matching the search request."
-        },
-        "state": {
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "Request did not specify use of this field in the result.",
-            "Asset was added between the points in time.",
-            "Asset was removed between the points in time.",
-            "Asset was active at both point(s) in time."
-          ],
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "UNUSED",
-            "ADDED",
-            "REMOVED",
-            "ACTIVE"
-          ],
-          "description": "State of the asset."
-        }
-      },
-      "id": "ListAssetsResult",
-      "description": "Result containing the Asset and its State."
-    },
-    "GetIamPolicyRequest": {
-      "description": "Request message for `GetIamPolicy` method.",
-      "type": "object",
-      "properties": {
-        "options": {
-          "$ref": "GetPolicyOptions",
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."
-        }
-      },
-      "id": "GetIamPolicyRequest"
-    },
-    "ListOperationsResponse": {
-      "description": "The response message for Operations.ListOperations.",
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        },
-        "operations": {
-          "description": "A list of operations that matches the specified filter in the request.",
-          "type": "array",
-          "items": {
-            "$ref": "Operation"
-          }
-        }
-      },
-      "id": "ListOperationsResponse"
-    },
-    "GroupFindingsResponse": {
-      "description": "Response message for group by findings.",
-      "type": "object",
-      "properties": {
-        "readTime": {
-          "description": "Time used for executing the groupBy request.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "groupByResults": {
-          "type": "array",
-          "items": {
-            "$ref": "GroupResult"
-          },
-          "description": "Group results. There exists an element for each existing unique\ncombination of property/values. The element contains a count for the number\nof times those specific property/values appear."
-        },
-        "nextPageToken": {
-          "type": "string",
-          "description": "Token to retrieve the next page of results, or empty if there are no more\nresults."
-        }
-      },
-      "id": "GroupFindingsResponse"
-    },
-    "ListSourcesResponse": {
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "description": "Token to retrieve the next page of results, or empty if there are no more\nresults.",
-          "type": "string"
-        },
-        "sources": {
-          "description": "Sources belonging to the requested parent.",
-          "type": "array",
-          "items": {
-            "$ref": "Source"
-          }
-        }
-      },
-      "id": "ListSourcesResponse",
-      "description": "Response message for listing sources."
-    },
-    "OrganizationSettings": {
-      "description": "User specified settings that are attached to the Cloud Security Command\nCenter (Cloud SCC) organization.",
-      "type": "object",
-      "properties": {
-        "enableAssetDiscovery": {
-          "description": "A flag that indicates if Asset Discovery should be enabled. If the flag is\nset to `true`, then discovery of assets will occur. If it is set to `false,\nall historical assets will remain, but discovery of future assets will not\noccur.",
-          "type": "boolean"
-        },
-        "name": {
-          "description": "The relative resource name of the settings. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/organizationSettings\".",
-          "type": "string"
-        },
-        "assetDiscoveryConfig": {
-          "$ref": "AssetDiscoveryConfig",
-          "description": "The configuration used for Asset Discovery runs."
-        }
-      },
-      "id": "OrganizationSettings"
-    },
-    "ListFindingsResponse": {
-      "type": "object",
-      "properties": {
-        "readTime": {
-          "type": "string",
-          "description": "Time used for executing the list request.",
-          "format": "google-datetime"
-        },
-        "totalSize": {
-          "description": "The total number of findings matching the query.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "findings": {
-          "type": "array",
-          "items": {
-            "$ref": "Finding"
-          },
-          "description": "Findings matching the list request."
-        },
-        "nextPageToken": {
-          "description": "Token to retrieve the next page of results, or empty if there are no more\nresults.",
-          "type": "string"
-        }
-      },
-      "id": "ListFindingsResponse",
-      "description": "Response message for listing findings."
-    },
-    "SecurityCenterProperties": {
-      "description": "Cloud SCC managed properties. These properties are managed by Cloud SCC and\ncannot be modified by the user.",
-      "type": "object",
-      "properties": {
-        "resourceParent": {
-          "description": "The full resource name of the immediate parent of the resource. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name",
-          "type": "string"
-        },
-        "resourceName": {
-          "description": "Immutable. The full resource name of the GCP resource this asset\nrepresents. This field is immutable after create time. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name",
-          "type": "string"
-        },
-        "resourceType": {
-          "description": "The type of the GCP resource. Examples include: APPLICATION,\nPROJECT, and ORGANIZATION. This is a case insensitive field defined by\nCloud SCC and/or the producer of the resource and is immutable\nafter create time.",
-          "type": "string"
-        },
-        "resourceProject": {
-          "description": "The full resource name of the project the resource belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name",
-          "type": "string"
-        },
-        "resourceOwners": {
-          "description": "Owners of the Google Cloud resource.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "id": "SecurityCenterProperties"
-    },
-    "SetIamPolicyRequest": {
-      "description": "Request message for `SetIamPolicy` method.",
-      "type": "object",
-      "properties": {
-        "policy": {
-          "$ref": "Policy",
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
-        },
-        "updateMask": {
-          "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM.",
-          "format": "google-fieldmask",
-          "type": "string"
-        }
-      },
-      "id": "SetIamPolicyRequest"
-    },
-    "GroupAssetsResponse": {
-      "description": "Response message for grouping by assets.",
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "type": "string",
-          "description": "Token to retrieve the next page of results, or empty if there are no more\nresults."
-        },
-        "readTime": {
-          "description": "Time used for executing the groupBy request.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "groupByResults": {
-          "description": "Group results. There exists an element for each existing unique\ncombination of property/values. The element contains a count for the number\nof times those specific property/values appear.",
-          "type": "array",
-          "items": {
-            "$ref": "GroupResult"
-          }
-        }
-      },
-      "id": "GroupAssetsResponse"
-    },
-    "Empty": {
-      "type": "object",
-      "properties": {},
-      "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
-    },
-    "GroupFindingsRequest": {
-      "id": "GroupFindingsRequest",
-      "description": "Request message for grouping by findings.",
-      "type": "object",
-      "properties": {
-        "readTime": {
-          "description": "Time used as a reference point when filtering findings. The filter is\nlimited to findings existing at the supplied time and their values are\nthose at that specific time. Absence of this field will default to the\nAPI's version of NOW.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "pageToken": {
-          "description": "The value returned by the last `GroupFindingsResponse`; indicates\nthat this is a continuation of a prior `GroupFindings` call, and\nthat the system should return the next page of data.",
-          "type": "string"
-        },
-        "pageSize": {
-          "description": "The maximum number of results to return in a single response. Default is\n10, minimum is 1, maximum is 1000.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "groupBy": {
-          "type": "string",
-          "description": "Required. Expression that defines what assets fields to use for grouping (including\n`state`). The string value should follow SQL syntax: comma separated list\nof fields. For example:\n\"parent,resource_name\".\n\nThe following fields are supported:\n\n* resource_name\n* category\n* state\n* parent"
-        },
-        "filter": {
-          "description": "Expression that defines the filter to apply across findings.\nThe expression is a list of one or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are not supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `\u003cfield\u003e \u003coperator\u003e \u003cvalue\u003e` and may have a `-`\ncharacter in front of them to indicate negation. Examples include:\n\n * name\n * source_properties.a_property\n * security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `\u003e`, `\u003c`, `\u003e=`, `\u003c=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nFor example, `source_properties.size = 100` is a valid filter string.",
-          "type": "string"
-        }
-      }
-    },
-    "SecurityMarks": {
-      "description": "User specified security marks that are attached to the parent Cloud Security\nCommand Center (Cloud SCC) resource. Security marks are scoped within a Cloud\nSCC organization -- they can be modified and viewed by all users who have\nproper permissions on the organization.",
-      "type": "object",
-      "properties": {
-        "marks": {
-          "description": "Mutable user specified security marks belonging to the parent resource.\nConstraints are as follows:\n\n  * Keys and values are treated as case insensitive\n  * Keys must be between 1 - 256 characters (inclusive)\n  * Keys must be letters, numbers, underscores, or dashes\n  * Values have leading and trailing whitespace trimmed, remaining\n    characters must be between 1 - 4096 characters (inclusive)",
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "name": {
-          "description": "The relative resource name of the SecurityMarks. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExamples:\n\"organizations/{organization_id}/assets/{asset_id}/securityMarks\"\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
-          "type": "string"
-        }
-      },
-      "id": "SecurityMarks"
-    },
-    "GroupResult": {
-      "type": "object",
-      "properties": {
-        "count": {
-          "description": "Total count of resources for the given properties.",
-          "format": "int64",
-          "type": "string"
-        },
-        "properties": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "any"
-          },
-          "description": "Properties matching the groupBy fields in the request."
-        }
-      },
-      "id": "GroupResult",
-      "description": "Result containing the properties and count of a groupBy request."
-    },
-    "GroupAssetsRequest": {
-      "description": "Request message for grouping by assets.",
-      "type": "object",
-      "properties": {
-        "pageToken": {
-          "description": "The value returned by the last `GroupAssetsResponse`; indicates\nthat this is a continuation of a prior `GroupAssets` call, and that the\nsystem should return the next page of data.",
-          "type": "string"
-        },
-        "pageSize": {
-          "type": "integer",
-          "description": "The maximum number of results to return in a single response. Default is\n10, minimum is 1, maximum is 1000.",
-          "format": "int32"
-        },
-        "readTime": {
-          "description": "Time used as a reference point when filtering assets. The filter is limited\nto assets existing at the supplied time and their values are those at that\nspecific time. Absence of this field will default to the API's version of\nNOW.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "compareDuration": {
-          "description": "When compare_duration is set, the Asset's \"state\" property is updated to\nindicate whether the asset was added, removed, or remained present during\nthe compare_duration period of time that precedes the read_time. This is\nthe time between (read_time - compare_duration) and read_time.\n\nThe state value is derived based on the presence of the asset at the two\npoints in time. Intermediate state changes between the two times don't\naffect the result. For example, the results aren't affected if the asset is\nremoved and re-created again.\n\nPossible \"state\" values when compare_duration is specified:\n\n* \"ADDED\": indicates that the asset was not present before\n             compare_duration, but present at reference_time.\n* \"REMOVED\": indicates that the asset was present at the start of\n             compare_duration, but not present at reference_time.\n* \"ACTIVE\": indicates that the asset was present at both the\n             start and the end of the time period defined by\n             compare_duration and reference_time.\n\nThis field is ignored if `state` is not a field in `group_by`.",
-          "format": "google-duration",
-          "type": "string"
-        },
-        "groupBy": {
-          "description": "Required. Expression that defines what assets fields to use for grouping. The string\nvalue should follow SQL syntax: comma separated list of fields. For\nexample:\n\"security_center_properties.resource_project,security_center_properties.project\".\n\nThe following fields are supported when compare_duration is not set:\n\n* security_center_properties.resource_project\n* security_center_properties.resource_type\n* security_center_properties.resource_parent\n\nThe following fields are supported when compare_duration is set:\n\n* security_center_properties.resource_type",
-          "type": "string"
-        },
-        "filter": {
-          "description": "Expression that defines the filter to apply across assets.\nThe expression is a list of zero or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are not supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `\u003cfield\u003e \u003coperator\u003e \u003cvalue\u003e` and may have a `-`\ncharacter in front of them to indicate negation. The fields map to those\ndefined in the Asset resource. Examples include:\n\n* name\n* security_center_properties.resource_name\n* resource_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `\u003e`, `\u003c`, `\u003e=`, `\u003c=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nFor example, `resource_properties.size = 100` is a valid filter string.",
-          "type": "string"
-        }
-      },
-      "id": "GroupAssetsRequest"
-    },
-    "Finding": {
-      "type": "object",
-      "properties": {
-        "parent": {
-          "description": "Immutable. The relative resource name of the source the finding belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nThis field is immutable after creation time.\nFor example:\n\"organizations/{organization_id}/sources/{source_id}\"",
-          "type": "string"
-        },
-        "securityMarks": {
-          "$ref": "SecurityMarks",
-          "description": "Output only. User specified security marks. These marks are entirely\nmanaged by the user and come from the SecurityMarks resource that belongs\nto the finding."
-        },
-        "createTime": {
-          "description": "The time at which the finding was created in Cloud SCC.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "state": {
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified state.",
-            "The finding requires attention and has not been addressed yet.",
-            "The finding has been fixed, triaged as a non-issue or otherwise addressed\nand is no longer active."
-          ],
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "ACTIVE",
-            "INACTIVE"
-          ],
-          "description": "The state of the finding."
-        },
-        "name": {
-          "description": "The relative resource name of this finding. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\"",
-          "type": "string"
-        },
-        "category": {
-          "description": "The additional taxonomy group within findings from a given source.\nThis field is immutable after creation time.\nExample: \"XSS_FLASH_INJECTION\"",
-          "type": "string"
-        },
-        "externalUri": {
-          "description": "The URI that, if available, points to a web page outside of Cloud SCC\nwhere additional information about the finding can be found. This field is\nguaranteed to be either empty or a well formed URL.",
-          "type": "string"
-        },
-        "resourceName": {
-          "type": "string",
-          "description": "For findings on Google Cloud Platform (GCP) resources, the full resource\nname of the GCP resource this finding is for. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name\nWhen the finding is for a non-GCP resource, the resourceName can be a\ncustomer or partner defined string.\nThis field is immutable after creation time."
-        },
-        "eventTime": {
-          "description": "The time at which the event took place. For example, if the finding\nrepresents an open firewall it would capture the time the detector believes\nthe firewall became open. The accuracy is determined by the detector.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "sourceProperties": {
-          "additionalProperties": {
-            "type": "any"
-          },
-          "description": "Source specific properties. These properties are managed by the source\nthat writes the finding. The key names in the source_properties map must be\nbetween 1 and 255 characters, and must start with a letter and contain\nalphanumeric characters or underscores only.",
-          "type": "object"
-        }
-      },
-      "id": "Finding",
-      "description": "Cloud Security Command Center (Cloud SCC) finding.\n\nA finding is a record of assessment data (security, risk, health or privacy)\ningested into Cloud SCC for presentation, notification, analysis,\npolicy testing, and enforcement. For example, an XSS vulnerability in an\nApp Engine application is a finding."
-    },
-    "AuditLogConfig": {
-      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:jose@example.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\njose@example.com from DATA_READ logging.",
-      "type": "object",
-      "properties": {
-        "exemptedMembers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."
-        },
-        "logType": {
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
-          "enum": [
-            "LOG_TYPE_UNSPECIFIED",
-            "ADMIN_READ",
-            "DATA_WRITE",
-            "DATA_READ"
-          ],
-          "description": "The log type that this config enables.",
-          "type": "string"
-        }
-      },
-      "id": "AuditLogConfig"
-    },
-    "Source": {
-      "id": "Source",
-      "description": "Cloud Security Command Center's (Cloud SCC) finding source. A finding source\nis an entity or a mechanism that can produce a finding. A source is like a\ncontainer of findings that come from the same scanner, logger, monitor, etc.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "The relative resource name of this source. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}\""
-        },
-        "displayName": {
-          "type": "string",
-          "description": "The source's display name.\nA source's display name must be unique amongst its siblings, for example,\ntwo sources with the same parent can't share the same display name.\nThe display name must have a length between 1 and 64 characters\n(inclusive)."
-        },
-        "description": {
-          "type": "string",
-          "description": "The description of the source (max of 1024 characters).\nExample:\n\"Cloud Security Scanner is a web security scanner for common\nvulnerabilities in App Engine applications. It can automatically\nscan and detect four common vulnerabilities, including cross-site-scripting\n(XSS), Flash injection, mixed content (HTTP in HTTPS), and\noutdated/insecure libraries.\""
-        }
-      }
-    },
-    "RunAssetDiscoveryRequest": {
-      "id": "RunAssetDiscoveryRequest",
-      "description": "Request message for running asset discovery for an organization.",
-      "type": "object",
-      "properties": {}
-    },
-    "TestIamPermissionsRequest": {
-      "type": "object",
-      "properties": {
-        "permissions": {
-          "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "id": "TestIamPermissionsRequest",
-      "description": "Request message for `TestIamPermissions` method."
-    },
-    "Policy": {
-      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` is a collection of `bindings`. A `binding` binds one or more\n`members` to a single `role`. Members can be user accounts, service accounts,\nGoogle groups, and domains (such as G Suite). A `role` is a named list of\npermissions (defined by IAM or configured by users). A `binding` can\noptionally specify a `condition`, which is a logic expression that further\nconstrains the role binding based on attributes about the request and/or\ntarget resource.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/resourcemanager.organizationAdmin\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/resourcemanager.organizationViewer\",\n          \"members\": [\"user:eve@example.com\"],\n          \"condition\": {\n            \"title\": \"expirable access\",\n            \"description\": \"Does not grant access after Sep 2020\",\n            \"expression\": \"request.time \u003c\n            timestamp('2020-10-01T00:00:00.000Z')\",\n          }\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-project-id@appspot.gserviceaccount.com\n      role: roles/resourcemanager.organizationAdmin\n    - members:\n      - user:eve@example.com\n      role: roles/resourcemanager.organizationViewer\n      condition:\n        title: expirable access\n        description: Does not grant access after Sep 2020\n        expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
-      "type": "object",
-      "properties": {
-        "etag": {
-          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten. Due to blind-set semantics of an etag-less policy,\n'setIamPolicy' will not fail even if the incoming policy version does not\nmeet the requirements for modifying the stored policy.",
-          "format": "byte",
-          "type": "string"
-        },
-        "version": {
-          "description": "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nOperations affecting conditional bindings must specify version 3. This can\nbe either setting a conditional policy, modifying a conditional binding,\nor removing a binding (conditional or unconditional) from the stored\nconditional policy.\nOperations on non-conditional policies may specify any valid value or\nleave the field unset.\n\nIf no etag is provided in the call to `setIamPolicy`, version compliance\nchecks against the stored policy is skipped.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "auditConfigs": {
-          "type": "array",
-          "items": {
-            "$ref": "AuditConfig"
-          },
-          "description": "Specifies cloud audit logging configuration for this policy."
-        },
-        "bindings": {
-          "type": "array",
-          "items": {
-            "$ref": "Binding"
-          },
-          "description": "Associates a list of `members` to a `role`. Optionally may specify a\n`condition` that determines when binding is in effect.\n`bindings` with no members will result in an error."
-        }
-      },
-      "id": "Policy"
-    },
-    "CancelOperationRequest": {
-      "description": "The request message for Operations.CancelOperation.",
-      "type": "object",
-      "properties": {},
-      "id": "CancelOperationRequest"
-    },
-    "Operation": {
-      "id": "Operation",
-      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
-      "type": "object",
-      "properties": {
-        "response": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
-          },
-          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."
-        },
-        "name": {
-          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`.",
-          "type": "string"
-        },
-        "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
-        },
-        "metadata": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
-          },
-          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."
-        },
-        "done": {
-          "type": "boolean",
-          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."
-        }
-      }
-    },
-    "AuditConfig": {
-      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:jose@example.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"sampleservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:aliya@example.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts jose@example.com from DATA_READ logging, and\naliya@example.com from DATA_WRITE logging.",
-      "type": "object",
-      "properties": {
-        "service": {
-          "type": "string",
-          "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."
-        },
-        "auditLogConfigs": {
-          "type": "array",
-          "items": {
-            "$ref": "AuditLogConfig"
-          },
-          "description": "The configuration for logging of each type of permission."
-        }
-      },
-      "id": "AuditConfig"
-    },
-    "ListAssetsResponse": {
-      "description": "Response message for listing assets.",
-      "type": "object",
-      "properties": {
-        "listAssetsResults": {
-          "description": "Assets matching the list request.",
-          "type": "array",
-          "items": {
-            "$ref": "ListAssetsResult"
-          }
-        },
-        "nextPageToken": {
-          "type": "string",
-          "description": "Token to retrieve the next page of results, or empty if there are no more\nresults."
-        },
-        "readTime": {
-          "description": "Time used for executing the list request.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "totalSize": {
-          "description": "The total number of assets matching the query.",
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "id": "ListAssetsResponse"
-    },
-    "Asset": {
-      "type": "object",
-      "properties": {
-        "securityCenterProperties": {
-          "$ref": "SecurityCenterProperties",
-          "description": "Cloud SCC managed properties. These properties are managed by\nCloud SCC and cannot be modified by the user."
-        },
-        "createTime": {
-          "description": "The time at which the asset was created in Cloud SCC.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "securityMarks": {
-          "description": "User specified security marks. These marks are entirely managed by the user\nand come from the SecurityMarks resource that belongs to the asset.",
-          "$ref": "SecurityMarks"
-        },
-        "updateTime": {
-          "type": "string",
-          "description": "The time at which the asset was last updated, added, or deleted in Cloud\nSCC.",
-          "format": "google-datetime"
-        },
-        "name": {
-          "description": "The relative resource name of this asset. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/assets/{asset_id}\".",
-          "type": "string"
-        },
-        "resourceProperties": {
-          "description": "Resource managed properties. These properties are managed and defined by\nthe GCP resource and cannot be modified by the user.",
-          "type": "object",
-          "additionalProperties": {
-            "type": "any"
-          }
-        }
-      },
-      "id": "Asset",
-      "description": "Cloud Security Command Center's (Cloud SCC) representation of a Google Cloud\nPlatform (GCP) resource.\n\nThe Asset is a Cloud SCC resource that captures information about a single\nGCP resource. All modifications to an Asset are only within the context of\nCloud SCC and don't affect the referenced GCP resource."
-    }
-  },
-  "protocol": "rest",
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  },
-  "canonicalName": "Security Command Center",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "View and manage your data across Google Cloud Platform services"
-        }
-      }
-    }
-  },
-  "rootUrl": "https://securitycenter.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "securitycenter",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true
+  "basePath": ""
 }
