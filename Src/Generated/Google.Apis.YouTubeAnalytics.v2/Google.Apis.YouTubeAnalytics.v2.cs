@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/analytics'>YouTube Analytics API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191126 (1790)
+ *      <tr><th>API Rev<td>20191203 (1797)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/analytics'>
  *              https://developers.google.com/youtube/analytics</a>
@@ -803,12 +803,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
             }
 
 
-            /// <summary>The `pageToken` parameter identifies a specific page in the result set that should be returned.
-            /// In an API response, the `nextPageToken` property identifies the next page that can be
-            /// retrieved.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>This parameter can only be used in a properly authorized request. **Note:** This parameter is
             /// intended exclusively for YouTube content partners that own and manage many different YouTube channels.
             ///
@@ -833,6 +827,12 @@ namespace Google.Apis.YouTubeAnalytics.v2
             /// true to retrieve all groups owned by the authenticated user.</summary>
             [Google.Apis.Util.RequestParameterAttribute("mine", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Mine { get; set; }
+
+            /// <summary>The `pageToken` parameter identifies a specific page in the result set that should be returned.
+            /// In an API response, the `nextPageToken` property identifies the next page that can be
+            /// retrieved.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -859,15 +859,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
                     {
                         Name = "onBehalfOfContentOwner",
@@ -889,6 +880,15 @@ namespace Google.Apis.YouTubeAnalytics.v2
                     "mine", new Google.Apis.Discovery.Parameter
                     {
                         Name = "mine",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

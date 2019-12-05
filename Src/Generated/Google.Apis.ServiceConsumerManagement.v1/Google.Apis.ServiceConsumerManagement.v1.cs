@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191119 (1783)
+ *      <tr><th>API Rev<td>20191203 (1797)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -591,10 +591,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -602,6 +598,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -637,15 +637,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -658,6 +649,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1467,21 +1467,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>The continuation token, which is used to page through large result sets. To get the next page
-            /// of results, set this parameter to the value of `nextPageToken` from the previous response.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of results returned by this request. Currently, the default maximum is set
-            /// to 1000. If `page_size` isn't provided or the size provided is a number larger than 1000, it's
-            /// automatically set to 1000.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Set a query `{expression}` for querying tenancy units. Your `{expression}` must be in the
             /// format: `field_name=literal_string`. The `field_name` is the name of the field you want to compare.
             /// Supported fields are `tenant_resources.tag` and `tenant_resources.resource`.
@@ -1497,6 +1482,21 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
+
+            /// <summary>The continuation token, which is used to page through large result sets. To get the next page
+            /// of results, set this parameter to the value of `nextPageToken` from the previous response.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of results returned by this request. Currently, the default maximum is set
+            /// to 1000. If `page_size` isn't provided or the size provided is a number larger than 1000, it's
+            /// automatically set to 1000.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1532,6 +1532,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         Pattern = @"^services/[^/]+$",
                     });
                 RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1544,15 +1553,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2769,29 +2769,17 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>The unit in which the metric value is reported. It is only applicable if the `value_type` is
-        /// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of [The Unified Code for Units of
-        /// Measure](http://unitsofmeasure.org/ucum.html) standard:
-        ///
-        /// **Basic units (UNIT)**
-        ///
-        /// * `bit`   bit * `By`    byte * `s`     second * `min`   minute * `h`     hour * `d`     day
-        ///
-        /// **Prefixes (PREFIX)**
-        ///
-        /// * `k`     kilo    (10**3) * `M`     mega    (10**6) * `G`     giga    (10**9) * `T`     tera    (10**12) *
-        /// `P`     peta    (10**15) * `E`     exa     (10**18) * `Z`     zetta   (10**21) * `Y`     yotta   (10**24) *
-        /// `m`     milli   (10**-3) * `u`     micro   (10**-6) * `n`     nano    (10**-9) * `p`     pico    (10**-12) *
-        /// `f`     femto   (10**-15) * `a`     atto    (10**-18) * `z`     zepto   (10**-21) * `y`     yocto
-        /// (10**-24) * `Ki`    kibi    (2**10) * `Mi`    mebi    (2**20) * `Gi`    gibi    (2**30) * `Ti`    tebi
-        /// (2**40)
+        /// <summary>* `Ki`    kibi    (2^10) * `Mi`    mebi    (2^20) * `Gi`    gibi    (2^30) * `Ti`    tebi    (2^40)
+        /// * `Pi`    pebi    (2^50)
         ///
         /// **Grammar**
         ///
         /// The grammar also includes these connectors:
         ///
-        /// * `/`    division (as an infix operator, e.g. `1/s`). * `.`    multiplication (as an infix operator, e.g.
-        /// `GBy.d`)
+        /// * `/`    division or ratio (as an infix operator). For examples, `kBy/{email}` or `MiBy/10ms` (although you
+        /// should almost never have `/s` in a metric `unit`; rates should always be computed at query time from the
+        /// underlying cumulative or delta value). * `.`    multiplication or composition (as an infix operator). For
+        /// examples, `GBy.d` or `k{watt}.h`.
         ///
         /// The grammar for a unit is as follows:
         ///
@@ -2803,10 +2791,17 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         ///
         /// Notes:
         ///
-        /// * `Annotation` is just a comment if it follows a `UNIT` and is equivalent to `1` if it is used alone. For
-        /// examples, `{requests}/s == 1/s`, `By{transmitted}/s == By/s`. * `NAME` is a sequence of non-blank printable
-        /// ASCII characters not containing '{' or '}'. * `1` represents dimensionless value 1, such as in `1/s`. * `%`
-        /// represents dimensionless value 1/100, and annotates values giving a percentage.</summary>
+        /// * `Annotation` is just a comment if it follows a `UNIT`. If the annotation is used alone, then the unit is
+        /// equivalent to `1`. For examples, `{request}/s == 1/s`, `By{transmitted}/s == By/s`. * `NAME` is a sequence
+        /// of non-blank printable ASCII characters not containing `{` or `}`. * `1` represents a unitary [dimensionless
+        /// unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in `1/s`. It is typically used
+        /// when none of the basic units are appropriate. For example, "new users per day" can be represented as `1/d`
+        /// or `{new-users}/d` (and a metric value `5` would mean "5 new users). Alternatively, "thousands of page views
+        /// per day" would be represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric value of `5.3` would
+        /// mean "5300 page views per day"). * `%` represents dimensionless value of 1/100, and annotates values giving
+        /// a percentage (so the metric values are typically in the range of 0..100, and a metric value `3` means "3
+        /// percent"). * `10^2.%` indicates a metric contains a ratio, typically in the range 0..1, that will be
+        /// multiplied by 100 and displayed as a percentage (so a metric value `0.03` means "3 percent").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 

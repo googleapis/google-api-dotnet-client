@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fact-check/tools/api/'>Fact Check Tools API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20191126 (1790)
+ *      <tr><th>API Rev<td>20191203 (1797)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fact-check/tools/api/'>
  *              https://developers.google.com/fact-check/tools/api/</a>
@@ -367,6 +367,21 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             }
 
 
+            /// <summary>The pagination token. You may provide the `next_page_token` returned from a previous List
+            /// request, if any, in order to get the next page. All other fields must have the same values as in the
+            /// previous request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The review publisher site to filter results by, e.g. nytimes.com.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("reviewPublisherSiteFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ReviewPublisherSiteFilter { get; set; }
+
+            /// <summary>The pagination size. We will return up to that many results. Defaults to 10 if not
+            /// set.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Textual query string. Required unless `review_publisher_site_filter` is specified.</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -386,21 +401,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             /// starting from the first matching result, and 10 means to return from the 11th result.</summary>
             [Google.Apis.Util.RequestParameterAttribute("offset", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> Offset { get; set; }
-
-            /// <summary>The pagination token. You may provide the `next_page_token` returned from a previous List
-            /// request, if any, in order to get the next page. All other fields must have the same values as in the
-            /// previous request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The pagination size. We will return up to that many results. Defaults to 10 if not
-            /// set.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The review publisher site to filter results by, e.g. nytimes.com.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("reviewPublisherSiteFilter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ReviewPublisherSiteFilter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -426,6 +426,33 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "reviewPublisherSiteFilter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "reviewPublisherSiteFilter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "query", new Google.Apis.Discovery.Parameter
                     {
@@ -457,33 +484,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
                     "offset", new Google.Apis.Discovery.Parameter
                     {
                         Name = "offset",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "reviewPublisherSiteFilter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "reviewPublisherSiteFilter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -700,6 +700,12 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             }
 
 
+            /// <summary>The URL from which to get `ClaimReview` markup. There will be at most one result. If markup is
+            /// associated with a more canonical version of the URL provided, we will return that URL instead. Cannot be
+            /// specified along with an organization.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("url", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Url { get; set; }
+
             /// <summary>An integer that specifies the current offset (that is, starting result location) in search
             /// results. This field is only considered if `page_token` is unset, and if the request is not for a
             /// specific URL. For example, 0 means to return results starting from the first matching result, and 10
@@ -722,12 +728,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             /// effect if a URL is requested.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The URL from which to get `ClaimReview` markup. There will be at most one result. If markup is
-            /// associated with a more canonical version of the URL provided, we will return that URL instead. Cannot be
-            /// specified along with an organization.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("url", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Url { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -753,6 +753,15 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "url", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "url",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "offset", new Google.Apis.Discovery.Parameter
                     {
@@ -784,15 +793,6 @@ namespace Google.Apis.FactCheckTools.v1alpha1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "url", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "url",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

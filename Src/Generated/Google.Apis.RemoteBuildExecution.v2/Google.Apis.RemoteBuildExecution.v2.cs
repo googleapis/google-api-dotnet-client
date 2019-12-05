@@ -436,10 +436,6 @@ namespace Google.Apis.RemoteBuildExecution.v2
             [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long SizeBytes { get; private set; }
 
-            /// <summary>A hint to the server to request inlining stdout in the ActionResult message.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("inlineStdout", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> InlineStdout { get; set; }
-
             /// <summary>A hint to the server to request inlining stderr in the ActionResult message.</summary>
             [Google.Apis.Util.RequestParameterAttribute("inlineStderr", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> InlineStderr { get; set; }
@@ -448,6 +444,10 @@ namespace Google.Apis.RemoteBuildExecution.v2
             /// exactly match one path in `output_files` in the Command message.</summary>
             [Google.Apis.Util.RequestParameterAttribute("inlineOutputFiles", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> InlineOutputFiles { get; set; }
+
+            /// <summary>A hint to the server to request inlining stdout in the ActionResult message.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("inlineStdout", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> InlineStdout { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -501,15 +501,6 @@ namespace Google.Apis.RemoteBuildExecution.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "inlineStdout", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "inlineStdout",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "inlineStderr", new Google.Apis.Discovery.Parameter
                     {
                         Name = "inlineStderr",
@@ -522,6 +513,15 @@ namespace Google.Apis.RemoteBuildExecution.v2
                     "inlineOutputFiles", new Google.Apis.Discovery.Parameter
                     {
                         Name = "inlineOutputFiles",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "inlineStdout", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "inlineStdout",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1217,17 +1217,17 @@ namespace Google.Apis.RemoteBuildExecution.v2
             [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long SizeBytes { get; private set; }
 
-            /// <summary>A page token, which must be a value received in a previous GetTreeResponse. If present, the
-            /// server will use it to return the following page of results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>A maximum page size to request. If present, the server will request no more than this many
             /// items. Regardless of whether a page size is specified, the server may place its own limit on the number
             /// of items to be returned and require the client to retrieve more items using a subsequent
             /// request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A page token, which must be a value received in a previous GetTreeResponse. If present, the
+            /// server will use it to return the following page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1281,18 +1281,18 @@ namespace Google.Apis.RemoteBuildExecution.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

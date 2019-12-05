@@ -1,20 +1,4 @@
 {
-  "canonicalName": "BigQuery Connection Service",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "View and manage your data across Google Cloud Platform services"
-        },
-        "https://www.googleapis.com/auth/bigquery": {
-          "description": "View and manage your data in Google BigQuery"
-        }
-      }
-    }
-  },
-  "rootUrl": "https://bigqueryconnection.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "bigqueryconnection",
   "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
   "title": "BigQuery Connection API",
@@ -27,7 +11,6 @@
             "connections": {
               "methods": {
                 "list": {
-                  "description": "Returns a list of connections in the given project.",
                   "response": {
                     "$ref": "ListConnectionsResponse"
                   },
@@ -40,11 +23,6 @@
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
                   "parameters": {
-                    "pageToken": {
-                      "location": "query",
-                      "description": "Page token.",
-                      "type": "string"
-                    },
                     "maxResults": {
                       "location": "query",
                       "description": "Maximum number of results per page.",
@@ -57,24 +35,64 @@
                       "required": true,
                       "type": "string",
                       "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    },
+                    "pageToken": {
+                      "location": "query",
+                      "description": "Page token.",
+                      "type": "string"
                     }
                   },
                   "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections",
                   "path": "v1beta1/{+parent}/connections",
-                  "id": "bigqueryconnection.projects.locations.connections.list"
+                  "id": "bigqueryconnection.projects.locations.connections.list",
+                  "description": "Returns a list of connections in the given project."
                 },
-                "setIamPolicy": {
-                  "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED",
+                "create": {
+                  "id": "bigqueryconnection.projects.locations.connections.create",
+                  "path": "v1beta1/{+parent}/connections",
+                  "description": "Creates a new connection.",
                   "request": {
-                    "$ref": "SetIamPolicyRequest"
+                    "$ref": "Connection"
                   },
                   "httpMethod": "POST",
                   "parameterOrder": [
-                    "resource"
+                    "parent"
                   ],
+                  "response": {
+                    "$ref": "Connection"
+                  },
+                  "parameters": {
+                    "parent": {
+                      "location": "path",
+                      "description": "Parent resource name.\nMust be in the format `projects/{project_id}/locations/{location_id}`",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    },
+                    "connectionId": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "Optional. Connection id that should be assigned to the created connection."
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections"
+                },
+                "setIamPolicy": {
                   "response": {
                     "$ref": "Policy"
                   },
+                  "parameterOrder": [
+                    "resource"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
                   "parameters": {
                     "resource": {
                       "location": "path",
@@ -84,117 +102,44 @@
                       "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+$"
                     }
                   },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
                   "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:setIamPolicy",
+                  "path": "v1beta1/{+resource}:setIamPolicy",
                   "id": "bigqueryconnection.projects.locations.connections.setIamPolicy",
-                  "path": "v1beta1/{+resource}:setIamPolicy"
-                },
-                "create": {
-                  "response": {
-                    "$ref": "Connection"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "POST",
-                  "parameters": {
-                    "connectionId": {
-                      "type": "string",
-                      "location": "query",
-                      "description": "Optional. Connection id that should be assigned to the created connection."
-                    },
-                    "parent": {
-                      "location": "path",
-                      "description": "Parent resource name.\nMust be in the format `projects/{project_id}/locations/{location_id}`",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections",
-                  "path": "v1beta1/{+parent}/connections",
-                  "id": "bigqueryconnection.projects.locations.connections.create",
-                  "description": "Creates a new connection.",
                   "request": {
-                    "$ref": "Connection"
-                  }
+                    "$ref": "SetIamPolicyRequest"
+                  },
+                  "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"
                 },
                 "getIamPolicy": {
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:getIamPolicy",
-                  "id": "bigqueryconnection.projects.locations.connections.getIamPolicy",
-                  "path": "v1beta1/{+resource}:getIamPolicy",
                   "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
                   "request": {
                     "$ref": "GetIamPolicyRequest"
                   },
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "resource"
-                  ],
                   "response": {
                     "$ref": "Policy"
                   },
+                  "parameterOrder": [
+                    "resource"
+                  ],
+                  "httpMethod": "POST",
                   "parameters": {
                     "resource": {
+                      "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
                       "required": true,
                       "type": "string",
                       "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
-                      "location": "path",
-                      "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field."
+                      "location": "path"
                     }
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/bigquery",
                     "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "patch": {
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
-                  "path": "v1beta1/{+name}",
-                  "id": "bigqueryconnection.projects.locations.connections.patch",
-                  "request": {
-                    "$ref": "Connection"
-                  },
-                  "description": "Updates the specified connection. For security reasons, also resets\ncredential if connection properties are in the update field mask.",
-                  "response": {
-                    "$ref": "Connection"
-                  },
-                  "parameterOrder": [
-                    "name"
                   ],
-                  "httpMethod": "PATCH",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "updateMask": {
-                      "type": "string",
-                      "location": "query",
-                      "description": "Update mask for the connection fields to be updated.",
-                      "format": "google-fieldmask"
-                    },
-                    "name": {
-                      "location": "path",
-                      "description": "Name of the connection to update, for example:\n`projects/{project_id}/locations/{location_id}/connections/{connection_id}`",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+$"
-                    }
-                  }
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:getIamPolicy",
+                  "path": "v1beta1/{+resource}:getIamPolicy",
+                  "id": "bigqueryconnection.projects.locations.connections.getIamPolicy"
                 },
                 "get": {
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
-                  "path": "v1beta1/{+name}",
-                  "id": "bigqueryconnection.projects.locations.connections.get",
-                  "description": "Returns specified connection.",
                   "response": {
                     "$ref": "Connection"
                   },
@@ -208,74 +153,83 @@
                   ],
                   "parameters": {
                     "name": {
-                      "location": "path",
                       "description": "Name of the requested connection, for example:\n`projects/{project_id}/locations/{location_id}/connections/{connection_id}`",
                       "required": true,
                       "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+$"
+                      "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                      "location": "path"
                     }
-                  }
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
+                  "path": "v1beta1/{+name}",
+                  "id": "bigqueryconnection.projects.locations.connections.get",
+                  "description": "Returns specified connection."
+                },
+                "patch": {
+                  "description": "Updates the specified connection. For security reasons, also resets\ncredential if connection properties are in the update field mask.",
+                  "request": {
+                    "$ref": "Connection"
+                  },
+                  "httpMethod": "PATCH",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "Connection"
+                  },
+                  "parameters": {
+                    "name": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                      "location": "path",
+                      "description": "Name of the connection to update, for example:\n`projects/{project_id}/locations/{location_id}/connections/{connection_id}`",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "updateMask": {
+                      "description": "Update mask for the connection fields to be updated.",
+                      "format": "google-fieldmask",
+                      "type": "string",
+                      "location": "query"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
+                  "id": "bigqueryconnection.projects.locations.connections.patch",
+                  "path": "v1beta1/{+name}"
                 },
                 "testIamPermissions": {
-                  "request": {
-                    "$ref": "TestIamPermissionsRequest"
-                  },
-                  "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.",
-                  "response": {
-                    "$ref": "TestIamPermissionsResponse"
-                  },
+                  "httpMethod": "POST",
                   "parameterOrder": [
                     "resource"
                   ],
-                  "httpMethod": "POST",
+                  "response": {
+                    "$ref": "TestIamPermissionsResponse"
+                  },
                   "scopes": [
                     "https://www.googleapis.com/auth/bigquery",
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
                   "parameters": {
                     "resource": {
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
                       "location": "path",
-                      "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field."
-                    }
-                  },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:testIamPermissions",
-                  "path": "v1beta1/{+resource}:testIamPermissions",
-                  "id": "bigqueryconnection.projects.locations.connections.testIamPermissions"
-                },
-                "delete": {
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
-                  "path": "v1beta1/{+name}",
-                  "id": "bigqueryconnection.projects.locations.connections.delete",
-                  "description": "Deletes connection and associated credential.",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "DELETE",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "Name of the deleted connection, for example:\n`projects/{project_id}/locations/{location_id}/connections/{connection_id}`",
+                      "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
                       "required": true,
                       "type": "string",
                       "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+$"
                     }
                   },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:testIamPermissions",
+                  "id": "bigqueryconnection.projects.locations.connections.testIamPermissions",
+                  "path": "v1beta1/{+resource}:testIamPermissions",
+                  "request": {
+                    "$ref": "TestIamPermissionsRequest"
+                  },
+                  "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."
                 },
                 "updateCredential": {
-                  "description": "Sets the credential for the specified connection.",
-                  "request": {
-                    "$ref": "ConnectionCredential"
-                  },
                   "httpMethod": "PATCH",
                   "parameterOrder": [
                     "name"
@@ -285,11 +239,11 @@
                   },
                   "parameters": {
                     "name": {
+                      "description": "Name of the connection, for example:\n`projects/{project_id}/locations/{location_id}/connections/{connection_id}/credential`",
                       "required": true,
                       "type": "string",
                       "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+/credential$",
-                      "location": "path",
-                      "description": "Name of the connection, for example:\n`projects/{project_id}/locations/{location_id}/connections/{connection_id}/credential`"
+                      "location": "path"
                     }
                   },
                   "scopes": [
@@ -298,7 +252,37 @@
                   ],
                   "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/credential",
                   "id": "bigqueryconnection.projects.locations.connections.updateCredential",
-                  "path": "v1beta1/{+name}"
+                  "path": "v1beta1/{+name}",
+                  "description": "Sets the credential for the specified connection.",
+                  "request": {
+                    "$ref": "ConnectionCredential"
+                  }
+                },
+                "delete": {
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "DELETE",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "description": "Name of the deleted connection, for example:\n`projects/{project_id}/locations/{location_id}/connections/{connection_id}`",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/connections/[^/]+$"
+                    }
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
+                  "path": "v1beta1/{+name}",
+                  "id": "bigqueryconnection.projects.locations.connections.delete",
+                  "description": "Deletes connection and associated credential."
                 }
               }
             }
@@ -308,9 +292,30 @@
     }
   },
   "parameters": {
-    "uploadType": {
+    "access_token": {
+      "type": "string",
       "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "description": "OAuth access token."
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
     },
     "fields": {
@@ -318,15 +323,20 @@
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
-    "callback": {
+    "uploadType": {
       "location": "query",
-      "description": "JSONP",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string"
     },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
     "oauth_token": {
-      "location": "query",
       "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "$.xgafv": {
       "location": "query",
@@ -342,6 +352,8 @@
       ]
     },
     "alt": {
+      "location": "query",
+      "description": "Data format for response.",
       "default": "json",
       "enum": [
         "json",
@@ -353,35 +365,7 @@
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response."
-    },
-    "key": {
-      "type": "string",
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    },
-    "access_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth access token."
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "type": "boolean",
-      "default": "true",
-      "location": "query",
-      "description": "Returns response with indentations and line breaks."
+      ]
     }
   },
   "version": "v1beta1",
@@ -390,79 +374,15 @@
   "description": "Allows users to manage BigQuery connections to external data sources.",
   "servicePath": "",
   "basePath": "",
-  "revision": "20191113",
-  "documentationLink": "https://cloud.google.com/bigquery/",
   "id": "bigqueryconnection:v1beta1",
+  "documentationLink": "https://cloud.google.com/bigquery/",
+  "revision": "20191113",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "TestIamPermissionsResponse": {
-      "type": "object",
-      "properties": {
-        "permissions": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."
-        }
-      },
-      "id": "TestIamPermissionsResponse",
-      "description": "Response message for `TestIamPermissions` method."
-    },
-    "GetIamPolicyRequest": {
-      "description": "Request message for `GetIamPolicy` method.",
-      "type": "object",
-      "properties": {
-        "options": {
-          "$ref": "GetPolicyOptions",
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."
-        }
-      },
-      "id": "GetIamPolicyRequest"
-    },
-    "ConnectionCredential": {
-      "type": "object",
-      "properties": {
-        "cloudSql": {
-          "$ref": "CloudSqlCredential",
-          "description": "Credential for Cloud SQL database."
-        }
-      },
-      "id": "ConnectionCredential",
-      "description": "Credential to use with a connection."
-    },
-    "AuditLogConfig": {
-      "type": "object",
-      "properties": {
-        "exemptedMembers": {
-          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "logType": {
-          "type": "string",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
-          "enum": [
-            "LOG_TYPE_UNSPECIFIED",
-            "ADMIN_READ",
-            "DATA_WRITE",
-            "DATA_READ"
-          ],
-          "description": "The log type that this config enables."
-        }
-      },
-      "id": "AuditLogConfig",
-      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:jose@example.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\njose@example.com from DATA_READ logging."
-    },
     "TestIamPermissionsRequest": {
+      "id": "TestIamPermissionsRequest",
+      "description": "Request message for `TestIamPermissions` method.",
       "type": "object",
       "properties": {
         "permissions": {
@@ -472,18 +392,12 @@
             "type": "string"
           }
         }
-      },
-      "id": "TestIamPermissionsRequest",
-      "description": "Request message for `TestIamPermissions` method."
+      }
     },
     "Policy": {
+      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` is a collection of `bindings`. A `binding` binds one or more\n`members` to a single `role`. Members can be user accounts, service accounts,\nGoogle groups, and domains (such as G Suite). A `role` is a named list of\npermissions (defined by IAM or configured by users). A `binding` can\noptionally specify a `condition`, which is a logic expression that further\nconstrains the role binding based on attributes about the request and/or\ntarget resource.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/resourcemanager.organizationAdmin\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/resourcemanager.organizationViewer\",\n          \"members\": [\"user:eve@example.com\"],\n          \"condition\": {\n            \"title\": \"expirable access\",\n            \"description\": \"Does not grant access after Sep 2020\",\n            \"expression\": \"request.time \u003c\n            timestamp('2020-10-01T00:00:00.000Z')\",\n          }\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-project-id@appspot.gserviceaccount.com\n      role: roles/resourcemanager.organizationAdmin\n    - members:\n      - user:eve@example.com\n      role: roles/resourcemanager.organizationViewer\n      condition:\n        title: expirable access\n        description: Does not grant access after Sep 2020\n        expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
       "type": "object",
       "properties": {
-        "etag": {
-          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten. Due to blind-set semantics of an etag-less policy,\n'setIamPolicy' will not fail even if the incoming policy version does not\nmeet the requirements for modifying the stored policy.",
-          "format": "byte",
-          "type": "string"
-        },
         "version": {
           "type": "integer",
           "description": "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nOperations affecting conditional bindings must specify version 3. This can\nbe either setting a conditional policy, modifying a conditional binding,\nor removing a binding (conditional or unconditional) from the stored\nconditional policy.\nOperations on non-conditional policies may specify any valid value or\nleave the field unset.\n\nIf no etag is provided in the call to `setIamPolicy`, version compliance\nchecks against the stored policy is skipped.",
@@ -497,58 +411,62 @@
           }
         },
         "bindings": {
+          "description": "Associates a list of `members` to a `role`. Optionally may specify a\n`condition` that determines when binding is in effect.\n`bindings` with no members will result in an error.",
           "type": "array",
           "items": {
             "$ref": "Binding"
-          },
-          "description": "Associates a list of `members` to a `role`. Optionally may specify a\n`condition` that determines when binding is in effect.\n`bindings` with no members will result in an error."
+          }
+        },
+        "etag": {
+          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten. Due to blind-set semantics of an etag-less policy,\n'setIamPolicy' will not fail even if the incoming policy version does not\nmeet the requirements for modifying the stored policy.",
+          "format": "byte",
+          "type": "string"
         }
       },
-      "id": "Policy",
-      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` is a collection of `bindings`. A `binding` binds one or more\n`members` to a single `role`. Members can be user accounts, service accounts,\nGoogle groups, and domains (such as G Suite). A `role` is a named list of\npermissions (defined by IAM or configured by users). A `binding` can\noptionally specify a `condition`, which is a logic expression that further\nconstrains the role binding based on attributes about the request and/or\ntarget resource.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/resourcemanager.organizationAdmin\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/resourcemanager.organizationViewer\",\n          \"members\": [\"user:eve@example.com\"],\n          \"condition\": {\n            \"title\": \"expirable access\",\n            \"description\": \"Does not grant access after Sep 2020\",\n            \"expression\": \"request.time \u003c\n            timestamp('2020-10-01T00:00:00.000Z')\",\n          }\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-project-id@appspot.gserviceaccount.com\n      role: roles/resourcemanager.organizationAdmin\n    - members:\n      - user:eve@example.com\n      role: roles/resourcemanager.organizationViewer\n      condition:\n        title: expirable access\n        description: Does not grant access after Sep 2020\n        expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs)."
+      "id": "Policy"
     },
     "ListConnectionsResponse": {
       "description": "The response for ConnectionService.ListConnections.",
       "type": "object",
       "properties": {
         "nextPageToken": {
-          "type": "string",
-          "description": "Next page token."
+          "description": "Next page token.",
+          "type": "string"
         },
         "connections": {
+          "description": "List of connections.",
           "type": "array",
           "items": {
             "$ref": "Connection"
-          },
-          "description": "List of connections."
+          }
         }
       },
       "id": "ListConnectionsResponse"
     },
     "AuditConfig": {
+      "id": "AuditConfig",
+      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:jose@example.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"sampleservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:aliya@example.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts jose@example.com from DATA_READ logging, and\naliya@example.com from DATA_WRITE logging.",
       "type": "object",
       "properties": {
         "service": {
-          "type": "string",
-          "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."
+          "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services.",
+          "type": "string"
         },
         "auditLogConfigs": {
+          "description": "The configuration for logging of each type of permission.",
           "type": "array",
           "items": {
             "$ref": "AuditLogConfig"
-          },
-          "description": "The configuration for logging of each type of permission."
+          }
         }
-      },
-      "id": "AuditConfig",
-      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:jose@example.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"sampleservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:aliya@example.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts jose@example.com from DATA_READ logging, and\naliya@example.com from DATA_WRITE logging."
+      }
     },
     "CloudSqlProperties": {
+      "id": "CloudSqlProperties",
       "description": "Connection properties specific to the Cloud SQL.",
       "type": "object",
       "properties": {
         "type": {
-          "type": "string",
           "enumDescriptions": [
             "Unspecified database type.",
             "Cloud SQL for PostgreSQL.",
@@ -559,7 +477,8 @@
             "POSTGRES",
             "MYSQL"
           ],
-          "description": "Type of the Cloud SQL database."
+          "description": "Type of the Cloud SQL database.",
+          "type": "string"
         },
         "database": {
           "type": "string",
@@ -569,33 +488,15 @@
           "description": "Cloud SQL instance ID in the form `project:location:instance`.",
           "type": "string"
         }
-      },
-      "id": "CloudSqlProperties"
+      }
     },
     "Connection": {
       "type": "object",
       "properties": {
-        "hasCredential": {
-          "type": "boolean",
-          "description": "Output only. True, if credential is configured for this connection."
-        },
-        "friendlyName": {
-          "description": "User provided display name for the connection.",
-          "type": "string"
-        },
-        "lastModifiedTime": {
-          "description": "Output only. The last update timestamp of the connection.",
-          "format": "int64",
-          "type": "string"
-        },
-        "description": {
-          "description": "User provided description.",
-          "type": "string"
-        },
         "creationTime": {
+          "type": "string",
           "description": "Output only. The creation timestamp of the connection.",
-          "format": "int64",
-          "type": "string"
+          "format": "int64"
         },
         "name": {
           "type": "string",
@@ -604,45 +505,66 @@
         "cloudSql": {
           "$ref": "CloudSqlProperties",
           "description": "Cloud SQL properties."
+        },
+        "hasCredential": {
+          "description": "Output only. True, if credential is configured for this connection.",
+          "type": "boolean"
+        },
+        "friendlyName": {
+          "description": "User provided display name for the connection.",
+          "type": "string"
+        },
+        "lastModifiedTime": {
+          "type": "string",
+          "description": "Output only. The last update timestamp of the connection.",
+          "format": "int64"
+        },
+        "description": {
+          "type": "string",
+          "description": "User provided description."
         }
       },
       "id": "Connection",
       "description": "Configuration parameters to establish connection with an external data\nsource, except the credential attributes."
     },
     "SetIamPolicyRequest": {
+      "description": "Request message for `SetIamPolicy` method.",
       "type": "object",
       "properties": {
         "policy": {
-          "$ref": "Policy",
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them.",
+          "$ref": "Policy"
         },
         "updateMask": {
-          "type": "string",
           "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM.",
-          "format": "google-fieldmask"
+          "format": "google-fieldmask",
+          "type": "string"
         }
       },
-      "id": "SetIamPolicyRequest",
-      "description": "Request message for `SetIamPolicy` method."
+      "id": "SetIamPolicyRequest"
     },
     "CloudSqlCredential": {
+      "description": "Credential info for the Cloud SQL.",
       "type": "object",
       "properties": {
         "password": {
-          "description": "The password for the credential.",
-          "type": "string"
+          "type": "string",
+          "description": "The password for the credential."
         },
         "username": {
           "description": "The username for the credential.",
           "type": "string"
         }
       },
-      "id": "CloudSqlCredential",
-      "description": "Credential info for the Cloud SQL."
+      "id": "CloudSqlCredential"
     },
     "Binding": {
       "type": "object",
       "properties": {
+        "role": {
+          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+          "type": "string"
+        },
         "condition": {
           "$ref": "Expr",
           "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
@@ -653,28 +575,17 @@
           "items": {
             "type": "string"
           }
-        },
-        "role": {
-          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
-          "type": "string"
         }
       },
       "id": "Binding",
       "description": "Associates `members` with a `role`."
     },
-    "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-      "type": "object",
-      "properties": {},
-      "id": "Empty"
-    },
     "Expr": {
-      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
       "type": "object",
       "properties": {
         "title": {
-          "type": "string",
-          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."
+          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
+          "type": "string"
         },
         "location": {
           "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
@@ -689,9 +600,17 @@
           "type": "string"
         }
       },
-      "id": "Expr"
+      "id": "Expr",
+      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\""
+    },
+    "Empty": {
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object",
+      "properties": {}
     },
     "GetPolicyOptions": {
+      "id": "GetPolicyOptions",
       "description": "Encapsulates settings provided to GetIamPolicy.",
       "type": "object",
       "properties": {
@@ -700,13 +619,94 @@
           "format": "int32",
           "type": "integer"
         }
+      }
+    },
+    "GetIamPolicyRequest": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "GetPolicyOptions",
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."
+        }
       },
-      "id": "GetPolicyOptions"
+      "id": "GetIamPolicyRequest",
+      "description": "Request message for `GetIamPolicy` method."
+    },
+    "TestIamPermissionsResponse": {
+      "type": "object",
+      "properties": {
+        "permissions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."
+        }
+      },
+      "id": "TestIamPermissionsResponse",
+      "description": "Response message for `TestIamPermissions` method."
+    },
+    "ConnectionCredential": {
+      "id": "ConnectionCredential",
+      "description": "Credential to use with a connection.",
+      "type": "object",
+      "properties": {
+        "cloudSql": {
+          "$ref": "CloudSqlCredential",
+          "description": "Credential for Cloud SQL database."
+        }
+      }
+    },
+    "AuditLogConfig": {
+      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:jose@example.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\njose@example.com from DATA_READ logging.",
+      "type": "object",
+      "properties": {
+        "exemptedMembers": {
+          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "logType": {
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
+          ],
+          "enum": [
+            "LOG_TYPE_UNSPECIFIED",
+            "ADMIN_READ",
+            "DATA_WRITE",
+            "DATA_READ"
+          ],
+          "description": "The log type that this config enables.",
+          "type": "string"
+        }
+      },
+      "id": "AuditLogConfig"
     }
   },
   "protocol": "rest",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  }
+  },
+  "canonicalName": "BigQuery Connection Service",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/bigquery": {
+          "description": "View and manage your data in Google BigQuery"
+        },
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "View and manage your data across Google Cloud Platform services"
+        }
+      }
+    }
+  },
+  "rootUrl": "https://bigqueryconnection.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "bigqueryconnection"
 }
