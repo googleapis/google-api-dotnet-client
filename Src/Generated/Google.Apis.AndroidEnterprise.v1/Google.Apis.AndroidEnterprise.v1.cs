@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191106 (1770)
+ *      <tr><th>API Rev<td>20191201 (1795)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -8421,8 +8421,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual System.Nullable<int> AutoInstallPriority { get; set; } 
 
         /// <summary>The minimum version of the app. If a lower version of the app is installed, then the app will be
-        /// auto-updated according to the auto-install constraints, instead of waiting for the regular auto-
-        /// update.</summary>
+        /// auto-updated according to the auto-install constraints, instead of waiting for the regular auto-update. You
+        /// can set a minimum version code for at most 20 apps per device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumVersionCode")]
         public virtual System.Nullable<int> MinimumVersionCode { get; set; } 
 

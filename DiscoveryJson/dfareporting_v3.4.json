@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/cvaatiDaKaNSJU4pq_9jWZaqzac\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/V35Ldow5sR30j3EuoED6Qn8EWrA\"",
  "discoveryVersion": "v1",
  "id": "dfareporting:v3.4",
  "name": "dfareporting",
  "version": "v3.4",
- "revision": "20191112",
+ "revision": "20191127",
  "title": "DCM/DFA Reporting And Trafficking API",
  "description": "Manages your DoubleClick Campaign Manager ad campaigns and reports.",
  "ownerDomain": "google.com",
@@ -1039,22 +1039,6 @@
     "nextPageToken": {
      "type": "string",
      "description": "Pagination token to be used for the next list operation."
-    }
-   }
-  },
-  "AnnotateClickEvent": {
-   "id": "AnnotateClickEvent",
-   "type": "object",
-   "description": "Annotate a click event.",
-   "properties": {
-    "gclid": {
-     "type": "string",
-     "description": "The Google click ID. Use this field to annotate the click associated with the gclid."
-    },
-    "kind": {
-     "type": "string",
-     "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#annotateClickEvent\".",
-     "default": "dfareporting#annotateClickEvent"
     }
    }
   },
@@ -3959,14 +3943,14 @@
    "description": "Experimental feature (no support provided) A custom event represents a third party impression, a third party click, an annotation on a first party impression, or an annotation on a first party click.",
    "properties": {
     "annotateClickEvent": {
-     "$ref": "AnnotateClickEvent",
+     "$ref": "CustomEventClickAnnotation",
      "description": "Annotate a click event."
     },
     "customVariables": {
      "type": "array",
      "description": "Custom variables associated with the event.",
      "items": {
-      "$ref": "CustomVariables"
+      "$ref": "CustomVariable"
      }
     },
     "eventType": {
@@ -3989,7 +3973,7 @@
      "format": "int64"
     },
     "insertEvent": {
-     "$ref": "InsertEvent",
+     "$ref": "CustomEventInsert",
      "description": "Insert custom event."
     },
     "kind": {
@@ -4005,6 +3989,22 @@
      "type": "string",
      "description": "The timestamp of this custom event, in Unix epoch micros. This is a required field.",
      "format": "int64"
+    }
+   }
+  },
+  "CustomEventClickAnnotation": {
+   "id": "CustomEventClickAnnotation",
+   "type": "object",
+   "description": "Annotate a click event.",
+   "properties": {
+    "gclid": {
+     "type": "string",
+     "description": "The Google click ID. Use this field to annotate the click associated with the gclid."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#customEventClickAnnotation\".",
+     "default": "dfareporting#customEventClickAnnotation"
     }
    }
   },
@@ -4039,6 +4039,48 @@
     "message": {
      "type": "string",
      "description": "A description of the error."
+    }
+   }
+  },
+  "CustomEventInsert": {
+   "id": "CustomEventInsert",
+   "type": "object",
+   "description": "Custom event to be inserted.",
+   "properties": {
+    "cmDimensions": {
+     "$ref": "CampaignManagerIds",
+     "description": "Campaign Manager dimensions associated with the event."
+    },
+    "dv3Dimensions": {
+     "$ref": "DV3Ids",
+     "description": "DV360 dimensions associated with the event."
+    },
+    "insertEventType": {
+     "type": "string",
+     "description": "The type of event to insert.",
+     "enum": [
+      "CLICK",
+      "IMPRESSION",
+      "UNKNOWN"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      ""
+     ]
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#customEventInsert\".",
+     "default": "dfareporting#customEventInsert"
+    },
+    "matchId": {
+     "type": "string",
+     "description": "The match ID field. A match ID is your own first-party identifier that has been synced with Google using the match ID feature in Floodlight. This field is mutually exclusive with mobileDeviceId, and at least one of the two fields is required."
+    },
+    "mobileDeviceId": {
+     "type": "string",
+     "description": "The mobile device ID. This field is mutually exclusive with matchId, and at least one of the two fields is required."
     }
    }
   },
@@ -4350,10 +4392,10 @@
     }
    }
   },
-  "CustomVariables": {
-   "id": "CustomVariables",
+  "CustomVariable": {
+   "id": "CustomVariable",
    "type": "object",
-   "description": "A custom variable.",
+   "description": "Custom variable.",
    "properties": {
     "index": {
      "type": "string",
@@ -4362,8 +4404,8 @@
     },
     "kind": {
      "type": "string",
-     "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#customVariables\".",
-     "default": "dfareporting#customVariables"
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#customVariable\".",
+     "default": "dfareporting#customVariable"
     },
     "value": {
      "type": "string",
@@ -6218,48 +6260,6 @@
      "items": {
       "$ref": "Region"
      }
-    }
-   }
-  },
-  "InsertEvent": {
-   "id": "InsertEvent",
-   "type": "object",
-   "description": "Insert custom event.",
-   "properties": {
-    "cmDimensions": {
-     "$ref": "CampaignManagerIds",
-     "description": "Campaign Manager dimensions associated with the event."
-    },
-    "dv3Dimensions": {
-     "$ref": "DV3Ids",
-     "description": "DV360 dimensions associated with the event."
-    },
-    "insertEventType": {
-     "type": "string",
-     "description": "The type of insert event.",
-     "enum": [
-      "CLICK",
-      "IMPRESSION",
-      "UNKNOWN"
-     ],
-     "enumDescriptions": [
-      "",
-      "",
-      ""
-     ]
-    },
-    "kind": {
-     "type": "string",
-     "description": "Identifies what kind of resource this is. Value: the fixed string \"dfareporting#insertEvent\".",
-     "default": "dfareporting#insertEvent"
-    },
-    "matchId": {
-     "type": "string",
-     "description": "The match ID field. A match ID is your own first-party identifier that has been synced with Google using the match ID feature in Floodlight. This field is mutually exclusive with mobileDeviceId, and at least one of the two fields is required."
-    },
-    "mobileDeviceId": {
-     "type": "string",
-     "description": "The mobile device ID. This field is mutually exclusive with matchId, and at least one of the two fields is required."
     }
    }
   },

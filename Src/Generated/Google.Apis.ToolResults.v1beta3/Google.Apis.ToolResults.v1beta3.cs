@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20191007 (1740)
+ *      <tr><th>API Rev<td>20191203 (1797)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -317,6 +317,7 @@ namespace Google.Apis.ToolResults.v1beta3
                 {
                     this.service = service;
                     clusters = new ClustersResource(service);
+                    environments = new EnvironmentsResource(service);
                     steps = new StepsResource(service);
 
                 }
@@ -573,6 +574,281 @@ namespace Google.Apis.ToolResults.v1beta3
                                     Name = "executionId",
                                     IsRequired = true,
                                     ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+                private readonly EnvironmentsResource environments;
+
+                /// <summary>Gets the Environments resource.</summary>
+                public virtual EnvironmentsResource Environments
+                {
+                    get { return environments; }
+                }
+
+                /// <summary>The "environments" collection of methods.</summary>
+                public class EnvironmentsResource
+                {
+                    private const string Resource = "environments";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public EnvironmentsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Gets an Environment.
+                    ///
+                    /// May return any of the following canonical error codes:
+                    ///
+                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
+                    /// request is malformed - NOT_FOUND - if the Environment does not exist</summary>
+                    /// <param name="projectId">Required. A Project id.</param>
+                    /// <param name="historyId">Required. A History
+                    /// id.</param>
+                    /// <param name="executionId">Required. An Execution id.</param>
+                    /// <param
+                    /// name="environmentId">Required. An Environment id.</param>
+                    public virtual GetRequest Get(string projectId, string historyId, string executionId, string environmentId)
+                    {
+                        return new GetRequest(service, projectId, historyId, executionId, environmentId);
+                    }
+
+                    /// <summary>Gets an Environment.
+                    ///
+                    /// May return any of the following canonical error codes:
+                    ///
+                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
+                    /// request is malformed - NOT_FOUND - if the Environment does not exist</summary>
+                    public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.Environment>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string environmentId)
+                            : base(service)
+                        {
+                            ProjectId = projectId;
+                            HistoryId = historyId;
+                            ExecutionId = executionId;
+                            EnvironmentId = environmentId;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. A Project id.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectId { get; private set; }
+
+                        /// <summary>Required. A History id.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string HistoryId { get; private set; }
+
+                        /// <summary>Required. An Execution id.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ExecutionId { get; private set; }
+
+                        /// <summary>Required. An Environment id.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("environmentId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string EnvironmentId { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{projectId}/histories/{historyId}/executions/{executionId}/environments/{environmentId}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "historyId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "historyId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "executionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "executionId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "environmentId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "environmentId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists Environments for a given Execution.
+                    ///
+                    /// The Environments are sorted by display name.
+                    ///
+                    /// May return any of the following canonical error codes:
+                    ///
+                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
+                    /// request is malformed - NOT_FOUND - if the containing Execution does not exist</summary>
+                    /// <param name="projectId">Required. A Project id.</param>
+                    /// <param name="historyId">Required. A History
+                    /// id.</param>
+                    /// <param name="executionId">Required. An Execution id.</param>
+                    public virtual ListRequest List(string projectId, string historyId, string executionId)
+                    {
+                        return new ListRequest(service, projectId, historyId, executionId);
+                    }
+
+                    /// <summary>Lists Environments for a given Execution.
+                    ///
+                    /// The Environments are sorted by display name.
+                    ///
+                    /// May return any of the following canonical error codes:
+                    ///
+                    /// - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the
+                    /// request is malformed - NOT_FOUND - if the containing Execution does not exist</summary>
+                    public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.ListEnvironmentsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId)
+                            : base(service)
+                        {
+                            ProjectId = projectId;
+                            HistoryId = historyId;
+                            ExecutionId = executionId;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. A Project id.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectId { get; private set; }
+
+                        /// <summary>Required. A History id.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string HistoryId { get; private set; }
+
+                        /// <summary>Required. An Execution id.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ExecutionId { get; private set; }
+
+                        /// <summary>The maximum number of Environments to fetch.
+                        ///
+                        /// Default value: 25. The server will use this default if the field is not set or has a value
+                        /// of 0.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>A continuation token to resume the query at the next item.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{projectId}/histories/{historyId}/executions/{executionId}/environments"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "historyId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "historyId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "executionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "executionId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
@@ -4171,6 +4447,80 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An Environment represents the set of test runs (Steps) from the parent Execution that are configured
+    /// with the same set of dimensions (Model, Version, Locale, and Orientation). Multiple such runs occur particularly
+    /// because of features like sharding (splitting up a test suite to run in parallel across devices) and reruns
+    /// (running a test multiple times to check for different outcomes).</summary>
+    public class Environment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time when the Environment status was set to complete.
+        ///
+        /// This value will be set automatically when state transitions to COMPLETE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
+        public virtual Timestamp CompletionTime { get; set; } 
+
+        /// <summary>Output only. The time when the Environment was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual Timestamp CreationTime { get; set; } 
+
+        /// <summary>Dimension values describing the environment. Dimension values always consist of "Model", "Version",
+        /// "Locale", and "Orientation".
+        ///
+        /// - In response: always set - In create request: always set - In update request: never set</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionValue")]
+        public virtual System.Collections.Generic.IList<EnvironmentDimensionValueEntry> DimensionValue { get; set; } 
+
+        /// <summary>A short human-readable name to display in the UI. Maximum of 100 characters. For example: Nexus 5,
+        /// API 27.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Output only. An Environment id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentId")]
+        public virtual string EnvironmentId { get; set; } 
+
+        /// <summary>Merged result of the environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentResult")]
+        public virtual MergedResult EnvironmentResult { get; set; } 
+
+        /// <summary>Output only. An Execution id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
+        public virtual string ExecutionId { get; set; } 
+
+        /// <summary>Output only. A History id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
+        public virtual string HistoryId { get; set; } 
+
+        /// <summary>Output only. A Project id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
+
+        /// <summary>The location where output files are stored in the user bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultsStorage")]
+        public virtual ResultsStorage ResultsStorage { get; set; } 
+
+        /// <summary>Output only. Summaries of shards.
+        ///
+        /// Only one shard will present unless sharding feature is enabled in TestExecutionService.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shardSummaries")]
+        public virtual System.Collections.Generic.IList<ShardSummary> ShardSummaries { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class EnvironmentDimensionValueEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An Execution represents a collection of Steps. For instance, it could represent: - a mobile test
     /// executed across a range of device configurations - a jenkins job with a build step followed by a test step
     ///
@@ -4466,6 +4816,43 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for EnvironmentService.ListEnvironments.</summary>
+    public class ListEnvironmentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Environments.
+        ///
+        /// Always set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environments")]
+        public virtual System.Collections.Generic.IList<Environment> Environments { get; set; } 
+
+        /// <summary>A Execution id
+        ///
+        /// Always set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
+        public virtual string ExecutionId { get; set; } 
+
+        /// <summary>A History id.
+        ///
+        /// Always set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
+        public virtual string HistoryId { get; set; } 
+
+        /// <summary>A continuation token to resume the query at the next item.
+        ///
+        /// Will only be set if there are more Environments to fetch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>A Project id.
+        ///
+        /// Always set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ListExecutionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Executions.
@@ -4604,6 +4991,37 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>Total memory available on the device in KiB</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryTotalInKibibyte")]
         public virtual System.Nullable<long> MemoryTotalInKibibyte { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Merged test result for environment.
+    ///
+    /// If the environment has only one step (no reruns or shards), then the merged result is the same as the step
+    /// result. If the environment has multiple shards and/or reruns, then the results of shards and reruns that belong
+    /// to the same environment are merged into one environment result.</summary>
+    public class MergedResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Outcome of the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outcome")]
+        public virtual Outcome Outcome { get; set; } 
+
+        /// <summary>State of the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The combined and rolled-up result of each test suite that was run as part of this environment.
+        ///
+        /// Combining: When the test cases from a suite are run in different steps (sharding), the results are added
+        /// back together in one overview. (e.g., if shard1 has 2 failures and shard2 has 1 failure than the overview
+        /// failure_count = 3).
+        ///
+        /// Rollup: When test cases from the same suite are run multiple times (flaky), the results are combined (e.g.,
+        /// if testcase1.run1 fails, testcase1.run2 passes, and both testcase2.run1 and testcase2.run2 fail then the
+        /// overview flaky_count = 1 and failure_count = 1).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testSuiteOverviews")]
+        public virtual System.Collections.Generic.IList<TestSuiteOverview> TestSuiteOverviews { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4829,6 +5247,21 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The storage for test results.</summary>
+    public class ResultsStorage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The root directory for test results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultsStoragePath")]
+        public virtual FileReference ResultsStoragePath { get; set; } 
+
+        /// <summary>The path to the Xunit XML file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xunitXmlFile")]
+        public virtual FileReference XunitXmlFile { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class Screen : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>File reference of the png file. Required.</summary>
@@ -4870,6 +5303,17 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>Full list of screens.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screens")]
         public virtual System.Collections.Generic.IList<Screen> Screens { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Result summary for a shard in an environment.</summary>
+    public class ShardSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Merged result of the shard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shardResult")]
+        public virtual MergedResult ShardResult { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5138,7 +5582,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Details for an outcome with a SUCCESS outcome summary.</summary>
+    /// <summary>Details for an outcome with a SUCCESS outcome summary. LINT.IfChange</summary>
     public class SuccessDetail : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If a native process other than the app crashed.</summary>
@@ -5331,6 +5775,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// - In create/response: always set - In update request: never</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
         public virtual System.Nullable<int> FailureCount { get; set; } 
+
+        /// <summary>Number of flaky test cases, set by the service by rolling up flaky test attempts.
+        ///
+        /// Present only for rollup test suite overview at environment level. A step cannot have flaky test
+        /// cases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flakyCount")]
+        public virtual System.Nullable<int> FlakyCount { get; set; } 
 
         /// <summary>The name of the test suite.
         ///

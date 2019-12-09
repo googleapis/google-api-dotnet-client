@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20191122 (1786)
+ *      <tr><th>API Rev<td>20191203 (1797)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -1882,6 +1882,34 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         /// <summary>The error message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>ResourceUsage is the system resource usage of the host machine.</summary>
+    public class GoogleDevtoolsRemotebuildbotResourceUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuUsedPercent")]
+        public virtual System.Nullable<double> CpuUsedPercent { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("diskUsage")]
+        public virtual GoogleDevtoolsRemotebuildbotResourceUsageStat DiskUsage { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryUsage")]
+        public virtual GoogleDevtoolsRemotebuildbotResourceUsageStat MemoryUsage { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GoogleDevtoolsRemotebuildbotResourceUsageStat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("total")]
+        public virtual System.Nullable<ulong> Total { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("used")]
+        public virtual System.Nullable<ulong> Used { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

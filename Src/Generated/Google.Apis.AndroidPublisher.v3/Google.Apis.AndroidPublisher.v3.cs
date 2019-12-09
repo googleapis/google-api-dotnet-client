@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20191113 (1777)
+ *      <tr><th>API Rev<td>20191202 (1796)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7618,21 +7618,6 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    public class MendelSampling : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("modRanges")]
-        public virtual System.Collections.Generic.IList<ModRange> ModRanges { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("modulus")]
-        public virtual System.Nullable<long> Modulus { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("salt")]
-        public virtual System.Nullable<int> Salt { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     public class ModRange : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
@@ -7828,6 +7813,21 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual ReviewReplyResult Result { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class Sampling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("modRanges")]
+        public virtual System.Collections.Generic.IList<ModRange> ModRanges { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("modulus")]
+        public virtual System.Nullable<long> Modulus { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("salt")]
+        public virtual System.Nullable<int> Salt { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8144,7 +8144,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual System.Collections.Generic.IList<LocalizedText> ReleaseNotes { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("sampling")]
-        public virtual MendelSampling Sampling { get; set; } 
+        public virtual Sampling Sampling { get; set; } 
 
         /// <summary>The desired status of this release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]

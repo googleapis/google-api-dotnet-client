@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v3.4
- *      <tr><th>API Rev<td>20191112 (1776)
+ *      <tr><th>API Rev<td>20191127 (1791)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -23514,22 +23514,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Annotate a click event.</summary>
-    public class AnnotateClickEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Google click ID. Use this field to annotate the click associated with the gclid.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gclid")]
-        public virtual string Gclid { get; set; } 
-
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "dfareporting#annotateClickEvent".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Audience Segment.</summary>
     public class AudienceSegment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25706,11 +25690,11 @@ namespace Google.Apis.Dfareporting.v3_4.Data
     {
         /// <summary>Annotate a click event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotateClickEvent")]
-        public virtual AnnotateClickEvent AnnotateClickEvent { get; set; } 
+        public virtual CustomEventClickAnnotation AnnotateClickEvent { get; set; } 
 
         /// <summary>Custom variables associated with the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customVariables")]
-        public virtual System.Collections.Generic.IList<CustomVariables> CustomVariables { get; set; } 
+        public virtual System.Collections.Generic.IList<CustomVariable> CustomVariables { get; set; } 
 
         /// <summary>The type of event. If INSERT, the fields in insertEvent need to be populated. If ANNOTATE_CLICK,
         /// the fields in annotateClickEvent need to be populated. A custom event cannot have both insertEvent and
@@ -25725,7 +25709,7 @@ namespace Google.Apis.Dfareporting.v3_4.Data
 
         /// <summary>Insert custom event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertEvent")]
-        public virtual InsertEvent InsertEvent { get; set; } 
+        public virtual CustomEventInsert InsertEvent { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "dfareporting#customEvent".</summary>
@@ -25739,6 +25723,22 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// <summary>The timestamp of this custom event, in Unix epoch micros. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampMicros")]
         public virtual System.Nullable<long> TimestampMicros { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Annotate a click event.</summary>
+    public class CustomEventClickAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Google click ID. Use this field to annotate the click associated with the gclid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gclid")]
+        public virtual string Gclid { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "dfareporting#customEventClickAnnotation".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25759,6 +25759,41 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// <summary>A description of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Custom event to be inserted.</summary>
+    public class CustomEventInsert : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Campaign Manager dimensions associated with the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmDimensions")]
+        public virtual CampaignManagerIds CmDimensions { get; set; } 
+
+        /// <summary>DV360 dimensions associated with the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dv3Dimensions")]
+        public virtual DV3Ids Dv3Dimensions { get; set; } 
+
+        /// <summary>The type of event to insert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertEventType")]
+        public virtual string InsertEventType { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "dfareporting#customEventInsert".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The match ID field. A match ID is your own first-party identifier that has been synced with Google
+        /// using the match ID feature in Floodlight. This field is mutually exclusive with mobileDeviceId, and at least
+        /// one of the two fields is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchId")]
+        public virtual string MatchId { get; set; } 
+
+        /// <summary>The mobile device ID. This field is mutually exclusive with matchId, and at least one of the two
+        /// fields is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceId")]
+        public virtual string MobileDeviceId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25859,15 +25894,15 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A custom variable.</summary>
-    public class CustomVariables : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Custom variable.</summary>
+    public class CustomVariable : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The index of the custom variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<long> Index { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "dfareporting#customVariables".</summary>
+        /// "dfareporting#customVariable".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -27156,41 +27191,6 @@ namespace Google.Apis.Dfareporting.v3_4.Data
         /// country of the region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
         public virtual System.Collections.Generic.IList<Region> Regions { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Insert custom event.</summary>
-    public class InsertEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Campaign Manager dimensions associated with the event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cmDimensions")]
-        public virtual CampaignManagerIds CmDimensions { get; set; } 
-
-        /// <summary>DV360 dimensions associated with the event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dv3Dimensions")]
-        public virtual DV3Ids Dv3Dimensions { get; set; } 
-
-        /// <summary>The type of insert event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("insertEventType")]
-        public virtual string InsertEventType { get; set; } 
-
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "dfareporting#insertEvent".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>The match ID field. A match ID is your own first-party identifier that has been synced with Google
-        /// using the match ID feature in Floodlight. This field is mutually exclusive with mobileDeviceId, and at least
-        /// one of the two fields is required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("matchId")]
-        public virtual string MatchId { get; set; } 
-
-        /// <summary>The mobile device ID. This field is mutually exclusive with matchId, and at least one of the two
-        /// fields is required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceId")]
-        public virtual string MobileDeviceId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

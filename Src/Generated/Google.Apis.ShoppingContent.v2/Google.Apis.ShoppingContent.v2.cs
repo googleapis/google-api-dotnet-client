@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191107 (1771)
+ *      <tr><th>API Rev<td>20191126 (1790)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -10870,8 +10870,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
         public virtual string FullName { get; set; } 
 
-        /// <summary>Email address for receiving merchant issued value-added tax or invoice documentation of this
-        /// order.</summary>
+        /// <summary>Email address for the merchant to send value-added tax or invoice documentation of the order. This
+        /// documentation is made available to the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceReceivingEmail")]
         public virtual string InvoiceReceivingEmail { get; set; } 
 
@@ -11436,12 +11436,22 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>The carrier handling the shipment.
         ///
-        /// Acceptable values for US are: - "gsx" - "ups" - "usps" - "fedex" - "dhl" - "ecourier" - "cxt" - "google" -
-        /// "ontrac" - "emsy" - "ont" - "deliv" - "dynamex" - "lasership" - "mpx" - "uds" - "efw" - "yunexpress" -
-        /// "china post" - "china ems" - "singapore post" - "pos malaysia" - "postnl" - "ptt" - "eub" - "chukou1"
-        ///
-        /// Acceptable values for FR are: - "colissimo" - "chronopost" - "gls" - "dpd" - "bpost" - "colis prive" -
-        /// "boxtal" - "geodis" - "tnt" - "la poste" - "ups"</summary>
+        /// For supported carriers, Google includes the carrier name and tracking URL in emails to customers. For select
+        /// supported carriers, Google also automatically updates the shipment status based on the provided shipment ID.
+        /// Note: You can also use unsupported carriers, but emails to customers will not include the carrier name or
+        /// tracking URL, and there will be no automatic order status updates. Supported carriers for US are: - "ups"
+        /// (United Parcel Service) automatic status updates - "usps" (United States Postal Service) automatic status
+        /// updates - "fedex" (FedEx) automatic status updates - "dhl" (DHL eCommerce) automatic status updates (US
+        /// only) - "ontrac" (OnTrac) automatic status updates - "dhl express" (DHL Express) - "deliv" (Deliv) -
+        /// "dynamex" (TForce) - "lasership" (LaserShip) - "mpx" (Military Parcel Xpress) - "uds" (United Delivery
+        /// Service) - "efw" (Estes Forwarding Worldwide) - "jd logistics" (JD Logistics) - "yunexpress" (YunExpress) -
+        /// "china post" (China Post) - "china ems" (China Post Express Mail Service) - "singapore post" (Singapore
+        /// Post) - "pos malaysia" (Pos Malaysia) - "postnl" (PostNL) - "ptt" (PTT Turkish Post) - "eub" (ePacket) -
+        /// "chukou1" (Chukou1 Logistics) Supported carriers for FR are: - "la poste" (La Poste) automatic status
+        /// updates - "colissimo" (Colissimo by La Poste) automatic status updates - "ups" (United Parcel Service)
+        /// automatic status updates - "chronopost" (Chronopost by La Poste) - "gls" (General Logistics Systems France)
+        /// - "dpd" (DPD Group by GeoPost) - "bpost" (Belgian Post Group) - "colis prive" (Colis Privé) - "boxtal"
+        /// (Boxtal) - "geodis" (GEODIS) - "tnt" (TNT)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -13404,7 +13414,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute
         /// of the feed specification in its generic form (e.g., { "name": "size type", "value": "regular" }). This is
-        /// useful for submitting attributes not explicitly exposed by the API.</summary>
+        /// useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for
+        /// Shopping Actions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributes")]
         public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; } 
 

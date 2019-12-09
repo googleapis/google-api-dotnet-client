@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/lPaYH0iSmC0hVlcD8E32P0nBl10\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/fhikrSCDL3XzY6nCDVa6bWLsHFU\"",
  "discoveryVersion": "v1",
  "id": "gmail:v1",
  "name": "gmail",
  "version": "v1",
- "revision": "20190624",
+ "revision": "20191113",
  "title": "Gmail API",
  "description": "Access Gmail mailboxes including sending user email.",
  "ownerDomain": "google.com",
@@ -626,7 +626,7 @@
    "properties": {
     "drafts": {
      "type": "array",
-     "description": "List of drafts.",
+     "description": "List of drafts. Note that the Message property in each Draft resource only contains an id and a threadId. The messages.get method can fetch additional message details.",
      "items": {
       "$ref": "Draft"
      }
@@ -698,7 +698,7 @@
    "properties": {
     "labels": {
      "type": "array",
-     "description": "List of labels.",
+     "description": "List of labels. Note that each label resource only contains an id, name, messageListVisibility, labelListVisibility, and type. The labels.get method can fetch additional label details.",
      "items": {
       "$ref": "Label"
      }

@@ -2460,10 +2460,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>An expression for filtering the results of the request, such as by name or label.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>A previously-returned page token representing part of the larger set of results to
             /// view.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -2472,6 +2468,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>The maximum number of results to return per response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>An expression for filtering the results of the request, such as by name or label.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2507,15 +2507,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -2528,6 +2519,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     "maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4439,6 +4439,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Host of the user in the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Host { get; set; }
+
             /// <summary>Name of the user in the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -4447,10 +4451,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// projects/{project}/locations/{location}/instances/{instance}/users</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ResourceName { get; set; }
-
-            /// <summary>Host of the user in the instance.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Host { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -4495,6 +4495,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "host", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "host",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -4507,15 +4516,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     "resourceName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "resourceName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "host", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "host",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

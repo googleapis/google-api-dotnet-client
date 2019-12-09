@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190624 (1635)
+ *      <tr><th>API Rev<td>20191113 (1777)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -7472,7 +7472,8 @@ namespace Google.Apis.Gmail.v1.Data
 
     public class ListDraftsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of drafts.</summary>
+        /// <summary>List of drafts. Note that the Message property in each Draft resource only contains an id and a
+        /// threadId. The messages.get method can fetch additional message details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drafts")]
         public virtual System.Collections.Generic.IList<Draft> Drafts { get; set; } 
 
@@ -7531,7 +7532,8 @@ namespace Google.Apis.Gmail.v1.Data
 
     public class ListLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of labels.</summary>
+        /// <summary>List of labels. Note that each label resource only contains an id, name, messageListVisibility,
+        /// labelListVisibility, and type. The labels.get method can fetch additional label details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<Label> Labels { get; set; } 
 

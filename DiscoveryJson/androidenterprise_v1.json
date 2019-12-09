@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/foNhZaJ_8Oy63aiizEaFDGY_W4A\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/nIj-cDXtx1hU_8az-yGj3W3cw8Y\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20191106",
+ "revision": "20191201",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -443,7 +443,7 @@
     },
     "minimumVersionCode": {
      "type": "integer",
-     "description": "The minimum version of the app. If a lower version of the app is installed, then the app will be auto-updated according to the auto-install constraints, instead of waiting for the regular auto-update.",
+     "description": "The minimum version of the app. If a lower version of the app is installed, then the app will be auto-updated according to the auto-install constraints, instead of waiting for the regular auto-update. You can set a minimum version code for at most 20 apps per device.",
      "format": "int32"
     }
    }

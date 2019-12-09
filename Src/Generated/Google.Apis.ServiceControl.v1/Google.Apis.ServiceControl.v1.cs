@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191111 (1775)
+ *      <tr><th>API Rev<td>20191127 (1791)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1846,7 +1846,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
 
-        /// <summary>The HTTP URL query in the format of `name1=value`=value2`, as it appears in the first line of the
+        /// <summary>The HTTP URL query in the format of `name1=value1=value2`, as it appears in the first line of the
         /// HTTP request. No decoding is performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 

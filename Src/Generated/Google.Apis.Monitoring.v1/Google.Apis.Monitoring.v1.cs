@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191118 (1782)
+ *      <tr><th>API Rev<td>20191202 (1796)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -64,7 +64,7 @@ namespace Google.Apis.Monitoring.v1
         public MonitoringService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
-
+            projects = new ProjectsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -109,9 +109,51 @@ namespace Google.Apis.Monitoring.v1
         }
         #endif
 
+        /// <summary>Available OAuth 2.0 scopes for use with the Stackdriver Monitoring API.</summary>
+        public class Scope
+        {
+            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>View and write monitoring data for all of your Google and third-party Cloud and API
+            /// projects</summary>
+            public static string Monitoring = "https://www.googleapis.com/auth/monitoring";
+
+            /// <summary>View monitoring data for all of your Google Cloud and third-party projects</summary>
+            public static string MonitoringRead = "https://www.googleapis.com/auth/monitoring.read";
+
+            /// <summary>Publish metric data to your Google Cloud projects</summary>
+            public static string MonitoringWrite = "https://www.googleapis.com/auth/monitoring.write";
+
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the Stackdriver Monitoring API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>View and write monitoring data for all of your Google and third-party Cloud and API
+            /// projects</summary>
+            public const string Monitoring = "https://www.googleapis.com/auth/monitoring";
+
+            /// <summary>View monitoring data for all of your Google Cloud and third-party projects</summary>
+            public const string MonitoringRead = "https://www.googleapis.com/auth/monitoring.read";
+
+            /// <summary>Publish metric data to your Google Cloud projects</summary>
+            public const string MonitoringWrite = "https://www.googleapis.com/auth/monitoring.write";
+
+        }
 
 
 
+        private readonly ProjectsResource projects;
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects
+        {
+            get { return projects; }
+        }
     }
 
     ///<summary>A base abstract class for Monitoring requests.</summary>
@@ -302,10 +344,590 @@ namespace Google.Apis.Monitoring.v1
                 });
         }
     }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            dashboards = new DashboardsResource(service);
+
+        }
+
+        private readonly DashboardsResource dashboards;
+
+        /// <summary>Gets the Dashboards resource.</summary>
+        public virtual DashboardsResource Dashboards
+        {
+            get { return dashboards; }
+        }
+
+        /// <summary>The "dashboards" collection of methods.</summary>
+        public class DashboardsResource
+        {
+            private const string Resource = "dashboards";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DashboardsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a new custom dashboard.This method requires the monitoring.dashboards.create permission
+            /// on the specified project. For more information, see Google Cloud IAM
+            /// (https://cloud.google.com/iam).</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">The project on which to execute the request. The format is "projects/{project_id_or_number}".
+            /// The {project_id_or_number} must match the dashboard resource name.</param>
+            public virtual CreateRequest Create(Google.Apis.Monitoring.v1.Data.Dashboard body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a new custom dashboard.This method requires the monitoring.dashboards.create permission
+            /// on the specified project. For more information, see Google Cloud IAM
+            /// (https://cloud.google.com/iam).</summary>
+            public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.Dashboard>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v1.Data.Dashboard body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The project on which to execute the request. The format is
+                /// "projects/{project_id_or_number}". The {project_id_or_number} must match the dashboard resource
+                /// name.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Monitoring.v1.Data.Dashboard Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/dashboards"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes an existing custom dashboard.This method requires the monitoring.dashboards.delete
+            /// permission on the specified dashboard. For more information, see Google Cloud IAM
+            /// (https://cloud.google.com/iam).</summary>
+            /// <param name="name">The resource name of the Dashboard. The format is
+            /// "projects/{project_id_or_number}/dashboards/{dashboard_id}".</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an existing custom dashboard.This method requires the monitoring.dashboards.delete
+            /// permission on the specified dashboard. For more information, see Google Cloud IAM
+            /// (https://cloud.google.com/iam).</summary>
+            public class DeleteRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource name of the Dashboard. The format is
+                /// "projects/{project_id_or_number}/dashboards/{dashboard_id}".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/dashboards/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Fetches a specific dashboard.This method requires the monitoring.dashboards.get permission on
+            /// the specified dashboard. For more information, see Google Cloud IAM
+            /// (https://cloud.google.com/iam).</summary>
+            /// <param name="name">The resource name of the Dashboard. The format is one of "dashboards/{dashboard_id}" (for system
+            /// dashboards) or "projects/{project_id_or_number}/dashboards/{dashboard_id}" (for custom dashboards).</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Fetches a specific dashboard.This method requires the monitoring.dashboards.get permission on
+            /// the specified dashboard. For more information, see Google Cloud IAM
+            /// (https://cloud.google.com/iam).</summary>
+            public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.Dashboard>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource name of the Dashboard. The format is one of "dashboards/{dashboard_id}" (for
+                /// system dashboards) or "projects/{project_id_or_number}/dashboards/{dashboard_id}" (for custom
+                /// dashboards).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/dashboards/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists the existing dashboards.This method requires the monitoring.dashboards.list permission on
+            /// the specified project. For more information, see Google Cloud IAM
+            /// (https://cloud.google.com/iam).</summary>
+            /// <param name="parent">The scope of the dashboards to list. A project scope must be specified in the form of
+            /// "projects/{project_id_or_number}".</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists the existing dashboards.This method requires the monitoring.dashboards.list permission on
+            /// the specified project. For more information, see Google Cloud IAM
+            /// (https://cloud.google.com/iam).</summary>
+            public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.ListDashboardsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>The scope of the dashboards to list. A project scope must be specified in the form of
+                /// "projects/{project_id_or_number}".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
+                /// previous call to this method. Using this field causes the method to return additional results from
+                /// the previous method call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>A positive number that is the maximum number of results to return. If unspecified, a
+                /// default of 1000 is used.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/dashboards"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Replaces an existing custom dashboard with a new definition.This method requires the
+            /// monitoring.dashboards.update permission on the specified dashboard. For more information, see Google
+            /// Cloud IAM (https://cloud.google.com/iam).</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The resource name of the dashboard.</param>
+            public virtual PatchRequest Patch(Google.Apis.Monitoring.v1.Data.Dashboard body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Replaces an existing custom dashboard with a new definition.This method requires the
+            /// monitoring.dashboards.update permission on the specified dashboard. For more information, see Google
+            /// Cloud IAM (https://cloud.google.com/iam).</summary>
+            public class PatchRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.Dashboard>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v1.Data.Dashboard body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource name of the dashboard.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Monitoring.v1.Data.Dashboard Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/dashboards/[^/]+$",
+                        });
+                }
+
+            }
+        }
+    }
 }
 
 namespace Google.Apis.Monitoring.v1.Data
 {    
+
+    /// <summary>Describes how to combine multiple time series to provide different views of the data. Aggregation
+    /// consists of an alignment step on individual time series (alignment_period and per_series_aligner) followed by an
+    /// optional reduction step of the data across the aligned time series (cross_series_reducer and group_by_fields).
+    /// For more details, see Aggregation.</summary>
+    public class Aggregation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The alignment period for per-time series alignment. If present, alignmentPeriod must be at least 60
+        /// seconds. After per-time series alignment, each time series will contain data points only on the period
+        /// boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is ignored. If
+        /// perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be defined; otherwise an
+        /// error is returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alignmentPeriod")]
+        public virtual object AlignmentPeriod { get; set; } 
+
+        /// <summary>The approach to be used to combine time series. Not all reducer functions may be applied to all
+        /// time series, depending on the metric type and the value type of the original time series. Reduction may
+        /// change the metric type of value type of the time series.Time series data must be aligned in order to perform
+        /// cross-time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be specified and
+        /// not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossSeriesReducer")]
+        public virtual string CrossSeriesReducer { get; set; } 
+
+        /// <summary>The set of fields to preserve when crossSeriesReducer is specified. The groupByFields determine how
+        /// the time series are partitioned into subsets prior to applying the aggregation function. Each subset
+        /// contains time series that have the same value for each of the grouping fields. Each individual time series
+        /// is a member of exactly one subset. The crossSeriesReducer is applied to each subset of time series. It is
+        /// not possible to reduce across different resource types, so this field implicitly contains resource.type.
+        /// Fields not specified in groupByFields are aggregated away. If groupByFields is not specified and all the
+        /// time series have the same resource type, then the time series are aggregated into a single output time
+        /// series. If crossSeriesReducer is not defined, this field is ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupByFields")]
+        public virtual System.Collections.Generic.IList<string> GroupByFields { get; set; } 
+
+        /// <summary>The approach to be used to align individual time series. Not all alignment functions may be applied
+        /// to all time series, depending on the metric type and value type of the original time series. Alignment may
+        /// change the metric type or the value type of the time series.Time series data must be aligned in order to
+        /// perform cross-time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be
+        /// specified and not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is
+        /// returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perSeriesAligner")]
+        public virtual string PerSeriesAligner { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A chart axis.</summary>
+    public class Axis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The label of the axis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; } 
+
+        /// <summary>The axis scale. By default, a linear scale is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scale")]
+        public virtual string Scale { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Options to control visual rendering of a chart.</summary>
+    public class ChartOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The chart mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines the layout properties and content for a column.</summary>
+    public class Column : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The relative weight of this column. The column weight is used to adjust the height of rows on the
+        /// screen (relative to peers). If omitted, a value of 1 is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<long> Weight { get; set; } 
+
+        /// <summary>The display widgets arranged vertically in this column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
+        public virtual System.Collections.Generic.IList<Widget> Widgets { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A simplified layout that divides the available space into vertical columns and arranges a set of
+    /// widgets vertically in each column.</summary>
+    public class ColumnLayout : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The columns of content to display.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<Column> Columns { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Google Stackdriver dashboard. Dashboards define the content and layout of pages in the Stackdriver
+    /// web application.</summary>
+    public class Dashboard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The content is divided into equally spaced columns and the widgets are arranged
+        /// vertically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnLayout")]
+        public virtual ColumnLayout ColumnLayout { get; set; } 
+
+        /// <summary>The mutable, human-readable name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a
+        /// policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are
+        /// expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to
+        /// the same version of the Dashboard configuration. The field should not be passed during dashboard
+        /// creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Content is arranged with a basic layout that re-flows a simple list of informational
+        /// elements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gridLayout")]
+        public virtual GridLayout GridLayout { get; set; } 
+
+        /// <summary>The resource name of the dashboard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The content is divided into equally spaced rows and the widgets are arranged
+        /// horizontally.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowLayout")]
+        public virtual RowLayout RowLayout { get; set; } 
+
+    }    
+
+    /// <summary>Groups a time series query definition with charting options.</summary>
+    public class DataSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A template string for naming TimeSeries in the resulting data set. This should be a string with
+        /// interpolations of the form ${label_name}, which will resolve to the label's value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legendTemplate")]
+        public virtual string LegendTemplate { get; set; } 
+
+        /// <summary>Optional. The lower bound on data point frequency for this data set implemented by specifying the
+        /// minimum alignment period to use in a time series query. For example, if the data is published once every 10
+        /// minutes it would not make sense to fetch and align data at one minute intervals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minAlignmentPeriod")]
+        public virtual object MinAlignmentPeriod { get; set; } 
+
+        /// <summary>How this data should be plotted on the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plotType")]
+        public virtual string PlotType { get; set; } 
+
+        /// <summary>Fields for querying time series data from the Stackdriver metrics API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesQuery")]
+        public virtual TimeSeriesQuery TimeSeriesQuery { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>A set of (label, value) pairs which were dropped during aggregation, attached to
     /// google.api.Distribution.Exemplars in google.api.Distribution values during aggregation.These values are used in
@@ -321,6 +943,16 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual System.Collections.Generic.IDictionary<string,string> Label { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty
+    /// JSON object {}.</summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -374,6 +1006,57 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A gauge chart shows where the current value sits within a pre-defined range. The upper and lower bounds
+    /// should define the possible range of values for the scorecard's query (inclusive).</summary>
+    public class GaugeView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The lower bound for this gauge chart. The value of the chart should always be greater than or equal
+        /// to this.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lowerBound")]
+        public virtual System.Nullable<double> LowerBound { get; set; } 
+
+        /// <summary>The upper bound for this gauge chart. The value of the chart should always be less than or equal to
+        /// this.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upperBound")]
+        public virtual System.Nullable<double> UpperBound { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A basic layout divides the available space into vertical columns of equal width and arranges a list of
+    /// widgets using a row-first strategy.</summary>
+    public class GridLayout : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of columns into which the view's width is divided. If omitted or set to zero, a system
+        /// default will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Nullable<long> Columns { get; set; } 
+
+        /// <summary>The informational elements that are arranged into the columns row-first.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
+        public virtual System.Collections.Generic.IList<Widget> Widgets { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The ListDashboards request.</summary>
+    public class ListDashboardsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of requested dashboards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dashboards")]
+        public virtual System.Collections.Generic.IList<Dashboard> Dashboards { get; set; } 
+
+        /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
+        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A protocol buffer option, which can be attached to a message, field, enumeration, etc.</summary>
     public class Option : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -388,6 +1071,106 @@ namespace Google.Apis.Monitoring.v1.Data
         /// as an int32 value using the google.protobuf.Int32Value type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IDictionary<string,object> Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The
+    /// filter lets through up to num_time_series time series, selecting them based on the relative ranking.</summary>
+    public class PickTimeSeriesFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>How to use the ranking to select time series that pass through the filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("direction")]
+        public virtual string Direction { get; set; } 
+
+        /// <summary>How many time series to return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numTimeSeries")]
+        public virtual System.Nullable<int> NumTimeSeries { get; set; } 
+
+        /// <summary>rankingMethod is applied to each time series independently to produce the value which will be used
+        /// to compare the time series to other time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankingMethod")]
+        public virtual string RankingMethod { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Describes a query to build the numerator or denominator of a TimeSeriesFilterRatio.</summary>
+    public class RatioPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>By default, the raw time series data is returned. Use this field to combine multiple time series
+        /// for different views of the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregation")]
+        public virtual Aggregation Aggregation { get; set; } 
+
+        /// <summary>Required. The monitoring filter that identifies the metric types, resources, and projects to
+        /// query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines the layout properties and content for a row.</summary>
+    public class Row : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The relative weight of this row. The row weight is used to adjust the height of rows on the screen
+        /// (relative to peers). If omitted, a value of 1 is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<long> Weight { get; set; } 
+
+        /// <summary>The display widgets arranged horizontally in this row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
+        public virtual System.Collections.Generic.IList<Widget> Widgets { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A simplified layout that divides the available space into rows and arranges a set of widgets
+    /// horizontally in each row.</summary>
+    public class RowLayout : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The rows of content to display.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<Row> Rows { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A widget showing the latest value of a metric, and how this value relates to one or more
+    /// thresholds.</summary>
+    public class Scorecard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Will cause the scorecard to show a gauge chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gaugeView")]
+        public virtual GaugeView GaugeView { get; set; } 
+
+        /// <summary>Will cause the scorecard to show a spark chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkChartView")]
+        public virtual SparkChartView SparkChartView { get; set; } 
+
+        /// <summary>The thresholds used to determine the state of the scorecard given the time series' current value.
+        /// For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold
+        /// that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is
+        /// above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless
+        /// x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the
+        /// following four thresholds: {  value: 90,  category: 'DANGER',  trigger: 'ABOVE', }, {  value: 70,  category:
+        /// 'WARNING',  trigger: 'ABOVE', }, {  value: 10,  category: 'DANGER',  trigger: 'BELOW', }, {  value: 20,
+        /// category: 'WARNING',  trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a
+        /// DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between
+        /// 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values
+        /// greater than or equal to 90 a DANGER state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thresholds")]
+        public virtual System.Collections.Generic.IList<Threshold> Thresholds { get; set; } 
+
+        /// <summary>Fields for querying time series data from the Stackdriver metrics API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesQuery")]
+        public virtual TimeSeriesQuery TimeSeriesQuery { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -422,6 +1205,158 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message
+    /// contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's
+    /// timeseries.</summary>
+    public class SparkChartView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The lower bound on data point frequency in the chart implemented by specifying the minimum
+        /// alignment period to use in a time series query. For example, if the data is published once every 10 minutes
+        /// it would not make sense to fetch and align data at one minute intervals. This field is optional and exists
+        /// only as a hint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minAlignmentPeriod")]
+        public virtual object MinAlignmentPeriod { get; set; } 
+
+        /// <summary>The type of sparkchart to show in this chartView.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkChartType")]
+        public virtual string SparkChartType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A filter that ranks streams based on their statistical relation to other streams in a
+    /// request.</summary>
+    public class StatisticalTimeSeriesFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>How many time series to output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numTimeSeries")]
+        public virtual System.Nullable<int> NumTimeSeries { get; set; } 
+
+        /// <summary>rankingMethod is applied to a set of time series, and then the produced value for each individual
+        /// time series is used to compare a given time series to others. These are methods that cannot be applied
+        /// stream-by-stream, but rather require the full context of a request to evaluate time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankingMethod")]
+        public virtual string RankingMethod { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A widget that displays textual content.</summary>
+    public class Text : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The text content to be displayed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; } 
+
+        /// <summary>How the text content is formatted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines a threshold for categorizing time series values.</summary>
+    public class Threshold : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The state color for this threshold. Color is not allowed in a XyChart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("color")]
+        public virtual string Color { get; set; } 
+
+        /// <summary>The direction for the current threshold. Direction is not allowed in a XyChart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("direction")]
+        public virtual string Direction { get; set; } 
+
+        /// <summary>A label for the threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; } 
+
+        /// <summary>The value of the threshold. The value should be defined in the native scale of the
+        /// metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A filter that defines a subset of time series data that is displayed in a widget. Time series data is
+    /// fetched using the ListTimeSeries method.</summary>
+    public class TimeSeriesFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>By default, the raw time series data is returned. Use this field to combine multiple time series
+        /// for different views of the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregation")]
+        public virtual Aggregation Aggregation { get; set; } 
+
+        /// <summary>Required. The monitoring filter that identifies the metric types, resources, and projects to
+        /// query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
+
+        /// <summary>Ranking based time series filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickTimeSeriesFilter")]
+        public virtual PickTimeSeriesFilter PickTimeSeriesFilter { get; set; } 
+
+        /// <summary>Statistics based time series filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statisticalTimeSeriesFilter")]
+        public virtual StatisticalTimeSeriesFilter StatisticalTimeSeriesFilter { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A pair of time series filters that define a ratio computation. The output time series is the pair-wise
+    /// division of each aligned element from the numerator and denominator time series.</summary>
+    public class TimeSeriesFilterRatio : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The denominator of the ratio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denominator")]
+        public virtual RatioPart Denominator { get; set; } 
+
+        /// <summary>The numerator of the ratio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numerator")]
+        public virtual RatioPart Numerator { get; set; } 
+
+        /// <summary>Ranking based time series filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickTimeSeriesFilter")]
+        public virtual PickTimeSeriesFilter PickTimeSeriesFilter { get; set; } 
+
+        /// <summary>Apply a second aggregation after the ratio is computed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryAggregation")]
+        public virtual Aggregation SecondaryAggregation { get; set; } 
+
+        /// <summary>Statistics based time series filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statisticalTimeSeriesFilter")]
+        public virtual StatisticalTimeSeriesFilter StatisticalTimeSeriesFilter { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>TimeSeriesQuery collects the set of supported methods for querying time series data from the
+    /// Stackdriver metrics API.</summary>
+    public class TimeSeriesQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Filter parameters to fetch time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesFilter")]
+        public virtual TimeSeriesFilter TimeSeriesFilter { get; set; } 
+
+        /// <summary>Parameters to fetch a ratio between two time series filters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesFilterRatio")]
+        public virtual TimeSeriesFilterRatio TimeSeriesFilterRatio { get; set; } 
+
+        /// <summary>The unit of data contained in fetched time series. If non-empty, this unit will override any unit
+        /// that accompanies fetched data. The format is the same as the unit field in MetricDescriptor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitOverride")]
+        public virtual string UnitOverride { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A protocol buffer message type.</summary>
     public class Type : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -448,6 +1383,67 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>The source syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntax")]
         public virtual string Syntax { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Widget contains a single dashboard component and configuration of how to present the component in the
+    /// dashboard.</summary>
+    public class Widget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A blank space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blank")]
+        public virtual Empty Blank { get; set; } 
+
+        /// <summary>A scorecard summarizing time series data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scorecard")]
+        public virtual Scorecard Scorecard { get; set; } 
+
+        /// <summary>A raw string or markdown displaying textual content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual Text Text { get; set; } 
+
+        /// <summary>Optional. The title of the widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>A chart of time series data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xyChart")]
+        public virtual XyChart XyChart { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A chart that displays data on a 2D (X and Y axes) plane.</summary>
+    public class XyChart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display options for the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartOptions")]
+        public virtual ChartOptions ChartOptions { get; set; } 
+
+        /// <summary>The data displayed in this chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSets")]
+        public virtual System.Collections.Generic.IList<DataSet> DataSets { get; set; } 
+
+        /// <summary>Threshold lines drawn horizontally across the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thresholds")]
+        public virtual System.Collections.Generic.IList<Threshold> Thresholds { get; set; } 
+
+        /// <summary>The duration used to display a comparison chart. A comparison chart shows values from two time
+        /// periods simultaneously (e.g., week-over-week metrics). The duration must be positive, and it can only be
+        /// applied to charts with data sets of LINE plot type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeshiftDuration")]
+        public virtual object TimeshiftDuration { get; set; } 
+
+        /// <summary>The X axis properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xAxis")]
+        public virtual Axis XAxis { get; set; } 
+
+        /// <summary>The primary Y axis properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yAxis")]
+        public virtual Axis YAxis { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

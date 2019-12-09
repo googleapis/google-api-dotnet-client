@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191014 (1747)
+ *      <tr><th>API Rev<td>20191025 (1758)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -58421,11 +58421,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>[Output Only] The status of the autoscaler configuration. Current set of possible values: PENDING:
-        /// Autoscaler backend hasn't read new/updated configuration DELETING: Configuration is being deleted ACTIVE:
-        /// Configuration is acknowledged to be effective. Some warnings might or might not be present in the
-        /// status_details field. ERROR: Configuration has errors. Actionable for users. Details are present in the
-        /// status_details field. New values might be added in the future.</summary>
+        /// <summary>[Output Only] The status of the autoscaler configuration. Current set of possible values: -
+        /// PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being
+        /// deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the
+        /// statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the
+        /// statusDetails field.  New values might be added in the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -58598,29 +58598,29 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
 
-        /// <summary>The type of error, warning or notice returned. Current set of possible values:
+        /// <summary>The type of error, warning, or notice returned. Current set of possible values: -
         /// ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are unhealthy (not in RUNNING state).
-        /// BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached to the instance group.
-        /// CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends size bigger than maxNumReplicas.
+        /// - BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached to the instance group. -
+        /// CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends a size greater than maxNumReplicas. -
         /// CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom metric samples are not exported often enough to
-        /// be a credible base for autoscaling. CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified does
-        /// not exist or does not have the necessary labels. MIN_EQUALS_MAX (WARNING): The minNumReplicas is equal to
-        /// maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group.
+        /// be a credible base for autoscaling. - CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified
+        /// does not exist or does not have the necessary labels. - MIN_EQUALS_MAX (WARNING): The minNumReplicas is
+        /// equal to maxNumReplicas. This means the autoscaler cannot add or remove instances from the instance group. -
         /// MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive any data from the custom metric
-        /// configured for autoscaling. MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to
+        /// configured for autoscaling. - MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to
         /// scale based on a load balancing signal but the instance group has not received any requests from the load
-        /// balancer. MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in the group won't change
-        /// automatically. The autoscaling configuration is preserved. MODE_ONLY_UP (WARNING): Autoscaling is in the
-        /// "Autoscale only up" mode. Instances in the group will be only added. MORE_THAN_ONE_BACKEND_SERVICE (ERROR):
-        /// The instance group cannot be autoscaled because it has more than one backend service attached to it.
-        /// NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): Exceeded quota for necessary resources, such as CPU, number of instances
-        /// and so on. REGION_RESOURCE_STOCKOUT (ERROR): Showed only for regional autoscalers: there is a resource
-        /// stockout in the chosen region. SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not
-        /// exist. UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does not work with an HTTP/S
-        /// load balancer that has been configured for maxRate. ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers:
-        /// there is a resource stockout in the chosen zone. For regional autoscalers: in at least one of the zones
-        /// you're using there is a resource stockout. New values might be added in the future. Some of the values might
-        /// not be available in all API versions.</summary>
+        /// balancer. - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in the group won't change
+        /// automatically. The autoscaling configuration is preserved. - MODE_ONLY_UP (WARNING): Autoscaling is in the
+        /// "Autoscale only up" mode. The autoscaler can add instances but not remove any. -
+        /// MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled because it has more than one
+        /// backend service attached to it. - NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): There is insufficient quota for the
+        /// necessary resources, such as CPU or number of instances. - REGION_RESOURCE_STOCKOUT (ERROR): Shown only for
+        /// regional autoscalers: there is a resource stockout in the chosen region. - SCALING_TARGET_DOES_NOT_EXIST
+        /// (ERROR): The target to be scaled does not exist. - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION
+        /// (ERROR): Autoscaling does not work with an HTTP/S load balancer that has been configured for maxRate. -
+        /// ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource stockout in the chosen zone. For
+        /// regional autoscalers: in at least one of the zones you're using there is a resource stockout.  New values
+        /// might be added in the future. Some of the values might not be available in all API versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -63287,6 +63287,10 @@ namespace Google.Apis.Compute.v1.Data
         /// values are FAILED, PENDING, or READY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
+
+        /// <summary>Cloud Storage bucket storage location of the image (regional or multi-regional).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageLocations")]
+        public virtual System.Collections.Generic.IList<string> StorageLocations { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -68944,8 +68948,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enforcingSuccessRate")]
         public virtual System.Nullable<int> EnforcingSuccessRate { get; set; } 
 
-        /// <summary>Time interval between ejection sweep analysis. This can result in both new ejections as well as
-        /// hosts being returned to service. Defaults to 1 seconds.</summary>
+        /// <summary>Time interval between ejection analysis sweeps. This can result in both new ejections as well as
+        /// hosts being returned to service. Defaults to 1 second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
         public virtual Duration Interval { get; set; } 
 
@@ -72092,8 +72096,8 @@ namespace Google.Apis.Compute.v1.Data
     /// disk snapshots. (== resource_for beta.snapshots ==) (== resource_for v1.snapshots ==)</summary>
     public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Set to true if snapshots are automatically by applying resource policy on the target
-        /// disk.</summary>
+        /// <summary>[Output Only] Set to true if snapshots are automatically created by applying resource policy on the
+        /// target disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCreated")]
         public virtual System.Nullable<bool> AutoCreated { get; set; } 
 

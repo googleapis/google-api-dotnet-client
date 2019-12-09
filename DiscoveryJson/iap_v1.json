@@ -1,33 +1,13 @@
 {
-  "discoveryVersion": "v1",
-  "version_module": true,
   "schemas": {
-    "ApplicationSettings": {
-      "description": "Wrapper over application specific settings for IAP.",
-      "type": "object",
-      "properties": {
-        "csmSettings": {
-          "$ref": "CsmSettings",
-          "description": "Settings to configure IAP's behavior for a CSM mesh."
-        }
-      },
-      "id": "ApplicationSettings"
-    },
-    "SetIamPolicyRequest": {
-      "description": "Request message for `SetIamPolicy` method.",
-      "type": "object",
-      "properties": {
-        "policy": {
-          "$ref": "Policy",
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
-        }
-      },
-      "id": "SetIamPolicyRequest"
-    },
     "Binding": {
       "description": "Associates `members` with a `role`.",
       "type": "object",
       "properties": {
+        "condition": {
+          "$ref": "Expr",
+          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
+        },
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
           "type": "array",
@@ -38,17 +18,11 @@
         "role": {
           "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
           "type": "string"
-        },
-        "condition": {
-          "$ref": "Expr",
-          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
         }
       },
       "id": "Binding"
     },
     "Expr": {
-      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
-      "type": "object",
       "properties": {
         "title": {
           "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
@@ -67,18 +41,20 @@
           "type": "string"
         }
       },
-      "id": "Expr"
+      "id": "Expr",
+      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
+      "type": "object"
     },
     "CorsSettings": {
-      "description": "Allows customers to configure HTTP request paths that'll allow HTTP OPTIONS\ncall to bypass authentication and authorization.",
-      "type": "object",
       "properties": {
         "allowHttpOptions": {
           "description": "Configuration to allow HTTP OPTIONS calls to skip authorization. If\nundefined, IAP will not apply any special logic to OPTIONS requests.",
           "type": "boolean"
         }
       },
-      "id": "CorsSettings"
+      "id": "CorsSettings",
+      "description": "Allows customers to configure HTTP request paths that'll allow HTTP OPTIONS\ncall to bypass authentication and authorization.",
+      "type": "object"
     },
     "GetPolicyOptions": {
       "description": "Encapsulates settings provided to GetIamPolicy.",
@@ -93,27 +69,25 @@
       "id": "GetPolicyOptions"
     },
     "AccessSettings": {
-      "description": "Access related settings for IAP protected apps.",
-      "type": "object",
       "properties": {
+        "oauthSettings": {
+          "$ref": "OAuthSettings",
+          "description": "Settings to configure IAP's OAuth behavior."
+        },
+        "corsSettings": {
+          "$ref": "CorsSettings",
+          "description": "Configuration to allow cross-origin requests via IAP."
+        },
         "gcipSettings": {
           "description": "GCIP claims and endpoint configurations for 3p identity providers.",
           "$ref": "GcipSettings"
-        },
-        "oauthSettings": {
-          "description": "Settings to configure IAP's OAuth behavior.",
-          "$ref": "OAuthSettings"
-        },
-        "corsSettings": {
-          "description": "Configuration to allow cross-origin requests via IAP.",
-          "$ref": "CorsSettings"
         }
       },
-      "id": "AccessSettings"
+      "id": "AccessSettings",
+      "description": "Access related settings for IAP protected apps.",
+      "type": "object"
     },
     "TestIamPermissionsResponse": {
-      "description": "Response message for `TestIamPermissions` method.",
-      "type": "object",
       "properties": {
         "permissions": {
           "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
@@ -123,29 +97,31 @@
           }
         }
       },
-      "id": "TestIamPermissionsResponse"
+      "id": "TestIamPermissionsResponse",
+      "description": "Response message for `TestIamPermissions` method.",
+      "type": "object"
     },
     "GetIamPolicyRequest": {
-      "description": "Request message for `GetIamPolicy` method.",
-      "type": "object",
       "properties": {
         "options": {
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM.",
-          "$ref": "GetPolicyOptions"
+          "$ref": "GetPolicyOptions",
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."
         }
       },
-      "id": "GetIamPolicyRequest"
+      "id": "GetIamPolicyRequest",
+      "description": "Request message for `GetIamPolicy` method.",
+      "type": "object"
     },
     "CsmSettings": {
-      "description": "Configuration for RCTokens generated for CSM workloads protected by IAP.\nRCTokens are IAP generated JWTs that can be verified at the application. The\nRCToken is primarily used for ISTIO deployments, and can be scoped to a\nsingle mesh by configuring the audience field accordingly",
-      "type": "object",
       "properties": {
         "rctokenAud": {
           "description": "Audience claim set in the generated RCToken. This value is not validated by\nIAP.",
           "type": "string"
         }
       },
-      "id": "CsmSettings"
+      "id": "CsmSettings",
+      "description": "Configuration for RCTokens generated for CSM workloads protected by IAP.\nRCTokens are IAP generated JWTs that can be verified at the application. The\nRCToken is primarily used for ISTIO deployments, and can be scoped to a\nsingle mesh by configuring the audience field accordingly",
+      "type": "object"
     },
     "TestIamPermissionsRequest": {
       "description": "Request message for `TestIamPermissions` method.",
@@ -162,8 +138,6 @@
       "id": "TestIamPermissionsRequest"
     },
     "Policy": {
-      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` is a collection of `bindings`. A `binding` binds one or more\n`members` to a single `role`. Members can be user accounts, service accounts,\nGoogle groups, and domains (such as G Suite). A `role` is a named list of\npermissions (defined by IAM or configured by users). A `binding` can\noptionally specify a `condition`, which is a logic expression that further\nconstrains the role binding based on attributes about the request and/or\ntarget resource.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/resourcemanager.organizationAdmin\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/resourcemanager.organizationViewer\",\n          \"members\": [\"user:eve@example.com\"],\n          \"condition\": {\n            \"title\": \"expirable access\",\n            \"description\": \"Does not grant access after Sep 2020\",\n            \"expression\": \"request.time \u003c\n            timestamp('2020-10-01T00:00:00.000Z')\",\n          }\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-project-id@appspot.gserviceaccount.com\n      role: roles/resourcemanager.organizationAdmin\n    - members:\n      - user:eve@example.com\n      role: roles/resourcemanager.organizationViewer\n      condition:\n        title: expirable access\n        description: Does not grant access after Sep 2020\n        expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
-      "type": "object",
       "properties": {
         "etag": {
           "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten. Due to blind-set semantics of an etag-less policy,\n'setIamPolicy' will not fail even if either of incoming or stored policy\ndoes not meet the version requirements.",
@@ -183,7 +157,9 @@
           }
         }
       },
-      "id": "Policy"
+      "id": "Policy",
+      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` is a collection of `bindings`. A `binding` binds one or more\n`members` to a single `role`. Members can be user accounts, service accounts,\nGoogle groups, and domains (such as G Suite). A `role` is a named list of\npermissions (defined by IAM or configured by users). A `binding` can\noptionally specify a `condition`, which is a logic expression that further\nconstrains the role binding based on attributes about the request and/or\ntarget resource.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/resourcemanager.organizationAdmin\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/resourcemanager.organizationViewer\",\n          \"members\": [\"user:eve@example.com\"],\n          \"condition\": {\n            \"title\": \"expirable access\",\n            \"description\": \"Does not grant access after Sep 2020\",\n            \"expression\": \"request.time \u003c\n            timestamp('2020-10-01T00:00:00.000Z')\",\n          }\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-project-id@appspot.gserviceaccount.com\n      role: roles/resourcemanager.organizationAdmin\n    - members:\n      - user:eve@example.com\n      role: roles/resourcemanager.organizationViewer\n      condition:\n        title: expirable access\n        description: Does not grant access after Sep 2020\n        expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
+      "type": "object"
     },
     "OAuthSettings": {
       "description": "Configuration for OAuth login&consent flow behavior.",
@@ -215,29 +191,51 @@
       "id": "GcipSettings"
     },
     "IapSettings": {
-      "description": "The IAP configurable settings.",
-      "type": "object",
       "properties": {
         "applicationSettings": {
           "description": "Top level wrapper for all application related settings in IAP",
           "$ref": "ApplicationSettings"
         },
         "accessSettings": {
-          "description": "Top level wrapper for all access related setting in IAP",
-          "$ref": "AccessSettings"
+          "$ref": "AccessSettings",
+          "description": "Top level wrapper for all access related setting in IAP"
         },
         "name": {
           "description": "Required. The resource name of the IAP protected resource.",
           "type": "string"
         }
       },
-      "id": "IapSettings"
+      "id": "IapSettings",
+      "description": "The IAP configurable settings.",
+      "type": "object"
+    },
+    "ApplicationSettings": {
+      "description": "Wrapper over application specific settings for IAP.",
+      "type": "object",
+      "properties": {
+        "csmSettings": {
+          "$ref": "CsmSettings",
+          "description": "Settings to configure IAP's behavior for a CSM mesh."
+        }
+      },
+      "id": "ApplicationSettings"
+    },
+    "SetIamPolicyRequest": {
+      "properties": {
+        "policy": {
+          "$ref": "Policy",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
+        }
+      },
+      "id": "SetIamPolicyRequest",
+      "description": "Request message for `SetIamPolicy` method.",
+      "type": "object"
     }
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "canonicalName": "Cloud IAP",
   "auth": {
@@ -259,93 +257,6 @@
   "resources": {
     "v1": {
       "methods": {
-        "testIamPermissions": {
-          "request": {
-            "$ref": "TestIamPermissionsRequest"
-          },
-          "description": "Returns permissions that a caller has on the Identity-Aware Proxy protected\nresource.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api",
-          "response": {
-            "$ref": "TestIamPermissionsResponse"
-          },
-          "parameterOrder": [
-            "resource"
-          ],
-          "httpMethod": "POST",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "resource": {
-              "location": "path",
-              "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
-              "required": true,
-              "type": "string",
-              "pattern": "^.+$"
-            }
-          },
-          "flatPath": "v1/{v1Id}:testIamPermissions",
-          "path": "v1/{+resource}:testIamPermissions",
-          "id": "iap.testIamPermissions"
-        },
-        "updateIapSettings": {
-          "flatPath": "v1/{v1Id}:iapSettings",
-          "path": "v1/{+name}:iapSettings",
-          "id": "iap.updateIapSettings",
-          "request": {
-            "$ref": "IapSettings"
-          },
-          "description": "Updates the IAP settings on a particular IAP protected resource. It\nreplaces all fields unless the `update_mask` is set.",
-          "response": {
-            "$ref": "IapSettings"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "PATCH",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "updateMask": {
-              "location": "query",
-              "description": "The field mask specifying which IAP settings should be updated.\nIf omitted, the all of the settings are updated. See\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask",
-              "format": "google-fieldmask",
-              "type": "string"
-            },
-            "name": {
-              "description": "Required. The resource name of the IAP protected resource.",
-              "required": true,
-              "type": "string",
-              "pattern": "^.+$",
-              "location": "path"
-            }
-          }
-        },
-        "getIapSettings": {
-          "description": "Gets the IAP settings on a particular IAP protected resource.",
-          "httpMethod": "GET",
-          "response": {
-            "$ref": "IapSettings"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "parameters": {
-            "name": {
-              "description": "Required. The resource name for which to retrieve the settings.\nAuthorization: Requires the `getSettings` permission for the associated\nresource.",
-              "required": true,
-              "type": "string",
-              "pattern": "^.+$",
-              "location": "path"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1/{v1Id}:iapSettings",
-          "id": "iap.getIapSettings",
-          "path": "v1/{+name}:iapSettings"
-        },
         "getIamPolicy": {
           "request": {
             "$ref": "GetIamPolicyRequest"
@@ -375,6 +286,8 @@
           "id": "iap.getIamPolicy"
         },
         "setIamPolicy": {
+          "path": "v1/{+resource}:setIamPolicy",
+          "id": "iap.setIamPolicy",
           "description": "Sets the access control policy for an Identity-Aware Proxy protected\nresource. Replaces any existing policy.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api",
           "request": {
             "$ref": "SetIamPolicyRequest"
@@ -388,54 +301,123 @@
           "httpMethod": "POST",
           "parameters": {
             "resource": {
+              "pattern": "^.+$",
               "location": "path",
               "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
               "required": true,
-              "type": "string",
-              "pattern": "^.+$"
+              "type": "string"
             }
           },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "flatPath": "v1/{v1Id}:setIamPolicy",
-          "path": "v1/{+resource}:setIamPolicy",
-          "id": "iap.setIamPolicy"
+          "flatPath": "v1/{v1Id}:setIamPolicy"
+        },
+        "testIamPermissions": {
+          "response": {
+            "$ref": "TestIamPermissionsResponse"
+          },
+          "parameterOrder": [
+            "resource"
+          ],
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "resource": {
+              "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+              "required": true,
+              "type": "string",
+              "pattern": "^.+$",
+              "location": "path"
+            }
+          },
+          "flatPath": "v1/{v1Id}:testIamPermissions",
+          "path": "v1/{+resource}:testIamPermissions",
+          "id": "iap.testIamPermissions",
+          "request": {
+            "$ref": "TestIamPermissionsRequest"
+          },
+          "description": "Returns permissions that a caller has on the Identity-Aware Proxy protected\nresource.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api"
+        },
+        "updateIapSettings": {
+          "request": {
+            "$ref": "IapSettings"
+          },
+          "description": "Updates the IAP settings on a particular IAP protected resource. It\nreplaces all fields unless the `update_mask` is set.",
+          "response": {
+            "$ref": "IapSettings"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "PATCH",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "updateMask": {
+              "description": "The field mask specifying which IAP settings should be updated.\nIf omitted, the all of the settings are updated. See\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask",
+              "format": "google-fieldmask",
+              "type": "string",
+              "location": "query"
+            },
+            "name": {
+              "pattern": "^.+$",
+              "location": "path",
+              "description": "Required. The resource name of the IAP protected resource.",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "flatPath": "v1/{v1Id}:iapSettings",
+          "path": "v1/{+name}:iapSettings",
+          "id": "iap.updateIapSettings"
+        },
+        "getIapSettings": {
+          "description": "Gets the IAP settings on a particular IAP protected resource.",
+          "httpMethod": "GET",
+          "response": {
+            "$ref": "IapSettings"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "parameters": {
+            "name": {
+              "pattern": "^.+$",
+              "location": "path",
+              "description": "Required. The resource name for which to retrieve the settings.\nAuthorization: Requires the `getSettings` permission for the associated\nresource.",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1/{v1Id}:iapSettings",
+          "id": "iap.getIapSettings",
+          "path": "v1/{+name}:iapSettings"
         }
       }
     }
   },
   "parameters": {
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
     "uploadType": {
-      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "fields": {
+      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "callback": {
+      "location": "query",
       "description": "JSONP",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "oauth_token": {
       "location": "query",
@@ -443,17 +425,17 @@
       "type": "string"
     },
     "$.xgafv": {
+      "enum": [
+        "1",
+        "2"
+      ],
       "description": "V1 error format.",
       "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ]
+      "location": "query"
     },
     "alt": {
       "description": "Data format for response.",
@@ -477,9 +459,25 @@
       "location": "query"
     },
     "access_token": {
-      "location": "query",
       "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
     }
   },
   "version": "v1",
@@ -490,5 +488,7 @@
   "basePath": "",
   "revision": "20191101",
   "documentationLink": "https://cloud.google.com/iap",
-  "id": "iap:v1"
+  "id": "iap:v1",
+  "discoveryVersion": "v1",
+  "version_module": true
 }

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/xy04ood3kp7DhJc1iZopsRriYwM\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/GPmJrIrExw3FkiMrSNedoSFbGgo\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v3",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v3",
- "revision": "20191113",
+ "revision": "20191202",
  "title": "Google Play Developer API",
  "description": "Accesses Android application developers' Google Play accounts.",
  "ownerDomain": "google.com",
@@ -730,26 +730,6 @@
     }
    }
   },
-  "MendelSampling": {
-   "id": "MendelSampling",
-   "type": "object",
-   "properties": {
-    "modRanges": {
-     "type": "array",
-     "items": {
-      "$ref": "ModRange"
-     }
-    },
-    "modulus": {
-     "type": "string",
-     "format": "int64"
-    },
-    "salt": {
-     "type": "integer",
-     "format": "int32"
-    }
-   }
-  },
   "ModRange": {
    "id": "ModRange",
    "type": "object",
@@ -958,6 +938,26 @@
    "properties": {
     "result": {
      "$ref": "ReviewReplyResult"
+    }
+   }
+  },
+  "Sampling": {
+   "id": "Sampling",
+   "type": "object",
+   "properties": {
+    "modRanges": {
+     "type": "array",
+     "items": {
+      "$ref": "ModRange"
+     }
+    },
+    "modulus": {
+     "type": "string",
+     "format": "int64"
+    },
+    "salt": {
+     "type": "integer",
+     "format": "int32"
     }
    }
   },
@@ -1256,7 +1256,7 @@
      }
     },
     "sampling": {
-     "$ref": "MendelSampling"
+     "$ref": "Sampling"
     },
     "status": {
      "type": "string",

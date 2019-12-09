@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/analytics'>YouTube Analytics API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191203 (1797)
+ *      <tr><th>API Rev<td>20191204 (1798)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/analytics'>
  *              https://developers.google.com/youtube/analytics</a>
@@ -1005,12 +1005,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
             }
 
 
-            /// <summary>The currency to which financial metrics should be converted. The default is US Dollar (USD). If
-            /// the result contains no financial metrics, this flag will be ignored. Responds with an error if the
-            /// specified currency is not recognized.", pattern: [A-Z]{3}</summary>
-            [Google.Apis.Util.RequestParameterAttribute("currency", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Currency { get; set; }
-
             /// <summary>An index of the first entity to retrieve. Use this parameter as a pagination mechanism along
             /// with the max-results parameter (one-based, inclusive).", minValue: 1</summary>
             [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
@@ -1077,6 +1071,12 @@ namespace Google.Apis.YouTubeAnalytics.v2
             [Google.Apis.Util.RequestParameterAttribute("includeHistoricalChannelData", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeHistoricalChannelData { get; set; }
 
+            /// <summary>The currency to which financial metrics should be converted. The default is US Dollar (USD). If
+            /// the result contains no financial metrics, this flag will be ignored. Responds with an error if the
+            /// specified currency is not recognized.", pattern: [A-Z]{3}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("currency", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Currency { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1101,15 +1101,6 @@ namespace Google.Apis.YouTubeAnalytics.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "currency", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "currency",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "startIndex", new Google.Apis.Discovery.Parameter
                     {
@@ -1195,6 +1186,15 @@ namespace Google.Apis.YouTubeAnalytics.v2
                     "includeHistoricalChannelData", new Google.Apis.Discovery.Parameter
                     {
                         Name = "includeHistoricalChannelData",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "currency", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "currency",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

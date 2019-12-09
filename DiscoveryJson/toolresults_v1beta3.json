@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/ymuVFwba22Z--veHvYRUtiTYrd0\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/CBEJ9kxU4IEf68udooTm0hfyOkw\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3",
- "revision": "20191007",
+ "revision": "20191203",
  "title": "Cloud Tool Results API",
  "description": "Reads and publishes results from Firebase Test Lab.",
  "ownerDomain": "google.com",
@@ -347,6 +347,75 @@
     }
    }
   },
+  "Environment": {
+   "id": "Environment",
+   "type": "object",
+   "description": "An Environment represents the set of test runs (Steps) from the parent Execution that are configured with the same set of dimensions (Model, Version, Locale, and Orientation). Multiple such runs occur particularly because of features like sharding (splitting up a test suite to run in parallel across devices) and reruns (running a test multiple times to check for different outcomes).",
+   "properties": {
+    "completionTime": {
+     "$ref": "Timestamp",
+     "description": "Output only. The time when the Environment status was set to complete.\n\nThis value will be set automatically when state transitions to COMPLETE."
+    },
+    "creationTime": {
+     "$ref": "Timestamp",
+     "description": "Output only. The time when the Environment was created."
+    },
+    "dimensionValue": {
+     "type": "array",
+     "description": "Dimension values describing the environment. Dimension values always consist of \"Model\", \"Version\", \"Locale\", and \"Orientation\".\n\n- In response: always set - In create request: always set - In update request: never set",
+     "items": {
+      "$ref": "EnvironmentDimensionValueEntry"
+     }
+    },
+    "displayName": {
+     "type": "string",
+     "description": "A short human-readable name to display in the UI. Maximum of 100 characters. For example: Nexus 5, API 27."
+    },
+    "environmentId": {
+     "type": "string",
+     "description": "Output only. An Environment id."
+    },
+    "environmentResult": {
+     "$ref": "MergedResult",
+     "description": "Merged result of the environment."
+    },
+    "executionId": {
+     "type": "string",
+     "description": "Output only. An Execution id."
+    },
+    "historyId": {
+     "type": "string",
+     "description": "Output only. A History id."
+    },
+    "projectId": {
+     "type": "string",
+     "description": "Output only. A Project id."
+    },
+    "resultsStorage": {
+     "$ref": "ResultsStorage",
+     "description": "The location where output files are stored in the user bucket."
+    },
+    "shardSummaries": {
+     "type": "array",
+     "description": "Output only. Summaries of shards.\n\nOnly one shard will present unless sharding feature is enabled in TestExecutionService.",
+     "items": {
+      "$ref": "ShardSummary"
+     }
+    }
+   }
+  },
+  "EnvironmentDimensionValueEntry": {
+   "id": "EnvironmentDimensionValueEntry",
+   "type": "object",
+   "properties": {
+    "key": {
+     "type": "string"
+    },
+    "value": {
+     "type": "string"
+    }
+   }
+  },
   "Execution": {
    "id": "Execution",
    "type": "object",
@@ -616,6 +685,36 @@
     }
    }
   },
+  "ListEnvironmentsResponse": {
+   "id": "ListEnvironmentsResponse",
+   "type": "object",
+   "description": "Response message for EnvironmentService.ListEnvironments.",
+   "properties": {
+    "environments": {
+     "type": "array",
+     "description": "Environments.\n\nAlways set.",
+     "items": {
+      "$ref": "Environment"
+     }
+    },
+    "executionId": {
+     "type": "string",
+     "description": "A Execution id\n\nAlways set."
+    },
+    "historyId": {
+     "type": "string",
+     "description": "A History id.\n\nAlways set."
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "A continuation token to resume the query at the next item.\n\nWill only be set if there are more Environments to fetch."
+    },
+    "projectId": {
+     "type": "string",
+     "description": "A Project id.\n\nAlways set."
+    }
+   }
+  },
   "ListExecutionsResponse": {
    "id": "ListExecutionsResponse",
    "type": "object",
@@ -759,6 +858,40 @@
      "type": "string",
      "description": "Total memory available on the device in KiB",
      "format": "int64"
+    }
+   }
+  },
+  "MergedResult": {
+   "id": "MergedResult",
+   "type": "object",
+   "description": "Merged test result for environment.\n\nIf the environment has only one step (no reruns or shards), then the merged result is the same as the step result. If the environment has multiple shards and/or reruns, then the results of shards and reruns that belong to the same environment are merged into one environment result.",
+   "properties": {
+    "outcome": {
+     "$ref": "Outcome",
+     "description": "Outcome of the resource"
+    },
+    "state": {
+     "type": "string",
+     "description": "State of the resource",
+     "enum": [
+      "complete",
+      "inProgress",
+      "pending",
+      "unknownState"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      ""
+     ]
+    },
+    "testSuiteOverviews": {
+     "type": "array",
+     "description": "The combined and rolled-up result of each test suite that was run as part of this environment.\n\nCombining: When the test cases from a suite are run in different steps (sharding), the results are added back together in one overview. (e.g., if shard1 has 2 failures and shard2 has 1 failure than the overview failure_count = 3).\n\nRollup: When test cases from the same suite are run multiple times (flaky), the results are combined (e.g., if testcase1.run1 fails, testcase1.run2 passes, and both testcase2.run1 and testcase2.run2 fail then the overview flaky_count = 1 and failure_count = 1).",
+     "items": {
+      "$ref": "TestSuiteOverview"
+     }
     }
    }
   },
@@ -1005,6 +1138,21 @@
     }
    }
   },
+  "ResultsStorage": {
+   "id": "ResultsStorage",
+   "type": "object",
+   "description": "The storage for test results.",
+   "properties": {
+    "resultsStoragePath": {
+     "$ref": "FileReference",
+     "description": "The root directory for test results."
+    },
+    "xunitXmlFile": {
+     "$ref": "FileReference",
+     "description": "The path to the Xunit XML file."
+    }
+   }
+  },
   "Screen": {
    "id": "Screen",
    "type": "object",
@@ -1049,6 +1197,17 @@
      "items": {
       "$ref": "Screen"
      }
+    }
+   }
+  },
+  "ShardSummary": {
+   "id": "ShardSummary",
+   "type": "object",
+   "description": "Result summary for a shard in an environment.",
+   "properties": {
+    "shardResult": {
+     "$ref": "MergedResult",
+     "description": "Merged result of the shard."
     }
    }
   },
@@ -1228,7 +1387,7 @@
   "SuccessDetail": {
    "id": "SuccessDetail",
    "type": "object",
-   "description": "Details for an outcome with a SUCCESS outcome summary.",
+   "description": "Details for an outcome with a SUCCESS outcome summary. LINT.IfChange",
    "properties": {
     "otherNativeCrash": {
      "type": "boolean",
@@ -1478,6 +1637,11 @@
     "failureCount": {
      "type": "integer",
      "description": "Number of failed test cases, typically set by the service by parsing the xml_source. May also be set by the user.\n\n- In create/response: always set - In update request: never",
+     "format": "int32"
+    },
+    "flakyCount": {
+     "type": "integer",
+     "description": "Number of flaky test cases, set by the service by rolling up flaky test attempts.\n\nPresent only for rollup test suite overview at environment level. A step cannot have flaky test cases.",
      "format": "int32"
     },
     "name": {
@@ -2025,6 +2189,102 @@
            "response": {
             "$ref": "ListScreenshotClustersResponse"
            }
+          }
+         }
+        },
+        "environments": {
+         "methods": {
+          "get": {
+           "id": "toolresults.projects.histories.executions.environments.get",
+           "path": "{projectId}/histories/{historyId}/executions/{executionId}/environments/{environmentId}",
+           "httpMethod": "GET",
+           "description": "Gets an Environment.\n\nMay return any of the following canonical error codes:\n\n- PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Environment does not exist",
+           "parameters": {
+            "environmentId": {
+             "type": "string",
+             "description": "Required. An Environment id.",
+             "required": true,
+             "location": "path"
+            },
+            "executionId": {
+             "type": "string",
+             "description": "Required. An Execution id.",
+             "required": true,
+             "location": "path"
+            },
+            "historyId": {
+             "type": "string",
+             "description": "Required. A History id.",
+             "required": true,
+             "location": "path"
+            },
+            "projectId": {
+             "type": "string",
+             "description": "Required. A Project id.",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "projectId",
+            "historyId",
+            "executionId",
+            "environmentId"
+           ],
+           "response": {
+            "$ref": "Environment"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+           ]
+          },
+          "list": {
+           "id": "toolresults.projects.histories.executions.environments.list",
+           "path": "{projectId}/histories/{historyId}/executions/{executionId}/environments",
+           "httpMethod": "GET",
+           "description": "Lists Environments for a given Execution.\n\nThe Environments are sorted by display name.\n\nMay return any of the following canonical error codes:\n\n- PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing Execution does not exist",
+           "parameters": {
+            "executionId": {
+             "type": "string",
+             "description": "Required. An Execution id.",
+             "required": true,
+             "location": "path"
+            },
+            "historyId": {
+             "type": "string",
+             "description": "Required. A History id.",
+             "required": true,
+             "location": "path"
+            },
+            "pageSize": {
+             "type": "integer",
+             "description": "The maximum number of Environments to fetch.\n\nDefault value: 25. The server will use this default if the field is not set or has a value of 0.",
+             "format": "int32",
+             "location": "query"
+            },
+            "pageToken": {
+             "type": "string",
+             "description": "A continuation token to resume the query at the next item.",
+             "location": "query"
+            },
+            "projectId": {
+             "type": "string",
+             "description": "Required. A Project id.",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "projectId",
+            "historyId",
+            "executionId"
+           ],
+           "response": {
+            "$ref": "ListEnvironmentsResponse"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+           ]
           }
          }
         },

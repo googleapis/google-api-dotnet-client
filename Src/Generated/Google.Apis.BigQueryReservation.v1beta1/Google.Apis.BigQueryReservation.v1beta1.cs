@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191113 (1777)
+ *      <tr><th>API Rev<td>20191203 (1797)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -422,6 +422,11 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>If true, fail the request if another project in the organization has a capacity
+                    /// commitment.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("enforceSingleAdminProjectPerOrg", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> EnforceSingleAdminProjectPerOrg { get; set; }
+
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.BigQueryReservation.v1beta1.Data.CapacityCommitment Body { get; set; }
@@ -460,6 +465,15 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "enforceSingleAdminProjectPerOrg", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "enforceSingleAdminProjectPerOrg",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                     }
 
