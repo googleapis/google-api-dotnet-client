@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191202 (1796)
+ *      <tr><th>API Rev<td>20191206 (1800)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -387,10 +387,6 @@ namespace Google.Apis.DLP.v2
             }
 
 
-            /// <summary>The geographic location to list info types. Reserved for future extensions.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LocationId { get; set; }
-
             /// <summary>Optional BCP-47 language code for localized infoType friendly names. If omitted, or if
             /// localized strings are not available, en-US strings will be returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
@@ -400,6 +396,10 @@ namespace Google.Apis.DLP.v2
             /// supported_by=INSPECT.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>The geographic location to list info types. Reserved for future extensions.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LocationId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -426,15 +426,6 @@ namespace Google.Apis.DLP.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "locationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "languageCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "languageCode",
@@ -447,6 +438,15 @@ namespace Google.Apis.DLP.v2
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "locationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locationId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -5331,15 +5331,6 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The geographic location where job triggers will be retrieved from. Use `-` for all
-                /// locations. Reserved for future extensions.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LocationId { get; set; }
-
-                /// <summary>Optional size of the page, can be limited by a server.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional comma separated list of triggeredJob fields to order by, followed by `asc` or
                 /// `desc` postfix. This list is case-insensitive, default sorting order is ascending, redundant space
                 /// characters are insignificant.
@@ -5382,6 +5373,15 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>The geographic location where job triggers will be retrieved from. Use `-` for all
+                /// locations. Reserved for future extensions.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LocationId { get; set; }
+
+                /// <summary>Optional size of the page, can be limited by a server.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -5416,24 +5416,6 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "locationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locationId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -5455,6 +5437,24 @@ namespace Google.Apis.DLP.v2
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "locationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6692,14 +6692,6 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string LocationId { get; private set; }
 
-                    /// <summary>The standard list page token.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc`
                     /// postfix. This list is case-insensitive, default sorting order is ascending, redundant space
                     /// characters are insignificant.
@@ -6752,6 +6744,14 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -6795,24 +6795,6 @@ namespace Google.Apis.DLP.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "orderBy", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "orderBy",
@@ -6834,6 +6816,24 @@ namespace Google.Apis.DLP.v2
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -9857,6 +9857,11 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recordTransformations")]
         public virtual GooglePrivacyDlpV2RecordTransformations RecordTransformations { get; set; } 
 
+        /// <summary>Mode for handling transformation errors. If left unspecified, the default mode is
+        /// `TransformationErrorHandling.ThrowError`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformationErrorHandling")]
+        public virtual GooglePrivacyDlpV2TransformationErrorHandling TransformationErrorHandling { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -11136,6 +11141,15 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Skips the data without modifying it if the requested transformation would cause an error. For example,
+    /// if a `DateShift` transformation were applied an an IP address, this mode would leave the IP address unchanged in
+    /// the response.</summary>
+    public class GooglePrivacyDlpV2LeaveUntransformed : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Message for specifying an adjustment to the likelihood of a finding as part of a detection
     /// rule.</summary>
     public class GooglePrivacyDlpV2LikelihoodAdjustment : Google.Apis.Requests.IDirectResponseSchema
@@ -12128,6 +12142,13 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Throw an error and fail the request when a transformation error occurs.</summary>
+    public class GooglePrivacyDlpV2ThrowError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a portion of the
     /// value.</summary>
     public class GooglePrivacyDlpV2TimePartConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -12180,6 +12201,23 @@ namespace Google.Apis.DLP.v2.Data
         /// the timestamp property does not exist or its value is empty or invalid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampField")]
         public virtual GooglePrivacyDlpV2FieldId TimestampField { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>How to handle transformation errors during de-identification. A transformation error occurs when the
+    /// requested transformation is incompatible with the data. For example, trying to de-identify an IP address using a
+    /// `DateShift` transformation would result in a transformation error, since date info cannot be extracted from an
+    /// IP address. Information about any incompatible transformations, and how they were handled, is returned in the
+    /// response as part of the `TransformationOverviews`.</summary>
+    public class GooglePrivacyDlpV2TransformationErrorHandling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("leaveUntransformed")]
+        public virtual GooglePrivacyDlpV2LeaveUntransformed LeaveUntransformed { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("throwError")]
+        public virtual GooglePrivacyDlpV2ThrowError ThrowError { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

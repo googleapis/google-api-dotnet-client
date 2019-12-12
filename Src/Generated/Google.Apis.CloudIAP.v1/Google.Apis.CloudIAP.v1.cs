@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iap'>Cloud Identity-Aware Proxy API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191101 (1765)
+ *      <tr><th>API Rev<td>20191206 (1800)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iap'>
  *              https://cloud.google.com/iap</a>
@@ -64,6 +64,7 @@ namespace Google.Apis.CloudIAP.v1
         public CloudIAPService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            oauth = new OauthResource(this);
             v1 = new V1Resource(this);
         }
 
@@ -126,6 +127,14 @@ namespace Google.Apis.CloudIAP.v1
         }
 
 
+
+        private readonly OauthResource oauth;
+
+        /// <summary>Gets the Oauth resource.</summary>
+        public virtual OauthResource Oauth
+        {
+            get { return oauth; }
+        }
 
         private readonly V1Resource v1;
 
@@ -322,6 +331,674 @@ namespace Google.Apis.CloudIAP.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+        }
+    }
+
+    /// <summary>The "oauth" collection of methods.</summary>
+    public class OauthResource
+    {
+        private const string Resource = "oauth";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OauthResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            projects = new ProjectsResource(service);
+
+        }
+
+        private readonly ProjectsResource projects;
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects
+        {
+            get { return projects; }
+        }
+
+        /// <summary>The "projects" collection of methods.</summary>
+        public class ProjectsResource
+        {
+            private const string Resource = "projects";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ProjectsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                brands = new BrandsResource(service);
+
+            }
+
+            private readonly BrandsResource brands;
+
+            /// <summary>Gets the Brands resource.</summary>
+            public virtual BrandsResource Brands
+            {
+                get { return brands; }
+            }
+
+            /// <summary>The "brands" collection of methods.</summary>
+            public class BrandsResource
+            {
+                private const string Resource = "brands";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BrandsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    identityAwareProxyClients = new IdentityAwareProxyClientsResource(service);
+
+                }
+
+                private readonly IdentityAwareProxyClientsResource identityAwareProxyClients;
+
+                /// <summary>Gets the IdentityAwareProxyClients resource.</summary>
+                public virtual IdentityAwareProxyClientsResource IdentityAwareProxyClients
+                {
+                    get { return identityAwareProxyClients; }
+                }
+
+                /// <summary>The "identityAwareProxyClients" collection of methods.</summary>
+                public class IdentityAwareProxyClientsResource
+                {
+                    private const string Resource = "identityAwareProxyClients";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public IdentityAwareProxyClientsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Creates an Identity Aware Proxy (IAP) OAuth client, the client is owned by IAP.
+                    /// Requires that the brand for the project exists and that it is set for internal only
+                    /// use.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. Path to create the client in. In the following format:
+                    /// projects/{project_number/id}/brands/{brand}. The project must belong to a GSuite account.</param>
+                    public virtual CreateRequest Create(Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates an Identity Aware Proxy (IAP) OAuth client, the client is owned by IAP.
+                    /// Requires that the brand for the project exists and that it is set for internal only
+                    /// use.</summary>
+                    public class CreateRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Path to create the client in. In the following format:
+                        /// projects/{project_number/id}/brands/{brand}. The project must belong to a GSuite
+                        /// account.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "create"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/oauth/{+parent}/identityAwareProxyClients"; }
+                        }
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/brands/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Deletes an Identity Aware Proxy (IAP) OAuth client. Useful if the secret was
+                    /// compromised. Requires that the client is owned by IAP.</summary>
+                    /// <param name="name">Required. Name of the Identity Aware Proxy client to be deleted. In the following format:
+                    /// projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes an Identity Aware Proxy (IAP) OAuth client. Useful if the secret was
+                    /// compromised. Requires that the client is owned by IAP.</summary>
+                    public class DeleteRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Name of the Identity Aware Proxy client to be deleted. In the following
+                        /// format:
+                        /// projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "delete"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "DELETE"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/oauth/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned
+                    /// by IAP.</summary>
+                    /// <param name="name">Required. Name of the Identity Aware Proxy client to be fetched. In the following format:
+                    /// projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned
+                    /// by IAP.</summary>
+                    public class GetRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Name of the Identity Aware Proxy client to be fetched. In the following
+                        /// format:
+                        /// projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/oauth/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists the existing clients for the brand.</summary>
+                    /// <param name="parent">Required. Full brand path. In the following format:
+                    /// projects/{project_number/id}/brands/{brand}.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists the existing clients for the brand.</summary>
+                    public class ListRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.ListIdentityAwareProxyClientsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Full brand path. In the following format:
+                        /// projects/{project_number/id}/brands/{brand}.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>A page token, received from a previous `ListIdentityAwareProxyClients` call.
+                        /// Provide this to retrieve the subsequent page.
+                        ///
+                        /// When paginating, all other parameters provided to `ListIdentityAwareProxyClients` must match
+                        /// the call that provided the page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>The maximum number of clients to return. The service may return fewer than this
+                        /// value. If unspecified, at most 100 clients will be returned. The maximum value is 1000;
+                        /// values above 1000 will be coerced to 1000.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/oauth/{+parent}/identityAwareProxyClients"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/brands/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful for removing obsolete
+                    /// clients, managing the number of clients in a given project, and cleaning up after tests.
+                    /// Requires that the client is owned by IAP.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. Name of the Identity Aware Proxy client to that will have its secret reset. In the
+                    /// following format: projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}.</param>
+                    public virtual ResetSecretRequest ResetSecret(Google.Apis.CloudIAP.v1.Data.ResetIdentityAwareProxyClientSecretRequest body, string name)
+                    {
+                        return new ResetSecretRequest(service, body, name);
+                    }
+
+                    /// <summary>Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful for removing obsolete
+                    /// clients, managing the number of clients in a given project, and cleaning up after tests.
+                    /// Requires that the client is owned by IAP.</summary>
+                    public class ResetSecretRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient>
+                    {
+                        /// <summary>Constructs a new ResetSecret request.</summary>
+                        public ResetSecretRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.ResetIdentityAwareProxyClientSecretRequest body, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. Name of the Identity Aware Proxy client to that will have its secret
+                        /// reset. In the following format:
+                        /// projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudIAP.v1.Data.ResetIdentityAwareProxyClientSecretRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "resetSecret"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/oauth/{+name}:resetSecret"; }
+                        }
+
+                        /// <summary>Initializes ResetSecret parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$",
+                                });
+                        }
+
+                    }
+                }
+
+                /// <summary>Constructs a new OAuth brand for the project if one does not exists. The created brand is
+                /// 'internal only', meaning that OAuth clients created under it only accept requests from users who
+                /// belong to the same GSuites account as the project. The brand is created in un-reviewed status. NOTE:
+                /// the 'internal_only' can be manually changed in Pantheon UI. Requires that brand does not already
+                /// exists for the project.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. GCP Project number/id under which the brand is to be created. In the following
+                /// format: projects/{project_number/id}.</param>
+                public virtual CreateRequest Create(Google.Apis.CloudIAP.v1.Data.Brand body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Constructs a new OAuth brand for the project if one does not exists. The created brand is
+                /// 'internal only', meaning that OAuth clients created under it only accept requests from users who
+                /// belong to the same GSuites account as the project. The brand is created in un-reviewed status. NOTE:
+                /// the 'internal_only' can be manually changed in Pantheon UI. Requires that brand does not already
+                /// exists for the project.</summary>
+                public class CreateRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.Brand>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIAP.v1.Data.Brand body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. GCP Project number/id under which the brand is to be created. In the
+                    /// following format: projects/{project_number/id}.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudIAP.v1.Data.Brand Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "create"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/oauth/{+parent}/brands"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Retrieves the OAuth brand of the project.</summary>
+                /// <param name="name">Required. Name of the brand to be fetched. In the following format:
+                /// projects/{project_number/id}/brands/{brand}.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieves the OAuth brand of the project.</summary>
+                public class GetRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.Brand>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. Name of the brand to be fetched. In the following format:
+                    /// projects/{project_number/id}/brands/{brand}.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/oauth/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/brands/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists the existing brands for the project.</summary>
+                /// <param name="parent">Required. GCP Project number/id. In the following format:
+                /// projects/{project_number/id}.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists the existing brands for the project.</summary>
+                public class ListRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.ListBrandsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. GCP Project number/id. In the following format:
+                    /// projects/{project_number/id}.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/oauth/{+parent}/brands"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+$",
+                            });
+                    }
+
+                }
+            }
         }
     }
 
@@ -771,6 +1448,20 @@ namespace Google.Apis.CloudIAP.v1.Data
         ///
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
         ///
+        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
+        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
+        ///
+        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a service account that has been recently deleted. For example, `my-other-
+        /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
+        ///
+        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
+        /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
+        /// binding.
+        ///
         /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.
         ///
@@ -782,6 +1473,31 @@ namespace Google.Apis.CloudIAP.v1.Data
         /// `roles/owner`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>OAuth brand data. NOTE: Only contains a portion of the data that describes a brand.</summary>
+    public class Brand : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Application name displayed on OAuth consent screen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationTitle")]
+        public virtual string ApplicationTitle { get; set; } 
+
+        /// <summary>Output only. Identifier of the brand. NOTE: GCP project number achieves the same brand
+        /// identification purpose as only one brand per project can be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Whether the brand is only intended for usage inside the GSuite organization
+        /// only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgInternalOnly")]
+        public virtual System.Nullable<bool> OrgInternalOnly { get; set; } 
+
+        /// <summary>Support email displayed on the OAuth consent screen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportEmail")]
+        public virtual string SupportEmail { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -809,6 +1525,18 @@ namespace Google.Apis.CloudIAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rctokenAud")]
         public virtual string RctokenAud { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -911,6 +1639,52 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Contains the data that describes an Identity Aware Proxy owned client.</summary>
+    public class IdentityAwareProxyClient : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Human-friendly name given to the OAuth client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Output only. Unique identifier of the OAuth client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Client secret of the OAuth client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
+        public virtual string Secret { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for ListBrands.</summary>
+    public class ListBrandsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Brands existing in the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brands")]
+        public virtual System.Collections.Generic.IList<Brand> Brands { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for ListIdentityAwareProxyClients.</summary>
+    public class ListIdentityAwareProxyClientsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Clients existing in the brand.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityAwareProxyClients")]
+        public virtual System.Collections.Generic.IList<IdentityAwareProxyClient> IdentityAwareProxyClients { get; set; } 
+
+        /// <summary>A token, which can be send as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Configuration for OAuth login flow behavior.</summary>
     public class OAuthSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -925,37 +1699,39 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
-    /// for Cloud Platform resources.
+    /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
+    /// resources.
     ///
     /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
     /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions (defined by IAM or configured by users). A `binding` can optionally specify a `condition`, which
-    /// is a logic expression that further constrains the role binding based on attributes about the request and/or
-    /// target resource.
+    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
     ///
-    /// **JSON Example**
+    /// Optionally, a `binding` can specify a `condition`, which is a logical expression that allows access to a
+    /// resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the
+    /// request, the resource, or both.
+    ///
+    /// **JSON example:**
     ///
     /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ] }
+    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
     ///
-    /// **YAML Example**
+    /// **YAML example:**
     ///
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
     /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
     /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
     /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z')
+    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
     ///
-    /// For a description of IAM and its features, see the [IAM developer's
-    /// guide](https://cloud.google.com/iam/docs).</summary>
+    /// For a description of IAM and its features, see the [IAM
+    /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Associates a list of `members` to a `role`. Optionally may specify a `condition` that determines
-        /// when binding is in effect. `bindings` with no members will result in an error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
+        /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -965,25 +1741,39 @@ namespace Google.Apis.CloudIAP.v1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
-        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if either of incoming or
-        /// stored policy does not meet the version requirements.</summary>
+        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
+        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
+        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
         /// <summary>Specifies the format of the policy.
         ///
-        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
         ///
-        /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
-        /// policy, modifying a conditional binding, or removing a conditional binding from the stored conditional
-        /// policy. Operations on non-conditional policies may specify any valid value or leave the field unset.
+        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
+        /// the following operations:
         ///
-        /// If no etag is provided in the call to `setIamPolicy`, any version compliance checks on the incoming and/or
-        /// stored policy is skipped.</summary>
+        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
+        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
+        /// from a policy that includes conditions
+        ///
+        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
+        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
+        /// `1` policy, and all of the conditions in the version `3` policy are lost.
+        ///
+        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
+        /// leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
+    }    
+
+    /// <summary>The request sent to ResetIdentityAwareProxyClientSecret.</summary>
+    public class ResetIdentityAwareProxyClientSecretRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Request message for `SetIamPolicy` method.</summary>

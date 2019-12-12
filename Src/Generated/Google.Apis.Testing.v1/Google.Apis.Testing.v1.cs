@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191118 (1782)
+ *      <tr><th>API Rev<td>20191203 (1797)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1755,7 +1755,7 @@ namespace Google.Apis.Testing.v1.Data
     public class ManualSharding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Group of packages, classes, and/or test methods to be run for each shard. The number of
-        /// shard_test_targets must be > 1, and <= 50.</summary>
+        /// shard_test_targets must be >= 1 and <= 50.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargetsForShard")]
         public virtual System.Collections.Generic.IList<TestTargetsForShard> TestTargetsForShard { get; set; } 
 
@@ -2329,7 +2329,7 @@ namespace Google.Apis.Testing.v1.Data
     /// invalid.</summary>
     public class UniformSharding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Total number of shards. The number must be > 1, and <= 50.</summary>
+        /// <summary>Required. Total number of shards. The number must be >= 1 and <= 50.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numShards")]
         public virtual System.Nullable<int> NumShards { get; set; } 
 

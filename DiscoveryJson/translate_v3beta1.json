@@ -1,670 +1,7 @@
 {
-  "resources": {
-    "projects": {
-      "methods": {
-        "detectLanguage": {
-          "response": {
-            "$ref": "DetectLanguageResponse"
-          },
-          "parameterOrder": [
-            "parent"
-          ],
-          "httpMethod": "POST",
-          "parameters": {
-            "parent": {
-              "location": "path",
-              "description": "Required. Project or location to make a call. Must refer to a caller's\nproject.\n\nFormat: `projects/{project-number-or-id}/locations/{location-id}` or\n`projects/{project-number-or-id}`.\n\nFor global calls, use `projects/{project-number-or-id}/locations/global` or\n`projects/{project-number-or-id}`.\n\nOnly models within the same region (has same location-id) can be used.\nOtherwise an INVALID_ARGUMENT (400) error is returned.",
-              "required": true,
-              "type": "string",
-              "pattern": "^projects/[^/]+$"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/cloud-translation"
-          ],
-          "flatPath": "v3beta1/projects/{projectsId}:detectLanguage",
-          "path": "v3beta1/{+parent}:detectLanguage",
-          "id": "translate.projects.detectLanguage",
-          "description": "Detects the language of text within a request.",
-          "request": {
-            "$ref": "DetectLanguageRequest"
-          }
-        },
-        "translateText": {
-          "response": {
-            "$ref": "TranslateTextResponse"
-          },
-          "parameterOrder": [
-            "parent"
-          ],
-          "httpMethod": "POST",
-          "parameters": {
-            "parent": {
-              "location": "path",
-              "description": "Required. Project or location to make a call. Must refer to a caller's\nproject.\n\nFormat: `projects/{project-number-or-id}` or\n`projects/{project-number-or-id}/locations/{location-id}`.\n\nFor global calls, use `projects/{project-number-or-id}/locations/global` or\n`projects/{project-number-or-id}`.\n\nNon-global location is required for requests using AutoML models or\ncustom glossaries.\n\nModels and glossaries must be within the same region (have same\nlocation-id), otherwise an INVALID_ARGUMENT (400) error is returned.",
-              "required": true,
-              "type": "string",
-              "pattern": "^projects/[^/]+$"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/cloud-translation"
-          ],
-          "flatPath": "v3beta1/projects/{projectsId}:translateText",
-          "path": "v3beta1/{+parent}:translateText",
-          "id": "translate.projects.translateText",
-          "description": "Translates input text and returns translated text.",
-          "request": {
-            "$ref": "TranslateTextRequest"
-          }
-        },
-        "getSupportedLanguages": {
-          "flatPath": "v3beta1/projects/{projectsId}/supportedLanguages",
-          "path": "v3beta1/{+parent}/supportedLanguages",
-          "id": "translate.projects.getSupportedLanguages",
-          "description": "Returns a list of supported languages for translation.",
-          "response": {
-            "$ref": "SupportedLanguages"
-          },
-          "parameterOrder": [
-            "parent"
-          ],
-          "httpMethod": "GET",
-          "parameters": {
-            "parent": {
-              "pattern": "^projects/[^/]+$",
-              "location": "path",
-              "description": "Required. Project or location to make a call. Must refer to a caller's\nproject.\n\nFormat: `projects/{project-number-or-id}` or\n`projects/{project-number-or-id}/locations/{location-id}`.\n\nFor global calls, use `projects/{project-number-or-id}/locations/global` or\n`projects/{project-number-or-id}`.\n\nNon-global location is required for AutoML models.\n\nOnly models within the same region (have same location-id) can be used,\notherwise an INVALID_ARGUMENT (400) error is returned.",
-              "required": true,
-              "type": "string"
-            },
-            "displayLanguageCode": {
-              "type": "string",
-              "location": "query",
-              "description": "Optional. The language to use to return localized, human readable names\nof supported languages. If missing, then display names are not returned\nin a response."
-            },
-            "model": {
-              "location": "query",
-              "description": "Optional. Get supported languages of this model.\n\nThe format depends on model type:\n\n- AutoML Translation models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`\n\n- General (built-in) models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/base`\n\n\nReturns languages supported by the specified model.\nIf missing, we get supported languages of Google general base (PBMT) model.",
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/cloud-translation"
-          ]
-        }
-      },
-      "resources": {
-        "locations": {
-          "methods": {
-            "batchTranslateText": {
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "parent": {
-                  "location": "path",
-                  "description": "Required. Location to make a call. Must refer to a caller's project.\n\nFormat: `projects/{project-number-or-id}/locations/{location-id}`.\n\nThe `global` location is not supported for batch translation.\n\nOnly AutoML Translation models or glossaries within the same region (have\nthe same location-id) can be used, otherwise an INVALID_ARGUMENT (400)\nerror is returned.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$"
-                }
-              },
-              "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}:batchTranslateText",
-              "path": "v3beta1/{+parent}:batchTranslateText",
-              "id": "translate.projects.locations.batchTranslateText",
-              "request": {
-                "$ref": "BatchTranslateTextRequest"
-              },
-              "description": "Translates a large volume of text in asynchronous batch mode.\nThis function provides real-time output as the inputs are being processed.\nIf caller cancels a request, the partial results (for an input file, it's\nall or nothing) may still be available on the specified output location.\n\nThis call returns immediately and you can\nuse google.longrunning.Operation.name to poll the status of the call.",
-              "response": {
-                "$ref": "Operation"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "POST"
-            },
-            "list": {
-              "response": {
-                "$ref": "ListLocationsResponse"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
-                  "description": "The resource that owns the locations collection, if applicable.",
-                  "required": true,
-                  "type": "string"
-                },
-                "pageToken": {
-                  "description": "The standard list page token.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "type": "integer",
-                  "location": "query",
-                  "description": "The standard list page size.",
-                  "format": "int32"
-                },
-                "filter": {
-                  "location": "query",
-                  "description": "The standard list filter.",
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/cloud-translation"
-              ],
-              "flatPath": "v3beta1/projects/{projectsId}/locations",
-              "path": "v3beta1/{+name}/locations",
-              "id": "translate.projects.locations.list",
-              "description": "Lists information about the supported locations for this service."
-            },
-            "translateText": {
-              "response": {
-                "$ref": "TranslateTextResponse"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "POST",
-              "parameters": {
-                "parent": {
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "location": "path",
-                  "description": "Required. Project or location to make a call. Must refer to a caller's\nproject.\n\nFormat: `projects/{project-number-or-id}` or\n`projects/{project-number-or-id}/locations/{location-id}`.\n\nFor global calls, use `projects/{project-number-or-id}/locations/global` or\n`projects/{project-number-or-id}`.\n\nNon-global location is required for requests using AutoML models or\ncustom glossaries.\n\nModels and glossaries must be within the same region (have same\nlocation-id), otherwise an INVALID_ARGUMENT (400) error is returned."
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/cloud-translation"
-              ],
-              "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}:translateText",
-              "path": "v3beta1/{+parent}:translateText",
-              "id": "translate.projects.locations.translateText",
-              "description": "Translates input text and returns translated text.",
-              "request": {
-                "$ref": "TranslateTextRequest"
-              }
-            },
-            "getSupportedLanguages": {
-              "description": "Returns a list of supported languages for translation.",
-              "response": {
-                "$ref": "SupportedLanguages"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "parent": {
-                  "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "location": "path",
-                  "description": "Required. Project or location to make a call. Must refer to a caller's\nproject.\n\nFormat: `projects/{project-number-or-id}` or\n`projects/{project-number-or-id}/locations/{location-id}`.\n\nFor global calls, use `projects/{project-number-or-id}/locations/global` or\n`projects/{project-number-or-id}`.\n\nNon-global location is required for AutoML models.\n\nOnly models within the same region (have same location-id) can be used,\notherwise an INVALID_ARGUMENT (400) error is returned.",
-                  "required": true,
-                  "type": "string"
-                },
-                "displayLanguageCode": {
-                  "location": "query",
-                  "description": "Optional. The language to use to return localized, human readable names\nof supported languages. If missing, then display names are not returned\nin a response.",
-                  "type": "string"
-                },
-                "model": {
-                  "location": "query",
-                  "description": "Optional. Get supported languages of this model.\n\nThe format depends on model type:\n\n- AutoML Translation models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`\n\n- General (built-in) models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/base`\n\n\nReturns languages supported by the specified model.\nIf missing, we get supported languages of Google general base (PBMT) model.",
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/cloud-translation"
-              ],
-              "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/supportedLanguages",
-              "path": "v3beta1/{+parent}/supportedLanguages",
-              "id": "translate.projects.locations.getSupportedLanguages"
-            },
-            "detectLanguage": {
-              "request": {
-                "$ref": "DetectLanguageRequest"
-              },
-              "description": "Detects the language of text within a request.",
-              "response": {
-                "$ref": "DetectLanguageResponse"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/cloud-translation"
-              ],
-              "parameters": {
-                "parent": {
-                  "description": "Required. Project or location to make a call. Must refer to a caller's\nproject.\n\nFormat: `projects/{project-number-or-id}/locations/{location-id}` or\n`projects/{project-number-or-id}`.\n\nFor global calls, use `projects/{project-number-or-id}/locations/global` or\n`projects/{project-number-or-id}`.\n\nOnly models within the same region (has same location-id) can be used.\nOtherwise an INVALID_ARGUMENT (400) error is returned.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}:detectLanguage",
-              "path": "v3beta1/{+parent}:detectLanguage",
-              "id": "translate.projects.locations.detectLanguage"
-            },
-            "get": {
-              "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}",
-              "id": "translate.projects.locations.get",
-              "path": "v3beta1/{+name}",
-              "description": "Gets information about a location.",
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "name"
-              ],
-              "response": {
-                "$ref": "Location"
-              },
-              "parameters": {
-                "name": {
-                  "description": "Resource name for the location.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/cloud-translation"
-              ]
-            }
-          },
-          "resources": {
-            "operations": {
-              "methods": {
-                "cancel": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-translation"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "The name of the operation resource to be cancelled.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
-                    }
-                  },
-                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-                  "path": "v3beta1/{+name}:cancel",
-                  "id": "translate.projects.locations.operations.cancel",
-                  "request": {
-                    "$ref": "CancelOperationRequest"
-                  },
-                  "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "POST"
-                },
-                "delete": {
-                  "httpMethod": "DELETE",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-translation"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "The name of the operation resource to be deleted.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                  "id": "translate.projects.locations.operations.delete",
-                  "path": "v3beta1/{+name}",
-                  "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`."
-                },
-                "list": {
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "ListOperationsResponse"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-translation"
-                  ],
-                  "parameters": {
-                    "filter": {
-                      "type": "string",
-                      "location": "query",
-                      "description": "The standard list filter."
-                    },
-                    "name": {
-                      "location": "path",
-                      "description": "The name of the operation's parent resource.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$"
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "description": "The standard list page token.",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "location": "query",
-                      "description": "The standard list page size.",
-                      "format": "int32",
-                      "type": "integer"
-                    }
-                  },
-                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/operations",
-                  "id": "translate.projects.locations.operations.list",
-                  "path": "v3beta1/{+name}/operations",
-                  "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id."
-                },
-                "get": {
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "The name of the operation resource.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-translation"
-                  ],
-                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                  "path": "v3beta1/{+name}",
-                  "id": "translate.projects.locations.operations.get",
-                  "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
-                },
-                "wait": {
-                  "path": "v3beta1/{+name}:wait",
-                  "id": "translate.projects.locations.operations.wait",
-                  "request": {
-                    "$ref": "WaitOperationRequest"
-                  },
-                  "description": "Waits for the specified long-running operation until it is done or reaches\nat most a specified timeout, returning the latest state.  If the operation\nis already done, the latest state is immediately returned.  If the timeout\nspecified is greater than the default HTTP/RPC timeout, the HTTP/RPC\ntimeout is used.  If the server does not support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.\nNote that this method is on a best-effort basis.  It may return the latest\nstate before the specified timeout (including immediately), meaning even an\nimmediate response is no guarantee that the operation is done.",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-translation"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "The name of the operation resource to wait on.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:wait"
-                }
-              }
-            },
-            "glossaries": {
-              "methods": {
-                "create": {
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameters": {
-                    "parent": {
-                      "description": "Required. The project name.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/glossaries",
-                  "id": "translate.projects.locations.glossaries.create",
-                  "path": "v3beta1/{+parent}/glossaries",
-                  "description": "Creates a glossary and returns the long-running operation. Returns\nNOT_FOUND, if the project doesn't exist.",
-                  "request": {
-                    "$ref": "Glossary"
-                  }
-                },
-                "delete": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-translation"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "Required. The name of the glossary to delete.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/glossaries/[^/]+$"
-                    }
-                  },
-                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}",
-                  "path": "v3beta1/{+name}",
-                  "id": "translate.projects.locations.glossaries.delete",
-                  "description": "Deletes a glossary, or cancels glossary construction\nif the glossary isn't created yet.\nReturns NOT_FOUND, if the glossary doesn't exist.",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "DELETE"
-                },
-                "list": {
-                  "response": {
-                    "$ref": "ListGlossariesResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-translation"
-                  ],
-                  "parameters": {
-                    "pageToken": {
-                      "location": "query",
-                      "description": "Optional. A token identifying a page of results the server should return.\nTypically, this is the value of [ListGlossariesResponse.next_page_token]\nreturned from the previous call to `ListGlossaries` method.\nThe first page is returned if `page_token`is empty or missing.",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "location": "query",
-                      "description": "Optional. Requested page size. The server may return fewer glossaries than\nrequested. If unspecified, the server picks an appropriate default.",
-                      "format": "int32",
-                      "type": "integer"
-                    },
-                    "parent": {
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "description": "Required. The name of the project from which to list all of the glossaries."
-                    },
-                    "filter": {
-                      "location": "query",
-                      "description": "Optional. Filter specifying constraints of a list operation.\nFiltering is not supported yet, and the parameter currently has no effect.\nIf missing, no filtering is performed.",
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/glossaries",
-                  "path": "v3beta1/{+parent}/glossaries",
-                  "id": "translate.projects.locations.glossaries.list",
-                  "description": "Lists glossaries in a project. Returns NOT_FOUND, if the project doesn't\nexist."
-                },
-                "get": {
-                  "description": "Gets a glossary. Returns NOT_FOUND, if the glossary doesn't\nexist.",
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "Glossary"
-                  },
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "Required. The name of the glossary to retrieve.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/glossaries/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-translation"
-                  ],
-                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}",
-                  "id": "translate.projects.locations.glossaries.get",
-                  "path": "v3beta1/{+name}"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "parameters": {
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "type": "string",
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
-    },
-    "prettyPrint": {
-      "type": "boolean",
-      "default": "true",
-      "location": "query",
-      "description": "Returns response with indentations and line breaks."
-    },
-    "quotaUser": {
-      "type": "string",
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "callback": {
-      "type": "string",
-      "location": "query",
-      "description": "JSONP"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format."
-    },
-    "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json"
-    }
-  },
-  "version": "v3beta1",
-  "baseUrl": "https://translation.googleapis.com/",
-  "servicePath": "",
-  "description": "Integrates text translation into your website or application.",
-  "kind": "discovery#restDescription",
-  "basePath": "",
-  "revision": "20191129",
-  "documentationLink": "https://cloud.google.com/translate/docs/quickstarts",
   "id": "translate:v3beta1",
+  "documentationLink": "https://cloud.google.com/translate/docs/quickstarts",
+  "revision": "20191206",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
@@ -673,6 +10,10 @@
       "description": "A single supported language response corresponds to information related\nto one supported language.",
       "type": "object",
       "properties": {
+        "displayName": {
+          "description": "Human readable name of the language localized in the display language\nspecified in the request.",
+          "type": "string"
+        },
         "supportSource": {
           "description": "Can be used as source language.",
           "type": "boolean"
@@ -684,16 +25,10 @@
         "supportTarget": {
           "description": "Can be used as target language.",
           "type": "boolean"
-        },
-        "displayName": {
-          "description": "Human readable name of the language localized in the display language\nspecified in the request.",
-          "type": "string"
         }
       }
     },
     "DetectedLanguage": {
-      "id": "DetectedLanguage",
-      "description": "The response message for language detection.",
       "type": "object",
       "properties": {
         "confidence": {
@@ -705,18 +40,20 @@
           "description": "The BCP-47 language code of source content in the request, detected\nautomatically.",
           "type": "string"
         }
-      }
+      },
+      "id": "DetectedLanguage",
+      "description": "The response message for language detection."
     },
     "GlossaryInputConfig": {
-      "id": "GlossaryInputConfig",
       "description": "Input configuration for glossaries.",
       "type": "object",
       "properties": {
         "gcsSource": {
-          "description": "Required. Google Cloud Storage location of glossary data.\nFile format is determined based on the filename extension. API returns\n[google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file\nformats. Wildcards are not allowed. This must be a single file in one of\nthe following formats:\n\nFor unidirectional glossaries:\n\n- TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated.\n  The first column is source text. The second column is target text.\n  The file must not contain headers. That is, the first row is data, not\n  column names.\n\n- TMX (`.tmx`): TMX file with parallel data defining source/target term\npairs.\n\nFor equivalent term sets glossaries:\n\n- CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms\n  in multiple languages. The format is defined for Google Translation\n  Toolkit and documented in [Use a\n  glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en).",
-          "$ref": "GcsSource"
+          "$ref": "GcsSource",
+          "description": "Required. Google Cloud Storage location of glossary data.\nFile format is determined based on the filename extension. API returns\n[google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file\nformats. Wildcards are not allowed. This must be a single file in one of\nthe following formats:\n\nFor unidirectional glossaries:\n\n- TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated.\n  The first column is source text. The second column is target text.\n  The file must not contain headers. That is, the first row is data, not\n  column names.\n\n- TMX (`.tmx`): TMX file with parallel data defining source/target term\npairs.\n\nFor equivalent term sets glossaries:\n\n- CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms\n  in multiple languages. The format is defined for Google Translation\n  Toolkit and documented in [Use a\n  glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en)."
         }
-      }
+      },
+      "id": "GlossaryInputConfig"
     },
     "SupportedLanguages": {
       "description": "The response message for discovering supported languages.",
@@ -733,7 +70,6 @@
       "id": "SupportedLanguages"
     },
     "OutputConfig": {
-      "description": "Output configuration for BatchTranslateText request.",
       "type": "object",
       "properties": {
         "gcsDestination": {
@@ -741,25 +77,25 @@
           "$ref": "GcsDestination"
         }
       },
-      "id": "OutputConfig"
+      "id": "OutputConfig",
+      "description": "Output configuration for BatchTranslateText request."
     },
     "TranslateTextGlossaryConfig": {
       "description": "Configures which glossary should be used for a specific target language,\nand defines options for applying that glossary.",
       "type": "object",
       "properties": {
-        "ignoreCase": {
-          "type": "boolean",
-          "description": "Optional. Indicates match is case-insensitive.\nDefault value is false if missing."
-        },
         "glossary": {
           "description": "Required. Specifies the glossary used for this translation. Use\nthis format: projects/*/locations/*/glossaries/*",
           "type": "string"
+        },
+        "ignoreCase": {
+          "description": "Optional. Indicates match is case-insensitive.\nDefault value is false if missing.",
+          "type": "boolean"
         }
       },
       "id": "TranslateTextGlossaryConfig"
     },
     "Translation": {
-      "id": "Translation",
       "description": "A single translation response.",
       "type": "object",
       "properties": {
@@ -768,40 +104,42 @@
           "type": "string"
         },
         "translatedText": {
-          "type": "string",
-          "description": "Text translated into the target language."
-        },
-        "detectedLanguageCode": {
-          "description": "The BCP-47 language code of source text in the initial request, detected\nautomatically, if no source language was passed within the initial\nrequest. If the source language was passed, auto-detection of the language\ndoes not occur and this field is empty.",
+          "description": "Text translated into the target language.",
           "type": "string"
         },
+        "detectedLanguageCode": {
+          "type": "string",
+          "description": "The BCP-47 language code of source text in the initial request, detected\nautomatically, if no source language was passed within the initial\nrequest. If the source language was passed, auto-detection of the language\ndoes not occur and this field is empty."
+        },
         "glossaryConfig": {
-          "description": "The `glossary_config` used for this translation.",
-          "$ref": "TranslateTextGlossaryConfig"
+          "$ref": "TranslateTextGlossaryConfig",
+          "description": "The `glossary_config` used for this translation."
         }
-      }
+      },
+      "id": "Translation"
     },
     "LanguageCodesSet": {
-      "description": "Used with equivalent term set glossaries.",
       "type": "object",
       "properties": {
         "languageCodes": {
+          "description": "The BCP-47 language code(s) for terms defined in the glossary.\nAll entries are unique. The list contains at least two entries.\nExpected to be an exact match for GlossaryTerm.language_code.",
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "The BCP-47 language code(s) for terms defined in the glossary.\nAll entries are unique. The list contains at least two entries.\nExpected to be an exact match for GlossaryTerm.language_code."
+          }
         }
       },
-      "id": "LanguageCodesSet"
+      "id": "LanguageCodesSet",
+      "description": "Used with equivalent term set glossaries."
     },
     "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
       "properties": {},
-      "id": "Empty"
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
     },
     "Location": {
+      "id": "Location",
       "description": "A resource that represents Google Cloud Platform location.",
       "type": "object",
       "properties": {
@@ -814,13 +152,13 @@
           "type": "string"
         },
         "displayName": {
-          "type": "string",
-          "description": "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."
+          "description": "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\".",
+          "type": "string"
         },
         "metadata": {
           "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
           },
           "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
           "type": "object"
@@ -832,31 +170,30 @@
             "type": "string"
           }
         }
-      },
-      "id": "Location"
+      }
     },
     "DetectLanguageRequest": {
       "description": "The request message for language detection.",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string",
-          "description": "The content of the input stored as a string."
-        },
-        "model": {
-          "description": "Optional. The language detection model to be used.\n\nFormat:\n`projects/{project-number-or-id}/locations/{location-id}/models/language-detection/{model-id}`\n\nOnly one language detection model is currently supported:\n`projects/{project-number-or-id}/locations/{location-id}/models/language-detection/default`.\n\nIf not specified, the default model is used.",
-          "type": "string"
-        },
         "mimeType": {
           "description": "Optional. The format of the source text, for example, \"text/html\",\n\"text/plain\". If left blank, the MIME type defaults to \"text/html\".",
           "type": "string"
         },
         "labels": {
-          "description": "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://cloud.google.com/translate/docs/labels for more information.",
           "type": "object",
           "additionalProperties": {
             "type": "string"
-          }
+          },
+          "description": "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://cloud.google.com/translate/docs/labels for more information."
+        },
+        "content": {
+          "description": "The content of the input stored as a string.",
+          "type": "string"
+        },
+        "model": {
+          "description": "Optional. The language detection model to be used.\n\nFormat:\n`projects/{project-number-or-id}/locations/{location-id}/models/language-detection/{model-id}`\n\nOnly one language detection model is currently supported:\n`projects/{project-number-or-id}/locations/{location-id}/models/language-detection/default`.\n\nIf not specified, the default model is used.",
+          "type": "string"
         }
       },
       "id": "DetectLanguageRequest"
@@ -872,11 +209,11 @@
           }
         },
         "glossaryTranslations": {
-          "description": "Text translation responses if a glossary is provided in the request.\nThis can be the same as\n`translations` if no terms apply.\nThis field has the same length as\n`contents`.",
           "type": "array",
           "items": {
             "$ref": "Translation"
-          }
+          },
+          "description": "Text translation responses if a glossary is provided in the request.\nThis can be the same as\n`translations` if no terms apply.\nThis field has the same length as\n`contents`."
         }
       },
       "id": "TranslateTextResponse"
@@ -886,8 +223,8 @@
       "type": "object",
       "properties": {
         "outputUriPrefix": {
-          "description": "Required. There must be no files under 'output_uri_prefix'.\n'output_uri_prefix' must end with \"/\" and start with \"gs://\", otherwise an\nINVALID_ARGUMENT (400) error is returned.",
-          "type": "string"
+          "type": "string",
+          "description": "Required. There must be no files under 'output_uri_prefix'.\n'output_uri_prefix' must end with \"/\" and start with \"gs://\", otherwise an\nINVALID_ARGUMENT (400) error is returned."
         }
       },
       "id": "GcsDestination"
@@ -896,22 +233,27 @@
       "description": "Represents a glossary built from user provided data.",
       "type": "object",
       "properties": {
+        "entryCount": {
+          "type": "integer",
+          "description": "Output only. The number of entries defined in the glossary.",
+          "format": "int32"
+        },
         "inputConfig": {
-          "description": "Required. Provides examples to build the glossary from.\nTotal glossary must not exceed 10M Unicode codepoints.",
-          "$ref": "GlossaryInputConfig"
+          "$ref": "GlossaryInputConfig",
+          "description": "Required. Provides examples to build the glossary from.\nTotal glossary must not exceed 10M Unicode codepoints."
         },
         "submitTime": {
-          "type": "string",
           "description": "Output only. When CreateGlossary was called.",
-          "format": "google-datetime"
-        },
-        "name": {
-          "description": "Required. The resource name of the glossary. Glossary names have the form\n`projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.",
+          "format": "google-datetime",
           "type": "string"
         },
         "languagePair": {
           "$ref": "LanguageCodePair",
           "description": "Used with unidirectional glossaries."
+        },
+        "name": {
+          "description": "Required. The resource name of the glossary. Glossary names have the form\n`projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.",
+          "type": "string"
         },
         "languageCodesSet": {
           "$ref": "LanguageCodesSet",
@@ -921,40 +263,35 @@
           "type": "string",
           "description": "Output only. When the glossary creation was finished.",
           "format": "google-datetime"
-        },
-        "entryCount": {
-          "description": "Output only. The number of entries defined in the glossary.",
-          "format": "int32",
-          "type": "integer"
         }
       },
       "id": "Glossary"
     },
     "ListLocationsResponse": {
+      "description": "The response message for Locations.ListLocations.",
       "type": "object",
       "properties": {
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        },
         "locations": {
           "description": "A list of locations that matches the specified filter in the request.",
           "type": "array",
           "items": {
             "$ref": "Location"
           }
-        },
-        "nextPageToken": {
-          "type": "string",
-          "description": "The standard List next-page token."
         }
       },
-      "id": "ListLocationsResponse",
-      "description": "The response message for Locations.ListLocations."
+      "id": "ListLocationsResponse"
     },
     "GcsSource": {
       "description": "The Google Cloud Storage location for the input content.",
       "type": "object",
       "properties": {
         "inputUri": {
-          "type": "string",
-          "description": "Required. Source data URI. For example, `gs://my_bucket/my_object`."
+          "description": "Required. Source data URI. For example, `gs://my_bucket/my_object`.",
+          "type": "string"
         }
       },
       "id": "GcsSource"
@@ -963,35 +300,6 @@
       "description": "The batch translation request.",
       "type": "object",
       "properties": {
-        "models": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Optional. The models to use for translation. Map's key is target language\ncode. Map's value is model name. Value can be a built-in general model,\nor an AutoML Translation model.\n\nThe value format depends on model type:\n\n- AutoML Translation models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`\n\n- General (built-in) models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/base`\n\n\nIf the map is empty or a specific model is\nnot requested for a language pair, then default google model (nmt) is used."
-        },
-        "targetLanguageCodes": {
-          "description": "Required. Specify up to 10 language codes here.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://cloud.google.com/translate/docs/labels for more information.",
-          "type": "object"
-        },
-        "sourceLanguageCode": {
-          "type": "string",
-          "description": "Required. Source language code."
-        },
-        "outputConfig": {
-          "$ref": "OutputConfig",
-          "description": "Required. Output configuration.\nIf 2 input configs match to the same file (that is, same input path),\nwe don't generate output for duplicate inputs."
-        },
         "inputConfigs": {
           "description": "Required. Input configurations.\nThe total number of files matched should be \u003c= 1000.\nThe total content size should be \u003c= 100M Unicode codepoints.\nThe files must use UTF-8 encoding.",
           "type": "array",
@@ -1000,11 +308,40 @@
           }
         },
         "glossaries": {
-          "type": "object",
           "additionalProperties": {
             "$ref": "TranslateTextGlossaryConfig"
           },
-          "description": "Optional. Glossaries to be applied for translation.\nIt's keyed by target language code."
+          "description": "Optional. Glossaries to be applied for translation.\nIt's keyed by target language code.",
+          "type": "object"
+        },
+        "models": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Optional. The models to use for translation. Map's key is target language\ncode. Map's value is model name. Value can be a built-in general model,\nor an AutoML Translation model.\n\nThe value format depends on model type:\n\n- AutoML Translation models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`\n\n- General (built-in) models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/base`\n\n\nIf the map is empty or a specific model is\nnot requested for a language pair, then default google model (nmt) is used."
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://cloud.google.com/translate/docs/labels for more information.",
+          "type": "object"
+        },
+        "targetLanguageCodes": {
+          "description": "Required. Specify up to 10 language codes here.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sourceLanguageCode": {
+          "type": "string",
+          "description": "Required. Source language code."
+        },
+        "outputConfig": {
+          "description": "Required. Output configuration.\nIf 2 input configs match to the same file (that is, same input path),\nwe don't generate output for duplicate inputs.",
+          "$ref": "OutputConfig"
         }
       },
       "id": "BatchTranslateTextRequest"
@@ -1025,23 +362,14 @@
       "id": "InputConfig"
     },
     "CancelOperationRequest": {
-      "id": "CancelOperationRequest",
       "description": "The request message for Operations.CancelOperation.",
       "type": "object",
-      "properties": {}
+      "properties": {},
+      "id": "CancelOperationRequest"
     },
     "Operation": {
-      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
       "type": "object",
       "properties": {
-        "name": {
-          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`.",
-          "type": "string"
-        },
-        "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
-        },
         "metadata": {
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
@@ -1051,19 +379,28 @@
           "type": "object"
         },
         "done": {
-          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
-          "type": "boolean"
+          "type": "boolean",
+          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."
         },
         "response": {
+          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
-          },
-          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
-          "type": "object"
+          }
+        },
+        "name": {
+          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`.",
+          "type": "string"
+        },
+        "error": {
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         }
       },
-      "id": "Operation"
+      "id": "Operation",
+      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call."
     },
     "ListGlossariesResponse": {
       "description": "Response message for ListGlossaries.",
@@ -1074,28 +411,30 @@
           "type": "string"
         },
         "glossaries": {
-          "description": "The list of glossaries for a project.",
           "type": "array",
           "items": {
             "$ref": "Glossary"
-          }
+          },
+          "description": "The list of glossaries for a project."
         }
       },
       "id": "ListGlossariesResponse"
     },
     "WaitOperationRequest": {
+      "description": "The request message for Operations.WaitOperation.",
       "type": "object",
       "properties": {
         "timeout": {
+          "type": "string",
           "description": "The maximum duration to wait before timing out. If left blank, the wait\nwill be at most the time permitted by the underlying HTTP/RPC protocol.\nIf RPC context deadline is also specified, the shorter one will be used.",
-          "format": "google-duration",
-          "type": "string"
+          "format": "google-duration"
         }
       },
-      "id": "WaitOperationRequest",
-      "description": "The request message for Operations.WaitOperation."
+      "id": "WaitOperationRequest"
     },
     "DetectLanguageResponse": {
+      "id": "DetectLanguageResponse",
+      "description": "The response message for language detection.",
       "type": "object",
       "properties": {
         "languages": {
@@ -1105,26 +444,25 @@
             "$ref": "DetectedLanguage"
           }
         }
-      },
-      "id": "DetectLanguageResponse",
-      "description": "The response message for language detection."
+      }
     },
     "LanguageCodePair": {
+      "id": "LanguageCodePair",
       "description": "Used with unidirectional glossaries.",
       "type": "object",
       "properties": {
         "targetLanguageCode": {
-          "description": "Required. The BCP-47 language code for translation output, for example,\n\"zh-CN\". Expected to be an exact match for GlossaryTerm.language_code.",
-          "type": "string"
+          "type": "string",
+          "description": "Required. The BCP-47 language code for translation output, for example,\n\"zh-CN\". Expected to be an exact match for GlossaryTerm.language_code."
         },
         "sourceLanguageCode": {
           "description": "Required. The BCP-47 language code of the input text, for example,\n\"en-US\". Expected to be an exact match for GlossaryTerm.language_code.",
           "type": "string"
         }
-      },
-      "id": "LanguageCodePair"
+      }
     },
     "Status": {
+      "id": "Status",
       "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
       "type": "object",
       "properties": {
@@ -1134,31 +472,26 @@
           "type": "integer"
         },
         "message": {
-          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
-          "type": "string"
+          "type": "string",
+          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."
         },
         "details": {
           "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
           "type": "array",
           "items": {
-            "type": "object",
             "additionalProperties": {
-              "type": "any",
-              "description": "Properties of the object. Contains field @type with type URL."
-            }
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
+            },
+            "type": "object"
           }
         }
-      },
-      "id": "Status"
+      }
     },
     "TranslateTextRequest": {
       "description": "The request message for synchronous translation.",
       "type": "object",
       "properties": {
-        "sourceLanguageCode": {
-          "description": "Optional. The BCP-47 language code of the input text if\nknown, for example, \"en-US\" or \"sr-Latn\". Supported language codes are\nlisted in Language Support. If the source language isn't specified, the API\nattempts to identify the source language automatically and returns the\nsource language within the response.",
-          "type": "string"
-        },
         "model": {
           "description": "Optional. The `model` type requested for this translation.\n\nThe format depends on model type:\n\n- AutoML Translation models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`\n\n- General (built-in) models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/base`\n\n\nFor global (non-regionalized) requests, use `location-id` `global`.\nFor example,\n`projects/{project-number-or-id}/locations/global/models/general/nmt`.\n\nIf missing, the system decides which google base model to use.",
           "type": "string"
@@ -1175,26 +508,28 @@
           "type": "string"
         },
         "glossaryConfig": {
-          "description": "Optional. Glossary to be applied. The glossary must be\nwithin the same region (have the same location-id) as the model, otherwise\nan INVALID_ARGUMENT (400) error is returned.",
-          "$ref": "TranslateTextGlossaryConfig"
+          "$ref": "TranslateTextGlossaryConfig",
+          "description": "Optional. Glossary to be applied. The glossary must be\nwithin the same region (have the same location-id) as the model, otherwise\nan INVALID_ARGUMENT (400) error is returned."
         },
         "labels": {
-          "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://cloud.google.com/translate/docs/labels for more information."
+          "description": "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://cloud.google.com/translate/docs/labels for more information.",
+          "type": "object"
         },
         "targetLanguageCode": {
           "description": "Required. The BCP-47 language code to use for translation of the input\ntext, set to one of the language codes listed in Language Support.",
           "type": "string"
+        },
+        "sourceLanguageCode": {
+          "type": "string",
+          "description": "Optional. The BCP-47 language code of the input text if\nknown, for example, \"en-US\" or \"sr-Latn\". Supported language codes are\nlisted in Language Support. If the source language isn't specified, the API\nattempts to identify the source language automatically and returns the\nsource language within the response."
         }
       },
       "id": "TranslateTextRequest"
     },
     "ListOperationsResponse": {
-      "id": "ListOperationsResponse",
-      "description": "The response message for Operations.ListOperations.",
       "type": "object",
       "properties": {
         "operations": {
@@ -1205,17 +540,19 @@
           }
         },
         "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
+          "type": "string",
+          "description": "The standard List next-page token."
         }
-      }
+      },
+      "id": "ListOperationsResponse",
+      "description": "The response message for Operations.ListOperations."
     }
   },
-  "protocol": "rest",
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
+  "protocol": "rest",
   "canonicalName": "Translate",
   "auth": {
     "oauth2": {
@@ -1235,5 +572,668 @@
   "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
   "title": "Cloud Translation API",
-  "ownerName": "Google"
+  "ownerName": "Google",
+  "resources": {
+    "projects": {
+      "methods": {
+        "detectLanguage": {
+          "path": "v3beta1/{+parent}:detectLanguage",
+          "id": "translate.projects.detectLanguage",
+          "request": {
+            "$ref": "DetectLanguageRequest"
+          },
+          "description": "Detects the language of text within a request.",
+          "response": {
+            "$ref": "DetectLanguageResponse"
+          },
+          "parameterOrder": [
+            "parent"
+          ],
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/cloud-translation"
+          ],
+          "parameters": {
+            "parent": {
+              "location": "path",
+              "description": "Required. Project or location to make a call. Must refer to a caller's\nproject.\n\nFormat: `projects/{project-number-or-id}/locations/{location-id}` or\n`projects/{project-number-or-id}`.\n\nFor global calls, use `projects/{project-number-or-id}/locations/global` or\n`projects/{project-number-or-id}`.\n\nOnly models within the same region (has same location-id) can be used.\nOtherwise an INVALID_ARGUMENT (400) error is returned.",
+              "required": true,
+              "type": "string",
+              "pattern": "^projects/[^/]+$"
+            }
+          },
+          "flatPath": "v3beta1/projects/{projectsId}:detectLanguage"
+        },
+        "translateText": {
+          "request": {
+            "$ref": "TranslateTextRequest"
+          },
+          "description": "Translates input text and returns translated text.",
+          "httpMethod": "POST",
+          "parameterOrder": [
+            "parent"
+          ],
+          "response": {
+            "$ref": "TranslateTextResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/cloud-translation"
+          ],
+          "parameters": {
+            "parent": {
+              "description": "Required. Project or location to make a call. Must refer to a caller's\nproject.\n\nFormat: `projects/{project-number-or-id}` or\n`projects/{project-number-or-id}/locations/{location-id}`.\n\nFor global calls, use `projects/{project-number-or-id}/locations/global` or\n`projects/{project-number-or-id}`.\n\nNon-global location is required for requests using AutoML models or\ncustom glossaries.\n\nModels and glossaries must be within the same region (have same\nlocation-id), otherwise an INVALID_ARGUMENT (400) error is returned.",
+              "required": true,
+              "type": "string",
+              "pattern": "^projects/[^/]+$",
+              "location": "path"
+            }
+          },
+          "flatPath": "v3beta1/projects/{projectsId}:translateText",
+          "id": "translate.projects.translateText",
+          "path": "v3beta1/{+parent}:translateText"
+        },
+        "getSupportedLanguages": {
+          "path": "v3beta1/{+parent}/supportedLanguages",
+          "id": "translate.projects.getSupportedLanguages",
+          "description": "Returns a list of supported languages for translation.",
+          "response": {
+            "$ref": "SupportedLanguages"
+          },
+          "parameterOrder": [
+            "parent"
+          ],
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/cloud-translation"
+          ],
+          "parameters": {
+            "displayLanguageCode": {
+              "location": "query",
+              "description": "Optional. The language to use to return localized, human readable names\nof supported languages. If missing, then display names are not returned\nin a response.",
+              "type": "string"
+            },
+            "model": {
+              "description": "Optional. Get supported languages of this model.\n\nThe format depends on model type:\n\n- AutoML Translation models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`\n\n- General (built-in) models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/base`\n\n\nReturns languages supported by the specified model.\nIf missing, we get supported languages of Google general base (PBMT) model.",
+              "type": "string",
+              "location": "query"
+            },
+            "parent": {
+              "pattern": "^projects/[^/]+$",
+              "location": "path",
+              "description": "Required. Project or location to make a call. Must refer to a caller's\nproject.\n\nFormat: `projects/{project-number-or-id}` or\n`projects/{project-number-or-id}/locations/{location-id}`.\n\nFor global calls, use `projects/{project-number-or-id}/locations/global` or\n`projects/{project-number-or-id}`.\n\nNon-global location is required for AutoML models.\n\nOnly models within the same region (have same location-id) can be used,\notherwise an INVALID_ARGUMENT (400) error is returned.",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "flatPath": "v3beta1/projects/{projectsId}/supportedLanguages"
+        }
+      },
+      "resources": {
+        "locations": {
+          "methods": {
+            "detectLanguage": {
+              "response": {
+                "$ref": "DetectLanguageResponse"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-translation"
+              ],
+              "parameters": {
+                "parent": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path",
+                  "description": "Required. Project or location to make a call. Must refer to a caller's\nproject.\n\nFormat: `projects/{project-number-or-id}/locations/{location-id}` or\n`projects/{project-number-or-id}`.\n\nFor global calls, use `projects/{project-number-or-id}/locations/global` or\n`projects/{project-number-or-id}`.\n\nOnly models within the same region (has same location-id) can be used.\nOtherwise an INVALID_ARGUMENT (400) error is returned."
+                }
+              },
+              "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}:detectLanguage",
+              "path": "v3beta1/{+parent}:detectLanguage",
+              "id": "translate.projects.locations.detectLanguage",
+              "request": {
+                "$ref": "DetectLanguageRequest"
+              },
+              "description": "Detects the language of text within a request."
+            },
+            "get": {
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "Resource name for the location.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/locations/[^/]+$"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-translation"
+              ],
+              "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}",
+              "id": "translate.projects.locations.get",
+              "path": "v3beta1/{+name}",
+              "description": "Gets information about a location.",
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "Location"
+              }
+            },
+            "batchTranslateText": {
+              "request": {
+                "$ref": "BatchTranslateTextRequest"
+              },
+              "description": "Translates a large volume of text in asynchronous batch mode.\nThis function provides real-time output as the inputs are being processed.\nIf caller cancels a request, the partial results (for an input file, it's\nall or nothing) may still be available on the specified output location.\n\nThis call returns immediately and you can\nuse google.longrunning.Operation.name to poll the status of the call.",
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "parent"
+              ],
+              "response": {
+                "$ref": "Operation"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "parent": {
+                  "description": "Required. Location to make a call. Must refer to a caller's project.\n\nFormat: `projects/{project-number-or-id}/locations/{location-id}`.\n\nThe `global` location is not supported for batch translation.\n\nOnly AutoML Translation models or glossaries within the same region (have\nthe same location-id) can be used, otherwise an INVALID_ARGUMENT (400)\nerror is returned.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}:batchTranslateText",
+              "id": "translate.projects.locations.batchTranslateText",
+              "path": "v3beta1/{+parent}:batchTranslateText"
+            },
+            "list": {
+              "response": {
+                "$ref": "ListLocationsResponse"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-translation"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "The resource that owns the locations collection, if applicable.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "The standard list page token.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "The standard list page size.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "filter": {
+                  "location": "query",
+                  "description": "The standard list filter.",
+                  "type": "string"
+                }
+              },
+              "flatPath": "v3beta1/projects/{projectsId}/locations",
+              "path": "v3beta1/{+name}/locations",
+              "id": "translate.projects.locations.list",
+              "description": "Lists information about the supported locations for this service."
+            },
+            "getSupportedLanguages": {
+              "parameters": {
+                "displayLanguageCode": {
+                  "location": "query",
+                  "description": "Optional. The language to use to return localized, human readable names\nof supported languages. If missing, then display names are not returned\nin a response.",
+                  "type": "string"
+                },
+                "model": {
+                  "location": "query",
+                  "description": "Optional. Get supported languages of this model.\n\nThe format depends on model type:\n\n- AutoML Translation models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`\n\n- General (built-in) models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/base`\n\n\nReturns languages supported by the specified model.\nIf missing, we get supported languages of Google general base (PBMT) model.",
+                  "type": "string"
+                },
+                "parent": {
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path",
+                  "description": "Required. Project or location to make a call. Must refer to a caller's\nproject.\n\nFormat: `projects/{project-number-or-id}` or\n`projects/{project-number-or-id}/locations/{location-id}`.\n\nFor global calls, use `projects/{project-number-or-id}/locations/global` or\n`projects/{project-number-or-id}`.\n\nNon-global location is required for AutoML models.\n\nOnly models within the same region (have same location-id) can be used,\notherwise an INVALID_ARGUMENT (400) error is returned.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-translation"
+              ],
+              "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/supportedLanguages",
+              "path": "v3beta1/{+parent}/supportedLanguages",
+              "id": "translate.projects.locations.getSupportedLanguages",
+              "description": "Returns a list of supported languages for translation.",
+              "response": {
+                "$ref": "SupportedLanguages"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "GET"
+            },
+            "translateText": {
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "parent"
+              ],
+              "response": {
+                "$ref": "TranslateTextResponse"
+              },
+              "parameters": {
+                "parent": {
+                  "description": "Required. Project or location to make a call. Must refer to a caller's\nproject.\n\nFormat: `projects/{project-number-or-id}` or\n`projects/{project-number-or-id}/locations/{location-id}`.\n\nFor global calls, use `projects/{project-number-or-id}/locations/global` or\n`projects/{project-number-or-id}`.\n\nNon-global location is required for requests using AutoML models or\ncustom glossaries.\n\nModels and glossaries must be within the same region (have same\nlocation-id), otherwise an INVALID_ARGUMENT (400) error is returned.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-translation"
+              ],
+              "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}:translateText",
+              "id": "translate.projects.locations.translateText",
+              "path": "v3beta1/{+parent}:translateText",
+              "description": "Translates input text and returns translated text.",
+              "request": {
+                "$ref": "TranslateTextRequest"
+              }
+            }
+          },
+          "resources": {
+            "glossaries": {
+              "methods": {
+                "delete": {
+                  "description": "Deletes a glossary, or cancels glossary construction\nif the glossary isn't created yet.\nReturns NOT_FOUND, if the glossary doesn't exist.",
+                  "httpMethod": "DELETE",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameters": {
+                    "name": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+/glossaries/[^/]+$",
+                      "location": "path",
+                      "description": "Required. The name of the glossary to delete.",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-translation"
+                  ],
+                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}",
+                  "id": "translate.projects.locations.glossaries.delete",
+                  "path": "v3beta1/{+name}"
+                },
+                "list": {
+                  "response": {
+                    "$ref": "ListGlossariesResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-translation"
+                  ],
+                  "parameters": {
+                    "parent": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "description": "Required. The name of the project from which to list all of the glossaries.",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "filter": {
+                      "location": "query",
+                      "description": "Optional. Filter specifying constraints of a list operation.\nFiltering is not supported yet, and the parameter currently has no effect.\nIf missing, no filtering is performed.",
+                      "type": "string"
+                    },
+                    "pageToken": {
+                      "description": "Optional. A token identifying a page of results the server should return.\nTypically, this is the value of [ListGlossariesResponse.next_page_token]\nreturned from the previous call to `ListGlossaries` method.\nThe first page is returned if `page_token`is empty or missing.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "pageSize": {
+                      "description": "Optional. Requested page size. The server may return fewer glossaries than\nrequested. If unspecified, the server picks an appropriate default.",
+                      "format": "int32",
+                      "type": "integer",
+                      "location": "query"
+                    }
+                  },
+                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/glossaries",
+                  "path": "v3beta1/{+parent}/glossaries",
+                  "id": "translate.projects.locations.glossaries.list",
+                  "description": "Lists glossaries in a project. Returns NOT_FOUND, if the project doesn't\nexist."
+                },
+                "get": {
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "description": "Required. The name of the glossary to retrieve.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/glossaries/[^/]+$"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-translation"
+                  ],
+                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}",
+                  "id": "translate.projects.locations.glossaries.get",
+                  "path": "v3beta1/{+name}",
+                  "description": "Gets a glossary. Returns NOT_FOUND, if the glossary doesn't\nexist.",
+                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "Glossary"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ]
+                },
+                "create": {
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameters": {
+                    "parent": {
+                      "location": "path",
+                      "description": "Required. The project name.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/glossaries",
+                  "id": "translate.projects.locations.glossaries.create",
+                  "path": "v3beta1/{+parent}/glossaries",
+                  "description": "Creates a glossary and returns the long-running operation. Returns\nNOT_FOUND, if the project doesn't exist.",
+                  "request": {
+                    "$ref": "Glossary"
+                  }
+                }
+              }
+            },
+            "operations": {
+              "methods": {
+                "list": {
+                  "response": {
+                    "$ref": "ListOperationsResponse"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-translation"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "description": "The name of the operation's parent resource."
+                    },
+                    "pageToken": {
+                      "description": "The standard list page token.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "pageSize": {
+                      "type": "integer",
+                      "location": "query",
+                      "description": "The standard list page size.",
+                      "format": "int32"
+                    },
+                    "filter": {
+                      "location": "query",
+                      "description": "The standard list filter.",
+                      "type": "string"
+                    }
+                  },
+                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/operations",
+                  "path": "v3beta1/{+name}/operations",
+                  "id": "translate.projects.locations.operations.list",
+                  "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id."
+                },
+                "get": {
+                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "location": "path",
+                      "description": "The name of the operation resource."
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-translation"
+                  ],
+                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "id": "translate.projects.locations.operations.get",
+                  "path": "v3beta1/{+name}",
+                  "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
+                },
+                "wait": {
+                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:wait",
+                  "id": "translate.projects.locations.operations.wait",
+                  "path": "v3beta1/{+name}:wait",
+                  "request": {
+                    "$ref": "WaitOperationRequest"
+                  },
+                  "description": "Waits for the specified long-running operation until it is done or reaches\nat most a specified timeout, returning the latest state.  If the operation\nis already done, the latest state is immediately returned.  If the timeout\nspecified is greater than the default HTTP/RPC timeout, the HTTP/RPC\ntimeout is used.  If the server does not support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.\nNote that this method is on a best-effort basis.  It may return the latest\nstate before the specified timeout (including immediately), meaning even an\nimmediate response is no guarantee that the operation is done.",
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-translation"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "description": "The name of the operation resource to wait on.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
+                    }
+                  }
+                },
+                "cancel": {
+                  "id": "translate.projects.locations.operations.cancel",
+                  "path": "v3beta1/{+name}:cancel",
+                  "request": {
+                    "$ref": "CancelOperationRequest"
+                  },
+                  "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-translation"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "location": "path",
+                      "description": "The name of the operation resource to be cancelled."
+                    }
+                  },
+                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel"
+                },
+                "delete": {
+                  "httpMethod": "DELETE",
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the operation resource to be deleted.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-translation"
+                  ],
+                  "flatPath": "v3beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "id": "translate.projects.locations.operations.delete",
+                  "path": "v3beta1/{+name}",
+                  "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "uploadType": {
+      "type": "string",
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string"
+    },
+    "alt": {
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
+    }
+  },
+  "version": "v3beta1",
+  "baseUrl": "https://translation.googleapis.com/",
+  "servicePath": "",
+  "kind": "discovery#restDescription",
+  "description": "Integrates text translation into your website or application.",
+  "basePath": ""
 }

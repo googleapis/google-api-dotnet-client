@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191120 (1784)
+ *      <tr><th>API Rev<td>20191207 (1801)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -914,6 +914,10 @@ namespace Google.Apis.CloudBuild.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>Token to provide to skip to a particular spot in the list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Number of results to return in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -921,10 +925,6 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>The raw filter text to constrain the results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>Token to provide to skip to a particular spot in the list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -960,6 +960,15 @@ namespace Google.Apis.CloudBuild.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -972,15 +981,6 @@ namespace Google.Apis.CloudBuild.v1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1910,8 +1910,9 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; } 
 
-        /// <summary>Option to specify a `WorkerPool` for the build. User specifies the pool with the format
-        /// "[WORKERPOOL_PROJECT_ID]/[WORKERPOOL_NAME]". This is an experimental field.</summary>
+        /// <summary>Option to specify a `WorkerPool` for the build. Format: projects/{project}/workerPools/{workerPool}
+        ///
+        /// This field is experimental.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; } 
 
@@ -2070,7 +2071,11 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includedFiles")]
         public virtual System.Collections.Generic.IList<string> IncludedFiles { get; set; } 
 
-        /// <summary>User assigned name of the trigger. Must be unique within the project.</summary>
+        /// <summary>User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the
+        /// following requirements:
+        ///
+        /// + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must
+        /// begin and end with an alphanumeric character.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2291,7 +2296,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("branch")]
         public virtual string Branch { get; set; } 
 
-        /// <summary>Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.</summary>
+        /// <summary>Whether to block builds on a "/gcbrun" comment from a repository admin or collaborator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commentControl")]
         public virtual string CommentControl { get; set; } 
 

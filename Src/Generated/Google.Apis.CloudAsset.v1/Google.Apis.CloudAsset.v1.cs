@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>Cloud Asset API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191130 (1794)
+ *      <tr><th>API Rev<td>20191207 (1801)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory'>
  *              https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory</a>
@@ -64,6 +64,7 @@ namespace Google.Apis.CloudAsset.v1
         public CloudAssetService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            feeds = new FeedsResource(this);
             operations = new OperationsResource(this);
             v1 = new V1Resource(this);
         }
@@ -127,6 +128,14 @@ namespace Google.Apis.CloudAsset.v1
         }
 
 
+
+        private readonly FeedsResource feeds;
+
+        /// <summary>Gets the Feeds resource.</summary>
+        public virtual FeedsResource Feeds
+        {
+            get { return feeds; }
+        }
 
         private readonly OperationsResource operations;
 
@@ -331,6 +340,365 @@ namespace Google.Apis.CloudAsset.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+        }
+    }
+
+    /// <summary>The "feeds" collection of methods.</summary>
+    public class FeedsResource
+    {
+        private const string Resource = "feeds";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FeedsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates a feed in a parent project/folder/organization to listen to its asset updates.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">Required. The name of the project/folder/organization where this feed should be created in. It
+        /// can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project
+        /// ID (such as "projects/my-project-id")", or a project number (such as "projects/12345").</param>
+        public virtual CreateRequest Create(Google.Apis.CloudAsset.v1.Data.CreateFeedRequest body, string parent)
+        {
+            return new CreateRequest(service, body, parent);
+        }
+
+        /// <summary>Creates a feed in a parent project/folder/organization to listen to its asset updates.</summary>
+        public class CreateRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Feed>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1.Data.CreateFeedRequest body, string parent)
+                : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The name of the project/folder/organization where this feed should be created in. It
+            /// can only be an organization number (such as "organizations/123"), a folder number (such as
+            /// "folders/123"), a project ID (such as "projects/my-project-id")", or a project number (such as
+            /// "projects/12345").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudAsset.v1.Data.CreateFeedRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+parent}/feeds"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes an asset feed.</summary>
+        /// <param name="name">Required. The name of the feed and it must be in the format of:
+        /// projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id
+        /// organizations/organization_number/feeds/feed_id</param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(service, name);
+        }
+
+        /// <summary>Deletes an asset feed.</summary>
+        public class DeleteRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The name of the feed and it must be in the format of:
+            /// projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id
+            /// organizations/organization_number/feeds/feed_id</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+name}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/feeds/[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Gets details about an asset feed.</summary>
+        /// <param name="name">Required. The name of the Feed and it must be in the format of:
+        /// projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id
+        /// organizations/organization_number/feeds/feed_id</param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>Gets details about an asset feed.</summary>
+        public class GetRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Feed>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The name of the Feed and it must be in the format of:
+            /// projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id
+            /// organizations/organization_number/feeds/feed_id</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+name}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/feeds/[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Lists all asset feeds in a parent project/folder/organization.</summary>
+        /// <param name="parent">Required. The parent project/folder/organization whose feeds are to be listed. It can only be
+        /// using project/folder/organization number (such as "folders/12345")", or a project ID (such as "projects/my-project-
+        /// id").</param>
+        public virtual ListRequest List(string parent)
+        {
+            return new ListRequest(service, parent);
+        }
+
+        /// <summary>Lists all asset feeds in a parent project/folder/organization.</summary>
+        public class ListRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.ListFeedsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                : base(service)
+            {
+                Parent = parent;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The parent project/folder/organization whose feeds are to be listed. It can only be
+            /// using project/folder/organization number (such as "folders/12345")", or a project ID (such as "projects
+            /// /my-project-id").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+parent}/feeds"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Updates an asset feed configuration.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or
+        /// folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds
+        /// /{client-assigned_feed_identifier}
+        ///
+        /// The client-assigned feed identifier must be unique within the parent project/folder/organization.</param>
+        public virtual PatchRequest Patch(Google.Apis.CloudAsset.v1.Data.UpdateFeedRequest body, string name)
+        {
+            return new PatchRequest(service, body, name);
+        }
+
+        /// <summary>Updates an asset feed configuration.</summary>
+        public class PatchRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Feed>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAsset.v1.Data.UpdateFeedRequest body, string name)
+                : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier}
+            /// or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or
+            /// organizations/{organization_number}/feeds/{client-assigned_feed_identifier}
+            ///
+            /// The client-assigned feed identifier must be unique within the parent
+            /// project/folder/organization.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudAsset.v1.Data.UpdateFeedRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+name}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+/feeds/[^/]+$",
+                    });
+            }
+
         }
     }
 
@@ -848,6 +1216,36 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Create asset feed request.</summary>
+    public class CreateFeedRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The feed details. The field `name` must be empty and it will be generated in the format
+        /// of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id
+        /// organizations/organization_number/feeds/feed_id</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feed")]
+        public virtual Feed Feed { get; set; } 
+
+        /// <summary>Required. This is the client-assigned asset feed identifier and it needs to be unique under a
+        /// specific parent project/folder/organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedId")]
+        public virtual string FeedId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Export asset request.</summary>
     public class ExportAssetsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -904,6 +1302,59 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An asset feed used to export asset updates to a destinations. An asset feed filter controls what
+    /// updates are exported. The asset feed must be created within a project, organization, or folder. Supported
+    /// destinations are: Cloud Pub/Sub topics.</summary>
+    public class Feed : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of the full names of the assets to receive updates. You must specify either or both of
+        /// asset_names and asset_types. Only asset updates matching specified asset_names and asset_types are exported
+        /// to the feed. For example:
+        /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource
+        /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetNames")]
+        public virtual System.Collections.Generic.IList<string> AssetNames { get; set; } 
+
+        /// <summary>A list of types of the assets to receive updates. You must specify either or both of asset_names
+        /// and asset_types. Only asset updates matching specified asset_names and asset_types are exported to the feed.
+        /// For example: "compute.googleapis.com/Disk" See [Introduction to Cloud Asset
+        /// Inventory](https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/overview) for all supported
+        /// asset types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetTypes")]
+        public virtual System.Collections.Generic.IList<string> AssetTypes { get; set; } 
+
+        /// <summary>Asset content type. If not specified, no content but the asset name and type will be
+        /// returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; } 
+
+        /// <summary>Required. Feed output configuration defining where the asset updates are published to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedOutputConfig")]
+        public virtual FeedOutputConfig FeedOutputConfig { get; set; } 
+
+        /// <summary>Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or
+        /// folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds
+        /// /{client-assigned_feed_identifier}
+        ///
+        /// The client-assigned feed identifier must be unique within the parent project/folder/organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Output configuration for asset feed destination.</summary>
+    public class FeedOutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Destination on Cloud Pubsub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubDestination")]
+        public virtual PubsubDestination PubsubDestination { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1389,6 +1840,16 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ListFeedsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of feeds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feeds")]
+        public virtual System.Collections.Generic.IList<Feed> Feeds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1516,6 +1977,18 @@ namespace Google.Apis.CloudAsset.v1.Data
 
     }    
 
+    /// <summary>A Cloud Pubsub destination.</summary>
+    public class PubsubDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the Cloud Pub/Sub topic to publish to. For example:
+        /// `projects/PROJECT_ID/topics/TOPIC_ID`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Representation of a cloud resource.</summary>
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1616,6 +2089,24 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>Start time of the time window (exclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Update asset feed request.</summary>
+    public class UpdateFeedRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The new values of feed details. It must match an existing feed and the field `name` must
+        /// be in the format of: projects/project_number/feeds/feed_id or folders/folder_number/feeds/feed_id or
+        /// organizations/organization_number/feeds/feed_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feed")]
+        public virtual Feed Feed { get; set; } 
+
+        /// <summary>Required. Only updates the `feed` fields indicated by this mask. The field mask must not be empty,
+        /// and it must not contain fields that are immutable or only set by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

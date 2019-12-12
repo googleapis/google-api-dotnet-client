@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191204 (1798)
+ *      <tr><th>API Rev<td>20191210 (1804)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -591,10 +591,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -602,6 +598,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -637,15 +637,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -658,6 +649,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1209,10 +1209,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Filter expression over tenancy resources field. Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The continuation token, which is used to page through large result sets. To get the next
                 /// page of results, set this parameter to the value of `nextPageToken` from the previous
                 /// response.</summary>
@@ -1222,6 +1218,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 /// <summary>The maximum number of results returned by this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Filter expression over tenancy resources field. Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1257,15 +1257,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                             Pattern = @"^services/[^/]+/[^/]+/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1278,6 +1269,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1829,7 +1829,18 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deadline")]
         public virtual System.Nullable<double> Deadline { get; set; } 
 
-        /// <summary>The JWT audience is used when generating a JWT id token for the backend.</summary>
+        /// <summary>When disable_auth is false,  a JWT ID token will be generated with the value from
+        /// BackendRule.address as jwt_audience, overrode to the HTTP "Authorization" request header and sent to the
+        /// backend.
+        ///
+        /// When disable_auth is true, a JWT ID token won't be generated and the original "Authorization" HTTP header
+        /// will be preserved. If the header is used to carry the original token and is expected by the backend, this
+        /// field must be set to true to preserve the header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAuth")]
+        public virtual System.Nullable<bool> DisableAuth { get; set; } 
+
+        /// <summary>The JWT audience is used when generating a JWT ID token for the backend. This ID token will be
+        /// added in the HTTP "authorization" header, and sent to the backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwtAudience")]
         public virtual string JwtAudience { get; set; } 
 
@@ -3942,6 +3953,28 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A default identity in the Identity and Access Management API.</summary>
+    public class V1DefaultIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The email address of the default identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; } 
+
+        /// <summary>Default identity resource name.
+        ///
+        /// An example name would be:
+        /// `services/serviceconsumermanagement.googleapis.com/projects/123/defaultIdentity`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The unique and stable id of the default identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
+        public virtual string UniqueId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for the `DisableConsumer` method. This response message is assigned to the `response`
     /// field of the returned Operation when that operation is done.</summary>
     public class V1DisableConsumerResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3954,6 +3987,30 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// field of the returned Operation when that operation is done.</summary>
     public class V1EnableConsumerResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the `GenerateDefaultIdentity` method.
+    ///
+    /// This response message is assigned to the `response` field of the returned Operation when that operation is
+    /// done.</summary>
+    public class V1GenerateDefaultIdentityResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Status of the role attachment. Under development (go/si-attach-role), currently always return
+        /// ATTACH_STATUS_UNSPECIFIED)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachStatus")]
+        public virtual string AttachStatus { get; set; } 
+
+        /// <summary>DefaultIdentity that was created or retrieved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identity")]
+        public virtual V1DefaultIdentity Identity { get; set; } 
+
+        /// <summary>Role attached to consumer project. Empty if not attached in this request. (Under development,
+        /// currently always return empty.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

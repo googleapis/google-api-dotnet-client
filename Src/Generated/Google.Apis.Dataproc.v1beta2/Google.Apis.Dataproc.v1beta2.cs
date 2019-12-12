@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20191031 (1764)
+ *      <tr><th>API Rev<td>20191120 (1784)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -1605,14 +1605,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. The page token, returned by a previous call, to request the next page of
                     /// results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1648,18 +1648,18 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2663,7 +2663,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1beta2/projects/{projectId}/regions/{region}/clusters"; }
+                        get { return "v1beta2/projects/{+projectId}/regions/{+region}/clusters"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -2678,7 +2678,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "region", new Google.Apis.Discovery.Parameter
@@ -2687,7 +2687,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "requestId", new Google.Apis.Discovery.Parameter
@@ -2742,6 +2742,11 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
+                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
+                    /// if cluster with specified UUID does not exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterUuid { get; set; }
+
                     /// <summary>Optional. A unique id used to identify the request. If the server receives two
                     /// DeleteClusterRequest requests with the same id, then the second request will be ignored and the
                     /// first google.longrunning.Operation created and stored in the backend is returned.It is
@@ -2751,11 +2756,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
-
-                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
-                    /// if cluster with specified UUID does not exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterUuid { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2773,7 +2773,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}"; }
+                        get { return "v1beta2/projects/{+projectId}/regions/{+region}/clusters/{+clusterName}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -2788,7 +2788,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "region", new Google.Apis.Discovery.Parameter
@@ -2797,7 +2797,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "clusterName", new Google.Apis.Discovery.Parameter
@@ -2806,21 +2806,21 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
+                            "clusterUuid", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "requestId",
+                                Name = "clusterUuid",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "requestId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
+                                Name = "requestId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2896,7 +2896,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}:diagnose"; }
+                        get { return "v1beta2/projects/{+projectId}/regions/{+region}/clusters/{+clusterName}:diagnose"; }
                     }
 
                     /// <summary>Initializes Diagnose parameter list.</summary>
@@ -2911,7 +2911,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "region", new Google.Apis.Discovery.Parameter
@@ -2920,7 +2920,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "clusterName", new Google.Apis.Discovery.Parameter
@@ -2929,7 +2929,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                     }
 
@@ -2989,7 +2989,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}"; }
+                        get { return "v1beta2/projects/{+projectId}/regions/{+region}/clusters/{+clusterName}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3004,7 +3004,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "region", new Google.Apis.Discovery.Parameter
@@ -3013,7 +3013,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "clusterName", new Google.Apis.Discovery.Parameter
@@ -3022,7 +3022,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                     }
 
@@ -3176,7 +3176,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1beta2/projects/{projectId}/regions/{region}/clusters"; }
+                        get { return "v1beta2/projects/{+projectId}/regions/{+region}/clusters"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -3191,7 +3191,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "region", new Google.Apis.Discovery.Parameter
@@ -3200,7 +3200,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
@@ -3343,7 +3343,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}"; }
+                        get { return "v1beta2/projects/{+projectId}/regions/{+region}/clusters/{+clusterName}"; }
                     }
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -3358,7 +3358,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "region", new Google.Apis.Discovery.Parameter
@@ -3367,7 +3367,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "clusterName", new Google.Apis.Discovery.Parameter
@@ -3376,7 +3376,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
@@ -3645,7 +3645,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel"; }
+                        get { return "v1beta2/projects/{+projectId}/regions/{+region}/jobs/{+jobId}:cancel"; }
                     }
 
                     /// <summary>Initializes Cancel parameter list.</summary>
@@ -3660,7 +3660,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "region", new Google.Apis.Discovery.Parameter
@@ -3669,7 +3669,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "jobId", new Google.Apis.Discovery.Parameter
@@ -3678,7 +3678,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                     }
 
@@ -3740,7 +3740,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}"; }
+                        get { return "v1beta2/projects/{+projectId}/regions/{+region}/jobs/{+jobId}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -3755,7 +3755,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "region", new Google.Apis.Discovery.Parameter
@@ -3764,7 +3764,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "jobId", new Google.Apis.Discovery.Parameter
@@ -3773,7 +3773,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                     }
 
@@ -3833,7 +3833,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}"; }
+                        get { return "v1beta2/projects/{+projectId}/regions/{+region}/jobs/{+jobId}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -3848,7 +3848,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "region", new Google.Apis.Discovery.Parameter
@@ -3857,7 +3857,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "jobId", new Google.Apis.Discovery.Parameter
@@ -3866,7 +3866,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                     }
 
@@ -3984,11 +3984,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
-                    /// named cluster.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterName { get; set; }
-
                     /// <summary>Optional. A filter constraining the jobs to list. Filters are case-sensitive and have
                     /// the following syntax:field = value AND field = value ...where field is status.state or
                     /// labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be
@@ -4024,6 +4019,11 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
+                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
+                    /// named cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterName { get; set; }
+
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -4040,7 +4040,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1beta2/projects/{projectId}/regions/{region}/jobs"; }
+                        get { return "v1beta2/projects/{+projectId}/regions/{+region}/jobs"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -4055,7 +4055,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "region", new Google.Apis.Discovery.Parameter
@@ -4064,16 +4064,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
@@ -4106,6 +4097,15 @@ namespace Google.Apis.Dataproc.v1beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterName",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4184,7 +4184,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}"; }
+                        get { return "v1beta2/projects/{+projectId}/regions/{+region}/jobs/{+jobId}"; }
                     }
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -4199,7 +4199,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "region", new Google.Apis.Discovery.Parameter
@@ -4208,7 +4208,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "jobId", new Google.Apis.Discovery.Parameter
@@ -4217,7 +4217,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "updateMask", new Google.Apis.Discovery.Parameter
@@ -4360,7 +4360,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1beta2/projects/{projectId}/regions/{region}/jobs:submit"; }
+                        get { return "v1beta2/projects/{+projectId}/regions/{+region}/jobs:submit"; }
                     }
 
                     /// <summary>Initializes Submit parameter list.</summary>
@@ -4375,7 +4375,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                         RequestParameters.Add(
                             "region", new Google.Apis.Discovery.Parameter
@@ -4384,7 +4384,7 @@ namespace Google.Apis.Dataproc.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^[^/]+$",
                             });
                     }
 
@@ -5513,10 +5513,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Deprecated. Please use request_id field instead.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string InstanceId { get; set; }
-
                     /// <summary>Optional. A tag that prevents multiple concurrent workflow instances with the same tag
                     /// from running. This mitigates risk of concurrent instances started due to retries.It is
                     /// recommended to always set this value to a UUID
@@ -5525,6 +5521,10 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
+
+                    /// <summary>Deprecated. Please use request_id field instead.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InstanceId { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -5566,18 +5566,18 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = @"^projects/[^/]+/regions/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "instanceId", new Google.Apis.Discovery.Parameter
+                            "requestId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "instanceId",
+                                Name = "requestId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
+                            "instanceId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "requestId",
+                                Name = "instanceId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6749,11 +6749,9 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("driverOutputResourceUri")]
         public virtual string DriverOutputResourceUri { get; set; } 
 
-        /// <summary>Job is a Hadoop job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hadoopJob")]
         public virtual HadoopJob HadoopJob { get; set; } 
 
-        /// <summary>Job is a Hive job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiveJob")]
         public virtual HiveJob HiveJob { get; set; } 
 
@@ -6769,7 +6767,6 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Job is a Pig job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pigJob")]
         public virtual PigJob PigJob { get; set; } 
 
@@ -6777,11 +6774,9 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("placement")]
         public virtual JobPlacement Placement { get; set; } 
 
-        /// <summary>Job is a Presto job</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prestoJob")]
         public virtual PrestoJob PrestoJob { get; set; } 
 
-        /// <summary>Job is a Pyspark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pysparkJob")]
         public virtual PySparkJob PysparkJob { get; set; } 
 
@@ -6795,15 +6790,12 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual JobScheduling Scheduling { get; set; } 
 
-        /// <summary>Job is a Spark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkJob")]
         public virtual SparkJob SparkJob { get; set; } 
 
-        /// <summary>Job is a SparkR job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkRJob")]
         public virtual SparkRJob SparkRJob { get; set; } 
 
-        /// <summary>Job is a SparkSql job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkSqlJob")]
         public virtual SparkSqlJob SparkSqlJob { get; set; } 
 
@@ -7194,11 +7186,9 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>A job executed by the workflow.</summary>
     public class OrderedJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Job is a Hadoop job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hadoopJob")]
         public virtual HadoopJob HadoopJob { get; set; } 
 
-        /// <summary>Job is a Hive job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiveJob")]
         public virtual HiveJob HiveJob { get; set; } 
 
@@ -7209,7 +7199,6 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Job is a Pig job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pigJob")]
         public virtual PigJob PigJob { get; set; } 
 
@@ -7218,7 +7207,6 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("prerequisiteStepIds")]
         public virtual System.Collections.Generic.IList<string> PrerequisiteStepIds { get; set; } 
 
-        /// <summary>Job is a Pyspark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pysparkJob")]
         public virtual PySparkJob PysparkJob { get; set; } 
 
@@ -7226,11 +7214,9 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual JobScheduling Scheduling { get; set; } 
 
-        /// <summary>Job is a Spark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkJob")]
         public virtual SparkJob SparkJob { get; set; } 
 
-        /// <summary>Job is a SparkSql job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkSqlJob")]
         public virtual SparkSqlJob SparkSqlJob { get; set; } 
 
@@ -7329,17 +7315,17 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// response to getIamPolicy, and systems are expected to put that etag in the request to setIamPolicy to ensure
         /// that their change will be applied to the same version of the policy.If no etag is provided in the call to
         /// setIamPolicy, then the existing policy is overwritten. Due to blind-set semantics of an etag-less policy,
-        /// 'setIamPolicy' will not fail even if either of incoming or stored policy does not meet the version
-        /// requirements.</summary>
+        /// 'setIamPolicy' will not fail even if the incoming policy version does not meet the requirements for
+        /// modifying the stored policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
         /// <summary>Specifies the format of the policy.Valid values are 0, 1, and 3. Requests specifying an invalid
         /// value will be rejected.Operations affecting conditional bindings must specify version 3. This can be either
-        /// setting a conditional policy, modifying a conditional binding, or removing a conditional binding from the
-        /// stored conditional policy. Operations on non-conditional policies may specify any valid value or leave the
-        /// field unset.If no etag is provided in the call to setIamPolicy, any version compliance checks on the
-        /// incoming and/or stored policy is skipped.</summary>
+        /// setting a conditional policy, modifying a conditional binding, or removing a binding (conditional or
+        /// unconditional) from the stored conditional policy. Operations on non-conditional policies may specify any
+        /// valid value or leave the field unset.If no etag is provided in the call to setIamPolicy, version compliance
+        /// checks against the stored policy is skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

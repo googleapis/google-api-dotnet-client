@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20191110 (1774)
+ *      <tr><th>API Rev<td>20191201 (1795)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -350,7 +350,7 @@ namespace Google.Apis.Datastore.v1beta3
         /// <summary>Allocates IDs for the given keys, which is useful for referencing an entity before it is
         /// inserted.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The ID of the project against which to make the request.</param>
+        /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual AllocateIdsRequest AllocateIds(Google.Apis.Datastore.v1beta3.Data.AllocateIdsRequest body, string projectId)
         {
             return new AllocateIdsRequest(service, body, projectId);
@@ -370,7 +370,7 @@ namespace Google.Apis.Datastore.v1beta3
             }
 
 
-            /// <summary>The ID of the project against which to make the request.</summary>
+            /// <summary>Required. The ID of the project against which to make the request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -419,7 +419,7 @@ namespace Google.Apis.Datastore.v1beta3
 
         /// <summary>Begins a new transaction.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The ID of the project against which to make the request.</param>
+        /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual BeginTransactionRequest BeginTransaction(Google.Apis.Datastore.v1beta3.Data.BeginTransactionRequest body, string projectId)
         {
             return new BeginTransactionRequest(service, body, projectId);
@@ -438,7 +438,7 @@ namespace Google.Apis.Datastore.v1beta3
             }
 
 
-            /// <summary>The ID of the project against which to make the request.</summary>
+            /// <summary>Required. The ID of the project against which to make the request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -487,7 +487,7 @@ namespace Google.Apis.Datastore.v1beta3
 
         /// <summary>Commits a transaction, optionally creating, deleting or modifying some entities.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The ID of the project against which to make the request.</param>
+        /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual CommitRequest Commit(Google.Apis.Datastore.v1beta3.Data.CommitRequest body, string projectId)
         {
             return new CommitRequest(service, body, projectId);
@@ -506,7 +506,7 @@ namespace Google.Apis.Datastore.v1beta3
             }
 
 
-            /// <summary>The ID of the project against which to make the request.</summary>
+            /// <summary>Required. The ID of the project against which to make the request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -555,7 +555,7 @@ namespace Google.Apis.Datastore.v1beta3
 
         /// <summary>Looks up entities by key.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The ID of the project against which to make the request.</param>
+        /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual LookupRequest Lookup(Google.Apis.Datastore.v1beta3.Data.LookupRequest body, string projectId)
         {
             return new LookupRequest(service, body, projectId);
@@ -574,7 +574,7 @@ namespace Google.Apis.Datastore.v1beta3
             }
 
 
-            /// <summary>The ID of the project against which to make the request.</summary>
+            /// <summary>Required. The ID of the project against which to make the request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -621,17 +621,15 @@ namespace Google.Apis.Datastore.v1beta3
 
         }
 
-        /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore. Used for imports
-        /// only; other workloads are not supported.</summary>
+        /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The ID of the project against which to make the request.</param>
+        /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual ReserveIdsRequest ReserveIds(Google.Apis.Datastore.v1beta3.Data.ReserveIdsRequest body, string projectId)
         {
             return new ReserveIdsRequest(service, body, projectId);
         }
 
-        /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore. Used for imports
-        /// only; other workloads are not supported.</summary>
+        /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.</summary>
         public class ReserveIdsRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1beta3.Data.ReserveIdsResponse>
         {
             /// <summary>Constructs a new ReserveIds request.</summary>
@@ -644,7 +642,7 @@ namespace Google.Apis.Datastore.v1beta3
             }
 
 
-            /// <summary>The ID of the project against which to make the request.</summary>
+            /// <summary>Required. The ID of the project against which to make the request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -693,7 +691,7 @@ namespace Google.Apis.Datastore.v1beta3
 
         /// <summary>Rolls back a transaction.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The ID of the project against which to make the request.</param>
+        /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual RollbackRequest Rollback(Google.Apis.Datastore.v1beta3.Data.RollbackRequest body, string projectId)
         {
             return new RollbackRequest(service, body, projectId);
@@ -712,7 +710,7 @@ namespace Google.Apis.Datastore.v1beta3
             }
 
 
-            /// <summary>The ID of the project against which to make the request.</summary>
+            /// <summary>Required. The ID of the project against which to make the request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -761,7 +759,7 @@ namespace Google.Apis.Datastore.v1beta3
 
         /// <summary>Queries for entities.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The ID of the project against which to make the request.</param>
+        /// <param name="projectId">Required. The ID of the project against which to make the request.</param>
         public virtual RunQueryRequest RunQuery(Google.Apis.Datastore.v1beta3.Data.RunQueryRequest body, string projectId)
         {
             return new RunQueryRequest(service, body, projectId);
@@ -780,7 +778,7 @@ namespace Google.Apis.Datastore.v1beta3
             }
 
 
-            /// <summary>The ID of the project against which to make the request.</summary>
+            /// <summary>Required. The ID of the project against which to make the request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -835,8 +833,8 @@ namespace Google.Apis.Datastore.v1beta3.Data
     /// <summary>The request for Datastore.AllocateIds.</summary>
     public class AllocateIdsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of keys with incomplete key paths for which to allocate IDs. No key may be reserved/read-
-        /// only.</summary>
+        /// <summary>Required. A list of keys with incomplete key paths for which to allocate IDs. No key may be
+        /// reserved/read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
         public virtual System.Collections.Generic.IList<Key> Keys { get; set; } 
 
@@ -1431,7 +1429,7 @@ namespace Google.Apis.Datastore.v1beta3.Data
     /// <summary>The request for Datastore.Lookup.</summary>
     public class LookupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Keys of entities to look up.</summary>
+        /// <summary>Required. Keys of entities to look up.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
         public virtual System.Collections.Generic.IList<Key> Keys { get; set; } 
 
@@ -1762,7 +1760,8 @@ namespace Google.Apis.Datastore.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; } 
 
-        /// <summary>A list of keys with complete key paths whose numeric IDs should not be auto-allocated.</summary>
+        /// <summary>Required. A list of keys with complete key paths whose numeric IDs should not be auto-
+        /// allocated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
         public virtual System.Collections.Generic.IList<Key> Keys { get; set; } 
 
@@ -1780,7 +1779,7 @@ namespace Google.Apis.Datastore.v1beta3.Data
     /// <summary>The request for Datastore.Rollback.</summary>
     public class RollbackRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The transaction identifier, returned by a call to Datastore.BeginTransaction.</summary>
+        /// <summary>Required. The transaction identifier, returned by a call to Datastore.BeginTransaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; } 
 

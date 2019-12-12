@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191107 (1771)
+ *      <tr><th>API Rev<td>20191128 (1792)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -550,11 +550,608 @@ namespace Google.Apis.Spanner.v1
             public InstancesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                backups = new BackupsResource(service);
                 databases = new DatabasesResource(service);
                 operations = new OperationsResource(service);
 
             }
 
+            private readonly BackupsResource backups;
+
+            /// <summary>Gets the Backups resource.</summary>
+            public virtual BackupsResource Backups
+            {
+                get { return backups; }
+            }
+
+            /// <summary>The "backups" collection of methods.</summary>
+            public class BackupsResource
+            {
+                private const string Resource = "backups";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BackupsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    operations = new OperationsResource(service);
+
+                }
+
+                private readonly OperationsResource operations;
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations
+                {
+                    get { return operations; }
+                }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
+                    /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support
+                    /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
+                    /// Operations.GetOperation or other methods to check whether the cancellation succeeded or whether
+                    /// the operation completed despite cancellation. On successful cancellation, the operation is not
+                    /// deleted; instead, it becomes an operation with an Operation.error value with a
+                    /// google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+                    /// <param name="name">The name of the operation resource to be cancelled.</param>
+                    public virtual CancelRequest Cancel(string name)
+                    {
+                        return new CancelRequest(service, name);
+                    }
+
+                    /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
+                    /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support
+                    /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
+                    /// Operations.GetOperation or other methods to check whether the cancellation succeeded or whether
+                    /// the operation completed despite cancellation. On successful cancellation, the operation is not
+                    /// deleted; instead, it becomes an operation with an Operation.error value with a
+                    /// google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+                    public class CancelRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The name of the operation resource to be cancelled.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "cancel"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}:cancel"; }
+                        }
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/backups/[^/]+/operations/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Deletes a long-running operation. This method indicates that the client is no longer
+                    /// interested in the operation result. It does not cancel the operation. If the server doesn't
+                    /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
+                    /// <param name="name">The name of the operation resource to be deleted.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a long-running operation. This method indicates that the client is no longer
+                    /// interested in the operation result. It does not cancel the operation. If the server doesn't
+                    /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
+                    public class DeleteRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The name of the operation resource to be deleted.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "delete"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "DELETE"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/backups/[^/]+/operations/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll
+                    /// the operation result at intervals as recommended by the API service.</summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll
+                    /// the operation result at intervals as recommended by the API service.</summary>
+                    public class GetRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/backups/[^/]+/operations/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
+                    /// support this method, it returns `UNIMPLEMENTED`.
+                    ///
+                    /// NOTE: the `name` binding allows API services to override the binding to use different resource
+                    /// name schemes, such as `users/operations`. To override the binding, API services can add a
+                    /// binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+                    /// compatibility, the default name includes the operations collection id, however overriding users
+                    /// must ensure the name binding is the parent resource, without the operations collection
+                    /// id.</summary>
+                    /// <param name="name">The name of the operation's parent resource.</param>
+                    public virtual ListRequest List(string name)
+                    {
+                        return new ListRequest(service, name);
+                    }
+
+                    /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
+                    /// support this method, it returns `UNIMPLEMENTED`.
+                    ///
+                    /// NOTE: the `name` binding allows API services to override the binding to use different resource
+                    /// name schemes, such as `users/operations`. To override the binding, API services can add a
+                    /// binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+                    /// compatibility, the default name includes the operations collection id, however overriding users
+                    /// must ensure the name binding is the parent resource, without the operations collection
+                    /// id.</summary>
+                    public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListOperationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string name)
+                            : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The name of the operation's parent resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The standard list page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>The standard list page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The standard list filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+name}"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/backups/[^/]+/operations$",
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+
+                /// <summary>Gets the access control policy for a database resource. Returns an empty policy if a
+                /// database exists but does not have a policy set.
+                ///
+                /// Authorization requires `spanner.databases.getIamPolicy` permission on resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is
+                /// `projects//instances/` for instance resources and `projects//instances//databases/` for database
+                /// resources.</param>
+                public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Spanner.v1.Data.GetIamPolicyRequest body, string resource)
+                {
+                    return new GetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>Gets the access control policy for a database resource. Returns an empty policy if a
+                /// database exists but does not have a policy set.
+                ///
+                /// Authorization requires `spanner.databases.getIamPolicy` permission on resource.</summary>
+                public class GetIamPolicyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.GetIamPolicyRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The
+                    /// format is `projects//instances/` for instance resources and `projects//instances//databases/`
+                    /// for database resources.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Spanner.v1.Data.GetIamPolicyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "getIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+resource}:getIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/backups/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Sets the access control policy on a database resource. Replaces any existing policy.
+                ///
+                /// Authorization requires `spanner.databases.setIamPolicy` permission on resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is
+                /// `projects//instances/` for instance resources and `projects//instances//databases/` for databases
+                /// resources.</param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Spanner.v1.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>Sets the access control policy on a database resource. Replaces any existing policy.
+                ///
+                /// Authorization requires `spanner.databases.setIamPolicy` permission on resource.</summary>
+                public class SetIamPolicyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.SetIamPolicyRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is
+                    /// `projects//instances/` for instance resources and `projects//instances//databases/` for
+                    /// databases resources.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Spanner.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "setIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+resource}:setIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/backups/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Returns permissions that the caller has on the specified database resource.
+                ///
+                /// Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the
+                /// user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise
+                /// returns an empty set of permissions.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is
+                /// `projects//instances/` for instance resources and `projects//instances//databases/` for database
+                /// resources.</param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Spanner.v1.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>Returns permissions that the caller has on the specified database resource.
+                ///
+                /// Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the
+                /// user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise
+                /// returns an empty set of permissions.</summary>
+                public class TestIamPermissionsRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.TestIamPermissionsRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format
+                    /// is `projects//instances/` for instance resources and `projects//instances//databases/` for
+                    /// database resources.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Spanner.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "testIamPermissions"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+resource}:testIamPermissions"; }
+                    }
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/backups/[^/]+$",
+                            });
+                    }
+
+                }
+            }
             private readonly DatabasesResource databases;
 
             /// <summary>Gets the Databases resource.</summary>
@@ -3065,10 +3662,6 @@ namespace Google.Apis.Spanner.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -3076,6 +3669,10 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3111,15 +3708,6 @@ namespace Google.Apis.Spanner.v1
                                 Pattern = @"^projects/[^/]+/instances/[^/]+/operations$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -3132,6 +3720,15 @@ namespace Google.Apis.Spanner.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

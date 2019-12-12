@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191118 (1782)
+ *      <tr><th>API Rev<td>20191202 (1796)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -730,17 +730,17 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("childSpanCount")]
         public virtual System.Nullable<int> ChildSpanCount { get; set; } 
 
-        /// <summary>A description of the span's operation (up to 128 bytes). Stackdriver Trace displays the description
-        /// in the Google Cloud Platform Console. For example, the display name can be a qualified method name or a file
-        /// name and a line number where the operation is called. A best practice is to use the same display name within
-        /// an application and at the same call point. This makes it easier to correlate spans in different
-        /// traces.</summary>
+        /// <summary>Required. A description of the span's operation (up to 128 bytes). Stackdriver Trace displays the
+        /// description in the Google Cloud Platform Console. For example, the display name can be a qualified method
+        /// name or a file name and a line number where the operation is called. A best practice is to use the same
+        /// display name within an application and at the same call point. This makes it easier to correlate spans in
+        /// different traces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual TruncatableString DisplayName { get; set; } 
 
-        /// <summary>The end time of the span. On the client side, this is the time kept by the local machine where the
-        /// span execution ends. On the server side, this is the time when the server application handler stops
-        /// running.</summary>
+        /// <summary>Required. The end time of the span. On the client side, this is the time kept by the local machine
+        /// where the span execution ends. On the server side, this is the time when the server application handler
+        /// stops running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
@@ -769,7 +769,7 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sameProcessAsParentSpan")]
         public virtual System.Nullable<bool> SameProcessAsParentSpan { get; set; } 
 
-        /// <summary>The [SPAN_ID] portion of the span's resource name.</summary>
+        /// <summary>Required. The [SPAN_ID] portion of the span's resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual string SpanId { get; set; } 
 
@@ -782,9 +782,9 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
         public virtual StackTrace StackTrace { get; set; } 
 
-        /// <summary>The start time of the span. On the client side, this is the time kept by the local machine where
-        /// the span execution starts. On the server side, this is the time when the server's application handler starts
-        /// running.</summary>
+        /// <summary>Required. The start time of the span. On the client side, this is the time kept by the local
+        /// machine where the span execution starts. On the server side, this is the time when the server's application
+        /// handler starts running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 

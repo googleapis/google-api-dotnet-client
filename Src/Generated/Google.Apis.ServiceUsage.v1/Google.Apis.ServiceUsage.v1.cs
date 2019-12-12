@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191204 (1798)
+ *      <tr><th>API Rev<td>20191210 (1804)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -597,10 +597,6 @@ namespace Google.Apis.ServiceUsage.v1
             }
 
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -612,6 +608,10 @@ namespace Google.Apis.ServiceUsage.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -638,15 +638,6 @@ namespace Google.Apis.ServiceUsage.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -668,6 +659,15 @@ namespace Google.Apis.ServiceUsage.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1338,7 +1338,18 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deadline")]
         public virtual System.Nullable<double> Deadline { get; set; } 
 
-        /// <summary>The JWT audience is used when generating a JWT id token for the backend.</summary>
+        /// <summary>When disable_auth is false,  a JWT ID token will be generated with the value from
+        /// BackendRule.address as jwt_audience, overrode to the HTTP "Authorization" request header and sent to the
+        /// backend.
+        ///
+        /// When disable_auth is true, a JWT ID token won't be generated and the original "Authorization" HTTP header
+        /// will be preserved. If the header is used to carry the original token and is expected by the backend, this
+        /// field must be set to true to preserve the header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAuth")]
+        public virtual System.Nullable<bool> DisableAuth { get; set; } 
+
+        /// <summary>The JWT audience is used when generating a JWT ID token for the backend. This ID token will be
+        /// added in the HTTP "authorization" header, and sent to the backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwtAudience")]
         public virtual string JwtAudience { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191118 (1782)
+ *      <tr><th>API Rev<td>20191206 (1800)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage-transfer/docs'>
  *              https://cloud.google.com/storage-transfer/docs</a>
@@ -662,7 +662,10 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>Updates a transfer job. Updating a job's transfer spec does not affect transfer operations that are
-        /// running already. Updating the scheduling of a job is not allowed.</summary>
+        /// running already. Updating a job's schedule is not allowed.
+        ///
+        /// Note: The job's `status` field can be modified using this RPC (for example, to set a job's status to
+        /// `DELETED`, `DISABLED`, or `ENABLED`).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="jobName">Required. The name of job to update.</param>
         public virtual PatchRequest Patch(Google.Apis.Storagetransfer.v1.Data.UpdateTransferJobRequest body, string jobName)
@@ -671,7 +674,10 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>Updates a transfer job. Updating a job's transfer spec does not affect transfer operations that are
-        /// running already. Updating the scheduling of a job is not allowed.</summary>
+        /// running already. Updating a job's schedule is not allowed.
+        ///
+        /// Note: The job's `status` field can be modified using this RPC (for example, to set a job's status to
+        /// `DELETED`, `DISABLED`, or `ENABLED`).</summary>
         public class PatchRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.TransferJob>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -955,6 +961,14 @@ namespace Google.Apis.Storagetransfer.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The list page size. The max allowed value is 256.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Required. A list of query parameters specified as JSON text in the form of:
             /// {"project_id":"my_project_id", "job_names":["jobid1","jobid2",...],
             /// "operation_names":["opid1","opid2",...], "transfer_statuses":["status1","status2",...]}. Since
@@ -964,14 +978,6 @@ namespace Google.Apis.Storagetransfer.v1
             /// `SUCCESS`, `FAILED`, and `ABORTED`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>The list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The list page size. The max allowed value is 256.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1007,15 +1013,6 @@ namespace Google.Apis.Storagetransfer.v1
                         Pattern = @"^transferOperations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1028,6 +1025,15 @@ namespace Google.Apis.Storagetransfer.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

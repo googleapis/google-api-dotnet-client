@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>Service Networking API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191204 (1798)
+ *      <tr><th>API Rev<td>20191210 (1804)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started'>
  *              https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started</a>
@@ -1073,6 +1073,78 @@ namespace Google.Apis.ServiceNetworking.v1
 
         }
 
+        /// <summary>Disables VPC service controls for a connection.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">The service that is managing peering connectivity for a service producer's organization. For
+        /// Google services that support this functionality, this value is
+        /// `services/servicenetworking.googleapis.com`.</param>
+        public virtual DisableVpcServiceControlsRequest DisableVpcServiceControls(Google.Apis.ServiceNetworking.v1.Data.DisableVpcServiceControlsRequest body, string parent)
+        {
+            return new DisableVpcServiceControlsRequest(service, body, parent);
+        }
+
+        /// <summary>Disables VPC service controls for a connection.</summary>
+        public class DisableVpcServiceControlsRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new DisableVpcServiceControls request.</summary>
+            public DisableVpcServiceControlsRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceNetworking.v1.Data.DisableVpcServiceControlsRequest body, string parent)
+                : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The service that is managing peering connectivity for a service producer's organization. For
+            /// Google services that support this functionality, this value is
+            /// `services/servicenetworking.googleapis.com`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ServiceNetworking.v1.Data.DisableVpcServiceControlsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "disableVpcServiceControls"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+parent}:disableVpcServiceControls"; }
+            }
+
+            /// <summary>Initializes DisableVpcServiceControls parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^services/[^/]+$",
+                    });
+            }
+
+        }
+
         /// <summary>Enables VPC service controls for a connection.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">The service that is managing peering connectivity for a service producer's organization. For
@@ -1563,7 +1635,18 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deadline")]
         public virtual System.Nullable<double> Deadline { get; set; } 
 
-        /// <summary>The JWT audience is used when generating a JWT id token for the backend.</summary>
+        /// <summary>When disable_auth is false,  a JWT ID token will be generated with the value from
+        /// BackendRule.address as jwt_audience, overrode to the HTTP "Authorization" request header and sent to the
+        /// backend.
+        ///
+        /// When disable_auth is true, a JWT ID token won't be generated and the original "Authorization" HTTP header
+        /// will be preserved. If the header is used to carry the original token and is expected by the backend, this
+        /// field must be set to true to preserve the header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAuth")]
+        public virtual System.Nullable<bool> DisableAuth { get; set; } 
+
+        /// <summary>The JWT audience is used when generating a JWT ID token for the backend. This ID token will be
+        /// added in the HTTP "authorization" header, and sent to the backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwtAudience")]
         public virtual string JwtAudience { get; set; } 
 
@@ -1810,6 +1893,19 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// <summary>The path matched by this custom verb.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to disable VPC service controls.</summary>
+    public class DisableVpcServiceControlsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The network that the consumer is using to connect with services. Must be in the form of
+        /// projects/{project}/global/networks/{network} {project} is a project number, as in '12345' {network} is
+        /// network name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
+        public virtual string ConsumerNetwork { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

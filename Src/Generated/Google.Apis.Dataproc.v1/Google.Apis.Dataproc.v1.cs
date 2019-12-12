@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191031 (1764)
+ *      <tr><th>API Rev<td>20191120 (1784)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -3097,6 +3097,10 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
+                    /// <summary>Optional. The standard List page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Optional. The standard List page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -3112,10 +3116,6 @@ namespace Google.Apis.Dataproc.v1
                     /// labels.env = staging AND labels.starred = *</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
-
-                    /// <summary>Optional. The standard List page token.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3160,6 +3160,15 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -3172,15 +3181,6 @@ namespace Google.Apis.Dataproc.v1
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3231,6 +3231,14 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
+                    /// <summary>Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows
+                    /// removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how
+                    /// long to wait for jobs in progress to finish before forcefully removing nodes (and potentially
+                    /// interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed
+                    /// timeout is 1 day.Only supported on Dataproc image versions 1.2 and higher.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("gracefulDecommissionTimeout", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object GracefulDecommissionTimeout { get; set; }
+
                     /// <summary>Optional. A unique id used to identify the request. If the server receives two
                     /// UpdateClusterRequest requests with the same id, then the second request will be ignored and the
                     /// first google.longrunning.Operation created and stored in the backend is returned.It is
@@ -3255,14 +3263,6 @@ namespace Google.Apis.Dataproc.v1
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
-
-                    /// <summary>Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows
-                    /// removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how
-                    /// long to wait for jobs in progress to finish before forcefully removing nodes (and potentially
-                    /// interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed
-                    /// timeout is 1 day.Only supported on Dataproc image versions 1.2 and higher.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("gracefulDecommissionTimeout", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object GracefulDecommissionTimeout { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -3322,6 +3322,15 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "gracefulDecommissionTimeout",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "requestId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "requestId",
@@ -3334,15 +3343,6 @@ namespace Google.Apis.Dataproc.v1
                             "updateMask", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "gracefulDecommissionTimeout",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3919,6 +3919,20 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
+                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
+                    /// results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
+                    /// named cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterName { get; set; }
+
                     /// <summary>Optional. A filter constraining the jobs to list. Filters are case-sensitive and have
                     /// the following syntax:field = value AND field = value ...where field is status.state or
                     /// labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be
@@ -3944,20 +3958,6 @@ namespace Google.Apis.Dataproc.v1
                         [Google.Apis.Util.StringValueAttribute("NON_ACTIVE")]
                         NONACTIVE,
                     }
-
-                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
-                    /// results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
-                    /// named cluster.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterName { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4002,24 +4002,6 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "jobStateMatcher", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "jobStateMatcher",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -4041,6 +4023,24 @@ namespace Google.Apis.Dataproc.v1
                             "clusterName", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "clusterName",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "jobStateMatcher", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobStateMatcher",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5525,14 +5525,14 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. The page token, returned by a previous call, to request the next page of
                     /// results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5568,18 +5568,18 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = @"^projects/[^/]+/regions/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6348,6 +6348,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; } 
 
+        /// <summary>Optional. Reservation Affinity for consuming Zonal reservation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
+        public virtual ReservationAffinity ReservationAffinity { get; set; } 
+
         /// <summary>Optional. The service account of the instances. Defaults to the default Compute Engine service
         /// account. Custom service accounts need permissions equivalent to the following IAM roles:
         /// roles/logging.logWriter roles/storage.objectAdmin(see https://cloud.google.com/compute/docs/access/service-
@@ -6626,11 +6630,9 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("driverOutputResourceUri")]
         public virtual string DriverOutputResourceUri { get; set; } 
 
-        /// <summary>Job is a Hadoop job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hadoopJob")]
         public virtual HadoopJob HadoopJob { get; set; } 
 
-        /// <summary>Job is a Hive job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiveJob")]
         public virtual HiveJob HiveJob { get; set; } 
 
@@ -6646,7 +6648,6 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Job is a Pig job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pigJob")]
         public virtual PigJob PigJob { get; set; } 
 
@@ -6654,7 +6655,6 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("placement")]
         public virtual JobPlacement Placement { get; set; } 
 
-        /// <summary>Job is a Pyspark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pysparkJob")]
         public virtual PySparkJob PysparkJob { get; set; } 
 
@@ -6668,15 +6668,12 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual JobScheduling Scheduling { get; set; } 
 
-        /// <summary>Job is a Spark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkJob")]
         public virtual SparkJob SparkJob { get; set; } 
 
-        /// <summary>Job is a SparkR job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkRJob")]
         public virtual SparkRJob SparkRJob { get; set; } 
 
-        /// <summary>Job is a SparkSql job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkSqlJob")]
         public virtual SparkSqlJob SparkSqlJob { get; set; } 
 
@@ -7062,11 +7059,9 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>A job executed by the workflow.</summary>
     public class OrderedJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Job is a Hadoop job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hadoopJob")]
         public virtual HadoopJob HadoopJob { get; set; } 
 
-        /// <summary>Job is a Hive job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiveJob")]
         public virtual HiveJob HiveJob { get; set; } 
 
@@ -7077,7 +7072,6 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Job is a Pig job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pigJob")]
         public virtual PigJob PigJob { get; set; } 
 
@@ -7086,7 +7080,6 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("prerequisiteStepIds")]
         public virtual System.Collections.Generic.IList<string> PrerequisiteStepIds { get; set; } 
 
-        /// <summary>Job is a Pyspark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pysparkJob")]
         public virtual PySparkJob PysparkJob { get; set; } 
 
@@ -7094,11 +7087,9 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual JobScheduling Scheduling { get; set; } 
 
-        /// <summary>Job is a Spark job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkJob")]
         public virtual SparkJob SparkJob { get; set; } 
 
-        /// <summary>Job is a SparkSql job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkSqlJob")]
         public virtual SparkSqlJob SparkSqlJob { get; set; } 
 
@@ -7197,17 +7188,17 @@ namespace Google.Apis.Dataproc.v1.Data
         /// response to getIamPolicy, and systems are expected to put that etag in the request to setIamPolicy to ensure
         /// that their change will be applied to the same version of the policy.If no etag is provided in the call to
         /// setIamPolicy, then the existing policy is overwritten. Due to blind-set semantics of an etag-less policy,
-        /// 'setIamPolicy' will not fail even if either of incoming or stored policy does not meet the version
-        /// requirements.</summary>
+        /// 'setIamPolicy' will not fail even if the incoming policy version does not meet the requirements for
+        /// modifying the stored policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
         /// <summary>Specifies the format of the policy.Valid values are 0, 1, and 3. Requests specifying an invalid
         /// value will be rejected.Operations affecting conditional bindings must specify version 3. This can be either
-        /// setting a conditional policy, modifying a conditional binding, or removing a conditional binding from the
-        /// stored conditional policy. Operations on non-conditional policies may specify any valid value or leave the
-        /// field unset.If no etag is provided in the call to setIamPolicy, any version compliance checks on the
-        /// incoming and/or stored policy is skipped.</summary>
+        /// setting a conditional policy, modifying a conditional binding, or removing a binding (conditional or
+        /// unconditional) from the stored conditional policy. Operations on non-conditional policies may specify any
+        /// valid value or leave the field unset.If no etag is provided in the call to setIamPolicy, version compliance
+        /// checks against the stored policy is skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -7280,6 +7271,25 @@ namespace Google.Apis.Dataproc.v1.Data
         /// regex in its entirety (substring matches are not sufficient).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regexes")]
         public virtual System.Collections.Generic.IList<string> Regexes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Reservation Affinity for consuming Zonal reservation.</summary>
+    public class ReservationAffinity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Type of reservation to consume</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumeReservationType")]
+        public virtual string ConsumeReservationType { get; set; } 
+
+        /// <summary>Optional. Corresponds to the label key of reservation resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>Optional. Corresponds to the label values of reservation resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191115 (1779)
+ *      <tr><th>API Rev<td>20191206 (1800)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -2103,6 +2103,10 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
+            /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The max number of items to include in the response list. Page size is 50 if not specified.
             /// Maximum value is 100.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -2117,10 +2121,6 @@ namespace Google.Apis.ServiceManagement.v1
             /// The Google Service Management implementation accepts the following forms: - project:</summary>
             [Google.Apis.Util.RequestParameterAttribute("consumerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ConsumerId { get; set; }
-
-            /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2147,6 +2147,15 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -2168,15 +2177,6 @@ namespace Google.Apis.ServiceManagement.v1
                     "consumerId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "consumerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2782,6 +2782,20 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// app@appspot.gserviceaccount.com`.
         ///
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
+        ///
+        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
+        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
+        ///
+        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a service account that has been recently deleted. For example, `my-other-
+        /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
+        ///
+        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
+        /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
+        /// binding.
         ///
         /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.
@@ -3955,29 +3969,17 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>The unit in which the metric value is reported. It is only applicable if the `value_type` is
-        /// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of [The Unified Code for Units of
-        /// Measure](http://unitsofmeasure.org/ucum.html) standard:
-        ///
-        /// **Basic units (UNIT)**
-        ///
-        /// * `bit`   bit * `By`    byte * `s`     second * `min`   minute * `h`     hour * `d`     day
-        ///
-        /// **Prefixes (PREFIX)**
-        ///
-        /// * `k`     kilo    (10**3) * `M`     mega    (10**6) * `G`     giga    (10**9) * `T`     tera    (10**12) *
-        /// `P`     peta    (10**15) * `E`     exa     (10**18) * `Z`     zetta   (10**21) * `Y`     yotta   (10**24) *
-        /// `m`     milli   (10**-3) * `u`     micro   (10**-6) * `n`     nano    (10**-9) * `p`     pico    (10**-12) *
-        /// `f`     femto   (10**-15) * `a`     atto    (10**-18) * `z`     zepto   (10**-21) * `y`     yocto
-        /// (10**-24) * `Ki`    kibi    (2**10) * `Mi`    mebi    (2**20) * `Gi`    gibi    (2**30) * `Ti`    tebi
-        /// (2**40)
+        /// <summary>* `Ki`    kibi    (2^10) * `Mi`    mebi    (2^20) * `Gi`    gibi    (2^30) * `Ti`    tebi    (2^40)
+        /// * `Pi`    pebi    (2^50)
         ///
         /// **Grammar**
         ///
         /// The grammar also includes these connectors:
         ///
-        /// * `/`    division (as an infix operator, e.g. `1/s`). * `.`    multiplication (as an infix operator, e.g.
-        /// `GBy.d`)
+        /// * `/`    division or ratio (as an infix operator). For examples, `kBy/{email}` or `MiBy/10ms` (although you
+        /// should almost never have `/s` in a metric `unit`; rates should always be computed at query time from the
+        /// underlying cumulative or delta value). * `.`    multiplication or composition (as an infix operator). For
+        /// examples, `GBy.d` or `k{watt}.h`.
         ///
         /// The grammar for a unit is as follows:
         ///
@@ -3989,10 +3991,17 @@ namespace Google.Apis.ServiceManagement.v1.Data
         ///
         /// Notes:
         ///
-        /// * `Annotation` is just a comment if it follows a `UNIT` and is equivalent to `1` if it is used alone. For
-        /// examples, `{requests}/s == 1/s`, `By{transmitted}/s == By/s`. * `NAME` is a sequence of non-blank printable
-        /// ASCII characters not containing '{' or '}'. * `1` represents dimensionless value 1, such as in `1/s`. * `%`
-        /// represents dimensionless value 1/100, and annotates values giving a percentage.</summary>
+        /// * `Annotation` is just a comment if it follows a `UNIT`. If the annotation is used alone, then the unit is
+        /// equivalent to `1`. For examples, `{request}/s == 1/s`, `By{transmitted}/s == By/s`. * `NAME` is a sequence
+        /// of non-blank printable ASCII characters not containing `{` or `}`. * `1` represents a unitary [dimensionless
+        /// unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in `1/s`. It is typically used
+        /// when none of the basic units are appropriate. For example, "new users per day" can be represented as `1/d`
+        /// or `{new-users}/d` (and a metric value `5` would mean "5 new users). Alternatively, "thousands of page views
+        /// per day" would be represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric value of `5.3` would
+        /// mean "5300 page views per day"). * `%` represents dimensionless value of 1/100, and annotates values giving
+        /// a percentage (so the metric values are typically in the range of 0..100, and a metric value `3` means "3
+        /// percent"). * `10^2.%` indicates a metric contains a ratio, typically in the range 0..1, that will be
+        /// multiplied by 100 and displayed as a percentage (so a metric value `0.03` means "3 percent").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 
@@ -4344,41 +4353,43 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
-    /// for Cloud Platform resources.
+    /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
+    /// resources.
     ///
     /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
     /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions (defined by IAM or configured by users). A `binding` can optionally specify a `condition`, which
-    /// is a logic expression that further constrains the role binding based on attributes about the request and/or
-    /// target resource.
+    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
     ///
-    /// **JSON Example**
+    /// Optionally, a `binding` can specify a `condition`, which is a logical expression that allows access to a
+    /// resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the
+    /// request, the resource, or both.
+    ///
+    /// **JSON example:**
     ///
     /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ] }
+    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
     ///
-    /// **YAML Example**
+    /// **YAML example:**
     ///
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
     /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
     /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
     /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z')
+    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
     ///
-    /// For a description of IAM and its features, see the [IAM developer's
-    /// guide](https://cloud.google.com/iam/docs).</summary>
+    /// For a description of IAM and its features, see the [IAM
+    /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 
-        /// <summary>Associates a list of `members` to a `role`. Optionally may specify a `condition` that determines
-        /// when binding is in effect. `bindings` with no members will result in an error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
+        /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -4388,23 +4399,29 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
-        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if the incoming policy version
-        /// does not meet the requirements for modifying the stored policy.</summary>
+        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
+        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
+        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
         /// <summary>Specifies the format of the policy.
         ///
-        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
         ///
-        /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
-        /// policy, modifying a conditional binding, or removing a binding (conditional or unconditional) from the
-        /// stored conditional policy. Operations on non-conditional policies may specify any valid value or leave the
-        /// field unset.
+        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
+        /// the following operations:
         ///
-        /// If no etag is provided in the call to `setIamPolicy`, version compliance checks against the stored policy is
-        /// skipped.</summary>
+        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
+        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
+        /// from a policy that includes conditions
+        ///
+        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
+        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
+        /// `1` policy, and all of the conditions in the version `3` policy are lost.
+        ///
+        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
+        /// leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191126 (1790)
+ *      <tr><th>API Rev<td>20191210 (1804)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -736,6 +736,10 @@ namespace Google.Apis.AndroidManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -743,10 +747,6 @@ namespace Google.Apis.AndroidManagement.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -782,6 +782,15 @@ namespace Google.Apis.AndroidManagement.v1
                                 Pattern = @"^enterprises/[^/]+/devices/[^/]+/operations$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -794,15 +803,6 @@ namespace Google.Apis.AndroidManagement.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2167,6 +2167,10 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
+            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
+
             /// <summary>The enterprise token appended to the callback URL.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EnterpriseToken { get; set; }
@@ -2174,10 +2178,6 @@ namespace Google.Apis.AndroidManagement.v1
             /// <summary>The name of the SignupUrl used to sign up for the enterprise.</summary>
             [Google.Apis.Util.RequestParameterAttribute("signupUrlName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SignupUrlName { get; set; }
-
-            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2210,6 +2210,15 @@ namespace Google.Apis.AndroidManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "enterpriseToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "enterpriseToken",
@@ -2222,15 +2231,6 @@ namespace Google.Apis.AndroidManagement.v1
                     "signupUrlName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "signupUrlName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2416,6 +2416,10 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
+            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
+
             /// <summary>The callback URL that the admin will be redirected to after successfully creating an
             /// enterprise. Before redirecting there the system will add a query parameter to this URL named
             /// enterpriseToken which will contain an opaque token to be used for the create enterprise request. The URL
@@ -2423,10 +2427,6 @@ namespace Google.Apis.AndroidManagement.v1
             /// minor formatting changes.</summary>
             [Google.Apis.Util.RequestParameterAttribute("callbackUrl", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CallbackUrl { get; set; }
-
-            /// <summary>The ID of the Google Cloud Platform project which will own the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2453,18 +2453,18 @@ namespace Google.Apis.AndroidManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "callbackUrl", new Google.Apis.Discovery.Parameter
+                    "projectId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "callbackUrl",
+                        Name = "projectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
+                    "callbackUrl", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "projectId",
+                        Name = "callbackUrl",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3165,7 +3165,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; } 
 
-        /// <summary>Sign-in details of the enterprise. Maximum of 1 SigninDetail is supported.</summary>
+        /// <summary>Sign-in details of the enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signinDetails")]
         public virtual System.Collections.Generic.IList<SigninDetail> SigninDetails { get; set; } 
 
@@ -4041,7 +4041,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<bool> ShareLocationDisabled { get; set; } 
 
         /// <summary>A message displayed to the user in the settings screen wherever functionality has been disabled by
-        /// the admin.</summary>
+        /// the admin. If the message is longer than 200 characters it may be truncated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortSupportMessage")]
         public virtual UserFacingMessage ShortSupportMessage { get; set; } 
 
@@ -4366,11 +4366,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceSettingsEnabled")]
         public virtual System.Nullable<bool> DeviceSettingsEnabled { get; set; } 
 
-        /// <summary>Whether displays reporting is enabled.</summary>
+        /// <summary>Whether displays reporting is enabled. Report data is not available for personally owned devices
+        /// with work profiles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayInfoEnabled")]
         public virtual System.Nullable<bool> DisplayInfoEnabled { get; set; } 
 
-        /// <summary>Whether hardware status reporting is enabled.</summary>
+        /// <summary>Whether hardware status reporting is enabled. Report data is not available for personally owned
+        /// devices with work profiles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hardwareStatusEnabled")]
         public virtual System.Nullable<bool> HardwareStatusEnabled { get; set; } 
 
@@ -4382,7 +4384,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkInfoEnabled")]
         public virtual System.Nullable<bool> NetworkInfoEnabled { get; set; } 
 
-        /// <summary>Whether power management event reporting is enabled.</summary>
+        /// <summary>Whether power management event reporting is enabled. Report data is not available for personally
+        /// owned devices with work profiles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("powerManagementEventsEnabled")]
         public virtual System.Nullable<bool> PowerManagementEventsEnabled { get; set; } 
 
