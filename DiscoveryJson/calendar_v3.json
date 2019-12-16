@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/_GW6rcmKxYwpqOGehL1u7UXJkIA\"",
+ "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/_GW6rcmKxYwpqOGehL1u7UXJkIA\"",
  "discoveryVersion": "v1",
  "id": "calendar:v3",
  "name": "calendar",

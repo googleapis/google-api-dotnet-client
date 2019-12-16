@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/storage/security'>Firebase Rules API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191115 (1779)
+ *      <tr><th>API Rev<td>20191209 (1803)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/storage/security'>
  *              https://firebase.google.com/docs/storage/security</a>
@@ -1394,6 +1394,26 @@ namespace Google.Apis.FirebaseRules.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Describes where in a file an expression is found and what it was evaluated to over the course of its
+    /// use.</summary>
+    public class ExpressionReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Subexpressions</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("children")]
+        public virtual System.Collections.Generic.IList<ExpressionReport> Children { get; set; } 
+
+        /// <summary>Position of expression in original rules source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourcePosition")]
+        public virtual SourcePosition SourcePosition { get; set; } 
+
+        /// <summary>Values that this expression evaluated to when encountered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<ValueCount> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>`File` containing source content.</summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1681,6 +1701,10 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expectation")]
         public virtual string Expectation { get; set; } 
 
+        /// <summary>Specifies what should be included in the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressionReportLevel")]
+        public virtual string ExpressionReportLevel { get; set; } 
+
         /// <summary>Optional function mocks for service-defined functions. If not set, any service defined function is
         /// expected to return an error, which may or may not influence the test outcome.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionMocks")]
@@ -1736,6 +1760,12 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// E.g. `error_position { line: 19 column: 37 }`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorPosition")]
         public virtual SourcePosition ErrorPosition { get; set; } 
+
+        /// <summary>The mapping from expression in the ruleset AST to the values they were evaluated to. Partially-
+        /// nested to mirror AST structure. Note that this field is actually tracking expressions and not permission
+        /// statements in contrast to the "visited_expressions" field above. Literal expressions are omitted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressionReports")]
+        public virtual System.Collections.Generic.IList<ExpressionReport> ExpressionReports { get; set; } 
 
         /// <summary>The set of function calls made to service-defined methods.
         ///
@@ -1816,6 +1846,21 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// <summary>Specifies which fields to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Tuple for how many times an Expression was evaluated to a particular ExpressionValue.</summary>
+    public class ValueCount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount of times that expression returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<int> Count { get; set; } 
+
+        /// <summary>The return value of the expression</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual object Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

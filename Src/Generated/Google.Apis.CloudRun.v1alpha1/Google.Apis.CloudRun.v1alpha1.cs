@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20191115 (1779)
+ *      <tr><th>API Rev<td>20191204 (1798)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -826,6 +826,10 @@ namespace Google.Apis.CloudRun.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Cloud Run currently ignores this parameter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ApiVersion { get; set; }
+
                 /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and
                 /// deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers/garbage-
                 /// collection/ for more information.</summary>
@@ -841,10 +845,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                 /// PropagationPolicy See https://github.com/kubernetes/kubernetes/issues/46659 for more info.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orphanDependents", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> OrphanDependents { get; set; }
-
-                /// <summary>Cloud Run currently ignores this parameter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ApiVersion { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -880,6 +880,15 @@ namespace Google.Apis.CloudRun.v1alpha1
                             Pattern = @"^namespaces/[^/]+/domainmappings/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "apiVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "apiVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "propagationPolicy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "propagationPolicy",
@@ -901,15 +910,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                         "orphanDependents", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orphanDependents",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "apiVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "apiVersion",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1004,6 +1004,11 @@ namespace Google.Apis.CloudRun.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
+                /// and notIn.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LabelSelector { get; set; }
+
                 /// <summary>The baseline resource version from which the list or watch operation should start. Not
                 /// currently used by Cloud Run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -1030,11 +1035,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                 /// used by Cloud Run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Watch { get; set; }
-
-                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
-                /// and notIn.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LabelSelector { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1068,6 +1068,15 @@ namespace Google.Apis.CloudRun.v1alpha1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^namespaces/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "labelSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "labelSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "resourceVersion", new Google.Apis.Discovery.Parameter
@@ -1118,15 +1127,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                         "watch", new Google.Apis.Discovery.Parameter
                         {
                             Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "labelSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelSelector",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1657,20 +1657,10 @@ namespace Google.Apis.CloudRun.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
-                /// used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> Watch { get; set; }
-
                 /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
                 /// and notIn.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LabelSelector { get; set; }
-
-                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
-                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string FieldSelector { get; set; }
 
                 /// <summary>The baseline resource version from which the list or watch operation should start. Not
                 /// currently used by Cloud Run.</summary>
@@ -1681,6 +1671,11 @@ namespace Google.Apis.CloudRun.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
 
+                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
+                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string FieldSelector { get; set; }
+
                 /// <summary>Optional encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Continue { get; set; }
@@ -1688,6 +1683,11 @@ namespace Google.Apis.CloudRun.v1alpha1
                 /// <summary>The maximum number of records that should be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> Limit { get; set; }
+
+                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
+                /// used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> Watch { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1723,27 +1723,9 @@ namespace Google.Apis.CloudRun.v1alpha1
                             Pattern = @"^namespaces/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "watch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "labelSelector", new Google.Apis.Discovery.Parameter
                         {
                             Name = "labelSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fieldSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldSelector",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1768,6 +1750,15 @@ namespace Google.Apis.CloudRun.v1alpha1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "fieldSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "continue", new Google.Apis.Discovery.Parameter
                         {
                             Name = "continue",
@@ -1780,6 +1771,15 @@ namespace Google.Apis.CloudRun.v1alpha1
                         "limit", new Google.Apis.Discovery.Parameter
                         {
                             Name = "limit",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "watch", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "watch",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1920,6 +1920,12 @@ namespace Google.Apis.CloudRun.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Deprecated. Specifies the cascade behavior on delete. Cloud Run only supports cascading
+                /// behavior, so this must be false. This attribute is deprecated, and is now replaced with
+                /// PropagationPolicy See https://github.com/kubernetes/kubernetes/issues/46659 for more info.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orphanDependents", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> OrphanDependents { get; set; }
+
                 /// <summary>Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ApiVersion { get; set; }
@@ -1933,12 +1939,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                 /// <summary>Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Kind { get; set; }
-
-                /// <summary>Deprecated. Specifies the cascade behavior on delete. Cloud Run only supports cascading
-                /// behavior, so this must be false. This attribute is deprecated, and is now replaced with
-                /// PropagationPolicy See https://github.com/kubernetes/kubernetes/issues/46659 for more info.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orphanDependents", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> OrphanDependents { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1974,6 +1974,15 @@ namespace Google.Apis.CloudRun.v1alpha1
                             Pattern = @"^namespaces/[^/]+/revisions/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "orphanDependents", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orphanDependents",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "apiVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "apiVersion",
@@ -1995,15 +2004,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                         "kind", new Google.Apis.Discovery.Parameter
                         {
                             Name = "kind",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orphanDependents", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orphanDependents",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2103,19 +2103,19 @@ namespace Google.Apis.CloudRun.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LabelSelector { get; set; }
 
-                /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                /// currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ResourceVersion { get; set; }
+                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
+                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string FieldSelector { get; set; }
 
                 /// <summary>Not currently used by Cloud Run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
 
-                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
-                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string FieldSelector { get; set; }
+                /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                /// currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ResourceVersion { get; set; }
 
                 /// <summary>Optional encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
@@ -2173,9 +2173,9 @@ namespace Google.Apis.CloudRun.v1alpha1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "resourceVersion", new Google.Apis.Discovery.Parameter
+                        "fieldSelector", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "resourceVersion",
+                            Name = "fieldSelector",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2191,9 +2191,9 @@ namespace Google.Apis.CloudRun.v1alpha1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "fieldSelector", new Google.Apis.Discovery.Parameter
+                        "resourceVersion", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "fieldSelector",
+                            Name = "resourceVersion",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2339,24 +2339,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                /// currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ResourceVersion { get; set; }
-
-                /// <summary>Not currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
-
-                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
-                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string FieldSelector { get; set; }
-
-                /// <summary>Optional encoded string to continue paging.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Continue { get; set; }
-
                 /// <summary>The maximum number of records that should be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> Limit { get; set; }
@@ -2370,6 +2352,24 @@ namespace Google.Apis.CloudRun.v1alpha1
                 /// and notIn.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LabelSelector { get; set; }
+
+                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
+                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string FieldSelector { get; set; }
+
+                /// <summary>Not currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
+
+                /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                /// currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ResourceVersion { get; set; }
+
+                /// <summary>Optional encoded string to continue paging.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Continue { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2405,42 +2405,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                             Pattern = @"^namespaces/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "resourceVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeUninitialized", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeUninitialized",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fieldSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "continue", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "continue",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "limit", new Google.Apis.Discovery.Parameter
                         {
                             Name = "limit",
@@ -2462,6 +2426,42 @@ namespace Google.Apis.CloudRun.v1alpha1
                         "labelSelector", new Google.Apis.Discovery.Parameter
                         {
                             Name = "labelSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "fieldSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "includeUninitialized", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeUninitialized",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "resourceVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "continue", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "continue",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2590,16 +2590,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Deprecated. Specifies the cascade behavior on delete. Cloud Run only supports cascading
-                /// behavior, so this must be false. This attribute is deprecated, and is now replaced with
-                /// PropagationPolicy See https://github.com/kubernetes/kubernetes/issues/46659 for more info.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orphanDependents", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> OrphanDependents { get; set; }
-
-                /// <summary>Cloud Run currently ignores this parameter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ApiVersion { get; set; }
-
                 /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and
                 /// deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers/garbage-
                 /// collection/ for more information.</summary>
@@ -2609,6 +2599,16 @@ namespace Google.Apis.CloudRun.v1alpha1
                 /// <summary>Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Kind { get; set; }
+
+                /// <summary>Deprecated. Specifies the cascade behavior on delete. Cloud Run only supports cascading
+                /// behavior, so this must be false. This attribute is deprecated, and is now replaced with
+                /// PropagationPolicy See https://github.com/kubernetes/kubernetes/issues/46659 for more info.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orphanDependents", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> OrphanDependents { get; set; }
+
+                /// <summary>Cloud Run currently ignores this parameter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ApiVersion { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2644,24 +2644,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                             Pattern = @"^namespaces/[^/]+/services/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "orphanDependents", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orphanDependents",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "apiVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "apiVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "propagationPolicy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "propagationPolicy",
@@ -2674,6 +2656,24 @@ namespace Google.Apis.CloudRun.v1alpha1
                         "kind", new Google.Apis.Discovery.Parameter
                         {
                             Name = "kind",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orphanDependents", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orphanDependents",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "apiVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "apiVersion",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2768,6 +2768,14 @@ namespace Google.Apis.CloudRun.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional encoded string to continue paging.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Continue { get; set; }
+
+                /// <summary>The maximum number of records that should be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> Limit { get; set; }
+
                 /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
                 /// used by Cloud Run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
@@ -2791,14 +2799,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                 /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string FieldSelector { get; set; }
-
-                /// <summary>Optional encoded string to continue paging.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Continue { get; set; }
-
-                /// <summary>The maximum number of records that should be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> Limit { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2832,6 +2832,24 @@ namespace Google.Apis.CloudRun.v1alpha1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^namespaces/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "continue", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "continue",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "limit", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "limit",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "watch", new Google.Apis.Discovery.Parameter
@@ -2873,24 +2891,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                         "fieldSelector", new Google.Apis.Discovery.Parameter
                         {
                             Name = "fieldSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "continue", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "continue",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "limit", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "limit",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3285,14 +3285,14 @@ namespace Google.Apis.CloudRun.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string FieldSelector { get; set; }
 
-                /// <summary>Not currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
-
                 /// <summary>The baseline resource version from which the list or watch operation should start. Not
                 /// currently used by Cloud Run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ResourceVersion { get; set; }
+
+                /// <summary>Not currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3373,18 +3373,18 @@ namespace Google.Apis.CloudRun.v1alpha1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "includeUninitialized", new Google.Apis.Discovery.Parameter
+                        "resourceVersion", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "includeUninitialized",
+                            Name = "resourceVersion",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "resourceVersion", new Google.Apis.Discovery.Parameter
+                        "includeUninitialized", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "resourceVersion",
+                            Name = "includeUninitialized",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3746,6 +3746,11 @@ namespace Google.Apis.CloudRun.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Watch { get; set; }
+
                     /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
                     /// in, and notIn.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
@@ -3772,11 +3777,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                     /// <summary>The maximum number of records that should be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Limit { get; set; }
-
-                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> Watch { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3810,6 +3810,15 @@ namespace Google.Apis.CloudRun.v1alpha1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "watch", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "watch",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         RequestParameters.Add(
                             "labelSelector", new Google.Apis.Discovery.Parameter
@@ -3860,15 +3869,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                             "limit", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "limit",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4417,6 +4417,19 @@ namespace Google.Apis.CloudRun.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional encoded string to continue paging.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Continue { get; set; }
+
+                    /// <summary>The maximum number of records that should be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> Limit { get; set; }
+
+                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Watch { get; set; }
+
                     /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
                     /// in, and notIn.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
@@ -4435,19 +4448,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                     /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string FieldSelector { get; set; }
-
-                    /// <summary>Optional encoded string to continue paging.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Continue { get; set; }
-
-                    /// <summary>The maximum number of records that should be returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> Limit { get; set; }
-
-                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> Watch { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4483,6 +4483,33 @@ namespace Google.Apis.CloudRun.v1alpha1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "continue", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "continue",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "limit", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "limit",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "watch", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "watch",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "labelSelector", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "labelSelector",
@@ -4513,33 +4540,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                             "fieldSelector", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "fieldSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "continue", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "continue",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "limit", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "limit",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4829,24 +4829,19 @@ namespace Google.Apis.CloudRun.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
-                    /// in, and notIn.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LabelSelector { get; set; }
-
-                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
-                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string FieldSelector { get; set; }
+                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ResourceVersion { get; set; }
 
                     /// <summary>Not currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
 
-                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ResourceVersion { get; set; }
+                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
+                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FieldSelector { get; set; }
 
                     /// <summary>Optional encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
@@ -4860,6 +4855,11 @@ namespace Google.Apis.CloudRun.v1alpha1
                     /// currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Watch { get; set; }
+
+                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
+                    /// in, and notIn.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LabelSelector { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4895,18 +4895,9 @@ namespace Google.Apis.CloudRun.v1alpha1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "labelSelector", new Google.Apis.Discovery.Parameter
+                            "resourceVersion", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "labelSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fieldSelector",
+                                Name = "resourceVersion",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4922,9 +4913,9 @@ namespace Google.Apis.CloudRun.v1alpha1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
+                            "fieldSelector", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "resourceVersion",
+                                Name = "fieldSelector",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4952,6 +4943,15 @@ namespace Google.Apis.CloudRun.v1alpha1
                             "watch", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "watch",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "labelSelector", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "labelSelector",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5271,6 +5271,14 @@ namespace Google.Apis.CloudRun.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional encoded string to continue paging.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Continue { get; set; }
+
+                    /// <summary>The maximum number of records that should be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> Limit { get; set; }
+
                     /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
                     /// currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
@@ -5281,27 +5289,19 @@ namespace Google.Apis.CloudRun.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LabelSelector { get; set; }
 
-                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ResourceVersion { get; set; }
-
-                    /// <summary>Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
-
                     /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
                     /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string FieldSelector { get; set; }
 
-                    /// <summary>Optional encoded string to continue paging.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Continue { get; set; }
+                    /// <summary>Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
 
-                    /// <summary>The maximum number of records that should be returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> Limit { get; set; }
+                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ResourceVersion { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5337,6 +5337,24 @@ namespace Google.Apis.CloudRun.v1alpha1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "continue", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "continue",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "limit", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "limit",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "watch", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "watch",
@@ -5355,9 +5373,9 @@ namespace Google.Apis.CloudRun.v1alpha1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
+                            "fieldSelector", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "resourceVersion",
+                                Name = "fieldSelector",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5373,27 +5391,9 @@ namespace Google.Apis.CloudRun.v1alpha1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
+                            "resourceVersion", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "fieldSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "continue", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "continue",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "limit", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "limit",
+                                Name = "resourceVersion",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5763,6 +5763,13 @@ namespace Google.Apis.CloudRun.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Deprecated. Specifies the cascade behavior on delete. Cloud Run only supports cascading
+                    /// behavior, so this must be false. This attribute is deprecated, and is now replaced with
+                    /// PropagationPolicy See https://github.com/kubernetes/kubernetes/issues/46659 for more
+                    /// info.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orphanDependents", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> OrphanDependents { get; set; }
+
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ApiVersion { get; set; }
@@ -5776,13 +5783,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Kind { get; set; }
-
-                    /// <summary>Deprecated. Specifies the cascade behavior on delete. Cloud Run only supports cascading
-                    /// behavior, so this must be false. This attribute is deprecated, and is now replaced with
-                    /// PropagationPolicy See https://github.com/kubernetes/kubernetes/issues/46659 for more
-                    /// info.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("orphanDependents", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> OrphanDependents { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5818,6 +5818,15 @@ namespace Google.Apis.CloudRun.v1alpha1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "orphanDependents", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orphanDependents",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "apiVersion", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "apiVersion",
@@ -5839,15 +5848,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                             "kind", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "kind",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "orphanDependents", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orphanDependents",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6664,6 +6664,19 @@ namespace Google.Apis.CloudRun.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional encoded string to continue paging.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Continue { get; set; }
+
+                    /// <summary>The maximum number of records that should be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> Limit { get; set; }
+
+                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Watch { get; set; }
+
                     /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
                     /// in, and notIn.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
@@ -6682,19 +6695,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                     /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string FieldSelector { get; set; }
-
-                    /// <summary>Optional encoded string to continue paging.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Continue { get; set; }
-
-                    /// <summary>The maximum number of records that should be returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> Limit { get; set; }
-
-                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> Watch { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -6730,6 +6730,33 @@ namespace Google.Apis.CloudRun.v1alpha1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "continue", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "continue",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "limit", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "limit",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "watch", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "watch",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "labelSelector", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "labelSelector",
@@ -6760,33 +6787,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                             "fieldSelector", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "fieldSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "continue", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "continue",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "limit", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "limit",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -7094,6 +7094,20 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         /// app@appspot.gserviceaccount.com`.
         ///
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
+        ///
+        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
+        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
+        ///
+        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a service account that has been recently deleted. For example, `my-other-
+        /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
+        ///
+        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
+        /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
+        /// binding.
         ///
         /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.
@@ -8612,41 +8626,43 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
-    /// for Cloud Platform resources.
+    /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
+    /// resources.
     ///
     /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
     /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
-    /// of permissions (defined by IAM or configured by users). A `binding` can optionally specify a `condition`, which
-    /// is a logic expression that further constrains the role binding based on attributes about the request and/or
-    /// target resource.
+    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
     ///
-    /// **JSON Example**
+    /// Optionally, a `binding` can specify a `condition`, which is a logical expression that allows access to a
+    /// resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the
+    /// request, the resource, or both.
+    ///
+    /// **JSON example:**
     ///
     /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ] }
+    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
     ///
-    /// **YAML Example**
+    /// **YAML example:**
     ///
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
     /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
     /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
     /// description: Does not grant access after Sep 2020 expression: request.time <
-    /// timestamp('2020-10-01T00:00:00.000Z')
+    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
     ///
-    /// For a description of IAM and its features, see the [IAM developer's
-    /// guide](https://cloud.google.com/iam/docs).</summary>
+    /// For a description of IAM and its features, see the [IAM
+    /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 
-        /// <summary>Associates a list of `members` to a `role`. Optionally may specify a `condition` that determines
-        /// when binding is in effect. `bindings` with no members will result in an error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
+        /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -8656,23 +8672,29 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten. Due to
-        /// blind-set semantics of an etag-less policy, 'setIamPolicy' will not fail even if the incoming policy version
-        /// does not meet the requirements for modifying the stored policy.</summary>
+        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
+        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
+        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
         /// <summary>Specifies the format of the policy.
         ///
-        /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
         ///
-        /// Operations affecting conditional bindings must specify version 3. This can be either setting a conditional
-        /// policy, modifying a conditional binding, or removing a binding (conditional or unconditional) from the
-        /// stored conditional policy. Operations on non-conditional policies may specify any valid value or leave the
-        /// field unset.
+        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
+        /// the following operations:
         ///
-        /// If no etag is provided in the call to `setIamPolicy`, version compliance checks against the stored policy is
-        /// skipped.</summary>
+        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
+        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
+        /// from a policy that includes conditions
+        ///
+        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
+        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
+        /// `1` policy, and all of the conditions in the version `3` policy are lost.
+        ///
+        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
+        /// leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -9892,8 +9914,12 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("importers")]
         public virtual System.Collections.Generic.IList<TriggerImporterSpec> Importers { get; set; } 
 
-        /// <summary>Subscriber is the addressable that receives events from the Broker that pass the Filter. It is
-        /// required.
+        /// <summary>Sink is the addressable that will receive events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sink")]
+        public virtual Destination Sink { get; set; } 
+
+        /// <summary>Deprecated, sink will be represented by Destination. Subscriber is the addressable that receives
+        /// events from the Broker that pass the Filter. It is required.
         ///
         /// E.g. https://us-central1-myproject.cloudfunctions.net/myfunction or /namespaces/my-project/services/my-
         /// service.</summary>

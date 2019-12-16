@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191127 (1791)
+ *      <tr><th>API Rev<td>20191206 (1800)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -542,7 +542,7 @@ namespace Google.Apis.ServiceControl.v1
         /// aggregation to 5 seconds is to reduce data loss during client crashes. Clients should carefully choose the
         /// aggregation time window to avoid data loss risk more than 0.01% for business and compliance reasons.
         ///
-        /// NOTE: the ReportRequest has the size limit of 1MB.
+        /// NOTE: the ReportRequest has the size limit (wire-format byte size) of 1MB.
         ///
         /// This method requires the `servicemanagement.services.report` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
@@ -564,7 +564,7 @@ namespace Google.Apis.ServiceControl.v1
         /// aggregation to 5 seconds is to reduce data loss during client crashes. Clients should carefully choose the
         /// aggregation time window to avoid data loss risk more than 0.01% for business and compliance reasons.
         ///
-        /// NOTE: the ReportRequest has the size limit of 1MB.
+        /// NOTE: the ReportRequest has the size limit (wire-format byte size) of 1MB.
         ///
         /// This method requires the `servicemanagement.services.report` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
@@ -1422,7 +1422,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual System.Nullable<long> Int64Value { get; set; } 
 
         /// <summary>The labels describing the metric value. See comments on
-        /// google.api.servicecontrol.v1.Operation.labels for the overriding relationship.</summary>
+        /// google.api.servicecontrol.v1.Operation.labels for the overriding relationship. Note that this map must not
+        /// contain monitored resource labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -1757,8 +1758,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// request is allowed, but should be used only when multiple operations are natually available at the time of
         /// the report.
         ///
-        /// If multiple operations are in a single request, the total request size should be no larger than 1MB. See
-        /// ReportResponse.report_errors for partial failure behavior.</summary>
+        /// There is no limit on the number of operations in the same ReportRequest, however the ReportRequest size
+        /// should be no larger than 1MB. See ReportResponse.report_errors for partial failure behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
 

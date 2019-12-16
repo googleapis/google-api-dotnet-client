@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191202 (1796)
+ *      <tr><th>API Rev<td>20191207 (1801)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -841,8 +841,9 @@ namespace Google.Apis.Monitoring.v1.Data
     /// <summary>Defines the layout properties and content for a column.</summary>
     public class Column : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The relative weight of this column. The column weight is used to adjust the height of rows on the
-        /// screen (relative to peers). If omitted, a value of 1 is used.</summary>
+        /// <summary>The relative weight of this column. The column weight is used to adjust the width of columns on the
+        /// screen (relative to peers). Greater the weight, greater the width of the column on the screen. If omitted, a
+        /// value of 1 is used while rendering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
         public virtual System.Nullable<long> Weight { get; set; } 
 
@@ -887,8 +888,8 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Content is arranged with a basic layout that re-flows a simple list of informational
-        /// elements.</summary>
+        /// <summary>Content is arranged with a basic layout that re-flows a simple list of informational elements like
+        /// widgets or tiles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gridLayout")]
         public virtual GridLayout GridLayout { get; set; } 
 
@@ -911,9 +912,10 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("legendTemplate")]
         public virtual string LegendTemplate { get; set; } 
 
-        /// <summary>Optional. The lower bound on data point frequency for this data set implemented by specifying the
-        /// minimum alignment period to use in a time series query. For example, if the data is published once every 10
-        /// minutes it would not make sense to fetch and align data at one minute intervals.</summary>
+        /// <summary>Optional. The lower bound on data point frequency for this data set, implemented by specifying the
+        /// minimum alignment period to use in a time series query For example, if the data is published once every 10
+        /// minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align
+        /// data at one minute intervals.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minAlignmentPeriod")]
         public virtual object MinAlignmentPeriod { get; set; } 
 
@@ -1029,7 +1031,7 @@ namespace Google.Apis.Monitoring.v1.Data
     public class GridLayout : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of columns into which the view's width is divided. If omitted or set to zero, a system
-        /// default will be used.</summary>
+        /// default will be used while rendering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Nullable<long> Columns { get; set; } 
 
@@ -1118,7 +1120,8 @@ namespace Google.Apis.Monitoring.v1.Data
     public class Row : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The relative weight of this row. The row weight is used to adjust the height of rows on the screen
-        /// (relative to peers). If omitted, a value of 1 is used.</summary>
+        /// (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of
+        /// 1 is used while rendering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
         public virtual System.Nullable<long> Weight { get; set; } 
 
@@ -1431,17 +1434,17 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("thresholds")]
         public virtual System.Collections.Generic.IList<Threshold> Thresholds { get; set; } 
 
-        /// <summary>The duration used to display a comparison chart. A comparison chart shows values from two time
-        /// periods simultaneously (e.g., week-over-week metrics). The duration must be positive, and it can only be
-        /// applied to charts with data sets of LINE plot type.</summary>
+        /// <summary>The duration used to display a comparison chart. A comparison chart simultaneously shows values
+        /// from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it
+        /// can only be applied to charts with data sets of LINE plot type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeshiftDuration")]
         public virtual object TimeshiftDuration { get; set; } 
 
-        /// <summary>The X axis properties.</summary>
+        /// <summary>The properties applied to the X axis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xAxis")]
         public virtual Axis XAxis { get; set; } 
 
-        /// <summary>The primary Y axis properties.</summary>
+        /// <summary>The properties applied to the Y axis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yAxis")]
         public virtual Axis YAxis { get; set; } 
 

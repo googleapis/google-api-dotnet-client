@@ -2123,27 +2123,6 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string JobId { get; private set; }
 
-                        /// <summary>Filter to only get messages with importance >= level</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("minimumImportance", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<MinimumImportanceEnum> MinimumImportance { get; set; }
-
-                        /// <summary>Filter to only get messages with importance >= level</summary>
-                        public enum MinimumImportanceEnum
-                        {
-                            [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_IMPORTANCE_UNKNOWN")]
-                            JOBMESSAGEIMPORTANCEUNKNOWN,
-                            [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DEBUG")]
-                            JOBMESSAGEDEBUG,
-                            [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DETAILED")]
-                            JOBMESSAGEDETAILED,
-                            [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_BASIC")]
-                            JOBMESSAGEBASIC,
-                            [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_WARNING")]
-                            JOBMESSAGEWARNING,
-                            [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_ERROR")]
-                            JOBMESSAGEERROR,
-                        }
-
                         /// <summary>Return only messages with timestamps < end_time. The default is now (i.e. return up
                         /// to the latest messages available).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
@@ -2164,6 +2143,27 @@ namespace Google.Apis.Dataflow.v1b3
                         /// results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Filter to only get messages with importance >= level</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("minimumImportance", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<MinimumImportanceEnum> MinimumImportance { get; set; }
+
+                        /// <summary>Filter to only get messages with importance >= level</summary>
+                        public enum MinimumImportanceEnum
+                        {
+                            [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_IMPORTANCE_UNKNOWN")]
+                            JOBMESSAGEIMPORTANCEUNKNOWN,
+                            [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DEBUG")]
+                            JOBMESSAGEDEBUG,
+                            [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DETAILED")]
+                            JOBMESSAGEDETAILED,
+                            [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_BASIC")]
+                            JOBMESSAGEBASIC,
+                            [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_WARNING")]
+                            JOBMESSAGEWARNING,
+                            [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_ERROR")]
+                            JOBMESSAGEERROR,
+                        }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2217,15 +2217,6 @@ namespace Google.Apis.Dataflow.v1b3
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "minimumImportance", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "minimumImportance",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "endTime", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "endTime",
@@ -2256,6 +2247,15 @@ namespace Google.Apis.Dataflow.v1b3
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "minimumImportance", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "minimumImportance",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3944,15 +3944,6 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>If true, the request is validated but not actually executed. Defaults to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                /// <summary>A Cloud Storage path to the template from which to create the job. Must be valid Cloud
-                /// Storage URL, beginning with 'gs://'.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string GcsPath { get; set; }
-
                 /// <summary>The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
                 /// endpoints) to which to direct the request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
@@ -3967,6 +3958,15 @@ namespace Google.Apis.Dataflow.v1b3
                 /// with `gs://`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("dynamicTemplate.stagingLocation", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DynamicTemplateStagingLocation { get; set; }
+
+                /// <summary>If true, the request is validated but not actually executed. Defaults to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                /// <summary>A Cloud Storage path to the template from which to create the job. Must be valid Cloud
+                /// Storage URL, beginning with 'gs://'.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string GcsPath { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -4008,24 +4008,6 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "gcsPath", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "gcsPath",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "location", new Google.Apis.Discovery.Parameter
                         {
                             Name = "location",
@@ -4047,6 +4029,24 @@ namespace Google.Apis.Dataflow.v1b3
                         "dynamicTemplate.stagingLocation", new Google.Apis.Discovery.Parameter
                         {
                             Name = "dynamicTemplate.stagingLocation",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "gcsPath", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "gcsPath",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

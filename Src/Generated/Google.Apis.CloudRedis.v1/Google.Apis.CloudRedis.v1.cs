@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>Google Cloud Memorystore for Redis API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191104 (1768)
+ *      <tr><th>API Rev<td>20191210 (1804)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/memorystore/docs/redis/'>
  *              https://cloud.google.com/memorystore/docs/redis/</a>

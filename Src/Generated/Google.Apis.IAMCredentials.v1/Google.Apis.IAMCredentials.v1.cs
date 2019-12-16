@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials'>IAM Service Account Credentials API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191203 (1797)
+ *      <tr><th>API Rev<td>20191206 (1800)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials'>
  *              https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials</a>
@@ -367,9 +367,9 @@ namespace Google.Apis.IAMCredentials.v1
 
             /// <summary>Generates an OAuth 2.0 access token for a service account.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The resource name of the service account for which the credentials are requested, in the
-            /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required;
-            /// replacing it with a project ID is invalid.</param>
+            /// <param name="name">Required. The resource name of the service account for which the credentials are requested, in
+            /// the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is
+            /// required; replacing it with a project ID is invalid.</param>
             public virtual GenerateAccessTokenRequest GenerateAccessToken(Google.Apis.IAMCredentials.v1.Data.GenerateAccessTokenRequest body, string name)
             {
                 return new GenerateAccessTokenRequest(service, body, name);
@@ -388,8 +388,8 @@ namespace Google.Apis.IAMCredentials.v1
                 }
 
 
-                /// <summary>The resource name of the service account for which the credentials are requested, in the
-                /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+                /// <summary>Required. The resource name of the service account for which the credentials are requested,
+                /// in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
                 /// character is required; replacing it with a project ID is invalid.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -439,9 +439,9 @@ namespace Google.Apis.IAMCredentials.v1
 
             /// <summary>Generates an OpenID Connect ID token for a service account.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The resource name of the service account for which the credentials are requested, in the
-            /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required;
-            /// replacing it with a project ID is invalid.</param>
+            /// <param name="name">Required. The resource name of the service account for which the credentials are requested, in
+            /// the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is
+            /// required; replacing it with a project ID is invalid.</param>
             public virtual GenerateIdTokenRequest GenerateIdToken(Google.Apis.IAMCredentials.v1.Data.GenerateIdTokenRequest body, string name)
             {
                 return new GenerateIdTokenRequest(service, body, name);
@@ -460,8 +460,8 @@ namespace Google.Apis.IAMCredentials.v1
                 }
 
 
-                /// <summary>The resource name of the service account for which the credentials are requested, in the
-                /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+                /// <summary>Required. The resource name of the service account for which the credentials are requested,
+                /// in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
                 /// character is required; replacing it with a project ID is invalid.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -511,9 +511,9 @@ namespace Google.Apis.IAMCredentials.v1
 
             /// <summary>Signs a blob using a service account's system-managed private key.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The resource name of the service account for which the credentials are requested, in the
-            /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required;
-            /// replacing it with a project ID is invalid.</param>
+            /// <param name="name">Required. The resource name of the service account for which the credentials are requested, in
+            /// the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is
+            /// required; replacing it with a project ID is invalid.</param>
             public virtual SignBlobRequest SignBlob(Google.Apis.IAMCredentials.v1.Data.SignBlobRequest body, string name)
             {
                 return new SignBlobRequest(service, body, name);
@@ -532,8 +532,8 @@ namespace Google.Apis.IAMCredentials.v1
                 }
 
 
-                /// <summary>The resource name of the service account for which the credentials are requested, in the
-                /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+                /// <summary>Required. The resource name of the service account for which the credentials are requested,
+                /// in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
                 /// character is required; replacing it with a project ID is invalid.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -583,9 +583,9 @@ namespace Google.Apis.IAMCredentials.v1
 
             /// <summary>Signs a JWT using a service account's system-managed private key.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The resource name of the service account for which the credentials are requested, in the
-            /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required;
-            /// replacing it with a project ID is invalid.</param>
+            /// <param name="name">Required. The resource name of the service account for which the credentials are requested, in
+            /// the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is
+            /// required; replacing it with a project ID is invalid.</param>
             public virtual SignJwtRequest SignJwt(Google.Apis.IAMCredentials.v1.Data.SignJwtRequest body, string name)
             {
                 return new SignJwtRequest(service, body, name);
@@ -604,8 +604,8 @@ namespace Google.Apis.IAMCredentials.v1
                 }
 
 
-                /// <summary>The resource name of the service account for which the credentials are requested, in the
-                /// following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+                /// <summary>Required. The resource name of the service account for which the credentials are requested,
+                /// in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
                 /// character is required; replacing it with a project ID is invalid.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -677,7 +677,7 @@ namespace Google.Apis.IAMCredentials.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lifetime")]
         public virtual object Lifetime { get; set; } 
 
-        /// <summary>Code to identify the scopes to be included in the OAuth 2.0 access token. See
+        /// <summary>Required. Code to identify the scopes to be included in the OAuth 2.0 access token. See
         /// https://developers.google.com/identity/protocols/googlescopes for more information. At least one value
         /// required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
@@ -703,7 +703,8 @@ namespace Google.Apis.IAMCredentials.v1.Data
 
     public class GenerateIdTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The audience for the token, such as the API or account that this token grants access to.</summary>
+        /// <summary>Required. The audience for the token, such as the API or account that this token grants access
+        /// to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
         public virtual string Audience { get; set; } 
 
@@ -748,7 +749,7 @@ namespace Google.Apis.IAMCredentials.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("delegates")]
         public virtual System.Collections.Generic.IList<string> Delegates { get; set; } 
 
-        /// <summary>The bytes to sign.</summary>
+        /// <summary>Required. The bytes to sign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual string Payload { get; set; } 
 
@@ -782,7 +783,7 @@ namespace Google.Apis.IAMCredentials.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("delegates")]
         public virtual System.Collections.Generic.IList<string> Delegates { get; set; } 
 
-        /// <summary>The JWT payload to sign: a JSON object that contains a JWT Claims Set.</summary>
+        /// <summary>Required. The JWT payload to sign: a JSON object that contains a JWT Claims Set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual string Payload { get; set; } 
 

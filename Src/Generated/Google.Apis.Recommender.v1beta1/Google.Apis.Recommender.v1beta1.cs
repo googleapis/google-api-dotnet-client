@@ -509,12 +509,6 @@ namespace Google.Apis.Recommender.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Filter expression to restrict the recommendations returned. Supported filter
-                        /// fields: state_info.state Eg: `state_info.state:"DISMISSED" or
-                        /// state_info.state:"FAILED"</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
-
                         /// <summary>Optional. If present, retrieves the next batch of results from the preceding call
                         /// to this method. `page_token` must be the value of `next_page_token` from the previous
                         /// response. The values of other method parameters must be identical to those in the previous
@@ -527,6 +521,12 @@ namespace Google.Apis.Recommender.v1beta1
                         /// return.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Filter expression to restrict the recommendations returned. Supported filter
+                        /// fields: state_info.state Eg: `state_info.state:"DISMISSED" or
+                        /// state_info.state:"FAILED"</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -562,15 +562,6 @@ namespace Google.Apis.Recommender.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/recommenders/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -583,6 +574,15 @@ namespace Google.Apis.Recommender.v1beta1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,

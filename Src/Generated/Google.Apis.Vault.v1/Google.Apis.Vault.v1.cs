@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/vault'>G Suite Vault API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191119 (1783)
+ *      <tr><th>API Rev<td>20191205 (1799)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/vault'>
  *              https://developers.google.com/vault</a>
