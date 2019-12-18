@@ -231,7 +231,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             return new AuthorizationCodeRequestUrl(new Uri(AuthorizationServerUrl))
             {
                 ClientId = ClientSecrets.ClientId,
-                Scope = string.Join(" ", Scopes),
+                Scope = Scopes == null ? null : string.Join(" ", Scopes),
                 RedirectUri = redirectUri
             };
         }
