@@ -72,7 +72,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             Assert.IsType<SystemClock>(flow.Clock);
             Assert.Null(flow.DataStore);
             Assert.NotNull(flow.HttpClient);
-            Assert.NotNull(flow.Scopes);
+            Assert.Null(flow.Scopes);
             Assert.Equal("https://token.com", flow.TokenServerUrl);
 
             // Disable "<member> is obsolete" warning for these uses.
@@ -140,6 +140,18 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             Assert.Equal("redirect", request.RedirectUri);
             Assert.Equal("code", request.ResponseType);
             Assert.Equal("a b", request.Scope);
+            Assert.Null(request.State);
+        }
+
+        [Fact]
+        public void TestCreateAuthorizationCodeRequest_DefaultValues()
+        {
+            var request = CreateFlow().CreateAuthorizationCodeRequest("redirect");
+            Assert.Equal(new Uri(AuthorizationCodeUrl), request.AuthorizationServerUrl);
+            Assert.Equal("id", request.ClientId);
+            Assert.Equal("redirect", request.RedirectUri);
+            Assert.Equal("code", request.ResponseType);
+            Assert.Null(request.Scope);
             Assert.Null(request.State);
         }
 
@@ -408,10 +420,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             {
                 initializer.DataStore = dataStore;
             }
-            if (scopes != null)
-            {
-                initializer.Scopes = scopes;
-            }
+            initializer.Scopes = scopes;
             return new AuthorizationCodeFlow(initializer);
         }
 
