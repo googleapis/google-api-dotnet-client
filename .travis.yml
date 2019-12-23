@@ -1,6 +1,6 @@
 language: csharp
 mono: none
-dotnet: 2.2.104
+dotnet: 3.1.100
 dist: xenial
 
 # Install the .NET Core 1.0 runtime as that's what we build and test against
@@ -12,6 +12,8 @@ addons:
     packages:
     - dotnet-sharedframework-microsoft.netcore.app-1.0.8
     - dotnet-sharedframework-microsoft.netcore.app-1.1.5
+    - dotnet-sdk-2.0.0
+    - dotnet-sdk-2.1
 
 script:
   - ./BuildSupport.sh

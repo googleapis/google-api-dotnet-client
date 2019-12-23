@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\CommonProjectProperties.xml" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <Version>$(Version)-beta01</Version>
+  </PropertyGroup>
+
+  <!-- nupkg information -->
+  <PropertyGroup>
+    <Title>Google APIs ASP.NET Core Auth Extensions</Title>
+    <Description>
+The Google APIs Client Library is a runtime client for working with Google Services.
+
+The ASP.NET Core Auth extension library contains a Google-specific OpenIdConnect auth handler.
+Supports incremental auth, and an injectable IGoogleAuthProvider to supply Google credentials.
+
+Supported Platforms:
+- ASP.NET Core 3.0+
+    </Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Google.Apis.Auth.AspNetCore\Consts.cs" Link="Consts.cs" />
+    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleAuthenticationSchemeProvider.cs" Link="GoogleAuthenticationSchemeProvider.cs" />
+    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleAuthProvider.cs" Link="GoogleAuthProvider.cs" />
+    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleOpenIdConnectDefaults.cs" Link="GoogleOpenIdConnectDefaults.cs" />
+    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleOpenIdConnectExtensions.cs" Link="GoogleOpenIdConnectExtensions.cs" />
+    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleScopedAuthorizationHandler.cs" Link="GoogleScopedAuthorizationHandler.cs" />
+    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleScopedAuthorizeAttribute.cs" Link="GoogleScopedAuthorizeAttribute.cs" />
+    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleScopedAuthorizeRequirement.cs" Link="GoogleScopedAuthorizeRequirement.cs" />
+    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleScopedPolicyProvider.cs" Link="GoogleScopedPolicyProvider.cs" />
+    <Compile Include="..\Google.Apis.Auth.AspNetCore\IGoogleAuthProvider.cs" Link="IGoogleAuthProvider.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <ProjectReference Include="..\Google.Apis.Auth\Google.Apis.Auth.csproj" />
+
+    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.0" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>

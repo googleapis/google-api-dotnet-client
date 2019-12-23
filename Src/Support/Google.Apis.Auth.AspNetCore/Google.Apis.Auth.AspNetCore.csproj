@@ -17,7 +17,7 @@ The ASP.NET Core Auth extension library contains a Google-specific OpenIdConnect
 Supports incremental auth, and an injectable IGoogleAuthProvider to supply Google credentials.
 
 Supported Platforms:
-- ASP.NET Core 2.0+
+- ASP.NET Core 2.0+, &lt;3.0
     </Description>
   </PropertyGroup>
 

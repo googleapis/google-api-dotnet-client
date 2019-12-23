@@ -36,6 +36,10 @@ namespace Google.Apis.Auth.AspNetCore
 
         public Task<AuthorizationPolicy> GetDefaultPolicyAsync() => _default.GetDefaultPolicyAsync();
 
+        // This is only required in the ASP.NET Core v3 IAuthorizationPolicyProvider,
+        // but there's no harm in it being present for the v2 version.
+        public Task<AuthorizationPolicy> GetFallbackPolicyAsync() => _default.GetDefaultPolicyAsync();
+
         public Task<AuthorizationPolicy> GetPolicyAsync(string policyName)
         {
             var scopes = GoogleScopedAuthorizeAttribute.ParsePolicy(policyName);

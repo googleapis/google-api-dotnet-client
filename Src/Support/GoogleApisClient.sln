@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Core", "Google.Apis.Core\Google.Apis.Core.csproj", "{556BEB88-1F3B-4EFA-B912-828C90AC3BEB}"
 EndProject
@@ -23,7 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth.Mvc", "Goo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth.AspNetCore", "Google.Apis.Auth.AspNetCore\Google.Apis.Auth.AspNetCore.csproj", "{2BCEF725-9F15-4A6B-BD43-D8E7457AB429}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.Auth.AspNetCore.IntegrationTests", "Google.Apis.Auth.AspNetCore.IntegrationTests\Google.Apis.Auth.AspNetCore.IntegrationTests.csproj", "{A88DC5FE-4697-4D1F-A374-D620E77A5383}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth.AspNetCore.IntegrationTests", "Google.Apis.Auth.AspNetCore.IntegrationTests\Google.Apis.Auth.AspNetCore.IntegrationTests.csproj", "{A88DC5FE-4697-4D1F-A374-D620E77A5383}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth.AspNetCore3", "Google.Apis.Auth.AspNetCore3\Google.Apis.Auth.AspNetCore3.csproj", "{C5BC0A08-6BCE-4EEE-B90D-5845B5215D0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth.AspNetCore3.IntegrationTests", "Google.Apis.Auth.AspNetCore3.IntegrationTests\Google.Apis.Auth.AspNetCore3.IntegrationTests.csproj", "{41B4BF5A-BBA5-4FEF-9D37-15ED9B009724}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,14 @@ Global
 		{A88DC5FE-4697-4D1F-A374-D620E77A5383}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A88DC5FE-4697-4D1F-A374-D620E77A5383}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A88DC5FE-4697-4D1F-A374-D620E77A5383}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5BC0A08-6BCE-4EEE-B90D-5845B5215D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5BC0A08-6BCE-4EEE-B90D-5845B5215D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5BC0A08-6BCE-4EEE-B90D-5845B5215D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5BC0A08-6BCE-4EEE-B90D-5845B5215D0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41B4BF5A-BBA5-4FEF-9D37-15ED9B009724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41B4BF5A-BBA5-4FEF-9D37-15ED9B009724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41B4BF5A-BBA5-4FEF-9D37-15ED9B009724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41B4BF5A-BBA5-4FEF-9D37-15ED9B009724}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
