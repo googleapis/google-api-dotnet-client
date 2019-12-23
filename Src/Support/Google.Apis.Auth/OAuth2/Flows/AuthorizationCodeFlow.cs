@@ -242,7 +242,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
         {
             var authorizationCodeTokenReq = new AuthorizationCodeTokenRequest
             {
-                Scope = string.Join(" ", Scopes),
+                Scope = Scopes == null ? null : string.Join(" ", Scopes),
                 RedirectUri = redirectUri,
                 Code = code,
             };

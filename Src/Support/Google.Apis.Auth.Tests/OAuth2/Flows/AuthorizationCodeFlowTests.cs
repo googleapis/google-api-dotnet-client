@@ -182,6 +182,30 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
         }
 
         [Fact]
+        public void TestExchangeCodeForTokenAsync_NullScopes()
+        {
+            var mock = new Mock<IDataStore>();
+            var handler = new FetchTokenMessageHandler();
+            handler.AuthorizationCodeTokenRequest = new AuthorizationCodeTokenRequest()
+            {
+                Code = "c0de",
+                RedirectUri = "redIrect",
+                Scope = null
+            };
+            MockHttpClientFactory mockFactory = new MockHttpClientFactory(handler);
+
+            TaskCompletionSource<object> tcs = new TaskCompletionSource<object>();
+            tcs.SetResult(null);
+            mock.Setup(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>())).Returns(tcs.Task);
+
+            var flow = CreateFlow(httpClientFactory: mockFactory, scopes: null, dataStore: mock.Object);
+            var response = flow.ExchangeCodeForTokenAsync("uSer", "c0de", "redIrect", CancellationToken.None).Result;
+            SubtestTokenResponse(response);
+
+            mock.Verify(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>()));
+        }
+
+        [Fact]
         public void TestRefreshTokenAsync()
         {
             var mock = new Mock<IDataStore>();
