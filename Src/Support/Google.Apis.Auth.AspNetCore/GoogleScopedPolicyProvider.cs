@@ -18,7 +18,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
 
+#if ASPNETCORE3
+namespace Google.Apis.Auth.AspNetCore3
+#else
 namespace Google.Apis.Auth.AspNetCore
+#endif
 {
     /// <summary>
     /// Construct GoogleScoped policies on the fly.
@@ -35,6 +39,10 @@ namespace Google.Apis.Auth.AspNetCore
         private readonly IAuthorizationPolicyProvider _default;
 
         public Task<AuthorizationPolicy> GetDefaultPolicyAsync() => _default.GetDefaultPolicyAsync();
+
+#if ASPNETCORE3
+        public Task<AuthorizationPolicy> GetFallbackPolicyAsync() => _default.GetFallbackPolicyAsync();
+#endif
 
         public Task<AuthorizationPolicy> GetPolicyAsync(string policyName)
         {

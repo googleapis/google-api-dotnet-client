@@ -14,7 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+#if ASPNETCORE3
+using Google.Apis.Auth.AspNetCore3;
+#else
 using Google.Apis.Auth.AspNetCore;
+#endif
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;

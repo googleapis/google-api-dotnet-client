@@ -18,7 +18,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+#if ASPNETCORE3
+namespace Google.Apis.Auth.AspNetCore3
+#else
 namespace Google.Apis.Auth.AspNetCore
+#endif
 {
     /// <summary>
     /// Default values related to the Google OpenIdConnect authentication handler.

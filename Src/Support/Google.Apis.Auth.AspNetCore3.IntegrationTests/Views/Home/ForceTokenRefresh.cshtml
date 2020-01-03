@@ -1,0 +1,30 @@
+﻿@using Google.Apis.Auth.AspNetCore3.IntegrationTests.Controllers
+@model HomeController.ForceTokenRefreshModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Integreation tests - Force Token Refresh</title>
+</head>
+<body>
+    <h1>Integration tests - Force Token Refresh</h1>
+    <ul>
+        @foreach (var result in @Model.Results)
+        {
+            <li>@result</li>
+        }
+    </ul>
+    <form asp-controller="home" asp-action="ForceTokenRefreshCheckPersisted" method="post">
+        @* Passing access token for test only - don't do this in production code! *@
+        <input name="expectedAccessToken" type="hidden" value="@Model.AccessToken" />
+        <button type="submit">Continue test...</button>
+    </form>
+    <p><a asp-controller="home" asp-action="index">Index</a></p>
+</body>
+</html>

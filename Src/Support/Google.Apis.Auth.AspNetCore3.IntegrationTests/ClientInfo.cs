@@ -1,5 +1,5 @@
 ﻿/*
-Copyright 2018 Google Inc
+Copyright 2020 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace Google.Apis.Auth.AspNetCore.IntegrationTests
+namespace Google.Apis.Auth.AspNetCore3.IntegrationTests
 {
     /// <summary>
     /// Client auth information, loaded from a Google user credential json file.

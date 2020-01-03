@@ -7,6 +7,7 @@
 Backup*
 *.suo
 *.user
+launchSettings.json
 .vs
 project.lock.json
 *~

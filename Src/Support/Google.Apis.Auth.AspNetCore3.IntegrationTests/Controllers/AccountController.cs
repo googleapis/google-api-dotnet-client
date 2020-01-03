@@ -1,5 +1,5 @@
 ﻿/*
-Copyright 2018 Google Inc
+Copyright 2020 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,16 +14,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#if ASPNETCORE3
-namespace Google.Apis.Auth.AspNetCore3
-#else
-namespace Google.Apis.Auth.AspNetCore
-#endif
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Google.Apis.Auth.AspNetCore3.IntegrationTests.Controllers
 {
-    internal static class Consts
+    public class AccountController : Controller
     {
-        public static char[] ScopeSplitter { get; } = { ' ' };
-        public const string ScopeName = "scope";
-        public const string HttpContextAdditionalScopeName = "ScopeIncremental";
+        public IActionResult Login(string returnUrl)
+        {
+            var properties = new AuthenticationProperties { RedirectUri = returnUrl };
+            return Challenge(properties, GoogleOpenIdConnectDefaults.AuthenticationScheme);
+        }
     }
 }

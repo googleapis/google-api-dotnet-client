@@ -17,7 +17,11 @@ limitations under the License.
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
 
+#if ASPNETCORE3
+namespace Google.Apis.Auth.AspNetCore3
+#else
 namespace Google.Apis.Auth.AspNetCore
+#endif
 {
     internal class GoogleScopedRequirement : IAuthorizationRequirement
     {
