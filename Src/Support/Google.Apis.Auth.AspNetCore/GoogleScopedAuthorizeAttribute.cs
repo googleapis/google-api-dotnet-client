@@ -18,7 +18,11 @@ using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 
+#if ASPNETCORE3
+namespace Google.Apis.Auth.AspNetCore3
+#else
 namespace Google.Apis.Auth.AspNetCore
+#endif
 {
     /// <summary>
     /// Specifies that the class or method that this attribute is applied to requires the specified authorization,

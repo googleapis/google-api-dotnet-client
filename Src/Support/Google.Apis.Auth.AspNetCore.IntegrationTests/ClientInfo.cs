@@ -36,7 +36,7 @@ namespace Google.Apis.Auth.AspNetCore.IntegrationTests
                 throw new InvalidOperationException($"Please set the {ClientSecretFilenameVariable} environment variable before running tests.");
             }
             // This MUST be a "web" credential, not an "installed app" credential.
-            var secrets = JObject.Parse(Encoding.UTF8.GetString(File.ReadAllBytes(clientSecretFilename)))["web"];
+            var secrets = JObject.Parse(File.ReadAllText(clientSecretFilename))["web"];
             var projectId = secrets["project_id"].Value<string>();
             var clientId = secrets["client_id"].Value<string>();
             var clientSecret = secrets["client_secret"].Value<string>();

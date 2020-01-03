@@ -24,7 +24,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+#if ASPNETCORE3
+namespace Google.Apis.Auth.AspNetCore3
+#else
 namespace Google.Apis.Auth.AspNetCore
+#endif
 {
     internal class GoogleScopedAuthorizationHandler : AuthorizationHandler<GoogleScopedRequirement>
     {

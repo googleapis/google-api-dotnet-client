@@ -33,10 +33,7 @@ namespace Google.Apis.Auth.AspNetCore.IntegrationTests
 
             return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .ConfigureServices(services =>
-                {
-                    services.AddSingleton(clientInfo);
-                })
+                .ConfigureServices(services => services.AddSingleton(clientInfo))
                 .Build();
         }
     }

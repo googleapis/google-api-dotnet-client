@@ -19,18 +19,10 @@ Supports incremental auth, and an injectable IGoogleAuthProvider to supply Googl
 Supported Platforms:
 - ASP.NET Core 3.0+
     </Description>
+    <DefineConstants>$(DefineConstants);ASPNETCORE3</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Google.Apis.Auth.AspNetCore\Consts.cs" Link="Consts.cs" />
-    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleAuthenticationSchemeProvider.cs" Link="GoogleAuthenticationSchemeProvider.cs" />
-    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleAuthProvider.cs" Link="GoogleAuthProvider.cs" />
-    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleOpenIdConnectDefaults.cs" Link="GoogleOpenIdConnectDefaults.cs" />
-    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleOpenIdConnectExtensions.cs" Link="GoogleOpenIdConnectExtensions.cs" />
-    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleScopedAuthorizationHandler.cs" Link="GoogleScopedAuthorizationHandler.cs" />
-    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleScopedAuthorizeAttribute.cs" Link="GoogleScopedAuthorizeAttribute.cs" />
-    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleScopedAuthorizeRequirement.cs" Link="GoogleScopedAuthorizeRequirement.cs" />
-    <Compile Include="..\Google.Apis.Auth.AspNetCore\GoogleScopedPolicyProvider.cs" Link="GoogleScopedPolicyProvider.cs" />
-    <Compile Include="..\Google.Apis.Auth.AspNetCore\IGoogleAuthProvider.cs" Link="IGoogleAuthProvider.cs" />
+    <Compile Include="..\Google.Apis.Auth.AspNetCore\*.cs" />
   </ItemGroup>
 
   <ItemGroup>

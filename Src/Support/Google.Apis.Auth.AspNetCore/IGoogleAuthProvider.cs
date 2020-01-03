@@ -21,7 +21,11 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
+#if ASPNETCORE3
+namespace Google.Apis.Auth.AspNetCore3
+#else
 namespace Google.Apis.Auth.AspNetCore
+#endif
 {
     /// <summary>
     /// Provides access to Google auth credentials and scopes.

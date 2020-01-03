@@ -1,5 +1,5 @@
 ﻿/*
-Copyright 2018 Google Inc
+Copyright 2020 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ limitations under the License.
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Google.Apis.Auth.AspNetCore.IntegrationTests.Controllers
+namespace Google.Apis.Auth.AspNetCore3.IntegrationTests.Controllers
 {
     public class AccountController : Controller
     {
