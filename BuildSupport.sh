@@ -15,4 +15,4 @@ export CI=true
 
 dotnet restore Src/Support/GoogleApisClient.sln
 dotnet build Src/Support/GoogleApisClient.sln --configuration $BUILD_CONFIGURATION --no-restore
-dotnet pack Src/Support/GoogleApisClient.sln --configuration $BUILD_CONFIGURATION --no-restore --no-build --output $NUPKG_DIR
+dotnet pack Src/Support/GoogleApisClient.sln --configuration $BUILD_CONFIGURATION --no-restore --output $NUPKG_DIR
