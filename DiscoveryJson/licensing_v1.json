@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/V3n4vxCP3J8VvoP6bHur312Efdk\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/V3n4vxCP3J8VvoP6bHur312Efdk\"",
  "discoveryVersion": "v1",
  "id": "licensing:v1",
  "name": "licensing",

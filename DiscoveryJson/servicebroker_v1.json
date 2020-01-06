@@ -1,11 +1,18 @@
 {
-  "revision": "20191210",
+  "version": "v1",
+  "baseUrl": "https://servicebroker.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "The Google Cloud Platform Service Broker API provides Google hosted\nimplementation of the Open Service Broker API\n(https://www.openservicebrokerapi.org/).\n",
+  "servicePath": "",
+  "basePath": "",
+  "revision": "20191223",
   "documentationLink": "https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker",
   "id": "servicebroker:v1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "GoogleIamV1__TestIamPermissionsResponse": {
+      "id": "GoogleIamV1__TestIamPermissionsResponse",
       "description": "Response message for `TestIamPermissions` method.",
       "type": "object",
       "properties": {
@@ -16,30 +23,29 @@
             "type": "string"
           }
         }
-      },
-      "id": "GoogleIamV1__TestIamPermissionsResponse"
+      }
     },
     "GoogleIamV1__Binding": {
-      "id": "GoogleIamV1__Binding",
       "description": "Associates `members` with a `role`.",
       "type": "object",
       "properties": {
+        "condition": {
+          "$ref": "GoogleType__Expr",
+          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
+        },
         "members": {
+          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a user that has been recently deleted. For\n   example, `alice@example.com?uid=123456789012345678901`. If the user is\n   recovered, this value reverts to `user:{emailid}` and the recovered user\n   retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n   unique identifier) representing a service account that has been recently\n   deleted. For example,\n   `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n   If the service account is undeleted, this value reverts to\n   `serviceAccount:{emailid}` and the undeleted service account retains the\n   role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a Google group that has been recently\n   deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n   the group is recovered, this value reverts to `group:{emailid}` and the\n   recovered group retains the role in the binding.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a user that has been recently deleted. For\n   example, `alice@example.com?uid=123456789012345678901`. If the user is\n   recovered, this value reverts to `user:{emailid}` and the recovered user\n   retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n   unique identifier) representing a service account that has been recently\n   deleted. For example,\n   `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n   If the service account is undeleted, this value reverts to\n   `serviceAccount:{emailid}` and the undeleted service account retains the\n   role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a Google group that has been recently\n   deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n   the group is recovered, this value reverts to `group:{emailid}` and the\n   recovered group retains the role in the binding.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n"
+          }
         },
         "role": {
           "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
           "type": "string"
-        },
-        "condition": {
-          "$ref": "GoogleType__Expr",
-          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
         }
-      }
+      },
+      "id": "GoogleIamV1__Binding"
     },
     "GoogleIamV1__SetIamPolicyRequest": {
       "description": "Request message for `SetIamPolicy` method.",
@@ -53,7 +59,6 @@
       "id": "GoogleIamV1__SetIamPolicyRequest"
     },
     "GoogleIamV1__TestIamPermissionsRequest": {
-      "description": "Request message for `TestIamPermissions` method.",
       "type": "object",
       "properties": {
         "permissions": {
@@ -64,27 +69,28 @@
           }
         }
       },
-      "id": "GoogleIamV1__TestIamPermissionsRequest"
+      "id": "GoogleIamV1__TestIamPermissionsRequest",
+      "description": "Request message for `TestIamPermissions` method."
     },
     "GoogleType__Expr": {
       "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
       "type": "object",
       "properties": {
-        "expression": {
-          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
+        "description": {
+          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
           "type": "string"
+        },
+        "expression": {
+          "type": "string",
+          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."
         },
         "title": {
-          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
-          "type": "string"
+          "type": "string",
+          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."
         },
         "location": {
-          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
-          "type": "string"
-        },
-        "description": {
           "type": "string",
-          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."
+          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."
         }
       },
       "id": "GoogleType__Expr"
@@ -98,16 +104,16 @@
           "type": "string"
         },
         "version": {
+          "type": "integer",
           "description": "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.",
-          "format": "int32",
-          "type": "integer"
+          "format": "int32"
         },
         "bindings": {
-          "description": "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member.",
           "type": "array",
           "items": {
             "$ref": "GoogleIamV1__Binding"
-          }
+          },
+          "description": "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member."
         }
       },
       "id": "GoogleIamV1__Policy",
@@ -139,6 +145,37 @@
   "resources": {
     "v1": {
       "methods": {
+        "getIamPolicy": {
+          "parameters": {
+            "resource": {
+              "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+              "required": true,
+              "type": "string",
+              "pattern": "^.+$",
+              "location": "path"
+            },
+            "options.requestedPolicyVersion": {
+              "description": "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.",
+              "format": "int32",
+              "type": "integer",
+              "location": "query"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1/{v1Id}:getIamPolicy",
+          "id": "servicebroker.getIamPolicy",
+          "path": "v1/{+resource}:getIamPolicy",
+          "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
+          "httpMethod": "GET",
+          "response": {
+            "$ref": "GoogleIamV1__Policy"
+          },
+          "parameterOrder": [
+            "resource"
+          ]
+        },
         "setIamPolicy": {
           "request": {
             "$ref": "GoogleIamV1__SetIamPolicyRequest"
@@ -156,11 +193,11 @@
           ],
           "parameters": {
             "resource": {
-              "required": true,
-              "type": "string",
               "pattern": "^.+$",
               "location": "path",
-              "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field."
+              "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+              "required": true,
+              "type": "string"
             }
           },
           "flatPath": "v1/{v1Id}:setIamPolicy",
@@ -172,94 +209,48 @@
           "request": {
             "$ref": "GoogleIamV1__TestIamPermissionsRequest"
           },
-          "httpMethod": "POST",
-          "parameterOrder": [
-            "resource"
-          ],
           "response": {
             "$ref": "GoogleIamV1__TestIamPermissionsResponse"
           },
+          "parameterOrder": [
+            "resource"
+          ],
+          "httpMethod": "POST",
           "parameters": {
             "resource": {
+              "location": "path",
+              "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
               "required": true,
               "type": "string",
-              "pattern": "^.+$",
-              "location": "path",
-              "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field."
+              "pattern": "^.+$"
             }
           },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
           "flatPath": "v1/{v1Id}:testIamPermissions",
-          "id": "servicebroker.testIamPermissions",
-          "path": "v1/{+resource}:testIamPermissions"
-        },
-        "getIamPolicy": {
-          "response": {
-            "$ref": "GoogleIamV1__Policy"
-          },
-          "parameterOrder": [
-            "resource"
-          ],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "options.requestedPolicyVersion": {
-              "location": "query",
-              "description": "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.",
-              "format": "int32",
-              "type": "integer"
-            },
-            "resource": {
-              "required": true,
-              "type": "string",
-              "pattern": "^.+$",
-              "location": "path",
-              "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field."
-            }
-          },
-          "flatPath": "v1/{v1Id}:getIamPolicy",
-          "path": "v1/{+resource}:getIamPolicy",
-          "id": "servicebroker.getIamPolicy",
-          "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."
+          "path": "v1/{+resource}:testIamPermissions",
+          "id": "servicebroker.testIamPermissions"
         }
       }
     }
   },
   "parameters": {
-    "access_token": {
+    "prettyPrint": {
+      "type": "boolean",
+      "default": "true",
       "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "type": "string",
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
+      "description": "Returns response with indentations and line breaks."
     },
     "quotaUser": {
+      "type": "string",
       "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
     },
     "fields": {
+      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "uploadType": {
       "location": "query",
@@ -267,14 +258,14 @@
       "type": "string"
     },
     "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "oauth_token": {
       "type": "string",
       "location": "query",
-      "description": "OAuth 2.0 token for the current user."
+      "description": "JSONP"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
     },
     "$.xgafv": {
       "type": "string",
@@ -290,12 +281,6 @@
       "description": "V1 error format."
     },
     "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -303,13 +288,28 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json"
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
     }
-  },
-  "version": "v1",
-  "baseUrl": "https://servicebroker.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "The Google Cloud Platform Service Broker API provides Google hosted\nimplementation of the Open Service Broker API\n(https://www.openservicebrokerapi.org/).\n",
-  "servicePath": "",
-  "basePath": ""
+  }
 }

@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/PxGYSjHi9_iXxWYXEommEAyhQB8\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/PxGYSjHi9_iXxWYXEommEAyhQB8\"",
  "discoveryVersion": "v1",
  "id": "books:v1",
  "name": "books",

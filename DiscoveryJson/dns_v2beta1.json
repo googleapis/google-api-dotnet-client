@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/xJUolIT7F7qVIZr-v2PboYiVMQY\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/Nx_eZgIPD51BKppiHoY05GMU8EA\"",
  "discoveryVersion": "v1",
  "id": "dns:v2beta1",
  "name": "dns",
  "version": "v2beta1",
- "revision": "20191029",
+ "revision": "20191205",
  "title": "Google Cloud DNS API",
  "description": "Configures and serves authoritative DNS records.",
  "ownerDomain": "google.com",
@@ -394,6 +394,10 @@
       "type": "string"
      }
     },
+    "peeringConfig": {
+     "$ref": "ManagedZonePeeringConfig",
+     "description": "The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with."
+    },
     "privateVisibilityConfig": {
      "$ref": "ManagedZonePrivateVisibilityConfig",
      "description": "For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from."
@@ -511,6 +515,40 @@
      "items": {
       "$ref": "Operation"
      }
+    }
+   }
+  },
+  "ManagedZonePeeringConfig": {
+   "id": "ManagedZonePeeringConfig",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZonePeeringConfig\".",
+     "default": "dns#managedZonePeeringConfig"
+    },
+    "targetNetwork": {
+     "$ref": "ManagedZonePeeringConfigTargetNetwork",
+     "description": "The network with which to peer."
+    }
+   }
+  },
+  "ManagedZonePeeringConfigTargetNetwork": {
+   "id": "ManagedZonePeeringConfigTargetNetwork",
+   "type": "object",
+   "properties": {
+    "deactivateTime": {
+     "type": "string",
+     "description": "The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates that the peering connection is active. The producer network can deactivate a zone. The zone is automatically deactivated if the producer network that the zone targeted is deleted. Output only."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZonePeeringConfigTargetNetwork\".",
+     "default": "dns#managedZonePeeringConfigTargetNetwork"
+    },
+    "networkUrl": {
+     "type": "string",
+     "description": "The fully qualified URL of the VPC network to forward queries to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}"
     }
    }
   },

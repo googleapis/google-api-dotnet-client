@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"F5McR9eEaw0XRpaO3M9gbIugkbs/qDu5470S_QfnHCP_4GxoX8OU3Kg\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/qDu5470S_QfnHCP_4GxoX8OU3Kg\"",
  "discoveryVersion": "v1",
  "id": "groupsmigration:v1",
  "name": "groupsmigration",
