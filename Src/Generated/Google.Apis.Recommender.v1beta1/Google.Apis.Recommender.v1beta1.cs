@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/recommender/docs/'>Recommender API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191216 (1810)
+ *      <tr><th>API Rev<td>20200108 (1833)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/recommender/docs/'>
  *              https://cloud.google.com/recommender/docs/</a>
@@ -415,7 +415,7 @@ namespace Google.Apis.Recommender.v1beta1
 
                     /// <summary>Gets the requested recommendation. Requires the recommender.*.get IAM permission for
                     /// the specified recommender.</summary>
-                    /// <param name="name">Name of the recommendation.</param>
+                    /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
@@ -434,7 +434,7 @@ namespace Google.Apis.Recommender.v1beta1
                         }
 
 
-                        /// <summary>Name of the recommendation.</summary>
+                        /// <summary>Required. Name of the recommendation.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -509,12 +509,6 @@ namespace Google.Apis.Recommender.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. The maximum number of results to return from this request. Non-positive
-                        /// values are ignored. If not specified, the server will determine the number of results to
-                        /// return.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>Filter expression to restrict the recommendations returned. Supported filter
                         /// fields: state_info.state Eg: `state_info.state:"DISMISSED" or
                         /// state_info.state:"FAILED"</summary>
@@ -527,6 +521,12 @@ namespace Google.Apis.Recommender.v1beta1
                         /// call.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Optional. The maximum number of results to return from this request.  Non-positive
+                        /// values are ignored. If not specified, the server will determine the number of results to
+                        /// return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -562,15 +562,6 @@ namespace Google.Apis.Recommender.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/recommenders/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "filter", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "filter",
@@ -583,6 +574,15 @@ namespace Google.Apis.Recommender.v1beta1
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -601,7 +601,7 @@ namespace Google.Apis.Recommender.v1beta1
                     ///
                     /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Name of the recommendation.</param>
+                    /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkClaimedRequest MarkClaimed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest body, string name)
                     {
                         return new MarkClaimedRequest(service, body, name);
@@ -627,7 +627,7 @@ namespace Google.Apis.Recommender.v1beta1
                         }
 
 
-                        /// <summary>Name of the recommendation.</summary>
+                        /// <summary>Required. Name of the recommendation.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -684,7 +684,7 @@ namespace Google.Apis.Recommender.v1beta1
                     ///
                     /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Name of the recommendation.</param>
+                    /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkFailedRequest MarkFailed(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest body, string name)
                     {
                         return new MarkFailedRequest(service, body, name);
@@ -711,7 +711,7 @@ namespace Google.Apis.Recommender.v1beta1
                         }
 
 
-                        /// <summary>Name of the recommendation.</summary>
+                        /// <summary>Required. Name of the recommendation.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -768,7 +768,7 @@ namespace Google.Apis.Recommender.v1beta1
                     ///
                     /// Requires the recommender.*.update IAM permission for the specified recommender.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Name of the recommendation.</param>
+                    /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkSucceededRequest MarkSucceeded(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest body, string name)
                     {
                         return new MarkSucceededRequest(service, body, name);
@@ -795,7 +795,7 @@ namespace Google.Apis.Recommender.v1beta1
                         }
 
 
-                        /// <summary>Name of the recommendation.</summary>
+                        /// <summary>Required. Name of the recommendation.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -901,7 +901,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
     /// <summary>Request for the `MarkRecommendationClaimed` Method.</summary>
     public class GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Fingerprint of the Recommendation. Provides optimistic locking.</summary>
+        /// <summary>Required. Fingerprint of the Recommendation. Provides optimistic locking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -915,7 +915,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
     /// <summary>Request for the `MarkRecommendationFailed` Method.</summary>
     public class GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Fingerprint of the Recommendation. Provides optimistic locking.</summary>
+        /// <summary>Required. Fingerprint of the Recommendation. Provides optimistic locking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -929,7 +929,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
     /// <summary>Request for the `MarkRecommendationSucceeded` Method.</summary>
     public class GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Fingerprint of the Recommendation. Provides optimistic locking.</summary>
+        /// <summary>Required. Fingerprint of the Recommendation. Provides optimistic locking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -1049,10 +1049,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
         public virtual object LastRefreshTime { get; set; } 
 
-        /// <summary>Name of recommendation.
-        ///
-        /// A project recommendation is represented as projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECO
-        /// MMENDER_ID]/recommendations/[RECOMMENDATION_ID]</summary>
+        /// <summary>Name of recommendation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

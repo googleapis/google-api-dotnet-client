@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>AI Platform Training & Prediction API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191214 (1808)
+ *      <tr><th>API Rev<td>20200103 (1828)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -115,6 +115,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
+            /// <summary>View your data across Google Cloud Platform services</summary>
+            public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
+
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the AI Platform Training & Prediction API.</summary>
@@ -122,6 +125,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>View your data across Google Cloud Platform services</summary>
+            public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
 
         }
 
@@ -1488,14 +1494,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The number of versions to retrieve per "page" of results. If there are more
-                    /// remaining results than this number, the response message will contain a valid value in the
-                    /// `next_page_token` field.
-                    ///
-                    /// The default value is 20, and the maximum page size is 100.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. Specifies the subset of versions to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1506,6 +1504,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// call.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The number of versions to retrieve per "page" of results. If there are more
+                    /// remaining results than this number, the response message will contain a valid value in the
+                    /// `next_page_token` field.
+                    ///
+                    /// The default value is 20, and the maximum page size is 100.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1541,15 +1547,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                                 Pattern = @"^projects/[^/]+/models/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1562,6 +1559,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2070,10 +2076,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. Specifies the subset of models to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>Optional. A page token to request the next page of results.
                 ///
                 /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
@@ -2087,6 +2089,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. Specifies the subset of models to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2122,15 +2128,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2143,6 +2140,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2667,10 +2673,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
         }
 
         /// <summary>Performs explanation on the data in the request. AI Platform implements a custom `explain` verb on
-        /// top of an HTTP POST method.
-        ///
-        /// For details of the request and response format, see the **guide to the [explain request format](/ml-
-        /// engine/docs/v1/explain-request)**.</summary>
+        /// top of an HTTP POST method.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. The resource name of a model or a version.
         ///
@@ -2681,10 +2684,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
         }
 
         /// <summary>Performs explanation on the data in the request. AI Platform implements a custom `explain` verb on
-        /// top of an HTTP POST method.
-        ///
-        /// For details of the request and response format, see the **guide to the [explain request format](/ml-
-        /// engine/docs/v1/explain-request)**.</summary>
+        /// top of an HTTP POST method.</summary>
         public class ExplainRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleApiHttpBody>
         {
             /// <summary>Constructs a new Explain request.</summary>
@@ -2810,11 +2810,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
 
         }
 
-        /// <summary>Performs prediction on the data in the request. AI Platform implements a custom `predict` verb on
-        /// top of an HTTP POST method.
+        /// <summary>Performs online prediction on the data in the request.
         ///
-        /// For details of the request and response format, see the **guide to the [predict request format](/ml-
-        /// engine/docs/v1/predict-request)**.</summary>
+        /// {% dynamic include "/ai-platform/includes/___predict-request" %}</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. The resource name of a model or a version.
         ///
@@ -2824,11 +2822,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             return new PredictRequest(service, body, name);
         }
 
-        /// <summary>Performs prediction on the data in the request. AI Platform implements a custom `predict` verb on
-        /// top of an HTTP POST method.
+        /// <summary>Performs online prediction on the data in the request.
         ///
-        /// For details of the request and response format, see the **guide to the [predict request format](/ml-
-        /// engine/docs/v1/predict-request)**.</summary>
+        /// {% dynamic include "/ai-platform/includes/___predict-request" %}</summary>
         public class PredictRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleApiHttpBody>
         {
             /// <summary>Constructs a new Predict request.</summary>
@@ -3531,7 +3527,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// <summary>Request for predictions to be issued against a trained model.</summary>
     public class GoogleCloudMlV1PredictRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary> Required. The prediction request body.</summary>
+        /// <summary> Required. The prediction request body. Refer to the [request body details section](#request-body-
+        /// details) for more information on how to structure your request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpBody")]
         public virtual GoogleApiHttpBody HttpBody { get; set; } 
 
@@ -3703,7 +3700,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// features.</summary>
     public class GoogleCloudMlV1SampledShapleyAttribution : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of feature permutations to consider when approximating the shapley values.</summary>
+        /// <summary>The number of feature permutations to consider when approximating the Shapley values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numPaths")]
         public virtual System.Nullable<int> NumPaths { get; set; } 
 
@@ -3819,9 +3816,18 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pythonModule")]
         public virtual string PythonModule { get; set; } 
 
-        /// <summary>Optional. The version of Python used in training. If not set, the default version is '2.7'. Python
-        /// '3.5' is available when `runtime_version` is set to '1.4' and above. Python '2.7' works with all supported
-        /// runtime versions.</summary>
+        /// <summary>Optional. The version of Python used in training. If not set, the default version is '2.7'.
+        /// Starting [January 13, 2020](/ml-engine/docs/release-notes#december_10_2019), this field is required.
+        ///
+        /// The following Python versions are available:
+        ///
+        /// * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available
+        /// when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when
+        /// `runtime_version` is set to '1.15' or earlier. (Runtime versions released [after January 1, 2020](/ml-
+        /// engine/docs/release-notes#december_10_2019) do not support Python 2.7.)
+        ///
+        /// Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-
+        /// list).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonVersion")]
         public virtual string PythonVersion { get; set; } 
 
@@ -3831,8 +3837,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string Region { get; set; } 
 
         /// <summary>Optional. The AI Platform runtime version to use for training. If not set, AI Platform uses the
-        /// default stable version, 1.0. For more information, see the runtime version list and how to manage runtime
-        /// versions.</summary>
+        /// default stable version, 1.0. Starting [January 13, 2020](/ml-engine/docs/release-notes#december_10_2019),
+        /// this field is required.
+        ///
+        /// For more information, see the runtime version list and how to manage runtime versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; } 
 
@@ -4095,8 +4103,17 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string PredictionClass { get; set; } 
 
         /// <summary>Optional. The version of Python used in prediction. If not set, the default version is '2.7'.
-        /// Python '3.5' is available when `runtime_version` is set to '1.4' and above. Python '2.7' works with all
-        /// supported runtime versions.</summary>
+        /// Starting [January 13, 2020](/ml-engine/docs/release-notes#december_10_2019), this field is required.
+        ///
+        /// The following Python versions are available:
+        ///
+        /// * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available
+        /// when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when
+        /// `runtime_version` is set to '1.15' or earlier. (Runtime versions released [after January 1, 2020](/ml-
+        /// engine/docs/release-notes#december_10_2019) do not support Python 2.7.)
+        ///
+        /// Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-
+        /// list).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonVersion")]
         public virtual string PythonVersion { get; set; } 
 
@@ -4108,8 +4125,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual GoogleCloudMlV1RequestLoggingConfig RequestLoggingConfig { get; set; } 
 
         /// <summary>Optional. The AI Platform runtime version to use for this deployment. If not set, AI Platform uses
-        /// the default stable version, 1.0. For more information, see the [runtime version list](/ml-engine/docs
-        /// /runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).</summary>
+        /// the default stable version, 1.0. Starting [January 13, 2020](/ml-engine/docs/release-
+        /// notes#december_10_2019), this field is required.
+        ///
+        /// For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to
+        /// manage runtime versions](/ml-engine/docs/versioning).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; } 
 

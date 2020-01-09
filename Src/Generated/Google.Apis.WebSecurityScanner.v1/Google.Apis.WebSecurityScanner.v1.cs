@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/security-scanner/'>Web Security Scanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191209 (1803)
+ *      <tr><th>API Rev<td>20200104 (1829)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/security-scanner/'>
  *              https://cloud.google.com/security-scanner/</a>
@@ -704,6 +704,11 @@ namespace Google.Apis.WebSecurityScanner.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>The filter expression. The expression must be in the format: . Supported field:
+                        /// 'finding_type'. Supported operator: '='.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
                         /// <summary>A token identifying a page of results to be returned. This should be a
                         /// `next_page_token` value returned from a previous List request. If unspecified, the first
                         /// page of results is returned.</summary>
@@ -714,11 +719,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                         /// specified or not positive, the implementation will select a reasonable value.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>The filter expression. The expression must be in the format: . Supported field:
-                        /// 'finding_type'. Supported operator: '='.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -754,6 +754,15 @@ namespace Google.Apis.WebSecurityScanner.v1
                                     Pattern = @"^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -766,15 +775,6 @@ namespace Google.Apis.WebSecurityScanner.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1468,6 +1468,10 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleAccount")]
         public virtual GoogleAccount GoogleAccount { get; set; } 
 
+        /// <summary>Authentication using Identity-Aware-Proxy (IAP).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iapCredential")]
+        public virtual IapCredential IapCredential { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1669,6 +1673,31 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Describes authentication configuration for Identity-Aware-Proxy (IAP).</summary>
+    public class IapCredential : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-
+        /// Proxy (IAP) access policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iapTestServiceAccountInfo")]
+        public virtual IapTestServiceAccountInfo IapTestServiceAccountInfo { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Describes authentication configuration when Web-Security-Scanner service account is added in Identity-
+    /// Aware-Proxy (IAP) access policies.</summary>
+    public class IapTestServiceAccountInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy
+        /// (IAP).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetAudienceClientId")]
+        public virtual string TargetAudienceClientId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response for the `ListCrawledUrls` method.</summary>
     public class ListCrawledUrlsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1784,6 +1813,10 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exportToSecurityCommandCenter")]
         public virtual string ExportToSecurityCommandCenter { get; set; } 
 
+        /// <summary>Whether the scan config is managed by Cloud Web Security Scanner, output only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedScan")]
+        public virtual System.Nullable<bool> ManagedScan { get; set; } 
+
         /// <summary>The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is
         /// unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be
         /// rejected with INVALID_ARGUMENT error.</summary>
@@ -1806,6 +1839,11 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         /// <summary>Required. The starting URLs from which the scanner finds site pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startingUrls")]
         public virtual System.Collections.Generic.IList<string> StartingUrls { get; set; } 
+
+        /// <summary>Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner
+        /// will access applications from static IP addresses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("staticIpScan")]
+        public virtual System.Nullable<bool> StaticIpScan { get; set; } 
 
         /// <summary>The user agent used during scanning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]

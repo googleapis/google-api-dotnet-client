@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/'>Cloud Billing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191216 (1810)
+ *      <tr><th>API Rev<td>20200106 (1831)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/'>
  *              https://cloud.google.com/billing/</a>
@@ -386,8 +386,8 @@ namespace Google.Apis.Cloudbilling.v1
             /// <summary>Lists the projects associated with a billing account. The current authenticated user must have
             /// the `billing.resourceAssociations.list` IAM permission, which is often given to billing account
             /// [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).</summary>
-            /// <param name="name">The resource name of the billing account associated with the projects that you want to list. For
-            /// example, `billingAccounts/012345-567890-ABCDEF`.</param>
+            /// <param name="name">Required. The resource name of the billing account associated with the projects that you want to
+            /// list. For example, `billingAccounts/012345-567890-ABCDEF`.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -407,8 +407,8 @@ namespace Google.Apis.Cloudbilling.v1
                 }
 
 
-                /// <summary>The resource name of the billing account associated with the projects that you want to
-                /// list. For example, `billingAccounts/012345-567890-ABCDEF`.</summary>
+                /// <summary>Required. The resource name of the billing account associated with the projects that you
+                /// want to list. For example, `billingAccounts/012345-567890-ABCDEF`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -543,7 +543,7 @@ namespace Google.Apis.Cloudbilling.v1
 
         /// <summary>Gets information about a billing account. The current authenticated user must be a [viewer of the
         /// billing account](https://cloud.google.com/billing/docs/how-to/billing-access).</summary>
-        /// <param name="name">The resource name of the billing account to retrieve. For example,
+        /// <param name="name">Required. The resource name of the billing account to retrieve. For example,
         /// `billingAccounts/012345-567890-ABCDEF`.</param>
         public virtual GetRequest Get(string name)
         {
@@ -563,7 +563,7 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
 
-            /// <summary>The resource name of the billing account to retrieve. For example,
+            /// <summary>Required. The resource name of the billing account to retrieve. For example,
             /// `billingAccounts/012345-567890-ABCDEF`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -708,12 +708,6 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
 
-            /// <summary>A token identifying a page of results to return. This should be a `next_page_token` value
-            /// returned from a previous `ListBillingAccounts` call. If unspecified, the first page of results is
-            /// returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>Requested page size. The maximum page size is 100; this is also the default.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -724,6 +718,12 @@ namespace Google.Apis.Cloudbilling.v1
             /// and other fields are not currently supported.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>A token identifying a page of results to return. This should be a `next_page_token` value
+            /// returned from a previous `ListBillingAccounts` call. If unspecified, the first page of results is
+            /// returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -750,15 +750,6 @@ namespace Google.Apis.Cloudbilling.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -776,6 +767,15 @@ namespace Google.Apis.Cloudbilling.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -785,7 +785,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// given to the [administrator](https://cloud.google.com/billing/docs/how-to/billing-access) of the billing
         /// account.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The name of the billing account resource to be updated.</param>
+        /// <param name="name">Required. The name of the billing account resource to be updated.</param>
         public virtual PatchRequest Patch(Google.Apis.Cloudbilling.v1.Data.BillingAccount body, string name)
         {
             return new PatchRequest(service, body, name);
@@ -807,7 +807,7 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
 
-            /// <summary>The name of the billing account resource to be updated.</summary>
+            /// <summary>Required. The name of the billing account resource to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1034,8 +1034,8 @@ namespace Google.Apis.Cloudbilling.v1
 
         /// <summary>Gets the billing information for a project. The current authenticated user must have [permission to
         /// view the project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo ).</summary>
-        /// <param name="name">The resource name of the project for which billing information is retrieved. For example,
-        /// `projects/tokyo-rain-123`.</param>
+        /// <param name="name">Required. The resource name of the project for which billing information is retrieved. For
+        /// example, `projects/tokyo-rain-123`.</param>
         public virtual GetBillingInfoRequest GetBillingInfo(string name)
         {
             return new GetBillingInfoRequest(service, name);
@@ -1054,8 +1054,8 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
 
-            /// <summary>The resource name of the project for which billing information is retrieved. For example,
-            /// `projects/tokyo-rain-123`.</summary>
+            /// <summary>Required. The resource name of the project for which billing information is retrieved. For
+            /// example, `projects/tokyo-rain-123`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1120,8 +1120,8 @@ namespace Google.Apis.Cloudbilling.v1
         /// billing on the project: any paid resources used by the project will be shut down. Thus, unless you wish to
         /// disable billing, you should always call this method with the name of an *open* billing account.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The resource name of the project associated with the billing information that you want to update.
-        /// For example, `projects/tokyo-rain-123`.</param>
+        /// <param name="name">Required. The resource name of the project associated with the billing information that you want
+        /// to update. For example, `projects/tokyo-rain-123`.</param>
         public virtual UpdateBillingInfoRequest UpdateBillingInfo(Google.Apis.Cloudbilling.v1.Data.ProjectBillingInfo body, string name)
         {
             return new UpdateBillingInfoRequest(service, body, name);
@@ -1162,8 +1162,8 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
 
-            /// <summary>The resource name of the project associated with the billing information that you want to
-            /// update. For example, `projects/tokyo-rain-123`.</summary>
+            /// <summary>Required. The resource name of the project associated with the billing information that you
+            /// want to update. For example, `projects/tokyo-rain-123`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1557,9 +1557,9 @@ namespace Google.Apis.Cloudbilling.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>True if the billing account is open, and will therefore be charged for any usage on associated
-        /// projects. False if the billing account is closed, and therefore projects associated with it will be unable
-        /// to use paid services.</summary>
+        /// <summary>Output only. True if the billing account is open, and will therefore be charged for any usage on
+        /// associated projects. False if the billing account is closed, and therefore projects associated with it will
+        /// be unable to use paid services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("open")]
         public virtual System.Nullable<bool> Open { get; set; } 
 

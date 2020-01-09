@@ -1,141 +1,47 @@
 {
+  "discoveryVersion": "v1",
+  "version_module": true,
   "schemas": {
-    "IdentityAwareProxyClient": {
-      "id": "IdentityAwareProxyClient",
-      "description": "Contains the data that describes an Identity Aware Proxy owned client.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Output only. Unique identifier of the OAuth client.",
-          "type": "string"
-        },
-        "secret": {
-          "description": "Output only. Client secret of the OAuth client.",
-          "type": "string"
-        },
-        "displayName": {
-          "description": "Human-friendly name given to the OAuth client.",
-          "type": "string"
-        }
-      }
-    },
-    "CorsSettings": {
-      "id": "CorsSettings",
-      "description": "Allows customers to configure HTTP request paths that'll allow HTTP OPTIONS\ncall to bypass authentication and authorization.",
-      "type": "object",
-      "properties": {
-        "allowHttpOptions": {
-          "description": "Configuration to allow HTTP OPTIONS calls to skip authorization. If\nundefined, IAP will not apply any special logic to OPTIONS requests.",
-          "type": "boolean"
-        }
-      }
-    },
-    "GetPolicyOptions": {
-      "description": "Encapsulates settings provided to GetIamPolicy.",
-      "type": "object",
-      "properties": {
-        "requestedPolicyVersion": {
-          "type": "integer",
-          "description": "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.",
-          "format": "int32"
-        }
-      },
-      "id": "GetPolicyOptions"
-    },
-    "AccessSettings": {
-      "id": "AccessSettings",
-      "description": "Access related settings for IAP protected apps.",
-      "type": "object",
-      "properties": {
-        "corsSettings": {
-          "$ref": "CorsSettings",
-          "description": "Configuration to allow cross-origin requests via IAP."
-        },
-        "gcipSettings": {
-          "description": "GCIP claims and endpoint configurations for 3p identity providers.",
-          "$ref": "GcipSettings"
-        },
-        "oauthSettings": {
-          "description": "Settings to configure IAP's OAuth behavior.",
-          "$ref": "OAuthSettings"
-        }
-      }
-    },
-    "GetIamPolicyRequest": {
-      "description": "Request message for `GetIamPolicy` method.",
-      "type": "object",
-      "properties": {
-        "options": {
-          "$ref": "GetPolicyOptions",
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."
-        }
-      },
-      "id": "GetIamPolicyRequest"
-    },
-    "TestIamPermissionsResponse": {
-      "description": "Response message for `TestIamPermissions` method.",
-      "type": "object",
-      "properties": {
-        "permissions": {
-          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "id": "TestIamPermissionsResponse"
-    },
-    "CsmSettings": {
-      "type": "object",
-      "properties": {
-        "rctokenAud": {
-          "description": "Audience claim set in the generated RCToken. This value is not validated by\nIAP.",
-          "type": "string"
-        }
-      },
-      "id": "CsmSettings",
-      "description": "Configuration for RCTokens generated for CSM workloads protected by IAP.\nRCTokens are IAP generated JWTs that can be verified at the application. The\nRCToken is primarily used for ISTIO deployments, and can be scoped to a\nsingle mesh by configuring the audience field accordingly"
-    },
     "TestIamPermissionsRequest": {
-      "id": "TestIamPermissionsRequest",
       "description": "Request message for `TestIamPermissions` method.",
       "type": "object",
       "properties": {
         "permissions": {
-          "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."
         }
-      }
+      },
+      "id": "TestIamPermissionsRequest"
     },
     "Policy": {
       "type": "object",
       "properties": {
-        "etag": {
-          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.",
-          "format": "byte",
-          "type": "string"
-        },
-        "version": {
-          "type": "integer",
-          "description": "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.",
-          "format": "int32"
-        },
         "bindings": {
           "description": "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member.",
           "type": "array",
           "items": {
             "$ref": "Binding"
           }
+        },
+        "etag": {
+          "type": "string",
+          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.",
+          "format": "byte"
+        },
+        "version": {
+          "description": "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.",
+          "format": "int32",
+          "type": "integer"
         }
       },
       "id": "Policy",
       "description": "An Identity and Access Management (IAM) policy, which specifies access\ncontrols for Google Cloud resources.\n\n\nA `Policy` is a collection of `bindings`. A `binding` binds one or more\n`members` to a single `role`. Members can be user accounts, service accounts,\nGoogle groups, and domains (such as G Suite). A `role` is a named list of\npermissions; each `role` can be an IAM predefined role or a user-created\ncustom role.\n\nOptionally, a `binding` can specify a `condition`, which is a logical\nexpression that allows access to a resource only if the expression evaluates\nto `true`. A condition can add constraints based on attributes of the\nrequest, the resource, or both.\n\n**JSON example:**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/resourcemanager.organizationAdmin\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/resourcemanager.organizationViewer\",\n          \"members\": [\"user:eve@example.com\"],\n          \"condition\": {\n            \"title\": \"expirable access\",\n            \"description\": \"Does not grant access after Sep 2020\",\n            \"expression\": \"request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\",\n          }\n        }\n      ],\n      \"etag\": \"BwWWja0YfJA=\",\n      \"version\": 3\n    }\n\n**YAML example:**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-project-id@appspot.gserviceaccount.com\n      role: roles/resourcemanager.organizationAdmin\n    - members:\n      - user:eve@example.com\n      role: roles/resourcemanager.organizationViewer\n      condition:\n        title: expirable access\n        description: Does not grant access after Sep 2020\n        expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\n    - etag: BwWWja0YfJA=\n    - version: 3\n\nFor a description of IAM and its features, see the\n[IAM documentation](https://cloud.google.com/iam/docs/)."
     },
     "Brand": {
+      "description": "OAuth brand data.\nNOTE: Only contains a portion of the data that describes a brand.",
       "type": "object",
       "properties": {
         "supportEmail": {
@@ -143,86 +49,91 @@
           "type": "string"
         },
         "orgInternalOnly": {
-          "description": "Output only. Whether the brand is only intended for usage inside the\nGSuite organization only.",
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Output only. Whether the brand is only intended for usage inside the\nGSuite organization only."
         },
         "name": {
-          "description": "Output only. Identifier of the brand.\nNOTE: GCP project number achieves the same brand identification purpose as\nonly one brand per project can be created.",
-          "type": "string"
+          "type": "string",
+          "description": "Output only. Identifier of the brand.\nNOTE: GCP project number achieves the same brand identification purpose as\nonly one brand per project can be created."
         },
         "applicationTitle": {
           "description": "Application name displayed on OAuth consent screen.",
           "type": "string"
         }
       },
-      "id": "Brand",
-      "description": "OAuth brand data.\nNOTE: Only contains a portion of the data that describes a brand."
+      "id": "Brand"
     },
-    "GcipSettings": {
-      "id": "GcipSettings",
-      "description": "Allows customers to configure tenant_id for GCIP instance per-app.",
+    "ListIdentityAwareProxyClientsResponse": {
+      "description": "Response message for ListIdentityAwareProxyClients.",
       "type": "object",
       "properties": {
-        "loginPageUri": {
-          "description": "Login page URI associated with the GCIP tenants.\nTypically, all resources within the same project share the same login page,\nthough it could be overridden at the sub resource level.",
-          "type": "string"
-        },
-        "tenantIds": {
-          "description": "GCIP tenant ids that are linked to the IAP resource.\ntenant_ids could be a string beginning with a number character to indicate\nauthenticating with GCIP tenant flow, or in the format of _\u003cProjectNumber\u003e\nto indicate authenticating with GCIP agent flow.\nIf agent flow is used, tenant_ids should only contain one single element,\nwhile for tenant flow, tenant_ids can contain multiple elements.",
+        "identityAwareProxyClients": {
           "type": "array",
           "items": {
-            "type": "string"
-          }
+            "$ref": "IdentityAwareProxyClient"
+          },
+          "description": "Clients existing in the brand."
+        },
+        "nextPageToken": {
+          "type": "string",
+          "description": "A token, which can be send as `page_token` to retrieve the next page.\nIf this field is omitted, there are no subsequent pages."
         }
-      }
+      },
+      "id": "ListIdentityAwareProxyClientsResponse"
     },
     "OAuthSettings": {
       "description": "Configuration for OAuth login&consent flow behavior.",
       "type": "object",
       "properties": {
         "loginHint": {
-          "description": "Domain hint to send as hd=? parameter in OAuth request flow. Enables\nredirect to primary IDP by skipping Google's login screen.\nhttps://developers.google.com/identity/protocols/OpenIDConnect#hd-param\nNote: IAP does not verify that the id token's hd claim matches this value\nsince access behavior is managed by IAM policies.",
-          "type": "string"
+          "type": "string",
+          "description": "Domain hint to send as hd=? parameter in OAuth request flow. Enables\nredirect to primary IDP by skipping Google's login screen.\nhttps://developers.google.com/identity/protocols/OpenIDConnect#hd-param\nNote: IAP does not verify that the id token's hd claim matches this value\nsince access behavior is managed by IAM policies."
         }
       },
       "id": "OAuthSettings"
     },
-    "ListIdentityAwareProxyClientsResponse": {
-      "description": "Response message for ListIdentityAwareProxyClients.",
+    "GcipSettings": {
       "type": "object",
       "properties": {
-        "nextPageToken": {
+        "loginPageUri": {
           "type": "string",
-          "description": "A token, which can be send as `page_token` to retrieve the next page.\nIf this field is omitted, there are no subsequent pages."
+          "description": "Login page URI associated with the GCIP tenants.\nTypically, all resources within the same project share the same login page,\nthough it could be overridden at the sub resource level."
         },
-        "identityAwareProxyClients": {
-          "description": "Clients existing in the brand.",
+        "tenantIds": {
           "type": "array",
           "items": {
-            "$ref": "IdentityAwareProxyClient"
-          }
+            "type": "string"
+          },
+          "description": "GCIP tenant ids that are linked to the IAP resource.\ntenant_ids could be a string beginning with a number character to indicate\nauthenticating with GCIP tenant flow, or in the format of _\u003cProjectNumber\u003e\nto indicate authenticating with GCIP agent flow.\nIf agent flow is used, tenant_ids should only contain one single element,\nwhile for tenant flow, tenant_ids can contain multiple elements."
         }
       },
-      "id": "ListIdentityAwareProxyClientsResponse"
+      "id": "GcipSettings",
+      "description": "Allows customers to configure tenant_id for GCIP instance per-app."
     },
     "IapSettings": {
-      "description": "The IAP configurable settings.",
       "type": "object",
       "properties": {
-        "accessSettings": {
-          "description": "Top level wrapper for all access related setting in IAP",
-          "$ref": "AccessSettings"
-        },
-        "name": {
-          "description": "Required. The resource name of the IAP protected resource.",
-          "type": "string"
-        },
         "applicationSettings": {
           "$ref": "ApplicationSettings",
           "description": "Top level wrapper for all application related settings in IAP"
+        },
+        "accessSettings": {
+          "$ref": "AccessSettings",
+          "description": "Top level wrapper for all access related setting in IAP"
+        },
+        "name": {
+          "type": "string",
+          "description": "Required. The resource name of the IAP protected resource."
         }
       },
-      "id": "IapSettings"
+      "id": "IapSettings",
+      "description": "The IAP configurable settings."
+    },
+    "ResetIdentityAwareProxyClientSecretRequest": {
+      "description": "The request sent to ResetIdentityAwareProxyClientSecret.",
+      "type": "object",
+      "properties": {},
+      "id": "ResetIdentityAwareProxyClientSecretRequest"
     },
     "ApplicationSettings": {
       "description": "Wrapper over application specific settings for IAP.",
@@ -235,14 +146,7 @@
       },
       "id": "ApplicationSettings"
     },
-    "ResetIdentityAwareProxyClientSecretRequest": {
-      "type": "object",
-      "properties": {},
-      "id": "ResetIdentityAwareProxyClientSecretRequest",
-      "description": "The request sent to ResetIdentityAwareProxyClientSecret."
-    },
     "SetIamPolicyRequest": {
-      "description": "Request message for `SetIamPolicy` method.",
       "type": "object",
       "properties": {
         "policy": {
@@ -250,51 +154,51 @@
           "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
         }
       },
-      "id": "SetIamPolicyRequest"
+      "id": "SetIamPolicyRequest",
+      "description": "Request message for `SetIamPolicy` method."
     },
     "Binding": {
       "description": "Associates `members` with a `role`.",
       "type": "object",
       "properties": {
+        "role": {
+          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+          "type": "string"
+        },
         "condition": {
           "$ref": "Expr",
           "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
         },
         "members": {
-          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a user that has been recently deleted. For\n   example, `alice@example.com?uid=123456789012345678901`. If the user is\n   recovered, this value reverts to `user:{emailid}` and the recovered user\n   retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n   unique identifier) representing a service account that has been recently\n   deleted. For example,\n   `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n   If the service account is undeleted, this value reverts to\n   `serviceAccount:{emailid}` and the undeleted service account retains the\n   role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a Google group that has been recently\n   deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n   the group is recovered, this value reverts to `group:{emailid}` and the\n   recovered group retains the role in the binding.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
           "type": "array",
           "items": {
             "type": "string"
-          }
-        },
-        "role": {
-          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
-          "type": "string"
+          },
+          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a user that has been recently deleted. For\n   example, `alice@example.com?uid=123456789012345678901`. If the user is\n   recovered, this value reverts to `user:{emailid}` and the recovered user\n   retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n   unique identifier) representing a service account that has been recently\n   deleted. For example,\n   `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n   If the service account is undeleted, this value reverts to\n   `serviceAccount:{emailid}` and the undeleted service account retains the\n   role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a Google group that has been recently\n   deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n   the group is recovered, this value reverts to `group:{emailid}` and the\n   recovered group retains the role in the binding.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n"
         }
       },
       "id": "Binding"
     },
     "ListBrandsResponse": {
-      "id": "ListBrandsResponse",
       "description": "Response message for ListBrands.",
       "type": "object",
       "properties": {
         "brands": {
-          "description": "Brands existing in the project.",
           "type": "array",
           "items": {
             "$ref": "Brand"
-          }
+          },
+          "description": "Brands existing in the project."
         }
-      }
+      },
+      "id": "ListBrandsResponse"
     },
     "Expr": {
-      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
       "type": "object",
       "properties": {
         "title": {
-          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
-          "type": "string"
+          "type": "string",
+          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."
         },
         "location": {
           "type": "string",
@@ -309,20 +213,118 @@
           "type": "string"
         }
       },
-      "id": "Expr"
+      "id": "Expr",
+      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\""
     },
     "Empty": {
-      "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
-      "properties": {}
+      "properties": {},
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
+    },
+    "IdentityAwareProxyClient": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Output only. Unique identifier of the OAuth client.",
+          "type": "string"
+        },
+        "secret": {
+          "type": "string",
+          "description": "Output only. Client secret of the OAuth client."
+        },
+        "displayName": {
+          "description": "Human-friendly name given to the OAuth client.",
+          "type": "string"
+        }
+      },
+      "id": "IdentityAwareProxyClient",
+      "description": "Contains the data that describes an Identity Aware Proxy owned client."
+    },
+    "CorsSettings": {
+      "description": "Allows customers to configure HTTP request paths that'll allow HTTP OPTIONS\ncall to bypass authentication and authorization.",
+      "type": "object",
+      "properties": {
+        "allowHttpOptions": {
+          "description": "Configuration to allow HTTP OPTIONS calls to skip authorization. If\nundefined, IAP will not apply any special logic to OPTIONS requests.",
+          "type": "boolean"
+        }
+      },
+      "id": "CorsSettings"
+    },
+    "GetPolicyOptions": {
+      "type": "object",
+      "properties": {
+        "requestedPolicyVersion": {
+          "description": "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "id": "GetPolicyOptions",
+      "description": "Encapsulates settings provided to GetIamPolicy."
+    },
+    "AccessSettings": {
+      "description": "Access related settings for IAP protected apps.",
+      "type": "object",
+      "properties": {
+        "corsSettings": {
+          "$ref": "CorsSettings",
+          "description": "Configuration to allow cross-origin requests via IAP."
+        },
+        "gcipSettings": {
+          "$ref": "GcipSettings",
+          "description": "GCIP claims and endpoint configurations for 3p identity providers."
+        },
+        "oauthSettings": {
+          "$ref": "OAuthSettings",
+          "description": "Settings to configure IAP's OAuth behavior."
+        }
+      },
+      "id": "AccessSettings"
+    },
+    "TestIamPermissionsResponse": {
+      "description": "Response message for `TestIamPermissions` method.",
+      "type": "object",
+      "properties": {
+        "permissions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."
+        }
+      },
+      "id": "TestIamPermissionsResponse"
+    },
+    "GetIamPolicyRequest": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "GetPolicyOptions",
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM."
+        }
+      },
+      "id": "GetIamPolicyRequest",
+      "description": "Request message for `GetIamPolicy` method."
+    },
+    "CsmSettings": {
+      "type": "object",
+      "properties": {
+        "rctokenAud": {
+          "type": "string",
+          "description": "Audience claim set in the generated RCToken. This value is not validated by\nIAP."
+        }
+      },
+      "id": "CsmSettings",
+      "description": "Configuration for RCTokens generated for CSM workloads protected by IAP.\nRCTokens are IAP generated JWTs that can be verified at the application. The\nRCToken is primarily used for ISTIO deployments, and can be scoped to a\nsingle mesh by configuring the audience field accordingly"
     }
   },
+  "protocol": "rest",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
-  "protocol": "rest",
   "canonicalName": "Cloud IAP",
   "auth": {
     "oauth2": {
@@ -343,18 +345,18 @@
   "resources": {
     "v1": {
       "methods": {
-        "getIamPolicy": {
-          "response": {
-            "$ref": "Policy"
-          },
+        "setIamPolicy": {
+          "httpMethod": "POST",
           "parameterOrder": [
             "resource"
           ],
-          "httpMethod": "POST",
+          "response": {
+            "$ref": "Policy"
+          },
           "parameters": {
             "resource": {
               "location": "path",
-              "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+              "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
               "required": true,
               "type": "string",
               "pattern": "^.+$"
@@ -363,43 +365,25 @@
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "flatPath": "v1/{v1Id}:getIamPolicy",
-          "path": "v1/{+resource}:getIamPolicy",
-          "id": "iap.getIamPolicy",
-          "description": "Gets the access control policy for an Identity-Aware Proxy protected\nresource.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api",
-          "request": {
-            "$ref": "GetIamPolicyRequest"
-          }
-        },
-        "setIamPolicy": {
+          "flatPath": "v1/{v1Id}:setIamPolicy",
+          "id": "iap.setIamPolicy",
+          "path": "v1/{+resource}:setIamPolicy",
           "description": "Sets the access control policy for an Identity-Aware Proxy protected\nresource. Replaces any existing policy.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api",
           "request": {
             "$ref": "SetIamPolicyRequest"
-          },
+          }
+        },
+        "testIamPermissions": {
           "httpMethod": "POST",
           "parameterOrder": [
             "resource"
           ],
           "response": {
-            "$ref": "Policy"
-          },
-          "parameters": {
-            "resource": {
-              "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
-              "required": true,
-              "type": "string",
-              "pattern": "^.+$",
-              "location": "path"
-            }
+            "$ref": "TestIamPermissionsResponse"
           },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "flatPath": "v1/{v1Id}:setIamPolicy",
-          "id": "iap.setIamPolicy",
-          "path": "v1/{+resource}:setIamPolicy"
-        },
-        "testIamPermissions": {
           "parameters": {
             "resource": {
               "required": true,
@@ -409,82 +393,100 @@
               "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field."
             }
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
           "flatPath": "v1/{v1Id}:testIamPermissions",
-          "path": "v1/{+resource}:testIamPermissions",
           "id": "iap.testIamPermissions",
-          "description": "Returns permissions that a caller has on the Identity-Aware Proxy protected\nresource.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api",
+          "path": "v1/{+resource}:testIamPermissions",
           "request": {
             "$ref": "TestIamPermissionsRequest"
           },
-          "response": {
-            "$ref": "TestIamPermissionsResponse"
-          },
-          "parameterOrder": [
-            "resource"
-          ],
-          "httpMethod": "POST"
+          "description": "Returns permissions that a caller has on the Identity-Aware Proxy protected\nresource.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api"
         },
         "updateIapSettings": {
-          "httpMethod": "PATCH",
-          "parameterOrder": [
-            "name"
-          ],
+          "flatPath": "v1/{v1Id}:iapSettings",
+          "path": "v1/{+name}:iapSettings",
+          "id": "iap.updateIapSettings",
+          "request": {
+            "$ref": "IapSettings"
+          },
+          "description": "Updates the IAP settings on a particular IAP protected resource. It\nreplaces all fields unless the `update_mask` is set.",
           "response": {
             "$ref": "IapSettings"
           },
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "PATCH",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
           "parameters": {
+            "updateMask": {
+              "type": "string",
+              "location": "query",
+              "description": "The field mask specifying which IAP settings should be updated.\nIf omitted, the all of the settings are updated. See\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask",
+              "format": "google-fieldmask"
+            },
             "name": {
               "required": true,
               "type": "string",
               "pattern": "^.+$",
               "location": "path",
               "description": "Required. The resource name of the IAP protected resource."
-            },
-            "updateMask": {
-              "location": "query",
-              "description": "The field mask specifying which IAP settings should be updated.\nIf omitted, the all of the settings are updated. See\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask",
-              "format": "google-fieldmask",
-              "type": "string"
             }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1/{v1Id}:iapSettings",
-          "id": "iap.updateIapSettings",
-          "path": "v1/{+name}:iapSettings",
-          "description": "Updates the IAP settings on a particular IAP protected resource. It\nreplaces all fields unless the `update_mask` is set.",
-          "request": {
-            "$ref": "IapSettings"
           }
         },
         "getIapSettings": {
-          "path": "v1/{+name}:iapSettings",
-          "id": "iap.getIapSettings",
           "description": "Gets the IAP settings on a particular IAP protected resource.",
+          "httpMethod": "GET",
           "response": {
             "$ref": "IapSettings"
           },
           "parameterOrder": [
             "name"
           ],
-          "httpMethod": "GET",
+          "parameters": {
+            "name": {
+              "required": true,
+              "type": "string",
+              "pattern": "^.+$",
+              "location": "path",
+              "description": "Required. The resource name for which to retrieve the settings.\nAuthorization: Requires the `getSettings` permission for the associated\nresource."
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1/{v1Id}:iapSettings",
+          "id": "iap.getIapSettings",
+          "path": "v1/{+name}:iapSettings"
+        },
+        "getIamPolicy": {
+          "request": {
+            "$ref": "GetIamPolicyRequest"
+          },
+          "description": "Gets the access control policy for an Identity-Aware Proxy protected\nresource.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api",
+          "httpMethod": "POST",
+          "parameterOrder": [
+            "resource"
+          ],
+          "response": {
+            "$ref": "Policy"
+          },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
           "parameters": {
-            "name": {
+            "resource": {
+              "required": true,
+              "type": "string",
               "pattern": "^.+$",
               "location": "path",
-              "description": "Required. The resource name for which to retrieve the settings.\nAuthorization: Requires the `getSettings` permission for the associated\nresource.",
-              "required": true,
-              "type": "string"
+              "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field."
             }
           },
-          "flatPath": "v1/{v1Id}:iapSettings"
+          "flatPath": "v1/{v1Id}:getIamPolicy",
+          "id": "iap.getIamPolicy",
+          "path": "v1/{+resource}:getIamPolicy"
         }
       }
     },
@@ -495,13 +497,17 @@
             "brands": {
               "methods": {
                 "list": {
-                  "response": {
-                    "$ref": "ListBrandsResponse"
-                  },
+                  "description": "Lists the existing brands for the project.",
+                  "httpMethod": "GET",
                   "parameterOrder": [
                     "parent"
                   ],
-                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "ListBrandsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
                   "parameters": {
                     "parent": {
                       "location": "path",
@@ -511,62 +517,58 @@
                       "pattern": "^projects/[^/]+$"
                     }
                   },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
                   "flatPath": "v1/oauth/projects/{projectsId}/brands",
-                  "path": "v1/oauth/{+parent}/brands",
                   "id": "iap.oauth.projects.brands.list",
-                  "description": "Lists the existing brands for the project."
+                  "path": "v1/oauth/{+parent}/brands"
                 },
                 "get": {
+                  "flatPath": "v1/oauth/projects/{projectsId}/brands/{brandsId}",
+                  "path": "v1/oauth/{+name}",
+                  "id": "iap.oauth.projects.brands.get",
+                  "description": "Retrieves the OAuth brand of the project.",
+                  "response": {
+                    "$ref": "Brand"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
                   "parameters": {
                     "name": {
+                      "location": "path",
                       "description": "Required. Name of the brand to be fetched.\nIn the following format: projects/{project_number/id}/brands/{brand}.",
                       "required": true,
                       "type": "string",
-                      "pattern": "^projects/[^/]+/brands/[^/]+$",
-                      "location": "path"
+                      "pattern": "^projects/[^/]+/brands/[^/]+$"
                     }
-                  },
-                  "flatPath": "v1/oauth/projects/{projectsId}/brands/{brandsId}",
-                  "id": "iap.oauth.projects.brands.get",
-                  "path": "v1/oauth/{+name}",
-                  "description": "Retrieves the OAuth brand of the project.",
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "Brand"
                   }
                 },
                 "create": {
-                  "response": {
-                    "$ref": "Brand"
-                  },
+                  "httpMethod": "POST",
                   "parameterOrder": [
                     "parent"
                   ],
-                  "httpMethod": "POST",
+                  "response": {
+                    "$ref": "Brand"
+                  },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
                   "parameters": {
                     "parent": {
-                      "pattern": "^projects/[^/]+$",
                       "location": "path",
                       "description": "Required. GCP Project number/id under which the brand is to be created.\nIn the following format: projects/{project_number/id}.",
                       "required": true,
-                      "type": "string"
+                      "type": "string",
+                      "pattern": "^projects/[^/]+$"
                     }
                   },
                   "flatPath": "v1/oauth/projects/{projectsId}/brands",
-                  "path": "v1/oauth/{+parent}/brands",
                   "id": "iap.oauth.projects.brands.create",
+                  "path": "v1/oauth/{+parent}/brands",
                   "request": {
                     "$ref": "Brand"
                   },
@@ -576,59 +578,6 @@
               "resources": {
                 "identityAwareProxyClients": {
                   "methods": {
-                    "resetSecret": {
-                      "flatPath": "v1/oauth/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients/{identityAwareProxyClientsId}:resetSecret",
-                      "id": "iap.oauth.projects.brands.identityAwareProxyClients.resetSecret",
-                      "path": "v1/oauth/{+name}:resetSecret",
-                      "request": {
-                        "$ref": "ResetIdentityAwareProxyClientSecretRequest"
-                      },
-                      "description": "Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful for\nremoving obsolete clients, managing the number of clients in a given\nproject, and cleaning up after tests.\nRequires that the client is owned by IAP.",
-                      "httpMethod": "POST",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "response": {
-                        "$ref": "IdentityAwareProxyClient"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "pattern": "^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$",
-                          "location": "path",
-                          "description": "Required. Name of the Identity Aware Proxy client to that will have its\nsecret reset. In the following format:\nprojects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}.",
-                          "required": true,
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "delete": {
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "description": "Required. Name of the Identity Aware Proxy client to be deleted.\nIn the following format:\nprojects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$",
-                          "location": "path"
-                        }
-                      },
-                      "flatPath": "v1/oauth/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients/{identityAwareProxyClientsId}",
-                      "path": "v1/oauth/{+name}",
-                      "id": "iap.oauth.projects.brands.identityAwareProxyClients.delete",
-                      "description": "Deletes an Identity Aware Proxy (IAP) OAuth client. Useful if the secret\nwas compromised.\nRequires that the client is owned by IAP.",
-                      "response": {
-                        "$ref": "Empty"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "DELETE"
-                    },
                     "list": {
                       "flatPath": "v1/oauth/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients",
                       "path": "v1/oauth/{+parent}/identityAwareProxyClients",
@@ -641,40 +590,38 @@
                         "parent"
                       ],
                       "httpMethod": "GET",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
                       "parameters": {
                         "parent": {
+                          "required": true,
+                          "type": "string",
                           "pattern": "^projects/[^/]+/brands/[^/]+$",
                           "location": "path",
-                          "description": "Required. Full brand path.\nIn the following format: projects/{project_number/id}/brands/{brand}.",
-                          "required": true,
-                          "type": "string"
+                          "description": "Required. Full brand path.\nIn the following format: projects/{project_number/id}/brands/{brand}."
                         },
                         "pageToken": {
+                          "type": "string",
                           "location": "query",
-                          "description": "A page token, received from a previous `ListIdentityAwareProxyClients`\ncall. Provide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters provided to\n`ListIdentityAwareProxyClients` must match the call that provided the page\ntoken.",
-                          "type": "string"
+                          "description": "A page token, received from a previous `ListIdentityAwareProxyClients`\ncall. Provide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters provided to\n`ListIdentityAwareProxyClients` must match the call that provided the page\ntoken."
                         },
                         "pageSize": {
-                          "type": "integer",
                           "location": "query",
                           "description": "The maximum number of clients to return. The service may return fewer than\nthis value.\nIf unspecified, at most 100 clients will be returned.\nThe maximum value is 1000; values above 1000 will be coerced to 1000.",
-                          "format": "int32"
+                          "format": "int32",
+                          "type": "integer"
                         }
-                      }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ]
                     },
                     "get": {
+                      "description": "Retrieves an Identity Aware Proxy (IAP) OAuth client.\nRequires that the client is owned by IAP.",
+                      "httpMethod": "GET",
                       "response": {
                         "$ref": "IdentityAwareProxyClient"
                       },
                       "parameterOrder": [
                         "name"
-                      ],
-                      "httpMethod": "GET",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
                       ],
                       "parameters": {
                         "name": {
@@ -685,19 +632,18 @@
                           "pattern": "^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$"
                         }
                       },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
                       "flatPath": "v1/oauth/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients/{identityAwareProxyClientsId}",
-                      "path": "v1/oauth/{+name}",
                       "id": "iap.oauth.projects.brands.identityAwareProxyClients.get",
-                      "description": "Retrieves an Identity Aware Proxy (IAP) OAuth client.\nRequires that the client is owned by IAP."
+                      "path": "v1/oauth/{+name}"
                     },
                     "create": {
-                      "flatPath": "v1/oauth/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients",
-                      "path": "v1/oauth/{+parent}/identityAwareProxyClients",
-                      "id": "iap.oauth.projects.brands.identityAwareProxyClients.create",
-                      "description": "Creates an Identity Aware Proxy (IAP) OAuth client, the client is owned\nby IAP.\nRequires that the brand for the project exists and that it is set for\ninternal only use.",
                       "request": {
                         "$ref": "IdentityAwareProxyClient"
                       },
+                      "description": "Creates an Identity Aware Proxy (IAP) OAuth client, the client is owned\nby IAP.\nRequires that the brand for the project exists and that it is set for\ninternal only use.",
                       "response": {
                         "$ref": "IdentityAwareProxyClient"
                       },
@@ -705,18 +651,74 @@
                         "parent"
                       ],
                       "httpMethod": "POST",
-                      "parameters": {
-                        "parent": {
-                          "location": "path",
-                          "description": "Required. Path to create the client in.\nIn the following format:\nprojects/{project_number/id}/brands/{brand}.\nThe project must belong to a GSuite account.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/brands/[^/]+$"
-                        }
-                      },
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
-                      ]
+                      ],
+                      "parameters": {
+                        "parent": {
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/brands/[^/]+$",
+                          "location": "path",
+                          "description": "Required. Path to create the client in.\nIn the following format:\nprojects/{project_number/id}/brands/{brand}.\nThe project must belong to a GSuite account."
+                        }
+                      },
+                      "flatPath": "v1/oauth/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients",
+                      "path": "v1/oauth/{+parent}/identityAwareProxyClients",
+                      "id": "iap.oauth.projects.brands.identityAwareProxyClients.create"
+                    },
+                    "resetSecret": {
+                      "request": {
+                        "$ref": "ResetIdentityAwareProxyClientSecretRequest"
+                      },
+                      "description": "Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful for\nremoving obsolete clients, managing the number of clients in a given\nproject, and cleaning up after tests.\nRequires that the client is owned by IAP.",
+                      "response": {
+                        "$ref": "IdentityAwareProxyClient"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "POST",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$",
+                          "location": "path",
+                          "description": "Required. Name of the Identity Aware Proxy client to that will have its\nsecret reset. In the following format:\nprojects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}."
+                        }
+                      },
+                      "flatPath": "v1/oauth/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients/{identityAwareProxyClientsId}:resetSecret",
+                      "path": "v1/oauth/{+name}:resetSecret",
+                      "id": "iap.oauth.projects.brands.identityAwareProxyClients.resetSecret"
+                    },
+                    "delete": {
+                      "response": {
+                        "$ref": "Empty"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "DELETE",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "location": "path",
+                          "description": "Required. Name of the Identity Aware Proxy client to be deleted.\nIn the following format:\nprojects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$"
+                        }
+                      },
+                      "flatPath": "v1/oauth/projects/{projectsId}/brands/{brandsId}/identityAwareProxyClients/{identityAwareProxyClientsId}",
+                      "path": "v1/oauth/{+name}",
+                      "id": "iap.oauth.projects.brands.identityAwareProxyClients.delete",
+                      "description": "Deletes an Identity Aware Proxy (IAP) OAuth client. Useful if the secret\nwas compromised.\nRequires that the client is owned by IAP."
                     }
                   }
                 }
@@ -744,41 +746,41 @@
         "proto"
       ]
     },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
     "access_token": {
       "location": "query",
       "description": "OAuth access token.",
       "type": "string"
     },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
     "upload_protocol": {
+      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "quotaUser": {
+      "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true",
-      "location": "query",
-      "description": "Returns response with indentations and line breaks."
-    },
-    "fields": {
-      "type": "string",
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
+      "default": "true"
     },
     "uploadType": {
-      "type": "string",
       "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
     },
     "callback": {
       "location": "query",
@@ -806,13 +808,11 @@
   },
   "version": "v1",
   "baseUrl": "https://iap.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Controls access to cloud applications running on Google Cloud Platform.",
   "servicePath": "",
+  "description": "Controls access to cloud applications running on Google Cloud Platform.",
+  "kind": "discovery#restDescription",
   "basePath": "",
-  "id": "iap:v1",
-  "documentationLink": "https://cloud.google.com/iap",
   "revision": "20191206",
-  "discoveryVersion": "v1",
-  "version_module": true
+  "documentationLink": "https://cloud.google.com/iap",
+  "id": "iap:v1"
 }

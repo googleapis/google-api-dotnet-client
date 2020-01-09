@@ -19,13 +19,13 @@
 
 /**
  * \brief
- *   Cloud Security Command Center API Version v1p1alpha1
+ *   Cloud Security Command Center API Version v1p1beta1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Cloud Security Command Center API</a>
- *      <tr><th>API Version<td>v1p1alpha1
+ *      <tr><th>API Version<td>v1p1beta1
  *      <tr><th>API Rev<td>20200102 (1827)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
@@ -43,13 +43,13 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.SecurityCommandCenter.v1p1alpha1
+namespace Google.Apis.SecurityCommandCenter.v1p1beta1
 {
     /// <summary>The SecurityCommandCenter Service.</summary>
     public class SecurityCommandCenterService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
-        public const string Version = "v1p1alpha1";
+        public const string Version = "v1p1beta1";
 
         /// <summary>The discovery version used to generate this service.</summary>
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
@@ -383,7 +383,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1alpha1
             /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
             /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
             /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
-            public class CancelRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1alpha1.Data.Empty>
+            public class CancelRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.Empty>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
                 public CancelRequest(Google.Apis.Services.IClientService service, string name)
@@ -414,7 +414,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1alpha1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v1p1alpha1/{+name}:cancel"; }
+                    get { return "v1p1beta1/{+name}:cancel"; }
                 }
 
                 /// <summary>Initializes Cancel parameter list.</summary>
@@ -447,7 +447,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1alpha1
             /// <summary>Deletes a long-running operation. This method indicates that the client is no longer interested
             /// in the operation result. It does not cancel the operation. If the server doesn't support this method, it
             /// returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
-            public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1alpha1.Data.Empty>
+            public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -478,7 +478,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1alpha1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v1p1alpha1/{+name}"; }
+                    get { return "v1p1beta1/{+name}"; }
                 }
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -509,7 +509,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1alpha1
 
             /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
             /// operation result at intervals as recommended by the API service.</summary>
-            public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1alpha1.Data.Operation>
+            public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -540,7 +540,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1alpha1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v1p1alpha1/{+name}"; }
+                    get { return "v1p1beta1/{+name}"; }
                 }
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -583,7 +583,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1alpha1
             /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
             /// name includes the operations collection id, however overriding users must ensure the name binding is the
             /// parent resource, without the operations collection id.</summary>
-            public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1alpha1.Data.ListOperationsResponse>
+            public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1p1beta1.Data.ListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string name)
@@ -626,7 +626,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1alpha1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v1p1alpha1/{+name}"; }
+                    get { return "v1p1beta1/{+name}"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -677,7 +677,7 @@ namespace Google.Apis.SecurityCommandCenter.v1p1alpha1
     }
 }
 
-namespace Google.Apis.SecurityCommandCenter.v1p1alpha1.Data
+namespace Google.Apis.SecurityCommandCenter.v1p1beta1.Data
 {    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A

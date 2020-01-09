@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech-to-Text API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191212 (1806)
+ *      <tr><th>API Rev<td>20200102 (1827)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -452,10 +452,6 @@ namespace Google.Apis.Speech.v1
             }
 
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -467,6 +463,10 @@ namespace Google.Apis.Speech.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -493,15 +493,6 @@ namespace Google.Apis.Speech.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -523,6 +514,15 @@ namespace Google.Apis.Speech.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1174,11 +1174,6 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("microphoneDistance")]
         public virtual string MicrophoneDistance { get; set; } 
 
-        /// <summary>Obfuscated (privacy-protected) ID of the user, to identify number of unique users using the
-        /// service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedId")]
-        public virtual System.Nullable<long> ObfuscatedId { get; set; } 
-
         /// <summary>The original media the speech was recorded on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalMediaType")]
         public virtual string OriginalMediaType { get; set; } 
@@ -1354,8 +1349,8 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>A distinct integer value is assigned for every speaker within the audio. This field specifies which
-        /// one of those speakers was detected to have spoken this word. Value ranges from '1' to
+        /// <summary>Output only. A distinct integer value is assigned for every speaker within the audio. This field
+        /// specifies which one of those speakers was detected to have spoken this word. Value ranges from '1' to
         /// diarization_speaker_count. speaker_tag is set if enable_speaker_diarization = 'true' and only in the top
         /// alternative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]

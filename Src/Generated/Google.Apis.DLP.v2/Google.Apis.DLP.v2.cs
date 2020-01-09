@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191214 (1808)
+ *      <tr><th>API Rev<td>20200104 (1829)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -387,19 +387,19 @@ namespace Google.Apis.DLP.v2
             }
 
 
-            /// <summary>The geographic location to list info types. Reserved for future extensions.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string LocationId { get; set; }
-
-            /// <summary>Optional BCP-47 language code for localized infoType friendly names. If omitted, or if
-            /// localized strings are not available, en-US strings will be returned.</summary>
+            /// <summary>BCP-47 language code for localized infoType friendly names. If omitted, or if localized strings
+            /// are not available, en-US strings will be returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
 
-            /// <summary>Optional filter to only return infoTypes supported by certain parts of the API. Defaults to
+            /// <summary>filter to only return infoTypes supported by certain parts of the API. Defaults to
             /// supported_by=INSPECT.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>The geographic location to list info types. Reserved for future extensions.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LocationId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -426,15 +426,6 @@ namespace Google.Apis.DLP.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "locationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "languageCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "languageCode",
@@ -447,6 +438,15 @@ namespace Google.Apis.DLP.v2
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "locationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locationId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -522,12 +522,12 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string LocationId { get; private set; }
 
-                /// <summary>Optional BCP-47 language code for localized infoType friendly names. If omitted, or if
-                /// localized strings are not available, en-US strings will be returned.</summary>
+                /// <summary>BCP-47 language code for localized infoType friendly names. If omitted, or if localized
+                /// strings are not available, en-US strings will be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LanguageCode { get; set; }
 
-                /// <summary>Optional filter to only return infoTypes supported by certain parts of the API. Defaults to
+                /// <summary>filter to only return infoTypes supported by certain parts of the API. Defaults to
                 /// supported_by=INSPECT.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -865,13 +865,13 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                /// <summary>Page token to continue retrieval. Comes from previous call to
                 /// `ListDeidentifyTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc` postfix.
-                /// This list is case-insensitive, default sorting order is ascending, redundant space characters are
+                /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list
+                /// is case-insensitive, default sorting order is ascending, redundant space characters are
                 /// insignificant.
                 ///
                 /// Example: `name asc,update_time, create_time desc`
@@ -884,8 +884,8 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
+                /// <summary>Size of the page, can be limited by server. If zero server returns a page of max size
+                /// 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1294,23 +1294,13 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The geographic location where inspection templates will be retrieved from. Use `-` for all
-                /// locations. Reserved for future extensions.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LocationId { get; set; }
-
-                /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                /// <summary>Page token to continue retrieval. Comes from previous call to
                 /// `ListInspectTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc` postfix.
-                /// This list is case-insensitive, default sorting order is ascending, redundant space characters are
+                /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list
+                /// is case-insensitive, default sorting order is ascending, redundant space characters are
                 /// insignificant.
                 ///
                 /// Example: `name asc,update_time, create_time desc`
@@ -1322,6 +1312,16 @@ namespace Google.Apis.DLP.v2
                 /// corresponds to template's display name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
+
+                /// <summary>Size of the page, can be limited by server. If zero server returns a page of max size
+                /// 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The geographic location where inspection templates will be retrieved from. Use `-` for all
+                /// locations. Reserved for future extensions.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LocationId { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1357,24 +1357,6 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "locationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locationId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1387,6 +1369,24 @@ namespace Google.Apis.DLP.v2
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "locationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1777,14 +1777,14 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string LocationId { get; private set; }
 
-                    /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                    /// <summary>Page token to continue retrieval. Comes from previous call to
                     /// `ListDeidentifyTemplates`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc`
-                    /// postfix. This list is case-insensitive, default sorting order is ascending, redundant space
-                    /// characters are insignificant.
+                    /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
+                    /// list is case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// insignificant.
                     ///
                     /// Example: `name asc,update_time, create_time desc`
                     ///
@@ -1796,8 +1796,8 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of
-                    /// max size 100.</summary>
+                    /// <summary>Size of the page, can be limited by server. If zero server returns a page of max size
+                    /// 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2228,14 +2228,14 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string LocationId { get; private set; }
 
-                    /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                    /// <summary>Page token to continue retrieval. Comes from previous call to
                     /// `ListInspectTemplates`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc`
-                    /// postfix. This list is case-insensitive, default sorting order is ascending, redundant space
-                    /// characters are insignificant.
+                    /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
+                    /// list is case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// insignificant.
                     ///
                     /// Example: `name asc,update_time, create_time desc`
                     ///
@@ -2247,8 +2247,8 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of
-                    /// max size 100.</summary>
+                    /// <summary>Size of the page, can be limited by server. If zero server returns a page of max size
+                    /// 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2676,14 +2676,14 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string LocationId { get; private set; }
 
-                    /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                    /// <summary>Page token to continue retrieval. Comes from previous call to
                     /// `ListStoredInfoTypes`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc`
-                    /// postfix. This list is case-insensitive, default sorting order is ascending, redundant space
-                    /// characters are insignificant.
+                    /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
+                    /// list is case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// insignificant.
                     ///
                     /// Example: `name asc, display_name, create_time desc`
                     ///
@@ -2695,8 +2695,8 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of
-                    /// max size 100.</summary>
+                    /// <summary>Size of the page, can be limited by server. If zero server returns a page of max size
+                    /// 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3102,13 +3102,13 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                /// <summary>Page token to continue retrieval. Comes from previous call to
                 /// `ListStoredInfoTypes`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc` postfix.
-                /// This list is case-insensitive, default sorting order is ascending, redundant space characters are
+                /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list
+                /// is case-insensitive, default sorting order is ascending, redundant space characters are
                 /// insignificant.
                 ///
                 /// Example: `name asc, display_name, create_time desc`
@@ -3121,8 +3121,8 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
+                /// <summary>Size of the page, can be limited by server. If zero server returns a page of max size
+                /// 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3819,23 +3819,13 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The geographic location where deidentifications templates will be retrieved from. Use `-`
-                /// for all locations. Reserved for future extensions.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LocationId { get; set; }
-
-                /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                /// <summary>Page token to continue retrieval. Comes from previous call to
                 /// `ListDeidentifyTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc` postfix.
-                /// This list is case-insensitive, default sorting order is ascending, redundant space characters are
+                /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list
+                /// is case-insensitive, default sorting order is ascending, redundant space characters are
                 /// insignificant.
                 ///
                 /// Example: `name asc,update_time, create_time desc`
@@ -3847,6 +3837,16 @@ namespace Google.Apis.DLP.v2
                 /// corresponds to template's display name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
+
+                /// <summary>Size of the page, can be limited by server. If zero server returns a page of max size
+                /// 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The geographic location where deidentifications templates will be retrieved from. Use `-`
+                /// for all locations. Reserved for future extensions.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LocationId { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3882,24 +3882,6 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "locationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locationId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3912,6 +3894,24 @@ namespace Google.Apis.DLP.v2
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "locationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4324,6 +4324,32 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The geographic location where jobs will be retrieved from. Use `-` for all locations.
+                /// Reserved for future extensions.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LocationId { get; set; }
+
+                /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list
+                /// is case-insensitive, default sorting order is ascending, redundant space characters are
+                /// insignificant.
+                ///
+                /// Example: `name asc, end_time asc, create_time desc`
+                ///
+                /// Supported fields are:
+                ///
+                /// - `create_time`: corresponds to time the job was created. - `end_time`: corresponds to time the job
+                /// ended. - `name`: corresponds to job's name. - `state`: corresponds to `state`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
                 /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<TypeEnum> Type { get; set; }
@@ -4339,15 +4365,15 @@ namespace Google.Apis.DLP.v2
                     RISKANALYSISJOB,
                 }
 
-                /// <summary>Optional. Allows filtering.
+                /// <summary>Allows filtering.
                 ///
                 /// Supported syntax:
                 ///
                 /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
                 /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
-                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY -
-                /// `trigger_name` - The resource name of the trigger that created job. - 'end_time` - Corresponds to
+                /// has the form of `{field} {operator} {value}`. * Supported fields/values for inspect jobs: - `state`
+                /// - PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
+                /// - `trigger_name` - The resource name of the trigger that created job. - 'end_time` - Corresponds to
                 /// time the job finished. - 'start_time` - Corresponds to time the job finished. * Supported fields for
                 /// risk analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time
                 /// the job finished. - 'start_time` - Corresponds to time the job finished. * The operator must be `=`
@@ -4362,32 +4388,6 @@ namespace Google.Apis.DLP.v2
                 /// The length of this field should be no more than 500 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The geographic location where jobs will be retrieved from. Use `-` for all locations.
-                /// Reserved for future extensions.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LocationId { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc` postfix.
-                /// This list is case-insensitive, default sorting order is ascending, redundant space characters are
-                /// insignificant.
-                ///
-                /// Example: `name asc, end_time asc, create_time desc`
-                ///
-                /// Supported fields are:
-                ///
-                /// - `create_time`: corresponds to time the job was created. - `end_time`: corresponds to time the job
-                /// ended. - `name`: corresponds to job's name. - `state`: corresponds to `state`</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -4423,36 +4423,9 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "type", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "type",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "locationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locationId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4468,9 +4441,36 @@ namespace Google.Apis.DLP.v2
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "locationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "type", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "type",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4837,13 +4837,13 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                /// <summary>Page token to continue retrieval. Comes from previous call to
                 /// `ListInspectTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc` postfix.
-                /// This list is case-insensitive, default sorting order is ascending, redundant space characters are
+                /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list
+                /// is case-insensitive, default sorting order is ascending, redundant space characters are
                 /// insignificant.
                 ///
                 /// Example: `name asc,update_time, create_time desc`
@@ -4856,8 +4856,8 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
+                /// <summary>Size of the page, can be limited by server. If zero server returns a page of max size
+                /// 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -5331,44 +5331,22 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. Allows filtering.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `  `. * Supported fields/values for inspect jobs: - `status` -
-                /// HEALTHY|PAUSED|CANCELLED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time`
-                /// - RFC 3339 formatted timestamp, surrounded by quotation marks. Nanoseconds are ignored. -
-                /// 'error_count' - Number of errors that have occurred while running. * The operator must be `=` or
-                /// `!=` for status and inspected_storage.
-                ///
-                /// Examples:
-                ///
-                /// * inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR
-                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state =
-                /// HEALTHY) * last_run_time > \"2017-12-12T00:00:00+00:00\"
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
-                /// <summary>Optional page token to continue retrieval. Comes from previous call to ListJobTriggers.
-                /// `order_by` field must not change for subsequent calls.</summary>
+                /// <summary>Page token to continue retrieval. Comes from previous call to ListJobTriggers. `order_by`
+                /// field must not change for subsequent calls.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Optional size of the page, can be limited by a server.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>The geographic location where job triggers will be retrieved from. Use `-` for all
                 /// locations. Reserved for future extensions.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LocationId { get; set; }
 
-                /// <summary>Optional comma separated list of triggeredJob fields to order by, followed by `asc` or
-                /// `desc` postfix. This list is case-insensitive, default sorting order is ascending, redundant space
+                /// <summary>Size of the page, can be limited by a server.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc`
+                /// postfix. This list is case-insensitive, default sorting order is ascending, redundant space
                 /// characters are insignificant.
                 ///
                 /// Example: `name asc,update_time, create_time desc`
@@ -5381,6 +5359,28 @@ namespace Google.Apis.DLP.v2
                 /// display name. - `status`: corresponds to JobTrigger's status.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
+
+                /// <summary>Allows filtering.
+                ///
+                /// Supported syntax:
+                ///
+                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
+                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
+                /// has the form of `{field} {operator} {value}`. * Supported fields/values for inspect jobs: - `status`
+                /// - HEALTHY|PAUSED|CANCELLED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY -
+                /// 'last_run_time` - RFC 3339 formatted timestamp, surrounded by quotation marks. Nanoseconds are
+                /// ignored. - 'error_count' - Number of errors that have occurred while running. * The operator must be
+                /// `=` or `!=` for status and inspected_storage.
+                ///
+                /// Examples:
+                ///
+                /// * inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR
+                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state =
+                /// HEALTHY) * last_run_time > \"2017-12-12T00:00:00+00:00\"
+                ///
+                /// The length of this field should be no more than 500 characters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -5416,27 +5416,9 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5452,9 +5434,27 @@ namespace Google.Apis.DLP.v2
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6160,14 +6160,14 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string LocationId { get; private set; }
 
-                    /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                    /// <summary>Page token to continue retrieval. Comes from previous call to
                     /// `ListDeidentifyTemplates`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc`
-                    /// postfix. This list is case-insensitive, default sorting order is ascending, redundant space
-                    /// characters are insignificant.
+                    /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
+                    /// list is case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// insignificant.
                     ///
                     /// Example: `name asc,update_time, create_time desc`
                     ///
@@ -6179,8 +6179,8 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of
-                    /// max size 100.</summary>
+                    /// <summary>Size of the page, can be limited by server. If zero server returns a page of max size
+                    /// 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -6692,9 +6692,9 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string LocationId { get; private set; }
 
-                    /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc`
-                    /// postfix. This list is case-insensitive, default sorting order is ascending, redundant space
-                    /// characters are insignificant.
+                    /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
+                    /// list is case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// insignificant.
                     ///
                     /// Example: `name asc, end_time asc, create_time desc`
                     ///
@@ -6720,14 +6720,14 @@ namespace Google.Apis.DLP.v2
                         RISKANALYSISJOB,
                     }
 
-                    /// <summary>Optional. Allows filtering.
+                    /// <summary>Allows filtering.
                     ///
                     /// Supported syntax:
                     ///
                     /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
                     /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A
-                    /// restriction has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
-                    /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` -
+                    /// restriction has the form of `{field} {operator} {value}`. * Supported fields/values for inspect
+                    /// jobs: - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` -
                     /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The resource name of the trigger that
                     /// created job. - 'end_time` - Corresponds to time the job finished. - 'start_time` - Corresponds
                     /// to time the job finished. * Supported fields for risk analysis jobs: - `state` -
@@ -7244,14 +7244,14 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string LocationId { get; private set; }
 
-                    /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                    /// <summary>Page token to continue retrieval. Comes from previous call to
                     /// `ListInspectTemplates`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc`
-                    /// postfix. This list is case-insensitive, default sorting order is ascending, redundant space
-                    /// characters are insignificant.
+                    /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
+                    /// list is case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// insignificant.
                     ///
                     /// Example: `name asc,update_time, create_time desc`
                     ///
@@ -7263,8 +7263,8 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of
-                    /// max size 100.</summary>
+                    /// <summary>Size of the page, can be limited by server. If zero server returns a page of max size
+                    /// 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -7761,9 +7761,9 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string LocationId { get; private set; }
 
-                    /// <summary>Optional comma separated list of triggeredJob fields to order by, followed by `asc` or
-                    /// `desc` postfix. This list is case-insensitive, default sorting order is ascending, redundant
-                    /// space characters are insignificant.
+                    /// <summary>Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc`
+                    /// postfix. This list is case-insensitive, default sorting order is ascending, redundant space
+                    /// characters are insignificant.
                     ///
                     /// Example: `name asc,update_time, create_time desc`
                     ///
@@ -7776,17 +7776,17 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Optional. Allows filtering.
+                    /// <summary>Allows filtering.
                     ///
                     /// Supported syntax:
                     ///
                     /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
                     /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A
-                    /// restriction has the form of `  `. * Supported fields/values for inspect jobs: - `status` -
-                    /// HEALTHY|PAUSED|CANCELLED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY -
-                    /// 'last_run_time` - RFC 3339 formatted timestamp, surrounded by quotation marks. Nanoseconds are
-                    /// ignored. - 'error_count' - Number of errors that have occurred while running. * The operator
-                    /// must be `=` or `!=` for status and inspected_storage.
+                    /// restriction has the form of `{field} {operator} {value}`. * Supported fields/values for inspect
+                    /// jobs: - `status` - HEALTHY|PAUSED|CANCELLED - `inspected_storage` -
+                    /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted timestamp, surrounded by
+                    /// quotation marks. Nanoseconds are ignored. - 'error_count' - Number of errors that have occurred
+                    /// while running. * The operator must be `=` or `!=` for status and inspected_storage.
                     ///
                     /// Examples:
                     ///
@@ -7798,12 +7798,12 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional page token to continue retrieval. Comes from previous call to ListJobTriggers.
+                    /// <summary>Page token to continue retrieval. Comes from previous call to ListJobTriggers.
                     /// `order_by` field must not change for subsequent calls.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Optional size of the page, can be limited by a server.</summary>
+                    /// <summary>Size of the page, can be limited by a server.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -8239,14 +8239,14 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string LocationId { get; private set; }
 
-                    /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                    /// <summary>Page token to continue retrieval. Comes from previous call to
                     /// `ListStoredInfoTypes`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc`
-                    /// postfix. This list is case-insensitive, default sorting order is ascending, redundant space
-                    /// characters are insignificant.
+                    /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
+                    /// list is case-insensitive, default sorting order is ascending, redundant space characters are
+                    /// insignificant.
                     ///
                     /// Example: `name asc, display_name, create_time desc`
                     ///
@@ -8258,8 +8258,8 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of
-                    /// max size 100.</summary>
+                    /// <summary>Size of the page, can be limited by server. If zero server returns a page of max size
+                    /// 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -8665,13 +8665,13 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                /// <summary>Page token to continue retrieval. Comes from previous call to
                 /// `ListStoredInfoTypes`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Optional comma separated list of fields to order by, followed by `asc` or `desc` postfix.
-                /// This list is case-insensitive, default sorting order is ascending, redundant space characters are
+                /// <summary>Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list
+                /// is case-insensitive, default sorting order is ascending, redundant space characters are
                 /// insignificant.
                 ///
                 /// Example: `name asc, display_name, create_time desc`
@@ -8684,8 +8684,8 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
+                /// <summary>Size of the page, can be limited by server. If zero server returns a page of max size
+                /// 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -8852,7 +8852,7 @@ namespace Google.Apis.DLP.v2.Data
     /// learn more.</summary>
     public class GooglePrivacyDlpV2Action : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Enable email notification to project owners and editors on job's completion/failure.</summary>
+        /// <summary>Enable email notification for project owners and editors on job's completion/failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobNotificationEmails")]
         public virtual GooglePrivacyDlpV2JobNotificationEmails JobNotificationEmails { get; set; } 
 
@@ -8890,21 +8890,27 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Result of a risk analysis operation request.</summary>
     public class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Categorical stats result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoricalStatsResult")]
         public virtual GooglePrivacyDlpV2CategoricalStatsResult CategoricalStatsResult { get; set; } 
 
+        /// <summary>Delta-presence result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deltaPresenceEstimationResult")]
         public virtual GooglePrivacyDlpV2DeltaPresenceEstimationResult DeltaPresenceEstimationResult { get; set; } 
 
+        /// <summary>K-anonymity result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kAnonymityResult")]
         public virtual GooglePrivacyDlpV2KAnonymityResult KAnonymityResult { get; set; } 
 
+        /// <summary>K-map result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kMapEstimationResult")]
         public virtual GooglePrivacyDlpV2KMapEstimationResult KMapEstimationResult { get; set; } 
 
+        /// <summary>L-divesity result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lDiversityResult")]
         public virtual GooglePrivacyDlpV2LDiversityResult LDiversityResult { get; set; } 
 
+        /// <summary>Numerical stats result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericalStatsResult")]
         public virtual GooglePrivacyDlpV2NumericalStatsResult NumericalStatsResult { get; set; } 
 
@@ -8926,16 +8932,16 @@ namespace Google.Apis.DLP.v2.Data
     /// corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).</summary>
     public class GooglePrivacyDlpV2AuxiliaryTable : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Quasi-identifier columns. [required]</summary>
+        /// <summary>Required. Quasi-identifier columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2QuasiIdField> QuasiIds { get; set; } 
 
-        /// <summary>The relative frequency column must contain a floating-point number between 0 and 1 (inclusive).
-        /// Null values are assumed to be zero. [required]</summary>
+        /// <summary>Required. The relative frequency column must contain a floating-point number between 0 and 1
+        /// (inclusive). Null values are assumed to be zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeFrequency")]
         public virtual GooglePrivacyDlpV2FieldId RelativeFrequency { get; set; } 
 
-        /// <summary>Auxiliary table location. [required]</summary>
+        /// <summary>Required. Auxiliary table location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; } 
 
@@ -9126,6 +9132,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Histogram of value frequencies in the column.</summary>
     public class GooglePrivacyDlpV2CategoricalStatsHistogramBucket : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Total number of values in this bucket.</summary>
@@ -9202,9 +9209,11 @@ namespace Google.Apis.DLP.v2.Data
     /// skipped.</summary>
     public class GooglePrivacyDlpV2CharsToIgnore : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Characters to not transform when masking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("charactersToSkip")]
         public virtual string CharactersToSkip { get; set; } 
 
+        /// <summary>Common characters to not transform when masking. Useful to avoid removing punctuation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonCharactersToIgnore")]
         public virtual string CommonCharactersToIgnore { get; set; } 
 
@@ -9358,15 +9367,15 @@ namespace Google.Apis.DLP.v2.Data
     /// false.</summary>
     public class GooglePrivacyDlpV2Condition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Field within the record this condition is evaluated against. [required]</summary>
+        /// <summary>Required. Field within the record this condition is evaluated against.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
 
-        /// <summary>Operator used to compare the field or infoType to the value. [required]</summary>
+        /// <summary>Required. Operator used to compare the field or infoType to the value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operator")]
         public virtual string Operator__ { get; set; } 
 
-        /// <summary>Value to compare against. [Required, except for `EXISTS` tests.]</summary>
+        /// <summary>Value to compare against. [Mandatory, except for `EXISTS` tests.]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual GooglePrivacyDlpV2Value Value { get; set; } 
 
@@ -9377,6 +9386,7 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>A collection of conditions.</summary>
     public class GooglePrivacyDlpV2Conditions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A collection of conditions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Condition> Conditions { get; set; } 
 
@@ -9410,7 +9420,8 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Name of the container where the finding is located. The top level name is the source file name or
         /// table name. Names of some common storage containers are formatted as follows:
         ///
-        /// * BigQuery tables:  `:.` * Cloud Storage files: `gs:` * Datastore namespace:
+        /// * BigQuery tables:  `{project_id}:{dataset_id}.{table_id}` * Cloud Storage files: `gs://{bucket}/{path}` *
+        /// Datastore namespace: {namespace}
         ///
         /// Nested names could be absent if the embedded object has no string identifier (for an example an image
         /// contained within a document).</summary>
@@ -9446,7 +9457,7 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Request message for CreateDeidentifyTemplate.</summary>
     public class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The DeidentifyTemplate to create.</summary>
+        /// <summary>Required. The DeidentifyTemplate to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyTemplate")]
         public virtual GooglePrivacyDlpV2DeidentifyTemplate DeidentifyTemplate { get; set; } 
 
@@ -9469,6 +9480,7 @@ namespace Google.Apis.DLP.v2.Data
     /// metrics or inspecting Google Cloud Storage.</summary>
     public class GooglePrivacyDlpV2CreateDlpJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Set to control what and how to inspect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectJob")]
         public virtual GooglePrivacyDlpV2InspectJobConfig InspectJob { get; set; } 
 
@@ -9482,6 +9494,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
+        /// <summary>Set to choose what metric to calculate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riskJob")]
         public virtual GooglePrivacyDlpV2RiskAnalysisJobConfig RiskJob { get; set; } 
 
@@ -9492,7 +9505,7 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Request message for CreateInspectTemplate.</summary>
     public class GooglePrivacyDlpV2CreateInspectTemplateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The InspectTemplate to create.</summary>
+        /// <summary>Required. The InspectTemplate to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
         public virtual GooglePrivacyDlpV2InspectTemplate InspectTemplate { get; set; } 
 
@@ -9513,7 +9526,7 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Request message for CreateJobTrigger.</summary>
     public class GooglePrivacyDlpV2CreateJobTriggerRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The JobTrigger to create.</summary>
+        /// <summary>Required. The JobTrigger to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobTrigger")]
         public virtual GooglePrivacyDlpV2JobTrigger JobTrigger { get; set; } 
 
@@ -9534,7 +9547,7 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Request message for CreateStoredInfoType.</summary>
     public class GooglePrivacyDlpV2CreateStoredInfoTypeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Configuration of the storedInfoType to create.</summary>
+        /// <summary>Required. Configuration of the storedInfoType to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual GooglePrivacyDlpV2StoredInfoTypeConfig Config { get; set; } 
 
@@ -9557,8 +9570,8 @@ namespace Google.Apis.DLP.v2.Data
     /// https://tools.ietf.org/html/rfc5297.</summary>
     public class GooglePrivacyDlpV2CryptoDeterministicConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A context may be used for higher security and maintaining referential integrity such that
-        /// the same identifier in two different contexts will be given a distinct surrogate. The context is appended to
+        /// <summary>A context may be used for higher security and maintaining referential integrity such that the same
+        /// identifier in two different contexts will be given a distinct surrogate. The context is appended to
         /// plaintext value being encrypted. On decryption the provided context is validated against the value used
         /// during encryption. If a context was provided during encryption, same context must be provided during
         /// decryption as well.
@@ -9581,7 +9594,8 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>The custom info type to annotate the surrogate with. This annotation will be applied to the
         /// surrogate by prefixing it with the name of the custom info type followed by the number of characters
-        /// comprising the surrogate. The following scheme defines the format: ():
+        /// comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character
+        /// count}):{surrogate}
         ///
         /// For example, if the name of custom info type is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full
         /// replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc'
@@ -9589,9 +9603,9 @@ namespace Google.Apis.DLP.v2.Data
         /// This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'.
         /// This facilitates reversal of the surrogate when it occurs in free text.
         ///
-        /// Note: For record transformations where the entire cell in a table is being transformed, surrogates are
-        /// optional to use. Surrogates are used to denote the location of the token and are necessary for re-
-        /// identification in free form text.
+        /// Note: For record transformations where the entire cell in a table is being transformed, surrogates are not
+        /// mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification
+        /// in free form text.
         ///
         /// In order for inspection to work properly, the name of this info type must not occur naturally anywhere in
         /// your data; otherwise, inspection may either
@@ -9630,12 +9644,15 @@ namespace Google.Apis.DLP.v2.Data
     /// attacker cannot unwrap the data crypto key.</summary>
     public class GooglePrivacyDlpV2CryptoKey : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Kms wrapped key</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsWrapped")]
         public virtual GooglePrivacyDlpV2KmsWrappedCryptoKey KmsWrapped { get; set; } 
 
+        /// <summary>Transient crypto key</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transient")]
         public virtual GooglePrivacyDlpV2TransientCryptoKey Transient { get; set; } 
 
+        /// <summary>Unwrapped crypto key</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unwrapped")]
         public virtual GooglePrivacyDlpV2UnwrappedCryptoKey Unwrapped { get; set; } 
 
@@ -9654,6 +9671,7 @@ namespace Google.Apis.DLP.v2.Data
     /// alphabet space and size, plus warrant referential integrity.</summary>
     public class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Common alphabets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonAlphabet")]
         public virtual string CommonAlphabet { get; set; } 
 
@@ -9677,7 +9695,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual GooglePrivacyDlpV2FieldId Context { get; set; } 
 
-        /// <summary>The key used by the encryption algorithm. [required]</summary>
+        /// <summary>Required. The key used by the encryption algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
         public virtual GooglePrivacyDlpV2CryptoKey CryptoKey { get; set; } 
 
@@ -9808,14 +9826,15 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
         public virtual GooglePrivacyDlpV2CryptoKey CryptoKey { get; set; } 
 
-        /// <summary>For example, -5 means shift date to at most 5 days back in the past. [Required]</summary>
+        /// <summary>Required. For example, -5 means shift date to at most 5 days back in the past.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowerBoundDays")]
         public virtual System.Nullable<int> LowerBoundDays { get; set; } 
 
-        /// <summary>Range of shift in days. Actual shift will be selected at random within this range (inclusive ends).
-        /// Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
+        /// <summary>Required. Range of shift in days. Actual shift will be selected at random within this range
+        /// (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years)
+        /// each direction.
         ///
-        /// For example, 3 means shift date to at most 3 days into the future. [Required]</summary>
+        /// For example, 3 means shift date to at most 3 days into the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upperBoundDays")]
         public virtual System.Nullable<int> UpperBoundDays { get; set; } 
 
@@ -9826,17 +9845,19 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Message for a date time object. e.g. 2018-01-01, 5th August.</summary>
     public class GooglePrivacyDlpV2DateTime : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>One or more of the following must be set. All fields are optional, but when set must be valid date
-        /// or time values.</summary>
+        /// <summary>One or more of the following must be set. Must be a valid date or time value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual GoogleTypeDate Date { get; set; } 
 
+        /// <summary>Day of week</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
         public virtual string DayOfWeek { get; set; } 
 
+        /// <summary>Time of day</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
         public virtual GoogleTypeTimeOfDay Time { get; set; } 
 
+        /// <summary>Time zone</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual GooglePrivacyDlpV2TimeZone TimeZone { get; set; } 
 
@@ -9874,10 +9895,9 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyConfig")]
         public virtual GooglePrivacyDlpV2DeidentifyConfig DeidentifyConfig { get; set; } 
 
-        /// <summary>Optional template to use. Any configuration directly specified in deidentify_config will override
-        /// those set in the template. Singular fields that are set in this request will replace their corresponding
-        /// fields in the template. Repeated fields are appended. Singular sub-messages and groups are recursively
-        /// merged.</summary>
+        /// <summary>Template to use. Any configuration directly specified in deidentify_config will override those set
+        /// in the template. Singular fields that are set in this request will replace their corresponding fields in the
+        /// template. Repeated fields are appended. Singular sub-messages and groups are recursively merged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyTemplateName")]
         public virtual string DeidentifyTemplateName { get; set; } 
 
@@ -9886,10 +9906,9 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
         public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; } 
 
-        /// <summary>Optional template to use. Any configuration directly specified in inspect_config will override
-        /// those set in the template. Singular fields that are set in this request will replace their corresponding
-        /// fields in the template. Repeated fields are appended. Singular sub-messages and groups are recursively
-        /// merged.</summary>
+        /// <summary>Template to use. Any configuration directly specified in inspect_config will override those set in
+        /// the template. Singular fields that are set in this request will replace their corresponding fields in the
+        /// template. Repeated fields are appended. Singular sub-messages and groups are recursively merged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateName")]
         public virtual string InspectTemplateName { get; set; } 
 
@@ -9924,7 +9943,7 @@ namespace Google.Apis.DLP.v2.Data
     /// https://cloud.google.com/dlp/docs/concepts-templates to learn more.</summary>
     public class GooglePrivacyDlpV2DeidentifyTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The creation timestamp of an inspectTemplate, output only field.</summary>
+        /// <summary>Output only. The creation timestamp of an inspectTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
@@ -9940,14 +9959,14 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The template name. Output only.
+        /// <summary>Output only. The template name.
         ///
         /// The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID`
         /// OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The last update timestamp of an inspectTemplate, output only field.</summary>
+        /// <summary>Output only. The last update timestamp of an inspectTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -9965,13 +9984,12 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auxiliaryTables")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2StatisticalTable> AuxiliaryTables { get; set; } 
 
-        /// <summary>Fields considered to be quasi-identifiers. No two fields can have the same tag.
-        /// [required]</summary>
+        /// <summary>Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2QuasiId> QuasiIds { get; set; } 
 
-        /// <summary>ISO 3166-1 alpha-2 region code to use in the statistical modeling. Required if no column is tagged
-        /// with a region-specific InfoType (like US_ZIP_5) or a region code.</summary>
+        /// <summary>ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with
+        /// a region-specific InfoType (like US_ZIP_5) or a region code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; } 
 
@@ -10161,9 +10179,10 @@ namespace Google.Apis.DLP.v2.Data
     }    
 
     /// <summary>Details information about an error encountered during job execution or the results of an unsuccessful
-    /// activation of the JobTrigger. Output only field.</summary>
+    /// activation of the JobTrigger.</summary>
     public class GooglePrivacyDlpV2Error : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Detailed error codes and messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual GoogleRpcStatus Details { get; set; } 
 
@@ -10217,6 +10236,7 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>An expression, consisting or an operator and conditions.</summary>
     public class GooglePrivacyDlpV2Expressions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Conditions to apply to the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual GooglePrivacyDlpV2Conditions Conditions { get; set; } 
 
@@ -10244,7 +10264,7 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2FieldTransformation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Only apply the transformation if the condition evaluates to true for the given `RecordCondition`.
-        /// The conditions are allowed to reference fields that are not used in the actual transformation. [optional]
+        /// The conditions are allowed to reference fields that are not used in the actual transformation.
         ///
         /// Example Use Cases:
         ///
@@ -10253,7 +10273,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual GooglePrivacyDlpV2RecordCondition Condition { get; set; } 
 
-        /// <summary>Input field(s) to apply the transformation to. [required]</summary>
+        /// <summary>Required. Input field(s) to apply the transformation to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> Fields { get; set; } 
 
@@ -10327,6 +10347,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration to control the number of findings returned.</summary>
     public class GooglePrivacyDlpV2FindingLimits : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Configuration of findings limit given for specified infoTypes.</summary>
@@ -10352,8 +10373,8 @@ namespace Google.Apis.DLP.v2.Data
     /// functionality, but requires more configuration. This message is provided as a convenience to the user for simple
     /// bucketing strategies.
     ///
-    /// The transformed value will be a hyphenated string of -, i.e if lower_bound = 10 and upper_bound = 20 all values
-    /// that are within this bucket will be replaced with "10-20".
+    /// The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and
+    /// upper_bound = 20 all values that are within this bucket will be replaced with "10-20".
     ///
     /// This can be used on data of type: double, long.
     ///
@@ -10363,21 +10384,21 @@ namespace Google.Apis.DLP.v2.Data
     /// See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.</summary>
     public class GooglePrivacyDlpV2FixedSizeBucketingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10,
+        /// <summary>Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10,
         /// `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30,
-        /// 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works. [Required].</summary>
+        /// 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
         public virtual System.Nullable<double> BucketSize { get; set; } 
 
-        /// <summary>Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single
-        /// bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value “-10”.
-        /// [Required].</summary>
+        /// <summary>Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together
+        /// into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the
+        /// value “-10”.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowerBound")]
         public virtual GooglePrivacyDlpV2Value LowerBound { get; set; } 
 
-        /// <summary>Upper bound value of buckets. All values greater than upper_bound are grouped together into a
-        /// single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the
-        /// value “89+”. [Required].</summary>
+        /// <summary>Required. Upper bound value of buckets. All values greater than upper_bound are grouped together
+        /// into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with
+        /// the value “89+”.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upperBound")]
         public virtual GooglePrivacyDlpV2Value UpperBound { get; set; } 
 
@@ -10518,7 +10539,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; } 
 
-        /// <summary>Primitive transformation to apply to the infoType. [required]</summary>
+        /// <summary>Required. Primitive transformation to apply to the infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primitiveTransformation")]
         public virtual GooglePrivacyDlpV2PrimitiveTransformation PrimitiveTransformation { get; set; } 
 
@@ -10531,8 +10552,8 @@ namespace Google.Apis.DLP.v2.Data
     /// info_type.</summary>
     public class GooglePrivacyDlpV2InfoTypeTransformations : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Transformation for each infoType. Cannot specify more than one for a given infoType.
-        /// [required]</summary>
+        /// <summary>Required. Transformation for each infoType. Cannot specify more than one for a given
+        /// infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformations")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeTransformation> Transformations { get; set; } 
 
@@ -10575,6 +10596,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; } 
 
+        /// <summary>Configuration to control the number of findings returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limits")]
         public virtual GooglePrivacyDlpV2FindingLimits Limits { get; set; } 
 
@@ -10601,10 +10623,9 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
         public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; } 
 
-        /// <summary>Optional template to use. Any configuration directly specified in inspect_config will override
-        /// those set in the template. Singular fields that are set in this request will replace their corresponding
-        /// fields in the template. Repeated fields are appended. Singular sub-messages and groups are recursively
-        /// merged.</summary>
+        /// <summary>Template to use. Any configuration directly specified in inspect_config will override those set in
+        /// the template. Singular fields that are set in this request will replace their corresponding fields in the
+        /// template. Repeated fields are appended. Singular sub-messages and groups are recursively merged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateName")]
         public virtual string InspectTemplateName { get; set; } 
 
@@ -10646,6 +10667,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Controls what and how to inspect for findings.</summary>
     public class GooglePrivacyDlpV2InspectJobConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Actions to execute at the completion of the job.</summary>
@@ -10692,7 +10714,7 @@ namespace Google.Apis.DLP.v2.Data
     /// templates to learn more.</summary>
     public class GooglePrivacyDlpV2InspectTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The creation timestamp of an inspectTemplate, output only field.</summary>
+        /// <summary>Output only. The creation timestamp of an inspectTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
@@ -10708,14 +10730,14 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
         public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; } 
 
-        /// <summary>The template name. Output only.
+        /// <summary>Output only. The template name.
         ///
         /// The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR
-        /// `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`</summary>
+        /// `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The last update timestamp of an inspectTemplate, output only field.</summary>
+        /// <summary>Output only. The last update timestamp of an inspectTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -10765,7 +10787,7 @@ namespace Google.Apis.DLP.v2.Data
     /// https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.</summary>
     public class GooglePrivacyDlpV2JobTrigger : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The creation timestamp of a triggeredJob, output only field.</summary>
+        /// <summary>Output only. The creation timestamp of a triggeredJob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
@@ -10777,16 +10799,17 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>A stream of errors encountered when the trigger was activated. Repeated errors may result in the
-        /// JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified
-        /// this list will be cleared. Output only field.</summary>
+        /// <summary>Output only. A stream of errors encountered when the trigger was activated. Repeated errors may
+        /// result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the
+        /// JobTrigger is modified this list will be cleared.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; } 
 
+        /// <summary>For inspect jobs, a snapshot of the configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectJob")]
         public virtual GooglePrivacyDlpV2InspectJobConfig InspectJob { get; set; } 
 
-        /// <summary>The timestamp of the last time this trigger executed, output only field.</summary>
+        /// <summary>Output only. The timestamp of the last time this trigger executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRunTime")]
         public virtual object LastRunTime { get; set; } 
 
@@ -10795,7 +10818,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>A status for this trigger. [required]</summary>
+        /// <summary>Required. A status for this trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -10804,7 +10827,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("triggers")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Trigger> Triggers { get; set; } 
 
-        /// <summary>The last update timestamp of a triggeredJob, output only field.</summary>
+        /// <summary>Output only. The last update timestamp of a triggeredJob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -10815,8 +10838,8 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>k-anonymity metric, used for analysis of reidentification risk.</summary>
     public class GooglePrivacyDlpV2KAnonymityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional message indicating that multiple rows might be associated to a single individual. If the
-        /// same entity_id is associated to multiple quasi-identifier tuples over distinct rows, we consider the entire
+        /// <summary>Message indicating that multiple rows might be associated to a single individual. If the same
+        /// entity_id is associated to multiple quasi-identifier tuples over distinct rows, we consider the entire
         /// collection of tuples as the composite quasi-identifier. This collection is a multiset: the order in which
         /// the different tuples appear in the dataset is ignored, but their frequency is taken into account.
         ///
@@ -10851,6 +10874,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Histogram of k-anonymity equivalence classes.</summary>
     public class GooglePrivacyDlpV2KAnonymityHistogramBucket : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Total number of equivalence classes in this bucket.</summary>
@@ -10892,8 +10916,8 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Reidentifiability metric. This corresponds to a risk model similar to what is called "journalist risk"
     /// in the literature, except the attack dataset is statistically modeled instead of being perfectly known. This can
     /// be done using publicly available data (like the US Census), or using a custom statistical model (indicated as
-    /// one or several BigQuery tables), or by extrapolating from the distribution of values in the input dataset. A
-    /// column with a semantic tag attached.</summary>
+    /// one or several BigQuery tables), or by extrapolating from the distribution of values in the input
+    /// dataset.</summary>
     public class GooglePrivacyDlpV2KMapEstimationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-
@@ -10901,13 +10925,13 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auxiliaryTables")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2AuxiliaryTable> AuxiliaryTables { get; set; } 
 
-        /// <summary>Fields considered to be quasi-identifiers. No two columns can have the same tag.
-        /// [required]</summary>
+        /// <summary>Required. Fields considered to be quasi-identifiers. No two columns can have the same
+        /// tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2TaggedField> QuasiIds { get; set; } 
 
-        /// <summary>ISO 3166-1 alpha-2 region code to use in the statistical modeling. Required if no column is tagged
-        /// with a region-specific InfoType (like US_ZIP_5) or a region code.</summary>
+        /// <summary>ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with
+        /// a region-specific InfoType (like US_ZIP_5) or a region code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; } 
 
@@ -11016,11 +11040,11 @@ namespace Google.Apis.DLP.v2.Data
     /// transformation using a kms-wrapped crypto key: dlp.kms.encrypt</summary>
     public class GooglePrivacyDlpV2KmsWrappedCryptoKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of the KMS CryptoKey to use for unwrapping. [required]</summary>
+        /// <summary>Required. The resource name of the KMS CryptoKey to use for unwrapping.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
         public virtual string CryptoKeyName { get; set; } 
 
-        /// <summary>The wrapped data crypto key. [required]</summary>
+        /// <summary>Required. The wrapped data crypto key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wrappedKey")]
         public virtual string WrappedKey { get; set; } 
 
@@ -11068,6 +11092,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Histogram of l-diversity equivalence class sensitive value frequencies.</summary>
     public class GooglePrivacyDlpV2LDiversityHistogramBucket : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Total number of equivalence classes in this bucket.</summary>
@@ -11390,36 +11415,47 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>A rule for transforming a value.</summary>
     public class GooglePrivacyDlpV2PrimitiveTransformation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Bucketing</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketingConfig")]
         public virtual GooglePrivacyDlpV2BucketingConfig BucketingConfig { get; set; } 
 
+        /// <summary>Mask</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("characterMaskConfig")]
         public virtual GooglePrivacyDlpV2CharacterMaskConfig CharacterMaskConfig { get; set; } 
 
+        /// <summary>Deterministic Crypto</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoDeterministicConfig")]
         public virtual GooglePrivacyDlpV2CryptoDeterministicConfig CryptoDeterministicConfig { get; set; } 
 
+        /// <summary>Crypto</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoHashConfig")]
         public virtual GooglePrivacyDlpV2CryptoHashConfig CryptoHashConfig { get; set; } 
 
+        /// <summary>Ffx-Fpe</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoReplaceFfxFpeConfig")]
         public virtual GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig CryptoReplaceFfxFpeConfig { get; set; } 
 
+        /// <summary>Date Shift</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateShiftConfig")]
         public virtual GooglePrivacyDlpV2DateShiftConfig DateShiftConfig { get; set; } 
 
+        /// <summary>Fixed size bucketing</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedSizeBucketingConfig")]
         public virtual GooglePrivacyDlpV2FixedSizeBucketingConfig FixedSizeBucketingConfig { get; set; } 
 
+        /// <summary>Redact</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redactConfig")]
         public virtual GooglePrivacyDlpV2RedactConfig RedactConfig { get; set; } 
 
+        /// <summary>Replace</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceConfig")]
         public virtual GooglePrivacyDlpV2ReplaceValueConfig ReplaceConfig { get; set; } 
 
+        /// <summary>Replace with infotype</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceWithInfoTypeConfig")]
         public virtual GooglePrivacyDlpV2ReplaceWithInfoTypeConfig ReplaceWithInfoTypeConfig { get; set; } 
 
+        /// <summary>Time extraction</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartConfig")]
         public virtual GooglePrivacyDlpV2TimePartConfig TimePartConfig { get; set; } 
 
@@ -11430,21 +11466,27 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Privacy metric to compute for reidentification risk analysis.</summary>
     public class GooglePrivacyDlpV2PrivacyMetric : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Categorical stats</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoricalStatsConfig")]
         public virtual GooglePrivacyDlpV2CategoricalStatsConfig CategoricalStatsConfig { get; set; } 
 
+        /// <summary>delta-presence</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deltaPresenceEstimationConfig")]
         public virtual GooglePrivacyDlpV2DeltaPresenceEstimationConfig DeltaPresenceEstimationConfig { get; set; } 
 
+        /// <summary>K-anonymity</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kAnonymityConfig")]
         public virtual GooglePrivacyDlpV2KAnonymityConfig KAnonymityConfig { get; set; } 
 
+        /// <summary>k-map</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kMapEstimationConfig")]
         public virtual GooglePrivacyDlpV2KMapEstimationConfig KMapEstimationConfig { get; set; } 
 
+        /// <summary>l-diversity</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lDiversityConfig")]
         public virtual GooglePrivacyDlpV2LDiversityConfig LDiversityConfig { get; set; } 
 
+        /// <summary>Numerical stats</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericalStatsConfig")]
         public virtual GooglePrivacyDlpV2NumericalStatsConfig NumericalStatsConfig { get; set; } 
 
@@ -11522,7 +11564,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
         public virtual string CustomTag { get; set; } 
 
-        /// <summary>Identifies the column. [required]</summary>
+        /// <summary>Required. Identifies the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
 
@@ -11546,9 +11588,11 @@ namespace Google.Apis.DLP.v2.Data
     /// column in the statistical model.</summary>
     public class GooglePrivacyDlpV2QuasiIdField : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A auxiliary field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
         public virtual string CustomTag { get; set; } 
 
+        /// <summary>Identifies the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
 
@@ -11560,9 +11604,12 @@ namespace Google.Apis.DLP.v2.Data
     /// column in the statistical model.</summary>
     public class GooglePrivacyDlpV2QuasiIdentifierField : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table
+        /// that contains statistical information on the possible values of this column (below).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
         public virtual string CustomTag { get; set; } 
 
+        /// <summary>Identifies the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
 
@@ -11664,7 +11711,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldTransformation> FieldTransformations { get; set; } 
 
         /// <summary>Configuration defining which records get suppressed entirely. Records that match any suppression
-        /// rule are omitted from the output [optional].</summary>
+        /// rule are omitted from the output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordSuppressions")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2RecordSuppression> RecordSuppressions { get; set; } 
 
@@ -11752,10 +11799,9 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
         public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; } 
 
-        /// <summary>Optional template to use. Any configuration directly specified in `inspect_config` will override
-        /// those set in the template. Singular fields that are set in this request will replace their corresponding
-        /// fields in the template. Repeated fields are appended. Singular sub-messages and groups are recursively
-        /// merged.</summary>
+        /// <summary>Template to use. Any configuration directly specified in `inspect_config` will override those set
+        /// in the template. Singular fields that are set in this request will replace their corresponding fields in the
+        /// template. Repeated fields are appended. Singular sub-messages and groups are recursively merged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateName")]
         public virtual string InspectTemplateName { get; set; } 
 
@@ -11778,10 +11824,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reidentifyConfig")]
         public virtual GooglePrivacyDlpV2DeidentifyConfig ReidentifyConfig { get; set; } 
 
-        /// <summary>Optional template to use. References an instance of `DeidentifyTemplate`. Any configuration
-        /// directly specified in `reidentify_config` or `inspect_config` will override those set in the template.
-        /// Singular fields that are set in this request will replace their corresponding fields in the template.
-        /// Repeated fields are appended. Singular sub-messages and groups are recursively merged.</summary>
+        /// <summary>Template to use. References an instance of `DeidentifyTemplate`. Any configuration directly
+        /// specified in `reidentify_config` or `inspect_config` will override those set in the template. Singular
+        /// fields that are set in this request will replace their corresponding fields in the template. Repeated fields
+        /// are appended. Singular sub-messages and groups are recursively merged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reidentifyTemplateName")]
         public virtual string ReidentifyTemplateName { get; set; } 
 
@@ -11822,8 +11868,10 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Snapshot of the inspection configuration.</summary>
     public class GooglePrivacyDlpV2RequestedOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Inspect config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobConfig")]
         public virtual GooglePrivacyDlpV2InspectJobConfig JobConfig { get; set; } 
 
@@ -11874,8 +11922,10 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Values of the row.</summary>
     public class GooglePrivacyDlpV2Row : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Individual cells.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Value> Values { get; set; } 
 
@@ -11887,6 +11937,7 @@ namespace Google.Apis.DLP.v2.Data
     /// instance of this action can be specified. Compatible with: Inspect, Risk</summary>
     public class GooglePrivacyDlpV2SaveFindings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Location to store findings outside of DLP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual GooglePrivacyDlpV2OutputStorageConfig OutputConfig { get; set; } 
 
@@ -11917,16 +11968,16 @@ namespace Google.Apis.DLP.v2.Data
     /// corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).</summary>
     public class GooglePrivacyDlpV2StatisticalTable : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Quasi-identifier columns. [required]</summary>
+        /// <summary>Required. Quasi-identifier columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2QuasiIdentifierField> QuasiIds { get; set; } 
 
-        /// <summary>The relative frequency column must contain a floating-point number between 0 and 1 (inclusive).
-        /// Null values are assumed to be zero. [required]</summary>
+        /// <summary>Required. The relative frequency column must contain a floating-point number between 0 and 1
+        /// (inclusive). Null values are assumed to be zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeFrequency")]
         public virtual GooglePrivacyDlpV2FieldId RelativeFrequency { get; set; } 
 
-        /// <summary>Auxiliary table location. [required]</summary>
+        /// <summary>Required. Auxiliary table location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual GooglePrivacyDlpV2BigQueryTable Table { get; set; } 
 
@@ -12022,11 +12073,15 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>Errors that occurred when creating this storedInfoType version, or anomalies detected in the
         /// storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the
-        /// most recent error appearing first. For example, some of the data for stored custom dictionaries is put in
-        /// the user's Google Cloud Storage bucket, and if this data is modified or deleted by the user or another
-        /// system, the dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message
-        /// and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue
-        /// using it, reusing the same `config` if it was not the source of the error.</summary>
+        /// most recent error appearing first.
+        ///
+        /// For example, some of the data for stored custom dictionaries is put in the user's Google Cloud Storage
+        /// bucket, and if this data is modified or deleted by the user or another system, the dictionary becomes
+        /// invalid.
+        ///
+        /// If any errors occur, fix the problem indicated by the error message and use the UpdateStoredInfoType API
+        /// method to create another version of the storedInfoType to continue using it, reusing the same `config` if it
+        /// was not the source of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; } 
 
@@ -12065,9 +12120,11 @@ namespace Google.Apis.DLP.v2.Data
     /// error details occurred.</summary>
     public class GooglePrivacyDlpV2SummaryResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Outcome of the transformation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; } 
 
+        /// <summary>Number of transformations counted by this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; } 
 
@@ -12094,9 +12151,11 @@ namespace Google.Apis.DLP.v2.Data
     /// https://cloud.google.com/dlp/docs/inspecting-text#inspecting_a_table to learn more.</summary>
     public class GooglePrivacyDlpV2Table : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Headers of the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> Headers { get; set; } 
 
+        /// <summary>Rows of the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Row> Rows { get; set; } 
 
@@ -12115,6 +12174,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A column with a semantic tag attached.</summary>
     public class GooglePrivacyDlpV2TaggedField : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table
@@ -12122,7 +12182,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
         public virtual string CustomTag { get; set; } 
 
-        /// <summary>Identifies the column. [required]</summary>
+        /// <summary>Required. Identifies the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
 
@@ -12153,6 +12213,7 @@ namespace Google.Apis.DLP.v2.Data
     /// value.</summary>
     public class GooglePrivacyDlpV2TimePartConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The part of the time to keep.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partToExtract")]
         public virtual string PartToExtract { get; set; } 
 
@@ -12160,6 +12221,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Time zone of the date time object.</summary>
     public class GooglePrivacyDlpV2TimeZone : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Set only if the offset can be determined. Positive for time ahead of UTC. E.g. For "UTC-9", this
@@ -12213,9 +12275,11 @@ namespace Google.Apis.DLP.v2.Data
     /// response as part of the `TransformationOverviews`.</summary>
     public class GooglePrivacyDlpV2TransformationErrorHandling : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Ignore errors</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leaveUntransformed")]
         public virtual GooglePrivacyDlpV2LeaveUntransformed LeaveUntransformed { get; set; } 
 
+        /// <summary>Throw an error</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("throwError")]
         public virtual GooglePrivacyDlpV2ThrowError ThrowError { get; set; } 
 
@@ -12259,6 +12323,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recordSuppress")]
         public virtual GooglePrivacyDlpV2RecordSuppression RecordSuppress { get; set; } 
 
+        /// <summary>Collection of all transformations that took place or had an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2SummaryResult> Results { get; set; } 
 
@@ -12278,7 +12343,7 @@ namespace Google.Apis.DLP.v2.Data
     /// finishes.</summary>
     public class GooglePrivacyDlpV2TransientCryptoKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of the key. [required] This is an arbitrary string used to differentiate different keys. A
+        /// <summary>Required. Name of the key. This is an arbitrary string used to differentiate different keys. A
         /// unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if
         /// their names are the same. When the data crypto key is generated, this name is not used in any way (repeating
         /// the api call will result in a different key being generated).</summary>
@@ -12304,7 +12369,7 @@ namespace Google.Apis.DLP.v2.Data
     /// key if possible.</summary>
     public class GooglePrivacyDlpV2UnwrappedCryptoKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A 128/192/256 bit key. [required]</summary>
+        /// <summary>Required. A 128/192/256 bit key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
@@ -12379,27 +12444,35 @@ namespace Google.Apis.DLP.v2.Data
     /// even though an int64 only holds up to 8 bytes of data.</summary>
     public class GooglePrivacyDlpV2Value : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>boolean</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
         public virtual System.Nullable<bool> BooleanValue { get; set; } 
 
+        /// <summary>date</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateValue")]
         public virtual GoogleTypeDate DateValue { get; set; } 
 
+        /// <summary>day of week</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeekValue")]
         public virtual string DayOfWeekValue { get; set; } 
 
+        /// <summary>float</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floatValue")]
         public virtual System.Nullable<double> FloatValue { get; set; } 
 
+        /// <summary>integer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integerValue")]
         public virtual System.Nullable<long> IntegerValue { get; set; } 
 
+        /// <summary>string</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; } 
 
+        /// <summary>time of day</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeValue")]
         public virtual GoogleTypeTimeOfDay TimeValue { get; set; } 
 
+        /// <summary>timestamp</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
         public virtual object TimestampValue { get; set; } 
 

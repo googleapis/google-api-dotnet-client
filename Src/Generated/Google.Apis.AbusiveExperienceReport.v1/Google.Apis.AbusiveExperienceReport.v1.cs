@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/abusive-experience-report/'>Abusive Experience Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191206 (1800)
+ *      <tr><th>API Rev<td>20200106 (1831)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/abusive-experience-report/'>
  *              https://developers.google.com/abusive-experience-report/</a>
@@ -110,21 +110,7 @@ namespace Google.Apis.AbusiveExperienceReport.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Abusive Experience Report API.</summary>
-        public class Scope
-        {
-            /// <summary>Test scope for access to the Zoo service</summary>
-            public static string XapiZoo = "https://www.googleapis.com/auth/xapi.zoo";
 
-        }
-
-        /// <summary>Available OAuth 2.0 scope constants for use with the Abusive Experience Report API.</summary>
-        public static class ScopeConstants
-        {
-            /// <summary>Test scope for access to the Zoo service</summary>
-            public const string XapiZoo = "https://www.googleapis.com/auth/xapi.zoo";
-
-        }
 
 
 

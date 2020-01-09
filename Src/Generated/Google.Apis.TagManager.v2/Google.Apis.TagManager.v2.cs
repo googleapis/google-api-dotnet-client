@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/tag-manager/api/v2/'>Tag Manager API</a>
+ *          <td><a href='https://developers.google.com/tag-manager'>Tag Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190516 (1596)
+ *      <tr><th>API Rev<td>20200107 (1832)
  *      <tr><th>API Docs
- *          <td><a href='https://developers.google.com/tag-manager/api/v2/'>
- *              https://developers.google.com/tag-manager/api/v2/</a>
+ *          <td><a href='https://developers.google.com/tag-manager'>
+ *              https://developers.google.com/tag-manager</a>
  *      <tr><th>Discovery Name<td>tagmanager
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Tag Manager API can be found at
- * <a href='https://developers.google.com/tag-manager/api/v2/'>https://developers.google.com/tag-manager/api/v2/</a>.
+ * <a href='https://developers.google.com/tag-manager'>https://developers.google.com/tag-manager</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -83,29 +83,29 @@ namespace Google.Apis.TagManager.v2
         public override string BaseUri
         {
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            get { return BaseUriOverride ?? "https://www.googleapis.com/tagmanager/v2/"; }
+            get { return BaseUriOverride ?? "https://www.googleapis.com/"; }
         #else
-            get { return "https://www.googleapis.com/tagmanager/v2/"; }
+            get { return "https://www.googleapis.com/"; }
         #endif
         }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath
         {
-            get { return "tagmanager/v2/"; }
+            get { return ""; }
         }
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/tagmanager/v2"; }
+            get { return "https://www.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch/tagmanager/v2"; }
+            get { return "batch"; }
         }
         #endif
 
@@ -183,18 +183,47 @@ namespace Google.Apis.TagManager.v2
         {
         }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<AltEnum> Alt { get; set; }
 
-        /// <summary>Data format for the response.</summary>
+        /// <summary>Data format for response.</summary>
         public enum AltEnum
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
         }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
@@ -214,14 +243,18 @@ namespace Google.Apis.TagManager.v2
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+        /// assigned to a user, but should not exceed 40 characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>Deprecated. Please use quotaUser instead.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string UserIp { get; set; }
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
 
         /// <summary>Initializes TagManager parameter list.</summary>
         protected override void InitParameters()
@@ -229,12 +262,39 @@ namespace Google.Apis.TagManager.v2
             base.InitParameters();
 
             RequestParameters.Add(
+                "$.xgafv", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "$.xgafv",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "access_token", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "access_token",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
                 "alt", new Google.Apis.Discovery.Parameter
                 {
                     Name = "alt",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "json",
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "callback", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "callback",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
                     Pattern = null,
                 });
             RequestParameters.Add(
@@ -283,9 +343,18 @@ namespace Google.Apis.TagManager.v2
                     Pattern = null,
                 });
             RequestParameters.Add(
-                "userIp", new Google.Apis.Discovery.Parameter
+                "uploadType", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "userIp",
+                    Name = "uploadType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            RequestParameters.Add(
+                "upload_protocol", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "upload_protocol",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -411,7 +480,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+parent}/environments"; }
+                        get { return "tagmanager/v2/{+parent}/environments"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -426,7 +495,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+$",
                             });
                     }
 
@@ -473,7 +542,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}"; }
+                        get { return "tagmanager/v2/{+path}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -488,7 +557,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/environments/[^/]+$",
                             });
                     }
 
@@ -535,7 +604,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}"; }
+                        get { return "tagmanager/v2/{+path}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -550,7 +619,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/environments/[^/]+$",
                             });
                     }
 
@@ -601,7 +670,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+parent}/environments"; }
+                        get { return "tagmanager/v2/{+parent}/environments"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -616,7 +685,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+$",
                             });
                         RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
@@ -680,7 +749,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}:reauthorize"; }
+                        get { return "tagmanager/v2/{+path}:reauthorize"; }
                     }
 
                     /// <summary>Initializes Reauthorize parameter list.</summary>
@@ -695,7 +764,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/environments/[^/]+$",
                             });
                     }
 
@@ -755,7 +824,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}"; }
+                        get { return "tagmanager/v2/{+path}"; }
                     }
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -770,7 +839,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/environments/[^/]+$",
                             });
                         RequestParameters.Add(
                             "fingerprint", new Google.Apis.Discovery.Parameter
@@ -850,7 +919,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+parent}/version_headers:latest"; }
+                        get { return "tagmanager/v2/{+parent}/version_headers:latest"; }
                     }
 
                     /// <summary>Initializes Latest parameter list.</summary>
@@ -865,7 +934,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+$",
                             });
                     }
 
@@ -920,7 +989,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+parent}/version_headers"; }
+                        get { return "tagmanager/v2/{+parent}/version_headers"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -935,7 +1004,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+$",
                             });
                         RequestParameters.Add(
                             "includeDeleted", new Google.Apis.Discovery.Parameter
@@ -1024,7 +1093,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}"; }
+                        get { return "tagmanager/v2/{+path}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1039,7 +1108,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/versions/[^/]+$",
                             });
                     }
 
@@ -1091,7 +1160,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}"; }
+                        get { return "tagmanager/v2/{+path}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1106,7 +1175,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/versions/[^/]+$",
                             });
                         RequestParameters.Add(
                             "containerVersionId", new Google.Apis.Discovery.Parameter
@@ -1162,7 +1231,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+parent}/versions:live"; }
+                        get { return "tagmanager/v2/{+parent}/versions:live"; }
                     }
 
                     /// <summary>Initializes Live parameter list.</summary>
@@ -1177,7 +1246,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+$",
                             });
                     }
 
@@ -1229,7 +1298,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}:publish"; }
+                        get { return "tagmanager/v2/{+path}:publish"; }
                     }
 
                     /// <summary>Initializes Publish parameter list.</summary>
@@ -1244,7 +1313,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/versions/[^/]+$",
                             });
                         RequestParameters.Add(
                             "fingerprint", new Google.Apis.Discovery.Parameter
@@ -1302,7 +1371,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}:set_latest"; }
+                        get { return "tagmanager/v2/{+path}:set_latest"; }
                     }
 
                     /// <summary>Initializes SetLatest parameter list.</summary>
@@ -1317,7 +1386,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/versions/[^/]+$",
                             });
                     }
 
@@ -1364,7 +1433,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}:undelete"; }
+                        get { return "tagmanager/v2/{+path}:undelete"; }
                     }
 
                     /// <summary>Initializes Undelete parameter list.</summary>
@@ -1379,7 +1448,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/versions/[^/]+$",
                             });
                     }
 
@@ -1439,7 +1508,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}"; }
+                        get { return "tagmanager/v2/{+path}"; }
                     }
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -1454,7 +1523,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/versions/[^/]+$",
                             });
                         RequestParameters.Add(
                             "fingerprint", new Google.Apis.Discovery.Parameter
@@ -1555,50 +1624,72 @@ namespace Google.Apis.TagManager.v2
                         /// <summary>The types of built-in variables to enable.</summary>
                         public enum TypeEnum
                         {
-                            [Google.Apis.Util.StringValueAttribute("advertiserId")]
-                            AdvertiserId,
-                            [Google.Apis.Util.StringValueAttribute("advertisingTrackingEnabled")]
-                            AdvertisingTrackingEnabled,
-                            [Google.Apis.Util.StringValueAttribute("ampBrowserLanguage")]
-                            AmpBrowserLanguage,
-                            [Google.Apis.Util.StringValueAttribute("ampCanonicalHost")]
-                            AmpCanonicalHost,
-                            [Google.Apis.Util.StringValueAttribute("ampCanonicalPath")]
-                            AmpCanonicalPath,
-                            [Google.Apis.Util.StringValueAttribute("ampCanonicalUrl")]
-                            AmpCanonicalUrl,
-                            [Google.Apis.Util.StringValueAttribute("ampClientId")]
-                            AmpClientId,
-                            [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollX")]
-                            AmpClientMaxScrollX,
-                            [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollY")]
-                            AmpClientMaxScrollY,
-                            [Google.Apis.Util.StringValueAttribute("ampClientScreenHeight")]
-                            AmpClientScreenHeight,
-                            [Google.Apis.Util.StringValueAttribute("ampClientScreenWidth")]
-                            AmpClientScreenWidth,
-                            [Google.Apis.Util.StringValueAttribute("ampClientScrollX")]
-                            AmpClientScrollX,
-                            [Google.Apis.Util.StringValueAttribute("ampClientScrollY")]
-                            AmpClientScrollY,
-                            [Google.Apis.Util.StringValueAttribute("ampClientTimestamp")]
-                            AmpClientTimestamp,
-                            [Google.Apis.Util.StringValueAttribute("ampClientTimezone")]
-                            AmpClientTimezone,
-                            [Google.Apis.Util.StringValueAttribute("ampGtmEvent")]
-                            AmpGtmEvent,
-                            [Google.Apis.Util.StringValueAttribute("ampPageDownloadTime")]
-                            AmpPageDownloadTime,
-                            [Google.Apis.Util.StringValueAttribute("ampPageLoadTime")]
-                            AmpPageLoadTime,
-                            [Google.Apis.Util.StringValueAttribute("ampPageViewId")]
-                            AmpPageViewId,
-                            [Google.Apis.Util.StringValueAttribute("ampReferrer")]
-                            AmpReferrer,
-                            [Google.Apis.Util.StringValueAttribute("ampTitle")]
-                            AmpTitle,
-                            [Google.Apis.Util.StringValueAttribute("ampTotalEngagedTime")]
-                            AmpTotalEngagedTime,
+                            [Google.Apis.Util.StringValueAttribute("builtInVariableTypeUnspecified")]
+                            BuiltInVariableTypeUnspecified,
+                            [Google.Apis.Util.StringValueAttribute("pageUrl")]
+                            PageUrl,
+                            [Google.Apis.Util.StringValueAttribute("pageHostname")]
+                            PageHostname,
+                            [Google.Apis.Util.StringValueAttribute("pagePath")]
+                            PagePath,
+                            [Google.Apis.Util.StringValueAttribute("referrer")]
+                            Referrer,
+                            [Google.Apis.Util.StringValueAttribute("event")]
+                            Event__,
+                            [Google.Apis.Util.StringValueAttribute("clickElement")]
+                            ClickElement,
+                            [Google.Apis.Util.StringValueAttribute("clickClasses")]
+                            ClickClasses,
+                            [Google.Apis.Util.StringValueAttribute("clickId")]
+                            ClickId,
+                            [Google.Apis.Util.StringValueAttribute("clickTarget")]
+                            ClickTarget,
+                            [Google.Apis.Util.StringValueAttribute("clickUrl")]
+                            ClickUrl,
+                            [Google.Apis.Util.StringValueAttribute("clickText")]
+                            ClickText,
+                            [Google.Apis.Util.StringValueAttribute("firstPartyServingUrl")]
+                            FirstPartyServingUrl,
+                            [Google.Apis.Util.StringValueAttribute("formElement")]
+                            FormElement,
+                            [Google.Apis.Util.StringValueAttribute("formClasses")]
+                            FormClasses,
+                            [Google.Apis.Util.StringValueAttribute("formId")]
+                            FormId,
+                            [Google.Apis.Util.StringValueAttribute("formTarget")]
+                            FormTarget,
+                            [Google.Apis.Util.StringValueAttribute("formUrl")]
+                            FormUrl,
+                            [Google.Apis.Util.StringValueAttribute("formText")]
+                            FormText,
+                            [Google.Apis.Util.StringValueAttribute("errorMessage")]
+                            ErrorMessage,
+                            [Google.Apis.Util.StringValueAttribute("errorUrl")]
+                            ErrorUrl,
+                            [Google.Apis.Util.StringValueAttribute("errorLine")]
+                            ErrorLine,
+                            [Google.Apis.Util.StringValueAttribute("newHistoryUrl")]
+                            NewHistoryUrl,
+                            [Google.Apis.Util.StringValueAttribute("oldHistoryUrl")]
+                            OldHistoryUrl,
+                            [Google.Apis.Util.StringValueAttribute("newHistoryFragment")]
+                            NewHistoryFragment,
+                            [Google.Apis.Util.StringValueAttribute("oldHistoryFragment")]
+                            OldHistoryFragment,
+                            [Google.Apis.Util.StringValueAttribute("newHistoryState")]
+                            NewHistoryState,
+                            [Google.Apis.Util.StringValueAttribute("oldHistoryState")]
+                            OldHistoryState,
+                            [Google.Apis.Util.StringValueAttribute("historySource")]
+                            HistorySource,
+                            [Google.Apis.Util.StringValueAttribute("containerVersion")]
+                            ContainerVersion,
+                            [Google.Apis.Util.StringValueAttribute("debugMode")]
+                            DebugMode,
+                            [Google.Apis.Util.StringValueAttribute("randomNumber")]
+                            RandomNumber,
+                            [Google.Apis.Util.StringValueAttribute("containerId")]
+                            ContainerId,
                             [Google.Apis.Util.StringValueAttribute("appId")]
                             AppId,
                             [Google.Apis.Util.StringValueAttribute("appName")]
@@ -1607,46 +1698,66 @@ namespace Google.Apis.TagManager.v2
                             AppVersionCode,
                             [Google.Apis.Util.StringValueAttribute("appVersionName")]
                             AppVersionName,
-                            [Google.Apis.Util.StringValueAttribute("builtInVariableTypeUnspecified")]
-                            BuiltInVariableTypeUnspecified,
-                            [Google.Apis.Util.StringValueAttribute("clickClasses")]
-                            ClickClasses,
-                            [Google.Apis.Util.StringValueAttribute("clickElement")]
-                            ClickElement,
-                            [Google.Apis.Util.StringValueAttribute("clickId")]
-                            ClickId,
-                            [Google.Apis.Util.StringValueAttribute("clickTarget")]
-                            ClickTarget,
-                            [Google.Apis.Util.StringValueAttribute("clickText")]
-                            ClickText,
-                            [Google.Apis.Util.StringValueAttribute("clickUrl")]
-                            ClickUrl,
-                            [Google.Apis.Util.StringValueAttribute("containerId")]
-                            ContainerId,
-                            [Google.Apis.Util.StringValueAttribute("containerVersion")]
-                            ContainerVersion,
-                            [Google.Apis.Util.StringValueAttribute("debugMode")]
-                            DebugMode,
+                            [Google.Apis.Util.StringValueAttribute("language")]
+                            Language,
+                            [Google.Apis.Util.StringValueAttribute("osVersion")]
+                            OsVersion,
+                            [Google.Apis.Util.StringValueAttribute("platform")]
+                            Platform,
+                            [Google.Apis.Util.StringValueAttribute("sdkVersion")]
+                            SdkVersion,
                             [Google.Apis.Util.StringValueAttribute("deviceName")]
                             DeviceName,
-                            [Google.Apis.Util.StringValueAttribute("elementVisibilityFirstTime")]
-                            ElementVisibilityFirstTime,
-                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRatio")]
-                            ElementVisibilityRatio,
-                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRecentTime")]
-                            ElementVisibilityRecentTime,
-                            [Google.Apis.Util.StringValueAttribute("elementVisibilityTime")]
-                            ElementVisibilityTime,
+                            [Google.Apis.Util.StringValueAttribute("resolution")]
+                            Resolution,
+                            [Google.Apis.Util.StringValueAttribute("advertiserId")]
+                            AdvertiserId,
+                            [Google.Apis.Util.StringValueAttribute("advertisingTrackingEnabled")]
+                            AdvertisingTrackingEnabled,
+                            [Google.Apis.Util.StringValueAttribute("htmlId")]
+                            HtmlId,
                             [Google.Apis.Util.StringValueAttribute("environmentName")]
                             EnvironmentName,
-                            [Google.Apis.Util.StringValueAttribute("errorLine")]
-                            ErrorLine,
-                            [Google.Apis.Util.StringValueAttribute("errorMessage")]
-                            ErrorMessage,
-                            [Google.Apis.Util.StringValueAttribute("errorUrl")]
-                            ErrorUrl,
-                            [Google.Apis.Util.StringValueAttribute("event")]
-                            Event__,
+                            [Google.Apis.Util.StringValueAttribute("ampBrowserLanguage")]
+                            AmpBrowserLanguage,
+                            [Google.Apis.Util.StringValueAttribute("ampCanonicalPath")]
+                            AmpCanonicalPath,
+                            [Google.Apis.Util.StringValueAttribute("ampCanonicalUrl")]
+                            AmpCanonicalUrl,
+                            [Google.Apis.Util.StringValueAttribute("ampCanonicalHost")]
+                            AmpCanonicalHost,
+                            [Google.Apis.Util.StringValueAttribute("ampReferrer")]
+                            AmpReferrer,
+                            [Google.Apis.Util.StringValueAttribute("ampTitle")]
+                            AmpTitle,
+                            [Google.Apis.Util.StringValueAttribute("ampClientId")]
+                            AmpClientId,
+                            [Google.Apis.Util.StringValueAttribute("ampClientTimezone")]
+                            AmpClientTimezone,
+                            [Google.Apis.Util.StringValueAttribute("ampClientTimestamp")]
+                            AmpClientTimestamp,
+                            [Google.Apis.Util.StringValueAttribute("ampClientScreenWidth")]
+                            AmpClientScreenWidth,
+                            [Google.Apis.Util.StringValueAttribute("ampClientScreenHeight")]
+                            AmpClientScreenHeight,
+                            [Google.Apis.Util.StringValueAttribute("ampClientScrollX")]
+                            AmpClientScrollX,
+                            [Google.Apis.Util.StringValueAttribute("ampClientScrollY")]
+                            AmpClientScrollY,
+                            [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollX")]
+                            AmpClientMaxScrollX,
+                            [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollY")]
+                            AmpClientMaxScrollY,
+                            [Google.Apis.Util.StringValueAttribute("ampTotalEngagedTime")]
+                            AmpTotalEngagedTime,
+                            [Google.Apis.Util.StringValueAttribute("ampPageViewId")]
+                            AmpPageViewId,
+                            [Google.Apis.Util.StringValueAttribute("ampPageLoadTime")]
+                            AmpPageLoadTime,
+                            [Google.Apis.Util.StringValueAttribute("ampPageDownloadTime")]
+                            AmpPageDownloadTime,
+                            [Google.Apis.Util.StringValueAttribute("ampGtmEvent")]
+                            AmpGtmEvent,
                             [Google.Apis.Util.StringValueAttribute("eventName")]
                             EventName,
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaign")]
@@ -1695,76 +1806,42 @@ namespace Google.Apis.TagManager.v2
                             FirebaseEventParameterQuantity,
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterValue")]
                             FirebaseEventParameterValue,
-                            [Google.Apis.Util.StringValueAttribute("formClasses")]
-                            FormClasses,
-                            [Google.Apis.Util.StringValueAttribute("formElement")]
-                            FormElement,
-                            [Google.Apis.Util.StringValueAttribute("formId")]
-                            FormId,
-                            [Google.Apis.Util.StringValueAttribute("formTarget")]
-                            FormTarget,
-                            [Google.Apis.Util.StringValueAttribute("formText")]
-                            FormText,
-                            [Google.Apis.Util.StringValueAttribute("formUrl")]
-                            FormUrl,
-                            [Google.Apis.Util.StringValueAttribute("historySource")]
-                            HistorySource,
-                            [Google.Apis.Util.StringValueAttribute("htmlId")]
-                            HtmlId,
-                            [Google.Apis.Util.StringValueAttribute("language")]
-                            Language,
-                            [Google.Apis.Util.StringValueAttribute("newHistoryFragment")]
-                            NewHistoryFragment,
-                            [Google.Apis.Util.StringValueAttribute("newHistoryState")]
-                            NewHistoryState,
-                            [Google.Apis.Util.StringValueAttribute("newHistoryUrl")]
-                            NewHistoryUrl,
-                            [Google.Apis.Util.StringValueAttribute("oldHistoryFragment")]
-                            OldHistoryFragment,
-                            [Google.Apis.Util.StringValueAttribute("oldHistoryState")]
-                            OldHistoryState,
-                            [Google.Apis.Util.StringValueAttribute("oldHistoryUrl")]
-                            OldHistoryUrl,
-                            [Google.Apis.Util.StringValueAttribute("osVersion")]
-                            OsVersion,
-                            [Google.Apis.Util.StringValueAttribute("pageHostname")]
-                            PageHostname,
-                            [Google.Apis.Util.StringValueAttribute("pagePath")]
-                            PagePath,
-                            [Google.Apis.Util.StringValueAttribute("pageUrl")]
-                            PageUrl,
-                            [Google.Apis.Util.StringValueAttribute("platform")]
-                            Platform,
-                            [Google.Apis.Util.StringValueAttribute("randomNumber")]
-                            RandomNumber,
-                            [Google.Apis.Util.StringValueAttribute("referrer")]
-                            Referrer,
-                            [Google.Apis.Util.StringValueAttribute("resolution")]
-                            Resolution,
-                            [Google.Apis.Util.StringValueAttribute("scrollDepthDirection")]
-                            ScrollDepthDirection,
-                            [Google.Apis.Util.StringValueAttribute("scrollDepthThreshold")]
-                            ScrollDepthThreshold,
-                            [Google.Apis.Util.StringValueAttribute("scrollDepthUnits")]
-                            ScrollDepthUnits,
-                            [Google.Apis.Util.StringValueAttribute("sdkVersion")]
-                            SdkVersion,
-                            [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
-                            VideoCurrentTime,
+                            [Google.Apis.Util.StringValueAttribute("videoProvider")]
+                            VideoProvider,
+                            [Google.Apis.Util.StringValueAttribute("videoUrl")]
+                            VideoUrl,
+                            [Google.Apis.Util.StringValueAttribute("videoTitle")]
+                            VideoTitle,
                             [Google.Apis.Util.StringValueAttribute("videoDuration")]
                             VideoDuration,
                             [Google.Apis.Util.StringValueAttribute("videoPercent")]
                             VideoPercent,
-                            [Google.Apis.Util.StringValueAttribute("videoProvider")]
-                            VideoProvider,
-                            [Google.Apis.Util.StringValueAttribute("videoStatus")]
-                            VideoStatus,
-                            [Google.Apis.Util.StringValueAttribute("videoTitle")]
-                            VideoTitle,
-                            [Google.Apis.Util.StringValueAttribute("videoUrl")]
-                            VideoUrl,
                             [Google.Apis.Util.StringValueAttribute("videoVisible")]
                             VideoVisible,
+                            [Google.Apis.Util.StringValueAttribute("videoStatus")]
+                            VideoStatus,
+                            [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
+                            VideoCurrentTime,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthThreshold")]
+                            ScrollDepthThreshold,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthUnits")]
+                            ScrollDepthUnits,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthDirection")]
+                            ScrollDepthDirection,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRatio")]
+                            ElementVisibilityRatio,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityTime")]
+                            ElementVisibilityTime,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityFirstTime")]
+                            ElementVisibilityFirstTime,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRecentTime")]
+                            ElementVisibilityRecentTime,
+                            [Google.Apis.Util.StringValueAttribute("requestPath")]
+                            RequestPath,
+                            [Google.Apis.Util.StringValueAttribute("requestMethod")]
+                            RequestMethod,
+                            [Google.Apis.Util.StringValueAttribute("clientName")]
+                            ClientName,
                         }
 
 
@@ -1783,7 +1860,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+parent}/built_in_variables"; }
+                            get { return "tagmanager/v2/{+parent}/built_in_variables"; }
                         }
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -1798,7 +1875,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "type", new Google.Apis.Discovery.Parameter
@@ -1845,50 +1922,72 @@ namespace Google.Apis.TagManager.v2
                         /// <summary>The types of built-in variables to delete.</summary>
                         public enum TypeEnum
                         {
-                            [Google.Apis.Util.StringValueAttribute("advertiserId")]
-                            AdvertiserId,
-                            [Google.Apis.Util.StringValueAttribute("advertisingTrackingEnabled")]
-                            AdvertisingTrackingEnabled,
-                            [Google.Apis.Util.StringValueAttribute("ampBrowserLanguage")]
-                            AmpBrowserLanguage,
-                            [Google.Apis.Util.StringValueAttribute("ampCanonicalHost")]
-                            AmpCanonicalHost,
-                            [Google.Apis.Util.StringValueAttribute("ampCanonicalPath")]
-                            AmpCanonicalPath,
-                            [Google.Apis.Util.StringValueAttribute("ampCanonicalUrl")]
-                            AmpCanonicalUrl,
-                            [Google.Apis.Util.StringValueAttribute("ampClientId")]
-                            AmpClientId,
-                            [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollX")]
-                            AmpClientMaxScrollX,
-                            [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollY")]
-                            AmpClientMaxScrollY,
-                            [Google.Apis.Util.StringValueAttribute("ampClientScreenHeight")]
-                            AmpClientScreenHeight,
-                            [Google.Apis.Util.StringValueAttribute("ampClientScreenWidth")]
-                            AmpClientScreenWidth,
-                            [Google.Apis.Util.StringValueAttribute("ampClientScrollX")]
-                            AmpClientScrollX,
-                            [Google.Apis.Util.StringValueAttribute("ampClientScrollY")]
-                            AmpClientScrollY,
-                            [Google.Apis.Util.StringValueAttribute("ampClientTimestamp")]
-                            AmpClientTimestamp,
-                            [Google.Apis.Util.StringValueAttribute("ampClientTimezone")]
-                            AmpClientTimezone,
-                            [Google.Apis.Util.StringValueAttribute("ampGtmEvent")]
-                            AmpGtmEvent,
-                            [Google.Apis.Util.StringValueAttribute("ampPageDownloadTime")]
-                            AmpPageDownloadTime,
-                            [Google.Apis.Util.StringValueAttribute("ampPageLoadTime")]
-                            AmpPageLoadTime,
-                            [Google.Apis.Util.StringValueAttribute("ampPageViewId")]
-                            AmpPageViewId,
-                            [Google.Apis.Util.StringValueAttribute("ampReferrer")]
-                            AmpReferrer,
-                            [Google.Apis.Util.StringValueAttribute("ampTitle")]
-                            AmpTitle,
-                            [Google.Apis.Util.StringValueAttribute("ampTotalEngagedTime")]
-                            AmpTotalEngagedTime,
+                            [Google.Apis.Util.StringValueAttribute("builtInVariableTypeUnspecified")]
+                            BuiltInVariableTypeUnspecified,
+                            [Google.Apis.Util.StringValueAttribute("pageUrl")]
+                            PageUrl,
+                            [Google.Apis.Util.StringValueAttribute("pageHostname")]
+                            PageHostname,
+                            [Google.Apis.Util.StringValueAttribute("pagePath")]
+                            PagePath,
+                            [Google.Apis.Util.StringValueAttribute("referrer")]
+                            Referrer,
+                            [Google.Apis.Util.StringValueAttribute("event")]
+                            Event__,
+                            [Google.Apis.Util.StringValueAttribute("clickElement")]
+                            ClickElement,
+                            [Google.Apis.Util.StringValueAttribute("clickClasses")]
+                            ClickClasses,
+                            [Google.Apis.Util.StringValueAttribute("clickId")]
+                            ClickId,
+                            [Google.Apis.Util.StringValueAttribute("clickTarget")]
+                            ClickTarget,
+                            [Google.Apis.Util.StringValueAttribute("clickUrl")]
+                            ClickUrl,
+                            [Google.Apis.Util.StringValueAttribute("clickText")]
+                            ClickText,
+                            [Google.Apis.Util.StringValueAttribute("firstPartyServingUrl")]
+                            FirstPartyServingUrl,
+                            [Google.Apis.Util.StringValueAttribute("formElement")]
+                            FormElement,
+                            [Google.Apis.Util.StringValueAttribute("formClasses")]
+                            FormClasses,
+                            [Google.Apis.Util.StringValueAttribute("formId")]
+                            FormId,
+                            [Google.Apis.Util.StringValueAttribute("formTarget")]
+                            FormTarget,
+                            [Google.Apis.Util.StringValueAttribute("formUrl")]
+                            FormUrl,
+                            [Google.Apis.Util.StringValueAttribute("formText")]
+                            FormText,
+                            [Google.Apis.Util.StringValueAttribute("errorMessage")]
+                            ErrorMessage,
+                            [Google.Apis.Util.StringValueAttribute("errorUrl")]
+                            ErrorUrl,
+                            [Google.Apis.Util.StringValueAttribute("errorLine")]
+                            ErrorLine,
+                            [Google.Apis.Util.StringValueAttribute("newHistoryUrl")]
+                            NewHistoryUrl,
+                            [Google.Apis.Util.StringValueAttribute("oldHistoryUrl")]
+                            OldHistoryUrl,
+                            [Google.Apis.Util.StringValueAttribute("newHistoryFragment")]
+                            NewHistoryFragment,
+                            [Google.Apis.Util.StringValueAttribute("oldHistoryFragment")]
+                            OldHistoryFragment,
+                            [Google.Apis.Util.StringValueAttribute("newHistoryState")]
+                            NewHistoryState,
+                            [Google.Apis.Util.StringValueAttribute("oldHistoryState")]
+                            OldHistoryState,
+                            [Google.Apis.Util.StringValueAttribute("historySource")]
+                            HistorySource,
+                            [Google.Apis.Util.StringValueAttribute("containerVersion")]
+                            ContainerVersion,
+                            [Google.Apis.Util.StringValueAttribute("debugMode")]
+                            DebugMode,
+                            [Google.Apis.Util.StringValueAttribute("randomNumber")]
+                            RandomNumber,
+                            [Google.Apis.Util.StringValueAttribute("containerId")]
+                            ContainerId,
                             [Google.Apis.Util.StringValueAttribute("appId")]
                             AppId,
                             [Google.Apis.Util.StringValueAttribute("appName")]
@@ -1897,46 +1996,66 @@ namespace Google.Apis.TagManager.v2
                             AppVersionCode,
                             [Google.Apis.Util.StringValueAttribute("appVersionName")]
                             AppVersionName,
-                            [Google.Apis.Util.StringValueAttribute("builtInVariableTypeUnspecified")]
-                            BuiltInVariableTypeUnspecified,
-                            [Google.Apis.Util.StringValueAttribute("clickClasses")]
-                            ClickClasses,
-                            [Google.Apis.Util.StringValueAttribute("clickElement")]
-                            ClickElement,
-                            [Google.Apis.Util.StringValueAttribute("clickId")]
-                            ClickId,
-                            [Google.Apis.Util.StringValueAttribute("clickTarget")]
-                            ClickTarget,
-                            [Google.Apis.Util.StringValueAttribute("clickText")]
-                            ClickText,
-                            [Google.Apis.Util.StringValueAttribute("clickUrl")]
-                            ClickUrl,
-                            [Google.Apis.Util.StringValueAttribute("containerId")]
-                            ContainerId,
-                            [Google.Apis.Util.StringValueAttribute("containerVersion")]
-                            ContainerVersion,
-                            [Google.Apis.Util.StringValueAttribute("debugMode")]
-                            DebugMode,
+                            [Google.Apis.Util.StringValueAttribute("language")]
+                            Language,
+                            [Google.Apis.Util.StringValueAttribute("osVersion")]
+                            OsVersion,
+                            [Google.Apis.Util.StringValueAttribute("platform")]
+                            Platform,
+                            [Google.Apis.Util.StringValueAttribute("sdkVersion")]
+                            SdkVersion,
                             [Google.Apis.Util.StringValueAttribute("deviceName")]
                             DeviceName,
-                            [Google.Apis.Util.StringValueAttribute("elementVisibilityFirstTime")]
-                            ElementVisibilityFirstTime,
-                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRatio")]
-                            ElementVisibilityRatio,
-                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRecentTime")]
-                            ElementVisibilityRecentTime,
-                            [Google.Apis.Util.StringValueAttribute("elementVisibilityTime")]
-                            ElementVisibilityTime,
+                            [Google.Apis.Util.StringValueAttribute("resolution")]
+                            Resolution,
+                            [Google.Apis.Util.StringValueAttribute("advertiserId")]
+                            AdvertiserId,
+                            [Google.Apis.Util.StringValueAttribute("advertisingTrackingEnabled")]
+                            AdvertisingTrackingEnabled,
+                            [Google.Apis.Util.StringValueAttribute("htmlId")]
+                            HtmlId,
                             [Google.Apis.Util.StringValueAttribute("environmentName")]
                             EnvironmentName,
-                            [Google.Apis.Util.StringValueAttribute("errorLine")]
-                            ErrorLine,
-                            [Google.Apis.Util.StringValueAttribute("errorMessage")]
-                            ErrorMessage,
-                            [Google.Apis.Util.StringValueAttribute("errorUrl")]
-                            ErrorUrl,
-                            [Google.Apis.Util.StringValueAttribute("event")]
-                            Event__,
+                            [Google.Apis.Util.StringValueAttribute("ampBrowserLanguage")]
+                            AmpBrowserLanguage,
+                            [Google.Apis.Util.StringValueAttribute("ampCanonicalPath")]
+                            AmpCanonicalPath,
+                            [Google.Apis.Util.StringValueAttribute("ampCanonicalUrl")]
+                            AmpCanonicalUrl,
+                            [Google.Apis.Util.StringValueAttribute("ampCanonicalHost")]
+                            AmpCanonicalHost,
+                            [Google.Apis.Util.StringValueAttribute("ampReferrer")]
+                            AmpReferrer,
+                            [Google.Apis.Util.StringValueAttribute("ampTitle")]
+                            AmpTitle,
+                            [Google.Apis.Util.StringValueAttribute("ampClientId")]
+                            AmpClientId,
+                            [Google.Apis.Util.StringValueAttribute("ampClientTimezone")]
+                            AmpClientTimezone,
+                            [Google.Apis.Util.StringValueAttribute("ampClientTimestamp")]
+                            AmpClientTimestamp,
+                            [Google.Apis.Util.StringValueAttribute("ampClientScreenWidth")]
+                            AmpClientScreenWidth,
+                            [Google.Apis.Util.StringValueAttribute("ampClientScreenHeight")]
+                            AmpClientScreenHeight,
+                            [Google.Apis.Util.StringValueAttribute("ampClientScrollX")]
+                            AmpClientScrollX,
+                            [Google.Apis.Util.StringValueAttribute("ampClientScrollY")]
+                            AmpClientScrollY,
+                            [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollX")]
+                            AmpClientMaxScrollX,
+                            [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollY")]
+                            AmpClientMaxScrollY,
+                            [Google.Apis.Util.StringValueAttribute("ampTotalEngagedTime")]
+                            AmpTotalEngagedTime,
+                            [Google.Apis.Util.StringValueAttribute("ampPageViewId")]
+                            AmpPageViewId,
+                            [Google.Apis.Util.StringValueAttribute("ampPageLoadTime")]
+                            AmpPageLoadTime,
+                            [Google.Apis.Util.StringValueAttribute("ampPageDownloadTime")]
+                            AmpPageDownloadTime,
+                            [Google.Apis.Util.StringValueAttribute("ampGtmEvent")]
+                            AmpGtmEvent,
                             [Google.Apis.Util.StringValueAttribute("eventName")]
                             EventName,
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaign")]
@@ -1985,76 +2104,42 @@ namespace Google.Apis.TagManager.v2
                             FirebaseEventParameterQuantity,
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterValue")]
                             FirebaseEventParameterValue,
-                            [Google.Apis.Util.StringValueAttribute("formClasses")]
-                            FormClasses,
-                            [Google.Apis.Util.StringValueAttribute("formElement")]
-                            FormElement,
-                            [Google.Apis.Util.StringValueAttribute("formId")]
-                            FormId,
-                            [Google.Apis.Util.StringValueAttribute("formTarget")]
-                            FormTarget,
-                            [Google.Apis.Util.StringValueAttribute("formText")]
-                            FormText,
-                            [Google.Apis.Util.StringValueAttribute("formUrl")]
-                            FormUrl,
-                            [Google.Apis.Util.StringValueAttribute("historySource")]
-                            HistorySource,
-                            [Google.Apis.Util.StringValueAttribute("htmlId")]
-                            HtmlId,
-                            [Google.Apis.Util.StringValueAttribute("language")]
-                            Language,
-                            [Google.Apis.Util.StringValueAttribute("newHistoryFragment")]
-                            NewHistoryFragment,
-                            [Google.Apis.Util.StringValueAttribute("newHistoryState")]
-                            NewHistoryState,
-                            [Google.Apis.Util.StringValueAttribute("newHistoryUrl")]
-                            NewHistoryUrl,
-                            [Google.Apis.Util.StringValueAttribute("oldHistoryFragment")]
-                            OldHistoryFragment,
-                            [Google.Apis.Util.StringValueAttribute("oldHistoryState")]
-                            OldHistoryState,
-                            [Google.Apis.Util.StringValueAttribute("oldHistoryUrl")]
-                            OldHistoryUrl,
-                            [Google.Apis.Util.StringValueAttribute("osVersion")]
-                            OsVersion,
-                            [Google.Apis.Util.StringValueAttribute("pageHostname")]
-                            PageHostname,
-                            [Google.Apis.Util.StringValueAttribute("pagePath")]
-                            PagePath,
-                            [Google.Apis.Util.StringValueAttribute("pageUrl")]
-                            PageUrl,
-                            [Google.Apis.Util.StringValueAttribute("platform")]
-                            Platform,
-                            [Google.Apis.Util.StringValueAttribute("randomNumber")]
-                            RandomNumber,
-                            [Google.Apis.Util.StringValueAttribute("referrer")]
-                            Referrer,
-                            [Google.Apis.Util.StringValueAttribute("resolution")]
-                            Resolution,
-                            [Google.Apis.Util.StringValueAttribute("scrollDepthDirection")]
-                            ScrollDepthDirection,
-                            [Google.Apis.Util.StringValueAttribute("scrollDepthThreshold")]
-                            ScrollDepthThreshold,
-                            [Google.Apis.Util.StringValueAttribute("scrollDepthUnits")]
-                            ScrollDepthUnits,
-                            [Google.Apis.Util.StringValueAttribute("sdkVersion")]
-                            SdkVersion,
-                            [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
-                            VideoCurrentTime,
+                            [Google.Apis.Util.StringValueAttribute("videoProvider")]
+                            VideoProvider,
+                            [Google.Apis.Util.StringValueAttribute("videoUrl")]
+                            VideoUrl,
+                            [Google.Apis.Util.StringValueAttribute("videoTitle")]
+                            VideoTitle,
                             [Google.Apis.Util.StringValueAttribute("videoDuration")]
                             VideoDuration,
                             [Google.Apis.Util.StringValueAttribute("videoPercent")]
                             VideoPercent,
-                            [Google.Apis.Util.StringValueAttribute("videoProvider")]
-                            VideoProvider,
-                            [Google.Apis.Util.StringValueAttribute("videoStatus")]
-                            VideoStatus,
-                            [Google.Apis.Util.StringValueAttribute("videoTitle")]
-                            VideoTitle,
-                            [Google.Apis.Util.StringValueAttribute("videoUrl")]
-                            VideoUrl,
                             [Google.Apis.Util.StringValueAttribute("videoVisible")]
                             VideoVisible,
+                            [Google.Apis.Util.StringValueAttribute("videoStatus")]
+                            VideoStatus,
+                            [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
+                            VideoCurrentTime,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthThreshold")]
+                            ScrollDepthThreshold,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthUnits")]
+                            ScrollDepthUnits,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthDirection")]
+                            ScrollDepthDirection,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRatio")]
+                            ElementVisibilityRatio,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityTime")]
+                            ElementVisibilityTime,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityFirstTime")]
+                            ElementVisibilityFirstTime,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRecentTime")]
+                            ElementVisibilityRecentTime,
+                            [Google.Apis.Util.StringValueAttribute("requestPath")]
+                            RequestPath,
+                            [Google.Apis.Util.StringValueAttribute("requestMethod")]
+                            RequestMethod,
+                            [Google.Apis.Util.StringValueAttribute("clientName")]
+                            ClientName,
                         }
 
 
@@ -2073,7 +2158,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -2088,7 +2173,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/built_in_variables$",
                                 });
                             RequestParameters.Add(
                                 "type", new Google.Apis.Discovery.Parameter
@@ -2148,7 +2233,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+parent}/built_in_variables"; }
+                            get { return "tagmanager/v2/{+parent}/built_in_variables"; }
                         }
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -2163,7 +2248,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
@@ -2210,50 +2295,72 @@ namespace Google.Apis.TagManager.v2
                         /// <summary>The type of built-in variable to revert.</summary>
                         public enum TypeEnum
                         {
-                            [Google.Apis.Util.StringValueAttribute("advertiserId")]
-                            AdvertiserId,
-                            [Google.Apis.Util.StringValueAttribute("advertisingTrackingEnabled")]
-                            AdvertisingTrackingEnabled,
-                            [Google.Apis.Util.StringValueAttribute("ampBrowserLanguage")]
-                            AmpBrowserLanguage,
-                            [Google.Apis.Util.StringValueAttribute("ampCanonicalHost")]
-                            AmpCanonicalHost,
-                            [Google.Apis.Util.StringValueAttribute("ampCanonicalPath")]
-                            AmpCanonicalPath,
-                            [Google.Apis.Util.StringValueAttribute("ampCanonicalUrl")]
-                            AmpCanonicalUrl,
-                            [Google.Apis.Util.StringValueAttribute("ampClientId")]
-                            AmpClientId,
-                            [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollX")]
-                            AmpClientMaxScrollX,
-                            [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollY")]
-                            AmpClientMaxScrollY,
-                            [Google.Apis.Util.StringValueAttribute("ampClientScreenHeight")]
-                            AmpClientScreenHeight,
-                            [Google.Apis.Util.StringValueAttribute("ampClientScreenWidth")]
-                            AmpClientScreenWidth,
-                            [Google.Apis.Util.StringValueAttribute("ampClientScrollX")]
-                            AmpClientScrollX,
-                            [Google.Apis.Util.StringValueAttribute("ampClientScrollY")]
-                            AmpClientScrollY,
-                            [Google.Apis.Util.StringValueAttribute("ampClientTimestamp")]
-                            AmpClientTimestamp,
-                            [Google.Apis.Util.StringValueAttribute("ampClientTimezone")]
-                            AmpClientTimezone,
-                            [Google.Apis.Util.StringValueAttribute("ampGtmEvent")]
-                            AmpGtmEvent,
-                            [Google.Apis.Util.StringValueAttribute("ampPageDownloadTime")]
-                            AmpPageDownloadTime,
-                            [Google.Apis.Util.StringValueAttribute("ampPageLoadTime")]
-                            AmpPageLoadTime,
-                            [Google.Apis.Util.StringValueAttribute("ampPageViewId")]
-                            AmpPageViewId,
-                            [Google.Apis.Util.StringValueAttribute("ampReferrer")]
-                            AmpReferrer,
-                            [Google.Apis.Util.StringValueAttribute("ampTitle")]
-                            AmpTitle,
-                            [Google.Apis.Util.StringValueAttribute("ampTotalEngagedTime")]
-                            AmpTotalEngagedTime,
+                            [Google.Apis.Util.StringValueAttribute("builtInVariableTypeUnspecified")]
+                            BuiltInVariableTypeUnspecified,
+                            [Google.Apis.Util.StringValueAttribute("pageUrl")]
+                            PageUrl,
+                            [Google.Apis.Util.StringValueAttribute("pageHostname")]
+                            PageHostname,
+                            [Google.Apis.Util.StringValueAttribute("pagePath")]
+                            PagePath,
+                            [Google.Apis.Util.StringValueAttribute("referrer")]
+                            Referrer,
+                            [Google.Apis.Util.StringValueAttribute("event")]
+                            Event__,
+                            [Google.Apis.Util.StringValueAttribute("clickElement")]
+                            ClickElement,
+                            [Google.Apis.Util.StringValueAttribute("clickClasses")]
+                            ClickClasses,
+                            [Google.Apis.Util.StringValueAttribute("clickId")]
+                            ClickId,
+                            [Google.Apis.Util.StringValueAttribute("clickTarget")]
+                            ClickTarget,
+                            [Google.Apis.Util.StringValueAttribute("clickUrl")]
+                            ClickUrl,
+                            [Google.Apis.Util.StringValueAttribute("clickText")]
+                            ClickText,
+                            [Google.Apis.Util.StringValueAttribute("firstPartyServingUrl")]
+                            FirstPartyServingUrl,
+                            [Google.Apis.Util.StringValueAttribute("formElement")]
+                            FormElement,
+                            [Google.Apis.Util.StringValueAttribute("formClasses")]
+                            FormClasses,
+                            [Google.Apis.Util.StringValueAttribute("formId")]
+                            FormId,
+                            [Google.Apis.Util.StringValueAttribute("formTarget")]
+                            FormTarget,
+                            [Google.Apis.Util.StringValueAttribute("formUrl")]
+                            FormUrl,
+                            [Google.Apis.Util.StringValueAttribute("formText")]
+                            FormText,
+                            [Google.Apis.Util.StringValueAttribute("errorMessage")]
+                            ErrorMessage,
+                            [Google.Apis.Util.StringValueAttribute("errorUrl")]
+                            ErrorUrl,
+                            [Google.Apis.Util.StringValueAttribute("errorLine")]
+                            ErrorLine,
+                            [Google.Apis.Util.StringValueAttribute("newHistoryUrl")]
+                            NewHistoryUrl,
+                            [Google.Apis.Util.StringValueAttribute("oldHistoryUrl")]
+                            OldHistoryUrl,
+                            [Google.Apis.Util.StringValueAttribute("newHistoryFragment")]
+                            NewHistoryFragment,
+                            [Google.Apis.Util.StringValueAttribute("oldHistoryFragment")]
+                            OldHistoryFragment,
+                            [Google.Apis.Util.StringValueAttribute("newHistoryState")]
+                            NewHistoryState,
+                            [Google.Apis.Util.StringValueAttribute("oldHistoryState")]
+                            OldHistoryState,
+                            [Google.Apis.Util.StringValueAttribute("historySource")]
+                            HistorySource,
+                            [Google.Apis.Util.StringValueAttribute("containerVersion")]
+                            ContainerVersion,
+                            [Google.Apis.Util.StringValueAttribute("debugMode")]
+                            DebugMode,
+                            [Google.Apis.Util.StringValueAttribute("randomNumber")]
+                            RandomNumber,
+                            [Google.Apis.Util.StringValueAttribute("containerId")]
+                            ContainerId,
                             [Google.Apis.Util.StringValueAttribute("appId")]
                             AppId,
                             [Google.Apis.Util.StringValueAttribute("appName")]
@@ -2262,46 +2369,66 @@ namespace Google.Apis.TagManager.v2
                             AppVersionCode,
                             [Google.Apis.Util.StringValueAttribute("appVersionName")]
                             AppVersionName,
-                            [Google.Apis.Util.StringValueAttribute("builtInVariableTypeUnspecified")]
-                            BuiltInVariableTypeUnspecified,
-                            [Google.Apis.Util.StringValueAttribute("clickClasses")]
-                            ClickClasses,
-                            [Google.Apis.Util.StringValueAttribute("clickElement")]
-                            ClickElement,
-                            [Google.Apis.Util.StringValueAttribute("clickId")]
-                            ClickId,
-                            [Google.Apis.Util.StringValueAttribute("clickTarget")]
-                            ClickTarget,
-                            [Google.Apis.Util.StringValueAttribute("clickText")]
-                            ClickText,
-                            [Google.Apis.Util.StringValueAttribute("clickUrl")]
-                            ClickUrl,
-                            [Google.Apis.Util.StringValueAttribute("containerId")]
-                            ContainerId,
-                            [Google.Apis.Util.StringValueAttribute("containerVersion")]
-                            ContainerVersion,
-                            [Google.Apis.Util.StringValueAttribute("debugMode")]
-                            DebugMode,
+                            [Google.Apis.Util.StringValueAttribute("language")]
+                            Language,
+                            [Google.Apis.Util.StringValueAttribute("osVersion")]
+                            OsVersion,
+                            [Google.Apis.Util.StringValueAttribute("platform")]
+                            Platform,
+                            [Google.Apis.Util.StringValueAttribute("sdkVersion")]
+                            SdkVersion,
                             [Google.Apis.Util.StringValueAttribute("deviceName")]
                             DeviceName,
-                            [Google.Apis.Util.StringValueAttribute("elementVisibilityFirstTime")]
-                            ElementVisibilityFirstTime,
-                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRatio")]
-                            ElementVisibilityRatio,
-                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRecentTime")]
-                            ElementVisibilityRecentTime,
-                            [Google.Apis.Util.StringValueAttribute("elementVisibilityTime")]
-                            ElementVisibilityTime,
+                            [Google.Apis.Util.StringValueAttribute("resolution")]
+                            Resolution,
+                            [Google.Apis.Util.StringValueAttribute("advertiserId")]
+                            AdvertiserId,
+                            [Google.Apis.Util.StringValueAttribute("advertisingTrackingEnabled")]
+                            AdvertisingTrackingEnabled,
+                            [Google.Apis.Util.StringValueAttribute("htmlId")]
+                            HtmlId,
                             [Google.Apis.Util.StringValueAttribute("environmentName")]
                             EnvironmentName,
-                            [Google.Apis.Util.StringValueAttribute("errorLine")]
-                            ErrorLine,
-                            [Google.Apis.Util.StringValueAttribute("errorMessage")]
-                            ErrorMessage,
-                            [Google.Apis.Util.StringValueAttribute("errorUrl")]
-                            ErrorUrl,
-                            [Google.Apis.Util.StringValueAttribute("event")]
-                            Event__,
+                            [Google.Apis.Util.StringValueAttribute("ampBrowserLanguage")]
+                            AmpBrowserLanguage,
+                            [Google.Apis.Util.StringValueAttribute("ampCanonicalPath")]
+                            AmpCanonicalPath,
+                            [Google.Apis.Util.StringValueAttribute("ampCanonicalUrl")]
+                            AmpCanonicalUrl,
+                            [Google.Apis.Util.StringValueAttribute("ampCanonicalHost")]
+                            AmpCanonicalHost,
+                            [Google.Apis.Util.StringValueAttribute("ampReferrer")]
+                            AmpReferrer,
+                            [Google.Apis.Util.StringValueAttribute("ampTitle")]
+                            AmpTitle,
+                            [Google.Apis.Util.StringValueAttribute("ampClientId")]
+                            AmpClientId,
+                            [Google.Apis.Util.StringValueAttribute("ampClientTimezone")]
+                            AmpClientTimezone,
+                            [Google.Apis.Util.StringValueAttribute("ampClientTimestamp")]
+                            AmpClientTimestamp,
+                            [Google.Apis.Util.StringValueAttribute("ampClientScreenWidth")]
+                            AmpClientScreenWidth,
+                            [Google.Apis.Util.StringValueAttribute("ampClientScreenHeight")]
+                            AmpClientScreenHeight,
+                            [Google.Apis.Util.StringValueAttribute("ampClientScrollX")]
+                            AmpClientScrollX,
+                            [Google.Apis.Util.StringValueAttribute("ampClientScrollY")]
+                            AmpClientScrollY,
+                            [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollX")]
+                            AmpClientMaxScrollX,
+                            [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollY")]
+                            AmpClientMaxScrollY,
+                            [Google.Apis.Util.StringValueAttribute("ampTotalEngagedTime")]
+                            AmpTotalEngagedTime,
+                            [Google.Apis.Util.StringValueAttribute("ampPageViewId")]
+                            AmpPageViewId,
+                            [Google.Apis.Util.StringValueAttribute("ampPageLoadTime")]
+                            AmpPageLoadTime,
+                            [Google.Apis.Util.StringValueAttribute("ampPageDownloadTime")]
+                            AmpPageDownloadTime,
+                            [Google.Apis.Util.StringValueAttribute("ampGtmEvent")]
+                            AmpGtmEvent,
                             [Google.Apis.Util.StringValueAttribute("eventName")]
                             EventName,
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaign")]
@@ -2350,76 +2477,42 @@ namespace Google.Apis.TagManager.v2
                             FirebaseEventParameterQuantity,
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterValue")]
                             FirebaseEventParameterValue,
-                            [Google.Apis.Util.StringValueAttribute("formClasses")]
-                            FormClasses,
-                            [Google.Apis.Util.StringValueAttribute("formElement")]
-                            FormElement,
-                            [Google.Apis.Util.StringValueAttribute("formId")]
-                            FormId,
-                            [Google.Apis.Util.StringValueAttribute("formTarget")]
-                            FormTarget,
-                            [Google.Apis.Util.StringValueAttribute("formText")]
-                            FormText,
-                            [Google.Apis.Util.StringValueAttribute("formUrl")]
-                            FormUrl,
-                            [Google.Apis.Util.StringValueAttribute("historySource")]
-                            HistorySource,
-                            [Google.Apis.Util.StringValueAttribute("htmlId")]
-                            HtmlId,
-                            [Google.Apis.Util.StringValueAttribute("language")]
-                            Language,
-                            [Google.Apis.Util.StringValueAttribute("newHistoryFragment")]
-                            NewHistoryFragment,
-                            [Google.Apis.Util.StringValueAttribute("newHistoryState")]
-                            NewHistoryState,
-                            [Google.Apis.Util.StringValueAttribute("newHistoryUrl")]
-                            NewHistoryUrl,
-                            [Google.Apis.Util.StringValueAttribute("oldHistoryFragment")]
-                            OldHistoryFragment,
-                            [Google.Apis.Util.StringValueAttribute("oldHistoryState")]
-                            OldHistoryState,
-                            [Google.Apis.Util.StringValueAttribute("oldHistoryUrl")]
-                            OldHistoryUrl,
-                            [Google.Apis.Util.StringValueAttribute("osVersion")]
-                            OsVersion,
-                            [Google.Apis.Util.StringValueAttribute("pageHostname")]
-                            PageHostname,
-                            [Google.Apis.Util.StringValueAttribute("pagePath")]
-                            PagePath,
-                            [Google.Apis.Util.StringValueAttribute("pageUrl")]
-                            PageUrl,
-                            [Google.Apis.Util.StringValueAttribute("platform")]
-                            Platform,
-                            [Google.Apis.Util.StringValueAttribute("randomNumber")]
-                            RandomNumber,
-                            [Google.Apis.Util.StringValueAttribute("referrer")]
-                            Referrer,
-                            [Google.Apis.Util.StringValueAttribute("resolution")]
-                            Resolution,
-                            [Google.Apis.Util.StringValueAttribute("scrollDepthDirection")]
-                            ScrollDepthDirection,
-                            [Google.Apis.Util.StringValueAttribute("scrollDepthThreshold")]
-                            ScrollDepthThreshold,
-                            [Google.Apis.Util.StringValueAttribute("scrollDepthUnits")]
-                            ScrollDepthUnits,
-                            [Google.Apis.Util.StringValueAttribute("sdkVersion")]
-                            SdkVersion,
-                            [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
-                            VideoCurrentTime,
+                            [Google.Apis.Util.StringValueAttribute("videoProvider")]
+                            VideoProvider,
+                            [Google.Apis.Util.StringValueAttribute("videoUrl")]
+                            VideoUrl,
+                            [Google.Apis.Util.StringValueAttribute("videoTitle")]
+                            VideoTitle,
                             [Google.Apis.Util.StringValueAttribute("videoDuration")]
                             VideoDuration,
                             [Google.Apis.Util.StringValueAttribute("videoPercent")]
                             VideoPercent,
-                            [Google.Apis.Util.StringValueAttribute("videoProvider")]
-                            VideoProvider,
-                            [Google.Apis.Util.StringValueAttribute("videoStatus")]
-                            VideoStatus,
-                            [Google.Apis.Util.StringValueAttribute("videoTitle")]
-                            VideoTitle,
-                            [Google.Apis.Util.StringValueAttribute("videoUrl")]
-                            VideoUrl,
                             [Google.Apis.Util.StringValueAttribute("videoVisible")]
                             VideoVisible,
+                            [Google.Apis.Util.StringValueAttribute("videoStatus")]
+                            VideoStatus,
+                            [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
+                            VideoCurrentTime,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthThreshold")]
+                            ScrollDepthThreshold,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthUnits")]
+                            ScrollDepthUnits,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthDirection")]
+                            ScrollDepthDirection,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRatio")]
+                            ElementVisibilityRatio,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityTime")]
+                            ElementVisibilityTime,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityFirstTime")]
+                            ElementVisibilityFirstTime,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRecentTime")]
+                            ElementVisibilityRecentTime,
+                            [Google.Apis.Util.StringValueAttribute("requestPath")]
+                            RequestPath,
+                            [Google.Apis.Util.StringValueAttribute("requestMethod")]
+                            RequestMethod,
+                            [Google.Apis.Util.StringValueAttribute("clientName")]
+                            ClientName,
                         }
 
 
@@ -2438,7 +2531,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}/built_in_variables:revert"; }
+                            get { return "tagmanager/v2/{+path}/built_in_variables:revert"; }
                         }
 
                         /// <summary>Initializes Revert parameter list.</summary>
@@ -2453,7 +2546,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "type", new Google.Apis.Discovery.Parameter
@@ -2541,7 +2634,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+parent}/folders"; }
+                            get { return "tagmanager/v2/{+parent}/folders"; }
                         }
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -2556,7 +2649,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                         }
 
@@ -2603,7 +2696,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -2618,7 +2711,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$",
                                 });
                         }
 
@@ -2669,7 +2762,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}:entities"; }
+                            get { return "tagmanager/v2/{+path}:entities"; }
                         }
 
                         /// <summary>Initializes Entities parameter list.</summary>
@@ -2684,7 +2777,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
@@ -2740,7 +2833,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -2755,7 +2848,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$",
                                 });
                         }
 
@@ -2806,7 +2899,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+parent}/folders"; }
+                            get { return "tagmanager/v2/{+parent}/folders"; }
                         }
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -2821,7 +2914,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
@@ -2863,6 +2956,10 @@ namespace Google.Apis.TagManager.v2
                         [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Path { get; private set; }
 
+                        /// <summary>The variables to be moved to the folder.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("variableId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> VariableId { get; set; }
+
                         /// <summary>The tags to be moved to the folder.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("tagId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual Google.Apis.Util.Repeatable<string> TagId { get; set; }
@@ -2870,10 +2967,6 @@ namespace Google.Apis.TagManager.v2
                         /// <summary>The triggers to be moved to the folder.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual Google.Apis.Util.Repeatable<string> TriggerId { get; set; }
-
-                        /// <summary>The variables to be moved to the folder.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("variableId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual Google.Apis.Util.Repeatable<string> VariableId { get; set; }
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
@@ -2897,7 +2990,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}:move_entities_to_folder"; }
+                            get { return "tagmanager/v2/{+path}:move_entities_to_folder"; }
                         }
 
                         /// <summary>Initializes MoveEntitiesToFolder parameter list.</summary>
@@ -2911,6 +3004,15 @@ namespace Google.Apis.TagManager.v2
                                     Name = "path",
                                     IsRequired = true,
                                     ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "variableId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "variableId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
@@ -2927,15 +3029,6 @@ namespace Google.Apis.TagManager.v2
                                 "triggerId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "triggerId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "variableId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "variableId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2991,7 +3084,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}:revert"; }
+                            get { return "tagmanager/v2/{+path}:revert"; }
                         }
 
                         /// <summary>Initializes Revert parameter list.</summary>
@@ -3006,7 +3099,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "fingerprint", new Google.Apis.Discovery.Parameter
@@ -3075,7 +3168,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Update parameter list.</summary>
@@ -3090,7 +3183,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "fingerprint", new Google.Apis.Discovery.Parameter
@@ -3178,7 +3271,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+parent}/tags"; }
+                            get { return "tagmanager/v2/{+parent}/tags"; }
                         }
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -3193,7 +3286,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                         }
 
@@ -3240,7 +3333,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -3255,7 +3348,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$",
                                 });
                         }
 
@@ -3302,7 +3395,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -3317,7 +3410,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$",
                                 });
                         }
 
@@ -3368,7 +3461,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+parent}/tags"; }
+                            get { return "tagmanager/v2/{+parent}/tags"; }
                         }
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -3383,7 +3476,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
@@ -3444,7 +3537,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}:revert"; }
+                            get { return "tagmanager/v2/{+path}:revert"; }
                         }
 
                         /// <summary>Initializes Revert parameter list.</summary>
@@ -3459,7 +3552,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "fingerprint", new Google.Apis.Discovery.Parameter
@@ -3528,7 +3621,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Update parameter list.</summary>
@@ -3543,7 +3636,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "fingerprint", new Google.Apis.Discovery.Parameter
@@ -3631,7 +3724,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+parent}/templates"; }
+                            get { return "tagmanager/v2/{+parent}/templates"; }
                         }
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -3646,7 +3739,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                         }
 
@@ -3693,7 +3786,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -3708,7 +3801,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$",
                                 });
                         }
 
@@ -3755,7 +3848,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -3770,7 +3863,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$",
                                 });
                         }
 
@@ -3821,7 +3914,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+parent}/templates"; }
+                            get { return "tagmanager/v2/{+parent}/templates"; }
                         }
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -3836,7 +3929,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
@@ -3897,7 +3990,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}:revert"; }
+                            get { return "tagmanager/v2/{+path}:revert"; }
                         }
 
                         /// <summary>Initializes Revert parameter list.</summary>
@@ -3912,7 +4005,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "fingerprint", new Google.Apis.Discovery.Parameter
@@ -3981,7 +4074,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Update parameter list.</summary>
@@ -3996,7 +4089,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "fingerprint", new Google.Apis.Discovery.Parameter
@@ -4084,7 +4177,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+parent}/triggers"; }
+                            get { return "tagmanager/v2/{+parent}/triggers"; }
                         }
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -4099,7 +4192,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                         }
 
@@ -4146,7 +4239,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -4161,7 +4254,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$",
                                 });
                         }
 
@@ -4208,7 +4301,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -4223,7 +4316,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$",
                                 });
                         }
 
@@ -4274,7 +4367,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+parent}/triggers"; }
+                            get { return "tagmanager/v2/{+parent}/triggers"; }
                         }
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -4289,7 +4382,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
@@ -4350,7 +4443,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}:revert"; }
+                            get { return "tagmanager/v2/{+path}:revert"; }
                         }
 
                         /// <summary>Initializes Revert parameter list.</summary>
@@ -4365,7 +4458,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "fingerprint", new Google.Apis.Discovery.Parameter
@@ -4434,7 +4527,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Update parameter list.</summary>
@@ -4449,7 +4542,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "fingerprint", new Google.Apis.Discovery.Parameter
@@ -4537,7 +4630,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+parent}/variables"; }
+                            get { return "tagmanager/v2/{+parent}/variables"; }
                         }
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -4552,7 +4645,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                         }
 
@@ -4599,7 +4692,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -4614,7 +4707,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$",
                                 });
                         }
 
@@ -4661,7 +4754,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -4676,7 +4769,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$",
                                 });
                         }
 
@@ -4727,7 +4820,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+parent}/variables"; }
+                            get { return "tagmanager/v2/{+parent}/variables"; }
                         }
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -4742,7 +4835,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
@@ -4803,7 +4896,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}:revert"; }
+                            get { return "tagmanager/v2/{+path}:revert"; }
                         }
 
                         /// <summary>Initializes Revert parameter list.</summary>
@@ -4818,7 +4911,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "fingerprint", new Google.Apis.Discovery.Parameter
@@ -4887,7 +4980,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Update parameter list.</summary>
@@ -4902,7 +4995,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "fingerprint", new Google.Apis.Discovery.Parameter
@@ -4990,7 +5083,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+parent}/zones"; }
+                            get { return "tagmanager/v2/{+parent}/zones"; }
                         }
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -5005,7 +5098,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                         }
 
@@ -5052,7 +5145,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -5067,7 +5160,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$",
                                 });
                         }
 
@@ -5114,7 +5207,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -5129,7 +5222,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$",
                                 });
                         }
 
@@ -5180,7 +5273,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+parent}/zones"; }
+                            get { return "tagmanager/v2/{+parent}/zones"; }
                         }
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -5195,7 +5288,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
@@ -5256,7 +5349,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}:revert"; }
+                            get { return "tagmanager/v2/{+path}:revert"; }
                         }
 
                         /// <summary>Initializes Revert parameter list.</summary>
@@ -5271,7 +5364,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "fingerprint", new Google.Apis.Discovery.Parameter
@@ -5340,7 +5433,7 @@ namespace Google.Apis.TagManager.v2
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "{+path}"; }
+                            get { return "tagmanager/v2/{+path}"; }
                         }
 
                         /// <summary>Initializes Update parameter list.</summary>
@@ -5355,7 +5448,7 @@ namespace Google.Apis.TagManager.v2
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$",
                                 });
                             RequestParameters.Add(
                                 "fingerprint", new Google.Apis.Discovery.Parameter
@@ -5420,7 +5513,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+parent}/workspaces"; }
+                        get { return "tagmanager/v2/{+parent}/workspaces"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -5435,7 +5528,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+$",
                             });
                     }
 
@@ -5492,7 +5585,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}:create_version"; }
+                        get { return "tagmanager/v2/{+path}:create_version"; }
                     }
 
                     /// <summary>Initializes CreateVersion parameter list.</summary>
@@ -5507,7 +5600,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                             });
                     }
 
@@ -5554,7 +5647,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}"; }
+                        get { return "tagmanager/v2/{+path}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -5569,7 +5662,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                             });
                     }
 
@@ -5616,7 +5709,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}"; }
+                        get { return "tagmanager/v2/{+path}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -5631,7 +5724,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                             });
                     }
 
@@ -5678,7 +5771,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}/status"; }
+                        get { return "tagmanager/v2/{+path}/status"; }
                     }
 
                     /// <summary>Initializes GetStatus parameter list.</summary>
@@ -5693,7 +5786,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                             });
                     }
 
@@ -5744,7 +5837,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+parent}/workspaces"; }
+                        get { return "tagmanager/v2/{+parent}/workspaces"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5759,7 +5852,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+$",
                             });
                         RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
@@ -5817,7 +5910,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}:quick_preview"; }
+                        get { return "tagmanager/v2/{+path}:quick_preview"; }
                     }
 
                     /// <summary>Initializes QuickPreview parameter list.</summary>
@@ -5832,7 +5925,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                             });
                     }
 
@@ -5894,7 +5987,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}:resolve_conflict"; }
+                        get { return "tagmanager/v2/{+path}:resolve_conflict"; }
                     }
 
                     /// <summary>Initializes ResolveConflict parameter list.</summary>
@@ -5909,7 +6002,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                             });
                         RequestParameters.Add(
                             "fingerprint", new Google.Apis.Discovery.Parameter
@@ -5967,7 +6060,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}:sync"; }
+                        get { return "tagmanager/v2/{+path}:sync"; }
                     }
 
                     /// <summary>Initializes Sync parameter list.</summary>
@@ -5982,7 +6075,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                             });
                     }
 
@@ -6042,7 +6135,7 @@ namespace Google.Apis.TagManager.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "{+path}"; }
+                        get { return "tagmanager/v2/{+path}"; }
                     }
 
                     /// <summary>Initializes Update parameter list.</summary>
@@ -6057,7 +6150,7 @@ namespace Google.Apis.TagManager.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$",
                             });
                         RequestParameters.Add(
                             "fingerprint", new Google.Apis.Discovery.Parameter
@@ -6120,7 +6213,7 @@ namespace Google.Apis.TagManager.v2
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{+parent}/containers"; }
+                    get { return "tagmanager/v2/{+parent}/containers"; }
                 }
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -6135,7 +6228,7 @@ namespace Google.Apis.TagManager.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = null,
+                            Pattern = @"^accounts/[^/]+$",
                         });
                 }
 
@@ -6182,7 +6275,7 @@ namespace Google.Apis.TagManager.v2
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{+path}"; }
+                    get { return "tagmanager/v2/{+path}"; }
                 }
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -6197,7 +6290,7 @@ namespace Google.Apis.TagManager.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = null,
+                            Pattern = @"^accounts/[^/]+/containers/[^/]+$",
                         });
                 }
 
@@ -6244,7 +6337,7 @@ namespace Google.Apis.TagManager.v2
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{+path}"; }
+                    get { return "tagmanager/v2/{+path}"; }
                 }
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -6259,7 +6352,7 @@ namespace Google.Apis.TagManager.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = null,
+                            Pattern = @"^accounts/[^/]+/containers/[^/]+$",
                         });
                 }
 
@@ -6308,7 +6401,7 @@ namespace Google.Apis.TagManager.v2
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{+parent}/containers"; }
+                    get { return "tagmanager/v2/{+parent}/containers"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -6323,7 +6416,7 @@ namespace Google.Apis.TagManager.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = null,
+                            Pattern = @"^accounts/[^/]+$",
                         });
                     RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
@@ -6392,7 +6485,7 @@ namespace Google.Apis.TagManager.v2
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{+path}"; }
+                    get { return "tagmanager/v2/{+path}"; }
                 }
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -6407,7 +6500,7 @@ namespace Google.Apis.TagManager.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = null,
+                            Pattern = @"^accounts/[^/]+/containers/[^/]+$",
                         });
                     RequestParameters.Add(
                         "fingerprint", new Google.Apis.Discovery.Parameter
@@ -6493,7 +6586,7 @@ namespace Google.Apis.TagManager.v2
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{+parent}/user_permissions"; }
+                    get { return "tagmanager/v2/{+parent}/user_permissions"; }
                 }
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -6508,7 +6601,7 @@ namespace Google.Apis.TagManager.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = null,
+                            Pattern = @"^accounts/[^/]+$",
                         });
                 }
 
@@ -6555,7 +6648,7 @@ namespace Google.Apis.TagManager.v2
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{+path}"; }
+                    get { return "tagmanager/v2/{+path}"; }
                 }
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -6570,7 +6663,7 @@ namespace Google.Apis.TagManager.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = null,
+                            Pattern = @"^accounts/[^/]+/user_permissions/[^/]+$",
                         });
                 }
 
@@ -6617,7 +6710,7 @@ namespace Google.Apis.TagManager.v2
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{+path}"; }
+                    get { return "tagmanager/v2/{+path}"; }
                 }
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -6632,7 +6725,7 @@ namespace Google.Apis.TagManager.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = null,
+                            Pattern = @"^accounts/[^/]+/user_permissions/[^/]+$",
                         });
                 }
 
@@ -6683,7 +6776,7 @@ namespace Google.Apis.TagManager.v2
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{+parent}/user_permissions"; }
+                    get { return "tagmanager/v2/{+parent}/user_permissions"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -6698,7 +6791,7 @@ namespace Google.Apis.TagManager.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = null,
+                            Pattern = @"^accounts/[^/]+$",
                         });
                     RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
@@ -6762,7 +6855,7 @@ namespace Google.Apis.TagManager.v2
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "{+path}"; }
+                    get { return "tagmanager/v2/{+path}"; }
                 }
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -6777,7 +6870,7 @@ namespace Google.Apis.TagManager.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = null,
+                            Pattern = @"^accounts/[^/]+/user_permissions/[^/]+$",
                         });
                 }
 
@@ -6823,7 +6916,7 @@ namespace Google.Apis.TagManager.v2
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "{+path}"; }
+                get { return "tagmanager/v2/{+path}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -6838,7 +6931,7 @@ namespace Google.Apis.TagManager.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^accounts/[^/]+$",
                     });
             }
 
@@ -6881,7 +6974,7 @@ namespace Google.Apis.TagManager.v2
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "accounts"; }
+                get { return "tagmanager/v2/accounts"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -6953,7 +7046,7 @@ namespace Google.Apis.TagManager.v2
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "{+path}"; }
+                get { return "tagmanager/v2/{+path}"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -6968,7 +7061,7 @@ namespace Google.Apis.TagManager.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^accounts/[^/]+$",
                     });
                 RequestParameters.Add(
                     "fingerprint", new Google.Apis.Discovery.Parameter
@@ -7000,7 +7093,8 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
-        /// <summary>Account display name.</summary>
+        /// <summary>Account display name. @mutable tagmanager.accounts.create @mutable
+        /// tagmanager.accounts.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -7011,7 +7105,7 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>Whether the account shares data anonymously with Google and others. This flag enables benchmarking
         /// by sharing your data in an anonymous form. Google will remove all identifiable information about your
         /// website, combine the data with hundreds of other anonymous sites and report aggregate trends in the
-        /// benchmarking service.</summary>
+        /// benchmarking service. @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shareData")]
         public virtual System.Nullable<bool> ShareData { get; set; } 
 
@@ -7026,7 +7120,8 @@ namespace Google.Apis.TagManager.v2.Data
     /// <summary>Defines the Google Tag Manager Account access permissions.</summary>
     public class AccountAccess : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the user has no access, user access, or admin access to an account.</summary>
+        /// <summary>Whether the user has no access, user access, or admin access to an account. @mutable
+        /// tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual string Permission { get; set; } 
 
@@ -7055,7 +7150,65 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
 
-        /// <summary>Type of built-in variable.</summary>
+        /// <summary>Type of built-in variable.
+        /// @required.tagmanager.accounts.containers.workspaces.built_in_variable.update @mutable
+        /// tagmanager.accounts.containers.workspaces.built_in_variable.update</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>GTM Workspace ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workspaceId")]
+        public virtual string WorkspaceId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class Client : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>GTM Account ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; } 
+
+        /// <summary>The Client ID uniquely identifies the GTM client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; } 
+
+        /// <summary>GTM Container ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
+        public virtual string ContainerId { get; set; } 
+
+        /// <summary>The fingerprint of the GTM Client as computed at storage time. This value is recomputed whenever
+        /// the client is modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; } 
+
+        /// <summary>Client display name. @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable
+        /// tagmanager.accounts.containers.workspaces.clients.update</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The client's parameters. @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable
+        /// tagmanager.accounts.containers.workspaces.clients.update</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
+        public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; } 
+
+        /// <summary>GTM client's API relative path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; } 
+
+        /// <summary>Priority determines relative firing order. @mutable
+        /// tagmanager.accounts.containers.workspaces.clients.create @mutable
+        /// tagmanager.accounts.containers.workspaces.clients.update</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; } 
+
+        /// <summary>Auto generated link to the tag manager UI</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagManagerUrl")]
+        public virtual string TagManagerUrl { get; set; } 
+
+        /// <summary>Client type. @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable
+        /// tagmanager.accounts.containers.workspaces.clients.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -7070,16 +7223,21 @@ namespace Google.Apis.TagManager.v2.Data
     /// <summary>Represents a predicate.</summary>
     public class Condition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of named parameters (key/value), depending on the condition's type. Notes: - For binary
+        /// <summary>A list of named parameters (key/value), depending on the condition's type. Notes: For binary
         /// operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively.
-        /// - At this time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex
+        /// At this time, the left operand (arg0) must be a reference to a variable. For case-insensitive Regex
         /// matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any
-        /// other value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named
-        /// negate boolean parameter that is set to true.</summary>
+        /// other value, the matching will be case sensitive. To negate an operator, include a boolean parameter named
+        /// negate boolean parameter that is set to true.
+        ///
+        /// @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; } 
 
-        /// <summary>The type of operator for this condition.</summary>
+        /// <summary>The type of operator for this condition. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -7099,20 +7257,23 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; } 
 
-        /// <summary>List of domain names associated with the Container.</summary>
+        /// <summary>List of domain names associated with the Container. @mutable tagmanager.accounts.containers.create
+        /// @mutable tagmanager.accounts.containers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
         public virtual System.Collections.Generic.IList<string> DomainName { get; set; } 
 
-        /// <summary>The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever
-        /// the account is modified.</summary>
+        /// <summary>The fingerprint of the GTM Container as computed at storage time.  This value is recomputed
+        /// whenever the account is modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
-        /// <summary>Container display name.</summary>
+        /// <summary>Container display name. @mutable tagmanager.accounts.containers.create @mutable
+        /// tagmanager.accounts.containers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Container Notes.</summary>
+        /// <summary>Container Notes. @mutable tagmanager.accounts.containers.create @mutable
+        /// tagmanager.accounts.containers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; } 
 
@@ -7128,7 +7289,8 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tagManagerUrl")]
         public virtual string TagManagerUrl { get; set; } 
 
-        /// <summary>List of Usage Contexts for the Container. Valid values include: web, android, or ios.</summary>
+        /// <summary>List of Usage Contexts for the Container. Valid values include: web, android, or ios. @mutable
+        /// tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageContext")]
         public virtual System.Collections.Generic.IList<string> UsageContext { get; set; } 
 
@@ -7139,11 +7301,13 @@ namespace Google.Apis.TagManager.v2.Data
     /// <summary>Defines the Google Tag Manager Container access permissions.</summary>
     public class ContainerAccess : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>GTM Container ID.</summary>
+        /// <summary>GTM Container ID. @mutable tagmanager.accounts.permissions.create @mutable
+        /// tagmanager.accounts.permissions.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; } 
 
-        /// <summary>List of Container permissions.</summary>
+        /// <summary>List of Container permissions. @mutable tagmanager.accounts.permissions.create @mutable
+        /// tagmanager.accounts.permissions.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual string Permission { get; set; } 
 
@@ -7161,6 +7325,10 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>The built-in variables in the container that this version was taken from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("builtInVariable")]
         public virtual System.Collections.Generic.IList<BuiltInVariable> BuiltInVariable { get; set; } 
+
+        /// <summary>The clients in the container that this version was taken from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual System.Collections.Generic.IList<Client> Client { get; set; } 
 
         /// <summary>The container that this version was taken from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
@@ -7182,7 +7350,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; } 
 
-        /// <summary>Container version description.</summary>
+        /// <summary>Container version description. @mutable tagmanager.accounts.containers.versions.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -7195,7 +7363,7 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("folder")]
         public virtual System.Collections.Generic.IList<Folder> Folder { get; set; } 
 
-        /// <summary>Container version display name.</summary>
+        /// <summary>Container version display name. @mutable tagmanager.accounts.containers.versions.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -7352,6 +7520,10 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
+        /// <summary>A reference to the Community Template Gallery entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("galleryReference")]
+        public virtual GalleryReference GalleryReference { get; set; } 
+
         /// <summary>Custom Template display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -7423,7 +7595,7 @@ namespace Google.Apis.TagManager.v2.Data
 
         /// <summary>The last update time-stamp for the authorization code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationTimestamp")]
-        public virtual Timestamp AuthorizationTimestamp { get; set; } 
+        public virtual object AuthorizationTimestamp { get; set; } 
 
         /// <summary>GTM Container ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
@@ -7433,11 +7605,15 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerVersionId")]
         public virtual string ContainerVersionId { get; set; } 
 
-        /// <summary>The environment description. Can be set or changed only on USER type environments.</summary>
+        /// <summary>The environment description. Can be set or changed only on USER type environments. @mutable
+        /// tagmanager.accounts.containers.environments.create @mutable
+        /// tagmanager.accounts.containers.environments.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Whether or not to enable debug by default for the environment.</summary>
+        /// <summary>Whether or not to enable debug by default for the environment. @mutable
+        /// tagmanager.accounts.containers.environments.create @mutable
+        /// tagmanager.accounts.containers.environments.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableDebug")]
         public virtual System.Nullable<bool> EnableDebug { get; set; } 
 
@@ -7450,7 +7626,9 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
-        /// <summary>The environment display name. Can be set or changed only on USER type environments.</summary>
+        /// <summary>The environment display name. Can be set or changed only on USER type environments. @mutable
+        /// tagmanager.accounts.containers.environments.create @mutable
+        /// tagmanager.accounts.containers.environments.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -7466,7 +7644,9 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>Default preview page url for the environment.</summary>
+        /// <summary>Default preview page url for the environment. @mutable
+        /// tagmanager.accounts.containers.environments.create @mutable
+        /// tagmanager.accounts.containers.environments.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -7498,11 +7678,14 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("folderId")]
         public virtual string FolderId { get; set; } 
 
-        /// <summary>Folder display name.</summary>
+        /// <summary>Folder display name. @mutable tagmanager.accounts.containers.workspaces.folders.create @mutable
+        /// tagmanager.accounts.containers.workspaces.folders.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>User notes on how to apply this folder in the container.</summary>
+        /// <summary>User notes on how to apply this folder in the container. @mutable
+        /// tagmanager.accounts.containers.workspaces.folders.create @mutable
+        /// tagmanager.accounts.containers.workspaces.folders.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; } 
 
@@ -7540,6 +7723,39 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>The list of variables inside the folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variable")]
         public virtual System.Collections.Generic.IList<Variable> Variable { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the link between a custom template and an entry on the Community Template Gallery
+    /// site.</summary>
+    public class GalleryReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the host for the community gallery template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; } 
+
+        /// <summary>If a user has manually edited the community  gallery template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isModified")]
+        public virtual System.Nullable<bool> IsModified { get; set; } 
+
+        /// <summary>The name of the owner for the community gallery template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("owner")]
+        public virtual string Owner { get; set; } 
+
+        /// <summary>The name of the repository for the community gallery template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; } 
+
+        /// <summary>The signature of the community gallery template as computed at import time. This value is
+        /// recomputed whenever the template is updated from the gallery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signature")]
+        public virtual string Signature { get; set; } 
+
+        /// <summary>The version of the community gallery template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7774,29 +7990,59 @@ namespace Google.Apis.TagManager.v2.Data
     /// <summary>Represents a Google Tag Manager Parameter.</summary>
     public class Parameter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The named key that uniquely identifies a parameter. Required for top-level parameters, as well as
-        /// map values. Ignored for list values.</summary>
+        /// <summary>The named key that uniquely identifies a parameter.  Required for top-level parameters, as well as
+        /// map values.  Ignored for list values. @mutable tagmanager.accounts.containers.workspaces.variables.create
+        /// @mutable tagmanager.accounts.containers.workspaces.variables.update @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
-        /// <summary>This list parameter's parameters (keys will be ignored).</summary>
+        /// <summary>This list parameter's parameters (keys will be ignored). @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.update @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("list")]
         public virtual System.Collections.Generic.IList<Parameter> List { get; set; } 
 
-        /// <summary>This map parameter's parameters (must have keys; keys must be unique).</summary>
+        /// <summary>This map parameter's parameters (must have keys; keys must be unique). @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.update @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("map")]
         public virtual System.Collections.Generic.IList<Parameter> Map { get; set; } 
 
-        /// <summary>The parameter type. Valid values are: - boolean: The value represents a boolean, represented as
-        /// 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list
-        /// of parameters should be specified - map: A map of parameters should be specified - template: The value
-        /// represents any text; this can include variable references (even variable references that might return non-
-        /// string types) - trigger_reference: The value represents a trigger, represented as the trigger id</summary>
+        /// <summary>The parameter type.  Valid values are: boolean: The value represents a boolean, represented as
+        /// 'true' or 'false' integer: The value represents a 64-bit signed integer value, in base 10 list: A list of
+        /// parameters should be specified map: A map of parameters should be specified template: The value represents
+        /// any text; this can include variable references (even variable references that might return non-string types)
+        /// trigger_reference: The value represents a trigger, represented as the trigger id tag_reference: The value
+        /// represents a tag, represented as the tag name
+        ///
+        /// @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.update @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
         /// <summary>A parameter's value (may contain variable references such as "{{myVariable}}") as appropriate to
-        /// the specified type.</summary>
+        /// the specified type. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.update @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -7980,12 +8226,15 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; } 
 
-        /// <summary>Blocking rule IDs. If any of the listed rules evaluate to true, the tag will not fire.</summary>
+        /// <summary>Blocking rule IDs. If any of the listed rules evaluate to true, the tag will not fire. @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockingRuleId")]
         public virtual System.Collections.Generic.IList<string> BlockingRuleId { get; set; } 
 
-        /// <summary>Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not
-        /// fire.</summary>
+        /// <summary>Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire.
+        /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockingTriggerId")]
         public virtual System.Collections.Generic.IList<string> BlockingTriggerId { get; set; } 
 
@@ -7999,29 +8248,52 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string Fingerprint { get; set; } 
 
         /// <summary>Firing rule IDs. A tag will fire when any of the listed rules are true and all of its
-        /// blockingRuleIds (if any specified) are false.</summary>
+        /// blockingRuleIds (if any specified) are false. @mutable tagmanager.accounts.containers.workspaces.tags.create
+        /// @mutable tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firingRuleId")]
         public virtual System.Collections.Generic.IList<string> FiringRuleId { get; set; } 
 
         /// <summary>Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its
-        /// blockingTriggerIds (if any specified) are false.</summary>
+        /// blockingTriggerIds (if any specified) are false. @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firingTriggerId")]
         public virtual System.Collections.Generic.IList<string> FiringTriggerId { get; set; } 
 
         /// <summary>If set to true, this tag will only fire in the live environment (e.g. not in preview or debug
-        /// mode).</summary>
+        /// mode). @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveOnly")]
         public virtual System.Nullable<bool> LiveOnly { get; set; } 
 
-        /// <summary>Tag display name.</summary>
+        /// <summary>A map of key-value pairs of tag metadata to be included in the event data for tag monitoring.
+        /// Notes: This parameter must be type MAP. Each parameter in the map are type TEMPLATE, however cannot contain
+        /// variable references.
+        ///
+        /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringMetadata")]
+        public virtual Parameter MonitoringMetadata { get; set; } 
+
+        /// <summary>If non-empty, then the tag display name will be included in the monitoring metadata map using the
+        /// key specified. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringMetadataTagNameKey")]
+        public virtual string MonitoringMetadataTagNameKey { get; set; } 
+
+        /// <summary>Tag display name. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>User notes on how to apply this tag in the container.</summary>
+        /// <summary>User notes on how to apply this tag in the container. @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; } 
 
-        /// <summary>The tag's parameters.</summary>
+        /// <summary>The tag's parameters. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; } 
 
@@ -8033,21 +8305,28 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
 
-        /// <summary>Indicates whether the tag is paused, which prevents the tag from firing.</summary>
+        /// <summary>Indicates whether the tag is paused, which prevents the tag from firing. @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paused")]
         public virtual System.Nullable<bool> Paused { get; set; } 
 
         /// <summary>User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags
         /// with higher numeric value fire first. A tag's priority can be a positive or negative value. The default
-        /// value is 0.</summary>
+        /// value is 0. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual Parameter Priority { get; set; } 
 
-        /// <summary>The end timestamp in milliseconds to schedule a tag.</summary>
+        /// <summary>The end timestamp in milliseconds to schedule a tag. @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndMs")]
         public virtual System.Nullable<long> ScheduleEndMs { get; set; } 
 
-        /// <summary>The start timestamp in milliseconds to schedule a tag.</summary>
+        /// <summary>The start timestamp in milliseconds to schedule a tag. @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartMs")]
         public virtual System.Nullable<long> ScheduleStartMs { get; set; } 
 
@@ -8071,7 +8350,8 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("teardownTag")]
         public virtual System.Collections.Generic.IList<TeardownTag> TeardownTag { get; set; } 
 
-        /// <summary>GTM Tag Type.</summary>
+        /// <summary>GTM Tag Type. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -8099,86 +8379,6 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a
-    /// count of seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC
-    /// midnight on January 1, 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar backwards
-    /// to year one.
-    ///
-    /// All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap second table is needed for
-    /// interpretation, using a [24-hour linear smear](https://developers.google.com/time/smear).
-    ///
-    /// The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we
-    /// ensure that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
-    ///
-    /// # Examples
-    ///
-    /// Example 1: Compute Timestamp from POSIX `time()`.
-    ///
-    /// Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-    ///
-    /// Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-    ///
-    /// struct timeval tv; gettimeofday(, NULL);
-    ///
-    /// Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.tv_usec * 1000);
-    ///
-    /// Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-    ///
-    /// FILETIME ft; GetSystemTimeAsFileTime(); UINT64 ticks = (((UINT64)ft.dwHighDateTime) << 32) | ft.dwLowDateTime;
-    ///
-    /// // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is 11644473600 seconds before Unix
-    /// epoch 1970-01-01T00:00:00Z. Timestamp timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) -
-    /// 11644473600LL)); timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-    ///
-    /// Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-    ///
-    /// long millis = System.currentTimeMillis();
-    ///
-    /// Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .setNanos((int) ((millis % 1000) *
-    /// 1000000)).build();
-    ///
-    /// Example 5: Compute Timestamp from current time in Python.
-    ///
-    /// timestamp = Timestamp() timestamp.GetCurrentTime()
-    ///
-    /// # JSON Mapping
-    ///
-    /// In JSON format, the Timestamp type is encoded as a string in the [RFC
-    /// 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is
-    /// "{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z" where {year} is always expressed using four digits while
-    /// {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional seconds, which can
-    /// go up to 9 digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix indicates the timezone
-    /// ("UTC"); the timezone is required. A proto3 JSON serializer should always use UTC (as indicated by "Z") when
-    /// printing the Timestamp type and a proto3 JSON parser should be able to accept both UTC and other timezones (as
-    /// indicated by an offset).
-    ///
-    /// For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on January 15, 2017.
-    ///
-    /// In JavaScript, one can convert a Date object to this format using the standard
-    /// [toISOString()](https://developer.mozilla.org/en-
-    /// US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString) method. In Python, a standard
-    /// `datetime.datetime` object can be converted to this format using
-    /// [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with the time format spec
-    /// '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda Time's [`ISODateTimeFormat.dateTime()`](
-    /// http://www.joda.org/joda-time/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-    /// formatter capable of generating timestamps in this format.</summary>
-    public class Timestamp : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions
-        /// must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999
-        /// inclusive.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; } 
-
-        /// <summary>Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from
-        /// 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
-        public virtual System.Nullable<long> Seconds { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Represents a Google Tag Manager Trigger</summary>
     public class Trigger : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8186,13 +8386,16 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; } 
 
-        /// <summary>Used in the case of auto event tracking.</summary>
+        /// <summary>Used in the case of auto event tracking. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoEventFilter")]
         public virtual System.Collections.Generic.IList<Condition> AutoEventFilter { get; set; } 
 
         /// <summary>Whether or not we should only fire tags if the form submit or link click event is not cancelled by
         /// some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click
-        /// triggers.</summary>
+        /// triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checkValidation")]
         public virtual Parameter CheckValidation { get; set; } 
 
@@ -8201,19 +8404,26 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string ContainerId { get; set; } 
 
         /// <summary>A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP
-        /// Visibility trigger.</summary>
+        /// Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continuousTimeMinMilliseconds")]
         public virtual Parameter ContinuousTimeMinMilliseconds { get; set; } 
 
-        /// <summary>Used in the case of custom event, which is fired iff all Conditions are true.</summary>
+        /// <summary>Used in the case of custom event, which is fired iff all Conditions are true. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customEventFilter")]
         public virtual System.Collections.Generic.IList<Condition> CustomEventFilter { get; set; } 
 
-        /// <summary>Name of the GTM event that is fired. Only valid for Timer triggers.</summary>
+        /// <summary>Name of the GTM event that is fired. Only valid for Timer triggers. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
         public virtual Parameter EventName { get; set; } 
 
-        /// <summary>The trigger will only fire iff all Conditions are true.</summary>
+        /// <summary>The trigger will only fire iff all Conditions are true. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual System.Collections.Generic.IList<Condition> Filter { get; set; } 
 
@@ -8223,37 +8433,50 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string Fingerprint { get; set; } 
 
         /// <summary>List of integer percentage values for scroll triggers. The trigger will fire when each percentage
-        /// is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers.</summary>
+        /// is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalScrollPercentageList")]
         public virtual Parameter HorizontalScrollPercentageList { get; set; } 
 
-        /// <summary>Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer
-        /// triggers.</summary>
+        /// <summary>Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers.
+        /// @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
         public virtual Parameter Interval { get; set; } 
 
-        /// <summary>Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger.</summary>
+        /// <summary>Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intervalSeconds")]
         public virtual Parameter IntervalSeconds { get; set; } 
 
         /// <summary>Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will
-        /// continue to fire GTM events until the user leaves the page. Only valid for Timer triggers.</summary>
+        /// continue to fire GTM events until the user leaves the page. Only valid for Timer triggers. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual Parameter Limit { get; set; } 
 
-        /// <summary>Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger.</summary>
+        /// <summary>Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTimerLengthSeconds")]
         public virtual Parameter MaxTimerLengthSeconds { get; set; } 
 
-        /// <summary>Trigger display name.</summary>
+        /// <summary>Trigger display name. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>User notes on how to apply this trigger in the container.</summary>
+        /// <summary>User notes on how to apply this trigger in the container. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; } 
 
-        /// <summary>Additional parameters.</summary>
+        /// <summary>Additional parameters. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; } 
 
@@ -8265,7 +8488,9 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
 
-        /// <summary>A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP Click trigger.</summary>
+        /// <summary>A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP Click trigger. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual Parameter Selector { get; set; } 
 
@@ -8274,7 +8499,8 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string TagManagerUrl { get; set; } 
 
         /// <summary>A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility
-        /// trigger.</summary>
+        /// trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalTimeMinMilliseconds")]
         public virtual Parameter TotalTimeMinMilliseconds { get; set; } 
 
@@ -8282,42 +8508,57 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
         public virtual string TriggerId { get; set; } 
 
-        /// <summary>Defines the data layer event that causes this trigger.</summary>
+        /// <summary>Defines the data layer event that causes this trigger. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
         /// <summary>Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer
         /// listener) if any. Used to make incompatible auto-events work together with trigger filtering based on
         /// trigger ids. This value is populated during output generation since the tags implied by triggers don't exist
-        /// until then. Only valid for Form Submit, Link Click and Timer triggers.</summary>
+        /// until then. Only valid for Form Submit, Link Click and Timer triggers. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueTriggerId")]
         public virtual Parameter UniqueTriggerId { get; set; } 
 
         /// <summary>List of integer percentage values for scroll triggers. The trigger will fire when each percentage
-        /// is reached when the view is scrolled vertically. Only valid for AMP scroll triggers.</summary>
+        /// is reached when the view is scrolled vertically. Only valid for AMP scroll triggers. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verticalScrollPercentageList")]
         public virtual Parameter VerticalScrollPercentageList { get; set; } 
 
-        /// <summary>A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger.</summary>
+        /// <summary>A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibilitySelector")]
         public virtual Parameter VisibilitySelector { get; set; } 
 
-        /// <summary>A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger.</summary>
+        /// <summary>A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visiblePercentageMax")]
         public virtual Parameter VisiblePercentageMax { get; set; } 
 
-        /// <summary>A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger.</summary>
+        /// <summary>A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visiblePercentageMin")]
         public virtual Parameter VisiblePercentageMin { get; set; } 
 
         /// <summary>Whether or not we should delay the form submissions or link opening until all of the tags have
         /// fired (by preventing the default action and later simulating the default action). Only valid for Form
-        /// Submission and Link Click triggers.</summary>
+        /// Submission and Link Click triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create
+        /// @mutable tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitForTags")]
         public virtual Parameter WaitForTags { get; set; } 
 
         /// <summary>How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true.
-        /// Only valid for Form Submission and Link Click triggers.</summary>
+        /// Only valid for Form Submission and Link Click triggers. @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
+        /// tagmanager.accounts.containers.workspaces.triggers.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitForTagsTimeout")]
         public virtual Parameter WaitForTagsTimeout { get; set; } 
 
@@ -8332,7 +8573,8 @@ namespace Google.Apis.TagManager.v2.Data
     /// <summary>Represents a user's permissions to an account and its container.</summary>
     public class UserPermission : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>GTM Account access permissions.</summary>
+        /// <summary>GTM Account access permissions. @mutable tagmanager.accounts.permissions.create @mutable
+        /// tagmanager.accounts.permissions.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountAccess")]
         public virtual AccountAccess AccountAccess { get; set; } 
 
@@ -8340,11 +8582,12 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; } 
 
-        /// <summary>GTM Container access permissions.</summary>
+        /// <summary>GTM Container access permissions. @mutable tagmanager.accounts.permissions.create @mutable
+        /// tagmanager.accounts.permissions.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerAccess")]
         public virtual System.Collections.Generic.IList<ContainerAccess> ContainerAccess { get; set; } 
 
-        /// <summary>User's email address.</summary>
+        /// <summary>User's email address. @mutable tagmanager.accounts.permissions.create</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; } 
 
@@ -8369,13 +8612,15 @@ namespace Google.Apis.TagManager.v2.Data
 
         /// <summary>For mobile containers only: A list of trigger IDs for disabling conditional variables; the variable
         /// is enabled if one of the enabling trigger is true while all the disabling trigger are false. Treated as an
-        /// unordered set.</summary>
+        /// unordered set. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disablingTriggerId")]
         public virtual System.Collections.Generic.IList<string> DisablingTriggerId { get; set; } 
 
         /// <summary>For mobile containers only: A list of trigger IDs for enabling conditional variables; the variable
         /// is enabled if one of the enabling triggers is true while all the disabling triggers are false. Treated as an
-        /// unordered set.</summary>
+        /// unordered set. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablingTriggerId")]
         public virtual System.Collections.Generic.IList<string> EnablingTriggerId { get; set; } 
 
@@ -8388,15 +8633,19 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("formatValue")]
         public virtual VariableFormatValue FormatValue { get; set; } 
 
-        /// <summary>Variable display name.</summary>
+        /// <summary>Variable display name. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>User notes on how to apply this variable in the container.</summary>
+        /// <summary>User notes on how to apply this variable in the container. @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; } 
 
-        /// <summary>The variable's parameters.</summary>
+        /// <summary>The variable's parameters. @mutable tagmanager.accounts.containers.workspaces.variables.create
+        /// @mutable tagmanager.accounts.containers.workspaces.variables.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; } 
 
@@ -8408,11 +8657,15 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
 
-        /// <summary>The end timestamp in milliseconds to schedule a variable.</summary>
+        /// <summary>The end timestamp in milliseconds to schedule a variable. @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndMs")]
         public virtual System.Nullable<long> ScheduleEndMs { get; set; } 
 
-        /// <summary>The start timestamp in milliseconds to schedule a variable.</summary>
+        /// <summary>The start timestamp in milliseconds to schedule a variable. @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.create @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartMs")]
         public virtual System.Nullable<long> ScheduleStartMs { get; set; } 
 
@@ -8420,7 +8673,8 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tagManagerUrl")]
         public virtual string TagManagerUrl { get; set; } 
 
-        /// <summary>GTM Variable Type.</summary>
+        /// <summary>GTM Variable Type. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable
+        /// tagmanager.accounts.containers.workspaces.variables.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -8473,7 +8727,8 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; } 
 
-        /// <summary>Workspace description.</summary>
+        /// <summary>Workspace description. @mutable tagmanager.accounts.containers.workspaces.create @mutable
+        /// tagmanager.accounts.containers.workspaces.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -8482,7 +8737,8 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
-        /// <summary>Workspace display name.</summary>
+        /// <summary>Workspace display name. @mutable tagmanager.accounts.containers.workspaces.create @mutable
+        /// tagmanager.accounts.containers.workspaces.update</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

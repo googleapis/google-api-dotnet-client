@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>Cloud Speech-to-Text API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20191212 (1806)
+ *      <tr><th>API Rev<td>20200102 (1827)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech-to-text/docs/quickstart-protocol'>
  *              https://cloud.google.com/speech-to-text/docs/quickstart-protocol</a>
@@ -1240,10 +1240,6 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual RecognitionConfig Config { get; set; } 
 
-        /// <summary>Use `model` field in RecognitionConfig instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1354,8 +1350,9 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("channelTag")]
         public virtual System.Nullable<int> ChannelTag { get; set; } 
 
-        /// <summary>The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this
-        /// result. This language code was detected to have the most likelihood of being spoken in the audio.</summary>
+        /// <summary>Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
+        /// language in this result. This language code was detected to have the most likelihood of being spoken in the
+        /// audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 
@@ -1406,8 +1403,8 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>A distinct integer value is assigned for every speaker within the audio. This field specifies which
-        /// one of those speakers was detected to have spoken this word. Value ranges from '1' to
+        /// <summary>Output only. A distinct integer value is assigned for every speaker within the audio. This field
+        /// specifies which one of those speakers was detected to have spoken this word. Value ranges from '1' to
         /// diarization_speaker_count. speaker_tag is set if enable_speaker_diarization = 'true' and only in the top
         /// alternative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]
