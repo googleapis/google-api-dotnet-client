@@ -1,8 +1,514 @@
 {
+  "resources": {
+    "folders": {
+      "resources": {
+        "catalogs": {
+          "methods": {
+            "search": {
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "resource"
+              ],
+              "response": {
+                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "query": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "The query to filter the catalogs. The supported queries are:\n\n* Get a single catalog: `name=catalogs/{catalog_id}`"
+                },
+                "resource": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^folders/[^/]+$",
+                  "location": "path",
+                  "description": "Required. The name of the resource context. It can be in following formats:\n\n* `projects/{project_id}`\n* `folders/{folder_id}`\n* `organizations/{organization_id}`"
+                },
+                "pageToken": {
+                  "description": "A pagination token returned from a previous call to SearchCatalogs that\nindicates where this listing should continue from.\nThis field is optional.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "pageSize": {
+                  "description": "The maximum number of entries that are requested.",
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
+                }
+              },
+              "flatPath": "v1beta1/folders/{foldersId}/catalogs:search",
+              "id": "cloudprivatecatalog.folders.catalogs.search",
+              "path": "v1beta1/{+resource}/catalogs:search",
+              "description": "Search Catalog resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."
+            }
+          }
+        },
+        "versions": {
+          "methods": {
+            "search": {
+              "description": "Search Version resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context.",
+              "response": {
+                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchVersionsResponse"
+              },
+              "parameterOrder": [
+                "resource"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "resource": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^folders/[^/]+$",
+                  "location": "path",
+                  "description": "Required. The name of the resource context. See\nSearchCatalogsRequest.resource for details."
+                },
+                "pageToken": {
+                  "description": "A pagination token returned from a previous call to SearchVersions\nthat indicates where this listing should continue from.\nThis field is optional.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "The maximum number of entries that are requested.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "query": {
+                  "description": "The query to filter the versions. Required.\n\nThe supported queries are:\n* List versions under a product:\n`parent=catalogs/{catalog_id}/products/{product_id}`\n* Get a version by name:\n`name=catalogs/{catalog_id}/products/{product_id}/versions/{version_id}`",
+                  "type": "string",
+                  "location": "query"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1beta1/folders/{foldersId}/versions:search",
+              "path": "v1beta1/{+resource}/versions:search",
+              "id": "cloudprivatecatalog.folders.versions.search"
+            }
+          }
+        },
+        "products": {
+          "methods": {
+            "search": {
+              "path": "v1beta1/{+resource}/products:search",
+              "id": "cloudprivatecatalog.folders.products.search",
+              "description": "Search Product resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context.",
+              "response": {
+                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchProductsResponse"
+              },
+              "parameterOrder": [
+                "resource"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "query": {
+                  "location": "query",
+                  "description": "The query to filter the products.\n\nThe supported queries are:\n* List products of all catalogs: empty\n* List products under a catalog: `parent=catalogs/{catalog_id}`\n* Get a product by name:\n`name=catalogs/{catalog_id}/products/{product_id}`",
+                  "type": "string"
+                },
+                "resource": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^folders/[^/]+$",
+                  "location": "path",
+                  "description": "Required. The name of the resource context. See\nSearchCatalogsRequest.resource for details."
+                },
+                "pageToken": {
+                  "description": "A pagination token returned from a previous call to SearchProducts that\nindicates where this listing should continue from.\nThis field is optional.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "pageSize": {
+                  "description": "The maximum number of entries that are requested.",
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
+                }
+              },
+              "flatPath": "v1beta1/folders/{foldersId}/products:search"
+            }
+          }
+        }
+      }
+    },
+    "projects": {
+      "resources": {
+        "catalogs": {
+          "methods": {
+            "search": {
+              "id": "cloudprivatecatalog.projects.catalogs.search",
+              "path": "v1beta1/{+resource}/catalogs:search",
+              "description": "Search Catalog resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context.",
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "resource"
+              ],
+              "response": {
+                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse"
+              },
+              "parameters": {
+                "pageToken": {
+                  "description": "A pagination token returned from a previous call to SearchCatalogs that\nindicates where this listing should continue from.\nThis field is optional.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "pageSize": {
+                  "description": "The maximum number of entries that are requested.",
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
+                },
+                "query": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "The query to filter the catalogs. The supported queries are:\n\n* Get a single catalog: `name=catalogs/{catalog_id}`"
+                },
+                "resource": {
+                  "description": "Required. The name of the resource context. It can be in following formats:\n\n* `projects/{project_id}`\n* `folders/{folder_id}`\n* `organizations/{organization_id}`",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1beta1/projects/{projectsId}/catalogs:search"
+            }
+          }
+        },
+        "versions": {
+          "methods": {
+            "search": {
+              "description": "Search Version resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context.",
+              "response": {
+                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchVersionsResponse"
+              },
+              "parameterOrder": [
+                "resource"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "resource": {
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path",
+                  "description": "Required. The name of the resource context. See\nSearchCatalogsRequest.resource for details.",
+                  "required": true,
+                  "type": "string"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "A pagination token returned from a previous call to SearchVersions\nthat indicates where this listing should continue from.\nThis field is optional.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "The maximum number of entries that are requested.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "query": {
+                  "location": "query",
+                  "description": "The query to filter the versions. Required.\n\nThe supported queries are:\n* List versions under a product:\n`parent=catalogs/{catalog_id}/products/{product_id}`\n* Get a version by name:\n`name=catalogs/{catalog_id}/products/{product_id}/versions/{version_id}`",
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1beta1/projects/{projectsId}/versions:search",
+              "path": "v1beta1/{+resource}/versions:search",
+              "id": "cloudprivatecatalog.projects.versions.search"
+            }
+          }
+        },
+        "products": {
+          "methods": {
+            "search": {
+              "description": "Search Product resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context.",
+              "response": {
+                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchProductsResponse"
+              },
+              "parameterOrder": [
+                "resource"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "pageToken": {
+                  "location": "query",
+                  "description": "A pagination token returned from a previous call to SearchProducts that\nindicates where this listing should continue from.\nThis field is optional.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "The maximum number of entries that are requested.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "query": {
+                  "location": "query",
+                  "description": "The query to filter the products.\n\nThe supported queries are:\n* List products of all catalogs: empty\n* List products under a catalog: `parent=catalogs/{catalog_id}`\n* Get a product by name:\n`name=catalogs/{catalog_id}/products/{product_id}`",
+                  "type": "string"
+                },
+                "resource": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path",
+                  "description": "Required. The name of the resource context. See\nSearchCatalogsRequest.resource for details."
+                }
+              },
+              "flatPath": "v1beta1/projects/{projectsId}/products:search",
+              "path": "v1beta1/{+resource}/products:search",
+              "id": "cloudprivatecatalog.projects.products.search"
+            }
+          }
+        }
+      }
+    },
+    "organizations": {
+      "resources": {
+        "catalogs": {
+          "methods": {
+            "search": {
+              "flatPath": "v1beta1/organizations/{organizationsId}/catalogs:search",
+              "path": "v1beta1/{+resource}/catalogs:search",
+              "id": "cloudprivatecatalog.organizations.catalogs.search",
+              "description": "Search Catalog resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context.",
+              "response": {
+                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse"
+              },
+              "parameterOrder": [
+                "resource"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "resource": {
+                  "pattern": "^organizations/[^/]+$",
+                  "location": "path",
+                  "description": "Required. The name of the resource context. It can be in following formats:\n\n* `projects/{project_id}`\n* `folders/{folder_id}`\n* `organizations/{organization_id}`",
+                  "required": true,
+                  "type": "string"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "A pagination token returned from a previous call to SearchCatalogs that\nindicates where this listing should continue from.\nThis field is optional.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "The maximum number of entries that are requested.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "query": {
+                  "description": "The query to filter the catalogs. The supported queries are:\n\n* Get a single catalog: `name=catalogs/{catalog_id}`",
+                  "type": "string",
+                  "location": "query"
+                }
+              }
+            }
+          }
+        },
+        "versions": {
+          "methods": {
+            "search": {
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "pageToken": {
+                  "location": "query",
+                  "description": "A pagination token returned from a previous call to SearchVersions\nthat indicates where this listing should continue from.\nThis field is optional.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "description": "The maximum number of entries that are requested.",
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
+                },
+                "query": {
+                  "location": "query",
+                  "description": "The query to filter the versions. Required.\n\nThe supported queries are:\n* List versions under a product:\n`parent=catalogs/{catalog_id}/products/{product_id}`\n* Get a version by name:\n`name=catalogs/{catalog_id}/products/{product_id}/versions/{version_id}`",
+                  "type": "string"
+                },
+                "resource": {
+                  "pattern": "^organizations/[^/]+$",
+                  "location": "path",
+                  "description": "Required. The name of the resource context. See\nSearchCatalogsRequest.resource for details.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1beta1/organizations/{organizationsId}/versions:search",
+              "path": "v1beta1/{+resource}/versions:search",
+              "id": "cloudprivatecatalog.organizations.versions.search",
+              "description": "Search Version resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context.",
+              "response": {
+                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchVersionsResponse"
+              },
+              "parameterOrder": [
+                "resource"
+              ],
+              "httpMethod": "GET"
+            }
+          }
+        },
+        "products": {
+          "methods": {
+            "search": {
+              "description": "Search Product resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context.",
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "resource"
+              ],
+              "response": {
+                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchProductsResponse"
+              },
+              "parameters": {
+                "resource": {
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^organizations/[^/]+$",
+                  "location": "path",
+                  "description": "Required. The name of the resource context. See\nSearchCatalogsRequest.resource for details."
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "A pagination token returned from a previous call to SearchProducts that\nindicates where this listing should continue from.\nThis field is optional.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "The maximum number of entries that are requested.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "query": {
+                  "location": "query",
+                  "description": "The query to filter the products.\n\nThe supported queries are:\n* List products of all catalogs: empty\n* List products under a catalog: `parent=catalogs/{catalog_id}`\n* Get a product by name:\n`name=catalogs/{catalog_id}/products/{product_id}`",
+                  "type": "string"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1beta1/organizations/{organizationsId}/products:search",
+              "id": "cloudprivatecatalog.organizations.products.search",
+              "path": "v1beta1/{+resource}/products:search"
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "prettyPrint": {
+      "type": "boolean",
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks."
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "callback": {
+      "type": "string",
+      "location": "query",
+      "description": "JSONP"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string"
+    },
+    "alt": {
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "type": "string",
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+    }
+  },
+  "version": "v1beta1",
+  "baseUrl": "https://cloudprivatecatalog.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "Enable cloud users to discover enterprise catalogs and products in their organizations.",
+  "servicePath": "",
+  "basePath": "",
+  "revision": "20200104",
+  "documentationLink": "https://cloud.google.com/private-catalog/",
+  "id": "cloudprivatecatalog:v1beta1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
     "GoogleCloudPrivatecatalogV1beta1Catalog": {
+      "description": "The readonly representation of a catalog computed with a given resource\ncontext.",
       "type": "object",
       "properties": {
         "name": {
@@ -14,8 +520,8 @@
           "type": "string"
         },
         "description": {
-          "type": "string",
-          "description": "Output only. The description of the catalog."
+          "description": "Output only. The description of the catalog.",
+          "type": "string"
         },
         "createTime": {
           "description": "Output only. The time when the catalog was created.",
@@ -28,39 +534,29 @@
           "type": "string"
         }
       },
-      "id": "GoogleCloudPrivatecatalogV1beta1Catalog",
-      "description": "The readonly representation of a catalog computed with a given resource\ncontext."
+      "id": "GoogleCloudPrivatecatalogV1beta1Catalog"
     },
     "GoogleCloudPrivatecatalogV1beta1SearchProductsResponse": {
-      "description": "Response message for PrivateCatalog.SearchProducts.",
       "type": "object",
       "properties": {
         "products": {
+          "description": "The `Product` resources computed from the resource context.",
           "type": "array",
           "items": {
             "$ref": "GoogleCloudPrivatecatalogV1beta1Product"
-          },
-          "description": "The `Product` resources computed from the resource context."
+          }
         },
         "nextPageToken": {
-          "type": "string",
-          "description": "A pagination token returned from a previous call to SearchProducts that\nindicates from where listing should continue.\nThis field is optional."
+          "description": "A pagination token returned from a previous call to SearchProducts that\nindicates from where listing should continue.\nThis field is optional.",
+          "type": "string"
         }
       },
-      "id": "GoogleCloudPrivatecatalogV1beta1SearchProductsResponse"
+      "id": "GoogleCloudPrivatecatalogV1beta1SearchProductsResponse",
+      "description": "Response message for PrivateCatalog.SearchProducts."
     },
     "GoogleCloudPrivatecatalogV1beta1Version": {
-      "description": "The consumer representation of a version which is a child resource under a\n`Product` with asset data.",
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string",
-          "description": "Output only. The resource name of the version, in the format\n`catalogs/{catalog_id}/products/{product_id}/versions/a-z*[a-z0-9]'.\n\nA unique identifier for the version under a product."
-        },
-        "description": {
-          "description": "Output only. The user-supplied description of the version. Maximum of 256\ncharacters.",
-          "type": "string"
-        },
         "asset": {
           "description": "Output only. The asset which has been validated and is ready to be\nprovisioned. See\ngoogle.cloud.privatecatalogproducer.v1beta.Version.asset for details.",
           "type": "object",
@@ -75,67 +571,76 @@
           "type": "string"
         },
         "updateTime": {
-          "type": "string",
           "description": "Output only. The time when the version was last updated.",
-          "format": "google-datetime"
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "name": {
+          "description": "Output only. The resource name of the version, in the format\n`catalogs/{catalog_id}/products/{product_id}/versions/a-z*[a-z0-9]'.\n\nA unique identifier for the version under a product.",
+          "type": "string"
+        },
+        "description": {
+          "type": "string",
+          "description": "Output only. The user-supplied description of the version. Maximum of 256\ncharacters."
         }
       },
-      "id": "GoogleCloudPrivatecatalogV1beta1Version"
+      "id": "GoogleCloudPrivatecatalogV1beta1Version",
+      "description": "The consumer representation of a version which is a child resource under a\n`Product` with asset data."
     },
     "GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse": {
+      "id": "GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse",
       "description": "Response message for PrivateCatalog.SearchCatalogs.",
       "type": "object",
       "properties": {
-        "nextPageToken": {
-          "description": "A pagination token returned from a previous call to SearchCatalogs that\nindicates from where listing should continue.\nThis field is optional.",
-          "type": "string"
-        },
         "catalogs": {
           "description": "The `Catalog`s computed from the resource context.",
           "type": "array",
           "items": {
             "$ref": "GoogleCloudPrivatecatalogV1beta1Catalog"
           }
+        },
+        "nextPageToken": {
+          "description": "A pagination token returned from a previous call to SearchCatalogs that\nindicates from where listing should continue.\nThis field is optional.",
+          "type": "string"
         }
-      },
-      "id": "GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse"
+      }
     },
     "GoogleCloudPrivatecatalogV1beta1Product": {
+      "id": "GoogleCloudPrivatecatalogV1beta1Product",
       "description": "The readonly representation of a product computed with a given resource\ncontext.",
       "type": "object",
       "properties": {
         "iconUri": {
-          "type": "string",
-          "description": "Output only. The icon URI of the product."
+          "description": "Output only. The icon URI of the product.",
+          "type": "string"
         },
         "createTime": {
-          "type": "string",
           "description": "Output only. The time when the product was created.",
-          "format": "google-datetime"
+          "format": "google-datetime",
+          "type": "string"
         },
         "updateTime": {
-          "type": "string",
           "description": "Output only. The time when the product was last updated.",
-          "format": "google-datetime"
+          "format": "google-datetime",
+          "type": "string"
         },
         "name": {
           "description": "Output only. The resource name of the target product, in the format of\n`products/a-z*[a-z0-9]'.\n\nA unique identifier for the product under a catalog.",
           "type": "string"
         },
-        "assetType": {
-          "description": "Output only. The type of the product asset. It can be one of the\nfollowing values:\n\n* `google.deploymentmanager.Template`\n* `google.cloudprivatecatalog.ListingOnly`",
-          "type": "string"
-        },
         "displayMetadata": {
           "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object."
+            "description": "Properties of the object.",
+            "type": "any"
           },
           "description": "Output only. The display metadata to describe the product.\nThe JSON schema of the metadata differs by Product.asset_type.\nWhen the type is `google.deploymentmanager.Template`, the schema is as\nfollows:\n\n```\n\"$schema\": http://json-schema.org/draft-04/schema#\ntype: object\nproperties:\n  name:\n    type: string\n    minLength: 1\n    maxLength: 64\n  description:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  tagline:\n    type: string\n    minLength: 1\n    maxLength: 100\n  support_info:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  creator:\n    type: string\n    minLength: 1\n    maxLength: 100\n  documentation:\n    type: array\n    items:\n      type: object\n      properties:\n        url:\n          type: string\n          pattern:\n          \"^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]\"\n        title:\n          type: string\n          minLength: 1\n          maxLength: 64\n        description:\n          type: string\n          minLength: 1\n          maxLength: 2048\nrequired:\n- name\n- description\nadditionalProperties: false\n\n```\n\nWhen the asset type is `google.cloudprivatecatalog.ListingOnly`, the schema\nis as follows:\n\n```\n\"$schema\": http://json-schema.org/draft-04/schema#\ntype: object\nproperties:\n  name:\n    type: string\n    minLength: 1\n    maxLength: 64\n  description:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  tagline:\n    type: string\n    minLength: 1\n    maxLength: 100\n  support_info:\n    type: string\n    minLength: 1\n    maxLength: 2048\n  creator:\n    type: string\n    minLength: 1\n    maxLength: 100\n  documentation:\n    type: array\n    items:\n      type: object\n      properties:\n        url:\n          type: string\n          pattern:\n          \"^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]\"\n        title:\n          type: string\n          minLength: 1\n          maxLength: 64\n        description:\n          type: string\n          minLength: 1\n          maxLength: 2048\n  signup_url:\n    type: string\n    pattern:\n    \"^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]\"\nrequired:\n- name\n- description\n- signup_url\nadditionalProperties: false\n```",
           "type": "object"
+        },
+        "assetType": {
+          "type": "string",
+          "description": "Output only. The type of the product asset. It can be one of the\nfollowing values:\n\n* `google.deploymentmanager.Template`\n* `google.cloudprivatecatalog.ListingOnly`"
         }
-      },
-      "id": "GoogleCloudPrivatecatalogV1beta1Product"
+      }
     },
     "GoogleCloudPrivatecatalogV1beta1SearchVersionsResponse": {
       "description": "Response message for PrivateCatalog.SearchVersions.",
@@ -177,510 +682,5 @@
   "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
   "title": "Cloud Private Catalog API",
-  "ownerName": "Google",
-  "resources": {
-    "folders": {
-      "resources": {
-        "catalogs": {
-          "methods": {
-            "search": {
-              "response": {
-                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse"
-              },
-              "parameterOrder": [
-                "resource"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "query": {
-                  "location": "query",
-                  "description": "The query to filter the catalogs. The supported queries are:\n\n* Get a single catalog: `name=catalogs/{catalog_id}`",
-                  "type": "string"
-                },
-                "resource": {
-                  "pattern": "^folders/[^/]+$",
-                  "location": "path",
-                  "description": "Required. The name of the resource context. It can be in following formats:\n\n* `projects/{project_id}`\n* `folders/{folder_id}`\n* `organizations/{organization_id}`",
-                  "required": true,
-                  "type": "string"
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "A pagination token returned from a previous call to SearchCatalogs that\nindicates where this listing should continue from.\nThis field is optional.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "type": "integer",
-                  "location": "query",
-                  "description": "The maximum number of entries that are requested.",
-                  "format": "int32"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/folders/{foldersId}/catalogs:search",
-              "path": "v1beta1/{+resource}/catalogs:search",
-              "id": "cloudprivatecatalog.folders.catalogs.search",
-              "description": "Search Catalog resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."
-            }
-          }
-        },
-        "versions": {
-          "methods": {
-            "search": {
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "resource"
-              ],
-              "response": {
-                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchVersionsResponse"
-              },
-              "parameters": {
-                "query": {
-                  "type": "string",
-                  "location": "query",
-                  "description": "The query to filter the versions. Required.\n\nThe supported queries are:\n* List versions under a product:\n`parent=catalogs/{catalog_id}/products/{product_id}`\n* Get a version by name:\n`name=catalogs/{catalog_id}/products/{product_id}/versions/{version_id}`"
-                },
-                "resource": {
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^folders/[^/]+$",
-                  "location": "path",
-                  "description": "Required. The name of the resource context. See\nSearchCatalogsRequest.resource for details."
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "A pagination token returned from a previous call to SearchVersions\nthat indicates where this listing should continue from.\nThis field is optional.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "The maximum number of entries that are requested.",
-                  "format": "int32",
-                  "type": "integer"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/folders/{foldersId}/versions:search",
-              "id": "cloudprivatecatalog.folders.versions.search",
-              "path": "v1beta1/{+resource}/versions:search",
-              "description": "Search Version resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."
-            }
-          }
-        },
-        "products": {
-          "methods": {
-            "search": {
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "resource"
-              ],
-              "response": {
-                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchProductsResponse"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "pageToken": {
-                  "description": "A pagination token returned from a previous call to SearchProducts that\nindicates where this listing should continue from.\nThis field is optional.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "description": "The maximum number of entries that are requested.",
-                  "format": "int32",
-                  "type": "integer",
-                  "location": "query"
-                },
-                "query": {
-                  "type": "string",
-                  "location": "query",
-                  "description": "The query to filter the products.\n\nThe supported queries are:\n* List products of all catalogs: empty\n* List products under a catalog: `parent=catalogs/{catalog_id}`\n* Get a product by name:\n`name=catalogs/{catalog_id}/products/{product_id}`"
-                },
-                "resource": {
-                  "location": "path",
-                  "description": "Required. The name of the resource context. See\nSearchCatalogsRequest.resource for details.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^folders/[^/]+$"
-                }
-              },
-              "flatPath": "v1beta1/folders/{foldersId}/products:search",
-              "id": "cloudprivatecatalog.folders.products.search",
-              "path": "v1beta1/{+resource}/products:search",
-              "description": "Search Product resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."
-            }
-          }
-        }
-      }
-    },
-    "projects": {
-      "resources": {
-        "products": {
-          "methods": {
-            "search": {
-              "flatPath": "v1beta1/projects/{projectsId}/products:search",
-              "path": "v1beta1/{+resource}/products:search",
-              "id": "cloudprivatecatalog.projects.products.search",
-              "description": "Search Product resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context.",
-              "response": {
-                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchProductsResponse"
-              },
-              "parameterOrder": [
-                "resource"
-              ],
-              "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "query": {
-                  "type": "string",
-                  "location": "query",
-                  "description": "The query to filter the products.\n\nThe supported queries are:\n* List products of all catalogs: empty\n* List products under a catalog: `parent=catalogs/{catalog_id}`\n* Get a product by name:\n`name=catalogs/{catalog_id}/products/{product_id}`"
-                },
-                "resource": {
-                  "location": "path",
-                  "description": "Required. The name of the resource context. See\nSearchCatalogsRequest.resource for details.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$"
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "A pagination token returned from a previous call to SearchProducts that\nindicates where this listing should continue from.\nThis field is optional.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "The maximum number of entries that are requested.",
-                  "format": "int32",
-                  "type": "integer"
-                }
-              }
-            }
-          }
-        },
-        "catalogs": {
-          "methods": {
-            "search": {
-              "response": {
-                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse"
-              },
-              "parameterOrder": [
-                "resource"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "pageToken": {
-                  "description": "A pagination token returned from a previous call to SearchCatalogs that\nindicates where this listing should continue from.\nThis field is optional.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "The maximum number of entries that are requested.",
-                  "format": "int32",
-                  "type": "integer"
-                },
-                "query": {
-                  "location": "query",
-                  "description": "The query to filter the catalogs. The supported queries are:\n\n* Get a single catalog: `name=catalogs/{catalog_id}`",
-                  "type": "string"
-                },
-                "resource": {
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
-                  "description": "Required. The name of the resource context. It can be in following formats:\n\n* `projects/{project_id}`\n* `folders/{folder_id}`\n* `organizations/{organization_id}`",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/projects/{projectsId}/catalogs:search",
-              "path": "v1beta1/{+resource}/catalogs:search",
-              "id": "cloudprivatecatalog.projects.catalogs.search",
-              "description": "Search Catalog resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."
-            }
-          }
-        },
-        "versions": {
-          "methods": {
-            "search": {
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "pageToken": {
-                  "location": "query",
-                  "description": "A pagination token returned from a previous call to SearchVersions\nthat indicates where this listing should continue from.\nThis field is optional.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "The maximum number of entries that are requested.",
-                  "format": "int32",
-                  "type": "integer"
-                },
-                "query": {
-                  "description": "The query to filter the versions. Required.\n\nThe supported queries are:\n* List versions under a product:\n`parent=catalogs/{catalog_id}/products/{product_id}`\n* Get a version by name:\n`name=catalogs/{catalog_id}/products/{product_id}/versions/{version_id}`",
-                  "type": "string",
-                  "location": "query"
-                },
-                "resource": {
-                  "location": "path",
-                  "description": "Required. The name of the resource context. See\nSearchCatalogsRequest.resource for details.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$"
-                }
-              },
-              "flatPath": "v1beta1/projects/{projectsId}/versions:search",
-              "id": "cloudprivatecatalog.projects.versions.search",
-              "path": "v1beta1/{+resource}/versions:search",
-              "description": "Search Version resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context.",
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "resource"
-              ],
-              "response": {
-                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchVersionsResponse"
-              }
-            }
-          }
-        }
-      }
-    },
-    "organizations": {
-      "resources": {
-        "products": {
-          "methods": {
-            "search": {
-              "flatPath": "v1beta1/organizations/{organizationsId}/products:search",
-              "id": "cloudprivatecatalog.organizations.products.search",
-              "path": "v1beta1/{+resource}/products:search",
-              "description": "Search Product resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context.",
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "resource"
-              ],
-              "response": {
-                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchProductsResponse"
-              },
-              "parameters": {
-                "query": {
-                  "description": "The query to filter the products.\n\nThe supported queries are:\n* List products of all catalogs: empty\n* List products under a catalog: `parent=catalogs/{catalog_id}`\n* Get a product by name:\n`name=catalogs/{catalog_id}/products/{product_id}`",
-                  "type": "string",
-                  "location": "query"
-                },
-                "resource": {
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+$",
-                  "location": "path",
-                  "description": "Required. The name of the resource context. See\nSearchCatalogsRequest.resource for details."
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "A pagination token returned from a previous call to SearchProducts that\nindicates where this listing should continue from.\nThis field is optional.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "The maximum number of entries that are requested.",
-                  "format": "int32",
-                  "type": "integer"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ]
-            }
-          }
-        },
-        "catalogs": {
-          "methods": {
-            "search": {
-              "path": "v1beta1/{+resource}/catalogs:search",
-              "id": "cloudprivatecatalog.organizations.catalogs.search",
-              "description": "Search Catalog resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context.",
-              "response": {
-                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchCatalogsResponse"
-              },
-              "parameterOrder": [
-                "resource"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "resource": {
-                  "description": "Required. The name of the resource context. It can be in following formats:\n\n* `projects/{project_id}`\n* `folders/{folder_id}`\n* `organizations/{organization_id}`",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+$",
-                  "location": "path"
-                },
-                "pageToken": {
-                  "description": "A pagination token returned from a previous call to SearchCatalogs that\nindicates where this listing should continue from.\nThis field is optional.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "The maximum number of entries that are requested.",
-                  "format": "int32",
-                  "type": "integer"
-                },
-                "query": {
-                  "location": "query",
-                  "description": "The query to filter the catalogs. The supported queries are:\n\n* Get a single catalog: `name=catalogs/{catalog_id}`",
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/organizations/{organizationsId}/catalogs:search"
-            }
-          }
-        },
-        "versions": {
-          "methods": {
-            "search": {
-              "response": {
-                "$ref": "GoogleCloudPrivatecatalogV1beta1SearchVersionsResponse"
-              },
-              "parameterOrder": [
-                "resource"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "pageToken": {
-                  "location": "query",
-                  "description": "A pagination token returned from a previous call to SearchVersions\nthat indicates where this listing should continue from.\nThis field is optional.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "The maximum number of entries that are requested.",
-                  "format": "int32",
-                  "type": "integer"
-                },
-                "query": {
-                  "description": "The query to filter the versions. Required.\n\nThe supported queries are:\n* List versions under a product:\n`parent=catalogs/{catalog_id}/products/{product_id}`\n* Get a version by name:\n`name=catalogs/{catalog_id}/products/{product_id}/versions/{version_id}`",
-                  "type": "string",
-                  "location": "query"
-                },
-                "resource": {
-                  "location": "path",
-                  "description": "Required. The name of the resource context. See\nSearchCatalogsRequest.resource for details.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^organizations/[^/]+$"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/organizations/{organizationsId}/versions:search",
-              "path": "v1beta1/{+resource}/versions:search",
-              "id": "cloudprivatecatalog.organizations.versions.search",
-              "description": "Search Version resources that consumers have access to, within the\nscope of the consumer cloud resource hierarchy context."
-            }
-          }
-        }
-      }
-    }
-  },
-  "parameters": {
-    "upload_protocol": {
-      "type": "string",
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ]
-    },
-    "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "type": "string",
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    }
-  },
-  "version": "v1beta1",
-  "baseUrl": "https://cloudprivatecatalog.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Enable cloud users to discover enterprise catalogs and products in their organizations.",
-  "servicePath": "",
-  "basePath": "",
-  "revision": "20200104",
-  "documentationLink": "https://cloud.google.com/private-catalog/",
-  "id": "cloudprivatecatalog:v1beta1"
+  "ownerName": "Google"
 }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iap'>Cloud Identity-Aware Proxy API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191206 (1800)
+ *      <tr><th>API Rev<td>20200102 (1827)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iap'>
  *              https://cloud.google.com/iap</a>
@@ -422,8 +422,8 @@ namespace Google.Apis.CloudIAP.v1
                     }
 
 
-                    /// <summary>Creates an Identity Aware Proxy (IAP) OAuth client, the client is owned by IAP.
-                    /// Requires that the brand for the project exists and that it is set for internal only
+                    /// <summary>Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP.
+                    /// Requires that the brand for the project exists and that it is set for internal-only
                     /// use.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. Path to create the client in. In the following format:
@@ -433,8 +433,8 @@ namespace Google.Apis.CloudIAP.v1
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates an Identity Aware Proxy (IAP) OAuth client, the client is owned by IAP.
-                    /// Requires that the brand for the project exists and that it is set for internal only
+                    /// <summary>Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP.
+                    /// Requires that the brand for the project exists and that it is set for internal-only
                     /// use.</summary>
                     public class CreateRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient>
                     {
@@ -497,8 +497,9 @@ namespace Google.Apis.CloudIAP.v1
 
                     }
 
-                    /// <summary>Deletes an Identity Aware Proxy (IAP) OAuth client. Useful if the secret was
-                    /// compromised. Requires that the client is owned by IAP.</summary>
+                    /// <summary>Deletes an Identity Aware Proxy (IAP) OAuth client. Useful for removing obsolete
+                    /// clients, managing the number of clients in a given project, and cleaning up after tests.
+                    /// Requires that the client is owned by IAP.</summary>
                     /// <param name="name">Required. Name of the Identity Aware Proxy client to be deleted. In the following format:
                     /// projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}.</param>
                     public virtual DeleteRequest Delete(string name)
@@ -506,8 +507,9 @@ namespace Google.Apis.CloudIAP.v1
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes an Identity Aware Proxy (IAP) OAuth client. Useful if the secret was
-                    /// compromised. Requires that the client is owned by IAP.</summary>
+                    /// <summary>Deletes an Identity Aware Proxy (IAP) OAuth client. Useful for removing obsolete
+                    /// clients, managing the number of clients in a given project, and cleaning up after tests.
+                    /// Requires that the client is owned by IAP.</summary>
                     public class DeleteRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -721,9 +723,8 @@ namespace Google.Apis.CloudIAP.v1
 
                     }
 
-                    /// <summary>Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful for removing obsolete
-                    /// clients, managing the number of clients in a given project, and cleaning up after tests.
-                    /// Requires that the client is owned by IAP.</summary>
+                    /// <summary>Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful if the secret was
+                    /// compromised. Requires that the client is owned by IAP.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. Name of the Identity Aware Proxy client to that will have its secret reset. In the
                     /// following format: projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}.</param>
@@ -732,9 +733,8 @@ namespace Google.Apis.CloudIAP.v1
                         return new ResetSecretRequest(service, body, name);
                     }
 
-                    /// <summary>Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful for removing obsolete
-                    /// clients, managing the number of clients in a given project, and cleaning up after tests.
-                    /// Requires that the client is owned by IAP.</summary>
+                    /// <summary>Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful if the secret was
+                    /// compromised. Requires that the client is owned by IAP.</summary>
                     public class ResetSecretRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.IdentityAwareProxyClient>
                     {
                         /// <summary>Constructs a new ResetSecret request.</summary>
@@ -797,11 +797,12 @@ namespace Google.Apis.CloudIAP.v1
                     }
                 }
 
-                /// <summary>Constructs a new OAuth brand for the project if one does not exists. The created brand is
-                /// 'internal only', meaning that OAuth clients created under it only accept requests from users who
-                /// belong to the same GSuites account as the project. The brand is created in un-reviewed status. NOTE:
-                /// the 'internal_only' can be manually changed in Pantheon UI. Requires that brand does not already
-                /// exists for the project.</summary>
+                /// <summary>Constructs a new OAuth brand for the project if one does not exist. The created brand is
+                /// "internal only", meaning that OAuth clients created under it only accept requests from users who
+                /// belong to the same G Suite organization as the project. The brand is created in an un-reviewed
+                /// status. NOTE: The "internal only" status can be manually changed in the Google Cloud console.
+                /// Requires that a brand does not already exist for the project, and that the specified support email
+                /// is owned by the caller.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. GCP Project number/id under which the brand is to be created. In the following
                 /// format: projects/{project_number/id}.</param>
@@ -810,11 +811,12 @@ namespace Google.Apis.CloudIAP.v1
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Constructs a new OAuth brand for the project if one does not exists. The created brand is
-                /// 'internal only', meaning that OAuth clients created under it only accept requests from users who
-                /// belong to the same GSuites account as the project. The brand is created in un-reviewed status. NOTE:
-                /// the 'internal_only' can be manually changed in Pantheon UI. Requires that brand does not already
-                /// exists for the project.</summary>
+                /// <summary>Constructs a new OAuth brand for the project if one does not exist. The created brand is
+                /// "internal only", meaning that OAuth clients created under it only accept requests from users who
+                /// belong to the same G Suite organization as the project. The brand is created in an un-reviewed
+                /// status. NOTE: The "internal only" status can be manually changed in the Google Cloud console.
+                /// Requires that a brand does not already exist for the project, and that the specified support email
+                /// is owned by the caller.</summary>
                 public class CreateRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.Brand>
                 {
                     /// <summary>Constructs a new Create request.</summary>

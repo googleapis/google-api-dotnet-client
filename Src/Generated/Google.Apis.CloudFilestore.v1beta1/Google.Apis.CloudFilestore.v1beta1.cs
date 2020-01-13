@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/filestore/'>Cloud Filestore API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20190917 (1720)
+ *      <tr><th>API Rev<td>20200109 (1834)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/filestore/'>
  *              https://cloud.google.com/filestore/</a>
@@ -629,10 +629,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>List filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The next_page_token value to use if there are additional results to retrieve for this
                     /// list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -645,6 +641,10 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>The maximum number of items to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>List filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -680,15 +680,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -710,6 +701,15 @@ namespace Google.Apis.CloudFilestore.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -747,8 +747,9 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>Mask of fields to update.  At least one path must be supplied in this field.  The
-                    /// elements of the repeated paths field may only include these fields: "description" "file_shares"
-                    /// "labels"</summary>
+                    /// elements of the repeated paths field may only include these fields:
+                    ///
+                    /// * "description" * "file_shares" * "labels"</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -1071,10 +1072,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1082,6 +1079,10 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1117,15 +1118,6 @@ namespace Google.Apis.CloudFilestore.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1138,6 +1130,15 @@ namespace Google.Apis.CloudFilestore.v1beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1235,6 +1236,10 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
+                /// <summary>If true, the returned list will include locations which are not yet revealed.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeUnrevealedLocations", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeUnrevealedLocations { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1280,6 +1285,15 @@ namespace Google.Apis.CloudFilestore.v1beta1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "includeUnrevealedLocations", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeUnrevealedLocations",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1416,6 +1430,12 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// this sementics: go/advanced-field-masks</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutMetadata")]
         public virtual System.Collections.Generic.IDictionary<string,GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata> RolloutMetadata { get; set; } 
+
+        /// <summary>Link to the SLM instance template. Only populated when updating SLM instances via SSA's Actuation
+        /// service adaptor. Service producers with custom control plane (e.g. Cloud SQL) doesn't need to populate this
+        /// field. Instead they should use software_versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slmInstanceTemplate")]
+        public virtual string SlmInstanceTemplate { get; set; } 
 
         /// <summary>Output only. SLO metadata for instance classification in the Standardized dataplane SLO platform.
         /// See go/cloud-ssa-standard-slo for feature description.</summary>
@@ -1555,7 +1575,25 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>SloExclusion represents an excusion in SLI calculation applies to all SLOs.</summary>
+    /// <summary>SloEligibility is a tuple containing eligibility value: true if an instance is eligible for SLO
+    /// calculation or false if it should be excluded from all SLO-related calculations along with a user-defined
+    /// reason.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether an instance is eligible or ineligible.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligible")]
+        public virtual System.Nullable<bool> Eligible { get; set; } 
+
+        /// <summary>User-defined reason for the current value of instance eligibility. Usually, this can be directly
+        /// mapped to the internal state. An empty reason is allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SloExclusion represents an exclusion in SLI calculation applies to all SLOs.</summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Exclusion duration. No restrictions on the possible values.
@@ -1564,12 +1602,8 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// can be updated by extending the duration. This is supported by the subsystem exporting eligibility data as
         /// long as such extension is committed at least 10 minutes before the original exclusion expiration - otherwise
         /// it is possible that there will be "gaps" in the exclusion application in the exported timeseries.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exclusionDuration")]
-        public virtual object ExclusionDuration { get; set; } 
-
-        /// <summary>Start time of the exclusion. No alignment (e.g. to a full minute) needed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exclusionStartTime")]
-        public virtual object ExclusionStartTime { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; } 
 
         /// <summary>Human-readable reason for the exclusion. This should be a static string (e.g. "Disruptive update in
         /// progress") and should not contain dynamically generated data (e.g. instance name). Can be left
@@ -1582,6 +1616,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sliName")]
         public virtual string SliName { get; set; } 
 
+        /// <summary>Start time of the exclusion. No alignment (e.g. to a full minute) needed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1589,6 +1627,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     /// <summary>SloMetadata contains resources required for proper SLO classification of the instance.</summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional: user-defined instance eligibility.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligibility")]
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility Eligibility { get; set; } 
+
         /// <summary>List of SLO exclusion windows. When multiple entries in the list match (matching the exclusion
         /// time-window against current time point) the exclusion reason used in the first matching entry will be
         /// published.
@@ -1598,8 +1640,8 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// reflected in the historically produced timeseries regardless of the current state).
         ///
         /// This field can be used to mark the instance as temporary ineligible for the purpose of SLO calculation. For
-        /// permanent instance SLO exclusion, a dedicated tier name can be used that does not have targets specified in
-        /// the service SLO configuration.</summary>
+        /// permanent instance SLO exclusion, use of custom instance eligibility is recommended. See 'eligibility' field
+        /// below.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
         public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion> Exclusions { get; set; } 
 

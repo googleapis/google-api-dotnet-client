@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/error-reporting/'>Stackdriver Error Reporting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191216 (1810)
+ *      <tr><th>API Rev<td>20191230 (1824)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/error-reporting/'>
  *              https://cloud.google.com/error-reporting/</a>
@@ -368,9 +368,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
 
             /// <summary>Lists the specified events.</summary>
-            /// <param name="projectName">Required. The resource name of the Google Cloud Platform project. Written as `projects/`
-            /// plus the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-
-            /// project-123`.</param>
+            /// <param name="projectName">Required. The resource name of the Google Cloud Platform project. Written as
+            /// `projects/{projectID}`, where `{projectID}` is the [Google Cloud Platform project
+            /// ID](https://support.google.com/cloud/answer/6158840).
+            ///
+            /// Example: `projects/my-project-123`.</param>
             public virtual ListRequest List(string projectName)
             {
                 return new ListRequest(service, projectName);
@@ -388,20 +390,26 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
 
-                /// <summary>Required. The resource name of the Google Cloud Platform project. Written as `projects/`
-                /// plus the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).
+                /// <summary>Required. The resource name of the Google Cloud Platform project. Written as
+                /// `projects/{projectID}`, where `{projectID}` is the [Google Cloud Platform project
+                /// ID](https://support.google.com/cloud/answer/6158840).
+                ///
                 /// Example: `projects/my-project-123`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
+
+                /// <summary>Required. The group for which events shall be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string GroupId { get; set; }
+
+                /// <summary>Optional. A `next_page_token` provided by a previous response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
                 /// <summary>Optional. The exact value to match against [`ServiceContext.service`](/error-
                 /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.service", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceFilterService { get; set; }
-
-                /// <summary>Optional. A `next_page_token` provided by a previous response.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
                 /// <summary>Optional. The maximum number of results to return per response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -438,10 +446,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     PERIOD30DAYS,
                 }
 
-                /// <summary>Required. The group for which events shall be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string GroupId { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -476,9 +480,9 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "serviceFilter.service", new Google.Apis.Discovery.Parameter
+                        "groupId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "serviceFilter.service",
+                            Name = "groupId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -488,6 +492,15 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "serviceFilter.service", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "serviceFilter.service",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -529,15 +542,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             DefaultValue = null,
                             Pattern = null,
                         });
-                    RequestParameters.Add(
-                        "groupId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "groupId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
                 }
 
             }
@@ -548,12 +552,14 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             /// key](https://support.google.com/cloud/answer/6158862) for authentication. To use an API key, append it
             /// to the URL as the value of a `key` parameter. For example:
             ///
-            /// `POST https://clouderrorreporting.googleapis.com/v1beta1/projects/example-
-            /// project/events:report?key=123ABC456`</summary>
+            /// `POST
+            /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="projectName">Required. The resource name of the Google Cloud Platform project. Written as `projects/`
-            /// plus the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-
-            /// project-123`.</param>
+            /// <param name="projectName">Required. The resource name of the Google Cloud Platform project. Written as
+            /// `projects/{projectId}`, where `{projectId}` is the [Google Cloud Platform project
+            /// ID](https://support.google.com/cloud/answer/6158840).
+            ///
+            /// Example: // `projects/my-project-123`.</param>
             public virtual ReportRequest Report(Google.Apis.Clouderrorreporting.v1beta1.Data.ReportedErrorEvent body, string projectName)
             {
                 return new ReportRequest(service, body, projectName);
@@ -565,8 +571,8 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             /// key](https://support.google.com/cloud/answer/6158862) for authentication. To use an API key, append it
             /// to the URL as the value of a `key` parameter. For example:
             ///
-            /// `POST https://clouderrorreporting.googleapis.com/v1beta1/projects/example-
-            /// project/events:report?key=123ABC456`</summary>
+            /// `POST
+            /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`</summary>
             public class ReportRequest : ClouderrorreportingBaseServiceRequest<Google.Apis.Clouderrorreporting.v1beta1.Data.ReportErrorEventResponse>
             {
                 /// <summary>Constructs a new Report request.</summary>
@@ -579,9 +585,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
 
-                /// <summary>Required. The resource name of the Google Cloud Platform project. Written as `projects/`
-                /// plus the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).
-                /// Example: `projects/my-project-123`.</summary>
+                /// <summary>Required. The resource name of the Google Cloud Platform project. Written as
+                /// `projects/{projectId}`, where `{projectId}` is the [Google Cloud Platform project
+                /// ID](https://support.google.com/cloud/answer/6158840).
+                ///
+                /// Example: // `projects/my-project-123`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
@@ -653,10 +661,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
 
             /// <summary>Lists the specified groups.</summary>
-            /// <param name="projectName">Required. The resource name of the Google Cloud Platform project. Written as projects/
-            /// plus the Google Cloud Platform project ID.
+            /// <param name="projectName">Required. The resource name of the Google Cloud Platform project. Written as
+            /// `projects/{projectID}`, where `{projectID}` is the [Google Cloud Platform project
+            /// ID](https://support.google.com/cloud/answer/6158840).
             ///
-            /// Example: projects/my-project-123.</param>
+            /// Example: `projects/my-project-123`.</param>
             public virtual ListRequest List(string projectName)
             {
                 return new ListRequest(service, projectName);
@@ -674,26 +683,17 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
 
-                /// <summary>Required. The resource name of the Google Cloud Platform project. Written as projects/ plus
-                /// the Google Cloud Platform project ID.
+                /// <summary>Required. The resource name of the Google Cloud Platform project. Written as
+                /// `projects/{projectID}`, where `{projectID}` is the [Google Cloud Platform project
+                /// ID](https://support.google.com/cloud/answer/6158840).
                 ///
-                /// Example: projects/my-project-123.</summary>
+                /// Example: `projects/my-project-123`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
-
-                /// <summary>Optional. The exact value to match against [`ServiceContext.service`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.service", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ServiceFilterService { get; set; }
 
                 /// <summary>Optional. The maximum number of results to return per response. Default is 20.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. The exact value to match against [`ServiceContext.version`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.version", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ServiceFilterVersion { get; set; }
 
                 /// <summary>Optional. The sort order in which the results are returned. Default is
                 /// `COUNT_DESC`.</summary>
@@ -715,6 +715,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     [Google.Apis.Util.StringValueAttribute("AFFECTED_USERS_DESC")]
                     AFFECTEDUSERSDESC,
                 }
+
+                /// <summary>Optional. The exact value to match against [`ServiceContext.version`](/error-
+                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.version", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ServiceFilterVersion { get; set; }
 
                 /// <summary>Optional. Time where the timed counts shall be aligned if rounded alignment is chosen.
                 /// Default is 00:00 UTC.</summary>
@@ -778,6 +783,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> GroupId { get; set; }
 
+                /// <summary>Optional. The exact value to match against [`ServiceContext.service`](/error-
+                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.service", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ServiceFilterService { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -812,15 +822,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "serviceFilter.service", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceFilter.service",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -830,18 +831,18 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "serviceFilter.version", new Google.Apis.Discovery.Parameter
+                        "order", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "serviceFilter.version",
+                            Name = "order",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "order", new Google.Apis.Discovery.Parameter
+                        "serviceFilter.version", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "order",
+                            Name = "serviceFilter.version",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -905,6 +906,15 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         "groupId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "groupId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "serviceFilter.service", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "serviceFilter.service",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1076,9 +1086,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
         }
 
         /// <summary>Deletes all error events of a given project.</summary>
-        /// <param name="projectName">Required. The resource name of the Google Cloud Platform project. Written as `projects/`
-        /// plus the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-
-        /// project-123`.</param>
+        /// <param name="projectName">Required. The resource name of the Google Cloud Platform project. Written as
+        /// `projects/{projectID}`, where `{projectID}` is the [Google Cloud Platform project
+        /// ID](https://support.google.com/cloud/answer/6158840).
+        ///
+        /// Example: `projects/my-project-123`.</param>
         public virtual DeleteEventsRequest DeleteEvents(string projectName)
         {
             return new DeleteEventsRequest(service, projectName);
@@ -1096,9 +1108,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             }
 
 
-            /// <summary>Required. The resource name of the Google Cloud Platform project. Written as `projects/` plus
-            /// the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840). Example:
-            /// `projects/my-project-123`.</summary>
+            /// <summary>Required. The resource name of the Google Cloud Platform project. Written as
+            /// `projects/{projectID}`, where `{projectID}` is the [Google Cloud Platform project
+            /// ID](https://support.google.com/cloud/answer/6158840).
+            ///
+            /// Example: `projects/my-project-123`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectName { get; private set; }
 

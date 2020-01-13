@@ -836,6 +836,12 @@ namespace Google.Apis.AndroidManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Optional short message displayed to the user before wiping the work profile on personal
+                /// devices. This has no effect on company owned devices. The maximum message length is 200
+                /// characters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("wipeReasonMessage", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string WipeReasonMessage { get; set; }
+
                 /// <summary>Optional flags that control the device wiping behavior.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("wipeDataFlags", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<WipeDataFlagsEnum> WipeDataFlags { get; set; }
@@ -850,12 +856,6 @@ namespace Google.Apis.AndroidManagement.v1
                     [Google.Apis.Util.StringValueAttribute("WIPE_EXTERNAL_STORAGE")]
                     WIPEEXTERNALSTORAGE,
                 }
-
-                /// <summary>Optional short message displayed to the user before wiping the work profile on personal
-                /// devices. This has no effect on company owned devices. The maximum message length is 200
-                /// characters.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("wipeReasonMessage", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string WipeReasonMessage { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -891,18 +891,18 @@ namespace Google.Apis.AndroidManagement.v1
                             Pattern = @"^enterprises/[^/]+/devices/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "wipeDataFlags", new Google.Apis.Discovery.Parameter
+                        "wipeReasonMessage", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "wipeDataFlags",
+                            Name = "wipeReasonMessage",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "wipeReasonMessage", new Google.Apis.Discovery.Parameter
+                        "wipeDataFlags", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "wipeReasonMessage",
+                            Name = "wipeDataFlags",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

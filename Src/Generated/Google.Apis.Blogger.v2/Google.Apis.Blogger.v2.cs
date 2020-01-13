@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/blogger/docs/2.0/json/getting_started'>Blogger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20190917 (1720)
+ *      <tr><th>API Rev<td>20191217 (1811)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/blogger/docs/2.0/json/getting_started'>
  *              https://developers.google.com/blogger/docs/2.0/json/getting_started</a>

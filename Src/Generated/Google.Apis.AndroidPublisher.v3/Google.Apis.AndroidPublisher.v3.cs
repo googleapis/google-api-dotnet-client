@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20191211 (1805)
+ *      <tr><th>API Rev<td>20191215 (1809)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -70,6 +70,7 @@ namespace Google.Apis.AndroidPublisher.v3
             orders = new OrdersResource(this);
             purchases = new PurchasesResource(this);
             reviews = new ReviewsResource(this);
+            systemapks = new SystemapksResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -178,6 +179,14 @@ namespace Google.Apis.AndroidPublisher.v3
         public virtual ReviewsResource Reviews
         {
             get { return reviews; }
+        }
+
+        private readonly SystemapksResource systemapks;
+
+        /// <summary>Gets the Systemapks resource.</summary>
+        public virtual SystemapksResource Systemapks
+        {
+            get { return systemapks; }
         }
     }
 
@@ -6995,6 +7004,444 @@ namespace Google.Apis.AndroidPublisher.v3
 
         }
     }
+
+    /// <summary>The "systemapks" collection of methods.</summary>
+    public class SystemapksResource
+    {
+        private const string Resource = "systemapks";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public SystemapksResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            variants = new VariantsResource(service);
+
+        }
+
+        private readonly VariantsResource variants;
+
+        /// <summary>Gets the Variants resource.</summary>
+        public virtual VariantsResource Variants
+        {
+            get { return variants; }
+        }
+
+        /// <summary>The "variants" collection of methods.</summary>
+        public class VariantsResource
+        {
+            private const string Resource = "variants";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public VariantsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a new variant of APK which is suitable for inclusion in a system image.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">Unique identifier for the Android app; for example, "com.spiffygame".</param>
+            ///
+            /// <param name="versionCode">The version code of the App Bundle.</param>
+            public virtual CreateRequest Create(Google.Apis.AndroidPublisher.v3.Data.SystemApkVariantsCreateRequest body, string packageName, long versionCode)
+            {
+                return new CreateRequest(service, body, packageName, versionCode);
+            }
+
+            /// <summary>Creates a new variant of APK which is suitable for inclusion in a system image.</summary>
+            public class CreateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Variant>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.SystemApkVariantsCreateRequest body, string packageName, long versionCode)
+                    : base(service)
+                {
+                    PackageName = packageName;
+                    VersionCode = versionCode;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Unique identifier for the Android app; for example, "com.spiffygame".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>The version code of the App Bundle.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("versionCode", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long VersionCode { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.SystemApkVariantsCreateRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "{packageName}/systemApks/{versionCode}/variants"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "versionCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "versionCode",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Download a previously created APK which is suitable for inclusion in a system image.</summary>
+            /// <param name="packageName">Unique identifier for the Android app; for example, "com.spiffygame".</param>
+            ///
+            /// <param name="versionCode">The version code of the App Bundle.</param>
+            /// <param name="variantId"></param>
+            public virtual DownloadRequest Download(string packageName, long versionCode, long variantId)
+            {
+                return new DownloadRequest(service, packageName, versionCode, variantId);
+            }
+
+            /// <summary>Download a previously created APK which is suitable for inclusion in a system image.</summary>
+            public class DownloadRequest : AndroidPublisherBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new Download request.</summary>
+                public DownloadRequest(Google.Apis.Services.IClientService service, string packageName, long versionCode, long variantId)
+                    : base(service)
+                {
+                    PackageName = packageName;
+                    VersionCode = versionCode;
+                    VariantId = variantId;
+                    MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
+                    InitParameters();
+                }
+
+
+                /// <summary>Unique identifier for the Android app; for example, "com.spiffygame".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>The version code of the App Bundle.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("versionCode", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long VersionCode { get; private set; }
+
+
+                [Google.Apis.Util.RequestParameterAttribute("variantId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long VariantId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "download"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "{packageName}/systemApks/{versionCode}/variants/{variantId}:download"; }
+                }
+
+                /// <summary>Initializes Download parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "versionCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "versionCode",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "variantId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "variantId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+                /// <summary>Gets the media downloader.</summary>
+                public Google.Apis.Download.IMediaDownloader MediaDownloader { get; private set; }
+
+                /// <summary>
+                /// <para>Synchronously download the media into the given stream.</para>
+                /// <para>Warning: This method hides download errors; use <see cref="DownloadWithStatus"/> instead.</para>
+                /// </summary>
+                public virtual void Download(System.IO.Stream stream)
+                {
+                    MediaDownloader.Download(this.GenerateRequestUri(), stream);
+                }
+
+                /// <summary>Synchronously download the media into the given stream.</summary>
+                /// <returns>The final status of the download; including whether the download succeeded or failed.</returns>
+                public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
+                {
+                    return MediaDownloader.Download(this.GenerateRequestUri(), stream);
+                }
+
+                /// <summary>Asynchronously download the media into the given stream.</summary>
+                public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream)
+                {
+                    return MediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream);
+                }
+
+                /// <summary>Asynchronously download the media into the given stream.</summary>
+                public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream,
+                    System.Threading.CancellationToken cancellationToken)
+                {
+                    return MediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+                }
+
+                #if !NET40
+                /// <summary>Synchronously download a range of the media into the given stream.</summary>
+                public virtual Google.Apis.Download.IDownloadProgress DownloadRange(System.IO.Stream stream, System.Net.Http.Headers.RangeHeaderValue range)
+                {
+                    var mediaDownloader = new Google.Apis.Download.MediaDownloader(Service);
+                    mediaDownloader.Range = range;
+                    return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+                }
+
+                /// <summary>Asynchronously download a range of the media into the given stream.</summary>
+                public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadRangeAsync(System.IO.Stream stream,
+                    System.Net.Http.Headers.RangeHeaderValue range,
+                    System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+                {
+                    var mediaDownloader = new Google.Apis.Download.MediaDownloader(Service);
+                    mediaDownloader.Range = range;
+                    return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+                }
+                #endif
+
+            }
+
+            /// <summary>Returns a previously created system APK variant.</summary>
+            /// <param name="packageName">Unique identifier for the Android app; for example, "com.spiffygame".</param>
+            ///
+            /// <param name="versionCode">The version code of the App Bundle.</param>
+            /// <param name="variantId">Unique
+            /// identifier for this variant.</param>
+            public virtual GetRequest Get(string packageName, long versionCode, long variantId)
+            {
+                return new GetRequest(service, packageName, versionCode, variantId);
+            }
+
+            /// <summary>Returns a previously created system APK variant.</summary>
+            public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Variant>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string packageName, long versionCode, long variantId)
+                    : base(service)
+                {
+                    PackageName = packageName;
+                    VersionCode = versionCode;
+                    VariantId = variantId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Unique identifier for the Android app; for example, "com.spiffygame".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>The version code of the App Bundle.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("versionCode", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long VersionCode { get; private set; }
+
+                /// <summary>Unique identifier for this variant.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("variantId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long VariantId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "{packageName}/systemApks/{versionCode}/variants/{variantId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "versionCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "versionCode",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "variantId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "variantId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Returns the list of previously created system APK variants.</summary>
+            /// <param name="packageName">Unique identifier for the Android app; for example, "com.spiffygame".</param>
+            ///
+            /// <param name="versionCode">The version code of the App Bundle.</param>
+            public virtual ListRequest List(string packageName, long versionCode)
+            {
+                return new ListRequest(service, packageName, versionCode);
+            }
+
+            /// <summary>Returns the list of previously created system APK variants.</summary>
+            public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.SystemApkVariantsListResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string packageName, long versionCode)
+                    : base(service)
+                {
+                    PackageName = packageName;
+                    VersionCode = versionCode;
+                    InitParameters();
+                }
+
+
+                /// <summary>Unique identifier for the Android app; for example, "com.spiffygame".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>The version code of the App Bundle.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("versionCode", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long VersionCode { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "{packageName}/systemApks/{versionCode}/variants"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "versionCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "versionCode",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+    }
 }
 
 namespace Google.Apis.AndroidPublisher.v3.Data
@@ -7256,6 +7703,21 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Screen width in pixels</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenWidthPx")]
         public virtual System.Nullable<int> ScreenWidthPx { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class DeviceSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("screenDensity")]
+        public virtual System.Nullable<long> ScreenDensity { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedAbis")]
+        public virtual System.Collections.Generic.IList<string> SupportedAbis { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedLocales")]
+        public virtual System.Collections.Generic.IList<string> SupportedLocales { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7721,6 +8183,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
         public virtual System.Nullable<int> PurchaseType { get; set; } 
 
+        /// <summary>The quantity associated with the purchase of the inapp product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<int> Quantity { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -8077,6 +8543,24 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class SystemApkVariantsCreateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceSpec")]
+        public virtual DeviceSpec DeviceSpec { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SystemApkVariantsListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("variants")]
+        public virtual System.Collections.Generic.IList<Variant> Variants { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class Testers : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of all Google Groups, as email addresses, that define testers for this track.</summary>
@@ -8235,6 +8719,19 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Number of users who have given this review a thumbs up</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbsUpCount")]
         public virtual System.Nullable<int> ThumbsUpCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the variant of a generated system APK from an uploaded App Bundle.</summary>
+    public class Variant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceSpec")]
+        public virtual DeviceSpec DeviceSpec { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("variantId")]
+        public virtual System.Nullable<long> VariantId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

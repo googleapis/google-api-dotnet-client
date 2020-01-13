@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191113 (1777)
+ *      <tr><th>API Rev<td>20200110 (1835)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -3481,7 +3481,7 @@ namespace Google.Apis.Gmail.v1
                 /// verification email. The delegate user must be a member of the same G Suite organization as the
                 /// delegator user.
                 ///
-                /// Gmail imposes limtations on the number of delegates and delegators each user in a G Suite
+                /// Gmail imposes limitations on the number of delegates and delegators each user in a G Suite
                 /// organization can have. These limits depend on your organization, but in general each user can have
                 /// up to 25 delegates and up to 10 delegators.
                 ///
@@ -3505,7 +3505,7 @@ namespace Google.Apis.Gmail.v1
                 /// verification email. The delegate user must be a member of the same G Suite organization as the
                 /// delegator user.
                 ///
-                /// Gmail imposes limtations on the number of delegates and delegators each user in a G Suite
+                /// Gmail imposes limitations on the number of delegates and delegators each user in a G Suite
                 /// organization can have. These limits depend on your organization, but in general each user can have
                 /// up to 25 delegates and up to 10 delegators.
                 ///

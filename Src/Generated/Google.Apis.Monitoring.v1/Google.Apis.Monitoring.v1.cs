@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191216 (1810)
+ *      <tr><th>API Rev<td>20200104 (1829)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -389,8 +389,8 @@ namespace Google.Apis.Monitoring.v1
             /// on the specified project. For more information, see Google Cloud IAM
             /// (https://cloud.google.com/iam).</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The project on which to execute the request. The format is "projects/{project_id_or_number}".
-            /// The {project_id_or_number} must match the dashboard resource name.</param>
+            /// <param name="parent">Required. The project on which to execute the request. The format is
+            /// "projects/{project_id_or_number}". The {project_id_or_number} must match the dashboard resource name.</param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v1.Data.Dashboard body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -411,7 +411,7 @@ namespace Google.Apis.Monitoring.v1
                 }
 
 
-                /// <summary>The project on which to execute the request. The format is
+                /// <summary>Required. The project on which to execute the request. The format is
                 /// "projects/{project_id_or_number}". The {project_id_or_number} must match the dashboard resource
                 /// name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -463,7 +463,7 @@ namespace Google.Apis.Monitoring.v1
             /// <summary>Deletes an existing custom dashboard.This method requires the monitoring.dashboards.delete
             /// permission on the specified dashboard. For more information, see Google Cloud IAM
             /// (https://cloud.google.com/iam).</summary>
-            /// <param name="name">The resource name of the Dashboard. The format is
+            /// <param name="name">Required. The resource name of the Dashboard. The format is
             /// "projects/{project_id_or_number}/dashboards/{dashboard_id}".</param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -484,7 +484,7 @@ namespace Google.Apis.Monitoring.v1
                 }
 
 
-                /// <summary>The resource name of the Dashboard. The format is
+                /// <summary>Required. The resource name of the Dashboard. The format is
                 /// "projects/{project_id_or_number}/dashboards/{dashboard_id}".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -529,8 +529,9 @@ namespace Google.Apis.Monitoring.v1
             /// <summary>Fetches a specific dashboard.This method requires the monitoring.dashboards.get permission on
             /// the specified dashboard. For more information, see Google Cloud IAM
             /// (https://cloud.google.com/iam).</summary>
-            /// <param name="name">The resource name of the Dashboard. The format is one of "dashboards/{dashboard_id}" (for system
-            /// dashboards) or "projects/{project_id_or_number}/dashboards/{dashboard_id}" (for custom dashboards).</param>
+            /// <param name="name">Required. The resource name of the Dashboard. The format is one of "dashboards/{dashboard_id}"
+            /// (for system dashboards) or "projects/{project_id_or_number}/dashboards/{dashboard_id}" (for custom
+            /// dashboards).</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -550,9 +551,9 @@ namespace Google.Apis.Monitoring.v1
                 }
 
 
-                /// <summary>The resource name of the Dashboard. The format is one of "dashboards/{dashboard_id}" (for
-                /// system dashboards) or "projects/{project_id_or_number}/dashboards/{dashboard_id}" (for custom
-                /// dashboards).</summary>
+                /// <summary>Required. The resource name of the Dashboard. The format is one of
+                /// "dashboards/{dashboard_id}" (for system dashboards) or
+                /// "projects/{project_id_or_number}/dashboards/{dashboard_id}" (for custom dashboards).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -596,7 +597,7 @@ namespace Google.Apis.Monitoring.v1
             /// <summary>Lists the existing dashboards.This method requires the monitoring.dashboards.list permission on
             /// the specified project. For more information, see Google Cloud IAM
             /// (https://cloud.google.com/iam).</summary>
-            /// <param name="parent">The scope of the dashboards to list. A project scope must be specified in the form of
+            /// <param name="parent">Required. The scope of the dashboards to list. A project scope must be specified in the form of
             /// "projects/{project_id_or_number}".</param>
             public virtual ListRequest List(string parent)
             {
@@ -617,8 +618,8 @@ namespace Google.Apis.Monitoring.v1
                 }
 
 
-                /// <summary>The scope of the dashboards to list. A project scope must be specified in the form of
-                /// "projects/{project_id_or_number}".</summary>
+                /// <summary>Required. The scope of the dashboards to list. A project scope must be specified in the
+                /// form of "projects/{project_id_or_number}".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 

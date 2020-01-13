@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191106 (1770)
+ *      <tr><th>API Rev<td>20191127 (1791)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -8278,9 +8278,9 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>The bucket's default storage class, used whenever no storageClass is specified for a newly-created
         /// object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage.
-        /// Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, and DURABLE_REDUCED_AVAILABILITY. If
-        /// this value is not specified when the bucket is created, it will default to STANDARD. For more information,
-        /// see storage classes.</summary>
+        /// Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and
+        /// DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to
+        /// STANDARD. For more information, see storage classes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
         public virtual string StorageClass { get; set; } 
 
@@ -8377,7 +8377,10 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>The bucket's IAM configuration.</summary>
         public class IamConfigurationData
         {
-            /// <summary>The bucket's Bucket Policy Only configuration.</summary>
+            /// <summary>The bucket's uniform bucket-level access configuration. The feature was formerly known as
+            /// Bucket Policy Only. For backward compatibility, this field will be populated with identical information
+            /// as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable
+            /// and disable the feature.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("bucketPolicyOnly")]
             public virtual IamConfigurationData.BucketPolicyOnlyData BucketPolicyOnly { get; set; } 
 
@@ -8387,7 +8390,10 @@ namespace Google.Apis.Storage.v1.Data
 
             
 
-            /// <summary>The bucket's Bucket Policy Only configuration.</summary>
+            /// <summary>The bucket's uniform bucket-level access configuration. The feature was formerly known as
+            /// Bucket Policy Only. For backward compatibility, this field will be populated with identical information
+            /// as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable
+            /// and disable the feature.</summary>
             public class BucketPolicyOnlyData
             {
                 /// <summary>If set, access is controlled only by bucket-level or above IAM policies.</summary>
@@ -8509,7 +8515,7 @@ namespace Google.Apis.Storage.v1.Data
                     public virtual string MatchesPattern { get; set; } 
 
                     /// <summary>Objects having any of the storage classes specified by this condition will be matched.
-                    /// Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, STANDARD, and
+                    /// Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and
                     /// DURABLE_REDUCED_AVAILABILITY.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("matchesStorageClass")]
                     public virtual System.Collections.Generic.IList<string> MatchesStorageClass { get; set; } 

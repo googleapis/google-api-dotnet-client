@@ -1,397 +1,4 @@
 {
-  "ownerName": "Google",
-  "resources": {
-    "projects": {
-      "resources": {
-        "locations": {
-          "methods": {
-            "list": {
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "description": "The resource that owns the locations collection, if applicable.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$"
-                },
-                "pageToken": {
-                  "description": "The standard list page token.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "description": "The standard list page size.",
-                  "format": "int32",
-                  "type": "integer",
-                  "location": "query"
-                },
-                "filter": {
-                  "location": "query",
-                  "description": "The standard list filter.",
-                  "type": "string"
-                }
-              },
-              "flatPath": "v1beta1/projects/{projectsId}/locations",
-              "path": "v1beta1/{+name}/locations",
-              "id": "cloudscheduler.projects.locations.list",
-              "description": "Lists information about the supported locations for this service.",
-              "response": {
-                "$ref": "ListLocationsResponse"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET"
-            },
-            "get": {
-              "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}",
-              "path": "v1beta1/{+name}",
-              "id": "cloudscheduler.projects.locations.get",
-              "description": "Gets information about a location.",
-              "response": {
-                "$ref": "Location"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "Resource name for the location.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "location": "path"
-                }
-              }
-            }
-          },
-          "resources": {
-            "jobs": {
-              "methods": {
-                "pause": {
-                  "path": "v1beta1/{+name}:pause",
-                  "id": "cloudscheduler.projects.locations.jobs.pause",
-                  "request": {
-                    "$ref": "PauseJobRequest"
-                  },
-                  "description": "Pauses a job.\n\nIf a job is paused then the system will stop executing the job\nuntil it is re-enabled via ResumeJob. The\nstate of the job is stored in state; if paused it\nwill be set to Job.State.PAUSED. A job must be in Job.State.ENABLED\nto be paused.",
-                  "response": {
-                    "$ref": "Job"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
-                      "location": "path",
-                      "description": "Required. The job name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:pause"
-                },
-                "delete": {
-                  "description": "Deletes a job.",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "DELETE",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
-                      "location": "path",
-                      "description": "Required. The job name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
-                  "path": "v1beta1/{+name}",
-                  "id": "cloudscheduler.projects.locations.jobs.delete"
-                },
-                "list": {
-                  "response": {
-                    "$ref": "ListJobsResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "GET",
-                  "parameters": {
-                    "pageToken": {
-                      "location": "query",
-                      "description": "A token identifying a page of results the server will return. To\nrequest the first page results, page_token must be empty. To\nrequest the next page of results, page_token must be the value of\nnext_page_token returned from\nthe previous call to ListJobs. It is an error to\nswitch the value of filter or\norder_by while iterating through pages.",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "description": "Requested page size.\n\nThe maximum page size is 500. If unspecified, the page size will\nbe the maximum. Fewer jobs than requested might be returned,\neven if more jobs exist; use next_page_token to determine if more\njobs exist.",
-                      "format": "int32",
-                      "type": "integer",
-                      "location": "query"
-                    },
-                    "parent": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "description": "Required. The location name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID`.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs",
-                  "path": "v1beta1/{+parent}/jobs",
-                  "id": "cloudscheduler.projects.locations.jobs.list",
-                  "description": "Lists jobs."
-                },
-                "create": {
-                  "response": {
-                    "$ref": "Job"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "parent": {
-                      "description": "Required. The location name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID`.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs",
-                  "path": "v1beta1/{+parent}/jobs",
-                  "id": "cloudscheduler.projects.locations.jobs.create",
-                  "request": {
-                    "$ref": "Job"
-                  },
-                  "description": "Creates a job."
-                },
-                "run": {
-                  "request": {
-                    "$ref": "RunJobRequest"
-                  },
-                  "description": "Forces a job to run now.\n\nWhen this method is called, Cloud Scheduler will dispatch the job, even\nif the job is already running.",
-                  "response": {
-                    "$ref": "Job"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "Required. The job name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:run",
-                  "path": "v1beta1/{+name}:run",
-                  "id": "cloudscheduler.projects.locations.jobs.run"
-                },
-                "resume": {
-                  "id": "cloudscheduler.projects.locations.jobs.resume",
-                  "path": "v1beta1/{+name}:resume",
-                  "description": "Resume a job.\n\nThis method reenables a job after it has been Job.State.PAUSED. The\nstate of a job is stored in Job.state; after calling this method it\nwill be set to Job.State.ENABLED. A job must be in\nJob.State.PAUSED to be resumed.",
-                  "request": {
-                    "$ref": "ResumeJobRequest"
-                  },
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "Job"
-                  },
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
-                      "location": "path",
-                      "description": "Required. The job name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:resume"
-                },
-                "get": {
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
-                  "path": "v1beta1/{+name}",
-                  "id": "cloudscheduler.projects.locations.jobs.get",
-                  "description": "Gets a job.",
-                  "response": {
-                    "$ref": "Job"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "Required. The job name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$"
-                    }
-                  }
-                },
-                "patch": {
-                  "request": {
-                    "$ref": "Job"
-                  },
-                  "description": "Updates a job.\n\nIf successful, the updated Job is returned. If the job does\nnot exist, `NOT_FOUND` is returned.\n\nIf UpdateJob does not successfully return, it is possible for the\njob to be in an Job.State.UPDATE_FAILED state. A job in this state may\nnot be executed. If this happens, retry the UpdateJob request\nuntil a successful response is received.",
-                  "response": {
-                    "$ref": "Job"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "PATCH",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "updateMask": {
-                      "description": "A  mask used to specify which fields of the job are being updated.",
-                      "format": "google-fieldmask",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "name": {
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
-                      "location": "path",
-                      "description": "Optionally caller-specified in CreateJob, after\nwhich it becomes output only.\n\nThe job name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.\n\n* `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),\n   hyphens (-), colons (:), or periods (.).\n   For more information, see\n   [Identifying\n   projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)\n* `LOCATION_ID` is the canonical ID for the job's location.\n   The list of available locations can be obtained by calling\n   ListLocations.\n   For more information, see https://cloud.google.com/about/locations/.\n* `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),\n   hyphens (-), or underscores (_). The maximum length is 500 characters."
-                    }
-                  },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
-                  "path": "v1beta1/{+name}",
-                  "id": "cloudscheduler.projects.locations.jobs.patch"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "parameters": {
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "fields": {
-      "type": "string",
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
-    },
-    "$.xgafv": {
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "alt": {
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    }
-  },
-  "version": "v1beta1",
   "baseUrl": "https://cloudscheduler.googleapis.com/",
   "servicePath": "",
   "kind": "discovery#restDescription",
@@ -450,40 +57,40 @@
           "type": "string"
         },
         "serviceAccountEmail": {
-          "type": "string",
-          "description": "[Service account email](https://cloud.google.com/iam/docs/service-accounts)\nto be used for generating OIDC token.\nThe service account must be within the same project as the job. The caller\nmust have iam.serviceAccounts.actAs permission for the service account."
+          "description": "[Service account email](https://cloud.google.com/iam/docs/service-accounts)\nto be used for generating OIDC token.\nThe service account must be within the same project as the job. The caller\nmust have iam.serviceAccounts.actAs permission for the service account.",
+          "type": "string"
         }
       },
       "id": "OidcToken"
     },
     "ListLocationsResponse": {
-      "description": "The response message for Locations.ListLocations.",
-      "type": "object",
       "properties": {
-        "locations": {
-          "type": "array",
-          "items": {
-            "$ref": "Location"
-          },
-          "description": "A list of locations that matches the specified filter in the request."
-        },
         "nextPageToken": {
           "description": "The standard List next-page token.",
           "type": "string"
+        },
+        "locations": {
+          "description": "A list of locations that matches the specified filter in the request.",
+          "type": "array",
+          "items": {
+            "$ref": "Location"
+          }
         }
       },
-      "id": "ListLocationsResponse"
+      "id": "ListLocationsResponse",
+      "description": "The response message for Locations.ListLocations.",
+      "type": "object"
     },
     "PubsubTarget": {
       "description": "Pub/Sub target. The job will be delivered by publishing a message to\nthe given Pub/Sub topic.",
       "type": "object",
       "properties": {
         "attributes": {
-          "description": "Attributes for PubsubMessage.\n\nPubsub message must contain either non-empty data, or at least one\nattribute.",
-          "type": "object",
           "additionalProperties": {
             "type": "string"
-          }
+          },
+          "description": "Attributes for PubsubMessage.\n\nPubsub message must contain either non-empty data, or at least one\nattribute.",
+          "type": "object"
         },
         "topicName": {
           "description": "Required. The name of the Cloud Pub/Sub topic to which messages will\nbe published when a job is delivered. The topic name must be in the\nsame format as required by PubSub's\n[PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest),\nfor example `projects/PROJECT_ID/topics/TOPIC_ID`.\n\nThe topic must be in the same project as the Cloud Scheduler job.",
@@ -501,15 +108,10 @@
       "description": "Configuration for a job.\nThe maximum allowed size for a job is 100KB.",
       "type": "object",
       "properties": {
-        "lastAttemptTime": {
-          "description": "Output only. The time the last job attempt started.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "scheduleTime": {
+          "type": "string",
           "description": "Output only. The next time the job is scheduled. Note that this may be a\nretry of a previously failed attempt or the next execution time\naccording to the schedule.",
-          "format": "google-datetime",
-          "type": "string"
+          "format": "google-datetime"
         },
         "userUpdateTime": {
           "description": "Output only. The creation time of the job.",
@@ -534,8 +136,8 @@
           "$ref": "HttpTarget"
         },
         "timeZone": {
-          "description": "Specifies the time zone to be used in interpreting\nschedule. The value of this field must be a time\nzone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database).\n\nNote that some time zones include a provision for\ndaylight savings time. The rules for daylight saving time are\ndetermined by the chosen tz. For UTC use the string \"utc\". If a\ntime zone is not specified, the default will be in UTC (also known\nas GMT).",
-          "type": "string"
+          "type": "string",
+          "description": "Specifies the time zone to be used in interpreting\nschedule. The value of this field must be a time\nzone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database).\n\nNote that some time zones include a provision for\ndaylight savings time. The rules for daylight saving time are\ndetermined by the chosen tz. For UTC use the string \"utc\". If a\ntime zone is not specified, the default will be in UTC (also known\nas GMT)."
         },
         "description": {
           "description": "Optionally caller-specified in CreateJob or\nUpdateJob.\n\nA human-readable description for the job. This string must not contain\nmore than 500 characters.",
@@ -546,14 +148,15 @@
           "$ref": "AppEngineHttpTarget"
         },
         "status": {
-          "$ref": "Status",
-          "description": "Output only. The response from the target for the last attempted execution."
+          "description": "Output only. The response from the target for the last attempted execution.",
+          "$ref": "Status"
         },
         "retryConfig": {
           "$ref": "RetryConfig",
           "description": "Settings that determine the retry behavior."
         },
         "state": {
+          "description": "Output only. State of the job.",
           "type": "string",
           "enumDescriptions": [
             "Unspecified state.",
@@ -568,11 +171,15 @@
             "PAUSED",
             "DISABLED",
             "UPDATE_FAILED"
-          ],
-          "description": "Output only. State of the job."
+          ]
         },
         "name": {
           "description": "Optionally caller-specified in CreateJob, after\nwhich it becomes output only.\n\nThe job name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.\n\n* `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),\n   hyphens (-), colons (:), or periods (.).\n   For more information, see\n   [Identifying\n   projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)\n* `LOCATION_ID` is the canonical ID for the job's location.\n   The list of available locations can be obtained by calling\n   ListLocations.\n   For more information, see https://cloud.google.com/about/locations/.\n* `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),\n   hyphens (-), or underscores (_). The maximum length is 500 characters.",
+          "type": "string"
+        },
+        "lastAttemptTime": {
+          "description": "Output only. The time the last job attempt started.",
+          "format": "google-datetime",
           "type": "string"
         }
       },
@@ -585,39 +192,17 @@
       "id": "PauseJobRequest"
     },
     "RunJobRequest": {
+      "id": "RunJobRequest",
       "description": "Request message for forcing a job to run now using\nRunJob.",
       "type": "object",
-      "properties": {},
-      "id": "RunJobRequest"
+      "properties": {}
     },
     "HttpTarget": {
-      "id": "HttpTarget",
-      "description": "Http target. The job will be pushed to the job handler by means of\nan HTTP request via an http_method such as HTTP\nPOST, HTTP GET, etc. The job is acknowledged by means of an HTTP\nresponse code in the range [200 - 299]. A failure to receive a response\nconstitutes a failed execution. For a redirected request, the response\nreturned by the redirected request is considered.",
       "type": "object",
       "properties": {
-        "body": {
-          "description": "HTTP request body. A request body is allowed only if the HTTP\nmethod is POST, PUT, or PATCH. It is an error to set body on a job with an\nincompatible HttpMethod.",
-          "format": "byte",
-          "type": "string"
-        },
-        "oauthToken": {
-          "description": "If specified, an\n[OAuth token](https://developers.google.com/identity/protocols/OAuth2)\nwill be generated and attached as an `Authorization` header in the HTTP\nrequest.\n\nThis type of authorization should generally only be used when calling\nGoogle APIs hosted on *.googleapis.com.",
-          "$ref": "OAuthToken"
-        },
-        "uri": {
-          "description": "Required. The full URI path that the request will be sent to. This string\nmust begin with either \"http://\" or \"https://\". Some examples of\nvalid values for uri are:\n`http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will\nencode some characters for safety and compatibility. The maximum allowed\nURL length is 2083 characters after encoding.",
-          "type": "string"
-        },
-        "headers": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "The user can specify HTTP request headers to send with the job's\nHTTP request. This map contains the header field names and\nvalues. Repeated headers are not supported, but a header value can\ncontain commas. These headers represent a subset of the headers\nthat will accompany the job's HTTP request. Some HTTP request\nheaders will be ignored or replaced. A partial list of headers that\nwill be ignored or replaced is below:\n- Host: This will be computed by Cloud Scheduler and derived from\nuri.\n* `Content-Length`: This will be computed by Cloud Scheduler.\n* `User-Agent`: This will be set to `\"Google-Cloud-Scheduler\"`.\n* `X-Google-*`: Google internal use only.\n* `X-AppEngine-*`: Google internal use only.\n\nThe total size of headers must be less than 80KB.",
-          "type": "object"
-        },
         "oidcToken": {
-          "$ref": "OidcToken",
-          "description": "If specified, an\n[OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)\ntoken will be generated and attached as an `Authorization` header in the\nHTTP request.\n\nThis type of authorization can be used for many scenarios, including\ncalling Cloud Run, or endpoints where you intend to validate the token\nyourself."
+          "description": "If specified, an\n[OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)\ntoken will be generated and attached as an `Authorization` header in the\nHTTP request.\n\nThis type of authorization can be used for many scenarios, including\ncalling Cloud Run, or endpoints where you intend to validate the token\nyourself.",
+          "$ref": "OidcToken"
         },
         "httpMethod": {
           "enumDescriptions": [
@@ -642,10 +227,33 @@
           ],
           "description": "Which HTTP method to use for the request.",
           "type": "string"
+        },
+        "body": {
+          "description": "HTTP request body. A request body is allowed only if the HTTP\nmethod is POST, PUT, or PATCH. It is an error to set body on a job with an\nincompatible HttpMethod.",
+          "format": "byte",
+          "type": "string"
+        },
+        "oauthToken": {
+          "$ref": "OAuthToken",
+          "description": "If specified, an\n[OAuth token](https://developers.google.com/identity/protocols/OAuth2)\nwill be generated and attached as an `Authorization` header in the HTTP\nrequest.\n\nThis type of authorization should generally only be used when calling\nGoogle APIs hosted on *.googleapis.com."
+        },
+        "uri": {
+          "description": "Required. The full URI path that the request will be sent to. This string\nmust begin with either \"http://\" or \"https://\". Some examples of\nvalid values for uri are:\n`http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will\nencode some characters for safety and compatibility. The maximum allowed\nURL length is 2083 characters after encoding.",
+          "type": "string"
+        },
+        "headers": {
+          "description": "The user can specify HTTP request headers to send with the job's\nHTTP request. This map contains the header field names and\nvalues. Repeated headers are not supported, but a header value can\ncontain commas. These headers represent a subset of the headers\nthat will accompany the job's HTTP request. Some HTTP request\nheaders will be ignored or replaced. A partial list of headers that\nwill be ignored or replaced is below:\n- Host: This will be computed by Cloud Scheduler and derived from\nuri.\n* `Content-Length`: This will be computed by Cloud Scheduler.\n* `User-Agent`: This will be set to `\"Google-Cloud-Scheduler\"`.\n* `X-Google-*`: Google internal use only.\n* `X-AppEngine-*`: Google internal use only.\n\nThe total size of headers must be less than 80KB.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
-      }
+      },
+      "id": "HttpTarget",
+      "description": "Http target. The job will be pushed to the job handler by means of\nan HTTP request via an http_method such as HTTP\nPOST, HTTP GET, etc. The job is acknowledged by means of an HTTP\nresponse code in the range [200 - 299]. A failure to receive a response\nconstitutes a failed execution. For a redirected request, the response\nreturned by the redirected request is considered."
     },
     "OAuthToken": {
+      "type": "object",
       "properties": {
         "serviceAccountEmail": {
           "description": "[Service account email](https://cloud.google.com/iam/docs/service-accounts)\nto be used for generating OAuth token.\nThe service account must be within the same project as the job. The caller\nmust have iam.serviceAccounts.actAs permission for the service account.",
@@ -657,23 +265,18 @@
         }
       },
       "id": "OAuthToken",
-      "description": "Contains information needed for generating an\n[OAuth token](https://developers.google.com/identity/protocols/OAuth2).\nThis type of authorization should generally only be used when calling Google\nAPIs hosted on *.googleapis.com.",
-      "type": "object"
+      "description": "Contains information needed for generating an\n[OAuth token](https://developers.google.com/identity/protocols/OAuth2).\nThis type of authorization should generally only be used when calling Google\nAPIs hosted on *.googleapis.com."
     },
     "Status": {
       "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
       "type": "object",
       "properties": {
-        "code": {
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "format": "int32",
-          "type": "integer"
-        },
         "message": {
           "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
           "type": "string"
         },
         "details": {
+          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
           "type": "array",
           "items": {
             "additionalProperties": {
@@ -681,14 +284,17 @@
               "type": "any"
             },
             "type": "object"
-          },
-          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."
+          }
+        },
+        "code": {
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "format": "int32",
+          "type": "integer"
         }
       },
       "id": "Status"
     },
     "PubsubMessage": {
-      "id": "PubsubMessage",
       "description": "A message that is published by publishers and consumed by subscribers. The\nmessage must contain either a non-empty data field or at least one attribute.\nNote that client libraries represent this object differently\ndepending on the language. See the corresponding\n\u003ca href=\"https://cloud.google.com/pubsub/docs/reference/libraries\"\u003eclient\nlibrary documentation\u003c/a\u003e for more information. See\n\u003ca href=\"https://cloud.google.com/pubsub/quotas\"\u003eQuotas and limits\u003c/a\u003e\nfor more information about message limits.",
       "type": "object",
       "properties": {
@@ -713,16 +319,13 @@
           "format": "byte",
           "type": "string"
         }
-      }
+      },
+      "id": "PubsubMessage"
     },
     "AppEngineRouting": {
       "description": "App Engine Routing.\n\nFor more information about services, versions, and instances see\n[An Overview of App\nEngine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine),\n[Microservices Architecture on Google App\nEngine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine),\n[App Engine Standard request\nrouting](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed),\nand [App Engine Flex request\nrouting](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).",
       "type": "object",
       "properties": {
-        "instance": {
-          "description": "App instance.\n\nBy default, the job is sent to an instance which is available when\nthe job is attempted.\n\nRequests can only be sent to a specific instance if\n[manual scaling is used in App Engine\nStandard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes).\nApp Engine Flex does not support instances. For more information, see\n[App Engine Standard request\nrouting](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)\nand [App Engine Flex request\nrouting](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).",
-          "type": "string"
-        },
         "version": {
           "description": "App version.\n\nBy default, the job is sent to the version which is the default\nversion when the job is attempted.",
           "type": "string"
@@ -732,28 +335,32 @@
           "type": "string"
         },
         "service": {
-          "type": "string",
-          "description": "App service.\n\nBy default, the job is sent to the service which is the default\nservice when the job is attempted."
+          "description": "App service.\n\nBy default, the job is sent to the service which is the default\nservice when the job is attempted.",
+          "type": "string"
+        },
+        "instance": {
+          "description": "App instance.\n\nBy default, the job is sent to an instance which is available when\nthe job is attempted.\n\nRequests can only be sent to a specific instance if\n[manual scaling is used in App Engine\nStandard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes).\nApp Engine Flex does not support instances. For more information, see\n[App Engine Standard request\nrouting](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)\nand [App Engine Flex request\nrouting](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).",
+          "type": "string"
         }
       },
       "id": "AppEngineRouting"
     },
     "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
       "properties": {},
-      "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
+      "id": "Empty"
     },
     "ListJobsResponse": {
       "description": "Response message for listing jobs using ListJobs.",
       "type": "object",
       "properties": {
         "jobs": {
-          "description": "The list of jobs.",
           "type": "array",
           "items": {
             "$ref": "Job"
-          }
+          },
+          "description": "The list of jobs."
         },
         "nextPageToken": {
           "description": "A token to retrieve next page of results. Pass this value in the\npage_token field in the subsequent call to\nListJobs to retrieve the next page of results.\nIf this is empty it indicates that there are no more results\nthrough which to paginate.\n\nThe page token is valid for only 2 hours.",
@@ -763,18 +370,15 @@
       "id": "ListJobsResponse"
     },
     "AppEngineHttpTarget": {
+      "description": "App Engine target. The job will be pushed to a job handler by means\nof an HTTP request via an http_method such\nas HTTP POST, HTTP GET, etc. The job is acknowledged by means of an\nHTTP response code in the range [200 - 299]. Error 503 is\nconsidered an App Engine system error instead of an application\nerror. Requests returning error 503 will be retried regardless of\nretry configuration and not counted against retry counts. Any other\nresponse code, or a failure to receive a response before the\ndeadline, constitutes a failed attempt.",
       "type": "object",
       "properties": {
-        "relativeUri": {
-          "description": "The relative URI.\n\nThe relative URL must begin with \"/\" and must be a valid HTTP relative URL.\nIt can contain a path, query string arguments, and `#` fragments.\nIf the relative URL is empty, then the root path \"/\" will be used.\nNo spaces are allowed, and the maximum length allowed is 2083 characters.",
-          "type": "string"
-        },
         "headers": {
-          "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "description": "HTTP request headers.\n\nThis map contains the header field names and values. Headers can be set\nwhen the job is created.\n\nCloud Scheduler sets some headers to default values:\n\n* `User-Agent`: By default, this header is\n  `\"AppEngine-Google; (+http://code.google.com/appengine)\"`.\n  This header can be modified, but Cloud Scheduler will append\n  `\"AppEngine-Google; (+http://code.google.com/appengine)\"` to the\n  modified `User-Agent`.\n* `X-CloudScheduler`: This header will be set to true.\n\nIf the job has an body, Cloud Scheduler sets\nthe following headers:\n\n* `Content-Type`: By default, the `Content-Type` header is set to\n  `\"application/octet-stream\"`. The default can be overridden by explictly\n  setting `Content-Type` to a particular media type when the job is\n  created.\n  For example, `Content-Type` can be set to `\"application/json\"`.\n* `Content-Length`: This is computed by Cloud Scheduler. This value is\n  output only. It cannot be changed.\n\nThe headers below are output only. They cannot be set or overridden:\n\n* `X-Google-*`: For Google internal use only.\n* `X-AppEngine-*`: For Google internal use only.\n\nIn addition, some App Engine headers, which contain\njob-specific information, are also be sent to the job handler."
+          "description": "HTTP request headers.\n\nThis map contains the header field names and values. Headers can be set\nwhen the job is created.\n\nCloud Scheduler sets some headers to default values:\n\n* `User-Agent`: By default, this header is\n  `\"AppEngine-Google; (+http://code.google.com/appengine)\"`.\n  This header can be modified, but Cloud Scheduler will append\n  `\"AppEngine-Google; (+http://code.google.com/appengine)\"` to the\n  modified `User-Agent`.\n* `X-CloudScheduler`: This header will be set to true.\n\nIf the job has an body, Cloud Scheduler sets\nthe following headers:\n\n* `Content-Type`: By default, the `Content-Type` header is set to\n  `\"application/octet-stream\"`. The default can be overridden by explictly\n  setting `Content-Type` to a particular media type when the job is\n  created.\n  For example, `Content-Type` can be set to `\"application/json\"`.\n* `Content-Length`: This is computed by Cloud Scheduler. This value is\n  output only. It cannot be changed.\n\nThe headers below are output only. They cannot be set or overridden:\n\n* `X-Google-*`: For Google internal use only.\n* `X-AppEngine-*`: For Google internal use only.\n\nIn addition, some App Engine headers, which contain\njob-specific information, are also be sent to the job handler.",
+          "type": "object"
         },
         "appEngineRouting": {
           "$ref": "AppEngineRouting",
@@ -808,12 +412,17 @@
           "description": "Body.\n\nHTTP request body. A request body is allowed only if the HTTP method is\nPOST or PUT. It will result in invalid argument error to set a body on a\njob with an incompatible HttpMethod.",
           "format": "byte",
           "type": "string"
+        },
+        "relativeUri": {
+          "description": "The relative URI.\n\nThe relative URL must begin with \"/\" and must be a valid HTTP relative URL.\nIt can contain a path, query string arguments, and `#` fragments.\nIf the relative URL is empty, then the root path \"/\" will be used.\nNo spaces are allowed, and the maximum length allowed is 2083 characters.",
+          "type": "string"
         }
       },
-      "id": "AppEngineHttpTarget",
-      "description": "App Engine target. The job will be pushed to a job handler by means\nof an HTTP request via an http_method such\nas HTTP POST, HTTP GET, etc. The job is acknowledged by means of an\nHTTP response code in the range [200 - 299]. Error 503 is\nconsidered an App Engine system error instead of an application\nerror. Requests returning error 503 will be retried regardless of\nretry configuration and not counted against retry counts. Any other\nresponse code, or a failure to receive a response before the\ndeadline, constitutes a failed attempt."
+      "id": "AppEngineHttpTarget"
     },
     "Location": {
+      "id": "Location",
+      "description": "A resource that represents Google Cloud Platform location.",
       "type": "object",
       "properties": {
         "labels": {
@@ -824,8 +433,8 @@
           "type": "object"
         },
         "name": {
-          "type": "string",
-          "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"
+          "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
+          "type": "string"
         },
         "locationId": {
           "description": "The canonical id for this location. For example: `\"us-east1\"`.",
@@ -836,16 +445,14 @@
           "type": "string"
         },
         "metadata": {
+          "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
-          },
-          "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
-          "type": "object"
+          }
         }
-      },
-      "id": "Location",
-      "description": "A resource that represents Google Cloud Platform location."
+      }
     }
   },
   "icons": {
@@ -868,5 +475,398 @@
   "name": "cloudscheduler",
   "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
-  "title": "Cloud Scheduler API"
+  "title": "Cloud Scheduler API",
+  "ownerName": "Google",
+  "resources": {
+    "projects": {
+      "resources": {
+        "locations": {
+          "methods": {
+            "list": {
+              "flatPath": "v1beta1/projects/{projectsId}/locations",
+              "path": "v1beta1/{+name}/locations",
+              "id": "cloudscheduler.projects.locations.list",
+              "description": "Lists information about the supported locations for this service.",
+              "response": {
+                "$ref": "ListLocationsResponse"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "The resource that owns the locations collection, if applicable.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
+                },
+                "pageToken": {
+                  "description": "The standard list page token.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "pageSize": {
+                  "description": "The standard list page size.",
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
+                },
+                "filter": {
+                  "description": "The standard list filter.",
+                  "type": "string",
+                  "location": "query"
+                }
+              }
+            },
+            "get": {
+              "description": "Gets information about a location.",
+              "response": {
+                "$ref": "Location"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "Resource name for the location.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/locations/[^/]+$"
+                }
+              },
+              "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}",
+              "path": "v1beta1/{+name}",
+              "id": "cloudscheduler.projects.locations.get"
+            }
+          },
+          "resources": {
+            "jobs": {
+              "methods": {
+                "create": {
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs",
+                  "path": "v1beta1/{+parent}/jobs",
+                  "id": "cloudscheduler.projects.locations.jobs.create",
+                  "request": {
+                    "$ref": "Job"
+                  },
+                  "description": "Creates a job.",
+                  "response": {
+                    "$ref": "Job"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "parent": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "description": "Required. The location name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID`."
+                    }
+                  }
+                },
+                "run": {
+                  "response": {
+                    "$ref": "Job"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "Required. The job name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:run",
+                  "path": "v1beta1/{+name}:run",
+                  "id": "cloudscheduler.projects.locations.jobs.run",
+                  "request": {
+                    "$ref": "RunJobRequest"
+                  },
+                  "description": "Forces a job to run now.\n\nWhen this method is called, Cloud Scheduler will dispatch the job, even\nif the job is already running."
+                },
+                "resume": {
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "Job"
+                  },
+                  "parameters": {
+                    "name": {
+                      "description": "Required. The job name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:resume",
+                  "id": "cloudscheduler.projects.locations.jobs.resume",
+                  "path": "v1beta1/{+name}:resume",
+                  "description": "Resume a job.\n\nThis method reenables a job after it has been Job.State.PAUSED. The\nstate of a job is stored in Job.state; after calling this method it\nwill be set to Job.State.ENABLED. A job must be in\nJob.State.PAUSED to be resumed.",
+                  "request": {
+                    "$ref": "ResumeJobRequest"
+                  }
+                },
+                "get": {
+                  "description": "Gets a job.",
+                  "response": {
+                    "$ref": "Job"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "Required. The job name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
+                  "path": "v1beta1/{+name}",
+                  "id": "cloudscheduler.projects.locations.jobs.get"
+                },
+                "patch": {
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
+                  "path": "v1beta1/{+name}",
+                  "id": "cloudscheduler.projects.locations.jobs.patch",
+                  "request": {
+                    "$ref": "Job"
+                  },
+                  "description": "Updates a job.\n\nIf successful, the updated Job is returned. If the job does\nnot exist, `NOT_FOUND` is returned.\n\nIf UpdateJob does not successfully return, it is possible for the\njob to be in an Job.State.UPDATE_FAILED state. A job in this state may\nnot be executed. If this happens, retry the UpdateJob request\nuntil a successful response is received.",
+                  "response": {
+                    "$ref": "Job"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "PATCH",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "updateMask": {
+                      "location": "query",
+                      "description": "A  mask used to specify which fields of the job are being updated.",
+                      "format": "google-fieldmask",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Optionally caller-specified in CreateJob, after\nwhich it becomes output only.\n\nThe job name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.\n\n* `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),\n   hyphens (-), colons (:), or periods (.).\n   For more information, see\n   [Identifying\n   projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)\n* `LOCATION_ID` is the canonical ID for the job's location.\n   The list of available locations can be obtained by calling\n   ListLocations.\n   For more information, see https://cloud.google.com/about/locations/.\n* `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),\n   hyphens (-), or underscores (_). The maximum length is 500 characters.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                      "location": "path"
+                    }
+                  }
+                },
+                "pause": {
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:pause",
+                  "path": "v1beta1/{+name}:pause",
+                  "id": "cloudscheduler.projects.locations.jobs.pause",
+                  "request": {
+                    "$ref": "PauseJobRequest"
+                  },
+                  "description": "Pauses a job.\n\nIf a job is paused then the system will stop executing the job\nuntil it is re-enabled via ResumeJob. The\nstate of the job is stored in state; if paused it\nwill be set to Job.State.PAUSED. A job must be in Job.State.ENABLED\nto be paused.",
+                  "response": {
+                    "$ref": "Job"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                      "location": "path",
+                      "description": "Required. The job name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`."
+                    }
+                  }
+                },
+                "delete": {
+                  "description": "Deletes a job.",
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "DELETE",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "description": "Required. The job name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$"
+                    }
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
+                  "path": "v1beta1/{+name}",
+                  "id": "cloudscheduler.projects.locations.jobs.delete"
+                },
+                "list": {
+                  "path": "v1beta1/{+parent}/jobs",
+                  "id": "cloudscheduler.projects.locations.jobs.list",
+                  "description": "Lists jobs.",
+                  "response": {
+                    "$ref": "ListJobsResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "parent": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "description": "Required. The location name. For example:\n`projects/PROJECT_ID/locations/LOCATION_ID`.",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "pageToken": {
+                      "location": "query",
+                      "description": "A token identifying a page of results the server will return. To\nrequest the first page results, page_token must be empty. To\nrequest the next page of results, page_token must be the value of\nnext_page_token returned from\nthe previous call to ListJobs. It is an error to\nswitch the value of filter or\norder_by while iterating through pages.",
+                      "type": "string"
+                    },
+                    "pageSize": {
+                      "location": "query",
+                      "description": "Requested page size.\n\nThe maximum page size is 500. If unspecified, the page size will\nbe the maximum. Fewer jobs than requested might be returned,\neven if more jobs exist; use next_page_token to determine if more\njobs exist.",
+                      "format": "int32",
+                      "type": "integer"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/jobs"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string"
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "alt": {
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    }
+  },
+  "version": "v1beta1"
 }

@@ -1,4 +1,16 @@
 {
+  "kind": "discovery#restDescription",
+  "description": "Views Ad Experience Report data, and gets a list of sites that have a significant number of annoying ads.",
+  "servicePath": "",
+  "rootUrl": "https://adexperiencereport.googleapis.com/",
+  "basePath": "",
+  "ownerDomain": "google.com",
+  "name": "adexperiencereport",
+  "batchPath": "batch",
+  "revision": "20200106",
+  "documentationLink": "https://developers.google.com/ad-experience-report/",
+  "id": "adexperiencereport:v1",
+  "title": "Ad Experience Report API",
   "discoveryVersion": "v1",
   "ownerName": "Google",
   "version_module": true,
@@ -22,9 +34,6 @@
     "sites": {
       "methods": {
         "get": {
-          "flatPath": "v1/sites/{sitesId}",
-          "path": "v1/{+name}",
-          "id": "adexperiencereport.sites.get",
           "description": "Gets a site's Ad Experience Report summary.",
           "response": {
             "$ref": "SiteSummaryResponse"
@@ -35,48 +44,25 @@
           "httpMethod": "GET",
           "parameters": {
             "name": {
+              "required": true,
+              "type": "string",
               "pattern": "^sites/[^/]+$",
               "location": "path",
-              "description": "Required. The name of the site whose summary to get, e.g.\n`sites/http%3A%2F%2Fwww.google.com%2F`.\n\nFormat: `sites/{site}`",
-              "required": true,
-              "type": "string"
+              "description": "Required. The name of the site whose summary to get, e.g.\n`sites/http%3A%2F%2Fwww.google.com%2F`.\n\nFormat: `sites/{site}`"
             }
-          }
+          },
+          "flatPath": "v1/sites/{sitesId}",
+          "path": "v1/{+name}",
+          "id": "adexperiencereport.sites.get"
         }
       }
     }
   },
   "parameters": {
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "type": "string",
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "type": "boolean",
-      "default": "true",
-      "location": "query",
-      "description": "Returns response with indentations and line breaks."
-    },
     "fields": {
-      "type": "string",
       "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
     },
     "uploadType": {
       "type": "string",
@@ -84,18 +70,16 @@
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
     },
     "callback": {
+      "type": "string",
       "location": "query",
-      "description": "JSONP",
-      "type": "string"
+      "description": "JSONP"
     },
     "oauth_token": {
+      "type": "string",
       "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
+      "description": "OAuth 2.0 token for the current user."
     },
     "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -104,9 +88,13 @@
       "enum": [
         "1",
         "2"
-      ]
+      ],
+      "description": "V1 error format.",
+      "type": "string"
     },
     "alt": {
+      "description": "Data format for response.",
+      "default": "json",
       "enum": [
         "json",
         "media",
@@ -118,50 +106,54 @@
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
+      "location": "query"
+    },
+    "access_token": {
       "location": "query",
-      "description": "Data format for response.",
-      "default": "json"
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
     }
   },
   "schemas": {
-    "ViolatingSitesResponse": {
-      "description": "Response message for ListViolatingSites.",
+    "PlatformSummary": {
+      "description": "A site's Ad Experience Report summary on a single platform.",
       "type": "object",
       "properties": {
-        "violatingSites": {
-          "description": "The list of violating sites.",
-          "type": "array",
-          "items": {
-            "$ref": "SiteSummaryResponse"
-          }
-        }
-      },
-      "id": "ViolatingSitesResponse"
-    },
-    "SiteSummaryResponse": {
-      "type": "object",
-      "properties": {
-        "mobileSummary": {
-          "$ref": "PlatformSummary",
-          "description": "The site's Ad Experience Report summary on mobile."
+        "underReview": {
+          "description": "Whether the site is currently under review on this platform.",
+          "type": "boolean"
         },
-        "reviewedSite": {
-          "description": "The name of the reviewed site, e.g. `google.com`.",
+        "reportUrl": {
+          "description": "A link to the full Ad Experience Report for the site on this platform..\n\nNot set in\nViolatingSitesResponse.\n\nNote that you must complete the [Search Console verification\nprocess](https://support.google.com/webmasters/answer/9008080) for the site\nbefore you can access the full report.",
           "type": "string"
         },
-        "desktopSummary": {
-          "$ref": "PlatformSummary",
-          "description": "The site's Ad Experience Report summary on desktop."
-        }
-      },
-      "id": "SiteSummaryResponse",
-      "description": "Response message for GetSiteSummary."
-    },
-    "PlatformSummary": {
-      "type": "object",
-      "properties": {
+        "lastChangeTime": {
+          "description": "The time at which the site's status last changed on this platform.",
+          "format": "google-datetime",
+          "type": "string"
+        },
         "betterAdsStatus": {
-          "type": "string",
           "enumDescriptions": [
             "Not reviewed.",
             "Passing.",
@@ -174,20 +166,15 @@
             "WARNING",
             "FAILING"
           ],
-          "description": "The site's Ad Experience Report status on this platform."
+          "description": "The site's Ad Experience Report status on this platform.",
+          "type": "string"
         },
         "enforcementTime": {
-          "type": "string",
           "description": "The time at which\n[enforcement](https://support.google.com/webtools/answer/7308033) against\nthe site began or will begin on this platform.\n\nNot set when the\nfilter_status\nis OFF.",
-          "format": "google-datetime"
+          "format": "google-datetime",
+          "type": "string"
         },
         "region": {
-          "enumDescriptions": [
-            "Ad standard not yet defined for your region.",
-            "Region A.",
-            "Region B.",
-            "Region C."
-          ],
           "description": "The site's regions on this platform.\n\nNo longer populated, because there is no longer any semantic difference\nbetween sites in different regions.",
           "type": "array",
           "items": {
@@ -198,7 +185,13 @@
               "REGION_B",
               "REGION_C"
             ]
-          }
+          },
+          "enumDescriptions": [
+            "Ad standard not yet defined for your region.",
+            "Region A.",
+            "Region B.",
+            "Region C."
+          ]
         },
         "filterStatus": {
           "type": "string",
@@ -217,23 +210,42 @@
             "PENDING"
           ],
           "description": "The site's [enforcement\nstatus](https://support.google.com/webtools/answer/7308033) on this\nplatform."
-        },
-        "underReview": {
-          "type": "boolean",
-          "description": "Whether the site is currently under review on this platform."
-        },
-        "reportUrl": {
-          "type": "string",
-          "description": "A link to the full Ad Experience Report for the site on this platform..\n\nNot set in\nViolatingSitesResponse.\n\nNote that you must complete the [Search Console verification\nprocess](https://support.google.com/webmasters/answer/9008080) for the site\nbefore you can access the full report."
-        },
-        "lastChangeTime": {
-          "description": "The time at which the site's status last changed on this platform.",
-          "format": "google-datetime",
-          "type": "string"
         }
       },
-      "id": "PlatformSummary",
-      "description": "A site's Ad Experience Report summary on a single platform."
+      "id": "PlatformSummary"
+    },
+    "ViolatingSitesResponse": {
+      "type": "object",
+      "properties": {
+        "violatingSites": {
+          "description": "The list of violating sites.",
+          "type": "array",
+          "items": {
+            "$ref": "SiteSummaryResponse"
+          }
+        }
+      },
+      "id": "ViolatingSitesResponse",
+      "description": "Response message for ListViolatingSites."
+    },
+    "SiteSummaryResponse": {
+      "description": "Response message for GetSiteSummary.",
+      "type": "object",
+      "properties": {
+        "mobileSummary": {
+          "description": "The site's Ad Experience Report summary on mobile.",
+          "$ref": "PlatformSummary"
+        },
+        "reviewedSite": {
+          "type": "string",
+          "description": "The name of the reviewed site, e.g. `google.com`."
+        },
+        "desktopSummary": {
+          "$ref": "PlatformSummary",
+          "description": "The site's Ad Experience Report summary on desktop."
+        }
+      },
+      "id": "SiteSummaryResponse"
     }
   },
   "icons": {
@@ -243,17 +255,5 @@
   "protocol": "rest",
   "version": "v1",
   "baseUrl": "https://adexperiencereport.googleapis.com/",
-  "canonicalName": "Ad Experience Report",
-  "kind": "discovery#restDescription",
-  "description": "Views Ad Experience Report data, and gets a list of sites that have a significant number of annoying ads.",
-  "servicePath": "",
-  "rootUrl": "https://adexperiencereport.googleapis.com/",
-  "basePath": "",
-  "ownerDomain": "google.com",
-  "name": "adexperiencereport",
-  "batchPath": "batch",
-  "revision": "20200106",
-  "documentationLink": "https://developers.google.com/ad-experience-report/",
-  "id": "adexperiencereport:v1",
-  "title": "Ad Experience Report API"
+  "canonicalName": "Ad Experience Report"
 }

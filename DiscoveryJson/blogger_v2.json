@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/MGMKlD0xwP3EqdVKgsCEdf_P-nU\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/E1S2-qKLssRORu2SRrbQMmGvHhk\"",
  "discoveryVersion": "v1",
  "id": "blogger:v2",
  "name": "blogger",
  "version": "v2",
- "revision": "20190917",
+ "revision": "20191217",
  "title": "Blogger API",
  "description": "API for access to the data within Blogger.",
  "ownerDomain": "google.com",

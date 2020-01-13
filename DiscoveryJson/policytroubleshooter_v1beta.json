@@ -1,110 +1,4 @@
 {
-  "resources": {
-    "iam": {
-      "methods": {
-        "troubleshoot": {
-          "request": {
-            "$ref": "GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyRequest"
-          },
-          "description": "Checks whether a member has a specific permission for a specific resource,\nand explains why the member does or does not have that permission.",
-          "response": {
-            "$ref": "GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "POST",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {},
-          "flatPath": "v1beta/iam:troubleshoot",
-          "path": "v1beta/iam:troubleshoot",
-          "id": "policytroubleshooter.iam.troubleshoot"
-        }
-      }
-    }
-  },
-  "parameters": {
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "key": {
-      "type": "string",
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
-    },
-    "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json"
-    }
-  },
-  "version": "v1beta",
-  "baseUrl": "https://policytroubleshooter.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "",
-  "servicePath": "",
   "basePath": "",
   "id": "policytroubleshooter:v1beta",
   "documentationLink": "https://cloud.google.com/iam/",
@@ -113,7 +7,6 @@
   "version_module": true,
   "schemas": {
     "GoogleIamV1Policy": {
-      "id": "GoogleIamV1Policy",
       "description": "An Identity and Access Management (IAM) policy, which specifies access\ncontrols for Google Cloud resources.\n\n\nA `Policy` is a collection of `bindings`. A `binding` binds one or more\n`members` to a single `role`. Members can be user accounts, service accounts,\nGoogle groups, and domains (such as G Suite). A `role` is a named list of\npermissions; each `role` can be an IAM predefined role or a user-created\ncustom role.\n\nOptionally, a `binding` can specify a `condition`, which is a logical\nexpression that allows access to a resource only if the expression evaluates\nto `true`. A condition can add constraints based on attributes of the\nrequest, the resource, or both.\n\n**JSON example:**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/resourcemanager.organizationAdmin\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/resourcemanager.organizationViewer\",\n          \"members\": [\"user:eve@example.com\"],\n          \"condition\": {\n            \"title\": \"expirable access\",\n            \"description\": \"Does not grant access after Sep 2020\",\n            \"expression\": \"request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\",\n          }\n        }\n      ],\n      \"etag\": \"BwWWja0YfJA=\",\n      \"version\": 3\n    }\n\n**YAML example:**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-project-id@appspot.gserviceaccount.com\n      role: roles/resourcemanager.organizationAdmin\n    - members:\n      - user:eve@example.com\n      role: roles/resourcemanager.organizationViewer\n      condition:\n        title: expirable access\n        description: Does not grant access after Sep 2020\n        expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\n    - etag: BwWWja0YfJA=\n    - version: 3\n\nFor a description of IAM and its features, see the\n[IAM documentation](https://cloud.google.com/iam/docs/).",
       "type": "object",
       "properties": {
@@ -123,16 +16,16 @@
           "type": "string"
         },
         "version": {
-          "type": "integer",
           "description": "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.",
-          "format": "int32"
+          "format": "int32",
+          "type": "integer"
         },
         "auditConfigs": {
+          "description": "Specifies cloud audit logging configuration for this policy.",
           "type": "array",
           "items": {
             "$ref": "GoogleIamV1AuditConfig"
-          },
-          "description": "Specifies cloud audit logging configuration for this policy."
+          }
         },
         "bindings": {
           "description": "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member.",
@@ -141,7 +34,8 @@
             "$ref": "GoogleIamV1Binding"
           }
         }
-      }
+      },
+      "id": "GoogleIamV1Policy"
     },
     "GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyResponse": {
       "description": "Response for TroubleshootIamPolicy.",
@@ -176,23 +70,151 @@
       "id": "GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyResponse"
     },
     "GoogleCloudPolicytroubleshooterV1betaExplainedPolicy": {
-      "description": "Details about how a specific IAM Policy contributed\nto the access check.",
       "type": "object",
       "properties": {
-        "policy": {
-          "$ref": "GoogleIamV1Policy",
-          "description": "The IAM policy attached to the resource.\n\nIf the sender of the request does not have access to the policy, this field\nis empty."
-        },
         "bindingExplanations": {
-          "description": "Details about how each binding in the policy affects the member's ability,\nor inability, to use the permission for the resource.\n\nIf the sender of the request does not have access to the policy, this field\nis omitted.",
           "type": "array",
           "items": {
             "$ref": "GoogleCloudPolicytroubleshooterV1betaBindingExplanation"
-          }
+          },
+          "description": "Details about how each binding in the policy affects the member's ability,\nor inability, to use the permission for the resource.\n\nIf the sender of the request does not have access to the policy, this field\nis omitted."
         },
         "fullResourceName": {
           "type": "string",
           "description": "The full resource name that identifies the resource. For example,\n`//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`.\n\nIf the sender of the request does not have access to the policy, this field\nis omitted.\n\nFor examples of full resource names for Google Cloud services, see\nhttps://cloud.google.com/iam/help/troubleshooter/full-resource-names."
+        },
+        "access": {
+          "enum": [
+            "ACCESS_STATE_UNSPECIFIED",
+            "GRANTED",
+            "NOT_GRANTED",
+            "UNKNOWN_CONDITIONAL",
+            "UNKNOWN_INFO_DENIED"
+          ],
+          "description": "Indicates whether _this policy_ provides the specified permission to the\nspecified member for the specified resource.\n\nThis field does _not_ indicate whether the member actually has the\npermission for the resource. There might be another policy that overrides\nthis policy. To determine whether the member actually has the permission,\nuse the `access` field in the\nTroubleshootIamPolicyResponse.",
+          "type": "string",
+          "enumDescriptions": [
+            "Reserved for future use.",
+            "The member has the permission.",
+            "The member does not have the permission.",
+            "The member has the permission only if a condition expression evaluates to\n`true`.",
+            "The sender of the request does not have access to all of the policies that\nPolicy Troubleshooter needs to evaluate."
+          ]
+        },
+        "relevance": {
+          "enum": [
+            "HEURISTIC_RELEVANCE_UNSPECIFIED",
+            "NORMAL",
+            "HIGH"
+          ],
+          "description": "The relevance of this policy to the overall determination in the\nTroubleshootIamPolicyResponse.\n\nIf the sender of the request does not have access to the policy, this field\nis omitted.",
+          "type": "string",
+          "enumDescriptions": [
+            "Reserved for future use.",
+            "The data point has a limited effect on the result. Changing the data point\nis unlikely to affect the overall determination.",
+            "The data point has a strong effect on the result. Changing the data point\nis likely to affect the overall determination."
+          ]
+        },
+        "policy": {
+          "description": "The IAM policy attached to the resource.\n\nIf the sender of the request does not have access to the policy, this field\nis empty.",
+          "$ref": "GoogleIamV1Policy"
+        }
+      },
+      "id": "GoogleCloudPolicytroubleshooterV1betaExplainedPolicy",
+      "description": "Details about how a specific IAM Policy contributed\nto the access check."
+    },
+    "GoogleIamV1Binding": {
+      "description": "Associates `members` with a `role`.",
+      "type": "object",
+      "properties": {
+        "role": {
+          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+          "type": "string"
+        },
+        "condition": {
+          "$ref": "GoogleTypeExpr",
+          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
+        },
+        "members": {
+          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a user that has been recently deleted. For\n   example, `alice@example.com?uid=123456789012345678901`. If the user is\n   recovered, this value reverts to `user:{emailid}` and the recovered user\n   retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n   unique identifier) representing a service account that has been recently\n   deleted. For example,\n   `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n   If the service account is undeleted, this value reverts to\n   `serviceAccount:{emailid}` and the undeleted service account retains the\n   role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a Google group that has been recently\n   deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n   the group is recovered, this value reverts to `group:{emailid}` and the\n   recovered group retains the role in the binding.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "GoogleIamV1Binding"
+    },
+    "GoogleTypeExpr": {
+      "id": "GoogleTypeExpr",
+      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
+      "type": "object",
+      "properties": {
+        "expression": {
+          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
+          "type": "string"
+        },
+        "title": {
+          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
+          "type": "string"
+        },
+        "location": {
+          "type": "string",
+          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."
+        },
+        "description": {
+          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
+          "type": "string"
+        }
+      }
+    },
+    "GoogleIamV1AuditConfig": {
+      "id": "GoogleIamV1AuditConfig",
+      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:jose@example.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"sampleservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:aliya@example.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts jose@example.com from DATA_READ logging, and\naliya@example.com from DATA_WRITE logging.",
+      "type": "object",
+      "properties": {
+        "auditLogConfigs": {
+          "description": "The configuration for logging of each type of permission.",
+          "type": "array",
+          "items": {
+            "$ref": "GoogleIamV1AuditLogConfig"
+          }
+        },
+        "service": {
+          "type": "string",
+          "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."
+        }
+      }
+    },
+    "GoogleCloudPolicytroubleshooterV1betaBindingExplanation": {
+      "id": "GoogleCloudPolicytroubleshooterV1betaBindingExplanation",
+      "description": "Details about how a binding in a policy affects a member's ability to use a\npermission.",
+      "type": "object",
+      "properties": {
+        "relevance": {
+          "description": "The relevance of this binding to the overall determination for the entire\npolicy.",
+          "type": "string",
+          "enumDescriptions": [
+            "Reserved for future use.",
+            "The data point has a limited effect on the result. Changing the data point\nis unlikely to affect the overall determination.",
+            "The data point has a strong effect on the result. Changing the data point\nis likely to affect the overall determination."
+          ],
+          "enum": [
+            "HEURISTIC_RELEVANCE_UNSPECIFIED",
+            "NORMAL",
+            "HIGH"
+          ]
+        },
+        "role": {
+          "description": "The role that this binding grants. For example,\n`roles/compute.serviceAgent`.\n\nFor a complete list of predefined IAM roles, as well as the permissions in\neach role, see https://cloud.google.com/iam/help/roles/reference.",
+          "type": "string"
+        },
+        "memberships": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembership"
+          },
+          "description": "Indicates whether each member in the binding includes the member specified\nin the request, either directly or indirectly. Each key identifies a member\nin the binding, and each value indicates whether the member in the binding\nincludes the member in the request.\n\nFor example, suppose that a binding includes the following members:\n\n* `user:alice@example.com`\n* `group:product-eng@example.com`\n\nYou want to troubleshoot access for `user:bob@example.com`. This user is a\nmember of the group `group:product-eng@example.com`.\n\nFor the first member in the binding, the key is `user:alice@example.com`,\nand the `membership` field in the value is set to\n`MEMBERSHIP_NOT_INCLUDED`.\n\nFor the second member in the binding, the key is\n`group:product-eng@example.com`, and the `membership` field in the value is\nset to `MEMBERSHIP_INCLUDED`."
         },
         "access": {
           "type": "string",
@@ -210,91 +232,8 @@
             "UNKNOWN_CONDITIONAL",
             "UNKNOWN_INFO_DENIED"
           ],
-          "description": "Indicates whether _this policy_ provides the specified permission to the\nspecified member for the specified resource.\n\nThis field does _not_ indicate whether the member actually has the\npermission for the resource. There might be another policy that overrides\nthis policy. To determine whether the member actually has the permission,\nuse the `access` field in the\nTroubleshootIamPolicyResponse."
+          "description": "Indicates whether _this binding_ provides the specified permission to the\nspecified member for the specified resource.\n\nThis field does _not_ indicate whether the member actually has the\npermission for the resource. There might be another binding that overrides\nthis binding. To determine whether the member actually has the permission,\nuse the `access` field in the\nTroubleshootIamPolicyResponse."
         },
-        "relevance": {
-          "enum": [
-            "HEURISTIC_RELEVANCE_UNSPECIFIED",
-            "NORMAL",
-            "HIGH"
-          ],
-          "description": "The relevance of this policy to the overall determination in the\nTroubleshootIamPolicyResponse.\n\nIf the sender of the request does not have access to the policy, this field\nis omitted.",
-          "type": "string",
-          "enumDescriptions": [
-            "Reserved for future use.",
-            "The data point has a limited effect on the result. Changing the data point\nis unlikely to affect the overall determination.",
-            "The data point has a strong effect on the result. Changing the data point\nis likely to affect the overall determination."
-          ]
-        }
-      },
-      "id": "GoogleCloudPolicytroubleshooterV1betaExplainedPolicy"
-    },
-    "GoogleIamV1Binding": {
-      "type": "object",
-      "properties": {
-        "condition": {
-          "$ref": "GoogleTypeExpr",
-          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."
-        },
-        "members": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a user that has been recently deleted. For\n   example, `alice@example.com?uid=123456789012345678901`. If the user is\n   recovered, this value reverts to `user:{emailid}` and the recovered user\n   retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n   unique identifier) representing a service account that has been recently\n   deleted. For example,\n   `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n   If the service account is undeleted, this value reverts to\n   `serviceAccount:{emailid}` and the undeleted service account retains the\n   role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a Google group that has been recently\n   deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n   the group is recovered, this value reverts to `group:{emailid}` and the\n   recovered group retains the role in the binding.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n"
-        },
-        "role": {
-          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
-          "type": "string"
-        }
-      },
-      "id": "GoogleIamV1Binding",
-      "description": "Associates `members` with a `role`."
-    },
-    "GoogleTypeExpr": {
-      "type": "object",
-      "properties": {
-        "title": {
-          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
-          "type": "string"
-        },
-        "location": {
-          "type": "string",
-          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."
-        },
-        "description": {
-          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
-          "type": "string"
-        },
-        "expression": {
-          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
-          "type": "string"
-        }
-      },
-      "id": "GoogleTypeExpr",
-      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\""
-    },
-    "GoogleIamV1AuditConfig": {
-      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:jose@example.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"sampleservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:aliya@example.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts jose@example.com from DATA_READ logging, and\naliya@example.com from DATA_WRITE logging.",
-      "type": "object",
-      "properties": {
-        "service": {
-          "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services.",
-          "type": "string"
-        },
-        "auditLogConfigs": {
-          "description": "The configuration for logging of each type of permission.",
-          "type": "array",
-          "items": {
-            "$ref": "GoogleIamV1AuditLogConfig"
-          }
-        }
-      },
-      "id": "GoogleIamV1AuditConfig"
-    },
-    "GoogleCloudPolicytroubleshooterV1betaBindingExplanation": {
-      "type": "object",
-      "properties": {
         "rolePermission": {
           "type": "string",
           "enumDescriptions": [
@@ -316,21 +255,7 @@
           "description": "A condition expression that prevents access unless the expression evaluates\nto `true`.\n\nTo learn about IAM Conditions, see\nhttp://cloud.google.com/iam/help/conditions/overview."
         },
         "rolePermissionRelevance": {
-          "enumDescriptions": [
-            "Reserved for future use.",
-            "The data point has a limited effect on the result. Changing the data point\nis unlikely to affect the overall determination.",
-            "The data point has a strong effect on the result. Changing the data point\nis likely to affect the overall determination."
-          ],
-          "enum": [
-            "HEURISTIC_RELEVANCE_UNSPECIFIED",
-            "NORMAL",
-            "HIGH"
-          ],
           "description": "The relevance of the permission's existence, or nonexistence, in the role\nto the overall determination for the entire policy.",
-          "type": "string"
-        },
-        "relevance": {
-          "description": "The relevance of this binding to the overall determination for the entire\npolicy.",
           "type": "string",
           "enumDescriptions": [
             "Reserved for future use.",
@@ -342,55 +267,46 @@
             "NORMAL",
             "HIGH"
           ]
-        },
-        "role": {
-          "description": "The role that this binding grants. For example,\n`roles/compute.serviceAgent`.\n\nFor a complete list of predefined IAM roles, as well as the permissions in\neach role, see https://cloud.google.com/iam/help/roles/reference.",
-          "type": "string"
-        },
-        "memberships": {
-          "description": "Indicates whether each member in the binding includes the member specified\nin the request, either directly or indirectly. Each key identifies a member\nin the binding, and each value indicates whether the member in the binding\nincludes the member in the request.\n\nFor example, suppose that a binding includes the following members:\n\n* `user:alice@example.com`\n* `group:product-eng@example.com`\n\nYou want to troubleshoot access for `user:bob@example.com`. This user is a\nmember of the group `group:product-eng@example.com`.\n\nFor the first member in the binding, the key is `user:alice@example.com`,\nand the `membership` field in the value is set to\n`MEMBERSHIP_NOT_INCLUDED`.\n\nFor the second member in the binding, the key is\n`group:product-eng@example.com`, and the `membership` field in the value is\nset to `MEMBERSHIP_INCLUDED`.",
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembership"
-          }
-        },
-        "access": {
-          "enumDescriptions": [
-            "Reserved for future use.",
-            "The member has the permission.",
-            "The member does not have the permission.",
-            "The member has the permission only if a condition expression evaluates to\n`true`.",
-            "The sender of the request does not have access to all of the policies that\nPolicy Troubleshooter needs to evaluate."
-          ],
-          "enum": [
-            "ACCESS_STATE_UNSPECIFIED",
-            "GRANTED",
-            "NOT_GRANTED",
-            "UNKNOWN_CONDITIONAL",
-            "UNKNOWN_INFO_DENIED"
-          ],
-          "description": "Indicates whether _this binding_ provides the specified permission to the\nspecified member for the specified resource.\n\nThis field does _not_ indicate whether the member actually has the\npermission for the resource. There might be another binding that overrides\nthis binding. To determine whether the member actually has the permission,\nuse the `access` field in the\nTroubleshootIamPolicyResponse.",
-          "type": "string"
         }
-      },
-      "id": "GoogleCloudPolicytroubleshooterV1betaBindingExplanation",
-      "description": "Details about how a binding in a policy affects a member's ability to use a\npermission."
+      }
     },
     "GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyRequest": {
-      "description": "Request for TroubleshootIamPolicy.",
       "type": "object",
       "properties": {
         "accessTuple": {
-          "$ref": "GoogleCloudPolicytroubleshooterV1betaAccessTuple",
-          "description": "The information to use for checking whether a member has a permission for a\nresource."
+          "description": "The information to use for checking whether a member has a permission for a\nresource.",
+          "$ref": "GoogleCloudPolicytroubleshooterV1betaAccessTuple"
         }
       },
-      "id": "GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyRequest"
+      "id": "GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyRequest",
+      "description": "Request for TroubleshootIamPolicy."
     },
     "GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembership": {
+      "description": "Details about whether the binding includes the member.",
       "type": "object",
       "properties": {
+        "relevance": {
+          "enumDescriptions": [
+            "Reserved for future use.",
+            "The data point has a limited effect on the result. Changing the data point\nis unlikely to affect the overall determination.",
+            "The data point has a strong effect on the result. Changing the data point\nis likely to affect the overall determination."
+          ],
+          "enum": [
+            "HEURISTIC_RELEVANCE_UNSPECIFIED",
+            "NORMAL",
+            "HIGH"
+          ],
+          "description": "The relevance of the member's status to the overall determination for the\nbinding.",
+          "type": "string"
+        },
         "membership": {
+          "enumDescriptions": [
+            "Reserved for future use.",
+            "The binding includes the member. The member can be included directly\nor indirectly. For example:\n\n* A member is included directly if that member is listed in the binding.\n* A member is included indirectly if that member is in a Google group or\n  G Suite domain that is listed in the binding.",
+            "The binding does not include the member.",
+            "The sender of the request is not allowed to access the binding.",
+            "The member is an unsupported type. Only Google Accounts and service\naccounts are supported."
+          ],
           "enum": [
             "MEMBERSHIP_UNSPECIFIED",
             "MEMBERSHIP_INCLUDED",
@@ -399,43 +315,16 @@
             "MEMBERSHIP_UNKNOWN_UNSUPPORTED"
           ],
           "description": "Indicates whether the binding includes the member.",
-          "type": "string",
-          "enumDescriptions": [
-            "Reserved for future use.",
-            "The binding includes the member. The member can be included directly\nor indirectly. For example:\n\n* A member is included directly if that member is listed in the binding.\n* A member is included indirectly if that member is in a Google group or\n  G Suite domain that is listed in the binding.",
-            "The binding does not include the member.",
-            "The sender of the request is not allowed to access the binding.",
-            "The member is an unsupported type. Only Google Accounts and service\naccounts are supported."
-          ]
-        },
-        "relevance": {
-          "type": "string",
-          "enumDescriptions": [
-            "Reserved for future use.",
-            "The data point has a limited effect on the result. Changing the data point\nis unlikely to affect the overall determination.",
-            "The data point has a strong effect on the result. Changing the data point\nis likely to affect the overall determination."
-          ],
-          "enum": [
-            "HEURISTIC_RELEVANCE_UNSPECIFIED",
-            "NORMAL",
-            "HIGH"
-          ],
-          "description": "The relevance of the member's status to the overall determination for the\nbinding."
+          "type": "string"
         }
       },
-      "id": "GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembership",
-      "description": "Details about whether the binding includes the member."
+      "id": "GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembership"
     },
     "GoogleIamV1AuditLogConfig": {
+      "id": "GoogleIamV1AuditLogConfig",
+      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:jose@example.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\njose@example.com from DATA_READ logging.",
       "type": "object",
       "properties": {
-        "exemptedMembers": {
-          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "logType": {
           "description": "The log type that this config enables.",
           "type": "string",
@@ -451,13 +340,17 @@
             "DATA_WRITE",
             "DATA_READ"
           ]
+        },
+        "exemptedMembers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."
         }
-      },
-      "id": "GoogleIamV1AuditLogConfig",
-      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:jose@example.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\njose@example.com from DATA_READ logging."
+      }
     },
     "GoogleCloudPolicytroubleshooterV1betaAccessTuple": {
-      "description": "Information about the member, resource, and permission to check.",
       "type": "object",
       "properties": {
         "fullResourceName": {
@@ -473,7 +366,8 @@
           "type": "string"
         }
       },
-      "id": "GoogleCloudPolicytroubleshooterV1betaAccessTuple"
+      "id": "GoogleCloudPolicytroubleshooterV1betaAccessTuple",
+      "description": "Information about the member, resource, and permission to check."
     }
   },
   "icons": {
@@ -497,5 +391,111 @@
   "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
   "title": "Policy Troubleshooter API",
-  "ownerName": "Google"
+  "ownerName": "Google",
+  "resources": {
+    "iam": {
+      "methods": {
+        "troubleshoot": {
+          "path": "v1beta/iam:troubleshoot",
+          "id": "policytroubleshooter.iam.troubleshoot",
+          "request": {
+            "$ref": "GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyRequest"
+          },
+          "description": "Checks whether a member has a specific permission for a specific resource,\nand explains why the member does or does not have that permission.",
+          "response": {
+            "$ref": "GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {},
+          "flatPath": "v1beta/iam:troubleshoot"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "uploadType": {
+      "type": "string",
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
+    "callback": {
+      "type": "string",
+      "location": "query",
+      "description": "JSONP"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ]
+    },
+    "alt": {
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    }
+  },
+  "version": "v1beta",
+  "baseUrl": "https://policytroubleshooter.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "",
+  "servicePath": ""
 }

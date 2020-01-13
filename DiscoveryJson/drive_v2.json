@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/rY_3vpUT9Tg-RSaFgYOb9O9rBjk\"",
+ "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/wt-VHDYUQjV18GxQRdTzFCNP9og\"",
  "discoveryVersion": "v1",
  "id": "drive:v2",
  "name": "drive",
  "version": "v2",
- "revision": "20191206",
+ "revision": "20191213",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -5215,83 +5215,6 @@
       "https://www.googleapis.com/auth/drive.file",
       "https://www.googleapis.com/auth/drive.metadata"
      ]
-    }
-   }
-  },
-  "realtime": {
-   "methods": {
-    "get": {
-     "id": "drive.realtime.get",
-     "path": "files/{fileId}/realtime",
-     "httpMethod": "GET",
-     "description": "Exports the contents of the Realtime API data model associated with this file as JSON.",
-     "parameters": {
-      "fileId": {
-       "type": "string",
-       "description": "The ID of the file that the Realtime API data model is associated with.",
-       "required": true,
-       "location": "path"
-      },
-      "revision": {
-       "type": "integer",
-       "description": "The revision of the Realtime API data model to export. Revisions start at 1 (the initial empty data model) and are incremented with each change. If this parameter is excluded, the most recent data model will be returned.",
-       "format": "int32",
-       "minimum": "1",
-       "location": "query"
-      }
-     },
-     "parameterOrder": [
-      "fileId"
-     ],
-     "scopes": [
-      "https://www.googleapis.com/auth/drive",
-      "https://www.googleapis.com/auth/drive.file",
-      "https://www.googleapis.com/auth/drive.readonly"
-     ],
-     "supportsMediaDownload": true
-    },
-    "update": {
-     "id": "drive.realtime.update",
-     "path": "files/{fileId}/realtime",
-     "httpMethod": "PUT",
-     "description": "Overwrites the Realtime API data model associated with this file with the provided JSON data model.",
-     "parameters": {
-      "baseRevision": {
-       "type": "string",
-       "description": "The revision of the model to diff the uploaded model against. If set, the uploaded model is diffed against the provided revision and those differences are merged with any changes made to the model after the provided revision. If not set, the uploaded model replaces the current model on the server.",
-       "location": "query"
-      },
-      "fileId": {
-       "type": "string",
-       "description": "The ID of the file that the Realtime API data model is associated with.",
-       "required": true,
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "fileId"
-     ],
-     "scopes": [
-      "https://www.googleapis.com/auth/drive",
-      "https://www.googleapis.com/auth/drive.file"
-     ],
-     "supportsMediaUpload": true,
-     "mediaUpload": {
-      "accept": [
-       "*/*"
-      ],
-      "maxSize": "10MB",
-      "protocols": {
-       "simple": {
-        "multipart": true,
-        "path": "/upload/drive/v2/files/{fileId}/realtime"
-       },
-       "resumable": {
-        "multipart": true,
-        "path": "/resumable/upload/drive/v2/files/{fileId}/realtime"
-       }
-      }
-     }
     }
    }
   },

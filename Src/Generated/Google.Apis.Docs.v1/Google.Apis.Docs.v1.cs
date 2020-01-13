@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191216 (1810)
+ *      <tr><th>API Rev<td>20200107 (1832)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -804,9 +804,9 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Creates a Footer. The new footer will be applied to the DocumentStyle.
+    /// <summary>Creates a Footer. The new footer is applied to the DocumentStyle.
     ///
-    /// If a footer of the specified type already exists then a 400 bad request error will be returned.</summary>
+    /// If a footer of the specified type already exists, a 400 bad request error is returned.</summary>
     public class CreateFooterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The type of footer to create.</summary>
@@ -828,9 +828,46 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Creates a Header. The new header will be applied to the DocumentStyle.
+    /// <summary>Creates a Footnote segment and inserts a new FootnoteReference to it at the given location.
     ///
-    /// If a header of the specified type already exists then a 400 bad request error will be returned.</summary>
+    /// The new Footnote segment will contain a space followed by a newline character.</summary>
+    public class CreateFootnoteRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Inserts the footnote reference at the end of the document body.
+        ///
+        /// Footnote references cannot be inserted inside a header, footer or footnote. Since footnote references can
+        /// only be inserted in the body, the segment ID field must be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOfSegmentLocation")]
+        public virtual EndOfSegmentLocation EndOfSegmentLocation { get; set; } 
+
+        /// <summary>Inserts the footnote reference at a specific index in the document.
+        ///
+        /// The footnote reference must be inserted inside the bounds of an existing Paragraph. For instance, it cannot
+        /// be inserted at a table's start index (i.e. between the table and its preceding paragraph).
+        ///
+        /// Footnote references cannot be inserted inside an equation, header, footer or footnote. Since footnote
+        /// references can only be inserted in the body, the segment ID field must be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual Location Location { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of creating a footnote.</summary>
+    public class CreateFootnoteResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the created footnote.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("footnoteId")]
+        public virtual string FootnoteId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Creates a Header. The new header is applied to the DocumentStyle.
+    ///
+    /// If a header of the specified type already exists, a 400 bad request error is returned.</summary>
     public class CreateHeaderRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The type of header to create.</summary>
@@ -3035,6 +3072,10 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createFooter")]
         public virtual CreateFooterRequest CreateFooter { get; set; } 
 
+        /// <summary>Creates a footnote.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createFootnote")]
+        public virtual CreateFootnoteRequest CreateFootnote { get; set; } 
+
         /// <summary>Creates a header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createHeader")]
         public virtual CreateHeaderRequest CreateHeader { get; set; } 
@@ -3157,6 +3198,10 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>The result of creating a footer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createFooter")]
         public virtual CreateFooterResponse CreateFooter { get; set; } 
+
+        /// <summary>The result of creating a footnote.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createFootnote")]
+        public virtual CreateFootnoteResponse CreateFootnote { get; set; } 
 
         /// <summary>The result of creating a header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createHeader")]

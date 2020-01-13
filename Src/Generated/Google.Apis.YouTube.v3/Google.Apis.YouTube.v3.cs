@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20191025 (1758)
+ *      <tr><th>API Rev<td>20200109 (1834)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -6537,8 +6537,8 @@ namespace Google.Apis.YouTube.v3
 
 
         /// <summary>Lists members for a channel.</summary>
-        /// <param name="part">The part parameter specifies the member resource parts that the API response will include.
-        /// Supported values are id and snippet.</param>
+        /// <param name="part">The part parameter specifies the member resource parts that the API response will include. Set
+        /// the parameter value to snippet.</param>
         public virtual ListRequest List(string part)
         {
             return new ListRequest(service, part);
@@ -6556,10 +6556,16 @@ namespace Google.Apis.YouTube.v3
             }
 
 
-            /// <summary>The part parameter specifies the member resource parts that the API response will include.
-            /// Supported values are id and snippet.</summary>
+            /// <summary>The part parameter specifies the member resource parts that the API response will include. Set
+            /// the parameter value to snippet.</summary>
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Part { get; private set; }
+
+            /// <summary>The filterByMemberChannelId parameter represents a comma separated list of channel IDs. Only
+            /// data about members that are part of this list will be included in the response. It can be used to
+            /// efficiently check whether specific users are entitled to perks offered via third parties.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filterByMemberChannelId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string FilterByMemberChannelId { get; set; }
 
             /// <summary>The hasAccessToLevel parameter specifies, when set, the ID of a pricing level that members from
             /// the results set should have access to. When not set, all members will be considered, regardless of their
@@ -6626,6 +6632,15 @@ namespace Google.Apis.YouTube.v3
                     {
                         Name = "part",
                         IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filterByMemberChannelId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filterByMemberChannelId",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -12196,9 +12211,15 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("longUploadsStatus")]
         public virtual string LongUploadsStatus { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("madeForKids")]
+        public virtual System.Nullable<bool> MadeForKids { get; set; } 
+
         /// <summary>Privacy status of the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyStatus")]
         public virtual string PrivacyStatus { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("selfDeclaredMadeForKids")]
+        public virtual System.Nullable<bool> SelfDeclaredMadeForKids { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13616,6 +13637,9 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("liveBroadcastPriority")]
         public virtual string LiveBroadcastPriority { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("madeForKids")]
+        public virtual System.Nullable<bool> MadeForKids { get; set; } 
+
         /// <summary>The broadcast's privacy status. Note that the broadcast represents exactly one YouTube video, so
         /// the privacy settings are identical to those supported for videos. In addition, you can set this field by
         /// modifying the broadcast resource or by setting the privacyStatus field of the corresponding video
@@ -13626,6 +13650,9 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The broadcast's recording status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordingStatus")]
         public virtual string RecordingStatus { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("selfDeclaredMadeForKids")]
+        public virtual System.Nullable<bool> SelfDeclaredMadeForKids { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14383,10 +14410,6 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The ID that YouTube assigns to uniquely identify the member.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
-
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#member".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
@@ -14453,10 +14476,18 @@ namespace Google.Apis.YouTube.v3.Data
 
     public class MembershipsDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>All levels that the user has access to. This includes the purchased level and all other levels that
-        /// are included because of a higher purchase.</summary>
+        /// <summary>All levels that the user has access to. This includes the currently active level and all other
+        /// levels that are included because of a higher purchase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessibleLevels")]
         public virtual System.Collections.Generic.IList<string> AccessibleLevels { get; set; } 
+
+        /// <summary>The highest level that the user has access to at the moment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highestAccessibleLevel")]
+        public virtual string HighestAccessibleLevel { get; set; } 
+
+        /// <summary>Display name for the highest level that the user has access to at the moment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highestAccessibleLevelDisplayName")]
+        public virtual string HighestAccessibleLevelDisplayName { get; set; } 
 
         /// <summary>The date and time when the user became a continuous member across all levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberSince")]
@@ -14477,7 +14508,9 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memberTotalDurationCurrentLevel")]
         public virtual System.Nullable<int> MemberTotalDurationCurrentLevel { get; set; } 
 
-        /// <summary>The highest level the user has access to at the moment.</summary>
+        /// <summary>The highest level that the user has access to at the moment. DEPRECATED - highest_accessible_level
+        /// should be used instead. This will be removed after we make sure there are no 3rd parties relying on
+        /// it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchasedLevel")]
         public virtual string PurchasedLevel { get; set; } 
 
@@ -16691,6 +16724,9 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("license")]
         public virtual string License { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("madeForKids")]
+        public virtual System.Nullable<bool> MadeForKids { get; set; } 
+
         /// <summary>The video's privacy status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyStatus")]
         public virtual string PrivacyStatus { get; set; } 
@@ -16723,6 +16759,12 @@ namespace Google.Apis.YouTube.v3.Data
         /// uploadStatus property indicates that the upload was rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rejectionReason")]
         public virtual string RejectionReason { get; set; } 
+
+        /// <summary>Allows clients to set the Crosswalk self_declared state for a Video. This maps to
+        /// VAPI.Video.creator_flags.is_crosswalk_self_declared() and
+        /// VAPI.Video.creator_flags.is_not_crosswalk_self_declared().</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfDeclaredMadeForKids")]
+        public virtual System.Nullable<bool> SelfDeclaredMadeForKids { get; set; } 
 
         /// <summary>The status of the uploaded video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadStatus")]

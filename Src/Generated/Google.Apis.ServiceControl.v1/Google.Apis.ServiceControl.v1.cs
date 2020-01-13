@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191206 (1800)
+ *      <tr><th>API Rev<td>20200106 (1831)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -2014,6 +2014,26 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>Third party identity as the real authority.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyPrincipal")]
         public virtual ThirdPartyPrincipal ThirdPartyPrincipal { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The context of a span, attached to google.api.Distribution.Exemplars in google.api.Distribution values
+    /// during aggregation.
+    ///
+    /// It contains the name of a span with format: projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]</summary>
+    public class SpanContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the span in the following format:
+        ///
+        /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project;
+        /// it is a 32-character hexadecimal encoding of a 16-byte array.
+        ///
+        /// [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an
+        /// 8-byte array.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spanName")]
+        public virtual string SpanName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
