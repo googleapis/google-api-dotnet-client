@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>Cloud Source Repositories API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20190611 (1622)
+ *      <tr><th>API Rev<td>20200102 (1827)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>
  *              https://cloud.google.com/source-repositories/docs/apis</a>
@@ -602,6 +602,15 @@ namespace Google.Apis.CloudSourceRepositories.v1
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
+                /// <summary>Optional. The policy format version to be returned.
+                ///
+                /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.
+                ///
+                /// Requests for policies with any conditional bindings must specify version 3. Policies without any
+                /// conditional bindings may specify any valid value or leave the field unset.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -634,6 +643,15 @@ namespace Google.Apis.CloudSourceRepositories.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/repos/.+$",
+                        });
+                    RequestParameters.Add(
+                        "options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 
@@ -1159,12 +1177,12 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     /// Example Policy with multiple AuditConfigs:
     ///
     /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ]
-    /// }, { "service": "fooservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
-    /// "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
+    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", }
+    /// ] }, { "service": "sampleservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, {
+    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] }
     ///
-    /// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
-    /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
+    /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts
+    /// jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -1182,10 +1200,10 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
 
     /// <summary>Provides the configuration for logging a type of permissions. Example:
     ///
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] }, {
+    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, {
     /// "log_type": "DATA_WRITE", } ] }
     ///
-    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.com from DATA_READ
+    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
     /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1221,12 +1239,26 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` .
+        /// `alice@example.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.
         ///
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
+        ///
+        /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
+        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
+        ///
+        /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a service account that has been recently deleted. For example, `my-other-
+        /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
+        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
+        ///
+        /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
+        /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
+        /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
+        /// binding.
         ///
         /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example,
         /// `google.com` or `example.com`.
@@ -1363,34 +1395,43 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
-    /// for Cloud Platform resources.
+    /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
+    /// resources.
     ///
-    /// A `Policy` consists of a list of `bindings`. A `binding` binds a list of `members` to a `role`, where the
-    /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
-    /// permissions defined by IAM.
+    /// A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members
+    /// can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list
+    /// of permissions; each `role` can be an IAM predefined role or a user-created custom role.
     ///
-    /// **JSON Example**
+    /// Optionally, a `binding` can specify a `condition`, which is a logical expression that allows access to a
+    /// resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the
+    /// request, the resource, or both.
     ///
-    /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role": "roles/viewer",
-    /// "members": ["user:sean@example.com"] } ] }
+    /// **JSON example:**
     ///
-    /// **YAML Example**
+    /// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    ///
+    /// **YAML example:**
     ///
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
-    /// other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com role: roles/viewer
+    /// project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: -
+    /// user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access
+    /// description: Does not grant access after Sep 2020 expression: request.time <
+    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
     ///
-    /// For a description of IAM and its features, see the [IAM developer's
-    /// guide](https://cloud.google.com/iam/docs).</summary>
+    /// For a description of IAM and its features, see the [IAM
+    /// documentation](https://cloud.google.com/iam/docs/).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 
-        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
-        /// error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
+        /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -1400,12 +1441,29 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
         ///
-        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
-        /// blindly.</summary>
+        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
+        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
+        /// `1` policy, and all of the conditions in the version `3` policy are lost.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Deprecated.</summary>
+        /// <summary>Specifies the format of the policy.
+        ///
+        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
+        ///
+        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to
+        /// the following operations:
+        ///
+        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy
+        /// * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition,
+        /// from a policy that includes conditions
+        ///
+        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
+        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
+        /// `1` policy, and all of the conditions in the version `3` policy are lost.
+        ///
+        /// If a policy does not include any conditions, operations on that policy may specify any valid version or
+        /// leave the field unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200104 (1829)
+ *      <tr><th>API Rev<td>20200110 (1835)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -381,17 +381,17 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
-            /// <summary>Creates a Membership.</summary>
+            /// <summary>Creates a `Membership`.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to create
-            /// Membership within. Format: `groups/{group_id}`, where `group_id` is the unique id assigned to the
-            /// Group.</param>
+            /// <param name="parent">The parent `Group` resource under which to create the `Membership`.
+            ///
+            /// Must be of the form `groups/{group_id}`.</param>
             public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.Membership body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a Membership.</summary>
+            /// <summary>Creates a `Membership`.</summary>
             public class CreateRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -404,9 +404,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 }
 
 
-                /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to create
-                /// Membership within. Format: `groups/{group_id}`, where `group_id` is the unique id assigned to the
-                /// Group.</summary>
+                /// <summary>The parent `Group` resource under which to create the `Membership`.
+                ///
+                /// Must be of the form `groups/{group_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -453,18 +453,17 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             }
 
-            /// <summary>Deletes a Membership.</summary>
-            /// <param name="name">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Membership to be
-            /// deleted.
+            /// <summary>Deletes a `Membership`.</summary>
+            /// <param name="name">The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership` to
+            /// delete.
             ///
-            /// Format: `groups/{group_id}/memberships/{member_id}`, where `group_id` is the unique id assigned to the Group to
-            /// which Membership belongs to, and member_id is the unique id assigned to the member.</param>
+            /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a Membership.</summary>
+            /// <summary>Deletes a `Membership`.</summary>
             public class DeleteRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -476,12 +475,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 }
 
 
-                /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Membership to
-                /// be deleted.
+                /// <summary>The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// `Membership` to delete.
                 ///
-                /// Format: `groups/{group_id}/memberships/{member_id}`, where `group_id` is the unique id assigned to
-                /// the Group to which Membership belongs to, and member_id is the unique id assigned to the
-                /// member.</summary>
+                /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -522,18 +519,17 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             }
 
-            /// <summary>Retrieves a Membership.</summary>
-            /// <param name="name">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Membership to be
-            /// retrieved.
+            /// <summary>Retrieves a `Membership`.</summary>
+            /// <param name="name">The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership` to
+            /// retrieve.
             ///
-            /// Format: `groups/{group_id}/memberships/{member_id}`, where `group_id` is the unique id assigned to the Group to
-            /// which Membership belongs to, and `member_id` is the unique id assigned to the member.</param>
+            /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Retrieves a Membership.</summary>
+            /// <summary>Retrieves a `Membership`.</summary>
             public class GetRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Membership>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -545,12 +541,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 }
 
 
-                /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Membership to
-                /// be retrieved.
+                /// <summary>The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// `Membership` to retrieve.
                 ///
-                /// Format: `groups/{group_id}/memberships/{member_id}`, where `group_id` is the unique id assigned to
-                /// the Group to which Membership belongs to, and `member_id` is the unique id assigned to the
-                /// member.</summary>
+                /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -591,17 +585,16 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             }
 
-            /// <summary>List Memberships within a Group.</summary>
-            /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to list
-            /// Memberships within.
+            /// <summary>Lists the `Membership`s within a `Group`.</summary>
+            /// <param name="parent">The parent `Group` resource under which to lookup the `Membership` name.
             ///
-            /// Format: `groups/{group_id}`, where `group_id` is the unique id assigned to the Group.</param>
+            /// Must be of the form `groups/{group_id}`.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>List Memberships within a Group.</summary>
+            /// <summary>Lists the `Membership`s within a `Group`.</summary>
             public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.ListMembershipsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -613,27 +606,37 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 }
 
 
-                /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to list
-                /// Memberships within.
+                /// <summary>The parent `Group` resource under which to lookup the `Membership` name.
                 ///
-                /// Format: `groups/{group_id}`, where `group_id` is the unique id assigned to the Group.</summary>
+                /// Must be of the form `groups/{group_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The next_page_token value returned from a previous list request, if any</summary>
+                /// <summary>The `next_page_token` value returned from a previous search request, if any.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>The default page size is 200 (max 1000) for the BASIC view, and 50 (max 500) for the FULL
-                /// view.</summary>
+                /// <summary>The maximum number of results to return.
+                ///
+                /// Note that the number of results returned may be less than this value even if there are more
+                /// available results. To fetch all results, clients must continue calling this method repeatedly until
+                /// the response no longer contains a `next_page_token`.
+                ///
+                /// If unspecified, defaults to 200 for `GroupView.BASIC` and to 50 for `GroupView.FULL`.
+                ///
+                /// Must not be greater than 1000 for `GroupView.BASIC` or 500 for `GroupView.FULL`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Membership resource view to be returned. Defaults to MembershipView.BASIC.</summary>
+                /// <summary>The level of detail to be returned.
+                ///
+                /// If unspecified, defaults to `MembershipView.BASIC`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                /// <summary>Membership resource view to be returned. Defaults to MembershipView.BASIC.</summary>
+                /// <summary>The level of detail to be returned.
+                ///
+                /// If unspecified, defaults to `MembershipView.BASIC`.</summary>
                 public enum ViewEnum
                 {
                     [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -706,19 +709,18 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             }
 
-            /// <summary>Looks up [resource name](https://cloud.google.com/apis/design/resource_names) of a Membership
-            /// within a Group by member's EntityKey.</summary>
-            /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to lookup
-            /// Membership within.
+            /// <summary>Looks up the [resource name](https://cloud.google.com/apis/design/resource_names) of a
+            /// `Membership` by its `EntityKey`.</summary>
+            /// <param name="parent">The parent `Group` resource under which to lookup the `Membership` name.
             ///
-            /// Format: `groups/{group_id}`, where `group_id` is the unique id assigned to the Group.</param>
+            /// Must be of the form `groups/{group_id}`.</param>
             public virtual LookupRequest Lookup(string parent)
             {
                 return new LookupRequest(service, parent);
             }
 
-            /// <summary>Looks up [resource name](https://cloud.google.com/apis/design/resource_names) of a Membership
-            /// within a Group by member's EntityKey.</summary>
+            /// <summary>Looks up the [resource name](https://cloud.google.com/apis/design/resource_names) of a
+            /// `Membership` by its `EntityKey`.</summary>
             public class LookupRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.LookupMembershipNameResponse>
             {
                 /// <summary>Constructs a new Lookup request.</summary>
@@ -730,24 +732,30 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 }
 
 
-                /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to lookup
-                /// Membership within.
+                /// <summary>The parent `Group` resource under which to lookup the `Membership` name.
                 ///
-                /// Format: `groups/{group_id}`, where `group_id` is the unique id assigned to the Group.</summary>
+                /// Must be of the form `groups/{group_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The id of the entity within the given namespace. The id must be unique within its
-                /// namespace.</summary>
+                /// <summary>The ID of the entity.
+                ///
+                /// For Google-managed entities, the `id` must be the email address of a group or user.
+                ///
+                /// For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's
+                /// requirements.
+                ///
+                /// Must be unique within a `namespace`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("memberKey.id", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string MemberKeyId { get; set; }
 
-                /// <summary>Namespaces provide isolation for ids, i.e an id only needs to be unique within its
-                /// namespace.
+                /// <summary>The namespace in which the entity exists.
                 ///
-                /// Namespaces are currently only created as part of IdentitySource creation from Admin Console. A
-                /// namespace `"identitysources/{identity_source_id}"` is created corresponding to every Identity Source
-                /// `identity_source_id`.</summary>
+                /// If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a
+                /// Google Group.
+                ///
+                /// If specified, the `EntityKey` represents an external-identity-mapped group created through Admin
+                /// Console. Must be of the form `identitysources/{identity_source_id}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("memberKey.namespace", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string MemberKeyNamespace { get; set; }
 
@@ -807,14 +815,14 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
         }
 
-        /// <summary>Creates a Group.</summary>
+        /// <summary>Creates a `Group`.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.Group body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a Group.</summary>
+        /// <summary>Creates a `Group`.</summary>
         public class CreateRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -860,15 +868,17 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
         }
 
-        /// <summary>Deletes a Group.</summary>
-        /// <param name="name">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in the format:
-        /// `groups/{group_id}`, where `group_id` is the unique id assigned to the Group.</param>
+        /// <summary>Deletes a `Group`.</summary>
+        /// <param name="name">The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to
+        /// retrieve.
+        ///
+        /// Must be of the form `groups/{group_id}`.</param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(service, name);
         }
 
-        /// <summary>Deletes a Group.</summary>
+        /// <summary>Deletes a `Group`.</summary>
         public class DeleteRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -880,8 +890,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
-            /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in the
-            /// format: `groups/{group_id}`, where `group_id` is the unique id assigned to the Group.</summary>
+            /// <summary>The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to
+            /// retrieve.
+            ///
+            /// Must be of the form `groups/{group_id}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -922,15 +934,17 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
         }
 
-        /// <summary>Retrieves a Group.</summary>
-        /// <param name="name">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in the format:
-        /// `groups/{group_id}`, where `group_id` is the unique id assigned to the Group.</param>
+        /// <summary>Retrieves a `Group`.</summary>
+        /// <param name="name">The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to
+        /// retrieve.
+        ///
+        /// Must be of the form `groups/{group_id}`.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
         }
 
-        /// <summary>Retrieves a Group.</summary>
+        /// <summary>Retrieves a `Group`.</summary>
         public class GetRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Group>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -942,8 +956,10 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
-            /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in the
-            /// format: `groups/{group_id}`, where `group_id` is the unique id assigned to the Group.</summary>
+            /// <summary>The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to
+            /// retrieve.
+            ///
+            /// Must be of the form `groups/{group_id}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -984,15 +1000,15 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
         }
 
-        /// <summary>Looks up [resource name](https://cloud.google.com/apis/design/resource_names) of a Group by its
-        /// EntityKey.</summary>
+        /// <summary>Looks up the [resource name](https://cloud.google.com/apis/design/resource_names) of a `Group` by
+        /// its `EntityKey`.</summary>
         public virtual LookupRequest Lookup()
         {
             return new LookupRequest(service);
         }
 
-        /// <summary>Looks up [resource name](https://cloud.google.com/apis/design/resource_names) of a Group by its
-        /// EntityKey.</summary>
+        /// <summary>Looks up the [resource name](https://cloud.google.com/apis/design/resource_names) of a `Group` by
+        /// its `EntityKey`.</summary>
         public class LookupRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.LookupGroupNameResponse>
         {
             /// <summary>Constructs a new Lookup request.</summary>
@@ -1003,18 +1019,26 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
-            /// <summary>Namespaces provide isolation for ids, i.e an id only needs to be unique within its namespace.
+            /// <summary>The ID of the entity.
             ///
-            /// Namespaces are currently only created as part of IdentitySource creation from Admin Console. A namespace
-            /// `"identitysources/{identity_source_id}"` is created corresponding to every Identity Source
-            /// `identity_source_id`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("groupKey.namespace", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string GroupKeyNamespace { get; set; }
-
-            /// <summary>The id of the entity within the given namespace. The id must be unique within its
-            /// namespace.</summary>
+            /// For Google-managed entities, the `id` must be the email address of a group or user.
+            ///
+            /// For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's
+            /// requirements.
+            ///
+            /// Must be unique within a `namespace`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey.id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string GroupKeyId { get; set; }
+
+            /// <summary>The namespace in which the entity exists.
+            ///
+            /// If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google
+            /// Group.
+            ///
+            /// If specified, the `EntityKey` represents an external-identity-mapped group created through Admin
+            /// Console. Must be of the form `identitysources/{identity_source_id}.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("groupKey.namespace", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string GroupKeyNamespace { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1041,18 +1065,18 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "groupKey.namespace", new Google.Apis.Discovery.Parameter
+                    "groupKey.id", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "groupKey.namespace",
+                        Name = "groupKey.id",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "groupKey.id", new Google.Apis.Discovery.Parameter
+                    "groupKey.namespace", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "groupKey.id",
+                        Name = "groupKey.namespace",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1062,18 +1086,18 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
         }
 
-        /// <summary>Updates a Group.</summary>
+        /// <summary>Updates a `Group`.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in
-        /// the format: `groups/{group_id}`, where group_id is the unique id assigned to the Group.
+        /// <param name="name">Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// `Group`.
         ///
-        /// Must be left blank while creating a Group</param>
+        /// Shall be of the form `groups/{group_id}`.</param>
         public virtual PatchRequest Patch(Google.Apis.CloudIdentity.v1beta1.Data.Group body, string name)
         {
             return new PatchRequest(service, body, name);
         }
 
-        /// <summary>Updates a Group.</summary>
+        /// <summary>Updates a `Group`.</summary>
         public class PatchRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1086,14 +1110,16 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
-            /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group
-            /// in the format: `groups/{group_id}`, where group_id is the unique id assigned to the Group.
+            /// <summary>Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// `Group`.
             ///
-            /// Must be left blank while creating a Group</summary>
+            /// Shall be of the form `groups/{group_id}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Editable fields: `display_name`, `description`</summary>
+            /// <summary>The fully-qualified names of fields to update.
+            ///
+            /// May only contain the following fields: `display_name`, `description`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -1149,13 +1175,13 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
         }
 
-        /// <summary>Searches for Groups.</summary>
+        /// <summary>Searches for `Group`s matching a specified query.</summary>
         public virtual SearchRequest Search()
         {
             return new SearchRequest(service);
         }
 
-        /// <summary>Searches for Groups.</summary>
+        /// <summary>Searches for `Group`s matching a specified query.</summary>
         public class SearchRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.SearchGroupsResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
@@ -1166,27 +1192,42 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
-            /// <summary>The next_page_token value returned from a previous search request, if any.</summary>
+            /// <summary>The `next_page_token` value returned from a previous search request, if any.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>The default page size is 200 (max 1000) for the BASIC view, and 50 (max 500) for the FULL
-            /// view.</summary>
+            /// <summary>The maximum number of results to return.
+            ///
+            /// Note that the number of results returned may be less than this value even if there are more available
+            /// results. To fetch all results, clients must continue calling this method repeatedly until the response
+            /// no longer contains a `next_page_token`.
+            ///
+            /// If unspecified, defaults to 200 for `GroupView.BASIC` and to 50 for `GroupView.FULL`.
+            ///
+            /// Must not be greater than 1000 for `GroupView.BASIC` or 500 for `GroupView.FULL`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>Query string for performing search on groups. Users can search on namespace and label
-            /// attributes of groups. EXACT match ('=') is supported on namespace, and CONTAINS match (':') is supported
-            /// on labels. This is a `required` field. Multiple queries can be combined using `AND` operator. The
-            /// operator is case sensitive. An example query would be: "namespace= AND labels:".</summary>
+            /// <summary>The search query.
+            ///
+            /// Only queries on the parent and labels of `Group`s are supported.
+            ///
+            /// Must be specified in [Common Expression Language](https://opensource.google/projects/cel). May only
+            /// contain equality operators on the parent (e.g. `parent == 'customers/{customer_id}'`) and inclusion
+            /// operators on labels (e.g., `'cloudidentity.googleapis.com/groups.discussion_forum' in
+            /// labels`).</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>Group resource view to be returned. Defaults to [GroupView.BASIC]().</summary>
+            /// <summary>The level of detail to be returned.
+            ///
+            /// If unspecified, defaults to `View.BASIC`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-            /// <summary>Group resource view to be returned. Defaults to [GroupView.BASIC]().</summary>
+            /// <summary>The level of detail to be returned.
+            ///
+            /// If unspecified, defaults to `View.BASIC`.</summary>
             public enum ViewEnum
             {
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -1264,20 +1305,31 @@ namespace Google.Apis.CloudIdentity.v1beta1
 namespace Google.Apis.CloudIdentity.v1beta1.Data
 {    
 
-    /// <summary>An EntityKey uniquely identifies an Entity. Namespaces are used to provide isolation for ids.  A single
-    /// Id can be reused across namespaces but the combination of a namespace and an id must be unique.</summary>
+    /// <summary>A unique identifier for an entity in the Cloud Identity Groups API.
+    ///
+    /// An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The
+    /// combination of `id` and `namespace` must be unique; however, the same `id` can be used with different
+    /// `namespace`s.</summary>
     public class EntityKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The id of the entity within the given namespace. The id must be unique within its
-        /// namespace.</summary>
+        /// <summary>The ID of the entity.
+        ///
+        /// For Google-managed entities, the `id` must be the email address of a group or user.
+        ///
+        /// For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's
+        /// requirements.
+        ///
+        /// Must be unique within a `namespace`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Namespaces provide isolation for ids, i.e an id only needs to be unique within its namespace.
+        /// <summary>The namespace in which the entity exists.
         ///
-        /// Namespaces are currently only created as part of IdentitySource creation from Admin Console. A namespace
-        /// `"identitysources/{identity_source_id}"` is created corresponding to every Identity Source
-        /// `identity_source_id`.</summary>
+        /// If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google
+        /// Group.
+        ///
+        /// If specified, the `EntityKey` represents an external-identity-mapped group created through Admin Console.
+        /// Must be of the form `identitysources/{identity_source_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; } 
 
@@ -1285,53 +1337,57 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Resource representing a Group</summary>
+    /// <summary>A group within the Cloud Identity Groups API.
+    ///
+    /// A `Group` is a collection of entities, where each entity is either a user or another group.</summary>
     public class Group : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Additional entity key aliases for a Group</summary>
+        /// <summary>Optional. Additional entity key aliases for a Group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalGroupKeys")]
         public virtual System.Collections.Generic.IList<EntityKey> AdditionalGroupKeys { get; set; } 
 
-        /// <summary>Output only. The time when the Group was created. Output only</summary>
+        /// <summary>Output only. The time when the `Group` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>An extended description to help users determine the purpose of a Group. For example, you can
-        /// include information about who should join the Group, the types of messages to send to the Group, links to
-        /// FAQs about the Group, or related Groups. Maximum length is 4,096 characters.</summary>
+        /// <summary>An extended description to help users determine the purpose of a `Group`.
+        ///
+        /// Must not be longer than 4,096 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>The Group's display name.</summary>
+        /// <summary>The display name of the `Group`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Required. Immutable. EntityKey of the Group.
-        ///
-        /// Must be set when creating a Group, read-only afterwards.</summary>
+        /// <summary>Required. Immutable. The `EntityKey` of the `Group`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupKey")]
         public virtual EntityKey GroupKey { get; set; } 
 
-        /// <summary>Required. Labels for Group resource. Required. For creating Groups under a namespace, set label key
-        /// to 'labels/system/groups/external' and label value as empty.</summary>
+        /// <summary>Required. The labels that apply to the `Group`.
+        ///
+        /// Must not contain more than one entry. Must contain the entry `'system/groups/external': ''` if the `Group`
+        /// is an external-identity-mapped group or `'cloudidentity.googleapis.com/groups.discussion_forum': ''` if the
+        /// `Group` is a Google Group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in
-        /// the format: `groups/{group_id}`, where group_id is the unique id assigned to the Group.
+        /// <summary>Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// `Group`.
         ///
-        /// Must be left blank while creating a Group</summary>
+        /// Shall be of the form `groups/{group_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required. Immutable. The entity under which this Group resides in Cloud Identity resource
-        /// hierarchy. Must be set when creating a Group, read-only afterwards.
+        /// <summary>Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud
+        /// Identity resource hierarchy.
         ///
-        /// Currently allowed types: 'identitysources'.</summary>
+        /// Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or
+        /// `customers/{customer_id}` for Google Groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
-        /// <summary>Output only. The time when the Group was last updated. Output only</summary>
+        /// <summary>Output only. The time when the `Group` was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -1339,14 +1395,15 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for MembershipsService.ListMemberships.</summary>
     public class ListMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of Memberships</summary>
+        /// <summary>The `Membership`s under the specified `parent`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
         public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; } 
 
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results available for
-        /// listing.</summary>
+        /// <summary>A continuation token to retrieve the next page of results, or empty if there are no more results
+        /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -1354,10 +1411,11 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for GroupsService.LookupGroupName.</summary>
     public class LookupGroupNameResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in the format:
-        /// `groups/{group_id}`, where `group_id` is the unique id assigned to the Group.</summary>
+        /// <summary>The [resource name](https://cloud.google.com/apis/design/resource_names) of the looked-up
+        /// `Group`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1365,13 +1423,13 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for MembershipsService.LookupMembershipName.</summary>
     public class LookupMembershipNameResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Membership being looked
-        /// up.
+        /// <summary>The [resource name](https://cloud.google.com/apis/design/resource_names) of the looked-up
+        /// `Membership`.
         ///
-        /// Format: `groups/{group_id}/memberships/{member_id}`, where `group_id` is the unique id assigned to the Group
-        /// to which Membership belongs to, and `member_id` is the unique id assigned to the member.</summary>
+        /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1379,35 +1437,39 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Resource representing a Membership within a Group</summary>
+    /// <summary>A membership within the Cloud Identity Groups API.
+    ///
+    /// A `Membership` defines a relationship between a `Group` and an entity belonging to that `Group`, referred to as
+    /// a "member".</summary>
     public class Membership : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Creation timestamp of the Membership.</summary>
+        /// <summary>Output only. The time when the `Membership` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>Required. Immutable. EntityKey of the entity to be added as the member. Must be set while creating
-        /// a Membership, read-only afterwards.
+        /// <summary>Immutable. The `EntityKey` of the member.
         ///
-        /// Currently allowed entity types: `Users`, `Groups`. This field will be deprecated soon.</summary>
+        /// Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership
+        /// but not both; both shall be set when returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberKey")]
         public virtual EntityKey MemberKey { get; set; } 
 
-        /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Membership
-        /// in the format: `groups/{group_id}/memberships/{member_id}`, where group_id is the unique id assigned to the
-        /// Group to which Membership belongs to, and member_id is the unique id assigned to the member
+        /// <summary>Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// `Membership`.
         ///
-        /// Must be left blank while creating a Membership.</summary>
+        /// Shall be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Roles for a member within the Group.
+        /// <summary>The `MembershipRole`s that apply to the `Membership`.
         ///
-        /// Currently supported MembershipRoles: `"MEMBER", "OWNER", "MANAGER"`.</summary>
+        /// If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`.
+        ///
+        /// Must not contain duplicate `MembershipRole`s with the same `name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
         public virtual System.Collections.Generic.IList<MembershipRole> Roles { get; set; } 
 
-        /// <summary>Output only. Last updated timestamp of the Membership.</summary>
+        /// <summary>Output only. The time when the `Membership` was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -1415,11 +1477,14 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Resource representing a role within a Membership.</summary>
+    /// <summary>A membership role within the Cloud Identity Groups API.
+    ///
+    /// A `MembershipRole` defines the privileges granted to a `Membership`.</summary>
     public class MembershipRole : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>MembershipRole in string format. Currently supported MembershipRoles: `"MEMBER", "OWNER",
-        /// "MANAGER"`.</summary>
+        /// <summary>The name of the `MembershipRole`.
+        ///
+        /// Must be one of `OWNER`, `MANAGER`, `MEMBER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1463,14 +1528,15 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for GroupsService.SearchGroups.</summary>
     public class SearchGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of Groups satisfying the search query.</summary>
+        /// <summary>The `Group`s that match the search query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groups")]
         public virtual System.Collections.Generic.IList<Group> Groups { get; set; } 
 
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results available for
-        /// specified query.</summary>
+        /// <summary>A continuation token to retrieve the next page of results, or empty if there are no more results
+        /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191115 (1779)
+ *      <tr><th>API Rev<td>20191211 (1805)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -392,7 +392,7 @@ namespace Google.Apis.Container.v1beta1
 
 
                 /// <summary>Lists subnetworks that can be used for creating clusters in a project.</summary>
-                /// <param name="parent">The parent project where subnetworks are usable. Specified in the format
+                /// <param name="parent">Required. The parent project where subnetworks are usable. Specified in the format
                 /// 'projects'.</param>
                 public virtual ListRequest List(string parent)
                 {
@@ -411,10 +411,16 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>The parent project where subnetworks are usable. Specified in the format
+                    /// <summary>Required. The parent project where subnetworks are usable. Specified in the format
                     /// 'projects'.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
+
+                    /// <summary>Filtering currently only supports equality on the networkProjectId and must be in the
+                    /// form: "networkProjectId=[PROJECTID]", where `networkProjectId` is the project which owns the
+                    /// listed subnetworks. This defaults to the parent project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
                     /// <summary>Specifies a page token to use. Set this to the nextPageToken returned by previous list
                     /// requests to get the next page of results.</summary>
@@ -427,12 +433,6 @@ namespace Google.Apis.Container.v1beta1
                     /// (Default: 500)</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Filtering currently only supports equality on the networkProjectId and must be in the
-                    /// form: "networkProjectId=[PROJECTID]", where `networkProjectId` is the project which owns the
-                    /// listed subnetworks. This defaults to the parent project ID.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -468,6 +468,15 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -480,15 +489,6 @@ namespace Google.Apis.Container.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -668,27 +668,27 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Deprecated. The name of the Google Compute Engine
-                        /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
-                        /// deprecated and replaced by the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Zone { get; set; }
-
-                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
-                        /// the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and
+                        /// replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ClusterId { get; set; }
 
-                        /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
-                        /// replaced by the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the node pool to delete. This field has been
+                        /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string NodePoolId { get; set; }
 
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ProjectId { get; set; }
+
+                        /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                        /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                        /// deprecated and replaced by the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Zone { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -724,15 +724,6 @@ namespace Google.Apis.Container.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "zone", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "zone",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "clusterId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "clusterId",
@@ -754,6 +745,15 @@ namespace Google.Apis.Container.v1beta1
                                 "projectId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "projectId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "zone", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "zone",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -788,25 +788,25 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ProjectId { get; set; }
 
-                        /// <summary>Deprecated. The name of the Google Compute Engine
+                        /// <summary>Required. Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Zone { get; set; }
 
-                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
-                        /// the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and
+                        /// replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ClusterId { get; set; }
 
-                        /// <summary>Deprecated. The name of the node pool. This field has been deprecated and replaced
-                        /// by the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the node pool. This field has been deprecated and
+                        /// replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string NodePoolId { get; set; }
 
@@ -908,20 +908,20 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the parent field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ProjectId { get; set; }
 
-                        /// <summary>Deprecated. The name of the Google Compute Engine
+                        /// <summary>Required. Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the parent field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Zone { get; set; }
 
-                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
-                        /// the parent field.</summary>
+                        /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and
+                        /// replaced by the parent field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ClusterId { get; set; }
 
@@ -1628,20 +1628,20 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProjectId { get; set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
 
-                    /// <summary>Deprecated. The name of the cluster to delete. This field has been deprecated and
-                    /// replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster to delete. This field has been deprecated
+                    /// and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClusterId { get; set; }
 
@@ -1734,20 +1734,20 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProjectId { get; set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
 
-                    /// <summary>Deprecated. The name of the cluster to retrieve. This field has been deprecated and
-                    /// replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster to retrieve. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClusterId { get; set; }
 
@@ -1904,15 +1904,15 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the parent field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProjectId { get; set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides, or "-" for all zones. This field has been deprecated and replaced
-                    /// by the parent field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides, or "-" for all zones. This
+                    /// field has been deprecated and replaced by the parent field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
 
@@ -2932,20 +2932,20 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
-                    /// and replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The server-assigned `name` of the operation. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OperationId { get; set; }
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProjectId { get; set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
 
@@ -3038,15 +3038,15 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the parent field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProjectId { get; set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// to return operations for, or `-` for all zones. This field has been deprecated and replaced by
-                    /// the parent field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) to return operations for, or `-` for all zones. This field
+                    /// has been deprecated and replaced by the parent field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
 
@@ -3131,14 +3131,15 @@ namespace Google.Apis.Container.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Deprecated. The Google Developers Console [project ID or project
+                /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                 /// replaced by the name field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ProjectId { get; set; }
 
-                /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) to
-                /// return operations for. This field has been deprecated and replaced by the name field.</summary>
+                /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                /// [zone](/compute/docs/zones#available) to return operations for. This field has been deprecated and
+                /// replaced by the name field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Zone { get; set; }
 
@@ -3198,7 +3199,8 @@ namespace Google.Apis.Container.v1beta1
             }
 
             /// <summary>Fetches locations that offer Google Kubernetes Engine.</summary>
-            /// <param name="parent">Contains the name of the resource requested. Specified in the format 'projects'.</param>
+            /// <param name="parent">Required. Contains the name of the resource requested. Specified in the format
+            /// 'projects'.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -3216,7 +3218,8 @@ namespace Google.Apis.Container.v1beta1
                 }
 
 
-                /// <summary>Contains the name of the resource requested. Specified in the format 'projects'.</summary>
+                /// <summary>Required. Contains the name of the resource requested. Specified in the format
+                /// 'projects'.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3332,16 +3335,17 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>Sets the autoscaling settings of a specific node pool.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                    /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                     /// field.</param>
-                    /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                    /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                     /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                     /// the name field.</param>
-                    /// <param name="clusterId">Deprecated. The name of the cluster to upgrade. This field
-                    /// has been deprecated and replaced by the name field.</param>
-                    /// <param name="nodePoolId">Deprecated. The name of
-                    /// the node pool to upgrade. This field has been deprecated and replaced by the name field.</param>
+                    /// <param name="clusterId">Required. Deprecated. The name of the cluster to upgrade.
+                    /// This field has been deprecated and replaced by the name field.</param>
+                    /// <param name="nodePoolId">Required.
+                    /// Deprecated. The name of the node pool to upgrade. This field has been deprecated and replaced by the name
+                    /// field.</param>
                     public virtual AutoscalingRequest Autoscaling(Google.Apis.Container.v1beta1.Data.SetNodePoolAutoscalingRequest body, string projectId, string zone, string clusterId, string nodePoolId)
                     {
                         return new AutoscalingRequest(service, body, projectId, zone, clusterId, nodePoolId);
@@ -3363,25 +3367,25 @@ namespace Google.Apis.Container.v1beta1
                         }
 
 
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                         /// replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the Google Compute Engine
+                        /// <summary>Required. Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Zone { get; private set; }
 
-                        /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and
-                        /// replaced by the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been
+                        /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ClusterId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the node pool to upgrade. This field has been deprecated
-                        /// and replaced by the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the node pool to upgrade. This field has been
+                        /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string NodePoolId { get; private set; }
 
@@ -3457,14 +3461,14 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>Creates a node pool for a cluster.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                    /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced
                     /// by the parent field.</param>
-                    /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                    /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                     /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                     /// the parent field.</param>
-                    /// <param name="clusterId">Deprecated. The name of the cluster. This field has been
-                    /// deprecated and replaced by the parent field.</param>
+                    /// <param name="clusterId">Required. Deprecated. The name of the cluster. This field
+                    /// has been deprecated and replaced by the parent field.</param>
                     public virtual CreateRequest Create(Google.Apis.Container.v1beta1.Data.CreateNodePoolRequest body, string projectId, string zone, string clusterId)
                     {
                         return new CreateRequest(service, body, projectId, zone, clusterId);
@@ -3485,20 +3489,20 @@ namespace Google.Apis.Container.v1beta1
                         }
 
 
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the parent field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the Google Compute Engine
+                        /// <summary>Required. Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the parent field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Zone { get; private set; }
 
-                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
-                        /// the parent field.</summary>
+                        /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and
+                        /// replaced by the parent field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ClusterId { get; private set; }
 
@@ -3564,16 +3568,16 @@ namespace Google.Apis.Container.v1beta1
                     }
 
                     /// <summary>Deletes a node pool from a cluster.</summary>
-                    /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                    /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced
                     /// by the name field.</param>
-                    /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                    /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                     /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                     /// the name field.</param>
-                    /// <param name="clusterId">Deprecated. The name of the cluster. This field has been
-                    /// deprecated and replaced by the name field.</param>
-                    /// <param name="nodePoolId">Deprecated. The name of the node
-                    /// pool to delete. This field has been deprecated and replaced by the name field.</param>
+                    /// <param name="clusterId">Required. Deprecated. The name of the cluster. This field
+                    /// has been deprecated and replaced by the name field.</param>
+                    /// <param name="nodePoolId">Required. Deprecated.
+                    /// The name of the node pool to delete. This field has been deprecated and replaced by the name field.</param>
                     public virtual DeleteRequest Delete(string projectId, string zone, string clusterId, string nodePoolId)
                     {
                         return new DeleteRequest(service, projectId, zone, clusterId, nodePoolId);
@@ -3594,25 +3598,25 @@ namespace Google.Apis.Container.v1beta1
                         }
 
 
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the Google Compute Engine
+                        /// <summary>Required. Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Zone { get; private set; }
 
-                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
-                        /// the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and
+                        /// replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ClusterId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the node pool to delete. This field has been deprecated and
-                        /// replaced by the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the node pool to delete. This field has been
+                        /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string NodePoolId { get; private set; }
 
@@ -3695,16 +3699,16 @@ namespace Google.Apis.Container.v1beta1
                     }
 
                     /// <summary>Retrieves the requested node pool.</summary>
-                    /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                    /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced
                     /// by the name field.</param>
-                    /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                    /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                     /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                     /// the name field.</param>
-                    /// <param name="clusterId">Deprecated. The name of the cluster. This field has been
-                    /// deprecated and replaced by the name field.</param>
-                    /// <param name="nodePoolId">Deprecated. The name of the node
-                    /// pool. This field has been deprecated and replaced by the name field.</param>
+                    /// <param name="clusterId">Required. Deprecated. The name of the cluster. This field
+                    /// has been deprecated and replaced by the name field.</param>
+                    /// <param name="nodePoolId">Required. Deprecated.
+                    /// The name of the node pool. This field has been deprecated and replaced by the name field.</param>
                     public virtual GetRequest Get(string projectId, string zone, string clusterId, string nodePoolId)
                     {
                         return new GetRequest(service, projectId, zone, clusterId, nodePoolId);
@@ -3725,25 +3729,25 @@ namespace Google.Apis.Container.v1beta1
                         }
 
 
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the Google Compute Engine
+                        /// <summary>Required. Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Zone { get; private set; }
 
-                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
-                        /// the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and
+                        /// replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ClusterId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the node pool. This field has been deprecated and replaced
-                        /// by the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the node pool. This field has been deprecated and
+                        /// replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string NodePoolId { get; private set; }
 
@@ -3826,14 +3830,14 @@ namespace Google.Apis.Container.v1beta1
                     }
 
                     /// <summary>Lists the node pools for a cluster.</summary>
-                    /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                    /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced
                     /// by the parent field.</param>
-                    /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                    /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                     /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                     /// the parent field.</param>
-                    /// <param name="clusterId">Deprecated. The name of the cluster. This field has been
-                    /// deprecated and replaced by the parent field.</param>
+                    /// <param name="clusterId">Required. Deprecated. The name of the cluster. This field
+                    /// has been deprecated and replaced by the parent field.</param>
                     public virtual ListRequest List(string projectId, string zone, string clusterId)
                     {
                         return new ListRequest(service, projectId, zone, clusterId);
@@ -3853,20 +3857,20 @@ namespace Google.Apis.Container.v1beta1
                         }
 
 
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the parent field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the Google Compute Engine
+                        /// <summary>Required. Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the parent field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Zone { get; private set; }
 
-                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
-                        /// the parent field.</summary>
+                        /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and
+                        /// replaced by the parent field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ClusterId { get; private set; }
 
@@ -3942,16 +3946,17 @@ namespace Google.Apis.Container.v1beta1
                     /// <summary>Rolls back a previously Aborted or Failed NodePool upgrade. This makes no changes if
                     /// the last upgrade successfully completed.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                    /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                     /// field.</param>
-                    /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                    /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                     /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                     /// the name field.</param>
-                    /// <param name="clusterId">Deprecated. The name of the cluster to rollback. This field
-                    /// has been deprecated and replaced by the name field.</param>
-                    /// <param name="nodePoolId">Deprecated. The name of
-                    /// the node pool to rollback. This field has been deprecated and replaced by the name field.</param>
+                    /// <param name="clusterId">Required. Deprecated. The name of the cluster to rollback.
+                    /// This field has been deprecated and replaced by the name field.</param>
+                    /// <param name="nodePoolId">Required.
+                    /// Deprecated. The name of the node pool to rollback. This field has been deprecated and replaced by the name
+                    /// field.</param>
                     public virtual RollbackRequest Rollback(Google.Apis.Container.v1beta1.Data.RollbackNodePoolUpgradeRequest body, string projectId, string zone, string clusterId, string nodePoolId)
                     {
                         return new RollbackRequest(service, body, projectId, zone, clusterId, nodePoolId);
@@ -3974,25 +3979,25 @@ namespace Google.Apis.Container.v1beta1
                         }
 
 
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                         /// replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the Google Compute Engine
+                        /// <summary>Required. Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Zone { get; private set; }
 
-                        /// <summary>Deprecated. The name of the cluster to rollback. This field has been deprecated and
-                        /// replaced by the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the cluster to rollback. This field has been
+                        /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ClusterId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the node pool to rollback. This field has been deprecated
-                        /// and replaced by the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the node pool to rollback. This field has been
+                        /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string NodePoolId { get; private set; }
 
@@ -4068,16 +4073,17 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>Sets the NodeManagement options for a node pool.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                    /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                     /// field.</param>
-                    /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                    /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                     /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                     /// the name field.</param>
-                    /// <param name="clusterId">Deprecated. The name of the cluster to update. This field
-                    /// has been deprecated and replaced by the name field.</param>
-                    /// <param name="nodePoolId">Deprecated. The name of
-                    /// the node pool to update. This field has been deprecated and replaced by the name field.</param>
+                    /// <param name="clusterId">Required. Deprecated. The name of the cluster to update.
+                    /// This field has been deprecated and replaced by the name field.</param>
+                    /// <param name="nodePoolId">Required.
+                    /// Deprecated. The name of the node pool to update. This field has been deprecated and replaced by the name
+                    /// field.</param>
                     public virtual SetManagementRequest SetManagement(Google.Apis.Container.v1beta1.Data.SetNodePoolManagementRequest body, string projectId, string zone, string clusterId, string nodePoolId)
                     {
                         return new SetManagementRequest(service, body, projectId, zone, clusterId, nodePoolId);
@@ -4099,25 +4105,25 @@ namespace Google.Apis.Container.v1beta1
                         }
 
 
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                         /// replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the Google Compute Engine
+                        /// <summary>Required. Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Zone { get; private set; }
 
-                        /// <summary>Deprecated. The name of the cluster to update. This field has been deprecated and
-                        /// replaced by the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the cluster to update. This field has been
+                        /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ClusterId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the node pool to update. This field has been deprecated and
-                        /// replaced by the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the node pool to update. This field has been
+                        /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string NodePoolId { get; private set; }
 
@@ -4193,16 +4199,17 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>Sets the size for a specific node pool.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                    /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                     /// field.</param>
-                    /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                    /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                     /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                     /// the name field.</param>
-                    /// <param name="clusterId">Deprecated. The name of the cluster to update. This field
-                    /// has been deprecated and replaced by the name field.</param>
-                    /// <param name="nodePoolId">Deprecated. The name of
-                    /// the node pool to update. This field has been deprecated and replaced by the name field.</param>
+                    /// <param name="clusterId">Required. Deprecated. The name of the cluster to update.
+                    /// This field has been deprecated and replaced by the name field.</param>
+                    /// <param name="nodePoolId">Required.
+                    /// Deprecated. The name of the node pool to update. This field has been deprecated and replaced by the name
+                    /// field.</param>
                     public virtual SetSizeRequest SetSize(Google.Apis.Container.v1beta1.Data.SetNodePoolSizeRequest body, string projectId, string zone, string clusterId, string nodePoolId)
                     {
                         return new SetSizeRequest(service, body, projectId, zone, clusterId, nodePoolId);
@@ -4224,25 +4231,25 @@ namespace Google.Apis.Container.v1beta1
                         }
 
 
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                         /// replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the Google Compute Engine
+                        /// <summary>Required. Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Zone { get; private set; }
 
-                        /// <summary>Deprecated. The name of the cluster to update. This field has been deprecated and
-                        /// replaced by the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the cluster to update. This field has been
+                        /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ClusterId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the node pool to update. This field has been deprecated and
-                        /// replaced by the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the node pool to update. This field has been
+                        /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string NodePoolId { get; private set; }
 
@@ -4318,16 +4325,17 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>Updates the version and/or image type of a specific node pool.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                    /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                     /// field.</param>
-                    /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                    /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                     /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                     /// the name field.</param>
-                    /// <param name="clusterId">Deprecated. The name of the cluster to upgrade. This field
-                    /// has been deprecated and replaced by the name field.</param>
-                    /// <param name="nodePoolId">Deprecated. The name of
-                    /// the node pool to upgrade. This field has been deprecated and replaced by the name field.</param>
+                    /// <param name="clusterId">Required. Deprecated. The name of the cluster to upgrade.
+                    /// This field has been deprecated and replaced by the name field.</param>
+                    /// <param name="nodePoolId">Required.
+                    /// Deprecated. The name of the node pool to upgrade. This field has been deprecated and replaced by the name
+                    /// field.</param>
                     public virtual UpdateRequest Update(Google.Apis.Container.v1beta1.Data.UpdateNodePoolRequest body, string projectId, string zone, string clusterId, string nodePoolId)
                     {
                         return new UpdateRequest(service, body, projectId, zone, clusterId, nodePoolId);
@@ -4349,25 +4357,25 @@ namespace Google.Apis.Container.v1beta1
                         }
 
 
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                         /// replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProjectId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the Google Compute Engine
+                        /// <summary>Required. Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Zone { get; private set; }
 
-                        /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and
-                        /// replaced by the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been
+                        /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ClusterId { get; private set; }
 
-                        /// <summary>Deprecated. The name of the node pool to upgrade. This field has been deprecated
-                        /// and replaced by the name field.</summary>
+                        /// <summary>Required. Deprecated. The name of the node pool to upgrade. This field has been
+                        /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string NodePoolId { get; private set; }
 
@@ -4444,14 +4452,14 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>Sets the addons for a specific cluster.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="clusterId">Deprecated. The name of the cluster to upgrade. This field
-                /// has been deprecated and replaced by the name field.</param>
+                /// <param name="clusterId">Required. Deprecated. The name of the cluster to upgrade.
+                /// This field has been deprecated and replaced by the name field.</param>
                 public virtual AddonsRequest Addons(Google.Apis.Container.v1beta1.Data.SetAddonsConfigRequest body, string projectId, string zone, string clusterId)
                 {
                     return new AddonsRequest(service, body, projectId, zone, clusterId);
@@ -4472,20 +4480,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and
-                    /// replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -4552,14 +4560,14 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>Completes master IP rotation.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced
                 /// by the name field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="clusterId">Deprecated. The name of the cluster. This field has been
-                /// deprecated and replaced by the name field.</param>
+                /// <param name="clusterId">Required. Deprecated. The name of the cluster. This field
+                /// has been deprecated and replaced by the name field.</param>
                 public virtual CompleteIpRotationRequest CompleteIpRotation(Google.Apis.Container.v1beta1.Data.CompleteIPRotationRequest body, string projectId, string zone, string clusterId)
                 {
                     return new CompleteIpRotationRequest(service, body, projectId, zone, clusterId);
@@ -4580,20 +4588,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                     /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by the
-                    /// name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and
+                    /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -4670,10 +4678,10 @@ namespace Google.Apis.Container.v1beta1
                 /// Finally, an entry is added to the project's global metadata indicating which CIDR range the cluster
                 /// is using.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the parent field.</param>
                 public virtual CreateRequest Create(Google.Apis.Container.v1beta1.Data.CreateClusterRequest body, string projectId, string zone)
@@ -4705,15 +4713,15 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the parent field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the parent
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the parent field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
@@ -4775,14 +4783,14 @@ namespace Google.Apis.Container.v1beta1
                 ///
                 /// Other Google Compute Engine resources that might be in use by the cluster, such as load balancer
                 /// resources, are not deleted if they weren't present when the cluster was initially created.</summary>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="clusterId">Deprecated. The name of the cluster to delete. This field
-                /// has been deprecated and replaced by the name field.</param>
+                /// <param name="clusterId">Required. Deprecated. The name of the cluster to delete.
+                /// This field has been deprecated and replaced by the name field.</param>
                 public virtual DeleteRequest Delete(string projectId, string zone, string clusterId)
                 {
                     return new DeleteRequest(service, projectId, zone, clusterId);
@@ -4807,20 +4815,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster to delete. This field has been deprecated and
-                    /// replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster to delete. This field has been deprecated
+                    /// and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -4894,14 +4902,14 @@ namespace Google.Apis.Container.v1beta1
                 }
 
                 /// <summary>Gets the details for a specific cluster.</summary>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="clusterId">Deprecated. The name of the cluster to retrieve. This field
-                /// has been deprecated and replaced by the name field.</param>
+                /// <param name="clusterId">Required. Deprecated. The name of the cluster to retrieve.
+                /// This field has been deprecated and replaced by the name field.</param>
                 public virtual GetRequest Get(string projectId, string zone, string clusterId)
                 {
                     return new GetRequest(service, projectId, zone, clusterId);
@@ -4921,20 +4929,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster to retrieve. This field has been deprecated and
-                    /// replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster to retrieve. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -5009,14 +5017,14 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>Enables or disables the ABAC authorization mechanism on a cluster.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="clusterId">Deprecated. The name of the cluster to update. This field
-                /// has been deprecated and replaced by the name field.</param>
+                /// <param name="clusterId">Required. Deprecated. The name of the cluster to update.
+                /// This field has been deprecated and replaced by the name field.</param>
                 public virtual LegacyAbacRequest LegacyAbac(Google.Apis.Container.v1beta1.Data.SetLegacyAbacRequest body, string projectId, string zone, string clusterId)
                 {
                     return new LegacyAbacRequest(service, body, projectId, zone, clusterId);
@@ -5037,20 +5045,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster to update. This field has been deprecated and
-                    /// replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster to update. This field has been deprecated
+                    /// and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -5116,10 +5124,10 @@ namespace Google.Apis.Container.v1beta1
                 }
 
                 /// <summary>Lists all clusters owned by a project in either the specified zone or all zones.</summary>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides, or "-" for all zones. This field has been
                 /// deprecated and replaced by the parent field.</param>
                 public virtual ListRequest List(string projectId, string zone)
@@ -5140,15 +5148,15 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the parent field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides, or "-" for all zones. This field has been deprecated and replaced
-                    /// by the parent field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides, or "-" for all zones. This
+                    /// field has been deprecated and replaced by the parent field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
@@ -5214,14 +5222,14 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>Sets the locations for a specific cluster.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="clusterId">Deprecated. The name of the cluster to upgrade. This field
-                /// has been deprecated and replaced by the name field.</param>
+                /// <param name="clusterId">Required. Deprecated. The name of the cluster to upgrade.
+                /// This field has been deprecated and replaced by the name field.</param>
                 public virtual LocationsRequest Locations(Google.Apis.Container.v1beta1.Data.SetLocationsRequest body, string projectId, string zone, string clusterId)
                 {
                     return new LocationsRequest(service, body, projectId, zone, clusterId);
@@ -5242,20 +5250,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and
-                    /// replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -5322,14 +5330,14 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>Sets the logging service for a specific cluster.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="clusterId">Deprecated. The name of the cluster to upgrade. This field
-                /// has been deprecated and replaced by the name field.</param>
+                /// <param name="clusterId">Required. Deprecated. The name of the cluster to upgrade.
+                /// This field has been deprecated and replaced by the name field.</param>
                 public virtual LoggingRequest Logging(Google.Apis.Container.v1beta1.Data.SetLoggingServiceRequest body, string projectId, string zone, string clusterId)
                 {
                     return new LoggingRequest(service, body, projectId, zone, clusterId);
@@ -5350,20 +5358,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and
-                    /// replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -5430,14 +5438,14 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>Updates the master for a specific cluster.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="clusterId">Deprecated. The name of the cluster to upgrade. This field
-                /// has been deprecated and replaced by the name field.</param>
+                /// <param name="clusterId">Required. Deprecated. The name of the cluster to upgrade.
+                /// This field has been deprecated and replaced by the name field.</param>
                 public virtual MasterRequest Master(Google.Apis.Container.v1beta1.Data.UpdateMasterRequest body, string projectId, string zone, string clusterId)
                 {
                     return new MasterRequest(service, body, projectId, zone, clusterId);
@@ -5458,20 +5466,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and
-                    /// replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -5538,14 +5546,14 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>Sets the monitoring service for a specific cluster.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="clusterId">Deprecated. The name of the cluster to upgrade. This field
-                /// has been deprecated and replaced by the name field.</param>
+                /// <param name="clusterId">Required. Deprecated. The name of the cluster to upgrade.
+                /// This field has been deprecated and replaced by the name field.</param>
                 public virtual MonitoringRequest Monitoring(Google.Apis.Container.v1beta1.Data.SetMonitoringServiceRequest body, string projectId, string zone, string clusterId)
                 {
                     return new MonitoringRequest(service, body, projectId, zone, clusterId);
@@ -5566,20 +5574,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and
-                    /// replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -5646,14 +5654,14 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>Sets labels on a cluster.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced
                 /// by the name field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="clusterId">Deprecated. The name of the cluster. This field has been
-                /// deprecated and replaced by the name field.</param>
+                /// <param name="clusterId">Required. Deprecated. The name of the cluster. This field
+                /// has been deprecated and replaced by the name field.</param>
                 public virtual ResourceLabelsRequest ResourceLabels(Google.Apis.Container.v1beta1.Data.SetLabelsRequest body, string projectId, string zone, string clusterId)
                 {
                     return new ResourceLabelsRequest(service, body, projectId, zone, clusterId);
@@ -5674,20 +5682,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                     /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by the
-                    /// name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and
+                    /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -5754,12 +5762,12 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>Sets the maintenance policy for a cluster.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840).</param>
-                /// <param name="zone">The name of the Google
-                /// Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                /// <param name="zone">Required. The name of
+                /// the Google Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
                 /// <param
-                /// name="clusterId">The name of the cluster to update.</param>
+                /// name="clusterId">Required. The name of the cluster to update.</param>
                 public virtual SetMaintenancePolicyRequest SetMaintenancePolicy(Google.Apis.Container.v1beta1.Data.SetMaintenancePolicyRequest body, string projectId, string zone, string clusterId)
                 {
                     return new SetMaintenancePolicyRequest(service, body, projectId, zone, clusterId);
@@ -5780,17 +5788,17 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>The Google Developers Console [project ID or project
+                    /// <summary>Required. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-                    /// the cluster resides.</summary>
+                    /// <summary>Required. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+                    /// in which the cluster resides.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>The name of the cluster to update.</summary>
+                    /// <summary>Required. The name of the cluster to update.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -5858,14 +5866,14 @@ namespace Google.Apis.Container.v1beta1
                 /// <summary>Sets master auth materials. Currently supports changing the admin password or a specific
                 /// cluster, either via password generation or explicitly setting the password.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="clusterId">Deprecated. The name of the cluster to upgrade. This field
-                /// has been deprecated and replaced by the name field.</param>
+                /// <param name="clusterId">Required. Deprecated. The name of the cluster to upgrade.
+                /// This field has been deprecated and replaced by the name field.</param>
                 public virtual SetMasterAuthRequest SetMasterAuth(Google.Apis.Container.v1beta1.Data.SetMasterAuthRequest body, string projectId, string zone, string clusterId)
                 {
                     return new SetMasterAuthRequest(service, body, projectId, zone, clusterId);
@@ -5887,20 +5895,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and
-                    /// replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -5967,14 +5975,14 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>Enables or disables Network Policy for a cluster.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced
                 /// by the name field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="clusterId">Deprecated. The name of the cluster. This field has been
-                /// deprecated and replaced by the name field.</param>
+                /// <param name="clusterId">Required. Deprecated. The name of the cluster. This field
+                /// has been deprecated and replaced by the name field.</param>
                 public virtual SetNetworkPolicyRequest SetNetworkPolicy(Google.Apis.Container.v1beta1.Data.SetNetworkPolicyRequest body, string projectId, string zone, string clusterId)
                 {
                     return new SetNetworkPolicyRequest(service, body, projectId, zone, clusterId);
@@ -5995,20 +6003,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                     /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by the
-                    /// name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and
+                    /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -6075,14 +6083,14 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>Starts master IP rotation.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced
                 /// by the name field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="clusterId">Deprecated. The name of the cluster. This field has been
-                /// deprecated and replaced by the name field.</param>
+                /// <param name="clusterId">Required. Deprecated. The name of the cluster. This field
+                /// has been deprecated and replaced by the name field.</param>
                 public virtual StartIpRotationRequest StartIpRotation(Google.Apis.Container.v1beta1.Data.StartIPRotationRequest body, string projectId, string zone, string clusterId)
                 {
                     return new StartIpRotationRequest(service, body, projectId, zone, clusterId);
@@ -6103,20 +6111,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                     /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by the
-                    /// name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and
+                    /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -6183,14 +6191,14 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>Updates the settings for a specific cluster.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="clusterId">Deprecated. The name of the cluster to upgrade. This field
-                /// has been deprecated and replaced by the name field.</param>
+                /// <param name="clusterId">Required. Deprecated. The name of the cluster to upgrade.
+                /// This field has been deprecated and replaced by the name field.</param>
                 public virtual UpdateRequest Update(Google.Apis.Container.v1beta1.Data.UpdateClusterRequest body, string projectId, string zone, string clusterId)
                 {
                     return new UpdateRequest(service, body, projectId, zone, clusterId);
@@ -6211,20 +6219,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and
-                    /// replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterId { get; private set; }
 
@@ -6315,14 +6323,14 @@ namespace Google.Apis.Container.v1beta1
 
                 /// <summary>Cancels the specified operation.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the operation resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="operationId">Deprecated. The server-assigned `name` of the operation.
-                /// This field has been deprecated and replaced by the name field.</param>
+                /// <param name="operationId">Required. Deprecated. The server-assigned `name` of the
+                /// operation. This field has been deprecated and replaced by the name field.</param>
                 public virtual CancelRequest Cancel(Google.Apis.Container.v1beta1.Data.CancelOperationRequest body, string projectId, string zone, string operationId)
                 {
                     return new CancelRequest(service, body, projectId, zone, operationId);
@@ -6343,20 +6351,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the operation resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the operation resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
-                    /// and replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The server-assigned `name` of the operation. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string OperationId { get; private set; }
 
@@ -6422,14 +6430,14 @@ namespace Google.Apis.Container.v1beta1
                 }
 
                 /// <summary>Gets the specified operation.</summary>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by
                 /// the name field.</param>
-                /// <param name="operationId">Deprecated. The server-assigned `name` of the operation.
-                /// This field has been deprecated and replaced by the name field.</param>
+                /// <param name="operationId">Required. Deprecated. The server-assigned `name` of the
+                /// operation. This field has been deprecated and replaced by the name field.</param>
                 public virtual GetRequest Get(string projectId, string zone, string operationId)
                 {
                     return new GetRequest(service, projectId, zone, operationId);
@@ -6449,20 +6457,20 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
-                    /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
-                    /// and replaced by the name field.</summary>
+                    /// <summary>Required. Deprecated. The server-assigned `name` of the operation. This field has been
+                    /// deprecated and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string OperationId { get; private set; }
 
@@ -6536,10 +6544,10 @@ namespace Google.Apis.Container.v1beta1
                 }
 
                 /// <summary>Lists all operations in a project in the specified zone or all zones.</summary>
-                /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+                /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent
                 /// field.</param>
-                /// <param name="zone">Deprecated. The name of the Google Compute Engine
+                /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
                 /// [zone](/compute/docs/zones#available) to return operations for, or `-` for all zones. This field has been deprecated
                 /// and replaced by the parent field.</param>
                 public virtual ListRequest List(string projectId, string zone)
@@ -6560,15 +6568,15 @@ namespace Google.Apis.Container.v1beta1
                     }
 
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the parent field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// to return operations for, or `-` for all zones. This field has been deprecated and replaced by
-                    /// the parent field.</summary>
+                    /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                    /// [zone](/compute/docs/zones#available) to return operations for, or `-` for all zones. This field
+                    /// has been deprecated and replaced by the parent field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Zone { get; private set; }
 
@@ -6634,10 +6642,10 @@ namespace Google.Apis.Container.v1beta1
             }
 
             /// <summary>Returns configuration info about the Google Kubernetes Engine service.</summary>
-            /// <param name="projectId">Deprecated. The Google Developers Console [project ID or project
+            /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
             /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
             /// field.</param>
-            /// <param name="zone">Deprecated. The name of the Google Compute Engine
+            /// <param name="zone">Required. Deprecated. The name of the Google Compute Engine
             /// [zone](/compute/docs/zones#available) to return operations for. This field has been deprecated and replaced by the
             /// name field.</param>
             public virtual GetServerconfigRequest GetServerconfig(string projectId, string zone)
@@ -6658,14 +6666,15 @@ namespace Google.Apis.Container.v1beta1
                 }
 
 
-                /// <summary>Deprecated. The Google Developers Console [project ID or project
+                /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                 /// replaced by the name field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) to
-                /// return operations for. This field has been deprecated and replaced by the name field.</summary>
+                /// <summary>Required. Deprecated. The name of the Google Compute Engine
+                /// [zone](/compute/docs/zones#available) to return operations for. This field has been deprecated and
+                /// replaced by the name field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Zone { get; private set; }
 
@@ -6760,6 +6769,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRunConfig")]
         public virtual CloudRunConfig CloudRunConfig { get; set; } 
 
+        /// <summary>Configuration for NodeLocalDNS, a dns cache running on cluster nodes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsCacheConfig")]
+        public virtual DnsCacheConfig DnsCacheConfig { get; set; } 
+
         /// <summary>Configuration for the horizontal pod autoscaling feature, which increases or decreases the number
         /// of replica pods a replication controller has based on the resource usage of the existing pods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalPodAutoscaling")]
@@ -6773,6 +6786,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Configuration for Istio, an open platform to connect, manage, and secure microservices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("istioConfig")]
         public virtual IstioConfig IstioConfig { get; set; } 
+
+        /// <summary>Configuration for the KALM addon, which manages the lifecycle of k8s applications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kalmConfig")]
+        public virtual KalmConfig KalmConfig { get; set; } 
 
         /// <summary>Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15.
         /// It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and
@@ -6896,19 +6913,19 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated and
-        /// replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The server-assigned `name` of the operation. This field has been deprecated
+        /// and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the operation resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the operation resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -6977,6 +6994,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// chosen or specify a `/14` block in `10.0.0.0/8`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4Cidr")]
         public virtual string ClusterIpv4Cidr { get; set; } 
+
+        /// <summary>Telemetry integration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterTelemetry")]
+        public virtual ClusterTelemetry ClusterTelemetry { get; set; } 
 
         /// <summary>Which conditions caused the current cluster state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
@@ -7261,6 +7282,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoprovisioningNodePoolDefaults")]
         public virtual AutoprovisioningNodePoolDefaults AutoprovisioningNodePoolDefaults { get; set; } 
 
+        /// <summary>Defines autoscaling behaviour.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingProfile")]
+        public virtual string AutoscalingProfile { get; set; } 
+
         /// <summary>Enables automatic node pool creation and deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableNodeAutoprovisioning")]
         public virtual System.Nullable<bool> EnableNodeAutoprovisioning { get; set; } 
@@ -7269,6 +7294,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLimits")]
         public virtual System.Collections.Generic.IList<ResourceLimit> ResourceLimits { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Telemetry integration for the cluster.</summary>
+    public class ClusterTelemetry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of the integration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7289,6 +7325,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Cluster-level autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredClusterAutoscaling")]
         public virtual ClusterAutoscaling DesiredClusterAutoscaling { get; set; } 
+
+        /// <summary>The desired telemetry integration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredClusterTelemetry")]
+        public virtual ClusterTelemetry DesiredClusterTelemetry { get; set; } 
 
         /// <summary>Configuration of etcd encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDatabaseEncryption")]
@@ -7374,6 +7414,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredPrivateClusterConfig")]
         public virtual PrivateClusterConfig DesiredPrivateClusterConfig { get; set; } 
 
+        /// <summary>The desired release channel configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredReleaseChannel")]
+        public virtual ReleaseChannel DesiredReleaseChannel { get; set; } 
+
         /// <summary>The desired configuration for exporting resource usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredResourceUsageExportConfig")]
         public virtual ResourceUsageExportConfig DesiredResourceUsageExportConfig { get; set; } 
@@ -7397,8 +7441,8 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>CompleteIPRotationRequest moves the cluster master back into single-IP mode.</summary>
     public class CompleteIPRotationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by the name
-        /// field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the
+        /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
@@ -7407,14 +7451,14 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -7437,7 +7481,8 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>CreateClusterRequest creates a cluster.</summary>
     public class CreateClusterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A [cluster resource](/container-engine/reference/rest/v1beta1/projects.zones.clusters)</summary>
+        /// <summary>Required. A [cluster resource](/container-
+        /// engine/reference/rest/v1beta1/projects.zones.clusters)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual Cluster Cluster { get; set; } 
 
@@ -7446,14 +7491,14 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// parent field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the parent field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the parent field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -7464,12 +7509,12 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>CreateNodePoolRequest creates a node pool for a cluster.</summary>
     public class CreateNodePoolRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent
-        /// field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the
+        /// parent field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
-        /// <summary>The node pool to create.</summary>
+        /// <summary>Required. The node pool to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePool")]
         public virtual NodePool NodePool { get; set; } 
 
@@ -7478,14 +7523,14 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
         /// replaced by the parent field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the parent field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the parent field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -7521,6 +7566,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Denotes the state of etcd encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for NodeLocal DNSCache</summary>
+    public class DnsCacheConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether NodeLocal DNSCache is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7841,6 +7897,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Used for ECDSA keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("y")]
         public virtual string Y { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration options for the KALM addon.</summary>
+    public class KalmConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether KALM is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8200,12 +8267,12 @@ namespace Google.Apis.Container.v1beta1.Data
         /// Keys must conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes in length. These are reflected as
         /// part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any
         /// other metadata keys for the project or be one of the reserved keys: "cluster-location" "cluster-name"
-        /// "cluster-uid" "configure-sh" "containerd-configure-sh" "enable-oslogin" "gci-ensure-gke-docker" "gci-update-
-        /// strategy" "instance-template" "kube-env" "startup-script" "user-data" "disable-address-manager" "windows-
-        /// startup-script-ps1" "common-psm1" "k8s-node-setup-psm1" "install-ssh-psm1" "user-profile-psm1" "serial-port-
-        /// logging-enable" Values are free-form strings, and only have meaning as interpreted by the image running in
-        /// the instance. The only restriction placed on them is that each value's size must be less than or equal to 32
-        /// KB.
+        /// "cluster-uid" "configure-sh" "containerd-configure-sh" "enable-oslogin" "gci-ensure-gke-docker" "gci-
+        /// metrics-enabled" "gci-update-strategy" "instance-template" "kube-env" "startup-script" "user-data" "disable-
+        /// address-manager" "windows-startup-script-ps1" "common-psm1" "k8s-node-setup-psm1" "install-ssh-psm1" "user-
+        /// profile-psm1" "serial-port-logging-enable" Values are free-form strings, and only have meaning as
+        /// interpreted by the image running in the instance. The only restriction placed on them is that each value's
+        /// size must be less than or equal to 32 KB.
         ///
         /// The total size of all keys and values must be less than 512 KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
@@ -8214,7 +8281,8 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or
         /// newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel
         /// Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU
-        /// platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)</summary>
+        /// platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu
+        /// platform field pass "automatic" as field value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
 
@@ -8237,6 +8305,11 @@ namespace Google.Apis.Container.v1beta1.Data
         /// instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
         public virtual System.Nullable<bool> Preemptible { get; set; } 
+
+        /// <summary>The optional reservation affinity. Setting this field will apply the specified [Zonal Compute
+        /// Reservation](/compute/docs/instances/reserving-zonal-resources) to this node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
+        public virtual ReservationAffinity ReservationAffinity { get; set; } 
 
         /// <summary>Sandbox configuration for this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sandboxConfig")]
@@ -8642,6 +8715,26 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>[ReservationAffinity](/compute/docs/instances/reserving-zonal-resources) is the configuration of
+    /// desired reservation which instances could take capacity from.</summary>
+    public class ReservationAffinity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Corresponds to the type of reservation consumption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumeReservationType")]
+        public virtual string ConsumeReservationType { get; set; } 
+
+        /// <summary>Corresponds to the label key of reservation resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>Corresponds to the label value(s) of reservation resource(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Contains information about amount of some resource in the cluster. For memory, value should be in
     /// GB.</summary>
     public class ResourceLimit : Google.Apis.Requests.IDirectResponseSchema
@@ -8686,8 +8779,8 @@ namespace Google.Apis.Container.v1beta1.Data
     /// be an no-op if the last upgrade successfully completed.</summary>
     public class RollbackNodePoolUpgradeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster to rollback. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster to rollback. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
@@ -8696,19 +8789,19 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The name of the node pool to rollback. This field has been deprecated and replaced by
-        /// the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the node pool to rollback. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePoolId")]
         public virtual string NodePoolId { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -8765,12 +8858,13 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>SetAddonsRequest sets the addons associated with the cluster.</summary>
     public class SetAddonsConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The desired configurations for the various addons available to run in the cluster.</summary>
+        /// <summary>Required. The desired configurations for the various addons available to run in the
+        /// cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addonsConfig")]
         public virtual AddonsConfig AddonsConfig { get; set; } 
 
-        /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
@@ -8779,14 +8873,14 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -8798,15 +8892,15 @@ namespace Google.Apis.Container.v1beta1.Data
     /// in turn set them for Google Compute Engine resources used by that cluster</summary>
     public class SetLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by the name
-        /// field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the
+        /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
-        /// <summary>The fingerprint of the previous set of labels for this resource, used to detect conflicts. The
-        /// fingerprint is initially generated by Kubernetes Engine and changes after every request to modify or update
-        /// labels. You must always provide an up-to-date fingerprint hash when updating or changing labels. Make a
-        /// get() request to the resource to get the latest fingerprint.</summary>
+        /// <summary>Required. The fingerprint of the previous set of labels for this resource, used to detect
+        /// conflicts. The fingerprint is initially generated by Kubernetes Engine and changes after every request to
+        /// modify or update labels. You must always provide an up-to-date fingerprint hash when updating or changing
+        /// labels. Make a get() request to the resource to get the latest fingerprint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 
@@ -8815,18 +8909,18 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>The labels to set for that cluster.</summary>
+        /// <summary>Required. The labels to set for that cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
         public virtual System.Collections.Generic.IDictionary<string,string> ResourceLabels { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -8837,12 +8931,12 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>SetLegacyAbacRequest enables or disables the ABAC authorization mechanism for a cluster.</summary>
     public class SetLegacyAbacRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster to update. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster to update. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
-        /// <summary>Whether ABAC authorization will be enabled in the cluster.</summary>
+        /// <summary>Required. Whether ABAC authorization will be enabled in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; } 
 
@@ -8851,14 +8945,14 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -8869,14 +8963,14 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>SetLocationsRequest sets the locations of the cluster.</summary>
     public class SetLocationsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
-        /// <summary>The desired list of Google Compute Engine [zones](/compute/docs/zones#available) in which the
-        /// cluster's nodes should be located. Changing the locations a cluster is in will result in nodes being either
-        /// created or removed from the cluster, depending on whether locations are being added or removed.
+        /// <summary>Required. The desired list of Google Compute Engine [zones](/compute/docs/zones#available) in which
+        /// the cluster's nodes should be located. Changing the locations a cluster is in will result in nodes being
+        /// either created or removed from the cluster, depending on whether locations are being added or removed.
         ///
         /// This list must always include the cluster's primary zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
@@ -8887,14 +8981,14 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -8905,12 +8999,12 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>SetLoggingServiceRequest sets the logging service of a cluster.</summary>
     public class SetLoggingServiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
-        /// <summary>The logging service the cluster should use to write metrics. Currently available options:
+        /// <summary>Required. The logging service the cluster should use to write metrics. Currently available options:
         ///
         /// * "logging.googleapis.com" - the Google Cloud Logging service * "none" - no metrics will be exported from
         /// the cluster</summary>
@@ -8922,14 +9016,14 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -8940,12 +9034,12 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>SetMaintenancePolicyRequest sets the maintenance policy for a cluster.</summary>
     public class SetMaintenancePolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the cluster to update.</summary>
+        /// <summary>Required. The name of the cluster to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
-        /// <summary>The maintenance policy to be set for the cluster. An empty field clears the existing maintenance
-        /// policy.</summary>
+        /// <summary>Required. The maintenance policy to be set for the cluster. An empty field clears the existing
+        /// maintenance policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
         public virtual MaintenancePolicy MaintenancePolicy { get; set; } 
 
@@ -8954,13 +9048,13 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The Google Developers Console [project ID or project
+        /// <summary>Required. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which the cluster
-        /// resides.</summary>
+        /// <summary>Required. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which the
+        /// cluster resides.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -8971,12 +9065,12 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>SetMasterAuthRequest updates the admin password of a cluster.</summary>
     public class SetMasterAuthRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The exact form of action to be taken on the master auth.</summary>
+        /// <summary>Required. The exact form of action to be taken on the master auth.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
@@ -8985,18 +9079,18 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>A description of the update.</summary>
+        /// <summary>Required. A description of the update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
         public virtual MasterAuth Update { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -9007,12 +9101,13 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>SetMonitoringServiceRequest sets the monitoring service of a cluster.</summary>
     public class SetMonitoringServiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
-        /// <summary>The monitoring service the cluster should use to write metrics. Currently available options:
+        /// <summary>Required. The monitoring service the cluster should use to write metrics. Currently available
+        /// options:
         ///
         /// * "monitoring.googleapis.com" - the Google Cloud Monitoring service * "none" - no metrics will be exported
         /// from the cluster</summary>
@@ -9024,14 +9119,14 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -9042,8 +9137,8 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>SetNetworkPolicyRequest enables/disables network policy for a cluster.</summary>
     public class SetNetworkPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by the name
-        /// field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the
+        /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
@@ -9052,18 +9147,18 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Configuration options for the NetworkPolicy feature.</summary>
+        /// <summary>Required. Configuration options for the NetworkPolicy feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkPolicy")]
         public virtual NetworkPolicy NetworkPolicy { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -9074,12 +9169,12 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>SetNodePoolAutoscalingRequest sets the autoscaler settings of a node pool.</summary>
     public class SetNodePoolAutoscalingRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Autoscaling configuration for the node pool.</summary>
+        /// <summary>Required. Autoscaling configuration for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscaling")]
         public virtual NodePoolAutoscaling Autoscaling { get; set; } 
 
-        /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
@@ -9088,19 +9183,19 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The name of the node pool to upgrade. This field has been deprecated and replaced by
-        /// the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the node pool to upgrade. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePoolId")]
         public virtual string NodePoolId { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -9111,12 +9206,12 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>SetNodePoolManagementRequest sets the node management properties of a node pool.</summary>
     public class SetNodePoolManagementRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster to update. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster to update. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
-        /// <summary>NodeManagement configuration for the node pool.</summary>
+        /// <summary>Required. NodeManagement configuration for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual NodeManagement Management { get; set; } 
 
@@ -9125,19 +9220,19 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The name of the node pool to update. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the node pool to update. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePoolId")]
         public virtual string NodePoolId { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -9148,8 +9243,8 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>SetNodePoolSizeRequest sets the size a node pool.</summary>
     public class SetNodePoolSizeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster to update. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster to update. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
@@ -9158,23 +9253,23 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The desired node count for the pool.</summary>
+        /// <summary>Required. The desired node count for the pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; } 
 
-        /// <summary>Deprecated. The name of the node pool to update. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the node pool to update. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePoolId")]
         public virtual string NodePoolId { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -9219,8 +9314,8 @@ namespace Google.Apis.Container.v1beta1.Data
     /// pool to point to the new IP.</summary>
     public class StartIPRotationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by the name
-        /// field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the
+        /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
@@ -9229,7 +9324,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and
         /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
@@ -9239,8 +9334,8 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rotateCredentials")]
         public virtual System.Nullable<bool> RotateCredentials { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -9310,8 +9405,8 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>UpdateClusterRequest updates the settings of a cluster.</summary>
     public class UpdateClusterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
@@ -9320,18 +9415,18 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>A description of the update.</summary>
+        /// <summary>Required. A description of the update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
         public virtual ClusterUpdate Update { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -9342,12 +9437,12 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>UpdateMasterRequest updates the master of the cluster.</summary>
     public class UpdateMasterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
-        /// <summary>The Kubernetes version to change the master to.
+        /// <summary>Required. The Kubernetes version to change the master to.
         ///
         /// Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the
         /// following behavior:
@@ -9363,14 +9458,14 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -9381,12 +9476,12 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>SetNodePoolVersionRequest updates the version of a node pool.</summary>
     public class UpdateNodePoolRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the
-        /// name field.</summary>
+        /// <summary>Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; } 
 
-        /// <summary>The desired image type for the node pool.</summary>
+        /// <summary>Required. The desired image type for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; } 
 
@@ -9401,12 +9496,12 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated. The name of the node pool to upgrade. This field has been deprecated and replaced by
-        /// the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the node pool to upgrade. This field has been deprecated and
+        /// replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePoolId")]
         public virtual string NodePoolId { get; set; } 
 
-        /// <summary>The Kubernetes version to change the nodes to (typically an upgrade).
+        /// <summary>Required. The Kubernetes version to change the nodes to (typically an upgrade).
         ///
         /// Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the
         /// following behavior:
@@ -9417,7 +9512,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeVersion")]
         public virtual string NodeVersion { get; set; } 
 
-        /// <summary>Deprecated. The Google Developers Console [project ID or project
+        /// <summary>Required. Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the
         /// name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
@@ -9431,8 +9526,8 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("workloadMetadataConfig")]
         public virtual WorkloadMetadataConfig WorkloadMetadataConfig { get; set; } 
 
-        /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
-        /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
+        /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+        /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 

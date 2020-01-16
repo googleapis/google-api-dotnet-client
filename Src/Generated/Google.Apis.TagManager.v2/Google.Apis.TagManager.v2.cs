@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/tag-manager'>Tag Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200109 (1834)
+ *      <tr><th>API Rev<td>20200113 (1838)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/tag-manager'>
  *              https://developers.google.com/tag-manager</a>
@@ -965,13 +965,13 @@ namespace Google.Apis.TagManager.v2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Continuation token for fetching the next page of results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>Also retrieve deleted (archived) versions when true.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeDeleted { get; set; }
+
+                    /// <summary>Continuation token for fetching the next page of results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1007,18 +1007,18 @@ namespace Google.Apis.TagManager.v2
                                 Pattern = @"^accounts/[^/]+/containers/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "includeDeleted", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "includeDeleted",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "includeDeleted", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "includeDeleted",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

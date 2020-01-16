@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/'>Cloud Billing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200106 (1831)
+ *      <tr><th>API Rev<td>20200110 (1835)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/'>
  *              https://cloud.google.com/billing/</a>
@@ -1252,7 +1252,7 @@ namespace Google.Apis.Cloudbilling.v1
 
 
             /// <summary>Lists all publicly available SKUs for a given cloud service.</summary>
-            /// <param name="parent">The name of the service. Example: "services/DA34-426B-A397"</param>
+            /// <param name="parent">Required. The name of the service. Example: "services/DA34-426B-A397"</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1270,9 +1270,16 @@ namespace Google.Apis.Cloudbilling.v1
                 }
 
 
-                /// <summary>The name of the service. Example: "services/DA34-426B-A397"</summary>
+                /// <summary>Required. The name of the service. Example: "services/DA34-426B-A397"</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
+
+                /// <summary>Optional exclusive end time of the time range for which the pricing versions will be
+                /// returned. Timestamps in the future are not allowed. The time range has to be within a single
+                /// calendar month in America/Los_Angeles timezone. Time range as a whole is optional. If not specified,
+                /// the latest pricing will be returned (up to 12 hours old at most).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object EndTime { get; set; }
 
                 /// <summary>A token identifying a page of results to return. This should be a `next_page_token` value
                 /// returned from a previous `ListSkus` call. If unspecified, the first page of results is
@@ -1295,13 +1302,6 @@ namespace Google.Apis.Cloudbilling.v1
                 /// conversion rate as of start_time. Optional. If not specified USD will be used.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("currencyCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CurrencyCode { get; set; }
-
-                /// <summary>Optional exclusive end time of the time range for which the pricing versions will be
-                /// returned. Timestamps in the future are not allowed. The time range has to be within a single
-                /// calendar month in America/Los_Angeles timezone. Time range as a whole is optional. If not specified,
-                /// the latest pricing will be returned (up to 12 hours old at most).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object EndTime { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1337,6 +1337,15 @@ namespace Google.Apis.Cloudbilling.v1
                             Pattern = @"^services/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1367,15 +1376,6 @@ namespace Google.Apis.Cloudbilling.v1
                         "currencyCode", new Google.Apis.Discovery.Parameter
                         {
                             Name = "currencyCode",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "endTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "endTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
