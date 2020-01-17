@@ -50,9 +50,16 @@ def GetDiscoveryDocuments(destination_dir):
       print(filename + " FAILED TO DOWNLOAD")
       continue
 
-    # Use binary mode to ensure the file is written exactly as received.
+    # Load and parse the JSON so we can normalize the property ordering.
+    try:
+      discovery_json = json.load(api_json)
+    except ValueError:
+      print(filename + " FAILED TO PARSE JSON")
+      continue
+
+    # Use binary mode to allow json.dump to control exact format.
     with open(filename, 'wb') as discovery_file:
-      discovery_file.write(api_json.read())
+      json.dump(discovery_json, discovery_file, indent=1, sort_keys=True)
 
     print(filename)
 
