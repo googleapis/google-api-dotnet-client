@@ -346,6 +346,23 @@ namespace Google.Apis.Kgsearch.v1
             }
 
 
+            /// <summary>The list of entity id to be used for search instead of query string. To specify multiple ids in
+            /// the HTTP request, repeat the parameter in the URL as in ...?ids=A=B</summary>
+            [Google.Apis.Util.RequestParameterAttribute("ids", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
+
+            /// <summary>Enables indenting of json results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("indent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Indent { get; set; }
+
+            /// <summary>The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languages", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Languages { get; set; }
+
+            /// <summary>Limits the number of entities to be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> Limit { get; set; }
+
             /// <summary>Enables prefix match against names and aliases of entities</summary>
             [Google.Apis.Util.RequestParameterAttribute("prefix", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Prefix { get; set; }
@@ -359,23 +376,6 @@ namespace Google.Apis.Kgsearch.v1
             /// of these types.</summary>
             [Google.Apis.Util.RequestParameterAttribute("types", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Types { get; set; }
-
-            /// <summary>Enables indenting of json results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("indent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> Indent { get; set; }
-
-            /// <summary>The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languages", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> Languages { get; set; }
-
-            /// <summary>The list of entity id to be used for search instead of query string. To specify multiple ids in
-            /// the HTTP request, repeat the parameter in the URL as in ...?ids=A=B</summary>
-            [Google.Apis.Util.RequestParameterAttribute("ids", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
-
-            /// <summary>Limits the number of entities to be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> Limit { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -402,27 +402,9 @@ namespace Google.Apis.Kgsearch.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "prefix", new Google.Apis.Discovery.Parameter
+                    "ids", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "prefix",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "types", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "types",
+                        Name = "ids",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -447,18 +429,36 @@ namespace Google.Apis.Kgsearch.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "ids", new Google.Apis.Discovery.Parameter
+                    "limit", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "ids",
+                        Name = "limit",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "limit", new Google.Apis.Discovery.Parameter
+                    "prefix", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "limit",
+                        Name = "prefix",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "types", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "types",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

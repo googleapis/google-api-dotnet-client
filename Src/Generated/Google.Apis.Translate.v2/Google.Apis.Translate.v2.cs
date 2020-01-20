@@ -541,13 +541,13 @@ namespace Google.Apis.Translate.v2
             }
 
 
-            /// <summary>The language to use to return localized, human readable names of supported languages.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Target { get; set; }
-
             /// <summary>The model type for which supported languages should be returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Model { get; set; }
+
+            /// <summary>The language to use to return localized, human readable names of supported languages.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Target { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -574,18 +574,18 @@ namespace Google.Apis.Translate.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "target", new Google.Apis.Discovery.Parameter
+                    "model", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "target",
+                        Name = "model",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "model", new Google.Apis.Discovery.Parameter
+                    "target", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "model",
+                        Name = "target",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -645,12 +645,6 @@ namespace Google.Apis.Translate.v2
             [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Target { get; private set; }
 
-            /// <summary>The language of the source text, set to one of the language codes listed in Language Support.
-            /// If the source language is not specified, the API will attempt to identify the source language
-            /// automatically and return it within the response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Source { get; set; }
-
             /// <summary>The customization id for translate</summary>
             [Google.Apis.Util.RequestParameterAttribute("cid", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Cid { get; set; }
@@ -676,6 +670,12 @@ namespace Google.Apis.Translate.v2
             /// documentation.</summary>
             [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Model { get; set; }
+
+            /// <summary>The language of the source text, set to one of the language codes listed in Language Support.
+            /// If the source language is not specified, the API will attempt to identify the source language
+            /// automatically and return it within the response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Source { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -720,15 +720,6 @@ namespace Google.Apis.Translate.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "source", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "cid", new Google.Apis.Discovery.Parameter
                     {
                         Name = "cid",
@@ -750,6 +741,15 @@ namespace Google.Apis.Translate.v2
                     "model", new Google.Apis.Discovery.Parameter
                     {
                         Name = "model",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

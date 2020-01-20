@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>Access Context Manager API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200104 (1829)
+ *      <tr><th>API Rev<td>20200110 (1835)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-context-manager/docs/reference/rest/'>
  *              https://cloud.google.com/access-context-manager/docs/reference/rest/</a>
@@ -640,15 +640,6 @@ namespace Google.Apis.AccessContextManager.v1beta
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Next page token for the next batch of Access Level instances. Defaults to the first page of
-                /// results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Number of Access Levels to include in the list. Default 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Whether to return `BasicLevels` in the Cloud Common Expression language, as `CustomLevels`,
                 /// rather than as `BasicLevels`. Defaults to returning `AccessLevels` in the format they were
                 /// defined.</summary>
@@ -667,6 +658,15 @@ namespace Google.Apis.AccessContextManager.v1beta
                     [Google.Apis.Util.StringValueAttribute("CEL")]
                     CEL,
                 }
+
+                /// <summary>Number of Access Levels to include in the list. Default 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Next page token for the next batch of Access Level instances. Defaults to the first page of
+                /// results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -702,9 +702,9 @@ namespace Google.Apis.AccessContextManager.v1beta
                             Pattern = @"^accessPolicies/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "accessLevelFormat", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "accessLevelFormat",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -720,9 +720,9 @@ namespace Google.Apis.AccessContextManager.v1beta
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "accessLevelFormat", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "accessLevelFormat",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1077,14 +1077,14 @@ namespace Google.Apis.AccessContextManager.v1beta
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Number of Service Perimeters to include in the list. Default 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Next page token for the next batch of Service Perimeter instances. Defaults to the first
                 /// page of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Number of Service Perimeters to include in the list. Default 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1120,18 +1120,18 @@ namespace Google.Apis.AccessContextManager.v1beta
                             Pattern = @"^accessPolicies/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1435,14 +1435,14 @@ namespace Google.Apis.AccessContextManager.v1beta
             }
 
 
+            /// <summary>Number of AccessPolicy instances to include in the list. Default 100.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Next page token for the next batch of AccessPolicy instances. Defaults to the first page of
             /// results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>Number of AccessPolicy instances to include in the list. Default 100.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>Required. Resource name for the container to list AccessPolicy instances from.
             ///
@@ -1475,18 +1475,18 @@ namespace Google.Apis.AccessContextManager.v1beta
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1688,6 +1688,10 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
+        /// <summary>A `CustomLevel` written in the Common Expression Language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("custom")]
+        public virtual CustomLevel Custom { get; set; } 
+
         /// <summary>Description of the `AccessLevel` and its use. Does not affect behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
@@ -1805,6 +1809,18 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>`CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language to represent the necessary
+    /// conditions for the level to apply to a request. See CEL spec at: https://github.com/google/cel-spec</summary>
+    public class CustomLevel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A Cloud CEL expression evaluating to a boolean.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expr")]
+        public virtual Expr Expr { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>`DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A
     /// `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any
     /// enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is
@@ -1837,6 +1853,38 @@ namespace Google.Apis.AccessContextManager.v1beta.Data
         /// `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireScreenlock")]
         public virtual System.Nullable<bool> RequireScreenlock { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an expression text. Example:
+    ///
+    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
+    /// "size(request.user) > 0"</summary>
+    public class Expr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
+        /// e.g. when hovered over it in a UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.
+        ///
+        /// The application context of the containing message determines which well-known feature set of CEL is
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; } 
+
+        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// and a position in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// e.g. in UIs which allow to enter the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

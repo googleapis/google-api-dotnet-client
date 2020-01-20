@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-sql/'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20191214 (1808)
+ *      <tr><th>API Rev<td>20200104 (1829)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-sql/'>
  *              https://developers.google.com/cloud-sql/</a>
@@ -767,15 +767,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>The parent, which owns this collection of backupRuns. Format:
-            /// projects/{project}/locations/{location}/instances/{instance}</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
-
             /// <summary>A previously-returned page token representing part of the larger set of results to
             /// view.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The parent, which owns this collection of backupRuns. Format:
+            /// projects/{project}/locations/{location}/instances/{instance}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -829,18 +829,18 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "parent",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "parent", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1268,7 +1268,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>Partially updates a resource containing information about a database inside a Cloud SQL instance.
-        /// This method supports patch semantics.</summary>
+        /// This method supports patch semantics. Caution: This is not a partial update, so you must include values for
+        /// all the settings that you want to retain. For partial updates, use update.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param
@@ -1281,7 +1282,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>Partially updates a resource containing information about a database inside a Cloud SQL instance.
-        /// This method supports patch semantics.</summary>
+        /// This method supports patch semantics. Caution: This is not a partial update, so you must include values for
+        /// all the settings that you want to retain. For partial updates, use update.</summary>
         public class PatchRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2469,18 +2471,29 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>A filter expression that filters resources listed in the response. The expression is in the
+            /// form of field:value. For example, 'instanceType:CLOUD_SQL_INSTANCE'. Fields can be nested as needed as
+            /// per their JSON representation, such as 'settings.userLabels.auto_start:true'.
+            ///
+            /// Multiple filter queries are space-separated. For example. 'state:RUNNABLE
+            /// instanceType:CLOUD_SQL_INSTANCE'. By default, each expression is an AND expression. However, you can
+            /// include AND and OR expressions explicitly.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The maximum number of results to return per response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
-
-            /// <summary>An expression for filtering the results of the request, such as by name or label.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
             /// <summary>A previously-returned page token representing part of the larger set of results to
             /// view.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The parent, which owns this collection of database instances. Format:
+            /// projects/{project}/locations/{location}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2516,15 +2529,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -2534,9 +2538,27 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3488,8 +3510,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
         }
 
-        /// <summary>Updates settings of a Cloud SQL instance. Caution: This is not a partial update, so you must
-        /// include values for all the settings that you want to retain. For partial updates, use patch.</summary>
+        /// <summary>Updates settings of a Cloud SQL instance.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param
@@ -3499,8 +3520,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             return new UpdateRequest(service, body, project, instance);
         }
 
-        /// <summary>Updates settings of a Cloud SQL instance. Caution: This is not a partial update, so you must
-        /// include values for all the settings that you want to retain. For partial updates, use patch.</summary>
+        /// <summary>Updates settings of a Cloud SQL instance.</summary>
         public class UpdateRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -3724,14 +3744,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Instance { get; set; }
 
+            /// <summary>Maximum number of operations per response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
             /// <summary>A previously-returned page token representing part of the larger set of results to
             /// view.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>Maximum number of operations per response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>Indirect parent. The direct parent should combine with the instance name, which owns this
             /// collection of operations. Format: projects/{project}/locations/{location}</summary>
@@ -3781,18 +3801,18 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "maxResults", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxResults",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4026,13 +4046,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>ID of the project that contains the instance.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Project { get; set; }
-
                     /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Instance { get; set; }
+
+                    /// <summary>ID of the project that contains the instance.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Project { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -4074,18 +4094,18 @@ namespace Google.Apis.SQLAdmin.v1beta4
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "project", new Google.Apis.Discovery.Parameter
+                            "instance", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "project",
+                                Name = "instance",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "instance", new Google.Apis.Discovery.Parameter
+                            "project", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "instance",
+                                Name = "project",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5054,6 +5074,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Host of the user in the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Host { get; set; }
+
             /// <summary>Name of the user in the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -5062,10 +5086,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// projects/{project}/locations/{location}/instances/{instance}/users</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ResourceName { get; set; }
-
-            /// <summary>Optional. Host of the user in the instance.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Host { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -5116,6 +5136,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "host", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "host",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -5128,15 +5157,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     "resourceName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "resourceName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "host", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "host",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -5807,6 +5827,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>A flag resource.</summary>
     public class Flag : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Use this field if only certain integers are accepted. Can be combined with min_value and max_value
+        /// to add additional values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedIntValues")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> AllowedIntValues { get; set; } 
+
         /// <summary>For STRING flags, a list of strings that the value can be set to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedStringValues")]
         public virtual System.Collections.Generic.IList<string> AllowedStringValues { get; set; } 
@@ -6020,7 +6045,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>List of warnings that ocurred while handling the request.</summary>
+        /// <summary>List of warnings that occurred while handling the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<ApiWarning> Warnings { get; set; } 
 
@@ -6622,6 +6647,21 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a Sql Server user on the Cloud SQL instance.</summary>
+    public class SqlServerUserDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the user has been disabled</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
+
+        /// <summary>The server roles for this user</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverRoles")]
+        public virtual System.Collections.Generic.IList<string> ServerRoles { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>SslCerts Resource</summary>
     public class SslCert : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6839,6 +6879,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// if applicable. Can be omitted for update since it is already specified on the URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlserverUserDetails")]
+        public virtual SqlServerUserDetails SqlserverUserDetails { get; set; } 
 
     }    
 

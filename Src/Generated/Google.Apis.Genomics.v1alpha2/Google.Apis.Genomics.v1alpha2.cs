@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20200114 (1839)
+ *      <tr><th>API Rev<td>20200116 (1841)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -560,13 +560,13 @@ namespace Google.Apis.Genomics.v1alpha2
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>The maximum number of results to return. The maximum value is 256.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -611,18 +611,18 @@ namespace Google.Apis.Genomics.v1alpha2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -858,13 +858,13 @@ namespace Google.Apis.Genomics.v1alpha2
             }
 
 
-
-            [Google.Apis.Util.RequestParameterAttribute("validationToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ulong> ValidationToken { get; set; }
-
             /// <summary>The operation to retrieve controller configuration for.</summary>
             [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OperationId { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("validationToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> ValidationToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -891,18 +891,18 @@ namespace Google.Apis.Genomics.v1alpha2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "validationToken", new Google.Apis.Discovery.Parameter
+                    "operationId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "validationToken",
+                        Name = "operationId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "operationId", new Google.Apis.Discovery.Parameter
+                    "validationToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "operationId",
+                        Name = "validationToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -933,24 +933,24 @@ namespace Google.Apis.Genomics.v1alpha2
             }
 
 
-            /// <summary>Token to use to indicate where to start getting results. If unspecified, returns the first page
-            /// of results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
+            /// <summary>Pipelines with names that match this prefix should be returned.  If unspecified, all pipelines
+            /// in the project, up to `pageSize`, will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("namePrefix", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string NamePrefix { get; set; }
 
             /// <summary>Number of pipelines to return at once. Defaults to 256, and max is 2048.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
+            /// <summary>Token to use to indicate where to start getting results. If unspecified, returns the first page
+            /// of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>Required. The name of the project to search for pipelines. Caller must have READ access to this
             /// project.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
-
-            /// <summary>Pipelines with names that match this prefix should be returned.  If unspecified, all pipelines
-            /// in the project, up to `pageSize`, will be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("namePrefix", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string NamePrefix { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -977,9 +977,9 @@ namespace Google.Apis.Genomics.v1alpha2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "namePrefix", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "namePrefix",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -995,18 +995,18 @@ namespace Google.Apis.Genomics.v1alpha2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "projectId",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "namePrefix", new Google.Apis.Discovery.Parameter
+                    "projectId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "namePrefix",
+                        Name = "projectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

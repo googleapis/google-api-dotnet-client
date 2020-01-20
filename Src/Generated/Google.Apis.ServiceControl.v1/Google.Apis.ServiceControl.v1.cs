@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200106 (1831)
+ *      <tr><th>API Rev<td>20200113 (1838)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -695,6 +695,46 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>ID of the actual config used to process the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
         public virtual string ServiceConfigId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The allowed types for [VALUE] in a `[KEY]:[VALUE]` attribute.</summary>
+    public class AttributeValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A Boolean value represented by `true` or `false`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; } 
+
+        /// <summary>A 64-bit signed integer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
+        public virtual System.Nullable<long> IntValue { get; set; } 
+
+        /// <summary>A string up to 256 bytes long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual TruncatableString StringValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A set of attributes, each in the format `[KEY]:[VALUE]`.</summary>
+    public class Attributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string
+        /// up to 256 bytes, a signed 64-bit integer, or the Boolean values `true` and `false`. For example:
+        ///
+        /// "/instance_id": "my-instance" "/http/user_agent": "" "/http/request_bytes": 300 "abc.com/myattribute":
+        /// true</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeMap")]
+        public virtual System.Collections.Generic.IDictionary<string,AttributeValue> AttributeMap { get; set; } 
+
+        /// <summary>The number of attributes that were discarded. Attributes can be discarded because their keys are
+        /// too long or because there are too many attributes. If this value is 0 then all attributes are
+        /// valid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("droppedAttributesCount")]
+        public virtual System.Nullable<int> DroppedAttributesCount { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1560,6 +1600,11 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
+        /// <summary>Unimplemented. A list of Cloud Trace spans. The span names shall contain the id of the destination
+        /// project which can be either the produce or the consumer project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("traceSpans")]
+        public virtual System.Collections.Generic.IList<TraceSpan> TraceSpans { get; set; } 
+
         /// <summary>User defined labels for the resource that this operation is associated with. Only a combination of
         /// 1000 user labels per consumer project are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
@@ -2071,6 +2116,99 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>Metadata about third party identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyClaims")]
         public virtual System.Collections.Generic.IDictionary<string,object> ThirdPartyClaims { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a
+    /// trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-
+    /// operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be
+    /// contiguousthere may be gaps or overlaps between spans in a trace.</summary>
+    public class TraceSpan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A set of attributes on the span. You can have up to 32 attributes per span.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual Attributes Attributes { get; set; } 
+
+        /// <summary>An optional number of child spans that were generated while this span was active. If set, allows
+        /// implementation to detect missing child spans.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("childSpanCount")]
+        public virtual System.Nullable<int> ChildSpanCount { get; set; } 
+
+        /// <summary>A description of the span's operation (up to 128 bytes). Stackdriver Trace displays the description
+        /// in the Google Cloud Platform Console. For example, the display name can be a qualified method name or a file
+        /// name and a line number where the operation is called. A best practice is to use the same display name within
+        /// an application and at the same call point. This makes it easier to correlate spans in different
+        /// traces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual TruncatableString DisplayName { get; set; } 
+
+        /// <summary>The end time of the span. On the client side, this is the time kept by the local machine where the
+        /// span execution ends. On the server side, this is the time when the server application handler stops
+        /// running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The resource name of the span in the following format:
+        ///
+        /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project;
+        /// it is a 32-character hexadecimal encoding of a 16-byte array.
+        ///
+        /// [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an
+        /// 8-byte array.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The [SPAN_ID] of this span's parent span. If this is a root span, then this field must be
+        /// empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentSpanId")]
+        public virtual string ParentSpanId { get; set; } 
+
+        /// <summary>(Optional) Set this parameter to indicate whether this span is in the same process as its parent.
+        /// If you do not set this parameter, Stackdriver Trace is unable to take advantage of this helpful
+        /// information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sameProcessAsParentSpan")]
+        public virtual System.Nullable<bool> SameProcessAsParentSpan { get; set; } 
+
+        /// <summary>The [SPAN_ID] portion of the span's resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
+        public virtual string SpanId { get; set; } 
+
+        /// <summary>Distinguishes between spans generated in a particular context. For example, two spans with the same
+        /// name may be distinguished using `CLIENT` (caller) and `SERVER` (callee) to identify an RPC call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spanKind")]
+        public virtual string SpanKind { get; set; } 
+
+        /// <summary>The start time of the span. On the client side, this is the time kept by the local machine where
+        /// the span execution starts. On the server side, this is the time when the server's application handler starts
+        /// running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>An optional final status for this span.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual Status Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a string that might be shortened to a specified length.</summary>
+    public class TruncatableString : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of bytes removed from the original string. If this value is 0, then the string was not
+        /// shortened.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truncatedByteCount")]
+        public virtual System.Nullable<int> TruncatedByteCount { get; set; } 
+
+        /// <summary>The shortened string. For example, if the original string is 500 bytes long and the limit of the
+        /// string is 128 bytes, then `value` contains the first 128 bytes of the 500-byte string.
+        ///
+        /// Truncation always happens on a UTF8 character boundary. If there are multi-byte characters in the string,
+        /// then the length of the shortened string might be less than the size limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

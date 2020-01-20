@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1.1
- *      <tr><th>API Rev<td>20191210 (1804)
+ *      <tr><th>API Rev<td>20200106 (1831)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>
@@ -1067,6 +1067,18 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Additional query options.</summary>
+    public class Options : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set to true and filter your report by `FILTER_INSERTION_ORDER` or `FILTER_LINE_ITEM` to include
+        /// data for audience lists specifically targeted by those items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeOnlyTargetedUserLists")]
+        public virtual System.Nullable<bool> IncludeOnlyTargetedUserLists { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Parameters of a query or report.</summary>
     public class Parameters : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1085,6 +1097,10 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// <summary>Metrics to include as columns in your report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
+
+        /// <summary>Additional query options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual Options Options { get; set; } 
 
         /// <summary>Report type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]

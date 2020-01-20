@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/tag-manager'>Tag Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200113 (1838)
+ *      <tr><th>API Rev<td>20200116 (1841)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/tag-manager'>
  *              https://developers.google.com/tag-manager</a>
@@ -1547,6 +1547,10 @@ namespace Google.Apis.TagManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("folderId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FolderId { get; private set; }
 
+                    /// <summary>The tags to be moved to the folder.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("tagId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> TagId { get; set; }
+
                     /// <summary>The triggers to be moved to the folder.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> TriggerId { get; set; }
@@ -1554,10 +1558,6 @@ namespace Google.Apis.TagManager.v1
                     /// <summary>The variables to be moved to the folder.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("variableId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> VariableId { get; set; }
-
-                    /// <summary>The tags to be moved to the folder.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("tagId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual Google.Apis.Util.Repeatable<string> TagId { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1617,6 +1617,15 @@ namespace Google.Apis.TagManager.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "tagId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "tagId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "triggerId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "triggerId",
@@ -1629,15 +1638,6 @@ namespace Google.Apis.TagManager.v1
                             "variableId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "variableId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "tagId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "tagId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3529,15 +3529,15 @@ namespace Google.Apis.TagManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("containerId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ContainerId { get; private set; }
 
-                    /// <summary>Also retrieve deleted (archived) versions when true.</summary>
-                    /// [default: false]
-                    [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeDeleted { get; set; }
-
                     /// <summary>Retrieve headers only when true.</summary>
                     /// [default: false]
                     [Google.Apis.Util.RequestParameterAttribute("headers", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Headers { get; set; }
+
+                    /// <summary>Also retrieve deleted (archived) versions when true.</summary>
+                    /// [default: false]
+                    [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3582,18 +3582,18 @@ namespace Google.Apis.TagManager.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "includeDeleted", new Google.Apis.Discovery.Parameter
+                            "headers", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "includeDeleted",
+                                Name = "headers",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = "false",
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "headers", new Google.Apis.Discovery.Parameter
+                            "includeDeleted", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "headers",
+                                Name = "includeDeleted",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = "false",

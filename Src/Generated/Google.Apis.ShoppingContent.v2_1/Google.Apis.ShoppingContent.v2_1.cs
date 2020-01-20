@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20191126 (1790)
+ *      <tr><th>API Rev<td>20200110 (1835)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -4882,6 +4882,8 @@ namespace Google.Apis.ShoppingContent.v2_1
                 Template1b,
                 [Google.Apis.Util.StringValueAttribute("template2")]
                 Template2,
+                [Google.Apis.Util.StringValueAttribute("template3")]
+                Template3,
             }
 
             /// <summary>The country of the template to retrieve. Defaults to US.</summary>
@@ -8245,6 +8247,66 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         }
 
+        /// <summary>Retrieves supported pickup services for an account.</summary>
+        /// <param name="merchantId">The ID of the account for which to retrieve the supported pickup services.</param>
+        public virtual GetsupportedpickupservicesRequest Getsupportedpickupservices(ulong merchantId)
+        {
+            return new GetsupportedpickupservicesRequest(service, merchantId);
+        }
+
+        /// <summary>Retrieves supported pickup services for an account.</summary>
+        public class GetsupportedpickupservicesRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ShippingsettingsGetSupportedPickupServicesResponse>
+        {
+            /// <summary>Constructs a new Getsupportedpickupservices request.</summary>
+            public GetsupportedpickupservicesRequest(Google.Apis.Services.IClientService service, ulong merchantId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account for which to retrieve the supported pickup services.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getsupportedpickupservices"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/supportedPickupServices"; }
+            }
+
+            /// <summary>Initializes Getsupportedpickupservices parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account.</summary>
         /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
         public virtual ListRequest List(ulong merchantId)
@@ -8937,6 +8999,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkedAccountId")]
         public virtual string LinkedAccountId { get; set; } 
 
+        /// <summary>List of provided services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<string> Services { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -8995,6 +9061,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The ID of the linked account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedAccountId")]
         public virtual string LinkedAccountId { get; set; } 
+
+        /// <summary>List of provided services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<string> Services { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11207,7 +11277,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// updates - "colissimo" (Colissimo by La Poste) automatic status updates - "ups" (United Parcel Service)
         /// automatic status updates - "chronopost" (Chronopost by La Poste) - "gls" (General Logistics Systems France)
         /// - "dpd" (DPD Group by GeoPost) - "bpost" (Belgian Post Group) - "colis prive" (Colis Privé) - "boxtal"
-        /// (Boxtal) - "geodis" (GEODIS) - "tnt" (TNT)</summary>
+        /// (Boxtal) - "geodis" (GEODIS) - "tnt" (TNT) - "db schenker" (DB Schenker)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -12061,6 +12131,38 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "content#ordersUpdateShipmentResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PickupCarrierService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the pickup carrier (e.g., "UPS"). Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
+        public virtual string CarrierName { get; set; } 
+
+        /// <summary>The name of the pickup service (e.g., "Access point"). Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PickupServicesPickupService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the carrier (e.g., "UPS"). Always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
+        public virtual string CarrierName { get; set; } 
+
+        /// <summary>The CLDR country code of the carrier (e.g., "US"). Always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
+        /// <summary>The name of the pickup service (e.g., "Access point"). Always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13865,11 +13967,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>The carrier-service pair delivering items to collection points. The list of supported pickup
+        /// services can be retrieved via the getSupportedPickupServices method. Required if and only if the service
+        /// delivery type is pickup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupService")]
+        public virtual PickupCarrierService PickupService { get; set; } 
+
         /// <summary>Shipping rate group definitions. Only the last one is allowed to have an empty
         /// applicableShippingLabels, which means "everything else". The other applicableShippingLabels must not
         /// overlap.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateGroups")]
         public virtual System.Collections.Generic.IList<RateGroup> RateGroups { get; set; } 
+
+        /// <summary>Type of locations this service ships orders to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentType")]
+        public virtual string ShipmentType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14052,6 +14164,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "content#shippingsettingsGetSupportedHolidaysResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ShippingsettingsGetSupportedPickupServicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#shippingsettingsGetSupportedPickupServicesResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>A list of supported pickup services. May be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupServices")]
+        public virtual System.Collections.Generic.IList<PickupServicesPickupService> PickupServices { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

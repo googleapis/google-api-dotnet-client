@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/actions/smarthome/create-app#request-sync'>HomeGraph API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200113 (1838)
+ *      <tr><th>API Rev<td>20200115 (1840)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/actions/smarthome/create-app#request-sync'>
  *              https://developers.google.com/actions/smarthome/create-app#request-sync</a>
@@ -974,13 +974,13 @@ namespace Google.Apis.HomeGraphService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("followUpToken")]
         public virtual string FollowUpToken { get; set; } 
 
-        /// <summary>State of devices to update and notification metadata for devices. For example, if a user turns a
-        /// light on manually, a state update should be sent so that the information is always the current status of the
-        /// device. Notifications are independent from the state and its piece of the payload should contain everything
-        /// necessary to notify the user. Although it may be related to a state change, it does not need to be. For
-        /// example, if a device can turn on/off and change temperature, the states reported would include both "on" and
-        /// "70 degrees" but the 3p may choose not to send any notification for that, or to only say that the "the room
-        /// is heating up", keeping state and notification independent.</summary>
+        /// <summary>Required. State of devices to update and notification metadata for devices. For example, if a user
+        /// turns a light on manually, a state update should be sent so that the information is always the current
+        /// status of the device. Notifications are independent from the state and its piece of the payload should
+        /// contain everything necessary to notify the user. Although it may be related to a state change, it does not
+        /// need to be. For example, if a device can turn on/off and change temperature, the states reported would
+        /// include both "on" and "70 degrees" but the 3p may choose not to send any notification for that, or to only
+        /// say that the "the room is heating up", keeping state and notification independent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual StateAndNotificationPayload Payload { get; set; } 
 

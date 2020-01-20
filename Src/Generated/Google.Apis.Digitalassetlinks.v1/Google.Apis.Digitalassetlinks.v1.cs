@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/digital-asset-links/'>Digital Asset Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191207 (1801)
+ *      <tr><th>API Rev<td>20200119 (1844)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/digital-asset-links/'>
  *              https://developers.google.com/digital-asset-links/</a>
@@ -387,6 +387,23 @@ namespace Google.Apis.Digitalassetlinks.v1
             }
 
 
+            /// <summary>Query string for the relation.
+            ///
+            /// We identify relations with strings of the format `/`, where `` must be one of a set of pre-defined
+            /// purpose categories, and `` is a free-form lowercase alphanumeric string that describes the specific use
+            /// case of the statement.
+            ///
+            /// Refer to [our API documentation](/digital-asset-links/v1/relation-strings) for the current list of
+            /// supported relations.
+            ///
+            /// For a query to match an asset link, both the query's and the asset link's relation strings must match
+            /// exactly.
+            ///
+            /// Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with
+            /// relation `delegate_permission/common.handle_all_urls`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("relation", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Relation { get; set; }
+
             /// <summary>The uppercase SHA-265 fingerprint of the certificate.  From the PEM certificate, it can be
             /// acquired like this:
             ///
@@ -405,8 +422,13 @@ namespace Google.Apis.Digitalassetlinks.v1
             /// If these tools are not available to you, you can convert the PEM certificate into the DER format,
             /// compute the SHA-256 hash of that string and represent the result as a hexstring (that is, uppercase
             /// hexadecimal representations of each octet, separated by colons).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("target.androidApp.certificate.sha256Fingerprint", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string TargetAndroidAppCertificateSha256Fingerprint { get; set; }
+            [Google.Apis.Util.RequestParameterAttribute("source.androidApp.certificate.sha256Fingerprint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SourceAndroidAppCertificateSha256Fingerprint { get; set; }
+
+            /// <summary>Android App assets are naturally identified by their Java package name. For example, the Google
+            /// Maps app uses the package name `com.google.android.apps.maps`. REQUIRED</summary>
+            [Google.Apis.Util.RequestParameterAttribute("source.androidApp.packageName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SourceAndroidAppPackageName { get; set; }
 
             /// <summary>Web assets are identified by a URL that contains only the scheme, hostname and port parts.  The
             /// format is
@@ -436,16 +458,6 @@ namespace Google.Apis.Digitalassetlinks.v1
             [Google.Apis.Util.RequestParameterAttribute("source.web.site", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceWebSite { get; set; }
 
-            /// <summary>Android App assets are naturally identified by their Java package name. For example, the Google
-            /// Maps app uses the package name `com.google.android.apps.maps`. REQUIRED</summary>
-            [Google.Apis.Util.RequestParameterAttribute("source.androidApp.packageName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SourceAndroidAppPackageName { get; set; }
-
-            /// <summary>Android App assets are naturally identified by their Java package name. For example, the Google
-            /// Maps app uses the package name `com.google.android.apps.maps`. REQUIRED</summary>
-            [Google.Apis.Util.RequestParameterAttribute("target.androidApp.packageName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string TargetAndroidAppPackageName { get; set; }
-
             /// <summary>The uppercase SHA-265 fingerprint of the certificate.  From the PEM certificate, it can be
             /// acquired like this:
             ///
@@ -464,25 +476,13 @@ namespace Google.Apis.Digitalassetlinks.v1
             /// If these tools are not available to you, you can convert the PEM certificate into the DER format,
             /// compute the SHA-256 hash of that string and represent the result as a hexstring (that is, uppercase
             /// hexadecimal representations of each octet, separated by colons).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("source.androidApp.certificate.sha256Fingerprint", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SourceAndroidAppCertificateSha256Fingerprint { get; set; }
+            [Google.Apis.Util.RequestParameterAttribute("target.androidApp.certificate.sha256Fingerprint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TargetAndroidAppCertificateSha256Fingerprint { get; set; }
 
-            /// <summary>Query string for the relation.
-            ///
-            /// We identify relations with strings of the format `/`, where `` must be one of a set of pre-defined
-            /// purpose categories, and `` is a free-form lowercase alphanumeric string that describes the specific use
-            /// case of the statement.
-            ///
-            /// Refer to [our API documentation](/digital-asset-links/v1/relation-strings) for the current list of
-            /// supported relations.
-            ///
-            /// For a query to match an asset link, both the query's and the asset link's relation strings must match
-            /// exactly.
-            ///
-            /// Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with
-            /// relation `delegate_permission/common.handle_all_urls`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("relation", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Relation { get; set; }
+            /// <summary>Android App assets are naturally identified by their Java package name. For example, the Google
+            /// Maps app uses the package name `com.google.android.apps.maps`. REQUIRED</summary>
+            [Google.Apis.Util.RequestParameterAttribute("target.androidApp.packageName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TargetAndroidAppPackageName { get; set; }
 
             /// <summary>Web assets are identified by a URL that contains only the scheme, hostname and port parts.  The
             /// format is
@@ -537,36 +537,9 @@ namespace Google.Apis.Digitalassetlinks.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "target.androidApp.certificate.sha256Fingerprint", new Google.Apis.Discovery.Parameter
+                    "relation", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "target.androidApp.certificate.sha256Fingerprint",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source.web.site", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source.web.site",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "source.androidApp.packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source.androidApp.packageName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "target.androidApp.packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "target.androidApp.packageName",
+                        Name = "relation",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -582,9 +555,36 @@ namespace Google.Apis.Digitalassetlinks.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "relation", new Google.Apis.Discovery.Parameter
+                    "source.androidApp.packageName", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "relation",
+                        Name = "source.androidApp.packageName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "source.web.site", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source.web.site",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "target.androidApp.certificate.sha256Fingerprint", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "target.androidApp.certificate.sha256Fingerprint",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "target.androidApp.packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "target.androidApp.packageName",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -661,6 +661,20 @@ namespace Google.Apis.Digitalassetlinks.v1
             }
 
 
+            /// <summary>Use only associations that match the specified relation.
+            ///
+            /// See the [`Statement`](#Statement) message for a detailed definition of relation strings.
+            ///
+            /// For a query to match a statement, one of the following must be true:
+            ///
+            /// *    both the query's and the statement's relation strings match exactly, or *    the query's relation
+            /// string is empty or missing.
+            ///
+            /// Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with
+            /// relation `delegate_permission/common.handle_all_urls`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("relation", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Relation { get; set; }
+
             /// <summary>The uppercase SHA-265 fingerprint of the certificate.  From the PEM certificate, it can be
             /// acquired like this:
             ///
@@ -682,19 +696,10 @@ namespace Google.Apis.Digitalassetlinks.v1
             [Google.Apis.Util.RequestParameterAttribute("source.androidApp.certificate.sha256Fingerprint", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceAndroidAppCertificateSha256Fingerprint { get; set; }
 
-            /// <summary>Use only associations that match the specified relation.
-            ///
-            /// See the [`Statement`](#Statement) message for a detailed definition of relation strings.
-            ///
-            /// For a query to match a statement, one of the following must be true:
-            ///
-            /// *    both the query's and the statement's relation strings match exactly, or *    the query's relation
-            /// string is empty or missing.
-            ///
-            /// Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with
-            /// relation `delegate_permission/common.handle_all_urls`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("relation", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Relation { get; set; }
+            /// <summary>Android App assets are naturally identified by their Java package name. For example, the Google
+            /// Maps app uses the package name `com.google.android.apps.maps`. REQUIRED</summary>
+            [Google.Apis.Util.RequestParameterAttribute("source.androidApp.packageName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SourceAndroidAppPackageName { get; set; }
 
             /// <summary>Web assets are identified by a URL that contains only the scheme, hostname and port parts.  The
             /// format is
@@ -724,11 +729,6 @@ namespace Google.Apis.Digitalassetlinks.v1
             [Google.Apis.Util.RequestParameterAttribute("source.web.site", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceWebSite { get; set; }
 
-            /// <summary>Android App assets are naturally identified by their Java package name. For example, the Google
-            /// Maps app uses the package name `com.google.android.apps.maps`. REQUIRED</summary>
-            [Google.Apis.Util.RequestParameterAttribute("source.androidApp.packageName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SourceAndroidAppPackageName { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -754,15 +754,6 @@ namespace Google.Apis.Digitalassetlinks.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "source.androidApp.certificate.sha256Fingerprint", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "source.androidApp.certificate.sha256Fingerprint",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "relation", new Google.Apis.Discovery.Parameter
                     {
                         Name = "relation",
@@ -772,9 +763,9 @@ namespace Google.Apis.Digitalassetlinks.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "source.web.site", new Google.Apis.Discovery.Parameter
+                    "source.androidApp.certificate.sha256Fingerprint", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "source.web.site",
+                        Name = "source.androidApp.certificate.sha256Fingerprint",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -784,6 +775,15 @@ namespace Google.Apis.Digitalassetlinks.v1
                     "source.androidApp.packageName", new Google.Apis.Discovery.Parameter
                     {
                         Name = "source.androidApp.packageName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "source.web.site", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source.web.site",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

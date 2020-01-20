@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20191215 (1809)
+ *      <tr><th>API Rev<td>20200112 (1837)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7917,11 +7917,6 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
         public virtual string PurchaseType { get; set; } 
 
-        /// <summary>Definition of a season for a seasonal subscription. Can be defined only for yearly
-        /// subscriptions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("season")]
-        public virtual Season Season { get; set; } 
-
         /// <summary>The stock-keeping-unit (SKU) of the product, unique within an app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sku")]
         public virtual string Sku { get; set; } 
@@ -8092,20 +8087,6 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    public class MonthDay : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Day of a month, value in [1, 31] range. Valid range depends on the specified month.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("day")]
-        public virtual System.Nullable<long> Day { get; set; } 
-
-        /// <summary>Month of a year. e.g. 1 = JAN, 2 = FEB etc.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("month")]
-        public virtual System.Nullable<long> Month { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     public class PageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("resultPerPage")]
@@ -8201,22 +8182,6 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    public class Prorate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Default price cannot be zero and must be less than the full subscription price. Default price is
-        /// always in the developer's Checkout merchant currency. Targeted countries have their prices set automatically
-        /// based on the default_price.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("defaultPrice")]
-        public virtual Price DefaultPrice { get; set; } 
-
-        /// <summary>Defines the first day on which the price takes effect.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("start")]
-        public virtual MonthDay Start { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     public class Review : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the user who wrote the review.</summary>
@@ -8294,26 +8259,6 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("salt")]
         public virtual System.Nullable<int> Salt { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class Season : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Inclusive end date of the recurrence period.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("end")]
-        public virtual MonthDay End { get; set; } 
-
-        /// <summary>Optionally present list of prorations for the season. Each proration is a one-off discounted entry
-        /// into a subscription. Each proration contains the first date on which the discount is available and the new
-        /// pricing information.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("prorations")]
-        public virtual System.Collections.Generic.IList<Prorate> Prorations { get; set; } 
-
-        /// <summary>Inclusive start date of the recurrence period.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("start")]
-        public virtual MonthDay Start { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
