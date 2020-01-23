@@ -639,7 +639,7 @@
    }
   }
  }, 
- "revision": "20200116", 
+ "revision": "20200120", 
  "rootUrl": "https://people.googleapis.com/", 
  "schemas": {
   "Address": {

@@ -180,7 +180,7 @@
    }
   }
  }, 
- "revision": "20200107", 
+ "revision": "20200116", 
  "rootUrl": "https://bigqueryreservation.googleapis.com/", 
  "schemas": {
   "Empty": {
@@ -203,17 +203,6 @@
       "$ref": "Operation"
      }, 
      "type": "array"
-    }
-   }, 
-   "type": "object"
-  }, 
-  "LocationMetadata": {
-   "description": "BigQuery-specific metadata about a location. This will be set on\ngoogle.cloud.location.Location.metadata in Cloud Location API\nresponses.", 
-   "id": "LocationMetadata", 
-   "properties": {
-    "legacyLocationId": {
-     "description": "The legacy BigQuery location ID, e.g. \u201cEU\u201d for the \u201ceurope\u201d location.\nThis is for any API consumers that need the legacy \u201cUS\u201d and \u201cEU\u201d locations.", 
-     "type": "string"
     }
    }, 
    "type": "object"

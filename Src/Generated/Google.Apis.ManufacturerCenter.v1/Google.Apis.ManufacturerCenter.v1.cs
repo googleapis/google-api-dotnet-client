@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/manufacturers/'>Manufacturer Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200107 (1832)
+ *      <tr><th>API Rev<td>20200114 (1839)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/manufacturers/'>
  *              https://developers.google.com/manufacturers/</a>

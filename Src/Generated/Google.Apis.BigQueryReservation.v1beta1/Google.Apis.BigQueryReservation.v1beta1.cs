@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200107 (1832)
+ *      <tr><th>API Rev<td>20200116 (1841)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -1465,66 +1465,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                 }
             }
 
-            /// <summary>Gets information about a location.</summary>
-            /// <param name="name">Resource name for the location.</param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(service, name);
-            }
-
-            /// <summary>Gets information about a location.</summary>
-            public class GetRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.Location>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-
-                /// <summary>Resource name for the location.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "get"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1beta1/{+name}"; }
-                }
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                }
-
-            }
-
             /// <summary>Retrieves a BI reservation.</summary>
             /// <param name="name">Name of the requested reservation, for example:
             /// `projects/{project_id}/locations/{location_id}/bireservation`</param>
@@ -1582,105 +1522,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/biReservation$",
-                        });
-                }
-
-            }
-
-            /// <summary>Lists information about the supported locations for this service.</summary>
-            /// <param name="name">The resource that owns the locations collection, if applicable.</param>
-            public virtual ListRequest List(string name)
-            {
-                return new ListRequest(service, name);
-            }
-
-            /// <summary>Lists information about the supported locations for this service.</summary>
-            public class ListRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1beta1.Data.ListLocationsResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-
-                /// <summary>The resource that owns the locations collection, if applicable.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "list"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1beta1/{+name}/locations"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                 }
 
@@ -2026,21 +1867,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response message for Locations.ListLocations.</summary>
-    public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of locations that matches the specified filter in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
-        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
-
-        /// <summary>The standard List next-page token.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The response for ReservationService.ListReservations.</summary>
     public class ListReservationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2052,49 +1878,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         /// <summary>List of reservations visible to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservations")]
         public virtual System.Collections.Generic.IList<Reservation> Reservations { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
-    public class Location : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
-
-        /// <summary>Cross-service attributes for the location. For example
-        ///
-        /// {"cloud.googleapis.com/region": "us-east1"}</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
-
-        /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
-        public virtual string LocationId { get; set; } 
-
-        /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
-
-        /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
-        /// /example-project/locations/us-east1"`</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>BigQuery-specific metadata about a location. This will be set on
-    /// google.cloud.location.Location.metadata in Cloud Location API responses.</summary>
-    public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The legacy BigQuery location ID, e.g. “EU” for the “europe” location. This is for any API consumers
-        /// that need the legacy “US” and “EU” locations.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("legacyLocationId")]
-        public virtual string LegacyLocationId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2118,8 +1901,8 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If false, any query using this reservation will use idle slots from other reservations within the
-        /// same admin project. If true, a query using this reservation will execute with the maximum slot capacity as
-        /// specified above.</summary>
+        /// same admin project. If true, a query using this reservation will execute with the slot capacity specified
+        /// above at most.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreIdleSlots")]
         public virtual System.Nullable<bool> IgnoreIdleSlots { get; set; } 
 
@@ -2127,10 +1910,10 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Maximum slots available to this reservation. A slot is a unit of computational power in BigQuery,
-        /// and serves as the unit of parallelism. In a scan of a multi-partitioned table, a single slot operates on a
-        /// single partition of the table. If the new reservation's slot capacity exceed the parent's slot capacity or
-        /// if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the
+        /// <summary>Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery,
+        /// and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if
+        /// ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity
+        /// or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the
         /// request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slotCapacity")]
         public virtual System.Nullable<long> SlotCapacity { get; set; } 

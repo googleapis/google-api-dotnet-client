@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-approval/docs'>Access Approval API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200113 (1838)
+ *      <tr><th>API Rev<td>20200117 (1842)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-approval/docs'>
  *              https://cloud.google.com/access-approval/docs</a>

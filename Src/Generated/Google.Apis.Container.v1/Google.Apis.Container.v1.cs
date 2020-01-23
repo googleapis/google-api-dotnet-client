@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191211 (1805)
+ *      <tr><th>API Rev<td>20200109 (1834)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -7103,6 +7103,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4Cidr")]
         public virtual string ServicesIpv4Cidr { get; set; } 
 
+        /// <summary>Shielded Nodes configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedNodes")]
+        public virtual ShieldedNodes ShieldedNodes { get; set; } 
+
         /// <summary>[Output only] The current status of this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
@@ -7255,6 +7259,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The desired configuration for exporting resource usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredResourceUsageExportConfig")]
         public virtual ResourceUsageExportConfig DesiredResourceUsageExportConfig { get; set; } 
+
+        /// <summary>Configuration for Shielded Nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredShieldedNodes")]
+        public virtual ShieldedNodes DesiredShieldedNodes { get; set; } 
 
         /// <summary>Cluster-level Vertical Pod Autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredVerticalPodAutoscaling")]
@@ -8015,6 +8023,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
         public virtual ReservationAffinity ReservationAffinity { get; set; } 
 
+        /// <summary>Sandbox configuration for this node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxConfig")]
+        public virtual SandboxConfig SandboxConfig { get; set; } 
+
         /// <summary>The Google Cloud Platform Service Account to be used by the node VMs. If no Service Account is
         /// specified, the "default" service account is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
@@ -8262,6 +8274,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterIpv4CidrBlock")]
         public virtual string MasterIpv4CidrBlock { get; set; } 
 
+        /// <summary>Output only. The peering name in the customer VPC used by this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peeringName")]
+        public virtual string PeeringName { get; set; } 
+
         /// <summary>Output only. The internal IP address of this cluster's master endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateEndpoint")]
         public virtual string PrivateEndpoint { get; set; } 
@@ -8395,6 +8411,17 @@ namespace Google.Apis.Container.v1.Data
         /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SandboxConfig contains configurations of the sandbox to use for the node.</summary>
+    public class SandboxConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of the sandbox to use for the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8867,6 +8894,17 @@ namespace Google.Apis.Container.v1.Data
         /// all boot components, and halting the boot process if signature verification fails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
         public virtual System.Nullable<bool> EnableSecureBoot { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration of Shielded Nodes feature.</summary>
+    public class ShieldedNodes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Shielded Nodes features are enabled on all nodes in this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

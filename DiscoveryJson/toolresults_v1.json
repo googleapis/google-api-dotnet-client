@@ -94,7 +94,7 @@
  }, 
  "protocol": "rest", 
  "resources": {}, 
- "revision": "20200116", 
+ "revision": "20200122", 
  "rootUrl": "https://toolresults.googleapis.com/", 
  "schemas": {
   "ANR": {
@@ -277,9 +277,11 @@
       "BLACK", 
       "GREY", 
       "GREY_MAX_O", 
-      "GREY_MAX_P"
+      "GREY_MAX_P", 
+      "GREY_MAX_Q"
      ], 
      "enumDescriptions": [
+      "", 
       "", 
       "", 
       "", 

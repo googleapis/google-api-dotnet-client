@@ -150,7 +150,7 @@
    }
   }
  }, 
- "revision": "20191230", 
+ "revision": "20200120", 
  "rootUrl": "https://kgsearch.googleapis.com/", 
  "schemas": {
   "SearchResponse": {

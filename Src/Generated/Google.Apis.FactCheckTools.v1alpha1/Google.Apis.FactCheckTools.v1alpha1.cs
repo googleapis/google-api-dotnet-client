@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fact-check/tools/api/'>Fact Check Tools API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200117 (1842)
+ *      <tr><th>API Rev<td>20200121 (1846)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fact-check/tools/api/'>
  *              https://developers.google.com/fact-check/tools/api/</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200104 (1829)
+ *      <tr><th>API Rev<td>20200116 (1841)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -1820,7 +1820,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>Proto for all phishing alerts with common payload. Supported types are any of the following:
     ///
     /// * User reported phishing * User reported spam spike * Suspicious message reported * Phishing reclassification *
-    /// Malware reclassification</summary>
+    /// Malware reclassification * Gmail potential employee spoofing</summary>
     public class MailPhishing : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The domain ID.</summary>
@@ -1838,6 +1838,10 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>The list of messages contained by this alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<GmailMessageInfo> Messages { get; set; } 
+
+        /// <summary>System actions on the messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemActionType")]
+        public virtual string SystemActionType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

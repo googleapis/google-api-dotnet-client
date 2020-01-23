@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200107 (1832)
+ *      <tr><th>API Rev<td>20200116 (1841)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -551,19 +551,6 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>BigQuery-specific metadata about a location. This will be set on
-    /// google.cloud.location.Location.metadata in Cloud Location API responses.</summary>
-    public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The legacy BigQuery location ID, e.g. “EU” for the “europe” location. This is for any API consumers
-        /// that need the legacy “US” and “EU” locations.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("legacyLocationId")]
-        public virtual string LegacyLocationId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

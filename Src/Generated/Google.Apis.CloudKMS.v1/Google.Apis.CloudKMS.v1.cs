@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kms/'>Cloud Key Management Service (KMS) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200104 (1829)
+ *      <tr><th>API Rev<td>20200116 (1841)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kms/'>
  *              https://cloud.google.com/kms/</a>

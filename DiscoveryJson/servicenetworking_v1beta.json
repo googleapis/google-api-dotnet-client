@@ -306,7 +306,7 @@
    }
   }
  }, 
- "revision": "20200116", 
+ "revision": "20200121", 
  "rootUrl": "https://servicenetworking.googleapis.com/", 
  "schemas": {
   "AddSubnetworkRequest": {
