@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200109 (1834)
+ *      <tr><th>API Rev<td>20200121 (1846)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -804,11 +804,18 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Creates a Footer. The new footer is applied to the DocumentStyle.
+    /// <summary>Creates a Footer. The new footer is applied to the SectionStyle at the location of the SectionBreak if
+    /// specificed, otherwise it is applied to the DocumentStyle.
     ///
     /// If a footer of the specified type already exists, a 400 bad request error is returned.</summary>
     public class CreateFooterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The location of the SectionBreak immediately preceding the section whose SectionStyle this footer
+        /// should belong to. If this is unset or refers to the first section break in the document, the footer applies
+        /// to the document style.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionBreakLocation")]
+        public virtual Location SectionBreakLocation { get; set; } 
+
         /// <summary>The type of footer to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
@@ -865,11 +872,18 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Creates a Header. The new header is applied to the DocumentStyle.
+    /// <summary>Creates a Header. The new header is applied to the SectionStyle at the location of the SectionBreak if
+    /// specificed, otherwise it is applied to the DocumentStyle.
     ///
     /// If a header of the specified type already exists, a 400 bad request error is returned.</summary>
     public class CreateHeaderRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The location of the SectionBreak which begins the section this header should belong to. If
+        /// `section_break_location' is unset or if it refers to the first section break in the document body, the
+        /// header applies to the DocumentStyle</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionBreakLocation")]
+        public virtual Location SectionBreakLocation { get; set; } 
+
         /// <summary>The type of header to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
@@ -1026,6 +1040,34 @@ namespace Google.Apis.Docs.v1.Data
         /// table. Deleting the content within a table cell is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual Range Range { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Deletes a Footer from the document.</summary>
+    public class DeleteFooterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The id of the footer to delete. If this footer is defined on DocumentStyle, the reference to this
+        /// footer is removed, resulting in no footer of that type for the first section of the document. If this footer
+        /// is defined on a SectionStyle, the reference to this footer is removed and the footer of that type is now
+        /// continued from the previous section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("footerId")]
+        public virtual string FooterId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Deletes a Header from the document.</summary>
+    public class DeleteHeaderRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The id of the header to delete. If this header is defined on DocumentStyle, the reference to this
+        /// header is removed, resulting in no header of that type for the first section of the document. If this header
+        /// is defined on a SectionStyle, the reference to this header is removed and the header of that type is now
+        /// continued from the previous section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerId")]
+        public virtual string HeaderId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1301,15 +1343,11 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("useCustomHeaderFooterMargins")]
         public virtual System.Nullable<bool> UseCustomHeaderFooterMargins { get; set; } 
 
-        /// <summary>Indicates whether to use the even page header / footer IDs for the even pages.
-        ///
-        /// This property is read-only.</summary>
+        /// <summary>Indicates whether to use the even page header / footer IDs for the even pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useEvenPageHeaderFooter")]
         public virtual System.Nullable<bool> UseEvenPageHeaderFooter { get; set; } 
 
-        /// <summary>Indicates whether to use the first page header / footer IDs for the first page.
-        ///
-        /// This property is read-only.</summary>
+        /// <summary>Indicates whether to use the first page header / footer IDs for the first page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useFirstPageHeaderFooter")]
         public virtual System.Nullable<bool> UseFirstPageHeaderFooter { get; set; } 
 
@@ -3092,6 +3130,14 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleteContentRange")]
         public virtual DeleteContentRangeRequest DeleteContentRange { get; set; } 
 
+        /// <summary>Deletes a footer from the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteFooter")]
+        public virtual DeleteFooterRequest DeleteFooter { get; set; } 
+
+        /// <summary>Deletes a header from the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteHeader")]
+        public virtual DeleteHeaderRequest DeleteHeader { get; set; } 
+
         /// <summary>Deletes a named range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteNamedRange")]
         public virtual DeleteNamedRangeRequest DeleteNamedRange { get; set; } 
@@ -3278,7 +3324,7 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paddingEnd")]
         public virtual Dimension PaddingEnd { get; set; } 
 
-        /// <summary>The width of the column.</summary>
+        /// <summary>Output only. The width of the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
         public virtual Dimension Width { get; set; } 
 
@@ -3291,19 +3337,85 @@ namespace Google.Apis.Docs.v1.Data
     {
         /// <summary>The section's columns properties.
         ///
-        /// If empty, the section contains one column with the default properties in the Docs editor.</summary>
+        /// If empty, the section contains one column with the default properties in the Docs editor. A section can be
+        /// updated to have no more than three columns.
+        ///
+        /// When updating this property, setting a concrete value is required. Unsetting this property will result in a
+        /// 400 bad request error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnProperties")]
         public virtual System.Collections.Generic.IList<SectionColumnProperties> ColumnProperties { get; set; } 
 
         /// <summary>The style of column separators.
         ///
-        /// This style can be set even when there is one column in the section.</summary>
+        /// This style can be set even when there is one column in the section.
+        ///
+        /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
+        /// bad request error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnSeparatorStyle")]
         public virtual string ColumnSeparatorStyle { get; set; } 
 
-        /// <summary>The content direction of this section. If unset, the value defaults to LEFT_TO_RIGHT.</summary>
+        /// <summary>The content direction of this section. If unset, the value defaults to LEFT_TO_RIGHT.
+        ///
+        /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
+        /// bad request error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDirection")]
         public virtual string ContentDirection { get; set; } 
+
+        /// <summary>The ID of the default footer. If unset, the value inherits from the previous SectionBreak's
+        /// SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's
+        /// default_footer_id.
+        ///
+        /// This property is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultFooterId")]
+        public virtual string DefaultFooterId { get; set; } 
+
+        /// <summary>The ID of the default header. If unset, the value inherits from the previous SectionBreak's
+        /// SectionStyle. If the value is unset in the first SectionBreak, it inherits from DocumentStyle's
+        /// default_header_id.
+        ///
+        /// This property is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultHeaderId")]
+        public virtual string DefaultHeaderId { get; set; } 
+
+        /// <summary>The ID of the footer used only for even pages. If the value of DocumentStyle's
+        /// use_even_page_header_footer is true, this value is used for the footers on even pages in the section. If it
+        /// is false, the footers on even pages uses the default_footer_id. If unset, the value inherits from the
+        /// previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from
+        /// DocumentStyle's even_page_footer_id.
+        ///
+        /// This property is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evenPageFooterId")]
+        public virtual string EvenPageFooterId { get; set; } 
+
+        /// <summary>The ID of the header used only for even pages. If the value of DocumentStyle's
+        /// use_even_page_header_footer is true, this value is used for the headers on even pages in the section. If it
+        /// is false, the headers on even pages uses the default_header_id. If unset, the value inherits from the
+        /// previous SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from
+        /// DocumentStyle's even_page_header_id.
+        ///
+        /// This property is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evenPageHeaderId")]
+        public virtual string EvenPageHeaderId { get; set; } 
+
+        /// <summary>The ID of the footer used only for the first page of the section. If use_first_page_header_footer
+        /// is true, this value is used for the footer on the first page of the section. If it is false, the footer on
+        /// the first page of the section uses the default_footer_id. If unset, the value inherits from the previous
+        /// SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from
+        /// DocumentStyle's first_page_footer_id.
+        ///
+        /// This property is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstPageFooterId")]
+        public virtual string FirstPageFooterId { get; set; } 
+
+        /// <summary>The ID of the header used only for the first page of the section. If use_first_page_header_footer
+        /// is true, this value is used for the header on the first page of the section. If it is false, the header on
+        /// the first page of the section uses the default_header_id. If unset, the value inherits from the previous
+        /// SectionBreak's SectionStyle. If the value is unset in the first SectionBreak, it inherits from
+        /// DocumentStyle's first_page_header_id.
+        ///
+        /// This property is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstPageHeaderId")]
+        public virtual string FirstPageHeaderId { get; set; } 
 
         /// <summary>The bottom page margin of the section. If unset, uses margin_bottom from DocumentStyle.
         ///
@@ -3360,6 +3472,15 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Output only. The type of section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
         public virtual string SectionType { get; set; } 
+
+        /// <summary>Indicates whether to use the first page header / footer IDs for the first page of the section. If
+        /// unset, it inherits from DocumentStyle's use_first_page_header_footer for the first section. If the value is
+        /// unset for subsequent sectors, it should be interpreted as false.
+        ///
+        /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
+        /// bad request error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useFirstPageHeaderFooter")]
+        public virtual System.Nullable<bool> UseFirstPageHeaderFooter { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

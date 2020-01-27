@@ -144,7 +144,7 @@
    }
   }
  }, 
- "revision": "20200112", 
+ "revision": "20200119", 
  "rootUrl": "https://commentanalyzer.googleapis.com/", 
  "schemas": {
   "AnalyzeCommentRequest": {

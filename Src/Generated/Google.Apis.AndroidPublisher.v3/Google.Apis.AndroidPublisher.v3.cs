@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200112 (1837)
+ *      <tr><th>API Rev<td>20200115 (1840)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -8439,9 +8439,19 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("profileName")]
         public virtual string ProfileName { get; set; } 
 
+        /// <summary>The promotion code applied on this purchase. This field is only set if a vanity code promotion is
+        /// applied when the subscription was purchased.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionCode")]
+        public virtual string PromotionCode { get; set; } 
+
+        /// <summary>The type of promotion applied on this purchase. This field is only set if a promotion is applied
+        /// when the subscription was purchased. Possible values are: - One time code - Vanity code</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionType")]
+        public virtual System.Nullable<int> PromotionType { get; set; } 
+
         /// <summary>The type of purchase of the subscription. This field is only set if this purchase was not made
         /// using the standard in-app billing flow. Possible values are: - Test (i.e. purchased from a license testing
-        /// account)</summary>
+        /// account) - Promo (i.e. purchased using a promo code)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
         public virtual System.Nullable<int> PurchaseType { get; set; } 
 

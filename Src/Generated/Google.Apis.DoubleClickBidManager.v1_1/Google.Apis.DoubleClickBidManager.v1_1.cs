@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1.1
- *      <tr><th>API Rev<td>20200106 (1831)
+ *      <tr><th>API Rev<td>20200116 (1841)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>
@@ -1227,6 +1227,10 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// <summary>Canonical timezone code for report generation time. Defaults to America/New_York.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRunTimezoneCode")]
         public virtual string NextRunTimezoneCode { get; set; } 
+
+        /// <summary>When to start running the query. Not applicable to `ONE_TIME` frequency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimeMs")]
+        public virtual System.Nullable<long> StartTimeMs { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

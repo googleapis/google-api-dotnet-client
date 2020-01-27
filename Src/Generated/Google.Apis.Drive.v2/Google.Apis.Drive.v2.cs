@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20191213 (1807)
+ *      <tr><th>API Rev<td>20200110 (1835)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -11094,8 +11094,6 @@ namespace Google.Apis.Drive.v2.Data
     /// <summary>A revision of a file.</summary>
     public class Revision : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Short term download URL for the file. This will only be populated on files with content stored in
-        /// Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
         public virtual string DownloadUrl { get; set; } 
 

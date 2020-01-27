@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191216 (1810)
+ *      <tr><th>API Rev<td>20200115 (1840)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -8935,6 +8935,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configurationVariables")]
         public virtual ConfigurationVariables ConfigurationVariables { get; set; } 
 
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -9327,6 +9328,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// and is privately hosted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distributionChannel")]
         public virtual string DistributionChannel { get; set; } 
+
+        /// <summary>Noteworthy features (if any) of this product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IList<string> Features { get; set; } 
 
         /// <summary>A link to an image that can be used as an icon for the product. This image is suitable for use at
         /// up to 512px x 512px.</summary>

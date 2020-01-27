@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>Cloud Talent Solution API</a>
  *      <tr><th>API Version<td>v3p1beta1
- *      <tr><th>API Rev<td>20200109 (1834)
+ *      <tr><th>API Rev<td>20200122 (1847)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/talent-solution/job-search/docs/'>
  *              https://cloud.google.com/talent-solution/job-search/docs/</a>
@@ -2489,8 +2489,8 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         public virtual string ImportanceLevel { get; set; } 
 
         /// <summary>Required. Controls over how job documents get ranked on top of existing relevance score (determined
-        /// by API algorithm). The product of ranking expression and relevance score is used to determine job's final
-        /// ranking position.
+        /// by API algorithm). A combination of the ranking expression and relevance score is used to determine job's
+        /// final ranking position.
         ///
         /// The syntax for this expression is a subset of Google SQL syntax.
         ///
@@ -2499,6 +2499,10 @@ namespace Google.Apis.CloudTalentSolution.v3p1beta1.Data
         ///
         /// Parenthesis are supported to adjust calculation precedence. The expression must be < 100 characters in
         /// length.
+        ///
+        /// The expression is considered invalid for a job if the expression references custom attributes that are not
+        /// populated on the job or if the expression results in a divide by zero. If an expression is invalid for a
+        /// job, that job is demoted to the end of the results.
         ///
         /// Sample ranking expression (year + 25) * 0.25 - (freshness / 0.5)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]

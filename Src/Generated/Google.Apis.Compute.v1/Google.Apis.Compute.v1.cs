@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191125 (1789)
+ *      <tr><th>API Rev<td>20200104 (1829)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -96,6 +96,7 @@ namespace Google.Apis.Compute.v1
             nodeGroups = new NodeGroupsResource(this);
             nodeTemplates = new NodeTemplatesResource(this);
             nodeTypes = new NodeTypesResource(this);
+            packetMirrorings = new PacketMirroringsResource(this);
             projects = new ProjectsResource(this);
             regionAutoscalers = new RegionAutoscalersResource(this);
             regionBackendServices = new RegionBackendServicesResource(this);
@@ -478,6 +479,14 @@ namespace Google.Apis.Compute.v1
         public virtual NodeTypesResource NodeTypes
         {
             get { return nodeTypes; }
+        }
+
+        private readonly PacketMirroringsResource packetMirrorings;
+
+        /// <summary>Gets the PacketMirrorings resource.</summary>
+        public virtual PacketMirroringsResource PacketMirrorings
+        {
+            get { return packetMirrorings; }
         }
 
         private readonly ProjectsResource projects;
@@ -8693,6 +8702,132 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Updates the specified forwarding rule with the data included in the request. This method supports
+        /// PATCH semantics and uses the JSON merge patch format and processing rules. Currently, you can only patch the
+        /// network_tier field.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="forwardingRule">Name of the ForwardingRule resource to
+        /// patch.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.ForwardingRule body, string project, string region, string forwardingRule)
+        {
+            return new PatchRequest(service, body, project, region, forwardingRule);
+        }
+
+        /// <summary>Updates the specified forwarding rule with the data included in the request. This method supports
+        /// PATCH semantics and uses the JSON merge patch format and processing rules. Currently, you can only patch the
+        /// network_tier field.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.ForwardingRule body, string project, string region, string forwardingRule)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                ForwardingRule = forwardingRule;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the ForwardingRule resource to patch.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ForwardingRule { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.ForwardingRule Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/forwardingRules/{forwardingRule}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "forwardingRule", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "forwardingRule",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Changes target URL for forwarding rule. The new target should be of the same type as the old
         /// target.</summary>
         /// <param name="body">The body of the request.</param>
@@ -9669,6 +9804,116 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Updates the specified forwarding rule with the data included in the request. This method supports
+        /// PATCH semantics and uses the JSON merge patch format and processing rules. Currently, you can only patch the
+        /// network_tier field.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="forwardingRule">Name of the
+        /// ForwardingRule resource to patch.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.ForwardingRule body, string project, string forwardingRule)
+        {
+            return new PatchRequest(service, body, project, forwardingRule);
+        }
+
+        /// <summary>Updates the specified forwarding rule with the data included in the request. This method supports
+        /// PATCH semantics and uses the JSON merge patch format and processing rules. Currently, you can only patch the
+        /// network_tier field.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.ForwardingRule body, string project, string forwardingRule)
+                : base(service)
+            {
+                Project = project;
+                ForwardingRule = forwardingRule;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the ForwardingRule resource to patch.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ForwardingRule { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.ForwardingRule Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/forwardingRules/{forwardingRule}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "forwardingRule", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "forwardingRule",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Changes target URL for the GlobalForwardingRule resource. The new target should be of the same type
         /// as the old target.</summary>
         /// <param name="body">The body of the request.</param>
@@ -10230,12 +10475,15 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Waits for the specified Operations resource until it is done or timeout, and retrieves the
-        /// specified Operations resource. 1. Immediately returns when the operation is already done. 2. Waits for no
-        /// more than the default deadline (2 minutes, subject to change) and then returns the current state of the
-        /// operation, which may be DONE or still in progress. 3. Is best-effort: a. The server can wait less than the
-        /// default deadline or zero seconds, in overload situations. b. There is no guarantee that the operation is
-        /// actually done when returns. 4. User should be prepared to retry if the operation is not DONE.</summary>
+        /// <summary>Waits for the specified Operation resource to return as DONE or for the request to approach the 2
+        /// minute deadline, and retrieves the specified Operation resource. This method differs from the GET method in
+        /// that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
+        /// operation, which might be DONE or still in progress.
+        ///
+        /// This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is
+        /// overloaded, the request might return before the default deadline is reached, or might return after zero
+        /// seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done
+        /// when the method returns. Be prepared to retry if the operation is not DONE.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="operation">Name of the Operations
         /// resource to return.</param>
@@ -10244,12 +10492,15 @@ namespace Google.Apis.Compute.v1
             return new WaitRequest(service, project, operation);
         }
 
-        /// <summary>Waits for the specified Operations resource until it is done or timeout, and retrieves the
-        /// specified Operations resource. 1. Immediately returns when the operation is already done. 2. Waits for no
-        /// more than the default deadline (2 minutes, subject to change) and then returns the current state of the
-        /// operation, which may be DONE or still in progress. 3. Is best-effort: a. The server can wait less than the
-        /// default deadline or zero seconds, in overload situations. b. There is no guarantee that the operation is
-        /// actually done when returns. 4. User should be prepared to retry if the operation is not DONE.</summary>
+        /// <summary>Waits for the specified Operation resource to return as DONE or for the request to approach the 2
+        /// minute deadline, and retrieves the specified Operation resource. This method differs from the GET method in
+        /// that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
+        /// operation, which might be DONE or still in progress.
+        ///
+        /// This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is
+        /// overloaded, the request might return before the default deadline is reached, or might return after zero
+        /// seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done
+        /// when the method returns. Be prepared to retry if the operation is not DONE.</summary>
         public class WaitRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Wait request.</summary>
@@ -29616,6 +29867,857 @@ namespace Google.Apis.Compute.v1
         }
     }
 
+    /// <summary>The "packetMirrorings" collection of methods.</summary>
+    public class PacketMirroringsResource
+    {
+        private const string Resource = "packetMirrorings";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public PacketMirroringsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Retrieves an aggregated list of packetMirrorings.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual AggregatedListRequest AggregatedList(string project)
+        {
+            return new AggregatedListRequest(service, project);
+        }
+
+        /// <summary>Retrieves an aggregated list of packetMirrorings.</summary>
+        public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.PacketMirroringAggregatedList>
+        {
+            /// <summary>Constructs a new AggregatedList request.</summary>
+            public AggregatedListRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            ///
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
+            ///
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "aggregatedList"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/aggregated/packetMirrorings"; }
+            }
+
+            /// <summary>Initializes AggregatedList parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes the specified PacketMirroring resource.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="packetMirroring">Name of the PacketMirroring resource to delete.</param>
+        public virtual DeleteRequest Delete(string project, string region, string packetMirroring)
+        {
+            return new DeleteRequest(service, project, region, packetMirroring);
+        }
+
+        /// <summary>Deletes the specified PacketMirroring resource.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string region, string packetMirroring)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                PacketMirroring = packetMirroring;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the PacketMirroring resource to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packetMirroring", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PacketMirroring { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/packetMirrorings/{packetMirroring}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "packetMirroring", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packetMirroring",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the specified PacketMirroring resource.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="packetMirroring">Name of the PacketMirroring resource to return.</param>
+        public virtual GetRequest Get(string project, string region, string packetMirroring)
+        {
+            return new GetRequest(service, project, region, packetMirroring);
+        }
+
+        /// <summary>Returns the specified PacketMirroring resource.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.PacketMirroring>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string region, string packetMirroring)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                PacketMirroring = packetMirroring;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the PacketMirroring resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packetMirroring", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PacketMirroring { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/packetMirrorings/{packetMirroring}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "packetMirroring", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packetMirroring",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a PacketMirroring resource in the specified project and region using the data included in
+        /// the request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.PacketMirroring body, string project, string region)
+        {
+            return new InsertRequest(service, body, project, region);
+        }
+
+        /// <summary>Creates a PacketMirroring resource in the specified project and region using the data included in
+        /// the request.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.PacketMirroring body, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.PacketMirroring Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/packetMirrorings"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves a list of PacketMirroring resources available to the specified project and
+        /// region.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        public virtual ListRequest List(string project, string region)
+        {
+            return new ListRequest(service, project, region);
+        }
+
+        /// <summary>Retrieves a list of PacketMirroring resources available to the specified project and
+        /// region.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.PacketMirroringList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            ///
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
+            ///
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/packetMirrorings"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Patches the specified PacketMirroring resource with the data included in the request. This method
+        /// supports PATCH semantics and uses JSON merge patch format and processing rules.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="packetMirroring">Name of the PacketMirroring resource to patch.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.PacketMirroring body, string project, string region, string packetMirroring)
+        {
+            return new PatchRequest(service, body, project, region, packetMirroring);
+        }
+
+        /// <summary>Patches the specified PacketMirroring resource with the data included in the request. This method
+        /// supports PATCH semantics and uses JSON merge patch format and processing rules.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.PacketMirroring body, string project, string region, string packetMirroring)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                PacketMirroring = packetMirroring;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the PacketMirroring resource to patch.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packetMirroring", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PacketMirroring { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.PacketMirroring Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/packetMirrorings/{packetMirroring}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "packetMirroring", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packetMirroring",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/packetMirrorings/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "projects" collection of methods.</summary>
     public class ProjectsResource
     {
@@ -37815,13 +38917,15 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Waits for the specified region-specific Operations resource until it is done or timeout, and
-        /// retrieves the specified Operations resource. 1. Immediately returns when the operation is already done. 2.
-        /// Waits for no more than the default deadline (2 minutes, subject to change) and then returns the current
-        /// state of the operation, which may be DONE or still in progress. 3. Is best-effort: a. The server can wait
-        /// less than the default deadline or zero seconds, in overload situations. b. There is no guarantee that the
-        /// operation is actually done when returns. 4. User should be prepared to retry if the operation is not
-        /// DONE.</summary>
+        /// <summary>Waits for the specified Operation resource to return as DONE or for the request to approach the 2
+        /// minute deadline, and retrieves the specified Operation resource. This method differs from the GET method in
+        /// that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
+        /// operation, which might be DONE or still in progress.
+        ///
+        /// This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is
+        /// overloaded, the request might return before the default deadline is reached, or might return after zero
+        /// seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done
+        /// when the method returns. Be prepared to retry if the operation is not DONE.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
@@ -37831,13 +38935,15 @@ namespace Google.Apis.Compute.v1
             return new WaitRequest(service, project, region, operation);
         }
 
-        /// <summary>Waits for the specified region-specific Operations resource until it is done or timeout, and
-        /// retrieves the specified Operations resource. 1. Immediately returns when the operation is already done. 2.
-        /// Waits for no more than the default deadline (2 minutes, subject to change) and then returns the current
-        /// state of the operation, which may be DONE or still in progress. 3. Is best-effort: a. The server can wait
-        /// less than the default deadline or zero seconds, in overload situations. b. There is no guarantee that the
-        /// operation is actually done when returns. 4. User should be prepared to retry if the operation is not
-        /// DONE.</summary>
+        /// <summary>Waits for the specified Operation resource to return as DONE or for the request to approach the 2
+        /// minute deadline, and retrieves the specified Operation resource. This method differs from the GET method in
+        /// that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
+        /// operation, which might be DONE or still in progress.
+        ///
+        /// This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is
+        /// overloaded, the request might return before the default deadline is reached, or might return after zero
+        /// seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done
+        /// when the method returns. Be prepared to retry if the operation is not DONE.</summary>
         public class WaitRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Wait request.</summary>
@@ -57356,13 +58462,15 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Waits for the specified zone-specific Operations resource until it is done or timeout, and
-        /// retrieves the specified Operations resource. 1. Immediately returns when the operation is already done. 2.
-        /// Waits for no more than the default deadline (2 minutes, subject to change) and then returns the current
-        /// state of the operation, which may be DONE or still in progress. 3. Is best-effort: a. The server can wait
-        /// less than the default deadline or zero seconds, in overload situations. b. There is no guarantee that the
-        /// operation is actually done when returns. 4. User should be prepared to retry if the operation is not
-        /// DONE.</summary>
+        /// <summary>Waits for the specified Operation resource to return as DONE or for the request to approach the 2
+        /// minute deadline, and retrieves the specified Operation resource. This method differs from the GET method in
+        /// that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
+        /// operation, which might be DONE or still in progress.
+        ///
+        /// This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is
+        /// overloaded, the request might return before the default deadline is reached, or might return after zero
+        /// seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done
+        /// when the method returns. Be prepared to retry if the operation is not DONE.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
         /// request.</param>
@@ -57372,13 +58480,15 @@ namespace Google.Apis.Compute.v1
             return new WaitRequest(service, project, zone, operation);
         }
 
-        /// <summary>Waits for the specified zone-specific Operations resource until it is done or timeout, and
-        /// retrieves the specified Operations resource. 1. Immediately returns when the operation is already done. 2.
-        /// Waits for no more than the default deadline (2 minutes, subject to change) and then returns the current
-        /// state of the operation, which may be DONE or still in progress. 3. Is best-effort: a. The server can wait
-        /// less than the default deadline or zero seconds, in overload situations. b. There is no guarantee that the
-        /// operation is actually done when returns. 4. User should be prepared to retry if the operation is not
-        /// DONE.</summary>
+        /// <summary>Waits for the specified Operation resource to return as DONE or for the request to approach the 2
+        /// minute deadline, and retrieves the specified Operation resource. This method differs from the GET method in
+        /// that it waits for no more than the default deadline (2 minutes) and then returns the current state of the
+        /// operation, which might be DONE or still in progress.
+        ///
+        /// This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is
+        /// overloaded, the request might return before the default deadline is reached, or might return after zero
+        /// seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done
+        /// when the method returns. Be prepared to retry if the operation is not DONE.</summary>
         public class WaitRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Wait request.</summary>
@@ -57722,7 +58832,7 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// Google Cloud Platform provides graphics processing units (accelerators) that you can add to VM instances to
     /// improve or accelerate performance when working with intensive workloads. For more information, read GPUs on
-    /// Compute Engine. (== resource_for beta.acceleratorTypes ==) (== resource_for v1.acceleratorTypes ==)</summary>
+    /// Compute Engine. (== resource_for {$api_version}.acceleratorTypes ==)</summary>
     public class AcceleratorType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -58017,19 +59127,25 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an IP Address resource.
+    /// <summary>Use global external addresses for GFE-based external HTTP(S) load balancers in Premium Tier.
     ///
-    /// An address resource represents a regional internal IP address. Regional internal IP addresses are RFC 1918
-    /// addresses that come from either a primary or secondary IP range of a subnet in a VPC network. Regional external
-    /// IP addresses can be assigned to GCP VM instances, Cloud VPN gateways, regional external forwarding rules for
-    /// network load balancers (in either Standard or Premium Tier), and regional external forwarding rules for HTTP(S),
-    /// SSL Proxy, and TCP Proxy load balancers in Standard Tier. For more information, read IP addresses.
+    /// Use global internal addresses for reserved peering network range.
     ///
-    /// A globalAddresses resource represent a global external IP address. Global external IP addresses are IPv4 or IPv6
-    /// addresses. They can only be assigned to global forwarding rules for HTTP(S), SSL Proxy, or TCP Proxy load
-    /// balancers in Premium Tier. For more information, read Global resources. (== resource_for beta.addresses ==) (==
-    /// resource_for v1.addresses ==) (== resource_for beta.globalAddresses ==) (== resource_for v1.globalAddresses
-    /// ==)</summary>
+    /// Use regional external addresses for the following resources:
+    ///
+    /// - External IP addresses for VM instances - Regional external forwarding rules - Cloud NAT external IP addresses
+    /// - GFE based LBs in Standard Tier - Network LBs in Premium or Standard Tier - Cloud VPN gateways (both Classic
+    /// and HA)
+    ///
+    /// Use regional internal IP addresses for subnet IP ranges (primary and secondary). This includes:
+    ///
+    /// - Internal IP addresses for VM instances - Alias IP ranges of VM instances (/32 only) - Regional internal
+    /// forwarding rules - Internal TCP/UDP load balancer addresses - Internal HTTP(S) load balancer addresses - Cloud
+    /// DNS inbound forwarding IP addresses
+    ///
+    /// For more information, read reserved IP address.
+    ///
+    /// (== resource_for {$api_version}.addresses ==) (== resource_for {$api_version}.globalAddresses ==)</summary>
     public class Address : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The static IP address represented by this resource.</summary>
@@ -58447,6 +59563,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionKey")]
         public virtual CustomerEncryptionKey DiskEncryptionKey { get; set; } 
 
+        /// <summary>The size of the disk in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<long> DiskSizeGb { get; set; } 
+
         /// <summary>A list of features to enable on the guest operating system. Applicable only for bootable images.
         /// Read  Enabling guest operating system features to see a list of available options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
@@ -58672,14 +59792,18 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents an Autoscaler resource.
     ///
+    /// Google Compute Engine has two Autoscaler resources:
+    ///
+    /// * [Global](/compute/docs/reference/rest/latest/autoscalers) *
+    /// [Regional](/compute/docs/reference/rest/latest/regionAutoscalers)
+    ///
     /// Use autoscalers to automatically add or delete instances from a managed instance group according to your defined
     /// autoscaling policy. For more information, read Autoscaling Groups of Instances.
     ///
     /// For zonal managed instance groups resource, use the autoscaler resource.
     ///
-    /// For regional managed instance groups, use the regionAutoscalers resource. (== resource_for beta.autoscalers ==)
-    /// (== resource_for v1.autoscalers ==) (== resource_for beta.regionAutoscalers ==) (== resource_for
-    /// v1.regionAutoscalers ==)</summary>
+    /// For regional managed instance groups, use the regionAutoscalers resource. (== resource_for
+    /// {$api_version}.autoscalers ==) (== resource_for {$api_version}.regionAutoscalers ==)</summary>
     public class Autoscaler : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration parameters for the autoscaling algorithm. You can define one or more of the
@@ -59377,9 +60501,14 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// A backend service contains configuration values for Google Cloud Platform load balancing services.
     ///
+    /// Backend services in Google Compute Engine can be either regionally or globally scoped.
+    ///
+    /// * [Global](/compute/docs/reference/rest/latest/backendServices) *
+    /// [Regional](/compute/docs/reference/rest/latest/regionBackendServices)
+    ///
     /// For more information, read Backend Services.
     ///
-    /// (== resource_for v1.backendService ==) (== resource_for beta.backendService ==)</summary>
+    /// (== resource_for {$api_version}.backendService ==)</summary>
     public class BackendService : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or
@@ -59447,9 +60576,10 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Fingerprint { get; set; } 
 
         /// <summary>The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this
-        /// BackendService. Currently at most one health check can be specified, and a health check is required for
-        /// Compute Engine backend services. A health check must not be specified for App Engine backend and Cloud
-        /// Function backend.
+        /// BackendService. Currently at most one health check can be specified. Health check is optional for Compute
+        /// Engine backend services if there is no backend. A health check must not be specified when adding Internet
+        /// Network Endpoint Group or Serverless Network Endpoint Group as backends. In all other cases, a health check
+        /// is required for Compute Engine backend services.
         ///
         /// For internal load balancing, a URL to a HealthCheck resource must be specified instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthChecks")]
@@ -59866,7 +60996,7 @@ namespace Google.Apis.Compute.v1.Data
         /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
         ///
         /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user
-        /// that has been recently deleted. For example,`alice@example.com?uid=123456789012345678901`. If the user is
+        /// that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
         /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
         ///
         /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
@@ -59977,8 +61107,8 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// Creating a commitment resource means that you are purchasing a committed use contract with an explicit start and
     /// end time. You can create commitments based on vCPUs and memory usage and receive discounted rates. For full
-    /// details, read Signing Up for Committed Use Discounts. (== resource_for beta.regionCommitments ==) (==
-    /// resource_for v1.regionCommitments ==)</summary>
+    /// details, read Signing Up for Committed Use Discounts. (== resource_for {$api_version}.regionCommitments
+    /// ==)</summary>
     public class Commitment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -60370,8 +61500,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exposeHeaders")]
         public virtual System.Collections.Generic.IList<string> ExposeHeaders { get; set; } 
 
-        /// <summary>Specifies how long the results of a preflight request can be cached. This translates to the content
-        /// for the Access-Control-Max-Age header.</summary>
+        /// <summary>Specifies how long results of a preflight request can be cached in seconds. This translates to the
+        /// Access-Control-Max-Age header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAge")]
         public virtual System.Nullable<int> MaxAge { get; set; } 
 
@@ -60455,14 +61585,18 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a Persistent Disk resource.
     ///
+    /// Google Compute Engine has two Disk resources:
+    ///
+    /// * [Global](/compute/docs/reference/rest/latest/disks) *
+    /// [Regional](/compute/docs/reference/rest/latest/regionDisks)
+    ///
     /// Persistent disks are required for running your VM instances. Create both boot and non-boot (data) persistent
     /// disks. For more information, read Persistent Disks. For more storage options, read Storage options.
     ///
     /// The disks resource represents a zonal persistent disk. For more information, read Zonal persistent disks.
     ///
     /// The regionDisks resource represents a regional persistent disk. For more information, read  Regional resources.
-    /// (== resource_for beta.disks ==) (== resource_for v1.disks ==) (== resource_for v1.regionDisks ==) (==
-    /// resource_for beta.regionDisks ==)</summary>
+    /// (== resource_for {$api_version}.disks ==) (== resource_for {$api_version}.regionDisks ==)</summary>
     public class Disk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -60850,14 +61984,19 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a Disk Type resource.
     ///
+    /// Google Compute Engine has two Disk Type resources:
+    ///
+    /// * [Global](/compute/docs/reference/rest/latest/diskTypes) *
+    /// [Regional](/compute/docs/reference/rest/latest/regionDiskTypes)
+    ///
     /// You can choose from a variety of disk types based on your needs. For more information, read Storage options.
     ///
     /// The diskTypes resource represents disk types for a zonal persistent disk. For more information, read Zonal
     /// persistent disks.
     ///
     /// The regionDiskTypes resource represents disk types for a regional persistent disk. For more information, read
-    /// Regional persistent disks. (== resource_for beta.diskTypes ==) (== resource_for v1.diskTypes ==) (==
-    /// resource_for v1.regionDiskTypes ==) (== resource_for beta.regionDiskTypes ==)</summary>
+    /// Regional persistent disks. (== resource_for {$api_version}.diskTypes ==) (== resource_for
+    /// {$api_version}.regionDiskTypes ==)</summary>
     public class DiskType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -61379,7 +62518,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>External VPN gateway is the on-premises VPN gateway(s) or another cloud provider?s VPN gateway that
+    /// <summary>External VPN gateway is the on-premises VPN gateway(s) or another cloud provider's VPN gateway that
     /// connects to your Google Cloud VPN gateway. To create a highly available VPN from Google Cloud to your on-
     /// premises side or another Cloud provider's VPN gateway, you must create a external VPN gateway resource in GCP,
     /// which provides the information to GCP about your external VPN gateway.</summary>
@@ -61452,7 +62591,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Nullable<long> Id { get; set; } 
 
         /// <summary>IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address
-        /// can be either from your on-premise gateway or another Cloud provider?s VPN gateway, it cannot be an IP
+        /// can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP
         /// address from Google Compute Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
@@ -61815,15 +62954,19 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a Forwarding Rule resource.
     ///
+    /// Forwarding rule resources in GCP can be either regional or global in scope:
+    ///
+    /// * [Global](/compute/docs/reference/rest/latest/globalForwardingRules) *
+    /// [Regional](/compute/docs/reference/rest/latest/forwardingRules)
+    ///
     /// A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud
     /// Platform load balancer. Forwarding rules can also reference target instances and Cloud VPN Classic gateways
     /// (targetVpnGateway).
     ///
     /// For more information, read Forwarding rule concepts and Using protocol forwarding.
     ///
-    /// (== resource_for beta.forwardingRules ==) (== resource_for v1.forwardingRules ==) (== resource_for
-    /// beta.globalForwardingRules ==) (== resource_for v1.globalForwardingRules ==) (== resource_for
-    /// beta.regionForwardingRules ==) (== resource_for v1.regionForwardingRules ==)</summary>
+    /// (== resource_for {$api_version}.forwardingRules ==) (== resource_for {$api_version}.globalForwardingRules ==)
+    /// (== resource_for {$api_version}.regionForwardingRules ==)</summary>
     public class ForwardingRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>IP address that this forwarding rule serves. When a client sends traffic to this IP address, the
@@ -61863,6 +63006,13 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allPorts")]
         public virtual System.Nullable<bool> AllPorts { get; set; } 
 
+        /// <summary>This field is used along with the backend_service field for internal load balancing or with the
+        /// target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all
+        /// regions. Otherwise only allows access from clients in the same region as the internal load
+        /// balancer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowGlobalAccess")]
+        public virtual System.Nullable<bool> AllowGlobalAccess { get; set; } 
+
         /// <summary>This field is only used for INTERNAL load balancing.
         ///
         /// For internal load balancing, this field identifies the BackendService resource to receive the matched
@@ -61879,6 +63029,14 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>Fingerprint of this resource. A hash of the contents stored in this object. This field is used in
+        /// optimistic locking. This field will be ignored when inserting a ForwardingRule. Include the fingerprint in
+        /// patch request to ensure that you do not overwrite changes that were applied from another concurrent request.
+        ///
+        /// To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; } 
+
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -61889,21 +63047,25 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipVersion")]
         public virtual string IpVersion { get; set; } 
 
+        /// <summary>Indicates whether or not this load balancer can be used as a collector for packet mirroring. To
+        /// prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a
+        /// PacketMirroring rule applies to them. This can only be set to true for load balancers that have their
+        /// loadBalancingScheme set to INTERNAL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isMirroringCollector")]
+        public virtual System.Nullable<bool> IsMirroringCollector { get; set; } 
+
         /// <summary>[Output Only] Type of the resource. Always compute#forwardingRule for Forwarding Rule
         /// resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Specifies the forwarding rule type. EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol
-        /// forwarding to VMs from an external IP address - The following load balancers: HTTP(S), SSL Proxy, TCP Proxy,
-        /// and Network TCP/UDP.
+        /// <summary>Specifies the forwarding rule type.
         ///
-        /// INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP load
-        /// balancers
-        ///
-        /// INTERNAL_MANAGED is used for: - Internal HTTP(S) load balancers
-        ///
-        /// INTERNAL_SELF_MANAGED is used for: - Traffic Director
+        /// - EXTERNAL is used for: - Classic Cloud VPN gateways - Protocol forwarding to VMs from an external IP
+        /// address - The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP - INTERNAL is
+        /// used for: - Protocol forwarding to VMs from an internal IP address - Internal TCP/UDP load balancers -
+        /// INTERNAL_MANAGED is used for: - Internal HTTP(S) load balancers - >INTERNAL_SELF_MANAGED is used for: -
+        /// Traffic Director
         ///
         /// For more information about forwarding rules, refer to Forwarding rule concepts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
@@ -62021,7 +63183,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The URL of the target resource to receive the matched traffic. For regional forwarding rules, this
         /// target must live in the same region as the forwarding rule. For global forwarding rules, this target must be
         /// a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object.
-        /// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.</summary>
+        /// For INTERNAL_SELF_MANAGED load balancing, only targetHttpProxy is valid, not targetHttpsProxy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 
@@ -62488,8 +63650,13 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a Health Check resource.
     ///
-    /// Health checks are used for most GCP load balancers and managed instance group auto-healing. For more
-    /// information, read Health Check Concepts.
+    /// Google Compute Engine has two Health Check resources:
+    ///
+    /// * [Global](/compute/docs/reference/rest/latest/healthChecks) *
+    /// [Regional](/compute/docs/reference/rest/latest/regionHealthChecks)
+    ///
+    /// Internal HTTP(S) load balancers use regional health checks. All other types of GCP load balancers and managed
+    /// instance group auto-healing use global health checks. For more information, read Health Check Concepts.
     ///
     /// To perform health checks on network load balancers, you must use either httpHealthChecks or
     /// httpsHealthChecks.</summary>
@@ -63197,13 +64364,16 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Nullable<bool> HttpsRedirect { get; set; } 
 
         /// <summary>The path that will be used in the redirect response instead of the one that was supplied in the
-        /// request. Only one of pathRedirect or prefixRedirect must be specified. The value must be between 1 and 1024
-        /// characters.</summary>
+        /// request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If
+        /// neither is supplied, the path of the original request will be used for the redirect. The value must be
+        /// between 1 and 1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathRedirect")]
         public virtual string PathRedirect { get; set; } 
 
         /// <summary>The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the
-        /// remaining portion of the URL before redirecting the request.</summary>
+        /// remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with
+        /// pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be
+        /// used for the redirect. The value must be between 1 and 1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefixRedirect")]
         public virtual string PrefixRedirect { get; set; } 
 
@@ -63568,7 +64738,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents an Image resource.
     ///
     /// You can use images to create boot disks for your VM instances. For more information, read Images. (==
-    /// resource_for beta.images ==) (== resource_for v1.images ==)</summary>
+    /// resource_for {$api_version}.images ==)</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).</summary>
@@ -63829,7 +64999,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents an Instance resource.
     ///
     /// An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual
-    /// Machine Instances. (== resource_for beta.instances ==) (== resource_for v1.instances ==)</summary>
+    /// Machine Instances. (== resource_for {$api_version}.instances ==)</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Allows this instance to send and receive packets with non-matching destination or source IPs. This
@@ -64077,8 +65247,8 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// For more information, read Instance groups.
     ///
-    /// (== resource_for beta.instanceGroups ==) (== resource_for v1.instanceGroups ==) (== resource_for
-    /// beta.regionInstanceGroups ==) (== resource_for v1.regionInstanceGroups ==)</summary>
+    /// (== resource_for {$api_version}.instanceGroups ==) (== resource_for {$api_version}.regionInstanceGroups
+    /// ==)</summary>
     public class InstanceGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The creation timestamp for this instance group in RFC3339 text format.</summary>
@@ -64302,8 +65472,8 @@ namespace Google.Apis.Compute.v1.Data
     /// For zonal Managed Instance Group, use the instanceGroupManagers resource.
     ///
     /// For regional Managed Instance Group, use the regionInstanceGroupManagers resource. (== resource_for
-    /// beta.instanceGroupManagers ==) (== resource_for v1.instanceGroupManagers ==) (== resource_for
-    /// beta.regionInstanceGroupManagers ==) (== resource_for v1.regionInstanceGroupManagers ==)</summary>
+    /// {$api_version}.instanceGroupManagers ==) (== resource_for {$api_version}.regionInstanceGroupManagers
+    /// ==)</summary>
     public class InstanceGroupManager : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The autohealing policy for this managed instance group. You can specify only one value.</summary>
@@ -65313,8 +66483,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents an Instance Template resource.
     ///
     /// You can use instance templates to create VM instances and managed instance groups. For more information, read
-    /// Instance Templates. (== resource_for beta.instanceTemplates ==) (== resource_for v1.instanceTemplates
-    /// ==)</summary>
+    /// Instance Templates. (== resource_for {$api_version}.instanceTemplates ==)</summary>
     public class InstanceTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The creation timestamp for this instance template in RFC3339 text format.</summary>
@@ -65605,8 +66774,8 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents an Interconnect resource.
     ///
     /// An Interconnect resource is a dedicated connection between the GCP network and your on-premises network. For
-    /// more information, read the  Dedicated Interconnect Overview. (== resource_for v1.interconnects ==) (==
-    /// resource_for beta.interconnects ==)</summary>
+    /// more information, read the  Dedicated Interconnect Overview. (== resource_for {$api_version}.interconnects
+    /// ==)</summary>
     public class Interconnect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Administrative status of the interconnect. When this is set to true, the Interconnect is functional
@@ -65736,7 +66905,7 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// You can use Interconnect attachments (VLANS) to connect your Virtual Private Cloud networks to your on-premises
     /// networks through an Interconnect. For more information, read  Creating VLAN Attachments. (== resource_for
-    /// beta.interconnectAttachments ==) (== resource_for v1.interconnectAttachments ==)</summary>
+    /// {$api_version}.interconnectAttachments ==)</summary>
     public class InterconnectAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER.</summary>
@@ -65755,7 +66924,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and
         /// customerRouterIpAddress for this attachment. All prefixes must be within link-local address space
         /// (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29
-        /// from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google?s
+        /// from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's
         /// edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("candidateSubnets")]
         public virtual System.Collections.Generic.IList<string> CandidateSubnets { get; set; } 
@@ -66038,7 +67207,7 @@ namespace Google.Apis.Compute.v1.Data
     /// are propagated from PARTNER_PROVIDER attachments to their corresponding PARTNER attachments.</summary>
     public class InterconnectAttachmentPartnerMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Plain text name of the Interconnect this attachment is connected to, as displayed in the Partner?s
+        /// <summary>Plain text name of the Interconnect this attachment is connected to, as displayed in the Partner's
         /// portal. For instance "Chicago 1". This value may be validated to match approved Partner values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectName")]
         public virtual string InterconnectName { get; set; } 
@@ -66048,7 +67217,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partnerName")]
         public virtual string PartnerName { get; set; } 
 
-        /// <summary>URL of the Partner?s portal for this Attachment. Partners may customise this to be a deep link to
+        /// <summary>URL of the Partner's portal for this Attachment. Partners may customise this to be a deep link to
         /// the specific resource on the Partner portal. This value may be validated to match approved Partner
         /// values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portalUrl")]
@@ -66145,7 +67314,7 @@ namespace Google.Apis.Compute.v1.Data
     }    
 
     /// <summary>Diagnostics information about interconnect, contains detailed and current technical information about
-    /// Google?s side of the connection.</summary>
+    /// Google's side of the connection.</summary>
     public class InterconnectDiagnostics : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of InterconnectDiagnostics.ARPEntry objects, describing individual neighbors currently seen
@@ -66184,11 +67353,11 @@ namespace Google.Apis.Compute.v1.Data
 
     public class InterconnectDiagnosticsLinkLACPStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>System ID of the port on Google?s side of the LACP exchange.</summary>
+        /// <summary>System ID of the port on Google's side of the LACP exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleSystemId")]
         public virtual string GoogleSystemId { get; set; } 
 
-        /// <summary>System ID of the port on the neighbor?s side of the LACP exchange.</summary>
+        /// <summary>System ID of the port on the neighbor's side of the LACP exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("neighborSystemId")]
         public virtual string NeighborSystemId { get; set; } 
 
@@ -66855,8 +68024,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents a Machine Type resource.
     ///
     /// You can use specific machine types for your VM instances based on performance and pricing requirements. For more
-    /// information, read Machine Types. (== resource_for v1.machineTypes ==) (== resource_for beta.machineTypes
-    /// ==)</summary>
+    /// information, read Machine Types. (== resource_for {$api_version}.machineTypes ==)</summary>
     public class MachineType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -67161,6 +68329,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; } 
 
+        /// <summary>[Output Only] Health state of the instance per health-check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceHealth")]
+        public virtual System.Collections.Generic.IList<ManagedInstanceInstanceHealth> InstanceHealth { get; set; } 
+
         /// <summary>[Output Only] The status of the instance. This field is empty when the instance does not
         /// exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceStatus")]
@@ -67173,6 +68345,20 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Intended version of this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual ManagedInstanceVersion Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ManagedInstanceInstanceHealth : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The current detailed instance health state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailedHealthState")]
+        public virtual string DetailedHealthState { get; set; } 
+
+        /// <summary>[Output Only] The URL for the health check that verifies whether the instance is healthy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthCheck")]
+        public virtual string HealthCheck { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -67337,7 +68523,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents a VPC Network resource.
     ///
     /// Networks connect resources to each other and to the internet. For more information, read Virtual Private Cloud
-    /// (VPC) Network. (== resource_for v1.networks ==) (== resource_for beta.networks ==)</summary>
+    /// (VPC) Network. (== resource_for {$api_version}.networks ==)</summary>
     public class Network : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this
@@ -67437,7 +68623,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents a collection of network endpoints.
     ///
     /// For more information read Setting up network endpoint groups in load balancing. (== resource_for
-    /// v1.networkEndpointGroups ==) (== resource_for beta.networkEndpointGroups ==) Next ID: 21</summary>
+    /// {$api_version}.networkEndpointGroups ==) Next ID: 21</summary>
     public class NetworkEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -68066,7 +69252,7 @@ namespace Google.Apis.Compute.v1.Data
     /// A sole-tenant node is a physical server that is dedicated to hosting VM instances only for your specific
     /// project. Use sole-tenant nodes to keep your instances physically separated from instances in other projects, or
     /// to group your instances together on the same host hardware. For more information, read Sole-tenant nodes. (==
-    /// resource_for beta.nodeGroups ==) (== resource_for v1.nodeGroups ==)</summary>
+    /// resource_for {$api_version}.nodeGroups ==)</summary>
     public class NodeGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -68444,7 +69630,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represent a sole-tenant Node Template resource.
     ///
     /// You can use a template to define properties for nodes in a node group. For more information, read Creating node
-    /// groups and instances. (== resource_for beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==)</summary>
+    /// groups and instances. (== resource_for {$api_version}.nodeTemplates ==) (== NextID: 18 ==)</summary>
     public class NodeTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -68737,8 +69923,8 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// Each node within a node group must have a node type. A node type specifies the total amount of cores and memory
     /// for that node. Currently, the only available node type is n1-node-96-624 node type that has 96 vCPUs and 624 GB
-    /// of memory, available in multiple zones. For more information read Node types. (== resource_for beta.nodeTypes
-    /// ==) (== resource_for v1.nodeTypes ==)</summary>
+    /// of memory, available in multiple zones. For more information read Node types. (== resource_for
+    /// {$api_version}.nodeTypes ==)</summary>
     public class NodeType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The CPU platform used by this node type.</summary>
@@ -68992,6 +70178,12 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents an Operation resource.
     ///
+    /// Google Compute Engine has three Operation resources:
+    ///
+    /// * [Global](/compute/docs/reference/rest/latest/globalOperations) *
+    /// [Regional](/compute/docs/reference/rest/latest/regionOperations) *
+    /// [Zonal](/compute/docs/reference/rest/latest/zoneOperations)
+    ///
     /// You can use an operation resource to manage asynchronous API requests. For more information, read Handling API
     /// responses.
     ///
@@ -68999,10 +70191,9 @@ namespace Google.Apis.Compute.v1.Data
     /// regional operations, use the regionOperations resource. - For zonal operations, use the zonalOperations
     /// resource.
     ///
-    /// For more information, read  Global, Regional, and Zonal Resources. (== resource_for v1.globalOperations ==) (==
-    /// resource_for beta.globalOperations ==) (== resource_for v1.regionOperations ==) (== resource_for
-    /// beta.regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for beta.zoneOperations
-    /// ==)</summary>
+    /// For more information, read  Global, Regional, and Zonal Resources. (== resource_for
+    /// {$api_version}.globalOperations ==) (== resource_for {$api_version}.regionOperations ==) (== resource_for
+    /// {$api_version}.zoneOperations ==)</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The value of `requestId` if you provided it in the request. Not present
@@ -69456,6 +70647,383 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a PacketMirroring resource.</summary>
+    public class PacketMirroring : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector
+        /// for mirrored traffic. The specified forwarding rule must have isMirroringCollector set to true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectorIlb")]
+        public virtual PacketMirroringForwardingRuleInfo CollectorIlb { get; set; } 
+
+        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; } 
+
+        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+        /// policy will not be enforced on the network.
+        ///
+        /// The default is TRUE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual string Enable { get; set; } 
+
+        /// <summary>Filter for mirrored traffic. If unspecified, all traffic is mirrored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual PacketMirroringFilter Filter { get; set; } 
+
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; } 
+
+        /// <summary>[Output Only] Type of the resource. Always compute#packetMirroring for packet mirrorings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of mirrored VM
+        /// instances, subnetworks and/or tags for which traffic from/to all VM instances will be mirrored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mirroredResources")]
+        public virtual PacketMirroringMirroredResourceInfo MirroredResources { get; set; } 
+
+        /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
+        /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
+        /// cannot be a dash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs
+        /// should have a NIC in the given network. All mirrored subnetworks should belong to the given
+        /// network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual PacketMirroringNetworkInfo Network { get; set; } 
+
+        /// <summary>The priority of applying this configuration. Priority is used to break ties in cases where there is
+        /// more than one matching rule. In the case of two rules that apply for a given Instance, the one with the
+        /// lowest-numbered priority value wins.
+        ///
+        /// Default value is 1000. Valid range is 0 through 65535.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<long> Priority { get; set; } 
+
+        /// <summary>[Output Only] URI of the region where the packetMirroring resides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains a list of packetMirrorings.</summary>
+    public class PacketMirroringAggregatedList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A list of PacketMirroring resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IDictionary<string,PacketMirroringsScopedList> Items { get; set; } 
+
+        /// <summary>Type of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual PacketMirroringAggregatedList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
+    }    
+
+    public class PacketMirroringFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that
+        /// matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all
+        /// traffic is mirrored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("IPProtocols")]
+        public virtual System.Collections.Generic.IList<string> IPProtocols { get; set; } 
+
+        /// <summary>IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP
+        /// header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified
+        /// IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is
+        /// mirrored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cidrRanges")]
+        public virtual System.Collections.Generic.IList<string> CidrRanges { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PacketMirroringForwardingRuleInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Unique identifier for the forwarding rule; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalUrl")]
+        public virtual string CanonicalUrl { get; set; } 
+
+        /// <summary>Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored
+        /// traffic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains a list of PacketMirroring resources.</summary>
+    public class PacketMirroringList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A list of PacketMirroring resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<PacketMirroring> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#packetMirroring for packetMirrorings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual PacketMirroringList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
+    }    
+
+    public class PacketMirroringMirroredResourceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A set of virtual machine instances that are being mirrored. They must live in zones contained in
+        /// the same region as this packetMirroring.
+        ///
+        /// Note that this config will apply only to those network interfaces of the Instances that belong to the
+        /// network specified in this packetMirroring.
+        ///
+        /// You may specify a maximum of 50 Instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
+        public virtual System.Collections.Generic.IList<PacketMirroringMirroredResourceInfoInstanceInfo> Instances { get; set; } 
+
+        /// <summary>A set of subnetworks for which traffic from/to all VM instances will be mirrored. They must live in
+        /// the same region as this packetMirroring.
+        ///
+        /// You may specify a maximum of 5 subnetworks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworks")]
+        public virtual System.Collections.Generic.IList<PacketMirroringMirroredResourceInfoSubnetInfo> Subnetworks { get; set; } 
+
+        /// <summary>A set of mirrored tags. Traffic from/to all VM instances that have one or more of these tags will
+        /// be mirrored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PacketMirroringMirroredResourceInfoInstanceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Unique identifier for the instance; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalUrl")]
+        public virtual string CanonicalUrl { get; set; } 
+
+        /// <summary>Resource URL to the virtual machine instance which is being mirrored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PacketMirroringMirroredResourceInfoSubnetInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Unique identifier for the subnetwork; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalUrl")]
+        public virtual string CanonicalUrl { get; set; } 
+
+        /// <summary>Resource URL to the subnetwork for which traffic from/to all VM instances will be
+        /// mirrored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PacketMirroringNetworkInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Unique identifier for the network; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalUrl")]
+        public virtual string CanonicalUrl { get; set; } 
+
+        /// <summary>URL of the network resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PacketMirroringsScopedList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of packetMirrorings contained in this scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packetMirrorings")]
+        public virtual System.Collections.Generic.IList<PacketMirroring> PacketMirrorings { get; set; } 
+
+        /// <summary>Informational warning which replaces the list of packetMirrorings when the list is empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual PacketMirroringsScopedList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>Informational warning which replaces the list of packetMirrorings when the list is empty.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
+    }    
+
     /// <summary>A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve
     /// the URL. If no rule was matched, the default service will be used.</summary>
     public class PathMatcher : Google.Apis.Requests.IDirectResponseSchema
@@ -69667,7 +71235,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents a Project resource.
     ///
     /// A project is used to organize resources in a Google Cloud Platform environment. For more information, read about
-    /// the  Resource Hierarchy. (== resource_for v1.projects ==) (== resource_for beta.projects ==)</summary>
+    /// the  Resource Hierarchy. (== resource_for {$api_version}.projects ==)</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata key/value pairs available to all instances contained in this project. See Custom metadata
@@ -69846,7 +71414,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents a Region resource.
     ///
     /// A region is a geographical area where a resource is located. For more information, read Regions and Zones. (==
-    /// resource_for beta.regions ==) (== resource_for v1.regions ==)</summary>
+    /// resource_for {$api_version}.regions ==)</summary>
     public class Region : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -70542,7 +72110,7 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even
     /// if the reserved VMs are not running. For more information, read  Reserving zonal resources. (== resource_for
-    /// beta.reservations ==) (== resource_for v1.reservations ==)</summary>
+    /// {$api_version}.reservations ==)</summary>
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Full or partial URL to a parent commitment. This field displays for reservations that
@@ -71206,7 +72774,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Specified snapshot properties for scheduled snapshots created by this policy.</summary>
     public class ResourcePolicySnapshotSchedulePolicySnapshotProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indication to perform a ?guest aware? snapshot.</summary>
+        /// <summary>Indication to perform a 'guest aware' snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestFlush")]
         public virtual System.Nullable<bool> GuestFlush { get; set; } 
 
@@ -71257,8 +72825,8 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents a Route resource.
     ///
     /// A route defines a path from VM instances in the VPC network to a specific destination. This destination can be
-    /// inside or outside the VPC network. For more information, read the Routes overview. (== resource_for beta.routes
-    /// ==) (== resource_for v1.routes ==)</summary>
+    /// inside or outside the VPC network. For more information, read the Routes overview. (== resource_for
+    /// {$api_version}.routes ==)</summary>
     public class Route : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -72263,8 +73831,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents a Cloud Armor Security Policy resource.
     ///
     /// Only external backend services that use load balancers can reference a Security Policy. For more information,
-    /// read  Cloud Armor Security Policy Concepts. (== resource_for v1.securityPolicies ==) (== resource_for
-    /// beta.securityPolicies ==)</summary>
+    /// read  Cloud Armor Security Policy Concepts. (== resource_for {$api_version}.securityPolicies ==)</summary>
     public class SecurityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -72413,7 +73980,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>A match condition that incoming traffic is evaluated against. If it evaluates to true, the
-        /// corresponding ?action? is enforced.</summary>
+        /// corresponding 'action' is enforced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("match")]
         public virtual SecurityPolicyRuleMatcher Match { get; set; } 
 
@@ -72605,7 +74172,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents a Persistent Disk Snapshot resource.
     ///
     /// You can use snapshots to back up data on a regular interval. For more information, read  Creating persistent
-    /// disk snapshots. (== resource_for beta.snapshots ==) (== resource_for v1.snapshots ==)</summary>
+    /// disk snapshots. (== resource_for {$api_version}.snapshots ==)</summary>
     public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Set to true if snapshots are automatically created by applying resource policy on the
@@ -72625,6 +74192,10 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Size of the source disk, specified in GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; } 
+
+        /// <summary>[Output Only] Number of bytes downloaded to restore a snapshot to a disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadBytes")]
+        public virtual System.Nullable<long> DownloadBytes { get; set; } 
 
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
@@ -72812,10 +74383,19 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents an SSL Certificate resource.
     ///
+    /// Google Compute Engine has two SSL Certificate resources:
+    ///
+    /// * [Global](/compute/docs/reference/rest/latest/sslCertificates) *
+    /// [Regional](/compute/docs/reference/rest/latest/regionSslCertificates)
+    ///
+    /// - sslCertificates are used by: - external HTTPS load balancers - SSL proxy load balancers
+    ///
+    /// - regionSslCertificates are used by: - internal HTTPS load balancers
+    ///
     /// This SSL certificate resource also contains a private key. You can use SSL keys and certificates to secure
     /// connections to a load balancer. For more information, read  Creating and Using SSL Certificates. (==
-    /// resource_for beta.sslCertificates ==) (== resource_for v1.sslCertificates ==) (== resource_for
-    /// beta.regionSslCertificates ==) (== resource_for v1.regionSslCertificates ==) Next ID: 17</summary>
+    /// resource_for {$api_version}.sslCertificates ==) (== resource_for {$api_version}.regionSslCertificates ==) Next
+    /// ID: 17</summary>
     public class SslCertificate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A local certificate file. The certificate must be in PEM format. The certificate chain must be no
@@ -73146,8 +74726,8 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents a Cloud Armor Security Policy resource.
     ///
     /// Only external backend services used by HTTP or HTTPS load balancers can reference a Security Policy. For more
-    /// information, read read  Cloud Armor Security Policy Concepts. (== resource_for beta.sslPolicies ==) (==
-    /// resource_for v1.sslPolicies ==)</summary>
+    /// information, read read  Cloud Armor Security Policy Concepts. (== resource_for {$api_version}.sslPolicies
+    /// ==)</summary>
     public class SslPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -73269,7 +74849,7 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// A subnetwork (also known as a subnet) is a logical partition of a Virtual Private Cloud network with one primary
     /// IP range and zero or more secondary IP ranges. For more information, read  Virtual Private Cloud (VPC) Network.
-    /// (== resource_for beta.subnetworks ==) (== resource_for v1.subnetworks ==)</summary>
+    /// (== resource_for {$api_version}.subnetworks ==)</summary>
     public class Subnetwork : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -73762,10 +75342,19 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a Target HTTP Proxy resource.
     ///
-    /// A target HTTP proxy is a component of GCP HTTP load balancers. Forwarding rules reference a target HTTP proxy,
-    /// and the target proxy then references a URL map. For more information, read Using Target Proxies and  Forwarding
-    /// rule concepts. (== resource_for beta.targetHttpProxies ==) (== resource_for v1.targetHttpProxies ==) (==
-    /// resource_for beta.regionTargetHttpProxies ==) (== resource_for v1.regionTargetHttpProxies ==)</summary>
+    /// Google Compute Engine has two Target HTTP Proxy resources:
+    ///
+    /// * [Global](/compute/docs/reference/rest/latest/targetHttpProxies) *
+    /// [Regional](/compute/docs/reference/rest/latest/regionTargetHttpProxies)
+    ///
+    /// A target HTTP proxy is a component of GCP HTTP load balancers.
+    ///
+    /// * targetHttpProxies are used by external HTTP load balancers and Traffic Director. * regionTargetHttpProxies are
+    /// used by internal HTTP load balancers.
+    ///
+    /// Forwarding rules reference a target HTTP proxy, and the target proxy then references a URL map. For more
+    /// information, read Using Target Proxies and  Forwarding rule concepts. (== resource_for
+    /// {$api_version}.targetHttpProxies ==) (== resource_for {$api_version}.regionTargetHttpProxies ==)</summary>
     public class TargetHttpProxy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -73988,11 +75577,19 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a Target HTTPS Proxy resource.
     ///
-    /// A target HTTPS proxy is a component of GCP HTTPS load balancers. Forwarding rules reference a target HTTPS
-    /// proxy, and the target proxy then references a URL map. For more information, read Using Target Proxies and
-    /// Forwarding rule concepts. (== resource_for beta.targetHttpsProxies ==) (== resource_for v1.targetHttpsProxies
-    /// ==) (== resource_for beta.regionTargetHttpsProxies ==) (== resource_for v1.regionTargetHttpsProxies
-    /// ==)</summary>
+    /// Google Compute Engine has two Target HTTPS Proxy resources:
+    ///
+    /// * [Global](/compute/docs/reference/rest/latest/targetHttpsProxies) *
+    /// [Regional](/compute/docs/reference/rest/latest/regionTargetHttpsProxies)
+    ///
+    /// A target HTTPS proxy is a component of GCP HTTPS load balancers.
+    ///
+    /// * targetHttpsProxies are used by external HTTPS load balancers. * regionTargetHttpsProxies are used by internal
+    /// HTTPS load balancers.
+    ///
+    /// Forwarding rules reference a target HTTPS proxy, and the target proxy then references a URL map. For more
+    /// information, read Using Target Proxies and  Forwarding rule concepts. (== resource_for
+    /// {$api_version}.targetHttpsProxies ==) (== resource_for {$api_version}.regionTargetHttpsProxies ==)</summary>
     public class TargetHttpsProxy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -74208,8 +75805,7 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// You can use a target instance to handle traffic for one or more forwarding rules, which is ideal for forwarding
     /// protocol traffic that is managed by a single source. For example, ESP, AH, TCP, or UDP. For more information,
-    /// read Target instances. (== resource_for beta.targetInstances ==) (== resource_for v1.targetInstances
-    /// ==)</summary>
+    /// read Target instances. (== resource_for {$api_version}.targetInstances ==)</summary>
     public class TargetInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -74464,7 +76060,7 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// Target pools are used for network TCP/UDP load balancing. A target pool references member instances, an
     /// associated legacy HttpHealthCheck resource, and, optionally, a backup target pool. For more information, read
-    /// Using target pools. (== resource_for beta.targetPools ==) (== resource_for v1.targetPools ==)</summary>
+    /// Using target pools. (== resource_for {$api_version}.targetPools ==)</summary>
     public class TargetPool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This field is applicable only when the containing target pool is serving a forwarding rule as the
@@ -74853,7 +76449,7 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// A target SSL proxy is a component of a SSL Proxy load balancer. Global forwarding rules reference a target SSL
     /// proxy, and the target proxy then references an external backend service. For more information, read Using Target
-    /// Proxies. (== resource_for beta.targetSslProxies ==) (== resource_for v1.targetSslProxies ==)</summary>
+    /// Proxies. (== resource_for {$api_version}.targetSslProxies ==)</summary>
     public class TargetSslProxy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -75006,8 +76602,7 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// A target TCP proxy is a component of a TCP Proxy load balancer. Global forwarding rules reference target TCP
     /// proxy, and the target proxy then references an external backend service. For more information, read TCP Proxy
-    /// Load Balancing Concepts. (== resource_for beta.targetTcpProxies ==) (== resource_for v1.targetTcpProxies
-    /// ==)</summary>
+    /// Load Balancing Concepts. (== resource_for {$api_version}.targetTcpProxies ==)</summary>
     public class TargetTcpProxy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -75128,7 +76723,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents a Target VPN Gateway resource.
     ///
     /// The target VPN gateway resource represents a Classic Cloud VPN gateway. For more information, read the the Cloud
-    /// VPN Overview. (== resource_for beta.targetVpnGateways ==) (== resource_for v1.targetVpnGateways ==)</summary>
+    /// VPN Overview. (== resource_for {$api_version}.targetVpnGateways ==)</summary>
     public class TargetVpnGateway : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -75428,11 +77023,21 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a URL Map resource.
     ///
-    /// A URL map resource is a component of certain types of load balancers. This resource defines mappings from host
-    /// names and URL paths to either a backend service or a backend bucket.
+    /// Google Compute Engine has two URL Map resources:
     ///
-    /// To use this resource, the backend service must have a loadBalancingScheme of either EXTERNAL,
-    /// INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED For more information, read URL Map Concepts.</summary>
+    /// * [Global](/compute/docs/reference/rest/latest/urlMaps) *
+    /// [Regional](/compute/docs/reference/rest/latest/regionUrlMaps)
+    ///
+    /// A URL map resource is a component of certain types of GCP load balancers and Traffic Director.
+    ///
+    /// * urlMaps are used by external HTTP(S) load balancers and Traffic Director. * regionUrlMaps are used by internal
+    /// HTTP(S) load balancers.
+    ///
+    /// This resource defines mappings from host names and URL paths to either a backend service or a backend bucket.
+    ///
+    /// To use the global urlMaps resource, the backend service must have a loadBalancingScheme of either EXTERNAL or
+    /// INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource, the backend service must have a loadBalancingScheme of
+    /// INTERNAL_MANAGED. For more information, read URL Map Concepts.</summary>
     public class UrlMap : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -76433,8 +78038,8 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents a Cloud VPN Tunnel resource.
     ///
-    /// For more information about VPN, read the the Cloud VPN Overview. (== resource_for beta.vpnTunnels ==) (==
-    /// resource_for v1.vpnTunnels ==)</summary>
+    /// For more information about VPN, read the the Cloud VPN Overview. (== resource_for {$api_version}.vpnTunnels
+    /// ==)</summary>
     public class VpnTunnel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -76876,8 +78481,8 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents a Zone resource.
     ///
     /// A zone is a deployment area. These deployment areas are subsets of a region. For example the zone us-east1-a is
-    /// located in the us-east1 region. For more information, read Regions and Zones. (== resource_for beta.zones ==)
-    /// (== resource_for v1.zones ==)</summary>
+    /// located in the us-east1 region. For more information, read Regions and Zones. (== resource_for
+    /// {$api_version}.zones ==)</summary>
     public class Zone : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Available cpu/platform selections for the zone.</summary>

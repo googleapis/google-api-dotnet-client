@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20191211 (1805)
+ *      <tr><th>API Rev<td>20200109 (1834)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -6848,6 +6848,14 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual NodeManagement Management { get; set; } 
 
+        /// <summary>Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
+        /// specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as
+        /// minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to
+        /// specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset
+        /// the min cpu platform field pass "automatic" as field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
+        public virtual string MinCpuPlatform { get; set; } 
+
         /// <summary>Scopes that are used by NAP when creating node pools. If oauth_scopes are specified,
         /// service_account should be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
@@ -8223,6 +8231,14 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; } 
 
+        /// <summary> The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the
+        /// node pool. This should be of the form
+        /// projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more
+        /// information about protecting resources with Cloud KMS Keys please see:
+        /// https://cloud.google.com/compute/docs/disks/customer-managed-encryption</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskKmsKey")]
+        public virtual string BootDiskKmsKey { get; set; } 
+
         /// <summary>Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
         ///
         /// If unspecified, the default disk size is 100GB.</summary>
@@ -8281,8 +8297,7 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or
         /// newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel
         /// Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU
-        /// platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu
-        /// platform field pass "automatic" as field value.</summary>
+        /// platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
 
@@ -8815,6 +8830,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Type of the sandbox to use for the node (e.g. 'gvisor')</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sandboxType")]
         public virtual string SandboxType { get; set; } 
+
+        /// <summary>Type of the sandbox to use for the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

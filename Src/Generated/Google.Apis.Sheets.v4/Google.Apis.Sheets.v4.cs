@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20200114 (1839)
+ *      <tr><th>API Rev<td>20200123 (1848)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -691,8 +691,7 @@ namespace Google.Apis.Sheets.v4
             /// <param name="body">The body of the request.</param>
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
             /// <param name="range">The A1 notation
-            /// of a range to search for a logical table of data. Values will be appended after the last row of the
-            /// table.</param>
+            /// of a range to search for a logical table of data. Values are appended after the last row of the table.</param>
             public virtual AppendRequest Append(Google.Apis.Sheets.v4.Data.ValueRange body, string spreadsheetId, string range)
             {
                 return new AppendRequest(service, body, spreadsheetId, range);
@@ -724,8 +723,8 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
-                /// <summary>The A1 notation of a range to search for a logical table of data. Values will be appended
-                /// after the last row of the table.</summary>
+                /// <summary>The A1 notation of a range to search for a logical table of data. Values are appended after
+                /// the last row of the table.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
@@ -1084,16 +1083,16 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>The major dimension that results should use.
                 ///
                 /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                /// `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
 
                 /// <summary>The major dimension that results should use.
                 ///
                 /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                /// `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.</summary>
                 public enum MajorDimensionEnum
                 {
                     [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
@@ -1550,16 +1549,16 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>The major dimension that results should use.
                 ///
                 /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                /// `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
 
                 /// <summary>The major dimension that results should use.
                 ///
                 /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                /// `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.</summary>
                 public enum MajorDimensionEnum
                 {
                     [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
@@ -1695,9 +1694,9 @@ namespace Google.Apis.Sheets.v4
                 public virtual string Range { get; private set; }
 
                 /// <summary>Determines if the update response should include the values of the cells that were updated.
-                /// By default, responses do not include the updated values. If the range to write was larger than than
-                /// the range actually written, the response will include all values in the requested range (excluding
-                /// trailing empty rows and columns).</summary>
+                /// By default, responses do not include the updated values. If the range to write was larger than the
+                /// range actually written, the response includes all values in the requested range (excluding trailing
+                /// empty rows and columns).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
 
@@ -2589,6 +2588,11 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("negativeColor")]
         public virtual Color NegativeColor { get; set; } 
 
+        /// <summary>Color to be used, in case baseline value represents a negative change for key value. This field is
+        /// optional. If negative_color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negativeColorStyle")]
+        public virtual ColorStyle NegativeColorStyle { get; set; } 
+
         /// <summary>Specifies the horizontal text positioning of baseline value. This field is optional. If not
         /// specified, default positioning is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
@@ -2598,6 +2602,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positiveColor")]
         public virtual Color PositiveColor { get; set; } 
+
+        /// <summary>Color to be used, in case baseline value represents a positive change for key value. This field is
+        /// optional. If positive_color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("positiveColorStyle")]
+        public virtual ColorStyle PositiveColorStyle { get; set; } 
 
         /// <summary>Text formatting options for baseline value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
@@ -2660,6 +2669,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// color is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; } 
+
+        /// <summary>The color for elements (i.e. bars, lines, points) associated with this series.  If empty, a default
+        /// color is used. If color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colorStyle")]
+        public virtual ColorStyle ColorStyle { get; set; } 
 
         /// <summary>The line style of this series. Valid only if the chartType is AREA, LINE, or SCATTER. COMBO charts
         /// are also supported if the series chart type is AREA or LINE.</summary>
@@ -2780,9 +2794,9 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>The response when clearing a range of values selected with DataFilters in a spreadsheet.</summary>
     public class BatchClearValuesByDataFilterResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ranges that were cleared, in A1 notation. (If the requests were for an unbounded range or a
-        /// ranger larger than the bounds of the sheet, this will be the actual ranges that were cleared, bounded to the
-        /// sheet's limits.)</summary>
+        /// <summary>The ranges that were cleared, in A1 notation. If the requests are for an unbounded range or a
+        /// ranger larger than the bounds of the sheet, this is the actual ranges that were cleared, bounded to the
+        /// sheet's limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clearedRanges")]
         public virtual System.Collections.Generic.IList<string> ClearedRanges { get; set; } 
 
@@ -2808,9 +2822,9 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>The response when clearing a range of values in a spreadsheet.</summary>
     public class BatchClearValuesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ranges that were cleared, in A1 notation. (If the requests were for an unbounded range or a
-        /// ranger larger than the bounds of the sheet, this will be the actual ranges that were cleared, bounded to the
-        /// sheet's limits.)</summary>
+        /// <summary>The ranges that were cleared, in A1 notation. If the requests are for an unbounded range or a
+        /// ranger larger than the bounds of the sheet, this is the actual ranges that were cleared, bounded to the
+        /// sheet's limits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clearedRanges")]
         public virtual System.Collections.Generic.IList<string> ClearedRanges { get; set; } 
 
@@ -2826,8 +2840,8 @@ namespace Google.Apis.Sheets.v4.Data
     /// DataFilters.</summary>
     public class BatchGetValuesByDataFilterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The data filters used to match the ranges of values to retrieve.  Ranges that match any of the
-        /// specified data filters will be included in the response.</summary>
+        /// <summary>The data filters used to match the ranges of values to retrieve. Ranges that match any of the
+        /// specified data filters are included in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFilters")]
         public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; } 
 
@@ -2840,8 +2854,8 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The major dimension that results should use.
         ///
         /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then a request that selects that range and
-        /// sets `majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas a request that sets `majorDimension=COLUMNS`
-        /// will return `[[1,3],[2,4]]`.</summary>
+        /// sets `majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas a request that sets `majorDimension=COLUMNS`
+        /// returns `[[1,3],[2,4]]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("majorDimension")]
         public virtual string MajorDimension { get; set; } 
 
@@ -2937,15 +2951,15 @@ namespace Google.Apis.Sheets.v4.Data
     public class BatchUpdateValuesByDataFilterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The new values to apply to the spreadsheet.  If more than one range is matched by the specified
-        /// DataFilter the specified values will be applied to all of those ranges.</summary>
+        /// DataFilter the specified values are applied to all of those ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IList<DataFilterValueRange> Data { get; set; } 
 
         /// <summary>Determines if the update response should include the values of the cells that were updated. By
         /// default, responses do not include the updated values. The `updatedData` field within each of the
-        /// BatchUpdateValuesResponse.responses will contain the updated values. If the range to write was larger than
-        /// than the range actually written, the response will include all values in the requested range (excluding
-        /// trailing empty rows and columns).</summary>
+        /// BatchUpdateValuesResponse.responses contains the updated values. If the range to write was larger than the
+        /// range actually written, the response includes all values in the requested range (excluding trailing empty
+        /// rows and columns).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeValuesInResponse")]
         public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; } 
 
@@ -3008,9 +3022,9 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>Determines if the update response should include the values of the cells that were updated. By
         /// default, responses do not include the updated values. The `updatedData` field within each of the
-        /// BatchUpdateValuesResponse.responses will contain the updated values. If the range to write was larger than
-        /// than the range actually written, the response will include all values in the requested range (excluding
-        /// trailing empty rows and columns).</summary>
+        /// BatchUpdateValuesResponse.responses contains the updated values. If the range to write was larger than the
+        /// range actually written, the response includes all values in the requested range (excluding trailing empty
+        /// rows and columns).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeValuesInResponse")]
         public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; } 
 
@@ -3147,6 +3161,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The bubble border color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleBorderColor")]
         public virtual Color BubbleBorderColor { get; set; } 
+
+        /// <summary>The bubble border color. If bubble_border_color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bubbleBorderColorStyle")]
+        public virtual ColorStyle BubbleBorderColorStyle { get; set; } 
 
         /// <summary>The data containing the bubble labels.  These do not need to be unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleLabels")]
@@ -3466,6 +3484,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The background color of the entire chart. Not applicable to Org charts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual Color BackgroundColor { get; set; } 
+
+        /// <summary>The background color of the entire chart. Not applicable to Org charts. If background_color is also
+        /// set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColorStyle")]
+        public virtual ColorStyle BackgroundColorStyle { get; set; } 
 
         /// <summary>A basic chart specification, can be one of many kinds of charts. See BasicChartType for the list of
         /// all charts this supports.</summary>
@@ -3834,8 +3857,8 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string MajorDimension { get; set; } 
 
         /// <summary>The data to be written.  If the provided values exceed any of the ranges matched by the data filter
-        /// then the request will fail.  If the provided values are less than the matched ranges only the specified
-        /// values will be written, existing values in the matched ranges will remain unaffected.</summary>
+        /// then the request fails.  If the provided values are less than the matched ranges only the specified values
+        /// are written, existing values in the matched ranges remain unaffected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Values { get; set; } 
 
@@ -4826,6 +4849,11 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("barColor")]
         public virtual Color BarColor { get; set; } 
 
+        /// <summary>The color of the column representing this series in each bucket. This field is optional. If
+        /// bar_color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("barColorStyle")]
+        public virtual ColorStyle BarColorStyle { get; set; } 
+
         /// <summary>The data for this histogram series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual ChartData Data { get; set; } 
@@ -5103,6 +5131,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeColor")]
         public virtual Color NodeColor { get; set; } 
 
+        /// <summary>The color of the org chart nodes. If node_color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeColorStyle")]
+        public virtual ColorStyle NodeColorStyle { get; set; } 
+
         /// <summary>The size of the org chart nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeSize")]
         public virtual string NodeSize { get; set; } 
@@ -5115,6 +5147,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The color of the selected org chart nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedNodeColor")]
         public virtual Color SelectedNodeColor { get; set; } 
+
+        /// <summary>The color of the selected org chart nodes. If selected_node_color is also set, this field takes
+        /// precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedNodeColorStyle")]
+        public virtual ColorStyle SelectedNodeColorStyle { get; set; } 
 
         /// <summary>The data containing the tooltip for the corresponding node.  A blank value results in no tooltip
         /// being displayed for the node. This field is optional.</summary>
@@ -5923,7 +5960,7 @@ namespace Google.Apis.Sheets.v4.Data
     public class SearchDeveloperMetadataRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The data filters describing the criteria used to determine which DeveloperMetadata entries to
-        /// return.  DeveloperMetadata matching any of the specified filters will be included in the response.</summary>
+        /// return.  DeveloperMetadata matching any of the specified filters are included in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFilters")]
         public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; } 
 
@@ -6246,7 +6283,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual CellFormat DefaultFormat { get; set; } 
 
         /// <summary>Determines whether and how circular references are resolved with iterative calculation.  Absence of
-        /// this field means that circular references will result in calculation errors.</summary>
+        /// this field means that circular references result in calculation errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iterativeCalculationSettings")]
         public virtual IterativeCalculationSettings IterativeCalculationSettings { get; set; } 
 
@@ -6286,8 +6323,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primaryFontFamily")]
         public virtual string PrimaryFontFamily { get; set; } 
 
-        /// <summary>The spreadsheet theme color pairs. For update users need to give all pairs of theme
-        /// colors.</summary>
+        /// <summary>The spreadsheet theme color pairs. To update you must provide all theme color pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("themeColors")]
         public virtual System.Collections.Generic.IList<ThemeColorPair> ThemeColors { get; set; } 
 
@@ -6421,20 +6457,40 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxValueColor")]
         public virtual Color MaxValueColor { get; set; } 
 
+        /// <summary>The background color for cells with a color value greater than or equal to maxValue. Defaults to
+        /// #109618 if not specified. If max_value_color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxValueColorStyle")]
+        public virtual ColorStyle MaxValueColorStyle { get; set; } 
+
         /// <summary>The background color for cells with a color value at the midpoint between minValue and maxValue.
         /// Defaults to #efe6dc if not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("midValueColor")]
         public virtual Color MidValueColor { get; set; } 
+
+        /// <summary>The background color for cells with a color value at the midpoint between minValue and maxValue.
+        /// Defaults to #efe6dc if not specified. If mid_value_color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("midValueColorStyle")]
+        public virtual ColorStyle MidValueColorStyle { get; set; } 
 
         /// <summary>The background color for cells with a color value less than or equal to minValue. Defaults to
         /// #dc3912 if not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValueColor")]
         public virtual Color MinValueColor { get; set; } 
 
+        /// <summary>The background color for cells with a color value less than or equal to minValue. Defaults to
+        /// #dc3912 if not specified. If min_value_color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minValueColorStyle")]
+        public virtual ColorStyle MinValueColorStyle { get; set; } 
+
         /// <summary>The background color for cells that have no color data associated with them. Defaults to #000000 if
         /// not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noDataColor")]
         public virtual Color NoDataColor { get; set; } 
+
+        /// <summary>The background color for cells that have no color data associated with them. Defaults to #000000 if
+        /// not specified. If no_data_color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noDataColorStyle")]
+        public virtual ColorStyle NoDataColorStyle { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6463,6 +6519,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The background color for header cells.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headerColor")]
         public virtual Color HeaderColor { get; set; } 
+
+        /// <summary>The background color for header cells. If header_color is also set, this field takes
+        /// precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerColorStyle")]
+        public virtual ColorStyle HeaderColorStyle { get; set; } 
 
         /// <summary>True to hide tooltips.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hideTooltips")]
@@ -7025,6 +7086,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The color of the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; } 
+
+        /// <summary>The color of the column. If color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colorStyle")]
+        public virtual ColorStyle ColorStyle { get; set; } 
 
         /// <summary>The label of the column's legend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]

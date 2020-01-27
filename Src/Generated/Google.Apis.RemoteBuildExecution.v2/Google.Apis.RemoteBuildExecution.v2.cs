@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>Remote Build Execution API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200115 (1840)
+ *      <tr><th>API Rev<td>20200121 (1846)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/remote-build-execution/docs/'>
  *              https://cloud.google.com/remote-build-execution/docs/</a>
@@ -2890,6 +2890,10 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         /// `f1-micro` and `g1-small` are not yet supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
+
+        /// <summary>The maximum number of actions a worker can execute concurrently.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentActions")]
+        public virtual System.Nullable<long> MaxConcurrentActions { get; set; } 
 
         /// <summary>Minimum CPU platform to use when creating the worker. See [CPU
         /// Platforms](https://cloud.google.com/compute/docs/cpu-platforms).</summary>

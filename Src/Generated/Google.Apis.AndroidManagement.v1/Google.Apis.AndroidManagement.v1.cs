@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200115 (1840)
+ *      <tr><th>API Rev<td>20200117 (1842)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -3415,6 +3415,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// kioskCustomLauncherEnabled to true or specify an app in the policy with installType KIOSK.</summary>
     public class KioskCustomization : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies whether the Settings app is allowed in kiosk mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceSettings")]
+        public virtual string DeviceSettings { get; set; } 
+
         /// <summary>Sets the behavior of a device in kiosk mode when a user presses and holds (long-presses) the Power
         /// button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("powerButtonActions")]
@@ -4012,7 +4016,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>Whether the kiosk custom launcher is enabled. This replaces the home screen with a launcher that
         /// locks down the device to the apps installed via the applications setting. Apps appear on a single page in
-        /// alphabetical order. The status bar is disabled when this is set.</summary>
+        /// alphabetical order. Use kioskCustomization to further configure the kiosk device behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kioskCustomLauncherEnabled")]
         public virtual System.Nullable<bool> KioskCustomLauncherEnabled { get; set; } 
 
