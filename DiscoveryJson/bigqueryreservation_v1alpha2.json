@@ -613,7 +613,7 @@
    }
   }
  }, 
- "revision": "20200116", 
+ "revision": "20200124", 
  "rootUrl": "https://bigqueryreservation.googleapis.com/", 
  "schemas": {
   "CreateSlotPoolMetadata": {

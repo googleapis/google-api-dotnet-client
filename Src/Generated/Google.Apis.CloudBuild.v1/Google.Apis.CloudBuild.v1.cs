@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>Cloud Build API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200108 (1833)
+ *      <tr><th>API Rev<td>20200123 (1848)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-build/docs/'>
  *              https://cloud.google.com/cloud-build/docs/</a>
@@ -2051,8 +2051,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>ignored_files and included_files are file glob matches using http://godoc/pkg/path/filepath#Match
-        /// extended with support for "**".
+        /// <summary>ignored_files and included_files are file glob matches using
+        /// https://golang.org/pkg/path/filepath/#Match extended with support for "**".
         ///
         /// If ignored_files and changed files are both empty, then they are not used to determine whether or not to
         /// trigger a build.

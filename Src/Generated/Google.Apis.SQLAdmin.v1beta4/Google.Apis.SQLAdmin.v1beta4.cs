@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-sql/'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20200104 (1829)
+ *      <tr><th>API Rev<td>20200124 (1849)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-sql/'>
  *              https://developers.google.com/cloud-sql/</a>
@@ -5231,6 +5231,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string Location { get; set; } 
 
         /// <summary>Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointInTimeRecoveryEnabled")]
+        public virtual System.Nullable<bool> PointInTimeRecoveryEnabled { get; set; } 
+
+        /// <summary>Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationLogArchivingEnabled")]
         public virtual System.Nullable<bool> ReplicationLogArchivingEnabled { get; set; } 
 
@@ -5375,6 +5379,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pitrTimestampMs")]
         public virtual System.Nullable<long> PitrTimestampMs { get; set; } 
+
+        /// <summary>Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointInTime")]
+        public virtual object PointInTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

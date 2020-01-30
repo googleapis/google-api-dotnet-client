@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20191230 (1824)
+ *      <tr><th>API Rev<td>20200115 (1840)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -3417,6 +3417,21 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Face detection annotation.</summary>
+    public class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The thumbnail of a person's face.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnail")]
+        public virtual string Thumbnail { get; set; } 
+
+        /// <summary>The face tracks with attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1Track> Tracks { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Label annotation.</summary>
     public class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3848,6 +3863,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         /// <summary>Explicit content annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitAnnotation")]
         public virtual GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation ExplicitAnnotation { get; set; } 
+
+        /// <summary>Face detection annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("faceDetectionAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation> FaceDetectionAnnotations { get; set; } 
 
         /// <summary>Label annotations on frame level. There is exactly one element for each unique label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameLabelAnnotations")]

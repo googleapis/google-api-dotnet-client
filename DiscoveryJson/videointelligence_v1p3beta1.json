@@ -127,7 +127,7 @@
    }
   }
  }, 
- "revision": "20191230", 
+ "revision": "20200122", 
  "rootUrl": "https://videointelligence.googleapis.com/", 
  "schemas": {
   "GoogleCloudVideointelligenceV1_AnnotateVideoProgress": {
@@ -2347,11 +2347,13 @@
       "Label detection. Detect objects, such as dog or flower.", 
       "Shot change detection.", 
       "Explicit content detection.", 
+      "Human face detection.", 
       "Speech transcription.", 
       "OCR text detection and tracking.", 
       "Object detection and tracking.", 
       "Logo detection, tracking, and recognition.", 
-      "Celebrity recognition."
+      "Celebrity recognition.", 
+      "Person detection."
      ], 
      "items": {
       "enum": [
@@ -2359,11 +2361,13 @@
        "LABEL_DETECTION", 
        "SHOT_CHANGE_DETECTION", 
        "EXPLICIT_CONTENT_DETECTION", 
+       "FACE_DETECTION", 
        "SPEECH_TRANSCRIPTION", 
        "TEXT_DETECTION", 
        "OBJECT_TRACKING", 
        "LOGO_RECOGNITION", 
-       "CELEBRITY_RECOGNITION"
+       "CELEBRITY_RECOGNITION", 
+       "PERSON_DETECTION"
       ], 
       "type": "string"
      }, 
@@ -2478,6 +2482,26 @@
    }, 
    "type": "object"
   }, 
+  "GoogleCloudVideointelligenceV1p3beta1_DetectedLandmark": {
+   "description": "A generic detected landmark represented by name in string format and a 2D\nlocation.", 
+   "id": "GoogleCloudVideointelligenceV1p3beta1_DetectedLandmark", 
+   "properties": {
+    "confidence": {
+     "description": "The confidence score of the detected landmark. Range [0, 1].", 
+     "format": "float", 
+     "type": "number"
+    }, 
+    "name": {
+     "description": "The name of this landmark, i.e. left_hand, right_shoulder.", 
+     "type": "string"
+    }, 
+    "point": {
+     "$ref": "GoogleCloudVideointelligenceV1p3beta1_NormalizedVertex", 
+     "description": "The 2D point of the detected landmark using the normalized image\ncoordindate system. The normalized coordinates have the range from 0 to 1."
+    }
+   }, 
+   "type": "object"
+  }, 
   "GoogleCloudVideointelligenceV1p3beta1_Entity": {
    "description": "Detected entity from video analysis.", 
    "id": "GoogleCloudVideointelligenceV1p3beta1_Entity", 
@@ -2549,6 +2573,44 @@
     "timeOffset": {
      "description": "Time-offset, relative to the beginning of the video, corresponding to the\nvideo frame for this location.", 
      "format": "google-duration", 
+     "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "GoogleCloudVideointelligenceV1p3beta1_FaceDetectionAnnotation": {
+   "description": "Face detection annotation.", 
+   "id": "GoogleCloudVideointelligenceV1p3beta1_FaceDetectionAnnotation", 
+   "properties": {
+    "thumbnail": {
+     "description": "The thumbnail of a person's face.", 
+     "format": "byte", 
+     "type": "string"
+    }, 
+    "tracks": {
+     "description": "The face tracks with attributes.", 
+     "items": {
+      "$ref": "GoogleCloudVideointelligenceV1p3beta1_Track"
+     }, 
+     "type": "array"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "GoogleCloudVideointelligenceV1p3beta1_FaceDetectionConfig": {
+   "description": "Config for FACE_DETECTION.", 
+   "id": "GoogleCloudVideointelligenceV1p3beta1_FaceDetectionConfig", 
+   "properties": {
+    "includeAttributes": {
+     "description": "Whether to enable face attributes detection, such as glasses, dark_glasses,\nmouth_open etc. Ignored if 'include_bounding_boxes' is false.", 
+     "type": "boolean"
+    }, 
+    "includeBoundingBoxes": {
+     "description": "Whether bounding boxes be included in the face annotation output.", 
+     "type": "boolean"
+    }, 
+    "model": {
+     "description": "Model to use for face detection.\nSupported values: \"builtin/stable\" (the default if unset) and\n\"builtin/latest\".", 
      "type": "string"
     }
    }, 
@@ -2798,6 +2860,39 @@
      "description": "The timestamp of the frame in microseconds.", 
      "format": "google-duration", 
      "type": "string"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "GoogleCloudVideointelligenceV1p3beta1_PersonDetectionAnnotation": {
+   "description": "Person detection annotation per video.", 
+   "id": "GoogleCloudVideointelligenceV1p3beta1_PersonDetectionAnnotation", 
+   "properties": {
+    "tracks": {
+     "description": "The trackes that a person is detected.", 
+     "items": {
+      "$ref": "GoogleCloudVideointelligenceV1p3beta1_Track"
+     }, 
+     "type": "array"
+    }
+   }, 
+   "type": "object"
+  }, 
+  "GoogleCloudVideointelligenceV1p3beta1_PersonDetectionConfig": {
+   "description": "Config for PERSON_DETECTION.", 
+   "id": "GoogleCloudVideointelligenceV1p3beta1_PersonDetectionConfig", 
+   "properties": {
+    "includeAttributes": {
+     "description": "Whether to enable person attributes detection, such as cloth color (black,\nblue, etc), type (coat, dress, etc), pattern (plain, floral, etc), hair\ncolor (black, blonde, etc), hair length (long, short, bald), etc.\nIgnored if 'include_bounding_boxes' is false.", 
+     "type": "boolean"
+    }, 
+    "includeBoundingBoxes": {
+     "description": "Whether bounding boxes be included in the person detection annotation\noutput.", 
+     "type": "boolean"
+    }, 
+    "includePoseLandmarks": {
+     "description": "Whether to enable pose landmarks detection. Ignored if\n'include_bounding_boxes' is false.", 
+     "type": "boolean"
     }
    }, 
    "type": "object"
@@ -3073,6 +3168,13 @@
      }, 
      "type": "array"
     }, 
+    "landmarks": {
+     "description": "Optional. The detected landmarks.", 
+     "items": {
+      "$ref": "GoogleCloudVideointelligenceV1p3beta1_DetectedLandmark"
+     }, 
+     "type": "array"
+    }, 
     "normalizedBoundingBox": {
      "$ref": "GoogleCloudVideointelligenceV1p3beta1_NormalizedBoundingBox", 
      "description": "Normalized Bounding box in a frame, where the object is located."
@@ -3126,22 +3228,26 @@
       "LABEL_DETECTION", 
       "SHOT_CHANGE_DETECTION", 
       "EXPLICIT_CONTENT_DETECTION", 
+      "FACE_DETECTION", 
       "SPEECH_TRANSCRIPTION", 
       "TEXT_DETECTION", 
       "OBJECT_TRACKING", 
       "LOGO_RECOGNITION", 
-      "CELEBRITY_RECOGNITION"
+      "CELEBRITY_RECOGNITION", 
+      "PERSON_DETECTION"
      ], 
      "enumDescriptions": [
       "Unspecified.", 
       "Label detection. Detect objects, such as dog or flower.", 
       "Shot change detection.", 
       "Explicit content detection.", 
+      "Human face detection.", 
       "Speech transcription.", 
       "OCR text detection and tracking.", 
       "Object detection and tracking.", 
       "Logo detection, tracking, and recognition.", 
-      "Celebrity recognition."
+      "Celebrity recognition.", 
+      "Person detection."
      ], 
      "type": "string"
     }, 
@@ -3187,6 +3293,13 @@
      "$ref": "GoogleCloudVideointelligenceV1p3beta1_ExplicitContentAnnotation", 
      "description": "Explicit content annotation."
     }, 
+    "faceDetectionAnnotations": {
+     "description": "Face detection annotations.", 
+     "items": {
+      "$ref": "GoogleCloudVideointelligenceV1p3beta1_FaceDetectionAnnotation"
+     }, 
+     "type": "array"
+    }, 
     "frameLabelAnnotations": {
      "description": "Label annotations on frame level.\nThere is exactly one element for each unique label.", 
      "items": {
@@ -3209,6 +3322,13 @@
      "description": "Annotations for list of objects detected and tracked in video.", 
      "items": {
       "$ref": "GoogleCloudVideointelligenceV1p3beta1_ObjectTrackingAnnotation"
+     }, 
+     "type": "array"
+    }, 
+    "personDetectionAnnotations": {
+     "description": "Person detection annotations.", 
+     "items": {
+      "$ref": "GoogleCloudVideointelligenceV1p3beta1_PersonDetectionAnnotation"
      }, 
      "type": "array"
     }, 
@@ -3276,6 +3396,10 @@
      "$ref": "GoogleCloudVideointelligenceV1p3beta1_ExplicitContentDetectionConfig", 
      "description": "Config for EXPLICIT_CONTENT_DETECTION."
     }, 
+    "faceDetectionConfig": {
+     "$ref": "GoogleCloudVideointelligenceV1p3beta1_FaceDetectionConfig", 
+     "description": "Config for FACE_DETECTION."
+    }, 
     "labelDetectionConfig": {
      "$ref": "GoogleCloudVideointelligenceV1p3beta1_LabelDetectionConfig", 
      "description": "Config for LABEL_DETECTION."
@@ -3283,6 +3407,10 @@
     "objectTrackingConfig": {
      "$ref": "GoogleCloudVideointelligenceV1p3beta1_ObjectTrackingConfig", 
      "description": "Config for OBJECT_TRACKING."
+    }, 
+    "personDetectionConfig": {
+     "$ref": "GoogleCloudVideointelligenceV1p3beta1_PersonDetectionConfig", 
+     "description": "Config for PERSON_DETECTION."
     }, 
     "segments": {
      "description": "Video segments to annotate. The segments may overlap and are not required\nto be contiguous or span the whole video. If unspecified, each video is\ntreated as a single segment.", 

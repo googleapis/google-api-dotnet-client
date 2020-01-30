@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/hosting/'>Firebase Hosting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200121 (1846)
+ *      <tr><th>API Rev<td>20200127 (1852)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/hosting/'>
  *              https://firebase.google.com/docs/hosting/</a>
@@ -64,6 +64,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
         public FirebaseHostingService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            projects = new ProjectsResource(this);
             sites = new SitesResource(this);
         }
 
@@ -144,6 +145,14 @@ namespace Google.Apis.FirebaseHosting.v1beta1
         }
 
 
+
+        private readonly ProjectsResource projects;
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects
+        {
+            get { return projects; }
+        }
 
         private readonly SitesResource sites;
 
@@ -340,6 +349,110 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     DefaultValue = null,
                     Pattern = null,
                 });
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            operations = new OperationsResource(service);
+
+        }
+
+        private readonly OperationsResource operations;
+
+        /// <summary>Gets the Operations resource.</summary>
+        public virtual OperationsResource Operations
+        {
+            get { return operations; }
+        }
+
+        /// <summary>The "operations" collection of methods.</summary>
+        public class OperationsResource
+        {
+            private const string Resource = "operations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public OperationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// operation result at intervals as recommended by the API service.</summary>
+            /// <param name="name">The name of the operation resource.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// operation result at intervals as recommended by the API service.</summary>
+            public class GetRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the operation resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/operations/[^/]+$",
+                        });
+                }
+
+            }
         }
     }
 
@@ -1090,6 +1203,76 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
             }
 
+            /// <summary>Creates a new version on the target site using the content of the specified version.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The target site where the cloned version will reside, in the format:
+            /// `sites/{site}`</param>
+            public virtual CloneRequest Clone(Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest body, string parent)
+            {
+                return new CloneRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a new version on the target site using the content of the specified version.</summary>
+            public class CloneRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new Clone request.</summary>
+                public CloneRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The target site where the cloned version will reside, in the format:
+                /// `sites/{site}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "clone"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+parent}/versions:clone"; }
+                }
+
+                /// <summary>Initializes Clone parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^sites/[^/]+$",
+                        });
+                }
+
+            }
+
             /// <summary>Creates a new version for a site.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The parent to create the version for, in the format: sites/site-name</param>
@@ -1717,6 +1900,32 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request sent to CloneVersion.</summary>
+    public class CloneVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If provided, only paths that do not match any of the regexes in this list will be included in the
+        /// new version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
+        public virtual PathFilter Exclude { get; set; } 
+
+        /// <summary>If true, immediately finalize the version after cloning is complete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalize")]
+        public virtual System.Nullable<bool> Finalize { get; set; } 
+
+        /// <summary>If provided, only paths that match one or more regexes in this list will be included in the new
+        /// version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("include")]
+        public virtual PathFilter Include { get; set; } 
+
+        /// <summary>Required. The name of the version to be cloned, in the format:
+        /// `sites/{site}/versions/{version}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceVersion")]
+        public virtual string SourceVersion { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not
     /// exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the
     /// Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to
@@ -1914,6 +2123,53 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
+        /// completed, and either `error` or `response` is available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; } 
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; } 
+
+        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
+        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
+        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+
+        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
+        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
+        /// `operations/{unique_id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
+        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A representation of filter path.</summary>
+    public class PathFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An array of regexes to filter by.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regexes")]
+        public virtual System.Collections.Generic.IList<string> Regexes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class PopulateVersionFilesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A set of file paths to the hashes corresponding to assets that should be added to the version. Note
@@ -2104,6 +2360,32 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// unlimited number of max_versions by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxVersions")]
         public virtual System.Nullable<long> MaxVersions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
+    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
+    /// message contains three pieces of data: error code, error message, and error details.
+    ///
+    /// You can find out more about this error model and how to work with it in the [API Design
+    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; } 
+
+        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
+        /// to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+
+        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
+        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Reservation API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200116 (1841)
+ *      <tr><th>API Rev<td>20200124 (1849)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -1096,7 +1096,7 @@ namespace Google.Apis.BigQueryReservation.v1beta1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>The reservation ID. This field must only contain lower case alphanumeric characters or
-                    /// dash.</summary>
+                    /// dash. Max length is 64 characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("reservationId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ReservationId { get; set; }
 

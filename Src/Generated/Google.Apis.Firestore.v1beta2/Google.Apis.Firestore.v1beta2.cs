@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/firestore'>Cloud Firestore API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20200104 (1829)
+ *      <tr><th>API Rev<td>20200110 (1835)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/firestore'>
  *              https://cloud.google.com/firestore</a>

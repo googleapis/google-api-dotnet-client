@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200109 (1834)
+ *      <tr><th>API Rev<td>20200119 (1844)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -1772,7 +1772,7 @@ namespace Google.Apis.Spanner.v1
                     /// transaction internally, and count toward the one transaction limit.
                     ///
                     /// Active sessions use additional server resources, so it is a good idea to delete idle and
-                    /// unneeded sessions. Aside from explicit deletes, Cloud Spanner can delete sessions for which no
+                    /// unneeded sessions. Aside from explicit deletes, Cloud Spanner may delete sessions for which no
                     /// operations are sent for more than an hour. If a session is deleted, requests to it return
                     /// `NOT_FOUND`.
                     ///
@@ -1794,7 +1794,7 @@ namespace Google.Apis.Spanner.v1
                     /// transaction internally, and count toward the one transaction limit.
                     ///
                     /// Active sessions use additional server resources, so it is a good idea to delete idle and
-                    /// unneeded sessions. Aside from explicit deletes, Cloud Spanner can delete sessions for which no
+                    /// unneeded sessions. Aside from explicit deletes, Cloud Spanner may delete sessions for which no
                     /// operations are sent for more than an hour. If a session is deleted, requests to it return
                     /// `NOT_FOUND`.
                     ///

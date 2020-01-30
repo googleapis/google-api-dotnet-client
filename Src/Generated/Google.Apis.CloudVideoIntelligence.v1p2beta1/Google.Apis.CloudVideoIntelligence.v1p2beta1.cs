@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1p2beta1
- *      <tr><th>API Rev<td>20191230 (1824)
+ *      <tr><th>API Rev<td>20200122 (1847)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -2675,6 +2675,26 @@ namespace Google.Apis.CloudVideoIntelligence.v1p2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A generic detected landmark represented by name in string format and a 2D location.</summary>
+    public class GoogleCloudVideointelligenceV1p3beta1DetectedLandmark : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The confidence score of the detected landmark. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>The name of this landmark, i.e. left_hand, right_shoulder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The 2D point of the detected landmark using the normalized image coordindate system. The normalized
+        /// coordinates have the range from 0 to 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("point")]
+        public virtual GoogleCloudVideointelligenceV1p3beta1NormalizedVertex Point { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Detected entity from video analysis.</summary>
     public class GoogleCloudVideointelligenceV1p3beta1Entity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2718,6 +2738,21 @@ namespace Google.Apis.CloudVideoIntelligence.v1p2beta1.Data
         /// location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeOffset")]
         public virtual object TimeOffset { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Face detection annotation.</summary>
+    public class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The thumbnail of a person's face.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnail")]
+        public virtual string Thumbnail { get; set; } 
+
+        /// <summary>The face tracks with attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1Track> Tracks { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2908,6 +2943,17 @@ namespace Google.Apis.CloudVideoIntelligence.v1p2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Person detection annotation per video.</summary>
+    public class GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The trackes that a person is detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1Track> Tracks { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The recognized celebrity with confidence score.</summary>
     public class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3072,6 +3118,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1DetectedAttribute> Attributes { get; set; } 
 
+        /// <summary>Optional. The detected landmarks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("landmarks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1DetectedLandmark> Landmarks { get; set; } 
+
         /// <summary>Normalized Bounding box in a frame, where the object is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("normalizedBoundingBox")]
         public virtual GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox NormalizedBoundingBox { get; set; } 
@@ -3155,6 +3205,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("explicitAnnotation")]
         public virtual GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation ExplicitAnnotation { get; set; } 
 
+        /// <summary>Face detection annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("faceDetectionAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation> FaceDetectionAnnotations { get; set; } 
+
         /// <summary>Label annotations on frame level. There is exactly one element for each unique label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation> FrameLabelAnnotations { get; set; } 
@@ -3170,6 +3224,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1p2beta1.Data
         /// <summary>Annotations for list of objects detected and tracked in video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation> ObjectAnnotations { get; set; } 
+
+        /// <summary>Person detection annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personDetectionAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation> PersonDetectionAnnotations { get; set; } 
 
         /// <summary>Video segment on which the annotation is run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segment")]
