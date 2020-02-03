@@ -18,7 +18,7 @@
   "description": "The API for Google Play Game Services.",
   "discoveryVersion": "v1",
   "documentationLink": "https://developers.google.com/games/services/",
-  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/Ep8MmGi9Fcg_wXq-jrohClAkjMI\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/DnUMgwvl0EWbvvG57wldwdHOzMs\"",
   "icons": {
     "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
     "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -1788,7 +1788,7 @@
       }
     }
   },
-  "revision": "20200107",
+  "revision": "20200122",
   "rootUrl": "https://www.googleapis.com/",
   "schemas": {
     "AchievementDefinition": {

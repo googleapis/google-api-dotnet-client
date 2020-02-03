@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2.1
- *      <tr><th>API Rev<td>20200110 (1835)
+ *      <tr><th>API Rev<td>20200117 (1842)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -995,6 +995,111 @@ namespace Google.Apis.ShoppingContent.v2_1
                     "merchantId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the list of accounts linked to your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
+        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account.</param>
+        /// <param name="accountId">The ID of the account for which to list links.</param>
+        public virtual ListlinksRequest Listlinks(ulong merchantId, ulong accountId)
+        {
+            return new ListlinksRequest(service, merchantId, accountId);
+        }
+
+        /// <summary>Returns the list of accounts linked to your Merchant Center account.</summary>
+        public class ListlinksRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountsListLinksResponse>
+        {
+            /// <summary>Constructs a new Listlinks request.</summary>
+            public ListlinksRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
+            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the account for which to list links.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong AccountId { get; private set; }
+
+            /// <summary>The maximum number of links to return in the response, used for pagination.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>The token returned by the previous request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "listlinks"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/accounts/{accountId}/listlinks"; }
+            }
+
+            /// <summary>Initializes Listlinks parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -9081,6 +9186,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class AccountsListLinksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#accountsListLinksResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The list of available links.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual System.Collections.Generic.IList<LinkedAccount> Links { get; set; } 
+
+        /// <summary>The token for the retrieval of the next page of links.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class AccountsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
@@ -10424,6 +10548,34 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "content#liasettingsSetPosDataProviderResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LinkService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Service provided to or by the linked account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; } 
+
+        /// <summary>Status of the link</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LinkedAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the linked account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedAccountId")]
+        public virtual string LinkedAccountId { get; set; } 
+
+        /// <summary>List of provided services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<LinkService> Services { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

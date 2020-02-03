@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200120 (1845)
+ *      <tr><th>API Rev<td>20200126 (1851)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -767,45 +767,60 @@ namespace Google.Apis.Monitoring.v1
 namespace Google.Apis.Monitoring.v1.Data
 {    
 
-    /// <summary>Describes how to combine multiple time series to provide different views of the data. Aggregation
-    /// consists of an alignment step on individual time series (alignment_period and per_series_aligner) followed by an
-    /// optional reduction step of the data across the aligned time series (cross_series_reducer and group_by_fields).
-    /// For more details, see Aggregation.</summary>
+    /// <summary>Describes how to combine multiple time series to provide a different view of the data. Aggregation of
+    /// time series is done in two steps. First, each time series in the set is aligned to the same time interval
+    /// boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the
+    /// per_series_aligner operation to each time series after its data has been divided into regular alignment_period
+    /// time intervals. This process takes all of the data points in an alignment period, applies a mathematical
+    /// transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per
+    /// period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number
+    /// of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer
+    /// to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the
+    /// reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources.
+    /// Alignment and reduction transforms this mass of data into a more manageable and representative collection of
+    /// data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can
+    /// be more easily graphed and comprehended, and the individual time series data is still available for later
+    /// drilldown. For more details, see Aggregating Time Series.</summary>
     public class Aggregation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The alignment period for per-time series alignment. If present, alignmentPeriod must be at least 60
-        /// seconds. After per-time series alignment, each time series will contain data points only on the period
-        /// boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is ignored. If
-        /// perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be defined; otherwise an
-        /// error is returned.</summary>
+        /// <summary>The alignment_period specifies a time interval, in seconds, that is used to divide the data in all
+        /// the time series into consistent blocks of time. This will be done before the per-series aligner can be
+        /// applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is
+        /// specified, this field is required or an error is returned. If no per-series aligner is specified, or the
+        /// aligner ALIGN_NONE is specified, then this field is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alignmentPeriod")]
         public virtual object AlignmentPeriod { get; set; } 
 
-        /// <summary>The approach to be used to combine time series. Not all reducer functions may be applied to all
-        /// time series, depending on the metric type and the value type of the original time series. Reduction may
-        /// change the metric type of value type of the time series.Time series data must be aligned in order to perform
-        /// cross-time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be specified and
-        /// not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is returned.</summary>
+        /// <summary>The reduction operation to be used to combine time series into a single time series, where the
+        /// value of each data point in the resulting series is a function of all the already aligned values in the
+        /// input time series.Not all reducer operations can be applied to all time series. The valid choices depend on
+        /// the metric_kind and the value_type of the original time series. Reduction can yield a time series with a
+        /// different metric_kind or value_type than the input time series.Time series data must first be aligned (see
+        /// per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified,
+        /// then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be
+        /// specified; otherwise, an error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossSeriesReducer")]
         public virtual string CrossSeriesReducer { get; set; } 
 
-        /// <summary>The set of fields to preserve when crossSeriesReducer is specified. The groupByFields determine how
-        /// the time series are partitioned into subsets prior to applying the aggregation function. Each subset
+        /// <summary>The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine
+        /// how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset
         /// contains time series that have the same value for each of the grouping fields. Each individual time series
-        /// is a member of exactly one subset. The crossSeriesReducer is applied to each subset of time series. It is
+        /// is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is
         /// not possible to reduce across different resource types, so this field implicitly contains resource.type.
-        /// Fields not specified in groupByFields are aggregated away. If groupByFields is not specified and all the
+        /// Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the
         /// time series have the same resource type, then the time series are aggregated into a single output time
-        /// series. If crossSeriesReducer is not defined, this field is ignored.</summary>
+        /// series. If cross_series_reducer is not defined, this field is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupByFields")]
         public virtual System.Collections.Generic.IList<string> GroupByFields { get; set; } 
 
-        /// <summary>The approach to be used to align individual time series. Not all alignment functions may be applied
-        /// to all time series, depending on the metric type and value type of the original time series. Alignment may
-        /// change the metric type or the value type of the time series.Time series data must be aligned in order to
-        /// perform cross-time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be
-        /// specified and not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is
-        /// returned.</summary>
+        /// <summary>An Aligner describes how to bring the data points in a single time series into temporal alignment.
+        /// Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically
+        /// grouped together, resulting in a single data point for each alignment_period with end timestamp at the end
+        /// of the period.Not all alignment operations may be applied to all time series. The valid choices depend on
+        /// the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the
+        /// value_type of the time series.Time series data must be aligned in order to perform cross-time series
+        /// reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to
+        /// ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perSeriesAligner")]
         public virtual string PerSeriesAligner { get; set; } 
 
@@ -1080,18 +1095,20 @@ namespace Google.Apis.Monitoring.v1.Data
     }    
 
     /// <summary>Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The
-    /// filter lets through up to num_time_series time series, selecting them based on the relative ranking.</summary>
+    /// filter will allow up to num_time_series time series to pass through it, selecting them based on the relative
+    /// ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3
+    /// times series with the lowest mean values will pass through the filter.</summary>
     public class PickTimeSeriesFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>How to use the ranking to select time series that pass through the filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; } 
 
-        /// <summary>How many time series to return.</summary>
+        /// <summary>How many time series to allow to pass through the filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numTimeSeries")]
         public virtual System.Nullable<int> NumTimeSeries { get; set; } 
 
-        /// <summary>rankingMethod is applied to each time series independently to produce the value which will be used
+        /// <summary>ranking_method is applied to each time series independently to produce the value which will be used
         /// to compare the time series to other time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingMethod")]
         public virtual string RankingMethod { get; set; } 
@@ -1229,24 +1246,6 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A filter that ranks streams based on their statistical relation to other streams in a
-    /// request.</summary>
-    public class StatisticalTimeSeriesFilter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>How many time series to output.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numTimeSeries")]
-        public virtual System.Nullable<int> NumTimeSeries { get; set; } 
-
-        /// <summary>rankingMethod is applied to a set of time series, and then the produced value for each individual
-        /// time series is used to compare a given time series to others. These are methods that cannot be applied
-        /// stream-by-stream, but rather require the full context of a request to evaluate time series.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rankingMethod")]
-        public virtual string RankingMethod { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A widget that displays textual content.</summary>
     public class Text : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1304,10 +1303,6 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pickTimeSeriesFilter")]
         public virtual PickTimeSeriesFilter PickTimeSeriesFilter { get; set; } 
 
-        /// <summary>Statistics based time series filter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statisticalTimeSeriesFilter")]
-        public virtual StatisticalTimeSeriesFilter StatisticalTimeSeriesFilter { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1331,10 +1326,6 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>Apply a second aggregation after the ratio is computed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryAggregation")]
         public virtual Aggregation SecondaryAggregation { get; set; } 
-
-        /// <summary>Statistics based time series filter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statisticalTimeSeriesFilter")]
-        public virtual StatisticalTimeSeriesFilter StatisticalTimeSeriesFilter { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

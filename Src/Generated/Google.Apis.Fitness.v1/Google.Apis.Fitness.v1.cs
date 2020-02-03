@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200112 (1837)
+ *      <tr><th>API Rev<td>20200119 (1844)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -2153,9 +2153,10 @@ namespace Google.Apis.Fitness.v1.Data
         /// When any of the optional fields that make up the data stream ID are absent, they will be omitted from the
         /// data stream ID. The minimum viable data stream ID would be: type:dataType.name:developer project number
         ///
-        /// Finally, the developer project number is obfuscated when read by any REST or Android client that did not
-        /// create the data source. Only the data source creator will see the developer project number in clear and
-        /// normal form.</summary>
+        /// Finally, the developer project number and device UID are obfuscated when read by any REST or Android client
+        /// that did not create the data source. Only the data source creator will see the developer project number in
+        /// clear and normal form. This means a client will see a different set of data_stream_ids than another client
+        /// with different credentials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStreamId")]
         public virtual string DataStreamId { get; set; } 
 
@@ -2289,7 +2290,10 @@ namespace Google.Apis.Fitness.v1.Data
 
         /// <summary>The serial number or other unique ID for the hardware. This field is obfuscated when read by any
         /// REST or Android client that did not create the data source. Only the data source creator will see the uid
-        /// field in clear and normal form.</summary>
+        /// field in clear and normal form.
+        ///
+        /// The obfuscation preserves equality; that is, given two IDs, if id1 == id2, obfuscated(id1) ==
+        /// obfuscated(id2).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; } 
 
@@ -2421,8 +2425,8 @@ namespace Google.Apis.Fitness.v1.Data
 
     /// <summary>Holder object for the value of a single field in a data point.
     ///
-    /// A field value has a particular format and is only ever set to one of an integer or a floating point value.
-    /// LINT.IfChange</summary>
+    /// A field value has a particular format and is only ever set to one of an integer or a floating point
+    /// value.</summary>
     public class Value : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Floating point value. When this is set, other values must not be set.</summary>

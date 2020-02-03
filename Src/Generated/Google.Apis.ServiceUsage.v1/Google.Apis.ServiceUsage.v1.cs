@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200124 (1849)
+ *      <tr><th>API Rev<td>20200130 (1855)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -1333,8 +1333,8 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; } 
 
-        /// <summary>The number of seconds to wait for a response from a request.  The default deadline for gRPC is
-        /// infinite (no deadline) and HTTP requests is 5 seconds.</summary>
+        /// <summary>The number of seconds to wait for a response from a request. The default varies based on the
+        /// request protocol and deployment environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deadline")]
         public virtual System.Nullable<double> Deadline { get; set; } 
 

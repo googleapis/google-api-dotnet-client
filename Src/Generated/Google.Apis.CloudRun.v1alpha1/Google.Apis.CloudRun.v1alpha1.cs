@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/run/'>Cloud Run API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20200110 (1835)
+ *      <tr><th>API Rev<td>20200130 (1855)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/run/'>
  *              https://cloud.google.com/run/</a>
@@ -347,11 +347,10 @@ namespace Google.Apis.CloudRun.v1alpha1
         {
             this.service = service;
             authorizeddomains = new AuthorizeddomainsResource(service);
-            cloudauditlogs = new CloudauditlogsResource(service);
+            cloudauditlogssources = new CloudauditlogssourcesResource(service);
+            cloudpubsubsources = new CloudpubsubsourcesResource(service);
             configurations = new ConfigurationsResource(service);
             domainmappings = new DomainmappingsResource(service);
-            eventtypes = new EventtypesResource(service);
-            pubsubs = new PubsubsResource(service);
             revisions = new RevisionsResource(service);
             routes = new RoutesResource(service);
             services = new ServicesResource(service);
@@ -470,43 +469,44 @@ namespace Google.Apis.CloudRun.v1alpha1
 
             }
         }
-        private readonly CloudauditlogsResource cloudauditlogs;
+        private readonly CloudauditlogssourcesResource cloudauditlogssources;
 
-        /// <summary>Gets the Cloudauditlogs resource.</summary>
-        public virtual CloudauditlogsResource Cloudauditlogs
+        /// <summary>Gets the Cloudauditlogssources resource.</summary>
+        public virtual CloudauditlogssourcesResource Cloudauditlogssources
         {
-            get { return cloudauditlogs; }
+            get { return cloudauditlogssources; }
         }
 
-        /// <summary>The "cloudauditlogs" collection of methods.</summary>
-        public class CloudauditlogsResource
+        /// <summary>The "cloudauditlogssources" collection of methods.</summary>
+        public class CloudauditlogssourcesResource
         {
-            private const string Resource = "cloudauditlogs";
+            private const string Resource = "cloudauditlogssources";
 
             /// <summary>The service which this resource belongs to.</summary>
             private readonly Google.Apis.Services.IClientService service;
 
             /// <summary>Constructs a new resource.</summary>
-            public CloudauditlogsResource(Google.Apis.Services.IClientService service)
+            public CloudauditlogssourcesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
 
             }
 
 
-            /// <summary>Creates a new cloudauditlog.</summary>
+            /// <summary>Creates a new cloudauditlogssource.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The project ID or project number in which this cloudauditlog should be created.</param>
-            public virtual CreateRequest Create(Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog body, string parent)
+            /// <param name="parent">The project ID or project number in which this cloudauditlogssource should be
+            /// created.</param>
+            public virtual CreateRequest Create(Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLogsSource body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a new cloudauditlog.</summary>
-            public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog>
+            /// <summary>Creates a new cloudauditlogssource.</summary>
+            public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLogsSource>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog body, string parent)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLogsSource body, string parent)
                     : base(service)
                 {
                     Parent = parent;
@@ -515,13 +515,14 @@ namespace Google.Apis.CloudRun.v1alpha1
                 }
 
 
-                /// <summary>The project ID or project number in which this cloudauditlog should be created.</summary>
+                /// <summary>The project ID or project number in which this cloudauditlogssource should be
+                /// created.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog Body { get; set; }
+                Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLogsSource Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -541,7 +542,7 @@ namespace Google.Apis.CloudRun.v1alpha1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "apis/events.cloud.google.com/v1alpha1/{+parent}/cloudauditlogs"; }
+                    get { return "apis/events.cloud.google.com/v1alpha1/{+parent}/cloudauditlogssources"; }
                 }
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -562,15 +563,15 @@ namespace Google.Apis.CloudRun.v1alpha1
 
             }
 
-            /// <summary>Rpc to delete a cloudauditlog.</summary>
-            /// <param name="name">The name of the cloudauditlog being deleted. If needed, replace {namespace_id} with the project
-            /// ID.</param>
+            /// <summary>Rpc to delete a cloudauditlogssource.</summary>
+            /// <param name="name">The name of the cloudauditlogssource being deleted. If needed, replace {namespace_id} with the
+            /// project ID.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Rpc to delete a cloudauditlog.</summary>
+            /// <summary>Rpc to delete a cloudauditlogssource.</summary>
             public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -582,8 +583,8 @@ namespace Google.Apis.CloudRun.v1alpha1
                 }
 
 
-                /// <summary>The name of the cloudauditlog being deleted. If needed, replace {namespace_id} with the
-                /// project ID.</summary>
+                /// <summary>The name of the cloudauditlogssource being deleted. If needed, replace {namespace_id} with
+                /// the project ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -632,7 +633,7 @@ namespace Google.Apis.CloudRun.v1alpha1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/cloudauditlogs/[^/]+$",
+                            Pattern = @"^namespaces/[^/]+/cloudauditlogssources/[^/]+$",
                         });
                     RequestParameters.Add(
                         "apiVersion", new Google.Apis.Discovery.Parameter
@@ -665,16 +666,16 @@ namespace Google.Apis.CloudRun.v1alpha1
 
             }
 
-            /// <summary>Rpc to get information about a cloudauditlog.</summary>
-            /// <param name="name">The name of the cloudauditlog being retrieved. If needed, replace {namespace_id} with the project
-            /// ID.</param>
+            /// <summary>Rpc to get information about a cloudauditlogssource.</summary>
+            /// <param name="name">The name of the cloudauditlogssource being retrieved. If needed, replace {namespace_id} with the
+            /// project ID.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Rpc to get information about a cloudauditlog.</summary>
-            public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog>
+            /// <summary>Rpc to get information about a cloudauditlogssource.</summary>
+            public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLogsSource>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -685,8 +686,8 @@ namespace Google.Apis.CloudRun.v1alpha1
                 }
 
 
-                /// <summary>The name of the cloudauditlog being retrieved. If needed, replace {namespace_id} with the
-                /// project ID.</summary>
+                /// <summary>The name of the cloudauditlogssource being retrieved. If needed, replace {namespace_id}
+                /// with the project ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -721,21 +722,22 @@ namespace Google.Apis.CloudRun.v1alpha1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/cloudauditlogs/[^/]+$",
+                            Pattern = @"^namespaces/[^/]+/cloudauditlogssources/[^/]+$",
                         });
                 }
 
             }
 
-            /// <summary>Rpc to list cloudauditlogs.</summary>
-            /// <param name="parent">The project ID or project number from which the cloudauditlogs should be listed.</param>
+            /// <summary>Rpc to list cloudauditlogssources.</summary>
+            /// <param name="parent">The project ID or project number from which the cloudauditlogssources should be
+            /// listed.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Rpc to list cloudauditlogs.</summary>
-            public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.ListCloudAuditLogsResponse>
+            /// <summary>Rpc to list cloudauditlogssources.</summary>
+            public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.ListCloudAuditLogsSourcesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -746,7 +748,8 @@ namespace Google.Apis.CloudRun.v1alpha1
                 }
 
 
-                /// <summary>The project ID or project number from which the cloudauditlogs should be listed.</summary>
+                /// <summary>The project ID or project number from which the cloudauditlogssources should be
+                /// listed.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -798,7 +801,7 @@ namespace Google.Apis.CloudRun.v1alpha1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "apis/events.cloud.google.com/v1alpha1/{+parent}/cloudauditlogs"; }
+                    get { return "apis/events.cloud.google.com/v1alpha1/{+parent}/cloudauditlogssources"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -881,49 +884,61 @@ namespace Google.Apis.CloudRun.v1alpha1
                 }
 
             }
+        }
+        private readonly CloudpubsubsourcesResource cloudpubsubsources;
 
-            /// <summary>Rpc to replace a cloudauditlog.
-            ///
-            /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud Run
-            /// will work to make the 'status' match the requested 'spec'.
-            ///
-            /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-            /// control.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the cloudauditlog being retrieved. If needed, replace {namespace_id} with the project
-            /// ID.</param>
-            public virtual ReplaceCloudAuditLogRequest ReplaceCloudAuditLog(Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog body, string name)
+        /// <summary>Gets the Cloudpubsubsources resource.</summary>
+        public virtual CloudpubsubsourcesResource Cloudpubsubsources
+        {
+            get { return cloudpubsubsources; }
+        }
+
+        /// <summary>The "cloudpubsubsources" collection of methods.</summary>
+        public class CloudpubsubsourcesResource
+        {
+            private const string Resource = "cloudpubsubsources";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CloudpubsubsourcesResource(Google.Apis.Services.IClientService service)
             {
-                return new ReplaceCloudAuditLogRequest(service, body, name);
+                this.service = service;
+
             }
 
-            /// <summary>Rpc to replace a cloudauditlog.
-            ///
-            /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud Run
-            /// will work to make the 'status' match the requested 'spec'.
-            ///
-            /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-            /// control.</summary>
-            public class ReplaceCloudAuditLogRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog>
+
+            /// <summary>Creates a new cloudpubsubsource.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">The project ID or project number in which this cloudpubsubsource should be
+            /// created.</param>
+            public virtual CreateRequest Create(Google.Apis.CloudRun.v1alpha1.Data.CloudPubSubSource body, string parent)
             {
-                /// <summary>Constructs a new ReplaceCloudAuditLog request.</summary>
-                public ReplaceCloudAuditLogRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog body, string name)
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a new cloudpubsubsource.</summary>
+            public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.CloudPubSubSource>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1alpha1.Data.CloudPubSubSource body, string parent)
                     : base(service)
                 {
-                    Name = name;
+                    Parent = parent;
                     Body = body;
                     InitParameters();
                 }
 
 
-                /// <summary>The name of the cloudauditlog being retrieved. If needed, replace {namespace_id} with the
-                /// project ID.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
+                /// <summary>The project ID or project number in which this cloudpubsubsource should be
+                /// created.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog Body { get; set; }
+                Google.Apis.CloudRun.v1alpha1.Data.CloudPubSubSource Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -931,13 +946,89 @@ namespace Google.Apis.CloudRun.v1alpha1
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
                 {
-                    get { return "replaceCloudAuditLog"; }
+                    get { return "create"; }
                 }
 
                 ///<summary>Gets the HTTP method.</summary>
                 public override string HttpMethod
                 {
-                    get { return "PUT"; }
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "apis/events.cloud.google.com/v1alpha1/{+parent}/cloudpubsubsources"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^namespaces/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Rpc to delete a cloudpubsubsource.</summary>
+            /// <param name="name">The name of the cloudpubsubsource being deleted. If needed, replace {namespace_id} with the
+            /// project ID.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Rpc to delete a cloudpubsubsource.</summary>
+            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the cloudpubsubsource being deleted. If needed, replace {namespace_id} with the
+                /// project ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Cloud Run currently ignores this parameter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ApiVersion { get; set; }
+
+                /// <summary>Cloud Run currently ignores this parameter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Kind { get; set; }
+
+                /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and
+                /// deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers/garbage-
+                /// collection/ for more information.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("propagationPolicy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PropagationPolicy { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
                 }
 
                 ///<summary>Gets the REST path.</summary>
@@ -946,7 +1037,7 @@ namespace Google.Apis.CloudRun.v1alpha1
                     get { return "apis/events.cloud.google.com/v1alpha1/{+name}"; }
                 }
 
-                /// <summary>Initializes ReplaceCloudAuditLog parameter list.</summary>
+                /// <summary>Initializes Delete parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -958,7 +1049,253 @@ namespace Google.Apis.CloudRun.v1alpha1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/cloudauditlogs/[^/]+$",
+                            Pattern = @"^namespaces/[^/]+/cloudpubsubsources/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "apiVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "apiVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "kind", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "kind",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "propagationPolicy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "propagationPolicy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Rpc to get information about a cloudpubsubsource.</summary>
+            /// <param name="name">The name of the cloudpubsubsource being retrieved. If needed, replace {namespace_id} with the
+            /// project ID.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Rpc to get information about a cloudpubsubsource.</summary>
+            public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.CloudPubSubSource>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the cloudpubsubsource being retrieved. If needed, replace {namespace_id} with
+                /// the project ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "apis/events.cloud.google.com/v1alpha1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^namespaces/[^/]+/cloudpubsubsources/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Rpc to list cloudpubsubsources.</summary>
+            /// <param name="parent">The project ID or project number from which the cloudpubsubsources should be
+            /// listed.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Rpc to list cloudpubsubsources.</summary>
+            public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.ListCloudPubSubSourcesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>The project ID or project number from which the cloudpubsubsources should be
+                /// listed.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional encoded string to continue paging.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Continue { get; set; }
+
+                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
+                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string FieldSelector { get; set; }
+
+                /// <summary>Not currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
+
+                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
+                /// and notIn.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LabelSelector { get; set; }
+
+                /// <summary>The maximum number of records that should be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> Limit { get; set; }
+
+                /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                /// currently used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ResourceVersion { get; set; }
+
+                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
+                /// used by Cloud Run.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> Watch { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "apis/events.cloud.google.com/v1alpha1/{+parent}/cloudpubsubsources"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^namespaces/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "continue", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "continue",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "fieldSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fieldSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "includeUninitialized", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeUninitialized",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "labelSelector", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "labelSelector",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "limit", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "limit",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "resourceVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "watch", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "watch",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 
@@ -1627,741 +1964,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
-                        });
-                }
-
-            }
-        }
-        private readonly EventtypesResource eventtypes;
-
-        /// <summary>Gets the Eventtypes resource.</summary>
-        public virtual EventtypesResource Eventtypes
-        {
-            get { return eventtypes; }
-        }
-
-        /// <summary>The "eventtypes" collection of methods.</summary>
-        public class EventtypesResource
-        {
-            private const string Resource = "eventtypes";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public EventtypesResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-
-            }
-
-
-            /// <summary>Rpc to get information about an EventType.</summary>
-            /// <param name="name">The name of the trigger being retrieved. If needed, replace {namespace_id} with the project
-            /// ID.</param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(service, name);
-            }
-
-            /// <summary>Rpc to get information about an EventType.</summary>
-            public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.EventType>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-
-                /// <summary>The name of the trigger being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "get"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "apis/eventing.knative.dev/v1alpha1/{+name}"; }
-                }
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/eventtypes/[^/]+$",
-                        });
-                }
-
-            }
-
-            /// <summary>Rpc to list EventTypes.</summary>
-            /// <param name="parent">The project ID or project number from which the EventTypes should be listed.</param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>Rpc to list EventTypes.</summary>
-            public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.ListEventTypesResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-
-                /// <summary>The project ID or project number from which the EventTypes should be listed.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Optional encoded string to continue paging.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Continue { get; set; }
-
-                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
-                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string FieldSelector { get; set; }
-
-                /// <summary>Not currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
-
-                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
-                /// and notIn.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LabelSelector { get; set; }
-
-                /// <summary>The maximum number of records that should be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> Limit { get; set; }
-
-                /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                /// currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ResourceVersion { get; set; }
-
-                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
-                /// used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> Watch { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "list"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "apis/eventing.knative.dev/v1alpha1/{+parent}/eventtypes"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "continue", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "continue",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fieldSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeUninitialized", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeUninitialized",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "labelSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "limit", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "limit",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "resourceVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "watch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-        }
-        private readonly PubsubsResource pubsubs;
-
-        /// <summary>Gets the Pubsubs resource.</summary>
-        public virtual PubsubsResource Pubsubs
-        {
-            get { return pubsubs; }
-        }
-
-        /// <summary>The "pubsubs" collection of methods.</summary>
-        public class PubsubsResource
-        {
-            private const string Resource = "pubsubs";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public PubsubsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-
-            }
-
-
-            /// <summary>Creates a new pubsub.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The project ID or project number in which this pubsub should be created.</param>
-            public virtual CreateRequest Create(Google.Apis.CloudRun.v1alpha1.Data.PubSub body, string parent)
-            {
-                return new CreateRequest(service, body, parent);
-            }
-
-            /// <summary>Creates a new pubsub.</summary>
-            public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.PubSub>
-            {
-                /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1alpha1.Data.PubSub body, string parent)
-                    : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>The project ID or project number in which this pubsub should be created.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudRun.v1alpha1.Data.PubSub Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "create"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "POST"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "apis/events.cloud.google.com/v1alpha1/{+parent}/pubsubs"; }
-                }
-
-                /// <summary>Initializes Create parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+$",
-                        });
-                }
-
-            }
-
-            /// <summary>Rpc to delete a pubsub.</summary>
-            /// <param name="name">The name of the pubsub being deleted. If needed, replace {namespace_id} with the project
-            /// ID.</param>
-            public virtual DeleteRequest Delete(string name)
-            {
-                return new DeleteRequest(service, name);
-            }
-
-            /// <summary>Rpc to delete a pubsub.</summary>
-            public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.Empty>
-            {
-                /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-
-                /// <summary>The name of the pubsub being deleted. If needed, replace {namespace_id} with the project
-                /// ID.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Cloud Run currently ignores this parameter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ApiVersion { get; set; }
-
-                /// <summary>Cloud Run currently ignores this parameter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Kind { get; set; }
-
-                /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and
-                /// deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers/garbage-
-                /// collection/ for more information.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("propagationPolicy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PropagationPolicy { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "delete"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "DELETE"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "apis/events.cloud.google.com/v1alpha1/{+name}"; }
-                }
-
-                /// <summary>Initializes Delete parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/pubsubs/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "apiVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "apiVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "kind", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "kind",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "propagationPolicy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "propagationPolicy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-
-            /// <summary>Rpc to get information about a pubsub.</summary>
-            /// <param name="name">The name of the pubsub being retrieved. If needed, replace {namespace_id} with the project
-            /// ID.</param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(service, name);
-            }
-
-            /// <summary>Rpc to get information about a pubsub.</summary>
-            public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.PubSub>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-
-                /// <summary>The name of the pubsub being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "get"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "apis/events.cloud.google.com/v1alpha1/{+name}"; }
-                }
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/pubsubs/[^/]+$",
-                        });
-                }
-
-            }
-
-            /// <summary>Rpc to list pubsubs.</summary>
-            /// <param name="parent">The project ID or project number from which the pubsubs should be listed.</param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>Rpc to list pubsubs.</summary>
-            public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.ListPubSubsResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-
-                /// <summary>The project ID or project number from which the pubsubs should be listed.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Optional encoded string to continue paging.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Continue { get; set; }
-
-                /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a query
-                /// string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string FieldSelector { get; set; }
-
-                /// <summary>Not currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
-
-                /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists, in,
-                /// and notIn.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LabelSelector { get; set; }
-
-                /// <summary>The maximum number of records that should be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> Limit { get; set; }
-
-                /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                /// currently used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ResourceVersion { get; set; }
-
-                /// <summary>Flag that indicates that the client expects to watch this resource as well. Not currently
-                /// used by Cloud Run.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> Watch { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "list"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "apis/events.cloud.google.com/v1alpha1/{+parent}/pubsubs"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "continue", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "continue",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "fieldSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "fieldSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeUninitialized", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeUninitialized",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "labelSelector", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "labelSelector",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "limit", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "limit",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "resourceVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "watch", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "watch",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-
-            /// <summary>Rpc to replace a pubsub.
-            ///
-            /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud Run
-            /// will work to make the 'status' match the requested 'spec'.
-            ///
-            /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-            /// control.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the pubsub being retrieved. If needed, replace {namespace_id} with the project
-            /// ID.</param>
-            public virtual ReplacePubSubRequest ReplacePubSub(Google.Apis.CloudRun.v1alpha1.Data.PubSub body, string name)
-            {
-                return new ReplacePubSubRequest(service, body, name);
-            }
-
-            /// <summary>Rpc to replace a pubsub.
-            ///
-            /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud Run
-            /// will work to make the 'status' match the requested 'spec'.
-            ///
-            /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-            /// control.</summary>
-            public class ReplacePubSubRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.PubSub>
-            {
-                /// <summary>Constructs a new ReplacePubSub request.</summary>
-                public ReplacePubSubRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1alpha1.Data.PubSub body, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>The name of the pubsub being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudRun.v1alpha1.Data.PubSub Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "replacePubSub"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "PUT"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "apis/events.cloud.google.com/v1alpha1/{+name}"; }
-                }
-
-                /// <summary>Initializes ReplacePubSub parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/pubsubs/[^/]+$",
                         });
                 }
 
@@ -4252,7 +3854,7 @@ namespace Google.Apis.CloudRun.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional encoded string to continue paging.</summary>
+                /// <summary>Optional. Encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Continue { get; set; }
 
@@ -4383,88 +3985,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                 }
 
             }
-
-            /// <summary>Rpc to replace a trigger.
-            ///
-            /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud Run
-            /// will work to make the 'status' match the requested 'spec'.
-            ///
-            /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-            /// control.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the trigger being retrieved. If needed, replace {namespace_id} with the project
-            /// ID.</param>
-            public virtual ReplaceTriggerRequest ReplaceTrigger(Google.Apis.CloudRun.v1alpha1.Data.Trigger body, string name)
-            {
-                return new ReplaceTriggerRequest(service, body, name);
-            }
-
-            /// <summary>Rpc to replace a trigger.
-            ///
-            /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud Run
-            /// will work to make the 'status' match the requested 'spec'.
-            ///
-            /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-            /// control.</summary>
-            public class ReplaceTriggerRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.Trigger>
-            {
-                /// <summary>Constructs a new ReplaceTrigger request.</summary>
-                public ReplaceTriggerRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1alpha1.Data.Trigger body, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>The name of the trigger being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudRun.v1alpha1.Data.Trigger Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "replaceTrigger"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "PUT"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "apis/eventing.knative.dev/v1alpha1/{+name}"; }
-                }
-
-                /// <summary>Initializes ReplaceTrigger parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^namespaces/[^/]+/triggers/[^/]+$",
-                        });
-                }
-
-            }
         }
     }
 
@@ -4505,11 +4025,10 @@ namespace Google.Apis.CloudRun.v1alpha1
             {
                 this.service = service;
                 authorizeddomains = new AuthorizeddomainsResource(service);
-                cloudauditlogs = new CloudauditlogsResource(service);
+                cloudauditlogssources = new CloudauditlogssourcesResource(service);
+                cloudpubsubsources = new CloudpubsubsourcesResource(service);
                 configurations = new ConfigurationsResource(service);
                 domainmappings = new DomainmappingsResource(service);
-                eventtypes = new EventtypesResource(service);
-                pubsubs = new PubsubsResource(service);
                 revisions = new RevisionsResource(service);
                 routes = new RoutesResource(service);
                 services = new ServicesResource(service);
@@ -4628,43 +4147,44 @@ namespace Google.Apis.CloudRun.v1alpha1
 
                 }
             }
-            private readonly CloudauditlogsResource cloudauditlogs;
+            private readonly CloudauditlogssourcesResource cloudauditlogssources;
 
-            /// <summary>Gets the Cloudauditlogs resource.</summary>
-            public virtual CloudauditlogsResource Cloudauditlogs
+            /// <summary>Gets the Cloudauditlogssources resource.</summary>
+            public virtual CloudauditlogssourcesResource Cloudauditlogssources
             {
-                get { return cloudauditlogs; }
+                get { return cloudauditlogssources; }
             }
 
-            /// <summary>The "cloudauditlogs" collection of methods.</summary>
-            public class CloudauditlogsResource
+            /// <summary>The "cloudauditlogssources" collection of methods.</summary>
+            public class CloudauditlogssourcesResource
             {
-                private const string Resource = "cloudauditlogs";
+                private const string Resource = "cloudauditlogssources";
 
                 /// <summary>The service which this resource belongs to.</summary>
                 private readonly Google.Apis.Services.IClientService service;
 
                 /// <summary>Constructs a new resource.</summary>
-                public CloudauditlogsResource(Google.Apis.Services.IClientService service)
+                public CloudauditlogssourcesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
 
                 }
 
 
-                /// <summary>Creates a new cloudauditlog.</summary>
+                /// <summary>Creates a new cloudauditlogssource.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The project ID or project number in which this cloudauditlog should be created.</param>
-                public virtual CreateRequest Create(Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog body, string parent)
+                /// <param name="parent">The project ID or project number in which this cloudauditlogssource should be
+                /// created.</param>
+                public virtual CreateRequest Create(Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLogsSource body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a new cloudauditlog.</summary>
-                public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog>
+                /// <summary>Creates a new cloudauditlogssource.</summary>
+                public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLogsSource>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog body, string parent)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLogsSource body, string parent)
                         : base(service)
                     {
                         Parent = parent;
@@ -4673,14 +4193,14 @@ namespace Google.Apis.CloudRun.v1alpha1
                     }
 
 
-                    /// <summary>The project ID or project number in which this cloudauditlog should be
+                    /// <summary>The project ID or project number in which this cloudauditlogssource should be
                     /// created.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog Body { get; set; }
+                    Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLogsSource Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -4700,7 +4220,7 @@ namespace Google.Apis.CloudRun.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+parent}/cloudauditlogs"; }
+                        get { return "v1alpha1/{+parent}/cloudauditlogssources"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -4721,15 +4241,15 @@ namespace Google.Apis.CloudRun.v1alpha1
 
                 }
 
-                /// <summary>Rpc to delete a cloudauditlog.</summary>
-                /// <param name="name">The name of the cloudauditlog being deleted. If needed, replace {namespace_id} with the project
-                /// ID.</param>
+                /// <summary>Rpc to delete a cloudauditlogssource.</summary>
+                /// <param name="name">The name of the cloudauditlogssource being deleted. If needed, replace {namespace_id} with the
+                /// project ID.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Rpc to delete a cloudauditlog.</summary>
+                /// <summary>Rpc to delete a cloudauditlogssource.</summary>
                 public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -4741,8 +4261,8 @@ namespace Google.Apis.CloudRun.v1alpha1
                     }
 
 
-                    /// <summary>The name of the cloudauditlog being deleted. If needed, replace {namespace_id} with the
-                    /// project ID.</summary>
+                    /// <summary>The name of the cloudauditlogssource being deleted. If needed, replace {namespace_id}
+                    /// with the project ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4791,7 +4311,7 @@ namespace Google.Apis.CloudRun.v1alpha1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/cloudauditlogs/[^/]+$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/cloudauditlogssources/[^/]+$",
                             });
                         RequestParameters.Add(
                             "apiVersion", new Google.Apis.Discovery.Parameter
@@ -4824,16 +4344,16 @@ namespace Google.Apis.CloudRun.v1alpha1
 
                 }
 
-                /// <summary>Rpc to get information about a cloudauditlog.</summary>
-                /// <param name="name">The name of the cloudauditlog being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</param>
+                /// <summary>Rpc to get information about a cloudauditlogssource.</summary>
+                /// <param name="name">The name of the cloudauditlogssource being retrieved. If needed, replace {namespace_id} with the
+                /// project ID.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Rpc to get information about a cloudauditlog.</summary>
-                public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog>
+                /// <summary>Rpc to get information about a cloudauditlogssource.</summary>
+                public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLogsSource>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -4844,8 +4364,8 @@ namespace Google.Apis.CloudRun.v1alpha1
                     }
 
 
-                    /// <summary>The name of the cloudauditlog being retrieved. If needed, replace {namespace_id} with
-                    /// the project ID.</summary>
+                    /// <summary>The name of the cloudauditlogssource being retrieved. If needed, replace {namespace_id}
+                    /// with the project ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4880,21 +4400,22 @@ namespace Google.Apis.CloudRun.v1alpha1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/cloudauditlogs/[^/]+$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/cloudauditlogssources/[^/]+$",
                             });
                     }
 
                 }
 
-                /// <summary>Rpc to list cloudauditlogs.</summary>
-                /// <param name="parent">The project ID or project number from which the cloudauditlogs should be listed.</param>
+                /// <summary>Rpc to list cloudauditlogssources.</summary>
+                /// <param name="parent">The project ID or project number from which the cloudauditlogssources should be
+                /// listed.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Rpc to list cloudauditlogs.</summary>
-                public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.ListCloudAuditLogsResponse>
+                /// <summary>Rpc to list cloudauditlogssources.</summary>
+                public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.ListCloudAuditLogsSourcesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -4905,7 +4426,7 @@ namespace Google.Apis.CloudRun.v1alpha1
                     }
 
 
-                    /// <summary>The project ID or project number from which the cloudauditlogs should be
+                    /// <summary>The project ID or project number from which the cloudauditlogssources should be
                     /// listed.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4958,7 +4479,7 @@ namespace Google.Apis.CloudRun.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/{+parent}/cloudauditlogs"; }
+                        get { return "v1alpha1/{+parent}/cloudauditlogssources"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -5041,49 +4562,61 @@ namespace Google.Apis.CloudRun.v1alpha1
                     }
 
                 }
+            }
+            private readonly CloudpubsubsourcesResource cloudpubsubsources;
 
-                /// <summary>Rpc to replace a cloudauditlog.
-                ///
-                /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud
-                /// Run will work to make the 'status' match the requested 'spec'.
-                ///
-                /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-                /// control.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">The name of the cloudauditlog being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</param>
-                public virtual ReplaceCloudAuditLogRequest ReplaceCloudAuditLog(Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog body, string name)
+            /// <summary>Gets the Cloudpubsubsources resource.</summary>
+            public virtual CloudpubsubsourcesResource Cloudpubsubsources
+            {
+                get { return cloudpubsubsources; }
+            }
+
+            /// <summary>The "cloudpubsubsources" collection of methods.</summary>
+            public class CloudpubsubsourcesResource
+            {
+                private const string Resource = "cloudpubsubsources";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CloudpubsubsourcesResource(Google.Apis.Services.IClientService service)
                 {
-                    return new ReplaceCloudAuditLogRequest(service, body, name);
+                    this.service = service;
+
                 }
 
-                /// <summary>Rpc to replace a cloudauditlog.
-                ///
-                /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud
-                /// Run will work to make the 'status' match the requested 'spec'.
-                ///
-                /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-                /// control.</summary>
-                public class ReplaceCloudAuditLogRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog>
+
+                /// <summary>Creates a new cloudpubsubsource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The project ID or project number in which this cloudpubsubsource should be
+                /// created.</param>
+                public virtual CreateRequest Create(Google.Apis.CloudRun.v1alpha1.Data.CloudPubSubSource body, string parent)
                 {
-                    /// <summary>Constructs a new ReplaceCloudAuditLog request.</summary>
-                    public ReplaceCloudAuditLogRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog body, string name)
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new cloudpubsubsource.</summary>
+                public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.CloudPubSubSource>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1alpha1.Data.CloudPubSubSource body, string parent)
                         : base(service)
                     {
-                        Name = name;
+                        Parent = parent;
                         Body = body;
                         InitParameters();
                     }
 
 
-                    /// <summary>The name of the cloudauditlog being retrieved. If needed, replace {namespace_id} with
-                    /// the project ID.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
+                    /// <summary>The project ID or project number in which this cloudpubsubsource should be
+                    /// created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudRun.v1alpha1.Data.CloudAuditLog Body { get; set; }
+                    Google.Apis.CloudRun.v1alpha1.Data.CloudPubSubSource Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -5091,13 +4624,89 @@ namespace Google.Apis.CloudRun.v1alpha1
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
                     {
-                        get { return "replaceCloudAuditLog"; }
+                        get { return "create"; }
                     }
 
                     ///<summary>Gets the HTTP method.</summary>
                     public override string HttpMethod
                     {
-                        get { return "PUT"; }
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1alpha1/{+parent}/cloudpubsubsources"; }
+                    }
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Rpc to delete a cloudpubsubsource.</summary>
+                /// <param name="name">The name of the cloudpubsubsource being deleted. If needed, replace {namespace_id} with the
+                /// project ID.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Rpc to delete a cloudpubsubsource.</summary>
+                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the cloudpubsubsource being deleted. If needed, replace {namespace_id} with
+                    /// the project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Cloud Run currently ignores this parameter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ApiVersion { get; set; }
+
+                    /// <summary>Cloud Run currently ignores this parameter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Kind { get; set; }
+
+                    /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting,
+                    /// and deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers
+                    /// /garbage-collection/ for more information.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("propagationPolicy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PropagationPolicy { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
                     }
 
                     ///<summary>Gets the REST path.</summary>
@@ -5106,7 +4715,7 @@ namespace Google.Apis.CloudRun.v1alpha1
                         get { return "v1alpha1/{+name}"; }
                     }
 
-                    /// <summary>Initializes ReplaceCloudAuditLog parameter list.</summary>
+                    /// <summary>Initializes Delete parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -5118,7 +4727,253 @@ namespace Google.Apis.CloudRun.v1alpha1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/cloudauditlogs/[^/]+$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/cloudpubsubsources/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "apiVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "apiVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "kind", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "kind",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "propagationPolicy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "propagationPolicy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Rpc to get information about a cloudpubsubsource.</summary>
+                /// <param name="name">The name of the cloudpubsubsource being retrieved. If needed, replace {namespace_id} with the
+                /// project ID.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Rpc to get information about a cloudpubsubsource.</summary>
+                public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.CloudPubSubSource>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the cloudpubsubsource being retrieved. If needed, replace {namespace_id}
+                    /// with the project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1alpha1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/cloudpubsubsources/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Rpc to list cloudpubsubsources.</summary>
+                /// <param name="parent">The project ID or project number from which the cloudpubsubsources should be
+                /// listed.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Rpc to list cloudpubsubsources.</summary>
+                public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.ListCloudPubSubSourcesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The project ID or project number from which the cloudpubsubsources should be
+                    /// listed.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional encoded string to continue paging.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Continue { get; set; }
+
+                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
+                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FieldSelector { get; set; }
+
+                    /// <summary>Not currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
+
+                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
+                    /// in, and notIn.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LabelSelector { get; set; }
+
+                    /// <summary>The maximum number of records that should be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> Limit { get; set; }
+
+                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ResourceVersion { get; set; }
+
+                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
+                    /// currently used by Cloud Run.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Watch { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1alpha1/{+parent}/cloudpubsubsources"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "continue", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "continue",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "fieldSelector", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "fieldSelector",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "includeUninitialized", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "includeUninitialized",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "labelSelector", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "labelSelector",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "limit", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "limit",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "resourceVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resourceVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "watch", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "watch",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                     }
 
@@ -5791,741 +5646,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
-                            });
-                    }
-
-                }
-            }
-            private readonly EventtypesResource eventtypes;
-
-            /// <summary>Gets the Eventtypes resource.</summary>
-            public virtual EventtypesResource Eventtypes
-            {
-                get { return eventtypes; }
-            }
-
-            /// <summary>The "eventtypes" collection of methods.</summary>
-            public class EventtypesResource
-            {
-                private const string Resource = "eventtypes";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public EventtypesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-
-                }
-
-
-                /// <summary>Rpc to get information about an EventType.</summary>
-                /// <param name="name">The name of the trigger being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>Rpc to get information about an EventType.</summary>
-                public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.EventType>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The name of the trigger being retrieved. If needed, replace {namespace_id} with the
-                    /// project ID.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "get"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "GET"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1alpha1/{+name}"; }
-                    }
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/eventtypes/[^/]+$",
-                            });
-                    }
-
-                }
-
-                /// <summary>Rpc to list EventTypes.</summary>
-                /// <param name="parent">The project ID or project number from which the EventTypes should be listed.</param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(service, parent);
-                }
-
-                /// <summary>Rpc to list EventTypes.</summary>
-                public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.ListEventTypesResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The project ID or project number from which the EventTypes should be listed.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Optional encoded string to continue paging.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Continue { get; set; }
-
-                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
-                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string FieldSelector { get; set; }
-
-                    /// <summary>Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
-
-                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
-                    /// in, and notIn.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LabelSelector { get; set; }
-
-                    /// <summary>The maximum number of records that should be returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> Limit { get; set; }
-
-                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ResourceVersion { get; set; }
-
-                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> Watch { get; set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "list"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "GET"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1alpha1/{+parent}/eventtypes"; }
-                    }
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "continue", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "continue",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fieldSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeUninitialized", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeUninitialized",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "labelSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "labelSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "limit", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "limit",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resourceVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-            }
-            private readonly PubsubsResource pubsubs;
-
-            /// <summary>Gets the Pubsubs resource.</summary>
-            public virtual PubsubsResource Pubsubs
-            {
-                get { return pubsubs; }
-            }
-
-            /// <summary>The "pubsubs" collection of methods.</summary>
-            public class PubsubsResource
-            {
-                private const string Resource = "pubsubs";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public PubsubsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-
-                }
-
-
-                /// <summary>Creates a new pubsub.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The project ID or project number in which this pubsub should be created.</param>
-                public virtual CreateRequest Create(Google.Apis.CloudRun.v1alpha1.Data.PubSub body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>Creates a new pubsub.</summary>
-                public class CreateRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.PubSub>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1alpha1.Data.PubSub body, string parent)
-                        : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The project ID or project number in which this pubsub should be created.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudRun.v1alpha1.Data.PubSub Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "create"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "POST"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1alpha1/{+parent}/pubsubs"; }
-                    }
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                    }
-
-                }
-
-                /// <summary>Rpc to delete a pubsub.</summary>
-                /// <param name="name">The name of the pubsub being deleted. If needed, replace {namespace_id} with the project
-                /// ID.</param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(service, name);
-                }
-
-                /// <summary>Rpc to delete a pubsub.</summary>
-                public class DeleteRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.Empty>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The name of the pubsub being deleted. If needed, replace {namespace_id} with the
-                    /// project ID.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Cloud Run currently ignores this parameter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ApiVersion { get; set; }
-
-                    /// <summary>Cloud Run currently ignores this parameter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Kind { get; set; }
-
-                    /// <summary>Specifies the propagation policy of delete. Cloud Run currently ignores this setting,
-                    /// and deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers
-                    /// /garbage-collection/ for more information.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("propagationPolicy", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PropagationPolicy { get; set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "delete"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "DELETE"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1alpha1/{+name}"; }
-                    }
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/pubsubs/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "apiVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "apiVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "kind", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "kind",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "propagationPolicy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "propagationPolicy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-
-                /// <summary>Rpc to get information about a pubsub.</summary>
-                /// <param name="name">The name of the pubsub being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>Rpc to get information about a pubsub.</summary>
-                public class GetRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.PubSub>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name)
-                        : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The name of the pubsub being retrieved. If needed, replace {namespace_id} with the
-                    /// project ID.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "get"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "GET"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1alpha1/{+name}"; }
-                    }
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/pubsubs/[^/]+$",
-                            });
-                    }
-
-                }
-
-                /// <summary>Rpc to list pubsubs.</summary>
-                /// <param name="parent">The project ID or project number from which the pubsubs should be listed.</param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(service, parent);
-                }
-
-                /// <summary>Rpc to list pubsubs.</summary>
-                public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.ListPubSubsResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                        : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The project ID or project number from which the pubsubs should be listed.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Optional encoded string to continue paging.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Continue { get; set; }
-
-                    /// <summary>Allows to filter resources based on a specific value for a field name. Send this in a
-                    /// query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("fieldSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string FieldSelector { get; set; }
-
-                    /// <summary>Not currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeUninitialized", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeUninitialized { get; set; }
-
-                    /// <summary>Allows to filter resources based on a label. Supported operations are =, !=, exists,
-                    /// in, and notIn.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LabelSelector { get; set; }
-
-                    /// <summary>The maximum number of records that should be returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> Limit { get; set; }
-
-                    /// <summary>The baseline resource version from which the list or watch operation should start. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("resourceVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ResourceVersion { get; set; }
-
-                    /// <summary>Flag that indicates that the client expects to watch this resource as well. Not
-                    /// currently used by Cloud Run.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("watch", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> Watch { get; set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "list"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "GET"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1alpha1/{+parent}/pubsubs"; }
-                    }
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                            });
-                        RequestParameters.Add(
-                            "continue", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "continue",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "fieldSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "fieldSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeUninitialized", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeUninitialized",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "labelSelector", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "labelSelector",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "limit", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "limit",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "resourceVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resourceVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "watch", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "watch",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-
-                /// <summary>Rpc to replace a pubsub.
-                ///
-                /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud
-                /// Run will work to make the 'status' match the requested 'spec'.
-                ///
-                /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-                /// control.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">The name of the pubsub being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</param>
-                public virtual ReplacePubSubRequest ReplacePubSub(Google.Apis.CloudRun.v1alpha1.Data.PubSub body, string name)
-                {
-                    return new ReplacePubSubRequest(service, body, name);
-                }
-
-                /// <summary>Rpc to replace a pubsub.
-                ///
-                /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud
-                /// Run will work to make the 'status' match the requested 'spec'.
-                ///
-                /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-                /// control.</summary>
-                public class ReplacePubSubRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.PubSub>
-                {
-                    /// <summary>Constructs a new ReplacePubSub request.</summary>
-                    public ReplacePubSubRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1alpha1.Data.PubSub body, string name)
-                        : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The name of the pubsub being retrieved. If needed, replace {namespace_id} with the
-                    /// project ID.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudRun.v1alpha1.Data.PubSub Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "replacePubSub"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "PUT"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1alpha1/{+name}"; }
-                    }
-
-                    /// <summary>Initializes ReplacePubSub parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/pubsubs/[^/]+$",
                             });
                     }
 
@@ -8646,7 +7766,7 @@ namespace Google.Apis.CloudRun.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional encoded string to continue paging.</summary>
+                    /// <summary>Optional. Encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Continue { get; set; }
 
@@ -8773,88 +7893,6 @@ namespace Google.Apis.CloudRun.v1alpha1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
-                            });
-                    }
-
-                }
-
-                /// <summary>Rpc to replace a trigger.
-                ///
-                /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud
-                /// Run will work to make the 'status' match the requested 'spec'.
-                ///
-                /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-                /// control.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">The name of the trigger being retrieved. If needed, replace {namespace_id} with the project
-                /// ID.</param>
-                public virtual ReplaceTriggerRequest ReplaceTrigger(Google.Apis.CloudRun.v1alpha1.Data.Trigger body, string name)
-                {
-                    return new ReplaceTriggerRequest(service, body, name);
-                }
-
-                /// <summary>Rpc to replace a trigger.
-                ///
-                /// Only the spec and metadata labels and annotations are modifiable. After the Update request, Cloud
-                /// Run will work to make the 'status' match the requested 'spec'.
-                ///
-                /// May provide metadata.resourceVersion to enforce update from last read for optimistic concurrency
-                /// control.</summary>
-                public class ReplaceTriggerRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1alpha1.Data.Trigger>
-                {
-                    /// <summary>Constructs a new ReplaceTrigger request.</summary>
-                    public ReplaceTriggerRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v1alpha1.Data.Trigger body, string name)
-                        : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>The name of the trigger being retrieved. If needed, replace {namespace_id} with the
-                    /// project ID.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudRun.v1alpha1.Data.Trigger Body { get; set; }
-
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "replaceTrigger"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "PUT"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1alpha1/{+name}"; }
-                    }
-
-                    /// <summary>Initializes ReplaceTrigger parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/triggers/[^/]+$",
                             });
                     }
 
@@ -9122,35 +8160,35 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    public class CloudAuditLog : Google.Apis.Requests.IDirectResponseSchema
+    public class CloudAuditLogsSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The API version for this call such as "events.cloud.google.com/v1alpha1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; } 
 
-        /// <summary>The kind of resource, in this case "CloudAuditLog".</summary>
+        /// <summary>The kind of resource, in this case "CloudAuditLogsSource".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Metadata associated with this CloudAuditLog.</summary>
+        /// <summary>Metadata associated with this CloudAuditLogsSource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ObjectMeta Metadata { get; set; } 
 
-        /// <summary>Spec defines the desired state of the CloudAuditLog.</summary>
+        /// <summary>Spec defines the desired state of the CloudAuditLogsSource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
-        public virtual CloudAuditLogSpec Spec { get; set; } 
+        public virtual CloudAuditLogsSourceSpec Spec { get; set; } 
 
-        /// <summary>Status represents the current state of the CloudAuditLog. This data may be out of date.
+        /// <summary>Status represents the current state of the CloudAuditLogsSource. This data may be out of date.
         /// +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual CloudAuditLogStatus Status { get; set; } 
+        public virtual CloudAuditLogsSourceStatus Status { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The desired state of the CloudAuditLog.</summary>
-    public class CloudAuditLogSpec : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>The desired state of the CloudAuditLogsSource.</summary>
+    public class CloudAuditLogsSourceSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>CloudEventOverrides defines overrides to control the output format and modifications of the event
         /// sent to the sink. +optional</summary>
@@ -9162,29 +8200,14 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("methodName")]
         public virtual string MethodName { get; set; } 
 
-        /// <summary>Project is the ID of the Google Cloud Project that the PubSub Topic exists in. If omitted, defaults
-        /// to same as the cluster. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("project")]
-        public virtual string Project { get; set; } 
-
-        /// <summary>PubSubSecret is the credential to use to create Topic / PullSubscription resources. If omitted,
-        /// uses Secret.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pubsubSecret")]
-        public virtual SecretKeySelector PubsubSecret { get; set; } 
-
         /// <summary>Optional. The resource specification. This must match "methodName" in Cloud Audit Logs. Regex or
         /// Wildcards (*) are not supported. Example: "projects/my-project/jobs/foo".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; } 
 
-        /// <summary>Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name:
-        /// google-cloud-key Key: key.json +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
-        public virtual SecretKeySelector Secret { get; set; } 
-
-        /// <summary>Email address of the IAM service account associated with the source. The service account represents
-        /// the identity of the source, and determines what permissions the source has. If not provided, the source will
-        /// use the project's default service account. +optional</summary>
+        /// <summary>Optional. Email address of the IAM service account associated with the source. The service account
+        /// represents the identity of the source, and determines what permissions the source has. If not provided, the
+        /// source will use the project's default service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountName")]
         public virtual string ServiceAccountName { get; set; } 
 
@@ -9202,15 +8225,15 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>CloudAuditLogStatus represents the current state of a CloudAuditLog.</summary>
-    public class CloudAuditLogStatus : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>CloudAuditLogsSourceStatus represents the current state of a CloudAuditLogsSource.</summary>
+    public class CloudAuditLogsSourceStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Array of observed CloudAuditLogConditions, indicating the current state of the
-        /// CloudAuditLog.</summary>
+        /// <summary>Array of observed CloudAuditLogsSourceConditions, indicating the current state of the
+        /// CloudAuditLogsSource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
 
-        /// <summary>ObservedGeneration is the 'Generation' of the CloudAuditLog that was last processed by the
+        /// <summary>ObservedGeneration is the 'Generation' of the CloudAuditLogsSource that was last processed by the
         /// controller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
         public virtual System.Nullable<int> ObservedGeneration { get; set; } 
@@ -9231,6 +8254,109 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         /// key-value pair are set on the event as an attribute extension independently. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
         public virtual System.Collections.Generic.IDictionary<string,string> Extensions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class CloudPubSubSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The API version for this call such as "events.cloud.google.com/v1alpha1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; } 
+
+        /// <summary>The kind of resource, in this case "CloudPubSubSource".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Metadata associated with this CloudPubSubSource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ObjectMeta Metadata { get; set; } 
+
+        /// <summary>Spec defines the desired state of the CloudPubSubSource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual CloudPubSubSourceSpec Spec { get; set; } 
+
+        /// <summary>Status represents the current state of the CloudPubSubSource. This data may be out of date.
+        /// +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual CloudPubSubSourceStatus Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The desired state of the CloudPubSubSource.</summary>
+    public class CloudPubSubSourceSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>AckDeadline is the default maximum time after a subscriber receives a message before the subscriber
+        /// should acknowledge the message. Defaults to 30 seconds ('30s'). +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ackDeadline")]
+        public virtual string AckDeadline { get; set; } 
+
+        /// <summary>CloudEventOverrides defines overrides to control the output format and modifications of the event
+        /// sent to the sink. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ceOverrides")]
+        public virtual CloudEventOverrides CeOverrides { get; set; } 
+
+        /// <summary>Project is the ID of the Google Cloud Project that the CloudPubSubSource Topic exists in. If
+        /// omitted, defaults to same as the cluster. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; } 
+
+        /// <summary>CloudPubSubSourceSecret is the credential to use to create Topic / PullSubscription resources. If
+        /// omitted, uses Secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubSecret")]
+        public virtual SecretKeySelector PubsubSecret { get; set; } 
+
+        /// <summary>RetainAckedMessages defines whether to retain acknowledged messages. If true, acknowledged messages
+        /// will not be expunged until they fall out of the RetentionDuration window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retainAckedMessages")]
+        public virtual System.Nullable<bool> RetainAckedMessages { get; set; } 
+
+        /// <summary>RetentionDuration defines how long to retain messages in backlog, from the time of publish. If
+        /// RetainAckedMessages is true, this duration affects the retention of acknowledged messages, otherwise only
+        /// unacknowledged messages are retained. Cannot be longer than 7 days or shorter than 10 minutes. Defaults to 7
+        /// days ('7d'). +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionDuration")]
+        public virtual string RetentionDuration { get; set; } 
+
+        /// <summary>Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name:
+        /// google-cloud-key Key: key.json +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
+        public virtual SecretKeySelector Secret { get; set; } 
+
+        /// <summary>Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the
+        /// sink.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sink")]
+        public virtual Destination Sink { get; set; } 
+
+        /// <summary>Topic is the ID of the CloudPubSubSource Topic to Subscribe to. It must be in the form of the
+        /// unique identifier within the project, not the entire name. E.g. it must be 'laconia', not 'projects/my-
+        /// proj/topics/laconia'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>CloudPubSubSourceStatus represents the current state of a CloudPubSubSource.</summary>
+    public class CloudPubSubSourceStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Array of observed CloudPubSubSourceConditions, indicating the current state of the
+        /// CloudPubSubSource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
+
+        /// <summary>ObservedGeneration is the 'Generation' of the CloudPubSubSource that was last processed by the
+        /// controller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
+        public virtual System.Nullable<int> ObservedGeneration { get; set; } 
+
+        /// <summary>SinkURI is the current active sink URI that has been configured for the Source. +optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sinkUri")]
+        public virtual string SinkUri { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9875,93 +9001,6 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    public class EventType : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The API version for this call such as "eventing.knative.dev/v1alpha1".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
-
-        /// <summary>The kind of resource, in this case "EventType".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Metadata associated with this EventType.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual ObjectMeta Metadata { get; set; } 
-
-        /// <summary>Spec defines the desired state of the EventType.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
-        public virtual EventTypeSpec Spec { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class EventTypeImporter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The API version of the importer CRD.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
-
-        /// <summary>The kind of the importer CRD.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Parameters required to create an importer for the EventType.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<EventTypeParameter> Parameters { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class EventTypeParameter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Description of the parameter. E.g. "Google Cloud Project Id."</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
-
-        /// <summary>Name of the parameter. E.g. googleCloudProject.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class EventTypeSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Refers to the Broker that can provide the EventType.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("broker")]
-        public virtual string Broker { get; set; } 
-
-        /// <summary>Description is a string describing what the EventType is about. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
-
-        /// <summary>The importer that provides this EventType to the eventing mesh.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("importer")]
-        public virtual EventTypeImporter Importer { get; set; } 
-
-        /// <summary>Schema is a URI with the EventType schema. It may be a JSON schema, a protobuf schema, etc.
-        /// +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual string Schema { get; set; } 
-
-        /// <summary>Source is a valid URI. Refers to the CloudEvent source as it enters into the eventing
-        /// mesh.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; } 
-
-        /// <summary>Type is authoritative. This refers to the CloudEvent type as it enters into the eventing
-        /// mesh.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>ExecAction describes a "run in container" action.</summary>
     public class ExecAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9976,30 +9015,48 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an expression text. Example:
+    /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
+    /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
     ///
-    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
-    /// "size(request.user) > 0"</summary>
+    /// Example (Comparison):
+    ///
+    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
+    /// "document.summary.size() < 100"
+    ///
+    /// Example (Equality):
+    ///
+    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
+    /// "document.owner == request.auth.claims.email"
+    ///
+    /// Example (Logic):
+    ///
+    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
+    /// "document.type != 'private' && document.type != 'internal'"
+    ///
+    /// Example (Data Manipulation):
+    ///
+    /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
+    /// message received at ' + string(document.create_time)"
+    ///
+    /// The exact variables and functions that may be referenced within an expression are determined by the service that
+    /// evaluates it. See the service documentation for additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
-        /// e.g. when hovered over it in a UI.</summary>
+        /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
+        /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Textual representation of an expression in Common Expression Language syntax.
-        ///
-        /// The application context of the containing message determines which well-known feature set of CEL is
-        /// supported.</summary>
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; } 
 
-        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
-        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
@@ -10179,22 +9236,49 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>ListCloudAuditLogsResponse is a list of CloudAuditLog resources.</summary>
-    public class ListCloudAuditLogsResponse : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>ListCloudAuditLogsSourcesResponse is a list of CloudAuditLogsSource resources.</summary>
+    public class ListCloudAuditLogsSourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The API version for this call such as "events.cloud.google.com/v1alpha1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; } 
 
-        /// <summary>List of CloudAuditLogs.</summary>
+        /// <summary>List of CloudAuditLogsSources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<CloudAuditLog> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<CloudAuditLogsSource> Items { get; set; } 
 
-        /// <summary>The kind of this resource, in this case "CloudAuditLogList".</summary>
+        /// <summary>The kind of this resource, in this case "CloudAuditLogsSourceList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Metadata associated with this CloudAuditLog list.</summary>
+        /// <summary>Metadata associated with this CloudAuditLogsSource list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ListMeta Metadata { get; set; } 
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>ListCloudPubSubSourcesResponse is a list of CloudPubSubSource resources.</summary>
+    public class ListCloudPubSubSourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The API version for this call such as "events.cloud.google.com/v1alpha1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; } 
+
+        /// <summary>List of CloudPubSubSources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<CloudPubSubSource> Items { get; set; } 
+
+        /// <summary>The kind of this resource, in this case "CloudPubSubSourceList".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Metadata associated with this CloudPubSubSource list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ListMeta Metadata { get; set; } 
 
@@ -10260,33 +9344,6 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>ListEventTypesResponse is a list of EventType resources.</summary>
-    public class ListEventTypesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The API version for this call such as "eventing.knative.dev/v1alpha1".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
-
-        /// <summary>List of EventTypes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<EventType> Items { get; set; } 
-
-        /// <summary>The kind of this resource, in this case "EventTypeList".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Metadata associated with this EventType list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual ListMeta Metadata { get; set; } 
-
-        /// <summary>Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10325,33 +9382,6 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         /// <summary>SelfLink is a URL representing this object. Populated by the system. Read-only. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>ListPubSubsResponse is a list of PubSub resources.</summary>
-    public class ListPubSubsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The API version for this call such as "events.cloud.google.com/v1alpha1".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
-
-        /// <summary>List of PubSubs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<PubSub> Items { get; set; } 
-
-        /// <summary>The kind of this resource, in this case "PubSubList".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Metadata associated with this PubSub list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual ListMeta Metadata { get; set; } 
-
-        /// <summary>Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10869,114 +9899,6 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         /// info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
         public virtual System.Nullable<int> TimeoutSeconds { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class PubSub : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The API version for this call such as "events.cloud.google.com/v1alpha1".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; } 
-
-        /// <summary>The kind of resource, in this case "PubSub".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>Metadata associated with this PubSub.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual ObjectMeta Metadata { get; set; } 
-
-        /// <summary>Spec defines the desired state of the PubSub.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
-        public virtual PubSubSpec Spec { get; set; } 
-
-        /// <summary>Status represents the current state of the PubSub. This data may be out of date.
-        /// +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual PubSubStatus Status { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The desired state of the PubSub.</summary>
-    public class PubSubSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>AckDeadline is the default maximum time after a subscriber receives a message before the subscriber
-        /// should acknowledge the message. Defaults to 30 seconds ('30s'). +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ackDeadline")]
-        public virtual string AckDeadline { get; set; } 
-
-        /// <summary>CloudEventOverrides defines overrides to control the output format and modifications of the event
-        /// sent to the sink. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ceOverrides")]
-        public virtual CloudEventOverrides CeOverrides { get; set; } 
-
-        /// <summary>Project is the ID of the Google Cloud Project that the PubSub Topic exists in. If omitted, defaults
-        /// to same as the cluster. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("project")]
-        public virtual string Project { get; set; } 
-
-        /// <summary>PubSubSecret is the credential to use to create Topic / PullSubscription resources. If omitted,
-        /// uses Secret.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pubsubSecret")]
-        public virtual SecretKeySelector PubsubSecret { get; set; } 
-
-        /// <summary>RetainAckedMessages defines whether to retain acknowledged messages. If true, acknowledged messages
-        /// will not be expunged until they fall out of the RetentionDuration window.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("retainAckedMessages")]
-        public virtual System.Nullable<bool> RetainAckedMessages { get; set; } 
-
-        /// <summary>RetentionDuration defines how long to retain messages in backlog, from the time of publish. If
-        /// RetainAckedMessages is true, this duration affects the retention of acknowledged messages, otherwise only
-        /// unacknowledged messages are retained. Cannot be longer than 7 days or shorter than 10 minutes. Defaults to 7
-        /// days ('7d'). +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("retentionDuration")]
-        public virtual string RetentionDuration { get; set; } 
-
-        /// <summary>Secret is the credential to use to create the Scheduler Job. If not specified, defaults to: Name:
-        /// google-cloud-key Key: key.json +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
-        public virtual SecretKeySelector Secret { get; set; } 
-
-        /// <summary>Email address of the IAM service account associated with the source. The service account represents
-        /// the identity of the source, and determines what permissions the source has. If not provided, the source will
-        /// use the project's Compute Engine default service account. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountName")]
-        public virtual string ServiceAccountName { get; set; } 
-
-        /// <summary>Sink is a reference to an object that will resolve to a domain name or a URI directly to use as the
-        /// sink.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sink")]
-        public virtual Destination Sink { get; set; } 
-
-        /// <summary>Topic is the ID of the PubSub Topic to Subscribe to. It must be in the form of the unique
-        /// identifier within the project, not the entire name. E.g. it must be 'laconia', not 'projects/my-
-        /// proj/topics/laconia'.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
-        public virtual string Topic { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>PubSubStatus represents the current state of a PubSub.</summary>
-    public class PubSubStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Array of observed PubSubConditions, indicating the current state of the PubSub.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
-
-        /// <summary>ObservedGeneration is the 'Generation' of the PubSub that was last processed by the
-        /// controller.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
-        public virtual System.Nullable<int> ObservedGeneration { get; set; } 
-
-        /// <summary>SinkURI is the current active sink URI that has been configured for the Source. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sinkUri")]
-        public virtual string SinkUri { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11910,23 +10832,6 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    public class SubscriberSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Reference to an object that will be used to find the target endpoint, which should implement the
-        /// Addressable duck type. For example, this could be a reference to a Route resource or a Knative Service
-        /// resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ref")]
-        public virtual ObjectReference Ref__ { get; set; } 
-
-        /// <summary>Reference to a 'known' endpoint where no resolving is done. http://k8s-service for example
-        /// http://myexternalhandler.example.com/foo/bar</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>TCPSocketAction describes an action based on opening a socket</summary>
     public class TCPSocketAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12041,8 +10946,8 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual TriggerSpec Spec { get; set; } 
 
-        /// <summary>Status represents the current state of the Trigger. This data may be out of date.
-        /// +optional</summary>
+        /// <summary>Optional. Status represents the current state of the Trigger. This data may be out of
+        /// date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual TriggerStatus Status { get; set; } 
 
@@ -12053,19 +10958,19 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     /// <summary>TriggerCondition contains state information for an Trigger.</summary>
     public class TriggerCondition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Last time the condition transitioned from one status to another. +optional</summary>
+        /// <summary>Optional. Last time the condition transitioned from one status to another.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastTransitionTime")]
         public virtual object LastTransitionTime { get; set; } 
 
-        /// <summary>Human readable message indicating details about the current status. +optional</summary>
+        /// <summary>Optional. Human readable message indicating details about the current status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
 
-        /// <summary>One-word CamelCase reason for the condition's current status. +optional</summary>
+        /// <summary>Optional. One-word CamelCase reason for the condition's current status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
-        /// <summary>How to interpret failures of this condition, one of Error, Warning, Info +optional</summary>
+        /// <summary>Optional. How to interpret failures of this condition, one of Error, Warning, Info</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; } 
 
@@ -12083,53 +10988,15 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
 
     public class TriggerFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Run fully managed: not supported
+        /// <summary>Optional. Attributes filters events by exact match on event context attributes. Each key in the map
+        /// is compared with the equivalent key in the event context. An event passes the filter if all values are equal
+        /// to the specified values.
         ///
-        /// Cloud Run on GKE: supported
-        ///
-        /// Attributes filters events by exact match on event context attributes. Each key in the map is compared with
-        /// the equivalent key in the event context. An event passes the filter if all values are equal to the specified
-        /// values.
-        ///
-        /// Nested context attributes are not supported as keys. Only string values are supported.
-        ///
-        /// +optional</summary>
+        /// Nested context attributes are not supported as keys. Only string values are supported. Note that this field
+        /// is optional in knative. In fully managed, 'type' attribute is required due to different broker
+        /// implementation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
-
-        /// <summary>SourceAndType is DEPRECATED and replaced by the Attributes field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceAndType")]
-        public virtual TriggerFilterSourceAndType SourceAndType { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>TriggerFilterSourceAndType is DEPRECATED. Filters are now contained in the map of attributes in
-    /// TriggerFilter proto.</summary>
-    public class TriggerFilterSourceAndType : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Deprecated, importer specification will be available via GcpImporterDao.</summary>
-    public class TriggerImporterSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Arguments to use for the importer. These must match the parameters in the EventType's
-        /// importer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Arguments { get; set; } 
-
-        /// <summary>Name of the EventType that this importer provides.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventTypeName")]
-        public virtual string EventTypeName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12145,27 +11012,15 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("broker")]
         public virtual string Broker { get; set; } 
 
-        /// <summary>Filter is the filter to apply against all events from the Broker. Only events that pass this filter
-        /// will be sent to the Subscriber.</summary>
+        /// <summary>Optional. Filter is the filter to apply against all events from the Broker. Only events that pass
+        /// this filter will be sent to the Subscriber. Note that filter is optional in knative and is only required in
+        /// fully managed due to different broker implementation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual TriggerFilter Filter { get; set; } 
 
-        /// <summary>Deprecated, importer specification will be replaced by information stored in
-        /// GcpImporterDao.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("importers")]
-        public virtual System.Collections.Generic.IList<TriggerImporterSpec> Importers { get; set; } 
-
         /// <summary>Sink is the addressable that will receive events.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sink")]
-        public virtual Destination Sink { get; set; } 
-
-        /// <summary>Deprecated, sink will be represented by Destination. Subscriber is the addressable that receives
-        /// events from the Broker that pass the Filter. It is required.
-        ///
-        /// E.g. https://us-central1-myproject.cloudfunctions.net/myfunction or /namespaces/my-project/services/my-
-        /// service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriber")]
-        public virtual SubscriberSpec Subscriber { get; set; } 
+        public virtual Destination Subscriber { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

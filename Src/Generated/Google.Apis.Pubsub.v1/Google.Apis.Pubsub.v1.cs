@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200113 (1838)
+ *      <tr><th>API Rev<td>20200121 (1846)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -3059,6 +3059,40 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Dead lettering is done on a best effort basis. The same message might be dead lettered multiple times.
+    ///
+    /// If validation on any of the fields fails at subscription creation/updation, the create/update subscription
+    /// request will fail.</summary>
+    public class DeadLetterPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the topic to which dead letter messages should be published. Format is
+        /// `projects/{project}/topics/{topic}`.The Cloud Pub/Sub service account associated with the enclosing
+        /// subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must
+        /// have permission to Publish() to this topic.
+        ///
+        /// The operation will fail if the topic does not exist. Users should ensure that there is a subscription
+        /// attached to this topic since messages published to a topic with no subscriptions are lost.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deadLetterTopic")]
+        public virtual string DeadLetterTopic { get; set; } 
+
+        /// <summary>The maximum number of delivery attempts for any message. The value must be between 5 and 100.
+        ///
+        /// The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the
+        /// acknowledgement deadline has been exceeded for the message).
+        ///
+        /// A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically
+        /// extend ack_deadlines.
+        ///
+        /// This field will be honored on a best effort basis.
+        ///
+        /// If this parameter is 0, a default value of 5 is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDeliveryAttempts")]
+        public virtual System.Nullable<int> MaxDeliveryAttempts { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -3086,30 +3120,48 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an expression text. Example:
+    /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
+    /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
     ///
-    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
-    /// "size(request.user) > 0"</summary>
+    /// Example (Comparison):
+    ///
+    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
+    /// "document.summary.size() < 100"
+    ///
+    /// Example (Equality):
+    ///
+    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
+    /// "document.owner == request.auth.claims.email"
+    ///
+    /// Example (Logic):
+    ///
+    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
+    /// "document.type != 'private' && document.type != 'internal'"
+    ///
+    /// Example (Data Manipulation):
+    ///
+    /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
+    /// message received at ' + string(document.create_time)"
+    ///
+    /// The exact variables and functions that may be referenced within an expression are determined by the service that
+    /// evaluates it. See the service documentation for additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
-        /// e.g. when hovered over it in a UI.</summary>
+        /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
+        /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Textual representation of an expression in Common Expression Language syntax.
-        ///
-        /// The application context of the containing message determines which well-known feature set of CEL is
-        /// supported.</summary>
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; } 
 
-        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
-        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
@@ -3468,6 +3520,22 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ackId")]
         public virtual string AckId { get; set; } 
 
+        /// <summary>Delivery attempt counter is 1 + (the sum of number of NACKs and number of ack_deadline exceeds) for
+        /// this message.
+        ///
+        /// A NACK is any call to ModifyAckDeadline with a 0 deadline. An ack_deadline exceeds event is whenever a
+        /// message is not acknowledged within ack_deadline. Note that ack_deadline is initially
+        /// Subscription.ackDeadlineSeconds, but may get extended automatically by the client library.
+        ///
+        /// The first delivery of a given message will have this value as 1. The value is calculated at best effort and
+        /// is approximate.
+        ///
+        /// If a DeadLetterPolicy is not set on the subscription, this will be 0. EXPERIMENTAL: This feature is part of
+        /// a closed alpha release. This API might be changed in backward-incompatible ways and is not recommended for
+        /// production use. It is not subject to any SLA or deprecation policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryAttempt")]
+        public virtual System.Nullable<int> DeliveryAttempt { get; set; } 
+
         /// <summary>The message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual PubsubMessage Message { get; set; } 
@@ -3569,6 +3637,17 @@ namespace Google.Apis.Pubsub.v1.Data
         /// message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; } 
+
+        /// <summary>A policy that specifies the conditions for dead lettering messages in this subscription. If
+        /// dead_letter_policy is not set, dead lettering is disabled.
+        ///
+        /// The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e.,
+        /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge()
+        /// messages on this subscription. EXPERIMENTAL: This feature is part of a closed alpha release. This API might
+        /// be changed in backward-incompatible ways and is not recommended for production use. It is not subject to any
+        /// SLA or deprecation policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deadLetterPolicy")]
+        public virtual DeadLetterPolicy DeadLetterPolicy { get; set; } 
 
         /// <summary>A policy that specifies the conditions for this subscription's expiration. A subscription is
         /// considered active as long as any connected subscriber is successfully consuming messages from the

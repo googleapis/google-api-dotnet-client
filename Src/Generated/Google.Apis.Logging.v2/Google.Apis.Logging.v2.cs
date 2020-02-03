@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200113 (1838)
+ *      <tr><th>API Rev<td>20200125 (1850)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -7304,6 +7304,13 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("usePartitionedTables")]
         public virtual System.Nullable<bool> UsePartitionedTables { get; set; } 
 
+        /// <summary>Output only. True if new timestamp column based partitioning is in use, false if legacy ingestion-
+        /// time partitioning is in use. All new sinks will have this field set true and will use timestamp column based
+        /// partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks
+        /// using partitioned tables will have this field set to false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usesTimestampColumnPartitioning")]
+        public virtual System.Nullable<bool> UsesTimestampColumnPartitioning { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -7694,8 +7701,10 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>Optional. A unique identifier for the log entry. If you provide a value, then Logging considers
         /// other log entries in the same project, with the same timestamp, and with the same insert_id to be duplicates
-        /// which can be removed. If omitted in new log entries, then Logging assigns its own unique identifier. The
-        /// insert_id is also used to order log entries that have the same timestamp value.</summary>
+        /// which are removed in a single query result. However, there are no guarantees of de-duplication in the export
+        /// of logs.If the insert_id is omitted when writing a log entry, the Logging API  assigns its own unique
+        /// identifier in this field.In queries, the insert_id is also used to order log entries that have the same
+        /// log_name and timestamp values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertId")]
         public virtual string InsertId { get; set; } 
 

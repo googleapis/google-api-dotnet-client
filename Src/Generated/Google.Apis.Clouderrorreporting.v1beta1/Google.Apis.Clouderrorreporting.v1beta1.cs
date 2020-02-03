@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/error-reporting/'>Stackdriver Error Reporting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200116 (1841)
+ *      <tr><th>API Rev<td>20200122 (1847)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/error-reporting/'>
  *              https://cloud.google.com/error-reporting/</a>
@@ -1018,7 +1018,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
             /// <summary>Replace the data for the specified group. Fails if the group does not exist.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The group resource name. Example: projects/my-project-123/groups/my-groupid</param>
+            /// <param name="name">The group resource name. Example: projects/my-project-123/groups/CNSgkpnppqKCUw</param>
             public virtual UpdateRequest Update(Google.Apis.Clouderrorreporting.v1beta1.Data.ErrorGroup body, string name)
             {
                 return new UpdateRequest(service, body, name);
@@ -1037,7 +1037,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
 
-                /// <summary>The group resource name. Example: projects/my-project-123/groups/my-groupid</summary>
+                /// <summary>The group resource name. Example: projects/my-project-123/groups/CNSgkpnppqKCUw</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1228,7 +1228,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual string GroupId { get; set; } 
 
-        /// <summary>The group resource name. Example: projects/my-project-123/groups/my-groupid</summary>
+        /// <summary>The group resource name. Example: projects/my-project-123/groups/CNSgkpnppqKCUw</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

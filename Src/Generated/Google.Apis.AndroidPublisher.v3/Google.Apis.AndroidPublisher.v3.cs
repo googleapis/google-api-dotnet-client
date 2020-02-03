@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200115 (1840)
+ *      <tr><th>API Rev<td>20200126 (1851)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -8369,6 +8369,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expiryTimeMillis")]
         public virtual System.Nullable<long> ExpiryTimeMillis { get; set; } 
 
+        /// <summary>User account identifier in the third-party service. Only present if account linking happened as
+        /// part of the subscription purchase flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAccountId")]
+        public virtual string ExternalAccountId { get; set; } 
+
         /// <summary>The family name of the user when the subscription was purchased. Only present for purchases made
         /// with 'Subscribe with Google'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
@@ -8572,6 +8577,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("countryTargeting")]
         public virtual CountryTargeting CountryTargeting { get; set; } 
+
+        /// <summary>In-app update priority of the release. All newly added APKs in the release will be considered at
+        /// this priority. in_app_update_priority can take values between [0, 5]. 5 is the highest priority. Default
+        /// priority is 0. See https://developer.android.com/guide/playcore/in-app-updates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inAppUpdatePriority")]
+        public virtual System.Nullable<int> InAppUpdatePriority { get; set; } 
 
         /// <summary>The release name, used to identify this release in the Play Console UI. Not required to be unique.
         /// This is optional, if not set it will be generated from the version_name in the APKs.</summary>

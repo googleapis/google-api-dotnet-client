@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200109 (1834)
+ *      <tr><th>API Rev<td>20200121 (1846)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -2111,7 +2111,9 @@ namespace Google.Apis.Container.v1
 
                 }
 
-                /// <summary>Sets the locations for a specific cluster.</summary>
+                /// <summary>Sets the locations for a specific cluster. Deprecated. Use
+                /// [projects.locations.clusters.update](/kubernetes-
+                /// engine/docs/reference/rest/v1/projects.locations.clusters.update) instead.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name (project, location, cluster) of the cluster to set locations. Specified in the format
                 /// 'projects/locations/clusters'.</param>
@@ -2120,7 +2122,9 @@ namespace Google.Apis.Container.v1
                     return new SetLocationsRequest(service, body, name);
                 }
 
-                /// <summary>Sets the locations for a specific cluster.</summary>
+                /// <summary>Sets the locations for a specific cluster. Deprecated. Use
+                /// [projects.locations.clusters.update](/kubernetes-
+                /// engine/docs/reference/rest/v1/projects.locations.clusters.update) instead.</summary>
                 public class SetLocationsRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new SetLocations request.</summary>
@@ -5158,7 +5162,9 @@ namespace Google.Apis.Container.v1
 
                 }
 
-                /// <summary>Sets the locations for a specific cluster.</summary>
+                /// <summary>Sets the locations for a specific cluster. Deprecated. Use
+                /// [projects.locations.clusters.update](/kubernetes-
+                /// engine/docs/reference/rest/v1/projects.locations.clusters.update) instead.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the name
@@ -5173,7 +5179,9 @@ namespace Google.Apis.Container.v1
                     return new LocationsRequest(service, body, projectId, zone, clusterId);
                 }
 
-                /// <summary>Sets the locations for a specific cluster.</summary>
+                /// <summary>Sets the locations for a specific cluster. Deprecated. Use
+                /// [projects.locations.clusters.update](/kubernetes-
+                /// engine/docs/reference/rest/v1/projects.locations.clusters.update) instead.</summary>
                 public class LocationsRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Locations request.</summary>
@@ -8105,6 +8113,11 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupUrls")]
         public virtual System.Collections.Generic.IList<string> InstanceGroupUrls { get; set; } 
 
+        /// <summary>The list of Google Compute Engine [zones](/compute/docs/zones#available) in which the NodePool's
+        /// nodes should be located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; } 
+
         /// <summary>NodeManagement configuration for this NodePool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual NodeManagement Management { get; set; } 
@@ -8134,6 +8147,10 @@ namespace Google.Apis.Container.v1.Data
         /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; } 
+
+        /// <summary>Upgrade settings control disruption and speed of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
+        public virtual UpgradeSettings UpgradeSettings { get; set; } 
 
         /// <summary>The version of the Kubernetes of this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
@@ -9057,6 +9074,12 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; } 
 
+        /// <summary>The desired list of Google Compute Engine [zones](/compute/docs/zones#available) in which the node
+        /// pool's nodes should be located. Changing the locations for a node pool will result in nodes being either
+        /// created or removed from the node pool, depending on whether locations are being added or removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; } 
+
         /// <summary>The name (project, location, cluster, node pool) of the node pool to update. Specified in the
         /// format 'projects/locations/clusters/nodePools'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -9084,10 +9107,49 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
+        /// <summary>Upgrade settings control disruption and speed of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
+        public virtual UpgradeSettings UpgradeSettings { get; set; } 
+
         /// <summary>Required. Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
         /// in which the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>These upgrade settings control the level of parallelism and the level of disruption caused by an
+    /// upgrade.
+    ///
+    /// maxUnavailable controls the number of nodes that can be simultaneously unavailable.
+    ///
+    /// maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of
+    /// the upgrade to increase the number of available nodes.
+    ///
+    /// (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same
+    /// time).
+    ///
+    /// Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new,
+    /// upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of
+    /// PodDisruptionBudget, if it is configured.)
+    ///
+    /// Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade
+    /// process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old
+    /// (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes
+    /// available.</summary>
+    public class UpgradeSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum number of nodes that can be created beyond the current size of the node pool during the
+        /// upgrade process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSurge")]
+        public virtual System.Nullable<int> MaxSurge { get; set; } 
+
+        /// <summary>The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A
+        /// node is considered available if its status is Ready.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxUnavailable")]
+        public virtual System.Nullable<int> MaxUnavailable { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
