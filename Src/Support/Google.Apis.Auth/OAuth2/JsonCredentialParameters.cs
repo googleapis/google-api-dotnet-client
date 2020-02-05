@@ -57,7 +57,7 @@ namespace Google.Apis.Auth.OAuth2
         /// Project ID associated with this credential for the purposes
         /// of quota calculations and billing.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty("quota_project")]
+        [Newtonsoft.Json.JsonProperty("quota_project_id")]
         public string QuotaProject { get; set; }
 
         /// <summary>

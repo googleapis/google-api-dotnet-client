@@ -42,7 +42,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 ""client_secret"": ""CLIENT_SECRET"",
 ""refresh_token"": ""REFRESH_TOKEN"",
 ""project_id"": ""PROJECT_ID"",
-""quota_project"": ""QUOTA_PROJECT"",
+""quota_project_id"": ""QUOTA_PROJECT"",
 ""type"": ""authorized_user""}";
         private const string DummyServiceAccountCredentialFileContents = @"{
 ""private_key_id"": ""PRIVATE_KEY_ID"",
