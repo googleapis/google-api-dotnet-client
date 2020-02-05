@@ -30,25 +30,30 @@ namespace Google.Apis.Auth.OAuth2
         private static readonly IReadOnlyDictionary<string, IReadOnlyList<string>> s_emptyHeaders = 
             new ReadOnlyDictionary<string, IReadOnlyList<string>>(new Dictionary<string, IReadOnlyList<string>>());
 
-        internal AccessTokenWithHeaders(string token, string quotaProject = null)
+        /// <summary>
+        /// Constructs an <see cref="AccessTokenWithHeaders"/> based on a given token and headers.
+        /// </summary>
+        /// <param name="token">The token to build this instance for. May be null.</param>
+        /// <param name="headers">The collection of headers that may accompany the token. May be null.</param>
+        public AccessTokenWithHeaders(string token, IReadOnlyDictionary<string, IReadOnlyList<string>> headers)
         {
             AccessToken = token;
-            if (quotaProject == null)
-            {
-                Headers = s_emptyHeaders;
-            }
-            else
-            {
-                Headers = new ReadOnlyDictionary<string, IReadOnlyList<string>>(
+            Headers = headers ?? s_emptyHeaders;
+        }
+
+        internal AccessTokenWithHeaders(string token, string quotaProject = null)
+            : this (token,
+                  quotaProject == null ?
+                  null :
+                  new ReadOnlyDictionary<string, IReadOnlyList<string>>(
                     new Dictionary<string, IReadOnlyList<string>>
                     {
-                        { 
+                        {
                             QuotaProjectHeaderName,
                             new List<string> { quotaProject }.AsReadOnly()
                         }
-                    });
-            }
-        }
+                    }))
+        { }
 
         /// <summary>
         /// An access token that can be used to authorize a request.
