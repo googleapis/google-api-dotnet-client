@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>G Suite Alert Center API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200125 (1850)
+ *      <tr><th>API Rev<td>20200201 (1857)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/alertcenter/'>
  *              https://developers.google.com/admin-sdk/alertcenter/</a>
@@ -1670,6 +1670,21 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Alerts that get triggered on violations of Data Loss Prevention (DLP) rules.</summary>
+    public class DlpRuleViolation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details about the violated DLP rule.
+        ///
+        /// Admins can use the predefined detectors provided by Google Cloud DLP https://cloud.google.com/dlp/ when
+        /// setting up a DLP rule. Matched Cloud DLP detectors in this violation if any will be captured in the
+        /// MatchInfo.predefined_detector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleViolationInfo")]
+        public virtual RuleViolationInfo RuleViolationInfo { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Domain ID of Gmail phishing alerts.</summary>
     public class DomainId : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1866,6 +1881,21 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Proto that contains match information from the condition part of the rule.</summary>
+    public class MatchInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For matched detector predefined by Google.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predefinedDetector")]
+        public virtual PredefinedDetectorInfo PredefinedDetector { get; set; } 
+
+        /// <summary>For matched detector defined by administrators.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDefinedDetector")]
+        public virtual UserDefinedDetectorInfo UserDefinedDetector { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Settings for callback notifications. For more details see [G Suite Alert Notification](/admin-
     /// sdk/alertcenter/guides/notifications).</summary>
     public class Notification : Google.Apis.Requests.IDirectResponseSchema
@@ -1902,6 +1932,17 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Detector provided by Google.</summary>
+    public class PredefinedDetectorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name that uniquely identifies the detector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectorName")]
+        public virtual string DetectorName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Requests for one application that needs default SQL setup.</summary>
     public class RequestInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1916,6 +1957,86 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>Required. Number of requests sent for this application to set up default SQL instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberOfRequests")]
         public virtual System.Nullable<long> NumberOfRequests { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Proto that contains resource information.</summary>
+    public class ResourceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Drive file ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual string DocumentId { get; set; } 
+
+        /// <summary>Title of the resource, e.g. email subject, or document title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTitle")]
+        public virtual string ResourceTitle { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Proto that contains rule information.</summary>
+    public class RuleInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User provided name of the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Resource name that uniquely identifies the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Common alert information about violated rules that are configured by G Suite administrators.</summary>
+    public class RuleViolationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Source of the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual string DataSource { get; set; } 
+
+        /// <summary>List of matches that were found in the resource content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchInfo")]
+        public virtual System.Collections.Generic.IList<MatchInfo> MatchInfo { get; set; } 
+
+        /// <summary>Resource recipients.
+        ///
+        /// For Drive, they are grantees that the Drive file was shared with at the time of rule triggering. Valid
+        /// values include user emails, group emails, domains, or 'anyone' if the file was publicly accessible. If the
+        /// file was private the recipients list will be empty.
+        ///
+        /// For Gmail, they are emails of the users or groups that the Gmail message was sent to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipients")]
+        public virtual System.Collections.Generic.IList<string> Recipients { get; set; } 
+
+        /// <summary>Details of the resource which violated the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceInfo")]
+        public virtual ResourceInfo ResourceInfo { get; set; } 
+
+        /// <summary>Details of the violated rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleInfo")]
+        public virtual RuleInfo RuleInfo { get; set; } 
+
+        /// <summary>Actions suppressed due to other actions with higher priority.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suppressedActionTypes")]
+        public virtual System.Collections.Generic.IList<string> SuppressedActionTypes { get; set; } 
+
+        /// <summary>Trigger of the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
+        public virtual string Trigger { get; set; } 
+
+        /// <summary>Actions applied as a consequence of the rule being triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeredActionTypes")]
+        public virtual System.Collections.Generic.IList<string> TriggeredActionTypes { get; set; } 
+
+        /// <summary>Email of the user who caused the violation. Value could be empty if not applicable, for example, a
+        /// violation found by drive continuous scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeringUserEmail")]
+        public virtual string TriggeringUserEmail { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2049,6 +2170,21 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>Email address of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Detector defined by administrators.</summary>
+    public class UserDefinedDetectorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display name of the detector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Resource name that uniquely identifies the detector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

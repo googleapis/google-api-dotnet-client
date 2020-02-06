@@ -973,7 +973,7 @@
    }
   }
  }, 
- "revision": "20200125", 
+ "revision": "20200203", 
  "rootUrl": "https://cloudprivatecatalogproducer.googleapis.com/", 
  "schemas": {
   "GoogleCloudPrivatecatalogproducerV1beta1Association": {

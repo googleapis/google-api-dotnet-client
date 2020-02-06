@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200121 (1846)
+ *      <tr><th>API Rev<td>20200128 (1853)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -6778,6 +6778,10 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.</summary>
     public class AutoprovisioningNodePoolDefaults : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies the node management options for NAP created node-pools.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("management")]
+        public virtual NodeManagement Management { get; set; } 
+
         /// <summary>Scopes that are used by NAP when creating node pools. If oauth_scopes are specified,
         /// service_account should be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
@@ -6787,6 +6791,10 @@ namespace Google.Apis.Container.v1.Data
         /// specified, scopes should be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
+
+        /// <summary>Specifies the upgrade settings for NAP created node pools</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
+        public virtual UpgradeSettings UpgradeSettings { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8035,8 +8043,9 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sandboxConfig")]
         public virtual SandboxConfig SandboxConfig { get; set; } 
 
-        /// <summary>The Google Cloud Platform Service Account to be used by the node VMs. If no Service Account is
-        /// specified, the "default" service account is used.</summary>
+        /// <summary>The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of
+        /// the Service Account; otherwise, if no Service Account is specified, the "default" service account is
+        /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
 

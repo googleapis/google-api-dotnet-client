@@ -522,7 +522,7 @@
    }
   }
  }, 
- "revision": "20200125", 
+ "revision": "20200203", 
  "rootUrl": "https://cloudprivatecatalog.googleapis.com/", 
  "schemas": {
   "GoogleCloudPrivatecatalogV1beta1Catalog": {

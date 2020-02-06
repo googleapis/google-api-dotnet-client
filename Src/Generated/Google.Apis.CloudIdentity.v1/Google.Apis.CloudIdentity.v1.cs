@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200125 (1850)
+ *      <tr><th>API Rev<td>20200203 (1859)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -383,8 +383,8 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>Creates a Membership.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to create
-            /// Membership within. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the
+            /// <param name="parent">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to
+            /// create Membership within. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the
             /// Group.</param>
             public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1.Data.Membership body, string parent)
             {
@@ -404,9 +404,9 @@ namespace Google.Apis.CloudIdentity.v1
                 }
 
 
-                /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to create
-                /// Membership within. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the
-                /// Group.</summary>
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group
+                /// to create Membership within. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned
+                /// to the Group.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -454,8 +454,8 @@ namespace Google.Apis.CloudIdentity.v1
             }
 
             /// <summary>Deletes a Membership.</summary>
-            /// <param name="name">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Membership to be
-            /// deleted.
+            /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Membership
+            /// to be deleted.
             ///
             /// Format: `groups/{group_id}/memberships/{member_id}`, where `group_id` is the unique ID assigned to the Group to
             /// which Membership belongs to, and member_id is the unique ID assigned to the member.</param>
@@ -476,8 +476,8 @@ namespace Google.Apis.CloudIdentity.v1
                 }
 
 
-                /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Membership to
-                /// be deleted.
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// Membership to be deleted.
                 ///
                 /// Format: `groups/{group_id}/memberships/{member_id}`, where `group_id` is the unique ID assigned to
                 /// the Group to which Membership belongs to, and member_id is the unique ID assigned to the
@@ -523,8 +523,8 @@ namespace Google.Apis.CloudIdentity.v1
             }
 
             /// <summary>Retrieves a Membership.</summary>
-            /// <param name="name">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Membership to be
-            /// retrieved.
+            /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Membership
+            /// to be retrieved.
             ///
             /// Format: `groups/{group_id}/memberships/{member_id}`, where `group_id` is the unique id assigned to the Group to
             /// which Membership belongs to, and `member_id` is the unique ID assigned to the member.</param>
@@ -545,8 +545,8 @@ namespace Google.Apis.CloudIdentity.v1
                 }
 
 
-                /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Membership to
-                /// be retrieved.
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// Membership to be retrieved.
                 ///
                 /// Format: `groups/{group_id}/memberships/{member_id}`, where `group_id` is the unique id assigned to
                 /// the Group to which Membership belongs to, and `member_id` is the unique ID assigned to the
@@ -592,8 +592,8 @@ namespace Google.Apis.CloudIdentity.v1
             }
 
             /// <summary>Lists Memberships within a Group.</summary>
-            /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to list
-            /// Memberships within.
+            /// <param name="parent">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to
+            /// list Memberships within.
             ///
             /// Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group.</param>
             public virtual ListRequest List(string parent)
@@ -613,8 +613,8 @@ namespace Google.Apis.CloudIdentity.v1
                 }
 
 
-                /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to list
-                /// Memberships within.
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group
+                /// to list Memberships within.
                 ///
                 /// Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -710,8 +710,8 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>Looks up [resource name](https://cloud.google.com/apis/design/resource_names) of a Membership
             /// within a Group by member's EntityKey.</summary>
-            /// <param name="parent">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to lookup
-            /// Membership within.
+            /// <param name="parent">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to
+            /// lookup Membership within.
             ///
             /// Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group.</param>
             public virtual LookupRequest Lookup(string parent)
@@ -732,8 +732,8 @@ namespace Google.Apis.CloudIdentity.v1
                 }
 
 
-                /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group to lookup
-                /// Membership within.
+                /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group
+                /// to lookup Membership within.
                 ///
                 /// Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -863,8 +863,8 @@ namespace Google.Apis.CloudIdentity.v1
         }
 
         /// <summary>Deletes a Group.</summary>
-        /// <param name="name">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in the format:
-        /// `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group.</param>
+        /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in
+        /// the format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group.</param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(service, name);
@@ -882,8 +882,8 @@ namespace Google.Apis.CloudIdentity.v1
             }
 
 
-            /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in the
-            /// format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group.</summary>
+            /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in
+            /// the format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -925,8 +925,8 @@ namespace Google.Apis.CloudIdentity.v1
         }
 
         /// <summary>Retrieves a Group.</summary>
-        /// <param name="name">[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in the format:
-        /// `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group.</param>
+        /// <param name="name">Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in
+        /// the format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -944,8 +944,8 @@ namespace Google.Apis.CloudIdentity.v1
             }
 
 
-            /// <summary>[Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in the
-            /// format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group.</summary>
+            /// <summary>Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Group in
+            /// the format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1012,7 +1012,7 @@ namespace Google.Apis.CloudIdentity.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>`Required`. May be made Optional in the future. Customer ID to list all groups from.</summary>
+            /// <summary>Required. Customer ID to list all groups from.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
 
@@ -1204,7 +1204,7 @@ namespace Google.Apis.CloudIdentity.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Editable fields: `display_name`, `description`</summary>
+            /// <summary>Required. Editable fields: `display_name`, `description`</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -1286,9 +1286,9 @@ namespace Google.Apis.CloudIdentity.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>`Required`. Query string for performing search on groups. Users can search on parent and label
-            /// attributes of groups. EXACT match ('==') is supported on parent, and CONTAINS match ('in') is supported
-            /// on labels.</summary>
+            /// <summary>Required. `Required`. Query string for performing search on groups. Users can search on parent
+            /// and label attributes of groups. EXACT match ('==') is supported on parent, and CONTAINS match ('in') is
+            /// supported on labels.</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
@@ -1392,6 +1392,350 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// `identity_source_id`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Resource representing the Android specific attributes of a Device.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1AndroidAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Baseband version of Android device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basebandVersion")]
+        public virtual string BasebandVersion { get; set; } 
+
+        /// <summary>Device bootloader version. Example: 0.6.7.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootloaderVersion")]
+        public virtual string BootloaderVersion { get; set; } 
+
+        /// <summary>Build number of Android device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildNumber")]
+        public virtual string BuildNumber { get; set; } 
+
+        /// <summary>Whether developer options is enabled on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledDeveloperOptions")]
+        public virtual System.Nullable<bool> EnabledDeveloperOptions { get; set; } 
+
+        /// <summary>Whether applications from unknown sources can be installed on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledUnknownSources")]
+        public virtual System.Nullable<bool> EnabledUnknownSources { get; set; } 
+
+        /// <summary>Whether adb (USB debugging) is enabled on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledUsbDebugging")]
+        public virtual System.Nullable<bool> EnabledUsbDebugging { get; set; } 
+
+        /// <summary>Device encryption state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionState")]
+        public virtual string EncryptionState { get; set; } 
+
+        /// <summary>Device hardware. Example: Sprout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hardware")]
+        public virtual string Hardware { get; set; } 
+
+        /// <summary>Kernel version of Android device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelVersion")]
+        public virtual string KernelVersion { get; set; } 
+
+        /// <summary>Domain name for Google accounts on device. Type for other accounts on device. Will only be
+        /// populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed
+        /// in to the device policy app if that account's domain has only one account. Examples: "com.example",
+        /// "xyz.com".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherAccounts")]
+        public virtual System.Collections.Generic.IList<string> OtherAccounts { get; set; } 
+
+        /// <summary>Whether this account is on an owner/primary profile. For phones, only true for owner profiles.
+        /// Android 4+ devices can have secondary or restricted user profiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerProfileAccount")]
+        public virtual System.Nullable<bool> OwnerProfileAccount { get; set; } 
+
+        /// <summary>Ownership privileges on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownershipPrivilege")]
+        public virtual string OwnershipPrivilege { get; set; } 
+
+        /// <summary>OS security patch update time on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPatchTime")]
+        public virtual object SecurityPatchTime { get; set; } 
+
+        /// <summary>Whether device supports Android work profiles. If false, this service will not block access to corp
+        /// data even if an administrator turns on the "Enforce Work Profile" policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsWorkProfile")]
+        public virtual System.Nullable<bool> SupportsWorkProfile { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for approving the device to access user data.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1ApproveDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant DeviceUser object for the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
+        public virtual GoogleAppsCloudidentityDevicesV1alpha1DeviceUser DeviceUser { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for blocking the device from accessing user data.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1BlockDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant DeviceUser object for the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
+        public virtual GoogleAppsCloudidentityDevicesV1alpha1DeviceUser DeviceUser { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for cancelling an unfinished device wipe.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1CancelWipeDeviceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant Device object for the action. Note that asset tags will not be returned in the device
+        /// object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual GoogleAppsCloudidentityDevicesV1alpha1Device Device { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for cancelling an unfinished user account wipe.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1CancelWipeDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant DeviceUser object for the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
+        public virtual GoogleAppsCloudidentityDevicesV1alpha1DeviceUser DeviceUser { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Resource representing a Device.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1Device : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Attributes specific to Android devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidSpecificAttributes")]
+        public virtual GoogleAppsCloudidentityDevicesV1alpha1AndroidAttributes AndroidSpecificAttributes { get; set; } 
+
+        /// <summary>Asset tag of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetTag")]
+        public virtual string AssetTag { get; set; } 
+
+        /// <summary>Output only. Device brand. Example: Samsung.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; } 
+
+        /// <summary>Output only. Represents whether the Device is compromised.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compromisedState")]
+        public virtual string CompromisedState { get; set; } 
+
+        /// <summary>Output only. When the Company-Owned device was imported. This field is empty for BYOD
+        /// devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Output only. Type of device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
+        public virtual string DeviceType { get; set; } 
+
+        /// <summary>Output only. IMEI number of device if GSM device; empty otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imei")]
+        public virtual string Imei { get; set; } 
+
+        /// <summary>Most recent time when device synced with this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSyncTime")]
+        public virtual object LastSyncTime { get; set; } 
+
+        /// <summary>Output only. Management state of the device</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementState")]
+        public virtual string ManagementState { get; set; } 
+
+        /// <summary>Output only. Device manufacturer. Example: Motorola.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
+        public virtual string Manufacturer { get; set; } 
+
+        /// <summary>Output only. MEID number of device if CDMA device; empty otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meid")]
+        public virtual string Meid { get; set; } 
+
+        /// <summary>Output only. Model name of device. Example: Pixel 3.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; } 
+
+        /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+        /// format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Mobile or network operator of device, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkOperator")]
+        public virtual string NetworkOperator { get; set; } 
+
+        /// <summary>Output only. OS version of the device. Example: Android 8.1.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; } 
+
+        /// <summary>Whether the device is owned by the company or an individual</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerType")]
+        public virtual string OwnerType { get; set; } 
+
+        /// <summary>Output only. OS release version. Example: 6.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseVersion")]
+        public virtual string ReleaseVersion { get; set; } 
+
+        /// <summary>Serial Number of device. Example: HT82V1A01076.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; } 
+
+        /// <summary>WiFi MAC addresses of device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiMacAddresses")]
+        public virtual System.Collections.Generic.IList<string> WifiMacAddresses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Resource representing a user's use of a Device</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1DeviceUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Compromised State of the DeviceUser object</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compromisedState")]
+        public virtual string CompromisedState { get; set; } 
+
+        /// <summary>Output only. Most recent time when user registered with this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstSyncTime")]
+        public virtual object FirstSyncTime { get; set; } 
+
+        /// <summary>Output only. Default locale used on device, in IETF BCP-47 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Output only. Last time when user synced with policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSyncTime")]
+        public virtual object LastSyncTime { get; set; } 
+
+        /// <summary>Output only. Management state of the user on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementState")]
+        public virtual string ManagementState { get; set; } 
+
+        /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the DeviceUser
+        /// in format: `devices/{device_id}/deviceUsers/{user_id}`, where user_id is the ID of the user associated with
+        /// the user session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Password state of the DeviceUser object</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordState")]
+        public virtual string PasswordState { get; set; } 
+
+        /// <summary>Output only. User agent on the device for this specific user</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
+        public virtual string UserAgent { get; set; } 
+
+        /// <summary>Email address of the user registered on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
+        public virtual string UserEmail { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Next ID to use: 7</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1EndpointApp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the app displayed to the user</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// EndpointApp in format: `devices/{device}/deviceUsers/{device_user}/endpointApps/{endpoint_app}`, where
+        /// client_app_id is the ID of the app associated with the Device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Full package name of the installed app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; } 
+
+        /// <summary>Output only. Names of all permissions granted to the installed app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+
+        /// <summary>Output only. Version code of the installed app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
+        public virtual System.Nullable<int> VersionCode { get; set; } 
+
+        /// <summary>Output only. Version name of the installed app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
+        public virtual string VersionName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message that is returned in LRO result of ListDeviceUsers Operation.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1ListDeviceUsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Devices meeting the list restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUsers")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCloudidentityDevicesV1alpha1DeviceUser> DeviceUsers { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message that is returned in LRO result of ListDevices Operation.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1ListDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Devices meeting the list restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devices")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCloudidentityDevicesV1alpha1Device> Devices { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing all apps on the device.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1ListEndpointAppsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of matching EndpointApps found as a result of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointApps")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCloudidentityDevicesV1alpha1EndpointApp> EndpointApps { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for wiping all data on the device.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1WipeDeviceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant Device object for the action. Note that asset tags will not be returned in the device
+        /// object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual GoogleAppsCloudidentityDevicesV1alpha1Device Device { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for wiping the user's account from the device.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1WipeDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant DeviceUser object for the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
+        public virtual GoogleAppsCloudidentityDevicesV1alpha1DeviceUser DeviceUser { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

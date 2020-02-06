@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>Cloud Security Command Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200125 (1850)
+ *      <tr><th>API Rev<td>20200131 (1856)
  *      <tr><th>API Docs
  *          <td><a href='https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview'>
  *              https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview</a>
@@ -2910,6 +2910,247 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The state of an asset discovery run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud Security Command Center's (Cloud SCC) representation of a Google Cloud Platform (GCP) resource.
+    ///
+    /// The Asset is a Cloud SCC resource that captures information about a single GCP resource. All modifications to an
+    /// Asset are only within the context of Cloud SCC and don't affect the referenced GCP resource.</summary>
+    public class GoogleCloudSecuritycenterV1p1beta1Asset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which the asset was created in Cloud SCC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>IAM Policy information associated with the GCP resource described by the Cloud SCC asset. This
+        /// information is managed and defined by the GCP resource and cannot be modified by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamPolicy")]
+        public virtual GoogleCloudSecuritycenterV1p1beta1IamPolicy IamPolicy { get; set; } 
+
+        /// <summary>The relative resource name of this asset. See:
+        /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+        /// "organizations/{organization_id}/assets/{asset_id}".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Resource managed properties. These properties are managed and defined by the GCP resource and
+        /// cannot be modified by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceProperties")]
+        public virtual System.Collections.Generic.IDictionary<string,object> ResourceProperties { get; set; } 
+
+        /// <summary>Cloud SCC managed properties. These properties are managed by Cloud SCC and cannot be modified by
+        /// the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityCenterProperties")]
+        public virtual GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties SecurityCenterProperties { get; set; } 
+
+        /// <summary>User specified security marks. These marks are entirely managed by the user and come from the
+        /// SecurityMarks resource that belongs to the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityMarks")]
+        public virtual GoogleCloudSecuritycenterV1p1beta1SecurityMarks SecurityMarks { get; set; } 
+
+        /// <summary>The time at which the asset was last updated, added, or deleted in Cloud SCC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud Security Command Center (Cloud SCC) finding.
+    ///
+    /// A finding is a record of assessment data (security, risk, health or privacy) ingested into Cloud SCC for
+    /// presentation, notification, analysis, policy testing, and enforcement. For example, an XSS vulnerability in an
+    /// App Engine application is a finding.</summary>
+    public class GoogleCloudSecuritycenterV1p1beta1Finding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The additional taxonomy group within findings from a given source. This field is immutable after
+        /// creation time. Example: "XSS_FLASH_INJECTION"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; } 
+
+        /// <summary>The time at which the finding was created in Cloud SCC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>The time at which the event took place. For example, if the finding represents an open firewall it
+        /// would capture the time the detector believes the firewall became open. The accuracy is determined by the
+        /// detector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual object EventTime { get; set; } 
+
+        /// <summary>The URI that, if available, points to a web page outside of Cloud SCC where additional information
+        /// about the finding can be found. This field is guaranteed to be either empty or a well formed URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
+        public virtual string ExternalUri { get; set; } 
+
+        /// <summary>The relative resource name of this finding. See:
+        /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
+        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The relative resource name of the source the finding belongs to. See:
+        /// https://cloud.google.com/apis/design/resource_names#relative_resource_name This field is immutable after
+        /// creation time. For example: "organizations/{organization_id}/sources/{source_id}"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
+        /// <summary>For findings on Google Cloud Platform (GCP) resources, the full resource name of the GCP resource
+        /// this finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the
+        /// finding is for a non-GCP resource, the resourceName can be a customer or partner defined string. This field
+        /// is immutable after creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
+
+        /// <summary>Output only. User specified security marks. These marks are entirely managed by the user and come
+        /// from the SecurityMarks resource that belongs to the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityMarks")]
+        public virtual GoogleCloudSecuritycenterV1p1beta1SecurityMarks SecurityMarks { get; set; } 
+
+        /// <summary>Source specific properties. These properties are managed by the source that writes the finding. The
+        /// key names in the source_properties map must be between 1 and 255 characters, and must start with a letter
+        /// and contain alphanumeric characters or underscores only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceProperties")]
+        public virtual System.Collections.Generic.IDictionary<string,object> SourceProperties { get; set; } 
+
+        /// <summary>The state of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>IAM Policy information associated with the GCP resource described by the Cloud SCC asset. This
+    /// information is managed and defined by the GCP resource and cannot be modified by the user.</summary>
+    public class GoogleCloudSecuritycenterV1p1beta1IamPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The JSON representation of the Policy associated with the asset. See
+        /// https://cloud.google.com/iam/reference/rest/v1p1beta1/Policy for format details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyBlob")]
+        public virtual string PolicyBlob { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud SCC's Notification</summary>
+    public class GoogleCloudSecuritycenterV1p1beta1NotificationMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If it's a Finding based notification config, this field will be populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finding")]
+        public virtual GoogleCloudSecuritycenterV1p1beta1Finding Finding { get; set; } 
+
+        /// <summary>Name of the notification config that generated current notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationConfigName")]
+        public virtual string NotificationConfigName { get; set; } 
+
+        /// <summary>If it's an asset based notification config, this field will be populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temporalAsset")]
+        public virtual GoogleCloudSecuritycenterV1p1beta1TemporalAsset TemporalAsset { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response of asset discovery run</summary>
+    public class GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The duration between asset discovery run start and end</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; } 
+
+        /// <summary>The state of an asset discovery run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud SCC managed properties. These properties are managed by Cloud SCC and cannot be modified by the
+    /// user.</summary>
+    public class GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user defined display name for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceDisplayName")]
+        public virtual string ResourceDisplayName { get; set; } 
+
+        /// <summary>The full resource name of the GCP resource this asset represents. This field is immutable after
+        /// create time. See: https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
+
+        /// <summary>Owners of the Google Cloud resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceOwners")]
+        public virtual System.Collections.Generic.IList<string> ResourceOwners { get; set; } 
+
+        /// <summary>The full resource name of the immediate parent of the resource. See:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceParent")]
+        public virtual string ResourceParent { get; set; } 
+
+        /// <summary>The user defined display name for the parent of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceParentDisplayName")]
+        public virtual string ResourceParentDisplayName { get; set; } 
+
+        /// <summary>The full resource name of the project the resource belongs to. See:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceProject")]
+        public virtual string ResourceProject { get; set; } 
+
+        /// <summary>The user defined display name for the project of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceProjectDisplayName")]
+        public virtual string ResourceProjectDisplayName { get; set; } 
+
+        /// <summary>The type of the GCP resource. Examples include: APPLICATION, PROJECT, and ORGANIZATION. This is a
+        /// case insensitive field defined by Cloud SCC and/or the producer of the resource and is immutable after
+        /// create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>User specified security marks that are attached to the parent Cloud Security Command Center (Cloud SCC)
+    /// resource. Security marks are scoped within a Cloud SCC organization -- they can be modified and viewed by all
+    /// users who have proper permissions on the organization.</summary>
+    public class GoogleCloudSecuritycenterV1p1beta1SecurityMarks : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Mutable user specified security marks belonging to the parent resource. Constraints are as follows:
+        ///
+        /// * Keys and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) *
+        /// Keys must be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed,
+        /// remaining characters must be between 1 - 4096 characters (inclusive)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marks")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Marks { get; set; } 
+
+        /// <summary>The relative resource name of the SecurityMarks. See:
+        /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples:
+        /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Wrapper over asset object that also captures the state change for the asset e.g. if it was a newly
+    /// created asset vs updated or deleted asset.</summary>
+    public class GoogleCloudSecuritycenterV1p1beta1TemporalAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Asset data that includes attributes, properties and marks about the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual GoogleCloudSecuritycenterV1p1beta1Asset Asset { get; set; } 
+
+        /// <summary>Represents if the asset was created/updated/deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
+        public virtual string ChangeType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

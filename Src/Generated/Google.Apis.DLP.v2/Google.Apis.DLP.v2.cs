@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200125 (1850)
+ *      <tr><th>API Rev<td>20200203 (1859)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -8967,7 +8967,9 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Row key for identifying a record in BigQuery table.</summary>
     public class GooglePrivacyDlpV2BigQueryKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Absolute number of the row from the beginning of the table at the time of scanning.</summary>
+        /// <summary>Row number inferred at the time the table was scanned. This value is nondeterministic, cannot be
+        /// queried, and may be null for inspection jobs. To locate findings within a table, specify
+        /// `inspect_job.storage_config.big_query_options.identifying_fields` in `CreateDlpJobRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowNumber")]
         public virtual System.Nullable<long> RowNumber { get; set; } 
 
@@ -8987,8 +8989,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludedFields")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> ExcludedFields { get; set; } 
 
-        /// <summary>References to fields uniquely identifying rows within the table. Nested fields in the format, like
-        /// `person.birthdate.year`, are allowed.</summary>
+        /// <summary>Table fields that may uniquely identify a row within the table. When
+        /// `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available
+        /// in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields
+        /// such as `person.birthdate.year` are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identifyingFields")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> IdentifyingFields { get; set; } 
 
@@ -9414,7 +9418,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Findings container location data.</summary>
+    /// <summary>Precise location of the finding within a document, record, image, or metadata container.</summary>
     public class GooglePrivacyDlpV2ContentLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Name of the container where the finding is located. The top level name is the source file name or
@@ -11663,8 +11667,8 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreKey")]
         public virtual GooglePrivacyDlpV2DatastoreKey DatastoreKey { get; set; } 
 
-        /// <summary>Values of identifying columns in the given row. Order of values matches the order of field
-        /// identifiers specified in the scanning request.</summary>
+        /// <summary>Values of identifying columns in the given row. Order of values matches the order of
+        /// `identifying_fields` specified in the scanning request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idValues")]
         public virtual System.Collections.Generic.IList<string> IdValues { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200120 (1845)
+ *      <tr><th>API Rev<td>20200128 (1853)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -377,7 +377,8 @@ namespace Google.Apis.CloudTrace.v1
             }
 
 
-            /// <summary>Gets a single trace by its ID.</summary>
+            /// <summary>Gets a single trace by its ID. In this case, getting for traces is considered an active
+            /// developer method, even though it is technically a read-only method.</summary>
             /// <param name="projectId">Required. ID of the Cloud project where the trace data is stored.</param>
             /// <param
             /// name="traceId">Required. ID of the trace to return.</param>
@@ -386,7 +387,8 @@ namespace Google.Apis.CloudTrace.v1
                 return new GetRequest(service, projectId, traceId);
             }
 
-            /// <summary>Gets a single trace by its ID.</summary>
+            /// <summary>Gets a single trace by its ID. In this case, getting for traces is considered an active
+            /// developer method, even though it is technically a read-only method.</summary>
             public class GetRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v1.Data.Trace>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -453,14 +455,18 @@ namespace Google.Apis.CloudTrace.v1
 
             }
 
-            /// <summary>Returns of a list of traces that match the specified filter conditions.</summary>
+            /// <summary>Returns of a list of traces that match the specified filter conditions. In this case, listing
+            /// for traces is considered an active developer method, even though it is technically a read-only
+            /// method.</summary>
             /// <param name="projectId">Required. ID of the Cloud project where the trace data is stored.</param>
             public virtual ListRequest List(string projectId)
             {
                 return new ListRequest(service, projectId);
             }
 
-            /// <summary>Returns of a list of traces that match the specified filter conditions.</summary>
+            /// <summary>Returns of a list of traces that match the specified filter conditions. In this case, listing
+            /// for traces is considered an active developer method, even though it is technically a read-only
+            /// method.</summary>
             public class ListRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v1.Data.ListTracesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -652,7 +658,8 @@ namespace Google.Apis.CloudTrace.v1
         /// <summary>Sends new traces to Stackdriver Trace or updates existing traces. If the ID of a trace that you
         /// send matches that of an existing trace, any fields in the existing trace and its spans are overwritten by
         /// the provided values, and any new fields provided are merged with the existing trace data. If the ID does not
-        /// match, a new trace is created.</summary>
+        /// match, a new trace is created. In this case, writing traces is not consider an active developer method since
+        /// traces are machine generated.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. ID of the Cloud project where the trace data is stored.</param>
         public virtual PatchTracesRequest PatchTraces(Google.Apis.CloudTrace.v1.Data.Traces body, string projectId)
@@ -663,7 +670,8 @@ namespace Google.Apis.CloudTrace.v1
         /// <summary>Sends new traces to Stackdriver Trace or updates existing traces. If the ID of a trace that you
         /// send matches that of an existing trace, any fields in the existing trace and its spans are overwritten by
         /// the provided values, and any new fields provided are merged with the existing trace data. If the ID does not
-        /// match, a new trace is created.</summary>
+        /// match, a new trace is created. In this case, writing traces is not consider an active developer method since
+        /// traces are machine generated.</summary>
         public class PatchTracesRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v1.Data.Empty>
         {
             /// <summary>Constructs a new PatchTraces request.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200125 (1850)
+ *      <tr><th>API Rev<td>20200203 (1859)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -383,7 +383,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             /// <summary>Creates a `Membership`.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The parent `Group` resource under which to create the `Membership`.
+            /// <param name="parent">Required. The parent `Group` resource under which to create the `Membership`.
             ///
             /// Must be of the form `groups/{group_id}`.</param>
             public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.Membership body, string parent)
@@ -404,7 +404,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 }
 
 
-                /// <summary>The parent `Group` resource under which to create the `Membership`.
+                /// <summary>Required. The parent `Group` resource under which to create the `Membership`.
                 ///
                 /// Must be of the form `groups/{group_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -454,8 +454,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
             /// <summary>Deletes a `Membership`.</summary>
-            /// <param name="name">The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership` to
-            /// delete.
+            /// <param name="name">Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// `Membership` to delete.
             ///
             /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</param>
             public virtual DeleteRequest Delete(string name)
@@ -475,7 +475,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 }
 
 
-                /// <summary>The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// <summary>Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
                 /// `Membership` to delete.
                 ///
                 /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
@@ -520,8 +520,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
             /// <summary>Retrieves a `Membership`.</summary>
-            /// <param name="name">The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership` to
-            /// retrieve.
+            /// <param name="name">Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// `Membership` to retrieve.
             ///
             /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</param>
             public virtual GetRequest Get(string name)
@@ -541,7 +541,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 }
 
 
-                /// <summary>The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// <summary>Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
                 /// `Membership` to retrieve.
                 ///
                 /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
@@ -586,7 +586,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
             /// <summary>Lists the `Membership`s within a `Group`.</summary>
-            /// <param name="parent">The parent `Group` resource under which to lookup the `Membership` name.
+            /// <param name="parent">Required. The parent `Group` resource under which to lookup the `Membership` name.
             ///
             /// Must be of the form `groups/{group_id}`.</param>
             public virtual ListRequest List(string parent)
@@ -606,7 +606,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 }
 
 
-                /// <summary>The parent `Group` resource under which to lookup the `Membership` name.
+                /// <summary>Required. The parent `Group` resource under which to lookup the `Membership` name.
                 ///
                 /// Must be of the form `groups/{group_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -711,7 +711,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             /// <summary>Looks up the [resource name](https://cloud.google.com/apis/design/resource_names) of a
             /// `Membership` by its `EntityKey`.</summary>
-            /// <param name="parent">The parent `Group` resource under which to lookup the `Membership` name.
+            /// <param name="parent">Required. The parent `Group` resource under which to lookup the `Membership` name.
             ///
             /// Must be of the form `groups/{group_id}`.</param>
             public virtual LookupRequest Lookup(string parent)
@@ -732,7 +732,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 }
 
 
-                /// <summary>The parent `Group` resource under which to lookup the `Membership` name.
+                /// <summary>Required. The parent `Group` resource under which to lookup the `Membership` name.
                 ///
                 /// Must be of the form `groups/{group_id}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -740,7 +740,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
                 /// <summary>The ID of the entity.
                 ///
-                /// For Google-managed entities, the `id` must be the email address of a group or user.
+                /// For Google-managed entities, the `id` must be the email address of an existing group or user.
                 ///
                 /// For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's
                 /// requirements.
@@ -813,6 +813,80 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 }
 
             }
+
+            /// <summary>Modifies the `MembershipRole`s of a `Membership`.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// `Membership` whose roles are to be modified.
+            ///
+            /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</param>
+            public virtual ModifyMembershipRolesRequest ModifyMembershipRoles(Google.Apis.CloudIdentity.v1beta1.Data.ModifyMembershipRolesRequest body, string name)
+            {
+                return new ModifyMembershipRolesRequest(service, body, name);
+            }
+
+            /// <summary>Modifies the `MembershipRole`s of a `Membership`.</summary>
+            public class ModifyMembershipRolesRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.ModifyMembershipRolesResponse>
+            {
+                /// <summary>Constructs a new ModifyMembershipRoles request.</summary>
+                public ModifyMembershipRolesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.ModifyMembershipRolesRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+                /// `Membership` whose roles are to be modified.
+                ///
+                /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudIdentity.v1beta1.Data.ModifyMembershipRolesRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "modifyMembershipRoles"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+name}:modifyMembershipRoles"; }
+                }
+
+                /// <summary>Initializes ModifyMembershipRoles parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^groups/[^/]+/memberships/[^/]+$",
+                        });
+                }
+
+            }
         }
 
         /// <summary>Creates a `Group`.</summary>
@@ -833,6 +907,21 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 InitParameters();
             }
 
+
+            /// <summary>Required. The initial configuration option for the `Group`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("initialGroupConfig", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<InitialGroupConfigEnum> InitialGroupConfig { get; set; }
+
+            /// <summary>Required. The initial configuration option for the `Group`.</summary>
+            public enum InitialGroupConfigEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("INITIAL_GROUP_CONFIG_UNSPECIFIED")]
+                INITIALGROUPCONFIGUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("WITH_INITIAL_OWNER")]
+                WITHINITIALOWNER,
+                [Google.Apis.Util.StringValueAttribute("EMPTY")]
+                EMPTY,
+            }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -864,13 +953,22 @@ namespace Google.Apis.CloudIdentity.v1beta1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "initialGroupConfig", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "initialGroupConfig",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
 
         /// <summary>Deletes a `Group`.</summary>
-        /// <param name="name">The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to
-        /// retrieve.
+        /// <param name="name">Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`
+        /// to retrieve.
         ///
         /// Must be of the form `groups/{group_id}`.</param>
         public virtual DeleteRequest Delete(string name)
@@ -890,8 +988,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
-            /// <summary>The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to
-            /// retrieve.
+            /// <summary>Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// `Group` to retrieve.
             ///
             /// Must be of the form `groups/{group_id}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -935,8 +1033,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
         }
 
         /// <summary>Retrieves a `Group`.</summary>
-        /// <param name="name">The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to
-        /// retrieve.
+        /// <param name="name">Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`
+        /// to retrieve.
         ///
         /// Must be of the form `groups/{group_id}`.</param>
         public virtual GetRequest Get(string name)
@@ -956,8 +1054,8 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
 
 
-            /// <summary>The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to
-            /// retrieve.
+            /// <summary>Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+            /// `Group` to retrieve.
             ///
             /// Must be of the form `groups/{group_id}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1000,6 +1098,129 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
         }
 
+        /// <summary>Lists the `Group`s within a customer or namespace.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists the `Group`s within a customer or namespace.</summary>
+        public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.ListGroupsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>The maximum number of results to return.
+            ///
+            /// Note that the number of results returned may be less than this value even if there are more available
+            /// results. To fetch all results, clients must continue calling this method repeatedly until the response
+            /// no longer contains a `next_page_token`.
+            ///
+            /// If unspecified, defaults to 200 for `View.BASIC` and to 50 for `View.FULL`.
+            ///
+            /// Must not be greater than 1000 for `View.BASIC` or 500 for `View.FULL`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The `next_page_token` value returned from a previous list request, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Required. The parent resource under which to list all `Group`s.
+            ///
+            /// Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or
+            /// `customers/{customer_id}` for Google Groups.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
+            /// <summary>The level of detail to be returned.
+            ///
+            /// If unspecified, defaults to `View.BASIC`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>The level of detail to be returned.
+            ///
+            /// If unspecified, defaults to `View.BASIC`.</summary>
+            public enum ViewEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
+                VIEWUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC,
+                [Google.Apis.Util.StringValueAttribute("FULL")]
+                FULL,
+            }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/groups"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Looks up the [resource name](https://cloud.google.com/apis/design/resource_names) of a `Group` by
         /// its `EntityKey`.</summary>
         public virtual LookupRequest Lookup()
@@ -1021,7 +1242,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
             /// <summary>The ID of the entity.
             ///
-            /// For Google-managed entities, the `id` must be the email address of a group or user.
+            /// For Google-managed entities, the `id` must be the email address of an existing group or user.
             ///
             /// For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's
             /// requirements.
@@ -1117,7 +1338,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The fully-qualified names of fields to update.
+            /// <summary>Required. The fully-qualified names of fields to update.
             ///
             /// May only contain the following fields: `display_name`, `description`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -1208,13 +1429,11 @@ namespace Google.Apis.CloudIdentity.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>The search query.
-            ///
-            /// Only queries on the parent and labels of `Group`s are supported.
+            /// <summary>Required. The search query.
             ///
             /// Must be specified in [Common Expression Language](https://opensource.google/projects/cel). May only
-            /// contain equality operators on the parent (e.g. `parent == 'customers/{customer_id}'`) and inclusion
-            /// operators on labels (e.g., `'cloudidentity.googleapis.com/groups.discussion_forum' in
+            /// contain equality operators on the parent and inclusion operators on labels (e.g., `parent ==
+            /// 'customers/{customer_id}' && 'cloudidentity.googleapis.com/groups.discussion_forum' in
             /// labels`).</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -1314,7 +1533,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     {
         /// <summary>The ID of the entity.
         ///
-        /// For Google-managed entities, the `id` must be the email address of a group or user.
+        /// For Google-managed entities, the `id` must be the email address of an existing group or user.
         ///
         /// For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's
         /// requirements.
@@ -1332,6 +1551,350 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// Must be of the form `identitysources/{identity_source_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Resource representing the Android specific attributes of a Device.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1AndroidAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Baseband version of Android device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basebandVersion")]
+        public virtual string BasebandVersion { get; set; } 
+
+        /// <summary>Device bootloader version. Example: 0.6.7.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootloaderVersion")]
+        public virtual string BootloaderVersion { get; set; } 
+
+        /// <summary>Build number of Android device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildNumber")]
+        public virtual string BuildNumber { get; set; } 
+
+        /// <summary>Whether developer options is enabled on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledDeveloperOptions")]
+        public virtual System.Nullable<bool> EnabledDeveloperOptions { get; set; } 
+
+        /// <summary>Whether applications from unknown sources can be installed on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledUnknownSources")]
+        public virtual System.Nullable<bool> EnabledUnknownSources { get; set; } 
+
+        /// <summary>Whether adb (USB debugging) is enabled on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledUsbDebugging")]
+        public virtual System.Nullable<bool> EnabledUsbDebugging { get; set; } 
+
+        /// <summary>Device encryption state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionState")]
+        public virtual string EncryptionState { get; set; } 
+
+        /// <summary>Device hardware. Example: Sprout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hardware")]
+        public virtual string Hardware { get; set; } 
+
+        /// <summary>Kernel version of Android device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelVersion")]
+        public virtual string KernelVersion { get; set; } 
+
+        /// <summary>Domain name for Google accounts on device. Type for other accounts on device. Will only be
+        /// populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed
+        /// in to the device policy app if that account's domain has only one account. Examples: "com.example",
+        /// "xyz.com".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherAccounts")]
+        public virtual System.Collections.Generic.IList<string> OtherAccounts { get; set; } 
+
+        /// <summary>Whether this account is on an owner/primary profile. For phones, only true for owner profiles.
+        /// Android 4+ devices can have secondary or restricted user profiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerProfileAccount")]
+        public virtual System.Nullable<bool> OwnerProfileAccount { get; set; } 
+
+        /// <summary>Ownership privileges on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownershipPrivilege")]
+        public virtual string OwnershipPrivilege { get; set; } 
+
+        /// <summary>OS security patch update time on device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPatchTime")]
+        public virtual object SecurityPatchTime { get; set; } 
+
+        /// <summary>Whether device supports Android work profiles. If false, this service will not block access to corp
+        /// data even if an administrator turns on the "Enforce Work Profile" policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsWorkProfile")]
+        public virtual System.Nullable<bool> SupportsWorkProfile { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for approving the device to access user data.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1ApproveDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant DeviceUser object for the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
+        public virtual GoogleAppsCloudidentityDevicesV1alpha1DeviceUser DeviceUser { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for blocking the device from accessing user data.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1BlockDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant DeviceUser object for the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
+        public virtual GoogleAppsCloudidentityDevicesV1alpha1DeviceUser DeviceUser { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for cancelling an unfinished device wipe.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1CancelWipeDeviceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant Device object for the action. Note that asset tags will not be returned in the device
+        /// object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual GoogleAppsCloudidentityDevicesV1alpha1Device Device { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for cancelling an unfinished user account wipe.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1CancelWipeDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant DeviceUser object for the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
+        public virtual GoogleAppsCloudidentityDevicesV1alpha1DeviceUser DeviceUser { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Resource representing a Device.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1Device : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Attributes specific to Android devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidSpecificAttributes")]
+        public virtual GoogleAppsCloudidentityDevicesV1alpha1AndroidAttributes AndroidSpecificAttributes { get; set; } 
+
+        /// <summary>Asset tag of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetTag")]
+        public virtual string AssetTag { get; set; } 
+
+        /// <summary>Output only. Device brand. Example: Samsung.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; } 
+
+        /// <summary>Output only. Represents whether the Device is compromised.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compromisedState")]
+        public virtual string CompromisedState { get; set; } 
+
+        /// <summary>Output only. When the Company-Owned device was imported. This field is empty for BYOD
+        /// devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Output only. Type of device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
+        public virtual string DeviceType { get; set; } 
+
+        /// <summary>Output only. IMEI number of device if GSM device; empty otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imei")]
+        public virtual string Imei { get; set; } 
+
+        /// <summary>Most recent time when device synced with this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSyncTime")]
+        public virtual object LastSyncTime { get; set; } 
+
+        /// <summary>Output only. Management state of the device</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementState")]
+        public virtual string ManagementState { get; set; } 
+
+        /// <summary>Output only. Device manufacturer. Example: Motorola.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
+        public virtual string Manufacturer { get; set; } 
+
+        /// <summary>Output only. MEID number of device if CDMA device; empty otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meid")]
+        public virtual string Meid { get; set; } 
+
+        /// <summary>Output only. Model name of device. Example: Pixel 3.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; } 
+
+        /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in
+        /// format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Mobile or network operator of device, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkOperator")]
+        public virtual string NetworkOperator { get; set; } 
+
+        /// <summary>Output only. OS version of the device. Example: Android 8.1.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; } 
+
+        /// <summary>Whether the device is owned by the company or an individual</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerType")]
+        public virtual string OwnerType { get; set; } 
+
+        /// <summary>Output only. OS release version. Example: 6.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseVersion")]
+        public virtual string ReleaseVersion { get; set; } 
+
+        /// <summary>Serial Number of device. Example: HT82V1A01076.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; } 
+
+        /// <summary>WiFi MAC addresses of device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiMacAddresses")]
+        public virtual System.Collections.Generic.IList<string> WifiMacAddresses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Resource representing a user's use of a Device</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1DeviceUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Compromised State of the DeviceUser object</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compromisedState")]
+        public virtual string CompromisedState { get; set; } 
+
+        /// <summary>Output only. Most recent time when user registered with this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstSyncTime")]
+        public virtual object FirstSyncTime { get; set; } 
+
+        /// <summary>Output only. Default locale used on device, in IETF BCP-47 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Output only. Last time when user synced with policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSyncTime")]
+        public virtual object LastSyncTime { get; set; } 
+
+        /// <summary>Output only. Management state of the user on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementState")]
+        public virtual string ManagementState { get; set; } 
+
+        /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the DeviceUser
+        /// in format: `devices/{device_id}/deviceUsers/{user_id}`, where user_id is the ID of the user associated with
+        /// the user session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Password state of the DeviceUser object</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordState")]
+        public virtual string PasswordState { get; set; } 
+
+        /// <summary>Output only. User agent on the device for this specific user</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
+        public virtual string UserAgent { get; set; } 
+
+        /// <summary>Email address of the user registered on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
+        public virtual string UserEmail { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Next ID to use: 7</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1EndpointApp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the app displayed to the user</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// EndpointApp in format: `devices/{device}/deviceUsers/{device_user}/endpointApps/{endpoint_app}`, where
+        /// client_app_id is the ID of the app associated with the Device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Full package name of the installed app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; } 
+
+        /// <summary>Output only. Names of all permissions granted to the installed app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+
+        /// <summary>Output only. Version code of the installed app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
+        public virtual System.Nullable<int> VersionCode { get; set; } 
+
+        /// <summary>Output only. Version name of the installed app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
+        public virtual string VersionName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message that is returned in LRO result of ListDeviceUsers Operation.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1ListDeviceUsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Devices meeting the list restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUsers")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCloudidentityDevicesV1alpha1DeviceUser> DeviceUsers { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message that is returned in LRO result of ListDevices Operation.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1ListDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Devices meeting the list restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devices")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCloudidentityDevicesV1alpha1Device> Devices { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing all apps on the device.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1ListEndpointAppsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of matching EndpointApps found as a result of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointApps")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCloudidentityDevicesV1alpha1EndpointApp> EndpointApps { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results. Empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for wiping all data on the device.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1WipeDeviceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant Device object for the action. Note that asset tags will not be returned in the device
+        /// object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual GoogleAppsCloudidentityDevicesV1alpha1Device Device { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for wiping the user's account from the device.</summary>
+    public class GoogleAppsCloudidentityDevicesV1alpha1WipeDeviceUserResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resultant DeviceUser object for the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
+        public virtual GoogleAppsCloudidentityDevicesV1alpha1DeviceUser DeviceUser { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1366,9 +1929,9 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
 
         /// <summary>Required. The labels that apply to the `Group`.
         ///
-        /// Must not contain more than one entry. Must contain the entry `'system/groups/external': ''` if the `Group`
-        /// is an external-identity-mapped group or `'cloudidentity.googleapis.com/groups.discussion_forum': ''` if the
-        /// `Group` is a Google Group.</summary>
+        /// Must not contain more than one entry. Must contain the entry
+        /// `'cloudidentity.googleapis.com/groups.discussion_forum': ''` if the `Group` is a Google Group or
+        /// `'system/groups/external': ''` if the `Group` is an external-identity-mapped group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -1395,6 +1958,22 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for GroupsService.ListGroups.</summary>
+    public class ListGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The `Group`s under the specified `parent`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groups")]
+        public virtual System.Collections.Generic.IList<Group> Groups { get; set; } 
+
+        /// <summary>A continuation token to retrieve the next page of results, or empty if there are no more results
+        /// available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for MembershipsService.ListMemberships.</summary>
     public class ListMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1414,8 +1993,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>The response message for GroupsService.LookupGroupName.</summary>
     public class LookupGroupNameResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The [resource name](https://cloud.google.com/apis/design/resource_names) of the looked-up
-        /// `Group`.</summary>
+        /// <summary>Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the
+        /// looked-up `Group`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1461,6 +2040,13 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>Required. Immutable. The `EntityKey` of the member.
+        ///
+        /// Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership
+        /// but not both; both shall be set when returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredMemberKey")]
+        public virtual EntityKey PreferredMemberKey { get; set; } 
+
         /// <summary>The `MembershipRole`s that apply to the `Membership`.
         ///
         /// If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`.
@@ -1487,6 +2073,51 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// Must be one of `OWNER`, `MANAGER`, `MEMBER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for MembershipsService.ModifyMembershipRoles.</summary>
+    public class ModifyMembershipRolesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The `MembershipRole`s to be added.
+        ///
+        /// Adding or removing roles in the same request as updating roles is not supported.
+        ///
+        /// Must not be set if `update_roles_params` is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addRoles")]
+        public virtual System.Collections.Generic.IList<MembershipRole> AddRoles { get; set; } 
+
+        /// <summary>The `name`s of the `MembershipRole`s to be removed.
+        ///
+        /// Adding or removing roles in the same request as updating roles is not supported.
+        ///
+        /// It is not possible to remove the `MEMBER` `MembershipRole`. If you wish to delete a `Membership`, call
+        /// MembershipsService.DeleteMembership instead.
+        ///
+        /// Must not contain `MEMBER`. Must not be set if `update_roles_params` is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeRoles")]
+        public virtual System.Collections.Generic.IList<string> RemoveRoles { get; set; } 
+
+        /// <summary>The `MembershipRole`s to be updated.
+        ///
+        /// Updating roles in the same request as adding or removing roles is not supported.
+        ///
+        /// Must not be set if either `add_roles` or `remove_roles` is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateRolesParams")]
+        public virtual System.Collections.Generic.IList<UpdateMembershipRolesParams> UpdateRolesParams { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for MembershipsService.ModifyMembershipRoles.</summary>
+    public class ModifyMembershipRolesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The `Membership` resource after modifying its `MembershipRole`s.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membership")]
+        public virtual Membership Membership { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1565,6 +2196,27 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The details of an update to a `MembershipRole`.</summary>
+    public class UpdateMembershipRolesParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fully-qualified names of fields to update.
+        ///
+        /// May only contain the field `expiry_detail`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
+        public virtual object FieldMask { get; set; } 
+
+        /// <summary>The `MembershipRole`s to be updated.
+        ///
+        /// Only `MEMBER` `MembershipRoles` can currently be updated.
+        ///
+        /// May only contain a `MembershipRole` with `name` `MEMBER`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipRole")]
+        public virtual MembershipRole MembershipRole { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

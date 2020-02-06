@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20200123 (1848)
+ *      <tr><th>API Rev<td>20200131 (1856)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -2551,11 +2551,22 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firstBandColor")]
         public virtual Color FirstBandColor { get; set; } 
 
+        /// <summary>The first color that is alternating. (Required) If first_band_color is also set, this field takes
+        /// precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstBandColorStyle")]
+        public virtual ColorStyle FirstBandColorStyle { get; set; } 
+
         /// <summary>The color of the last row or column. If this field is not set, the last row or column will be
         /// filled with either first_band_color or second_band_color, depending on the color of the previous row or
         /// column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("footerColor")]
         public virtual Color FooterColor { get; set; } 
+
+        /// <summary>The color of the last row or column. If this field is not set, the last row or column will be
+        /// filled with either first_band_color or second_band_color, depending on the color of the previous row or
+        /// column. If footer_color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("footerColorStyle")]
+        public virtual ColorStyle FooterColorStyle { get; set; } 
 
         /// <summary>The color of the first row or column. If this field is set, the first row or column will be filled
         /// with this color and the colors will alternate between first_band_color and second_band_color starting from
@@ -2564,9 +2575,22 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headerColor")]
         public virtual Color HeaderColor { get; set; } 
 
+        /// <summary>The color of the first row or column. If this field is set, the first row or column will be filled
+        /// with this color and the colors will alternate between first_band_color and second_band_color starting from
+        /// the second row or column. Otherwise, the first row or column will be filled with first_band_color and the
+        /// colors will proceed to alternate as they normally would. If header_color is also set, this field takes
+        /// precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerColorStyle")]
+        public virtual ColorStyle HeaderColorStyle { get; set; } 
+
         /// <summary>The second color that is alternating. (Required)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondBandColor")]
         public virtual Color SecondBandColor { get; set; } 
+
+        /// <summary>The second color that is alternating. (Required) If second_band_color is also set, this field takes
+        /// precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondBandColorStyle")]
+        public virtual ColorStyle SecondBandColorStyle { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2665,13 +2689,13 @@ namespace Google.Apis.Sheets.v4.Data
     /// may exist, one for the "Open Price", "High Price", "Low Price" and "Close Price".</summary>
     public class BasicChartSeries : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The color for elements (i.e. bars, lines, points) associated with this series.  If empty, a default
-        /// color is used.</summary>
+        /// <summary>The color for elements (such as bars, lines, and points) associated with this series.  If empty, a
+        /// default color is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; } 
 
-        /// <summary>The color for elements (i.e. bars, lines, points) associated with this series.  If empty, a default
-        /// color is used. If color is also set, this field takes precedence.</summary>
+        /// <summary>The color for elements (such as bars, lines, and points) associated with this series.  If empty, a
+        /// default color is used. If color is also set, this field takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorStyle")]
         public virtual ColorStyle ColorStyle { get; set; } 
 
@@ -3119,6 +3143,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; } 
 
+        /// <summary>The color of the border. If color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colorStyle")]
+        public virtual ColorStyle ColorStyle { get; set; } 
+
         /// <summary>The style of the border.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("style")]
         public virtual string Style { get; set; } 
@@ -3362,6 +3390,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The background color of the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual Color BackgroundColor { get; set; } 
+
+        /// <summary>The background color of the cell. If background_color is also set, this field takes
+        /// precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColorStyle")]
+        public virtual ColorStyle BackgroundColorStyle { get; set; } 
 
         /// <summary>The borders of the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("borders")]
@@ -4482,11 +4515,24 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("visibleBackgroundColor")]
         public virtual Color VisibleBackgroundColor { get; set; } 
 
+        /// <summary>The background fill color to filter by; only cells with this fill color are shown. Mutually
+        /// exclusive with all other filter criteria. Requests to set this field will fail with a 400 error if any other
+        /// filter criteria field is set. If visible_background_color is also set, this field takes
+        /// precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibleBackgroundColorStyle")]
+        public virtual ColorStyle VisibleBackgroundColorStyle { get; set; } 
+
         /// <summary>The text color to filter by; only cells with this text color are shown. Mutually exclusive with all
         /// other filter criteria. Requests to set this field will fail with a 400 error if any other filter criteria
         /// field is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleForegroundColor")]
         public virtual Color VisibleForegroundColor { get; set; } 
+
+        /// <summary>The text color to filter by; only cells with this text color are shown. Mutually exclusive with all
+        /// other filter criteria. Requests to set this field will fail with a 400 error if any other filter criteria
+        /// field is set. If visible_foreground_color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibleForegroundColorStyle")]
+        public virtual ColorStyle VisibleForegroundColorStyle { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4907,6 +4953,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The color this interpolation point should use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; } 
+
+        /// <summary>The color this interpolation point should use. If color is also set, this field takes
+        /// precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colorStyle")]
+        public virtual ColorStyle ColorStyle { get; set; } 
 
         /// <summary>How the value should be interpreted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -6110,6 +6161,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tabColor")]
         public virtual Color TabColor { get; set; } 
 
+        /// <summary>The color of the tab in the UI. If tab_color is also set, this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabColorStyle")]
+        public virtual ColorStyle TabColorStyle { get; set; } 
+
         /// <summary>The name of the sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
@@ -6148,6 +6203,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The background color of the slicer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual Color BackgroundColor { get; set; } 
+
+        /// <summary>The background color of the slicer. If background_color is also set, this field takes
+        /// precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColorStyle")]
+        public virtual ColorStyle BackgroundColorStyle { get; set; } 
 
         /// <summary>The column index in the data table on which the filter is applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnIndex")]
@@ -6201,6 +6261,12 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual Color BackgroundColor { get; set; } 
 
+        /// <summary>The background fill color to sort by. Mutually exclusive with sorting by text color. Requests to
+        /// set this field will fail with a 400 error if foreground color is also set. If background_color is also set,
+        /// this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColorStyle")]
+        public virtual ColorStyle BackgroundColorStyle { get; set; } 
+
         /// <summary>The dimension the sort should be applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionIndex")]
         public virtual System.Nullable<int> DimensionIndex { get; set; } 
@@ -6209,6 +6275,12 @@ namespace Google.Apis.Sheets.v4.Data
         /// set this field will fail with a 400 error if background color is also set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foregroundColor")]
         public virtual Color ForegroundColor { get; set; } 
+
+        /// <summary>The text color to sort by. Mutually exclusive with sorting by background fill color. Requests to
+        /// set this field will fail with a 400 error if background color is also set. If foreground_color is also set,
+        /// this field takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foregroundColorStyle")]
+        public virtual ColorStyle ForegroundColorStyle { get; set; } 
 
         /// <summary>The order data should be sorted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
@@ -6349,6 +6421,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The foreground color of the text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foregroundColor")]
         public virtual Color ForegroundColor { get; set; } 
+
+        /// <summary>The foreground color of the text. If foreground_color is also set, this field takes
+        /// precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foregroundColorStyle")]
+        public virtual ColorStyle ForegroundColorStyle { get; set; } 
 
         /// <summary>True if the text is italicized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("italic")]

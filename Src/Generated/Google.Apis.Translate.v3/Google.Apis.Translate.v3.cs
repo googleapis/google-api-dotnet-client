@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>Cloud Translation API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200124 (1849)
+ *      <tr><th>API Rev<td>20200131 (1856)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/translate/docs/quickstarts'>
  *              https://cloud.google.com/translate/docs/quickstarts</a>
@@ -2472,8 +2472,12 @@ namespace Google.Apis.Translate.v3.Data
     /// applying that glossary.</summary>
     public class TranslateTextGlossaryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Specifies the glossary used for this translation. Use this format:
-        /// projects/locations/glossaries</summary>
+        /// <summary>Required. The `glossary` to be applied for this translation.
+        ///
+        /// The format depends on glossary:
+        ///
+        /// - User provided custom glossary: `projects/{project-number-or-id}/locations/{location-id}/glossaries
+        /// /{glossary-id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glossary")]
         public virtual string Glossary { get; set; } 
 
