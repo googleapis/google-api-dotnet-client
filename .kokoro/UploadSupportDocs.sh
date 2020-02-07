@@ -28,7 +28,7 @@ for pkg in $packages
 do
   pushd Src/Support/$pkg/obj/site
   echo "Generating metadata for $pkg"
-  python -m docuploader create-metadata --name $pkg --version $version --language dotnet --github-repository https://github.com/googleapis/google-api-dotnet-client
+  python -m docuploader create-metadata --name $pkg --version $version --language dotnet --github-repository googleapis/google-api-dotnet-client
 
   echo "Final upload stage"
   python -m docuploader upload . --credentials $service_account_json --staging-bucket $staging_bucket

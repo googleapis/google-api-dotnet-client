@@ -30,7 +30,7 @@ do
     version=$(grep \<Version\> Src/Generated/$pkg/$pkg.csproj | sed 's/</>/g' | cut -d\> -f 3)
     pushd Src/Generated/$pkg/obj/site > /dev/null
     echo "Uploading $pkg version $version"
-    python -m docuploader create-metadata --name $pkg --version $version --language dotnet --github-repository https://github.com/googleapis/google-api-dotnet-client
+    python -m docuploader create-metadata --name $pkg --version $version --language dotnet --github-repository googleapis/google-api-dotnet-client
     python -m docuploader upload . --credentials $service_account_json --staging-bucket $staging_bucket
     popd > /dev/null
   fi
