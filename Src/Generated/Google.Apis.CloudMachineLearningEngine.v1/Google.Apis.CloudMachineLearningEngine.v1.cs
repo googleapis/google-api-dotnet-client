@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>AI Platform Training & Prediction API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200124 (1849)
+ *      <tr><th>API Rev<td>20200205 (1861)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -3677,7 +3677,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Required. Fully qualified BigQuery table name in the following format:
         /// "project_id.dataset_name.table_name"
         ///
-        /// The specifcied table must already exist, and the "Cloud ML Service Agent" for your project must have
+        /// The specified table must already exist, and the "Cloud ML Service Agent" for your project must have
         /// permission to write to it. The table must have the following [schema](/bigquery/docs/schemas):
         ///
         /// Field nameType Mode modelSTRINGREQUIRED model_versionSTRINGREQUIRED timeTIMESTAMPREQUIRED
@@ -3703,6 +3703,27 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>The number of feature permutations to consider when approximating the Shapley values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numPaths")]
         public virtual System.Nullable<int> NumPaths { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>All parameters related to queuing and scheduling of training jobs.</summary>
+    public class GoogleCloudMlV1Scheduling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The maximum job running time, expressed in seconds. By default there is no limit.
+        ///
+        /// If the training job is still running after this duration, AI Platform Training cancels it.
+        ///
+        /// For example, if you want to ensure your job runs for no more than 2 hours, set this field to `7200s` (2
+        /// hours * 60 minutes / hour * 60 seconds / minute).
+        ///
+        /// If you submit your training job using the `gcloud` tool, you can [provide this field in a `config.yaml` file
+        /// ](/ml-engine/docs/training-jobs#formatting_your_configuration_parameters). For example:
+        ///
+        /// ```yaml trainingInput: ... scheduling: maxRunningTime: 7200s ... ```</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRunningTime")]
+        public virtual object MaxRunningTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3848,6 +3869,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// servers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleTier")]
         public virtual string ScaleTier { get; set; } 
+
+        /// <summary>Optional. Scheduling options for a training job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
+        public virtual GoogleCloudMlV1Scheduling Scheduling { get; set; } 
 
         /// <summary>Optional. Use 'chief' instead of 'master' in TF_CONFIG when Custom Container is used and evaluator
         /// is not specified.
@@ -4459,30 +4484,48 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an expression text. Example:
+    /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
+    /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
     ///
-    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
-    /// "size(request.user) > 0"</summary>
+    /// Example (Comparison):
+    ///
+    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
+    /// "document.summary.size() < 100"
+    ///
+    /// Example (Equality):
+    ///
+    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
+    /// "document.owner == request.auth.claims.email"
+    ///
+    /// Example (Logic):
+    ///
+    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
+    /// "document.type != 'private' && document.type != 'internal'"
+    ///
+    /// Example (Data Manipulation):
+    ///
+    /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
+    /// message received at ' + string(document.create_time)"
+    ///
+    /// The exact variables and functions that may be referenced within an expression are determined by the service that
+    /// evaluates it. See the service documentation for additional information.</summary>
     public class GoogleTypeExpr : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
-        /// e.g. when hovered over it in a UI.</summary>
+        /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
+        /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Textual representation of an expression in Common Expression Language syntax.
-        ///
-        /// The application context of the containing message determines which well-known feature set of CEL is
-        /// supported.</summary>
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; } 
 
-        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
-        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/'>Cloud OS Config API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20200109 (1834)
+ *      <tr><th>API Rev<td>20200207 (1863)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/'>
  *              https://cloud.google.com/</a>
@@ -115,9 +115,6 @@ namespace Google.Apis.SystemsManagement.v1beta
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View and manage your Google Compute Engine resources</summary>
-            public static string Compute = "https://www.googleapis.com/auth/compute";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud OS Config API.</summary>
@@ -125,9 +122,6 @@ namespace Google.Apis.SystemsManagement.v1beta
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
-            /// <summary>View and manage your Google Compute Engine resources</summary>
-            public const string Compute = "https://www.googleapis.com/auth/compute";
 
         }
 
@@ -1998,22 +1992,9 @@ namespace Google.Apis.SystemsManagement.v1beta.Data
         ///
         /// If left empty, all VM instances underneath this policy are targeted.
         ///
-        /// Conflict Management
-        ///
         /// At the same level in the resource hierarchy (that is within a project), the service prevents the creation of
-        /// multiple policies that conflict with each other. If there are multiple policies that specify the same config
-        /// (eg. package, software recipe, repository, etc.), the service ensures that no VM instance could potentially
-        /// receive instructions from both policies. To create multiple policies that specify different versions of a
-        /// package or different configs for different operating systems, each policy must be mutually exclusive in
-        /// their targeting according to labels, OS, or other criteria.
-        ///
-        /// Different configs are identified for conflicts in different ways. Packages are identified by their name and
-        /// the package manager(s) they target. Package repositories are identified by their unique id where applicable.
-        /// Some package managers don't have a unique identifier for repositories and where that's the case, no
-        /// uniqueness is validated by the service.
-        ///
-        /// Note that if OS Inventory is disabled, a VM instance cannot assign a policy that targets by OS because the
-        /// service sees the OS as unknown.</summary>
+        /// multiple policies that conflict with each other. For more information, see how the service [handles
+        /// assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignment")]
         public virtual Assignment Assignment { get; set; } 
 

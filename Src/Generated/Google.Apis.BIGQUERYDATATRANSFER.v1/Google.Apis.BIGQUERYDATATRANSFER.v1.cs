@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Data Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200115 (1840)
+ *      <tr><th>API Rev<td>20200203 (1859)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3515,6 +3515,17 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents preferences for sending email notifications for transfer run events.</summary>
+    public class EmailPreferences : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, email notifications will be sent on transfer run failures.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableFailureEmail")]
+        public virtual System.Nullable<bool> EnableFailureEmail { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -3796,6 +3807,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
+        /// <summary>Email notifications will be sent according to these preferences to the email address of the user
+        /// who owns this transfer config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailPreferences")]
+        public virtual EmailPreferences EmailPreferences { get; set; } 
+
         /// <summary>The resource name of the transfer config. Transfer config names have the form of
         /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. The name is automatically generated
         /// based on the config_id specified in CreateTransferConfigRequest along with project_id and region. If
@@ -3807,6 +3823,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// <summary>Output only. Next time when data transfer will run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRunTime")]
         public virtual object NextRunTime { get; set; } 
+
+        /// <summary>Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer
+        /// config finish.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
+        public virtual string NotificationPubsubTopic { get; set; } 
 
         /// <summary>Data transfer specific parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
@@ -3871,6 +3892,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationDatasetId")]
         public virtual string DestinationDatasetId { get; set; } 
 
+        /// <summary>Output only. Email notifications will be sent according to these preferences to the email address
+        /// of the user who owns the transfer config this run was derived from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailPreferences")]
+        public virtual EmailPreferences EmailPreferences { get; set; } 
+
         /// <summary>Output only. Time when transfer run ended. Parameter ignored by server for input
         /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
@@ -3885,6 +3911,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// when creating a transfer run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Output only. Pub/Sub topic where a notification will be sent after this transfer run
+        /// finishes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
+        public virtual string NotificationPubsubTopic { get; set; } 
 
         /// <summary>Output only. Data transfer specific parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]

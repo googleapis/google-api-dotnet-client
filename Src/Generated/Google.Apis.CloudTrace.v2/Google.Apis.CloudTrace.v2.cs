@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200128 (1853)
+ *      <tr><th>API Rev<td>20200203 (1859)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -395,8 +395,8 @@ namespace Google.Apis.CloudTrace.v2
                 }
 
 
-                /// <summary>Creates a new span. In this case, writing traces is not consider an active developer method
-                /// since traces are machine generated.</summary>
+                /// <summary>Creates a new span. In this case, writing traces is not considered an active developer
+                /// method since traces are machine generated.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name of the span in the following format:
                 ///
@@ -410,8 +410,8 @@ namespace Google.Apis.CloudTrace.v2
                     return new CreateSpanRequest(service, body, name);
                 }
 
-                /// <summary>Creates a new span. In this case, writing traces is not consider an active developer method
-                /// since traces are machine generated.</summary>
+                /// <summary>Creates a new span. In this case, writing traces is not considered an active developer
+                /// method since traces are machine generated.</summary>
                 public class CreateSpanRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.Span>
                 {
                     /// <summary>Constructs a new CreateSpan request.</summary>
@@ -479,7 +479,8 @@ namespace Google.Apis.CloudTrace.v2
             }
 
             /// <summary>Sends new spans to new or existing traces. You cannot update existing spans. In this case,
-            /// writing traces is not consider an active developer method since traces are machine generated.</summary>
+            /// writing traces is not considered an active developer method since traces are machine
+            /// generated.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The name of the project where the spans belong. The format is
             /// `projects/[PROJECT_ID]`.</param>
@@ -489,7 +490,8 @@ namespace Google.Apis.CloudTrace.v2
             }
 
             /// <summary>Sends new spans to new or existing traces. You cannot update existing spans. In this case,
-            /// writing traces is not consider an active developer method since traces are machine generated.</summary>
+            /// writing traces is not considered an active developer method since traces are machine
+            /// generated.</summary>
             public class BatchWriteRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.Empty>
             {
                 /// <summary>Constructs a new BatchWrite request.</summary>

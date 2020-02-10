@@ -166,7 +166,7 @@
    }
   }
  }, 
- "revision": "20200112", 
+ "revision": "20200126", 
  "rootUrl": "https://datastore.googleapis.com/", 
  "schemas": {
   "GoogleDatastoreAdminV1CommonMetadata": {

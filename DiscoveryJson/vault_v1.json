@@ -1050,7 +1050,7 @@
    }
   }
  }, 
- "revision": "20200116", 
+ "revision": "20200130", 
  "rootUrl": "https://vault.googleapis.com/", 
  "schemas": {
   "AccountInfo": {

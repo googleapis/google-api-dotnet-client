@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/firestore'>Cloud Firestore API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200112 (1837)
+ *      <tr><th>API Rev<td>20200126 (1851)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/firestore'>
  *              https://cloud.google.com/firestore</a>
@@ -3397,8 +3397,7 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("delete")]
         public virtual string Delete { get; set; } 
 
-        /// <summary>Applies a transformation to a document. At most one `transform` per document is allowed in a given
-        /// request. An `update` cannot follow a `transform` on the same document in a given request.</summary>
+        /// <summary>Applies a transformation to a document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transform")]
         public virtual DocumentTransform Transform { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200121 (1846)
+ *      <tr><th>API Rev<td>20200128 (1853)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -6781,6 +6781,11 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dnsCacheConfig")]
         public virtual DnsCacheConfig DnsCacheConfig { get; set; } 
 
+        /// <summary>Configuration for the GCE PD CSI driver. This option can only be enabled at cluster creation
+        /// time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcePersistentDiskCsiDriverConfig")]
+        public virtual GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfig { get; set; } 
+
         /// <summary>Configuration for the horizontal pod autoscaling feature, which increases or decreases the number
         /// of replica pods a replication controller has based on the resource usage of the existing pods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalPodAutoscaling")]
@@ -7626,6 +7631,18 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration for the GCE PD CSI driver. This option can only be enabled at cluster creation
+    /// time.</summary>
+    public class GcePersistentDiskCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the GCE PD CSI driver is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>GetJSONWebKeysResponse is a valid JSON Web Key Set as specififed in rfc 7517</summary>
     public class GetJSONWebKeysResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8338,8 +8355,9 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sandboxConfig")]
         public virtual SandboxConfig SandboxConfig { get; set; } 
 
-        /// <summary>The Google Cloud Platform Service Account to be used by the node VMs. If no Service Account is
-        /// specified, the "default" service account is used.</summary>
+        /// <summary>The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of
+        /// the Service Account; otherwise, if no Service Account is specified, the "default" service account is
+        /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
 

@@ -674,7 +674,7 @@
    }
   }
  }, 
- "revision": "20200201", 
+ "revision": "20200117", 
  "rootUrl": "https://cloudtasks.googleapis.com/", 
  "schemas": {
   "AppEngineHttpRequest": {
