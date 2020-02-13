@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/tag-manager'>Tag Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200203 (1859)
+ *      <tr><th>API Rev<td>20200212 (1868)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/tag-manager'>
  *              https://developers.google.com/tag-manager</a>
@@ -1842,6 +1842,8 @@ namespace Google.Apis.TagManager.v2
                             RequestMethod,
                             [Google.Apis.Util.StringValueAttribute("clientName")]
                             ClientName,
+                            [Google.Apis.Util.StringValueAttribute("queryString")]
+                            QueryString,
                         }
 
 
@@ -2140,6 +2142,8 @@ namespace Google.Apis.TagManager.v2
                             RequestMethod,
                             [Google.Apis.Util.StringValueAttribute("clientName")]
                             ClientName,
+                            [Google.Apis.Util.StringValueAttribute("queryString")]
+                            QueryString,
                         }
 
 
@@ -2513,6 +2517,8 @@ namespace Google.Apis.TagManager.v2
                             RequestMethod,
                             [Google.Apis.Util.StringValueAttribute("clientName")]
                             ClientName,
+                            [Google.Apis.Util.StringValueAttribute("queryString")]
+                            QueryString,
                         }
 
 

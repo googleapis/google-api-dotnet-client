@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-sql/'>Cloud SQL Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20200124 (1849)
+ *      <tr><th>API Rev<td>20200203 (1859)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-sql/'>
  *              https://developers.google.com/cloud-sql/</a>
@@ -3970,6 +3970,247 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 }
 
             }
+
+            /// <summary>Start External master migration.</summary>
+            /// <param name="project">ID of the project that contains the first generation instance.</param>
+            /// <param
+            /// name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
+            public virtual StartExternalSyncRequest StartExternalSync(string project, string instance)
+            {
+                return new StartExternalSyncRequest(service, project, instance);
+            }
+
+            /// <summary>Start External master migration.</summary>
+            public class StartExternalSyncRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+            {
+                /// <summary>Constructs a new StartExternalSync request.</summary>
+                public StartExternalSyncRequest(Google.Apis.Services.IClientService service, string project, string instance)
+                    : base(service)
+                {
+                    Project = project;
+                    Instance = instance;
+                    InitParameters();
+                }
+
+
+                /// <summary>ID of the project that contains the first generation instance.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Project { get; private set; }
+
+                /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Instance { get; private set; }
+
+                /// <summary>The parent resource where Cloud SQL starts this database instance external sync. Format:
+                /// projects/{project}/locations/{location}/instances/{instance}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Parent { get; set; }
+
+                /// <summary>External sync mode</summary>
+                [Google.Apis.Util.RequestParameterAttribute("syncMode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<SyncModeEnum> SyncMode { get; set; }
+
+                /// <summary>External sync mode</summary>
+                public enum SyncModeEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("EXTERNAL_SYNC_MODE_UNSPECIFIED")]
+                    EXTERNALSYNCMODEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("ONLINE")]
+                    ONLINE,
+                    [Google.Apis.Util.StringValueAttribute("OFFLINE")]
+                    OFFLINE,
+                }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "startExternalSync"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "sql/v1beta4/projects/{project}/instances/{instance}/startExternalSync"; }
+                }
+
+                /// <summary>Initializes StartExternalSync parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "project", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "project",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "instance", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "instance",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "syncMode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "syncMode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Verify External master external sync settings.</summary>
+            /// <param name="project">Project ID of the project that contains the instance.</param>
+            /// <param
+            /// name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
+            public virtual VerifyExternalSyncSettingsRequest VerifyExternalSyncSettings(string project, string instance)
+            {
+                return new VerifyExternalSyncSettingsRequest(service, project, instance);
+            }
+
+            /// <summary>Verify External master external sync settings.</summary>
+            public class VerifyExternalSyncSettingsRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesVerifyExternalSyncSettingsResponse>
+            {
+                /// <summary>Constructs a new VerifyExternalSyncSettings request.</summary>
+                public VerifyExternalSyncSettingsRequest(Google.Apis.Services.IClientService service, string project, string instance)
+                    : base(service)
+                {
+                    Project = project;
+                    Instance = instance;
+                    InitParameters();
+                }
+
+
+                /// <summary>Project ID of the project that contains the instance.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Project { get; private set; }
+
+                /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Instance { get; private set; }
+
+                /// <summary>The parent resource where Cloud SQL verifies this database instance external sync settings.
+                /// Format: projects/{project}/locations/{location}/instances/{instance}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Parent { get; set; }
+
+                /// <summary>External sync mode</summary>
+                [Google.Apis.Util.RequestParameterAttribute("syncMode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<SyncModeEnum> SyncMode { get; set; }
+
+                /// <summary>External sync mode</summary>
+                public enum SyncModeEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("EXTERNAL_SYNC_MODE_UNSPECIFIED")]
+                    EXTERNALSYNCMODEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("ONLINE")]
+                    ONLINE,
+                    [Google.Apis.Util.StringValueAttribute("OFFLINE")]
+                    OFFLINE,
+                }
+
+                /// <summary>Flag to enable verifying connection only</summary>
+                [Google.Apis.Util.RequestParameterAttribute("verifyConnectionOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> VerifyConnectionOnly { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "verifyExternalSyncSettings"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "sql/v1beta4/projects/{project}/instances/{instance}/verifyExternalSyncSettings"; }
+                }
+
+                /// <summary>Initializes VerifyExternalSyncSettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "project", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "project",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "instance", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "instance",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "syncMode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "syncMode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "verifyConnectionOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "verifyConnectionOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
         }
         private readonly LocationsResource locations;
 
@@ -4106,6 +4347,243 @@ namespace Google.Apis.SQLAdmin.v1beta4
                             "project", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "project",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Start External master migration.</summary>
+                /// <param name="parent">The parent resource where Cloud SQL starts this database instance external sync. Format:
+                /// projects/{project}/locations/{location}/instances/{instance}</param>
+                public virtual StartExternalSyncRequest StartExternalSync(string parent)
+                {
+                    return new StartExternalSyncRequest(service, parent);
+                }
+
+                /// <summary>Start External master migration.</summary>
+                public class StartExternalSyncRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+                {
+                    /// <summary>Constructs a new StartExternalSync request.</summary>
+                    public StartExternalSyncRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The parent resource where Cloud SQL starts this database instance external sync.
+                    /// Format: projects/{project}/locations/{location}/instances/{instance}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Instance { get; set; }
+
+                    /// <summary>ID of the project that contains the first generation instance.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Project { get; set; }
+
+                    /// <summary>External sync mode</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("syncMode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<SyncModeEnum> SyncMode { get; set; }
+
+                    /// <summary>External sync mode</summary>
+                    public enum SyncModeEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("EXTERNAL_SYNC_MODE_UNSPECIFIED")]
+                        EXTERNALSYNCMODEUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("ONLINE")]
+                        ONLINE,
+                        [Google.Apis.Util.StringValueAttribute("OFFLINE")]
+                        OFFLINE,
+                    }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "startExternalSync"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "sql/v1beta4/{+parent}/startExternalSync"; }
+                    }
+
+                    /// <summary>Initializes StartExternalSync parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "instance", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "instance",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "project", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "project",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "syncMode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "syncMode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Verify External master external sync settings.</summary>
+                /// <param name="parent">The parent resource where Cloud SQL verifies this database instance external sync settings.
+                /// Format: projects/{project}/locations/{location}/instances/{instance}</param>
+                public virtual VerifyExternalSyncSettingsRequest VerifyExternalSyncSettings(string parent)
+                {
+                    return new VerifyExternalSyncSettingsRequest(service, parent);
+                }
+
+                /// <summary>Verify External master external sync settings.</summary>
+                public class VerifyExternalSyncSettingsRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesVerifyExternalSyncSettingsResponse>
+                {
+                    /// <summary>Constructs a new VerifyExternalSyncSettings request.</summary>
+                    public VerifyExternalSyncSettingsRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The parent resource where Cloud SQL verifies this database instance external sync
+                    /// settings. Format: projects/{project}/locations/{location}/instances/{instance}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Instance { get; set; }
+
+                    /// <summary>Project ID of the project that contains the instance.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Project { get; set; }
+
+                    /// <summary>External sync mode</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("syncMode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<SyncModeEnum> SyncMode { get; set; }
+
+                    /// <summary>External sync mode</summary>
+                    public enum SyncModeEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("EXTERNAL_SYNC_MODE_UNSPECIFIED")]
+                        EXTERNALSYNCMODEUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("ONLINE")]
+                        ONLINE,
+                        [Google.Apis.Util.StringValueAttribute("OFFLINE")]
+                        OFFLINE,
+                    }
+
+                    /// <summary>Flag to enable verifying connection only</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("verifyConnectionOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> VerifyConnectionOnly { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "verifyExternalSyncSettings"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "sql/v1beta4/{+parent}/verifyExternalSyncSettings"; }
+                    }
+
+                    /// <summary>Initializes VerifyExternalSyncSettings parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "instance", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "instance",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "project", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "project",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "syncMode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "syncMode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "verifyConnectionOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "verifyConnectionOnly",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6279,6 +6757,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
         public virtual string ClientKey { get; set; } 
 
+        /// <summary>The dump file to create the Cloud SQL replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dumpFilePath")]
+        public virtual string DumpFilePath { get; set; } 
+
         /// <summary>The host and port of the on-premises instance in host:port format</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostPort")]
         public virtual string HostPort { get; set; } 
@@ -6286,6 +6768,14 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always sql#onPremisesConfiguration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The password for connecting to on-premises instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; } 
+
+        /// <summary>The username for connecting to on-premises instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6449,8 +6939,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rescheduleType")]
         public virtual string RescheduleType { get; set; } 
 
-        /// <summary>Optional. Timestamp when the maintenance shall be rescheduled to if
-        /// reschedule_type=SPECIFIC_TIME.</summary>
+        /// <summary>Optional. Timestamp when the maintenance shall be rescheduled to if reschedule_type=SPECIFIC_TIME,
+        /// in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
         public virtual object ScheduleTime { get; set; } 
 
@@ -6611,12 +7101,46 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>External master migration setting error.</summary>
+    public class SqlExternalSyncSettingError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional information about the error encountered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; } 
+
+        /// <summary>This is always sql#migrationSettingError.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Identifies the specific error that occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Reschedule options for maintenance windows.</summary>
     public class SqlInstancesRescheduleMaintenanceRequestBody : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The type of the reschedule the user wants.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reschedule")]
         public virtual Reschedule Reschedule { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Instance verify external sync settings response.</summary>
+    public class SqlInstancesVerifyExternalSyncSettingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of migration violations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<SqlExternalSyncSettingError> Errors { get; set; } 
+
+        /// <summary>This is always sql#migrationSettingErrorList.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

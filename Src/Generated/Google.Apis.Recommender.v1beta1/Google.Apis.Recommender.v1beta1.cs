@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/recommender/docs/'>Recommender API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200201 (1857)
+ *      <tr><th>API Rev<td>20200210 (1866)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/recommender/docs/'>
  *              https://cloud.google.com/recommender/docs/</a>
@@ -915,7 +915,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
     /// <summary>Request for the `MarkRecommendationFailed` Method.</summary>
     public class GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Fingerprint of the Recommendation. Provides optimistic locking.</summary>
+        /// <summary>Fingerprint of the Recommendation. Provides optimistic locking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 

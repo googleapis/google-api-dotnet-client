@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/docs/'>Google Docs API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200128 (1853)
+ *      <tr><th>API Rev<td>20200207 (1863)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/docs/'>
  *              https://developers.google.com/docs/</a>
@@ -3468,6 +3468,15 @@ namespace Google.Apis.Docs.v1.Data
         /// bad request error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginTop")]
         public virtual Dimension MarginTop { get; set; } 
+
+        /// <summary>The page number from which to start counting the number of pages for this section. If unset, page
+        /// numbering continues from the previous section. If the value is unset in the first SectionBreak, refer to
+        /// DocumentStyle's page_number_start.
+        ///
+        /// When updating this property, setting a concrete value is required. Unsetting this property results in a 400
+        /// bad request error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageNumberStart")]
+        public virtual System.Nullable<int> PageNumberStart { get; set; } 
 
         /// <summary>Output only. The type of section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/healthcare'>Cloud Healthcare API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200120 (1845)
+ *      <tr><th>API Rev<td>20200131 (1856)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/healthcare'>
  *              https://cloud.google.com/healthcare</a>
@@ -6393,6 +6393,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 PARSEDONLY,
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
                                 FULL,
+                                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                                BASIC,
                             }
 
 
@@ -6593,6 +6595,27 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
+                            /// <summary>Specifies the parts of the Message to return in the response. When unspecified,
+                            /// equivalent to BASIC.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                            /// <summary>Specifies the parts of the Message to return in the response. When unspecified,
+                            /// equivalent to BASIC.</summary>
+                            public enum ViewEnum
+                            {
+                                [Google.Apis.Util.StringValueAttribute("MESSAGE_VIEW_UNSPECIFIED")]
+                                MESSAGEVIEWUNSPECIFIED,
+                                [Google.Apis.Util.StringValueAttribute("RAW_ONLY")]
+                                RAWONLY,
+                                [Google.Apis.Util.StringValueAttribute("PARSED_ONLY")]
+                                PARSEDONLY,
+                                [Google.Apis.Util.StringValueAttribute("FULL")]
+                                FULL,
+                                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                                BASIC,
+                            }
+
 
                             ///<summary>Gets the method name.</summary>
                             public override string MethodName
@@ -6657,6 +6680,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                     "pageToken", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "view", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "view",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -8676,8 +8708,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 
         /// <summary>The name of the dataset resource to create and write the redacted data to.
         ///
-        /// * The destination dataset must not exist. * The destination dataset must be in the same project as the
-        /// source dataset. De-identifying data across multiple projects is not supported.</summary>
+        /// * The destination dataset must not exist. * The destination dataset must be in the same project and location
+        /// as the source dataset. De-identifying data across multiple projects or locations is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
         public virtual string DestinationDataset { get; set; } 
 
@@ -8930,30 +8962,48 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an expression text. Example:
+    /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
+    /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
     ///
-    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
-    /// "size(request.user) > 0"</summary>
+    /// Example (Comparison):
+    ///
+    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
+    /// "document.summary.size() < 100"
+    ///
+    /// Example (Equality):
+    ///
+    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
+    /// "document.owner == request.auth.claims.email"
+    ///
+    /// Example (Logic):
+    ///
+    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
+    /// "document.type != 'private' && document.type != 'internal'"
+    ///
+    /// Example (Data Manipulation):
+    ///
+    /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
+    /// message received at ' + string(document.create_time)"
+    ///
+    /// The exact variables and functions that may be referenced within an expression are determined by the service that
+    /// evaluates it. See the service documentation for additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
-        /// e.g. when hovered over it in a UI.</summary>
+        /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
+        /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Textual representation of an expression in Common Expression Language syntax.
-        ///
-        /// The application context of the containing message determines which well-known feature set of CEL is
-        /// supported.</summary>
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; } 
 
-        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
-        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
@@ -8966,8 +9016,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class FhirConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies FHIR paths to match and how to transform them. Any field that is not matched by a
-        /// FieldMetadata is passed through to the output dataset unmodified. All extensions are removed in the
-        /// output.</summary>
+        /// FieldMetadata is passed through to the output dataset unmodified. All extensions are removed in the output.
+        /// If a field can be matched by more than one FieldMetadata, the first FieldMetadata.Action is
+        /// applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldMetadataList")]
         public virtual System.Collections.Generic.IList<FieldMetadata> FieldMetadataList { get; set; } 
 
@@ -9056,11 +9107,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>List of paths to FHIR fields to be redacted. Each path is a period-separated list where each
-        /// component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types
-        /// (those defined in the FHIR spec with the form: field[x]) we use two separate components. For example,
-        /// "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Code,
-        /// Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.</summary>
+        /// <summary>List of paths to FHIR fields to redact. Each path is a period-separated list where each component
+        /// is either a field name or FHIR type name. All types begin with an upper case letter. For example, the
+        /// resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String".
+        /// Path also supports partial matching. For example, "Patient.Address.city" can be matched by "Address.city"
+        /// (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city"
+        /// can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form:
+        /// field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit".
+        /// Supported types are: AdministrativeGenderCode, Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode,
+        /// Markdown, Oid, String, Uri, Uuid, Xhtml. The sub-type for HumanName(for example HumanName.given,
+        /// HumanName.family) can be omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<string> Paths { get; set; } 
 
@@ -9335,6 +9391,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parserConfig")]
         public virtual ParserConfig ParserConfig { get; set; } 
 
+        /// <summary>Determines whether duplicate messages should be rejected. A duplicate message is a message with the
+        /// same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is
+        /// false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the
+        /// IngestMessageResponse as has been returned previously. Note that only one resource is created in the store.
+        /// When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be
+        /// rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rejectDuplicateMessage")]
+        public virtual System.Nullable<bool> RejectDuplicateMessage { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -9458,8 +9523,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dateShiftConfig")]
         public virtual DateShiftConfig DateShiftConfig { get; set; } 
 
-        /// <summary>InfoTypes to apply this transformation to. If this is not specified, the transformation applies to
-        /// any info_type.</summary>
+        /// <summary>InfoTypes to apply this transformation to. If this is not specified, this transformation becomes
+        /// the default transformation, and is used for any info_type that is not specified in another
+        /// transformation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
         public virtual System.Collections.Generic.IList<string> InfoTypes { get; set; } 
 
@@ -9586,8 +9652,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Lists the messages in the specified HL7v2 store.</summary>
     public class ListMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The returned message names. Won't be more values than the value of page_size in the
-        /// request.</summary>
+        /// <summary>The returned Messages. Won't be more Messages than the value of page_size in the request. See view
+        /// for populated fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hl7V2Messages")]
+        public virtual System.Collections.Generic.IList<Message> Hl7V2Messages { get; set; } 
+
+        /// <summary>Deprecated. Use `hl7_v2_messages` instead. The returned message names. Won't be more values than
+        /// the value of page_size in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<string> Messages { get; set; } 
 

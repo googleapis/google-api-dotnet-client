@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>AI Platform Training & Prediction API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200205 (1861)
+ *      <tr><th>API Rev<td>20200207 (1863)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -3708,10 +3708,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>All parameters related to queuing and scheduling of training jobs.</summary>
+    /// <summary>All parameters related to scheduling of training jobs.</summary>
     public class GoogleCloudMlV1Scheduling : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The maximum job running time, expressed in seconds. By default there is no limit.
+        /// <summary>Optional. The maximum job running time, expressed in seconds. The field can contain up to nine
+        /// fractional digits, terminated by `s`. By default there is no limit to the running time.
         ///
         /// If the training job is still running after this duration, AI Platform Training cancels it.
         ///
@@ -3719,7 +3720,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// hours * 60 minutes / hour * 60 seconds / minute).
         ///
         /// If you submit your training job using the `gcloud` tool, you can [provide this field in a `config.yaml` file
-        /// ](/ml-engine/docs/training-jobs#formatting_your_configuration_parameters). For example:
+        /// ](/ai-platform/training/docs/training-jobs#formatting_your_configuration_parameters). For example:
         ///
         /// ```yaml trainingInput: ... scheduling: maxRunningTime: 7200s ... ```</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRunningTime")]

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/access-approval/docs'>Access Approval API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200131 (1856)
+ *      <tr><th>API Rev<td>20200207 (1863)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/access-approval/docs'>
  *              https://cloud.google.com/access-approval/docs</a>
@@ -866,7 +866,11 @@ namespace Google.Apis.AccessApproval.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>For the `FieldMask` definition, see https://developers.google.com/protocol-
+            /// <summary>The update mask applies to the settings. Only the top level fields of AccessApprovalSettings
+            /// (notification_emails & enrolled_services) are supported. For each field, if it is included, the
+            /// currently stored value will be entirely overwritten with the value of the field passed in this request.
+            ///
+            /// For the `FieldMask` definition, see https://developers.google.com/protocol-
             /// buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the
             /// notification_emails field will be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -1448,7 +1452,11 @@ namespace Google.Apis.AccessApproval.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>For the `FieldMask` definition, see https://developers.google.com/protocol-
+            /// <summary>The update mask applies to the settings. Only the top level fields of AccessApprovalSettings
+            /// (notification_emails & enrolled_services) are supported. For each field, if it is included, the
+            /// currently stored value will be entirely overwritten with the value of the field passed in this request.
+            ///
+            /// For the `FieldMask` definition, see https://developers.google.com/protocol-
             /// buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the
             /// notification_emails field will be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -2030,7 +2038,11 @@ namespace Google.Apis.AccessApproval.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>For the `FieldMask` definition, see https://developers.google.com/protocol-
+            /// <summary>The update mask applies to the settings. Only the top level fields of AccessApprovalSettings
+            /// (notification_emails & enrolled_services) are supported. For each field, if it is included, the
+            /// currently stored value will be entirely overwritten with the value of the field passed in this request.
+            ///
+            /// For the `FieldMask` definition, see https://developers.google.com/protocol-
             /// buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the
             /// notification_emails field will be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]

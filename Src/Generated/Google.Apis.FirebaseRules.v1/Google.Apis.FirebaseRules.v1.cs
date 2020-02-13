@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/storage/security'>Firebase Rules API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200118 (1843)
+ *      <tr><th>API Rev<td>20200206 (1862)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/storage/security'>
  *              https://firebase.google.com/docs/storage/security</a>
@@ -1674,6 +1674,14 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// <summary>First column on the source line associated with the source fragment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual System.Nullable<int> Column { get; set; } 
+
+        /// <summary>Start position relative to the beginning of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentOffset")]
+        public virtual System.Nullable<int> CurrentOffset { get; set; } 
+
+        /// <summary>End position relative to the beginning of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
+        public virtual System.Nullable<int> EndOffset { get; set; } 
 
         /// <summary>Name of the `File`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]

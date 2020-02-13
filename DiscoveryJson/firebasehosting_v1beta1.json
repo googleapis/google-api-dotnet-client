@@ -703,7 +703,7 @@
    }
   }
  }, 
- "revision": "20200203", 
+ "revision": "20200212", 
  "rootUrl": "https://firebasehosting.googleapis.com/", 
  "schemas": {
   "ActingUser": {
@@ -1391,7 +1391,8 @@
       "FINALIZED", 
       "DELETED", 
       "ABANDONED", 
-      "EXPIRED"
+      "EXPIRED", 
+      "CLONING"
      ], 
      "enumDescriptions": [
       "The default status; should not be intentionally used.", 
@@ -1399,7 +1400,8 @@
       "All content has been added to the version, and the version can no longer be\nchanged.", 
       "The version has been deleted.", 
       "The version was not updated to `FINALIZED` within 12&nbsp;hours and was\nautomatically deleted.", 
-      "The version is outside the site-configured limit for the number of\nretained versions, so the version's content is scheduled for deletion."
+      "The version is outside the site-configured limit for the number of\nretained versions, so the version's content is scheduled for deletion.", 
+      "The version is being cloned from another version. All content is still\nbeing copied over."
      ], 
      "type": "string"
     }, 

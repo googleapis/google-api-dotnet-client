@@ -180,7 +180,7 @@
    }
   }
  }, 
- "revision": "20200124", 
+ "revision": "20200205", 
  "rootUrl": "https://bigqueryreservation.googleapis.com/", 
  "schemas": {
   "Empty": {
