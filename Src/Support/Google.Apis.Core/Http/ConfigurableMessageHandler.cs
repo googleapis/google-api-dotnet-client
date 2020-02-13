@@ -65,6 +65,11 @@ namespace Google.Apis.Http
         /// </summary>
         public const string ResponseStreamInterceptorProviderKey = "__ResponseStreamInterceptorProviderKey";
 
+        /// <summary>
+        /// Key for a credential in a <see cref="HttpRequestMessage"/> properties.
+        /// </summary>
+        public const string CredentialKey = "__CredentialKey";
+
         /// <summary>The current API version of this client library.</summary>
         private static readonly string ApiVersion = Google.Apis.Util.Utilities.GetLibraryVersion();
 
@@ -325,6 +330,14 @@ namespace Google.Apis.Http
         /// <summary>Gets or sets the value set for the x-goog-api-client header.</summary>
         public string GoogleApiClientHeader { get; set; }
 
+        /// <summary>
+        /// The credential to apply to all requests made with this client,
+        /// unless theres a specific call credential set.
+        /// If <see cref="Credential"/> implements <see cref="IHttpUnsuccessfulResponseHandler"/>
+        /// then it will also be included as a handler of an unsuccessful response.
+        /// </summary>
+        public IHttpExecuteInterceptor Credential { get; set; }
+
         /// <summary>Constructs a new configurable message handler.</summary>
         public ConfigurableMessageHandler(HttpMessageHandler httpMessageHandler)
             : base(httpMessageHandler)
@@ -424,6 +437,9 @@ namespace Google.Apis.Http
                 {
                     await interceptor.InterceptAsync(request, cancellationToken).ConfigureAwait(false);
                 }
+
+                await CredentialInterceptAsync(request, cancellationToken).ConfigureAwait(false);
+
                 if (loggable)
                 {
                     if ((LogEvents & LogEventType.RequestUri) != 0)
@@ -535,19 +551,21 @@ namespace Google.Apis.Http
                             handlers.AddRange(perCallHandlers);
                         }
 
+                        var handlerArgs = new HandleUnsuccessfulResponseArgs
+                        {
+                            Request = request,
+                            Response = response,
+                            TotalTries = NumTries,
+                            CurrentFailedTry = NumTries - triesRemaining,
+                            CancellationToken = cancellationToken
+                        };
+
                         // Try to handle the abnormal HTTP response with each handler.
                         foreach (var handler in handlers)
                         {
                             try
                             {
-                                errorHandled |= await handler.HandleResponseAsync(new HandleUnsuccessfulResponseArgs
-                                    {
-                                        Request = request,
-                                        Response = response,
-                                        TotalTries = NumTries,
-                                        CurrentFailedTry = NumTries - triesRemaining,
-                                        CancellationToken = cancellationToken
-                                    }).ConfigureAwait(false);
+                                errorHandled |= await handler.HandleResponseAsync(handlerArgs).ConfigureAwait(false);
                             }
                             catch when (DisposeAndReturnFalse(response)) { }
 
@@ -557,6 +575,8 @@ namespace Google.Apis.Http
                                 return false;
                             }
                         }
+
+                        errorHandled |= await CredentialHandleResponseAsync(handlerArgs).ConfigureAwait(false);
 
                         if (!errorHandled)
                         {
@@ -608,6 +628,30 @@ namespace Google.Apis.Http
 
             return response;
         }
+
+        private async Task CredentialInterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var effectiveCredential = GetEffectiveCredential(request);
+            if (effectiveCredential != null)
+            {
+                await effectiveCredential.InterceptAsync(request, cancellationToken).ConfigureAwait(false);
+            }
+        }
+
+        private async Task<bool> CredentialHandleResponseAsync(HandleUnsuccessfulResponseArgs args)
+        {
+            var effectiveCredential = GetEffectiveCredential(args.Request);
+            if (effectiveCredential is IHttpUnsuccessfulResponseHandler handler)
+            {
+                return await handler.HandleResponseAsync(args).ConfigureAwait(false);
+            }
+
+            return false;
+        }
+
+        private IHttpExecuteInterceptor GetEffectiveCredential(HttpRequestMessage request) =>
+            (request.Properties.TryGetValue(CredentialKey, out var cred) && cred is IHttpExecuteInterceptor callCredential)
+            ? callCredential : Credential;
 
         /// <summary>
         /// Handles redirect if the response's status code is redirect, redirects are turned on, and the header has
