@@ -51,13 +51,8 @@ namespace Google.Apis.Auth.OAuth2
             {
                 throw new ArgumentException("Credential must implement IHttpExecuteInterceptor.", nameof(credential));
             }
-            request.AddExecuteInterceptor(httpExecuteInterceptor);
-            // Add the optional unsuccessful interceptor to this request.
-            if (credential is IHttpUnsuccessfulResponseHandler httpUnsuccessfulResponseHandler)
-            {
-                request.AddUnsuccessfulResponseHandler(httpUnsuccessfulResponseHandler);
-            }
-            // Return the request.
+            request.Credential = httpExecuteInterceptor;
+
             return request;
         }
     }
