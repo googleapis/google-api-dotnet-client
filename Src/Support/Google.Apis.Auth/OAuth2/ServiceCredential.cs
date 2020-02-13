@@ -147,11 +147,8 @@ namespace Google.Apis.Auth.OAuth2
         #region IConfigurableHttpClientInitializer
 
         /// <inheritdoc/>
-        public void Initialize(ConfigurableHttpClient httpClient)
-        {
-            httpClient.MessageHandler.AddExecuteInterceptor(this);
-            httpClient.MessageHandler.AddUnsuccessfulResponseHandler(this);
-        }
+        public void Initialize(ConfigurableHttpClient httpClient) =>
+            OverridableCredential.WrapInitialize(this, httpClient);
 
         #endregion
 

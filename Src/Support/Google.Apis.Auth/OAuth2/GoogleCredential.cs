@@ -151,7 +151,8 @@ namespace Google.Apis.Auth.OAuth2
             private readonly string _accessToken;
             private readonly IAccessMethod _accessMethod;
 
-            public void Initialize(ConfigurableHttpClient httpClient) => httpClient.MessageHandler.AddExecuteInterceptor(this);
+            public void Initialize(ConfigurableHttpClient httpClient) => 
+                OverridableCredential.WrapInitialize(this, httpClient);
 
             public Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken)) =>
                 Task.FromResult(_accessToken);
