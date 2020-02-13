@@ -28,14 +28,13 @@ namespace Google.Apis.Auth.OAuth2
     {
         /// <summary>
         /// Add a credential that is used for this request only.
-        /// This will override a service-level credential (if there is one).
-        /// Do not call more than once per request instance, as each call incrementally adds the provided credential.
-        /// To perform identical requests but with distinct credentials, create a separate request instance for each credential.
+        /// This will override all other existing credentials, including service level ones.
         /// </summary>
         /// <typeparam name="T">The request type.</typeparam>
         /// <param name="request">The request which requires a credential. Must not be null.</param>
         /// <param name="credential">The credential to use for this request only. Must not be null.</param>
-        /// <returns></returns>
+        /// <returns>The same request object as <paramref name="request"/> with all pre-existing credentials removed
+        /// and <paramref name="credential"/> added.</returns>
         public static T AddCredential<T>(this T request, ICredential credential) where T : ClientServiceRequest
         {
             request.ThrowIfNull(nameof(request));
@@ -51,6 +50,10 @@ namespace Google.Apis.Auth.OAuth2
             {
                 throw new ArgumentException("Credential must implement IHttpExecuteInterceptor.", nameof(credential));
             }
+            // Now we are ready to add the new credential.
+            // Let's remove old ones first.
+            request.RemoveCredentials();
+
             request.AddExecuteInterceptor(httpExecuteInterceptor);
             // Add the optional unsuccessful interceptor to this request.
             if (credential is IHttpUnsuccessfulResponseHandler httpUnsuccessfulResponseHandler)
@@ -58,6 +61,22 @@ namespace Google.Apis.Auth.OAuth2
                 request.AddUnsuccessfulResponseHandler(httpUnsuccessfulResponseHandler);
             }
             // Return the request.
+            return request;
+        }
+
+        /// <summary>
+        /// Removes all existing credentials from the given request.
+        /// This method is useful when credentials need to be overwritten.
+        /// </summary>
+        /// <typeparam name="T">The type of the request to remove credentials from.</typeparam>
+        /// <param name="request">The request to remove credentials from.</param>
+        /// <returns>The same request object as <paramref name="request"/> with all credentials removed.</returns>
+        internal static T RemoveCredentials<T>(this T request) where T : ClientServiceRequest
+        {
+            request.ThrowIfNull(nameof(request));
+            request.RemoveExecuteInterceptors<ICredential>();
+            request.RemoveUnsuccessfulResponseHandlers<ICredential>();
+
             return request;
         }
     }

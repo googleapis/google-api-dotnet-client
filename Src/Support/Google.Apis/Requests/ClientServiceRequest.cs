@@ -61,6 +61,15 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>
+        /// Removes all unsuccessful response handler of the given type if there are any.
+        /// </summary>
+        /// <typeparam name="THandler">The type of the handlers to remove.</typeparam>
+        public void RemoveUnsuccessfulResponseHandlers<THandler>()
+        {
+            _unsuccessfulResponseHandlers?.RemoveAll(handler => handler is THandler);
+        }
+
+        /// <summary>
         /// Add an exception handler for this request only.
         /// </summary>
         /// <param name="handler">The exception handler. Must not be <c>null</c>.</param>
@@ -86,6 +95,15 @@ namespace Google.Apis.Requests
                 _executeInterceptors = new List<IHttpExecuteInterceptor>();
             }
             _executeInterceptors.Add(handler);
+        }
+
+        /// <summary>
+        /// Removes all execute interceptors of the given type if there are any.
+        /// </summary>
+        /// <typeparam name="TInterceptor">The type of the interceptors to remove.</typeparam>
+        public void RemoveExecuteInterceptors<TInterceptor>()
+        {
+            _executeInterceptors?.RemoveAll(handler => handler is TInterceptor);
         }
     }
 
