@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Http;
 using Google.Apis.Requests;
@@ -22,9 +23,11 @@ using Google.Apis.Storage.v1;
 using Google.Apis.Storage.v1.Data;
 using IntegrationTests.Utils;
 using System;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using static Google.Apis.Auth.OAuth2.GoogleCredential;
 
 namespace IntegrationTests
 {
@@ -46,7 +49,7 @@ namespace IntegrationTests
         }
 
         [Fact]
-        public void OverrideServiceCredentialWithPerCallCredential()
+        public void OverridesServiceCredentialWithPerCallCredential_Header()
         {
             // Broken credential in the client.
             StorageService client = new StorageService(new BaseClientService.Initializer
@@ -59,6 +62,126 @@ namespace IntegrationTests
             Buckets buckets = client.Buckets.List(Helper.GetProjectId()).AddCredential(credential).Execute();
             // Check the response is sane.
             Assert.NotNull(buckets.Items);
+        }
+
+        private class RequestInterceptorCredentialWrapper : IConfigurableHttpClientInitializer, IHttpExecuteInterceptor
+        {
+            private AccessTokenCredential _credential;
+            public HttpRequestMessage Request { get; private set; }
+
+            public RequestInterceptorCredentialWrapper(string accessToken, IAccessMethod accessMethod) =>
+                _credential = new AccessTokenCredential(accessToken, accessMethod);
+
+            public void Initialize(ConfigurableHttpClient httpClient)
+            {
+                _credential.Initialize(httpClient);
+                httpClient.MessageHandler.AddExecuteInterceptor(this);
+            }
+
+            public Task InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                Request = request;
+                return Task.FromResult(true);
+            }
+        }
+
+        private BucketsResource.ListRequest BuildListBucketsRequest(
+            RequestInterceptorCredentialWrapper serviceCredential, ICredential callCredential)
+        {
+            // Set one credential in the client
+            StorageService client = new StorageService(new BaseClientService.Initializer
+            {
+                ApplicationName = "IntegrationTest",
+                HttpClientInitializer = serviceCredential
+            }); ;
+
+            // Create a request with a per-call credential.; this overrides the service-level credential.
+            return client.Buckets.List(Helper.GetProjectId()).AddCredential(callCredential);
+        }
+
+        [Fact]
+        public void OverridesServiceCredentialWithPerCallCredential_QueryString()
+        {
+            var serviceCredential = new RequestInterceptorCredentialWrapper("SERVICE_CREDENTIAL_TOKEN", new BearerToken.QueryParameterAccessMethod());
+            var callCredential = new AccessTokenCredential("CALL_CREDENTIAL_TOKEN", new BearerToken.QueryParameterAccessMethod());
+
+            var request = BuildListBucketsRequest(serviceCredential, callCredential);
+
+            // This should throw unauthorized, the credentials are fake, but let's make sure the
+            // request got to the server so we know all appropiate interceptors executed.
+            var exception = Assert.ThrowsAny<GoogleApiException>(() => request.Execute());
+            Assert.Equal(401, exception.Error.Code);
+
+            string query = serviceCredential.Request.RequestUri.Query;
+
+            Assert.DoesNotContain("access_token=SERVICE_CREDENTIAL_TOKEN", query, StringComparison.OrdinalIgnoreCase);
+            Assert.Contains("access_token=CALL_CREDENTIAL_TOKEN", query, StringComparison.OrdinalIgnoreCase);
+        }
+
+        [Fact]
+        public void OverridesServiceCredentialWithPerCallCredential_Mixed_Header_Query()
+        {
+            var serviceCredential = new RequestInterceptorCredentialWrapper("SERVICE_CREDENTIAL_TOKEN", new BearerToken.AuthorizationHeaderAccessMethod());
+            var callCredential = new AccessTokenCredential("CALL_CREDENTIAL_TOKEN", new BearerToken.QueryParameterAccessMethod());
+
+            var request = BuildListBucketsRequest(serviceCredential, callCredential);
+
+            // This should throw unauthorized, the credentials are fake, but let's make sure the
+            // request got to the server so we know all appropiate interceptors executed.
+            var exception = Assert.ThrowsAny<GoogleApiException>(() => request.Execute());
+            Assert.Equal(401, exception.Error.Code);
+
+            HttpRequestMessage httpRequest = serviceCredential.Request;
+            string query = httpRequest.RequestUri.Query;
+
+            Assert.Null(httpRequest.Headers.Authorization);
+            Assert.Contains("access_token=CALL_CREDENTIAL_TOKEN", query, StringComparison.OrdinalIgnoreCase);
+        }
+
+        [Fact]
+        public void OverridesServiceCredentialWithPerCallCredential_Mixed_Query_Header()
+        {
+            var serviceCredential = new RequestInterceptorCredentialWrapper("SERVICE_CREDENTIAL_TOKEN", new BearerToken.QueryParameterAccessMethod());
+            var callCredential = new AccessTokenCredential("CALL_CREDENTIAL_TOKEN", new BearerToken.AuthorizationHeaderAccessMethod());
+
+            var request = BuildListBucketsRequest(serviceCredential, callCredential);
+
+            // This should throw unauthorized, the credentials are fake, but let's make sure the
+            // request got to the server so we know all appropiate interceptors executed.
+            var exception = Assert.ThrowsAny<GoogleApiException>(() => request.Execute());
+            Assert.Equal(401, exception.Error.Code);
+
+            HttpRequestMessage httpRequest = serviceCredential.Request;
+            string query = httpRequest.RequestUri.Query;
+
+            Assert.DoesNotContain("access_token=SERVICE_CREDENTIAL_TOKEN", query, StringComparison.OrdinalIgnoreCase);
+            Assert.Equal("CALL_CREDENTIAL_TOKEN", httpRequest.Headers.Authorization.Parameter);
+        }
+
+        [Fact]
+        public void OverridesServiceCredentialWithPerCallCredential_TwoCallCredentials()
+        {
+            var serviceCredential = new RequestInterceptorCredentialWrapper("SERVICE_CREDENTIAL_TOKEN", new BearerToken.QueryParameterAccessMethod());
+            var callCredential1 = new AccessTokenCredential("CALL_CREDENTIAL_TOKEN_1", new BearerToken.QueryParameterAccessMethod());
+            var callCredential2 = new AccessTokenCredential("CALL_CREDENTIAL_TOKEN_2", new BearerToken.QueryParameterAccessMethod());
+
+            var request = BuildListBucketsRequest(serviceCredential, callCredential1);
+            request.AddCredential(callCredential2);
+
+            // This should throw unauthorized, the credentials are fake, but let's make sure the
+            // request got to the server so we know all appropiate interceptors executed.
+            var exception = Assert.ThrowsAny<GoogleApiException>(() => request.Execute());
+            Assert.Equal(401, exception.Error.Code);
+
+            string query = serviceCredential.Request.RequestUri.Query;
+
+            int serviceIndex = query.IndexOf("access_token=SERVICE_CREDENTIAL_TOKEN", StringComparison.OrdinalIgnoreCase);
+            int call1Index = query.LastIndexOf("access_token=CALL_CREDENTIAL_TOKEN_1", StringComparison.OrdinalIgnoreCase);
+            int call2Index = query.LastIndexOf("access_token=CALL_CREDENTIAL_TOKEN_2", StringComparison.OrdinalIgnoreCase);
+
+            Assert.DoesNotContain("access_token=SERVICE_CREDENTIAL_TOKEN", query, StringComparison.OrdinalIgnoreCase);
+            Assert.DoesNotContain("access_token=CALL_CREDENTIAL_TOKEN_1", query, StringComparison.OrdinalIgnoreCase);
+            Assert.Contains("access_token=CALL_CREDENTIAL_TOKEN_2", query, StringComparison.OrdinalIgnoreCase);
         }
 
         [Fact]
