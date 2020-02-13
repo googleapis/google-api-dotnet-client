@@ -47,6 +47,13 @@ namespace Google.Apis.Requests
         protected List<IHttpExecuteInterceptor> _executeInterceptors;
 
         /// <summary>
+        /// Credential to use for this request.
+        /// If <see cref="Credential"/> implements <see cref="IHttpUnsuccessfulResponseHandler"/>
+        /// then it will also be included as a handler of an unsuccessful response.
+        /// </summary>
+        public IHttpExecuteInterceptor Credential { get; set; }
+
+        /// <summary>
         /// Add an unsuccessful response handler for this request only.
         /// </summary>
         /// <param name="handler">The unsuccessful response handler. Must not be <c>null</c>.</param>
@@ -271,6 +278,10 @@ namespace Google.Apis.Requests
             if (_executeInterceptors != null)
             {
                 request.Properties.Add(ConfigurableMessageHandler.ExecuteInterceptorKey, _executeInterceptors);
+            }
+            if (Credential != null)
+            {
+                request.Properties.Add(ConfigurableMessageHandler.CredentialKey, Credential);
             }
             ModifyRequest?.Invoke(request);
             return request;
