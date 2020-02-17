@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200110 (1835)
+ *      <tr><th>API Rev<td>20200203 (1859)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -115,6 +115,18 @@ namespace Google.Apis.Gmail.v1
             /// <summary>Read, compose, send, and permanently delete all your email from Gmail</summary>
             public static string MailGoogleCom = "https://mail.google.com/";
 
+            /// <summary>Manage drafts and send emails when you interact with the add-on</summary>
+            public static string GmailAddonsCurrentActionCompose = "https://www.googleapis.com/auth/gmail.addons.current.action.compose";
+
+            /// <summary>View your email messages when you interact with the add-on</summary>
+            public static string GmailAddonsCurrentMessageAction = "https://www.googleapis.com/auth/gmail.addons.current.message.action";
+
+            /// <summary>View your email message metadata when the add-on is running</summary>
+            public static string GmailAddonsCurrentMessageMetadata = "https://www.googleapis.com/auth/gmail.addons.current.message.metadata";
+
+            /// <summary>View your email messages when the add-on is running</summary>
+            public static string GmailAddonsCurrentMessageReadonly = "https://www.googleapis.com/auth/gmail.addons.current.message.readonly";
+
             /// <summary>Manage drafts and send emails</summary>
             public static string GmailCompose = "https://www.googleapis.com/auth/gmail.compose";
 
@@ -149,6 +161,18 @@ namespace Google.Apis.Gmail.v1
         {
             /// <summary>Read, compose, send, and permanently delete all your email from Gmail</summary>
             public const string MailGoogleCom = "https://mail.google.com/";
+
+            /// <summary>Manage drafts and send emails when you interact with the add-on</summary>
+            public const string GmailAddonsCurrentActionCompose = "https://www.googleapis.com/auth/gmail.addons.current.action.compose";
+
+            /// <summary>View your email messages when you interact with the add-on</summary>
+            public const string GmailAddonsCurrentMessageAction = "https://www.googleapis.com/auth/gmail.addons.current.message.action";
+
+            /// <summary>View your email message metadata when the add-on is running</summary>
+            public const string GmailAddonsCurrentMessageMetadata = "https://www.googleapis.com/auth/gmail.addons.current.message.metadata";
+
+            /// <summary>View your email messages when the add-on is running</summary>
+            public const string GmailAddonsCurrentMessageReadonly = "https://www.googleapis.com/auth/gmail.addons.current.message.readonly";
 
             /// <summary>Manage drafts and send emails</summary>
             public const string GmailCompose = "https://www.googleapis.com/auth/gmail.compose";

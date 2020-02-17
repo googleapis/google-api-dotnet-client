@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200203 (1859)
+ *      <tr><th>API Rev<td>20200212 (1868)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -11992,15 +11992,15 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Shared message indicating Cloud storage type.</summary>
     public class GooglePrivacyDlpV2StorageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>BigQuery options specification.</summary>
+        /// <summary>BigQuery options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigQueryOptions")]
         public virtual GooglePrivacyDlpV2BigQueryOptions BigQueryOptions { get; set; } 
 
-        /// <summary>Google Cloud Storage options specification.</summary>
+        /// <summary>Google Cloud Storage options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageOptions")]
         public virtual GooglePrivacyDlpV2CloudStorageOptions CloudStorageOptions { get; set; } 
 
-        /// <summary>Google Cloud Datastore options specification.</summary>
+        /// <summary>Google Cloud Datastore options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreOptions")]
         public virtual GooglePrivacyDlpV2DatastoreOptions DatastoreOptions { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20200204 (1860)
+ *      <tr><th>API Rev<td>20200210 (1866)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -413,11 +413,11 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Creates a new alerting policy.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The project in which to create the alerting policy. The format is
-            /// projects/[PROJECT_ID].Note that this field names the parent container in which the alerting policy will be written,
-            /// not the name of the created policy. The alerting policy that is returned will have a name that contains a normalized
-            /// representation of this name as a prefix but adds a suffix of the form /alertPolicies/[POLICY_ID], identifying the
-            /// policy in the container.</param>
+            /// <param name="name">Required. The project in which to create the alerting policy. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which the alerting policy will be
+            /// written, not the name of the created policy. The alerting policy that is returned will have a name that contains a
+            /// normalized representation of this name as a prefix but adds a suffix of the form /alertPolicies/[ALERT_POLICY_ID],
+            /// identifying the policy in the container.</param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.AlertPolicy body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -436,11 +436,12 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The project in which to create the alerting policy. The format is
-                /// projects/[PROJECT_ID].Note that this field names the parent container in which the alerting policy
-                /// will be written, not the name of the created policy. The alerting policy that is returned will have
-                /// a name that contains a normalized representation of this name as a prefix but adds a suffix of the
-                /// form /alertPolicies/[POLICY_ID], identifying the policy in the container.</summary>
+                /// <summary>Required. The project in which to create the alerting policy. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which the
+                /// alerting policy will be written, not the name of the created policy. The alerting policy that is
+                /// returned will have a name that contains a normalized representation of this name as a prefix but
+                /// adds a suffix of the form /alertPolicies/[ALERT_POLICY_ID], identifying the policy in the
+                /// container.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -489,7 +490,7 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Deletes an alerting policy.</summary>
             /// <param name="name">Required. The alerting policy to delete. The format is:
-            /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID] For more information, see AlertPolicy.</param>
+            /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] For more information, see AlertPolicy.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -508,7 +509,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>Required. The alerting policy to delete. The format is:
-                /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID] For more information, see
+                /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] For more information, see
                 /// AlertPolicy.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -551,8 +552,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>Gets a single alerting policy.</summary>
-            /// <param name="name">Required. The alerting policy to retrieve. The format is
-            /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID] </param>
+            /// <param name="name">Required. The alerting policy to retrieve. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -570,8 +571,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The alerting policy to retrieve. The format is
-                /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID] </summary>
+                /// <summary>Required. The alerting policy to retrieve. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -613,9 +614,10 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>Lists the existing alerting policies for the project.</summary>
-            /// <param name="name">Required. The project whose alert policies are to be listed. The format is projects/[PROJECT_ID]
-            /// Note that this field names the parent container in which the alerting policies to be listed are stored. To retrieve
-            /// a single alerting policy by name, use the GetAlertPolicy operation, instead.</param>
+            /// <param name="name">Required. The project whose alert policies are to be listed. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which the alerting policies to be
+            /// listed are stored. To retrieve a single alerting policy by name, use the GetAlertPolicy operation,
+            /// instead.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -633,10 +635,10 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The project whose alert policies are to be listed. The format is
-                /// projects/[PROJECT_ID] Note that this field names the parent container in which the alerting policies
-                /// to be listed are stored. To retrieve a single alerting policy by name, use the GetAlertPolicy
-                /// operation, instead.</summary>
+                /// <summary>Required. The project whose alert policies are to be listed. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which the
+                /// alerting policies to be listed are stored. To retrieve a single alerting policy by name, use the
+                /// GetAlertPolicy operation, instead.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -738,10 +740,10 @@ namespace Google.Apis.Monitoring.v3
             /// only certain fields in the current alerting policy by specifying the fields to be updated via
             /// updateMask. Returns the updated alerting policy.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required if the policy exists. The resource name for this policy. The syntax is:
-            /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when
-            /// the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting
-            /// policy passed as part of the request.</param>
+            /// <param name="name">Required if the policy exists. The resource name for this policy. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver
+            /// Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field
+            /// in the alerting policy passed as part of the request.</param>
             public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.AlertPolicy body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -762,10 +764,10 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required if the policy exists. The resource name for this policy. The syntax is:
-                /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver
-                /// Monitoring when the policy is created. When calling the alertPolicies.create method, do not include
-                /// the name field in the alerting policy passed as part of the request.</summary>
+                /// <summary>Required if the policy exists. The resource name for this policy. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by
+                /// Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do
+                /// not include the name field in the alerting policy passed as part of the request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -863,8 +865,8 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Stackdriver Monitoring Agent only: Creates a new time series.This method is only for use by the
             /// Stackdriver Monitoring Agent. Use projects.timeSeries.create instead.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The project in which to create the time series. The format is
-            /// "projects/PROJECT_ID_OR_NUMBER".</param>
+            /// <param name="name">The project in which to create the time series. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.CreateCollectdTimeSeriesRequest body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -884,8 +886,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>The project in which to create the time series. The format is
-                /// "projects/PROJECT_ID_OR_NUMBER".</summary>
+                /// <summary>The project in which to create the time series. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -981,8 +983,8 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>Lists the monitored resources that are members of a group.</summary>
-                /// <param name="name">Required. The group whose members are listed. The format is
-                /// "projects/{project_id_or_number}/groups/{group_id}".</param>
+                /// <param name="name">Required. The group whose members are listed. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] </param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(service, name);
@@ -1000,15 +1002,15 @@ namespace Google.Apis.Monitoring.v3
                     }
 
 
-                    /// <summary>Required. The group whose members are listed. The format is
-                    /// "projects/{project_id_or_number}/groups/{group_id}".</summary>
+                    /// <summary>Required. The group whose members are listed. The format is:
+                    /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>An optional list filter describing the members to be returned. The filter may reference
                     /// the type, labels, and metadata of monitored resources that comprise the group. For example, to
-                    /// return only resources representing Compute Engine VM instances, use this filter: resource.type =
-                    /// "gce_instance" </summary>
+                    /// return only resources representing Compute Engine VM instances, use this filter: `resource.type
+                    /// = "gce_instance"` </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -1025,7 +1027,7 @@ namespace Google.Apis.Monitoring.v3
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
+                    /// <summary>If this field is not empty then it must contain the next_page_token value returned by a
                     /// previous call to this method. Using this field causes the method to return additional results
                     /// from the previous method call.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1116,8 +1118,8 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Creates a new group.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The project in which to create the group. The format is
-            /// "projects/{project_id_or_number}".</param>
+            /// <param name="name">Required. The project in which to create the group. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.Group body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -1136,8 +1138,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The project in which to create the group. The format is
-                /// "projects/{project_id_or_number}".</summary>
+                /// <summary>Required. The project in which to create the group. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1198,8 +1200,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>Deletes an existing group.</summary>
-            /// <param name="name">Required. The group to delete. The format is
-            /// "projects/{project_id_or_number}/groups/{group_id}".</param>
+            /// <param name="name">Required. The group to delete. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -1217,8 +1219,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The group to delete. The format is
-                /// "projects/{project_id_or_number}/groups/{group_id}".</summary>
+                /// <summary>Required. The group to delete. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1275,8 +1277,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>Gets a single group.</summary>
-            /// <param name="name">Required. The group to retrieve. The format is
-            /// "projects/{project_id_or_number}/groups/{group_id}".</param>
+            /// <param name="name">Required. The group to retrieve. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1294,8 +1296,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The group to retrieve. The format is
-                /// "projects/{project_id_or_number}/groups/{group_id}".</summary>
+                /// <summary>Required. The group to retrieve. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1337,8 +1339,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>Lists the existing groups.</summary>
-            /// <param name="name">Required. The project whose groups are to be listed. The format is
-            /// "projects/{project_id_or_number}".</param>
+            /// <param name="name">Required. The project whose groups are to be listed. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] </param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -1356,27 +1358,27 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The project whose groups are to be listed. The format is
-                /// "projects/{project_id_or_number}".</summary>
+                /// <summary>Required. The project whose groups are to be listed. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns groups that are
-                /// ancestors of the specified group. The groups are returned in order, starting with the immediate
-                /// parent and ending with the most distant ancestor. If the specified group has no immediate parent,
-                /// the results are empty.</summary>
+                /// <summary>A group name. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] Returns
+                /// groups that are ancestors of the specified group. The groups are returned in order, starting with
+                /// the immediate parent and ending with the most distant ancestor. If the specified group has no
+                /// immediate parent, the results are empty.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("ancestorsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AncestorsOfGroup { get; set; }
 
-                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
-                /// parentName field contains the group name. If no groups have this parent, the results are
-                /// empty.</summary>
+                /// <summary>A group name. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] Returns
+                /// groups whose parent_name field contains the group name. If no groups have this parent, the results
+                /// are empty.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("childrenOfGroup", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ChildrenOfGroup { get; set; }
 
-                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns the descendants
-                /// of the specified group. This is a superset of the results returned by the childrenOfGroup filter,
-                /// and includes children-of-children, and so forth.</summary>
+                /// <summary>A group name. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] Returns the
+                /// descendants of the specified group. This is a superset of the results returned by the
+                /// children_of_group filter, and includes children-of-children, and so forth.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("descendantsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DescendantsOfGroup { get; set; }
 
@@ -1384,7 +1386,7 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
+                /// <summary>If this field is not empty then it must contain the next_page_token value returned by a
                 /// previous call to this method. Using this field causes the method to return additional results from
                 /// the previous method call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1474,9 +1476,9 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Updates an existing group. You can change any group attributes except name.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Output only. The name of this group. The format is
-            /// "projects/{project_id_or_number}/groups/{group_id}". When creating a group, this field is ignored and a new name is
-            /// created consisting of the project specified in the call to CreateGroup and a unique {group_id} that is generated
+            /// <param name="name">Output only. The name of this group. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is
+            /// created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated
             /// automatically.</param>
             public virtual UpdateRequest Update(Google.Apis.Monitoring.v3.Data.Group body, string name)
             {
@@ -1496,10 +1498,10 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Output only. The name of this group. The format is
-                /// "projects/{project_id_or_number}/groups/{group_id}". When creating a group, this field is ignored
-                /// and a new name is created consisting of the project specified in the call to CreateGroup and a
-                /// unique {group_id} that is generated automatically.</summary>
+                /// <summary>Output only. The name of this group. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a
+                /// new name is created consisting of the project specified in the call to CreateGroup and a unique
+                /// [GROUP_ID] that is generated automatically.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1586,8 +1588,8 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Creates a new metric descriptor. User-created metric descriptors define custom
             /// metrics.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The project on which to execute the request. The format is
-            /// "projects/{project_id_or_number}".</param>
+            /// <param name="name">Required. The project on which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.MetricDescriptor body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -1607,8 +1609,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The project on which to execute the request. The format is
-                /// "projects/{project_id_or_number}".</summary>
+                /// <summary>Required. The project on which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1656,8 +1658,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>Deletes a metric descriptor. Only user-created custom metrics can be deleted.</summary>
-            /// <param name="name">Required. The metric descriptor on which to execute the request. The format is
-            /// "projects/{project_id_or_number}/metricDescriptors/{metric_id}". An example of {metric_id} is:
+            /// <param name="name">Required. The metric descriptor on which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID] An example of [METRIC_ID] is:
             /// "custom.googleapis.com/my_test_metric".</param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -1676,8 +1678,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The metric descriptor on which to execute the request. The format is
-                /// "projects/{project_id_or_number}/metricDescriptors/{metric_id}". An example of {metric_id} is:
+                /// <summary>Required. The metric descriptor on which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID] An example of [METRIC_ID] is:
                 /// "custom.googleapis.com/my_test_metric".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1720,8 +1722,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>Gets a single metric descriptor. This method does not require a Stackdriver account.</summary>
-            /// <param name="name">Required. The metric descriptor on which to execute the request. The format is
-            /// "projects/{project_id_or_number}/metricDescriptors/{metric_id}". An example value of {metric_id} is
+            /// <param name="name">Required. The metric descriptor on which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID] An example value of [METRIC_ID] is
             /// "compute.googleapis.com/instance/disk/read_bytes_count".</param>
             public virtual GetRequest Get(string name)
             {
@@ -1740,8 +1742,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The metric descriptor on which to execute the request. The format is
-                /// "projects/{project_id_or_number}/metricDescriptors/{metric_id}". An example value of {metric_id} is
+                /// <summary>Required. The metric descriptor on which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID] An example value of [METRIC_ID] is
                 /// "compute.googleapis.com/instance/disk/read_bytes_count".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1785,8 +1787,8 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Lists metric descriptors that match a filter. This method does not require a Stackdriver
             /// account.</summary>
-            /// <param name="name">Required. The project on which to execute the request. The format is
-            /// "projects/{project_id_or_number}".</param>
+            /// <param name="name">Required. The project on which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] </param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -1805,8 +1807,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The project on which to execute the request. The format is
-                /// "projects/{project_id_or_number}".</summary>
+                /// <summary>Required. The project on which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1917,8 +1919,8 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Gets a single monitored resource descriptor. This method does not require a Stackdriver
             /// account.</summary>
-            /// <param name="name">Required. The monitored resource descriptor to get. The format is
-            /// "projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}". The {resource_type} is a predefined
+            /// <param name="name">Required. The monitored resource descriptor to get. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/monitoredResourceDescriptors/[RESOURCE_TYPE] The [RESOURCE_TYPE] is a predefined
             /// type, such as cloudsql_database.</param>
             public virtual GetRequest Get(string name)
             {
@@ -1938,9 +1940,9 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The monitored resource descriptor to get. The format is
-                /// "projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}". The {resource_type}
-                /// is a predefined type, such as cloudsql_database.</summary>
+                /// <summary>Required. The monitored resource descriptor to get. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/monitoredResourceDescriptors/[RESOURCE_TYPE] The [RESOURCE_TYPE] is
+                /// a predefined type, such as cloudsql_database.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1983,8 +1985,8 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Lists monitored resource descriptors that match a filter. This method does not require a
             /// Stackdriver account.</summary>
-            /// <param name="name">Required. The project on which to execute the request. The format is
-            /// "projects/{project_id_or_number}".</param>
+            /// <param name="name">Required. The project on which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] </param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -2003,8 +2005,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The project on which to execute the request. The format is
-                /// "projects/{project_id_or_number}".</summary>
+                /// <summary>Required. The project on which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2115,8 +2117,8 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Gets a single channel descriptor. The descriptor indicates which fields are expected /
             /// permitted for a notification channel of the given type.</summary>
-            /// <param name="name">Required. The channel type for which to execute the request. The format is
-            /// projects/[PROJECT_ID]/notificationChannelDescriptors/{channel_type}.</param>
+            /// <param name="name">Required. The channel type for which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[CHANNEL_TYPE] </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -2135,8 +2137,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The channel type for which to execute the request. The format is
-                /// projects/[PROJECT_ID]/notificationChannelDescriptors/{channel_type}.</summary>
+                /// <summary>Required. The channel type for which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[CHANNEL_TYPE] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2180,8 +2182,8 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Lists the descriptors for supported channel types. The use of descriptors makes it possible for
             /// new channel types to be dynamically added.</summary>
             /// <param name="name">Required. The REST resource name of the parent from which to retrieve the notification channel
-            /// descriptors. The expected syntax is: projects/[PROJECT_ID] Note that this names the parent container in which to
-            /// look for the descriptors; to retrieve a single descriptor by name, use the GetNotificationChannelDescriptor
+            /// descriptors. The expected syntax is: projects/[PROJECT_ID_OR_NUMBER] Note that this names the parent container in
+            /// which to look for the descriptors; to retrieve a single descriptor by name, use the GetNotificationChannelDescriptor
             /// operation, instead.</param>
             public virtual ListRequest List(string name)
             {
@@ -2202,9 +2204,9 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>Required. The REST resource name of the parent from which to retrieve the notification
-                /// channel descriptors. The expected syntax is: projects/[PROJECT_ID] Note that this names the parent
-                /// container in which to look for the descriptors; to retrieve a single descriptor by name, use the
-                /// GetNotificationChannelDescriptor operation, instead.</summary>
+                /// channel descriptors. The expected syntax is: projects/[PROJECT_ID_OR_NUMBER] Note that this names
+                /// the parent container in which to look for the descriptors; to retrieve a single descriptor by name,
+                /// use the GetNotificationChannelDescriptor operation, instead.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2300,10 +2302,10 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Creates a new notification channel, representing a single notification endpoint such as an
             /// email address, SMS number, or PagerDuty service.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The project on which to execute the request. The format is: projects/[PROJECT_ID] Note
-            /// that this names the container into which the channel will be written. This does not name the newly created channel.
-            /// The resulting channel's name will have a normalized version of this field as a prefix, but will add
-            /// /notificationChannels/[CHANNEL_ID] to identify the channel.</param>
+            /// <param name="name">Required. The project on which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] This names the container into which the channel will be written, this does not name
+            /// the newly created channel. The resulting channel's name will have a normalized version of this field as a prefix,
+            /// but will add /notificationChannels/[CHANNEL_ID] to identify the channel.</param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.NotificationChannel body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -2323,10 +2325,11 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The project on which to execute the request. The format is: projects/[PROJECT_ID]
-                /// Note that this names the container into which the channel will be written. This does not name the
-                /// newly created channel. The resulting channel's name will have a normalized version of this field as
-                /// a prefix, but will add /notificationChannels/[CHANNEL_ID] to identify the channel.</summary>
+                /// <summary>Required. The project on which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] This names the container into which the channel will be written,
+                /// this does not name the newly created channel. The resulting channel's name will have a normalized
+                /// version of this field as a prefix, but will add /notificationChannels/[CHANNEL_ID] to identify the
+                /// channel.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2374,8 +2377,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>Deletes a notification channel.</summary>
-            /// <param name="name">Required. The channel for which to execute the request. The format is
-            /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID].</param>
+            /// <param name="name">Required. The channel for which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -2393,8 +2396,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The channel for which to execute the request. The format is
-                /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID].</summary>
+                /// <summary>Required. The channel for which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2454,8 +2457,8 @@ namespace Google.Apis.Monitoring.v3
             /// with which the channel was created. However, the response may truncate or omit passwords, API keys, or
             /// other private key matter and thus the response may not be 100% identical to the information that was
             /// supplied in the call to the create method.</summary>
-            /// <param name="name">Required. The channel for which to execute the request. The format is
-            /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID].</param>
+            /// <param name="name">Required. The channel for which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -2476,8 +2479,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The channel for which to execute the request. The format is
-                /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID].</summary>
+                /// <summary>Required. The channel for which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2617,9 +2620,10 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>Lists the notification channels that have been created for the project.</summary>
-            /// <param name="name">Required. The project on which to execute the request. The format is projects/[PROJECT_ID]. That
-            /// is, this names the container in which to look for the notification channels; it does not name a specific channel. To
-            /// query a specific channel by REST resource name, use the GetNotificationChannel operation.</param>
+            /// <param name="name">Required. The project on which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] This names the container in which to look for the notification channels; it does not
+            /// name a specific channel. To query a specific channel by REST resource name, use the GetNotificationChannel
+            /// operation.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -2637,10 +2641,10 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The project on which to execute the request. The format is projects/[PROJECT_ID].
-                /// That is, this names the container in which to look for the notification channels; it does not name a
-                /// specific channel. To query a specific channel by REST resource name, use the GetNotificationChannel
-                /// operation.</summary>
+                /// <summary>Required. The project on which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] This names the container in which to look for the notification
+                /// channels; it does not name a specific channel. To query a specific channel by REST resource name,
+                /// use the GetNotificationChannel operation.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2741,9 +2745,9 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Updates a notification channel. Fields not specified in the field mask remain
             /// unchanged.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The full REST resource name for this channel. The syntax is:
-            /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on
-            /// creation.</param>
+            /// <param name="name">The full REST resource name for this channel. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the
+            /// server on creation.</param>
             public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.NotificationChannel body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -2763,9 +2767,9 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>The full REST resource name for this channel. The syntax is:
-                /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned
-                /// by the server on creation.</summary>
+                /// <summary>The full REST resource name for this channel. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically
+                /// assigned by the server on creation.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2993,8 +2997,8 @@ namespace Google.Apis.Monitoring.v3
             /// the request were written. If any time series could not be written, a corresponding failure message is
             /// included in the error response.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The project on which to execute the request. The format is
-            /// "projects/{project_id_or_number}".</param>
+            /// <param name="name">Required. The project on which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.CreateTimeSeriesRequest body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -3015,8 +3019,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The project on which to execute the request. The format is
-                /// "projects/{project_id_or_number}".</summary>
+                /// <summary>Required. The project on which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -3065,8 +3069,8 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Lists time series that match a filter. This method does not require a Stackdriver
             /// account.</summary>
-            /// <param name="name">Required. The project on which to execute the request. The format is
-            /// "projects/{project_id_or_number}".</param>
+            /// <param name="name">Required. The project on which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] </param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -3085,8 +3089,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The project on which to execute the request. The format is
-                /// "projects/{project_id_or_number}".</summary>
+                /// <summary>Required. The project on which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -3435,8 +3439,8 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Creates a new Uptime check configuration.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The project in which to create the Uptime check. The format  is
-            /// projects/[PROJECT_ID].</param>
+            /// <param name="parent">Required. The project in which to create the Uptime check. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.UptimeCheckConfig body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -3455,8 +3459,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The project in which to create the Uptime check. The format  is
-                /// projects/[PROJECT_ID].</summary>
+                /// <summary>Required. The project in which to create the Uptime check. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3506,8 +3510,8 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Deletes an Uptime check configuration. Note that this method will fail if the Uptime check
             /// configuration is referenced by an alert policy or other dependent configs that would be rendered invalid
             /// by the deletion.</summary>
-            /// <param name="name">Required. The Uptime check configuration to delete. The format  is
-            /// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].</param>
+            /// <param name="name">Required. The Uptime check configuration to delete. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -3527,8 +3531,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The Uptime check configuration to delete. The format  is
-                /// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].</summary>
+                /// <summary>Required. The Uptime check configuration to delete. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -3570,8 +3574,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>Gets a single Uptime check configuration.</summary>
-            /// <param name="name">Required. The Uptime check configuration to retrieve. The format  is
-            /// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].</param>
+            /// <param name="name">Required. The Uptime check configuration to retrieve. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -3589,8 +3593,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The Uptime check configuration to retrieve. The format  is
-                /// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].</summary>
+                /// <summary>Required. The Uptime check configuration to retrieve. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -3633,8 +3637,8 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Lists the existing valid Uptime check configurations for the project (leaving out any invalid
             /// configurations).</summary>
-            /// <param name="parent">Required. The project whose Uptime check configurations are listed. The format  is
-            /// projects/[PROJECT_ID].</param>
+            /// <param name="parent">Required. The project whose Uptime check configurations are listed. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -3653,8 +3657,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. The project whose Uptime check configurations are listed. The format  is
-                /// projects/[PROJECT_ID].</summary>
+                /// <summary>Required. The project whose Uptime check configurations are listed. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3729,9 +3733,9 @@ namespace Google.Apis.Monitoring.v3
             /// new one or replace only certain fields in the current configuration by specifying the fields to be
             /// updated via updateMask. Returns the updated configuration.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">A unique resource name for this Uptime check configuration. The format
-            /// is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted when creating the Uptime
-            /// check configuration; on create, the resource name is assigned by the server and included in the
+            /// <param name="name">A unique resource name for this Uptime check configuration. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] This field should be omitted when creating the
+            /// Uptime check configuration; on create, the resource name is assigned by the server and included in the
             /// response.</param>
             public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.UptimeCheckConfig body, string name)
             {
@@ -3753,10 +3757,10 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>A unique resource name for this Uptime check configuration. The format
-                /// is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted when
-                /// creating the Uptime check configuration; on create, the resource name is assigned by the server and
-                /// included in the response.</summary>
+                /// <summary>A unique resource name for this Uptime check configuration. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] This field should be omitted
+                /// when creating the Uptime check configuration; on create, the resource name is assigned by the server
+                /// and included in the response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -3862,8 +3866,8 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Create a ServiceLevelObjective for the given Service.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Resource name of the parent Service. Of the form
-            /// projects/{project_id}/services/{service_id}.</param>
+            /// <param name="parent">Required. Resource name of the parent Service. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.ServiceLevelObjective body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -3882,13 +3886,13 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. Resource name of the parent Service. Of the form
-                /// projects/{project_id}/services/{service_id}.</summary>
+                /// <summary>Required. Resource name of the parent Service. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted,
-                /// an id will be generated instead. Must match the pattern a-z0-9-+</summary>
+                /// an id will be generated instead. Must match the pattern [a-z0-9\-]+</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceLevelObjectiveId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceLevelObjectiveId { get; set; }
 
@@ -3945,8 +3949,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>Delete the given ServiceLevelObjective.</summary>
-            /// <param name="name">Required. Resource name of the ServiceLevelObjective to delete. Of the form
-            /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.</param>
+            /// <param name="name">Required. Resource name of the ServiceLevelObjective to delete. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -3964,8 +3968,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. Resource name of the ServiceLevelObjective to delete. Of the form
-                /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.</summary>
+                /// <summary>Required. Resource name of the ServiceLevelObjective to delete. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -4007,8 +4011,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>Get a ServiceLevelObjective by name.</summary>
-            /// <param name="name">Required. Resource name of the ServiceLevelObjective to get. Of the form
-            /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.</param>
+            /// <param name="name">Required. Resource name of the ServiceLevelObjective to get. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -4026,8 +4030,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. Resource name of the ServiceLevelObjective to get. Of the form
-                /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.</summary>
+                /// <summary>Required. Resource name of the ServiceLevelObjective to get. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -4097,8 +4101,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>List the ServiceLevelObjectives for the given Service.</summary>
-            /// <param name="parent">Required. Resource name of the parent Service. Of the form
-            /// projects/{project_id}/services/{service_id}.</param>
+            /// <param name="parent">Required. Resource name of the parent Service. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -4116,8 +4120,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Required. Resource name of the parent Service. Of the form
-                /// projects/{project_id}/services/{service_id}.</summary>
+                /// <summary>Required. Resource name of the parent Service. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -4230,8 +4234,8 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Update the given ServiceLevelObjective.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Resource name for this ServiceLevelObjective. Of the form
-            /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.</param>
+            /// <param name="name">Resource name for this ServiceLevelObjective. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] </param>
             public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.ServiceLevelObjective body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -4250,8 +4254,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>Resource name for this ServiceLevelObjective. Of the form
-                /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.</summary>
+                /// <summary>Resource name for this ServiceLevelObjective. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -4314,8 +4318,8 @@ namespace Google.Apis.Monitoring.v3
 
         /// <summary>Create a Service.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="parent">Required. Resource name of the parent workspace. Of the form
-        /// projects/{project_id}.</param>
+        /// <param name="parent">Required. Resource name of the parent workspace. The format is: projects/[PROJECT_ID_OR_NUMBER]
+        /// </param>
         public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.Service body, string parent)
         {
             return new CreateRequest(service, body, parent);
@@ -4334,12 +4338,13 @@ namespace Google.Apis.Monitoring.v3
             }
 
 
-            /// <summary>Required. Resource name of the parent workspace. Of the form projects/{project_id}.</summary>
+            /// <summary>Required. Resource name of the parent workspace. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
             /// <summary>Optional. The Service id to use for this Service. If omitted, an id will be generated instead.
-            /// Must match the pattern a-z0-9-+</summary>
+            /// Must match the pattern [a-z0-9\-]+</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ServiceId { get; set; }
 
@@ -4396,8 +4401,8 @@ namespace Google.Apis.Monitoring.v3
         }
 
         /// <summary>Soft delete this Service.</summary>
-        /// <param name="name">Required. Resource name of the Service to delete. Of the form
-        /// projects/{project_id}/services/{service_id}.</param>
+        /// <param name="name">Required. Resource name of the Service to delete. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] </param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(service, name);
@@ -4415,8 +4420,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
 
-            /// <summary>Required. Resource name of the Service to delete. Of the form
-            /// projects/{project_id}/services/{service_id}.</summary>
+            /// <summary>Required. Resource name of the Service to delete. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -4458,8 +4463,8 @@ namespace Google.Apis.Monitoring.v3
         }
 
         /// <summary>Get the named Service.</summary>
-        /// <param name="name">Required. Resource name of the Service. Of the form
-        /// projects/{project_id}/services/{service_id}.</param>
+        /// <param name="name">Required. Resource name of the Service. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] </param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -4477,8 +4482,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
 
-            /// <summary>Required. Resource name of the Service. Of the form
-            /// projects/{project_id}/services/{service_id}.</summary>
+            /// <summary>Required. Resource name of the Service. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -4521,8 +4526,8 @@ namespace Google.Apis.Monitoring.v3
 
         /// <summary>List Services for this workspace.</summary>
         /// <param name="parent">Required. Resource name of the parent containing the listed services, either a project or
-        /// Stackdriver Account (workspace).One of the forms: "projects/{project_id}"
-        /// "workspaces/{host_project_id}"</param>
+        /// Stackdriver Account (workspace). The formats are: projects/[PROJECT_ID_OR_NUMBER] workspaces/[HOST_PROJECT_ID]
+        /// </param>
         public virtual ListRequest List(string parent)
         {
             return new ListRequest(service, parent);
@@ -4541,8 +4546,8 @@ namespace Google.Apis.Monitoring.v3
 
 
             /// <summary>Required. Resource name of the parent containing the listed services, either a project or
-            /// Stackdriver Account (workspace).One of the forms: "projects/{project_id}"
-            /// "workspaces/{host_project_id}"</summary>
+            /// Stackdriver Account (workspace). The formats are: projects/[PROJECT_ID_OR_NUMBER]
+            /// workspaces/[HOST_PROJECT_ID] </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -4633,8 +4638,8 @@ namespace Google.Apis.Monitoring.v3
 
         /// <summary>Update this Service.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">Resource name for this Service. Of the form
-        /// projects/{project_id}/services/{service_id}.</param>
+        /// <param name="name">Resource name for this Service. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID} </param>
         public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.Service body, string name)
         {
             return new PatchRequest(service, body, name);
@@ -4653,8 +4658,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
 
-            /// <summary>Resource name for this Service. Of the form
-            /// projects/{project_id}/services/{service_id}.</summary>
+            /// <summary>Resource name for this Service. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID} </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -4884,8 +4889,8 @@ namespace Google.Apis.Monitoring.v3.Data
 
         /// <summary>A list of conditions for the policy. The conditions are combined by AND or OR according to the
         /// combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have
-        /// from one to six conditions. If |condition_time_series_uery_language| is present, it must be the only
-        /// |condition|.</summary>
+        /// from one to six conditions. If condition_time_series_query_language is present, it must be the only
+        /// condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
 
@@ -4919,8 +4924,8 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mutationRecord")]
         public virtual MutationRecord MutationRecord { get; set; } 
 
-        /// <summary>Required if the policy exists. The resource name for this policy. The syntax is:
-        /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver
+        /// <summary>Required if the policy exists. The resource name for this policy. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver
         /// Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name
         /// field in the alerting policy passed as part of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4929,8 +4934,8 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Identifies the notification channels to which notifications should be sent when incidents are
         /// opened or closed or when new violations occur on an already opened incident. Each element of this array
         /// corresponds to the name field in each of the NotificationChannel objects that are returned from the
-        /// ListNotificationChannels method. The syntax of the entries in this field is:
-        /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] </summary>
+        /// ListNotificationChannels method. The format of the entries in this field is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationChannels")]
         public virtual System.Collections.Generic.IList<string> NotificationChannels { get; set; } 
 
@@ -5069,7 +5074,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Istio service. Learn more at http://istio.io.</summary>
+    /// <summary>Istio service scoped to a single Kubernetes cluster. Learn more at http://istio.io.</summary>
     public class ClusterIstio : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the
@@ -5211,16 +5216,16 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Required if the condition exists. The unique resource name for this condition. Its syntax is:
-        /// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by
-        /// Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When
-        /// calling the alertPolicies.create method, do not include the name field in the conditions of the requested
-        /// alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new
-        /// policy.When calling the alertPolicies.update method to update a policy, including a condition name causes
-        /// the existing condition to be updated. Conditions without names are added to the updated policy. Existing
-        /// conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only
-        /// small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the
-        /// change as a new condition and let the existing condition be deleted.</summary>
+        /// <summary>Required if the condition exists. The unique resource name for this condition. Its format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is
+        /// assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting
+        /// policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the
+        /// requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the
+        /// new policy.When calling the alertPolicies.update method to update a policy, including a condition name
+        /// causes the existing condition to be updated. Conditions without names are added to the updated policy.
+        /// Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you
+        /// make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise,
+        /// treat the change as a new condition and let the existing condition be deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -5655,15 +5660,15 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isCluster")]
         public virtual System.Nullable<bool> IsCluster { get; set; } 
 
-        /// <summary>Output only. The name of this group. The format is
-        /// "projects/{project_id_or_number}/groups/{group_id}". When creating a group, this field is ignored and a new
-        /// name is created consisting of the project specified in the call to CreateGroup and a unique {group_id} that
+        /// <summary>Output only. The name of this group. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new
+        /// name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that
         /// is generated automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The name of the group's parent, if it has one. The format is
-        /// "projects/{project_id_or_number}/groups/{group_id}". For groups with no parent, parentName is the empty
+        /// <summary>The name of the group's parent, if it has one. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty
         /// string, "".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentName")]
         public virtual string ParentName { get; set; } 
@@ -5733,9 +5738,9 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcpZone")]
         public virtual string GcpZone { get; set; } 
 
-        /// <summary>A unique resource name for this InternalChecker. The format
-        /// is:projects/[PROJECT_ID]/internalCheckers/[INTERNAL_CHECKER_ID].[PROJECT_ID] is the Stackdriver Workspace
-        /// project for the Uptime check config associated with the internal checker.</summary>
+        /// <summary>A unique resource name for this InternalChecker. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the
+        /// Stackdriver Workspace project for the Uptime check config associated with the internal checker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -5820,7 +5825,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Collections.Generic.IList<AlertPolicy> AlertPolicies { get; set; } 
 
         /// <summary>If there might be more results than were returned, then this field is set to a non-empty value. To
-        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
+        /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -5836,7 +5841,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Collections.Generic.IList<MonitoredResource> Members { get; set; } 
 
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
-        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
+        /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -5856,7 +5861,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Collections.Generic.IList<Group> Group { get; set; } 
 
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
-        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
+        /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -5873,7 +5878,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Collections.Generic.IList<MetricDescriptor> MetricDescriptors { get; set; } 
 
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
-        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
+        /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -5885,7 +5890,7 @@ namespace Google.Apis.Monitoring.v3.Data
     public class ListMonitoredResourceDescriptorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
-        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
+        /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -5937,7 +5942,7 @@ namespace Google.Apis.Monitoring.v3.Data
     public class ListServiceLevelObjectivesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
-        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
+        /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -5953,7 +5958,7 @@ namespace Google.Apis.Monitoring.v3.Data
     public class ListServicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
-        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
+        /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -5974,7 +5979,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Collections.Generic.IList<Status> ExecutionErrors { get; set; } 
 
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
-        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
+        /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -6023,6 +6028,28 @@ namespace Google.Apis.Monitoring.v3.Data
         /// from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uptimeCheckIps")]
         public virtual System.Collections.Generic.IList<UptimeCheckIp> UptimeCheckIps { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Istio service scoped to an Istio mesh</summary>
+    public class MeshIstio : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric
+        /// label in Istio metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meshUid")]
+        public virtual string MeshUid { get; set; } 
+
+        /// <summary>The name of the Istio service underlying this service. Corresponds to the destination_service_name
+        /// metric label in Istio metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; } 
+
+        /// <summary>The namespace of the Istio service underlying this service. Corresponds to the
+        /// destination_service_namespace metric label in Istio metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceNamespace")]
+        public virtual string ServiceNamespace { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6423,9 +6450,9 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The full REST resource name for this channel. The syntax is:
-        /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the
-        /// server on creation.</summary>
+        /// <summary>The full REST resource name for this channel. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned
+        /// by the server on creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -6480,9 +6507,9 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("launchStage")]
         public virtual string LaunchStage { get; set; } 
 
-        /// <summary>The full REST resource name for this descriptor. The syntax is:
-        /// projects/[PROJECT_ID]/notificationChannelDescriptors/[TYPE] In the above, [TYPE] is the value of the type
-        /// field.</summary>
+        /// <summary>The full REST resource name for this descriptor. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[TYPE] In the above, [TYPE] is the value of
+        /// the type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -6592,7 +6619,7 @@ namespace Google.Apis.Monitoring.v3.Data
     public class ResourceGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path
-        /// projects/[PROJECT_ID]/groups/[GROUP_ID].</summary>
+        /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual string GroupId { get; set; } 
 
@@ -6636,7 +6663,12 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Resource name for this Service. Of the form projects/{project_id}/services/{service_id}.</summary>
+        /// <summary>Type used for Istio services scoped to an Istio mesh.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meshIstio")]
+        public virtual MeshIstio MeshIstio { get; set; } 
+
+        /// <summary>Resource name for this Service. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID} </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -6696,8 +6728,8 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("goal")]
         public virtual System.Nullable<double> Goal { get; set; } 
 
-        /// <summary>Resource name for this ServiceLevelObjective. Of the form
-        /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.</summary>
+        /// <summary>Resource name for this ServiceLevelObjective. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -6728,15 +6760,15 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The context of a span, attached to google.api.Distribution.Exemplars in google.api.Distribution values
-    /// during aggregation.It contains the name of a span with format:
-    /// projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID</summary>
+    /// <summary>The context of a span, attached to Exemplars in Distribution values during aggregation.It contains the
+    /// name of a span with format: projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID] </summary>
     public class SpanContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of the span in the following format:
-        /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID] TRACE_ID is a unique identifier for a trace within a
-        /// project; it is a 32-character hexadecimal encoding of a 16-byte array.SPAN_ID is a unique identifier for a
-        /// span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array.</summary>
+        /// <summary>The resource name of the span. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID] [TRACE_ID] is a unique identifier for a
+        /// trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array.[SPAN_ID] is a unique
+        /// identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte
+        /// array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanName")]
         public virtual string SpanName { get; set; } 
 
@@ -7009,10 +7041,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]
         public virtual MonitoredResource MonitoredResource { get; set; } 
 
-        /// <summary>A unique resource name for this Uptime check configuration. The format
-        /// is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted when creating the
-        /// Uptime check configuration; on create, the resource name is assigned by the server and included in the
-        /// response.</summary>
+        /// <summary>A unique resource name for this Uptime check configuration. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] This field should be omitted when
+        /// creating the Uptime check configuration; on create, the resource name is assigned by the server and included
+        /// in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

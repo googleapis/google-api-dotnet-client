@@ -14,7 +14,7 @@
  "description": "API for access to the data within Blogger.", 
  "discoveryVersion": "v1", 
  "documentationLink": "https://developers.google.com/blogger/docs/2.0/json/getting_started", 
- "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/2faIINy3I7i8fTshyKHsWMS4aW8\"", 
+ "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/5n8J-SrfC_3u-tnboDRXTbXXKhw\"", 
  "icons": {
   "x16": "https://www.google.com/images/icons/product/blogger-16.png", 
   "x32": "https://www.google.com/images/icons/product/blogger-32.png"
@@ -392,7 +392,7 @@
    }
   }
  }, 
- "revision": "20200121", 
+ "revision": "20200204", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "Blog": {

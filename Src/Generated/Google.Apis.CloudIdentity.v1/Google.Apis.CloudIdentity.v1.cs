@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200210 (1866)
+ *      <tr><th>API Rev<td>20200211 (1867)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -1510,7 +1510,8 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Resource representing a Device.</summary>
+    /// <summary>Represents a Device known to Google Cloud, independent of the device ownership, type, and whether it is
+    /// assigned or in use by a user.</summary>
     public class GoogleAppsCloudidentityDevicesV1alpha1Device : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Attributes specific to Android devices.</summary>

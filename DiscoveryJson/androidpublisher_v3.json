@@ -15,7 +15,7 @@
  "description": "Accesses Android application developers' Google Play accounts.", 
  "discoveryVersion": "v1", 
  "documentationLink": "https://developers.google.com/android-publisher", 
- "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/QIrvPUss3PXFnQ2S7u7HNrSYtCk\"", 
+ "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/FX_0eZqN_h0XOPznb5gQFmwb-t0\"", 
  "icons": {
   "x16": "https://www.google.com/images/icons/product/android-16.png", 
   "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -2537,7 +2537,7 @@
    }
   }
  }, 
- "revision": "20200202", 
+ "revision": "20200204", 
  "rootUrl": "https://www.googleapis.com/", 
  "schemas": {
   "Apk": {

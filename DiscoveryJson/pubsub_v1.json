@@ -1092,7 +1092,7 @@
    }
   }
  }, 
- "revision": "20200128", 
+ "revision": "20200206", 
  "rootUrl": "https://pubsub.googleapis.com/", 
  "schemas": {
   "AcknowledgeRequest": {

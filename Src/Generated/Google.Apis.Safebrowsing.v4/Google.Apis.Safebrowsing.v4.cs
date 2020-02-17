@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/safe-browsing/'>Safe Browsing API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20200129 (1854)
+ *      <tr><th>API Rev<td>20200210 (1866)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/safe-browsing/'>
  *              https://developers.google.com/safe-browsing/</a>
@@ -962,8 +962,9 @@ namespace Google.Apis.Safebrowsing.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; } 
 
-        /// <summary>Sets the maximum number of entries that the client is willing to have in the local database. This
-        /// should be a power of 2 between 2**10 and 2**20. If zero, no database size limit is set.</summary>
+        /// <summary>Sets the maximum number of entries that the client is willing to have in the local database for the
+        /// specified list. This should be a power of 2 between 2**10 and 2**20. If zero, no database size limit is
+        /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDatabaseEntries")]
         public virtual System.Nullable<int> MaxDatabaseEntries { get; set; } 
 

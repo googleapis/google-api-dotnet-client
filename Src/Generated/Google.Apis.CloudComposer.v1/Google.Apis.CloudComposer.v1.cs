@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/composer/'>Cloud Composer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200109 (1834)
+ *      <tr><th>API Rev<td>20200207 (1863)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/composer/'>
  *              https://cloud.google.com/composer/</a>
@@ -1244,7 +1244,10 @@ namespace Google.Apis.CloudComposer.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The resource name of the environment, in the form:
-        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</summary>
+        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+        ///
+        /// EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or
+        /// hyphens, and cannot end with a hyphen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

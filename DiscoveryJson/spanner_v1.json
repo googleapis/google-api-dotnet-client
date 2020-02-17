@@ -1610,7 +1610,7 @@
    }
   }
  }, 
- "revision": "20200206", 
+ "revision": "20200214", 
  "rootUrl": "https://spanner.googleapis.com/", 
  "schemas": {
   "BatchCreateSessionsRequest": {

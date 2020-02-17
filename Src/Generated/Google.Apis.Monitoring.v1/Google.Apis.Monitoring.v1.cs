@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200204 (1860)
+ *      <tr><th>API Rev<td>20200210 (1866)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -389,8 +389,8 @@ namespace Google.Apis.Monitoring.v1
             /// on the specified project. For more information, see Google Cloud IAM
             /// (https://cloud.google.com/iam).</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The project on which to execute the request. The format is
-            /// "projects/{project_id_or_number}". The {project_id_or_number} must match the dashboard resource name.</param>
+            /// <param name="parent">Required. The project on which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] The [PROJECT_ID_OR_NUMBER] must match the dashboard resource name.</param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v1.Data.Dashboard body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -411,8 +411,8 @@ namespace Google.Apis.Monitoring.v1
                 }
 
 
-                /// <summary>Required. The project on which to execute the request. The format is
-                /// "projects/{project_id_or_number}". The {project_id_or_number} must match the dashboard resource
+                /// <summary>Required. The project on which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] The [PROJECT_ID_OR_NUMBER] must match the dashboard resource
                 /// name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -463,8 +463,8 @@ namespace Google.Apis.Monitoring.v1
             /// <summary>Deletes an existing custom dashboard.This method requires the monitoring.dashboards.delete
             /// permission on the specified dashboard. For more information, see Google Cloud IAM
             /// (https://cloud.google.com/iam).</summary>
-            /// <param name="name">Required. The resource name of the Dashboard. The format is
-            /// "projects/{project_id_or_number}/dashboards/{dashboard_id}".</param>
+            /// <param name="name">Required. The resource name of the Dashboard. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID] </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -484,8 +484,8 @@ namespace Google.Apis.Monitoring.v1
                 }
 
 
-                /// <summary>Required. The resource name of the Dashboard. The format is
-                /// "projects/{project_id_or_number}/dashboards/{dashboard_id}".</summary>
+                /// <summary>Required. The resource name of the Dashboard. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -529,8 +529,8 @@ namespace Google.Apis.Monitoring.v1
             /// <summary>Fetches a specific dashboard.This method requires the monitoring.dashboards.get permission on
             /// the specified dashboard. For more information, see Google Cloud IAM
             /// (https://cloud.google.com/iam).</summary>
-            /// <param name="name">Required. The resource name of the Dashboard. The format is one of "dashboards/{dashboard_id}"
-            /// (for system dashboards) or "projects/{project_id_or_number}/dashboards/{dashboard_id}" (for custom
+            /// <param name="name">Required. The resource name of the Dashboard. The format is one of: dashboards/[DASHBOARD_ID]
+            /// (for system dashboards) projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID]  (for custom
             /// dashboards).</param>
             public virtual GetRequest Get(string name)
             {
@@ -551,9 +551,9 @@ namespace Google.Apis.Monitoring.v1
                 }
 
 
-                /// <summary>Required. The resource name of the Dashboard. The format is one of
-                /// "dashboards/{dashboard_id}" (for system dashboards) or
-                /// "projects/{project_id_or_number}/dashboards/{dashboard_id}" (for custom dashboards).</summary>
+                /// <summary>Required. The resource name of the Dashboard. The format is one of:
+                /// dashboards/[DASHBOARD_ID] (for system dashboards)
+                /// projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID]  (for custom dashboards).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -597,8 +597,8 @@ namespace Google.Apis.Monitoring.v1
             /// <summary>Lists the existing dashboards.This method requires the monitoring.dashboards.list permission on
             /// the specified project. For more information, see Google Cloud IAM
             /// (https://cloud.google.com/iam).</summary>
-            /// <param name="parent">Required. The scope of the dashboards to list. A project scope must be specified in the form of
-            /// "projects/{project_id_or_number}".</param>
+            /// <param name="parent">Required. The scope of the dashboards to list. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -618,8 +618,8 @@ namespace Google.Apis.Monitoring.v1
                 }
 
 
-                /// <summary>Required. The scope of the dashboards to list. A project scope must be specified in the
-                /// form of "projects/{project_id_or_number}".</summary>
+                /// <summary>Required. The scope of the dashboards to list. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1067,7 +1067,7 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual System.Collections.Generic.IList<Dashboard> Dashboards { get; set; } 
 
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
-        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
+        /// see the additional results, use that value as page_token in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -1210,15 +1210,15 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The context of a span, attached to google.api.Distribution.Exemplars in google.api.Distribution values
-    /// during aggregation.It contains the name of a span with format:
-    /// projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID</summary>
+    /// <summary>The context of a span, attached to Exemplars in Distribution values during aggregation.It contains the
+    /// name of a span with format: projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID] </summary>
     public class SpanContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of the span in the following format:
-        /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID] TRACE_ID is a unique identifier for a trace within a
-        /// project; it is a 32-character hexadecimal encoding of a 16-byte array.SPAN_ID is a unique identifier for a
-        /// span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array.</summary>
+        /// <summary>The resource name of the span. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID] [TRACE_ID] is a unique identifier for a
+        /// trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array.[SPAN_ID] is a unique
+        /// identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte
+        /// array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanName")]
         public virtual string SpanName { get; set; } 
 

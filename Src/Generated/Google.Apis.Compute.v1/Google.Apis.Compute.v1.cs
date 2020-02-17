@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20200106 (1831)
+ *      <tr><th>API Rev<td>20200114 (1839)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -13891,6 +13891,109 @@ namespace Google.Apis.Compute.v1
                         Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Apply changes to selected instances on the managed instance group. This method can be used to apply
+        /// new overrides and/or new versions.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone where the
+        /// managed instance group is located. Should conform to RFC1035.</param>
+        /// <param name="instanceGroupManager">The
+        /// name of the managed instance group, should conform to RFC1035.</param>
+        public virtual ApplyUpdatesToInstancesRequest ApplyUpdatesToInstances(Google.Apis.Compute.v1.Data.InstanceGroupManagersApplyUpdatesRequest body, string project, string zone, string instanceGroupManager)
+        {
+            return new ApplyUpdatesToInstancesRequest(service, body, project, zone, instanceGroupManager);
+        }
+
+        /// <summary>Apply changes to selected instances on the managed instance group. This method can be used to apply
+        /// new overrides and/or new versions.</summary>
+        public class ApplyUpdatesToInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new ApplyUpdatesToInstances request.</summary>
+            public ApplyUpdatesToInstancesRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.InstanceGroupManagersApplyUpdatesRequest body, string project, string zone, string instanceGroupManager)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                InstanceGroupManager = instanceGroupManager;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone where the managed instance group is located. Should conform to
+            /// RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>The name of the managed instance group, should conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string InstanceGroupManager { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.InstanceGroupManagersApplyUpdatesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "applyUpdatesToInstances"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/applyUpdatesToInstances"; }
+            }
+
+            /// <summary>Initializes ApplyUpdatesToInstances parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instanceGroupManager",
+                        IsRequired = true,
+                        ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -36394,6 +36497,106 @@ namespace Google.Apis.Compute.v1
                         Name = "requestId",
                         IsRequired = false,
                         ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Apply updates to selected instances the managed instance group.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request, should conform to RFC1035.</param>
+        /// <param name="instanceGroupManager">The name of the managed
+        /// instance group, should conform to RFC1035.</param>
+        public virtual ApplyUpdatesToInstancesRequest ApplyUpdatesToInstances(Google.Apis.Compute.v1.Data.RegionInstanceGroupManagersApplyUpdatesRequest body, string project, string region, string instanceGroupManager)
+        {
+            return new ApplyUpdatesToInstancesRequest(service, body, project, region, instanceGroupManager);
+        }
+
+        /// <summary>Apply updates to selected instances the managed instance group.</summary>
+        public class ApplyUpdatesToInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new ApplyUpdatesToInstances request.</summary>
+            public ApplyUpdatesToInstancesRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.RegionInstanceGroupManagersApplyUpdatesRequest body, string project, string region, string instanceGroupManager)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InstanceGroupManager = instanceGroupManager;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request, should conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>The name of the managed instance group, should conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string InstanceGroupManager { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.RegionInstanceGroupManagersApplyUpdatesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "applyUpdatesToInstances"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/applyUpdatesToInstances"; }
+            }
+
+            /// <summary>Initializes ApplyUpdatesToInstances parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instanceGroupManager",
+                        IsRequired = true,
+                        ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -64130,15 +64333,17 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The header value must be an integer and its value must be in the range specified in rangeMatch. If
         /// the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0]
         /// - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of
-        /// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.</summary>
+        /// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Note that
+        /// rangeMatch is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangeMatch")]
         public virtual Int64RangeMatch RangeMatch { get; set; } 
 
-        /// <summary>The value of the header must match the regualar expression specified in regexMatch. For regular
+        /// <summary>The value of the header must match the regular expression specified in regexMatch. For regular
         /// expression grammar, please see:  en.cppreference.com/w/cpp/regex/ecmascript For matching against a port
         /// specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that
         /// satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch,
-        /// regexMatch, presentMatch or rangeMatch must be set.</summary>
+        /// regexMatch, presentMatch or rangeMatch must be set. Note that regexMatch only applies to Loadbalancers that
+        /// have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regexMatch")]
         public virtual string RegexMatch { get; set; } 
 
@@ -64339,8 +64544,8 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>The queryParameterMatch matches if the value of the parameter matches the regular expression
         /// specified by regexMatch. For the regular expression grammar, please see
-        /// en.cppreference.com/w/cpp/regex/ecmascript Only one of presentMatch, exactMatch or regexMatch must be
-        /// set.</summary>
+        /// en.cppreference.com/w/cpp/regex/ecmascript Only one of presentMatch, exactMatch or regexMatch must be set.
+        /// Note that regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regexMatch")]
         public virtual string RegexMatch { get; set; } 
 
@@ -64583,7 +64788,8 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>For satisfying the matchRule condition, the path of the request must satisfy the regular expression
         /// specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For
         /// regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript Only one of prefixMatch,
-        /// fullPathMatch or regexMatch must be specified.</summary>
+        /// fullPathMatch or regexMatch must be specified. Note that regexMatch only applies to Loadbalancers that have
+        /// their loadBalancingScheme set to INTERNAL_SELF_MANAGED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regexMatch")]
         public virtual string RegexMatch { get; set; } 
 
@@ -65920,6 +66126,34 @@ namespace Google.Apis.Compute.v1.Data
         /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>InstanceGroupManagers.applyUpdatesToInstances</summary>
+    public class InstanceGroupManagersApplyUpdatesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of URLs of one or more instances for which you want to apply updates. Each URL can be a
+        /// full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
+        public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
+
+        /// <summary>The minimal action that you want to perform on each instance during the update: - REPLACE: At
+        /// minimum, delete the instance and create it again. - RESTART: Stop the instance and start it again. -
+        /// REFRESH: Do not stop the instance. - NONE: Do not disrupt the instance at all.  By default, the minimum
+        /// action is NONE. If your update requires a more disruptive action than you set with this flag, the necessary
+        /// action is performed to execute the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimalAction")]
+        public virtual string MinimalAction { get; set; } 
+
+        /// <summary>The most disruptive action that you want to perform on each instance during the update: - REPLACE:
+        /// Delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not
+        /// stop the instance. - NONE: Do not disrupt the instance at all.  By default, the most disruptive allowed
+        /// action is REPLACE. If your update requires a more disruptive action than you set with this flag, the update
+        /// request will fail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mostDisruptiveAllowedAction")]
+        public virtual string MostDisruptiveAllowedAction { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -71082,8 +71316,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>The list of HTTP route rules. Use this list instead of pathRules when advanced route matching and
         /// routing actions are desired. routeRules are evaluated in order of priority, from the lowest to highest
-        /// number. Within a given pathMatcher, only one of pathRules or routeRules must be set. routeRules are not
-        /// supported in UrlMaps intended for External Load balancers.</summary>
+        /// number. Within a given pathMatcher, you can set only one of pathRules or routeRules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routeRules")]
         public virtual System.Collections.Generic.IList<HttpRouteRule> RouteRules { get; set; } 
 
@@ -71786,6 +72019,34 @@ namespace Google.Apis.Compute.v1.Data
         /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>InstanceGroupManagers.applyUpdatesToInstances</summary>
+    public class RegionInstanceGroupManagersApplyUpdatesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of URLs of one or more instances for which you want to apply updates. Each URL can be a
+        /// full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
+        public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
+
+        /// <summary>The minimal action that you want to perform on each instance during the update: - REPLACE: At
+        /// minimum, delete the instance and create it again. - RESTART: Stop the instance and start it again. -
+        /// REFRESH: Do not stop the instance. - NONE: Do not disrupt the instance at all.  By default, the minimum
+        /// action is NONE. If your update requires a more disruptive action than you set with this flag, the necessary
+        /// action is performed to execute the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimalAction")]
+        public virtual string MinimalAction { get; set; } 
+
+        /// <summary>The most disruptive action that you want to perform on each instance during the update: - REPLACE:
+        /// Delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not
+        /// stop the instance. - NONE: Do not disrupt the instance at all.  By default, the most disruptive allowed
+        /// action is REPLACE. If your update requires a more disruptive action than you set with this flag, the update
+        /// request will fail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mostDisruptiveAllowedAction")]
+        public virtual string MostDisruptiveAllowedAction { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

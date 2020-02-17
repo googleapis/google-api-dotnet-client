@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/composer/'>Cloud Composer API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200109 (1834)
+ *      <tr><th>API Rev<td>20200207 (1863)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/composer/'>
  *              https://cloud.google.com/composer/</a>
@@ -1217,6 +1217,26 @@ namespace Google.Apis.CloudComposer.v1beta1
 namespace Google.Apis.CloudComposer.v1beta1.Data
 {    
 
+    /// <summary>Allowed IP range with user-provided description.</summary>
+    public class AllowedIpRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. User-provided description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>IP address or range, defined using CIDR notation, of requests that this rule applies to. You can
+        /// use the wildcard character "*" to match all IPs equivalent to "0/0" and "::/0" together. Examples:
+        /// `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`.
+        ///
+        /// IP range prefixes should be properly truncated. For example, `1.2.3.4/24` should be truncated to
+        /// `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -1250,7 +1270,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The resource name of the environment, in the form:
-        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</summary>
+        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+        ///
+        /// EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or
+        /// hyphens, and cannot end with a hyphen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1306,6 +1329,11 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>The configuration settings for software inside the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual SoftwareConfig SoftwareConfig { get; set; } 
+
+        /// <summary>Optional. The network-level access control policy for the Airflow web server. If unspecified, no
+        /// network-level access restrictions will be applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webServerNetworkAccessControl")]
+        public virtual WebServerNetworkAccessControl WebServerNetworkAccessControl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1704,6 +1732,17 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Network-level access control policy for the Airflow web server.</summary>
+    public class WebServerNetworkAccessControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A collection of allowed IP ranges with descriptions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedIpRanges")]
+        public virtual System.Collections.Generic.IList<AllowedIpRange> AllowedIpRanges { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

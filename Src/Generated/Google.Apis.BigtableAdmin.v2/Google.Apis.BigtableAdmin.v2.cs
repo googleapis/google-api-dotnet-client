@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigtable/'>Cloud Bigtable Admin API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20200114 (1839)
+ *      <tr><th>API Rev<td>20200204 (1860)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigtable/'>
  *              https://cloud.google.com/bigtable/</a>
@@ -1274,9 +1274,178 @@ namespace Google.Apis.BigtableAdmin.v2
                 public ClustersResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    backups = new BackupsResource(service);
 
                 }
 
+                private readonly BackupsResource backups;
+
+                /// <summary>Gets the Backups resource.</summary>
+                public virtual BackupsResource Backups
+                {
+                    get { return backups; }
+                }
+
+                /// <summary>The "backups" collection of methods.</summary>
+                public class BackupsResource
+                {
+                    private const string Resource = "backups";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public BackupsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Gets the access control policy for a Table or Backup resource. Returns an empty policy
+                    /// if the resource exists but does not have a policy set.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+                    /// documentation for the appropriate value for this field.</param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest body, string resource)
+                    {
+                        return new GetIamPolicyRequest(service, body, resource);
+                    }
+
+                    /// <summary>Gets the access control policy for a Table or Backup resource. Returns an empty policy
+                    /// if the resource exists but does not have a policy set.</summary>
+                    public class GetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest body, string resource)
+                            : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                        /// documentation for the appropriate value for this field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BigtableAdmin.v2.Data.GetIamPolicyRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "getIamPolicy"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v2/{+resource}:getIamPolicy"; }
+                        }
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Sets the access control policy on a Table or Backup resource. Replaces any existing
+                    /// policy.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+                    /// documentation for the appropriate value for this field.</param>
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest body, string resource)
+                    {
+                        return new SetIamPolicyRequest(service, body, resource);
+                    }
+
+                    /// <summary>Sets the access control policy on a Table or Backup resource. Replaces any existing
+                    /// policy.</summary>
+                    public class SetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
+                    {
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest body, string resource)
+                            : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                        /// documentation for the appropriate value for this field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BigtableAdmin.v2.Data.SetIamPolicyRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "setIamPolicy"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v2/{+resource}:setIamPolicy"; }
+                        }
+
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$",
+                                });
+                        }
+
+                    }
+                }
 
                 /// <summary>Creates a cluster within an instance.</summary>
                 /// <param name="body">The body of the request.</param>
@@ -2101,8 +2270,8 @@ namespace Google.Apis.BigtableAdmin.v2
 
                 }
 
-                /// <summary>Gets the access control policy for a table resource. Returns an empty policy if an table
-                /// exists but does not have a policy set.</summary>
+                /// <summary>Gets the access control policy for a Table or Backup resource. Returns an empty policy if
+                /// the resource exists but does not have a policy set.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -2111,8 +2280,8 @@ namespace Google.Apis.BigtableAdmin.v2
                     return new GetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Gets the access control policy for a table resource. Returns an empty policy if an table
-                /// exists but does not have a policy set.</summary>
+                /// <summary>Gets the access control policy for a Table or Backup resource. Returns an empty policy if
+                /// the resource exists but does not have a policy set.</summary>
                 public class GetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -2372,7 +2541,8 @@ namespace Google.Apis.BigtableAdmin.v2
 
                 }
 
-                /// <summary>Sets the access control policy on a table resource. Replaces any existing policy.</summary>
+                /// <summary>Sets the access control policy on a Table or Backup resource. Replaces any existing
+                /// policy.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -2381,7 +2551,8 @@ namespace Google.Apis.BigtableAdmin.v2
                     return new SetIamPolicyRequest(service, body, resource);
                 }
 
-                /// <summary>Sets the access control policy on a table resource. Replaces any existing policy.</summary>
+                /// <summary>Sets the access control policy on a Table or Backup resource. Replaces any existing
+                /// policy.</summary>
                 public class SetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -3714,30 +3885,48 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an expression text. Example:
+    /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
+    /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
     ///
-    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
-    /// "size(request.user) > 0"</summary>
+    /// Example (Comparison):
+    ///
+    /// title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression:
+    /// "document.summary.size() < 100"
+    ///
+    /// Example (Equality):
+    ///
+    /// title: "Requestor is owner" description: "Determines if requestor is the document owner" expression:
+    /// "document.owner == request.auth.claims.email"
+    ///
+    /// Example (Logic):
+    ///
+    /// title: "Public documents" description: "Determine whether the document should be publicly visible" expression:
+    /// "document.type != 'private' && document.type != 'internal'"
+    ///
+    /// Example (Data Manipulation):
+    ///
+    /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
+    /// message received at ' + string(document.create_time)"
+    ///
+    /// The exact variables and functions that may be referenced within an expression are determined by the service that
+    /// evaluates it. See the service documentation for additional information.</summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
-        /// e.g. when hovered over it in a UI.</summary>
+        /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
+        /// when hovered over it in a UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Textual representation of an expression in Common Expression Language syntax.
-        ///
-        /// The application context of the containing message determines which well-known feature set of CEL is
-        /// supported.</summary>
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; } 
 
-        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
         /// and a position in the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
-        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
         /// e.g. in UIs which allow to enter the expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 

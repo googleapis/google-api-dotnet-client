@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/identity/'>Cloud Identity API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20200210 (1866)
+ *      <tr><th>API Rev<td>20200211 (1867)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/identity/'>
  *              https://cloud.google.com/identity/</a>
@@ -754,8 +754,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 /// If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a
                 /// Google Group.
                 ///
-                /// If specified, the `EntityKey` represents an external-identity-mapped group created through Admin
-                /// Console. Must be of the form `identitysources/{identity_source_id}.</summary>
+                /// If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must
+                /// correspond to an identity source created in Admin Console. Must be of the form
+                /// `identitysources/{identity_source_id}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("memberKey.namespace", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string MemberKeyNamespace { get; set; }
 
@@ -1098,13 +1099,13 @@ namespace Google.Apis.CloudIdentity.v1beta1
 
         }
 
-        /// <summary>Lists the `Group`s within a customer or namespace.</summary>
+        /// <summary>Lists the `Group`s under a customer or namespace.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists the `Group`s within a customer or namespace.</summary>
+        /// <summary>Lists the `Group`s under a customer or namespace.</summary>
         public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.ListGroupsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1256,8 +1257,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google
             /// Group.
             ///
-            /// If specified, the `EntityKey` represents an external-identity-mapped group created through Admin
-            /// Console. Must be of the form `identitysources/{identity_source_id}.</summary>
+            /// If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must
+            /// correspond to an identity source created in Admin Console. Must be of the form
+            /// `identitysources/{identity_source_id}.</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey.namespace", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string GroupKeyNamespace { get; set; }
 
@@ -1547,8 +1549,9 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google
         /// Group.
         ///
-        /// If specified, the `EntityKey` represents an external-identity-mapped group created through Admin Console.
-        /// Must be of the form `identitysources/{identity_source_id}.</summary>
+        /// If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to
+        /// an identity source created in Admin Console. Must be of the form
+        /// `identitysources/{identity_source_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; } 
 
@@ -1669,7 +1672,8 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Resource representing a Device.</summary>
+    /// <summary>Represents a Device known to Google Cloud, independent of the device ownership, type, and whether it is
+    /// assigned or in use by a user.</summary>
     public class GoogleAppsCloudidentityDevicesV1alpha1Device : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Attributes specific to Android devices.</summary>
